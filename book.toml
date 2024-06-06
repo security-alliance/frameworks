@@ -1,0 +1,39 @@
+[book]
+authors = ["matta"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Security Frameworks by SEAL"
+
+[preprocessor]
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+
+[preprocessor.catppuccin]
+assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
+
+[output]
+
+[output.html]
+additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./mdbook-admonish.css"]
+default-theme = "latte"
+preferred-dark-theme = "mocha"
+mathjax-support = true
+# site-url = "/book/"
+git-repository-url = "https://github.com/security-alliance/frameworks/tree/develop"
+edit-url-template = "https://github.com/security-alliance/frameworks/tree/develop/{path}"
+
+[output.html.playground]
+editable = true
+line-numbers = true
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2
