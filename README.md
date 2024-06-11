@@ -1,4 +1,4 @@
-# Security Frameworks content repository (develop)
+# Security Frameworks content repository
 Official repository to the Security Frameworks by SEAL. This repository contains the entire
 structure and contents of the frameworks. Feel free to suggest from new categories to grammar
 corrections. Collaboration is open to everyone.
@@ -22,7 +22,7 @@ If you want to know more about the frameworks or take a peek at the live book go
 `git checkout -b develop`
 1. Make your changes.
 2. Make sure your changes don't break anything by testing it in the local setup (see above).
-`mdbook serve`
+`mdbook serve`.
 1. Commit your changes.
 `git add .`
 1. Commit the changes with a descriptive message:
