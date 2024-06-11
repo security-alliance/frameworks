@@ -1,5 +1,5 @@
 # SUMMARY
-# Security Frameworks by SEAL
+# Security Frameworks by SEAL (develop)
 - [Introduction to the frameworks](./intro/introduction)
 - [What is it](./intro/what-is-it)
 - [What it isn't](./intro/what-it-isnt)
