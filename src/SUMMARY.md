@@ -1,9 +1,9 @@
-# Introduction
-- [Introduction to the Security Frameworks by SEAL](./intro/intro.md)
-    - [What is it](./intro/what-is-it)
-    - [What it isn't](./intro/what-it-isnt)
-    - [How to navigate the website](./intro/how-to-navigate-the-website)
-    - [Overview of each framework](./intro/overview-of-each-framework)
+# SUMMARY
+# Security Frameworks by SEAL
+- [What is it](./intro/what-is-it)
+- [What it isn't](./intro/what-it-isnt)
+- [How to navigate the website](./intro/how-to-navigate-the-website)
+- [Overview of each framework](./intro/overview-of-each-framework)
 
 # Frameworks
 - [Infrastructure](./infrastructure/README.md)
@@ -133,11 +133,11 @@
 
 
 # Practical Guides
-    - Step-by-step implementation — can be omitted
-    - Case studies — an idea
+<!-- - Step-by-step implementation — can be omitted
+- Case studies — an idea -->
 
 # Additional Resources
-    - Tools and software recommendations
-    - Further reading and references
+<!-- - Tools and software recommendations
+- Further reading and references -->
 -----------
 [Contributors](misc/contributors.md)
