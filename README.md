@@ -1,4 +1,4 @@
-# Security Frameworks content repository
+# Security Frameworks content repository (develop)
 Official repository to the Security Frameworks by SEAL. This repository contains the entire
 structure and contents of the frameworks. Feel free to suggest from new categories to grammar
 corrections. Collaboration is open to everyone.
