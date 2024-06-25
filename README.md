@@ -6,11 +6,11 @@ corrections. Collaboration is open to everyone.
 If you want to know more about the frameworks or take a peek at the live book go to
 [frameworks.securityalliance.org](https://frameworks.securityalliance.org).
 
-## Installation and local setup
+## Quick installation and local setup
 1. `gh repo clone security-alliance/frameworks`
 2. `git checkout develop`
 3. `cargo install mdbook mdbook-admonish mdbook-catppuccin`
-4. `mdbook serve`
+4. `./serve`
 
 ## Collaborate
 1. Fork the repository. Click on the "Fork" button at the top right corner of the page.
@@ -22,7 +22,7 @@ If you want to know more about the frameworks or take a peek at the live book go
 `git checkout -b develop`
 1. Make your changes.
 2. Make sure your changes don't break anything by testing it in the local setup (see above).
-`mdbook serve`.
+`./serve`.
 1. Commit your changes.
 `git add .`
 1. Commit the changes with a descriptive message:
@@ -38,11 +38,12 @@ If you want to know more about the frameworks or take a peek at the live book go
 
 # Editor area
 Editors merge PRs and push suggestions to the main branch which will be reflected on the live book.
-1. git checkout main
-2. git fetch origin develop
-3. git merge origin/develop
+1. `git checkout main`
+2. `git fetch origin develop`
+3. `git merge origin/develop`
 4. Manually merge files, solve conflicts and add a description.
 
 ## caveats
-The index.hbs from develop differs from main, since the theme has to be hardcoded to work as it is
+- The index.hbs from develop differs from main, since the theme has to be hardcoded to work as it is
 right now under vercel. This is why it is under a .gitignore.
+- Using the `serve.sh` script instead of mdBook `serve` command is needed to be able to see properly the local deployment.
