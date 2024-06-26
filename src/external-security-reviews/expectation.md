@@ -1,1 +1,2 @@
 # Expectation
+A security review is a time-boxed assessment of your smart contracts and web3 protocol, with the goal of finding as many vulnerabilities as possible and educating the development team on ways to improve the security of their codebase moving forward. Security reviewers use a combination of manual techniques and automated tools to find vulnerabilities affecting the target.

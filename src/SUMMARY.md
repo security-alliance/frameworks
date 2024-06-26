@@ -1,13 +1,14 @@
 # SUMMARY
 # Security Frameworks by SEAL (develop)
-- [Introduction to the frameworks](./intro/introduction)
-- [What is it](./intro/what-is-it)
-- [What it isn't](./intro/what-it-isnt)
-- [How to navigate the website](./intro/how-to-navigate-the-website)
-- [Overview of each framework](./intro/overview-of-each-framework)
+- [Introduction to the frameworks](./intro/introduction.md)
+- [What is it](./intro/what-is-it.md)
+- [What it isn't](./intro/what-it-isnt.md)
+- [How to navigate the website](./intro/how-to-navigate-the-website.md)
+- [Overview of each framework](./intro/overview-of-each-framework.md)
 
 # Frameworks
 - [Infrastructure](./infrastructure/README.md)
+  - [Cloud infraestructure](./infrastructure/cloud.md)
   - [DDoS protection](./infrastructure/ddos-protection.md)
   - [DNS and Domain Registration](./infrastructure/dns-and-domain-registration.md)
   - [Operating System Security](./infrastructure/operating-system-security.md)
@@ -27,6 +28,8 @@
 - [Community Management](./community-management/README.md)
   - [Discord](./community-management/discord.md)
   - [Twitter](./community-management/twitter.md)
+  - [Telegram](./community-management/telegram.md)
+  - [Google](./community-management/google.md)
 
 - [Key Management](./key-management/README.md)
   - [Custodial vs Non-Custodial](./key-management/custodial-vs-non-custodial.md)
