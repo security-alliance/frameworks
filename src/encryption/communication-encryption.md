@@ -1,1 +1,2 @@
 # Communication Encryption
+Secret information should only be shared via trusted communication channels. Messages sent via services such as Discord and Telegram are not encrypted by default, and as such could be read by an attacker obtaining access to your Discord or Telegram account. There are other services providing end-to-end encryption, which may be a good option for messages that should not be readable by a malicious third party.

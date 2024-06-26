@@ -1,1 +1,4 @@
 # Network Security
+- **Default Deny**: Infrastructure should deny all incoming traffic by default. When opening ports, consideration should be made as to which ports and incoming IPs are needed. SSH, RDP, and Database ports should not be open to the entire Internet.
+- **Network Segmentation:** Firewall protection and network segmentation should, when possible, be used to decrease the attack surface. For a web application, this could mean that a service such as Cloudflare or a front-end web server is serving HTTP traffic, and the application server accepts requests only from Cloudflare. The application server in turn could communicate with a 
+database server, which only has the relevant port open to the application server.

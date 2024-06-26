@@ -1,1 +1,2 @@
 # Asset Inventory
+You should maintain be an index of all important assets (systems and services) with an owner assigned. The owner ensures that necessary safeguarding measures are established maintained and documented in the asset inventory. A yearly security assessment of assets should take place.

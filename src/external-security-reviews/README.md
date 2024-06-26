@@ -1,1 +1,5 @@
 # External security reviews
+External security assessments are a critical and ongoing process in the realm of cybersecurity, including in the context of modern blockchain projects. They serve as a proactive measure to safeguard your protocol, user data and funds, and the reputation of your organization and project. External security testing is not a one-time event but an ongoing commitment to the safety and security of your web3 project.
+
+Furthermore, your smart contracts are not the only components that should be included in the scope of an external security assessment. If relevant, any offchain software (Bridges, Oracles, Sequencers, etc.) should also be reviewed in conjunction with any onchain application.
+By continually assessing and improving your security posture, you enhance your project's resilience, protect user assets and interests, and demonstrate your dedication to maintaining the highest standards of security in this ever-evolving landscape.
