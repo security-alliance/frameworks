@@ -1,4 +1,4 @@
-# Discord
+# Discord Security Self-Audit
 Unfortunately, this section has not yet been thoroughly completed.
 You may find useful information in the following links:
 - [Securing Your Server - Discord](https://discord.com/community/securing-your-server)
