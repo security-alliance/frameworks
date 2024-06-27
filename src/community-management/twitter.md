@@ -4,73 +4,73 @@
 
 ---
 
-It’s really hard to get your Twitter account back once you’ve lost it, so here are 8 simple steps to make it much harder for hackers to steal your account from you (unless they have insider access, in which case you’re probably done for anyways).
+It’s challenging to recover a lost Twitter account, so here are eight simple steps to make it much harder for hackers to steal your account. Note that if hackers have insider access, these steps may not be sufficient.
 
-# Remove your phone number
+## Remove Your Phone Number
 
-There are no good reasons to keep a phone number attached to your account, and it’s the easiest way for a hacker to get into your account after SIM swapping you. Getting verified requires you to add a phone number, but you can remove it afterward.
+Keeping a phone number attached to your account is very risky, as it’s the easiest way for a hacker to gain access after SIM swapping you. This has been quite common in the past, so it is highly recommended to remove it if you have done added. Getting verified requires adding a phone number, but you can and should remove it afterward.
 
-1. Go to https://twitter.com/settings/phone
+1. Go to [Twitter Phone Settings](https://twitter.com/settings/phone)
 2. If a phone number exists, remove it with “Delete phone number”
 
-# Configure 2FA
+## Configure 2FA
 
-Two-factor authentication is extremely useful to protect against hackers, but not if you’re using SMS 2FA and the hackers have access to your phone number. You should almost always prefer using an authenticator app or security key. Make sure you’ve stored your backup codes somewhere secure.
+Two-factor authentication is crucial for protecting against hackers, but definitely avoid SMS 2FA. Use an authenticator app or preferably a hardware security key instead. Ensure your backup codes are stored securely on paper and not on your computer as it defeats the purpose.
 
-1. Go to https://twitter.com/settings/account/login_verification
-2. Make sure “Text message” is disabled
-3. Make sure either “Authentication app” or “Security key” is enabled
-    1. If you choose an authentication app, you can store your TOTP secret in 1Password or Google Authenticator (but make sure to disable [sync](https://retool.com/blog/mfa-isnt-mfa))
-    2. If you choose security keys, you’ll probably want two at minimum in case one of them dies. I recommend [Yubico](https://www.yubico.com/us/product/yubikey-5-series/yubikey-5-nfc/) keys - they’re expensive but worth it
-4. Select “Backup codes”, then generate a new backup code. Write this down somewhere safe (or honestly, just put it in your password manager too)
+1. Go to [Twitter 2FA Settings](https://twitter.com/settings/account/login_verification)
+2. Disable “Text message”
+3. Enable either “Authentication app” or “Security key”
+    1. If using an authenticator application, it is recommended to use it on a separate device (e.g. a phone) app, such as Authy (with an encryption password set) or Google Authenticator (disable [sync](https://retool.com/blog/mfa-isnt-mfa))
+    2. If using security keys, have at least two. Yubico [YubiKey](https://www.yubico.com/us/product/yubikey-5-series/yubikey-5-nfc/) keys are common. Purchase these from approved vendors.
+4. Generate new backup codes and store them securely on printer paper. If storing on your computer it means that someone with access to your computer could potentially read the backup codes and access your account.
 
-# Revoke access from delegated accounts
+## Revoke Access from Delegated Accounts
 
-Twitter allows you to delegate access to your account to other accounts. If your account was previously compromised, this is a sneaky way for attackers to maintain access to your account even after you recover control.
+Twitter allows delegation of account access to other accounts. Ensure no unauthorized accounts have access.
 
-1. Go to https://twitter.com/settings/delegate/members
-2. For every account, if you don’t recognize it, click “Remove from group”
+1. Go to [Twitter Delegated Access](https://twitter.com/settings/delegate/members)
+2. Remove any unrecognized accounts from the group
 
-# Enable password reset protect
+## Enable Password Reset Protection
 
-Twitter offers an option to require users to enter the email or phone number (or both) associated with an account before being able to request a password reset. This means hackers need to know your email instead of being given a hint. It makes a huge difference!
+This option requires users to enter the email or phone number associated with the account before requesting a password reset, making it harder for hackers.
 
-![*Password reset protect is disabled*](https://prod-files-secure.s3.us-west-2.amazonaws.com/b1d29658-a003-4e92-93b6-241efdd083f6/6fb46280-6044-47aa-8f02-90e3cd81c110/twitter.com_i_flow_password_reset_input_flow_data22requested_variant3A3D227D.png)
-
+![Password reset protect is disabled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b1d29658-a003-4e92-93b6-241efdd083f6/6fb46280-6044-47aa-8f02-90e3cd81c110/twitter.com_i_flow_password_reset_input_flow_data22requested_variant3A3D227D.png)
 *Password reset protect is disabled*
 
-![*Password reset protect is enabled*](https://prod-files-secure.s3.us-west-2.amazonaws.com/b1d29658-a003-4e92-93b6-241efdd083f6/77165025-2f3d-48a9-9438-a533ad0797a3/1.png)
-
+![Password reset protect is enabled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b1d29658-a003-4e92-93b6-241efdd083f6/77165025-2f3d-48a9-9438-a533ad0797a3/1.png)
 *Password reset protect is enabled*
 
-1. Go to https://twitter.com/settings/security
-2. Make sure “Password reset protect” is enabled
+1. Go to [Twitter Security Settings](https://twitter.com/settings/security)
+2. Ensure “Password reset protect” is enabled
 
-# Revoke access from unnecessary apps
+## Revoke Access from Unnecessary Apps
 
-You might’ve connected Twitter with various apps (such as the ones that generate those Twitter friend circle pictures). Do those apps really need to be able to send tweets as you or follow other users like you? The answer is no.
+Review apps connected to your Twitter account and remove any that don't need access.
 
-1. Go to https://twitter.com/settings/connected_apps
-2. For each app, check the permissions that it has. If it can act on your behalf, consider removing it with “Revoke app permissions”
-    1. Of course, you may be using social media management software, which needs permission to act on your behalf. Make sure that the software is reputable
+1. Go to [Twitter Connected Apps](https://twitter.com/settings/connected_apps)
+2. Check each app's permissions. If it can act on your behalf and is unnecessary, revoke its permissions
+    1. Ensure any social media management software is reputable if it requires such permissions
 
-# De-authorize inactive or unrecognized sessions
+## De-authorize Inactive or Unrecognized Sessions
 
-You’ve probably logged into Twitter from a bunch of places. Maybe you used a friend’s phone to send a quick tweet. Now’s the time to sign out any session that you don’t need.
+Sign out of any sessions that you don’t need or recognize.
 
-1. Go to https://twitter.com/settings/sessions
-2. For every session under “Log out of other sessions”, see if you recognize the device and if it’s been active recently. If not, click the device and click “Log out of the device shown”
+1. Go to [Twitter Sessions](https://twitter.com/settings/sessions)
+2. Log out of any unrecognized or inactive sessions
 
-# Ensure you’re using an up-to-date email
+## Ensure You’re Using an Up-to-Date Email
 
-Did you change emails since you made your Twitter account? That old email is an easy target for hackers. Make sure you’re using your latest email so you get security alerts.
+Make sure your account uses your current email address to receive security alerts.
 
-1. Go to https://twitter.com/settings/email
-2. If the email being used is not an up-to-date email, update it
+1. Go to [Twitter Email Settings](https://twitter.com/settings/email)
+2. Update the email if it is not up-to-date
 
-# Change your password
+## Change Your Password
 
-When was the last time you changed your password? If it’s been a while, let’s take the opportunity to do it right now. It should be straightforward if you’re using a password manager, which you *are* using, right?
+If you have reused your twitter password elsewhere then it's time to update it to a unique one. Use a password manager to create and store a strong, unique password.
 
-1. Go to https://twitter.com/settings/password
+1. Go to [Twitter Password Settings](https://twitter.com/settings/password)
 2. Change your password
+
+By following these steps, you can significantly enhance the security of your Twitter account and protect it from unauthorized access.
