@@ -1,17 +1,7 @@
-# What is it
-A collection of best practices, written in an abstract or general fashion, for you to apply them
-regardless the technology.
+# What Is It
 
-If not, you can consider it a sort of large guide to start securing everything you have and be
-resilient with lesser chances of getting rekt.
+This resource is a collection of best practices written in an abstract or general fashion to be applicable regardless of the specific technology. It serves as a comprehensive guide to help you secure various aspects of your Web3 projects and build resilience against potential threats.
 
-This is the result of the incentive to centralize existing information, so you probably won't see
-many novelistic features to it, but it will likely be the first time you see all of them together.
+This guide aims to centralize existing information, so you might not see novel features but rather a well-organized compilation of security-related topics, from simpler ones to more complex ones. The goal is to provide a comprehensive resource that brings together diverse security insights and practices into one accessible place.
 
-Expect security-related topics, from simpler ones to more complex ones. Most recent attacks focus on
-ignorance. The stakes are too high, and even having all the knowledge in the world won't help us
-prevent things like the xz backdoor.
-
-We hope this resource helps you take your current knowledge to another level.
-
-May your security consciousness expand.
+We hope this resource will alow your security consciousness and knowledge to expand.
