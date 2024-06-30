@@ -1,22 +1,31 @@
-# Cloud infraestructure
-Securing your cloud infrastructure is as important as securing your decentralized application. Here are a few areas to consider to harden your infrastructure:
+# Cloud Infrastructure
 
-- **Access Control and Identity Management**: manage user access, roles, and permissions, ensuring that only authorized individuals can interact with cloud resources.
-- **Data Encryption and Privacy**: encrypt data both in transit and at rest, managing encryption keys.
-- **Network Security**: configure virtual private clouds, implementing firewalls, and monitoring network traffic to protect against unauthorized access and threats.
-- **Logging and Monitoring:** set up comprehensive logging, monitoring, and threat detection systems to identify and respond to security incidents in real-time.
-- **Compliance and Governance:** address compliance assessments, and adherence to regulatory requirements (e.g., GDPR, HIPAA)
-- **Resilience and Disaster Recovery:** ensure high availability, data backup, and disaster recovery, protecting against service disruptions.
+Securing your cloud infrastructure is as important as securing your decentralized application. Here are best practices to harden your cloud infrastructure:
 
-All cloud providers have hardening guides that serve as comprehensive manuals that provide step-by-step instructions and best practices for configuring and managing various technology assets securely.
+## Best Practices
 
-- **AWS:** https://aws.amazon.com/architecture/security-identity-compliance/
-- **Azure:** https://learn.microsoft.com/en-us/azure/security/fundamentals/best-practices-and-patterns
-- **GCP:** https://cloud.google.com/security/best-practices
+- **Access Control and Identity Management**: Implement strict access controls and identity management to ensure that only authorized individuals can interact with cloud resources. Use role-based access control (RBAC) and multi-factor authentication (MFA).
+- **Data Encryption and Privacy**: Encrypt data both in transit and at rest. Use managed encryption keys or bring your own keys (BYOK) for enhanced security.
+- **Network Security**: Configure virtual private clouds (VPCs), implement firewalls, and monitor network traffic to protect against unauthorized access and threats.
+- **Logging and Monitoring**: Set up comprehensive logging, monitoring, and threat detection systems to identify and respond to security incidents in real-time. Use services like AWS CloudTrail, Azure Monitor, and Google Cloud Logging.
+- **Compliance and Governance**: Ensure compliance with regulatory requirements (e.g., GDPR, HIPAA) by adhering to best practices and performing regular audits.
+- **Resilience and Disaster Recovery**: Implement high availability, data backup, and disaster recovery plans to protect against service disruptions. Use automated failover and replication strategies.
 
-To aid with vulnerability detection and compliance, a few useful open source scripts are available:
+## Cloud Provider Hardening Guides
 
-- **CloudSploit:** https://github.com/aquasecurity/cloudsploit
-- **Prowler**: https://github.com/prowler-cloud/prowler
-- **S3Scanner** (AWS): https://github.com/sa7mon/S3Scanner
-- **Zeus** (AWS): https://github.com/DenizParlak/Zeus
+All cloud providers have hardening guides that provide step-by-step instructions and best practices for securing cloud infrastructure:
+
+- **AWS**: [Security, Identity, and Compliance](https://aws.amazon.com/architecture/security-identity-compliance/)
+- **Azure**: [Best Practices and Patterns](https://learn.microsoft.com/en-us/azure/security/fundamentals/best-practices-and-patterns)
+- **GCP**: [Security Best Practices](https://cloud.google.com/security/best-practices)
+
+## Open Source Tools
+
+To aid with vulnerability detection and compliance, use the following open-source tools:
+
+- **CloudSploit**: [CloudSploit](https://github.com/aquasecurity/cloudsploit)
+- **Prowler**: [Prowler](https://github.com/prowler-cloud/prowler)
+- **S3Scanner (AWS)**: [S3Scanner](https://github.com/sa7mon/S3Scanner)
+- **Zeus (AWS)**: [Zeus](https://github.com/DenizParlak/Zeus)
+
+By following these best practices and using the recommended tools, you can secure your cloud infrastructure effectively.
