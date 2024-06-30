@@ -5,12 +5,13 @@ Encryption is a fundamental aspect of securing data, ensuring that sensitive inf
 ## Contents
 
 1. [Cloud Data Encryption](./cloud-data-encryption.md)
-2. [Encryption in Transit](./encryption-in-transit.md)
-3. [Database Encryption](./database-encryption.md)
-4. [Email Encryption](./email-encryption.md)
-5. [File Encryption](./file-encryption.md)
-6. [Full Disk Encryption](./full-disk-encryption.md)
-7. [Hardware Encryption](./hardware-encryption.md)
+2. [Communication Encryption](./communication-encryption.md)
+3. [Encryption in Transit](./encryption-in-transit.md)
+4. [Database Encryption](./database-encryption.md)
+5. [Email Encryption](./email-encryption.md)
+6. [File Encryption](./file-encryption.md)
+7. [Full Disk Encryption](./full-disk-encryption.md)
+8. [Hardware Encryption](./hardware-encryption.md)
 
 By understanding and applying the principles of encryption, you can protect your data across different platforms and use cases, enhancing overall security.
 
