@@ -25,7 +25,6 @@ Using secure messaging systems is crucial for protecting the privacy and integri
    - [Wire](https://wire.com/)
 
 
-
 ## Messaging Systems Without Default End-to-End Encryption
 
 These messaging systems suppsedly provides encryption for data in transit and at rest, but not end-to-end encryption for messages.
@@ -38,11 +37,15 @@ These messaging systems suppsedly provides encryption for data in transit and at
    - Does not offer end-to-end encryption for messages.
    - [Discord](https://discord.com/)
 
-3. **Slack**
+3. **Zoom**
+   - End-to-end encryption for calls, but must be manually enabled.
+   - [Zoom](https://zoom.us)
+
+4. **Slack**
    - Does not offer end-to-end encryption for messages.
    - [Slack](https://slack.com/)
 
-4. **Microsoft Teams**
+5. **Microsoft Teams**
    - Does not offer end-to-end encryption for messages.
    - [Microsoft Teams](https://www.microsoft.com/en/microsoft-teams/group-chat-software)
 
