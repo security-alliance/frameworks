@@ -1,18 +1,9 @@
-# What it isn't
-This isn't just a compilation of resources. At first glance, it may seem that way because writing
-that amount of content is a process by itself. However, there are already skilled curators creating
-content with that kind of structure.
+# What It Isn't
 
-Curations, compilations, and blog posts are fine, but they often focus on the latest technologies
-rather than delving into specifics, the underlying concepts, and the technical aspects.
+This resource isn't just a compilation of existing information. While it may initially seem like a collection of curated content, its primary focus is on providing in-depth, practical guidance.
 
-This isn't something to be read like a "story," at least not until we understand where it leads and
-if the community is satisfied with the outcome. We still need to figure out how to improve the
-content structure and determine what the web3 community needs most.
+Unlike other curations, compilations, or blog posts that often focus on the latest technologies, this guide delves into underlying concepts and technical aspects essential for securing Web3 projects. It’s not meant to be read like a "story" but rather used as a reference to enhance your understanding and application of security practices.
 
-It may not always follow the current state of the art, since its focus won't at the technologies,
-that would make the content very hard to maintain, but you'll get an idea of what things are
-possible in given situations.
+The content may not always follow the latest state-of-the-art technologies, as its focus is on fundamental security principles that are broadly applicable. Our aim is to provide valuable insights and practical advice to help you secure your projects effectively.
 
-And definitely, this is not intended to be offensive, though it might include some offensive
-material to illustrate our point in some particular topics.
+This guide is not intended to be offensive, though it might include strong examples to illustrate particular points. Our goal is to ensure clarity and effectiveness in conveying security best practices.
