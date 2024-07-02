@@ -1,14 +1,17 @@
 # Key Management
-Unfortunately this section has not yet been completed. In the meanwhile, you can take a look at the recommended resources of information that we have left below.
 
-Resources:
-- https://www.cyfrin.io/blog/what-should-i-use-to-store-my-cryptocurrency-web3-wallet-guide
-- https://walletscrutiny.com/
-- https://walletcompare.xyz/
-- https://xkcd.com/538/
-- https://github.com/slowmist/Blockchain-dark-forest-selfguard-handbook
+Cryptocurrency relies on cryptographic keys to secure transactions and manage ownership of digital assets. Proper key management is essential to protect these assets from theft, loss, and unauthorized access. This guide covers the fundamental aspects of key management, offering insights into different types of wallets, signing schemes, and best practices to ensure a high level of security.
 
-TODOs:
-- [ ] Add an introduction heavily basing it on Cyfrin's article.
-- [ ] Xkdc wrench joke
-- [ ] Diagram by slowmist
+In this section you can:
+   - Learn the differences between cold and hot wallets, their use cases, and how to choose the right one for your needs.
+   - Understand the pros and cons of custodial and non-custodial wallets, and which type suits your security preferences.
+   - Explore popular hardware wallets, their characteristics, and the importance of using them for secure key storage.
+   - Get insights into different signing schemes such as EOAs, Multisig, Smart Contract Wallets, and more, including their use cases and security implications.
+   - Discover various software wallets, their features, and how they can be used securely to manage cryptocurrency assets.
+
+
+Effective key management is the cornerstone of cryptocurrency security, including taking physical attacks such as the wrench attack into consideration.
+
+![security](https://github.com/security-alliance/frameworks/assets/84518844/12e2cba3-f69e-4fde-85f1-8a235b9808af)
+
+[xkcd](https://xkcd.com/538/)
