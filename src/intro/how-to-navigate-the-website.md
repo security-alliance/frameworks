@@ -1,14 +1,21 @@
-# How to navigate the website (WIP)
-You will see there are different categories. Right now we're currently under the introduction,
-but below there's a bigger category which we will refer to it as "Frameworks". Each framework is
-inside a broader category as you already noticed. 
+# How to Navigate the Website
 
-But something interesting you can do, is filter by profile. What does "filter by profile" mean? It means that you can possibly be a community manager, or a developer, and might only be interested in the parts you can relate to your current role or position under an organization. So how do you do to remove what would be unnecesary reading? Simply head to the search bar, and filter by any of the following roles:
-- developer
-- executive
-- security
-- finance
-- crypto
-- management
-- community
-- non-technical
+Navigating the Security Frameworks by SEAL is designed to be intuitive and user-friendly. Here’s how you can make the most out of this resource:
+
+## Categories
+
+The content is organized into different categories, each focusing on a specific aspect of security. Currently, we are under the introduction section, but you can explore the broader category of "Frameworks" below. Each framework is categorized to help you find relevant information quickly.
+
+## Filtering by Profile
+
+You can filter the content by profile to focus on information relevant to your role within the organization. This feature allows you to bypass unnecessary reading and concentrate on what matters most to you. Use the search bar to filter by any of the following roles:
+- Developer
+- Executive
+- Security
+- Finance
+- Crypto
+- Management
+- Community
+- Non-Technical
+
+This targeted approach ensures you get the most relevant information efficiently.
