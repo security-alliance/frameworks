@@ -1,16 +1,41 @@
-# Custodial vs NonCustodial
-*TODO: Add an image and more technical examples.*
+# Custodial vs. Non-Custodial Wallets
 
 ## Custodial Wallets
-**Analogy**: Like a bank. The service provider (like a bank or an exchange) holds your crypto keys.
-**Control**: The provider controls your keys, managing transactions and security.
-**Access**: You access funds through their interface (web/app).
-**Risk**: If the provider gets hacked, your assets might be at risk.
-**Recovery**: Easier to recover access if you lose your login details.
 
-## Non-Custodial Wallets:
-**Analogy**: Like a personal safe. Only you have the key (private key).
-**Control**: You have full control over your keys and crypto assets.
-**Access**: Direct interaction with the blockchain via software/hardware wallet.
-**Risk**: If you lose your key, no one can recover your assets.
-**Responsibility**: Higher security responsibility on your part.
+### What Are They?
+Custodial wallets are managed by a third party, such as an exchange or a wallet service provider. The third party holds and manages the private keys on behalf of the user.
+
+### Characteristics
+- **Managed Private Keys**: The third party has control over the private keys.
+- **Recovery Options**: Easier to recover access if credentials are lost, as the third party can assist.
+- **Security Dependence**: Security depends on the third party’s practices and infrastructure.
+
+### Use Cases
+- **New Users**: Suitable for users who are new to cryptocurrency and prefer a simpler, managed solution.
+- **Convenience**: Ideal for users who prioritize convenience and ease of use over full control.
+
+## Non-Custodial Wallets
+
+### What Are They?
+Non-custodial wallets are managed by the user, who has full control over their private keys. The user is responsible for the security and management of their keys.
+
+### Characteristics
+- **User-Controlled Private Keys**: The user has full control over their private keys.
+- **Higher Security**: Greater security and privacy, as only the user has access to the keys.
+- **Responsibility**: The user is solely responsible for backing up and securing their keys.
+
+### Use Cases
+- **Experienced Users**: Suitable for users who have a good understanding of cryptocurrency and key management.
+- **Security Prioritization**: Ideal for users who prioritize security and control over convenience.
+
+## Comparison
+
+| Feature             | Custodial Wallets  | Non-Custodial Wallets |
+|---------------------|--------------------|-----------------------|
+| Private Key Control | Third Party        | User                  |
+| Security            | Dependent on Third Party | High             |
+| Convenience         | High               | Moderate to Low       |
+| Recovery Options    | Easy               | User Responsibility   |
+| Use Case            | New Users, Convenience | Experienced Users, Security|
+
+By understanding these differences, you can choose the wallet type that best suits your needs and security preferences.
