@@ -1,33 +1,42 @@
-# Cold vs Hot wallet
-*TODO: Mention something about them having nothing to do with their technology per sé, but more with
-how you use them.*
+# Cold vs. Hot Wallets
 
-Hot wallets and cold wallets are two primary methods for storing and managing
-cryptocurrencies. A hot wallet is a software-based wallet that is connected to
-the internet and is often used for regular transactions. On the other hand, a
-cold wallet is a hardware device that stores the user's private keys offline,
-providing enhanced security but lqss convenience for frequent transactions.
+Understanding the differences between cold and hot wallets is essential for managing cryptocurrency securely. Here’s an overview of what they are, their various options, and their use cases.
 
-## Usage and Applications
-Hot wallets are suitable for individuals who make regular cryptocurrency
-transactions and require easy access to their funds. They are more user-friendly
-and provide a smooth experience for crypto exchanges[^geeks]. Cold wallets, on the
-other hand, are ideal for long-term storage of cryptocurrencies and for those
-who make fewer transactions. They offer enhanced security benefits due to being
-offline, making them less vulnerable to online hacks or theft[^nerd].
+## Cold Wallets
 
-## Differences
-The main differences between hot and cold wallets are their connectivity and
-security features. Hot wallets are always connected to the internet, allowing
-for easy accessibility but making them more vulnerable to hacking. Cold wallets,
-being offline, provide a higher level of security but are less convenient for
-frequent trading or transactions. In summary, the choice between a hot wallet
-and a cold wallet depends on an individual's specific needs and preferences. Hot
-wallets are more suitable for regular transactions, while cold wallets are
-preferred for long-term storage and enhanced security. Some users may opt to use
-a combination of both for a balance between accessibility and security[^gemini].
+### What Are They?
+Cold wallets are offline storage solutions for cryptocurrencies. They are not connected to the internet, which makes them highly secure against online attacks.
 
+### Types of Cold Wallets
+- **Hardware Wallets**: Physical devices that store private keys offline.
+- **Paper Wallets**: Physical printouts or handwritten notes of private keys and QR codes.
+- **Air-Gapped Computers**: Computers that are never connected to the internet.
 
-[^geeks]: https://www.geeksforgeeks.org/hot-wallets-vs-cold-wallets-in-blockchain/
-[^nerd]: https://www.nerdwallet.com/article/investing/hot-wallet-vs-cold-wallet
+### Use Cases
+- **Long-Term Storage**: Ideal for storing large amounts of cryptocurrency for extended periods.
+- **High Security Needs**: Suitable for users who prioritize security over convenience.
+
+## Hot Wallets
+
+### What Are They?
+Hot wallets are online storage solutions for cryptocurrencies. They are connected to the internet, making them more convenient but less secure than cold wallets.
+
+### Types of Hot Wallets
+- **Mobile Wallets**: Apps installed on smartphones.
+- **Desktop Wallets**: Software installed on computers.
+- **Web Wallets**: Online services accessible via web browsers.
+
+### Use Cases
+- **Daily Transactions**: Ideal for users who need quick access to their funds for transactions.
+- **Small Balances**: Suitable for storing smaller amounts of cryptocurrency that are used regularly.
+
+## Comparison
+
+| Feature            | Cold Wallets       | Hot Wallets       |
+|--------------------|--------------------|-------------------|
+| Security           | High               | Moderate to Low   |
+| Convenience        | Low                | High              |
+| Internet Exposure  | None               | Constant          |
+| Use Case           | Long-term storage  | Daily transactions|
+
 [^gemini]: https://www.gemini.com/cryptopedia/crypto-wallets-hot-cold
