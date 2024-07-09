@@ -4,4 +4,4 @@ This resource is a collection of best practices written in an abstract or genera
 
 This guide aims to centralize existing information, so you might not see novel features but rather a well-organized compilation of security-related topics, from simpler ones to more complex ones. The goal is to provide a comprehensive resource that brings together diverse security insights and practices into one accessible place.
 
-We hope this resource will alow your security consciousness and knowledge to expand.
+Our hope is that these resources will help expand your security skillset.
