@@ -1,14 +1,6 @@
 # SIM Swapping
 
-SIM swapping is a type of cybercrime where criminals trick a mobile phone provider into transferring a victim's phone number to a SIM card that the criminals control. This allows the criminals to intercept the victim's text messages and phone calls, including any two-factor authentication codes. With access to the victim's phone number, the criminals can then gain unauthorized access to the victim's online accounts, steal their personal information, and make fraudulent transactions. SIM swapping is a serious crime that can have devastating consequences for victims.
-
----
-
-## Cellular Provider Self-Audit
-
-*Estimated time: 30 minutes*
-
-Your phone number might be the most important piece of ID you didn’t realize you owned. Unfortunately, it’s also the easiest point of entry for a hacker, with high-profile individuals getting SIM swapped almost every single day. It’s not easy to protect your phone number from a determined attacker, but here’s how you can make it hard enough that they’ll probably go for someone else.
+SIM swapping occurs when a threat actor trick a mobile phone provider into transferring a victim's phone number to a SIM card that the criminals control. This allows the criminals to intercept the victim's text messages and phone calls, including any two-factor authentication codes. With access to the victim's phone number, the criminals can then gain unauthorized access to the victim's accounts.
 
 ## Stop Using SMS-Based 2FA
 
@@ -29,6 +21,7 @@ Not sure where to start? Here’s a brief list of services to inspire you:
 - **Domain Registrars**: GoDaddy, Squarespace
 - **Banking**: PayPal, Revolut
 
+
 ## Switch to a High-Security Carrier
 
 The next best thing you can do is to simply switch to a new carrier entirely. Generally speaking, there are two ways that an attacker can compromise your phone number:
@@ -38,7 +31,7 @@ The next best thing you can do is to simply switch to a new carrier entirely. Ge
 
 By switching to a high-security carrier, you reduce or eliminate the risk from social engineering, but you’re still at risk of an insider attack. Unfortunately, there’s almost nothing you can do to defend against that.
 
-### United States of America
+### USA
 
 If you live in the USA, you get the option of one of the big three Mobile Network Operators: AT&T, Verizon, and T-Mobile. None is perfect, but AT&T and Verizon are slightly ahead in terms of security reputation, while T-Mobile has been compromised a handful of times.
 
@@ -52,26 +45,9 @@ For an added bonus, you might consider creating a new Google account under a fak
 
 [Efani](https://www.efani.com/) is an MVNO using AT&T’s and Verizon’s networks and is designed for high-risk individuals. Efani has negotiated agreements in which they are responsible for manually approving requests to modify subscriber accounts instead of allowing agents at AT&T or Verizon to make those changes. Efani also masks your information before submitting it to the MNOs, making it harder for an insider to locate your account.
 
-### Other Regions
-
-Much of the common knowledge is primarily applicable to North America. If you’re a security researcher with information about carriers around the world, or a user with a positive/negative review, please reach out!
 
 ## Place a Note on Your Carrier Account
 
 If you can’t switch carriers or no secure carriers are available in your area, your next option is to mitigate the likelihood of a support agent being social engineered. Some carriers will offer this explicitly (for example, some sort of account lock that you can opt into). If there is no option, you may need to either call or go in-store and ask for a note to be placed on your account.
 
 Keep in mind that some support agents may not know about SIM swapping, and that’s not their fault. If this happens, you might need to politely ask to speak to a manager or just come back another day. Also, keep in mind that while you may be able to add an internal note to your account, there’s no guarantee that whatever support agent who is communicating with a scammer will actually read the note. The scammer may also be able to convince the agent that they’re desperately in need to regain access quickly, and to ignore the note entirely. As such, placing a note on your account is a nice additional measure but not nearly as effective as simply disabling SMS 2FA on your accounts.
-
-## Additional Security Measures
-
-### Use a Separate Phone Number
-
-Consider using a phone number that is not publicly associated with your personal information or online accounts. This can be a secondary number used exclusively for critical accounts.
-
-### Regular Account Reviews
-
-Periodically review the security settings and recovery options of your accounts to ensure they are up-to-date and secure. This includes checking for unauthorized changes to your contact information.
-
-### Secure Email Accounts
-
-Since email accounts are often the recovery point for many online services, ensure that your email accounts are secured with strong passwords and multi-factor authentication. Avoid using SMS for email recovery if possible.
