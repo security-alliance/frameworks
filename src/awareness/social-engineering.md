@@ -1,6 +1,6 @@
 # Social Engineering
 
-Social engineering is the use of deception to manipulate individuals into divulging confidential or personal information. It is crucial to be aware of these tactics to protect yourself and your organization.
+Social engineering is the use of deception to manipulate individuals into divulging confidential or personal information. This is one of the easiest and most effective ways to otain access to your project.
 
 ## Common Social Engineering Techniques
 
@@ -27,8 +27,7 @@ Social engineering is the use of deception to manipulate individuals into divulg
 
 ### 1. Education and Awareness
 
-- **Regular Training**: Conduct regular training sessions on recognizing and responding to social engineering attacks.
-- **Stay Informed**: Keep up to date with the latest social engineering tactics and trends.
+It could prove valuable to conduct regular training sessions on recognizing and responding to social engineering attacks, and stay up to date on the current trends in web2 and web3. For example, right now it's getting increasingly common that threat actors are pretending to provide jobs, and ask applicants to run malicious projects that create backdoors on the applicant's computer.
 
 ### 2. Verification
 
@@ -37,8 +36,6 @@ Social engineering is the use of deception to manipulate individuals into divulg
 
 ### 3. Security
 
-- **Access Control**: Implement strict access control measures to prevent unauthorized entry.
-- **Report Suspicious Activity**: Encourage employees to report any suspicious behavior or requests immediately.
-
-By understanding social engineering and implementing these preventive measures, you can protect yourself and your organization from falling victim to these deceptive tactics.
+- **Access Control**: Implement strict access control measures, preferably requiring confirmations by multiple people before critical actions can be taken.
+- **Report Suspicious Activity**: Encourage team members to report any suspicious behavior or requests immediately.
 
