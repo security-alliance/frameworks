@@ -1,11 +1,9 @@
 # Security Awareness
 
-This section aims to provide essential information and best practices to help you and your team maintain a strong security posture. By understanding the basics of security, identifying potential threats, and staying informed about the latest developments in the security landscape, you can significantly reduce the risk of security incidents.
+Security Awareness aims to bring essential information that is relevant to each team. Each team has different needs of security and potential threat actors, and for security awareness to be successful it should be tailored to each team's unique threat landscape.
 
 ## Contents
 
 1. [Security Training](./security-training.md)
 2. [Social Engineering](./social-engineering.md)
 3. [Staying Up-to-Date](./staying-up-to-date.md)
-
-By following these guides, you can improve your knowledge and awareness of security best practices, ultimately protecting your digital assets and personal information.
