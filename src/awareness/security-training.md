@@ -1,41 +1,41 @@
 # Security Training
 
-Security training is essential for all team members to understand the importance of security and how to implement best practices in their daily activities. Here are some key components of an effective security training program:
+All team members should receive some type of security training, however how in-depth this training is depends on their specific needs and what type of access they have. It is important to not do this only once, but to keep it as a recurring activity, however a training session does not need to mean sitting down for 60 minutes to look at a power point presentation but rather could be tiny nuggets of relevant information that doesn't take more than a minute to consume each time.
+
+As an introductionary and overarching training session, this could be done:
 
 ## 1. Introduction to Security
 
-- **Importance of Security**: Understand why security is crucial for individuals and organizations.
-- **Common Threats**: Learn about common security threats such as malware, phishing, and ransomware.
+- **Importance of Security**: Explain why security is important for your project.
+- **Common Threats**: What are the common threats targetting your platform, and what type of attacks are most likely to happen for the team you're doing security training for.
 
 ## 2. Password Management
 
-- **Strong Passwords**: Use unique, complex passwords for different accounts.
-- **Password Managers**: Utilize password managers to securely store and manage passwords.
+- **Strong Passwords**: Explain the reason for using unique and complex passwords for accounts.
+- **Password Managers**: Show the value and time save of using a password manager to securely store and manage passwords.
 
 ## 3. Two-Factor Authentication (2FA)
 
-- **Enabling 2FA**: Learn how to enable 2FA on various platforms.
-- **Types of 2FA**: Understand the different types of 2FA, including SMS, authenticator apps, and hardware tokens. Each of these have their strenghts and weaknesses.
+- **Enabling 2FA**: Explain why it's important to enable 2FA.
+- **Types of 2FA**: Explain the different types of 2FA, including SMS, authenticator apps, and hardware tokens. Each of these have their strenghts and weaknesses which should be explained (and especially why nobody should be using SMS for 2FA).
 
 ## 4. Secure Communication
 
-- **Email Security**: Recognize phishing emails and avoid clicking on suspicious links.
-- **Messaging Apps**: Use secure messaging apps like Signal for sensitive communications.
+- **Email Security**: Explain how phishing emails and fake jobs can be used by a threat actor to compromise a project.
+- **Messaging Apps**: Explain why messaging apps such as Telegram does not have end to end encryption, and why secure messaging apps like Signal should be used for sensitive communications.
 
 ## 5. Device Security
 
-- **Software Updates**: Keep operating systems and software up to date.
-- **Antivirus Software**: Install and maintain antivirus software on relevant devices.
+- **Software Updates**: Explain why it's important to keep operating systems and software up to date.
+- **Antivirus Software**: Explain when it could be relevant to install and keep antivirus software up to date on relevant devices.
 
 ## 6. Data Protection
 
-- **Backups**: Regularly back up important data.
-- **Encryption**: Use encryption to protect sensitive data both in transit and at rest.
+- **Backups**: Discuss when it could be relevant to back up important data.
+- **Encryption**: Discuss when using encryption could be important to to protect sensitive data both in transit and at rest.
 
 ## 7. Incident Response
 
-- **Reporting Incidents**: Understand the process for reporting security incidents.
-- **Response Plan**: Understand your incident response plan.
-
-Regular security training helps to keep everyone informed about the latest threats and best practices, ensuring a proactive approach to security.
+- **Reporting Incidents**: Discuss the need for everybody knowing how to react during security incidents, and how one should never be afraid to raise the alarm.
+- **Response Plan**: For teams where relevant, discuss the incident response plan.
 
