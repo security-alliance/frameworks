@@ -6,7 +6,7 @@ A Standard Operating Environment (SOE) refers to a standardized and controlled c
 
 ### Device Configuration
 
-- **Full-Disk Encryption**: Ensure all workstations and mobile devices use full-disk encryption to protect data at rest.
+- **Full-Disk Encryption**: Ensure all workstations and mobile devices use [full-disk encryption](../encryption/full-disk-encryption.md) to protect data at rest.
 - **Operating System Updates**: Configure devices to automatically apply critical security patches and updates.
 - **Application Updates**: Ensure all installed applications are regularly updated to their latest versions to mitigate vulnerabilities.
 
