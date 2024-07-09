@@ -1,11 +1,9 @@
-# Discord Security Self-Audit
-Unfortunately, this section has not yet been thoroughly completed.
-You may find useful information in the following links:
-- [Securing Your Server - Discord](https://discord.com/community/securing-your-server)
-- [Four Steps for a Super Safe Server - Discord](https://discord.com/safety/360043653152-four-steps-to-a-super-safe-server)
-- [Securely Set Up a Safe Server - Boring Security](https://boringsecurity.com/articles/securely-set-up-a-discord-server)
+# Discord Security
 
-## Discord Server Self-Hardening 
+Discord has a large set of security settings to take into consideration, as well as some potential pitfalls where a server moderator could for example fall victim to a phishing attempt by having their account hijacked through a QR code.
+Below, you can find some hardening suggestions when setting up a Discord server.
+
+## Discord Server Hardening
 ### Server Settings:
 
 a) **Enable 2FA Requirement for Moderation**
@@ -189,4 +187,7 @@ f) **Backup Systems**
 - Use a bot like ServerBackup to regularly backup your server configuration
 - Store backups securely off-platform
 
-Remember to document all changes made during the hardening process and train your moderation team on new systems and procedures. Regularly update this guide as Discord introduces new features or as your server's needs change.
+
+## Additional Resources
+- [Securing Your Server - Discord](https://discord.com/community/securing-your-server)
+- [Four Steps for a Super Safe Server - Discord](https://discord.com/safety/360043653152-four-steps-to-a-super-safe-server)
