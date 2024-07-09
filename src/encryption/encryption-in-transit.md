@@ -1,13 +1,10 @@
 # Encryption in Transit
 
-Encryption in transit protects data as it moves across networks. Implement the following best practices:
+Encryption in transit means how data is being encrypted while it flows across networks. This is important as you don't want anyone eavesdropping on your traffic, and by following best practices such as the ones below, you can reduce the risk of that:
 
 ## Best Practices
 
-- **Use TLS/SSL**: Ensure that all data transmitted over the internet is encrypted using TLS/SSL.
-- **Secure VPNs**: Use secure VPNs to encrypt data transmitted over public networks.
-- **SSH for Remote Access**: Use SSH for secure remote access to servers and other infrastructure.
-- **Email Encryption**: Use encryption protocols such as S/MIME or PGP for email communications.
-- **Monitoring and Logging**: Monitor and log network traffic to detect and respond to potential security threats.
-
-These practices help ensure that data remains confidential and secure during transmission.
+1. Ensure that all data transmitted over the internet is encrypted using TLS/SSL.
+2. Use secure VPNs to encrypt data transmitted over public networks such as public WiFi.
+3. Use SSH for secure remote access to servers and other infrastructure.
+4. Use encryption protocols such as S/MIME or PGP for email communications.
