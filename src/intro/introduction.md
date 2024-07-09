@@ -16,6 +16,6 @@ This mdBook-style handbook is designed for easy collaboration and automatic depl
 
 ## Who We Are
 
-SEAL is a non-profit organization committed to enhancing security awareness, education, and specialized work as a public service for the Web3 ecosystem, its supporting technologies, and communities. Our efforts are driven by a shared desire to foster a safer, more informed digital landscape. We do this by designing innovative projects, engaging elite technologists, and coordinating on the social layer to ensure meaningful adoption.
+SEAL is a fot-for-profit organization committed to enhancing security awareness, education, and specialized work as a public service for the Web3 ecosystem, its supporting technologies, and communities. Our efforts are driven by a shared desire to foster a safer, more informed digital landscape. We do this by designing innovative projects, engaging elite technologists, and coordinating on the social layer to ensure meaningful adoption.
 
 Let's work together to make a positive difference!
