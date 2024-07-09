@@ -1,6 +1,6 @@
 # Operating System Security
-Follow OS Hardening guide lines such as , which include (non-exhaustive list):
-Securing the operating systems (OS) that support your blockchain infrastructure is crucial for maintaining overall security. Following best practices from guide lines such as [NIST 800-123](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-123.pdf) for OS security helps protect against vulnerabilities and unauthorized access.
+
+This document outlines some general best practises one should follow with regards to operating system security, however if you're interested in a much more comprehensive guide you could look at [NIST 800-123](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-123.pdf).
 
 ## Best Practices
 
