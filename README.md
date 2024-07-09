@@ -5,7 +5,7 @@ corrections. Collaboration is open to everyone.
 
 If you want to know more about the frameworks or take a peek at the live book go to:
 
-[Production (frameworks.securityalliance.org](https://frameworks.securityalliance.org)
+[Production (frameworks.securityalliance.org)](https://frameworks.securityalliance.org)
 
 [Development](https://frameworks-git-develop-seal-frameworks.vercel.app/book/)
 
