@@ -1,6 +1,7 @@
 # Repository Hardening
 
-Hardening your code repository is vital to protect against unauthorized access and ensure the integrity of the codebase. Implement the following best practices:
+If a threat actor obtains access to your repository, it could have very severe consequenses. In order to help avoid this, you could consider implementing the following best practises:
+
 
 1. Require Multi-Factor Authentication (MFA) for all repository members.
 2. Enable protected branches to prevent unauthorized changes to critical branches. [Learn more about protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
