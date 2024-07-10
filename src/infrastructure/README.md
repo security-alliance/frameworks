@@ -1,6 +1,6 @@
 # Infrastructure
 
-Blockchain projects, often reliant on decentralized and distributed architectures, have unique infrastructure requirements. Ensuring the integrity and resilience of your infrastructure components is essential to maintaining the availability, scalability, and security of your blockchain protocol. A robust and secure infrastructure forms the foundation upon which your web3 applications thrive. This section focuses on Infrastructure Security, encompassing critical aspects such as cloud infrastructure, DNS providers, domain registrars, and DDoS (Distributed Denial of Service) protection.
+Infrastructure can often be overlooked in web3, but it's often a very important area given that most front-end web applications are running on centralized infrastructure. This section focuses on Infrastructure Security, encompassing critical aspects such as cloud infrastructure, DNS providers, domain registrars, and DDoS (Distributed Denial of Service) protection.
 
 When designing your architecture, it may be worth considering how many different providers you rely on. Are you going to use different providers for infrastructure, DDoS protection, domain registration, and DNS, or will you choose a provider that provides all of these? On one hand, putting all eggs in one basket means a failure on said service would cause downtime, however by using a single service and ensuring it’s following all best practices with regards to security measures means a lower risk surface.
 
