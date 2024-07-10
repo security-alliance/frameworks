@@ -37,5 +37,3 @@ Non-custodial wallets are managed by the user, who has full control over their p
 | Convenience         | High               | Moderate to Low       |
 | Recovery Options    | Easy               | User Responsibility   |
 | Use Case            | New Users, Convenience | Experienced Users, Security|
-
-By understanding these differences, you can choose the wallet type that best suits your needs and security preferences.
