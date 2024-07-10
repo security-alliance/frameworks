@@ -1,19 +1,20 @@
 # Security Training
 
-Effective security training is essential for ensuring that all team members are equipped with the knowledge and skills necessary to recognize and mitigate security threats. Regular training helps keep security top-of-mind and reinforces the importance of adhering to security policies and procedures.
+Regular security training helps keep security top-of-mind and reinforces the importance. It will help create the skills necessary to recognize and mitigate security threats to your project.
 
 ## Best Practices for Security Training
 
 1. **Regular Training Sessions**
    - Conduct regular security training sessions to keep team members informed about the latest threats and best practices.
    - Schedule training sessions at least quarterly or bi-annually.
+   - Don't make the trainign sessions too long, it's better to make them more frequent compared to a three hour session each year.
 
 2. **Interactive Training**
-   - Use interactive training methods, such as SEAL Wargames, workshops, simulations, and hands-on exercises, to engage team members and enhance learning.
+   - Use interactive training methods, such as SEAL Wargames or workshops to engage team members and enhance learning.
 
 3. **Role-Based Training**
    - Tailor training content to the specific roles and responsibilities of team members.
-   - Provide specialized training for high-risk roles, such as developers, administrators, and customer support staff.
+   - Provide specialized training for high-risk roles, such as developers and community managers
 
 4. **Real-World Scenarios**
    - Incorporate real-world scenarios and case studies to illustrate the impact of security breaches and the importance of preventive measures.
