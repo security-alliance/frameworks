@@ -1,13 +1,5 @@
 # Asset Inventory
 
-Maintaining a comprehensive inventory of all infrastructure assets is crucial for effective security management. An asset inventory helps you keep track of all contracts, hardware, software, and network components, ensuring that each element is accounted for and managed securely.
+An asset inventory means having information about everything related to your project, meaning for example contracts, hardware, software, cloud providers, dependencies and network components. This is important, as if you don't have awareness of your assets then how are you going to be able to protect them? 
 
-## Best Practices
-
-- **Catalog All Assets**: Document all physical and virtual assets, including contracts, servers, databases, network devices, and cloud resources.
-- **Automated Discovery**: Use automated tools to continuously discover and catalog new assets.
-- **Update Regularly**: Keep the inventory up-to-date with any changes, such as new deployments or decommissioned assets.
-- **Assign Ownership**: Assign a responsible owner for each asset to ensure accountability and proper management.
-- **Classify Assets**: Classify assets based on their criticality and sensitivity to prioritize security measures.
-
-By maintaining a detailed asset inventory, you can enhance your infrastructure's security posture and ensure effective management of all components.
+You should at the very least document as much as you can with regards to your assets, and update this on a regular basis. It is highly recommended to also assign ownership of each asset, so that someone ensures the safety of this asset. Classifying them based on their criticality and sensitivity also helps you prioritize them with regards to security measures.
