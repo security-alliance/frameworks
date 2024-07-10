@@ -1,15 +1,14 @@
 # Cloud Infrastructure
 
-Securing your cloud infrastructure is as important as securing your decentralized application. Here are best practices to harden your cloud infrastructure:
+Securing your cloud infrastructure could be considered as important as securing your decentralized application, as a lot of users will be interacting with your dapp through the cloud provider. Some best practices to consider are:
 
-## Best Practices
+1. Implement strict access controls and identity management to ensure that only authorized individuals can interact with cloud resources. Use role-based access control (RBAC) and multi-factor authentication (MFA).
+2. Encrypt data both in transit and at rest. Use managed encryption keys or bring your own keys (BYOK) for enhanced security.
+3. Configure virtual private clouds (VPCs), implement firewalls, and monitor network traffic to protect against unauthorized access and threats.
+4. Set up comprehensive logging, monitoring, and threat detection systems to identify and respond to security incidents in real-time. Use services like AWS CloudTrail, Azure Monitor, and Google Cloud Logging.
+5. Implement high availability, data backup, and disaster recovery plans to protect against service disruptions. Use automated failover and replication strategies.
+6. Ensure compliance with regulatory requirements (e.g., GDPR, MiCA).
 
-- **Access Control and Identity Management**: Implement strict access controls and identity management to ensure that only authorized individuals can interact with cloud resources. Use role-based access control (RBAC) and multi-factor authentication (MFA).
-- **Data Encryption and Privacy**: Encrypt data both in transit and at rest. Use managed encryption keys or bring your own keys (BYOK) for enhanced security.
-- **Network Security**: Configure virtual private clouds (VPCs), implement firewalls, and monitor network traffic to protect against unauthorized access and threats.
-- **Logging and Monitoring**: Set up comprehensive logging, monitoring, and threat detection systems to identify and respond to security incidents in real-time. Use services like AWS CloudTrail, Azure Monitor, and Google Cloud Logging.
-- **Compliance and Governance**: Ensure compliance with regulatory requirements (e.g., GDPR, HIPAA) by adhering to best practices and performing regular audits.
-- **Resilience and Disaster Recovery**: Implement high availability, data backup, and disaster recovery plans to protect against service disruptions. Use automated failover and replication strategies.
 
 ## Cloud Provider Hardening Guides
 
@@ -21,11 +20,9 @@ All cloud providers have hardening guides that provide step-by-step instructions
 
 ## Open Source Tools
 
-To aid with vulnerability detection and compliance, use the following open-source tools:
+To aid with vulnerability detection and compliance, you could consider using the following open-source tools:
 
 - **CloudSploit**: [CloudSploit](https://github.com/aquasecurity/cloudsploit)
 - **Prowler**: [Prowler](https://github.com/prowler-cloud/prowler)
 - **S3Scanner (AWS)**: [S3Scanner](https://github.com/sa7mon/S3Scanner)
 - **Zeus (AWS)**: [Zeus](https://github.com/DenizParlak/Zeus)
-
-By following these best practices and using the recommended tools, you can secure your cloud infrastructure effectively.
