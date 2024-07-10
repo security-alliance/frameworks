@@ -1,6 +1,6 @@
 # Security-Aware Culture
 
-Fostering a security-aware culture within your project is crucial for mitigating security risks and ensuring that all team members understand the importance of security. A security-aware culture empowers team members to recognize and respond to security threats effectively.
+Fostering a security-aware culture within your project aims to help mitigating security risks and help team members understand the importance of security.
 
 ## Strategies for Fostering a Security-Aware Culture
 
@@ -8,7 +8,7 @@ Fostering a security-aware culture within your project is crucial for mitigating
    - Ensure that leadership demonstrates a strong commitment to security by prioritizing and investing in security initiatives.
 
 2. **Regular Communication**
-   - Communicate the importance of security regularly through your communications
+   - Communicate the importance of security regularly through your communications with the team.
     
 3. **Security Policies and Procedures**
    - Develop and enforce clear security policies and procedures that outline expectations and responsibilities for all team members.
@@ -22,16 +22,14 @@ Fostering a security-aware culture within your project is crucial for mitigating
 6. **Continuous Improvement**
    - Continuously assess and improve the project's security culture through feedback, assessments, and audits.
 
-## Key Elements of a Security-Aware Culture
-
-1. **Awareness**
+7. **Awareness**
    - Ensure that all team members are aware of common security threats and best practices for preventing them.
 
-2. **Responsibility**
+8. **Responsibility**
    - Instill a sense of responsibility for security at all levels of the project.
 
-3. **Collaboration**
+9. **Collaboration**
    - Promote collaboration and information sharing among team members to enhance overall security.
 
-4. **Training**
+10. **Training**
    - Provide ongoing security training to keep team members informed about the latest threats and security practices.
