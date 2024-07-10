@@ -1,6 +1,6 @@
 # Front-End Web Application Security Best Practices
 
-Ensuring the security of your front-end web and mobile applications is crucial for protecting user data and maintaining the integrity of your web3 protocol. This documentation provides best practices for securing both web and mobile applications, with additional sections for common vulnerabilities and tools.
+Often an overlooked area, but ensuring the security of your front-end web and potential mobile applications is crucial for protecting your users. If the front-end web application is compromised, it could have severe effects on your users as they for example could start interacting with a malicious contract instead of your offical contract.
 
 ## Contents
 
@@ -8,5 +8,3 @@ Ensuring the security of your front-end web and mobile applications is crucial f
 2. [Mobile Application Security](./mobile-application-security.md)
 3. [Common Vulnerabilities](./common-vulnerabilities.md)
 4. [Security Tools and Resources](./security-tools-resources.md)
-
-By following these guidelines, you can enhance the security of your front-end applications and protect your users and assets from potential threats.
