@@ -1,7 +1,5 @@
 # Cold vs. Hot Wallets
 
-Understanding the differences between cold and hot wallets is essential for managing cryptocurrency securely. Here’s an overview of what they are, their various options, and their use cases.
-
 ## Cold Wallets
 
 ### What Are They?
