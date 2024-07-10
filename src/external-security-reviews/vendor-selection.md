@@ -1,25 +1,10 @@
 # Vendor Selection
 
-Choosing the right security vendor is critical for your protocol’s safety and success. Consider these key points when selecting a security vendor:
+There are a lot of security vendors in the web3 ecosystem, and also in the web2 ecosystem.
+Depending on what you want to have reviewed, for example a Solidity contract, it may be relevant to use a security vendor that focus on web3, while if for example you're reviewing your infrastructure it may be more relevant to choose a vendor that focus on web2.
 
-## Varying Degrees of Expertise and Quality
-- Evaluate potential vendors based on their track record, reputation, and the depth of their security knowledge.
-- Look for vendors with a proven history of addressing security challenges similar to your protocol’s needs.
-
-## Ensure Relevant Domain Experience
-- Ensure the vendor has relevant experience in web3 security vulnerabilities, as these require specialized skills.
-- For example, if you’re building an L2, choose vendors with a track record of reviewing similar platforms.
-
-## Combine Traditional and Community Assessments
-- An ideal security assessment program should include both traditional security reviews and community-driven assessments.
-- Traditional security firms provide structured evaluations, while community audits leverage the power of the crowd to identify vulnerabilities.
-
-## Don't Forget Bug Bounties
-- Implement bug bounty programs to incentivize external security researchers to identify and report vulnerabilities.
-- Bug bounties help uncover issues that might go unnoticed in traditional testing and provide an additional layer of security.
-
-## Success or Failure?
-- Avoid making the scope too large. Focus on critical components to ensure a thorough and manageable review.
-- Start with a crowd-sourced assessment, move to a vendor review for focused analysis, and then implement a bug bounty program to catch any remaining issues.
-
-By carefully selecting a security vendor, you can ensure a thorough and effective security assessment for your protocol.
+1. Make sure you evaluate potential vendors based on their track record, reputation, and experience in what you want to test.
+2. Look for vendors with a proven history of addressing security challenges similar to your project’s needs.
+  1. Ensure the vendor has relevant experience in web3 security vulnerabilities, as these require specialized skills.
+  2. For example, if you’re building an L2, it may be beneficial to choose a vendor with a track record of reviewing L2s.
+3. It could prove valuable to start with a crowd-sourced assessment which is likely to catch a lot of low hanging fruit, then move to a dedicated security vendor that will dig down into the code to potentially find remaining issues.
