@@ -2,6 +2,9 @@
 
 Understanding and mitigating common vulnerabilities is crucial for securing your web and mobile applications. Here are some frequently encountered vulnerabilities:
 
+## General Vulnerabilities
+- **Account Takeovers**: Having the administrator accounts for your services (DNS, Cloud, Domain Registrar, Email, Github, etc.) is likely to be devestating to your project, as a threat actor can then make malicious changes. To protect against this, it is recommended to follow best practises with regards to account security and use hardware 2FA solutions to secure the accounts.
+
 ## Web Application Vulnerabilities
 
 - **Cross-Site Scripting (XSS)**: Malicious scripts injected into trusted websites, leading to data theft or session hijacking.
