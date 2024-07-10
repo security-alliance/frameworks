@@ -1,6 +1,6 @@
 # Digital Footprint
 
-Your digital footprint is the trail of data you leave behind while using the internet. Managing your digital footprint is crucial for maintaining your privacy and protecting your personal information from misuse.
+Your digital footprint is the trail of data you leave behind while using the internet.
 
 ## Understanding Your Digital Footprint
 
@@ -50,6 +50,6 @@ Your digital footprint is the trail of data you leave behind while using the int
 
 ## Best Practices
 
-- **Regularly Review Your Footprint**: Conduct regular audits of your online presence to identify and remove unwanted information.
-- **Use Strong Passwords**: Protect your accounts with strong, unique passwords.
-- **Stay Informed**: Keep up-to-date with privacy news and updates to stay informed about new threats and tools.
+1. Conduct regular audits of your online presence to identify and remove unwanted information.
+2. Protect your accounts with strong, unique passwords.
+3. Keep up-to-date with privacy news and updates to stay informed about new threats and tools.
