@@ -1,6 +1,6 @@
 # Create and Maintain Threat Models
 
-Creating and maintaining threat models is a fundamental part of a proactive security strategy. Threat models help identify potential security risks and develop mitigation strategies to protect the project.
+Creating and maintaining threat models help identify potential security risks and develop mitigation strategies to protect the project.
 
 ## Steps to Create a Threat Model
 
@@ -65,4 +65,3 @@ Creating and maintaining threat models is a fundamental part of a proactive secu
    - An open-source threat modeling tool for creating diagrams and identifying threats.
    - Pros: Free, web-based, supports multiple platforms.
    - Cons: Limited features compared to commercial tools.
-  
