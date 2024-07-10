@@ -1,11 +1,10 @@
 # Incident Detection and Response
 
-Timely detection and effective response to security incidents are essential for minimizing damage and ensuring a swift recovery. Implementing robust detection and response mechanisms helps protect your project's assets and reputation.
+You don't want to be that project which has funds stolen, and then don't notice it for multiple days. Early detection and effective response to security incidents will help minimize damage.
 
 ## Key Components of Incident Detection
 
-- **Monitoring and Logging**: Implement continuous monitoring and logging of on-chain activity for your project to understand when something is behaving out of the ordinary. Also implement monitoring of system events, and user behavior to detect anomalies and potential security incidents in non-onchain systems.
-- **Security Information and Event Management (SIEM)**: Use SIEM solutions to aggregate and analyze logs from multiple sources, providing a comprehensive view of security events.
+- **Monitoring and Logging**: Implement continuous monitoring and logging of on-chain activity for your project to understand when something is behaving out of the ordinary. Also implement monitoring of system events, and user behavior to detect anomalies and potential security incidents in non-onchain systems such as web applications or cloud environments.
 
 ## Key Components of Incident Response
 
@@ -14,5 +13,3 @@ Timely detection and effective response to security incidents are essential for 
 - **Containment**: Implement strategies to contain the incident.
 - **Recovery and Remediation**: Ensure that everything is restored to normal operation and take steps to prevent future incidents.
 - **Post-Incident Review**: Conduct a thorough review of the incident to identify lessons learned and improve future response efforts.
-
-By implementing these practices, you can enhance your project's ability to detect and respond to security incidents effectively.
