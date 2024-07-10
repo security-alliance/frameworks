@@ -1,17 +1,17 @@
 # Dependency Awareness
 
-Dependency awareness is the practice of understanding and managing all the external libraries, frameworks, and components that a software project relies on. Dependencies can introduce vulnerabilities and risks, making it crucial to keep track of them and ensure they are secure.
+Dependency awareness is the practice of understanding and managing all the external libraries, frameworks, and components that a software project relies on. Dependencies can introduce vulnerabilities and risks, which means it's important to keep track of them and ensure they are secure.
 
 ## Importance of Dependency Awareness
 
 1. **Security Risks**
-   - Dependencies can contain vulnerabilities that may be exploited by attackers. Keeping track of dependencies helps in identifying and mitigating these risks.
+   - Dependencies can contain vulnerabilities that may be exploited by threat actors.
 
 2. **Compliance**
    - Ensuring that dependencies comply with licensing and regulatory requirements is essential to avoid legal issues.
 
 3. **Maintainability**
-   - Understanding dependencies and their impact on the project helps in maintaining and updating the software more effectively.
+   - Understanding dependencies and their impact on the project will help understand if it's possible to update a dependency used by your application.
 
 ## Best Practices for Dependency Awareness
 
@@ -25,7 +25,7 @@ Dependency awareness is the practice of understanding and managing all the exter
        - **MythX:** Scans for vulnerabilities in smart contract dependencies.
 
 2. **Regularly Update Dependencies**
-   - Regularly update dependencies to the latest secure versions. Use automated tools to help manage updates and patches.
+   - Regularly update dependencies to the latest secure versions after verifying them.
 
 3. **Monitor for Vulnerabilities**
    - Continuously monitor dependencies for known vulnerabilities using tools like Snyk, npm audit, and GitHub Security Alerts.
