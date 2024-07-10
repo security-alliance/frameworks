@@ -12,7 +12,7 @@ Using privacy-focused operating systems and tools can significantly enhance your
 2. **Qubes OS**
    - An open-source operating system designed for security through isolation.
    - Pros: Strong isolation, supports running multiple virtual machines.
-   - Cons: Requires powerful hardware, steep learning curve.
+   - Cons: Requires fairly powerful hardware, steep learning curve.
 
 3. **Whonix**
    - A security-focused operating system that runs in a virtual machine and uses Tor to anonymize internet traffic.
