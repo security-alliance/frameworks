@@ -56,6 +56,6 @@ Secure browsing is essential to protect your privacy and personal information wh
 
 ## Best Practices
 
-- **Regularly Clear Browsing Data**: Regularly clear your browsing history, cookies, and cache to remove any stored data.
-- **Be Cautious with Extensions**: Only install trusted browser extensions and regularly review their permissions.
-- **Use Strong Passwords**: Use a password manager to create and store strong, unique passwords for each website.
+1. Regularly clear your browsing history, cookies, and cache to remove any stored data.
+2. Only install trusted browser extensions and regularly review their permissions.
+3. Use a password manager to create and store strong, unique passwords for each website.
