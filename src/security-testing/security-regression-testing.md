@@ -1,6 +1,6 @@
 # Security Regression Testing
 
-Security regression testing involves retesting previously fixed vulnerabilities to ensure that they remain fixed and that new code changes do not introduce new vulnerabilities. This practice is essential for maintaining the security of applications over time.
+Security regression testing involves retesting previously fixed vulnerabilities to ensure that they remain fixed and that new code changes do not introduce new vulnerabilities.
 
 ## Benefits of Security Regression Testing
 
