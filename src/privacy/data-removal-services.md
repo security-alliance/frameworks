@@ -40,6 +40,6 @@ Removing your personal data from online platforms can help protect your privacy 
 
 ## Best Practices
 
-- **Regularly Review and Update Privacy Settings**: Regularly check and update the privacy settings on your online accounts.
-- **Limit Information Sharing**: Be mindful of the information you share online and with whom.
-- **Use Pseudonyms**: Use pseudonyms for accounts that don't require your real name.
+1. Regularly check and update the privacy settings on your online accounts.
+2. Be mindful of the information you share online and with whom.
+3. Use pseudonyms for accounts that don't require your real name.
