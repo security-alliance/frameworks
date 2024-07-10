@@ -1,6 +1,6 @@
 # Incident Management
 
-Incident management is a critical aspect of cybersecurity that involves preparing for, detecting, responding to, and recovering from security incidents. Effective incident management practices help minimize the impact of security breaches, ensure timely recovery, and prevent future incidents.
+Incident management involves preparing for, detecting, responding to, and recovering from security incidents. By thinking about incident management prior to actually experiencing an incident, you can help increase the likelihood of a timely recovery.
 
 ## Contents
 
@@ -9,5 +9,3 @@ Incident management is a critical aspect of cybersecurity that involves preparin
 3. [Lessons Learned](./lessons-learned.md)
 4. [Playbooks](./playbooks.md)
 5. [SEAL 911 War Room Guidelines](./seal-911-war-room-guidelines.md)
-
-By implementing these best practices, you can enhance your project's ability to respond to and recover from security incidents effectively.
