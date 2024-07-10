@@ -1,6 +1,6 @@
 # Secure Coding Standards and Guidelines
 
-Adhering to secure coding standards and guidelines is essential for writing code that is resilient to security threats. These standards help developers avoid common vulnerabilities and ensure that security is considered at every stage of development.
+Using secure coding standards and guidelines increases the likelihood of you being resilient to security threats. Having these type of standards can help developers avoid common vulnerabilities, and help ensure that security is considered at every stage of development.
 
 ## Secure Coding Standards
 
