@@ -10,7 +10,8 @@ Mobile applications are increasingly used as front-ends for web3 protocols. As m
     - Insecure Authentication
     - Insecure Authorization
 
-2. Ensure that APIs used by the mobile application are secure and follow best practices for authentication and authorization.
-3. Encrypt sensitive data stored on the device and during transmission.
-4. Keep the mobile application and its dependencies updated to protect against known vulnerabilities.
-5. Leverage security libraries and frameworks designed for mobile application security, such as OWASP Mobile Security Project.
+2. Use the trusted execution environment available in the device for secret management.
+3. Ensure that APIs used by the mobile application are secure and follow best practices for authentication and authorization by implementing certificate pinning to help prevent man-in-the-middle attacks.
+4. Encrypt sensitive data stored on the device and during transmission.
+5. Keep the mobile application and its dependencies updated to protect against known vulnerabilities.
+6. Leverage security libraries and frameworks designed for mobile application security, such as OWASP Mobile Security Project.
