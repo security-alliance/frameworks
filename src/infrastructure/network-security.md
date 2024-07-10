@@ -1,15 +1,15 @@
 # Network Security
 
-Securing the network infrastructure of your blockchain project is essential for protecting data in transit and preventing unauthorized access. Implementing robust network security measures ensures the integrity and availability of your network.
+Network security is a very wide subject, and the steps you take are significantly dependent on if you're managing your own network, if you're utilizing a cloud provider, or if you're using a service provider. With that said, there are some general best practices to consider:
 
 ## Best Practices
 
-- **Default Deny**: Infrastructure should deny all incoming traffic by default. When opening ports, consideration should be made as to which ports and incoming IPs are needed. SSH, RDP, and Database ports should not be open to the entire Internet.
-- **Network Segmentation**: Divide your network into segments to limit the impact of a potential breach.
-- **Firewalls**: Implement firewalls to control and monitor incoming and outgoing network traffic based on predetermined security rules.
-- **Intrusion Detection and Prevention Systems (IDPS)**: Use IDPS to detect and prevent potential security breaches.
-- **Virtual Private Networks (VPNs)**: Use VPNs to provide secure remote access to your network.
-- **Encryption**: Encrypt sensitive data in transit using protocols such as TLS/SSL.
-- **Access Control Lists (ACLs)**: Use ACLs to define and control which users or systems can access network resources.
-- **Regular Audits**: Conduct regular network security audits to identify and address vulnerabilities.
-- **Patch Management**: Keep any potential network devices and software updated with the latest security patches.
+1. Infrastructure should deny all incoming traffic by default. When opening ports, consideration should be made as to which ports and incoming IPs are needed. SSH, RDP, and Database ports should not be open to the entire Internet.
+2. Divide your network into segments to limit the impact of a potential breach.
+3. Implement firewalls to control and monitor incoming and outgoing network traffic based on predetermined security rules.
+4. Use IDPS to detect and prevent potential security breaches.
+5. Use VPNs to provide secure remote access to your network.
+6. Encrypt sensitive data in transit using secure protocols.
+7. Use ACLs to define and control which systems or users can access network resources.
+8. Conduct regular network security audits to identify and address vulnerabilities.
+9. Keep any potential network devices and software updated with the latest security patches.
