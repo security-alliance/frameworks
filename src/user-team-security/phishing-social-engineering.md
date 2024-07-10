@@ -1,14 +1,10 @@
 # Phishing and Social Engineering
 
-In the dynamic and often nebulous realm of Web3 and cryptocurrencies, understanding scams and phishing is critical for anyone venturing into this space. Both terms describe deceptive practices but manifest in distinct ways and require different prevention strategies.
+In the dynamic and often nebulous realm of web3 and cryptocurrencies, understanding scams and phishing is critical for anyone venturing into this space. Both terms describe deceptive practices but manifest in distinct ways and require different prevention strategies.
 
 ## Scams
 
-**Scams** or Rug-Pulls in the context of Web3 and cryptocurrencies typically involve fraudulent schemes designed to swindle individuals out of their digital assets. For example, an enticing new project may promise revolutionary technology and unprecedented returns. However, the project developers quickly vanish, leaving investors with worthless tokens and empty promises.
-
-## Drainers
-
-**Drainers** are advanced phishing projects where 
+**Scams** or Rug-Pulls in the context of web3 and cryptocurrencies typically involve fraudulent schemes designed to swindle individuals out of their digital assets. For example, an enticing new project may promise revolutionary technology and unprecedented returns. However, the project developers quickly vanish, leaving investors with worthless tokens and empty promises.
 
 ## Phishing
 
