@@ -5,10 +5,7 @@ Providing a secure front-end (web application) for users to interact with your w
 ## Best Practices
 
 1. Utilize popular and well-maintained web application frameworks when developing your application.
-2. Familiarize yourself with common web application vulnerabilities such as:
-    - Cross-Site Scripting (XSS)
-    - Cross-Site Request Forgery (CSRF)
-    - Insecure Direct Object Reference (IDOR)
+2. Familiarize yourself with common web application vulnerabilities that may affect your decentralized application such as Cross-Site Scripting (XSS).
   Refer to the [OWASP Top 10](https://owasp.org/www-project-top-ten/) for a comprehensive list.
 3. Minimize the introduction of custom components in your framework. Ensure that any custom code undergoes thorough internal and external security testing.
 4. Refer to the [Infrastructure/DDoS Protection](../infrastructure/ddos-protection.md) section for insights on ensuring high availability of your protocol’s front-end.
