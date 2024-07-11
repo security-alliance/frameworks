@@ -43,3 +43,4 @@ It could prove valuable to conduct regular training sessions on recognizing and 
 - **Access Control**: Implement strict access control measures, preferably requiring confirmations by multiple people before critical actions can be taken.
 - **Report Suspicious Activity**: Encourage team members to report any suspicious behavior or requests immediately.
 
+[Contribute on GitHub](https://github.com/security-alliance/frameworks/edit/develop/src/awareness/social-engineering.md)
