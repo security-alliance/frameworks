@@ -87,4 +87,4 @@ This page is also opened for contributors! Suggest improvements to our style and
 
 ## Attribution
 
-A lot of the content of this page comes from the Ethereum Protocol Fellows over at https://github.com/eth-protocol-fellows/protocol-studies
+A lot of the content of this page comes from the [Ethereum Protocol Fellows](https://github.com/eth-protocol-fellows/protocol-studies)
