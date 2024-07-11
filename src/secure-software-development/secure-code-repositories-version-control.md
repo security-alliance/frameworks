@@ -13,8 +13,8 @@ Managing secure code repositories and having version control practices helps pro
    - Use hardware tokens or authentication apps for stronger security.
 
 3. **Branch Protection**
-   - Enable branch protection rules to prevent unauthorized changes to critical branches.
-   - Require code reviews and approvals before changes can be merged into the main branch.
+   - Enable branch protection rules to prevent unauthorized changes to critical branches such as main/master.
+   - Require code reviews and approvals by another person before changes can be merged into the main/master branch.
 
 4. **Audit Logs**
    - Enable audit logging to track all activities within the repository.
