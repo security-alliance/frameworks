@@ -15,5 +15,3 @@ It is often very valuable to have information on the latest security threats and
 ## 3. Follow Security Blogs and Podcasts
 
 - **Social Feeds**: Follow blogs and listen to podcasts such as the Daily Stormcast from FIRST.org or darkness diaries to gain deeper insights into emerging threats and solutions.
-
-[Contribute on GitHub](https://github.com/security-alliance/frameworks/edit/develop/src/awareness/staying-up-to-date.md)
