@@ -10,4 +10,4 @@ Security Awareness aims to bring essential information that is relevant to each 
 
 
 
-[Contribute on GitHub](https://github.com/security-alliance/frameworks/tree/develop/src/awareness/README.md)
+[Contribute on GitHub](https://github.com/security-alliance/frameworks/edit/develop/src/awareness/README.md)
