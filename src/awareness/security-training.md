@@ -44,3 +44,5 @@ As an introductionary and overarching training session, this could be done:
 
 ## Phishing Training
 As a means to keep team members aware of the type of phishing emails that they may be receiving, it could be beneficial to run a phishing test campaign against the team members from time to time.
+
+[Contribute on GitHub](https://github.com/security-alliance/frameworks/edit/develop/src/awareness/security-training.md)
