@@ -28,7 +28,7 @@ For contributors, we recommend focusing on specific topics contained in correspo
 
 ## Style guide
 
-Wiki pages follow standard [Markdown](https://www.markdownguide.org/). 
+Wiki pages follow standard [Markdown](https://rust-lang.github.io/mdBook/format/markdown.html) with some extensions by [mdBook](https://rust-lang.github.io/mdBook/format/markdown.html).
 
 The audience of this wiki is technical and the content should reflect that. There are many guides on technical and documentation writing you can learn from, for example you can check [this lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get started.
 
