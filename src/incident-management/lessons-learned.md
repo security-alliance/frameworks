@@ -2,7 +2,7 @@
 
 Conducting a post-incident review and identifying lessons learned will improve your project's incident response capabilities. By analyzing what went well and what could be improved, you can enhance your readiness for future incidents.
 
-## Best Practices for Lessons Learned
+## Best Practices
 
 1. Review the incident together with everybody involved in handling it shortly after the incident is resolved.
 2. Record details about the incident, including the timeline, root cause, impact, and response efforts.
