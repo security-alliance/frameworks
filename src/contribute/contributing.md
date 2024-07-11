@@ -67,9 +67,7 @@ Don't overwhelm reader with too many resources within the text.
 
 When linking a page within this framework, use a relative path and if it references specific topic within the page, use a link to heading IDs. 
 
-For other important links, add a section on the bottom of the page with list of resources. Resources should have a name or short description with a link and alternative link to its archived mirror. We strongly suggest adding a link to the latest snapshot from archive.org. Example of a link in a resource section: 
-
-[JSON-RPC API reference](https://ethereum.org/en/developers/docs/apis/json-rpc), [archived](https://web.archive.org/web/20240117035335/https://ethereum.org/en/developers/docs/apis/json-rpc)
+For other important links, add a section on the bottom of the page with list of resources. Resources should have a name or short description with a link and alternative link to its archived mirror. We strongly suggest adding a link to the latest snapshot from archive.org.
 
 ### In-page notices
 
