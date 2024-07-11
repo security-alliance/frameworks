@@ -140,6 +140,7 @@
 - Case studies — an idea -->
 
 # Additional Resources
+- [Contributing](./contribute/contributing.md)
 <!-- - Tools and software recommendations
 - Further reading and references -->
 -----------
