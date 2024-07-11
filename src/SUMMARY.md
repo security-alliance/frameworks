@@ -141,7 +141,6 @@
 
 # Additional Resources
 - [Contributing](./contribute/contributing.md)
+  - [Contributors](contribute/contributors.md)
 <!-- - Tools and software recommendations
 - Further reading and references -->
------------
-[Contributors](misc/contributors.md)
