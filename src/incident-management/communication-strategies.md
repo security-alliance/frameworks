@@ -2,7 +2,7 @@
 
 Communication during an incident can be very hard, as people are often scrambling to fix the issue at hand. Nonetheless, from aa team member, outsider or observer's point of view, communication is very important to be able to understand what's happening, and it also provide some time to reflect and think about what is going on. With that said, providing information before confirming that it's accurate, can often be very negative and cause uncertainty. It is recommended to have a person designated for communication during an incident, and that updates are sent out on a fixed schedule, and it can often be that the update is that there is currently no new information available.
 
-## Best Practices for Communication Strategies
+## Best Practices
 
 1. Define and establish secure communication channels for incident response teams. Use [encrypted messaging apps](../encryption/communication-encryption.md)
 2. Appoint primary and backup spokespersons to handle internal and external communications during an incident.
