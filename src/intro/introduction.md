@@ -12,8 +12,8 @@ Regardless of your background—whether in Web2, Web3, or beyond—these guideli
 
 ## How to Contribute
 
-This mdBook-style handbook is designed for easy collaboration and automatic deployment through continuous integration. If you'd like to join our effort, feel free to fix typos, contribute new sections, or propose enhancements. Simply fork [this repository](https://github.com/security-alliance/frameworks), switch to the `develop` branch, and submit a pull request. You can also click on the upper-right corner, which will take you to suggest an edit using GitHub's web interface.
+Read our [Contribution Guide](./contribute/contributing.md).
 
 ## Who We Are
 
-SEAL is a not-for-profit organization committed to enhancing security awareness, education, and specialized work as a public service for the Web3 ecosystem, its supporting technologies, and communities. Our efforts are driven by a shared desire to foster a safer, more informed digital landscape. We do this by designing innovative projects, engaging elite technologists, and coordinating on the social layer to ensure meaningful adoption.
+SEAL is a not-for-profit organization committed to enhancing security awareness, education, and specialized work as a public good for the Web3 ecosystem, its supporting technologies, and communities. Our efforts are driven by a shared desire to foster a safer, more informed digital landscape. We do this by designing innovative projects, engaging elite technologists, and coordinating on the social layer to ensure meaningful adoption.
