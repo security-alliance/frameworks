@@ -2,10 +2,15 @@
 
 The Security Framework is an open and collaborative project. Whether you are part of the Security Alliance or not, we welcome your contributions! Help us to build the documentation and improve security in the ecosystem.
 
+This mdBook-style handbook is designed for easy collaboration and automatic deployment through continuous integration. If you'd like to join our effort, feel free to fix typos, contribute new sections, or propose enhancements.
+
+To contribute you can either:
+- Fork [this repository](https://github.com/security-alliance/frameworks), switch to the develop branch, and submit a pull request.
+- On each page, you will find a "Suggest an edit" button at the top-right corner. Clicking this sends you to the GitHub.com where you can suggest edits using their web interface.
 
 ## Contributing
 
-Before you start with editing, please read the code of conduct and make yourself familiar with the overall structure. 
+Before you start editing, adding or removing content, please read the [code of conduct]https://github.com/security-alliance/frameworks/CODE_OF_CONDUCT.md and make yourself familiar with the overall structure.
 
 The source is hosted in github repository at [github.com/security-alliance/frameworks](https://github.com/security-alliance/frameworks).
 
