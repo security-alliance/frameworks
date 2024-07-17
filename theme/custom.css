@@ -1,0 +1,12 @@
+.sidebar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.sidebar-logo img {
+    max-width: 80%;
+    height: auto;
+}

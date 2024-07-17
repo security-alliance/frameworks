@@ -17,9 +17,11 @@ assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 [output]
 
 [output.html]
-additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./mdbook-admonish.css"]
-default-theme = "latte"
-preferred-dark-theme = "mocha"
+additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./mdbook-admonish.css", "./theme/custom.css"]
+template-path = "theme"
+copy-images = true
+default-theme = "navy"
+preferred-dark-theme = "navy"
 mathjax-support = true
 # site-url = "/book/"
 git-repository-url = "https://github.com/security-alliance/frameworks/tree/develop"
