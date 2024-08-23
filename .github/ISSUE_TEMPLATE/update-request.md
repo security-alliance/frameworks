@@ -1,19 +1,16 @@
 ---
-name: Update request 
-about: Update an existing content missing in the Framework
+name: Update request or suggestion
+about: Suggest an update or modification to an existing content
 title: ''
 labels: 'modification'
 assignees: ''
 ---
 
-## What content are you looking to add?
-_Some examples can be:_
-- It would be useful to create a new framework about xxxxxx
-- I want someone to add a new page on yyyyy framework
-- Examples on how to properly do zzzzz are missing
+## What content are you looking to modify or update?
+_Be as specific as you can._
 
-## Why do you think it is important?
-_If it is not self-explanatory, or relatively clear, add a few sentences explaining how it matters to frameworks._
+## Why do you think this update or modification is needed?
+_If it is not self-explanatory, or relatively clear, add a few sentences explaining why it is needed._
 
-## Can you cite resources where to base the content from?
+## Can you justify your argument and provide additional resources
 _Here add as many resources as you can to sustain your argument or provide information from which we can research/base the content._
