@@ -2,7 +2,7 @@
 name: New content request 
 about: Request a new content missing in the Framework
 title: ''
-labels: 'feature'
+labels: 'collab'
 assignees: ''
 ---
 
