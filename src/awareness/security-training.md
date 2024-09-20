@@ -37,10 +37,12 @@ As an introductionary and overarching training session, this could be done:
 - **Backups**: Discuss when it could be relevant to back up important data.
 - **Encryption**: Discuss when using encryption could be important to to protect sensitive data both in transit and at rest.
 
-### 7. Incident Response
+### 7. Phishing Training
+
+- **Phishing Test Campaigns**: As a means to keep team members aware of the type of phishing emails that they may be receiving, it could be beneficial to run a phishing test campaign against the team members from time to time.
+- **Effectiveness of Phishing Training**: While phishing training can be beneficial, it's important to note that not all phishing tests are insightful. Poorly designed phishing tests can lead to frustration and a contrary effect, where team members become desensitized or overly cautious, impacting their productivity. It's crucial to design phishing tests that are realistic, educational, and provide constructive feedback to truly enhance security awareness.
+
+### 8. Incident Response
 
 - **Reporting Incidents**: Discuss the need for everybody knowing how to react during security incidents, and how one should never be afraid to raise the alarm.
 - **Response Plan**: For teams where relevant, discuss the incident response plan.
-
-## Phishing Training
-As a means to keep team members aware of the type of phishing emails that they may be receiving, it could be beneficial to run a phishing test campaign against the team members from time to time.
