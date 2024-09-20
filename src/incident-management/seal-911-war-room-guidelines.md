@@ -8,45 +8,51 @@ When interacting with SEAL 911, ensure that you give as much information as poss
 
 ---
 
-# Crisis Handbook - Smart Contract Hack
-[Go to the Google Doc version.](https://docs.google.com/document/d/1DaAiuGFkMEMMiIuvqhePL5aDFGHJ9Ya6D04rdaldqC0/edit#heading=h.c4h2beeflqpo)
+# Crisis Handbook - Smart Contract Hack | [Google Doc](https://docs.google.com/document/d/1DaAiuGFkMEMMiIuvqhePL5aDFGHJ9Ya6D04rdaldqC0/edit#heading=h.c4h2beeflqpo)
 
 ## Actions Checklist
 
 ### Perform Immediately
-1. Notify SEAL 911 Bot of the incident. Use this message template to get started.
-2. Create a War Room with audio and share the invite link with trusted individuals.
-3. Duplicate this document to allow collaboration and share the link in the War Room.
-4. Review the Advice to Keep in Mind section.
+- [ ] Notify SEAL 911 Bot of the incident. Use this message template to get started.
+- [ ] Create a War Room with audio and share the invite link with trusted individuals.
+- [ ] Duplicate this document to allow collaboration and share the link in the War Room.
+- [ ] Review the Advice to Keep in Mind section.
 
 ### Perform in Parallel by Role
-1. Assign Key Roles to War Room Members.
+
+1. **Assign Key Roles to War Room Members**:
+   - [ ] Assign members to specific roles.
+
 2. **Analysis**:
-    - Scope the impact of the attack.
-    - Gather Transactions Involved.
-    - Gather Affected Addresses.
-    - Record Funds Movement.
-    - Gather Attacker Information.
-    - Investigate the issue and update the Issue Description.
-    - Propose workable solutions.
+   - [ ] Scope the impact of the attack.
+   - [ ] Gather Transactions Involved.
+   - [ ] Gather Affected Addresses.
+   - [ ] Record Funds Movement.
+   - [ ] Gather Attacker Information.
+   - [ ] Investigate the issue and update the Issue Description.
+   - [ ] Propose workable solutions.
+
 3. **Protocol actions**:
-    - Take immediate corrective/preventative actions to prevent further loss of funds.
-    - Pause contracts if possible.
-    - Execute pre-made defensive scripts.
-    - Prioritize proposed solutions.
-    - Validate and execute the solution.
-    - Prepare monitoring alerts for situations that require future actions.
+   - [ ] Take immediate corrective/preventative actions to prevent further loss of funds.
+   - [ ] Pause contracts if possible.
+   - [ ] Execute pre-made defensive scripts.
+   - [ ] Prioritize proposed solutions.
+   - [ ] Validate and execute the solution.
+   - [ ] Prepare monitoring alerts for situations that require future actions.
+
 4. **Web actions**:
-    - Disable deposits and/or withdrawals as needed in the web UI.
-    - Enable frontend IP or Address blacklisting.
-    - Create frontend for any user actions necessary (approval revoking, fund migrating, etc.).
+   - [ ] Disable deposits and/or withdrawals as needed in the web UI.
+   - [ ] Enable frontend IP or Address blacklisting.
+   - [ ] Create frontend for any user actions necessary (approval revoking, fund migrating, etc.).
+
 5. **Communications**:
-    - Identify social platforms that communications on the incident must be sent to.
-    - Prepare messages for incident communication internally and externally.
-    - Gather security contacts for any potentially affected downstream protocols (bridges, lending protocols).
-    - Notify block explorers (like Etherscan) for attacker address labeling.
-    - Continuously monitor social media for users providing additional information that aids whitehat efforts.
-    - Monitor War Room efforts and maintain the Event Timeline.
+   - [ ] Identify social platforms that communications on the incident must be sent to.
+   - [ ] Prepare messages for incident communication internally and externally.
+   - [ ] Gather security contacts for any potentially affected downstream protocols (bridges, lending protocols).
+   - [ ] Notify block explorers (like Etherscan) for attacker address labeling.
+   - [ ] Continuously monitor social media for users providing additional information that aids whitehat efforts.
+   - [ ] Monitor War Room efforts and maintain the Event Timeline.
+
 
 ### After all of the above is complete, consider Post Incident Actions
 
@@ -59,7 +65,7 @@ Information will primarily be shared and acted upon in the War Room. As time all
 This is the chief duty of the Scribe.
 
 ### Issue Description
-<Provide a description of the issue at hand>
+The issue involves an unauthorized transfer of funds from the protocol's treasury contract due to a vulnerability in the contract's access control mechanism. The attacker exploited this vulnerability to initiate multiple transfers, siphoning funds to an external wallet.
 
 ### Events Timeline
 Record events to construct an overall timeline of the incident. Events worth recording:
@@ -71,33 +77,35 @@ Record events to construct an overall timeline of the incident. Events worth rec
 
 Record times in UTC. Use a UTC Time Converter.
 
-| Date-Time (UTC) | Event Description | Notes |
-| --------------- | ----------------- | ----- |
-|                 |                    |       |
-|                 |                    |       |
-|                 |                    |       |
-|                 |                    |       |
+| Date-Time (UTC)   | Event Description                   | Notes                            |
+| ----------------- | ----------------------------------- | -------------------------------- |
+| 2024-08-23 12:45  | First notice of the unauthorized transfer | Alert received via monitoring system |
+| 2024-08-23 12:50  | War room created                    | Initial members invited          |
+| 2024-08-23 13:05  | Notified SEAL 911 Bot               | Incident report submitted        |
+| 2024-08-23 13:15  | Attack transaction identified       | Transaction hash: 0x123456789abc |
+| 2024-08-23 13:20  | Contracts paused                    | Prevented further fund transfers |
+| 2024-08-23 13:30  | External communication initiated    | First update sent via Twitter    |
 
 ### Transactions Involved
 Record all transactions related to the incident.
 
-| Transaction Link | Notes |
-| ---------------- | ----- |
-|                  |       |
-|                  |       |
-|                  |       |
+| Transaction Link                                                      | Notes                                |
+| --------------------------------------------------------------------- | ------------------------------------ |
+| [0x123456789abcdef...](https://etherscan.io/tx/0x123456789abcdef)     | Initial exploit transaction          |
+| [0xabcdef123456789...](https://etherscan.io/tx/0xabcdef123456789)     | Attacker moving funds to mixer       |
+| [0xfedcba987654321...](https://etherscan.io/tx/0xfedcba987654321)     | Defensive move by the team           |
 
 ### Affected Addresses
 Record affected addresses related to the incident (protocol contracts, bridges, users, etc.).
 
-| Address Link | Status | Notes |
-| ------------ | ------ | ----- |
-|              | At Risk|       |
-|              | Impacted |     |
-|              | Paused  |      |
-|              | Saved   |      |
-|              | Needs Review | |
-|              | Uncertain |   |
+| Address Link                                                    | Status      | Notes                               |
+| --------------------------------------------------------------- | ----------- | ----------------------------------- |
+| [0x1111222233334444...](https://etherscan.io/address/0x11112222) | At Risk     | User wallet, interacted with exploit |
+| [0x5555666677778888...](https://etherscan.io/address/0x55556666) | Impacted    | Protocol treasury address            |
+| [0x99990000aaaabbbb...](https://etherscan.io/address/0x99990000) | Paused      | Lending protocol contract            |
+| [0xaaaabbbbccccdddd...](https://etherscan.io/address/0xaaaabbbb) | Saved       | Bridge contract, funds secured       |
+| [0xddddeeeeffff0000...](https://etherscan.io/address/0xddddeeee) | Needs Review| User wallet, unusual activity noted  |
+| [0x2222333344445555...](https://etherscan.io/address/0x22223333) | Uncertain   | User wallet, pending analysis        |
 
 ### Funds Movement
 Record funds movement to gather the impact of the incident and organize recovery efforts.
@@ -109,21 +117,22 @@ Record funds movement to gather the impact of the incident and organize recovery
 
 Use Phalcon Tx Explorer to aid in recording funds movement.
 
-| Origin | Transaction | Amount / Asset | Destination | Recovery Status | Notes |
-| ------ | ----------- | -------------- | ----------- | --------------- | ----- |
-|        |             |                |             | Needs Review    |       |
-|        |             |                |             | In Progress     |       |
-|        |             |                |             | Recovered       |       |
-|        |             |                |             | Uncertain       |       |
+| Origin                                                      | Transaction Link                                             | Amount / Asset | Destination                                        | Recovery Status | Notes                               |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | -------------- | ------------------------------------------------- | --------------- | ----------------------------------- |
+| [0x5555666677778888...](https://etherscan.io/address/0x5555) | [0xabcdef123456789...](https://etherscan.io/tx/0xabcdef)     | 1000 ETH       | [Mixer address](https://etherscan.io/address/0x12)| Needs Review    | Funds moved to Tornado Cash        |
+| [0x99990000aaaabbbb...](https://etherscan.io/address/0x9999) | [0x9876543210fedcba...](https://etherscan.io/tx/0x987654)    | 500,000 DAI    | [CEX address](https://etherscan.io/address/0x34)  | In Progress     | Funds transferred to centralized exchange |
+| [0xaaaabbbbccccdddd...](https://etherscan.io/address/0xaaaa) | [0x123456789abcdef...](https://etherscan.io/tx/0x123456)     | 200 BTC        | [Contract address](https://etherscan.io/address/0x56) | Recovered       | Funds recovered via multisig       |
+| [0xddddeeeeffff0000...](https://etherscan.io/address/0xdddd) | [0xfedcba987654321...](https://etherscan.io/tx/0xfedcba)     | 50,000 USDC    | [Bridge address](https://etherscan.io/address/0x78)| Uncertain       | Funds possibly moved cross-chain   |
 
 ### Attacker Information
 Gather attacker information to aid legal efforts and fund recovery.
 
-| Address Link | Funded By | Notes |
-| ------------ | --------- | ----- |
-|              |           |       |
-|              |           |       |
-|              |           |       |
+| Address Link                                                    | Funded By | Notes                                 |
+| ---------------------------------------------------------------- | --------- | ------------------------------------- |
+| [0xabcdefabcdefabcd...](https://etherscan.io/address/0xabcdefab) | Tornado Cash | Initial funding from Tornado Cash mixer |
+| [0x123456789abcdef...](https://etherscan.io/address/0x12345678)  | CEX       | Received funds from centralized exchange |
+| [0xfedcba987654321...](https://etherscan.io/address/0xfedcba98)  | Unknown   | No prior activity, potentially new wallet |
+
 
 ## Post Incident Actions
 1. Confirm the incident has been resolved.
