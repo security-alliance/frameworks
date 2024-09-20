@@ -1,6 +1,8 @@
+<!-- tags: tag1, tag2, tag3 -->
+
 # How to Navigate the Website
 
-Navigating the Security Frameworks by SEAL is designed to be intuitive and user-friendly. Here’s how you can make the most out of this resource:
+Navigating the Security Frameworks by SEAL will be designed to be intuitive and user-friendly. We plan on allowing users to filter contents by role, but we're not quite there yet. Any feedback on how to improve the usage of frameworks in the future is appreciated.
 
 ## Categories
 
@@ -8,7 +10,9 @@ The content is organized into different categories, each focusing on a specific 
 
 ## Filtering by Profile
 
-You can filter the content by profile to focus on information relevant to your role within the organization. This feature allows you to bypass unnecessary reading and concentrate on what matters most to you. Use the search bar to filter by any of the following roles:
+This is yet to be implemented, and we're currently looking for volunteers and collaborators for this specific task. The main objective will be to allow users to filter the content by profile to focus on information relevant to their role within the organization. This feature allows them to bypass unnecessary reading and concentrate on what matters most.
+
+Example roles:
 - Developer
 - Executive
 - Security
@@ -18,4 +22,4 @@ You can filter the content by profile to focus on information relevant to your r
 - Community
 - Non-Technical
 
-This targeted approach ensures you get the most relevant information efficiently.
+This targeted approach will ensure you get the most relevant information efficiently.
