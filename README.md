@@ -1,14 +1,14 @@
 # Security Frameworks content repository
 Official repository to the Security Frameworks by SEAL. This repository contains the entire
 structure and contents of the frameworks. Feel free to suggest from new categories to grammar
-corrections. Collaboration is open to everyone.
+corrections. Collaboration is open to everyone. **This is a work in progress.**
 
-If you want to know more about the frameworks or take a peek at the live book go to:
+If you want to know more about the frameworks or take a peek at the live book go to the following
+branches below: [Main](https://seal-frameworks.vercel.app/book),
+[Development](https://frameworks-git-develop-seal-frameworks.vercel.app/book/?_vercel_share=zOI0Q3riUfDv1Lq1IylFz2hXQzYPcmLp).
 
-[Production (frameworks.securityalliance.org)](https://frameworks.securityalliance.org)
-
-[Development](https://frameworks-git-develop-seal-frameworks.vercel.app/book/)
-
+Production will be at [frameworks.securityalliance.org](https://frameworks.securityalliance.org),
+but not yet available.
 
 ## Quick installation and local setup
 1. `gh repo clone security-alliance/frameworks`
@@ -16,7 +16,15 @@ If you want to know more about the frameworks or take a peek at the live book go
 3. `cargo install mdbook mdbook-admonish mdbook-catppuccin`
 4. `./serve`
 
-## Collaborate
+## Collaboration
+There are currently two ways to collaborate. The first one is by logging from your vercel account
+and commenting directly on the deployed version of the book, and the second one is by forking the
+repository and creating a pull request.
+
+### Comments
+To comment on the live version of the book under development, you will need to log in to your Vercel account. Please visit [this link](https://frameworks-git-develop-seal-frameworks.vercel.app/book/?_vercel_share=zOI0Q3riUfDv1Lq1IylFz2hXQzYPcmLp), which includes a read access token. A floating window will appear at the bottom, and you'll be ready to go.
+
+### Pull requests
 1. Fork the repository. Click on the "Fork" button at the top right corner of the page.
 2. Clone the forked repository to your local machine. Open your terminal or command prompt.
 `git clone https://github.com/your-username/frameworks.git`
@@ -50,4 +58,5 @@ Editors merge PRs and push suggestions to the main branch which will be reflecte
 ## caveats
 - The index.hbs from develop differs from main, since the theme has to be hardcoded to work as it is
 right now under vercel. This is why it is under a .gitignore.
-- Using the `serve.sh` script instead of mdBook `serve` command is needed to be able to see properly the local deployment.
+- Using the `serve.sh` script instead of mdBook `serve` command is needed to be able to see properly
+  the local deployment.
