@@ -18,6 +18,7 @@ assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 
 [output.html]
 additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./mdbook-admonish.css", "./theme/custom.css"]
+additional-js = ["./theme/tagsindex.json"]
 template-path = "theme"
 copy-images = true
 default-theme = "navy"
