@@ -21,4 +21,6 @@ trap "cross_platform_sed" INT
 # Perform initial sed operation
 cross_platform_sed
 
+node theme/tags_generator.js
+
 mdbook serve --watcher native
