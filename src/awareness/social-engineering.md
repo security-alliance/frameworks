@@ -25,7 +25,9 @@ Social engineering is the use of deception to manipulate individuals into divulg
 
 ### 5. Shoulder Surfing
 
--**Information Leakage**: A threat actor could be monitoring your monitor in a shared co-working space, to understand what you're working on and use the information to gain unauthorized access.
+-**Information Leakage**: A threat actor could be monitoring your screen in a shared co-working space, to understand what you're working on and use the information to gain unauthorized access.
+
+Users should be particularly vigilant in co-working spaces, as well as be aware of the presence of cameras or other recording devices that could capture sensitive information. Always position your screen away from prying eyes and use privacy screens if necessary.
 
 ## Preventive Measures
 

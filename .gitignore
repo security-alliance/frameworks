@@ -8,3 +8,5 @@
 **/.idea?
 book
 bin
+theme/index.hbs
+index.hbs

@@ -12,7 +12,7 @@ Regardless of your background—whether in Web2, Web3, or beyond—these guideli
 
 ## How to Contribute
 
-Read our [Contribution Guide](./contribute/contributing.md).
+Read our [Contribution Guide](../contribute/contributing.md) to learn how you can contribute to this project.
 
 ## Who We Are
 
