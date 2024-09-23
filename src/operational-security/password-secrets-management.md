@@ -8,8 +8,7 @@ Effective management of passwords and cryptographic keys help maintain the secur
 2. Check if your email has been in any breach on [Have I Been Pwned](https://haveibeenpwned.com/) and set up notifications for future breaches. Change passwords on the services where you may have been breached.
 3. If you suspect a breach of your password, change it as soon as possible.
 4. Use MFA whenever possible. It is a key measure in preventing account breaches. It is highly recommended to use a hardware token such as Yubikey to protect your accounts. If you use a mobile authenticator such as Authy to store your MFA tokens, ensure that you also set an encryption password to mitigate the risk of SIM swapping. Avoid using SMS for MFA unless there is no other option, as there are multiple cases where people have been SIM swapped and their accounts taken over. If SMS is the only option, it is still better than having no MFA enabled at all. It is recommended to not use the password manager/vault used for your passwords to store your MFA codes.
-
-
+5. **Reminder:** Do not derive wallets from self generated passwords, even if they look random. It is very easy to make mistakes in the derivation process and end up with a wallet that is easy to compromise. It is always better to use an appropiate wallet software to generate your seed phrases.
 
 ## Password and Key Security
 ### Passphrases
