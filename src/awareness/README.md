@@ -1,7 +1,5 @@
 # Security Awareness
 
-tag: [security-awareness]
-
 Security Awareness aims to bring essential information that is relevant to each team. Each team has different needs of security and potential threat actors, and for security awareness to be successful it should be tailored to each team's unique threat landscape.
 
 ## Contents
