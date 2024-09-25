@@ -4,6 +4,7 @@ const path = require("path");
 function tagsGenerator(srcDir, outputDir) {
   console.log("Starting tagsGenerator");
   const tagsFile = path.join(outputDir, "tagsindex.json");
+  const colorsFile = path.join(outputDir, "tagscolors.json");
 
   let tags = {};
   if (fs.existsSync(tagsFile)) {
@@ -13,6 +14,7 @@ function tagsGenerator(srcDir, outputDir) {
   console.log(`Source directory: ${srcDir}`);
   console.log(`Output directory: ${outputDir}`);
   console.log(`Tags file: ${tagsFile}`);
+  console.log(`Colors file: ${colorsFile}`);
 
   function extractTags(content) {
     console.log("Extracting tags from content");
@@ -72,6 +74,12 @@ function tagsGenerator(srcDir, outputDir) {
     });
   }
 
+  function generateColor(tag) {
+    const length = tag.length;
+    const hex = (length * 1234567).toString(16).slice(0, 6);
+    return `#${hex.padEnd(6, '0')}`;
+  }
+
   walkDir(srcDir);
 
   if (!fs.existsSync(outputDir)) {
@@ -81,6 +89,14 @@ function tagsGenerator(srcDir, outputDir) {
 
   console.log(`Writing tags to file: ${tagsFile}`);
   fs.writeFileSync(tagsFile, JSON.stringify(tags, null, 2));
+
+  const tagColors = {};
+  for (const tag in tags) {
+    tagColors[tag] = generateColor(tag);
+  }
+
+  console.log(`Writing tag colors to file: ${colorsFile}`);
+  fs.writeFileSync(colorsFile, JSON.stringify(tagColors, null, 2));
 
   console.log("tagsGenerator completed");
   process.exit(1);
