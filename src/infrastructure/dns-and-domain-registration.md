@@ -1,4 +1,5 @@
 # DNS and Domain Registration
+tag: [Engineer/Developer, Security Specialist, Operations & Strategy]
 
 DNS (Domain Name System) is the backbone of the internet, translating domain names into IP addresses.
 Choosing a secure and trusted Domain Registrar is important, as if someone is able to obtain access to your domain registrar they could change DNS servers and more.

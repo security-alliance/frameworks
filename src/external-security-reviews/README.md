@@ -1,4 +1,5 @@
 # External Security Reviews
+tag: [Security Specialist, Operations & Strategy]
 
 External security reviews are quite common in web3 when it comes to smart contract audits which are often being done to check if the smart contracts are secure.
 

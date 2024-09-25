@@ -1,4 +1,5 @@
 # Operating System Security
+tag: [Engineer/Developer, Security Specialist, Operations & Strategy]
 
 This document outlines some general best practises one should follow with regards to operating system security, however if you're interested in a much more comprehensive guide you could look at [NIST 800-123](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-123.pdf).
 

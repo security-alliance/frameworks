@@ -1,4 +1,5 @@
 # Incident Detection and Response
+tag: [Security Specialist, Operations & Strategy]
 
 You don't want to be that project which has funds stolen, and then don't notice it for multiple days. Early detection and effective response to security incidents will help minimize damage.
 

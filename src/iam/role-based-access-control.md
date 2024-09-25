@@ -1,4 +1,5 @@
 # Role-Based Access Control (RBAC)
+tag: [Engineer/Developer, Security Specialist, Operations & Strategy]
 
 Role-Based Access Control (RBAC) is a method of regulating access to systems and data based on the roles assigned to individual users within an project. RBAC ensures that users have the minimum access necessary to perform their job functions, reducing the risk of unauthorized access.
 

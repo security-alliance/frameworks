@@ -1,4 +1,5 @@
 # Common Vulnerabilities
+tag: [Engineer/Developer, Security Specialist]
 
 Understanding and mitigating common vulnerabilities is crucial for securing your web and mobile applications. Here are some frequently encountered vulnerabilities:
 

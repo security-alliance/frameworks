@@ -1,6 +1,8 @@
 # Cloud Data Encryption
+tag: [Engineer/Developer, Security Specialist]
 
-You should consider using the best practices below, in order to ensure that data stored in the cloud is protected from unauthorized access:
+You should consider using the best practices below, in order to ensure that data stored in the cloud
+is protected from unauthorized access:
 
 ## Best Practices
 

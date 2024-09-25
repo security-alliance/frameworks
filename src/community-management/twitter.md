@@ -1,4 +1,5 @@
 # Twitter Security
+tag: [Community & Marketing]
 
 Having your twitter account compromised can cause a lot of damage not only to you but to the entire ecosystem. Securing your Twitter account is not particularily hard or time consuming, so consider following the best practises below:
 

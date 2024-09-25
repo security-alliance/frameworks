@@ -1,4 +1,5 @@
 # Supply Chain Levels for Software Artifacts
+tag: [Engineer/Developer, Security Specialist]
 
 Supply chain levels for software artifacts provide a framework for categorizing and securing software components based on their risk levels. This approach helps projects prioritize their security efforts towards software components with the highest risk levels.
 

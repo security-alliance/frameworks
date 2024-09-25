@@ -1,4 +1,5 @@
 # Financial Privacy Services
+tag: [Engineer/Developer, Security Specialist]
 
 Maintaining financial privacy is often seen by an important thing for people inside the web3 ecosystem, and it can help prevent personal and financial information from unauthorized access and fraud.
 

@@ -85,3 +85,5 @@ This framework explores various methods of testing Web3 projects for security vu
 ## User (Team) Security
 
 This section addresses security practices and awareness for the team members working on Web3 projects.
+
+tag: [Operations & Strategy, Security Specialist]

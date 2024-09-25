@@ -1,4 +1,5 @@
 # DDoS Protection
+tag: [Engineer/Developer, Security Specialist, Operations & Strategy]
 
 Distributed Denial of Service (DDoS) attacks are a pervasive threat that can disrupt your services by overwhelming them with excessive traffic.
 

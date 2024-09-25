@@ -1,4 +1,5 @@
 # Defining Thresholds for On-Chain Monitoring
+tag: [Engineer/Developer, Security Specialist]
 
 Setting appropriate thresholds for on-chain monitoring is hard when taking into account you want to detect unusual activities, without generating excessive false positives. Here are some guidelines for defining and configuring thresholds.
 

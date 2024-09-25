@@ -1,4 +1,5 @@
 # Cloud Infrastructure
+tag: [Engineer/Developer, Security Specialist, Operations & Strategy, Devops, Cloud, SRE]
 
 Securing your cloud infrastructure could be considered as important as securing your decentralized application, as a lot of users will be interacting with your dapp through the cloud provider. Some best practices to consider are:
 

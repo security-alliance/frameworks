@@ -1,4 +1,5 @@
 # Security Metrics and KPIs
+tag: [Operations & Strategy, Legal & Compliance]
 
 Measuring security performance through metrics and Key Performance Indicators (KPIs) can be very useful for assessing the effectiveness of your security program, and can allow you to make informed decisions on what actions to take with regards to security.
 

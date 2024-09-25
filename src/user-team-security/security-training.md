@@ -1,4 +1,5 @@
 # Security Training
+tag: [Security Specialist, Operations & Strategy]
 
 Regular security training helps keep security top-of-mind and reinforces the importance. It will help create the skills necessary to recognize and mitigate security threats to your project.
 

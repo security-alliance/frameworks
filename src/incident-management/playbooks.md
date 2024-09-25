@@ -1,5 +1,5 @@
 # Playbooks
-
+tag: [Security Specialist, Operations & Strategy]
 Generally speaking, incident response playbooks aim to provide detailed, step-by-step procedures for handling specific types of security incidents. Obviously, it's not possible to have thought about every possible scenario ahead of time, but one could create documentation for the most likely or devestating scenarios.
 
 ## Best Practices

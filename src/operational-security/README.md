@@ -1,4 +1,5 @@
 # Operational Security
+tag: [Security Specialist, Operations & Strategy]
 
 Operational security, often abbreviated as **OpSec** provides a range of practices and measures designed to safeguard an organization's sensitive information, assets, and operations from unauthorized access, espionage, disruption, or compromise.
 

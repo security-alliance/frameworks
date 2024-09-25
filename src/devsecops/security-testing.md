@@ -1,4 +1,5 @@
 # Security Testing
+tag: [Engineer/Developer, Security Specialist]
 
 Security testing is a crucial part of the DevSecOps process, as it helps identify vulnerabilities early on so that they can be taken care of before they become an issue in production.
 

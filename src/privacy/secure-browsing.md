@@ -1,4 +1,5 @@
 # Secure Browsing
+tag: [Engineer/Developer, Security Specialist]
 
 Secure browsing is essential to protect your privacy and personal information while using the internet.
 

@@ -1,4 +1,5 @@
 # Secure Code Repositories and Version Control
+tag: [Engineer/Developer, Security Specialist]
 
 Managing secure code repositories and having version control practices helps protect your project from unauthorized access and ensuring the integrity of your project.
 

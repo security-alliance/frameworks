@@ -1,4 +1,5 @@
 # Staying Up-to-Date
+tag: [Security Specialist, Operations & Strategy]
 
 It is often very valuable to have information on the latest security threats and trends, as you may be able to take preventive actions for attacks that are increasing, or security vulnerabilities that may be relevant to your project. Some things you could consider doing are:
 
