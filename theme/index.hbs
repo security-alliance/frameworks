@@ -417,19 +417,27 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const tagLines = Array.from(document.querySelectorAll('p')).filter(line => line.textContent.includes("tag:"));
-            tagLines.forEach(line => {
-                const tagText = line.textContent;
-                if (tagText.includes('tag: [')) {
-                    const tagContent = tagText.split('[')[1].split(']')[0].trim();
-                    const tags = tagContent.split(',').map(tag => tag.trim());
-                    const tagLabels = tags.map(tag => {
-                        const hexColor = `#${Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0')}`;
-                        return `<span style="background-color: ${hexColor}; padding: 5px 10px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; color: white;"><i class="fa fa-tag" aria-hidden="true"></i> ${tag}</span>`;
-                    });
-                    line.innerHTML = tagLabels.join(' ');
-                }
-            });
+
+            fetch('{{ path_to_root }}theme/tagscolors.json')
+                 .then(response => response.json())
+                 .then(data=>
+                 {
+                  window.tagsColors = data
+
+                  const tagLines = Array.from(document.querySelectorAll('p')).filter(line => line.textContent.includes("tag:"));
+                  tagLines.forEach(line => {
+                      const tagText = line.textContent;
+                      if (tagText.includes('tag: [')) {
+                          const tagContent = tagText.split('[')[1].split(']')[0].trim();
+                          const tags = tagContent.split(',').map(tag => tag.trim());
+                          const tagLabels = tags.map(tag => {
+                              const hexColor = window.tagsColors[tag]
+                              return `<span style="background-color: ${hexColor}; padding: 5px 10px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; color: white;"><i class="fa fa-tag" aria-hidden="true"></i> ${tag}</span>`;
+                          });
+                          line.innerHTML = tagLabels.join(' ');
+                      }
+                  });
+                 })
 
             fetch('{{ path_to_root }}theme/tagsindex.json')
                 .then(response => response.json())
