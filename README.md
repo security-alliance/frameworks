@@ -4,8 +4,8 @@ structure and contents of the frameworks. Feel free to suggest from new categori
 corrections. Collaboration is open to everyone. **This is a work in progress.**
 
 If you want to know more about the frameworks or take a peek at the live book go to the following
-branches below: [Main](https://seal-frameworks.vercel.app/book),
-[Development](https://frameworks-git-develop-seal-frameworks.vercel.app/book/?_vercel_share=zOI0Q3riUfDv1Lq1IylFz2hXQzYPcmLp).
+branches below: [Main](https://seal-frameworks.vercel.app/),
+[Development](https://frameworks-git-develop-seal-frameworks.vercel.app/?_vercel_share=zOI0Q3riUfDv1Lq1IylFz2hXQzYPcmLp).
 
 Production will be at [frameworks.securityalliance.org](https://frameworks.securityalliance.org),
 but not yet available.
@@ -14,7 +14,7 @@ but not yet available.
 1. `gh repo clone security-alliance/frameworks`
 2. `git checkout develop`
 3. `cargo install mdbook mdbook-admonish mdbook-catppuccin`
-4. `./serve`
+4. `./serve.sh`
 
 ## Collaboration
 There are currently two ways to collaborate. The first one is by logging from your vercel account
@@ -34,7 +34,7 @@ To comment on the live version of the book under development, you will need to l
 `git checkout -b develop`
 1. Make your changes.
 2. Make sure your changes don't break anything by testing it in the local setup (see above).
-`./serve`.
+`./serve.sh`.
 1. Commit your changes.
 `git add .`
 1. Commit the changes with a descriptive message:
