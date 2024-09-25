@@ -1,4 +1,5 @@
 # Database Encryption
+tag: [Engineer/Developer, Security Specialist]
 
 Often, databases contains information that should not be publicly available. In order to protect your database, you may consider implementing the following best practices:
 

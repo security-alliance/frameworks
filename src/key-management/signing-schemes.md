@@ -1,4 +1,6 @@
 # Signing schemes
+tag: [Engineer/Developer, Security Specialist]
+
 Different signing schemes provide varying levels of security, control, and use cases for managing cryptocurrency assets. Here’s an overview of common signing schemes, their analogies, use cases, and security implications.
 
 ## Externally Owned Accounts (EOA)

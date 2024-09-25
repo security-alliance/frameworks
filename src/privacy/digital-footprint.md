@@ -1,4 +1,5 @@
 # Digital Footprint
+tag: [Engineer/Developer, Security Specialist]
 
 Your digital footprint is the trail of data you leave behind while using the internet.
 

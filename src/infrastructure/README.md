@@ -1,4 +1,5 @@
 # Infrastructure
+tag: [Engineer/Developer, Security Specialist, Devops, Cloud, SRE]
 
 Infrastructure can often be overlooked in web3, but it's often a very important area given that most front-end web applications are running on centralized infrastructure. This section focuses on Infrastructure Security, encompassing critical aspects such as cloud infrastructure, DNS providers, domain registrars, and DDoS (Distributed Denial of Service) protection.
 

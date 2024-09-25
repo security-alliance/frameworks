@@ -1,4 +1,5 @@
 # Vendor Selection
+tag: [Security Specialist, Operations & Strategy]
 
 There are a lot of security vendors in the web3 ecosystem, and also in the web2 ecosystem.
 Depending on what you want to have reviewed, for example a Solidity contract, it may be relevant to use a security vendor that focus on web3, while if for example you're reviewing your infrastructure it may be more relevant to choose a vendor that focus on web2.

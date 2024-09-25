@@ -1,4 +1,5 @@
 # Privacy-Focused Operating Systems and Tools
+tag: [Engineer/Developer, Security Specialist]
 
 Using privacy-focused operating systems and tools can significantly enhance your digital privacy. These systems and tools are designed to protect your data and minimize your digital footprint.
 

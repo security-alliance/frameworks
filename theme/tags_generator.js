@@ -4,15 +4,15 @@ const path = require("path");
 function tagsGenerator(srcDir, outputDir) {
   console.log("Starting tagsGenerator");
   const tagsFile = path.join(outputDir, "tagsindex.json");
-  // Create and overwrite the tags file
-  fs.writeFileSync(tagsFile, "{}", "utf8");
-  console.log(`Created/overwritten tags file: ${tagsFile}`);
+
+  let tags = {};
+  if (fs.existsSync(tagsFile)) {
+    tags = JSON.parse(fs.readFileSync(tagsFile, "utf8"));
+  }
 
   console.log(`Source directory: ${srcDir}`);
   console.log(`Output directory: ${outputDir}`);
   console.log(`Tags file: ${tagsFile}`);
-
-  const tags = {};
 
   function extractTags(content) {
     console.log("Extracting tags from content");
@@ -40,6 +40,15 @@ function tagsGenerator(srcDir, outputDir) {
       relativePath = path.join(path.dirname(relativePath), "index.html");
     }
 
+    // Remove the file from all existing tags
+    for (const tag in tags) {
+      tags[tag] = tags[tag].filter((file) => file !== relativePath);
+      if (tags[tag].length === 0) {
+        delete tags[tag];
+      }
+    }
+
+    // Add the file to the new tags
     fileTags.forEach((tag) => {
       if (!tags[tag]) {
         tags[tag] = [];

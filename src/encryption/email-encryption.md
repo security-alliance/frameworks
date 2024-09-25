@@ -1,4 +1,5 @@
 # Email Encryption
+tag: [Engineer/Developer, Security Specialist]
 
 Email is insecure and unencrypted by default, but can become more secure by following best practices:
 

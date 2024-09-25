@@ -1,4 +1,5 @@
 # Custodial vs. Non-Custodial Wallets
+tag: [Engineer/Developer, Security Specialist]
 
 ## Custodial Wallets
 

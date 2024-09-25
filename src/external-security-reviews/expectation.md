@@ -1,4 +1,5 @@
 # Expectation
+tag: [Security Specialist, Operations & Strategy]
 
 A security review is a time-boxed assessment, generally with a project's smart contracts being in scope.
 

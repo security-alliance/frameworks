@@ -1,4 +1,5 @@
 # Cold vs. Hot Wallets
+tag: [Engineer/Developer, Security Specialist]
 
 ## Cold Wallets
 

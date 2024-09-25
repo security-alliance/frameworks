@@ -1,4 +1,5 @@
 # Hardware Wallets
+tag: [Engineer/Developer, Security Specialist, Operations & Strategy, Finance]
 
 Hardware wallets are physical devices designed to securely store private keys offline. They are one of the most secure options for managing cryptocurrency. It is strongly advised to only purchase hardware wallets directly from the creator or one of their approved vendors, as there has been cases of people falling victim of stolen assets after purchasing hardware wallets on amazon market place, ebay, and other places.
 

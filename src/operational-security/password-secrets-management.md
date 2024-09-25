@@ -1,4 +1,5 @@
 # Password/Secrets Management
+tag: [Security Specialist, Operations & Strategy]
 
 Effective management of passwords and cryptographic keys help maintain the security and integrity of digital assets and sensitive information.
 

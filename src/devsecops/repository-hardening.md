@@ -1,4 +1,5 @@
 # Repository Hardening
+tag: [Engineer/Developer, Security Specialist]
 
 If a threat actor obtains access to your repository, it could have very severe consequenses. In order to help avoid this, you could consider implementing the following best practises:
 

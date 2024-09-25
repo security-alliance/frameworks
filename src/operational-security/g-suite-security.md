@@ -1,4 +1,5 @@
 # Google Workspace Security
+tag: [Security Specialist, Operations & Strategy]
 
 Google Workspace (formerly G Suite) is a powerful suite of productivity and collaboration tools widely used by projects. A lot of things may depend on Google Workspace, in which case it is important to consider the security of it.
 

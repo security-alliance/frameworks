@@ -1,4 +1,5 @@
 # Threat Modeling and Secure Design Principles
+tag: [Engineer/Developer, Security Specialist]
 
 Threat modeling and secure design principles help identify and mitigating potential security threats during the design phase of software development. T
 

@@ -1,4 +1,5 @@
 # Wireless Security
+tag: [Security Specialist, Operations & Strategy]
 
 Wireless networks offfers convenience and flexibility. However, they also present unique security challenges.
 
