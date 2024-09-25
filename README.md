@@ -46,7 +46,7 @@ To comment on the live version of the book under development, you will need to l
 2. Click on the "Create pull request" button.
 3.  Wait for review. Once your pull request is approved, and no more changes are needeed, we will
     merge it into the main repository.
-4.  Congratulations! Your changes are now part of the safety-handbook!
+4.  Congratulations! Your changes are now part of the security frameworks!
 
 # Editor area
 Editors merge PRs and push suggestions to the main branch which will be reflected on the live book.
@@ -56,7 +56,5 @@ Editors merge PRs and push suggestions to the main branch which will be reflecte
 4. Manually merge files, solve conflicts and add a description.
 
 ## caveats
-- The index.hbs from develop differs from main, since the theme has to be hardcoded to work as it is
-right now under vercel. This is why it is under a .gitignore.
 - Using the `serve.sh` script instead of mdBook `serve` command is needed to be able to see properly
   the local deployment.
