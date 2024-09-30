@@ -106,10 +106,23 @@
             .tags-list input[type="checkbox"] {
                 margin-right: 5px;
             }
+
+            .announcement-stripe {
+                padding: 10px;
+                text-align: center;
+                margin: 0 auto;
+                width: 100%;
+            }
+            .announcement-stripe p {
+                margin: 0;
+            }
         </style>
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
+        <div class="announcement-stripe">
+          <p>This is a WIP. We're looking for volunteers. See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> to know how to collaborate.</p>
+        </div>
         <!-- Provide site root to javascript -->
         <script>
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "{{ preferred_dark_theme }}" : "{{ default_theme }}";
