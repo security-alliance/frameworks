@@ -1,6 +1,5 @@
 # Preparation
-
-tag: [Security Specialist, Operations & Strategy]
+tag: [Security Specialist, Operations & Strategy, Devops]
 
 A common misconception is that when doing a security review, you can just hand off the written code and let reviewers do their work. This could in theory work, however this would mean that time by reviewers is spent doing things that you could have easily done on your side to make the review more cost effective. Some of the steps you could consider taking before initiating a security review are:
 
