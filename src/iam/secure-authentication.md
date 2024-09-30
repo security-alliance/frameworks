@@ -1,5 +1,5 @@
 # Secure Authentication
-tag: [Engineer/Developer, Security Specialist, Operations & Strategy]
+tag: [Engineer/Developer, Security Specialist, Operations & Strategy, Devops, HR]
 
 Secure authentication is essential for verifying the identity of team members and ensuring that only authorized individuals have access. By implementing strong authentication mechanisms you can protect your project against unauthorized access and lower the risk for potential security breaches.
 
