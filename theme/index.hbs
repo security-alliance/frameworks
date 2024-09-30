@@ -116,10 +116,20 @@
                 text-align: center;
                 margin: 0 auto;
                 width: 100%;
-                z-index: 1000; /* Lowered z-index */
+                z-index: 1000;
             }
             .announcement-stripe p {
                 margin: 0;
+            }
+
+            @media (max-width: 768px) {
+                .announcement-stripe p {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .announcement-stripe p span {
+                    display: block;
+                }
             }
 
             /* Add this new style for the sidebar */
@@ -131,7 +141,10 @@
     <body class="sidebar-visible no-js">
     <div id="body-container">
         <div class="announcement-stripe">
-          <p>This is a Live Document. We're looking for volunteers. See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> to know how to collaborate.</p>
+            <p>
+                <span>This is a Live document, we're looking for volunteers.</span>
+                <span>See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> to know how to collaborate.</span>
+            </p>
         </div>
         <!-- Provide site root to javascript -->
         <script>
@@ -479,7 +492,7 @@
                         const isChecked = localStorage.getItem(`tag_${tag}`) === 'true';
                         li.innerHTML = `
                             <label>
-                                <input type="checkbox" value="${tag}" ${isChecked ? 'checked' : ''}>
+                                <input class="tag-checkbox" type="checkbox" value="${tag}" ${isChecked ? 'checked' : ''}>
                                 ${tag}
                             </label>
                         `;
@@ -616,8 +629,9 @@
                 sidebarLinks.forEach(link => {
                     link.style.backgroundColor = '';
                 });
-                document.querySelectorAll('.chapter-item a').forEach(link => {
-                    link.style.backgroundColor = 'none';
+                const tagCheckboxes = document.querySelectorAll('.tag-checkbox');
+                tagCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
                 });
                 updateSelectedPages();
             });
