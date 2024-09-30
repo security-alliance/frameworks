@@ -1,6 +1,6 @@
 # Security Policies and Procedures
 
-tag: [Security Specialist, Legal & Compliance, Operations & Strategy]
+tag: [Security Specialist, Legal & Compliance, Operations & Strategy, HR]
 As part of the external security review, it could be beneficial to also review the internal security policies and procedures as well.
 Some of the things that could be relevant to review are:
 

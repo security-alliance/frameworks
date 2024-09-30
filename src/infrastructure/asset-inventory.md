@@ -1,5 +1,5 @@
 # Asset Inventory
-tag: [Engineer/Developer, Security Specialist]
+tag: [Engineer/Developer, Security Specialist, Devops, SRE]
 
 An asset inventory means having information about everything related to your project, meaning for example contracts, hardware, software, cloud providers, dependencies and network components. This is important, as if you don't have awareness of your assets then how are you going to be able to protect them? 
 

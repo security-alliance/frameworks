@@ -1,6 +1,6 @@
 # Security Training
 
-tag: [Security Specialist, Operations & Strategy]
+tag: [Security Specialist, Operations & Strategy, HR]
 
 All team members should receive some type of security training, however how in-depth this training is depends on their specific needs and what type of access they have. It is important to not do this only once, but to keep it as a recurring activity, however a training session does not need to mean sitting down for 60 minutes to look at a power point presentation but rather could be tiny nuggets of relevant information that doesn't take more than a minute to consume each time.
 
