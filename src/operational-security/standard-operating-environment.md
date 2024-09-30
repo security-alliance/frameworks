@@ -1,5 +1,5 @@
 # Standard Operating Environment
-tag: [Engineer/Developer, Security Specialist]
+tag: [Engineer/Developer, Security Specialist, Devops, SRE]
 
 A Standard Operating Environment (SOE) refers to a standardized and controlled computing environment used across a project. It ensures that all devices and systems adhere to the same security policies, configurations, and software versions, thereby reducing vulnerabilities and simplifying management.
 
