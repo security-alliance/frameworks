@@ -7,12 +7,12 @@ All team members should receive some type of security training, however how in-d
 
 ## Security Training Session
 
-As an introductionary and overarching training session, this could be done:
+As an introductory and overarching training session, this could be done:
 
 ### 1. Introduction to Security
 
 - **Importance of Security**: Explain why security is important for your project.
-- **Common Threats**: What are the common threats targetting your platform, and what type of attacks are most likely to happen for the team you're doing security training for.
+- **Common Threats**: What are the common threats targeting your platform, and what type of attacks are most likely to happen for the team you're doing security training for.
 
 ### 2. Password Management
 
