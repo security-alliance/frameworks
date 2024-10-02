@@ -5,7 +5,7 @@ It is often very valuable to have information on the latest security threats and
 
 ## 1. Subscribe to Security Newsletters
 
-- **Industry News**: While most security newsletters are focused on web2, they could still be relevant to your project as a large part is actually likelt to run on web2 services. You could subscribe to newsletters from sources such as FIRST.org.
+- **Industry News**: While most security newsletters are focused on web2, they could still be relevant to your project as a large part is actually likely to run on web2 services. You could subscribe to newsletters from sources such as FIRST.org.
 - **Vendor Updates**: If you have awareness of what software and hardware you're running in your project stack (which you should), you can follow updates from them for information on new vulnerabilities and patches.
 
 ## 2. Participate in Security Communities
@@ -15,4 +15,4 @@ It is often very valuable to have information on the latest security threats and
 
 ## 3. Follow Security Blogs and Podcasts
 
-- **Social Feeds**: Follow blogs and listen to podcasts such as the Daily Stormcast from FIRST.org or darkness diaries to gain deeper insights into emerging threats and solutions.
+- **Social Feeds**: Follow blogs and listen to podcasts such as the Daily Stormcast from FIRST.org or darknet diaries to gain deeper insights into emerging threats and solutions.

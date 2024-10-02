@@ -8,7 +8,7 @@ Regular security training helps keep security top-of-mind and reinforces the imp
 1. **Regular Training Sessions**
    - Conduct regular security training sessions to keep team members informed about the latest threats and best practices.
    - Schedule training sessions at least quarterly or bi-annually.
-   - Don't make the trainign sessions too long, it's better to make them more frequent compared to a three hour session each year.
+   - Don't make the training sessions too long, it's better to make them more frequent compared to a three hour session each year.
 
 2. **Interactive Training**
    - Use interactive training methods, such as SEAL Wargames or workshops to engage team members and enhance learning.

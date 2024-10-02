@@ -44,7 +44,7 @@ To comment on the live version of the book under development, you will need to l
 1. Create a pull request. Go to your forked repository on GitHub. You should see a "Compare & pull
    request" button. Click on it. Provide a descriptive title and description for your pull request.
 2. Click on the "Create pull request" button.
-3.  Wait for review. Once your pull request is approved, and no more changes are needeed, we will
+3.  Wait for review. Once your pull request is approved, and no more changes are needed, we will
     merge it into the main repository.
 4.  Congratulations! Your changes are now part of the security frameworks!
 
