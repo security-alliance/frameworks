@@ -27,6 +27,6 @@ In the dynamic and often nebulous realm of web3 and cryptocurrencies, understand
 
 ## Check & Remove Token Approvals
 
-There are services available that let you check which smart contracts have approvals to handle funds in your wallet. By regularly checking this and revoking unecessary approvals you can improve your security posture.
+There are services available that let you check which smart contracts have approvals to handle funds in your wallet. By regularly checking this and revoking unnecessary approvals you can improve your security posture.
 [Unrekt](https://app.unrekt.net/)
 [Etherscan Token Approval Checker](https://etherscan.io/tokenapprovalchecker)
