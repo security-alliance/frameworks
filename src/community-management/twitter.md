@@ -18,7 +18,7 @@ Two-factor authentication is extremely useful to protect against hackers, but no
 2. Make sure “Text message” is disabled
 3. Make sure either “Authentication app” or “Security key” is enabled
     1. If you choose an authentication app, you can store your TOTP secret in Authy or Google Authenticator (but make sure to disable [sync](https://retool.com/blog/mfa-isnt-mfa))
-    2. If you choose security keys, you’ll probably want two at minimum in case one of them stop functioning. [Yubico](https://www.yubico.com/) provide multiple hardware keys which have proved the test of timel
+    2. If you choose security keys, you’ll probably want two at minimum in case one of them stop functioning. [Yubico](https://www.yubico.com/) provide multiple hardware keys which have stood the test of time.
 4. Select “Backup codes”, then generate a new backup code to store in a safe place, preferably printed rather than on your computer as compromising one device should not mean the threat actor has access to everything.
 
 ## Revoke access from delegated accounts
