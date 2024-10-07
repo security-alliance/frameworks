@@ -1,5 +1,5 @@
 # Standard Operating Environment
-tag: [Engineer/Developer, Security Specialist]
+tag: [Engineer/Developer, Security Specialist, Devops]
 
 Identifying and mitigating threats is a crucial part of the threat modeling process. By understanding potential threats and developing strategies to address them, projects can help protect their systems and data from security incidents.
 
