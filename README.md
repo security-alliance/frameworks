@@ -35,7 +35,7 @@ To comment on the live version of the book under development, you will need to l
 8. Push the changes to your forked repository: `git push origin develop-{feature}`
 9. Create a pull request. Go to your forked repository on GitHub. Click on the "Compare & pull request" button in the top-right. Provide a descriptive title and description for your pull request.
 10. Click on the "Create pull request" button.
-11. Wait for review. Once your pull request is approved, and no more changes are needeed, we will merge it into the main repository.
+11. Wait for review. Once your pull request is approved, and no more changes are needed, we will merge it into the main repository.
 12. Congratulations! Your changes are now part of the Security Frameworks!
 
 # Editor area
