@@ -267,7 +267,21 @@
     "vulnerability-disclosure/safe-harbor.html",
     "vulnerability-disclosure/safe-harbor/safe-harbor.html",
     "intro/introduction.html",
-    "vulnerability-disclosure/safe-harbor/index.html"
+    "vulnerability-disclosure/safe-harbor/index.html",
+    "vulnerability-disclosure/safe-harbor/protocol.html",
+    "vulnerability-disclosure/safe-harbor/whitehat.html"
+  ],
+  "Protocol": [
+    "vulnerability-disclosure/safe-harbor/index.html",
+    "vulnerability-disclosure/safe-harbor/protocol.html"
+  ],
+  "Whitehat": [
+    "vulnerability-disclosure/safe-harbor/index.html",
+    "vulnerability-disclosure/safe-harbor/whitehat.html"
+  ],
+  "DAO": [
+    "vulnerability-disclosure/safe-harbor/index.html",
+    "vulnerability-disclosure/safe-harbor/protocol.html"
   ],
   "Finance": [
     "key-management/hardware-wallets.html"
