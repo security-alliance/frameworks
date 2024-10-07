@@ -1,18 +1,18 @@
 # Security Training
 
-tag: [Security Specialist, Operations & Strategy]
+tag: [Security Specialist, Operations & Strategy, HR]
 
 All team members should receive some type of security training, however how in-depth this training is depends on their specific needs and what type of access they have. It is important to not do this only once, but to keep it as a recurring activity, however a training session does not need to mean sitting down for 60 minutes to look at a power point presentation but rather could be tiny nuggets of relevant information that doesn't take more than a minute to consume each time.
 
 
 ## Security Training Session
 
-As an introductionary and overarching training session, this could be done:
+As an introductory and overarching training session, this could be done:
 
 ### 1. Introduction to Security
 
 - **Importance of Security**: Explain why security is important for your project.
-- **Common Threats**: What are the common threats targetting your platform, and what type of attacks are most likely to happen for the team you're doing security training for.
+- **Common Threats**: What are the common threats targeting your platform, and what type of attacks are most likely to happen for the team you're doing security training for.
 
 ### 2. Password Management
 

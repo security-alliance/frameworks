@@ -1,5 +1,5 @@
 # Contributors
-Contributors that made a substancial amount of contribution will be listed below.
+Contributors that made a substantial amount of contribution will be listed below.
 
 ## Core team
 Matías Aereal Aeón (@mattaereal)
@@ -12,4 +12,3 @@ Jorge de los Santos (@tebayoso)
 ### Feedback
 Patrick Collins (@patrickcollins)
 Sebastián Fernández (@snf)
-

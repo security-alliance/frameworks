@@ -8,4 +8,4 @@ When operating in a devsecops mindset, projects prioritizes automation and colla
 Some of the key areas to consider are:
 1. Integrate security measures early in the development process, such as by utilizing security tools such as fuzzing, static and dynamic analysis tools in your CI/CD process, to identify and mitigate vulnerabilities before they turn into critical issues.
 2. Implement automated security testing and monitoring.
-3. Dvelopment, Operations and Security teams should be aligned and work closely together.
+3. Development, Operations and Security teams should be aligned and work closely together.
