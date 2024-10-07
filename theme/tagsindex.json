@@ -263,6 +263,12 @@
     "infrastructure/cloud.html",
     "security-automation/index.html"
   ],
+  "SEAL/Initiative": [
+    "vulnerability-disclosure/safe-harbor.html",
+    "vulnerability-disclosure/safe-harbor/safe-harbor.html",
+    "intro/introduction.html",
+    "vulnerability-disclosure/safe-harbor/index.html"
+  ],
   "Finance": [
     "key-management/hardware-wallets.html"
   ]
