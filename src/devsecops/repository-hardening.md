@@ -1,7 +1,7 @@
 # Repository Hardening
-tag: [Engineer/Developer, Security Specialist]
+tag: [Engineer/Developer, Security Specialist, Devops]
 
-If a threat actor obtains access to your repository, it could have very severe consequenses. In order to help avoid this, you could consider implementing the following best practises:
+If a threat actor obtains access to your repository, it could have very severe consequences. In order to help avoid this, you could consider implementing the following best practices:
 
 
 1. Require Multi-Factor Authentication (MFA) for all repository members.
