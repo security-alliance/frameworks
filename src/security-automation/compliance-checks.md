@@ -1,5 +1,5 @@
 # Compliance Checks
-tag: [Engineer/Developer, Security Specialist]
+tag: [Engineer/Developer, Security Specialist, Devops, Cloud, SRE]
 
 Automating compliance checks helps projects ensure that they adhere to security policies, standards, and potential regulatory requirements consistently. Automated compliance tools can continuously monitor, assess, and report on the compliance status of systems and applications.
 

@@ -120,12 +120,48 @@
                 display: none;
             }
 
+            .announcement-stripe {
+                background-color: #ff00004f;
+                font-weight: bold;
+                color: #fff;
+                padding: 10px;
+                position: relative;
+                text-align: center;
+                margin: 0 auto;
+                width: 100%;
+                z-index: 1000;
+            }
+            .announcement-stripe p {
+                margin: 0;
+            }
+
+            @media (max-width: 768px) {
+                .announcement-stripe p {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .announcement-stripe p span {
+                    display: block;
+                }
+            }
+
+            /* Add this new style for the sidebar */
+            #sidebar {
+                z-index: 1001; /* Higher z-index than the announcement stripe */
+            }
         </style>
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
+        <div class="announcement-stripe">
+            <p>
+                <span>This is a work in progress and not a release. We're looking for volunteers.</span>
+                <span>See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> to know how to collaborate.</span>
+            </p>
+        </div>
         <!-- Provide site root to javascript -->
         <script>
+            var path_to_root = "{{ path_to_root }}";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "{{ preferred_dark_theme }}" : "{{ default_theme }}";
         </script>
 
@@ -209,10 +245,12 @@
         </script>
 
         <div id="page-wrapper" class="page-wrapper">
-
             <div class="page">
                 {{> header}}
-                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar-hover-placeholder">
+
+                </div>
+
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -241,7 +279,7 @@
                             <i class="fa fa-tags"></i>
                         </button>
                         <div id="tags-dropdown" class="tags-dropdown hidden">
-                            <input type="text" id="tag-search" placeholder="Search tags..." aria-label="Search tags">
+                            <input type="text" id="tag-search" placeholder="Search tags..." aria-label="Search tags" style="width: 90%; padding: 5px;">
                             <div id="tags-list" class="tags-list" aria-label="Tags" role="listbox" aria-multiselectable="true">
 
                             </div>
@@ -426,8 +464,7 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-
-            fetch('{{ path_to_root }}theme/tagscolors.json')
+            fetch(path_to_root + 'theme/tagscolors.json')
                  .then(response => response.json())
                  .then(data=>
                  {
@@ -448,11 +485,10 @@
                   });
                  })
 
-            fetch('{{ path_to_root }}theme/tagsindex.json')
+            fetch(path_to_root + 'theme/tagsindex.json')
                 .then(response => response.json())
                 .then(data => {
                     window.tagsData = data;
-                    console.log('Tags data loaded:', window.tagsData);
                     const tags = Object.keys(data).sort((a, b) => { return ('' + a).localeCompare(b); });
                     const tagsList = document.getElementById('tags-list');
 
@@ -462,7 +498,7 @@
                         const isChecked = localStorage.getItem(`tag_${tag}`) === 'true';
                         li.innerHTML = `
                             <label>
-                                <input type="checkbox" value="${tag}" ${isChecked ? 'checked' : ''}>
+                                <input class="tag-checkbox" type="checkbox" value="${tag}" ${isChecked ? 'checked' : ''}>
                                 ${tag}
                             </label>
                         `;
@@ -526,8 +562,10 @@
                         }
                     });
 
-                    // Initial highlighting and selected pages update based on stored tag selections
                     highlightSidebarLinks();
+                })
+                .catch(error => {
+                    console.error('Error loading or parsing tagsindex.json:', error);
                 });
 
             const tagsToggle = document.getElementById('tags-toggle');

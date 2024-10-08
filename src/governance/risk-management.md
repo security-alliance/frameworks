@@ -5,7 +5,7 @@ If a project has effective risk management, it is also likely to be successful a
 
 ## Best Practices for Risk Management
 
-1. Use established frameworks such as NIST, ISO 27001, or COBIT to helop start your risk management efforts.
+1. Use established frameworks such as NIST, ISO 27001, or COBIT to help start your risk management efforts.
 2. Focus on the most critical risks first, using a risk matrix to prioritize based on likelihood and impact.
 3. Conduct regular risk assessments and reviews to keep up with the so very evolving threat landscape.
 4. Use lessons learned from past incidents and risk assessments to continuously improve your risk management practices.
