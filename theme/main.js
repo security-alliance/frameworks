@@ -30,6 +30,15 @@ function populateTags(tagList, tags, filter = '') {
 }
 
 /**
+ * Clears all locally stored tags
+ */
+function clearStoredTags() {
+    Object.keys(localStorage)
+        .filter(key => key.startsWith('tag_'))
+        .forEach(key => localStorage.removeItem(key));
+}
+
+/**
 * Highlight sidebar links based on selected tags
 */
 function highlightSidebarLinks() {
@@ -42,26 +51,51 @@ function highlightSidebarLinks() {
         .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
         .map(key => key.replace('tag_', ''));
 
-    let anySelected = false;
-    selectedTags.forEach(tag => {
-        const pages = window.tagsData[tag] || [];
-        pages.forEach(page => {
-            const link = document.querySelector(`#sidebar a[href$="${page}"]`);
-            if (link) {
-                link.classList.add("selected");
-                anySelected = true;
-            }
-        });
+    // Filter pages by AND selected tags
+    let anySelected = false
+    let selectedPages = new Set(window.tagsData[selectedTags[0]] || []);
+    for (const tag of selectedTags.slice(1)) {
+        const pages = new Set(window.tagsData[tag] || []);
+        selectedPages = new Set([...selectedPages].filter(x => pages.has(x)));
+        if (selectedPages.size === 0) {
+            break;
+        }
+    }
+
+    // Highlight selected pages
+    selectedPages.forEach(page => {
+        const link = document.querySelector(`#sidebar a[href$="${page}"]`);
+        if (link) {
+            link.classList.add("selected");
+            anySelected = true;
+        }
     });
 
-    // If no tags are selected, show all pages.
-    //? Can't just use `selectedTags.length === 0` because 
-    //? for some reason `selectedTags` contains a `protcol` tag.
-    if (anySelected) {
-        document.getElementById("sidebar").classList.add("filtered");
-    } else {
-        document.getElementById("sidebar").classList.remove("filtered");
+    // Janky solution to clear any depricated tags from the local storage if 
+    // none are selected. Ghost tags can be created when tags that were selected
+    // are removed from the tags*.json files, IE during development.
+    if (!anySelected) {
+        clearStoredTags();
     }
+
+    if (selectedTags.length === 0) {
+        document.getElementById("sidebar").classList.remove("filtered");
+    } else {
+        document.getElementById("sidebar").classList.add("filtered");
+    }
+
+    // Filter pages by OR selected tags
+    // let anySelected = false;
+    // selectedTags.forEach(tag => {
+    //     const pages = window.tagsData[tag] || [];
+    //     pages.forEach(page => {
+    //         const link = document.querySelector(`#sidebar a[href$="${page}"]`);
+    //         if (link) {
+    //             link.classList.add("selected");
+    //             anySelected = true;
+    //         }
+    //     });
+    // });
 }
 
 /**
