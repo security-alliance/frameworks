@@ -64,57 +64,56 @@ function highlightSidebarLinks() {
     }
 }
 
+/**
+ * Populates the per-page tags
+ * @param {[key: string]: string} tagColors 
+ */
+function createPageTags(tagColors) {
+    const tagLines = Array.from(document.querySelectorAll('p')).filter(line => line.textContent.includes("tag:"));
+    tagLines.forEach(line => {
+        const tagText = line.textContent;
+        if (tagText.includes('tag: [')) {
+            const tagContent = tagText.split('[')[1].split(']')[0].trim();
+            const tags = tagContent.split(',').map(tag => tag.trim());
+            const tagLabels = tags.map(tag => {
+                const hexColor = tagColors[tag]
+                return `
+                      <span class="colored-tag" style="--tag-color: ${hexColor}">
+                        <i class="fa fa-tag" aria-hidden="true"></i> 
+                        ${tag}
+                    </span>`;
+            });
+            line.innerHTML = tagLabels.join(' ');
+        }
+    });
+}
+
+/**
+ * Populates the searchable tags in the tags dropdown
+ */
+function createSearchableTags(tagsData) {
+    const tags = Object.keys(tagsData).sort((a, b) => { return ('' + a).localeCompare(b); });
+    const tagsList = document.getElementById('tags-list');
+
+    populateTags(tagsList, tags);
+    highlightSidebarLinks();
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     //* Initialize per-page tags
     fetch(path_to_root + 'theme/tagscolors.json')
         .then(response => response.json())
         .then(data => {
-            window.tagsColors = data
-
-            const tagLines = Array.from(document.querySelectorAll('p')).filter(line => line.textContent.includes("tag:"));
-            tagLines.forEach(line => {
-                const tagText = line.textContent;
-                if (tagText.includes('tag: [')) {
-                    const tagContent = tagText.split('[')[1].split(']')[0].trim();
-                    const tags = tagContent.split(',').map(tag => tag.trim());
-                    const tagLabels = tags.map(tag => {
-                        const hexColor = window.tagsColors[tag]
-                        return `
-                      <span class="colored-tag" style="--tag-color: ${hexColor}">
-                        <i class="fa fa-tag" aria-hidden="true"></i> 
-                        ${tag}
-                    </span>`;
-                    });
-                    line.innerHTML = tagLabels.join(' ');
-                }
-            });
+            window.tagsColors = data;
+            createPageTags(data);
         })
 
-    // Initialize searchable tags
+    //* Initialize searchable tags
     fetch(path_to_root + 'theme/tagsindex.json')
         .then(response => response.json())
         .then(data => {
             window.tagsData = data;
-            const tags = Object.keys(data).sort((a, b) => { return ('' + a).localeCompare(b); });
-            const tagsList = document.getElementById('tags-list');
-
-            populateTags(tagsList, tags);
-
-            const tagSearch = document.getElementById('tag-search');
-            tagSearch.addEventListener('input', function () {
-                populateTags(tagsList, tags, this.value);
-            });
-
-            tagsList.addEventListener('change', function (event) {
-                if (event.target.type === 'checkbox') {
-                    const selectedTag = event.target.value;
-                    const isChecked = event.target.checked;
-                    localStorage.setItem(`tag_${selectedTag}`, isChecked);
-                    highlightSidebarLinks();
-                }
-            });
-
-            highlightSidebarLinks();
+            createSearchableTags(data);
         })
         .catch(error => {
             console.error('Error loading or parsing tagsindex.json:', error);
@@ -124,8 +123,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const tagsToggle = document.getElementById('tags-toggle');
     const tagsDropdown = document.getElementById('tags-dropdown');
     const tagSearch = document.getElementById('tag-search');
+    const tagsList = document.getElementById('tags-list');
 
-    // Open the tags dropdown when clicked
+    // On click on tags dropdown button
     tagsToggle.addEventListener('click', function (event) {
         event.stopPropagation();
         const isExpanded = this.getAttribute('aria-expanded') === 'true';
@@ -136,11 +136,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Close the dropdown when clicking another element
+    // On click on anything except for the tags dropdown
     document.addEventListener('click', function (event) {
         if (!tagsDropdown.contains(event.target) && event.target !== tagsToggle) {
             tagsToggle.setAttribute('aria-expanded', 'false');
             tagsDropdown.classList.add('hidden');
+        }
+    });
+
+    // On search for a tag
+    tagSearch.addEventListener('input', function () {
+        populateTags(tagsList, tags, this.value);
+    });
+
+    // On select a tag
+    tagsList.addEventListener('change', function (event) {
+        if (event.target.type === 'checkbox') {
+            const selectedTag = event.target.value;
+            const isChecked = event.target.checked;
+            localStorage.setItem(`tag_${selectedTag}`, isChecked);
+            highlightSidebarLinks();
         }
     });
 });
