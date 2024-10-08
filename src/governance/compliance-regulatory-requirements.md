@@ -1,5 +1,5 @@
 # Compliance with Regulatory Requirements
-tag: [Legal & Compliance, Operations & Strategy]
+tag: [Operations & Strategy, Legal & Compliance, Devops, HR]
 
 Compliance with regulatory requirements may be essential for your project. Understanding the needs and ensuring the necessary compliance helps protect your project from potential legal penalties.
 

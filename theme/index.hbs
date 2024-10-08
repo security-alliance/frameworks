@@ -106,12 +106,49 @@
             .tags-list input[type="checkbox"] {
                 margin-right: 5px;
             }
+
+            .announcement-stripe {
+                background-color: #ff00004f;
+                font-weight: bold;
+                color: #fff;
+                padding: 10px;
+                position: relative;
+                text-align: center;
+                margin: 0 auto;
+                width: 100%;
+                z-index: 1000;
+            }
+            .announcement-stripe p {
+                margin: 0;
+            }
+
+            @media (max-width: 768px) {
+                .announcement-stripe p {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .announcement-stripe p span {
+                    display: block;
+                }
+            }
+
+            /* Add this new style for the sidebar */
+            #sidebar {
+                z-index: 1001; /* Higher z-index than the announcement stripe */
+            }
         </style>
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
+        <div class="announcement-stripe">
+            <p>
+                <span>This is a work in progress and not a release. We're looking for volunteers.</span>
+                <span>See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> to know how to collaborate.</span>
+            </p>
+        </div>
         <!-- Provide site root to javascript -->
         <script>
+            var path_to_root = "{{ path_to_root }}";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "{{ preferred_dark_theme }}" : "{{ default_theme }}";
         </script>
 
@@ -168,8 +205,10 @@
                     <img src="{{ path_to_root }}logo.svg" alt="Logo">
                 </div>
                 <div id="selected-pages" class="selected-pages">
-                    <h2>Selected Pages</h2>
-                    Filter pages by tag to create a selection.
+                    <div class="selected-pages-header" style="display: flex; align-items: center; justify-content: space-between; height: 50px;">
+                        <h2 style="margin: 0;">Selected Pages</h2>
+                        <button id="clear-selected-pages" type="button" title="Clear selected pages" aria-label="Clear selected pages" style="height: 100%;">x Clear</button>
+                    </div>
                     <ul id="selected-pages-list"></ul>
                 </div>
                 {{#toc}}{{/toc}}
@@ -200,10 +239,12 @@
         </script>
 
         <div id="page-wrapper" class="page-wrapper">
-
             <div class="page">
                 {{> header}}
-                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar-hover-placeholder">
+
+                </div>
+
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -232,7 +273,7 @@
                             <i class="fa fa-tags"></i>
                         </button>
                         <div id="tags-dropdown" class="tags-dropdown hidden">
-                            <input type="text" id="tag-search" placeholder="Search tags..." aria-label="Search tags">
+                            <input type="text" id="tag-search" placeholder="Search tags..." aria-label="Search tags" style="width: 90%; padding: 5px;">
                             <div id="tags-list" class="tags-list" aria-label="Tags" role="listbox" aria-multiselectable="true">
 
                             </div>
@@ -417,8 +458,7 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-
-            fetch('{{ path_to_root }}theme/tagscolors.json')
+            fetch(path_to_root + 'theme/tagscolors.json')
                  .then(response => response.json())
                  .then(data=>
                  {
@@ -439,11 +479,10 @@
                   });
                  })
 
-            fetch('{{ path_to_root }}theme/tagsindex.json')
+            fetch(path_to_root + 'theme/tagsindex.json')
                 .then(response => response.json())
                 .then(data => {
                     window.tagsData = data;
-                    console.log('Tags data loaded:', window.tagsData);
                     const tags = Object.keys(data);
                     const tagsList = document.getElementById('tags-list');
 
@@ -453,7 +492,7 @@
                         const isChecked = localStorage.getItem(`tag_${tag}`) === 'true';
                         li.innerHTML = `
                             <label>
-                                <input type="checkbox" value="${tag}" ${isChecked ? 'checked' : ''}>
+                                <input class="tag-checkbox" type="checkbox" value="${tag}" ${isChecked ? 'checked' : ''}>
                                 ${tag}
                             </label>
                         `;
@@ -496,40 +535,6 @@
                         });
                     }
 
-                    function updateSelectedPages() {
-                        const selectedPagesList = document.getElementById('selected-pages-list');
-                        selectedPagesList.innerHTML = '';
-
-                        const selectedTags = Object.keys(localStorage)
-                            .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
-                            .map(key => key.replace('tag_', ''));
-
-                        const selectedPages = new Set();
-                        selectedTags.forEach(tag => {
-                            const pages = window.tagsData[tag] || [];
-                            pages.forEach(page => selectedPages.add(page));
-                        });
-
-                        selectedPages.forEach(page => {
-                            const li = document.createElement('li');
-                            let pageTitle = window.tagsData[page]?.title || page;
-
-                            // Format the title
-                            const parts = page.split('/');
-                            const section = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
-                            if (parts[1] === 'index.html') {
-                                pageTitle = section;
-                            } else {
-                                const title = parts[1].replace('.html', '').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-                                pageTitle = `${section} - ${title}`;
-                            }
-
-                            const absoluteUrl = new URL(page, window.location.origin).href;
-                            li.innerHTML = `<a href="${absoluteUrl}">${pageTitle}</a>`;
-                            selectedPagesList.appendChild(li);
-                        });
-                    }
-
                     tagsList.addEventListener('change', function(event) {
                         if (event.target.type === 'checkbox') {
                             const selectedTag = event.target.value;
@@ -541,15 +546,95 @@
                         }
                     });
 
-                    // Initial highlighting and selected pages update based on stored tag selections
                     highlightSidebarLinks();
                     updateSelectedPages();
+                })
+                .catch(error => {
+                    console.error('Error loading or parsing tagsindex.json:', error);
                 });
+
+
+                    function updateSelectedPages() {
+                        const selectedPagesList = document.getElementById('selected-pages-list');
+                        const selectedPagesContainer = document.getElementById('selected-pages');
+                        selectedPagesList.innerHTML = '';
+
+                        const selectedTags = Object.keys(localStorage)
+                            .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
+                            .map(key => key.replace('tag_', ''));
+
+                        if (selectedTags.length === 0) {
+                            selectedPagesContainer.style.display = 'none';
+                            return;
+                        }
+
+                        selectedPagesContainer.style.display = 'block';
+
+                        const selectedPages = new Set();
+                        selectedTags.forEach(tag => {
+                            const pages = window.tagsData[tag] || [];
+                            pages.forEach(page => selectedPages.add(page));
+                        });
+
+                        const pageTree = {};
+
+                        selectedPages.forEach(page => {
+                            const parts = page.split('/');
+                            const section = parts[0];
+                            const fileName = parts[1];
+
+                            if (!pageTree[section]) {
+                                pageTree[section] = [];
+                            }
+
+                            if (fileName !== 'index.html') {
+                                pageTree[section].push(fileName);
+                            }
+                        });
+
+                        for (const [section, pages] of Object.entries(pageTree)) {
+                            const sectionLi = document.createElement('li');
+                            const sectionTitle = section.charAt(0).toUpperCase() + section.slice(1);
+                            sectionLi.innerHTML = `<strong>${sectionTitle}</strong>`;
+
+                            if (pages.length > 0) {
+                                const subList = document.createElement('ul');
+                                subList.style.paddingLeft = '20px';
+
+                                pages.forEach(fileName => {
+                                    const pageLi = document.createElement('li');
+                                    const title = fileName.replace('.html', '').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                                    const absoluteUrl = new URL(`${section}/${fileName}`, window.location.origin).href;
+                                    pageLi.innerHTML = `<a href="${absoluteUrl}">${title}</a>`;
+                                    subList.appendChild(pageLi);
+                                });
+
+                                sectionLi.appendChild(subList);
+                            }
+
+                            selectedPagesList.appendChild(sectionLi);
+                        }
+                    }
+
 
             const tagsToggle = document.getElementById('tags-toggle');
             const tagsDropdown = document.getElementById('tags-dropdown');
             const tagSearch = document.getElementById('tag-search');
             const tagsList = document.getElementById('tags-list');
+            const clearSelectedPagesButton = document.getElementById('clear-selected-pages');
+
+            clearSelectedPagesButton.addEventListener('click', function() {
+                localStorage.clear();
+                const sidebarLinks = document.querySelectorAll('#sidebar a');
+                sidebarLinks.forEach(link => {
+                    link.style.backgroundColor = '';
+                });
+                const tagCheckboxes = document.querySelectorAll('.tag-checkbox');
+                tagCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                updateSelectedPages();
+            });
 
             function createTagElement(tag) {
                 const li = document.createElement('li');
