@@ -55,12 +55,6 @@
     </head>
     <body class="sidebar-visible no-js">
     <div id="body-container">
-        <div class="announcement-stripe">
-            <p>
-                <span>This is a work in progress and not a release. We're looking for volunteers.</span>
-                <span>See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> to know how to collaborate.</span>
-            </p>
-        </div>
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "{{ path_to_root }}";
@@ -147,6 +141,12 @@
         </script>
 
         <div id="page-wrapper" class="page-wrapper">
+            <div class="announcement-stripe">
+                <p>
+                    <span>This is a work in progress and not a release. We're looking for volunteers.</span>
+                    <span>See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> to know how to collaborate.</span>
+                </p>
+            </div>
             <div class="page">
                 {{> header}}
                 <div id="menu-bar-hover-placeholder">
