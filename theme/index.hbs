@@ -62,6 +62,21 @@
                 overflow-y: scroll; /* Force Show scrollbars */
             }
 
+            /* Colored Tag Span. Displayed at the top of tagged pages */
+            .colored-tag {
+                background-color: var(--tag-color);
+                padding: 5px 10px;
+                border-radius: 20px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+            }
+
+            .colored-tag i {
+                margin-right: 5px;
+            }
+
             /* Tag Search Styles */
             .tags-dropdown {
                 position: absolute;
@@ -463,7 +478,74 @@
 
     </div>
     <script>
+        /**
+        * Create a tag element
+        * @param {string} tag
+        */
+        function createTagElement(tag) {
+            const li = document.createElement('li');
+            const isChecked = localStorage.getItem(`tag_${tag}`) === 'true';
+            li.setAttribute('role', 'option');
+            li.innerHTML = `
+                <label>
+                    <input class="tag-checkbox" type="checkbox" value="${tag}" ${isChecked ? 'checked' : ''}>
+                    ${tag}
+                </label>
+            `;
+            return li;
+        }
+        
+        /**
+        * Populate the tagList element with tags
+        * @param {HTMLElement} tagList
+        * @param {string[]} tags
+        * @param {string} filter
+        */
+        function populateTags(tagList, tags, filter = '') {
+            tagList.innerHTML = '';
+            tags.filter(tag => tag.toLowerCase().includes(filter.toLowerCase()))
+                .forEach(tag => {
+                    tagList.appendChild(createTagElement(tag));
+                });
+        }
+
+        /**
+        * Highlight sidebar links based on selected tags
+        */
+        function highlightSidebarLinks() {
+            const sidebarLinks = document.querySelectorAll('#sidebar a');
+            sidebarLinks.forEach(link => {
+                link.classList.remove("selected");
+            });
+
+            const selectedTags = Object.keys(localStorage)
+                .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
+                .map(key => key.replace('tag_', ''));
+
+            let anySelected = false;
+            selectedTags.forEach(tag => {
+                const pages = window.tagsData[tag] || [];
+                pages.forEach(page => {
+                    const link = document.querySelector(`#sidebar a[href$="${page}"]`);
+                    if (link) {
+                        link.classList.add("selected");
+                        anySelected = true;
+                    }
+                });
+            });
+
+            // If no tags are selected, show all pages.
+            //? Can't just use `selectedTags.length === 0` because 
+            //? for some reason `selectedTags` contains a `protcol` tag.
+            if (anySelected) {
+                document.getElementById("sidebar").classList.add("filtered");
+            } else {
+                document.getElementById("sidebar").classList.remove("filtered");
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            //* Initialize per-page tags
             fetch(path_to_root + 'theme/tagscolors.json')
                  .then(response => response.json())
                  .then(data=>
@@ -478,13 +560,18 @@
                           const tags = tagContent.split(',').map(tag => tag.trim());
                           const tagLabels = tags.map(tag => {
                               const hexColor = window.tagsColors[tag]
-                              return `<span style="background-color: ${hexColor}; padding: 5px 10px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; color: white;"><i class="fa fa-tag" aria-hidden="true"></i> ${tag}</span>`;
+                              return `
+                              <span class="colored-tag" style="--tag-color: ${hexColor}">
+                                <i class="fa fa-tag" aria-hidden="true"></i> 
+                                ${tag}
+                            </span>`;
                           });
                           line.innerHTML = tagLabels.join(' ');
                       }
                   });
                  })
 
+            // Initialize searchable tags
             fetch(path_to_root + 'theme/tagsindex.json')
                 .then(response => response.json())
                 .then(data => {
@@ -492,72 +579,18 @@
                     const tags = Object.keys(data).sort((a, b) => { return ('' + a).localeCompare(b); });
                     const tagsList = document.getElementById('tags-list');
 
-                    function createTagElement(tag) {
-                        const li = document.createElement('li');
-                        li.setAttribute('role', 'option');
-                        const isChecked = localStorage.getItem(`tag_${tag}`) === 'true';
-                        li.innerHTML = `
-                            <label>
-                                <input class="tag-checkbox" type="checkbox" value="${tag}" ${isChecked ? 'checked' : ''}>
-                                ${tag}
-                            </label>
-                        `;
-                        return li;
-                    }
-
-                    function populateTags(filter = '') {
-                        tagsList.innerHTML = '';
-                        tags.filter(tag => tag.toLowerCase().includes(filter.toLowerCase()))
-                            .forEach(tag => {
-                                tagsList.appendChild(createTagElement(tag));
-                            });
-                    }
-
-                    populateTags();
+                    populateTags(tagsList, tags);
 
                     const tagSearch = document.getElementById('tag-search');
                     tagSearch.addEventListener('input', function() {
-                        populateTags(this.value);
+                        populateTags(tagsList, tags, this.value);
                     });
-
-                    function highlightSidebarLinks() {
-                        const sidebarLinks = document.querySelectorAll('#sidebar a');
-                        sidebarLinks.forEach(link => {
-                            link.classList.remove("selected");
-                        });
-
-                        const selectedTags = Object.keys(localStorage)
-                            .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
-                            .map(key => key.replace('tag_', ''));
-
-                        let anySelected = false;
-                        selectedTags.forEach(tag => {
-                            const pages = window.tagsData[tag] || [];
-                            pages.forEach(page => {
-                                const link = document.querySelector(`#sidebar a[href$="${page}"]`);
-                                if (link) {
-                                    link.classList.add("selected");
-                                    anySelected = true;
-                                }
-                            });
-                        });
-
-                        // If no tags are selected, show all pages.
-                        //? Can't just use `selectedTags.length === 0` because 
-                        //? for some reason `selectedTags` contains a `protcol` tag.
-                        if (anySelected) {
-                            document.getElementById("sidebar").classList.add("filtered");
-                        } else {
-                            document.getElementById("sidebar").classList.remove("filtered");
-                        }
-                    }
 
                     tagsList.addEventListener('change', function(event) {
                         if (event.target.type === 'checkbox') {
                             const selectedTag = event.target.value;
                             const isChecked = event.target.checked;
                             localStorage.setItem(`tag_${selectedTag}`, isChecked);
-                            console.log(`Tag ${selectedTag} is ${isChecked ? 'selected' : 'deselected'}`);
                             highlightSidebarLinks();
                         }
                     });
@@ -568,30 +601,12 @@
                     console.error('Error loading or parsing tagsindex.json:', error);
                 });
 
+            //* Setup event listeners for dropdowns & tags
             const tagsToggle = document.getElementById('tags-toggle');
             const tagsDropdown = document.getElementById('tags-dropdown');
             const tagSearch = document.getElementById('tag-search');
-            const tagsList = document.getElementById('tags-list');
 
-            function createTagElement(tag) {
-                const li = document.createElement('li');
-                li.setAttribute('role', 'option');
-                li.innerHTML = `
-                    <label>
-                        <input type="checkbox" value="${tag}">
-                        ${tag}
-                    </label>
-                `;
-                return li;
-            }
-
-            function populateTags(filter = '') {
-                tags.filter(tag => tag.toLowerCase().includes(filter.toLowerCase()))
-                    .forEach(tag => {
-                        tagsList.appendChild(createTagElement(tag));
-                    });
-            }
-
+            // Open the tags dropdown when clicked
             tagsToggle.addEventListener('click', function(event) {
                 event.stopPropagation();
                 const isExpanded = this.getAttribute('aria-expanded') === 'true';
@@ -599,25 +614,14 @@
                 tagsDropdown.classList.toggle('hidden');
                 if (!isExpanded) {
                     tagSearch.focus();
-                    //populateTags();
                 }
             });
 
-            tagSearch.addEventListener('input', function() {
-                populateTags(this.value);
-            });
-
+            // Close the dropdown when clicking another element
             document.addEventListener('click', function(event) {
                 if (!tagsDropdown.contains(event.target) && event.target !== tagsToggle) {
                     tagsToggle.setAttribute('aria-expanded', 'false');
                     tagsDropdown.classList.add('hidden');
-                }
-            });
-
-            // Handle tag selection (you can customize this based on your needs)
-            tagsList.addEventListener('change', function(event) {
-                if (event.target.type === 'checkbox') {
-                    console.log('Selected tag:', event.target.value);
                 }
             });
         });
