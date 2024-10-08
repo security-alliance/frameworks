@@ -58,6 +58,11 @@
                 position: relative;
             }
 
+            #sidebar .sidebar-scrollbox {
+                overflow-y: scroll; /* Force Show scrollbars */
+            }
+
+            /* Tag Search Styles */
             .tags-dropdown {
                 position: absolute;
                 top: 100%;
@@ -74,20 +79,23 @@
 
             #tag-search {
                 width: 100%;
-                padding: 5px;
+                padding: 10px 16px;
+                box-sizing: border-box;
                 margin-bottom: 10px;
                 border: 1px solid var(--searchbar-border-color);
-                border-radius: 4px;
+                border-radius: 3px;
                 background-color: var(--searchbar-bg);
                 color: var(--searchbar-fg);
             }
 
             .tags-list {
+                box-sizing: border-box;
                 list-style-type: none;
                 padding: 0;
                 margin: 0;
                 max-height: 200px;
                 overflow-y: auto;
+                scrollbar-color: var(--sidebar-fg) var(--sidebar-bg);
             }
 
             .tags-list li {
@@ -95,17 +103,23 @@
             }
 
             .tags-list li:hover {
-                background-color: var(--sidebar-active);
+                color: var(--sidebar-active);
             }
 
             .tags-list label {
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
             }
 
             .tags-list input[type="checkbox"] {
                 margin-right: 5px;
+                margin-top: 4px;
             }
+
+            #sidebar.filtered .chapter-item:has(> *:not(.selected))  {
+                display: none;
+            }
+
         </style>
     </head>
     <body class="sidebar-visible no-js">
@@ -166,11 +180,6 @@
             <div class="sidebar-scrollbox">
                 <div class="sidebar-logo">
                     <img src="{{ path_to_root }}logo.svg" alt="Logo">
-                </div>
-                <div id="selected-pages" class="selected-pages">
-                    <h2>Selected Pages</h2>
-                    Filter pages by tag to create a selection.
-                    <ul id="selected-pages-list"></ul>
                 </div>
                 {{#toc}}{{/toc}}
             </div>
@@ -444,7 +453,7 @@
                 .then(data => {
                     window.tagsData = data;
                     console.log('Tags data loaded:', window.tagsData);
-                    const tags = Object.keys(data);
+                    const tags = Object.keys(data).sort((a, b) => { return ('' + a).localeCompare(b); });
                     const tagsList = document.getElementById('tags-list');
 
                     function createTagElement(tag) {
@@ -478,56 +487,33 @@
                     function highlightSidebarLinks() {
                         const sidebarLinks = document.querySelectorAll('#sidebar a');
                         sidebarLinks.forEach(link => {
-                            link.style.backgroundColor = '';
+                            link.classList.remove("selected");
                         });
 
                         const selectedTags = Object.keys(localStorage)
                             .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
                             .map(key => key.replace('tag_', ''));
 
+                        let anySelected = false;
                         selectedTags.forEach(tag => {
                             const pages = window.tagsData[tag] || [];
                             pages.forEach(page => {
                                 const link = document.querySelector(`#sidebar a[href$="${page}"]`);
                                 if (link) {
-                                    link.style.backgroundColor = 'var(--sidebar-active)';
+                                    link.classList.add("selected");
+                                    anySelected = true;
                                 }
                             });
                         });
-                    }
 
-                    function updateSelectedPages() {
-                        const selectedPagesList = document.getElementById('selected-pages-list');
-                        selectedPagesList.innerHTML = '';
-
-                        const selectedTags = Object.keys(localStorage)
-                            .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
-                            .map(key => key.replace('tag_', ''));
-
-                        const selectedPages = new Set();
-                        selectedTags.forEach(tag => {
-                            const pages = window.tagsData[tag] || [];
-                            pages.forEach(page => selectedPages.add(page));
-                        });
-
-                        selectedPages.forEach(page => {
-                            const li = document.createElement('li');
-                            let pageTitle = window.tagsData[page]?.title || page;
-
-                            // Format the title
-                            const parts = page.split('/');
-                            const section = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
-                            if (parts[1] === 'index.html') {
-                                pageTitle = section;
-                            } else {
-                                const title = parts[1].replace('.html', '').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-                                pageTitle = `${section} - ${title}`;
-                            }
-
-                            const absoluteUrl = new URL(page, window.location.origin).href;
-                            li.innerHTML = `<a href="${absoluteUrl}">${pageTitle}</a>`;
-                            selectedPagesList.appendChild(li);
-                        });
+                        // If no tags are selected, show all pages.
+                        //? Can't just use `selectedTags.length === 0` because 
+                        //? for some reason `selectedTags` contains a `protcol` tag.
+                        if (anySelected) {
+                            document.getElementById("sidebar").classList.add("filtered");
+                        } else {
+                            document.getElementById("sidebar").classList.remove("filtered");
+                        }
                     }
 
                     tagsList.addEventListener('change', function(event) {
@@ -537,13 +523,11 @@
                             localStorage.setItem(`tag_${selectedTag}`, isChecked);
                             console.log(`Tag ${selectedTag} is ${isChecked ? 'selected' : 'deselected'}`);
                             highlightSidebarLinks();
-                            updateSelectedPages();
                         }
                     });
 
                     // Initial highlighting and selected pages update based on stored tag selections
                     highlightSidebarLinks();
-                    updateSelectedPages();
                 });
 
             const tagsToggle = document.getElementById('tags-toggle');
