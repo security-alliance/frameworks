@@ -1,13 +1,13 @@
 ## Frameworks PR Checklist
 
-Thank you for contributing to the Security Frameworks! Before you open a PR, make sure to read [information for contributors](https://framework.securityalliance.org/book/contribute/contribute.html) and take a look at following checklist:
+Thank you for contributing to the Security Frameworks! Before you open a PR, make sure to read [information for contributors](https://framework.securityalliance.org/book/contribute/contribute.html) and take a look at the following checklist:
 
 - [ ] Describe your changes, substitute this text with the information
-- [ ] If you are touching an existing piece of content, ask the original creator for review 
+- [ ] If you are touching an existing piece of content, ask the original creator for review
 - [ ] If you need feedback for your content from wider community, share the PR in our Discord
-- [ ] Review changes to ensure there are no typos, see instructions bellow
+- [ ] Review changes to ensure there are no typos, see instructions below
 
-<!-- 
+<!--
 ℹ️ Checking for typos locally
 1. Install [aspell](https://www.gnu.org/software/aspell/) for your platform.
 2. Navigate to the project root and run:
