@@ -1,15 +1,18 @@
 personal_ws-1.1 en 10000 utf-8
 aaaabbbb
 abcdef
+Acknowledgement
 Acunetix
 Aeón
 Aereal
 AES
 AFL
 AKAMAI
+Analytics
 anonymization
 Anonymize
 Ansible
+assignees
 authenticator
 Authy
 backdoors
@@ -26,6 +29,7 @@ CCPA
 CEX
 Checkmarx
 Checkov
+CIS
 CISA
 Clippy
 Cloudflare
@@ -33,6 +37,7 @@ CloudSploit
 COBIT
 codebase
 Coinbase
+collab
 Comodo
 Config
 Cooldown
@@ -238,8 +243,11 @@ xddddeeeeffff
 xfedcba
 xkcd
 XSS
+xxxxxx
 xyz
 Yubico
 Yubikey
 Yubikeys
+yyyyy
 Zerouali
+zzzzz
