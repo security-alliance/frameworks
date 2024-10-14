@@ -30,15 +30,6 @@ function populateTags(tagList, tags, filter = '') {
 }
 
 /**
- * Clears all locally stored tags
- */
-function clearStoredTags() {
-    Object.keys(localStorage)
-        .filter(key => key.startsWith('tag_'))
-        .forEach(key => localStorage.removeItem(key));
-}
-
-/**
 * Highlight sidebar links based on selected tags
 */
 function highlightSidebarLinks() {
@@ -47,12 +38,12 @@ function highlightSidebarLinks() {
         link.classList.remove("selected");
     });
 
-    const selectedTags = Object.keys(localStorage)
-        .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
-        .map(key => key.replace('tag_', ''));
+    const tagsDropdown = document.getElementById('tags-dropdown');
+        const selectedTags = Object.keys(localStorage)
+            .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
+            .map(key => key.replace('tag_', ''));
 
     // Filter pages by AND selected tags
-    let anySelected = false
     let selectedPages = new Set(window.tagsData[selectedTags[0]] || []);
     for (const tag of selectedTags.slice(1)) {
         const pages = new Set(window.tagsData[tag] || []);
@@ -70,13 +61,6 @@ function highlightSidebarLinks() {
             anySelected = true;
         }
     });
-
-    // Janky solution to clear any depricated tags from the local storage if 
-    // none are selected. Ghost tags can be created when tags that were selected
-    // are removed from the tags*.json files, IE during development.
-    if (!anySelected) {
-        clearStoredTags();
-    }
 
     if (selectedTags.length === 0) {
         document.getElementById("sidebar").classList.remove("filtered");
@@ -201,7 +185,7 @@ const bookmarkPrefix = "bookmarks_";
 
 // Bookmarks or unbookmarks the current page
 function bookmarkPage() {
-    const pagePath = window.location.pathname;
+    const pagePath = getPathname();
     const title = document.title.replace(" - Security Frameworks by SEAL", "").replace(".", "");
 
     if (localStorage.getItem(`${bookmarkPrefix}${pagePath}`)) {
@@ -233,7 +217,7 @@ function addBookmarkTags() {
 // Update the bookmark icon
 function updateBookmarkIcon() {
     const bookmarkButton = document.getElementById('bookmark-button');
-    const pagePath = window.location.pathname;
+    const pagePath = getPathname();
 
     if (localStorage.getItem(`${bookmarkPrefix}${pagePath}`)) {
         bookmarkButton.classList.add("fa-bookmark");
@@ -242,4 +226,9 @@ function updateBookmarkIcon() {
         bookmarkButton.classList.add("fa-bookmark-o");
         bookmarkButton.classList.remove("fa-bookmark");
     }
+}
+
+// Gets the path name in the same style as the tagsData
+function getPathname() {
+    return window.location.pathname.replace("/", "");
 }
