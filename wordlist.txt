@@ -14,6 +14,7 @@ cryptocurrencies
 cryptocurrency
 cryptographic
 Cybersecurity
+DAO
 dapp
 DAST
 DeFi
@@ -22,12 +23,14 @@ DevSecOps
 DNS
 DNSSEC
 Dyno
+EIP
 EOA
 EOAs
 Ethereum
 Etherscan
 executables
 Fernández
+financials
 Fredrik
 Fuzzer
 Fuzzers
@@ -42,6 +45,7 @@ LLVM
 Matías
 Mehdi
 multisig
+multisigs
 Multisignature
 Mythril
 Nano
@@ -62,9 +66,11 @@ Solidity
 SonarQube
 SRE
 Svantes
+timelock
 TLS
 Trezor
 underflows
+unelected
 Unrekt
 Veracode
 VPC
