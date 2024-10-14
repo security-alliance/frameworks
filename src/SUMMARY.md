@@ -104,6 +104,7 @@
   - [Risk Management](./governance/risk-management.md)
   - [Compliance with Regulatory Requirements](./governance/compliance-regulatory-requirements.md)
   - [Security Metrics and KPIs](./governance/security-metrics-kpis.md)
+  - [DAO Governance Controls](./governance/dao-governance-controls.md)
 
 - [Security Automation](./security-automation/README.md)
   - [Threat Detection and Response](./security-automation/threat-detection-response.md)
