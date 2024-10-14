@@ -28,7 +28,7 @@ Using secure messaging systems is crucial for protecting the privacy and integri
 
 ## Messaging Systems Without Default End-to-End Encryption
 
-These messaging systems suppsedly provides encryption for data in transit and at rest, but not end-to-end encryption for messages.
+These messaging systems supposedly provides encryption for data in transit and at rest, but not end-to-end encryption for messages.
 
 1. **Telegram**
    - Offers end-to-end encryption only for "Secret Chats".
