@@ -62,7 +62,5 @@ Editors merge PRs and push suggestions to the main branch which will be reflecte
 3. `git merge origin/develop`
 4. Manually merge files, solve conflicts and add a description.
 
-### caveats
-
 - Using the `serve.sh` script instead of mdBook `serve` command is needed to be able to see properly
   the local deployment.
