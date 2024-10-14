@@ -1,7 +1,6 @@
 # Security Frameworks content repository
 
-Official repository to the Security Frameworks by SEAL
-. This repository contains the entire
+Official repository to the Security Frameworks by SEAL. This repository contains the entire
 structure and contents of the frameworks. Feel free to suggest from new categories to grammar
 corrections. Collaboration is open to everyone. **This is a work in progress.**
 
