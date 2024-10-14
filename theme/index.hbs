@@ -53,7 +53,7 @@
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         {{/if}}
     </head>
-    <body class="sidebar-visible no-js">
+    <body class="sidebar-visible no-js" data-page-title="{{ page.title }}">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -113,7 +113,16 @@
                 <div class="sidebar-logo">
                     <img src="{{ path_to_root }}logo.svg" alt="Logo">
                 </div>
-                {{#toc}}{{/toc}}
+                <!-- Bookmarks bar.  Structure is copied from #toc so they have the same appearance -->
+                <div id="bookmarks-container">
+                    <ul class="chapter" id="bookmarks">
+                        <li class="chapter-item expanded affix "></li>
+                        <li class="part-title">Bookmarks</li>
+                    </ul>
+                </div>
+                <div id="toc">
+                    {{#toc}}{{/toc}}
+                </div>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -183,7 +192,6 @@
                         <div id="tags-dropdown" class="tags-dropdown hidden">
                             <input type="text" id="tag-search" placeholder="Search tags..." aria-label="Search tags">
                             <div id="tags-list" class="tags-list" aria-label="Tags" role="listbox" aria-multiselectable="true">
-
                             </div>
                         </div>
                     </div>
@@ -206,6 +214,9 @@
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         {{/if}}
+                        <a href="#" onclick="bookmarkPage()" title="Bookmark the page" aria-label="Bookmark the page">
+                            <i id="bookmark-button" class="fa fa-bookmark-o"></i>
+                        </a>
 
                     </div>
                 </div>

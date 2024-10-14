@@ -61,10 +61,10 @@ function highlightSidebarLinks() {
             break;
         }
     }
-
+    
     // Highlight selected pages
     selectedPages.forEach(page => {
-        const link = document.querySelector(`#sidebar a[href$="${page}"]`);
+        const link = document.querySelector(`#sidebar #toc a[href$="${page}"]`);
         if (link) {
             link.classList.add("selected");
             anySelected = true;
@@ -147,11 +147,14 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             window.tagsData = data;
+            initializeBookmarks();
             createSearchableTags(data);
         })
         .catch(error => {
             console.error('Error loading or parsing tagsindex.json:', error);
         });
+
+    initializeBookmarks();
 
     //* Setup event listeners for dropdowns & tags
     const tagsToggle = document.getElementById('tags-toggle');
@@ -180,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // On search for a tag
     tagSearch.addEventListener('input', function () {
-        populateTags(tagsList, tags, this.value);
+        populateTags(tagsList, window.tagsData, this.value);
     });
 
     // On select a tag
@@ -193,3 +196,102 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// Initializes the bookmark icon and sidebar
+function initializeBookmarks() {
+    insertBookmarks();
+    updateBookmarkIcon();
+}
+
+// Bookmark or unbookmarks the current page
+function bookmarkPage() {
+    const pagePath = getPagePath();
+    const activeSection = document.querySelector('#sidebar .active');
+    const title = document.title.replace(" - Security Frameworks by SEAL", "").replace(".", "");
+    const unix = Math.round(+new Date() / 1000);
+
+    const combinedTitle = `${unix}.${title}`;
+
+    if (localStorage.getItem(`bookmarks_${pagePath}`)) {
+        localStorage.removeItem(`bookmarks_${pagePath}`);
+    } else {
+        localStorage.setItem(`bookmarks_${pagePath}`, combinedTitle);
+    }
+
+    updateBookmarkIcon();
+    insertBookmarks();
+}
+
+// Insert bookmarked pages into the sidebar
+function insertBookmarks() {
+    const bookmarkContainer = document.getElementById("bookmarks")
+    const prefix = "bookmarks_";
+
+    // delete all existing bookmark elements
+    const bookmarks = document.querySelectorAll("#sidebar #bookmarks-container .bookmark");
+    bookmarks.forEach(bookmark => bookmark.remove());
+
+    if (window.tagsData) {
+        window.tagsData["Bookmarked"] = [];
+    }
+
+    let keys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        
+        if (key.startsWith(prefix)) {
+            const combinedTitle = localStorage.getItem(key);
+            const unix = combinedTitle.split(".")[0];
+            const title = combinedTitle.split(".")[1];
+
+            const pagePath = key.replace(prefix, "").replaceAll("_", "/") + ".html";
+
+            keys.push({
+                unix,
+                title,
+                pagePath,
+            });
+
+            if (window.tagsData) {
+                window.tagsData["Bookmarked"].push(pagePath.replace("/", ""));
+            }
+        }
+    }
+
+    keys.sort((a, b) => b.unix - a.unix).forEach(key => {
+        bookmarkContainer.appendChild(createBookmarkElement(key.title, key.pagePath));
+    });
+}
+
+// Update the bookmark icon
+function updateBookmarkIcon() {
+    const bookmarkButton = document.getElementById('bookmark-button');
+    const pagePath = getPagePath();
+
+    if (localStorage.getItem(`bookmarks_${pagePath}`)) {
+        bookmarkButton.classList.add("fa-bookmark");
+        bookmarkButton.classList.remove("fa-bookmark-o");
+    } else {
+        bookmarkButton.classList.add("fa-bookmark-o");
+        bookmarkButton.classList.remove("fa-bookmark");
+    }
+}
+
+function createBookmarkElement(title, pagePath) {
+    const li = document.createElement('li');
+    li.classList.add("chapter-item")
+    li.classList.add("bookmark");
+    li.classList.add("expanded");
+    li.innerHTML = `
+        <a href="${pagePath}">${title}</a>
+    `;
+    return li;
+}
+
+/**
+ * Returns the current page path component
+ * @returns {string}
+ */
+function getPagePath() {
+    return window.location.pathname.replaceAll("/", "_").replaceAll(".html", "");
+}
