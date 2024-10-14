@@ -134,6 +134,8 @@ function createSearchableTags(tagsData) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    updateBookmarkIcon();
+
     //* Initialize per-page tags
     fetch(path_to_root + 'theme/tagscolors.json')
         .then(response => response.json())
@@ -147,14 +149,12 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             window.tagsData = data;
-            initializeBookmarks();
+            addBookmarkTags();
             createSearchableTags(data);
         })
         .catch(error => {
             console.error('Error loading or parsing tagsindex.json:', error);
         });
-
-    initializeBookmarks();
 
     //* Setup event listeners for dropdowns & tags
     const tagsToggle = document.getElementById('tags-toggle');
@@ -197,101 +197,49 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Initializes the bookmark icon and sidebar
-function initializeBookmarks() {
-    insertBookmarks();
-    updateBookmarkIcon();
-}
+const bookmarkPrefix = "bookmarks_";
 
-// Bookmark or unbookmarks the current page
+// Bookmarks or unbookmarks the current page
 function bookmarkPage() {
-    const pagePath = getPagePath();
-    const activeSection = document.querySelector('#sidebar .active');
+    const pagePath = window.location.pathname;
     const title = document.title.replace(" - Security Frameworks by SEAL", "").replace(".", "");
-    const unix = Math.round(+new Date() / 1000);
 
-    const combinedTitle = `${unix}.${title}`;
-
-    if (localStorage.getItem(`bookmarks_${pagePath}`)) {
-        localStorage.removeItem(`bookmarks_${pagePath}`);
+    if (localStorage.getItem(`${bookmarkPrefix}${pagePath}`)) {
+        localStorage.removeItem(`${bookmarkPrefix}${pagePath}`);
     } else {
-        localStorage.setItem(`bookmarks_${pagePath}`, combinedTitle);
+        localStorage.setItem(`${bookmarkPrefix}${pagePath}`, title);
     }
 
     updateBookmarkIcon();
-    insertBookmarks();
+    addBookmarkTags();
 }
 
-// Insert bookmarked pages into the sidebar
-function insertBookmarks() {
-    const bookmarkContainer = document.getElementById("bookmarks")
-    const prefix = "bookmarks_";
-
-    // delete all existing bookmark elements
-    const bookmarks = document.querySelectorAll("#sidebar #bookmarks-container .bookmark");
-    bookmarks.forEach(bookmark => bookmark.remove());
-
-    if (window.tagsData) {
-        window.tagsData["Bookmarked"] = [];
+// Adds all the bookmarks currently stored in localStorage to the tagsData
+function addBookmarkTags() {
+    if (!window.tagsData) {
+        return
     }
+    window.tagsData["Bookmarked"] = [];
 
-    let keys = [];
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        
-        if (key.startsWith(prefix)) {
-            const combinedTitle = localStorage.getItem(key);
-            const unix = combinedTitle.split(".")[0];
-            const title = combinedTitle.split(".")[1];
-
-            const pagePath = key.replace(prefix, "").replaceAll("_", "/") + ".html";
-
-            keys.push({
-                unix,
-                title,
-                pagePath,
-            });
-
-            if (window.tagsData) {
-                window.tagsData["Bookmarked"].push(pagePath.replace("/", ""));
-            }
+        if (key.startsWith(bookmarkPrefix)) {
+            const pagePath = key.replace(bookmarkPrefix, "");
+            window.tagsData["Bookmarked"].push(pagePath);
         }
     }
-
-    keys.sort((a, b) => b.unix - a.unix).forEach(key => {
-        bookmarkContainer.appendChild(createBookmarkElement(key.title, key.pagePath));
-    });
 }
 
 // Update the bookmark icon
 function updateBookmarkIcon() {
     const bookmarkButton = document.getElementById('bookmark-button');
-    const pagePath = getPagePath();
+    const pagePath = window.location.pathname;
 
-    if (localStorage.getItem(`bookmarks_${pagePath}`)) {
+    if (localStorage.getItem(`${bookmarkPrefix}${pagePath}`)) {
         bookmarkButton.classList.add("fa-bookmark");
         bookmarkButton.classList.remove("fa-bookmark-o");
     } else {
         bookmarkButton.classList.add("fa-bookmark-o");
         bookmarkButton.classList.remove("fa-bookmark");
     }
-}
-
-function createBookmarkElement(title, pagePath) {
-    const li = document.createElement('li');
-    li.classList.add("chapter-item")
-    li.classList.add("bookmark");
-    li.classList.add("expanded");
-    li.innerHTML = `
-        <a href="${pagePath}">${title}</a>
-    `;
-    return li;
-}
-
-/**
- * Returns the current page path component
- * @returns {string}
- */
-function getPagePath() {
-    return window.location.pathname.replaceAll("/", "_").replaceAll(".html", "");
 }
