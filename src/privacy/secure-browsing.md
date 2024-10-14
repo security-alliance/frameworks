@@ -50,7 +50,7 @@ Secure browsing is essential to protect your privacy and personal information wh
    - Pros: Strong privacy, no tracking.
    - Cons: Less personalized search results.
 
-2. **Startpage**
+2. **Start-page**
    - A search engine that uses Google’s search results but protects your privacy.
    - Pros: Google search results, strong privacy.
    - Cons: Slower than Google.
