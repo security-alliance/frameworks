@@ -1,3 +1,9 @@
+## DAO Governance
+
+DAO security is a multi-faceted concept. In the analysis below, we have considered multiple angles, including data transparency, decentralized ownership, vendor management, defense against governance attacks, physical security policy, etc. While the absence of some of these (for example, a physical security policy for delegates and key stakeholders) can lead to a critical security incident, others (for example, data transparency) may not have an immediate side effect. Even so, it may lead to second-order effects (e.g., low data transparency → loss of quality contributors → governance takeover).
+
+Note that we also have a separate section for protocol DAOs, i.e., DAOs that control an on-chain protocol. All DAOs, whether or not they are a protocol DAO, are advised to consider the controls detailed in the first section.
+
 ## DAO Controls
 
 | Control | Description |
