@@ -5,7 +5,7 @@ You don't want to be that project which has funds stolen, and then don't notice 
 
 ## Key Components of Incident Detection
 
-- **Monitoring and Logging**: Implement continuous monitoring and logging of on-chain activity for your project to understand when something is behaving out of the ordinary. Also implement monitoring of system events, and user behavior to detect anomalies and potential security incidents in non-onchain systems such as web applications or cloud environments.
+- **Monitoring and Logging**: Implement continuous monitoring and logging of on-chain activity for your project to understand when something is behaving out of the ordinary. Also implement monitoring of system events, and user behavior to detect anomalies and potential security incidents in non-on-chain systems such as web applications or cloud environments.
 
 ## Key Components of Incident Response
 

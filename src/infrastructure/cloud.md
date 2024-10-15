@@ -1,4 +1,5 @@
 # Cloud Infrastructure
+
 tag: [Engineer/Developer, Security Specialist, Operations & Strategy, Devops, Cloud, SRE]
 
 Securing your cloud infrastructure could be considered as important as securing your decentralized application, as a lot of users will be interacting with your dapp through the cloud provider. Some best practices to consider are:
@@ -7,9 +8,8 @@ Securing your cloud infrastructure could be considered as important as securing 
 2. Encrypt data both in transit and at rest. Use managed encryption keys or bring your own keys (BYOK) for enhanced security.
 3. Configure virtual private clouds (VPCs), implement firewalls, and monitor network traffic to protect against unauthorized access and threats.
 4. Set up comprehensive logging, monitoring, and threat detection systems to identify and respond to security incidents in real-time. Use services like AWS CloudTrail, Azure Monitor, and Google Cloud Logging.
-5. Implement high availability, data backup, and disaster recovery plans to protect against service disruptions. Use automated failover and replication strategies.
+5. Implement high availability, data backup, and disaster recovery plans to protect against service disruptions. Use automated fail-over and replication strategies.
 6. Ensure compliance with regulatory requirements (e.g., GDPR, MiCA).
-
 
 ## Cloud Provider Hardening Guides
 
