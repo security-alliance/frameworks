@@ -2,7 +2,7 @@
 tag: [Engineer/Developer, Security Specialist]
 
 ## What is Volume Encryption?
-Volume encryption is the process of encrypting a specific storage volume or partition to protect the data it contains. Unlike full disk encryption, which encrypts the entire disk, volume encryption allows for selective encryption of specific volumes, providing flexibility in managing encrypted and unencrypted data on the same device.
+Volume encryption is the process of encrypting a specific storage volume or partition to protect the data it contains. Unlike full disk encryption, which encrypts the entire disk, volume encryption allows for selective encryption of specific volumes, providing flexibility in managing encrypted and un-encrypted data on the same device.
 
 ## Importance of Volume Encryption
 Volume encryption is essential for protecting sensitive information from unauthorized access, especially in environments where different types of data coexist on the same device. It helps prevent data breaches in case of unauthorized access to specific volumes and ensures compliance with data protection regulations.

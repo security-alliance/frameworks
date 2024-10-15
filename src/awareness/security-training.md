@@ -4,7 +4,6 @@ tag: [Security Specialist, Operations & Strategy, HR]
 
 All team members should receive some type of security training, however how in-depth this training is depends on their specific needs and what type of access they have. It is important to not do this only once, but to keep it as a recurring activity, however a training session does not need to mean sitting down for 60 minutes to look at a power point presentation but rather could be tiny nuggets of relevant information that doesn't take more than a minute to consume each time.
 
-
 ## Security Training Session
 
 As an introductory and overarching training session, this could be done:
@@ -22,7 +21,7 @@ As an introductory and overarching training session, this could be done:
 ### 3. Two-Factor Authentication (2FA)
 
 - **Enabling 2FA**: Explain why it's important to enable 2FA.
-- **Types of 2FA**: Explain the different types of 2FA, including SMS, authenticator apps, and hardware tokens. Each of these have their strenghts and weaknesses which should be explained (and especially why nobody should be using SMS for 2FA).
+- **Types of 2FA**: Explain the different types of 2FA, including SMS, authenticator apps, and hardware tokens. Each of these have their strengths and weaknesses which should be explained (and especially why nobody should be using SMS for 2FA).
 
 ### 4. Secure Communication
 
