@@ -8,3 +8,4 @@ Good governance practices involve setting clear policies, establishing accountab
 1. [Compliance with Regulatory Requirements](./compliance-regulatory-requirements.md)
 2. [Risk Management](./risk-management.md)
 3. [Security Metrics and KPIs](./security-metrics-kpis.md)
+4. [DAO Governance Controls](./dao-governance-controls.md)
