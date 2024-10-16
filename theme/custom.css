@@ -20,6 +20,10 @@
     /* Force Show scrollbars */
 }
 
+#bookmarks li {
+    list-style-type: disc;
+}
+
 /* Colored Tag Span. Displayed at the top of tagged pages */
 .colored-tag {
     background-color: var(--tag-color);
@@ -90,7 +94,7 @@
     margin-top: 4px;
 }
 
-#sidebar.filtered .chapter-item:has(> *:not(.selected)) {
+#sidebar.filtered #toc .chapter-item:has(> *:not(.selected)) {
     display: none;
 }
 
