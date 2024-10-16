@@ -196,6 +196,7 @@ function bookmarkPage() {
 
     updateBookmarkIcon();
     addBookmarkTags();
+    highlightSidebarLinks();
 }
 
 // Adds all the bookmarks currently stored in localStorage to the tagsData
