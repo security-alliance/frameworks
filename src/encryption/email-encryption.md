@@ -1,7 +1,7 @@
 # Email Encryption
 tag: [Engineer/Developer, Security Specialist]
 
-Email is insecure and unencrypted by default, but can become more secure by following best practices:
+Email is insecure and un-encrypted by default, but can become more secure by following best practices:
 
 ## Best Practices
 
@@ -19,7 +19,7 @@ Email is insecure and unencrypted by default, but can become more secure by foll
        2. Generate a key pair using the command: `gpg --gen-key`.
        3. Share your public key with your contacts.
        4. Install an email client extension:
-          - **Thunderbird**: Install Enigmail from the Thunderbird add-ons store.
+          - **Thunderbird**: Install Enigmail from the Thunderbird add-on store.
           - **Gmail**: Install FlowCrypt from the Chrome Web Store.
        5. Configure the extension with your GPG key.
        6. Compose a new email and use the extension to encrypt/sign the email.
@@ -32,7 +32,7 @@ Email is insecure and unencrypted by default, but can become more secure by foll
 
 5. **Open Source Alternatives**:
    - **GnuPG (GPG)**: An open-source implementation of PGP, widely used for encrypting and signing data and communications.
-   - **Mailvelope**: A browser extension that integrates PGP encryption into webmail services like Gmail, Outlook, and Yahoo Mail.
+   - **Mailvelope**: A browser extension that integrates PGP encryption into web-mail services like Gmail, Outlook, and Yahoo Mail.
    - **ProtonMail**: A secure email service that offers end-to-end encryption and is open-source. It provides an easy-to-use interface and strong privacy protections.
 
 By following these best practices and utilizing the recommended tools, you can significantly enhance the security of your email communications.
