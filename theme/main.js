@@ -30,15 +30,6 @@ function populateTags(tagList, tags, filter = '') {
 }
 
 /**
- * Clears all locally stored tags
- */
-function clearStoredTags() {
-    Object.keys(localStorage)
-        .filter(key => key.startsWith('tag_'))
-        .forEach(key => localStorage.removeItem(key));
-}
-
-/**
 * Highlight sidebar links based on selected tags
 */
 function highlightSidebarLinks() {
@@ -47,12 +38,12 @@ function highlightSidebarLinks() {
         link.classList.remove("selected");
     });
 
-    const selectedTags = Object.keys(localStorage)
-        .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
-        .map(key => key.replace('tag_', ''));
+    const tagsDropdown = document.getElementById('tags-dropdown');
+        const selectedTags = Object.keys(localStorage)
+            .filter(key => key.startsWith('tag_') && localStorage.getItem(key) === 'true')
+            .map(key => key.replace('tag_', ''));
 
     // Filter pages by AND selected tags
-    let anySelected = false
     let selectedPages = new Set(window.tagsData[selectedTags[0]] || []);
     for (const tag of selectedTags.slice(1)) {
         const pages = new Set(window.tagsData[tag] || []);
@@ -61,22 +52,15 @@ function highlightSidebarLinks() {
             break;
         }
     }
-
+    
     // Highlight selected pages
     selectedPages.forEach(page => {
-        const link = document.querySelector(`#sidebar a[href$="${page}"]`);
+        const link = document.querySelector(`#sidebar #toc a[href$="${page}"]`);
         if (link) {
             link.classList.add("selected");
             anySelected = true;
         }
     });
-
-    // Janky solution to clear any depricated tags from the local storage if 
-    // none are selected. Ghost tags can be created when tags that were selected
-    // are removed from the tags*.json files, IE during development.
-    if (!anySelected) {
-        clearStoredTags();
-    }
 
     if (selectedTags.length === 0) {
         document.getElementById("sidebar").classList.remove("filtered");
@@ -134,6 +118,8 @@ function createSearchableTags(tagsData) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    updateBookmarkIcon();
+
     //* Initialize per-page tags
     fetch(path_to_root + 'theme/tagscolors.json')
         .then(response => response.json())
@@ -147,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             window.tagsData = data;
+            addBookmarkTags();
             createSearchableTags(data);
         })
         .catch(error => {
@@ -180,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // On search for a tag
     tagSearch.addEventListener('input', function () {
-        populateTags(tagsList, tags, this.value);
+        populateTags(tagsList, window.tagsData, this.value);
     });
 
     // On select a tag
@@ -193,3 +180,56 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+const bookmarkPrefix = "bookmarks_";
+
+// Bookmarks or unbookmarks the current page
+function bookmarkPage() {
+    const pagePath = getPathname();
+    const title = document.title.replace(" - Security Frameworks by SEAL", "").replace(".", "");
+
+    if (localStorage.getItem(`${bookmarkPrefix}${pagePath}`)) {
+        localStorage.removeItem(`${bookmarkPrefix}${pagePath}`);
+    } else {
+        localStorage.setItem(`${bookmarkPrefix}${pagePath}`, title);
+    }
+
+    updateBookmarkIcon();
+    addBookmarkTags();
+    highlightSidebarLinks();
+}
+
+// Adds all the bookmarks currently stored in localStorage to the tagsData
+function addBookmarkTags() {
+    if (!window.tagsData) {
+        return
+    }
+    window.tagsData["Bookmarked"] = [];
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith(bookmarkPrefix)) {
+            const pagePath = key.replace(bookmarkPrefix, "");
+            window.tagsData["Bookmarked"].push(pagePath);
+        }
+    }
+}
+
+// Update the bookmark icon
+function updateBookmarkIcon() {
+    const bookmarkButton = document.getElementById('bookmark-button');
+    const pagePath = getPathname();
+
+    if (localStorage.getItem(`${bookmarkPrefix}${pagePath}`)) {
+        bookmarkButton.classList.add("fa-bookmark");
+        bookmarkButton.classList.remove("fa-bookmark-o");
+    } else {
+        bookmarkButton.classList.add("fa-bookmark-o");
+        bookmarkButton.classList.remove("fa-bookmark");
+    }
+}
+
+// Gets the path name in the same style as the tagsData
+function getPathname() {
+    return window.location.pathname.replace("/", "");
+}
