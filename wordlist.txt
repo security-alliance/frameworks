@@ -54,6 +54,7 @@ customizable
 CyberSec
 Cybersecurity
 DAI
+DAO
 dapp
 Darknet
 DAST
@@ -72,6 +73,7 @@ DSS
 Dyno
 EE
 Efani
+EIP
 encrypt
 Enigmail
 EOA
@@ -86,6 +88,7 @@ FDE
 fedcba
 Fernández
 Fi
+financials
 Fredrik
 Fuzzer
 Fuzzers
@@ -144,6 +147,7 @@ MTTD
 MTTR
 MullvadVPN
 multisig
+multisigs
 Multisignature
 MVNO
 Mythril
@@ -209,6 +213,7 @@ tfsec
 Threema
 timeframe
 timeframes
+timelock
 TLS
 TOTP
 TPM
@@ -217,6 +222,7 @@ TVL
 TXT
 UI
 underflows
+unelected
 Unrekt
 untrusted
 USDC
