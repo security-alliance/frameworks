@@ -1,7 +1,7 @@
 # Telegram Security
 tag: [Community & Marketing]
 
-Telegram, in its default mode, is actually not providing end-to-end encryption between users. If it's important to have end-to-end encryption, using a messenger suc has [Signal](https://signal.org/) should be used instead. With that said, Telegram is popular in the crypto ecosystem, and as such you can find some best practices below when it comes to securing Telegram.
+Telegram, in its default mode, is actually not providing end-to-end encryption between users. If it's important to have end-to-end encryption, using a messenger such has [Signal](https://signal.org/) should be used instead. With that said, Telegram is popular in the crypto ecosystem, and as such you can find some best practices below when it comes to securing Telegram.
 
 ## Standard Security
 
@@ -11,7 +11,7 @@ Telegram might require you to sign up using a phone number, but you can also set
 
 ![*Logging in with 2FA enabled*](https://prod-files-secure.s3.us-west-2.amazonaws.com/b1d29658-a003-4e92-93b6-241efdd083f6/c9d574e8-1ad9-4aad-a93f-e33bce31581b/Screen_Shot_2023-11-29_at_23.17.33.png)
 
-*Logging in with 2FA enabled*
+**Logging in with 2FA enabled**
 
 1. Go to Settings > Privacy and Security > Two-Step Verification
 2. Select a password and recovery email (and save it in your password manager)

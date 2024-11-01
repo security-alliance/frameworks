@@ -1,4 +1,5 @@
 # SEAL 911
+
 tag: [Security Specialist, Operations & Strategy]
 
 SEAL 911 is a project designed to give users, developers, and even other security researchers an accessible method to contact a small group of highly trusted security researchers. The group can be reached via the [Telegram bot](https://t.me/seal_911_bot).
@@ -14,6 +15,7 @@ When interacting with SEAL 911, ensure that you give as much information as poss
 ## Actions Checklist
 
 ### Perform Immediately
+
 - [ ] Notify SEAL 911 Bot of the incident. Use this message template to get started.
 - [ ] Create a War Room with audio and share the invite link with trusted individuals.
 - [ ] Duplicate this document to allow collaboration and share the link in the War Room.
@@ -43,8 +45,8 @@ When interacting with SEAL 911, ensure that you give as much information as poss
 
 4. **Web actions**:
    - [ ] Disable deposits and/or withdrawals as needed in the web UI.
-   - [ ] Enable frontend IP or Address blacklisting.
-   - [ ] Create frontend for any user actions necessary (approval revoking, fund migrating, etc.).
+   - [ ] Enable front-end IP or Address blacklisting.
+   - [ ] Create front-end for any user actions necessary (approval revoking, fund migrating, etc.).
 
 5. **Communications**:
    - [ ] Identify social platforms that communications on the incident must be sent to.
@@ -54,11 +56,12 @@ When interacting with SEAL 911, ensure that you give as much information as poss
    - [ ] Continuously monitor social media for users providing additional information that aids whitehat efforts.
    - [ ] Monitor War Room efforts and maintain the Event Timeline.
 
-
 ### After all of the above is complete, consider Post Incident Actions
 
 ## Information Gathering
+
 Information will primarily be shared and acted upon in the War Room. As time allows, consolidate intel in the below section to achieve the following:
+
 - Accurately scope the incident impact.
 - Inform new War Room members and third parties efficiently.
 - Aid external communication.
@@ -66,10 +69,13 @@ Information will primarily be shared and acted upon in the War Room. As time all
 This is the chief duty of the Scribe.
 
 ### Issue Description
+
 The issue involves an unauthorized transfer of funds from the protocol's treasury contract due to a vulnerability in the contract's access control mechanism. The attacker exploited this vulnerability to initiate multiple transfers, siphoning funds to an external wallet.
 
 ### Events Timeline
+
 Record events to construct an overall timeline of the incident. Events worth recording:
+
 - First notice of the incident
 - War room creation
 - External communications
@@ -88,6 +94,7 @@ Record times in UTC. Use a UTC Time Converter.
 | 2024-08-23 13:30  | External communication initiated    | First update sent via Twitter    |
 
 ### Transactions Involved
+
 Record all transactions related to the incident.
 
 | Transaction Link                                                      | Notes                                |
@@ -97,6 +104,7 @@ Record all transactions related to the incident.
 | [0xfedcba987654321...](https://etherscan.io/tx/0xfedcba987654321)     | Defensive move by the team           |
 
 ### Affected Addresses
+
 Record affected addresses related to the incident (protocol contracts, bridges, users, etc.).
 
 | Address Link                                                    | Status      | Notes                               |
@@ -109,7 +117,9 @@ Record affected addresses related to the incident (protocol contracts, bridges, 
 | [0x2222333344445555...](https://etherscan.io/address/0x22223333) | Uncertain   | User wallet, pending analysis        |
 
 ### Funds Movement
+
 Record funds movement to gather the impact of the incident and organize recovery efforts.
+
 - Original address that held the funds
 - Transaction that moved the funds
 - Assets and amounts the funds are comprised of
@@ -126,6 +136,7 @@ Use Phalcon Tx Explorer to aid in recording funds movement.
 | [0xddddeeeeffff0000...](https://etherscan.io/address/0xdddd) | [0xfedcba987654321...](https://etherscan.io/tx/0xfedcba)     | 50,000 USDC    | [Bridge address](https://etherscan.io/address/0x78)| Uncertain       | Funds possibly moved cross-chain   |
 
 ### Attacker Information
+
 Gather attacker information to aid legal efforts and fund recovery.
 
 | Address Link                                                    | Funded By | Notes                                 |
@@ -134,23 +145,25 @@ Gather attacker information to aid legal efforts and fund recovery.
 | [0x123456789abcdef...](https://etherscan.io/address/0x12345678)  | CEX       | Received funds from centralized exchange |
 | [0xfedcba987654321...](https://etherscan.io/address/0xfedcba98)  | Unknown   | No prior activity, potentially new wallet |
 
-
 ## Post Incident Actions
+
 1. Confirm the incident has been resolved.
 2. Create monitoring alerts for situations requiring future actions.
 3. Prepare scripts to perform any actions related to monitoring events in the future.
 4. Consider creating additional defensive scripts (pause/upgrade) to use for future situations.
-5. Schedule a Post Mortem writeup.
-6. Post the writeup to relevant social media.
+5. Schedule a Post Mortem write-up.
+6. Post the write-up to relevant social media.
 
 ## Appendix
 
 ### Advice to Keep in Mind
+
 - Limit the War Room occupancy. Be careful not to invite too many people during the early stages. Sensitive information is being shared; be wary.
 - Make it clear to War Room members not to publicize information without the protocol’s consent.
 - Do not speak to the press/news/publications.
 
 ### Key Roles
+
 - **Operations**: Initiates War Room, assigns roles, distributes tasks, herds multisig participants.
   - *Person Responsible*
 - **Scribe**: Consolidates gathered information for efficiency in knowledge-sharing.
@@ -159,7 +172,7 @@ Gather attacker information to aid legal efforts and fund recovery.
   - *Person Responsible*
 - **Protocol Lead**: Responsible for smart-contract actions (pausing, upgrading, etc.).
   - *Person Responsible*
-- **Web/Infrastructure Lead**: Responsible for updating the frontend, managing servers.
+- **Web/Infrastructure Lead**: Responsible for updating the front-end, managing servers.
   - *Person Responsible*
 - **External Communicator**: Social media and user communications.
   - *Person Responsible*
@@ -181,6 +194,7 @@ Gather attacker information to aid legal efforts and fund recovery.
 | HackMD                | Code Sharing    | Private notes become published after ~48 hours. Be very careful with sensitive information! |
 
 ### SEAL Message Template
+
 Fill out with relevant information and send to SEAL 911 Bot.
 
 ```plaintext
@@ -190,5 +204,3 @@ Funds at Risk: [Estimated Amount in USD or Token]
 
 [Brief Description of the incident]
 ```
-
-
