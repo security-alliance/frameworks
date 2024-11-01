@@ -38,7 +38,7 @@ The audience of this wiki is technical and the content should reflect that. Ther
 - Avoid unnecessary simplifications, describe the technical reality
 - Avoid using too long and complex sentences or paragraphs
     - Use concise and clear statements 
-    - Break down your text using blockquotes, bullet points or images 
+    - Break down your text using block-quotes, bullet points or images 
 - Always link your resources and verify them
 - Use bullet points or tables for topics which require enumerating 
 - Highlight keywords to support scanning and skimming through the article
@@ -60,7 +60,7 @@ The wiki uses American English over British spelling. Terminology, capitalizatio
 
 Usage of images and visualizations is encouraged. If you are using an image created by a third party, make sure its license allows it and provide link to the original. For creating your own visualizations, we suggest [excalidraw.com](https://github.com/excalidraw/excalidraw). 
 
-Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it fits, for example in blockquotes. 
+Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it fits, for example in block-quotes.
 
 ### Linking resources
 
@@ -76,7 +76,7 @@ For other important links, add a section on the bottom of the page with list of 
 
 ### In-page notices
 
-We use blockquote notices at the top of the page to provide readers with appropriate context regarding the content of the page. 
+We use block-quote notices at the top of the page to provide readers with appropriate context regarding the content of the page. 
 
 #### Incomplete pages
 

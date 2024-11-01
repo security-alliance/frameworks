@@ -75,9 +75,9 @@ function tagsGenerator(srcDir, outputDir) {
   }
 
   function generateColor(tag) {
-    const length = tag.length;
-    const hex = (length * 1234567).toString(16).slice(0, 6);
-    return `#${hex.padEnd(6, '0')}`;
+    const crypto = require("crypto");
+    const hex = crypto.createHash("sha1").update(tag).digest("hex").slice(0, 6);
+    return `#${hex}`;
   }
 
   walkDir(srcDir);
@@ -86,13 +86,18 @@ function tagsGenerator(srcDir, outputDir) {
     console.log(`Creating output directory: ${outputDir}`);
     fs.mkdirSync(outputDir, { recursive: true });
   }
-
+  
   console.log(`Writing tags to file: ${tagsFile}`);
   fs.writeFileSync(tagsFile, JSON.stringify(tags, null, 2));
-
+  
+  let existingColouredTags = {};
+  if (fs.existsSync(colorsFile)) {
+    existingColouredTags = JSON.parse(fs.readFileSync(colorsFile, "utf8"));
+  }
+  
   const tagColors = {};
   for (const tag in tags) {
-    tagColors[tag] = generateColor(tag);
+    tagColors[tag] = existingColouredTags[tag] || generateColor(tag);
   }
 
   console.log(`Writing tag colors to file: ${colorsFile}`);
