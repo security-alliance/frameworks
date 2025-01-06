@@ -84,10 +84,11 @@
 - [Vulnerability Disclosure](./vulnerability-disclosure/README.md)
   - [Security Contact](./vulnerability-disclosure/security-contact.md)
   - [Bug Bounties](./vulnerability-disclosure/bug-bounties.md)
-  - [Safe Harbor](./vulnerability-disclosure/safe-harbor/README.md)
-    - [Safe Harbor for Protocols](./vulnerability-disclosure/safe-harbor/protocol.md)
-    - [Safe Harbor for Whitehats](./vulnerability-disclosure/safe-harbor/whitehat.md)
-    - [Appendix](./vulnerability-disclosure/safe-harbor/key-terms.md)
+
+- [Safe Harbor](./safe-harbor/README.md)
+  - [Safe Harbor for Protocols](./safe-harbor/protocol.md)
+  - [Safe Harbor for Whitehats](./safe-harbor/whitehat.md)
+  - [Appendix](./safe-harbor/key-terms.md)
 
 - [Supply Chain](./supply-chain/README.md)
   - [Dependency Awareness](./supply-chain/dependency-awareness.md)

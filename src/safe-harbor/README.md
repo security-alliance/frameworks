@@ -7,10 +7,9 @@ SEAL’s [Whitehat Safe Harbor](https://github.com/security-alliance/safe-harbor
 1. Funds are returned to a designated [Asset Recovery Address](./key-terms.md#asset-recovery-address) determined by the protocol.
 2. Action is only taken in the event of an [Active Exploit](./key-terms.md#active-exploit).
 
-By adopting Safe Harbor, protocols and whitehats can work together to increase their chances of recovering funds in the event of an attack.
-
 ## Documents
 
+- [Technical Outline](https://github.com/security-alliance/safe-harbor)
 - [Safe Harbor for Protocols](./protocol.md)
 - [Safe Harbor for Whitehats](./whitehat.md)
 
