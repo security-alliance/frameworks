@@ -252,3 +252,16 @@ Yubikeys
 yyyyy
 Zerouali
 zzzzz
+blackhat
+blackhats
+whitehat
+whitehats
+kyc
+dao
+usd
+ofac
+slrdf
+debevoise
+emptively
+plimpton
+lexpunk
