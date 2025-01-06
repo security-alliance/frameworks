@@ -14,7 +14,7 @@ In addition to the legal protections, Safe Harbor also helps whitehats by tellin
 4. What KYC requirements (if any) protocols impose onto whitehats
 5. What bounty terms whitehats will be awarded under Safe Harbor
 
-This information is all neatly catalogued in the [Safe Harbor Registry](./key-terms.md#safe-harbor-registry) - an on-chain registry cataloging all protocol adoptions and their adoption details. For more details, review the [Safe Harbor for Protocols](./protocol.md) document.
+This information is all neatly cataloged in the [Safe Harbor Registry](./key-terms.md#safe-harbor-registry) - an on-chain registry cataloging all protocol adoptions and their adoption details. For more details, review the [Safe Harbor for Protocols](./protocol.md) document.
 
 ## Whitehat Adoption
 
@@ -46,4 +46,4 @@ In the event that all the above applies, you may chose to take action to protect
 
 ### Post-Intervention
 
-After the funds have been recovered, it is your responsbility to ensure their safe return to the owner protocol. If possible, we recommend contacting [SEAL911](./seal-911) immediately to advise on the fund recovery process and to assist with KYC, protocol communications, and bounty collection. Otherwise, you must contact the protocol's posted security contact and return all recovered funds to the protocol's [asset recovery address](./key-terms.md#asset-recovery-address) within 6 hours of the event, or 48 hours if reason is provided and the protocol has been made aware.
+After the funds have been recovered, it is your responsibility to ensure their safe return to the owner protocol. If possible, we recommend contacting [SEAL911](./seal-911) immediately to advise on the fund recovery process and to assist with KYC, protocol communications, and bounty collection. Otherwise, you must contact the protocol's posted security contact and return all recovered funds to the protocol's [asset recovery address](./key-terms.md#asset-recovery-address) within 6 hours of the event, or 48 hours if reason is provided and the protocol has been made aware.
