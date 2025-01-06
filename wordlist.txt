@@ -260,7 +260,7 @@ kyc
 dao
 usd
 ofac
-slrdf
+srldf
 debevoise
 emptively
 plimpton
@@ -272,3 +272,4 @@ frontrunning
 mev
 hacken
 skylock
+kickstart
