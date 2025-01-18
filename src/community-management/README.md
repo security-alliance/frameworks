@@ -23,6 +23,7 @@ Here, we present essential best practices to safeguard your community. In the fo
 
 - Educate members on recognizing and reporting phishing attempts.
 - Clearly communicate to community members that your team will never send the first direct message to them. This is important because attackers often impersonate team members and initiate direct messages to trick users into believing they are legitimate, thereby gaining their trust and potentially compromising their security.
+- Publically define all official communication channels used by your organization.  
 
 Refer to the [**Security Awareness framework**](../awareness/README.md) to learn more about **Security Trainings** and **Social Engineering**.
 
