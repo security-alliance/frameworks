@@ -2,6 +2,9 @@
 
 tag: [Community & Marketing]
 
+> **Key Takeaway for Twitter (X):**  
+> To secure your Twitter account, prioritize using an authenticator app or security key over SMS-based 2FA, remove your phone number, and regularly review third-party app permissions. Ensure your recovery settings are robust and frequently monitor account activity to safeguard your online presence and maintain community trust.
+
 A compromised **X** account can harm not only you but also your community. Attackers often use phishing tactics—like SIM swaps or fake login screens—to seize control of your profile. A few simple steps can significantly reduce these risks.
 
 Securing your Twitter account is not particularly hard or time consuming, so consider following the best practices below.
