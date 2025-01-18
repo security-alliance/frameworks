@@ -1,9 +1,30 @@
-# Discord Security
+# Discord Security <!-- omit in toc -->
 
-tag: [Community & Marketing, Security Specialist]
+tag: [Community & Marketing]
 
-Discord has a large set of security settings to take into consideration, as well as some potential pitfalls where a server moderator could for example fall victim to a phishing attempt by having their account hijacked through a QR code.
-Below, you can find some hardening suggestions when setting up a Discord server.
+Discord offers a variety of security features that are essential to use. Despite these, users should stay alert to threats like phishing, which can target server moderators. Such threats may appear as QR code scams, fake login screens, or misleading direct messages pretending to be from Discord support.
+
+To enhance the security of your Discord server, take into account these suggestions. They cover important aspects like server settings, roles and permissions, moderation, bots, channels, invites, member screening, logging, and other security measures.
+
+## Table of Contents <!-- omit in toc -->
+
+- [Discord Server Hardening](#discord-server-hardening)
+  - [Server Settings](#server-settings)
+  - [Roles and Permissions](#roles-and-permissions)
+  - [Moderation](#moderation)
+  - [Extra Moderation Best Practices](#extra-moderation-best-practices)
+  - [Bots](#bots)
+  - [Channels](#channels)
+  - [Invites](#invites)
+  - [Member Screening](#member-screening)
+  - [Logging](#logging)
+  - [Regular Reviews](#regular-reviews)
+  - [Cold Admin Accounts](#cold-admin-accounts)
+  - [Additional Community Features](#additional-community-features)
+  - [Additional Security Measures](#additional-security-measures)
+- [Additional Resources](#additional-resources)
+
+---
 
 ## Discord Server Hardening
 
@@ -78,6 +99,23 @@ c) **Establish Clear Server Rules**
 - Create a #rules channel
 - Use Discord's built-in rules screening feature
 - Include sections on: Behavior, Content, Moderation Actions, Appeals Process
+
+### Extra Moderation Best Practices
+
+a) **Leverage “Default Notifications to Mentions Only”**
+
+- Go to **Server Settings > Overview** and set **Default Notifications** to **Mentions Only**.
+- Reduces potential spam notifications for members, making them more vigilant about suspicious or phishing content.
+
+b) **Stay Alert to New Features & Potential Exploits**
+
+- Keep track of newly introduced features such as Threads, Scheduled Events, or Stage Channels.
+- Configure their permissions carefully (e.g., who can start or join a Thread) to prevent abuse by spammers or scammers.
+
+c) **Regularly Check Third-Party Bot Security**
+
+- Ensure bots are from reputable sources and receive frequent updates.
+- Review bot permissions after each significant update to avoid newly introduced vulnerabilities.
 
 ### Bots
 
@@ -194,6 +232,24 @@ c) **Use the Cold Account for Critical Actions**
 - Manage bots, modify server settings, and respond to compromises
 - Never use this account for regular server activities
 
+d) **Disable QR Code Login on Cold Device**
+
+- In **User Settings > Privacy & Safety**, deselect any quick login or QR scan options.
+- Prevents attackers from using QR phishing tactics to hijack this high-privilege account.
+
+### Additional Community Features
+
+a) **Enable the Community Feature (Newer Discord Update)**
+
+- Go to **Server Settings > Community** to activate the Community Feature.
+- Unlocks tools like membership screening, server insights, welcome screen, and discovery settings.
+- Helps maintain a structured, secure environment by surfacing official rules and critical info to newcomers.
+
+b) **Review Updated Discord Moderation Resources**
+
+- Consult the official [Discord Moderator Academy](https://discord.com/moderation) for ongoing best practices and new features.
+- Implement recommended strategies (e.g., improved spam filters, updated role recommendations).
+
 ### Additional Security Measures
 
 a) **Verification Systems**
@@ -225,6 +281,16 @@ f) **Backup Systems**
 
 - Use a bot like ServerBackup to regularly backup your server configuration
 - Store backups securely off-platform
+
+g) **Audit New Integration/Link Safety Settings**
+
+- Regularly review **Server Settings > Integrations** for newly added apps or link shorteners.
+- Disable suspicious integrations or automate link scanning with a bot that checks URLs against known phishing databases.
+
+h) **Enable Safe Direct Messaging for All Users**
+
+- In **User Settings > Privacy & Safety**, select **Keep Me Safe** for direct messages.
+- Encourages moderators and community members to adopt the same setting to minimize phishing DMs.
 
 ## Additional Resources
 
