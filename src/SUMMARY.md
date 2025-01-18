@@ -12,31 +12,31 @@
 
 ## Frameworks
 
-- Infrastructure
-- Monitoring
-- Front-End/Web Application
+- [Infrastructure]()
+- [Monitoring]()
+- [Front-End/Web Application]()
 - [Community Management](./community-management/README.md)
   - [Discord](./community-management/discord.md)
   - [Twitter](./community-management/twitter.md)
   - [Telegram](./community-management/telegram.md)
   - [Google](./community-management/google.md)
-- Key Management
-- Encryption
-- Incident Management
-- Operational Security
-- DevSecOps
-- Privacy
-- Vulnerability Disclosure
-- Supply Chain
-- Awareness
-- External Security Reviews
-- Governance
-- Security Automation
-- Threat Modeling
-- Identity and Access Management IAM
-- Secure Software Development
-- Security Testing
-- User and Team Security
+- [Key Management]()
+- [Encryption]()
+- [Incident Management]()
+- [Operational Security]()
+- [DevSecOps]()
+- [Privacy]()
+- [Vulnerability Disclosure]()
+- [Supply Chain]()
+- [Awareness]()
+- [External Security Reviews]()
+- [Governance]()
+- [Security Automation]()
+- [Threat Modeling]()
+- [Identity and Access Management IAM]()
+- [Secure Software Development]()
+- [Security Testing]()
+- [User and Team Security]()
 
 ## Practical Guides
 

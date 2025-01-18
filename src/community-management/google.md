@@ -1,57 +1,81 @@
-# Google Security
+# Google Security <!-- omit in toc -->
+
 tag: [Community & Marketing, Security Specialist]
 
-Google provides a wide range of services including email, file storage, search, and more. Protecting your Google account is one of the most crucial things to do, and Google offers multiple ways to enhance your account security. Here are five simple steps you can take right now to secure your Google account.
+**Google** provides a wide range of services—from email to file storage. Safeguarding your Google account is among the most critical steps you can take to protect your personal and professional data. Below are simple yet effective measures to improve your Google account security.
+
+---
+
+## Table Of Contents <!-- omit in toc -->
+
+- [Standard Security](#standard-security)
+  - [Configure 2FA](#configure-2fa)
+  - [Remove Recovery Methods](#remove-recovery-methods)
+  - [Manage Active Sessions](#manage-active-sessions)
+  - [Manage OAuth Applications](#manage-oauth-applications)
+  - [Hide Personal Information](#hide-personal-information)
+- [Extended Security](#extended-security)
+  - [Advanced Protection Program](#advanced-protection-program)
+- [Additional Tips](#additional-tips)
 
 ## Standard Security
 
+>This section does not include Google Suite or more advanced security configurations. For that, refer to the Operational Security Framework, under [Google Suite Security](../operational-security/g-suite-security.md).
+
 ### Configure 2FA
 
-Properly configuring your two-factor authentication (2FA) settings is one of the most important steps you can take. Disable SMS 2FA and enable either an authenticator app or a hardware security key (preferred).
+Properly setting up two-factor authentication (2FA) is one of the most crucial steps you can take. Disable SMS 2FA to avoid SIM swaps, and instead use an authenticator app or a hardware security key (preferred).
 
-1. Go to [Google 2-Step Verification](https://myaccount.google.com/signinoptions/two-step-verification)
-2. If “Voice or text message” is enabled, disable it
-3. If you don’t have an Android device, configure an “Authenticator app” or “Security Key”. If you do, you can continue to use “Google prompts”
-4. Store your backup codes in a safe place
+1. **Go to** [Google 2-Step Verification](https://myaccount.google.com/signinoptions/two-step-verification)  
+2. **Disable:** "Voice or text message" if it’s enabled  
+3. **Enable:** "Authenticator app" and/or "Passkeys and security keys". You can also can continue using **Google prompts**.
+4. **Store Backup Codes:** Keep them offline in a secure place
 
 ### Remove Recovery Methods
 
-Google uses heuristics for account recovery, but having your phone number as a recovery method can make it easier for attackers to steal your account after cloning your phone number. Email can also be a weak point if it is not properly secured.
+By default, Google allows account recovery using phone numbers and emails. Attackers can exploit these if they compromise your phone or email.
 
-1. Go to [Google Recovery Phone](https://myaccount.google.com/signinoptions/rescuephone)
-2. If a recovery phone is present, remove it
-3. If this Google account is your primary account and you are confident you will not need to perform account recovery:
-    1. Go to [Google Recovery Email](https://myaccount.google.com/recovery/email)
-    2. If a recovery email is present, remove it
-
-### Hide Personal Information
-
-Ensure your personal information is not publicly visible, reducing the risk of attackers using it to impersonate you.
-
-1. Go to [Google Profile](https://myaccount.google.com/profile)
-2. For each item in your profile, check if it’s set to “Anyone”. Consider whether the information can be used by an attacker to impersonate you.
-    - Set your birthday to private if it isn’t already
+1. **Go to**: [Google Recovery Phone](https://myaccount.google.com/signinoptions/rescuephone)  
+2. **Remove:** Any phone number listed  
+3. **Optional**: If you’re confident you won’t need standard recovery processes:  
+   1. **Go to**: [Google Recovery Email](https://myaccount.google.com/recovery/email)  
+   2. **Remove:** Any recovery email present
 
 ### Manage Active Sessions
 
-Review your active sessions to ensure you’re not logged in anywhere unexpectedly.
+Keeping track of active sessions helps you detect unauthorized access.
 
-1. Go to [Google Device Activity](https://myaccount.google.com/device-activity)
-2. If there are any sessions you don’t recognize, terminate them
+1. **Go to**: [Google Device Activity](https://myaccount.google.com/device-activity)  
+2. **Terminate:** Any session you don’t recognize
 
 ### Manage OAuth Applications
 
-OAuth connections can sometimes request extensive permissions, such as full access to your inbox or files. Review and manage these applications.
+Some apps request extensive permissions (e.g., full inbox or file access). Regularly review these to minimize risks.
 
-1. Go to [Google Connections](https://myaccount.google.com/connections)
-2. For each app or service, click on it to review its permissions. If you’re not using it or the permissions are excessive, remove its access to your Google account
+1. **Go to**: [Google Connections](https://myaccount.google.com/connections)  
+2. **Review:** Each connected app’s permissions; remove if unnecessary or excessive
 
+### Hide Personal Information
+
+Publicly visible personal info can aid attackers in impersonating you.
+
+1. **Go to**: [Google Profile](https://myaccount.google.com/profile)  
+2. **Check Visibility:** If any info is set to “Anyone,” switch it to private if unnecessary  
+   - **Birthday:** Consider making it private
 
 ## Extended Security
 
 ### Advanced Protection Program
 
-If you’re a public figure or influencer, you may want to enroll in the Advanced Protection Program for enhanced security measures. This program enforces the use of security keys, blocks unverified apps, and makes account recovery more difficult.
+For those who are public figures or need heightened security, Google's **Advanced Protection Program** is worth considering. It requires the use of security keys, limits access to unverified apps, and makes the process of account recovery more challenging.
 
-1. Go to [Google Advanced Protection Program](https://myaccount.google.com/advanced-protection/landing)
-2. Complete the steps to enroll in the program
+1. **Go to** [Google Advanced Protection Program](https://myaccount.google.com/advanced-protection/landing)  
+2. **Enroll:** Follow the on-screen steps
+
+## Additional Tips
+
+- **Review Security Alerts:** Pay attention to any email or phone notifications from Google regarding unusual sign-ins or account changes.  
+- **Perform a Security Checkup:** Regularly visit [Google’s Security Checkup](https://myaccount.google.com/security-checkup) to identify potential issues and resolve them.
+- **Consider** using identity **monitoring** apps like [Push Security](pushsecurity.com).
+
+> **Key Takeaway:** Combining strong 2FA methods, removing unnecessary recovery options, and carefully managing third-party access dramatically improves your Google account security.
