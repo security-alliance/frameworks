@@ -2,6 +2,9 @@
 
 tag: [Community & Marketing]
 
+> **Key Takeaway:** Stay vigilant with group chats on Telegram. Implement verification steps and secure communication practices to protect against sophisticated interception attacks.
+
+
 While **Telegram** is widely used in the crypto community, it's crucial to understand its security limitations. Telegram **does not** offer end-to-end encryption (**E2EE**) by default, which means your messages could potentially be accessed by third parties. Additionally, Telegram's reliance on phone numbers for account creation can expose users to SIM swapping attacks, and its peer-to-peer call feature can reveal your IP address to other users. If **E2EE** is a priority, consider using [Signal](https://signal.org/).
 
 However, if you choose to use **Telegram**, the following best practices can help enhance your security.
@@ -188,7 +191,3 @@ Attackers can exploit Telegram's group chat features to intercept and manipulate
 - **Double-Check Payment Details:** Verify payment information through multiple methods before transferring funds.
 - **Limit Group Permissions:** Restrict who can add members to groups to prevent unauthorized cloning.
 - **Educate Members:** Train community members to recognize and report suspicious group activities.
-
----
-
-> **Key Takeaway:** Stay vigilant with group chats on Telegram. Implement verification steps and secure communication practices to protect against sophisticated interception attacks.

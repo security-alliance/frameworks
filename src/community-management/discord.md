@@ -2,6 +2,10 @@
 
 tag: [Community & Marketing]
 
+> **Key Takeaway for Discord:**  
+> To secure your Discord server, focus on implementing robust access controls and enforcing two-factor authentication for all administrators. Regularly audit roles and permissions, and maintain vigilant moderation. Educate your community about security best practices to prevent unauthorized access and protect against potential threats.
+
+
 Discord offers a variety of security features that are essential to use. Despite these, users should stay alert to threats like phishing, which can target server moderators. Such threats may appear as QR code scams, fake login screens, or misleading direct messages pretending to be from Discord support.
 
 To enhance the security of your Discord server, take into account these suggestions. They cover important aspects like server settings, roles and permissions, moderation, bots, channels, invites, member screening, logging, and other security measures.

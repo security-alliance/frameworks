@@ -12,11 +12,12 @@ Here, we present essential best practices to safeguard your community. In the fo
 
 ### Strong Passwords and Two-Factor Authentication (2FA)
 
-- Use unique, complex passwords for each service and store them securely in a reputable password manager.
-- Always enable 2FA. Prefer hardware-based tokens (e.g., Yubikey) or mobile authenticator apps over SMS-based methods, which are vulnerable to SIM-swapping.
-- Keep password generation and 2FA codes separate; do not use your password manager to generate 2FA codes.
-- If using an app like Authy or Google Authenticator, ensure passcodes are encrypted with a robust password to mitigate risk from SIM-swapping.
+- Use unique, complex passwords for each service and store them securely in a reputable password manager. Refer to the [**Operational Security Framework**](../operational-security/README.md) and [**Key Management Framework**](../key-management/README.md) for more information on this.
 - Secure the email account linked to your community platforms with a unique password and 2FA.
+- Always enable 2FA. Prefer hardware-based tokens (e.g., Yubikey) or mobile authenticator apps over SMS-based methods, which are vulnerable to SIM-swapping.
+- If you use an authenticator app like Authy, 1Password, or Aegis to generate time-based one-time passwords (TOTP). Ensure that the secret keys are stored encrypted and protected with robust security measures.
+- Configure your app to require a password, PIN, or biometric authentication (e.g., fingerprint or face recognition) to unlock access to the tokens. This prevents unauthorized access and ensures the tokens remain secure even if someone gains physical or remote access to your device.
+- Keep password generation and 2FA codes separate; do not use your password manager to generate 2FA codes. Otherwise, if the password manager is compromised, it could render the 2FA ineffective, allowing unauthorized access to your accounts.
 - Encourage community members to adopt these practices as well.
 
 ### Phishing Awareness
