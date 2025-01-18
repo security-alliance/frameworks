@@ -6,6 +6,8 @@ Discord offers a variety of security features that are essential to use. Despite
 
 To enhance the security of your Discord server, take into account these suggestions. They cover important aspects like server settings, roles and permissions, moderation, bots, channels, invites, member screening, logging, and other security measures.
 
+---
+
 ## Table of Contents <!-- omit in toc -->
 
 - [Discord Server Hardening](#discord-server-hardening)
@@ -23,8 +25,6 @@ To enhance the security of your Discord server, take into account these suggesti
   - [Additional Community Features](#additional-community-features)
   - [Additional Security Measures](#additional-security-measures)
 - [Additional Resources](#additional-resources)
-
----
 
 ## Discord Server Hardening
 
