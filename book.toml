@@ -17,8 +17,8 @@ assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 [output]
 
 [output.html]
-additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./mdbook-admonish.css", "./theme/custom.css"]
-additional-js = ["./theme/tagsindex.json", "./theme/tagscolors.json", "./theme/main.js"]
+additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./mdbook-admonish.css", "./theme/custom.css", "./theme/pagetoc.css"]
+additional-js = ["./theme/tagsindex.json", "./theme/tagscolors.json", "./theme/main.js", "./theme/pagetoc.js"]
 template-path = "theme"
 copy-images = true
 default-theme = "ayu"
