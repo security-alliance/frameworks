@@ -60,3 +60,42 @@ Remember that picture you sent your friend 8 months ago? You might not, but if a
 
 1. Go to Settings > Privacy and Security > Auto-Delete Messages
 2. Set to “After 1 week” or a time which matches your risk appetite.
+
+**Devices**
+Settings > Devices: The default for automatically terminating old sessions is set to 6 months. I highly recommend changing this setting to a shorter period—1 month or even 1 week—depending on how frequently you use TG
+
+**Passcode Lock**
+Settings > Privacy and Security > Passcode Lock: This feature adds a passcode to access your Telegram app after a period of inactivity. The default setting is "away for 1 hour." Don't lose this passcode—store it offline if needed. However, ensure it's different from your phone's unlock passcode.
+
+**Privacy and Security**
+Settings > Privacy and Security > Two-Step Verification: Keep in mind that Telegram doesn't have a login by default. However, you can set up a password that acts as a "second" 2FA method when logging in from a new device. While they send a code via SMS (which is not secure) and offer email recovery (which is better), they don't provide options for authenticator apps or hardware keys. If you lose this password, you'll be in trouble, so make sure to write it down offline and don't lose it.
+
+**Privacy**
+
+Consider adjusting the following settings in this section based on your country, usage, and purpose for using Telegram:
+
+Settings > Privacy and Security >
+Phone Number: Nobody
+Last Seen & Online: Nobody
+Profile Picture: Everybody (stops scammers impersonating your PFP)
+Bio: Nobody (Depending on use of TG)
+Date of Birth: Nobody
+Forwarded Messages: Nobody
+Calls: Nobody or Contacts Only (Depending on use of TG)
+Voice Messages: Contacts Only (Depending on use of TG)
+Messages: Everybody or Contacts Only (Depending on use of TG)
+Invites: Contacts Only or Nobody (I wouldn't put ‘Everyone’ so you don't get added to a random group that impersonates another group and ends up getting you scammed)
+
+Settings > Privacy and Security > Data Settings:
+Sync Contacts: Disable (Depending on use of TG)
+Suggest Frequent Contacts: Disable (Depending on use of TG)
+
+Tips to use Telegram safely:
+- Do you want to message someone? Create a 'secret' chat so the communication is encrypted (1:1 chats)
+- Triple-check all group invites, so it's not an imposter group sharing bad links
+- Never trust a DM from anyone sending links or acting as "support", "exchanges", or "team"
+- Use the block function, don't just delete chats, report, and block spammers/scammers
+- This is an advanced tip, but you can setup a proxy (VPN) to hide your IP at all times via TG app.
+- Do not just use any "mini app", do not login or put any information if it redirects outside of telegram, triple check the username of the mini app to ensure its the real one as telegram does not use any bot verification system. Never download anything and run any commands on your device from telegram.
+- Be aware of telegram ads in channels as anyone can post an ad (99% scam ads).
+   
