@@ -9,6 +9,7 @@ There are no good reasons to keep a phone number attached to your account, and i
 
 1. Go to https://twitter.com/settings/phone
 2. If a phone number exists, remove it with “Delete phone number”
+3. After removing your phone number, it's crucial to navigate to Settings > Security and Account Access > Security > Two-Factor Authentication > Backup Codes. Store these codes offline, just like your seed phrase. Anyone with these codes can bypass your 2FA, so it's extremely important to write them down and keep them secure. Remember, when you change your password, new backup codes are generated.
 
 ## Configure 2FA
 
@@ -43,6 +44,14 @@ Twitter offers an option to require users to enter the email or phone number (or
 1. Go to https://twitter.com/settings/security
 2. Make sure “Password reset protect” is enabled
 
+## Additional Security Settings
+
+1. Go to Settings & Privacy > Privacy and Safety > Discoverability and Contacts > Recommend to turn both email and phone discoverability off
+2. Go to Settings & Privacy > Security and Account Access > Security > Setup your Security Key. Also enable/check box ‘password reset protection’
+3. Go to Settings & Privacy > Security and Account Access > Apps and Sessions
+> Connected Apps, log out of apps
+> Sessions, log out of old sessions
+
 ## Revoke access from unnecessary apps
 
 You might’ve connected Twitter with various apps, and some of these apps may have too many permissions assigned to them. To verify what permissions these apps have, follow these steps:
@@ -70,3 +79,8 @@ If you are not using a unique password for Twitter, then it's time to create one
 
 1. Go to https://twitter.com/settings/password
 2. Change your password
+
+## X Emails
+
+- Be cautious if you receieve an email about any password, delegate, content moderation; email. Always go to the source, do not click links in phishing emails and enter X account login info.
+- Always check the "from" of the email and verify if its from "@x.com"
