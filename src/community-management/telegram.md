@@ -96,4 +96,6 @@ Tips to use Telegram safely:
 - Never trust a DM from anyone sending links or acting as "support", "exchanges", or "team"
 - Use the block function, don't just delete chats, report, and block spammers/scammers
 - This is an advanced tip, but you can setup a proxy (VPN) to hide your IP at all times via TG app.
+- Do not just use any "mini app", do not login or put any information if it redirects outside of telegram, triple check the username of the mini app to ensure its the real one as telegram does not use any bot verification system. Never download anything and run any commands on your device from telegram.
+- Be aware of telegram ads in channels as anyone can post an ad (99% scam ads).
    
