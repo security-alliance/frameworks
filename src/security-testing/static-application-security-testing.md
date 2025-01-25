@@ -1,5 +1,10 @@
+---
+tags:
+  - Security Specialist
+---
+
 # Static Application Security Testing (SAST)
-tag: [Security Specialist]
+
 
 Static Application Security Testing (SAST) is a method of analyzing source code for security vulnerabilities without executing the program. SAST tools examine the codebase to identify potential security issues, enabling developers to address vulnerabilities early in the development lifecycle.
 

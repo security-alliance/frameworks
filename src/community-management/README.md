@@ -1,5 +1,10 @@
+---
+tags:
+  - Community & Marketing
+---
+
 # Community Management
-tag: [Community & Marketing]
+
 
 Historically, there has been quite a few compromised communities where the threat actor then transformed it into a phishing platform with users ending up losing funds as a consequence. In order to protect your users, as well as your own brand, you should ensure that you secure your communities.
 Each community platform has its own set of best practices, and below you can find some general approaches to securing your community

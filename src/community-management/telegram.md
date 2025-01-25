@@ -1,5 +1,10 @@
+---
+tags:
+  - Community & Marketing
+---
+
 # Telegram Security
-tag: [Community & Marketing]
+
 
 Telegram, in its default mode, is actually not providing end-to-end encryption between users. If it's important to have end-to-end encryption, using a messenger such has [Signal](https://signal.org/) should be used instead. With that said, Telegram is popular in the crypto ecosystem, and as such you can find some best practices below when it comes to securing Telegram.
 

@@ -1,5 +1,12 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+---
+
 # Zero-Trust Principles
-tag: [Engineer/Developer, Security Specialist, Operations & Strategy]
+
 
 The Zero-Trust security model assumes that threats can exist both inside and outside the network. It requires strict verification for every user and device attempting to access resources, regardless of their location.
 

@@ -1,5 +1,12 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+---
+
 # Common Vulnerabilities
-tag: [Engineer/Developer, Security Specialist, Devops]
+
 
 Understanding and mitigating common vulnerabilities is crucial for securing your web and mobile applications. Here are some frequently encountered vulnerabilities:
 

@@ -1,5 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - SRE
+---
+
 # Continuous Integration and Continuous Deployment (CI/CD)
-tag: [Engineer/Developer, Security Specialist, Devops, SRE]
+
 
 Continuous Integration and Continuous Deployment are there to ensure good code quality and create rapid and secure deployments. Some best practices are:
 

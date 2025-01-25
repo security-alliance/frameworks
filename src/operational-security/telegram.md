@@ -1,5 +1,11 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+---
+
 # Telegram
-tag: [Security Specialist, Operations & Strategy]
+
 
 ## 1. Use Two-Step Verification
 - **Enable Two-Step Verification:** Protect your account with an additional password to ensure that even if someone has your phone number, they cannot access your account without the additional password.

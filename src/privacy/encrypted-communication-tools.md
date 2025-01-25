@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Encrypted Communication Tools
-tag: [Engineer/Developer, Security Specialist]
+
 
 Encrypted communication tools are essential for maintaining privacy and security in digital communications. These tools ensure that your messages and calls are protected from eavesdropping and unauthorized access.
 
