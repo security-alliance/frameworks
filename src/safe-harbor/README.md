@@ -8,8 +8,6 @@ tags:
 
 # Whitehat Safe Harbor
 
-
-
 SEAL’s [Whitehat Safe Harbor](https://github.com/security-alliance/safe-harbor) agreement is a legal and technical framework which can be adopted by protocols and crypto communities to grant advanced permission to whitehats and MEV bots for frontrunning exploits so long as:
 
 1. Funds are returned to a designated [Asset Recovery Address](./key-terms.md#asset-recovery-address) determined by the protocol.

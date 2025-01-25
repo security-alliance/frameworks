@@ -6,8 +6,6 @@ tags:
 
 # Safe Harbor for Whitehats
 
-
-
 ## Why You Should Care
 
 Safe Harbor lets whitehats step in during [active exploits](./key-terms.md#active-exploit) to help secure protocol funds. It does so by providing a legal framework that outlines what whitehats can and can't do, how they ought to operate, and protects whitehats in the event of legal action taken by the protocol.
