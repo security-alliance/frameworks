@@ -1,6 +1,12 @@
+---
+tags:
+  - Community & Marketing
+  - Security Specialist
+---
+
 # Discord Security
 
-tag: [Community & Marketing, Security Specialist]
+
 
 Discord has a large set of security settings to take into consideration, as well as some potential pitfalls where a server moderator could for example fall victim to a phishing attempt by having their account hijacked through a QR code.
 Below, you can find some hardening suggestions when setting up a Discord server.

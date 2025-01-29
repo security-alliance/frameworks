@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Dynamic Application Security Testing (DAST)
-tag: [Engineer/Developer, Security Specialist]
+
 
 Dynamic Application Security Testing (DAST) is a security testing method that involves evaluating applications in their running state. DAST tools simulate attacks against the application to identify vulnerabilities that could be exploited.
 

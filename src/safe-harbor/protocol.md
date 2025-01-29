@@ -1,6 +1,11 @@
-# Safe Harbor for Protocols
+---
+tags:
+  - SEAL/Initiative
+  - Protocol
+  - DAO
+---
 
-tag: [SEAL/Initiative, Protocol, DAO]
+# Safe Harbor for Protocols
 
 ## Why You Should Care
 
@@ -8,8 +13,8 @@ Currently, the process for fund recovery during an [active exploit](./key-terms.
 
 As of 2023, just 20% of stolen assets are recovered. With Safe Harbor we aim to approach 100%.
 
-| ![20% Assets Recovered](images/returned-funds-percent.png) |
-| :--: |
+|           ![20% Assets Recovered](images/returned-funds-percent.png)            |
+| :-----------------------------------------------------------------------------: |
 | Hacken 2023 [Security Report](https://hacken.io/insights/2023-security-report/) |
 
 Safe Harbor defines clear guidelines for what a Whitehat can and cannot do to protect your protocol, as well as what happens after protection occurs.
@@ -47,7 +52,6 @@ Adoption will generally follow the following process:
 
 Collecting all this information ensures that, in the event of an attack against your protocol, whitehats have the knowledge and permission required to step in and minimize losses.
 
-
 ## After You’ve Adopted
 
 Once you've adopted Safe Harbor, maintaining it is crucial for ongoing protection of any new assets. If you publish a new asset always ensure you update your safe harbor adoption so everything remains protected.
@@ -59,4 +63,7 @@ If you want to make any changes to your adoption details, for example adjusting 
 In the event of an exploit you’ll follow the below process.
 
 1. **Asset Recovery**: Whitehats will use your designated Asset Recovery Address to return any recovered funds and attempt to contact your designated emergency contact. In general this should happen within 6 hours of the event, though it may take as long as 48 hours.
-2. **Post-recovery Procedure**: Upon receiving your recovered assets, conduct any required KYC checks using the disclosed KYC provider. Then, distribute the agreed bounty to the Whitehat according to the bounty terms specified in your adoption details.
+   <<<<<<< HEAD
+2. # **Post-recovery Procedure**: Upon receiving your recovered assets, conduct any required KYC checks using the disclosed KYC provider. Then, distribute the agreed bounty to the Whitehat according to the bounty terms specified in your adoption details.
+3. **Post-recovery Procedure**: Upon receiving your recovered assets, conduct any required KYC checks using the disclosed KYC provider. Then, distribute the agreed bounty to the Whitehat according to the bounty terms specified in your adoption details.
+   > > > > > > > develop

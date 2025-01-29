@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Phishing and Social Engineering
-tag: [Engineer/Developer, Security Specialist]
+
 
 In the dynamic and often nebulous realm of web3 and cryptocurrencies, understanding scams and phishing is critical for anyone venturing into this space. Both terms describe deceptive practices but manifest in distinct ways and require different prevention strategies.
 

@@ -1,5 +1,15 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+  - Cloud
+  - SRE
+---
+
 # Network Security
-tag: [Engineer/Developer, Security Specialist, Operations & Strategy, Devops, Cloud, SRE]
+
 
 Network security is a very wide subject, and the steps you take are significantly dependent on if you're managing your own network, if you're utilizing a cloud provider, or if you're using a service provider. With that said, there are some general best practices to consider:
 

@@ -1,5 +1,15 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+  - Cloud
+  - SRE
+---
+
 # DDoS Protection
-tag: [Engineer/Developer, Security Specialist, Operations & Strategy, Devops, Cloud, SRE]
+
 
 Distributed Denial of Service (DDoS) attacks are a pervasive threat that can disrupt your services by overwhelming them with excessive traffic.
 

@@ -1,5 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - SRE
+---
+
 # DevSecOps
-tag: [Engineer/Developer, Security Specialist, Devops, SRE]
+
 
 Traditionally, rapid development and deployment is often prioritized at the expense of security considerations. This is generally speaking no different in web3, but it is important to take integrity, confidentiality, and availability into consideration too. To effectively address this without compromising on rapid development and deployment, it is essential to integrate security into the process, which is where devsecops comes into play. By implementing devsecops, projects can not only deploy faster, but also be more secure.
 

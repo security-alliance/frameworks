@@ -1,5 +1,11 @@
+---
+tags:
+  - Community & Marketing
+  - Security Specialist
+---
+
 # Google Security
-tag: [Community & Marketing, Security Specialist]
+
 
 Google provides a wide range of services including email, file storage, search, and more. Protecting your Google account is one of the most crucial things to do, and Google offers multiple ways to enhance your account security. Here are five simple steps you can take right now to secure your Google account.
 

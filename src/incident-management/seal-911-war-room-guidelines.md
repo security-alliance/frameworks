@@ -1,6 +1,12 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+---
+
 # SEAL 911
 
-tag: [Security Specialist, Operations & Strategy]
+
 
 SEAL 911 is a project designed to give users, developers, and even other security researchers an accessible method to contact a small group of highly trusted security researchers. The group can be reached via the [Telegram bot](https://t.me/seal_911_bot).
 

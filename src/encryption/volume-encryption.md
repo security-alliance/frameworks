@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Volume Encryption
-tag: [Engineer/Developer, Security Specialist]
+
 
 ## What is Volume Encryption?
 Volume encryption is the process of encrypting a specific storage volume or partition to protect the data it contains. Unlike full disk encryption, which encrypts the entire disk, volume encryption allows for selective encryption of specific volumes, providing flexibility in managing encrypted and un-encrypted data on the same device.

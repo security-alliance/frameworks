@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Key Management
-tag: [Engineer/Developer, Security Specialist]
+
 
 Cryptocurrency relies on cryptographic keys to secure transactions and manage ownership of digital assets. Proper key management is essential to protect these assets from theft, loss, and unauthorized access. This guide covers the fundamental aspects of key management, offering insights into different types of wallets, signing schemes, and best practices to ensure a high level of security.
 
