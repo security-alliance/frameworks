@@ -40,7 +40,15 @@ However, if you choose to use **Telegram**, the following best practices can hel
       - [Step 3: Replicating Conversations](#step-3-replicating-conversations)
       - [Step 4: Swapping Payment Details](#step-4-swapping-payment-details)
       - [Step 5: Execution of the Scam](#step-5-execution-of-the-scam)
-  - [Prevention Tips](#prevention-tips)
+  - [Extended Security](#extended-security-1)
+    - [Devices](#devices)
+    - [Passcode Lock](#passcode-lock)
+    - [Privacy and Security](#privacy-and-security)
+      - [Security](#security)
+        - [Two-Step Verification](#two-step-verification)
+      - [Privacy](#privacy)
+      - [Settings \> Privacy and Security \> Data Settings](#settings--privacy-and-security--data-settings)
+  - [Tips for Safe Use](#tips-for-safe-use)
 
 ## Standard Security
 
@@ -188,48 +196,62 @@ Attackers can exploit Telegram's group chat features to intercept and manipulate
 
 ## Extended Security
 
-**Devices**
-Settings > Devices: The default for automatically terminating old sessions is set to 6 months. I highly recommend changing this setting to a shorter period—1 month or even 1 week—depending on how frequently you use TG
+### Devices
 
-**Passcode Lock**
-Settings > Privacy and Security > Passcode Lock: This feature adds a passcode to access your Telegram app after a period of inactivity. The default setting is "away for 1 hour." Don't lose this passcode—store it offline if needed. However, ensure it's different from your phone's unlock passcode.
+- **Settings > Devices:** The default setting for automatically terminating old sessions is set to 6 months. It is highly recommended to change this setting to a shorter period—1 month or even 1 week—depending on how frequently you use Telegram.
 
-**Privacy and Security**
-Settings > Privacy and Security > Two-Step Verification: Keep in mind that Telegram doesn't have a login by default. However, you can set up a password that acts as a "second" 2FA method when logging in from a new device. While they send a code via SMS (which is not secure) and offer email recovery (which is better), they don't provide options for authenticator apps or hardware keys. If you lose this password, you'll be in trouble, so make sure to write it down offline and don't lose it.
+### Passcode Lock
 
-**Privacy**
+- **Settings > Privacy and Security > Passcode Lock:** This feature adds a passcode to access your Telegram app after a period of inactivity. The default setting is "away for 1 hour." 
+  - **Recommendations:**
+    - **Store Passcode Securely:** Do not lose this passcode—store it offline if needed.
+    - **Unique Passcode:** Ensure it is different from your phone's unlock passcode.
 
-Consider adjusting the following settings in this section based on your country, usage, and purpose for using Telegram:
-Settings > Privacy and Security >
+### Privacy and Security
 
-Phone Number: Nobody
-Last Seen & Online: Nobody
-Profile Picture: Everybody (stops scammers impersonating your PFP)
-Bio: Nobody (Depending on use of TG)
-Date of Birth: Nobody
-Forwarded Messages: Nobody
-Calls: Nobody or Contacts Only (Depending on use of TG)
-Voice Messages: Contacts Only (Depending on use of TG)
-Messages: Everybody or Contacts Only (Depending on use of TG)
-Invites: Contacts Only or Nobody (I wouldn't put ‘Everyone’ so you don't get added to a random group that impersonates another group and ends up getting you scammed)
-Settings > Privacy and Security > Data Settings:
-Sync Contacts: Disable (Depending on use of TG)
-Suggest Frequent Contacts: Disable (Depending on use of TG)
+**Go to:** Settings > Privacy and Security
 
-**Tips to use Telegram safely:**
-- Do you want to message someone? Create a 'secret' chat so the communication is encrypted (1:1 chats)
-- Triple-check all group invites, so it's not an imposter group sharing bad links
-- Never trust a DM from anyone sending links or acting as "support", "exchanges", or "team"
-- Use the block function, don't just delete chats, report, and block spammers/scammers
-- This is an advanced tip, but you can setup a proxy (VPN) to hide your IP at all times via TG app.
-- Do not just use any "mini app" do not login or put any information if it redirects outside of telegram, triple check the username of the mini app to ensure its the real one as telegram does not use any bot verification system. Never download anything and run any commands on your device from telegram.
-- Be aware of telegram ads in channels as anyone can post an ad (99% scam ads)
+#### Security
 
+##### Two-Step Verification
 
-## Prevention Tips
+- **Overview:** Telegram does not require a login by default. However, you can set up a password that acts as a "second" 2FA method when logging in from a new device.
+- **Security Measures:**
+  - **SMS Codes:** Telegram sends a code via SMS, which is not secure.
+  - **Email Recovery:** Offers email recovery, which is more secure but lacks options for authenticator apps or hardware keys.
+- **Important:** 
+  - **Backup Password:** If you lose this password, access to your account may be compromised. 
+  - **Secure Storage:** Write it down offline and ensure it is not lost.
 
-- **Verify Group Authenticity:** Always confirm the legitimacy of group chats with all parties involved through separate channels.
-- **Use Encrypted Chats:** Prefer one-on-one secret chats with end-to-end encryption for sensitive transactions.
-- **Double-Check Payment Details:** Verify payment information through multiple methods before transferring funds.
-- **Limit Group Permissions:** Restrict who can add members to groups to prevent unauthorized cloning.
-- **Educate Members:** Train community members to recognize and report suspicious group activities.
+#### Privacy
+
+Consider adjusting the following settings based on your country, usage, and purpose for using Telegram:
+
+- **Phone Number:** Set to **Nobody** to prevent exposure.
+- **Last Seen & Online:** Set to **Nobody** to enhance privacy.
+- **Profile Picture:** Set to **Everybody** to stop scammers from impersonating your profile picture.
+- **Bio:** Set to **Nobody** (depending on use of Telegram).
+- **Date of Birth:** Set to **Nobody**.
+- **Forwarded Messages:** Set to **Nobody**.
+- **Calls:** Set to **Nobody** or **Contacts Only** (depending on use of Telegram).
+- **Voice Messages:** Set to **Contacts Only** (depending on use of Telegram).
+- **Messages:** Set to **Everybody** or **Contacts Only** (depending on use of Telegram).
+- **Invites:** Set to **Contacts Only** or **Nobody** to prevent being added to random groups that may impersonate legitimate groups and lead to scams.
+
+#### Settings > Privacy and Security > Data Settings
+
+- **Sync Contacts:** Disable (depending on use of Telegram) to prevent syncing your contacts.
+- **Suggest Frequent Contacts:** Disable (depending on use of Telegram) to avoid unsolicited contact suggestions.
+
+## Tips for Safe Use
+
+- **Use Secret Chats:** When messaging someone, create a 'secret' chat to ensure encrypted 1:1 communication, providing end-to-end encryption for sensitive transactions.
+- **Verify Group Invites and Authenticity:** Always triple-check group invitations and confirm the legitimacy of group chats through separate channels to avoid joining impostor groups that share malicious links.
+- **Beware of Unsolicited DMs:** Never trust direct messages from anyone sending links or posing as "support," "exchanges," or "team" members.
+- **Double-Check Payment Details:** Verify payment information through multiple methods before transferring funds to prevent fund redirection.
+- **Block and Report Scammers:** Use the block function to prevent further contact, and report spammers/scammers instead of just deleting chats.
+- **Limit Group Permissions:** Restrict who can add members to groups to prevent unauthorized cloning and protect against raids.
+- **Educate Members:** Train community members to recognize and report suspicious group activities and security threats.
+- **Exercise Caution with Mini Apps:** Avoid logging in or providing information to mini apps that redirect outside of Telegram. Triple-check the username of the mini app to ensure its legitimacy, as Telegram lacks a bot verification system. Never download or run any commands from Telegram on your device.
+- **Enhance Privacy with a VPN:** *Advanced tip:* Set up a proxy or VPN to hide your IP address while using the Telegram app.
+- **Stay Vigilant Against Scam Ads:** Be aware that anyone can post ads in channels, with 99% being scam ads. Exercise caution when interacting with advertisements.
