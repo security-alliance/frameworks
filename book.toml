@@ -21,12 +21,23 @@ tag_colors = { "SEAL/Initiative" = "#4339db" }
 [output]
 
 [output.html]
-additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./mdbook-admonish.css", "./theme/custom.css", "./tags/tags.css"]
-additional-js = ["./theme/main.js", "./tags/tagsindex.js"]
+additional-css = [
+    "./theme/catppuccin.css",
+    "./theme/catppuccin-admonish.css",
+    "./mdbook-admonish.css",
+    "./theme/custom.css",
+    "./theme/toc/pagetoc.css",
+    "./tags/tags.css",
+]
+additional-js = [
+    "./theme/main.js",
+    "./theme/toc/pagetoc.js",
+    "./tags/tagsindex.js",
+]
 template-path = "theme"
 copy-images = true
-default-theme = "ayu"
-preferred-dark-theme = "ayu"
+default-theme = "navy"
+preferred-dark-theme = "navy"
 mathjax-support = true
 # site-url = "/book/"
 git-repository-url = "https://github.com/security-alliance/frameworks/tree/develop"
