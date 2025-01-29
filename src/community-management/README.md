@@ -1,6 +1,9 @@
-# Community Management
+---
+tags:
+  - Community & Marketing
+---
 
-tag: [Community & Marketing]
+# Community Management
 
 Communities might be the key of many Web3 projects, but they also represent a significant security challenge. From casual users to top-level executives, everyone within an organization can be targeted by social engineering tactics across platforms like Telegram, Discord, X (formerly Twitter), Google, and more. When a community channel is compromised—whether by phishing, fraudulent links, or account takeovers—it can quickly become a vehicle for wider attacks, putting both users and organizational reputations at risk.
 

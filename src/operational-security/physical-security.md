@@ -1,5 +1,11 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+---
+
 # Physical Security
-tag: [Security Specialist, Operations & Strategy]
+
 
 Physical security is an often overlooked but crucial aspect of operational security, especially for individuals and organizations involved in cryptocurrency. This section provides guidelines on how to protect yourself, your digital assets, and your organization from physical threats and attacks.
 

@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Code Reviews and Peer Audits
-tag: [Engineer/Developer, Security Specialist]
+
 
 Code reviews and peer audits help identifying and mitigating security vulnerabilities in software. They involve systematically examining code to ensure it adheres to the security standards and best practices of the project.
 

@@ -1,5 +1,12 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+---
+
 # Repository Hardening
-tag: [Engineer/Developer, Security Specialist, Devops]
+
 
 If a threat actor obtains access to your repository, it could have very severe consequences. In order to help avoid this, you could consider implementing the following best practices:
 

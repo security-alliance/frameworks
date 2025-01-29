@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Fuzz Testing
-tag: [Engineer/Developer, Security Specialist]
+
 
 Fuzz testing, or fuzzing, is a software testing technique that involves providing invalid, unexpected, or random data to the inputs of a program to discover vulnerabilities. Fuzzing helps identify security issues such as buffer overflows, memory leaks, and input validation errors.
 
