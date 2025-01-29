@@ -6,7 +6,6 @@ tags:
 
 # Wireless Security
 
-
 Wireless networks offers convenience and flexibility. However, they also present unique security challenges.
 
 ## Key Components of Wireless Security
@@ -37,9 +36,11 @@ Wireless networks offers convenience and flexibility. However, they also present
 ## Best Practices for Wireless Security
 
 ### Network Security
+
 1. Consider the security implications of someone obtaining access into your network via an activated inbound VPN connection, and make configurations to prevent a disaster should this happen, if inbound VPN must be enabled.
 2. Create a secure wireless network for your work, and use a less safe wireless network for other devices such as IoT devices, TVs, and other types of non-work related devices that is on a restricted network.
 
 ### Guest Networks
+
 1. Set up a separate guest network for friends and temporary users. Ensure it is isolated from the main corporate network.
 2. Restrict guest network access to the internet only. Implement bandwidth limits and usage policies to prevent abuse.

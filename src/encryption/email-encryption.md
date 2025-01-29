@@ -6,7 +6,6 @@ tags:
 
 # Email Encryption
 
-
 Email is insecure and un-encrypted by default, but can become more secure by following best practices:
 
 ## Best Practices

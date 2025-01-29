@@ -5,63 +5,191 @@ tags:
 
 # Telegram Security
 
+> **Key Takeaway:** Stay vigilant with group chats on Telegram. Implement verification steps and secure communication practices to protect against sophisticated interception attacks.
 
-Telegram, in its default mode, is actually not providing end-to-end encryption between users. If it's important to have end-to-end encryption, using a messenger such has [Signal](https://signal.org/) should be used instead. With that said, Telegram is popular in the crypto ecosystem, and as such you can find some best practices below when it comes to securing Telegram.
+While **Telegram** is widely used in the crypto community, it's crucial to understand its security limitations. Telegram **does not** offer end-to-end encryption (**E2EE**) by default, which means your messages could potentially be accessed by third parties. Additionally, Telegram's reliance on phone numbers for account creation can expose users to SIM swapping attacks, and its peer-to-peer call feature can reveal your IP address to other users. If **E2EE** is a priority, consider using [Signal](https://signal.org/).
+
+However, if you choose to use **Telegram**, the following best practices can help enhance your security.
+
+---
+
+## Table Of Contents <!-- omit in toc -->
+
+- [Telegram Security](#telegram-security)
+  - [Standard Security](#standard-security)
+    - [Configure 2FA](#configure-2fa)
+    - [Hide Your Phone Number](#hide-your-phone-number)
+    - [Disable P2P Calling](#disable-p2p-calling)
+    - [Manage Inactive Sessions](#manage-inactive-sessions)
+  - [Extended Security](#extended-security)
+    - [Consider Using a Different Phone Number](#consider-using-a-different-phone-number)
+      - [Using a VoIP Number](#using-a-voip-number)
+      - [Using an Anonymous Number](#using-an-anonymous-number)
+    - [Turn On Auto-delete Messages](#turn-on-auto-delete-messages)
+  - [Advanced Security Measures](#advanced-security-measures)
+    - [Use Secret Chats for Enhanced Privacy](#use-secret-chats-for-enhanced-privacy)
+    - [Regularly Update the Telegram App](#regularly-update-the-telegram-app)
+    - [Be Cautious with Third-Party Bots and Integrations](#be-cautious-with-third-party-bots-and-integrations)
+    - [Implement Device-Level Security](#implement-device-level-security)
+    - [Manage Group and Channel Admin Permissions](#manage-group-and-channel-admin-permissions)
+    - [Educate Community Members on Security Practices](#educate-community-members-on-security-practices)
+  - [Example of a Man-in-the-Group Attack](#example-of-a-man-in-the-group-attack)
+    - [Scenario: Intercepting a Payment Deal](#scenario-intercepting-a-payment-deal)
+      - [Step 1: Initial Communication](#step-1-initial-communication)
+      - [Step 2: Attackers Create Cloned Groups](#step-2-attackers-create-cloned-groups)
+      - [Step 3: Replicating Conversations](#step-3-replicating-conversations)
+      - [Step 4: Swapping Payment Details](#step-4-swapping-payment-details)
+      - [Step 5: Execution of the Scam](#step-5-execution-of-the-scam)
+  - [Prevention Tips](#prevention-tips)
 
 ## Standard Security
 
 ### Configure 2FA
 
-Telegram might require you to sign up using a phone number, but you can also set up 2FA in the form of an additional password. This is probably the most important thing you could do, and is the only thing that will keep your Telegram account safe if you get SIM swapped. Just make sure you don’t reuse this password!
+Telegram sign-ups require a phone number, but you can also enable two-factor authentication via a password—your main protection if you’re ever SIM-swapped. **Don’t reuse this password anywhere else.**
 
-![*Logging in with 2FA enabled*](https://prod-files-secure.s3.us-west-2.amazonaws.com/b1d29658-a003-4e92-93b6-241efdd083f6/c9d574e8-1ad9-4aad-a93f-e33bce31581b/Screen_Shot_2023-11-29_at_23.17.33.png)
+1. **Go to**: **Settings > Privacy and Security > Two-Step Verification**  
+2. **Set**: A strong password and recovery email (store both in a password manager)
 
-**Logging in with 2FA enabled**
+### Hide Your Phone Number
 
-1. Go to Settings > Privacy and Security > Two-Step Verification
-2. Select a password and recovery email (and save it in your password manager)
+Making your phone number visible can expose you to unwanted contact or social engineering attacks. Restricting visibility helps safeguard your personal info.
 
-### Hide your phone number
+1. **Go to**: **Settings > Privacy and Security > Phone Number**  
+2. **Who can see my phone number?**: Select **Nobody**  
+3. **Who can find me by my number?**: Select **My contacts**
 
-Don’t make it easy for threat actors to collect your personal information. Having your phone number publicly visible, or even to people you have added to your contacts, is often completely unnecessary. To disable this, change the following:
+### Disable P2P Calling
 
-1. Go to Settings > Privacy and Security > Phone Number
-2. Under “Who can see my phone number”, select “Nobody”
-3. Under “Who can find me by my number”, select “My contacts”
+By default, Telegram calls can connect you *directly* to the other user, potentially revealing your IP address.
 
-### Disable P2P calling
+1. **Go to**: **Settings > Privacy and Security > Calls**  
+2. **Use peer-to-peer with**: Select **Nobody**
 
-Telegram allows for peer-to-peer calls, which means that calls will connect you directly with the other user instead of via Telegram’s servers. If you’re not using E2EE for your chats, you probably prefer hiding your IP over potential surveillance by Telegram.
+### Manage Inactive Sessions
 
-1. Go to Settings > Privacy and Security > Calls
-2. Under “Use peer-to-peer with”, select “Nobody”
+Telegram supports auto-terminating inactive sessions. You can also manually review and end any suspicious active sessions.
 
-### Manage inactive sessions
-
-Telegram allows you to automatically terminate inactive sessions, but you should also verify that all your active sessions are legitimate.
-
-1. Go to Settings > Privacy and Security > Active sessions
-2. Review your active sessions. Delete any sessions you don’t recognize
-3. Set Telegram to terminate inactive sessions after one month
-
+1. **Go to**: **Settings > Privacy and Security > Active sessions**  
+2. **Review**: Delete any sessions you don’t recognize  
+3. **Auto-terminate**: Set inactive sessions to end after **1 month**
 
 ## Extended Security
 
-### Consider using a different phone number
+### Consider Using a Different Phone Number
 
-If you’ve followed the guide above, you should be safe using your primary number for Telegram. However, there are some legitimate reasons why you might still want to use a different number, such as: not wanting your contacts to find out that you use Telegram, or not wanting to accidentally leak your number if you show your Telegram profile to someone. If this is the case, you have two options.
+Even if you implement all the recommended security measures, there are still valid reasons to use a separate phone number. For instance, it can help prevent your contacts from discovering your Telegram account or reduce the risk of accidental number exposure. This is particularly important because the **"Share My Phone Number"** option is enabled by default whenever you add a new contact.
 
-**Using a VoIP number**
+#### Using a VoIP Number
 
-Telegram doesn’t really like it when you do this and blocks a lot of VoIP providers, but there are services out there that you can use to purchase a burner number to use exclusively with Telegram. [Google Voice](https://voice.google.com/) or [Burner](https://www.burnerapp.com/) might work here.
+Telegram restricts many VoIP providers, but services like [Google Voice](https://voice.google.com/) or [Burner](https://www.burnerapp.com/) might work. Purchase a burner number solely for Telegram if you prefer additional anonymity.
 
-**Using an anonymous number**
+#### Using an Anonymous Number
 
-As of December 2022, Telegram added support for anonymous numbers purchased on their [blockchain](https://ton.org/). You can also use [Fragment](https://fragment.com/).
+In December 2022, Telegram introduced support for anonymous numbers purchased through its [TON](https://ton.org/) blockchain infrastructure. You can also check out [Fragment](https://fragment.com/) for such options.
 
-### Turn on auto-delete messages
+### Turn On Auto-delete Messages
 
-Remember that picture you sent your friend 8 months ago? You might not, but if an attacker manages to hijack your account, they’ll certainly appreciate all the breadcrumbs you’ve left behind for them.
+Consider the photo you shared with a friend several months ago. While it might have slipped your mind, an attacker who gains access to your account could find such information quite valuable.
 
-1. Go to Settings > Privacy and Security > Auto-Delete Messages
-2. Set to “After 1 week” or a time which matches your risk appetite.
+1. **Go to**: **Settings > Privacy and Security > Auto-Delete Messages**  
+2. **Set**: Choose a time frame (e.g., 1 week) based on your risk tolerance
+
+## Advanced Security Measures
+
+### Use Secret Chats for Enhanced Privacy
+
+For conversations that require an extra layer of security, use Telegram's Secret Chats, which offer **end-to-end encryption**.
+
+1. **Start a Secret Chat**: Open the chat with the desired contact, tap on their name, and select **Start Secret Chat**  
+2. **Benefits**:
+   - Messages are encrypted and can only be read by you and the recipient
+   - Offers self-destruct timers for messages
+   - Prevents forwarding of messages to other chats
+
+### Regularly Update the Telegram App
+
+Ensure you are always using the latest version of Telegram to benefit from the newest security patches and features.
+
+1. **Check for Updates**: Visit your device's app store regularly  
+2. **Enable Automatic Updates**: If possible, turn on automatic updates to stay current
+
+### Be Cautious with Third-Party Bots and Integrations
+
+Third-party bots can enhance functionality but may also introduce vulnerabilities.
+
+1. **Use Trusted Bots**: Only add bots from reputable sources  
+2. **Review Permissions**: Limit the permissions you grant to bots  
+3. **Regular Audits**: Periodically review and remove unnecessary bots
+
+### Implement Device-Level Security
+
+Protect the device you use to access Telegram to prevent unauthorized access.
+
+1. **Use Strong Passwords or Biometrics**: Secure your device with a strong passcode or biometric authentication  
+2. **Enable Device Encryption**: Ensure your device's storage is encrypted  
+3. **Install Security Software**: Use reputable antivirus and anti-malware solutions
+
+### Manage Group and Channel Admin Permissions
+
+Properly managing admin permissions can prevent misuse and unauthorized access.
+
+1. **Limit Admin Roles**: Only grant admin privileges to trusted individuals  
+2. **Review Permissions**: Regularly check what permissions each admin has  
+3. **Use Role-Based Access**: Assign roles based on responsibilities to minimize risks
+
+### Educate Community Members on Security Practices
+
+A secure community relies on the awareness and vigilance of its members.
+
+1. **Provide Security Guidelines**: Share best practices with your community  
+2. **Conduct Training Sessions**: Offer regular training on recognizing phishing and other threats  
+3. **Promote Safe Communication**: Encourage the use of Secret Chats and cautious sharing of personal information
+
+---
+
+## Example of a Man-in-the-Group Attack
+
+Attackers can exploit Telegram's group chat features to intercept and manipulate communications between two parties. Here's a concise example of how such an attack might occur:
+
+### Scenario: Intercepting a Payment Deal
+
+#### Step 1: Initial Communication
+
+- **Alice** and **Bob** decide to finalize a cryptocurrency deal using a Telegram group chat named **"Crypto Deals"**.
+
+#### Step 2: Attackers Create Cloned Groups
+
+- **Attacker 1** creates **Group A** impersonating **Alice**.
+- **Attacker 2** creates **Group B** impersonating **Bob**.
+
+#### Step 3: Replicating Conversations
+
+- **In Group A (Impersonating Alice):**
+  - The attacker, posing as Alice, relays Alice's messages from Group B to maintain the conversation.
+
+- **In Group B (Impersonating Bob):**
+  - The attacker, posing as Bob, mirrors Bob's messages from Group A, acting as a middleman without altering the content.
+
+#### Step 4: Swapping Payment Details
+
+- **In Group A:**
+  - Fake Alice and Bob agree to the terms of the deal.
+  - Bob shares his payment address.
+
+- **In Group B:**
+  - Fake Bob shares his swapped payment address.
+  - The conversation continues normally, with neither Alice nor Bob aware of the swap.
+
+#### Step 5: Execution of the Scam
+
+- **Alice** sends the payment to what she believes are Bob's details but are actually those of Fake Bob.
+- The attacker now controls both ends of the conversation, having successfully redirected the funds.
+
+## Prevention Tips
+
+- **Verify Group Authenticity:** Always confirm the legitimacy of group chats with all parties involved through separate channels.
+- **Use Encrypted Chats:** Prefer one-on-one secret chats with end-to-end encryption for sensitive transactions.
+- **Double-Check Payment Details:** Verify payment information through multiple methods before transferring funds.
+- **Limit Group Permissions:** Restrict who can add members to groups to prevent unauthorized cloning.
+- **Educate Members:** Train community members to recognize and report suspicious group activities.

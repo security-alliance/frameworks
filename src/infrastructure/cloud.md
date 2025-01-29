@@ -10,8 +10,6 @@ tags:
 
 # Cloud Infrastructure
 
-
-
 Securing your cloud infrastructure could be considered as important as securing your decentralized application, as a lot of users will be interacting with your dapp through the cloud provider. Some best practices to consider are:
 
 1. Implement strict access controls and identity management to ensure that only authorized individuals can interact with cloud resources. Use role-based access control (RBAC) and multi-factor authentication (MFA).
