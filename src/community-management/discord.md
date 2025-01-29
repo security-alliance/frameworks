@@ -63,6 +63,7 @@ c) **Enable Explicit Content Filter**
 - This automatically blocks messages containing explicit images in non-age-restricted channels
 - Age-restricted channels are exempt from this filter
 
+<<<<<<< HEAD
 d) **Enable Raid Protection and CAPTCHA**
 
 - Go to Server Settings > Safety Setup > Raid Protection and Captcha
@@ -71,6 +72,10 @@ d) **Enable Raid Protection and CAPTCHA**
 - When activated:
   - Sends alerts to a specified channel
   - Requires CAPTCHA verification for new users for one hour after detection
+=======
+d) **Raid Protection and CAPTCHA**
+Discord’s Raid Protection system utilizes machine learning to detect and prevent join-raids, where bot armies attempt to overwhelm your server. Activate Raid Protection alerts to receive notifications when a raid is detected. Upon detection, automated actions are taken, including sending alerts to a designated channel and implementing CAPTCHA verification for new joiners within the following hour to deter raiders. To enable these features, navigate to Server Settings > Safety Setup > Raid Protection and Captcha, and activate all relevant settings to prompt users for CAPTCHA verification when performing actions as new users.
+>>>>>>> edaf90e47c1b0ca3eb4c70605e469811a8528fd3
 
 ### Roles and Permissions
 
@@ -162,6 +167,7 @@ c) **Implement Security/Moderation Bots**
   - Dyno for advanced moderation and logging
   - Carl-bot for reaction roles and custom commands
   - Set up security Bots
+<<<<<<< HEAD
 
 #### Third party bots
 
@@ -184,6 +190,19 @@ This is a monitoring system to observe and note any changes (spontaneous or plan
 Only allows approved links to be used in the discord server. A popular bot in this category is Goodknight Bot.
 
 _The bots above are not all-inclusive but rather a recommended list of bots to help protect your Discord server in these categories._
+=======
+Various third-party Discord bots offer valuable security and protection features, facilitating automated moderation for your server. In the sections below, we’ll explore different categories of security bots and highlight popular options for each category.
+
+Anti-Impersonation Bots: Set up custom rules to prevent other users from joining using the same username and PFP to impersonate you or other important members of the server. A popular bot in this category is Wick Bot.
+
+Anti-Raid Bots: to prevent spam bots from joining your server all at once, an attack known as raiding, you can also set up bots with particular rules. Beemo is a good example of a bot in this category.
+
+Anti-Nuke Bots: This is a monitoring system to observe and note any changes (spontaneous or planned) that take place in your discord server. Some key observation markers are channel and role creation/deletions, banning or kicking members, and webhook creation/deletion.
+
+Moderation & Link Whitelisting Bots: Only allows approved links to be used in the discord server. A popular bot in this category is Goodknight Bot.
+
+The bots above are not all-inclusive but rather a recommended list of bots to help protect your Discord server in these categories.
+>>>>>>> edaf90e47c1b0ca3eb4c70605e469811a8528fd3
 
 ### Channels
 
