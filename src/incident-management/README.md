@@ -1,5 +1,13 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+  - SRE
+---
+
 # Incident Management
-tag: [Security Specialist, Operations & Strategy, Devops, SRE]
+
 
 Incident management involves preparing for, detecting, responding to, and recovering from security incidents. By thinking about incident management prior to actually experiencing an incident, you can help increase the likelihood of a timely recovery.
 

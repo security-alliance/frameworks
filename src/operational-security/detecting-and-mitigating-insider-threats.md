@@ -1,5 +1,11 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+---
+
 # Detecting and Mitigating Insider Threats
-tag: [Security Specialist, Operations & Strategy]
+
 
 Insider threats, whether intentional or unintentional, pose a significant risk to any project. These threats can come from current or former employees, contractors, or business associates who have inside information concerning the project's security practices, data, and computer systems. Effective detection and mitigation strategies are crucial for safeguarding your project against these risks.
 

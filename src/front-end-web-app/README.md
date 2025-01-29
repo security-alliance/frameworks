@@ -1,5 +1,12 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+---
+
 # Front-End Web Application Security Best Practices
-tag: [Engineer/Developer, Security Specialist, Devops]
+
 
 Often an overlooked area, but ensuring the security of your front-end web and potential mobile applications is crucial for protecting your users. If the front-end web application is compromised, it could have severe effects on your users as they for example could start interacting with a malicious contract instead of your official contract.
 

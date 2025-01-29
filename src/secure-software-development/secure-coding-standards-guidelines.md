@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Secure Coding Standards and Guidelines
-tag: [Engineer/Developer, Security Specialist]
+
 
 Using secure coding standards and guidelines increases the likelihood of you being resilient to security threats. Having these type of standards can help developers avoid common vulnerabilities, and help ensure that security is considered at every stage of development.
 

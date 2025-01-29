@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Web Application Security
-tag: [Engineer/Developer, Security Specialist]
+
 
 Providing a secure front-end (web application) for users to interact with your web3 protocol is often essential. Web application vulnerabilities have however been exploited in the past to steal user funds, and as such it's important to take web application security into consideration for your project.
 

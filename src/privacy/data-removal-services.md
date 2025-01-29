@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Data Removal Services
-tag: [Engineer/Developer, Security Specialist]
+
 
 Removing your personal data from online platforms can help protect your privacy and reduce the risk of identity theft. Here are some steps and services to help you remove your data from the internet.
 
