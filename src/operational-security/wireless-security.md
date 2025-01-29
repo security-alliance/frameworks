@@ -1,5 +1,11 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+---
+
 # Wireless Security
-tag: [Security Specialist, Operations & Strategy]
+
 
 Wireless networks offers convenience and flexibility. However, they also present unique security challenges.
 

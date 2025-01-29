@@ -1,6 +1,10 @@
-# Safe Harbor for Whitehats
+---
+tags:
+  - SEAL/Initiative
+  - Whitehat
+---
 
-tag: [SEAL/Initiative, Whitehat]
+# Safe Harbor for Whitehats
 
 ## Why You Should Care
 

@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Guidelines for On-Chain Monitoring
-tag: [Engineer/Developer, Security Specialist]
+
 
 Effective on-chain monitoring is complex, and involves setting up systems and processes to continuously observe blockchain activities and detect any anomalies.
 

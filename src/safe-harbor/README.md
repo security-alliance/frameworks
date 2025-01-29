@@ -1,6 +1,12 @@
-# Whitehat Safe Harbor
+---
+tags:
+  - SEAL/Initiative
+  - Protocol
+  - Whitehat
+  - DAO
+---
 
-tag: [SEAL/Initiative, Protocol, Whitehat, DAO]
+# Whitehat Safe Harbor
 
 SEAL’s [Whitehat Safe Harbor](https://github.com/security-alliance/safe-harbor) agreement is a legal and technical framework which can be adopted by protocols and crypto communities to grant advanced permission to whitehats and MEV bots for frontrunning exploits so long as:
 

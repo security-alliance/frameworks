@@ -1,5 +1,12 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+---
+
 # External Security Reviews
-tag: [Security Specialist, Operations & Strategy, Devops]
+
 
 External security reviews are quite common in web3 when it comes to smart contract audits which are often being done to check if the smart contracts are secure.
 
@@ -13,4 +20,3 @@ While external security reviews are good, they are certainly not foolproof and c
 2. [Preparation](./preparation.md)
 3. [Vendor Selection](./vendor-selection.md)
 4. [Security Policies and Procedures](./security-policies-and-procedures.md)
-

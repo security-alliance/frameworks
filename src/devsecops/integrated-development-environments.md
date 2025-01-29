@@ -1,5 +1,12 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+---
+
 # Integrated Development Environments (IDEs)
-tag: [Engineer/Developer, Security Specialist, Devops]
+
 
 Integrated Development Environments (IDEs) are essential tools for developers, but they also need to be secured. Consider implementing the following best practices:
 
