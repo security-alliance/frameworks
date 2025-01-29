@@ -95,11 +95,9 @@ Using a unique password for Twitter is crucial. If you haven't set one, now is t
 
 ### Additional Best Practices
 
-- Go to Settings & Privacy > Privacy and Safety > Discoverability and Contacts > Recommend to turn both email and phone discoverability off
-- Go to Settings & Privacy > Security and Account Access > Security > Setup your Security Key. Also enable/check box ‘password reset protection’
-- Go to Settings & Privacy > Security and Account Access > Apps and Sessions
->Connected Apps, log out of apps
-> Sessions, log out of old sessions
+- **Disable Email and Phone Discoverability**  
+  - Go to [Discoverability and Contacts](https://x.com/settings/contacts)
+  - It is recommended to turn both email and phone discoverability off.
 
 - **Privacy & Safety Settings:**  
   - In [Privacy & Safety](https://x.com/settings/privacy_and_safety), consider disabling “Allow message requests from everyone” to limit spam DMs and phishing attempts and enabling "Filter low-quality messages".
