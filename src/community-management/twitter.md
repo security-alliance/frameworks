@@ -36,6 +36,8 @@ There are no good reasons to keep a phone number attached to your account, and i
 1. **Go to:** [Phone Settings](https://x.com/settings/phone)
 2. **Remove:** Click **Delete phone number** if one is listed.
 
+After removing your phone number, it's crucial to navigate to Settings > Security and Account Access > Security > Two-Factor Authentication > Backup Codes. Store these codes offline, just like your seed phrase. Anyone with these codes can bypass your 2FA, so it's extremely important to write them down and keep them secure. Remember, when you change your password, new backup codes are generated.
+
 ### Configure 2FA
 
 Two-factor authentication is a great way to keep hackers at bay, but it's not foolproof if you're relying on SMS 2FA and someone gets hold of your phone number. It's generally better to use an authenticator app or a security key. Also, ensure your backup codes are stored safely, ideally printed on paper rather than saved on your device.
@@ -93,6 +95,10 @@ Using a unique password for Twitter is crucial. If you haven't set one, now is t
 
 ### Additional Best Practices
 
+- **Disable Email and Phone Discoverability**  
+  - Go to [Discoverability and Contacts](https://x.com/settings/contacts)
+  - It is recommended to turn both email and phone discoverability off.
+
 - **Privacy & Safety Settings:**  
   - In [Privacy & Safety](https://x.com/settings/privacy_and_safety), consider disabling “Allow message requests from everyone” to limit spam DMs and phishing attempts and enabling "Filter low-quality messages".
   
@@ -101,3 +107,5 @@ Using a unique password for Twitter is crucial. If you haven't set one, now is t
 
 - **Use Unique Recovery Methods:**  
   - If you choose to use a recovery phone number, which we generally strongly advise against, make sure it isn't your main mobile number. Instead, use a separate VoIP or alternative line to minimize the risk of SIM swapping.
+
+- If you received an email about any content moderation, login, or any email from "X"; ensure the email is from "@x.com"

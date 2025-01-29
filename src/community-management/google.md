@@ -74,6 +74,19 @@ Publicly visible personal info can aid attackers in impersonating you.
 
 ## Extended Security
 
+1. **Start from**: [Google Security](https://myaccount.google.com/security).
+2. **Go to**:"Your connect to third-party apps & Services".
+3. **Revoke**: all applications that should not be connected.
+4. **Go to**: "Log out of all unknown devices"
+5. **Turn off**: "skip password when possible" (below previous step)
+6. **Go to**: "How you sign in with Google"
+7. **Setup**: your 2FA or Security Key in this section
+8. **Ensure you do not have a recovery phone setup. No SMS 2FA or phone number on your account at all.**
+
+Once these steps are completed, please change your password. Remember to note down your backup codes.
+
+If using Google Authenticator as a 2FA app on your phone, disconnect it from the cloud, as backup codes are then stored in the google cloud associated to email. Use it without an account and ensure backup codes are written down offline.
+
 ### Advanced Protection Program
 
 For those who are public figures or need heightened security, Google's **Advanced Protection Program** is worth considering. It requires the use of security keys, limits access to unverified apps, and makes the process of account recovery more challenging.
