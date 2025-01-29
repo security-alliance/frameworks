@@ -8,9 +8,7 @@ tags:
 
 # Standard Operating Environment
 
-
 A Standard Operating Environment (SOE) refers to a standardized and controlled computing environment used across a project. It ensures that all devices and systems adhere to the same security policies, configurations, and software versions, thereby reducing vulnerabilities and simplifying management.
-
 
 ## Key Components of an SOE
 
@@ -25,7 +23,6 @@ A Standard Operating Environment (SOE) refers to a standardized and controlled c
 7. Avoid using an Administrator account for day-to-day activities.
 8. Disable macros on Office products.
 9. If a device has been left unlocked with a third party having access without you seeing what they did (e.g., at an airport security check), treat it as having been compromised.
-
 
 ### User Access Controls
 
