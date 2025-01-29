@@ -30,7 +30,7 @@
         display: flex;
     }
 
-    @media (max-width: 1179px) {
+    @media (max-width: 1079px) {
         .sidebar-hidden #sidetoc {
             display: none;
         }
@@ -42,14 +42,14 @@
         }
     }
 
-    @media (1180px <= width <= 1439px) {
+    @media (1079px <= width <= 1339px) {
         .sidebar-hidden main {
             position: relative;
             left: var(--center-content-toc-shift);
         }
     }
 
-    @media (1440px <= width <= 1700px) {
+    @media (1439px <= width <= 1700px) {
         .sidebar-visible main {
             position: relative;
             left: var(--center-content-toc-shift);

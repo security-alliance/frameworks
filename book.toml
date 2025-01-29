@@ -9,7 +9,7 @@ title = "Security Frameworks by SEAL"
 
 [preprocessor.admonish]
 command = "mdbook-admonish"
-assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
+assets_version = "3.0.2"    # do not edit: managed by `mdbook-admonish install`
 
 [preprocessor.catppuccin]
 assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
@@ -17,8 +17,19 @@ assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 [output]
 
 [output.html]
-additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./mdbook-admonish.css", "./theme/custom.css", "./theme/pagetoc.css"]
-additional-js = ["./theme/tagsindex.json", "./theme/tagscolors.json", "./theme/main.js", "./theme/pagetoc.js"]
+additional-css = [
+    "./theme/catppuccin.css",
+    "./theme/catppuccin-admonish.css",
+    "./mdbook-admonish.css",
+    "./theme/custom.css",
+    "./theme/toc/pagetoc.css",
+]
+additional-js = [
+    "./theme/tagsindex.json",
+    "./theme/tagscolors.json",
+    "./theme/main.js",
+    "./theme/toc/pagetoc.js",
+]
 template-path = "theme"
 copy-images = true
 default-theme = "ayu"
