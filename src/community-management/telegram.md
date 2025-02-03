@@ -78,7 +78,7 @@ By default, Telegram calls can connect you *directly* to the other user, potenti
 
 Telegram supports auto-terminating inactive sessions. You can also manually review and end any suspicious active sessions.
 
-1. **Go to**: **Settings > Privacy and Security > Active sessions**  
+1. **Go to**: **Settings > Devices**  
 2. **Review**: Delete any sessions you don’t recognize  
 3. **Auto-terminate**: Set inactive sessions to end after **1 month**
 
