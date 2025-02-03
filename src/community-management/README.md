@@ -3,13 +3,11 @@ tags:
   - Community & Marketing
 ---
 
-# Community Management
+# Community Management <!-- omit in toc -->
 
 Communities might be the key of many Web3 projects, but they also represent a significant security challenge. From casual users to top-level executives, everyone within an organization can be targeted by social engineering tactics across platforms like Telegram, Discord, X (formerly Twitter), Google, and more. When a community channel is compromised—whether by phishing, fraudulent links, or account takeovers—it can quickly become a vehicle for wider attacks, putting both users and organizational reputations at risk.
 
 Here, we present essential best practices to safeguard your community. In the following sections, we will explore platform-specific recommendations in more depth.
-
----
 
 ## Best Practices for Community Security
 
@@ -27,7 +25,7 @@ Here, we present essential best practices to safeguard your community. In the fo
 
 - Educate members on recognizing and reporting phishing attempts.
 - Clearly communicate to community members that your team will never send the first direct message to them. This is important because attackers often impersonate team members and initiate direct messages to trick users into believing they are legitimate, thereby gaining their trust and potentially compromising their security.
-- Publically define all official communication channels used by your organization.  
+- Publically define all official communication channels used by your organization.
 
 Refer to the [**Security Awareness framework**](../awareness/README.md) to learn more about **Security Trainings** and **Social Engineering**.
 
