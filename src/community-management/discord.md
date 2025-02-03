@@ -4,40 +4,14 @@ tags:
   - Security Specialist
 ---
 
-# Discord Security
+# Discord Security <!-- omit in toc -->
 
-> **Key Takeaway for Discord:**  
+> **Key Takeaway:**  
 > To secure your Discord server, focus on implementing robust access controls and enforcing two-factor authentication for all administrators. Regularly audit roles and permissions, and maintain vigilant moderation. Educate your community about security best practices to prevent unauthorized access and protect against potential threats.
 
 Discord offers a variety of security features that are essential to use. Despite these, users should stay alert to threats like phishing, which can target server moderators. Such threats may appear as QR code scams, fake login screens, or misleading direct messages pretending to be from Discord support.
 
 To enhance the security of your Discord server, take into account these suggestions. They cover important aspects like server settings, roles and permissions, moderation, bots, channels, invites, member screening, logging, and other security measures.
-
----
-
-## Table of Contents <!-- omit in toc -->
-
-- [Discord Security](#discord-security)
-  - [Discord Server Hardening](#discord-server-hardening)
-    - [Server Settings](#server-settings)
-    - [Roles and Permissions](#roles-and-permissions)
-    - [Moderation](#moderation)
-    - [Extra Moderation Best Practices](#extra-moderation-best-practices)
-    - [Bots](#bots)
-      - [Third party bots](#third-party-bots)
-        - [Anti-Impersonation Bots](#anti-impersonation-bots)
-        - [Anti-Raid Bots](#anti-raid-bots)
-        - [Anti-Nuke Bots](#anti-nuke-bots)
-        - [Moderation \& Link Whitelisting Bots](#moderation--link-whitelisting-bots)
-    - [Channels](#channels)
-    - [Invites](#invites)
-    - [Member Screening](#member-screening)
-    - [Logging](#logging)
-    - [Regular Reviews](#regular-reviews)
-    - [Cold Admin Accounts](#cold-admin-accounts)
-    - [Additional Community Features](#additional-community-features)
-    - [Additional Security Measures](#additional-security-measures)
-  - [Additional Resources](#additional-resources)
 
 ## Discord Server Hardening
 
