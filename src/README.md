@@ -47,15 +47,4 @@ contributors:
   - John Doe  # You can mix simple and detailed formats
 ---
 
-# Page Title
-```
-
-You can configure default avatar images and GitHub profiles for contributors in the `book.toml` file, which will be used when not specified in the frontmatter:
-
-```toml
-[preprocessor.tags]
-contributor_avatars = { "Matt" = "https://github.com/matta.png", "Steven" = "https://github.com/steven.png" }
-contributor_github = { "Matt" = "https://github.com/matta", "Steven" = "https://github.com/steven" }
-```
-
 Contributors will be displayed at the top of the page and collected in a contributors index page. 

@@ -2,13 +2,10 @@
 tags:
   - Community & Marketing
 contributors:
-  - name: Matt
-    avatar: https://github.com/matta.png
-    github: https://github.com/matta
-  - name: Steven
-    avatar: https://github.com/steven.png
-    github: https://github.com/steven
-  - John Doe
+  - name: Matta
+    avatar: https://github.com/mattaereal.png
+    github: https://github.com/mattaereal
+  - NFTDrewww
 ---
 
 # Community Management
