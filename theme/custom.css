@@ -124,8 +124,8 @@
 
 /* Footer styles */
 #page-footer {
-    margin-top: 3rem;
-    padding: 2rem 0 3rem;
+    margin-top: 1.5rem;
+    padding: 1rem 0 1.5rem;
     text-align: center;
     border-top: 1px solid rgba(20, 16, 49, 0.1); /* Based on #141031 */
     background-color: transparent;
@@ -138,15 +138,16 @@
 }
 
 #page-footer .footer-text-line {
-    white-space: nowrap; /* Prevent wrapping */
-    margin-bottom: 2rem;
+    white-space: nowrap;
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
 }
 
 #page-footer .footer-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 300;
     color: #4339db; /* SEAL Blue from the color palette */
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     display: inline-block;
     vertical-align: middle;
 }
@@ -154,14 +155,15 @@
 #page-footer .footer-message {
     font-size: 1.6rem;
     color: #6C757D; /* Gray from the SEAL color palette */
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     display: inline-block;
     vertical-align: middle;
+    line-height: 1.1;
 }
 
 #page-footer .highlight {
-    font-weight: bold;
-    font-style: italic;
+    font-style: italic; /* Keep italic */
+    /* Removed font-weight: bold */
 }
 
 #page-footer .footer-link {
@@ -200,12 +202,12 @@
     #page-footer .footer-message,
     #page-footer .footer-link {
         display: block;
-        margin: 0 0 1rem 0;
+        margin: 0 0 0.2rem 0;
     }
 }
 
 #page-footer .footer-cta {
-    margin-top: 1rem;
+    margin-top: 0.4rem;
 }
 
 #page-footer .footer-cta a {
