@@ -124,8 +124,4 @@ Here are some useful resources where you can follow and learn more about the bes
 10. **SANS Institute**
 
 - **SANS Security Resources:** Provides extensive resources, including guides, whitepapers, and training courses, for improving security and regulatory compliance.
-<<<<<<< HEAD
 - URL: [https://www.sans.org/security-resources/](https://www.sans.org/security-resources/)
-=======
-- URL: [https://www.sans.org/security-resources/](https://www.sans.org/security-resources/)
->>>>>>> fw_community_mgmt
