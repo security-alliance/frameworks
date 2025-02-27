@@ -14,19 +14,6 @@ Securing your Twitter account is not particularly hard or time consuming, so con
 
 ---
 
-## Table of Contents <!-- omit in toc -->
-
-- [X (Twitter) Security Hardening](#x-twitter-security-hardening)
-  - [Remove your phone number](#remove-your-phone-number)
-  - [Configure 2FA](#configure-2fa)
-  - [Revoke access from delegated accounts](#revoke-access-from-delegated-accounts)
-  - [Enable password reset protect](#enable-password-reset-protect)
-  - [Revoke access from unnecessary apps](#revoke-access-from-unnecessary-apps)
-  - [Log Out of Unnecessary Sessions](#log-out-of-unnecessary-sessions)
-  - [Verify Your Email is Current](#verify-your-email-is-current)
-  - [Refresh Your Password](#refresh-your-password)
-  - [Additional Best Practices](#additional-best-practices)
-
 ## X (Twitter) Security Hardening
 
 ### Remove your phone number

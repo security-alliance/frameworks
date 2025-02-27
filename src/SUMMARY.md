@@ -1,16 +1,10 @@
 # SUMMARY
 
-## Security Frameworks by SEAL
-
-- [Introduction to the Frameworks](./intro/introduction.md)
-- [What It Is](./intro/what-is-it.md)
-- [What It Isn't](./intro/what-it-isnt.md)
+- [Introduction to Frameworks](./intro/introduction.md)
 - [How to Navigate the Website](./intro/how-to-navigate-the-website.md)
 - [Overview of Each Framework](./intro/overview-of-each-framework.md)
-- [Contributing](./contribute/contributing.md)
-  - [Contributors](contribute/contributors.md)
 
-## Frameworks
+# Frameworks
 
 - [Community Management](./community-management/README.md)
   - [Discord](./community-management/discord.md)
@@ -38,12 +32,20 @@
 - [Security Testing]()
 - [Encryption]()
 
-## Practical Guides
+# About this
+
+- [What It Is](./intro/what-is-it.md)
+- [What It Isn't](./intro/what-it-isnt.md)
+- [Contributing](./contribute/contributing.md)
+  - [Contributors](contribute/contributors.md)
+  - [Champions]()
+
+# Practical Guides
 
 <!-- - Step-by-step implementation — can be omitted
 - Case studies — an idea -->
 
-## Additional Resources
+# Additional Resources
 
 <!-- - Tools and software recommendations
 - Further reading and references -->
