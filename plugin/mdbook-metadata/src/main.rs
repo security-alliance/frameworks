@@ -13,7 +13,7 @@ use mdbook::{
     BookItem,
 };
 
-struct Tags;
+struct Metadata;
 
 #[derive(Debug, Deserialize)]
 struct Frontmatter {
@@ -55,8 +55,8 @@ impl Contributor {
     }
 }
 
-const OUT_DIR: &str = "tags/";
-const CONTRIBUTORS_OUT_DIR: &str = "contributors/";
+const OUT_DIR: &str = "theme/";
+const CONTRIBUTORS_OUT_DIR: &str = "theme/";
 
 fn main() {
     let mut args = std::env::args().skip(1);
@@ -78,9 +78,9 @@ fn main() {
     }
 }
 
-impl Preprocessor for Tags {
+impl Preprocessor for Metadata {
     fn name(&self) -> &str {
-        "tags"
+        "metadata"
     }
 
     fn run(&self, ctx: &PreprocessorContext, mut book: Book) -> Result<Book, Error> {
@@ -259,7 +259,7 @@ impl Preprocessor for Tags {
     }
 }
 
-impl Tags {
+impl Metadata {
     fn insert_tags(body: &str, tags: Vec<String>) -> Result<String, Error> {
         // Find the chapter title
         if !body.starts_with("# ") {
@@ -314,7 +314,7 @@ impl Tags {
 
             // Insert contributors after tags
             let contributors_html = format!(
-                "<div class=\"contributors\">{}</div>",
+                "<div class=\"contributors-container\">\n  <div class=\"contributors-title\">Contributors to this framework</div>\n  <div class=\"contributors\">{}</div>\n</div>",
                 contributors
                     .iter()
                     .map(|contributor| {
@@ -367,7 +367,7 @@ impl Tags {
         } else {
             // No tags, insert contributors after title
             let contributors_html = format!(
-                "<div class=\"contributors\">{}</div>",
+                "<div class=\"contributors-container\">\n  <div class=\"contributors-title\">Contributors to this framework</div>\n  <div class=\"contributors\">{}</div>\n</div>",
                 contributors
                     .iter()
                     .map(|contributor| {
@@ -423,6 +423,24 @@ impl Tags {
     fn generate_css(tag_colours: &HashMap<String, String>) -> Result<(), Error> {
         let mut css = String::new();
 
+        // General tag styling with less rounded corners
+        css.push_str(".tags {\n");
+        css.push_str("  display: flex;\n");
+        css.push_str("  flex-wrap: wrap;\n");
+        css.push_str("  gap: 0.5rem;\n");
+        css.push_str("  margin-bottom: 1rem;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".tag {\n");
+        css.push_str("  display: inline-block;\n");
+        css.push_str("  padding: 0.5rem 1rem;\n");
+        css.push_str("  border-radius: 0.25rem;\n");  // Less rounded, more squared shape
+        css.push_str("  color: white;\n");
+        css.push_str("  font-size: 1.6rem;\n");
+        css.push_str("  font-weight: 500;\n");
+        css.push_str("  line-height: 1;\n");
+        css.push_str("}\n\n");
+
         let mut sorted_tags: Vec<_> = tag_colours.iter().collect();
         sorted_tags.sort_by(|a, b| a.0.cmp(&b.0));
 
@@ -453,37 +471,74 @@ impl Tags {
     fn generate_contributors_css(contributor_avatars: &HashMap<String, String>) -> Result<(), Error> {
         let mut css = String::new();
 
+        // Base styling for contributors container box
+        css.push_str(".contributors-container {\n");
+        css.push_str("  margin: 1.5rem 0;\n");
+        css.push_str("  padding: 1rem;\n");
+        css.push_str("  border: 1px solid var(--sidebar-non-existant);\n");
+        css.push_str("  border-radius: 0.5rem;\n");
+        css.push_str("  background-color: var(--sidebar-bg);\n");
+        css.push_str("  opacity: 0.85;\n");
+        css.push_str("  float: right;\n");
+        css.push_str("  width: 250px;\n");
+        css.push_str("  margin-left: 1.5rem;\n");
+        css.push_str("  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);\n");
+        css.push_str("  clear: right;\n");
+        css.push_str("}\n\n");
+        
+        // Title styling
+        css.push_str(".contributors-title {\n");
+        css.push_str("  font-size: 1.25rem;\n");
+        css.push_str("  font-weight: bold;\n");
+        css.push_str("  margin-bottom: 1rem;\n");
+        css.push_str("  color: var(--fg);\n");
+        css.push_str("  text-align: center;\n");
+        css.push_str("  padding-bottom: 0.5rem;\n");
+        css.push_str("  border-bottom: 1px solid var(--sidebar-non-existant);\n");
+        css.push_str("  white-space: nowrap;\n");
+        css.push_str("  overflow: hidden;\n");
+        css.push_str("  text-overflow: ellipsis;\n");
+        css.push_str("}\n\n");
+
         // Base styling for contributors
         css.push_str(".contributors {\n");
         css.push_str("  display: flex;\n");
-        css.push_str("  flex-wrap: wrap;\n");
-        css.push_str("  gap: 0.5rem;\n");
-        css.push_str("  margin: 1rem 0;\n");
-        css.push_str("  align-items: center;\n");
+        css.push_str("  flex-direction: column;\n");
+        css.push_str("  gap: 0.75rem;\n");
+        css.push_str("  align-items: flex-start;\n");
+        css.push_str("  width: 100%;\n");
         css.push_str("}\n\n");
         
         css.push_str(".contributor {\n");
         css.push_str("  display: inline-flex;\n");
         css.push_str("  align-items: center;\n");
-        css.push_str("  padding: 0.25rem 0.5rem;\n");
-        css.push_str("  border-radius: 1rem;\n");
-        css.push_str("  background-color: var(--quote-bg);\n");
-        css.push_str("  font-size: 0.8rem;\n");
+        css.push_str("  padding: 0.4rem 0.75rem;\n");
+        css.push_str("  border-radius: 2rem;\n");
+        css.push_str("  background-color: var(--theme-popup-bg);\n");
+        css.push_str("  font-size: 1.25rem;\n"); // 25% larger than 1rem
         css.push_str("  transition: all 0.2s ease;\n");
         css.push_str("  color: var(--fg);\n");
         css.push_str("  text-decoration: none;\n");
+        css.push_str("  width: calc(100% - 1.5rem);\n");
+        css.push_str("  margin-left: 0.75rem;\n");
+        css.push_str("  white-space: nowrap;\n");
+        css.push_str("  overflow: hidden;\n");
+        css.push_str("  text-overflow: ellipsis;\n");
+        css.push_str("  box-sizing: border-box;\n");
         css.push_str("}\n\n");
         
         css.push_str(".contributor:hover {\n");
-        css.push_str("  background-color: var(--quote-border);\n");
+        css.push_str("  background-color: var(--sidebar-active);\n");
+        css.push_str("  transform: translateY(-2px);\n");
+        css.push_str("  color: var(--sidebar-fg);\n");
         css.push_str("}\n\n");
         
         css.push_str("/* Avatar styling */\n");
         css.push_str(".contributor.with-avatar {\n");
-        css.push_str("  padding-left: 1.5rem;\n");
-        css.push_str("  background-size: 1rem 1rem;\n");
+        css.push_str("  padding-left: 2.25rem;\n"); // Increased for larger avatar
+        css.push_str("  background-size: 1.75rem 1.75rem;\n"); // 25% larger than 1.4rem
         css.push_str("  background-repeat: no-repeat;\n");
-        css.push_str("  background-position: 0.25rem center;\n");
+        css.push_str("  background-position: 0.3rem center;\n");
         css.push_str("}\n\n");
         
         // Individual contributor avatar styles
@@ -711,7 +766,7 @@ fn name_to_id(name: &str) -> String {
 }
 
 fn handle_preprocessing() -> Result<(), Error> {
-    let preprocessor = Tags;
+    let preprocessor = Metadata;
     let (ctx, book) = CmdPreprocessor::parse_input(io::stdin())?;
 
     let processed_book = preprocessor.run(&ctx, book)?;
