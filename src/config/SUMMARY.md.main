@@ -1,0 +1,51 @@
+# SUMMARY
+
+- [Introduction to Frameworks](./intro/introduction.md)
+- [How to Navigate the Website](./intro/how-to-navigate-the-website.md)
+- [Overview of Each Framework](./intro/overview-of-each-framework.md)
+
+# Frameworks
+
+- [Community Management](./community-management/README.md)
+  - [Discord](./community-management/discord.md)
+  - [Twitter](./community-management/twitter.md)
+  - [Telegram](./community-management/telegram.md)
+  - [Google](./community-management/google.md)
+- [Awareness]()
+- [User and Team Security]()
+- [Operational Security]()
+- [Key Management]()
+- [External Security Reviews]()
+- [Vulnerability Disclosure]()
+- [Infrastructure]()
+- [Monitoring]()
+- [Front-End/Web Application]()
+- [Incident Management]()
+- [Threat Modeling]()
+- [Governance]()
+- [DevSecOps]()
+- [Privacy]()
+- [Supply Chain]()
+- [Security Automation]()
+- [Identity and Access Management IAM]()
+- [Secure Software Development]()
+- [Security Testing]()
+- [Encryption]()
+
+# About this
+
+- [What It Is](./intro/what-is-it.md)
+- [What It Isn't](./intro/what-it-isnt.md)
+- [Contributing](./contribute/contributing.md)
+  - [Contributors](contribute/contributors.md)
+  - [Champions]()
+
+# Practical Guides
+
+<!-- - Step-by-step implementation — can be omitted
+- Case studies — an idea -->
+
+# Additional Resources
+
+<!-- - Tools and software recommendations
+- Further reading and references -->
