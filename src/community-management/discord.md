@@ -15,7 +15,7 @@ To enhance the security of your Discord server, take into account these suggesti
 
 ---
 
-## Discord Server Hardening
+## Essential Security Measures
 
 ### Server Settings
 
@@ -57,10 +57,10 @@ a) **Implement Role Hierarchy**
 - Drag to reorder; higher roles override lower roles
 - Restructure the role hierarchy by dragging roles higher or lower in the roles list:
 
-Cold Admin
-Team
-Moderator
-Verified
+  - Cold Admin
+  - Team
+  - Moderator
+  - Verified
 
 b) **Restrict Administrative Permissions**
 
@@ -79,6 +79,8 @@ d) **Use the "View Server as Role" Feature**
 
 - Go to Server Settings > Roles > Select a role > View Server as Role
 - This allows you to see what members with a certain role can see and access
+
+## Advanced Security Measures
 
 ### Moderation
 
@@ -104,7 +106,7 @@ c) **Establish Clear Server Rules**
 
 ### Extra Moderation Best Practices
 
-a) **Leverage “Default Notifications to Mentions Only”**
+a) **Leverage "Default Notifications to Mentions Only"**
 
 - Go to **Server Settings > Overview** and set **Default Notifications** to **Mentions Only**.
 - Reduces potential spam notifications for members, making them more vigilant about suspicious or phishing content.
@@ -139,27 +141,29 @@ c) **Implement Security/Moderation Bots**
   - Carl-bot for reaction roles and custom commands
   - Set up security Bots
 
-#### Third party bots
+### Security-Specific Bots
 
-Various third-party Discord bots offer valuable security and protection features, facilitating automated moderation for your server. In the sections below, we’ll explore different categories of security bots and highlight popular options for each category.
+Various third-party Discord bots offer valuable security and protection features, facilitating automated moderation for your server. In the sections below, we'll explore different categories of security bots and highlight popular options for each category.
 
-##### Anti-Impersonation Bots
+#### Anti-Impersonation Bots
 
 Set up custom rules to prevent other users from joining using the same username and PFP to impersonate you or other important members of the server. A popular bot in this category is Wick Bot.
 
-##### Anti-Raid Bots
+#### Anti-Raid Bots
 
 to prevent spam bots from joining your server all at once, an attack known as raiding, you can also set up bots with particular rules. Beemo is a good example of a bot in this category.
 
-##### Anti-Nuke Bots
+#### Anti-Nuke Bots
 
 This is a monitoring system to observe and note any changes (spontaneous or planned) that take place in your discord server. Some key observation markers are channel and role creation/deletions, banning or kicking members, and webhook creation/deletion.
 
-##### Moderation & Link Whitelisting Bots
+#### Moderation & Link Whitelisting Bots
 
 Only allows approved links to be used in the discord server. A popular bot in this category is Goodknight Bot.
 
 _The bots above are not all-inclusive but rather a recommended list of bots to help protect your Discord server in these categories._
+
+## Enhanced Server Configuration
 
 ### Channels
 
@@ -223,6 +227,8 @@ b) **Set Up a Private Logging Channel**
 - Create a private channel visible only to admins/mods
 - Use a logging bot like Logger or Dyno to send detailed logs
 
+## Best Practices & Administrative Security
+
 ### Regular Reviews
 
 a) **Conduct Periodic Permission Audits**
@@ -274,6 +280,8 @@ b) **Review Updated Discord Moderation Resources**
 
 - Consult the official [Discord Moderator Academy](https://discord.com/moderation) for ongoing best practices and new features.
 - Implement recommended strategies (e.g., improved spam filters, updated role recommendations).
+
+## Platform-Specific Security Considerations
 
 ### Additional Security Measures
 

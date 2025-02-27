@@ -14,11 +14,11 @@ Securing your Twitter account is not particularly hard or time consuming, so con
 
 ---
 
-## X (Twitter) Security Hardening
+## Essential Security Measures
 
 ### Remove your phone number
 
-There are no good reasons to keep a phone number attached to your account, and it’s the easiest way for a hacker to get into your account after SIM swapping you. Getting verified requires you to add a phone number, but you can remove it afterward.
+There are no good reasons to keep a phone number attached to your account, and it's the easiest way for a hacker to get into your account after SIM swapping you. Getting verified requires you to add a phone number, but you can remove it afterward.
 
 1. **Go to:** [Phone Settings](https://x.com/settings/phone)
 2. **Remove:** Click **Delete phone number** if one is listed.
@@ -36,13 +36,6 @@ Two-factor authentication is a great way to keep hackers at bay, but it's not fo
     2. If using security keys, keep at least two (e.g., from [Yubico](https://www.yubico.com/)) in case one fails.  
 4. Under **Additional methods**, below, select **Backup codes** and create a new backup code. Store this code securely, offline, ideally in a physical format like a printout, to ensure that if one device is compromised, the code remains safe.
 
-### Revoke access from delegated accounts
-
-It's possible to allow other accounts to access your Twitter account. If your account was previously compromised, attackers could exploit this feature to maintain access even after you've regained control.
-
-1. **Go to:** [Delegate Members](https://x.com/settings/delegate/members)  
-2. **Review:** Remove any unfamiliar accounts.
-
 ### Enable password reset protect
 
 Twitter provides a feature that requires users to input their email or phone number linked to the account before they can initiate a password reset. This adds an extra layer of security by ensuring that hackers must know your email, rather than receiving a hint.
@@ -50,12 +43,21 @@ Twitter provides a feature that requires users to input their email or phone num
 1. **Go to:** [Security Settings](https://x.com/settings/security)  
 2. **Toggle On:** Check **Password reset protect**.
 
+## Advanced Security Measures
+
+### Revoke access from delegated accounts
+
+It's possible to allow other accounts to access your Twitter account. If your account was previously compromised, attackers could exploit this feature to maintain access even after you've regained control.
+
+1. **Go to:** [Delegate Members](https://x.com/settings/delegate/members)  
+2. **Review:** Remove any unfamiliar accounts.
+
 ### Revoke access from unnecessary apps
 
 It's possible that you've linked your Twitter account to several apps, and some might have more permissions than necessary. To check and manage these permissions, follow these steps:
 
 1. **Go to:** [Connected Apps](https://x.com/settings/connected_apps)  
-2. **Review:** Check each app’s permissions and **Revoke** if it’s no longer needed or trusted.
+2. **Review:** Check each app's permissions and **Revoke** if it's no longer needed or trusted.
 
 ### Log Out of Unnecessary Sessions
 
@@ -64,7 +66,7 @@ It's possible you've accessed Twitter from devices you don't regularly use, like
 Old sessions on unfamiliar devices can be risky.
 
 1. **Go to:** [Sessions](https://x.com/settings/sessions)
-2. **Log Out:** For any device or session you don’t recognize.
+2. **Log Out:** For any device or session you don't recognize.
 
 ### Verify Your Email is Current
 
@@ -80,17 +82,17 @@ Using a unique password for Twitter is crucial. If you haven't set one, now is t
 1. **Go to:** [Password Settings](https://x.com/settings/password)  
 2. **Change:** Select a long, complex password.
 
-### Additional Best Practices
+## Best Practices & Additional Tips
 
 - **Disable Email and Phone Discoverability**  
   - **Go to** [Discoverability and Contacts](https://x.com/settings/contacts)
   - It is recommended to turn both email and phone discoverability off.
 
 - **Privacy & Safety Settings:**  
-  - In [Privacy & Safety](https://x.com/settings/privacy_and_safety), consider disabling “Allow message requests from everyone” to limit spam DMs and phishing attempts and enabling "Filter low-quality messages".
+  - In [Privacy & Safety](https://x.com/settings/privacy_and_safety), consider disabling "Allow message requests from everyone" to limit spam DMs and phishing attempts and enabling "Filter low-quality messages".
   
 - **Monitor for Suspicious Alerts:**  
-  - X (Twitter) may notify you about unusual activity. If you suspect a breach,log out of all sessions, revoke suspicious apps, and change your password immediately.
+  - X (Twitter) may notify you about unusual activity. If you suspect a breach, log out of all sessions, revoke suspicious apps, and change your password immediately.
 
 - **Use Unique Recovery Methods:**  
   - If you choose to use a recovery phone number, which we generally strongly advise against, make sure it isn't your main mobile number. Instead, use a separate VoIP or alternative line to minimize the risk of SIM swapping.

@@ -13,11 +13,11 @@ However, if you choose to use **Telegram**, the following best practices can hel
 
 ---
 
-## Standard Security
+## Essential Security Measures
 
 ### Configure 2FA
 
-Telegram sign-ups require a phone number, but you can also enable two-factor authentication via a password—your main protection if you’re ever SIM-swapped. **Don’t reuse this password anywhere else.**
+Telegram sign-ups require a phone number, but you can also enable two-factor authentication via a password—your main protection if you're ever SIM-swapped. **Don't reuse this password anywhere else.**
 
 1. **Go to**: **Settings > Privacy and Security > Two-Step Verification**  
 2. **Set**: A strong password and recovery email (store both in a password manager)
@@ -42,10 +42,35 @@ By default, Telegram calls can connect you *directly* to the other user, potenti
 Telegram supports auto-terminating inactive sessions. You can also manually review and end any suspicious active sessions.
 
 1. **Go to**: **Settings > Privacy and Security > Active sessions**  
-2. **Review**: Delete any sessions you don’t recognize  
+2. **Review**: Delete any sessions you don't recognize  
 3. **Auto-terminate**: Set inactive sessions to end after **1 month**
 
-## Extended Security
+### Implement Device-Level Security
+
+Securing the device you use for Telegram is crucial for preventing unauthorized access to your account and messages.
+
+1. **Enable Full Device Encryption**:
+   - Ensure your device has full disk encryption enabled
+   - For iOS: This is enabled by default with a passcode
+   - For Android: Go to **Settings > Security > Encryption** and follow instructions
+
+2. **Set Strong Device Passcodes**:
+   - Use alphanumeric passwords rather than simple PINs
+   - Enable biometric authentication as a secondary measure
+
+3. **Keep Your Device Updated**:
+   - Install OS updates promptly to patch security vulnerabilities
+   - Update Telegram to the latest version regularly
+
+4. **Install Security Software**:
+   - Use reputable anti-malware software on your device
+   - Consider privacy-focused apps that detect network anomalies
+
+5. **Secure Your Backups**:
+   - Ensure any device backups containing Telegram data are encrypted
+   - Be cautious about cloud backups that might store Telegram messages
+
+## Advanced Security Measures
 
 ### Consider Using a Different Phone Number
 
@@ -65,8 +90,6 @@ Consider the photo you shared with a friend several months ago. While it might h
 
 1. **Go to**: **Settings > Privacy and Security > Auto-Delete Messages**  
 2. **Set**: Choose a time frame (e.g., 1 week) based on your risk tolerance
-
-## Advanced Security Measures
 
 ### Use Secret Chats for Enhanced Privacy
 
@@ -93,33 +116,124 @@ Third-party bots can enhance functionality but may also introduce vulnerabilitie
 2. **Review Permissions**: Limit the permissions you grant to bots  
 3. **Regular Audits**: Periodically review and remove unnecessary bots
 
-### Implement Device-Level Security
-
-Protect the device you use to access Telegram to prevent unauthorized access.
-
-1. **Use Strong Passwords or Biometrics**: Secure your device with a strong passcode or biometric authentication  
-2. **Enable Device Encryption**: Ensure your device's storage is encrypted  
-3. **Install Security Software**: Use reputable antivirus and anti-malware solutions
-
 ### Manage Group and Channel Admin Permissions
 
-Properly managing admin permissions can prevent misuse and unauthorized access.
+If you manage Telegram groups or channels, properly configuring admin permissions is crucial for maintaining security.
 
-1. **Limit Admin Roles**: Only grant admin privileges to trusted individuals  
-2. **Review Permissions**: Regularly check what permissions each admin has  
-3. **Use Role-Based Access**: Assign roles based on responsibilities to minimize risks
+1. **Limit Admin Privileges**:
+   - Go to your group/channel, tap the group name, select **Administrators**
+   - Only grant necessary permissions to each admin
+   - Avoid giving "Add Users" permission to untrusted admins
+
+2. **Implement Admin Verification**:
+   - Establish a verification process before promoting members to admin
+   - Use separate channels (like voice calls) to confirm admin identities
+   - Document when admin changes occur and why
+
+3. **Configure Group Settings**:
+   - Restrict member actions such as sending media or links
+   - Enable "Slow Mode" for large groups to prevent spam
+   - Use discussion groups for channels to control information flow
+
+4. **Audit Admin Activities**:
+   - Regularly review admin actions in the group
+   - Remove inactive or suspicious admins
+   - Consider using admin action logs if available
+
+5. **Handle Admin Transitions Securely**:
+   - Have protocols for transferring ownership if needed
+   - Revoke admin rights immediately when team members leave
+
+## Enhanced Privacy Settings
+
+### Passcode Lock
+
+- **Settings > Privacy and Security > Passcode Lock:** This feature adds a passcode to access your Telegram app after a period of inactivity. The default setting is "away for 1 hour." 
+  - **Recommendations:**
+    - **Store Passcode Securely:** Do not lose this passcode—store it offline if needed.
+    - **Unique Passcode:** Ensure it is different from your phone's unlock passcode.
+
+### Privacy and Security Settings
+
+**Go to:** Settings > Privacy and Security
+
+#### Security
+
+##### Two-Step Verification
+
+- **Overview:** Telegram does not require a login by default. However, you can set up a password that acts as a "second" 2FA method when logging in from a new device.
+- **Security Measures:**
+  - **SMS Codes:** Telegram sends a code via SMS, which is not secure.
+  - **Email Recovery:** Offers email recovery, which is more secure but lacks options for authenticator apps or hardware keys.
+- **Important:** 
+  - **Backup Password:** If you lose this password, access to your account may be compromised. 
+  - **Secure Storage:** Write it down offline and ensure it is not lost.
+
+#### Additional Privacy Settings
+
+Consider adjusting the following settings based on your country, usage, and purpose for using Telegram:
+
+- **Phone Number:** Set to **Nobody** to prevent exposure.
+- **Last Seen & Online:** Set to **Nobody** to enhance privacy.
+- **Profile Picture:** Set to **Everybody** to stop scammers from impersonating your profile picture.
+- **Bio:** Set to **Nobody** (depending on use of Telegram).
+- **Date of Birth:** Set to **Nobody**.
+- **Forwarded Messages:** Set to **Nobody**.
+- **Calls:** Set to **Nobody** or **Contacts Only** (depending on use of Telegram).
+- **Voice Messages:** Set to **Contacts Only** (depending on use of Telegram).
+- **Messages:** Set to **Everybody** or **Contacts Only** (depending on use of Telegram).
+- **Invites:** Set to **Contacts Only** or **Nobody** to prevent being added to random groups that may impersonate legitimate groups and lead to scams.
+
+### Data Settings
+
+**Go to:** Settings > Privacy and Security > Data Settings
+
+- **Sync Contacts:** Disable (depending on use of Telegram) to prevent syncing your contacts.
+- **Suggest Frequent Contacts:** Disable (depending on use of Telegram) to avoid unsolicited contact suggestions.
+
+## Best Practices & Tips for Safe Use
+
+- **Use Secret Chats:** When messaging someone, create a 'secret' chat to ensure encrypted 1:1 communication, providing end-to-end encryption for sensitive transactions.
+- **Verify Group Invites and Authenticity:** Always triple-check group invitations and confirm the legitimacy of group chats through separate channels to avoid joining impostor groups that share malicious links.
+- **Beware of Unsolicited DMs:** Never trust direct messages from anyone sending links or posing as "support," "exchanges," or "team" members.
+- **Double-Check Payment Details:** Verify payment information through multiple methods before transferring funds to prevent fund redirection.
+- **Block and Report Scammers:** Use the block function to prevent further contact, and report spammers/scammers instead of just deleting chats.
+- **Limit Group Permissions:** Restrict who can add members to groups to prevent unauthorized cloning and protect against raids.
 
 ### Educate Community Members on Security Practices
 
-A secure community relies on the awareness and vigilance of its members.
+If you're managing a community on Telegram, educating your members about security is vital for collective protection.
 
-1. **Provide Security Guidelines**: Share best practices with your community  
-2. **Conduct Training Sessions**: Offer regular training on recognizing phishing and other threats  
-3. **Promote Safe Communication**: Encourage the use of Secret Chats and cautious sharing of personal information
+1. **Regular Security Announcements**:
+   - Schedule periodic reminders about security best practices
+   - Pin important security announcements in your group/channel
+   - Create dedicated security FAQ channels or posts
 
----
+2. **Clear Verification Procedures**:
+   - Establish and communicate how official communications will occur
+   - Create verification steps for new members to follow
+   - Document how to verify the authenticity of admins and official messages
 
-## Example of a Man-in-the-Group Attack
+3. **Threat Awareness Training**:
+   - Share examples of common scams targeting your community
+   - Post screenshots of phishing attempts (with sensitive info redacted)
+   - Explain the "Man-in-the-Group Attack" and how to avoid it
+
+4. **Incident Reporting Protocol**:
+   - Create clear guidelines for reporting suspicious activity
+   - Designate security-focused admins to handle reports
+   - Acknowledge reports publicly (without specifics) to encourage vigilance
+
+5. **Security Resources**:
+   - Develop simple, accessible security guides for members
+   - Share platform-specific security updates when Telegram releases them
+   - Create a security checklist for new community members
+
+- **Exercise Caution with Mini Apps:** Avoid logging in or providing information to mini apps that redirect outside of Telegram. Triple-check the username of the mini app to ensure its legitimacy, as Telegram lacks a bot verification system. Never download or run any commands from Telegram on your device.
+- **Enhance Privacy with a VPN:** *Advanced tip:* Set up a proxy or VPN to hide your IP address while using the Telegram app.
+- **Stay Vigilant Against Scam Ads:** Be aware that anyone can post ads in channels, with 99% being scam ads. Exercise caution when interacting with advertisements.
+
+## Platform-Specific Risks: Man-in-the-Group Attack
 
 Attackers can exploit Telegram's group chat features to intercept and manipulate communications between two parties. Here's a concise example of how such an attack might occur:
 
@@ -156,65 +270,3 @@ Attackers can exploit Telegram's group chat features to intercept and manipulate
 
 - **Alice** sends the payment to what she believes are Bob's details but are actually those of Fake Bob.
 - The attacker now controls both ends of the conversation, having successfully redirected the funds.
-
-## Extended Security
-
-### Devices
-
-- **Settings > Devices:** The default setting for automatically terminating old sessions is set to 6 months. It is highly recommended to change this setting to a shorter period—1 month or even 1 week—depending on how frequently you use Telegram.
-
-### Passcode Lock
-
-- **Settings > Privacy and Security > Passcode Lock:** This feature adds a passcode to access your Telegram app after a period of inactivity. The default setting is "away for 1 hour." 
-  - **Recommendations:**
-    - **Store Passcode Securely:** Do not lose this passcode—store it offline if needed.
-    - **Unique Passcode:** Ensure it is different from your phone's unlock passcode.
-
-### Privacy and Security
-
-**Go to:** Settings > Privacy and Security
-
-#### Security
-
-##### Two-Step Verification
-
-- **Overview:** Telegram does not require a login by default. However, you can set up a password that acts as a "second" 2FA method when logging in from a new device.
-- **Security Measures:**
-  - **SMS Codes:** Telegram sends a code via SMS, which is not secure.
-  - **Email Recovery:** Offers email recovery, which is more secure but lacks options for authenticator apps or hardware keys.
-- **Important:** 
-  - **Backup Password:** If you lose this password, access to your account may be compromised. 
-  - **Secure Storage:** Write it down offline and ensure it is not lost.
-
-#### Privacy
-
-Consider adjusting the following settings based on your country, usage, and purpose for using Telegram:
-
-- **Phone Number:** Set to **Nobody** to prevent exposure.
-- **Last Seen & Online:** Set to **Nobody** to enhance privacy.
-- **Profile Picture:** Set to **Everybody** to stop scammers from impersonating your profile picture.
-- **Bio:** Set to **Nobody** (depending on use of Telegram).
-- **Date of Birth:** Set to **Nobody**.
-- **Forwarded Messages:** Set to **Nobody**.
-- **Calls:** Set to **Nobody** or **Contacts Only** (depending on use of Telegram).
-- **Voice Messages:** Set to **Contacts Only** (depending on use of Telegram).
-- **Messages:** Set to **Everybody** or **Contacts Only** (depending on use of Telegram).
-- **Invites:** Set to **Contacts Only** or **Nobody** to prevent being added to random groups that may impersonate legitimate groups and lead to scams.
-
-#### Settings > Privacy and Security > Data Settings
-
-- **Sync Contacts:** Disable (depending on use of Telegram) to prevent syncing your contacts.
-- **Suggest Frequent Contacts:** Disable (depending on use of Telegram) to avoid unsolicited contact suggestions.
-
-## Tips for Safe Use
-
-- **Use Secret Chats:** When messaging someone, create a 'secret' chat to ensure encrypted 1:1 communication, providing end-to-end encryption for sensitive transactions.
-- **Verify Group Invites and Authenticity:** Always triple-check group invitations and confirm the legitimacy of group chats through separate channels to avoid joining impostor groups that share malicious links.
-- **Beware of Unsolicited DMs:** Never trust direct messages from anyone sending links or posing as "support," "exchanges," or "team" members.
-- **Double-Check Payment Details:** Verify payment information through multiple methods before transferring funds to prevent fund redirection.
-- **Block and Report Scammers:** Use the block function to prevent further contact, and report spammers/scammers instead of just deleting chats.
-- **Limit Group Permissions:** Restrict who can add members to groups to prevent unauthorized cloning and protect against raids.
-- **Educate Members:** Train community members to recognize and report suspicious group activities and security threats.
-- **Exercise Caution with Mini Apps:** Avoid logging in or providing information to mini apps that redirect outside of Telegram. Triple-check the username of the mini app to ensure its legitimacy, as Telegram lacks a bot verification system. Never download or run any commands from Telegram on your device.
-- **Enhance Privacy with a VPN:** *Advanced tip:* Set up a proxy or VPN to hide your IP address while using the Telegram app.
-- **Stay Vigilant Against Scam Ads:** Be aware that anyone can post ads in channels, with 99% being scam ads. Exercise caution when interacting with advertisements.

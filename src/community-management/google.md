@@ -12,7 +12,7 @@ tags:
 
 ---
 
-## Standard Security
+## Essential Security Measures
 
 >This section does not include Google Suite or more advanced security configurations. For that, refer to the Operational Security Framework, under [Google Suite Security](../operational-security/g-suite-security.md).
 
@@ -21,7 +21,7 @@ tags:
 Properly setting up two-factor authentication (2FA) is one of the most crucial steps you can take. Disable SMS 2FA to avoid SIM swaps, and instead use an authenticator app or a hardware security key (preferred).
 
 1. **Go to** [Google 2-Step Verification](https://myaccount.google.com/signinoptions/two-step-verification)  
-2. **Disable:** "Voice or text message" if it’s enabled  
+2. **Disable:** "Voice or text message" if it's enabled  
 3. **Enable:** "Authenticator app" and/or "Passkeys and security keys". You can also can continue using **Google prompts**.
 4. **Store Backup Codes:** Keep them offline in a secure place
 
@@ -31,7 +31,7 @@ By default, Google allows account recovery using phone numbers and emails. Attac
 
 1. **Go to**: [Google Recovery Phone](https://myaccount.google.com/signinoptions/rescuephone)  
 2. **Remove:** Any phone number listed  
-3. **Optional**: If you’re confident you won’t need standard recovery processes:  
+3. **Optional**: If you're confident you won't need standard recovery processes:  
    1. **Go to**: [Google Recovery Email](https://myaccount.google.com/recovery/email)  
    2. **Remove:** Any recovery email present
 
@@ -40,24 +40,26 @@ By default, Google allows account recovery using phone numbers and emails. Attac
 Keeping track of active sessions helps you detect unauthorized access.
 
 1. **Go to**: [Google Device Activity](https://myaccount.google.com/device-activity)  
-2. **Terminate:** Any session you don’t recognize
+2. **Terminate:** Any session you don't recognize
 
 ### Manage OAuth Applications
 
 Some apps request extensive permissions (e.g., full inbox or file access). Regularly review these to minimize risks.
 
 1. **Go to**: [Google Connections](https://myaccount.google.com/connections)  
-2. **Review:** Each connected app’s permissions; remove if unnecessary or excessive
+2. **Review:** Each connected app's permissions; remove if unnecessary or excessive
 
 ### Hide Personal Information
 
 Publicly visible personal info can aid attackers in impersonating you.
 
 1. **Go to**: [Google Profile](https://myaccount.google.com/profile)  
-2. **Check Visibility:** If any info is set to “Anyone,” switch it to private if unnecessary  
+2. **Check Visibility:** If any info is set to "Anyone," switch it to private if unnecessary  
    - **Birthday:** Consider making it private
 
-## Extended Security
+## Advanced Security Measures
+
+### Extended Security Settings
 
 1. **Start from**: [Google Security](https://myaccount.google.com/security).
 2. **Go to**:"Your connect to third-party apps & Services".
@@ -79,8 +81,8 @@ For those who are public figures or need heightened security, Google's **Advance
 1. **Go to** [Google Advanced Protection Program](https://myaccount.google.com/advanced-protection/landing)  
 2. **Enroll:** Follow the on-screen steps
 
-## Additional Tips
+## Best Practices & Additional Tips
 
 - **Review Security Alerts:** Pay attention to any email or phone notifications from Google regarding unusual sign-ins or account changes.  
-- **Perform a Security Checkup:** Regularly visit [Google’s Security Checkup](https://myaccount.google.com/security-checkup) to identify potential issues and resolve them.
+- **Perform a Security Checkup:** Regularly visit [Google's Security Checkup](https://myaccount.google.com/security-checkup) to identify potential issues and resolve them.
 - **Consider** using identity **monitoring** apps like [Push Security](pushsecurity.com).
