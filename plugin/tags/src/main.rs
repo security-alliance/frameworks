@@ -17,10 +17,46 @@ struct Tags;
 
 #[derive(Debug, Deserialize)]
 struct Frontmatter {
-    tags: Vec<String>,
+    tags: Option<Vec<String>>,
+    contributors: Option<Vec<Contributor>>,
+}
+
+#[derive(Debug, Deserialize, Clone)]
+#[serde(untagged)]
+enum Contributor {
+    Simple(String),
+    Detailed {
+        name: String,
+        avatar: Option<String>,
+        github: Option<String>,
+    },
+}
+
+impl Contributor {
+    fn name(&self) -> &str {
+        match self {
+            Self::Simple(name) => name,
+            Self::Detailed { name, .. } => name,
+        }
+    }
+
+    fn avatar(&self) -> Option<&str> {
+        match self {
+            Self::Simple(_) => None,
+            Self::Detailed { avatar, .. } => avatar.as_deref(),
+        }
+    }
+
+    fn github(&self) -> Option<&str> {
+        match self {
+            Self::Simple(_) => None,
+            Self::Detailed { github, .. } => github.as_deref(),
+        }
+    }
 }
 
 const OUT_DIR: &str = "tags/";
+const CONTRIBUTORS_OUT_DIR: &str = "contributors/";
 
 fn main() {
     let mut args = std::env::args().skip(1);
@@ -66,7 +102,44 @@ impl Preprocessor for Tags {
             })
             .unwrap_or_default();
 
+        // Load contributor avatars from the config - these will be used as fallbacks
+        let mut contributor_avatars: HashMap<String, String> = ctx
+            .config
+            .get("preprocessor.tags.contributor_avatars")
+            .and_then(|value| value.as_table())
+            .map(|table| {
+                table
+                    .iter()
+                    .map(|(contributor, avatar)| {
+                        (
+                            contributor.to_string(),
+                            avatar.as_str().unwrap_or_default().to_string(),
+                        )
+                    })
+                    .collect()
+            })
+            .unwrap_or_default();
+
+        // Load contributor github profiles from the config - these will be used as fallbacks
+        let mut contributor_github: HashMap<String, String> = ctx
+            .config
+            .get("preprocessor.tags.contributor_github")
+            .and_then(|value| value.as_table())
+            .map(|table| {
+                table
+                    .iter()
+                    .map(|(contributor, github)| {
+                        (
+                            contributor.to_string(),
+                            github.as_str().unwrap_or_default().to_string(),
+                        )
+                    })
+                    .collect()
+            })
+            .unwrap_or_default();
+
         let mut tags_index: HashMap<String, Vec<String>> = HashMap::new();
+        let mut contributors_index: HashMap<String, Vec<String>> = HashMap::new();
 
         book.for_each_mut(|item| {
             // Throw away invalid chapters
@@ -112,33 +185,75 @@ impl Preprocessor for Tags {
                 return;
             };
 
-            // Process tags
-            for tag in &frontmatter.tags {
-                tag_colours
-                    .entry(tag.clone())
-                    .or_insert_with(|| generate_color(tag));
+            // Process tags if they exist
+            if let Some(tags) = &frontmatter.tags {
+                for tag in tags {
+                    tag_colours
+                        .entry(tag.clone())
+                        .or_insert_with(|| generate_color(tag));
 
-                tags_index
-                    .entry(tag.clone())
-                    .or_default()
-                    .push(chapter_path_str.replace(".md", ".html"));
+                    tags_index
+                        .entry(tag.clone())
+                        .or_default()
+                        .push(chapter_path_str.replace(".md", ".html"));
+                }
+
+                // Insert tags
+                match Self::insert_tags(&mut body, tags.clone()) {
+                    Ok(new_body) => body = new_body,
+                    Err(e) => {
+                        eprintln!("Error processing chapter tags: {} err={}", ch.name, e);
+                        return;
+                    }
+                }
             }
 
-            // Insert tags
-            match Self::insert_tags(&mut body, frontmatter.tags) {
-                Ok(new_body) => body = new_body,
-                Err(e) => {
-                    eprintln!("Error processing chapter: {} err={}", ch.name, e);
-                    return;
+            // Process contributors if they exist
+            if let Some(contributors) = &frontmatter.contributors {
+                for contributor in contributors {
+                    let name = contributor.name().to_string();
+                    
+                    // If avatar provided in frontmatter, use it, otherwise use from config
+                    if let Some(avatar) = contributor.avatar() {
+                        contributor_avatars.insert(name.clone(), avatar.to_string());
+                    }
+                    
+                    // If github provided in frontmatter, use it, otherwise use from config
+                    if let Some(github) = contributor.github() {
+                        contributor_github.insert(name.clone(), github.to_string());
+                    }
+
+                    contributors_index
+                        .entry(name)
+                        .or_default()
+                        .push(chapter_path_str.replace(".md", ".html"));
+                }
+
+                // Insert contributors
+                match Self::insert_contributors(&mut body, contributors.clone(), &contributor_avatars, &contributor_github) {
+                    Ok(new_body) => body = new_body,
+                    Err(e) => {
+                        eprintln!("Error processing chapter contributors: {} err={}", ch.name, e);
+                        return;
+                    }
                 }
             }
 
             ch.content = body;
         });
 
+        // Create contributors directory if it doesn't exist
+        if !std::path::Path::new(CONTRIBUTORS_OUT_DIR).exists() {
+            std::fs::create_dir_all(CONTRIBUTORS_OUT_DIR)?;
+        }
+
         // Save processed tag metadata
         Self::generate_css(&tag_colours)?;
         Self::generate_tags_index(&tags_index)?;
+
+        // Save processed contributor metadata
+        Self::generate_contributors_css(&contributor_avatars)?;
+        generate_contributors_index_js(&contributors_index, &contributor_github, &contributor_avatars)?;
 
         Ok(book)
     }
@@ -172,6 +287,139 @@ impl Tags {
         return Ok(new_body);
     }
 
+    fn insert_contributors(
+        body: &str, 
+        contributors: Vec<Contributor>, 
+        avatars: &HashMap<String, String>,
+        github_profiles: &HashMap<String, String>
+    ) -> Result<String, Error> {
+        // Find where to insert contributors
+        let parts: Vec<&str> = body.splitn(2, "\n").collect();
+        if parts.len() != 2 {
+            return Err(Error::msg("Chapter content not properly formatted"));
+        }
+
+        let title = parts[0];
+        let remaining_body = parts[1].to_string();
+
+        // If tags are present, we need to insert after them
+        if remaining_body.starts_with("<div class=\"tags\">") {
+            let tag_parts: Vec<&str> = remaining_body.splitn(2, "\n").collect();
+            if tag_parts.len() != 2 {
+                return Err(Error::msg("Failed to find tag ending"));
+            }
+
+            let tags_html = tag_parts[0];
+            let content_after_tags = tag_parts[1].to_string();
+
+            // Insert contributors after tags
+            let contributors_html = format!(
+                "<div class=\"contributors\">{}</div>",
+                contributors
+                    .iter()
+                    .map(|contributor| {
+                        let name = contributor.name();
+                        let id = name_to_id(name);
+                        
+                        // Use avatar from frontmatter or config if available
+                        let has_avatar = avatars.get(name).map_or(false, |url| !url.is_empty());
+                        let avatar_class = if has_avatar {
+                            format!("contributor {} with-avatar", id)
+                        } else {
+                            format!("contributor {}", id)
+                        };
+                        
+                        // If we have the avatar, add the background-image inline
+                        let style_attr = if has_avatar {
+                            if let Some(avatar_url) = avatars.get(name) {
+                                format!(" style=\"background-image: url('{}');\"", avatar_url)
+                            } else {
+                                String::new()
+                            }
+                        } else {
+                            String::new()
+                        };
+                        
+                        // Use github link from frontmatter or config if available
+                        if let Some(github) = contributor.github().or_else(|| github_profiles.get(name).filter(|url| !url.is_empty()).map(|s| s.as_str())) {
+                            format!(
+                                "<a href=\"{}\" target=\"_blank\" class=\"{}\"{}>{}</a>",
+                                github,
+                                avatar_class,
+                                style_attr,
+                                name
+                            )
+                        } else {
+                            format!(
+                                "<span class=\"{}\"{}>{}</span>",
+                                avatar_class,
+                                style_attr,
+                                name
+                            )
+                        }
+                    })
+                    .collect::<Vec<_>>()
+                    .join("")
+            );
+
+            let new_body = format!("{}\n{}\n{}\n{}", title, tags_html, contributors_html, content_after_tags);
+            return Ok(new_body);
+        } else {
+            // No tags, insert contributors after title
+            let contributors_html = format!(
+                "<div class=\"contributors\">{}</div>",
+                contributors
+                    .iter()
+                    .map(|contributor| {
+                        let name = contributor.name();
+                        let id = name_to_id(name);
+                        
+                        // Use avatar from frontmatter or config if available
+                        let has_avatar = avatars.get(name).map_or(false, |url| !url.is_empty());
+                        let avatar_class = if has_avatar {
+                            format!("contributor {} with-avatar", id)
+                        } else {
+                            format!("contributor {}", id)
+                        };
+                        
+                        // If we have the avatar, add the background-image inline
+                        let style_attr = if has_avatar {
+                            if let Some(avatar_url) = avatars.get(name) {
+                                format!(" style=\"background-image: url('{}');\"", avatar_url)
+                            } else {
+                                String::new()
+                            }
+                        } else {
+                            String::new()
+                        };
+                        
+                        // Use github link from frontmatter or config if available
+                        if let Some(github) = contributor.github().or_else(|| github_profiles.get(name).filter(|url| !url.is_empty()).map(|s| s.as_str())) {
+                            format!(
+                                "<a href=\"{}\" target=\"_blank\" class=\"{}\"{}>{}</a>",
+                                github,
+                                avatar_class,
+                                style_attr,
+                                name
+                            )
+                        } else {
+                            format!(
+                                "<span class=\"{}\"{}>{}</span>",
+                                avatar_class,
+                                style_attr,
+                                name
+                            )
+                        }
+                    })
+                    .collect::<Vec<_>>()
+                    .join("")
+            );
+
+            let new_body = format!("{}\n{}\n{}", title, contributors_html, remaining_body);
+            return Ok(new_body);
+        }
+    }
+
     fn generate_css(tag_colours: &HashMap<String, String>) -> Result<(), Error> {
         let mut css = String::new();
 
@@ -198,6 +446,153 @@ impl Tags {
         }
 
         let mut file = File::create(format!("{}tags.css", OUT_DIR))?;
+        file.write(css.as_bytes())?;
+        Ok(())
+    }
+
+    fn generate_contributors_css(contributor_avatars: &HashMap<String, String>) -> Result<(), Error> {
+        let mut css = String::new();
+
+        // Base styling for contributors
+        css.push_str(".contributors {\n");
+        css.push_str("  display: flex;\n");
+        css.push_str("  flex-wrap: wrap;\n");
+        css.push_str("  gap: 0.5rem;\n");
+        css.push_str("  margin: 1rem 0;\n");
+        css.push_str("  align-items: center;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".contributor {\n");
+        css.push_str("  display: inline-flex;\n");
+        css.push_str("  align-items: center;\n");
+        css.push_str("  padding: 0.25rem 0.5rem;\n");
+        css.push_str("  border-radius: 1rem;\n");
+        css.push_str("  background-color: var(--quote-bg);\n");
+        css.push_str("  font-size: 0.8rem;\n");
+        css.push_str("  transition: all 0.2s ease;\n");
+        css.push_str("  color: var(--fg);\n");
+        css.push_str("  text-decoration: none;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".contributor:hover {\n");
+        css.push_str("  background-color: var(--quote-border);\n");
+        css.push_str("}\n\n");
+        
+        css.push_str("/* Avatar styling */\n");
+        css.push_str(".contributor.with-avatar {\n");
+        css.push_str("  padding-left: 1.5rem;\n");
+        css.push_str("  background-size: 1rem 1rem;\n");
+        css.push_str("  background-repeat: no-repeat;\n");
+        css.push_str("  background-position: 0.25rem center;\n");
+        css.push_str("}\n\n");
+        
+        // Individual contributor avatar styles
+        let mut sorted_contributors: Vec<_> = contributor_avatars.iter().collect();
+        sorted_contributors.sort_by(|a, b| a.0.cmp(&b.0));
+
+        if !sorted_contributors.is_empty() {
+            css.push_str("/* Individual contributor avatars */\n");
+            for (contributor, avatar) in sorted_contributors {
+                if !avatar.is_empty() {
+                    css.push_str(&format!(
+                        ".contributor.{}.with-avatar {{\n  background-image: url('{}');\n}}\n\n",
+                        name_to_id(contributor),
+                        avatar
+                    ));
+                }
+            }
+        }
+
+        // Styling for the contributors page
+        css.push_str("/* Styling for the contributors page */\n");
+        css.push_str(".contributors-list {\n");
+        css.push_str("  display: grid;\n");
+        css.push_str("  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n");
+        css.push_str("  gap: 1rem;\n");
+        css.push_str("  margin: 1rem 0;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".contributor-card {\n");
+        css.push_str("  display: flex;\n");
+        css.push_str("  flex-direction: column;\n");
+        css.push_str("  align-items: center;\n");
+        css.push_str("  padding: 1rem;\n");
+        css.push_str("  border-radius: 0.5rem;\n");
+        css.push_str("  background-color: var(--quote-bg);\n");
+        css.push_str("  transition: all 0.2s ease;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".contributor-card:hover {\n");
+        css.push_str("  background-color: var(--quote-border);\n");
+        css.push_str("  transform: translateY(-3px);\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".contributor-avatar {\n");
+        css.push_str("  width: 64px;\n");
+        css.push_str("  height: 64px;\n");
+        css.push_str("  border-radius: 50%;\n");
+        css.push_str("  object-fit: cover;\n");
+        css.push_str("  margin-bottom: 0.5rem;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".contributor-name {\n");
+        css.push_str("  font-weight: bold;\n");
+        css.push_str("  margin-bottom: 0.25rem;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".contributor-contributions {\n");
+        css.push_str("  font-size: 0.8rem;\n");
+        css.push_str("  color: var(--fg);\n");
+        css.push_str("  opacity: 0.8;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".chapters-button {\n");
+        css.push_str("  margin-top: 0.5rem;\n");
+        css.push_str("  padding: 0.25rem 0.75rem;\n");
+        css.push_str("  background-color: var(--sidebar-active);\n");
+        css.push_str("  color: var(--sidebar-fg);\n");
+        css.push_str("  border: none;\n");
+        css.push_str("  border-radius: 0.25rem;\n");
+        css.push_str("  cursor: pointer;\n");
+        css.push_str("  font-size: 0.8rem;\n");
+        css.push_str("  transition: all 0.2s ease;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".chapters-button:hover {\n");
+        css.push_str("  background-color: var(--sidebar-active-hover);\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".chapters-list {\n");
+        css.push_str("  margin-top: 0.5rem;\n");
+        css.push_str("  padding-left: 1.5rem;\n");
+        css.push_str("  font-size: 0.9rem;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".chapters-list li {\n");
+        css.push_str("  margin-bottom: 0.25rem;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".chapters-list a {\n");
+        css.push_str("  color: var(--fg);\n");
+        css.push_str("  text-decoration: none;\n");
+        css.push_str("}\n\n");
+        
+        css.push_str(".chapters-list a:hover {\n");
+        css.push_str("  text-decoration: underline;\n");
+        css.push_str("}\n");
+
+        // Check if writing the file changes the content
+        let mut existing_css = String::new();
+        let mut file = File::open(format!("{}contributors.css", CONTRIBUTORS_OUT_DIR));
+        if let Ok(file) = file.as_mut() {
+            file.read_to_string(&mut existing_css)?;
+        }
+
+        if existing_css.trim().eq(css.trim()) {
+            return Ok(());
+        }
+
+        let mut file = File::create(format!("{}contributors.css", CONTRIBUTORS_OUT_DIR))?;
         file.write(css.as_bytes())?;
         Ok(())
     }
@@ -236,6 +631,14 @@ impl Tags {
 
         let mut file = File::create(format!("{}tagsindex.js", OUT_DIR))?;
         file.write_all(tags_js.as_bytes())?;
+        Ok(())
+    }
+
+    fn generate_contributors_index(
+        contributors_index: &HashMap<String, Vec<String>>,
+        github_profiles: &HashMap<String, String>
+    ) -> Result<(), Error> {
+        // Replaced with the new generate_contributors_index_js function
         Ok(())
     }
 }
@@ -287,16 +690,24 @@ fn check_color_contrast(c1: rgb::RGB<u8>, c2: rgb::RGB<u8>) -> bool {
     c > 5f32
 }
 
+/// Convert a contributor name into a CSS ID-compatible string
 fn name_to_id(name: &str) -> String {
-    name.to_lowercase()
-        .replace(' ', "-")
+    // First, convert to lowercase
+    let lowercase = name.to_lowercase();
+    
+    // Replace all spaces with dashes
+    let with_dashes = lowercase.replace(' ', "-");
+    
+    // Remove any remaining characters that would be invalid in CSS IDs
+    with_dashes
         .replace('&', "")
-        .replace(' ', "-")
         .replace('.', "")
         .replace(':', "")
         .replace(',', "")
         .replace('#', "")
         .replace('/', "")
+        .replace('(', "")
+        .replace(')', "")
 }
 
 fn handle_preprocessing() -> Result<(), Error> {
@@ -306,5 +717,77 @@ fn handle_preprocessing() -> Result<(), Error> {
     let processed_book = preprocessor.run(&ctx, book)?;
     serde_json::to_writer(io::stdout(), &processed_book)?;
 
+    Ok(())
+}
+
+fn generate_contributors_index_js(
+    contributors_map: &HashMap<String, Vec<String>>, 
+    github_profiles: &HashMap<String, String>,
+    avatars: &HashMap<String, String>
+) -> Result<(), Error> {
+    let mut js = String::new();
+    js.push_str("// This file is auto-generated by the tags preprocessor\n");
+    js.push_str("const contributorsIndex = {\n");
+
+    // Sort contributors alphabetically for consistency
+    let mut sorted_contributors: Vec<_> = contributors_map.iter().collect();
+    sorted_contributors.sort_by(|a, b| a.0.cmp(&b.0));
+
+    for (i, (contributor, chapters)) in sorted_contributors.iter().enumerate() {
+        js.push_str(&format!("  \"{}\": {{\n", contributor));
+        js.push_str(&format!("    \"chapters\": [\n"));
+        
+        // Sort chapters for consistency
+        let mut sorted_chapters: Vec<String> = chapters.to_vec();
+        sorted_chapters.sort();
+        
+        for (j, chapter) in sorted_chapters.iter().enumerate() {
+            js.push_str(&format!("      \"{}\"", chapter));
+            if j < sorted_chapters.len() - 1 {
+                js.push_str(",\n");
+            } else {
+                js.push_str("\n");
+            }
+        }
+        js.push_str("    ]");
+        
+        // Add github profile if available
+        if let Some(github) = github_profiles.get(*contributor) {
+            if !github.is_empty() {
+                js.push_str(&format!(",\n    \"github\": \"{}\"", github));
+            }
+        }
+        
+        // Add avatar URL if available
+        if let Some(avatar) = avatars.get(*contributor) {
+            if !avatar.is_empty() {
+                js.push_str(&format!(",\n    \"avatar\": \"{}\"", avatar));
+            }
+        }
+        
+        js.push_str("\n  }");
+        
+        if i < sorted_contributors.len() - 1 {
+            js.push_str(",\n");
+        } else {
+            js.push_str("\n");
+        }
+    }
+
+    js.push_str("};\n");
+
+    // Check if writing the file changes the content
+    let mut existing_js = String::new();
+    let mut file = File::open(format!("{}contributorsindex.js", CONTRIBUTORS_OUT_DIR));
+    if let Ok(file) = file.as_mut() {
+        file.read_to_string(&mut existing_js)?;
+    }
+
+    if existing_js.trim().eq(js.trim()) {
+        return Ok(());
+    }
+
+    let mut file = File::create(format!("{}contributorsindex.js", CONTRIBUTORS_OUT_DIR))?;
+    file.write(js.as_bytes())?;
     Ok(())
 }

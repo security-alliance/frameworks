@@ -233,3 +233,154 @@ if (document.readyState === 'loading') {
     // DOM already loaded, run immediately
     setEnvironmentBanner();
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Add contributors functionality if available
+    if (typeof contributorsIndex !== 'undefined') {
+        setupContributorsPage();
+    }
+});
+
+function setupContributorsPage() {
+    // Create a contributors page if we're on a path ending with 'contributors.html'
+    if (window.location.pathname.endsWith('contributors.html')) {
+        buildContributorsPage();
+    }
+
+    // Add contributors navigation item
+    const nav = document.querySelector('nav.sidebar-menu');
+    if (nav) {
+        // Look for existing "Tags" link to place contributors after it
+        let tagsLink = Array.from(nav.querySelectorAll('a')).find(a => a.textContent.trim() === 'Tags');
+        
+        if (tagsLink && tagsLink.parentElement) {
+            const contributorsItem = document.createElement('li');
+            const contributorsLink = document.createElement('a');
+            contributorsLink.href = window.location.pathname.replace(/[^/]*$/, 'contributors.html');
+            contributorsLink.textContent = 'Contributors';
+            contributorsItem.appendChild(contributorsLink);
+            
+            // Insert after tags
+            tagsLink.parentElement.insertAdjacentElement('afterend', contributorsItem);
+        }
+    }
+}
+
+function buildContributorsPage() {
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    // Clear existing content
+    main.innerHTML = '';
+
+    // Add page title
+    const header = document.createElement('h1');
+    header.textContent = 'Contributors';
+    main.appendChild(header);
+
+    // Add description
+    const description = document.createElement('p');
+    description.textContent = 'This page lists all contributors to the book and the chapters they contributed to.';
+    main.appendChild(description);
+
+    // Sort contributors alphabetically
+    const sortedContributors = Object.keys(contributorsIndex).sort();
+
+    // Create the contributors list
+    const contributorsList = document.createElement('div');
+    contributorsList.className = 'contributors-list';
+    
+    for (const contributor of sortedContributors) {
+        const contributorCard = document.createElement('div');
+        contributorCard.className = 'contributor-card';
+        
+        // Create ID based on contributor name
+        const contributorId = contributor.toLowerCase().replace(/\s+/g, '-')
+            .replace(/[&.:,#\/()]/g, ''); // Remove special characters
+        
+        // Add avatar if available
+        const contributorData = contributorsIndex[contributor];
+        if (contributorData.avatar) {
+            const avatar = document.createElement('img');
+            avatar.className = 'contributor-avatar';
+            avatar.src = contributorData.avatar;
+            avatar.alt = `${contributor}'s avatar`;
+            avatar.loading = 'lazy';
+            contributorCard.appendChild(avatar);
+        }
+        
+        // Contributor name with optional GitHub link
+        const contributorName = document.createElement('div');
+        contributorName.className = 'contributor-name';
+        
+        if (contributorData.github) {
+            const githubLink = document.createElement('a');
+            githubLink.href = contributorData.github;
+            githubLink.target = '_blank';
+            githubLink.textContent = contributor;
+            contributorName.appendChild(githubLink);
+        } else {
+            contributorName.textContent = contributor;
+        }
+        
+        contributorCard.appendChild(contributorName);
+        
+        // Add contribution count
+        const chapterCount = contributorData.chapters.length;
+        const contributionInfo = document.createElement('div');
+        contributionInfo.className = 'contributor-contributions';
+        contributionInfo.textContent = `${chapterCount} contribution${chapterCount !== 1 ? 's' : ''}`;
+        contributorCard.appendChild(contributionInfo);
+        
+        // Add "View Chapters" button that expands to show chapters
+        if (chapterCount > 0) {
+            const chaptersButton = document.createElement('button');
+            chaptersButton.className = 'chapters-button';
+            chaptersButton.textContent = 'View Chapters';
+            chaptersButton.onclick = function() {
+                const chaptersList = this.nextElementSibling;
+                if (chaptersList.style.display === 'none' || !chaptersList.style.display) {
+                    chaptersList.style.display = 'block';
+                    this.textContent = 'Hide Chapters';
+                } else {
+                    chaptersList.style.display = 'none';
+                    this.textContent = 'View Chapters';
+                }
+            };
+            contributorCard.appendChild(chaptersButton);
+            
+            // Chapters list (initially hidden)
+            const chaptersList = document.createElement('ul');
+            chaptersList.className = 'chapters-list';
+            chaptersList.style.display = 'none';
+            
+            for (const chapterPath of contributorData.chapters) {
+                const chapterItem = document.createElement('li');
+                const chapterLink = document.createElement('a');
+                
+                // Get chapter title by fetching it from the page
+                fetch(chapterPath)
+                    .then(response => response.text())
+                    .then(html => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        const title = doc.querySelector('h1')?.textContent || chapterPath;
+                        chapterLink.textContent = title;
+                    })
+                    .catch(() => {
+                        chapterLink.textContent = chapterPath;
+                    });
+                
+                chapterLink.href = chapterPath;
+                chapterItem.appendChild(chapterLink);
+                chaptersList.appendChild(chapterItem);
+            }
+            
+            contributorCard.appendChild(chaptersList);
+        }
+        
+        contributorsList.appendChild(contributorCard);
+    }
+    
+    main.appendChild(contributorsList);
+}

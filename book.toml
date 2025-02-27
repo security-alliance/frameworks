@@ -22,6 +22,8 @@ assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 [preprocessor.tags]
 command = "cargo run --manifest-path=plugin/tags/Cargo.toml --locked"
 tag_colors = { "SEAL/Initiative" = "#4339db" }
+contributor_avatars = { "Matt" = "https://github.com/matta.png", "Steven" = "https://github.com/steven.png" }
+contributor_github = { "Matt" = "https://github.com/matta", "Steven" = "https://github.com/steven" }
 
 [output]
 
@@ -33,11 +35,13 @@ additional-css = [
     "./theme/custom.css",
     "./theme/toc/pagetoc.css",
     "./tags/tags.css",
+    "./contributors/contributors.css",
 ]
 additional-js = [
     "./theme/main.js",
     "./theme/toc/pagetoc.js",
     "./tags/tagsindex.js",
+    "./contributors/contributorsindex.js",
 ]
 template-path = "theme"
 copy-images = true
