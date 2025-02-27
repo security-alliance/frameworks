@@ -15,30 +15,6 @@ To enhance the security of your Discord server, take into account these suggesti
 
 ---
 
-## Table of Contents <!-- omit in toc -->
-
-- [Discord Security](#discord-security)
-  - [Discord Server Hardening](#discord-server-hardening)
-    - [Server Settings](#server-settings)
-    - [Roles and Permissions](#roles-and-permissions)
-    - [Moderation](#moderation)
-    - [Extra Moderation Best Practices](#extra-moderation-best-practices)
-    - [Bots](#bots)
-      - [Third party bots](#third-party-bots)
-        - [Anti-Impersonation Bots](#anti-impersonation-bots)
-        - [Anti-Raid Bots](#anti-raid-bots)
-        - [Anti-Nuke Bots](#anti-nuke-bots)
-        - [Moderation \& Link Whitelisting Bots](#moderation--link-whitelisting-bots)
-    - [Channels](#channels)
-    - [Invites](#invites)
-    - [Member Screening](#member-screening)
-    - [Logging](#logging)
-    - [Regular Reviews](#regular-reviews)
-    - [Cold Admin Accounts](#cold-admin-accounts)
-    - [Additional Community Features](#additional-community-features)
-    - [Additional Security Measures](#additional-security-measures)
-  - [Additional Resources](#additional-resources)
-
 ## Discord Server Hardening
 
 ### Server Settings

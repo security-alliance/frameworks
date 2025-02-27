@@ -6,26 +6,11 @@ tags:
 
 # Google Security
 
-tag: [Community & Marketing]
-
 > **Key Takeaway:** Enhance your Google account security by implementing robust 2FA, eliminating redundant recovery options, and diligently overseeing third-party access.
 
 **Google** provides a wide range of services—from email to file storage. Safeguarding your Google account is among the most critical steps you can take to protect your personal and professional data. Below are simple yet effective measures to improve your Google account security.
 
 ---
-
-## Table Of Contents <!-- omit in toc -->
-
-- [Google Security](#google-security)
-  - [Standard Security](#standard-security)
-    - [Configure 2FA](#configure-2fa)
-    - [Remove Recovery Methods](#remove-recovery-methods)
-    - [Manage Active Sessions](#manage-active-sessions)
-    - [Manage OAuth Applications](#manage-oauth-applications)
-    - [Hide Personal Information](#hide-personal-information)
-  - [Extended Security](#extended-security)
-    - [Advanced Protection Program](#advanced-protection-program)
-  - [Additional Tips](#additional-tips)
 
 ## Standard Security
 

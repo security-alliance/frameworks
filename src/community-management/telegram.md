@@ -13,43 +13,6 @@ However, if you choose to use **Telegram**, the following best practices can hel
 
 ---
 
-## Table Of Contents <!-- omit in toc -->
-
-- [Telegram Security](#telegram-security)
-  - [Standard Security](#standard-security)
-    - [Configure 2FA](#configure-2fa)
-    - [Hide Your Phone Number](#hide-your-phone-number)
-    - [Disable P2P Calling](#disable-p2p-calling)
-    - [Manage Inactive Sessions](#manage-inactive-sessions)
-  - [Extended Security](#extended-security)
-    - [Consider Using a Different Phone Number](#consider-using-a-different-phone-number)
-      - [Using a VoIP Number](#using-a-voip-number)
-      - [Using an Anonymous Number](#using-an-anonymous-number)
-    - [Turn On Auto-delete Messages](#turn-on-auto-delete-messages)
-  - [Advanced Security Measures](#advanced-security-measures)
-    - [Use Secret Chats for Enhanced Privacy](#use-secret-chats-for-enhanced-privacy)
-    - [Regularly Update the Telegram App](#regularly-update-the-telegram-app)
-    - [Be Cautious with Third-Party Bots and Integrations](#be-cautious-with-third-party-bots-and-integrations)
-    - [Implement Device-Level Security](#implement-device-level-security)
-    - [Manage Group and Channel Admin Permissions](#manage-group-and-channel-admin-permissions)
-    - [Educate Community Members on Security Practices](#educate-community-members-on-security-practices)
-  - [Example of a Man-in-the-Group Attack](#example-of-a-man-in-the-group-attack)
-    - [Scenario: Intercepting a Payment Deal](#scenario-intercepting-a-payment-deal)
-      - [Step 1: Initial Communication](#step-1-initial-communication)
-      - [Step 2: Attackers Create Cloned Groups](#step-2-attackers-create-cloned-groups)
-      - [Step 3: Replicating Conversations](#step-3-replicating-conversations)
-      - [Step 4: Swapping Payment Details](#step-4-swapping-payment-details)
-      - [Step 5: Execution of the Scam](#step-5-execution-of-the-scam)
-  - [Extended Security](#extended-security-1)
-    - [Devices](#devices)
-    - [Passcode Lock](#passcode-lock)
-    - [Privacy and Security](#privacy-and-security)
-      - [Security](#security)
-        - [Two-Step Verification](#two-step-verification)
-      - [Privacy](#privacy)
-      - [Settings \> Privacy and Security \> Data Settings](#settings--privacy-and-security--data-settings)
-  - [Tips for Safe Use](#tips-for-safe-use)
-
 ## Standard Security
 
 ### Configure 2FA

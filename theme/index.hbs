@@ -146,7 +146,7 @@
             <div class="announcement-stripe">
                 <p>
                     <span>This is a work in progress and not a release. We're looking for volunteers.</span>
-                    <span>See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> to know how to collaborate.</span>
+                    <span>See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> and <a href="{{ path_to_root }}contribute/contributing.html">Contribution</a> to know how to collaborate.</span>
                 </p>
             </div>
             <div class="page">
@@ -280,6 +280,18 @@
             </nav>
 
         </div>
+
+        <!-- Footer with contribution message -->
+        <footer id="page-footer">
+            <div class="footer-content">
+                <div class="footer-text-line">
+                    <p><span class="footer-title">Help us improve!</span></p>
+                    <span class="footer-message">Spotted an error or have ideas to enhance this content? <span class="highlight">Your contributions are valuable to us. <a href="{{ path_to_root }}contribute/contributing.html">Learn more</a></span></span></span>
+                    <span class="footer-link">
+                </div>
+                <p class="footer-cta"><a href="{{git_repository_edit_url}}" title="Suggest an edit on GitHub" target="_blank"><i class="fa fa-pencil"></i> Contribute today!</a></p>
+            </div>
+        </footer>
 
         {{#if live_reload_endpoint}}
         <!-- Livereload script (if served using the cli tool) -->
