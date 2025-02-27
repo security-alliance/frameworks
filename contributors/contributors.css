@@ -1,0 +1,117 @@
+.contributors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.contributor {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  background-color: var(--quote-bg);
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.contributor:hover {
+  background-color: var(--quote-border);
+}
+
+/* Avatar styling */
+.contributor.with-avatar {
+  padding-left: 1.5rem;
+  background-size: 1rem 1rem;
+  background-repeat: no-repeat;
+  background-position: 0.25rem center;
+}
+
+/* Individual contributor avatars */
+.contributor.matt.with-avatar {
+  background-image: url('https://github.com/matta.png');
+}
+
+.contributor.steven.with-avatar {
+  background-image: url('https://github.com/steven.png');
+}
+
+/* Styling for the contributors page */
+.contributors-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.contributor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--quote-bg);
+  transition: all 0.2s ease;
+}
+
+.contributor-card:hover {
+  background-color: var(--quote-border);
+  transform: translateY(-3px);
+}
+
+.contributor-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.contributor-name {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.contributor-contributions {
+  font-size: 0.8rem;
+  color: var(--fg);
+  opacity: 0.8;
+}
+
+.chapters-button {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--sidebar-active);
+  color: var(--sidebar-fg);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.chapters-button:hover {
+  background-color: var(--sidebar-active-hover);
+}
+
+.chapters-list {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.chapters-list li {
+  margin-bottom: 0.25rem;
+}
+
+.chapters-list a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.chapters-list a:hover {
+  text-decoration: underline;
+}
