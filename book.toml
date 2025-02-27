@@ -5,6 +5,11 @@ multilingual = false
 src = "src"
 title = "Security Frameworks by SEAL"
 
+[build]
+build-dir = "book"
+create-missing = true
+use-default-preprocessors = true
+
 [preprocessor]
 
 [preprocessor.admonish]

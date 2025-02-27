@@ -189,3 +189,47 @@ function bookmarkPage() {
 function getPathname() {
     return window.location.pathname.replace("/", "");
 }
+
+// Function to set banner content based on domain/environment
+function setEnvironmentBanner() {
+    try {
+        const currentDomain = window.location.hostname;
+        const announcementStripe = document.querySelector('.announcement-stripe p');
+        const announcementBanner = document.querySelector('.announcement-stripe');
+        
+        if (!announcementStripe || !announcementBanner) {
+            console.warn('Announcement stripe element not found');
+            return;
+        }
+        
+        // Default banner is red
+        announcementBanner.style.backgroundColor = '#5e1118';
+        
+        // Check if we're on .org domain (production/main branch)
+        if (currentDomain.includes('.org') || currentDomain === 'frameworks.securityalliance.org') {
+            // Production banner (blue)
+            announcementStripe.innerHTML = `
+                <span>We're progressively releasing an alpha for each framework. Go to .dev domain to peek on future content.</span>
+            `;
+            // Change banner color to blue
+            announcementBanner.style.backgroundColor = '#4339db';
+        } else {
+            // Development banner (red - original)
+            announcementStripe.innerHTML = `
+                <span>This is a work in progress and not a release. We're looking for volunteers.</span>
+                <span>See <a href="https://github.com/security-alliance/frameworks/issues">Issues</a> and <a href="${path_to_root}contribute/contributing.html">Contribution</a> to know how to collaborate.</span>
+            `;
+            // Keep original red background
+        }
+    } catch (error) {
+        console.error('Error setting environment banner:', error);
+    }
+}
+
+// Run the function as early as possible
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setEnvironmentBanner);
+} else {
+    // DOM already loaded, run immediately
+    setEnvironmentBanner();
+}
