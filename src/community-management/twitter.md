@@ -85,7 +85,7 @@ Using a unique password for Twitter is crucial. If you haven't set one, now is t
 ## Best Practices & Additional Tips
 
 - **Disable Email and Phone Discoverability**  
-  - **Go to** [Discoverability and Contacts](https://x.com/settings/contacts)
+  - **Go to:** [Discoverability and Contacts](https://x.com/settings/contacts)
   - It is recommended to turn both email and phone discoverability off.
 
 - **Privacy & Safety Settings:**  
