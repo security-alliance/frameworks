@@ -1,5 +1,10 @@
+---
+tags:
+  - Security Specialist
+---
+
 # Security Regression Testing
-tag: [Security Specialist]
+
 
 Security regression testing involves retesting previously fixed vulnerabilities to ensure that they remain fixed and that new code changes do not introduce new vulnerabilities.
 

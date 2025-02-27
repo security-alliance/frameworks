@@ -1,5 +1,14 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+  - HR
+---
+
 # Google Workspace Security
-tag: [Engineer/Developer, Security Specialist, Operations & Strategy, Devops, HR]
+
 
 Google Workspace (formerly G Suite) is a powerful suite of productivity and collaboration tools widely used by projects. A lot of things may depend on Google Workspace, in which case it is important to consider the security of it.
 

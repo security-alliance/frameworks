@@ -25,8 +25,7 @@
 }
 
 /* Colored Tag Span. Displayed at the top of tagged pages */
-.colored-tag {
-    background-color: var(--tag-color);
+.tag {
     margin: 0 5px 10px 0;
     padding: 5px 10px;
     border-radius: 20px;
@@ -34,10 +33,6 @@
     align-items: center;
     justify-content: center;
     color: white;
-}
-
-.colored-tag i {
-    margin-right: 5px;
 }
 
 /* Tag Search Styles */
@@ -101,13 +96,15 @@
 .announcement-stripe {
     background-color: #5e1118;
     font-weight: bold;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
     padding: 10px;
-    position: relative;
+    position: fixed;
     text-align: center;
     margin: 0 auto;
     width: 100%;
     z-index: 1000;
+    top: 0;
+    left: 0;
 }
 
 .announcement-stripe p {
@@ -118,4 +115,181 @@
 #sidebar {
     z-index: 1001;
     /* Higher z-index than the announcement stripe */
+}
+
+/* Add padding to the page wrapper to prevent content from being hidden behind the fixed banner */
+.page-wrapper {
+    padding-top: 40px;
+}
+
+/* Footer styles */
+#page-footer {
+    margin-top: 1.5rem;
+    padding: 1rem 0 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(20, 16, 49, 0.1); /* Based on #141031 */
+    background-color: transparent;
+}
+
+#page-footer .footer-content {
+    max-width: 1200px; /* Wider container to fit content */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+#page-footer .footer-text-line {
+    white-space: nowrap;
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
+}
+
+#page-footer .footer-title {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: #4339db; /* SEAL Blue from the color palette */
+    margin-right: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#page-footer .footer-message {
+    font-size: 1.6rem;
+    color: #6C757D; /* Gray from the SEAL color palette */
+    margin-right: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.1;
+}
+
+#page-footer .highlight {
+    font-style: italic; /* Keep italic */
+    /* Removed font-weight: bold */
+}
+
+#page-footer .footer-link {
+    font-size: 1.4rem;
+    display: inline;
+    vertical-align: middle;
+    margin-left: 0.3rem;
+}
+
+#page-footer .footer-link a {
+    color: #4339db; /* SEAL Blue */
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+#page-footer .footer-link a:hover {
+    color: #352eb0; /* Darker SEAL Blue */
+}
+
+/* Only allow wrapping on small screens */
+@media (max-width: 1200px) {
+    #page-footer .footer-text-line {
+        white-space: normal;
+    }
+    
+    #page-footer .footer-title,
+    #page-footer .footer-message,
+    #page-footer .footer-link {
+        display: inline;
+    }
+}
+
+/* Stack elements on very small screens */
+@media (max-width: 768px) {
+    #page-footer .footer-title,
+    #page-footer .footer-message,
+    #page-footer .footer-link {
+        display: block;
+        margin: 0 0 0.2rem 0;
+    }
+}
+
+#page-footer .footer-cta {
+    margin-top: 0.4rem;
+}
+
+#page-footer .footer-cta a {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #4339db;
+    background-color: #4339db;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+#page-footer .footer-cta a:hover {
+    background-color: #352eb0;
+    border-color: #352eb0;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(67, 57, 219, 0.2);
+}
+
+#page-footer .footer-cta a i {
+    margin-right: 5px;
+}
+
+/* Dark theme styling for the footer */
+html.ayu #page-footer,
+html.coal #page-footer,
+html.navy #page-footer {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+html.ayu #page-footer p,
+html.coal #page-footer p,
+html.navy #page-footer p {
+    color: #FFFFFF; /* White for dark themes */
+}
+
+html.ayu #page-footer .footer-message,
+html.coal #page-footer .footer-message,
+html.navy #page-footer .footer-message {
+    color: #a8adb2; /* Lighter gray for dark themes */
+}
+
+html.ayu #page-footer .footer-title,
+html.coal #page-footer .footer-title,
+html.navy #page-footer .footer-title {
+    color: #6b63e8; /* Brighter SEAL Blue for dark themes */
+}
+
+html.ayu #page-footer .footer-link a,
+html.coal #page-footer .footer-link a,
+html.navy #page-footer .footer-link a {
+    color: #6b63e8; /* Brighter SEAL Blue for dark themes */
+}
+
+html.ayu #page-footer .footer-link a:hover,
+html.coal #page-footer .footer-link a:hover,
+html.navy #page-footer .footer-link a:hover {
+    color: #8c85f0; /* Even brighter SEAL Blue for dark themes */
+}
+
+html.ayu #page-footer .footer-cta a,
+html.coal #page-footer .footer-cta a,
+html.navy #page-footer .footer-cta a {
+    color: #FFFFFF; /* White text for dark themes */
+    border-color: #6b63e8; /* Brighter SEAL Blue for dark themes */
+    background-color: #6b63e8; /* Brighter SEAL Blue for dark themes */
+}
+
+html.ayu #page-footer .footer-cta a:hover,
+html.coal #page-footer .footer-cta a:hover,
+html.navy #page-footer .footer-cta a:hover {
+    background-color: #8c85f0; /* Even brighter SEAL Blue for dark themes */
+    border-color: #8c85f0; /* Even brighter SEAL Blue for dark themes */
+    color: #1a1a1a; /* Darker background for contrast */
+    box-shadow: 0 4px 8px rgba(107, 99, 232, 0.3); /* Brighter SEAL Blue shadow */
+}
+
+/* Remove previously added unnecessary styles */
+.contribute-message {
+    display: none;
 }

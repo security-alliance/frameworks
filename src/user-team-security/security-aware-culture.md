@@ -1,5 +1,12 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - HR
+---
+
 # Security-Aware Culture
-tag: [Security Specialist, Operations & Strategy, HR]
+
 
 Fostering a security-aware culture within your project aims to help mitigating security risks and help team members understand the importance of security.
 

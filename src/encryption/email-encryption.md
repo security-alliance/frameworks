@@ -1,5 +1,10 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Email Encryption
-tag: [Engineer/Developer, Security Specialist]
 
 Email is insecure and un-encrypted by default, but can become more secure by following best practices:
 

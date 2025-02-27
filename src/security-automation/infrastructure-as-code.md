@@ -1,5 +1,14 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - Cloud
+  - SRE
+---
+
 # Infrastructure as Code
-tag: [Engineer/Developer, Security Specialist, Devops, Cloud, SRE]
+
 
 Infrastructure as Code (IaC) is the managing and provisioning computing infrastructure through machine-readable definition files, rather than manual  configuration or interactive configuration tools. Automating security within IaC helps ensure that infrastructure is configured securely and consistently.
 

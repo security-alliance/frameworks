@@ -1,5 +1,11 @@
+---
+tags:
+  - Operations & Strategy
+  - Legal & Compliance
+---
+
 # Risk Management
-tag: [Operations & Strategy, Legal & Compliance]
+
 
 If a project has effective risk management, it is also likely to be successful at identifying, assessing, and mitigating potential threats to the project. By utilizing risk management, you're likely to be able to prioritize security efforts and see where resources are needed. Risk management provides the capabilities to develop and implement strategies to mitigate identified risks by continuously monitoring the security landscape for new threats and vulnerabilities and then communicating risk findings and mitigation strategies to relevant people.
 

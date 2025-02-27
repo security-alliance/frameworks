@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # File Encryption
-tag: [Engineer/Developer, Security Specialist]
+
 
 File encryption protects sensitive information stored in files.
 
