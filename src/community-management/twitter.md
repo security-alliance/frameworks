@@ -30,7 +30,7 @@ After removing your phone number, it's crucial to navigate to Settings > Securit
 Two-factor authentication is a great way to keep hackers at bay, but it's not foolproof if you're relying on SMS 2FA and someone gets hold of your phone number. It's generally better to use an authenticator app or a security key. Also, ensure your backup codes are stored safely, ideally printed on paper rather than saved on your device.
 
 1. **Go to:** [Login Verification](https://x.com/settings/account/login_verification)  
-2. **Disable:** Uncheck **Text message**
+2. **Disable:** Un-check **Text message**
 3. **Enable:** Choose **Authentication app** and/or **Security key**
     1. If using an authentication app, store your secret (TOTP) in a reliable app (Authy, Google Authenticator), but disable [syncing](https://retool.com/blog/mfa-isnt-mfa) for added security.  
     2. If using security keys, keep at least two (e.g., from [Yubico](https://www.yubico.com/)) in case one fails.  
