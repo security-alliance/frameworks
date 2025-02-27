@@ -273,7 +273,7 @@ mev
 hacken
 skylock
 kickstart
-Webhook
+Webhooks
 automod
 Helpdesk
 PFP
