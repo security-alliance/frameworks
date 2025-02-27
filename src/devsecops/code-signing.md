@@ -1,5 +1,12 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+---
+
 # Code Signing
-tag: [Engineer/Developer, Security Specialist, Devops]
+
 
 Code signing ensures that the code has not been tampered with, and verifies the identity of the developer. Here are some best practices that could be followed:
 

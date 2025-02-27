@@ -1,3 +1,9 @@
+---
+tags:
+  - Operations & Strategy
+  - Security Specialist
+---
+
 # Overview of Each Framework
 
 This document provides an overview of the various frameworks covered in the Security Frameworks by SEAL. Each framework addresses a specific aspect of Web3 security, providing best practices and guidelines to help secure your projects.
@@ -85,5 +91,3 @@ This framework explores various methods of testing Web3 projects for security vu
 ## User (Team) Security
 
 This section addresses security practices and awareness for the team members working on Web3 projects.
-
-tag: [Operations & Strategy, Security Specialist]

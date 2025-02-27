@@ -1,5 +1,13 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+  - SRE
+---
+
 # Lessons Learned
-tag: [Security Specialist, Operations & Strategy, Devops, SRE]
+
 
 Conducting a post-incident review and identifying lessons learned will improve your project's incident response capabilities. By analyzing what went well and what could be improved, you can enhance your readiness for future incidents.
 

@@ -1,0 +1,182 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+:root {
+    --toc-width: 270px;
+    --center-content-toc-shift: calc(-1 * var(--toc-width) / 2);
+    --toc-bg-h1: rgba(114, 137, 218, 0.05);
+    --toc-bg-h2: rgba(114, 137, 218, 0.03);
+    --toc-bg-active: rgba(86, 114, 210, 0.15);
+    --toc-border-active: rgb(86, 114, 210);
+}
+
+.nav-chapters {
+    /* adjust width of buttons that bring to the previous or the next page */
+    min-width: 50px;
+}
+
+.previous {
+    /*
+    adjust the space between the left sidebar or the left side of the screen 
+    and the button that leads to the previous page
+    */
+    margin-left: var(--page-padding);
+}
+
+@media only screen {
+    main {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    @media (max-width: 1079px) {
+        .sidebar-hidden #sidetoc {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1439px) {
+        .sidebar-visible #sidetoc {
+            display: none;
+        }
+    }
+
+    @media (1079px <= width <= 1339px) {
+        .sidebar-hidden main {
+            position: relative;
+            left: var(--center-content-toc-shift);
+        }
+    }
+
+    @media (1439px <= width <= 1700px) {
+        .sidebar-visible main {
+            position: relative;
+            left: var(--center-content-toc-shift);
+        }
+    }
+
+    .content-wrap {
+        width: 100%;
+    }
+
+    #sidetoc {
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: auto;
+    }
+    #pagetoc {
+        position: fixed;
+        /* adjust TOC width */
+        width: var(--toc-width);
+        max-height: 60vh; /* Limit the height to 60% of the viewport height */
+        overflow-y: auto; /* Add vertical scrolling when content exceeds max-height */
+        height: auto; /* Allow the height to be dynamic based on content up to max-height */
+        margin-bottom: 20px; /* Add some margin at the bottom */
+        scrollbar-width: thin; /* Make scrollbar thin for Firefox */
+    }
+    #pagetoc a {
+        border-left: 2px solid var(--sidebar-bg);
+        color: var(--fg) !important;
+        display: block;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-left: 10px;
+        text-align: left;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        margin-bottom: 1px;
+        border-radius: 0 4px 4px 0;
+    }
+    #pagetoc a:hover {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-fg) !important;
+        border-left-color: var(--links);
+        padding-left: 15px;
+    }
+    #pagetoc a.active {
+        background: var(--toc-bg-active);
+        color: var(--links) !important;
+        border-left-color: var(--toc-border-active);
+        font-weight: bold;
+        padding-left: 15px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    /* Enhanced heading styles for better hierarchy visualization */
+    #pagetoc .pagetoc-title {
+        font-weight: bold;
+        font-size: 1.2em;
+        border-left-color: var(--links);
+        border-left-width: 3px;
+        margin-bottom: 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        background: var(--toc-bg-active);
+        color: var(--links) !important;
+        border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    #pagetoc .pagetoc-H1 {
+        font-weight: bold;
+        font-size: 1.05em;
+        border-left-color: var(--icons);
+        background: var(--toc-bg-h1);
+    }
+    #pagetoc .pagetoc-H2 {
+        padding-left: 20px;
+        font-weight: 600;
+        font-size: 1em;
+        border-left-color: var(--sidebar-active);
+        opacity: 0.95;
+        background: var(--toc-bg-h2);
+    }
+    #pagetoc .pagetoc-H3 {
+        padding-left: 40px;
+        font-weight: normal;
+        font-size: 0.95em;
+        border-left-color: var(--quote-border);
+        opacity: 0.9;
+    }
+    #pagetoc .pagetoc-H4 {
+        padding-left: 60px;
+        font-weight: normal;
+        font-size: 0.9em;
+        color: var(--sidebar-fg) !important;
+        opacity: 0.9;
+    }
+    #pagetoc .pagetoc-H5 {
+        padding-left: 80px;
+        font-weight: normal;
+        font-size: 0.85em;
+        opacity: 0.8;
+    }
+    #pagetoc .pagetoc-H6 {
+        padding-left: 100px;
+        font-weight: normal;
+        font-size: 0.8em;
+        opacity: 0.7;
+    }
+}
+
+/* Style the scrollbar for webkit browsers (Chrome, Safari, etc.) */
+#pagetoc::-webkit-scrollbar {
+    width: 6px;
+}
+
+#pagetoc::-webkit-scrollbar-track {
+    background: var(--sidebar-bg);
+}
+
+#pagetoc::-webkit-scrollbar-thumb {
+    background-color: var(--sidebar-fg);
+    border-radius: 6px;
+}
+
+@media print {
+    #sidetoc {
+        display: none;
+    }
+}

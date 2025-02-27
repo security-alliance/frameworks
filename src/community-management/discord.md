@@ -1,11 +1,21 @@
+---
+tags:
+  - Community & Marketing
+  - Security Specialist
+---
+
 # Discord Security
 
-tag: [Community & Marketing, Security Specialist]
+> **Key Takeaway for Discord:**  
+> To secure your Discord server, focus on implementing robust access controls and enforcing two-factor authentication for all administrators. Regularly audit roles and permissions, and maintain vigilant moderation. Educate your community about security best practices to prevent unauthorized access and protect against potential threats.
 
-Discord has a large set of security settings to take into consideration, as well as some potential pitfalls where a server moderator could for example fall victim to a phishing attempt by having their account hijacked through a QR code.
-Below, you can find some hardening suggestions when setting up a Discord server.
+Discord offers a variety of security features that are essential to use. Despite these, users should stay alert to threats like phishing, which can target server moderators. Such threats may appear as QR code scams, fake login screens, or misleading direct messages pretending to be from Discord support.
 
-## Discord Server Hardening
+To enhance the security of your Discord server, take into account these suggestions. They cover important aspects like server settings, roles and permissions, moderation, bots, channels, invites, member screening, logging, and other security measures.
+
+---
+
+## Essential Security Measures
 
 ### Server Settings
 
@@ -14,13 +24,12 @@ a) **Enable 2FA Requirement for Moderation**
 - Go to Server Settings > Safety Setup > Moderation
 - Toggle on "Require 2FA for moderation"
 - This ensures all moderators have an extra layer of security
-- Protects your server if a moderator's account is compromised
 
 b) **Set Appropriate Verification Level**
 
 - Go to Server Settings > Safety Setup > Verification Level
 - Choose from: None, Low, Medium, High, Highest
-- Recommended: "High" for public servers (requires verified email and server membership for 10 minutes before messaging)
+- Recommended: "Moderate" for public servers (requires users are registered on discord for longer then 5 min.)
 - Higher levels protect against spammers and raids
 
 c) **Enable Explicit Content Filter**
@@ -30,22 +39,36 @@ c) **Enable Explicit Content Filter**
 - This automatically blocks messages containing explicit images in non-age-restricted channels
 - Age-restricted channels are exempt from this filter
 
+d) **Enable Raid Protection and CAPTCHA**
+
+- Go to Server Settings > Safety Setup > Raid Protection and Captcha
+- Activate all relevant settings to require CAPTCHA for new user actions
+- This protection uses machine learning to detect and block bot-driven join-raids
+- When activated:
+  - Sends alerts to a specified channel
+  - Requires CAPTCHA verification for new users for one hour after detection
+
 ### Roles and Permissions
 
 a) **Implement Role Hierarchy**
 
 - Go to Server Settings > Roles
-- Create roles like: Admin, Moderator, Trusted Member, Member, New Member
+- Create roles like: Cold Admin, Team, Moderator, & Verified.
 - Drag to reorder; higher roles override lower roles
-- Restructure the role hierarchy by dragging roles higher or lower in the roles list
+- Restructure the role hierarchy by dragging roles higher or lower in the roles list:
+
+  - Cold Admin
+  - Team
+  - Moderator
+  - Verified
 
 b) **Restrict Administrative Permissions**
 
 - For each role, carefully review the 32 available permissions
-- Key permissions to restrict: Administrator, Manage Server, Manage Roles, Manage Channels
+- Key permissions to restrict: Administrator, Manage Webhooks, Manage Server, Manage Roles, & Manage Channels
 - Never give Admin or Kick permissions to anyone you don't fully trust
 - Good permissions for moderators: Manage Channels, Manage Roles, Manage Messages, Ban Members, Delete Messages
-- Good permissions for members: View Channels, Create Invite, Send Messages, Read Message History, Connect, Speak & Use Voice Activity
+- Good permissions for members: View Channels, View audit logs, Create Invite, Manage Messages, Read Message History, Connect, Speak & Use Voice Activity, & Ban/Kick/Timeout
 
 c) **Use Channel-Specific Permissions**
 
@@ -57,6 +80,8 @@ d) **Use the "View Server as Role" Feature**
 - Go to Server Settings > Roles > Select a role > View Server as Role
 - This allows you to see what members with a certain role can see and access
 
+## Advanced Security Measures
+
 ### Moderation
 
 a) **Set Up Auto-Moderation Rules**
@@ -65,7 +90,7 @@ a) **Set Up Auto-Moderation Rules**
 - Set up rules for: Spam, Harmful Links, Mention Spam, Inappropriate Words
 - Configure custom keyword filters and exempted roles
 - Customize the response to spam, like blocking the message, sending an alert, or timing out the member
-- Allow certain roles to bypass the spam filter if needed
+- Add to the existing automod rule to block keywords in a users name, and put Support, Bot, Admin, Tech, Helpdesk, etc.
 
 b) **Configure Timeout Duration**
 
@@ -79,6 +104,23 @@ c) **Establish Clear Server Rules**
 - Use Discord's built-in rules screening feature
 - Include sections on: Behavior, Content, Moderation Actions, Appeals Process
 
+### Extra Moderation Best Practices
+
+a) **Leverage "Default Notifications to Mentions Only"**
+
+- Go to **Server Settings > Overview** and set **Default Notifications** to **Mentions Only**.
+- Reduces potential spam notifications for members, making them more vigilant about suspicious or phishing content.
+
+b) **Stay Alert to New Features & Potential Exploits**
+
+- Keep track of newly introduced features such as Threads, Scheduled Events, or Stage Channels.
+- Configure their permissions carefully (e.g., who can start or join a Thread) to prevent abuse by spammers or scammers.
+
+c) **Regularly Check Third-Party Bot Security**
+
+- Ensure bots are from reputable sources and receive frequent updates.
+- Review bot permissions after each significant update to avoid newly introduced vulnerabilities.
+
 ### Bots
 
 a) **Audit Bot Permissions**
@@ -86,6 +128,7 @@ a) **Audit Bot Permissions**
 - Go to Server Settings > Integrations
 - Review each bot's permissions
 - Remove unnecessary permissions
+- Remove permissions for bots that ask for Admin or other permissions that aren't needed, use least privilege with permissions at the role level and channel level.
 
 b) **Remove Unnecessary Bots**
 
@@ -94,9 +137,33 @@ b) **Remove Unnecessary Bots**
 c) **Implement Security/Moderation Bots**
 
 - Consider bots like:
-  - MEE6 for auto-moderation and leveling
   - Dyno for advanced moderation and logging
   - Carl-bot for reaction roles and custom commands
+  - Set up security Bots
+
+### Security-Specific Bots
+
+Various third-party Discord bots offer valuable security and protection features, facilitating automated moderation for your server. In the sections below, we'll explore different categories of security bots and highlight popular options for each category.
+
+#### Anti-Impersonation Bots
+
+Set up custom rules to prevent other users from joining using the same username and PFP to impersonate you or other important members of the server. A popular bot in this category is Wick Bot.
+
+#### Anti-Raid Bots
+
+to prevent spam bots from joining your server all at once, an attack known as raiding, you can also set up bots with particular rules. Beemo is a good example of a bot in this category.
+
+#### Anti-Nuke Bots
+
+This is a monitoring system to observe and note any changes (spontaneous or planned) that take place in your discord server. Some key observation markers are channel and role creation/deletions, banning or kicking members, and webhook creation/deletion.
+
+#### Moderation & Link Whitelisting Bots
+
+Only allows approved links to be used in the discord server. A popular bot in this category is Goodknight Bot.
+
+_The bots above are not all-inclusive but rather a recommended list of bots to help protect your Discord server in these categories._
+
+## Enhanced Server Configuration
 
 ### Channels
 
@@ -160,6 +227,8 @@ b) **Set Up a Private Logging Channel**
 - Create a private channel visible only to admins/mods
 - Use a logging bot like Logger or Dyno to send detailed logs
 
+## Best Practices & Administrative Security
+
 ### Regular Reviews
 
 a) **Conduct Periodic Permission Audits**
@@ -194,12 +263,33 @@ c) **Use the Cold Account for Critical Actions**
 - Manage bots, modify server settings, and respond to compromises
 - Never use this account for regular server activities
 
+d) **Disable QR Code Login on Cold Device**
+
+- In **User Settings > Privacy & Safety**, deselect any quick login or QR scan options.
+- Prevents attackers from using QR phishing tactics to hijack this high-privilege account.
+
+### Additional Community Features
+
+a) **Enable the Community Feature (Newer Discord Update)**
+
+- Go to **Server Settings > Community** to activate the Community Feature.
+- Unlocks tools like membership screening, server insights, welcome screen, and discovery settings.
+- Helps maintain a structured, secure environment by surfacing official rules and critical info to newcomers.
+
+b) **Review Updated Discord Moderation Resources**
+
+- Consult the official [Discord Moderator Academy](https://discord.com/moderation) for ongoing best practices and new features.
+- Implement recommended strategies (e.g., improved spam filters, updated role recommendations).
+
+## Platform-Specific Security Considerations
+
 ### Additional Security Measures
 
 a) **Verification Systems**
 
-- Implement a verification bot like Wick or Captcha.bot
-- Require users to complete a captcha or react to a message before accessing the server
+- Implement a verification bot like Wick
+- Require users to complete an in-channel captcha before accessing the server
+- Advance Settings: Have verification bot filter based on account age, PFP set, and timeout for incomplete captcha
 
 b) **Raid Protection**
 
@@ -226,7 +316,18 @@ f) **Backup Systems**
 - Use a bot like ServerBackup to regularly backup your server configuration
 - Store backups securely off-platform
 
+g) **Audit New Integration/Link Safety Settings**
+
+- Regularly review **Server Settings > Integrations** for newly added apps or link shorteners.
+- Disable suspicious integrations or automate link scanning with a bot that checks URLs against known phishing databases.
+
+h) **Enable Safe Direct Messaging for All Users**
+
+- In **User Settings > Privacy & Safety**, select **Keep Me Safe** for direct messages.
+- Encourages moderators and community members to adopt the same setting to minimize phishing DMs.
+
 ## Additional Resources
 
 - [Securing Your Server - Discord](https://discord.com/community/securing-your-server)
 - [Four Steps for a Super Safe Server - Discord](https://discord.com/safety/360043653152-four-steps-to-a-super-safe-server)
+- [How to setup a Discord server securely](https://www.ledger.com/academy/basic-basics/launch-a-crypto-project-securely/how-to-set-up-a-crypto-project-discord-server-securely)

@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Security Tools and Resources
-tag: [Engineer/Developer, Security Specialist]
+
 
 There is a very large amount of security tools and resources available, and sometimes it can feel overwhelming.
 

@@ -1,5 +1,11 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
 # Custodial vs. Non-Custodial Wallets
-tag: [Engineer/Developer, Security Specialist]
+
 
 ## Custodial Wallets
 

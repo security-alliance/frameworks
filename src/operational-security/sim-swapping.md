@@ -1,5 +1,11 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+---
+
 # SIM Swapping
-tag: [Security Specialist, Operations & Strategy]
+
 
 SIM swapping occurs when a threat actor trick a mobile phone provider into transferring a victim's phone number to a SIM card that the criminals control. This allows the criminals to intercept the victim's text messages and phone calls, including any two-factor authentication codes. With access to the victim's phone number, the criminals can then gain unauthorized access to the victim's accounts.
 
