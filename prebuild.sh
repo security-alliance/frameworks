@@ -28,19 +28,19 @@ if [ ! -d "src/config" ]; then
 fi
 
 # Ensure we have branch-specific SUMMARY files
-# If they don't exist, create them from the current SUMMARY.md
+# If they don't exist, fail with an error
 if [ ! -f "src/config/SUMMARY.md.develop" ]; then
-    echo "Creating develop SUMMARY file from current..."
-    cp src/SUMMARY.md src/config/SUMMARY.md.develop
+    echo "ERROR: src/config/SUMMARY.md.develop file is missing!"
+    exit 1
 fi
 
 if [ ! -f "src/config/SUMMARY.md.main" ]; then
-    echo "Creating main SUMMARY file from current..."
-    cp src/SUMMARY.md src/config/SUMMARY.md.main
+    echo "ERROR: src/config/SUMMARY.md.main file is missing!"
+    exit 1
 fi
 
 # Select the appropriate SUMMARY.md based on branch
-if [ "$CURRENT_BRANCH" = "main" ]; then
+if [ "$CURRENT_BRANCH" = "main" ] || [ "$CURRENT_BRANCH" = "master" ]; then
     echo "Using main branch SUMMARY.md"
     cp src/config/SUMMARY.md.main src/SUMMARY.md
 else
