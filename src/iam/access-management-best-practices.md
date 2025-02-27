@@ -9,7 +9,6 @@ tags:
 
 # Access Management Best Practices
 
-
 Effective access management involves ensuring that users have the right access, at the right time, and that access is promptly revoked when no longer needed. Implementing access management practices helps prevent unauthorized access, and reduces the risk of insider threats.
 
 ## Practices for Access Management
