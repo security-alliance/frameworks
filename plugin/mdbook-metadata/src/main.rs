@@ -688,14 +688,6 @@ impl Metadata {
         file.write_all(tags_js.as_bytes())?;
         Ok(())
     }
-
-    fn generate_contributors_index(
-        contributors_index: &HashMap<String, Vec<String>>,
-        github_profiles: &HashMap<String, String>
-    ) -> Result<(), Error> {
-        // Replaced with the new generate_contributors_index_js function
-        Ok(())
-    }
 }
 
 fn generate_color(tag: &str) -> String {
