@@ -7,7 +7,7 @@ const contributorsIndex = {
     "github": "https://github.com/mattaereal",
     "avatar": "https://github.com/mattaereal.png"
   },
-  "NFTDrewww": {
+  "NFT_Dreww.eth": {
     "chapters": [
       "community-management/index.html"
     ]

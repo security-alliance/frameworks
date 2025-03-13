@@ -5,7 +5,7 @@ contributors:
   - name: Matta
     avatar: https://github.com/mattaereal.png
     github: https://github.com/mattaereal
-  - NFTDrewww
+  - NFT_Dreww.eth
 ---
 
 # Community Management
