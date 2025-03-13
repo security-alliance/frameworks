@@ -284,6 +284,5 @@ shorteners
 Discoverability
 mdbook
 pagetoc
-NFT_Dreww.eth
 Matta
 frontmatter
