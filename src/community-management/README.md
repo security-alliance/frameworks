@@ -34,7 +34,7 @@ Here, we present essential best practices to safeguard your community. In the fo
 - Clearly communicate to community members that your team will never send the first direct message to them. This is important because attackers often impersonate team members and initiate direct messages to trick users into believing they are legitimate, thereby gaining their trust and potentially compromising their security.
 - Publicly define all official communication channels used by your organization.  
 
-Refer to the [**Security Awareness framework**](../awareness/README.md) to learn more about **Security Training** and **Social Engineering**.
+Refer to the [**Security Awareness framework**](../awareness/README.md) to learn more about social engineering techniques and security training best practices.
 
 ### Operational Security (OpSec)
 
