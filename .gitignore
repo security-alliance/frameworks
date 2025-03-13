@@ -9,3 +9,9 @@
 book
 bin
 *.code-workspace
+# Rust build artifacts
+**/target/
+**/*.rs.bk
+**/*.rmeta
+**/*.rlib
+Cargo.lock

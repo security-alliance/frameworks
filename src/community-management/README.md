@@ -1,6 +1,11 @@
 ---
 tags:
   - Community & Marketing
+contributors:
+  - name: Matta
+    avatar: https://github.com/mattaereal.png
+    github: https://github.com/mattaereal
+  - NFT_Dreww.eth
 ---
 
 # Community Management
@@ -41,6 +46,6 @@ For a comprehensive understanding of Operational Security, including additional 
 ### Emergency Response Plan
 
 - Prepare a clear protocol for handling security incidents, including how to quickly remove compromised accounts and warn community members.
-- Adopt a proactive mindset: it’s not a matter of if but when a breach will occur. Having a plan in place helps you act decisively and contain damage.
+- Adopt a proactive mindset: it's not a matter of if but when a breach will occur. Having a plan in place helps you act decisively and contain damage.
 
 As part of the communication team, it is crucial to know when and how to communicate effectively during an incident. This involves understanding the appropriate timing and messaging to ensure clarity and prevent misinformation. For more insights on where this role fits within an incident, refer to the [**Incident Management framework**](../incident-management/README.md).
