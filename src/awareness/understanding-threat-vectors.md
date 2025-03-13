@@ -4,6 +4,7 @@ tags:
   - Operations & Strategy
   - Community & Marketing
   - HR
+  - Engineer/Developer
 ---
 
 # 2. Understanding Threat Vectors
@@ -24,7 +25,29 @@ Attackers may use text messages or direct social media messages to bypass email 
 Phone calls that pretend to be from a trusted organization, often using spoofed caller IDs.
 **Scenario Example:** A staff member receives a voicemail warning about a potential security breach and instructing them to call a specific number immediately. Recognizing the urgency and verifying the caller ID against known numbers can help avoid falling for a vishing scam.
 
-### 2.1.2. Additional Social Engineering Techniques:
+### 2.1.2. Web3-Specific Phishing and Scams:
+
+- **Crypto Drainers:**
+A common attack where a threat actor suggests users can participate in an airdrop by visiting a provided link. Unsuspecting users who click the link are directed to a counterfeit website, where they are asked to authenticate their wallet and sign a transaction. Once signed, the threat actor gains access to steal funds from the wallet.
+
+- **Rug Pulls:**
+In the context of web3 and cryptocurrencies, these scams typically involve fraudulent schemes designed to swindle individuals out of their digital assets. For example, an enticing new project may promise revolutionary technology and unprecedented returns. However, the project developers quickly vanish, leaving investors with worthless tokens and empty promises.
+
+- **Token Approval Exploits:**
+Attackers may trick users into approving smart contracts that give unlimited access to tokens in their wallet. Always verify what permissions you're granting when signing transactions.
+
+### 2.1.3. Protecting Against Web3 Threats:
+
+- **Check & Remove Token Approvals:**
+Regularly check which smart contracts have approvals to handle funds in your wallet and revoke unnecessary approvals to improve your security posture.
+**Useful Tools:**
+  - [Unrekt](https://app.unrekt.net/)
+  - [Etherscan Token Approval Checker](https://etherscan.io/tokenapprovalchecker)
+
+- **Scrutinize Transaction Requests:**
+Never sign a transaction unless you are completely sure exactly what you are signing. Be especially skeptical of offers that seem too good to be true.
+
+### 2.1.4. Additional Social Engineering Techniques:
 
 - **Pretexting:**
 Attackers create a fabricated scenario to steal personal information or gain access.
