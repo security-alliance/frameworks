@@ -4,6 +4,7 @@ tags:
   - Operations & Strategy
   - Community & Marketing
   - HR
+  - Engineer/Developer
 ---
 
 # Security Awareness
@@ -15,12 +16,14 @@ This framework is all about understanding the threat landscape, recognizing risk
 
 ## Introduction & Objectives
 
-The modern digital landscape is filled with sophisticated attacks. This section lays the foundation for why a high level of security awareness is essential. It's about empowering you to notice, question, and respond appropriately when something feels off. Trust, but verify!
+The modern digital landscape is filled with sophisticated attacks, including web3-specific threats like crypto drainers and rug pulls. This section lays the foundation for why a high level of security awareness is essential. It's about empowering you to notice, question, and respond appropriately when something feels off. Trust, but verify!
 
 ### Objectives
 
-- Recognize Threats: Understand common tactics used by cybercriminals.
+- Recognize Threats: Understand common tactics used by cybercriminals, including both traditional and web3-specific attack vectors.
 - Adopt a Proactive Stance: Learn how early recognition can stop an attack in its tracks.
+- Foster a Security Culture: Build an organizational environment where security is everyone's responsibility.
+- Implement Effective Training: Develop structured approaches to security education for all team members.
 - Separate Awareness from Implementation: Focus here on "being aware" rather than the step-by-step controls, which are covered in other sections.
 
 ## Contents

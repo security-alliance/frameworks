@@ -4,6 +4,7 @@ tags:
   - Operations & Strategy
   - Community & Marketing
   - HR
+  - Engineer/Developer
 ---
 
 # 5. Resources & Further Reading
@@ -58,7 +59,18 @@ Read detailed incident reports and analysis (available from sources like Verizon
 - [Blockthreat](https://blockthreat.io/) - Web3 security news and analysis
 - [The Red Guild](https://blog.theredguild.org/) - Web3 security awareness and education
 
-## 5.6. Security Tools and Services
+## 5.6. Web3 Security Tools
+
+- **Token Approval Management:**
+  - [Unrekt](https://app.unrekt.net/) - Check and revoke token approvals
+  - [Etherscan Token Approval Checker](https://etherscan.io/tokenapprovalchecker) - Monitor smart contract approvals
+
+- **Wallet Security:**
+  - [Software Wallets comparison](https://walletcompare.xyz) - Compare security features of different crypto wallets
+  - [Hardware Wallets comparison](https://www.hardware-wallets.net/) - Compare security features of different hardware wallets  
+  - [Hardware Wallet Resources](https://trezor.io/learn) - Educational content about hardware wallet security
+
+## 5.7. Security Tools and Services
 
 - **Password Managers:**
   - [Bitwarden](https://bitwarden.com/) - Open-source password management

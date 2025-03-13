@@ -4,6 +4,7 @@ tags:
   - Operations & Strategy
   - Community & Marketing
   - HR
+  - Engineer/Developer
 ---
 
 # 4. Staying Informed & Continuous Learning
@@ -37,7 +38,33 @@ Example: Monthly security topics with quarterly refreshers on critical subjects.
 Include hands-on exercises that allow people to apply what they've learned.
 Example: Conduct simulated phishing tests followed by immediate feedback and learning opportunities.
 
-## 4.3. Specific Information Sources
+- **Interactive Training Methods:**
+Use interactive training methods, such as SEAL Wargames or workshops to engage team members and enhance learning.
+
+- **Real-World Scenarios:**
+Incorporate real-world scenarios and case studies to illustrate the impact of security breaches and the importance of preventive measures.
+
+- **Assessments and Quizzes:**
+Use assessments and quizzes to evaluate the effectiveness of training and identify areas where additional training may be needed.
+
+## 4.3. Essential Training Topics
+
+- **Phishing and Social Engineering:**
+Educate team members on recognizing and responding to phishing attacks and social engineering tactics, with special focus on web3-specific threats.
+
+- **Password Management:**
+Provide best practices for creating and managing strong passwords and using password managers.
+
+- **Data Protection:**
+Teach methods for protecting sensitive data, including encryption, access controls, and secure data handling practices.
+
+- **Incident Reporting:**
+Instruct team members on how to report security incidents and suspicious activities promptly.
+
+- **Secure Coding Practices:**
+For developers, provide training on secure coding practices and common vulnerabilities in web3 environments.
+
+## 4.4. Specific Information Sources
 
 ### Security Newsletters
 

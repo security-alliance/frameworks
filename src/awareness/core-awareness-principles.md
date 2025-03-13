@@ -4,6 +4,7 @@ tags:
   - Operations & Strategy
   - Community & Marketing
   - HR
+  - Engineer/Developer
 ---
 
 # 1. Core Awareness Principles
@@ -22,5 +23,22 @@ Always verify before trusting. Even messages from familiar contacts should be co
 - **Filtering Credible Information**
 In an era of information overload, it's critical to identify and rely on reputable sources. This means following established security blogs, official alerts from cybersecurity agencies, or verified community channels.
 
+- **Organizational Responsibility**
+Security is a shared responsibility that requires commitment at all levels of the organization. Leadership must demonstrate strong commitment by prioritizing and investing in security initiatives, while every team member should understand their role in maintaining security.
+
 > **Real-World Example**
 A company might receive a seemingly routine email from a "vendor" requesting updated banking details. An employee with a strong zero trust mindset will independently verify the request through known contact numbers or an established internal process, thereby avoiding a potential fraud.
+
+## Fostering a Security-Aware Culture
+
+- **Leadership Commitment**
+Ensure that leadership demonstrates a strong commitment to security by prioritizing and investing in security initiatives.
+
+- **Encourage Reporting**
+Create an environment where team members feel comfortable reporting security incidents, suspicious activities, and potential vulnerabilities without fear of retribution.
+
+- **Recognition and Rewards**
+Recognize and reward team members who demonstrate exemplary security practices and contribute to the organization's security efforts.
+
+- **Collaboration**
+Promote collaboration and information sharing among team members to enhance overall security awareness and response capabilities.
