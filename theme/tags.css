@@ -1,0 +1,31 @@
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.tag.cloud { background-color: #0873B5; }
+.tag.community--marketing { background-color: #5B2371; }
+.tag.dao { background-color: #5112C1; }
+.tag.devops { background-color: #5C234A; }
+.tag.engineerdeveloper { background-color: #B2439F; }
+.tag.finance { background-color: #005ED7; }
+.tag.hr { background-color: #285AD2; }
+.tag.legal--compliance { background-color: #0525B1; }
+.tag.operations--strategy { background-color: #9A055D; }
+.tag.protocol { background-color: #495EA9; }
+.tag.sealinitiative { background-color: #3C7A0C; }
+.tag.sre { background-color: #2E51BA; }
+.tag.security-specialist { background-color: #9F2026; }
+.tag.whitehat { background-color: #571A70; }
