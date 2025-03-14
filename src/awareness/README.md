@@ -28,8 +28,8 @@ The modern digital landscape is filled with sophisticated attacks, including web
 
 ## Contents
 
-1. [Core Awareness Principles](./core-awareness-principles.md)
-2. [Understanding Threat Vectors](./understanding-threat-vectors.md)
-3. [Cultivating a Security-Aware Mindset](./cultivating-a-security-aware-mindset.md)
-4. [Staying Informed & Continuous Learning](./staying-informed-and-continuous-learning.md)
-5. [Resources & Further Reading](./resources-and-further-reading.md)
+1. [Core Awareness Principles](./core-awareness-principles.md) - Foundational security concepts and mindsets that form the basis of security awareness
+2. [Understanding Threat Vectors](./understanding-threat-vectors.md) - Comprehensive overview of attack methods, indicators, and preventive measures
+3. [Cultivating a Security-Aware Mindset](./cultivating-a-security-aware-mindset.md) - Behavioral practices and organizational strategies for building a security culture
+4. [Staying Informed & Continuous Learning](./staying-informed-and-continuous-learning.md) - Training frameworks, educational approaches, and information sources
+5. [Resources & Further Reading](./resources-and-further-reading.md) - External tools, references, and resources for ongoing security education

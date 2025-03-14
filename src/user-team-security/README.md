@@ -1,1 +1,0 @@
-# User and Team Security
