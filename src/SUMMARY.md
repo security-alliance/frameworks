@@ -24,6 +24,7 @@
   - [G Suite Security](./operational-security/g-suite-security.md)
   - [Password and Secrets Management](./operational-security/password-secrets-management.md)
   - [Physical Security](./operational-security/physical-security.md)
+  - [Secure Multisig Best Practices](./operational-security/secure-multisig-best-practices.md)
   - [Secure Multisig Signing Process](./operational-security/secure-multisig-signing-process.md)
   - [SIM Swapping](./operational-security/sim-swapping.md)
   - [Standard Operating Environment](./operational-security/standard-operating-environment.md)
