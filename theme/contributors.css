@@ -1,0 +1,148 @@
+.contributors-container {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--sidebar-non-existant);
+  border-radius: 0.5rem;
+  background-color: var(--sidebar-bg);
+  opacity: 0.85;
+  float: right;
+  width: 250px;
+  margin-left: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  clear: right;
+}
+
+.contributors-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--fg);
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--sidebar-non-existant);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contributors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.contributor {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.75rem;
+  border-radius: 2rem;
+  background-color: var(--theme-popup-bg);
+  font-size: 1.25rem;
+  transition: all 0.2s ease;
+  color: var(--fg);
+  text-decoration: none;
+  width: calc(100% - 1.5rem);
+  margin-left: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.contributor:hover {
+  background-color: var(--sidebar-active);
+  transform: translateY(-2px);
+  color: var(--sidebar-fg);
+}
+
+/* Avatar styling */
+.contributor.with-avatar {
+  padding-left: 2.25rem;
+  background-size: 1.75rem 1.75rem;
+  background-repeat: no-repeat;
+  background-position: 0.3rem center;
+}
+
+/* Individual contributor avatars */
+.contributor.matta.with-avatar {
+  background-image: url('https://github.com/mattaereal.png');
+}
+
+/* Styling for the contributors page */
+.contributors-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.contributor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--quote-bg);
+  transition: all 0.2s ease;
+}
+
+.contributor-card:hover {
+  background-color: var(--quote-border);
+  transform: translateY(-3px);
+}
+
+.contributor-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.contributor-name {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.contributor-contributions {
+  font-size: 0.8rem;
+  color: var(--fg);
+  opacity: 0.8;
+}
+
+.chapters-button {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--sidebar-active);
+  color: var(--sidebar-fg);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.chapters-button:hover {
+  background-color: var(--sidebar-active-hover);
+}
+
+.chapters-list {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.chapters-list li {
+  margin-bottom: 0.25rem;
+}
+
+.chapters-list a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.chapters-list a:hover {
+  text-decoration: underline;
+}

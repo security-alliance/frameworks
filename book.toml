@@ -19,8 +19,8 @@ assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
 [preprocessor.catppuccin]
 assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 
-[preprocessor.tags]
-command = "cargo run --manifest-path=plugin/tags/Cargo.toml --locked"
+[preprocessor.metadata]
+command = "cargo run --manifest-path=plugin/mdbook-metadata/Cargo.toml --locked"
 tag_colors = { "SEAL/Initiative" = "#4339db" }
 
 [output]
@@ -32,12 +32,14 @@ additional-css = [
     "./mdbook-admonish.css",
     "./theme/custom.css",
     "./theme/toc/pagetoc.css",
-    "./tags/tags.css",
+    "./theme/tags.css",
+    "./theme/contributors.css",
 ]
 additional-js = [
     "./theme/main.js",
     "./theme/toc/pagetoc.js",
-    "./tags/tagsindex.js",
+    "./theme/tagsindex.js",
+    "./theme/contributorsindex.js",
 ]
 template-path = "theme"
 copy-images = true
