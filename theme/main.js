@@ -273,15 +273,26 @@ function buildContributorsPage() {
     // Clear existing content
     main.innerHTML = '';
 
+    // Create a container for better spacing
+    const container = document.createElement('div');
+    container.className = 'contributors-page-container';
+    main.appendChild(container);
+    
     // Add page title
     const header = document.createElement('h1');
     header.textContent = 'Contributors';
-    main.appendChild(header);
+    container.appendChild(header);
 
-    // Add description
+    // Add description with better styling
     const description = document.createElement('p');
+    description.className = 'contributors-description';
     description.textContent = 'This page lists all contributors to the book and the chapters they contributed to.';
-    main.appendChild(description);
+    container.appendChild(description);
+    
+    // Add a divider
+    const divider = document.createElement('hr');
+    divider.className = 'contributors-divider';
+    container.appendChild(divider);
 
     // Sort contributors alphabetically
     const sortedContributors = Object.keys(contributorsIndex).sort();
@@ -382,5 +393,5 @@ function buildContributorsPage() {
         contributorsList.appendChild(contributorCard);
     }
     
-    main.appendChild(contributorsList);
+    container.appendChild(contributorsList);
 }
