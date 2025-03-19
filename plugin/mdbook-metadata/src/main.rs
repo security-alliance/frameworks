@@ -55,8 +55,8 @@ impl Contributor {
     }
 }
 
-const OUT_DIR: &str = "theme/";
-const CONTRIBUTORS_OUT_DIR: &str = "theme/";
+const OUT_DIR: &str = "theme/tags/";
+const CONTRIBUTORS_OUT_DIR: &str = "theme/contributors/";
 
 fn main() {
     let mut args = std::env::args().skip(1);
@@ -84,6 +84,14 @@ impl Preprocessor for Metadata {
     }
 
     fn run(&self, ctx: &PreprocessorContext, mut book: Book) -> Result<Book, Error> {
+        // Create output directories if they don't exist
+        if !std::path::Path::new(OUT_DIR).exists() {
+            std::fs::create_dir_all(OUT_DIR)?;
+        }
+        if !std::path::Path::new(CONTRIBUTORS_OUT_DIR).exists() {
+            std::fs::create_dir_all(CONTRIBUTORS_OUT_DIR)?;
+        }
+
         // Load tag colours from the config
         let mut tag_colours: HashMap<String, String> = ctx
             .config
@@ -241,11 +249,6 @@ impl Preprocessor for Metadata {
 
             ch.content = body;
         });
-
-        // Create contributors directory if it doesn't exist
-        if !std::path::Path::new(CONTRIBUTORS_OUT_DIR).exists() {
-            std::fs::create_dir_all(CONTRIBUTORS_OUT_DIR)?;
-        }
 
         // Save processed tag metadata
         Self::generate_css(&tag_colours)?;
