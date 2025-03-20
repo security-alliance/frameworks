@@ -2,6 +2,9 @@
 tags:
   - Community & Marketing
   - Security Specialist
+contributors:
+  - mattaereal
+  - nft_dreww
 ---
 
 # Discord Security

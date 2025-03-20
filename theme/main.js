@@ -8,6 +8,9 @@ window.addEventListener("load", () => {
     window.tagsData = tagsIndex;
     addBookmarkedToTags();
     createSearchableTags();
+    
+    // Ensure text wraps tightly around contributors boxes
+    ensureContributorBoxWrapping();
 
     //* Setup event listeners for dropdowns & tags
     const tagsToggle = document.getElementById('tags-toggle');
@@ -323,18 +326,52 @@ function buildContributorsPage() {
         // Contributor name with optional GitHub link
         const contributorName = document.createElement('div');
         contributorName.className = 'contributor-name';
+        contributorName.textContent = contributor;
+        contributorCard.appendChild(contributorName);
         
+        // Add social links container
+        const socialContainer = document.createElement('div');
+        socialContainer.className = 'contributor-social';
+        
+        // Add GitHub link if available
         if (contributorData.github) {
             const githubLink = document.createElement('a');
             githubLink.href = contributorData.github;
             githubLink.target = '_blank';
-            githubLink.textContent = contributor;
-            contributorName.appendChild(githubLink);
-        } else {
-            contributorName.textContent = contributor;
+            githubLink.className = 'social-icon';
+            githubLink.title = `${contributor}'s GitHub`;
+            githubLink.innerHTML = '<i class="fa fa-github"></i>';
+            socialContainer.appendChild(githubLink);
         }
         
-        contributorCard.appendChild(contributorName);
+        // Add Twitter link if available
+        if (contributorData.twitter) {
+            const twitterLink = document.createElement('a');
+            twitterLink.href = contributorData.twitter.startsWith('http') 
+                ? contributorData.twitter 
+                : `https://twitter.com/${contributorData.twitter.replace('@', '')}`;
+            twitterLink.target = '_blank';
+            twitterLink.className = 'social-icon';
+            twitterLink.title = `${contributor}'s Twitter`;
+            twitterLink.innerHTML = '<i class="fa fa-twitter"></i>';
+            socialContainer.appendChild(twitterLink);
+        }
+        
+        // Add other potential social links (LinkedIn, personal website, etc.)
+        if (contributorData.website) {
+            const websiteLink = document.createElement('a');
+            websiteLink.href = contributorData.website;
+            websiteLink.target = '_blank'; 
+            websiteLink.className = 'social-icon';
+            websiteLink.title = `${contributor}'s Website`;
+            websiteLink.innerHTML = '<i class="fa fa-globe"></i>';
+            socialContainer.appendChild(websiteLink);
+        }
+        
+        // Only add the social container if there are any social links
+        if (socialContainer.children.length > 0) {
+            contributorCard.appendChild(socialContainer);
+        }
         
         // Add contribution count
         const chapterCount = contributorData.chapters.length;
@@ -364,25 +401,77 @@ function buildContributorsPage() {
             const chaptersList = document.createElement('ul');
             chaptersList.className = 'chapters-list';
             chaptersList.style.display = 'none';
+            chaptersList.style.textAlign = 'left';
+            chaptersList.style.width = '100%';
             
             for (const chapterPath of contributorData.chapters) {
                 const chapterItem = document.createElement('li');
                 const chapterLink = document.createElement('a');
                 
-                // Get chapter title by fetching it from the page
-                fetch(chapterPath)
-                    .then(response => response.text())
+                // Set href with correct path (add "../" prefix)
+                chapterLink.href = "../" + chapterPath;
+                
+                // Extract a more readable title from the path
+                let displayTitle = chapterPath;
+                
+                // Remove file extension and handle index files better
+                if (displayTitle.endsWith('.html')) {
+                    const pathParts = displayTitle.split('/');
+                    const fileName = pathParts.pop();
+                    
+                    // For index.html files, use parent directory name
+                    if (fileName === 'index.html' && pathParts.length > 0) {
+                        const parentDir = pathParts[pathParts.length - 1];
+                        displayTitle = parentDir.replace(/-/g, ' ');
+                    } else {
+                        displayTitle = fileName.replace('.html', '').replace(/-/g, ' ');
+                    }
+                    
+                    // Convert to title case
+                    displayTitle = displayTitle
+                        .split(' ')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+                }
+                
+                // Set initial display title (will be replaced if fetch succeeds)
+                chapterLink.textContent = displayTitle;
+                
+                // Try to fetch the actual title from the page
+                fetch("../" + chapterPath)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch page');
+                        }
+                        return response.text();
+                    })
                     .then(html => {
                         const parser = new DOMParser();
                         const doc = parser.parseFromString(html, 'text/html');
-                        const title = doc.querySelector('h1')?.textContent || chapterPath;
-                        chapterLink.textContent = title;
+                        
+                        // Get all h1 elements - the first one is the site title, we want the second one
+                        const h1Elements = doc.querySelectorAll('h1');
+                        
+                        // Use the second h1 if available (index 1), which should be the actual page title
+                        if (h1Elements.length > 1 && h1Elements[1].textContent.trim()) {
+                            chapterLink.textContent = h1Elements[1].textContent.trim();
+                            return;
+                        }
+                        
+                        // If no second h1 found, try getting the document title as fallback
+                        const docTitle = doc.querySelector('title');
+                        if (docTitle) {
+                            // Remove book title suffix if present
+                            let titleText = docTitle.textContent.trim();
+                            titleText = titleText.replace(' - Security Frameworks by SEAL', '');
+                            chapterLink.textContent = titleText;
+                        }
                     })
-                    .catch(() => {
-                        chapterLink.textContent = chapterPath;
+                    .catch(error => {
+                        console.error(`Error fetching title for ${chapterPath}:`, error);
+                        // Keep the existing displayTitle if fetch fails
                     });
                 
-                chapterLink.href = chapterPath;
                 chapterItem.appendChild(chapterLink);
                 chaptersList.appendChild(chapterItem);
             }
@@ -394,4 +483,36 @@ function buildContributorsPage() {
     }
     
     container.appendChild(contributorsList);
+}
+
+// Function to ensure text wraps tightly around contributor boxes
+function ensureContributorBoxWrapping() {
+    // Find all contributor boxes
+    const contributorBoxes = document.querySelectorAll('.contributors-container');
+    
+    // For each contributor box, ensure it's positioned correctly for text wrapping
+    contributorBoxes.forEach(box => {
+        // Get the parent paragraph
+        const parentParagraph = box.closest('p') || box.parentElement;
+        
+        // If the box is not inside a paragraph, try to find the first paragraph
+        if (!parentParagraph.matches('p')) {
+            const firstParagraph = box.parentElement.querySelector('p');
+            if (firstParagraph) {
+                // Move the box to be the first child of the first paragraph
+                firstParagraph.insertBefore(box, firstParagraph.firstChild);
+                
+                // Set overflow for proper wrapping
+                firstParagraph.style.overflow = 'auto';
+            }
+        } else {
+            // If already in a paragraph, ensure proper wrapping
+            parentParagraph.style.overflow = 'auto';
+        }
+        
+        // Ensure the box is properly positioned
+        box.style.float = 'right';
+        box.style.clear = 'both';
+        box.style.margin = '0 0 0.5rem 0.75rem';
+    });
 }
