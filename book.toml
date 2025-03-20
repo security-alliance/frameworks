@@ -32,14 +32,14 @@ additional-css = [
     "./mdbook-admonish.css",
     "./theme/custom.css",
     "./theme/toc/pagetoc.css",
-    "./theme/tags.css",
-    "./theme/contributors.css",
+    "./theme/tags/tags.css",
+    "./theme/contributors/contributors.css",
 ]
 additional-js = [
     "./theme/main.js",
     "./theme/toc/pagetoc.js",
-    "./theme/tagsindex.js",
-    "./theme/contributorsindex.js",
+    "./theme/tags/tagsindex.js",
+    "./theme/contributors/contributorsindex.js",
 ]
 template-path = "theme"
 copy-images = true
