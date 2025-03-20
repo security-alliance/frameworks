@@ -2,10 +2,8 @@
 tags:
   - Community & Marketing
 contributors:
-  - name: Matta
-    avatar: https://github.com/mattaereal.png
-    github: https://github.com/mattaereal
-  - NFT_Dreww.eth
+  - mattaereal
+  - robert
 ---
 
 # Community Management

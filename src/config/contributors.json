@@ -1,0 +1,28 @@
+{
+  "mattaereal": {
+    "name": "matta",
+    "displayName": "matta",
+    "avatar": "https://github.com/mattaereal.png",
+    "github": "https://github.com/mattaereal",
+    "twitter": "https://twitter.com/mattaereal",
+    "website": "https://theredguild.org",
+    "bio": "The Red Guild | SEAL"
+  },
+  "nft_dreww": {
+    "name": "NFT_Dreww.eth",
+    "displayName": "NFT_Dreww.eth",
+    "avatar": "https://pbs.twimg.com/profile_images/1589726471249174536/pEqaw6FO_400x400.png",
+    "github": null,
+    "twitter": "https://twitter.com/nft_dreww",
+    "bio": "Community manager and security enthusiast"
+  },
+  "robert": {
+    "name": "Robert MacWha",
+    "displayName": "Robert",
+    "avatar": "https://github.com/Robert-MacWha.png",
+    "github": "https://github.com/Robert-MacWha",
+    "twitter": null,
+    "website": "https://robertmacwha.com",
+    "bio": "Full-stack developer and security enthusiast"
+  }
+}
