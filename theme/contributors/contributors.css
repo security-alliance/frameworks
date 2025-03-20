@@ -1,24 +1,23 @@
 .contributors-container {
-  margin: 1.5rem 0;
-  padding: 1rem;
+  margin: 0 0 0.5rem 0.75rem;
+  padding: 0.4rem;
   border: 1px solid var(--sidebar-non-existant);
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   background-color: var(--sidebar-bg);
-  opacity: 0.85;
+  opacity: 0.9;
+  width: 200px;
   float: right;
-  width: 250px;
-  margin-left: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  clear: right;
+  clear: both;
+  box-sizing: border-box;
 }
 
 .contributors-title {
-  font-size: 1.25rem;
+  font-size: 0.85rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
   color: var(--fg);
   text-align: center;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.2rem;
   border-bottom: 1px solid var(--sidebar-non-existant);
   white-space: nowrap;
   overflow: hidden;
@@ -27,45 +26,48 @@
 
 .contributors {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: center;
   width: 100%;
 }
 
 .contributor {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 0.75rem;
-  border-radius: 2rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 1rem;
   background-color: var(--theme-popup-bg);
-  font-size: 1.25rem;
+  font-size: 0.75rem;
   transition: all 0.2s ease;
   color: var(--fg);
   text-decoration: none;
-  width: calc(100% - 1.5rem);
-  margin-left: 0.75rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   box-sizing: border-box;
+  margin-bottom: 0.15rem;
 }
 
 .contributor:hover {
   background-color: var(--sidebar-active);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   color: var(--sidebar-fg);
 }
 
 /* Avatar styling */
 .contributor.with-avatar {
-  padding-left: 2.25rem;
-  background-size: 1.75rem 1.75rem;
+  padding-left: 1.4rem;
+  background-size: 1rem 1rem;
   background-repeat: no-repeat;
-  background-position: 0.3rem center;
+  background-position: 0.2rem center;
 }
 
 /* Individual contributor avatars */
+.contributor.nft_drewweth.with-avatar {
+  background-image: url('https://pbs.twimg.com/profile_images/1589726471249174536/pEqaw6FO_400x400.png');
+}
+
 .contributor.matta.with-avatar {
   background-image: url('https://github.com/mattaereal.png');
 }
