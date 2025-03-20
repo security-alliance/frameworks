@@ -4,6 +4,7 @@ use std::{
     fs::File,
     hash::{DefaultHasher, Hash, Hasher},
     io::{self, Read, Write},
+    path::Path,
 };
 
 use mdbook::{
@@ -13,44 +14,36 @@ use mdbook::{
     BookItem,
 };
 
+use serde_json::Value as JsonValue;
+
 struct Metadata;
 
 #[derive(Debug, Deserialize)]
 struct Frontmatter {
     tags: Option<Vec<String>>,
-    contributors: Option<Vec<Contributor>>,
+    contributors: Option<Vec<ContributorRef>>,
 }
 
+// A contributor can be referenced in two ways:
+// 1. Just an ID string that refers to the contributors.json database
+// 2. An object with just the id field
 #[derive(Debug, Deserialize, Clone)]
 #[serde(untagged)]
-enum Contributor {
-    Simple(String),
-    Detailed {
-        name: String,
-        avatar: Option<String>,
-        github: Option<String>,
-    },
+enum ContributorRef {
+    // Simple ID to look up in the contributors database
+    Id(String),
+    // ID reference in object form
+    IdObj {
+        id: String,
+    }
 }
 
-impl Contributor {
-    fn name(&self) -> &str {
+impl ContributorRef {
+    // Extract the contributor ID regardless of how it was specified
+    fn get_id(&self) -> &str {
         match self {
-            Self::Simple(name) => name,
-            Self::Detailed { name, .. } => name,
-        }
-    }
-
-    fn avatar(&self) -> Option<&str> {
-        match self {
-            Self::Simple(_) => None,
-            Self::Detailed { avatar, .. } => avatar.as_deref(),
-        }
-    }
-
-    fn github(&self) -> Option<&str> {
-        match self {
-            Self::Simple(_) => None,
-            Self::Detailed { github, .. } => github.as_deref(),
+            Self::Id(id) => id,
+            Self::IdObj { id } => id,
         }
     }
 }
@@ -79,10 +72,19 @@ fn main() {
 }
 
 impl Preprocessor for Metadata {
+    // Return the name of the preprocessor
     fn name(&self) -> &str {
         "metadata"
     }
-
+    
+    // Process the book to extract and add metadata
+    // This function:
+    // 1. Creates output directories
+    // 2. Loads the contributors database
+    // 3. Loads tag colors from the config
+    // 4. Processes each chapter to extract tags and contributors
+    // 5. Inserts tags and contributors HTML into each chapter
+    // 6. Generates CSS and JS files for tags and contributors
     fn run(&self, ctx: &PreprocessorContext, mut book: Book) -> Result<Book, Error> {
         // Create output directories if they don't exist
         if !std::path::Path::new(OUT_DIR).exists() {
@@ -91,6 +93,9 @@ impl Preprocessor for Metadata {
         if !std::path::Path::new(CONTRIBUTORS_OUT_DIR).exists() {
             std::fs::create_dir_all(CONTRIBUTORS_OUT_DIR)?;
         }
+        
+        // Load the contributors database
+        let contributors_db = load_contributors_db()?;
 
         // Load tag colours from the config
         let mut tag_colours: HashMap<String, String> = ctx
@@ -146,7 +151,14 @@ impl Preprocessor for Metadata {
             })
             .unwrap_or_default();
 
+        // Initialize additional contributor social media maps
+        let mut contributor_twitter: HashMap<String, String> = HashMap::new();
+        let mut contributor_websites: HashMap<String, String> = HashMap::new();
+
+        // Extract all tags
         let mut tags_index: HashMap<String, Vec<String>> = HashMap::new();
+
+        // Extract all contributors
         let mut contributors_index: HashMap<String, Vec<String>> = HashMap::new();
 
         book.for_each_mut(|item| {
@@ -218,27 +230,60 @@ impl Preprocessor for Metadata {
 
             // Process contributors if they exist
             if let Some(contributors) = &frontmatter.contributors {
-                for contributor in contributors {
-                    let name = contributor.name().to_string();
+                for contributor_ref in contributors {
+                    // Get contributor ID
+                    let id = contributor_ref.get_id();
                     
-                    // If avatar provided in frontmatter, use it, otherwise use from config
-                    if let Some(avatar) = contributor.avatar() {
-                        contributor_avatars.insert(name.clone(), avatar.to_string());
+                    if let Some(db_contributor) = contributors_db.get(id) {
+                        // We found the contributor in the database
+                        
+                        // Get display name from database or fall back to ID
+                        let name = db_contributor
+                            .get("displayName")
+                            .and_then(|v| v.as_str())
+                            .or_else(|| db_contributor.get("name").and_then(|v| v.as_str()))
+                            .unwrap_or(id)
+                            .to_string();
+                        
+                        // Extract avatar URL from the database
+                        if let Some(avatar) = db_contributor.get("avatar").and_then(|v| v.as_str()) {
+                            contributor_avatars.insert(name.clone(), avatar.to_string());
+                        }
+                        
+                        // Extract GitHub URL from the database
+                        if let Some(github) = db_contributor.get("github").and_then(|v| v.as_str()) {
+                            contributor_github.insert(name.clone(), github.to_string());
+                        }
+                        
+                        // Extract Twitter URL from the database
+                        if let Some(twitter) = db_contributor.get("twitter").and_then(|v| v.as_str()) {
+                            contributor_twitter.insert(name.clone(), twitter.to_string());
+                        }
+                        
+                        // Extract website URL from the database
+                        if let Some(website) = db_contributor.get("website").and_then(|v| v.as_str()) {
+                            contributor_websites.insert(name.clone(), website.to_string());
+                        }
+                        
+                        // Add to the contributors index
+                        contributors_index
+                            .entry(name)
+                            .or_default()
+                            .push(chapter_path_str.replace(".md", ".html"));
+                    } else {
+                        // Contributor ID not found in database - create a basic entry using just the ID
+                        let name = id.to_string();
+                        
+                        // Add to the contributors index
+                        contributors_index
+                            .entry(name)
+                            .or_default()
+                            .push(chapter_path_str.replace(".md", ".html"));
                     }
-                    
-                    // If github provided in frontmatter, use it, otherwise use from config
-                    if let Some(github) = contributor.github() {
-                        contributor_github.insert(name.clone(), github.to_string());
-                    }
-
-                    contributors_index
-                        .entry(name)
-                        .or_default()
-                        .push(chapter_path_str.replace(".md", ".html"));
                 }
 
                 // Insert contributors
-                match Self::insert_contributors(&mut body, contributors.clone(), &contributor_avatars, &contributor_github) {
+                match Self::insert_contributors(&mut body, contributors.clone(), &contributors_db) {
                     Ok(new_body) => body = new_body,
                     Err(e) => {
                         eprintln!("Error processing chapter contributors: {} err={}", ch.name, e);
@@ -254,15 +299,25 @@ impl Preprocessor for Metadata {
         Self::generate_css(&tag_colours)?;
         Self::generate_tags_index(&tags_index)?;
 
-        // Save processed contributor metadata
-        Self::generate_contributors_css(&contributor_avatars)?;
-        generate_contributors_index_js(&contributors_index, &contributor_github, &contributor_avatars)?;
+        // Skip CSS generation since we'll use a static CSS file
+        // Self::generate_contributors_css(&contributor_avatars)?;
+        
+        // Use the new function with additional parameters
+        generate_contributors_js(
+            &contributors_index, 
+            &contributor_github, 
+            &contributor_avatars,
+            &contributor_twitter,
+            &contributor_websites
+        )?;
 
         Ok(book)
     }
 }
 
 impl Metadata {
+    // Insert tags HTML into the chapter body using the template
+    // This adds a tag bar below the chapter title
     fn insert_tags(body: &str, tags: Vec<String>) -> Result<String, Error> {
         // Find the chapter title
         if !body.starts_with("# ") {
@@ -277,24 +332,52 @@ impl Metadata {
         let title = parts[0];
         let body = parts[1];
 
-        // Insert tags
-        let tags_html = format!(
-            "<div class=\"tags\">{}</div>",
-            tags.iter()
-                .map(|tag| format!("<span class=\"tag {}\">{}</span>", name_to_id(tag), tag))
-                .collect::<Vec<_>>()
-                .join("")
-        );
+        // Read the tags template
+        let template_path = Path::new("theme/templates/tags.html");
+        let mut template = String::new();
+        if template_path.exists() {
+            let mut file = File::open(template_path)?;
+            file.read_to_string(&mut template)?;
+        } else {
+            // Fallback to hardcoded template if file doesn't exist
+            template = String::from("<div class=\"tags\"><!-- TAG_ITEMS_PLACEHOLDER --></div>");
+        }
+        
+        // Read the tag item template
+        let tag_item_path = Path::new("theme/templates/tag-item.html");
+        let mut tag_item_template = String::new();
+        if tag_item_path.exists() {
+            let mut file = File::open(tag_item_path)?;
+            file.read_to_string(&mut tag_item_template)?;
+        } else {
+            // Fallback to hardcoded template if file doesn't exist
+            tag_item_template = String::from("<span class=\"tag TAG_ID_PLACEHOLDER\">TAG_NAME_PLACEHOLDER</span>");
+        }
+        
+        // Generate tag items HTML
+        let tag_items = tags.iter()
+            .map(|tag| {
+                tag_item_template
+                    .replace("TAG_ID_PLACEHOLDER", &name_to_id(tag))
+                    .replace("TAG_NAME_PLACEHOLDER", tag)
+            })
+            .collect::<Vec<_>>()
+            .join("");
+        
+        // Replace placeholder with actual tag items
+        let tags_html = template.replace("<!-- TAG_ITEMS_PLACEHOLDER -->", &tag_items);
 
-        let new_body = format!("{}\n{}\n{}", title, tags_html, body);
-        return Ok(new_body);
+        // Combine title, tags, and body - ensure tags are properly below the title
+        Ok(format!("{}\n{}\n{}", title, tags_html, body))
     }
 
+    // Insert contributors HTML into the chapter body using templates
+    // This adds a contributors section below the chapter title (or below tags if present)
+    // Contributors are looked up in the contributors database by ID
     fn insert_contributors(
         body: &str, 
-        contributors: Vec<Contributor>, 
-        avatars: &HashMap<String, String>,
-        github_profiles: &HashMap<String, String>
+        contributors: Vec<ContributorRef>,
+        contributors_db: &HashMap<String, JsonValue>
     ) -> Result<String, Error> {
         // Find where to insert contributors
         let parts: Vec<&str> = body.splitn(2, "\n").collect();
@@ -305,8 +388,102 @@ impl Metadata {
         let title = parts[0];
         let remaining_body = parts[1].to_string();
 
-        // If tags are present, we need to insert after them
+        // Read the contributors template
+        let template_path = Path::new("theme/templates/contributors.html");
+        let mut template = String::new();
+        if template_path.exists() {
+            let mut file = File::open(template_path)?;
+            file.read_to_string(&mut template)?;
+        } else {
+            // Fallback to hardcoded template if file doesn't exist
+            template = String::from("<div class=\"contributors-container\">\n  <div class=\"contributors-title\">Contributed to this page</div>\n  <div class=\"contributors\"><!-- CONTRIBUTOR_ITEMS_PLACEHOLDER --></div>\n</div>");
+        }
+        
+        // Read the contributor item template
+        let item_path = Path::new("theme/templates/contributor-item.html");
+        let mut item_templates = Vec::new();
+        if item_path.exists() {
+            let mut file = File::open(item_path)?;
+            let mut content = String::new();
+            file.read_to_string(&mut content)?;
+            
+            // Split into separate templates based on comments
+            for section in content.split("<!--").skip(1) {
+                if let Some(template_text) = section.split("-->").nth(1) {
+                    item_templates.push(template_text.trim().to_string());
+                }
+            }
+        }
+        
+        // If no templates were loaded, use fallbacks
+        if item_templates.is_empty() {
+            item_templates = vec![
+                // With GitHub and avatar
+                "<a href=\"GITHUB_URL_PLACEHOLDER\" target=\"_blank\" class=\"contributor CONTRIBUTOR_ID_PLACEHOLDER with-avatar\" style=\"background-image: url('AVATAR_URL_PLACEHOLDER');\">CONTRIBUTOR_NAME_PLACEHOLDER</a>".to_string(),
+                // With avatar, no GitHub
+                "<span class=\"contributor CONTRIBUTOR_ID_PLACEHOLDER with-avatar\" style=\"background-image: url('AVATAR_URL_PLACEHOLDER');\">CONTRIBUTOR_NAME_PLACEHOLDER</span>".to_string(),
+                // No avatar
+                "<span class=\"contributor CONTRIBUTOR_ID_PLACEHOLDER\">CONTRIBUTOR_NAME_PLACEHOLDER</span>".to_string()
+            ];
+        }
+
+        // Generate contributor items HTML
+        let contributor_items = contributors
+            .iter()
+            .map(|contributor_ref| {
+                let id = contributor_ref.get_id();
+                
+                if let Some(db_contributor) = contributors_db.get(id) {
+                    // Found contributor in database
+                    let name = db_contributor
+                        .get("displayName")
+                        .and_then(|v| v.as_str())
+                        .or_else(|| db_contributor.get("name").and_then(|v| v.as_str()))
+                        .unwrap_or(id);
+                
+                    let css_id = name_to_id(name);
+                    let avatar_url = db_contributor.get("avatar").and_then(|v| v.as_str());
+                    let github_url = db_contributor.get("github").and_then(|v| v.as_str());
+                    
+                    // Choose the appropriate template
+                    let template = if github_url.is_some() && avatar_url.is_some() {
+                        &item_templates[0] // GitHub + avatar
+                    } else if avatar_url.is_some() {
+                        &item_templates[1] // Avatar only
+                    } else {
+                        &item_templates[2] // Basic
+                    };
+                    
+                    // Replace placeholders in the template
+                    let mut html = template.replace("CONTRIBUTOR_ID_PLACEHOLDER", &css_id)
+                                           .replace("CONTRIBUTOR_NAME_PLACEHOLDER", name);
+                    
+                    if let Some(avatar) = avatar_url {
+                        html = html.replace("AVATAR_URL_PLACEHOLDER", avatar);
+                    }
+                    
+                    if let Some(github) = github_url {
+                        html = html.replace("GITHUB_URL_PLACEHOLDER", github);
+                    }
+                    
+                    html
+                } else {
+                    // Contributor not found in database
+                    let css_id = name_to_id(id);
+                    let template = &item_templates[2]; // Basic template
+                    template.replace("CONTRIBUTOR_ID_PLACEHOLDER", &css_id)
+                            .replace("CONTRIBUTOR_NAME_PLACEHOLDER", id)
+                }
+            })
+            .collect::<Vec<_>>()
+            .join("\n");
+        
+        // Replace placeholder with actual contributor items
+        let contributors_html = template.replace("<!-- CONTRIBUTOR_ITEMS_PLACEHOLDER -->", &contributor_items);
+        
+        // Check if tags are present
         if remaining_body.starts_with("<div class=\"tags\">") {
+            // If tags are present, place contributors box BEFORE the tags
             let tag_parts: Vec<&str> = remaining_body.splitn(2, "\n").collect();
             if tag_parts.len() != 2 {
                 return Err(Error::msg("Failed to find tag ending"));
@@ -314,344 +491,65 @@ impl Metadata {
 
             let tags_html = tag_parts[0];
             let content_after_tags = tag_parts[1].to_string();
-
-            // Insert contributors after tags
-            let contributors_html = format!(
-                "<div class=\"contributors-container\">\n  <div class=\"contributors-title\">Contributors to this framework</div>\n  <div class=\"contributors\">{}</div>\n</div>",
-                contributors
-                    .iter()
-                    .map(|contributor| {
-                        let name = contributor.name();
-                        let id = name_to_id(name);
-                        
-                        // Use avatar from frontmatter or config if available
-                        let has_avatar = avatars.get(name).map_or(false, |url| !url.is_empty());
-                        let avatar_class = if has_avatar {
-                            format!("contributor {} with-avatar", id)
-                        } else {
-                            format!("contributor {}", id)
-                        };
-                        
-                        // If we have the avatar, add the background-image inline
-                        let style_attr = if has_avatar {
-                            if let Some(avatar_url) = avatars.get(name) {
-                                format!(" style=\"background-image: url('{}');\"", avatar_url)
-                            } else {
-                                String::new()
-                            }
-                        } else {
-                            String::new()
-                        };
-                        
-                        // Use github link from frontmatter or config if available
-                        if let Some(github) = contributor.github().or_else(|| github_profiles.get(name).filter(|url| !url.is_empty()).map(|s| s.as_str())) {
-                            format!(
-                                "<a href=\"{}\" target=\"_blank\" class=\"{}\"{}>{}</a>",
-                                github,
-                                avatar_class,
-                                style_attr,
-                                name
-                            )
-                        } else {
-                            format!(
-                                "<span class=\"{}\"{}>{}</span>",
-                                avatar_class,
-                                style_attr,
-                                name
-                            )
-                        }
-                    })
-                    .collect::<Vec<_>>()
-                    .join("")
-            );
-
-            let new_body = format!("{}\n{}\n{}\n{}", title, tags_html, contributors_html, content_after_tags);
-            return Ok(new_body);
+            
+            // Place contributors box before tags, but after the title
+            return Ok(format!("{}\n{}\n{}\n{}", 
+                title,
+                contributors_html,
+                tags_html,
+                content_after_tags));
         } else {
-            // No tags, insert contributors after title
-            let contributors_html = format!(
-                "<div class=\"contributors-container\">\n  <div class=\"contributors-title\">Contributors to this framework</div>\n  <div class=\"contributors\">{}</div>\n</div>",
-                contributors
-                    .iter()
-                    .map(|contributor| {
-                        let name = contributor.name();
-                        let id = name_to_id(name);
-                        
-                        // Use avatar from frontmatter or config if available
-                        let has_avatar = avatars.get(name).map_or(false, |url| !url.is_empty());
-                        let avatar_class = if has_avatar {
-                            format!("contributor {} with-avatar", id)
-                        } else {
-                            format!("contributor {}", id)
-                        };
-                        
-                        // If we have the avatar, add the background-image inline
-                        let style_attr = if has_avatar {
-                            if let Some(avatar_url) = avatars.get(name) {
-                                format!(" style=\"background-image: url('{}');\"", avatar_url)
-                            } else {
-                                String::new()
-                            }
-                        } else {
-                            String::new()
-                        };
-                        
-                        // Use github link from frontmatter or config if available
-                        if let Some(github) = contributor.github().or_else(|| github_profiles.get(name).filter(|url| !url.is_empty()).map(|s| s.as_str())) {
-                            format!(
-                                "<a href=\"{}\" target=\"_blank\" class=\"{}\"{}>{}</a>",
-                                github,
-                                avatar_class,
-                                style_attr,
-                                name
-                            )
-                        } else {
-                            format!(
-                                "<span class=\"{}\"{}>{}</span>",
-                                avatar_class,
-                                style_attr,
-                                name
-                            )
-                        }
-                    })
-                    .collect::<Vec<_>>()
-                    .join("")
-            );
-
-            let new_body = format!("{}\n{}\n{}", title, contributors_html, remaining_body);
-            return Ok(new_body);
+            // No tags present - place contributors box directly after title
+            return Ok(format!("{}\n{}\n{}", 
+                title, 
+                contributors_html, 
+                remaining_body));
         }
     }
 
+    // Generate CSS for new tags that don't have predefined styles
+    // This appends to the static tags.css file without overwriting existing styles
     fn generate_css(tag_colours: &HashMap<String, String>) -> Result<(), Error> {
+        // Read the existing static CSS file
         let mut css = String::new();
-
-        // General tag styling with less rounded corners
-        css.push_str(".tags {\n");
-        css.push_str("  display: flex;\n");
-        css.push_str("  flex-wrap: wrap;\n");
-        css.push_str("  gap: 0.5rem;\n");
-        css.push_str("  margin-bottom: 1rem;\n");
-        css.push_str("}\n\n");
+        let css_path = format!("{}tags.css", OUT_DIR);
+        let mut file = File::open(&css_path)?;
+        file.read_to_string(&mut css)?;
         
-        css.push_str(".tag {\n");
-        css.push_str("  display: inline-block;\n");
-        css.push_str("  padding: 0.5rem 1rem;\n");
-        css.push_str("  border-radius: 0.25rem;\n");  // Less rounded, more squared shape
-        css.push_str("  color: white;\n");
-        css.push_str("  font-size: 1.6rem;\n");
-        css.push_str("  font-weight: 500;\n");
-        css.push_str("  line-height: 1;\n");
-        css.push_str("}\n\n");
-
+        // Check if we need to add any new tag colors
+        let mut new_colors = String::new();
         let mut sorted_tags: Vec<_> = tag_colours.iter().collect();
         sorted_tags.sort_by(|a, b| a.0.cmp(&b.0));
-
+        
         for (tag, colour) in sorted_tags {
-            css.push_str(&format!(
-                ".tag.{} {{ background-color: {}; }}\n",
-                name_to_id(tag),
-                colour
-            ));
-        }
-
-        // Check if writing the file changes the content
-        let mut existing_css = String::new();
-        let mut file = File::open(format!("{}tags.css", OUT_DIR));
-        if let Ok(file) = file.as_mut() {
-            file.read_to_string(&mut existing_css)?;
-        }
-
-        if existing_css.trim().eq(css.trim()) {
-            return Ok(());
-        }
-
-        let mut file = File::create(format!("{}tags.css", OUT_DIR))?;
-        file.write(css.as_bytes())?;
-        Ok(())
-    }
-
-    fn generate_contributors_css(contributor_avatars: &HashMap<String, String>) -> Result<(), Error> {
-        let mut css = String::new();
-
-        // Base styling for contributors container box
-        css.push_str(".contributors-container {\n");
-        css.push_str("  margin: 1.5rem 0;\n");
-        css.push_str("  padding: 1rem;\n");
-        css.push_str("  border: 1px solid var(--sidebar-non-existant);\n");
-        css.push_str("  border-radius: 0.5rem;\n");
-        css.push_str("  background-color: var(--sidebar-bg);\n");
-        css.push_str("  opacity: 0.85;\n");
-        css.push_str("  float: right;\n");
-        css.push_str("  width: 250px;\n");
-        css.push_str("  margin-left: 1.5rem;\n");
-        css.push_str("  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);\n");
-        css.push_str("  clear: right;\n");
-        css.push_str("}\n\n");
-        
-        // Title styling
-        css.push_str(".contributors-title {\n");
-        css.push_str("  font-size: 1.25rem;\n");
-        css.push_str("  font-weight: bold;\n");
-        css.push_str("  margin-bottom: 1rem;\n");
-        css.push_str("  color: var(--fg);\n");
-        css.push_str("  text-align: center;\n");
-        css.push_str("  padding-bottom: 0.5rem;\n");
-        css.push_str("  border-bottom: 1px solid var(--sidebar-non-existant);\n");
-        css.push_str("  white-space: nowrap;\n");
-        css.push_str("  overflow: hidden;\n");
-        css.push_str("  text-overflow: ellipsis;\n");
-        css.push_str("}\n\n");
-
-        // Base styling for contributors
-        css.push_str(".contributors {\n");
-        css.push_str("  display: flex;\n");
-        css.push_str("  flex-direction: column;\n");
-        css.push_str("  gap: 0.75rem;\n");
-        css.push_str("  align-items: flex-start;\n");
-        css.push_str("  width: 100%;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".contributor {\n");
-        css.push_str("  display: inline-flex;\n");
-        css.push_str("  align-items: center;\n");
-        css.push_str("  padding: 0.4rem 0.75rem;\n");
-        css.push_str("  border-radius: 2rem;\n");
-        css.push_str("  background-color: var(--theme-popup-bg);\n");
-        css.push_str("  font-size: 1.25rem;\n"); // 25% larger than 1rem
-        css.push_str("  transition: all 0.2s ease;\n");
-        css.push_str("  color: var(--fg);\n");
-        css.push_str("  text-decoration: none;\n");
-        css.push_str("  width: calc(100% - 1.5rem);\n");
-        css.push_str("  margin-left: 0.75rem;\n");
-        css.push_str("  white-space: nowrap;\n");
-        css.push_str("  overflow: hidden;\n");
-        css.push_str("  text-overflow: ellipsis;\n");
-        css.push_str("  box-sizing: border-box;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".contributor:hover {\n");
-        css.push_str("  background-color: var(--sidebar-active);\n");
-        css.push_str("  transform: translateY(-2px);\n");
-        css.push_str("  color: var(--sidebar-fg);\n");
-        css.push_str("}\n\n");
-        
-        css.push_str("/* Avatar styling */\n");
-        css.push_str(".contributor.with-avatar {\n");
-        css.push_str("  padding-left: 2.25rem;\n"); // Increased for larger avatar
-        css.push_str("  background-size: 1.75rem 1.75rem;\n"); // 25% larger than 1.4rem
-        css.push_str("  background-repeat: no-repeat;\n");
-        css.push_str("  background-position: 0.3rem center;\n");
-        css.push_str("}\n\n");
-        
-        // Individual contributor avatar styles
-        let mut sorted_contributors: Vec<_> = contributor_avatars.iter().collect();
-        sorted_contributors.sort_by(|a, b| a.0.cmp(&b.0));
-
-        if !sorted_contributors.is_empty() {
-            css.push_str("/* Individual contributor avatars */\n");
-            for (contributor, avatar) in sorted_contributors {
-                if !avatar.is_empty() {
-                    css.push_str(&format!(
-                        ".contributor.{}.with-avatar {{\n  background-image: url('{}');\n}}\n\n",
-                        name_to_id(contributor),
-                        avatar
-                    ));
-                }
+            // Create the CSS class name
+            let css_class = format!(".tag.{}", name_to_id(tag));
+            
+            // Only add if the tag doesn't already have a style in the CSS
+            if !css.contains(&css_class) {
+                new_colors.push_str(&format!(
+                    ".tag.{} {{ background-color: {}; }}\n",
+                    name_to_id(tag),
+                    colour
+                ));
             }
         }
-
-        // Styling for the contributors page
-        css.push_str("/* Styling for the contributors page */\n");
-        css.push_str(".contributors-list {\n");
-        css.push_str("  display: grid;\n");
-        css.push_str("  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n");
-        css.push_str("  gap: 1rem;\n");
-        css.push_str("  margin: 1rem 0;\n");
-        css.push_str("}\n\n");
         
-        css.push_str(".contributor-card {\n");
-        css.push_str("  display: flex;\n");
-        css.push_str("  flex-direction: column;\n");
-        css.push_str("  align-items: center;\n");
-        css.push_str("  padding: 1rem;\n");
-        css.push_str("  border-radius: 0.5rem;\n");
-        css.push_str("  background-color: var(--quote-bg);\n");
-        css.push_str("  transition: all 0.2s ease;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".contributor-card:hover {\n");
-        css.push_str("  background-color: var(--quote-border);\n");
-        css.push_str("  transform: translateY(-3px);\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".contributor-avatar {\n");
-        css.push_str("  width: 64px;\n");
-        css.push_str("  height: 64px;\n");
-        css.push_str("  border-radius: 50%;\n");
-        css.push_str("  object-fit: cover;\n");
-        css.push_str("  margin-bottom: 0.5rem;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".contributor-name {\n");
-        css.push_str("  font-weight: bold;\n");
-        css.push_str("  margin-bottom: 0.25rem;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".contributor-contributions {\n");
-        css.push_str("  font-size: 0.8rem;\n");
-        css.push_str("  color: var(--fg);\n");
-        css.push_str("  opacity: 0.8;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".chapters-button {\n");
-        css.push_str("  margin-top: 0.5rem;\n");
-        css.push_str("  padding: 0.25rem 0.75rem;\n");
-        css.push_str("  background-color: var(--sidebar-active);\n");
-        css.push_str("  color: var(--sidebar-fg);\n");
-        css.push_str("  border: none;\n");
-        css.push_str("  border-radius: 0.25rem;\n");
-        css.push_str("  cursor: pointer;\n");
-        css.push_str("  font-size: 0.8rem;\n");
-        css.push_str("  transition: all 0.2s ease;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".chapters-button:hover {\n");
-        css.push_str("  background-color: var(--sidebar-active-hover);\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".chapters-list {\n");
-        css.push_str("  margin-top: 0.5rem;\n");
-        css.push_str("  padding-left: 1.5rem;\n");
-        css.push_str("  font-size: 0.9rem;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".chapters-list li {\n");
-        css.push_str("  margin-bottom: 0.25rem;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".chapters-list a {\n");
-        css.push_str("  color: var(--fg);\n");
-        css.push_str("  text-decoration: none;\n");
-        css.push_str("}\n\n");
-        
-        css.push_str(".chapters-list a:hover {\n");
-        css.push_str("  text-decoration: underline;\n");
-        css.push_str("}\n");
-
-        // Check if writing the file changes the content
-        let mut existing_css = String::new();
-        let mut file = File::open(format!("{}contributors.css", CONTRIBUTORS_OUT_DIR));
-        if let Ok(file) = file.as_mut() {
-            file.read_to_string(&mut existing_css)?;
+        // If there are new colors to add, append them to the file
+        if !new_colors.is_empty() {
+            let mut file = std::fs::OpenOptions::new()
+                .write(true)
+                .append(true)
+                .open(css_path)?;
+                
+            // Add a comment before new auto-generated colors
+            if !css.contains("/* Auto-generated tag colors */") {
+                writeln!(file, "\n/* Auto-generated tag colors */")?;
+            }
+            
+            file.write_all(new_colors.as_bytes())?;
         }
-
-        if existing_css.trim().eq(css.trim()) {
-            return Ok(());
-        }
-
-        let mut file = File::create(format!("{}contributors.css", CONTRIBUTORS_OUT_DIR))?;
-        file.write(css.as_bytes())?;
+        
         Ok(())
     }
 
@@ -770,10 +668,14 @@ fn handle_preprocessing() -> Result<(), Error> {
     Ok(())
 }
 
-fn generate_contributors_index_js(
+// Generate the JavaScript file containing the contributors index data
+// This is used by the frontend to display contributor information
+fn generate_contributors_js(
     contributors_map: &HashMap<String, Vec<String>>, 
     github_profiles: &HashMap<String, String>,
-    avatars: &HashMap<String, String>
+    avatars: &HashMap<String, String>,
+    twitter_profiles: &HashMap<String, String>,
+    websites: &HashMap<String, String>
 ) -> Result<(), Error> {
     let mut js = String::new();
     js.push_str("// This file is auto-generated by the tags preprocessor\n");
@@ -815,6 +717,20 @@ fn generate_contributors_index_js(
             }
         }
         
+        // Add Twitter profile if available
+        if let Some(twitter) = twitter_profiles.get(*contributor) {
+            if !twitter.is_empty() {
+                js.push_str(&format!(",\n    \"twitter\": \"{}\"", twitter));
+            }
+        }
+        
+        // Add website if available
+        if let Some(website) = websites.get(*contributor) {
+            if !website.is_empty() {
+                js.push_str(&format!(",\n    \"website\": \"{}\"", website));
+            }
+        }
+        
         js.push_str("\n  }");
         
         if i < sorted_contributors.len() - 1 {
@@ -840,4 +756,31 @@ fn generate_contributors_index_js(
     let mut file = File::create(format!("{}contributorsindex.js", CONTRIBUTORS_OUT_DIR))?;
     file.write(js.as_bytes())?;
     Ok(())
+}
+
+// Load the contributors database from the JSON file in src/config/contributors.json
+// Returns a HashMap where keys are contributor IDs and values are their data as JSON objects
+fn load_contributors_db() -> Result<HashMap<String, JsonValue>, Error> {
+    let mut contributors_db: HashMap<String, JsonValue> = HashMap::new();
+    
+    // Try to load the contributors database file
+    let db_path = Path::new("src/config/contributors.json");
+    
+    if db_path.exists() {
+        let mut file = File::open(db_path)?;
+        let mut contents = String::new();
+        file.read_to_string(&mut contents)?;
+        
+        // Parse the JSON
+        let json: serde_json::Value = serde_json::from_str(&contents)?;
+        
+        // Convert to HashMap
+        if let JsonValue::Object(map) = json {
+            for (key, value) in map {
+                contributors_db.insert(key, value);
+            }
+        }
+    }
+    
+    Ok(contributors_db)
 }
