@@ -24,7 +24,7 @@ This section covers the following aspects of human-centered security:
 
 ## Intersection with Awareness
 
-While this section focuses on operational measures to address human-centered security, it works in close conjunction with the [Security Awareness Framework](../../awareness/README.md). The awareness framework provides the educational foundation, while human-centered security implements the operational controls and procedures needed to protect against human-related security risks.
+While this section focuses on operational measures to address human-centered security, it works in close conjunction with the [Security Awareness Framework](../../awareness/). The awareness framework provides the educational foundation, while human-centered security implements the operational controls and procedures needed to protect against human-related security risks.
 
 ## Risk-Based Approach
 
@@ -35,4 +35,4 @@ Not all human-centered security risks are equal. Organizations should adopt a ri
 3. Implementing controls proportionate to the identified risks
 4. Creating an environment where security is valued and prioritized
 
-By focusing on human factors in security, organizations can create a more resilient security posture that combines technical controls with human awareness and behavior. 
+Focusing on human factors in security, organizations can create a more resilient security posture that combines technical controls with human awareness and behavior.

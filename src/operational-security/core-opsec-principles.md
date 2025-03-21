@@ -17,7 +17,7 @@ Operational security is built on fundamental principles that guide the implement
 > - **Multiple security layers**: Hardware wallets for cold storage, multi-signature requirements for transactions, regular security audits, and continuous monitoring
 > - **Access control**: Only specific team members have access to deployment keys, with different permission levels for development, testing, and production environments
 > - **Compartmentalized information**: Private keys for multi-signature wallets are distributed among trusted team members with no single person having access to all keys, and sensitive incident response procedures are only shared with the security team
-> - **Regular threat assessment**: The team conducts quarterly reviews of potential attack vectors, from smart contract vulnerabilities to [understanding threat vectors](../awareness/understanding-threat-vectors.md) targeting team members
+> - **Regular threat assessment**: The team conducts quarterly reviews of potential attack vectors, from smart contract vulnerabilities to [social engineering](../awareness/social-engineering.md) attempts targeting team members
 
 ## Defense in Depth
 
@@ -60,7 +60,7 @@ Information should only be shared with individuals who require that information 
 1. Classify information based on sensitivity and restrict access accordingly
 2. Compartmentalize sensitive information to limit exposure in case of a breach
 3. Implement clear data handling and sharing policies
-4. Train team members on proper handling and sharing of sensitive information through regular security awareness training
+4. Train team members on proper handling and sharing of sensitive information through regular [security training](../awareness/security-training.md)
 5. Use secure communication channels for sensitive information
 
 ## Threat Modeling for OpSec
@@ -143,6 +143,6 @@ Recognizing that blockchain transactions are generally irreversible, requiring h
 1. Develop clear procedures for key management
 2. Implement separation of duties for transaction approval
 3. Balance security with operational efficiency
-4. Stay informed about [best practices and continuous learning](../awareness/staying-informed-and-continuous-learning.md) in key management and custody solutions
+4. [Stay up-to-date](../awareness/staying-up-to-date.md) with best practices in key management and custody solutions
 
 By adhering to these core principles, organizations can build a strong foundation for operational security that addresses both traditional and Web3-specific security challenges.
