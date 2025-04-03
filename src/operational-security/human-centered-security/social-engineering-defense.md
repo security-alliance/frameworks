@@ -9,38 +9,39 @@ tags:
 
 Social engineering attacks target the human element of security by manipulating individuals into breaking security protocols, revealing sensitive information, or granting unauthorized access. Defending against these attacks requires a combination of awareness, training, and operational controls.
 
-## Common Social Engineering Techniques
+## Understanding Social Engineering
 
-### Phishing
+Social engineering encompasses various manipulation techniques that exploit human psychology rather than technical vulnerabilities. For a comprehensive overview of common attack vectors, refer to our [Security Awareness Attack Vectors](../../awareness/attack-vectors/README.md) documentation.
 
-Phishing attacks use fraudulent emails, messages, or websites that appear to be from legitimate sources to trick recipients into revealing sensitive information or installing malware.
+## General Defense Strategies
 
-#### Defense Strategies
+Regardless of the specific social engineering technique, several core defensive measures are effective:
 
-1. Implement email filtering solutions to detect and block phishing attempts
-2. Train team members to identify phishing indicators such as suspicious sender addresses, grammatical errors, and urgent requests
-3. Establish protocols for reporting suspected phishing attempts
-4. Conduct regular phishing simulations to test and reinforce awareness
+1. **Implement Verification Protocols**: Establish multi-step verification procedures for sensitive requests, especially those involving financial transactions, credential changes, or access modifications
+   
+2. **Develop a Questioning Culture**: Encourage team members to verify unexpected requests through alternative communication channels, even when they appear to come from trusted sources
+   
+3. **Technical Controls**: Deploy appropriate filtering, monitoring, and access control systems to detect and prevent social engineering attempts
+   
+4. **Regular Training**: Conduct ongoing security awareness training with realistic scenarios based on current threats
 
-### Pretexting
+5. **Clear Reporting Mechanisms**: Create simple, accessible ways for team members to report suspected social engineering attempts
 
-Pretexting involves creating a fabricated scenario to obtain information or access from a target by impersonating colleagues, authority figures, or trusted entities.
+## Specific Defensive Considerations
 
-#### Defense Strategies
+While general principles apply broadly, some attack vectors require specific defensive approaches:
 
-1. Establish verification procedures for sensitive requests, especially those involving financial transactions or access changes
-2. Implement out-of-band verification for high-risk actions (using a different communication channel than the one where the request originated)
-3. Train team members to verify unexpected requests, even from seemingly trusted sources
+### Phishing Defense
 
-### Baiting
+Email and messaging-based deception requires specialized filtering solutions and training team members to recognize suspicious indicators like sender addresses, grammatical errors, and urgent requests.
 
-Baiting attacks use promises of items or goods to entice targets into taking actions that compromise security, such as plugging in infected USB drives or downloading malicious files.
+### Voice and In-Person Manipulation Defense
 
-#### Defense Strategies
+For pretexting, vishing, and impersonation attacks, implement strict identity verification procedures and establish clear escalation paths for unusual requests.
 
-1. Disable autorun features on devices to prevent automatic execution of malicious code
-2. Establish clear policies regarding the use of unknown storage devices
-3. Provide secure alternatives for file sharing and storage
+### Physical Security Considerations
+
+To counter baiting, tailgating, and physical social engineering, develop protocols for handling unknown devices, visitor management, and physical access controls.
 
 ## Cross-Function Collaboration
 
@@ -72,4 +73,4 @@ The goal of social engineering defense is not just to prevent specific attacks b
 2. Develop and practice "security skepticism" as a valued trait
 3. Design systems and processes with human behavior in mind, acknowledging that perfect compliance is unrealistic
 
-By combining technical controls with human awareness and organizational procedures, teams can significantly reduce their vulnerability to social engineering attacks. 
+Combining technical controls with human awareness and organizational procedures, teams can significantly reduce their vulnerability to social engineering attacks. 

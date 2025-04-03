@@ -101,4 +101,4 @@ These examples highlight the intersection of social engineering and insider thre
 
 ### Behavioral and Cultural Measures
 
-1. Foster a culture of security awareness where team members understand the importance of protecting sensitive information and reporting suspicious activities.
+1. Foster a [culture of security awareness](../../awareness/security-culture/README.md) where team members understand the importance of protecting sensitive information and reporting suspicious activities.
