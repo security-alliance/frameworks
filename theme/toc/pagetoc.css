@@ -6,7 +6,7 @@
 */
 
 :root {
-    --sidebar-width: 270px; /* or whatever width you want */
+    --sidebar-width: 270px;
     --sidebar-resize-indicator-width: 0px;
     --toc-width: 270px;
     --center-content-toc-shift: calc(-1 * var(--toc-width) / 2);
