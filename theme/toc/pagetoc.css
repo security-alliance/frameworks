@@ -6,6 +6,8 @@
 */
 
 :root {
+    --sidebar-width: 270px;
+    --sidebar-resize-indicator-width: 0px;
     --toc-width: 270px;
     --center-content-toc-shift: calc(-1 * var(--toc-width) / 2);
     --toc-bg-h1: rgba(114, 137, 218, 0.05);

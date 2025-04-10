@@ -94,14 +94,12 @@
 }
 
 .announcement-stripe {
+    width: auto;
     background-color: #5e1118;
     font-weight: bold;
     color: rgba(255, 255, 255, 0.8);
     padding: 10px;
-    position: fixed;
     text-align: center;
-    margin: 0 auto;
-    width: 100%;
     z-index: 1000;
     top: 0;
     left: 0;
@@ -118,9 +116,7 @@
 }
 
 /* Add padding to the page wrapper to prevent content from being hidden behind the fixed banner */
-.page-wrapper {
-    padding-top: 40px;
-}
+
 
 /* Footer styles */
 #page-footer {
