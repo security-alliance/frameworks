@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
     window.tagsData = tagsIndex;
     addBookmarkedToTags();
     createSearchableTags();
-    
+
     // Ensure text wraps tightly around contributors boxes
     ensureContributorBoxWrapping();
 
@@ -199,23 +199,18 @@ function setEnvironmentBanner() {
         const currentDomain = window.location.hostname;
         const announcementStripe = document.querySelector('.announcement-stripe p');
         const announcementBanner = document.querySelector('.announcement-stripe');
-        
+
         if (!announcementStripe || !announcementBanner) {
             console.warn('Announcement stripe element not found');
             return;
         }
-        
+
         // Default banner is red
         announcementBanner.style.backgroundColor = '#5e1118';
-        
+
         // Check if we're on .org domain (production/main branch)
         if (currentDomain.includes('.org') || currentDomain === 'frameworks.securityalliance.org') {
-            // Production banner (blue)
-            announcementStripe.innerHTML = `
-                <span>We're progressively releasing an alpha for each framework. Go to .dev domain to peek on future content.</span>
-            `;
-            // Change banner color to blue
-            announcementBanner.style.backgroundColor = '#4339db';
+            announcementBanner.remove();
         } else {
             // Development banner (red - original)
             announcementStripe.innerHTML = `
@@ -237,7 +232,7 @@ if (document.readyState === 'loading') {
     setEnvironmentBanner();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Add contributors functionality if available
     if (typeof contributorsIndex !== 'undefined') {
         setupContributorsPage();
@@ -255,14 +250,14 @@ function setupContributorsPage() {
     if (nav) {
         // Look for existing "Tags" link to place contributors after it
         let tagsLink = Array.from(nav.querySelectorAll('a')).find(a => a.textContent.trim() === 'Tags');
-        
+
         if (tagsLink && tagsLink.parentElement) {
             const contributorsItem = document.createElement('li');
             const contributorsLink = document.createElement('a');
             contributorsLink.href = window.location.pathname.replace(/[^/]*$/, 'contributors.html');
             contributorsLink.textContent = 'Contributors';
             contributorsItem.appendChild(contributorsLink);
-            
+
             // Insert after tags
             tagsLink.parentElement.insertAdjacentElement('afterend', contributorsItem);
         }
@@ -280,7 +275,7 @@ function buildContributorsPage() {
     const container = document.createElement('div');
     container.className = 'contributors-page-container';
     main.appendChild(container);
-    
+
     // Add page title
     const header = document.createElement('h1');
     header.textContent = 'Contributors';
@@ -291,7 +286,7 @@ function buildContributorsPage() {
     description.className = 'contributors-description';
     description.textContent = 'This page lists all contributors to the book and the chapters they contributed to.';
     container.appendChild(description);
-    
+
     // Add a divider
     const divider = document.createElement('hr');
     divider.className = 'contributors-divider';
@@ -303,15 +298,15 @@ function buildContributorsPage() {
     // Create the contributors list
     const contributorsList = document.createElement('div');
     contributorsList.className = 'contributors-list';
-    
+
     for (const contributor of sortedContributors) {
         const contributorCard = document.createElement('div');
         contributorCard.className = 'contributor-card';
-        
+
         // Create ID based on contributor name
         const contributorId = contributor.toLowerCase().replace(/\s+/g, '-')
             .replace(/[&.:,#\/()]/g, ''); // Remove special characters
-        
+
         // Add avatar if available
         const contributorData = contributorsIndex[contributor];
         if (contributorData.avatar) {
@@ -322,17 +317,17 @@ function buildContributorsPage() {
             avatar.loading = 'lazy';
             contributorCard.appendChild(avatar);
         }
-        
+
         // Contributor name with optional GitHub link
         const contributorName = document.createElement('div');
         contributorName.className = 'contributor-name';
         contributorName.textContent = contributor;
         contributorCard.appendChild(contributorName);
-        
+
         // Add social links container
         const socialContainer = document.createElement('div');
         socialContainer.className = 'contributor-social';
-        
+
         // Add GitHub link if available
         if (contributorData.github) {
             const githubLink = document.createElement('a');
@@ -343,12 +338,12 @@ function buildContributorsPage() {
             githubLink.innerHTML = '<i class="fa fa-github"></i>';
             socialContainer.appendChild(githubLink);
         }
-        
+
         // Add Twitter link if available
         if (contributorData.twitter) {
             const twitterLink = document.createElement('a');
-            twitterLink.href = contributorData.twitter.startsWith('http') 
-                ? contributorData.twitter 
+            twitterLink.href = contributorData.twitter.startsWith('http')
+                ? contributorData.twitter
                 : `https://twitter.com/${contributorData.twitter.replace('@', '')}`;
             twitterLink.target = '_blank';
             twitterLink.className = 'social-icon';
@@ -356,36 +351,36 @@ function buildContributorsPage() {
             twitterLink.innerHTML = '<i class="fa fa-twitter"></i>';
             socialContainer.appendChild(twitterLink);
         }
-        
+
         // Add other potential social links (LinkedIn, personal website, etc.)
         if (contributorData.website) {
             const websiteLink = document.createElement('a');
             websiteLink.href = contributorData.website;
-            websiteLink.target = '_blank'; 
+            websiteLink.target = '_blank';
             websiteLink.className = 'social-icon';
             websiteLink.title = `${contributor}'s Website`;
             websiteLink.innerHTML = '<i class="fa fa-globe"></i>';
             socialContainer.appendChild(websiteLink);
         }
-        
+
         // Only add the social container if there are any social links
         if (socialContainer.children.length > 0) {
             contributorCard.appendChild(socialContainer);
         }
-        
+
         // Add contribution count
         const chapterCount = contributorData.chapters.length;
         const contributionInfo = document.createElement('div');
         contributionInfo.className = 'contributor-contributions';
         contributionInfo.textContent = `${chapterCount} contribution${chapterCount !== 1 ? 's' : ''}`;
         contributorCard.appendChild(contributionInfo);
-        
+
         // Add "View Chapters" button that expands to show chapters
         if (chapterCount > 0) {
             const chaptersButton = document.createElement('button');
             chaptersButton.className = 'chapters-button';
             chaptersButton.textContent = 'View Chapters';
-            chaptersButton.onclick = function() {
+            chaptersButton.onclick = function () {
                 const chaptersList = this.nextElementSibling;
                 if (chaptersList.style.display === 'none' || !chaptersList.style.display) {
                     chaptersList.style.display = 'block';
@@ -396,29 +391,29 @@ function buildContributorsPage() {
                 }
             };
             contributorCard.appendChild(chaptersButton);
-            
+
             // Chapters list (initially hidden)
             const chaptersList = document.createElement('ul');
             chaptersList.className = 'chapters-list';
             chaptersList.style.display = 'none';
             chaptersList.style.textAlign = 'left';
             chaptersList.style.width = '100%';
-            
+
             for (const chapterPath of contributorData.chapters) {
                 const chapterItem = document.createElement('li');
                 const chapterLink = document.createElement('a');
-                
+
                 // Set href with correct path (add "../" prefix)
                 chapterLink.href = "../" + chapterPath;
-                
+
                 // Extract a more readable title from the path
                 let displayTitle = chapterPath;
-                
+
                 // Remove file extension and handle index files better
                 if (displayTitle.endsWith('.html')) {
                     const pathParts = displayTitle.split('/');
                     const fileName = pathParts.pop();
-                    
+
                     // For index.html files, use parent directory name
                     if (fileName === 'index.html' && pathParts.length > 0) {
                         const parentDir = pathParts[pathParts.length - 1];
@@ -426,17 +421,17 @@ function buildContributorsPage() {
                     } else {
                         displayTitle = fileName.replace('.html', '').replace(/-/g, ' ');
                     }
-                    
+
                     // Convert to title case
                     displayTitle = displayTitle
                         .split(' ')
                         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                         .join(' ');
                 }
-                
+
                 // Set initial display title (will be replaced if fetch succeeds)
                 chapterLink.textContent = displayTitle;
-                
+
                 // Try to fetch the actual title from the page
                 fetch("../" + chapterPath)
                     .then(response => {
@@ -448,16 +443,16 @@ function buildContributorsPage() {
                     .then(html => {
                         const parser = new DOMParser();
                         const doc = parser.parseFromString(html, 'text/html');
-                        
+
                         // Get all h1 elements - the first one is the site title, we want the second one
                         const h1Elements = doc.querySelectorAll('h1');
-                        
+
                         // Use the second h1 if available (index 1), which should be the actual page title
                         if (h1Elements.length > 1 && h1Elements[1].textContent.trim()) {
                             chapterLink.textContent = h1Elements[1].textContent.trim();
                             return;
                         }
-                        
+
                         // If no second h1 found, try getting the document title as fallback
                         const docTitle = doc.querySelector('title');
                         if (docTitle) {
@@ -471,17 +466,17 @@ function buildContributorsPage() {
                         console.error(`Error fetching title for ${chapterPath}:`, error);
                         // Keep the existing displayTitle if fetch fails
                     });
-                
+
                 chapterItem.appendChild(chapterLink);
                 chaptersList.appendChild(chapterItem);
             }
-            
+
             contributorCard.appendChild(chaptersList);
         }
-        
+
         contributorsList.appendChild(contributorCard);
     }
-    
+
     container.appendChild(contributorsList);
 }
 
@@ -489,19 +484,19 @@ function buildContributorsPage() {
 function ensureContributorBoxWrapping() {
     // Find all contributor boxes
     const contributorBoxes = document.querySelectorAll('.contributors-container');
-    
+
     // For each contributor box, ensure it's positioned correctly for text wrapping
     contributorBoxes.forEach(box => {
         // Get the parent paragraph
         const parentParagraph = box.closest('p') || box.parentElement;
-        
+
         // If the box is not inside a paragraph, try to find the first paragraph
         if (!parentParagraph.matches('p')) {
             const firstParagraph = box.parentElement.querySelector('p');
             if (firstParagraph) {
                 // Move the box to be the first child of the first paragraph
                 firstParagraph.insertBefore(box, firstParagraph.firstChild);
-                
+
                 // Set overflow for proper wrapping
                 firstParagraph.style.overflow = 'auto';
             }
@@ -509,7 +504,7 @@ function ensureContributorBoxWrapping() {
             // If already in a paragraph, ensure proper wrapping
             parentParagraph.style.overflow = 'auto';
         }
-        
+
         // Ensure the box is properly positioned
         box.style.float = 'right';
         box.style.clear = 'both';
