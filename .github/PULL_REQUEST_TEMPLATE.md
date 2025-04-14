@@ -1,6 +1,6 @@
 ## Frameworks PR Checklist
 
-Thank you for contributing to the Security Frameworks! Before you open a PR, make sure to read [information for contributors](https://framework.securityalliance.org/book/contribute/contribute.html) and take a look at the following checklist:
+Thank you for contributing to the Security Frameworks! Before you open a PR, make sure to read [information for contributors](https://frameworks.securityalliance.org/contribute/contributing.html) and take a look at the following checklist:
 
 - [ ] Describe your changes, substitute this text with the information
 - [ ] If you are touching an existing piece of content, ask the original creator for review
