@@ -32,7 +32,7 @@ To comment on the live version of the book under development, you will need to l
 
 1. Fork the repository. Click on the "Fork" button at the top right corner of the page.
 2. Clone the forked repository to your local machine. Open your terminal or command prompt.
-```bash
+```
 git clone https://github.com/your-username/frameworks.git
 ```
 3. Make sure you're in the develop branch first.
