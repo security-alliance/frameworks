@@ -36,7 +36,7 @@ To comment on the live version of the book under development, you will need to l
 3. Make sure you're in the develop branch first.
 `git checkout develop`
 4. Inside the folder create a new branch based on `develop`.
-`git checkout -b develop`
+`git checkout -b {name_of_your_branch}`
 5. Make your changes.
 6. Make sure your changes don't break anything by testing it in the local setup (see above).
 `./serve.sh`.
