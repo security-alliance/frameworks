@@ -128,7 +128,7 @@
 - [What It Isn't](./intro/what-it-isnt.md)
 - [Contributing](./contribute/contributing.md)
   - [Contributors](./contribute/contributors.md)
-  - [Champions](./contribute/champions.md)
+  - [Stewards](./contribute/stewards.md)
 
 # Practical Guides
 
