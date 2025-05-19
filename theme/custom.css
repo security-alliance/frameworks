@@ -367,3 +367,209 @@ html.coal .contributors-title,
 html.navy .contributors-title {
   border-color: rgba(255, 255, 255, 0.05);
 }
+
+/* Contributor page styling */
+.contributors-page-container {
+  margin: 2rem 0;
+}
+
+.contributors-description {
+  max-width: 800px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contributors-divider {
+  margin: 2rem 0;
+  border: 0;
+  height: 1px;
+  background: #e1e4e8;
+}
+
+.contributors-group {
+  margin-bottom: 3rem;
+}
+
+.contributors-group h2 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.contributors-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.contributor-card {
+  background: var(--sidebar-bg);
+  border: 1px solid var(--theme-popup-border);
+  border-radius: 6px;
+  padding: 1rem 0.75rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.contributor-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.contributor-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.contributor-name {
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-right: 0.5rem;
+  word-break: break-word;
+}
+
+.contributor-badge {
+  font-size: 1.8rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+.steward-badge {
+  background-color: #0366d6;
+  color: white;
+}
+
+.contributor-role {
+  font-size: 1.725rem;
+  color: #586069;
+  margin-bottom: 0.75rem;
+}
+
+.contributor-company {
+  font-size: 1.725rem;
+  color: var(--fg);
+  margin: 0.5rem 0 0.75rem;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--quote-bg, rgba(0,0,0,0.05));
+  border: 1px solid var(--theme-popup-border);
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Dark theme specific adjustments */
+html.ayu .contributor-company,
+html.coal .contributor-company,
+html.navy .contributor-company {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.contributor-description {
+  font-size: 1.38rem;
+  line-height: 1.5;
+  color: var(--fg);
+  margin-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--theme-popup-border);
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.contributor-social {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.social-icon {
+  color: #586069;
+  transition: color 0.2s;
+  font-size: 3rem;
+}
+
+.social-icon:hover {
+  color: var(--icons-hover);
+}
+
+.contributor-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 2px solid var(--theme-popup-border);
+}
+
+.contributor-contributions {
+  font-size: 2.2rem;
+  color: #586069;
+  margin-bottom: 0.75rem;
+}
+
+.chapters-button {
+  background: var(--theme-hover);
+  border: 1px solid var(--theme-popup-border);
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  font-size: 2.2rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s;
+}
+
+.chapters-button:hover {
+  background: var(--theme-hover-dark);
+}
+
+.chapters-list {
+  font-size: 2.2rem;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.chapters-list li {
+  margin-bottom: 0.5rem;
+}
+
+.chapters-list a {
+  color: var(--links);
+}
+
+.chapters-list a:hover {
+  text-decoration: underline;
+}
+
+/* Core contributors specific styling */
+.core-group .contributor-card {
+  border-left: 3px solid #28a745;
+}
+
+/* Stewards specific styling */
+.steward-group .contributor-card {
+  border-left: 3px solid #0366d6;
+}
+
+/* Featured contributors styling */
+.featured-group .contributor-card {
+  border-left: 3px solid #f6c32c;
+}
+
+/* Regular contributors styling */
+.general-group .contributor-card {
+  border-left: 3px solid #6f42c1;
+}
+
+/* Lead contributors specific styling */
+.lead-group .contributor-card {
+  border-left: 3px solid #e34c26;
+}
