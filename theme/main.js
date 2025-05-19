@@ -440,43 +440,45 @@ function buildContributorsPage() {
 
         // For general contributors (including those manually added with "featured" tag)
         if (isInGroup === 'general') {
-            // Add contribution count
+            // Add contribution count if there are any contributions
             const chapterCount = contributorData.chapters ? contributorData.chapters.length : 0;
-            const contributionInfo = document.createElement('div');
-            contributionInfo.className = 'contributor-contributions';
             
-            if (contributorData.features && contributorData.features.includes('featured') && chapterCount === 0) {
-                // For manually added contributors with no content contributions
-                contributionInfo.textContent = 'Infrastructure contributor';
-            } else {
+            // Only show contributions count if there are actual contributions
+            // or if the contributor is not manually added (doesn't have "featured" tag)
+            if (chapterCount > 0 || !(contributorData.features && contributorData.features.includes('featured'))) {
+                const contributionInfo = document.createElement('div');
+                contributionInfo.className = 'contributor-contributions';
                 contributionInfo.textContent = `${chapterCount} contribution${chapterCount !== 1 ? 's' : ''}`;
+                contributorCard.appendChild(contributionInfo);
             }
-            
-            contributorCard.appendChild(contributionInfo);
 
-            // Add "View frameworks contributions" button that expands to show chapters
+            // Add "View frameworks contributions" button only if there are actual contributions to show
             if (chapterCount > 0) {
                 const chaptersButton = document.createElement('button');
                 chaptersButton.className = 'chapters-button';
                 chaptersButton.textContent = 'View frameworks contributions';
                 chaptersButton.onclick = function () {
-                    const chaptersList = this.nextElementSibling;
-                    if (chaptersList.style.display === 'none' || !chaptersList.style.display) {
-                        chaptersList.style.display = 'block';
+                    const chaptersContainer = this.nextElementSibling;
+                    if (chaptersContainer.style.display === 'none' || !chaptersContainer.style.display) {
+                        chaptersContainer.style.display = 'block';
                         this.textContent = 'Hide frameworks contributions';
                     } else {
-                        chaptersList.style.display = 'none';
+                        chaptersContainer.style.display = 'none';
                         this.textContent = 'View frameworks contributions';
                     }
                 };
                 contributorCard.appendChild(chaptersButton);
 
                 // Chapters list (initially hidden)
+                const chaptersContainer = document.createElement('div');
+                chaptersContainer.className = 'chapters-container';
+                chaptersContainer.style.display = 'none';
+                
+                // No heading, go straight to the list
+                
+                // Create the list with improved styling
                 const chaptersList = document.createElement('ul');
                 chaptersList.className = 'chapters-list';
-                chaptersList.style.display = 'none';
-                chaptersList.style.textAlign = 'left';
-                chaptersList.style.width = '100%';
 
                 for (const chapterPath of contributorData.chapters) {
                     const chapterItem = document.createElement('li');
@@ -545,10 +547,17 @@ function buildContributorsPage() {
                             // Ignore errors, fallback to default displayTitle
                         });
 
+                    // Add a custom style to each item
+                    chapterItem.className = 'chapter-item';
                     chapterItem.appendChild(chapterLink);
                     chaptersList.appendChild(chapterItem);
                 }
-                contributorCard.appendChild(chaptersList);
+                
+                // Add the list to the container
+                chaptersContainer.appendChild(chaptersList);
+                
+                // Add the container to the card
+                contributorCard.appendChild(chaptersContainer);
             }
         }
 

@@ -3,7 +3,6 @@ tags:
   - Community & Marketing
 contributors:
   - mattaereal
-  - engn33r
 ---
 
 # Telegram Security

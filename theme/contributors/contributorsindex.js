@@ -24,16 +24,6 @@ const contributorsIndex = {
     "description": "Full-stack developer and security enthusiast",
     "features": ["core"]
   },
-  "engn33r": {
-    "chapters": [
-      "community-management/telegram.html"
-    ],
-    "github": "https://github.com/engn33r",
-    "avatar": "https://github.com/engn33r.png",
-    "twitter": "https://twitter.com/engn33r",
-    "description": "Signing scheme content",
-    "features": ["featured"]
-  },
   "matta": {
     "chapters": [
       "awareness/index.html",
@@ -51,6 +41,14 @@ const contributorsIndex = {
     "role": "Security Frameworks Lead",
     "description": "Initiative lead and maintainer of the Security Frameworks",
     "features": ["lead"]
+  },
+  "engn33r": {
+    "chapters": [],
+    "github": "https://github.com/engn33r",
+    "avatar": "https://github.com/engn33r.png",
+    "twitter": "https://twitter.com/engn33r",
+    "description": "Signing scheme content",
+    "features": ["featured"]
   },
   "Fredrik Svantes": {
     "chapters": [],
