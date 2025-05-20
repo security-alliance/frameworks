@@ -17,7 +17,7 @@
     "avatar": "https://github.com/fredriksvantes.png",
     "github": "https://github.com/fredriksvantes",
     "twitter": "https://twitter.com/fredriksvantes",
-    "website": "https://fredriksvantes.com",
+    "website": "https://ethereum.org",
     "features": ["core"],
     "role": "Security Frameworks core",
     "description": "Initial contributor to the Security Frameworks",
@@ -28,7 +28,7 @@
     "displayName": "zedt3ster",
     "avatar": "https://github.com/zedt3ster.png",
     "github": "https://github.com/zedt3ster",
-    "twitter": "https://twitter.com/zedt3ster",
+    "website": "https://sigmaprime.io",
     "features": ["core"],
     "role": "Security Frameworks core",
     "description": "Initial contributor to the Security Frameworks",
@@ -51,7 +51,7 @@
     "avatar": "https://github.com/Robert-MacWha.png",
     "github": "https://github.com/Robert-MacWha",
     "twitter": null,
-    "website": "https://robertmacwha.com",
+    "website": "https://robert-macwha.github.io/",
     "features": ["core"],
     "role": "Security Frameworks webs collaborator",
     "description": "Full-stack developer and security enthusiast",
@@ -72,8 +72,8 @@
     "displayName": "engn33r",
     "avatar": "https://github.com/engn33r.png",
     "github": "https://github.com/engn33r",
-    "twitter": "https://twitter.com/engn33r",
+    "twitter": "https://twitter.com/bl4ckb1rd71",
     "features": ["featured"],
-    "description": "Signing scheme content"
+    "description": "Signing best practices"
   }
 }
