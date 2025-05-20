@@ -284,22 +284,34 @@ function buildContributorsPage() {
     // Add description with better styling
     const description = document.createElement('p');
     description.className = 'contributors-description';
-    description.textContent = 'This page lists all contributors to the book and the chapters they contributed to.';
+    description.textContent = 'This is the current list of individuals who have made substantial contributions to the project and deserve recognition.';
     container.appendChild(description);
 
-    // Add a divider
-    const divider = document.createElement('hr');
-    divider.className = 'contributors-divider';
-    container.appendChild(divider);
+    // Group contributors by features
+    const leadContributors = [];
+    const coreContributors = [];
+    const stewards = [];
+    const generalContributors = []; // This will include both auto-added and manually featured contributors
 
-    // Sort contributors alphabetically
-    const sortedContributors = Object.keys(contributorsIndex).sort();
+    for (const contributor of Object.keys(contributorsIndex)) {
+        const data = contributorsIndex[contributor];
+        const features = data.features || [];
+        
+        if (features.includes('lead')) {
+            leadContributors.push(contributor);
+        } else if (features.includes('core')) {
+            coreContributors.push(contributor);
+        } else if (features.includes('steward')) {
+            // Only add to stewards if not already in core or lead
+            stewards.push(contributor);
+        } else {
+            // All other contributors go into general, including those with "featured" tag
+            generalContributors.push(contributor);
+        }
+    }
 
-    // Create the contributors list
-    const contributorsList = document.createElement('div');
-    contributorsList.className = 'contributors-list';
-
-    for (const contributor of sortedContributors) {
+    // Helper to create a contributor card
+    function createContributorCard(contributor, isInGroup) {
         const contributorCard = document.createElement('div');
         contributorCard.className = 'contributor-card';
 
@@ -307,8 +319,10 @@ function buildContributorsPage() {
         const contributorId = contributor.toLowerCase().replace(/\s+/g, '-')
             .replace(/[&.:,#\/()]/g, ''); // Remove special characters
 
-        // Add avatar if available
         const contributorData = contributorsIndex[contributor];
+        const features = contributorData.features || [];
+
+        // Add avatar if available
         if (contributorData.avatar) {
             const avatar = document.createElement('img');
             avatar.className = 'contributor-avatar';
@@ -318,11 +332,67 @@ function buildContributorsPage() {
             contributorCard.appendChild(avatar);
         }
 
-        // Contributor name with optional GitHub link
+        // Create a container for the name, role, and badges
+        const nameContainer = document.createElement('div');
+        nameContainer.className = 'contributor-header';
+        
+        // Contributor name
         const contributorName = document.createElement('div');
         contributorName.className = 'contributor-name';
         contributorName.textContent = contributor;
-        contributorCard.appendChild(contributorName);
+        nameContainer.appendChild(contributorName);
+
+        // Add steward badge for core contributors who are also stewards
+        if (isInGroup === 'core' && features.includes('steward')) {
+            const stewardBadge = document.createElement('span');
+            stewardBadge.className = 'contributor-badge steward-badge';
+            stewardBadge.textContent = 'Steward';
+            nameContainer.appendChild(stewardBadge);
+        }
+        
+        contributorCard.appendChild(nameContainer);
+
+        // Add company if available
+        if (contributorData.company) {
+            const companyContainer = document.createElement('div');
+            companyContainer.style.textAlign = 'center';
+            companyContainer.style.width = '100%';
+            
+            const companyElement = document.createElement('div');
+            companyElement.className = 'contributor-company';
+            
+            // Add label/prefix for better clarity
+            if (features.includes('lead') || features.includes('core') || features.includes('steward') || features.includes('featured')) {
+                // No prefix for lead, core, stewards, or featured contributors
+                companyElement.textContent = contributorData.company;
+            } else {
+                companyElement.textContent = `Affiliated with: ${contributorData.company}`;
+            }
+            
+            companyContainer.appendChild(companyElement);
+            contributorCard.appendChild(companyContainer);
+        }
+
+        // Add role for leadership, core contributors and stewards (not featured)
+        if ((isInGroup === 'lead' || isInGroup === 'core' || isInGroup === 'steward') && contributorData.role) {
+            const roleElement = document.createElement('div');
+            roleElement.className = 'contributor-role';
+            roleElement.textContent = contributorData.role;
+            contributorCard.appendChild(roleElement);
+        }
+
+        // Add description for all contributors if available
+        if (contributorData.description) {
+            const descElement = document.createElement('div');
+            // For contributors with "featured" tag, use the more prominent role styling for description
+            if (contributorData.features && contributorData.features.includes('featured')) {
+                descElement.className = 'contributor-role'; // More prominent styling
+            } else {
+                descElement.className = 'contributor-description';
+            }
+            descElement.textContent = contributorData.description;
+            contributorCard.appendChild(descElement);
+        }
 
         // Add social links container
         const socialContainer = document.createElement('div');
@@ -368,116 +438,165 @@ function buildContributorsPage() {
             contributorCard.appendChild(socialContainer);
         }
 
-        // Add contribution count
-        const chapterCount = contributorData.chapters.length;
-        const contributionInfo = document.createElement('div');
-        contributionInfo.className = 'contributor-contributions';
-        contributionInfo.textContent = `${chapterCount} contribution${chapterCount !== 1 ? 's' : ''}`;
-        contributorCard.appendChild(contributionInfo);
-
-        // Add "View Chapters" button that expands to show chapters
-        if (chapterCount > 0) {
-            const chaptersButton = document.createElement('button');
-            chaptersButton.className = 'chapters-button';
-            chaptersButton.textContent = 'View Chapters';
-            chaptersButton.onclick = function () {
-                const chaptersList = this.nextElementSibling;
-                if (chaptersList.style.display === 'none' || !chaptersList.style.display) {
-                    chaptersList.style.display = 'block';
-                    this.textContent = 'Hide Chapters';
-                } else {
-                    chaptersList.style.display = 'none';
-                    this.textContent = 'View Chapters';
-                }
-            };
-            contributorCard.appendChild(chaptersButton);
-
-            // Chapters list (initially hidden)
-            const chaptersList = document.createElement('ul');
-            chaptersList.className = 'chapters-list';
-            chaptersList.style.display = 'none';
-            chaptersList.style.textAlign = 'left';
-            chaptersList.style.width = '100%';
-
-            for (const chapterPath of contributorData.chapters) {
-                const chapterItem = document.createElement('li');
-                const chapterLink = document.createElement('a');
-
-                // Set href with correct path (add "../" prefix)
-                chapterLink.href = "../" + chapterPath;
-
-                // Extract a more readable title from the path
-                let displayTitle = chapterPath;
-
-                // Remove file extension and handle index files better
-                if (displayTitle.endsWith('.html')) {
-                    const pathParts = displayTitle.split('/');
-                    const fileName = pathParts.pop();
-
-                    // For index.html files, use parent directory name
-                    if (fileName === 'index.html' && pathParts.length > 0) {
-                        const parentDir = pathParts[pathParts.length - 1];
-                        displayTitle = parentDir.replace(/-/g, ' ');
-                    } else {
-                        displayTitle = fileName.replace('.html', '').replace(/-/g, ' ');
-                    }
-
-                    // Convert to title case
-                    displayTitle = displayTitle
-                        .split(' ')
-                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                        .join(' ');
-                }
-
-                // Set initial display title (will be replaced if fetch succeeds)
-                chapterLink.textContent = displayTitle;
-
-                // Try to fetch the actual title from the page
-                fetch("../" + chapterPath)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Failed to fetch page');
-                        }
-                        return response.text();
-                    })
-                    .then(html => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(html, 'text/html');
-
-                        // Get all h1 elements - the first one is the site title, we want the second one
-                        const h1Elements = doc.querySelectorAll('h1');
-
-                        // Use the second h1 if available (index 1), which should be the actual page title
-                        if (h1Elements.length > 1 && h1Elements[1].textContent.trim()) {
-                            chapterLink.textContent = h1Elements[1].textContent.trim();
-                            return;
-                        }
-
-                        // If no second h1 found, try getting the document title as fallback
-                        const docTitle = doc.querySelector('title');
-                        if (docTitle) {
-                            // Remove book title suffix if present
-                            let titleText = docTitle.textContent.trim();
-                            titleText = titleText.replace(' - Security Frameworks by SEAL', '');
-                            chapterLink.textContent = titleText;
-                        }
-                    })
-                    .catch(error => {
-                        console.error(`Error fetching title for ${chapterPath}:`, error);
-                        // Keep the existing displayTitle if fetch fails
-                    });
-
-                chapterItem.appendChild(chapterLink);
-                chaptersList.appendChild(chapterItem);
+        // For general contributors (including those manually added with "featured" tag)
+        if (isInGroup === 'general') {
+            // Add contribution count if there are any contributions
+            const chapterCount = contributorData.chapters ? contributorData.chapters.length : 0;
+            
+            // Only show contributions count if there are actual contributions
+            // or if the contributor is not manually added (doesn't have "featured" tag)
+            if (chapterCount > 0 || !(contributorData.features && contributorData.features.includes('featured'))) {
+                const contributionInfo = document.createElement('div');
+                contributionInfo.className = 'contributor-contributions';
+                contributionInfo.textContent = `${chapterCount} contribution${chapterCount !== 1 ? 's' : ''}`;
+                contributorCard.appendChild(contributionInfo);
             }
 
-            contributorCard.appendChild(chaptersList);
+            // Add "View frameworks contributions" button only if there are actual contributions to show
+            if (chapterCount > 0) {
+                const chaptersButton = document.createElement('button');
+                chaptersButton.className = 'chapters-button';
+                chaptersButton.textContent = 'View frameworks contributions';
+                chaptersButton.onclick = function () {
+                    const chaptersContainer = this.nextElementSibling;
+                    if (chaptersContainer.style.display === 'none' || !chaptersContainer.style.display) {
+                        chaptersContainer.style.display = 'block';
+                        this.textContent = 'Hide frameworks contributions';
+                    } else {
+                        chaptersContainer.style.display = 'none';
+                        this.textContent = 'View frameworks contributions';
+                    }
+                };
+                contributorCard.appendChild(chaptersButton);
+
+                // Chapters list (initially hidden)
+                const chaptersContainer = document.createElement('div');
+                chaptersContainer.className = 'chapters-container';
+                chaptersContainer.style.display = 'none';
+                
+                // No heading, go straight to the list
+                
+                // Create the list with improved styling
+                const chaptersList = document.createElement('ul');
+                chaptersList.className = 'chapters-list';
+
+                for (const chapterPath of contributorData.chapters) {
+                    const chapterItem = document.createElement('li');
+                    const chapterLink = document.createElement('a');
+
+                    // Set href with correct path (add "../" prefix)
+                    chapterLink.href = "../" + chapterPath;
+
+                    // Extract a more readable title from the path
+                    let displayTitle = chapterPath;
+
+                    // Remove file extension and handle index files better
+                    if (displayTitle.endsWith('.html')) {
+                        const pathParts = displayTitle.split('/');
+                        const fileName = pathParts.pop();
+
+                        // For index.html files, use parent directory name
+                        if (fileName === 'index.html' && pathParts.length > 0) {
+                            const parentDir = pathParts[pathParts.length - 1];
+                            displayTitle = parentDir.replace(/-/g, ' ');
+                        } else {
+                            displayTitle = fileName.replace('.html', '').replace(/-/g, ' ');
+                        }
+
+                        // Convert to title case
+                        displayTitle = displayTitle
+                            .split(' ')
+                            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                            .join(' ');
+                    }
+
+                    // Set initial display title (will be replaced if fetch succeeds)
+                    chapterLink.textContent = displayTitle;
+
+                    // Try to fetch the actual title from the page
+                    fetch("../" + chapterPath)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to fetch page');
+                            }
+                            return response.text();
+                        })
+                        .then(html => {
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(html, 'text/html');
+
+                            // Get all h1 elements - the first one is the site title, we want the second one
+                            const h1Elements = doc.querySelectorAll('h1');
+
+                            // Use the second h1 if available (index 1), which should be the actual page title
+                            if (h1Elements.length > 1 && h1Elements[1].textContent.trim()) {
+                                chapterLink.textContent = h1Elements[1].textContent.trim();
+                                return;
+                            }
+
+                            // If no second h1 found, try getting the document title as fallback
+                            const docTitle = doc.querySelector('title');
+                            if (docTitle) {
+                                // Remove book title suffix if present
+                                let titleText = docTitle.textContent.trim();
+                                titleText = titleText.replace(' - Security Frameworks by SEAL', '');
+                                chapterLink.textContent = titleText;
+                            }
+                        })
+                        .catch(error => {
+                            // Ignore errors, fallback to default displayTitle
+                        });
+
+                    // Add a custom style to each item
+                    chapterItem.className = 'chapter-item';
+                    chapterItem.appendChild(chapterLink);
+                    chaptersList.appendChild(chapterItem);
+                }
+                
+                // Add the list to the container
+                chaptersContainer.appendChild(chaptersList);
+                
+                // Add the container to the card
+                contributorCard.appendChild(chaptersContainer);
+            }
         }
 
-        contributorsList.appendChild(contributorCard);
+        return contributorCard;
     }
 
-    container.appendChild(contributorsList);
+    // Helper to render a group
+    function renderContributorsGroup(title, contributors, groupIdentifier) {
+        if (!contributors.length) return null;
+        const groupDiv = document.createElement('div');
+        groupDiv.className = `contributors-group ${groupIdentifier}-group`;
+
+        const groupHeader = document.createElement('h2');
+        groupHeader.textContent = title;
+        groupDiv.appendChild(groupHeader);
+
+        const groupList = document.createElement('div');
+        groupList.className = 'contributors-list';
+
+        for (const contributor of contributors.sort()) {
+            const card = createContributorCard(contributor, groupIdentifier);
+            groupList.appendChild(card);
+        }
+
+        groupDiv.appendChild(groupList);
+        return groupDiv;
+    }
+
+    // Render groups in order
+    const leadGroup = renderContributorsGroup('Leadership', leadContributors, 'lead');
+    const coreGroup = renderContributorsGroup('Core Contributors', coreContributors, 'core');
+    const stewardsGroup = renderContributorsGroup('Stewards', stewards, 'steward');
+    const contributorsGroup = renderContributorsGroup('Contributors', generalContributors, 'general');
+
+    // Add groups to container
+    if (leadGroup) container.appendChild(leadGroup);
+    if (coreGroup) container.appendChild(coreGroup);
+    if (stewardsGroup) container.appendChild(stewardsGroup);
+    if (contributorsGroup) container.appendChild(contributorsGroup);
 }
 
 // Function to ensure text wraps tightly around contributor boxes
