@@ -4,7 +4,7 @@ tags:
   - Security Specialist
 contributors:
   - mattaereal
-  - nft_dreww
+  - nftdreww
 ---
 
 # Discord Security
