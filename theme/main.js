@@ -281,9 +281,8 @@ function buildContributorsPage() {
     header.textContent = 'Contributors';
     container.appendChild(header);
 
-    // Add description with better styling
+    // Add description with default mdbook styling
     const description = document.createElement('p');
-    description.className = 'contributors-description';
     description.textContent = 'This is the current list of individuals who have made substantial contributions to the project and deserve recognition.';
     container.appendChild(description);
 
@@ -470,54 +469,54 @@ function buildContributorsPage() {
         // For general contributors (including those manually added with "featured" tag)
         if (isInGroup === 'general') {
             // Add contribution count if there are any contributions
-            const chapterCount = contributorData.chapters ? contributorData.chapters.length : 0;
+            const pageCount = contributorData.pages ? contributorData.pages.length : 0;
             
             // Only show contributions count if there are actual contributions
             // or if the contributor is not manually added (doesn't have "featured" tag)
-            if (chapterCount > 0 || !(contributorData.features && contributorData.features.includes('featured'))) {
+            if (pageCount > 0 || !(contributorData.features && contributorData.features.includes('featured'))) {
                 const contributionInfo = document.createElement('div');
                 contributionInfo.className = 'contributor-contributions';
-                contributionInfo.textContent = `${chapterCount} contribution${chapterCount !== 1 ? 's' : ''}`;
+                contributionInfo.textContent = `${pageCount} contribution${pageCount !== 1 ? 's' : ''}`;
                 contributorCard.appendChild(contributionInfo);
             }
 
-            // Add "View frameworks contributions" button only if there are actual contributions to show
-            if (chapterCount > 0) {
-                const chaptersButton = document.createElement('button');
-                chaptersButton.className = 'chapters-button';
-                chaptersButton.textContent = 'View frameworks contributions';
-                chaptersButton.onclick = function () {
-                    const chaptersContainer = this.nextElementSibling;
-                    if (chaptersContainer.style.display === 'none' || !chaptersContainer.style.display) {
-                        chaptersContainer.style.display = 'block';
-                        this.textContent = 'Hide frameworks contributions';
+            // Add "View page contributions" button only if there are actual contributions to show
+            if (pageCount > 0) {
+                const pagesButton = document.createElement('button');
+                pagesButton.className = 'pages-button';
+                pagesButton.textContent = 'View page contributions';
+                pagesButton.onclick = function () {
+                    const pagesContainer = this.nextElementSibling;
+                    if (pagesContainer.style.display === 'none' || !pagesContainer.style.display) {
+                        pagesContainer.style.display = 'block';
+                        this.textContent = 'Hide page contributions';
                     } else {
-                        chaptersContainer.style.display = 'none';
-                        this.textContent = 'View frameworks contributions';
+                        pagesContainer.style.display = 'none';
+                        this.textContent = 'View page contributions';
                     }
                 };
-                contributorCard.appendChild(chaptersButton);
+                contributorCard.appendChild(pagesButton);
 
-                // Chapters list (initially hidden)
-                const chaptersContainer = document.createElement('div');
-                chaptersContainer.className = 'chapters-container';
-                chaptersContainer.style.display = 'none';
+                // Pages list (initially hidden)
+                const pagesContainer = document.createElement('div');
+                pagesContainer.className = 'pages-container';
+                pagesContainer.style.display = 'none';
                 
                 // No heading, go straight to the list
                 
                 // Create the list with improved styling
-                const chaptersList = document.createElement('ul');
-                chaptersList.className = 'chapters-list';
+                const pagesList = document.createElement('ul');
+                pagesList.className = 'pages-list';
 
-                for (const chapterPath of contributorData.chapters) {
-                    const chapterItem = document.createElement('li');
-                    const chapterLink = document.createElement('a');
+                for (const pagePath of contributorData.pages) {
+                    const pageItem = document.createElement('li');
+                    const pageLink = document.createElement('a');
 
                     // Set href with correct path (add "../" prefix)
-                    chapterLink.href = "../" + chapterPath;
+                    pageLink.href = "../" + pagePath;
 
                     // Extract a more readable title from the path
-                    let displayTitle = chapterPath;
+                    let displayTitle = pagePath;
 
                     // Remove file extension and handle index files better
                     if (displayTitle.endsWith('.html')) {
@@ -540,10 +539,10 @@ function buildContributorsPage() {
                     }
 
                     // Set initial display title (will be replaced if fetch succeeds)
-                    chapterLink.textContent = displayTitle;
+                    pageLink.textContent = displayTitle;
 
                     // Try to fetch the actual title from the page
-                    fetch("../" + chapterPath)
+                    fetch("../" + pagePath)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error('Failed to fetch page');
@@ -559,7 +558,7 @@ function buildContributorsPage() {
 
                             // Use the second h1 if available (index 1), which should be the actual page title
                             if (h1Elements.length > 1 && h1Elements[1].textContent.trim()) {
-                                chapterLink.textContent = h1Elements[1].textContent.trim();
+                                pageLink.textContent = h1Elements[1].textContent.trim();
                                 return;
                             }
 
@@ -569,7 +568,7 @@ function buildContributorsPage() {
                                 // Remove book title suffix if present
                                 let titleText = docTitle.textContent.trim();
                                 titleText = titleText.replace(' - Security Frameworks by SEAL', '');
-                                chapterLink.textContent = titleText;
+                                pageLink.textContent = titleText;
                             }
                         })
                         .catch(error => {
@@ -577,16 +576,16 @@ function buildContributorsPage() {
                         });
 
                     // Add a custom style to each item
-                    chapterItem.className = 'chapter-item';
-                    chapterItem.appendChild(chapterLink);
-                    chaptersList.appendChild(chapterItem);
+                    pageItem.className = 'page-item';
+                    pageItem.appendChild(pageLink);
+                    pagesList.appendChild(pageItem);
                 }
                 
                 // Add the list to the container
-                chaptersContainer.appendChild(chaptersList);
+                pagesContainer.appendChild(pagesList);
                 
                 // Add the container to the card
-                contributorCard.appendChild(chaptersContainer);
+                contributorCard.appendChild(pagesContainer);
             }
         }
 

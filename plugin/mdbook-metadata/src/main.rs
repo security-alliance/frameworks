@@ -170,7 +170,7 @@ impl Preprocessor for Metadata {
         let mut contributor_roles: HashMap<String, HashMap<String, Vec<String>>> = HashMap::new();
 
         book.for_each_mut(|item| {
-            // Throw away invalid chapters
+            // Throw away invalid pages
             let BookItem::Chapter(ch) = item else {
                 return;
             };
@@ -662,13 +662,13 @@ impl Metadata {
         sorted_tags.sort_by(|a, b| a.0.cmp(&b.0));
 
         tags_js.push_str("const tagsIndex = {\n");
-        for (tag, chapters) in sorted_tags {
+        for (tag, pages) in sorted_tags {
             tags_js.push_str(&format!(
                 "  \"{}\": [{}],\n",
                 tag,
-                chapters
+                pages
                     .iter()
-                    .map(|chapter| format!("\"{}\"", chapter))
+                    .map(|page| format!("\"{}\"", page))
                     .collect::<Vec<_>>()
                     .join(", ")
             ));
@@ -821,18 +821,18 @@ fn generate_contributors_js(
     let mut sorted_contributors: Vec<_> = contributors_map.iter().collect();
     sorted_contributors.sort_by(|a, b| a.0.cmp(&b.0));
 
-    // First add all contributors who have contributed to chapters
-    for (i, (contributor, chapters)) in sorted_contributors.iter().enumerate() {
+    // First add all contributors who have contributed to pages
+    for (i, (contributor, pages)) in sorted_contributors.iter().enumerate() {
         js.push_str(&format!("  \"{}\": {{\n", contributor));
-        js.push_str(&format!("    \"chapters\": [\n"));
+        js.push_str(&format!("    \"pages\": [\n"));
         
-        // Sort chapters for consistency
-        let mut sorted_chapters: Vec<String> = chapters.to_vec();
-        sorted_chapters.sort();
+        // Sort pages for consistency
+        let mut sorted_pages: Vec<String> = pages.to_vec();
+        sorted_pages.sort();
         
-        for (j, chapter) in sorted_chapters.iter().enumerate() {
-            js.push_str(&format!("      \"{}\"", chapter));
-            if j < sorted_chapters.len() - 1 {
+        for (j, page) in sorted_pages.iter().enumerate() {
+            js.push_str(&format!("      \"{}\"", page));
+            if j < sorted_pages.len() - 1 {
                 js.push_str(",\n");
             } else {
                 js.push_str("\n");
@@ -843,7 +843,7 @@ fn generate_contributors_js(
         // Add roles information
         let mut contributor_roles: HashMap<String, Vec<String>> = HashMap::new();
         
-        // Collect all roles for this contributor across all chapters
+        // Collect all roles for this contributor across all pages
         for (chapter_path, chapter_roles) in roles {
             for (role, users) in chapter_roles {
                 if users.contains(contributor) {
@@ -859,14 +859,14 @@ fn generate_contributors_js(
             js.push_str(",\n    \"roles\": {\n");
             
             let role_entries: Vec<_> = contributor_roles.iter().collect();
-            for (j, (role, chapters)) in role_entries.iter().enumerate() {
+            for (j, (role, pages)) in role_entries.iter().enumerate() {
                 js.push_str(&format!("      \"{}\": [", role));
                 
-                // Join the chapters for this role
-                let chapter_strings: Vec<String> = chapters.iter()
-                    .map(|c| format!("\"{}\"", c))
+                // Join the pages for this role
+                let page_strings: Vec<String> = pages.iter()
+                    .map(|p| format!("\"{}\"", p))
                     .collect();
-                js.push_str(&chapter_strings.join(", "));
+                js.push_str(&page_strings.join(", "));
                 
                 js.push_str("]");
                 if j < role_entries.len() - 1 {
@@ -1000,7 +1000,7 @@ fn generate_contributors_js(
     }
 
     // Now add contributors from the database who haven't been processed yet
-    // These are contributors who haven't contributed to any chapters yet
+    // These are contributors who haven't contributed to any pages yet
     let mut additional_contributors: Vec<_> = contributors_db.iter()
         .filter(|(id, _)| !processed_contributors.contains(*id))
         .collect();
@@ -1012,8 +1012,8 @@ fn generate_contributors_js(
         
         js.push_str(&format!("  \"{}\": {{\n", display_name));
         
-        // Add empty chapters array
-        js.push_str("    \"chapters\": []");
+        // Add empty pages array
+        js.push_str("    \"pages\": []");
         
         // Add github profile if available
         if let Some(github) = data.get("github").and_then(|v| v.as_str()) {
