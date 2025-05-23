@@ -326,9 +326,38 @@ function buildContributorsPage() {
         if (contributorData.avatar) {
             const avatar = document.createElement('img');
             avatar.className = 'contributor-avatar';
-            avatar.src = contributorData.avatar;
+            
+            // Fix the avatar URL path
+            let avatarUrl = contributorData.avatar;
+            
+            // Check if avatarUrl is a relative path that needs fixing
+            if (avatarUrl && !avatarUrl.startsWith('http') && !avatarUrl.startsWith('data:')) {
+                // Make relative URLs absolute based on site root
+                const basePath = window.location.pathname.split('/').slice(0, -2).join('/');
+                avatarUrl = basePath + '/' + avatarUrl.replace(/^\//, '');
+            }
+            
+            avatar.src = avatarUrl;
             avatar.alt = `${contributor}'s avatar`;
             avatar.loading = 'lazy';
+            avatar.onerror = function() {
+                // Fallback for broken images - show initials or first letter
+                this.style.display = 'flex';
+                this.style.alignItems = 'center';
+                this.style.justifyContent = 'center';
+                this.style.backgroundColor = '#e1e4e8';
+                this.style.color = '#586069';
+                this.style.fontWeight = 'bold';
+                this.style.fontSize = '2.5rem';
+                this.style.textTransform = 'uppercase';
+                
+                // Show first letter of name as fallback
+                const initials = contributor.charAt(0);
+                this.innerText = initials;
+                
+                // Remove image source to prevent further error attempts
+                this.removeAttribute('src');
+            };
             contributorCard.appendChild(avatar);
         }
 

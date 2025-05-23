@@ -37,30 +37,36 @@
   align-items: center;
   padding: 0.2rem 0.4rem;
   border-radius: 1rem;
-  background-color: var(--theme-popup-bg);
+  background-color: var(--theme-popup-bg, #ffffff);
   font-size: 0.75rem;
   transition: all 0.2s ease;
-  color: var(--fg);
+  color: var(--fg, #333333);
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   box-sizing: border-box;
   margin-bottom: 0.15rem;
+  border: 1px solid transparent;
+  position: relative;
 }
 
 .contributor:hover {
-  background-color: var(--sidebar-active);
+  background-color: var(--sidebar-active, #0077cc);
   transform: translateY(-1px);
-  color: var(--sidebar-fg);
+  color: var(--bg, #ffffff);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  border: 1px solid var(--sidebar-active-hover, #005fa3);
+  font-weight: bold;
 }
 
 /* Avatar styling */
 .contributor.with-avatar {
-  padding-left: 1.4rem;
-  background-size: 1rem 1rem;
+  padding-left: 2rem;
+  background-size: 1.25rem 1.25rem;
   background-repeat: no-repeat;
-  background-position: 0.2rem center;
+  background-position: 0.4rem center;
 }
 
 /* Individual contributor avatars */
@@ -153,10 +159,10 @@
 .contributors-roles {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  margin: 0.75rem 0 1.5rem 0;
-  padding-top: 0.5rem;
-  font-size: 0.85rem;
+  gap: 0;
+  margin: 1.25rem 0 2.5rem 0;
+  padding-top: 1rem;
+  font-size: 1.1rem;
   color: var(--sidebar-fg);
   clear: both;
   width: 100%;
@@ -166,23 +172,72 @@
 .contributor-role-group {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.75rem 0;
+  padding: 0;
 }
 
 .contributor-role-label {
   font-weight: bold;
-  margin-right: 0.5rem;
-  min-width: 90px;
+  margin-right: 1rem;
+  min-width: 130px;
+  font-size: 1.3rem !important;
 }
 
 .contributor-role-users {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.3rem;
   flex: 1;
+  margin: 0;
+  padding: 0;
 }
 
 /* Contributor avatars and info for the role-based format */
 .contributor-role-users .contributor {
-  margin-bottom: 0;
+  margin: 0 0.1rem 0.25rem 0;
+  font-size: 1.3rem !important;
+  padding: 0.25rem 0.5rem;
+  line-height: 1.5;
+  max-width: calc(50% - 1rem);
+  white-space: normal;
+  overflow: visible;
+  text-overflow: ellipsis;
+  position: relative;
+  border: 1px solid transparent;
+  background-color: var(--theme-popup-bg, #ffffff);
+  color: var(--fg, #333333);
+}
+
+.contributor-role-users .contributor:hover {
+  background-color: var(--sidebar-active, #0077cc);
+  transform: translateY(-1px);
+  color: var(--bg, #ffffff);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  border: 1px solid var(--sidebar-active-hover, #005fa3);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Fix avatar spacing in role-based contributors */
+.contributor-role-users .contributor.with-avatar {
+  padding-left: 2.5rem;
+  background-size: 1.5rem 1.5rem;
+  background-position: 0.5rem center;
+}
+
+/* Responsive adjustments for many contributors */
+@media (max-width: 768px) {
+  .contributor-role-group {
+    flex-direction: column;
+  }
+  
+  .contributor-role-label {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  
+  .contributor-role-users .contributor {
+    max-width: 100%;
+  }
 }

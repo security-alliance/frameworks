@@ -31,16 +31,16 @@ struct Frontmatter {
 #[derive(Debug, Deserialize, Clone)]
 #[serde(untagged)]
 enum ContributorRef {
+    // New: Role-based contributor reference
+    RoleRef {
+        role: String,
+        users: Vec<String>,
+    },
     // Simple ID to look up in the contributors database
     Id(String),
     // ID reference in object form
     IdObj {
         id: String,
-    },
-    // New: Role-based contributor reference
-    RoleRef {
-        role: String,
-        users: Vec<String>,
     }
 }
 
@@ -123,7 +123,7 @@ impl Preprocessor for Metadata {
             .unwrap_or_default();
 
         // Load contributor avatars from the config - these will be used as fallbacks
-        let mut contributor_avatars: HashMap<String, String> = ctx
+        let contributor_avatars: HashMap<String, String> = ctx
             .config
             .get("preprocessor.tags.contributor_avatars")
             .and_then(|value| value.as_table())
@@ -141,7 +141,7 @@ impl Preprocessor for Metadata {
             .unwrap_or_default();
 
         // Load contributor github profiles from the config - these will be used as fallbacks
-        let mut contributor_github: HashMap<String, String> = ctx
+        let contributor_github: HashMap<String, String> = ctx
             .config
             .get("preprocessor.tags.contributor_github")
             .and_then(|value| value.as_table())
@@ -159,8 +159,8 @@ impl Preprocessor for Metadata {
             .unwrap_or_default();
 
         // Initialize additional contributor social media maps
-        let mut contributor_twitter: HashMap<String, String> = HashMap::new();
-        let mut contributor_websites: HashMap<String, String> = HashMap::new();
+        let contributor_twitter: HashMap<String, String> = HashMap::new();
+        let contributor_websites: HashMap<String, String> = HashMap::new();
 
         // Extract all tags
         let mut tags_index: HashMap<String, Vec<String>> = HashMap::new();
@@ -207,11 +207,14 @@ impl Preprocessor for Metadata {
             let mut body = parts[2].to_string();
             body = body.trim().to_string();
 
-            let frontmatter_str = parts[1];
-            let Ok(frontmatter) = serde_yaml::from_str::<Frontmatter>(frontmatter_str) else {
-                eprintln!("Invalid frontmatter in chapter: {}", ch.name);
-                return;
-            };
+                let frontmatter_str = parts[1];
+    let frontmatter = match serde_yaml::from_str::<Frontmatter>(frontmatter_str) {
+        Ok(fm) => fm,
+        Err(_) => {
+            eprintln!("Error parsing frontmatter in chapter: {}", ch.name);
+            return;
+        }
+    };
 
             // Process tags if they exist
             if let Some(tags) = &frontmatter.tags {
@@ -256,9 +259,13 @@ impl Preprocessor for Metadata {
                                 .push(chapter_path_str.replace(".md", ".html"));
                         }
                         ContributorRef::RoleRef { role, users } => {
+                            chapter_contributors.push(ContributorRef::RoleRef { 
+                                role: role.clone(), 
+                                users: users.clone() 
+                            });
+                            
                             // Add each user to the chapter's contributors list
                             for user in users {
-                                chapter_contributors.push(ContributorRef::Id(user.clone()));
                                 contributors_index.entry(user.clone())
                                     .or_insert_with(Vec::new)
                                     .push(chapter_path_str.replace(".md", ".html"));
@@ -374,40 +381,32 @@ impl Metadata {
         role_type: &str,
         item_templates: &Vec<String>
     ) -> String {
-        // First filter contributors by role
-        let role_contributors: Vec<&ContributorRef> = contributors.iter()
-            .filter(|c| {
-                if let ContributorRef::RoleRef { role, .. } = c {
-                    role == role_type
-                } else {
-                    // Also check for legacy-style contributors with ID only
-                    // These should all be "wrote" contributors
-                    role_type == "wrote" && !matches!(c, ContributorRef::RoleRef { .. })
-                }
-            })
-            .collect();
-            
-        // If no contributors for this role, return empty string
-        if role_contributors.is_empty() {
-            return String::new();
-        }
-        
-        // Extract all user IDs
+        // Extract all user IDs for the specified role
         let mut user_ids: Vec<String> = Vec::new();
-        for contributor_ref in &role_contributors {
+        
+        for contributor_ref in contributors {
             match contributor_ref {
-                ContributorRef::RoleRef { users, .. } => {
-                    for user in users {
-                        user_ids.push(user.clone());
+                ContributorRef::RoleRef { role, users } => {
+                    // Only include users for this specific role
+                    if role == role_type {
+                        for user in users {
+                            user_ids.push(user.clone());
+                        }
                     }
                 },
+                // Handle legacy (non-role) contributors - they go into "wrote"
                 _ => {
-                    // Handle legacy-style contributors (non-role-based)
-                    // Those will have a simple ID that we can get with get_id()
-                    let id = contributor_ref.get_id().to_string();
-                    user_ids.push(id);
+                    if role_type == "wrote" {
+                        let id = contributor_ref.get_id().to_string();
+                        user_ids.push(id);
+                    }
                 }
             }
+        }
+        
+        // If no users found for this role, return empty string
+        if user_ids.is_empty() {
+            return String::new();
         }
         
         // Now generate HTML for each user
@@ -416,10 +415,22 @@ impl Metadata {
                 if let Some(db_contributor) = contributors_db.get(user_id) {
                     // Found contributor in database
                     let name = db_contributor
-                        .get("displayName")
+                        .get("name")
                         .and_then(|v| v.as_str())
-                        .or_else(|| db_contributor.get("name").and_then(|v| v.as_str()))
                         .unwrap_or(user_id);
+                    
+                    // Get company information if available
+                    let company = db_contributor
+                        .get("company")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("");
+                    
+                    // Format display name with company if available
+                    let display_name = if !company.is_empty() {
+                        format!("{} - {}", name, company)
+                    } else {
+                        name.to_string()
+                    };
                 
                     let css_id = name_to_id(name);
                     let avatar_url = db_contributor.get("avatar").and_then(|v| v.as_str());
@@ -436,7 +447,7 @@ impl Metadata {
                     
                     // Replace placeholders in the template
                     let mut html = template.replace("CONTRIBUTOR_ID_PLACEHOLDER", &css_id)
-                                          .replace("CONTRIBUTOR_NAME_PLACEHOLDER", name);
+                                          .replace("CONTRIBUTOR_NAME_PLACEHOLDER", &display_name);
                     
                     if let Some(avatar) = avatar_url {
                         html = html.replace("AVATAR_URL_PLACEHOLDER", avatar);
@@ -908,6 +919,42 @@ fn generate_contributors_js(
                     }
                 }
                 
+                // Add avatar URL from the database if not already added from avatars map
+                if !avatars.contains_key(*contributor) {
+                    if let Some(avatar) = contributor_data.get("avatar").and_then(|v| v.as_str()) {
+                        if !avatar.is_empty() {
+                            js.push_str(&format!(",\n    \"avatar\": \"{}\"", avatar));
+                        }
+                    }
+                }
+                
+                // Add github URL from the database if not already added
+                if !github_profiles.contains_key(*contributor) {
+                    if let Some(github) = contributor_data.get("github").and_then(|v| v.as_str()) {
+                        if !github.is_empty() {
+                            js.push_str(&format!(",\n    \"github\": \"{}\"", github));
+                        }
+                    }
+                }
+                
+                // Add Twitter URL from the database if not already added
+                if !twitter_profiles.contains_key(*contributor) {
+                    if let Some(twitter) = contributor_data.get("twitter").and_then(|v| v.as_str()) {
+                        if !twitter.is_empty() {
+                            js.push_str(&format!(",\n    \"twitter\": \"{}\"", twitter));
+                        }
+                    }
+                }
+                
+                // Add website URL from the database if not already added
+                if !websites.contains_key(*contributor) {
+                    if let Some(website) = contributor_data.get("website").and_then(|v| v.as_str()) {
+                        if !website.is_empty() {
+                            js.push_str(&format!(",\n    \"website\": \"{}\"", website));
+                        }
+                    }
+                }
+                
                 // Add role if available
                 if let Some(role) = contributor_data.get("role").and_then(|v| v.as_str()) {
                     if !role.is_empty() {
@@ -1036,19 +1083,39 @@ fn generate_contributors_js(
 
     js.push_str("};\n");
 
-    // Check if writing the file changes the content
-    let mut existing_js = String::new();
-    let mut file = File::open(format!("{}contributorsindex.js", CONTRIBUTORS_OUT_DIR));
-    if let Ok(file) = file.as_mut() {
-        file.read_to_string(&mut existing_js)?;
-    }
+    // Create the file path
+    let js_path = Path::new(CONTRIBUTORS_OUT_DIR).join("contributorsindex.js");
+    
+    // Use a more reliable update mechanism to prevent unnecessary writes
+    // that could trigger mdbook file watching loops
+    match File::open(&js_path) {
+        Ok(mut existing_file) => {
+            // If the file already exists, read it and compare content
+            let mut existing_content = String::new();
+            if existing_file.read_to_string(&mut existing_content).is_ok() {
+                // Normalize whitespace for reliable comparison
+                if existing_content.trim() == js.trim() {
+                    // Content hasn't changed meaningfully, no need to write
+                    return Ok(());
+                }
+            }
+        },
+        Err(_) => {
+            // File doesn't exist yet or there was an error opening it
+            // We'll proceed to create it
+        }
+    };
 
-    if existing_js.trim().eq(js.trim()) {
-        return Ok(());
+    // Create or update the file with new content
+    match File::create(&js_path) {
+        Ok(mut file) => {
+            file.write_all(js.as_bytes())?;
+        },
+        Err(err) => {
+            return Err(Error::msg(format!("Failed to create contributors index file: {}", err)));
+        }
     }
-
-    let mut file = File::create(format!("{}contributorsindex.js", CONTRIBUTORS_OUT_DIR))?;
-    file.write(js.as_bytes())?;
+    
     Ok(())
 }
 
