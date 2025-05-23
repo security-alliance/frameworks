@@ -3,8 +3,12 @@ tags:
   - Community & Marketing
   - Security Specialist
 contributors:
-  - mattaereal
-  - nftdreww
+  - role: wrote
+    users: [mattaereal, zedt3ster, fredriksvantes]
+  - role: reviewed
+    users: [mattaereal]
+  - role: fact_checked
+    users: [nftdreww]
 ---
 
 # Discord Security
@@ -334,3 +338,4 @@ h) **Enable Safe Direct Messaging for All Users**
 - [Securing Your Server - Discord](https://discord.com/community/securing-your-server)
 - [Four Steps for a Super Safe Server - Discord](https://discord.com/safety/360043653152-four-steps-to-a-super-safe-server)
 - [How to setup a Discord server securely](https://www.ledger.com/academy/basic-basics/launch-a-crypto-project-securely/how-to-set-up-a-crypto-project-discord-server-securely)
+<!-- Test change: vie 23 may 2025 19:59:52 -03 -->
