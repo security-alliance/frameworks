@@ -148,3 +148,41 @@
 .chapters-list a:hover {
   text-decoration: underline;
 }
+
+/* Styles for the new contributors-with-roles format */
+.contributors-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0.75rem 0 1.5rem 0;
+  padding-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--sidebar-fg);
+  clear: both;
+  width: 100%;
+  border-top: 1px solid var(--sidebar-non-existant);
+}
+
+.contributor-role-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.25rem;
+}
+
+.contributor-role-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+  min-width: 90px;
+}
+
+.contributor-role-users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+/* Contributor avatars and info for the role-based format */
+.contributor-role-users .contributor {
+  margin-bottom: 0;
+}
