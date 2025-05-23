@@ -24,12 +24,18 @@ struct Frontmatter {
     contributors: Option<Vec<ContributorRef>>,
 }
 
-// A contributor can be referenced in two ways:
+// A contributor can be referenced in three ways:
 // 1. Just an ID string that refers to the contributors.json database
 // 2. An object with just the id field
+// 3. A role-based contributor reference
 #[derive(Debug, Deserialize, Clone)]
 #[serde(untagged)]
 enum ContributorRef {
+    // New: Role-based contributor reference
+    RoleRef {
+        role: String,
+        users: Vec<String>,
+    },
     // Simple ID to look up in the contributors database
     Id(String),
     // ID reference in object form
@@ -44,6 +50,7 @@ impl ContributorRef {
         match self {
             Self::Id(id) => id,
             Self::IdObj { id } => id,
+            Self::RoleRef { users, .. } => users[0].as_str(),
         }
     }
 }
@@ -116,7 +123,7 @@ impl Preprocessor for Metadata {
             .unwrap_or_default();
 
         // Load contributor avatars from the config - these will be used as fallbacks
-        let mut contributor_avatars: HashMap<String, String> = ctx
+        let contributor_avatars: HashMap<String, String> = ctx
             .config
             .get("preprocessor.tags.contributor_avatars")
             .and_then(|value| value.as_table())
@@ -134,7 +141,7 @@ impl Preprocessor for Metadata {
             .unwrap_or_default();
 
         // Load contributor github profiles from the config - these will be used as fallbacks
-        let mut contributor_github: HashMap<String, String> = ctx
+        let contributor_github: HashMap<String, String> = ctx
             .config
             .get("preprocessor.tags.contributor_github")
             .and_then(|value| value.as_table())
@@ -152,17 +159,18 @@ impl Preprocessor for Metadata {
             .unwrap_or_default();
 
         // Initialize additional contributor social media maps
-        let mut contributor_twitter: HashMap<String, String> = HashMap::new();
-        let mut contributor_websites: HashMap<String, String> = HashMap::new();
+        let contributor_twitter: HashMap<String, String> = HashMap::new();
+        let contributor_websites: HashMap<String, String> = HashMap::new();
 
         // Extract all tags
         let mut tags_index: HashMap<String, Vec<String>> = HashMap::new();
 
-        // Extract all contributors
+        // Global collections for contributors and roles
         let mut contributors_index: HashMap<String, Vec<String>> = HashMap::new();
+        let mut contributor_roles: HashMap<String, HashMap<String, Vec<String>>> = HashMap::new();
 
         book.for_each_mut(|item| {
-            // Throw away invalid chapters
+            // Throw away invalid pages
             let BookItem::Chapter(ch) = item else {
                 return;
             };
@@ -199,11 +207,14 @@ impl Preprocessor for Metadata {
             let mut body = parts[2].to_string();
             body = body.trim().to_string();
 
-            let frontmatter_str = parts[1];
-            let Ok(frontmatter) = serde_yaml::from_str::<Frontmatter>(frontmatter_str) else {
-                eprintln!("Invalid frontmatter in chapter: {}", ch.name);
-                return;
-            };
+                let frontmatter_str = parts[1];
+    let frontmatter = match serde_yaml::from_str::<Frontmatter>(frontmatter_str) {
+        Ok(fm) => fm,
+        Err(_) => {
+            eprintln!("Error parsing frontmatter in chapter: {}", ch.name);
+            return;
+        }
+    };
 
             // Process tags if they exist
             if let Some(tags) = &frontmatter.tags {
@@ -230,60 +241,51 @@ impl Preprocessor for Metadata {
 
             // Process contributors if they exist
             if let Some(contributors) = &frontmatter.contributors {
+                let mut chapter_contributors: Vec<ContributorRef> = Vec::new();
+                let mut chapter_roles: HashMap<String, Vec<String>> = HashMap::new();
+                
                 for contributor_ref in contributors {
-                    // Get contributor ID
-                    let id = contributor_ref.get_id();
-                    
-                    if let Some(db_contributor) = contributors_db.get(id) {
-                        // We found the contributor in the database
-                        
-                        // Get display name from database or fall back to ID
-                        let name = db_contributor
-                            .get("displayName")
-                            .and_then(|v| v.as_str())
-                            .or_else(|| db_contributor.get("name").and_then(|v| v.as_str()))
-                            .unwrap_or(id)
-                            .to_string();
-                        
-                        // Extract avatar URL from the database
-                        if let Some(avatar) = db_contributor.get("avatar").and_then(|v| v.as_str()) {
-                            contributor_avatars.insert(name.clone(), avatar.to_string());
+                    match contributor_ref {
+                        ContributorRef::Id(id) => {
+                            chapter_contributors.push(ContributorRef::Id(id.clone()));
+                            contributors_index.entry(id.clone())
+                                .or_insert_with(Vec::new)
+                                .push(chapter_path_str.replace(".md", ".html"));
                         }
-                        
-                        // Extract GitHub URL from the database
-                        if let Some(github) = db_contributor.get("github").and_then(|v| v.as_str()) {
-                            contributor_github.insert(name.clone(), github.to_string());
+                        ContributorRef::IdObj { id } => {
+                            chapter_contributors.push(ContributorRef::IdObj { id: id.clone() });
+                            contributors_index.entry(id.clone())
+                                .or_insert_with(Vec::new)
+                                .push(chapter_path_str.replace(".md", ".html"));
                         }
-                        
-                        // Extract Twitter URL from the database
-                        if let Some(twitter) = db_contributor.get("twitter").and_then(|v| v.as_str()) {
-                            contributor_twitter.insert(name.clone(), twitter.to_string());
+                        ContributorRef::RoleRef { role, users } => {
+                            chapter_contributors.push(ContributorRef::RoleRef { 
+                                role: role.clone(), 
+                                users: users.clone() 
+                            });
+                            
+                            // Add each user to the chapter's contributors list
+                            for user in users {
+                                contributors_index.entry(user.clone())
+                                    .or_insert_with(Vec::new)
+                                    .push(chapter_path_str.replace(".md", ".html"));
+                                    
+                                // Record the role for this user on this chapter
+                                chapter_roles.entry(role.clone())
+                                    .or_insert_with(Vec::new)
+                                    .push(user.clone());
+                            }
                         }
-                        
-                        // Extract website URL from the database
-                        if let Some(website) = db_contributor.get("website").and_then(|v| v.as_str()) {
-                            contributor_websites.insert(name.clone(), website.to_string());
-                        }
-                        
-                        // Add to the contributors index
-                        contributors_index
-                            .entry(name)
-                            .or_default()
-                            .push(chapter_path_str.replace(".md", ".html"));
-                    } else {
-                        // Contributor ID not found in database - create a basic entry using just the ID
-                        let name = id.to_string();
-                        
-                        // Add to the contributors index
-                        contributors_index
-                            .entry(name)
-                            .or_default()
-                            .push(chapter_path_str.replace(".md", ".html"));
                     }
+                }
+                
+                // Store the chapter's role mappings
+                if !chapter_roles.is_empty() {
+                    contributor_roles.insert(chapter_path_str.replace(".md", ".html"), chapter_roles);
                 }
 
                 // Insert contributors
-                match Self::insert_contributors(&mut body, contributors.clone(), &contributors_db) {
+                match Self::insert_contributors(&mut body, chapter_contributors, &contributors_db) {
                     Ok(new_body) => body = new_body,
                     Err(e) => {
                         eprintln!("Error processing chapter contributors: {} err={}", ch.name, e);
@@ -308,7 +310,8 @@ impl Preprocessor for Metadata {
             &contributor_github, 
             &contributor_avatars,
             &contributor_twitter,
-            &contributor_websites
+            &contributor_websites,
+            &contributor_roles
         )?;
 
         Ok(book)
@@ -371,9 +374,103 @@ impl Metadata {
         Ok(format!("{}\n{}\n{}", title, tags_html, body))
     }
 
+    // Generate contributor items HTML for specific role
+    fn generate_contributor_items(
+        contributors: &Vec<ContributorRef>,
+        contributors_db: &HashMap<String, JsonValue>,
+        role_type: &str,
+        item_templates: &Vec<String>
+    ) -> String {
+        // Extract all user IDs for the specified role
+        let mut user_ids: Vec<String> = Vec::new();
+        
+        for contributor_ref in contributors {
+            match contributor_ref {
+                ContributorRef::RoleRef { role, users } => {
+                    // Only include users for this specific role
+                    if role == role_type {
+                        for user in users {
+                            user_ids.push(user.clone());
+                        }
+                    }
+                },
+                // Handle legacy (non-role) contributors - they go into "wrote"
+                _ => {
+                    if role_type == "wrote" {
+                        let id = contributor_ref.get_id().to_string();
+                        user_ids.push(id);
+                    }
+                }
+            }
+        }
+        
+        // If no users found for this role, return empty string
+        if user_ids.is_empty() {
+            return String::new();
+        }
+        
+        // Now generate HTML for each user
+        user_ids.iter()
+            .map(|user_id| {
+                if let Some(db_contributor) = contributors_db.get(user_id) {
+                    // Found contributor in database
+                    let name = db_contributor
+                        .get("name")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or(user_id);
+                    
+                    // Get company information if available
+                    let company = db_contributor
+                        .get("company")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("");
+                    
+                    // Format display name with company if available
+                    let display_name = if !company.is_empty() {
+                        format!("{} - {}", name, company)
+                    } else {
+                        name.to_string()
+                    };
+                
+                    let css_id = name_to_id(name);
+                    let avatar_url = db_contributor.get("avatar").and_then(|v| v.as_str());
+                    let github_url = db_contributor.get("github").and_then(|v| v.as_str());
+                    
+                    // Choose the appropriate template
+                    let template = if github_url.is_some() && avatar_url.is_some() {
+                        &item_templates[0] // GitHub + avatar
+                    } else if avatar_url.is_some() {
+                        &item_templates[1] // Avatar only
+                    } else {
+                        &item_templates[2] // Basic
+                    };
+                    
+                    // Replace placeholders in the template
+                    let mut html = template.replace("CONTRIBUTOR_ID_PLACEHOLDER", &css_id)
+                                          .replace("CONTRIBUTOR_NAME_PLACEHOLDER", &display_name);
+                    
+                    if let Some(avatar) = avatar_url {
+                        html = html.replace("AVATAR_URL_PLACEHOLDER", avatar);
+                    }
+                    
+                    if let Some(github) = github_url {
+                        html = html.replace("GITHUB_URL_PLACEHOLDER", github);
+                    }
+                    
+                    html
+                } else {
+                    // Contributor not found in database
+                    let css_id = name_to_id(user_id);
+                    let template = &item_templates[2]; // Basic template
+                    template.replace("CONTRIBUTOR_ID_PLACEHOLDER", &css_id)
+                            .replace("CONTRIBUTOR_NAME_PLACEHOLDER", user_id)
+                }
+            })
+            .collect::<Vec<_>>()
+            .join("\n")
+    }
+
     // Insert contributors HTML into the chapter body using templates
-    // This adds a contributors section below the chapter title (or below tags if present)
-    // Contributors are looked up in the contributors database by ID
     fn insert_contributors(
         body: &str, 
         contributors: Vec<ContributorRef>,
@@ -389,14 +486,25 @@ impl Metadata {
         let remaining_body = parts[1].to_string();
 
         // Read the contributors template
-        let template_path = Path::new("theme/templates/contributors.html");
+        let template_path = Path::new("theme/templates/contributors-roles.html");
         let mut template = String::new();
         if template_path.exists() {
             let mut file = File::open(template_path)?;
             file.read_to_string(&mut template)?;
         } else {
             // Fallback to hardcoded template if file doesn't exist
-            template = String::from("<div class=\"contributors-container\">\n  <div class=\"contributors-title\">Contributed to this page</div>\n  <div class=\"contributors\"><!-- CONTRIBUTOR_ITEMS_PLACEHOLDER --></div>\n</div>");
+            template = String::from("<div class=\"contributors-roles\"><!-- WROTE_CONTRIBUTORS_PLACEHOLDER --><!-- REVIEWED_CONTRIBUTORS_PLACEHOLDER --><!-- FACT_CHECKED_CONTRIBUTORS_PLACEHOLDER --></div>");
+        }
+        
+        // Read the contributor role group template
+        let role_group_path = Path::new("theme/templates/contributor-role-group.html");
+        let mut role_group_template = String::new();
+        if role_group_path.exists() {
+            let mut file = File::open(role_group_path)?;
+            file.read_to_string(&mut role_group_template)?;
+        } else {
+            // Fallback to hardcoded template if file doesn't exist
+            role_group_template = String::from("<div class=\"contributor-role-group\"><div class=\"contributor-role-label\">ROLE_LABEL_PLACEHOLDER:</div><div class=\"contributor-role-users\"><!-- ROLE_CONTRIBUTORS_PLACEHOLDER --></div></div>");
         }
         
         // Read the contributor item template
@@ -427,84 +535,78 @@ impl Metadata {
             ];
         }
 
-        // Generate contributor items HTML
-        let contributor_items = contributors
-            .iter()
-            .map(|contributor_ref| {
-                let id = contributor_ref.get_id();
-                
-                if let Some(db_contributor) = contributors_db.get(id) {
-                    // Found contributor in database
-                    let name = db_contributor
-                        .get("displayName")
-                        .and_then(|v| v.as_str())
-                        .or_else(|| db_contributor.get("name").and_then(|v| v.as_str()))
-                        .unwrap_or(id);
-                
-                    let css_id = name_to_id(name);
-                    let avatar_url = db_contributor.get("avatar").and_then(|v| v.as_str());
-                    let github_url = db_contributor.get("github").and_then(|v| v.as_str());
-                    
-                    // Choose the appropriate template
-                    let template = if github_url.is_some() && avatar_url.is_some() {
-                        &item_templates[0] // GitHub + avatar
-                    } else if avatar_url.is_some() {
-                        &item_templates[1] // Avatar only
-                    } else {
-                        &item_templates[2] // Basic
-                    };
-                    
-                    // Replace placeholders in the template
-                    let mut html = template.replace("CONTRIBUTOR_ID_PLACEHOLDER", &css_id)
-                                           .replace("CONTRIBUTOR_NAME_PLACEHOLDER", name);
-                    
-                    if let Some(avatar) = avatar_url {
-                        html = html.replace("AVATAR_URL_PLACEHOLDER", avatar);
-                    }
-                    
-                    if let Some(github) = github_url {
-                        html = html.replace("GITHUB_URL_PLACEHOLDER", github);
-                    }
-                    
-                    html
-                } else {
-                    // Contributor not found in database
-                    let css_id = name_to_id(id);
-                    let template = &item_templates[2]; // Basic template
-                    template.replace("CONTRIBUTOR_ID_PLACEHOLDER", &css_id)
-                            .replace("CONTRIBUTOR_NAME_PLACEHOLDER", id)
-                }
-            })
-            .collect::<Vec<_>>()
-            .join("\n");
+        // Generate contributor items HTML for each role
+        let wrote_items = Self::generate_contributor_items(&contributors, contributors_db, "wrote", &item_templates);
+        let reviewed_items = Self::generate_contributor_items(&contributors, contributors_db, "reviewed", &item_templates);
+        let fact_checked_items = Self::generate_contributor_items(&contributors, contributors_db, "fact_checked", &item_templates);
         
-        // Replace placeholder with actual contributor items
-        let contributors_html = template.replace("<!-- CONTRIBUTOR_ITEMS_PLACEHOLDER -->", &contributor_items);
+        // Create role groups only if there are items
+        let mut wrote_group = String::new();
+        if !wrote_items.is_empty() {
+            wrote_group = role_group_template
+                .replace("ROLE_LABEL_PLACEHOLDER", "Written by")
+                .replace("<!-- ROLE_CONTRIBUTORS_PLACEHOLDER -->", &wrote_items);
+        }
+        
+        let mut reviewed_group = String::new();
+        if !reviewed_items.is_empty() {
+            reviewed_group = role_group_template
+                .replace("ROLE_LABEL_PLACEHOLDER", "Reviewed by")
+                .replace("<!-- ROLE_CONTRIBUTORS_PLACEHOLDER -->", &reviewed_items);
+        }
+        
+        let mut fact_checked_group = String::new();
+        if !fact_checked_items.is_empty() {
+            fact_checked_group = role_group_template
+                .replace("ROLE_LABEL_PLACEHOLDER", "Fact checked by")
+                .replace("<!-- ROLE_CONTRIBUTORS_PLACEHOLDER -->", &fact_checked_items);
+        }
+        
+        // Only add the contributors section if at least one role has contributors
+        if wrote_group.is_empty() && reviewed_group.is_empty() && fact_checked_group.is_empty() {
+            // No contributors to show, just return the original content
+            return Ok(format!("{}\n{}", title, remaining_body));
+        }
+        
+        // Replace placeholders with actual role groups
+        let contributors_html = template
+            .replace("<!-- WROTE_CONTRIBUTORS_PLACEHOLDER -->", &wrote_group)
+            .replace("<!-- REVIEWED_CONTRIBUTORS_PLACEHOLDER -->", &reviewed_group)
+            .replace("<!-- FACT_CHECKED_CONTRIBUTORS_PLACEHOLDER -->", &fact_checked_group);
         
         // Check if tags are present
         if remaining_body.starts_with("<div class=\"tags\">") {
-            // If tags are present, place contributors box BEFORE the tags
-            let tag_parts: Vec<&str> = remaining_body.splitn(2, "\n").collect();
-            if tag_parts.len() != 2 {
+            // If tags are present, place contributors box AFTER the tags
+            // We need to find where the tags div ends
+            let tag_end_pos = remaining_body.find("</div>");
+            if tag_end_pos.is_none() {
                 return Err(Error::msg("Failed to find tag ending"));
             }
-
-            let tags_html = tag_parts[0];
-            let content_after_tags = tag_parts[1].to_string();
             
-            // Place contributors box before tags, but after the title
+            // Find the end of the line containing the closing </div> tag
+            let tag_end_pos = tag_end_pos.unwrap();
+            let line_end_pos = remaining_body[tag_end_pos..].find('\n');
+            if line_end_pos.is_none() {
+                return Err(Error::msg("Failed to find end of tag line"));
+            }
+            
+            // Calculate the full position where tags end
+            let full_end_pos = tag_end_pos + line_end_pos.unwrap() + 1; // +1 for the newline char
+            
+            // Split the content into before and after tags
+            let tags_html = &remaining_body[..full_end_pos];
+            let content_after_tags = &remaining_body[full_end_pos..];
+            
+            // Place contributors box after tags with clear separation
             return Ok(format!("{}\n{}\n{}\n{}", 
                 title,
-                contributors_html,
                 tags_html,
+                contributors_html,
                 content_after_tags));
-        } else {
-            // No tags present - place contributors box directly after title
-            return Ok(format!("{}\n{}\n{}", 
-                title, 
-                contributors_html, 
-                remaining_body));
         }
+        
+        // No tags, place contributors box right after the title
+        Ok(format!("{}\n{}\n{}", title, contributors_html, remaining_body))
     }
 
     // Generate CSS for new tags that don't have predefined styles
@@ -560,13 +662,13 @@ impl Metadata {
         sorted_tags.sort_by(|a, b| a.0.cmp(&b.0));
 
         tags_js.push_str("const tagsIndex = {\n");
-        for (tag, chapters) in sorted_tags {
+        for (tag, pages) in sorted_tags {
             tags_js.push_str(&format!(
                 "  \"{}\": [{}],\n",
                 tag,
-                chapters
+                pages
                     .iter()
-                    .map(|chapter| format!("\"{}\"", chapter))
+                    .map(|page| format!("\"{}\"", page))
                     .collect::<Vec<_>>()
                     .join(", ")
             ));
@@ -675,7 +777,8 @@ fn generate_contributors_js(
     github_profiles: &HashMap<String, String>,
     avatars: &HashMap<String, String>,
     twitter_profiles: &HashMap<String, String>,
-    websites: &HashMap<String, String>
+    websites: &HashMap<String, String>,
+    roles: &HashMap<String, HashMap<String, Vec<String>>>
 ) -> Result<(), Error> {
     let mut js = String::new();
     js.push_str("// This file is auto-generated by the tags preprocessor\n");
@@ -718,24 +821,63 @@ fn generate_contributors_js(
     let mut sorted_contributors: Vec<_> = contributors_map.iter().collect();
     sorted_contributors.sort_by(|a, b| a.0.cmp(&b.0));
 
-    // First add all contributors who have contributed to chapters
-    for (i, (contributor, chapters)) in sorted_contributors.iter().enumerate() {
+    // First add all contributors who have contributed to pages
+    for (i, (contributor, pages)) in sorted_contributors.iter().enumerate() {
         js.push_str(&format!("  \"{}\": {{\n", contributor));
-        js.push_str(&format!("    \"chapters\": [\n"));
+        js.push_str(&format!("    \"pages\": [\n"));
         
-        // Sort chapters for consistency
-        let mut sorted_chapters: Vec<String> = chapters.to_vec();
-        sorted_chapters.sort();
+        // Sort pages for consistency
+        let mut sorted_pages: Vec<String> = pages.to_vec();
+        sorted_pages.sort();
         
-        for (j, chapter) in sorted_chapters.iter().enumerate() {
-            js.push_str(&format!("      \"{}\"", chapter));
-            if j < sorted_chapters.len() - 1 {
+        for (j, page) in sorted_pages.iter().enumerate() {
+            js.push_str(&format!("      \"{}\"", page));
+            if j < sorted_pages.len() - 1 {
                 js.push_str(",\n");
             } else {
                 js.push_str("\n");
             }
         }
         js.push_str("    ]");
+
+        // Add roles information
+        let mut contributor_roles: HashMap<String, Vec<String>> = HashMap::new();
+        
+        // Collect all roles for this contributor across all pages
+        for (chapter_path, chapter_roles) in roles {
+            for (role, users) in chapter_roles {
+                if users.contains(contributor) {
+                    contributor_roles.entry(role.clone())
+                        .or_insert_with(Vec::new)
+                        .push(chapter_path.clone());
+                }
+            }
+        }
+        
+        // Add roles to the JS if there are any
+        if !contributor_roles.is_empty() {
+            js.push_str(",\n    \"roles\": {\n");
+            
+            let role_entries: Vec<_> = contributor_roles.iter().collect();
+            for (j, (role, pages)) in role_entries.iter().enumerate() {
+                js.push_str(&format!("      \"{}\": [", role));
+                
+                // Join the pages for this role
+                let page_strings: Vec<String> = pages.iter()
+                    .map(|p| format!("\"{}\"", p))
+                    .collect();
+                js.push_str(&page_strings.join(", "));
+                
+                js.push_str("]");
+                if j < role_entries.len() - 1 {
+                    js.push_str(",\n");
+                } else {
+                    js.push_str("\n");
+                }
+            }
+            
+            js.push_str("    }");
+        }
         
         // Add github profile if available
         if let Some(github) = github_profiles.get(*contributor) {
@@ -774,6 +916,42 @@ fn generate_contributors_js(
                 if let Some(company) = contributor_data.get("company").and_then(|v| v.as_str()) {
                     if !company.is_empty() {
                         js.push_str(&format!(",\n    \"company\": \"{}\"", company));
+                    }
+                }
+                
+                // Add avatar URL from the database if not already added from avatars map
+                if !avatars.contains_key(*contributor) {
+                    if let Some(avatar) = contributor_data.get("avatar").and_then(|v| v.as_str()) {
+                        if !avatar.is_empty() {
+                            js.push_str(&format!(",\n    \"avatar\": \"{}\"", avatar));
+                        }
+                    }
+                }
+                
+                // Add github URL from the database if not already added
+                if !github_profiles.contains_key(*contributor) {
+                    if let Some(github) = contributor_data.get("github").and_then(|v| v.as_str()) {
+                        if !github.is_empty() {
+                            js.push_str(&format!(",\n    \"github\": \"{}\"", github));
+                        }
+                    }
+                }
+                
+                // Add Twitter URL from the database if not already added
+                if !twitter_profiles.contains_key(*contributor) {
+                    if let Some(twitter) = contributor_data.get("twitter").and_then(|v| v.as_str()) {
+                        if !twitter.is_empty() {
+                            js.push_str(&format!(",\n    \"twitter\": \"{}\"", twitter));
+                        }
+                    }
+                }
+                
+                // Add website URL from the database if not already added
+                if !websites.contains_key(*contributor) {
+                    if let Some(website) = contributor_data.get("website").and_then(|v| v.as_str()) {
+                        if !website.is_empty() {
+                            js.push_str(&format!(",\n    \"website\": \"{}\"", website));
+                        }
                     }
                 }
                 
@@ -822,7 +1000,7 @@ fn generate_contributors_js(
     }
 
     // Now add contributors from the database who haven't been processed yet
-    // These are contributors who haven't contributed to any chapters yet
+    // These are contributors who haven't contributed to any pages yet
     let mut additional_contributors: Vec<_> = contributors_db.iter()
         .filter(|(id, _)| !processed_contributors.contains(*id))
         .collect();
@@ -834,8 +1012,8 @@ fn generate_contributors_js(
         
         js.push_str(&format!("  \"{}\": {{\n", display_name));
         
-        // Add empty chapters array
-        js.push_str("    \"chapters\": []");
+        // Add empty pages array
+        js.push_str("    \"pages\": []");
         
         // Add github profile if available
         if let Some(github) = data.get("github").and_then(|v| v.as_str()) {
@@ -905,19 +1083,39 @@ fn generate_contributors_js(
 
     js.push_str("};\n");
 
-    // Check if writing the file changes the content
-    let mut existing_js = String::new();
-    let mut file = File::open(format!("{}contributorsindex.js", CONTRIBUTORS_OUT_DIR));
-    if let Ok(file) = file.as_mut() {
-        file.read_to_string(&mut existing_js)?;
-    }
+    // Create the file path
+    let js_path = Path::new(CONTRIBUTORS_OUT_DIR).join("contributorsindex.js");
+    
+    // Use a more reliable update mechanism to prevent unnecessary writes
+    // that could trigger mdbook file watching loops
+    match File::open(&js_path) {
+        Ok(mut existing_file) => {
+            // If the file already exists, read it and compare content
+            let mut existing_content = String::new();
+            if existing_file.read_to_string(&mut existing_content).is_ok() {
+                // Normalize whitespace for reliable comparison
+                if existing_content.trim() == js.trim() {
+                    // Content hasn't changed meaningfully, no need to write
+                    return Ok(());
+                }
+            }
+        },
+        Err(_) => {
+            // File doesn't exist yet or there was an error opening it
+            // We'll proceed to create it
+        }
+    };
 
-    if existing_js.trim().eq(js.trim()) {
-        return Ok(());
+    // Create or update the file with new content
+    match File::create(&js_path) {
+        Ok(mut file) => {
+            file.write_all(js.as_bytes())?;
+        },
+        Err(err) => {
+            return Err(Error::msg(format!("Failed to create contributors index file: {}", err)));
+        }
     }
-
-    let mut file = File::create(format!("{}contributorsindex.js", CONTRIBUTORS_OUT_DIR))?;
-    file.write(js.as_bytes())?;
+    
     Ok(())
 }
 

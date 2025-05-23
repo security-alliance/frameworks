@@ -1,85 +1,121 @@
-.contributors-container {
-  margin: 0 0 0.5rem 0.75rem;
-  padding: 0.4rem;
-  border: 1px solid var(--sidebar-non-existant);
-  border-radius: 0.3rem;
-  background-color: var(--sidebar-bg);
-  opacity: 0.9;
-  width: 200px;
-  float: right;
+/**
+ * Contributors CSS
+ * This file contains two main sections:
+ * 1. Attribution styling - For displaying contributor attribution on documentation pages
+ * 2. Contributor cards - For the dedicated contributors listing page
+ */
+
+/*----------------------------------------------
+  SECTION 1: ATTRIBUTION STYLING
+  Styles for displaying contributor attribution on individual documentation pages
+------------------------------------------------*/
+
+/* Main container for role-based contributors below page titles */
+.contributors-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 1.25rem 0 2.5rem 0;
+  padding-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--sidebar-fg);
   clear: both;
-  box-sizing: border-box;
+  width: 100%;
+  border-top: 1px solid var(--sidebar-non-existant);
 }
 
-.contributors-title {
-  font-size: 0.85rem;
+/* Container for each role group (wrote/reviewed/fact-checked) */
+.contributor-role-group {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 0 0.75rem 0;
+  padding: 0;
+}
+
+/* Label for each role (e.g., "Written by:") */
+.contributor-role-label {
   font-weight: bold;
-  margin-bottom: 0.25rem;
-  color: var(--fg);
-  text-align: center;
-  padding-bottom: 0.2rem;
-  border-bottom: 1px solid var(--sidebar-non-existant);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin-right: 1rem;
+  min-width: 130px;
+  font-size: 1.3rem !important;
 }
 
-.contributors {
+/* Container for the list of contributors in each role */
+.contributor-role-users {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem;
-  justify-content: center;
-  width: 100%;
+  gap: 0.3rem;
+  flex: 1;
+  margin: 0;
+  padding: 0;
 }
 
-.contributor {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.2rem 0.4rem;
-  border-radius: 1rem;
-  background-color: var(--theme-popup-bg);
-  font-size: 0.75rem;
-  transition: all 0.2s ease;
-  color: var(--fg);
-  text-decoration: none;
-  white-space: nowrap;
-  overflow: hidden;
+/* Individual contributor in the attribution area */
+.contributor-role-users .contributor {
+  margin: 0 0.1rem 0.25rem 0;
+  font-size: 1.3rem !important;
+  padding: 0.25rem 0.5rem;
+  line-height: 1.5;
+  max-width: calc(50% - 1rem);
+  white-space: normal;
+  overflow: visible;
   text-overflow: ellipsis;
-  box-sizing: border-box;
-  margin-bottom: 0.15rem;
+  position: relative;
+  border: 1px solid transparent;
+  background-color: var(--theme-popup-bg, #ffffff);
+  color: var(--fg, #333333);
 }
 
-.contributor:hover {
-  background-color: var(--sidebar-active);
+/* Hover effect for attribution contributors */
+.contributor-role-users .contributor:hover {
+  background-color: var(--sidebar-active, #0077cc);
   transform: translateY(-1px);
-  color: var(--sidebar-fg);
+  color: var(--bg, #ffffff);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  border: 1px solid var(--sidebar-active-hover, #005fa3);
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* Avatar styling */
-.contributor.with-avatar {
-  padding-left: 1.4rem;
-  background-size: 1rem 1rem;
+/* Avatar styling for attribution contributors */
+.contributor-role-users .contributor.with-avatar {
+  padding-left: 2.5rem;
+  background-size: 1.5rem 1.5rem;
+  background-position: 0.5rem center;
   background-repeat: no-repeat;
-  background-position: 0.2rem center;
 }
 
-/* Individual contributor avatars */
-.contributor.nft_drewweth.with-avatar {
-  background-image: url('https://pbs.twimg.com/profile_images/1589726471249174536/pEqaw6FO_400x400.png');
+/* Responsive adjustments for attribution section */
+@media (max-width: 768px) {
+  .contributor-role-group {
+    flex-direction: column;
+  }
+  
+  .contributor-role-label {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  
+  .contributor-role-users .contributor {
+    max-width: 100%;
+  }
 }
 
-.contributor.matta.with-avatar {
-  background-image: url('https://github.com/mattaereal.png');
-}
+/*----------------------------------------------
+  SECTION 2: CONTRIBUTOR CARDS
+  Styles for the dedicated contributors page
+------------------------------------------------*/
 
-/* Styling for the contributors page */
+/* Grid layout for the contributors listing page */
 .contributors-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
   margin: 1rem 0;
 }
 
+/* Individual contributor card on the contributors page */
 .contributor-card {
   display: flex;
   flex-direction: column;
@@ -90,11 +126,14 @@
   transition: all 0.2s ease;
 }
 
+/* Hover effect for contributor cards */
 .contributor-card:hover {
   background-color: var(--quote-border);
   transform: translateY(-3px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Contributor avatar on cards */
 .contributor-avatar {
   width: 64px;
   height: 64px;
@@ -103,18 +142,59 @@
   margin-bottom: 0.5rem;
 }
 
+/* Contributor name on cards */
 .contributor-name {
   font-weight: bold;
   margin-bottom: 0.25rem;
+  text-align: center;
 }
 
+/* Company information on cards */
+.contributor-company {
+  font-size: 0.9rem;
+  color: var(--fg);
+  opacity: 0.9;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+/* Role information on cards */
+.contributor-role {
+  font-size: 0.95rem;
+  color: var(--fg);
+  margin-bottom: 0.25rem;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Description on cards */
+.contributor-description {
+  font-size: 0.9rem;
+  color: var(--fg);
+  text-align: center;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+/* Social media links container */
+.contributor-social {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+/* Page count information */
 .contributor-contributions {
   font-size: 0.8rem;
   color: var(--fg);
   opacity: 0.8;
+  margin-top: 0.25rem;
+  text-align: center;
 }
 
-.chapters-button {
+/* Button to show contributed pages */
+.pages-button {
   margin-top: 0.5rem;
   padding: 0.25rem 0.75rem;
   background-color: var(--sidebar-active);
@@ -126,25 +206,83 @@
   transition: all 0.2s ease;
 }
 
-.chapters-button:hover {
+.pages-button:hover {
   background-color: var(--sidebar-active-hover);
 }
 
-.chapters-list {
+/* List of pages in expanded view */
+.pages-list {
   margin-top: 0.5rem;
   padding-left: 1.5rem;
   font-size: 0.9rem;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
 }
 
-.chapters-list li {
+.pages-list li {
   margin-bottom: 0.25rem;
 }
 
-.chapters-list a {
+.pages-list a {
   color: var(--fg);
   text-decoration: none;
 }
 
-.chapters-list a:hover {
+.pages-list a:hover {
   text-decoration: underline;
+}
+
+/* Badges for contributor types */
+.contributor-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.7rem;
+  border-radius: 0.25rem;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.lead-badge {
+  background-color: #5c2d91;
+  color: white;
+}
+
+.core-badge {
+  background-color: #0078d4;
+  color: white;
+}
+
+.steward-badge {
+  background-color: #107c10;
+  color: white;
+}
+
+/* Section headers for different contributor groups */
+.contributors-section-title {
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--sidebar-non-existant);
+  font-size: 1.5rem;
+}
+
+/* Description for the contributors page */
+.contributors-description {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  max-width: 800px;
+}
+
+/* Container for the entire contributors page */
+.contributors-page-container {
+  padding: 1rem 0;
+}
+
+/* Responsive adjustments for contributor cards */
+@media (max-width: 480px) {
+  .contributors-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 }
