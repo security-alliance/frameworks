@@ -1,4 +1,14 @@
-[ENS Best Practices](#ens-best-practices)
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
+
+# ENS Best Practices
+
+The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.
+
+ENS maps human-readable names like 'alice.eth' to machine-readable identifiers such as Ethereum addresses, other cryptocurrency addresses, content hashes, metadata, and more. ENS also supports 'reverse resolution', making it possible to associate metadata such as primary names or interface descriptions with Ethereum addresses.
 
 ## Key Takeaway for ENS
 

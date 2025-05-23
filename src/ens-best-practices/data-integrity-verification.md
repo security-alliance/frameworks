@@ -1,6 +1,12 @@
-[Data Integrity & Verification](#data-integrity--verification)
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+---
 
-a) Use On-chain Resolution for Financial Transactions
+# Data Integrity & Verification
+
+## Use On-chain Resolution for Financial Transactions
 
 - Always resolve fresh data directly from Ethereum mainnet whenever conducting financial transactions
 - Do not rely on indexer or API data when moving or managing funds
@@ -8,7 +14,8 @@ a) Use On-chain Resolution for Financial Transactions
 
 **Rationale**: Indexers and third-party APIs may have delayed updates or inconsistencies that could lead to payments being sent to outdated or incorrect addresses. By querying L1 directly, applications work with the most current and authoritative ENS data, dramatically reducing the risk of misdirected funds. This is particularly crucial for high-value transactions where the consequences of using stale data could be severe.
 
-b) Verify Forward Resolution on Reverse Records
+## Verify Forward Resolution on Reverse Records
+
 - Always perform forward resolution on reverse records to verify address matches
 - Check that name → address → name completes a valid loop
 - Clearly indicate to users when there's a mismatch
