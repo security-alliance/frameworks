@@ -6,7 +6,7 @@
     "twitter": "https://twitter.com/mattaereal",
     "website": "https://theredguild.org",
     "features": ["lead"],
-    "role": "Security Researcher",
+    "role": "Security Knowmad",
     "description": "Initiative lead and maintainer",
     "company": "The Red Guild | SEAL"
   },
@@ -17,7 +17,7 @@
     "twitter": "https://twitter.com/fredriksvantes",
     "website": "https://ethereum.org",
     "features": ["core"],
-    "role": "Security Engineer",
+    "role": "Head of Security",
     "description": "Initial contributor to the Security Frameworks",
     "company": "Ethereum Foundation"
   },
@@ -28,9 +28,9 @@
     "twitter": "https://twitter.com/ethzed",
     "website": "https://sigmaprime.io",
     "features": ["core"],
-    "role": "Security Auditor",
+    "role": "Director. Ethereum enthusiast ",
     "description": "Initial contributor to the Security Frameworks",
-    "company": "Web3 Security"
+    "company": "Sigma Prime"
   },
   "nftdreww": {
     "name": "NFTDreww",
@@ -40,7 +40,7 @@
     "features": ["steward"],
     "role": "Security Researcher",
     "description": "Managing and curating the Community Management framework",
-    "company": "DeFi Protocol"
+    "company": "PocketUniverseZ"
   },
   "robert": {
     "name": "Robert Smith",
@@ -49,9 +49,9 @@
     "twitter": null,
     "website": "https://robert.macwha.com/",
     "features": ["core"],
-    "role": "Security Frameworks webs collaborator",
-    "description": "Full-stack developer and security enthusiast",
-    "company": "Blockchain Labs"
+    "role": "Full-stack developer and security enthusiast",
+    "description": "Web dev & fact checking",
+    "company": "Skylock"
   },
   "tebayoso": {
     "name": "tebayoso",

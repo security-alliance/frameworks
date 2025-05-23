@@ -8,14 +8,14 @@ const contributorsIndex = {
       "community-management/twitter.html"
     ],
     "roles": {
-      "wrote": ["community-management/google.html", "community-management/discord.html", "community-management/twitter.html", "community-management/telegram.html"]
+      "wrote": ["community-management/twitter.html", "community-management/google.html", "community-management/discord.html", "community-management/telegram.html"]
     },
     "company": "Ethereum Foundation",
     "avatar": "https://github.com/fredriksvantes.png",
     "github": "https://github.com/fredriksvantes",
     "twitter": "https://twitter.com/fredriksvantes",
     "website": "https://ethereum.org",
-    "role": "Security Engineer",
+    "role": "Head of Security",
     "description": "Initial contributor to the Security Frameworks",
     "features": ["core"]
   },
@@ -34,15 +34,15 @@ const contributorsIndex = {
       "community-management/twitter.html"
     ],
     "roles": {
-      "wrote": ["community-management/google.html", "community-management/index.html", "community-management/discord.html", "community-management/twitter.html", "community-management/telegram.html"],
-      "reviewed": ["community-management/google.html", "community-management/index.html", "community-management/discord.html", "community-management/twitter.html", "community-management/telegram.html"]
+      "wrote": ["community-management/twitter.html", "community-management/google.html", "community-management/discord.html", "community-management/telegram.html", "community-management/index.html"],
+      "reviewed": ["community-management/twitter.html", "community-management/google.html", "community-management/discord.html", "community-management/telegram.html", "community-management/index.html"]
     },
     "company": "The Red Guild | SEAL",
     "avatar": "https://github.com/mattaereal.png",
     "github": "https://github.com/mattaereal",
     "twitter": "https://twitter.com/mattaereal",
     "website": "https://theredguild.org",
-    "role": "Security Researcher",
+    "role": "Security Knowmad",
     "description": "Initiative lead and maintainer",
     "features": ["lead"]
   },
@@ -53,7 +53,7 @@ const contributorsIndex = {
     "roles": {
       "fact_checked": ["community-management/discord.html"]
     },
-    "company": "DeFi Protocol",
+    "company": "PocketUniverseZ",
     "avatar": "https://pbs.twimg.com/profile_images/1589726471249174536/pEqaw6FO_400x400.png",
     "github": "https://github.com/NFTDreww",
     "twitter": "https://twitter.com/nft_dreww",
@@ -68,12 +68,12 @@ const contributorsIndex = {
     "roles": {
       "wrote": ["community-management/index.html"]
     },
-    "company": "Blockchain Labs",
+    "company": "Skylock",
     "avatar": "https://github.com/Robert-MacWha.png",
     "github": "https://github.com/robert",
     "website": "https://robert.macwha.com/",
-    "role": "Security Frameworks webs collaborator",
-    "description": "Full-stack developer and security enthusiast",
+    "role": "Full-stack developer and security enthusiast",
+    "description": "Web dev & fact checking",
     "features": ["core"]
   },
   "zedt3ster": {
@@ -84,14 +84,14 @@ const contributorsIndex = {
       "community-management/twitter.html"
     ],
     "roles": {
-      "wrote": ["community-management/google.html", "community-management/discord.html", "community-management/twitter.html", "community-management/telegram.html"]
+      "wrote": ["community-management/twitter.html", "community-management/google.html", "community-management/discord.html", "community-management/telegram.html"]
     },
-    "company": "Web3 Security",
+    "company": "Sigma Prime",
     "avatar": "https://github.com/zedt3ster.png",
     "github": "https://github.com/zedt3ster",
     "twitter": "https://twitter.com/ethzed",
     "website": "https://sigmaprime.io",
-    "role": "Security Auditor",
+    "role": "Director. Ethereum enthusiast ",
     "description": "Initial contributor to the Security Frameworks",
     "features": ["core"]
   },
