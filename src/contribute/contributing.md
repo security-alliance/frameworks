@@ -81,7 +81,7 @@ We use block-quote notices at the top of the page to provide readers with approp
 
 Pages with minimal content which need more work to cover the topic need to include a notice:
 
-> :warning: This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the framework by [contributing](/contribute/contributing.md) and expanding it.
+> ⚠️ This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the framework by [contributing](/contribute/contributing.md) and expanding it.
 
 ## Anything else?
 

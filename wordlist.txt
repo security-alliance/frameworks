@@ -286,6 +286,7 @@ mdbook
 pagetoc
 NFT
 Dreww
+nftdreww
 frontmatter
 cyber
 cybercriminals
@@ -298,3 +299,8 @@ Consensys
 Blockthreat
 Vishing
 Matta
+mattaereal
+touchpoint
+unencrypted
+uncollateralized
+preprocessor
