@@ -9,10 +9,10 @@ tags:
 ## Respect Cointype for Chain-Specific Resolution
 
 - Always use the correct cointype parameter when resolving addresses on specific chains
-- Implement clear fallback policies when a specific cointype record doesn't exist
-- If applying fallback resolution, alert the user that the address for the requested coin type wasn't found
+- For EVM-compatible chains, implement optional fallback to cointype(60) when a specific cointype record doesn't exist, with prominent user warnings
+- When applying fallback resolution, prominently warn the user that the resolved address may not exist or be controlled by the same entity on the target chain, and require explicit user confirmation before proceeding
 
-**Rationale**: An ENS name can resolve to a different address for each different blockchain network, which ENS supports through the cointype field in address records (following SLIP-44 standards). With the rise of smart contract wallets and account abstraction, users may have different addresses across different chains. Failing to respect the cointype when resolving addresses can lead to funds being sent to addresses that don't exist on the target chain or that belong to different entities altogether.
+**Rationale**: An ENS name can resolve to a different address for each different blockchain network, which ENS supports through the cointype field in address records (following SLIP-44 standards). With the rise of smart contract wallets and account abstraction, users may have different addresses across different chains. Failing to respect the cointype when resolving addresses can lead to funds being sent to addresses that don't exist on the target chain or that belong to different entities altogether. While fallback resolution to cointype(60) can improve user experience, it must be implemented with clear warnings about potential risks and require explicit user consent.
 
 ## Implement CCIP-Read Support
 
