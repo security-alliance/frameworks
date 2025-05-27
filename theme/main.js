@@ -295,16 +295,14 @@ function buildContributorsPage() {
     for (const contributor of Object.keys(contributorsIndex)) {
         const data = contributorsIndex[contributor];
         const features = data.features || [];
-        
+
         if (features.includes('lead')) {
             leadContributors.push(contributor);
         } else if (features.includes('core')) {
             coreContributors.push(contributor);
         } else if (features.includes('steward')) {
-            // Only add to stewards if not already in core or lead
             stewards.push(contributor);
         } else {
-            // All other contributors go into general, including those with "featured" tag
             generalContributors.push(contributor);
         }
     }
@@ -325,21 +323,21 @@ function buildContributorsPage() {
         if (contributorData.avatar) {
             const avatar = document.createElement('img');
             avatar.className = 'contributor-avatar';
-            
+
             // Fix the avatar URL path
             let avatarUrl = contributorData.avatar;
-            
+
             // Check if avatarUrl is a relative path that needs fixing
             if (avatarUrl && !avatarUrl.startsWith('http') && !avatarUrl.startsWith('data:')) {
                 // Make relative URLs absolute based on site root
                 const basePath = window.location.pathname.split('/').slice(0, -2).join('/');
                 avatarUrl = basePath + '/' + avatarUrl.replace(/^\//, '');
             }
-            
+
             avatar.src = avatarUrl;
             avatar.alt = `${contributor}'s avatar`;
             avatar.loading = 'lazy';
-            avatar.onerror = function() {
+            avatar.onerror = function () {
                 // Fallback for broken images - show initials or first letter
                 this.style.display = 'flex';
                 this.style.alignItems = 'center';
@@ -349,11 +347,11 @@ function buildContributorsPage() {
                 this.style.fontWeight = 'bold';
                 this.style.fontSize = '2.5rem';
                 this.style.textTransform = 'uppercase';
-                
+
                 // Show first letter of name as fallback
                 const initials = contributor.charAt(0);
                 this.innerText = initials;
-                
+
                 // Remove image source to prevent further error attempts
                 this.removeAttribute('src');
             };
@@ -363,7 +361,7 @@ function buildContributorsPage() {
         // Create a container for the name, role, and badges
         const nameContainer = document.createElement('div');
         nameContainer.className = 'contributor-header';
-        
+
         // Contributor name
         const contributorName = document.createElement('div');
         contributorName.className = 'contributor-name';
@@ -377,7 +375,7 @@ function buildContributorsPage() {
             stewardBadge.textContent = 'Steward';
             nameContainer.appendChild(stewardBadge);
         }
-        
+
         contributorCard.appendChild(nameContainer);
 
         // Add company if available
@@ -385,10 +383,10 @@ function buildContributorsPage() {
             const companyContainer = document.createElement('div');
             companyContainer.style.textAlign = 'center';
             companyContainer.style.width = '100%';
-            
+
             const companyElement = document.createElement('div');
             companyElement.className = 'contributor-company';
-            
+
             // Add label/prefix for better clarity
             if (features.includes('lead') || features.includes('core') || features.includes('steward') || features.includes('featured')) {
                 // No prefix for lead, core, stewards, or featured contributors
@@ -396,7 +394,7 @@ function buildContributorsPage() {
             } else {
                 companyElement.textContent = `Affiliated with: ${contributorData.company}`;
             }
-            
+
             companyContainer.appendChild(companyElement);
             contributorCard.appendChild(companyContainer);
         }
@@ -470,7 +468,7 @@ function buildContributorsPage() {
         if (isInGroup === 'general') {
             // Add contribution count if there are any contributions
             const pageCount = contributorData.pages ? contributorData.pages.length : 0;
-            
+
             // Only show contributions count if there are actual contributions
             // or if the contributor is not manually added (doesn't have "featured" tag)
             if (pageCount > 0 || !(contributorData.features && contributorData.features.includes('featured'))) {
@@ -501,9 +499,9 @@ function buildContributorsPage() {
                 const pagesContainer = document.createElement('div');
                 pagesContainer.className = 'pages-container';
                 pagesContainer.style.display = 'none';
-                
+
                 // No heading, go straight to the list
-                
+
                 // Create the list with improved styling
                 const pagesList = document.createElement('ul');
                 pagesList.className = 'pages-list';
@@ -580,10 +578,10 @@ function buildContributorsPage() {
                     pageItem.appendChild(pageLink);
                     pagesList.appendChild(pageItem);
                 }
-                
+
                 // Add the list to the container
                 pagesContainer.appendChild(pagesList);
-                
+
                 // Add the container to the card
                 contributorCard.appendChild(pagesContainer);
             }
