@@ -2,7 +2,10 @@
 tags:
   - Community & Marketing
 contributors:
-  - mattaereal
+  - role: wrote
+    users: [mattaereal, zedt3ster, fredriksvantes]
+  - role: reviewed
+    users: [mattaereal]
 ---
 
 # Telegram Security

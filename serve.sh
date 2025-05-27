@@ -4,5 +4,5 @@ if ! test -e theme/index.hbs; then
     exit 1
 fi
 
-# Run mdbook serve with poll watching enabled
+# Run mdbook serve
 mdbook serve

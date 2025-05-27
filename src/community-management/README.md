@@ -2,8 +2,10 @@
 tags:
   - Community & Marketing
 contributors:
-  - mattaereal
-  - robert
+  - role: wrote
+    users: [mattaereal, robert]
+  - role: reviewed
+    users: [mattaereal]
 ---
 
 # Community Management
