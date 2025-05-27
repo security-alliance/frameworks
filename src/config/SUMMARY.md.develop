@@ -121,6 +121,12 @@
   - [Hardware Encryption](./encryption/hardware-encryption.md)
   - [Partition Encryption](./encryption/partition-encryption.md)
   - [Volume Encryption](./encryption/volume-encryption.md)
+- [ENS Best Practices](./ens-best-practices/README.md)
+  - [Data Integrity & Verification](./ens-best-practices/data-integrity-verification.md)
+  - [Cross-Chain Compatibility](./ens-best-practices/cross-chain-compatibility.md)
+  - [Smart Contract Integration](./ens-best-practices/smart-contract-integration.md)
+  - [Interface Compliance](./ens-best-practices/interface-compliance.md)
+  - [Name Handling & Normalization](./ens-best-practices/name-handling-normalization.md)  
 
 # About this
 

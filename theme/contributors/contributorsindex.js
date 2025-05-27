@@ -8,7 +8,7 @@ const contributorsIndex = {
       "community-management/twitter.html"
     ],
     "roles": {
-      "wrote": ["community-management/twitter.html", "community-management/google.html", "community-management/discord.html", "community-management/telegram.html"]
+      "wrote": ["community-management/google.html", "community-management/twitter.html", "community-management/telegram.html", "community-management/discord.html"]
     },
     "company": "Ethereum Foundation",
     "avatar": "https://github.com/fredriksvantes.png",
@@ -34,8 +34,8 @@ const contributorsIndex = {
       "community-management/twitter.html"
     ],
     "roles": {
-      "wrote": ["community-management/twitter.html", "community-management/google.html", "community-management/discord.html", "community-management/telegram.html", "community-management/index.html"],
-      "reviewed": ["community-management/twitter.html", "community-management/google.html", "community-management/discord.html", "community-management/telegram.html", "community-management/index.html"]
+      "reviewed": ["community-management/google.html", "community-management/twitter.html", "community-management/telegram.html", "community-management/discord.html", "community-management/index.html"],
+      "wrote": ["community-management/google.html", "community-management/twitter.html", "community-management/telegram.html", "community-management/discord.html", "community-management/index.html"]
     },
     "company": "The Red Guild | SEAL",
     "avatar": "https://github.com/mattaereal.png",
@@ -84,7 +84,7 @@ const contributorsIndex = {
       "community-management/twitter.html"
     ],
     "roles": {
-      "wrote": ["community-management/twitter.html", "community-management/google.html", "community-management/discord.html", "community-management/telegram.html"]
+      "wrote": ["community-management/google.html", "community-management/twitter.html", "community-management/telegram.html", "community-management/discord.html"]
     },
     "company": "Sigma Prime",
     "avatar": "https://github.com/zedt3ster.png",
