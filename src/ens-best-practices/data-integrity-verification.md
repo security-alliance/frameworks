@@ -14,7 +14,7 @@ tags:
 
 **Rationale**: Indexers and third-party APIs may have delayed updates or inconsistencies that could lead to payments being sent to outdated or incorrect addresses. By querying L1 directly, applications work with the most current and authoritative ENS data, dramatically reducing the risk of misdirected funds. This is particularly crucial for high-value transactions where the consequences of using stale data could be severe.
 
-## Verify Forward Resolution on Reverse Records
+## Verify Forward Resolution on [Reverse Records](https://docs.ens.domains/ensip/3)
 
 - Always perform forward resolution on reverse records to verify address matches
 - Check that name → address → name completes a valid loop

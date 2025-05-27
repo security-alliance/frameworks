@@ -6,7 +6,7 @@ tags:
 
 # Name Handling & Normalization
 
-## Normalize Names per ENSIP-15
+## Normalize Names per [ENSIP-15](https://docs.ens.domains/ensip/15)
 - Always normalize ENS names before creating namehash, labelhash, or DNS-encoding
 - Use established libraries that correctly implement ENSIP-15 normalization (like @adraffy/ens-normalize)
 - Apply normalization at the earliest possible point in your ENS handling logic
