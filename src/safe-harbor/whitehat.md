@@ -2,15 +2,18 @@
 tags:
   - SEAL/Initiative
   - Whitehat
+contributors:
+  - role: wrote
+    users: [robert]
 ---
 
 # Safe Harbor for Whitehats
 
 ## Why You Should Care
 
-Safe Harbor lets whitehats step in during [active exploits](./key-terms.md#active-exploit) to help secure protocol funds. It does so by providing a legal framework that outlines what whitehats can and can't do, how they ought to operate, and protects whitehats in the event of legal action taken by the protocol.
+Safe Harbor lets whitehats intervene during [active exploits](./key-terms.md#active-exploit) to help secure protocol funds. It does so by providing a legal framework that outlines what whitehats can and can't do, how they ought to operate, and protects abiding whitehats in the event of legal action taken by the protocol.
 
-In addition to the legal protections, Safe Harbor also helps whitehats by telling them for every organization that adopts Safe Harbor:
+In addition to the legal protections, Safe Harbor also helps whitehats by giving them the following information:
 
 1. What assets are owned by a protocol
 2. What is the protocol's ([asset recovery address](./key-terms.md#asset-recovery-address))
@@ -18,7 +21,7 @@ In addition to the legal protections, Safe Harbor also helps whitehats by tellin
 4. What KYC requirements (if any) protocols impose onto whitehats
 5. What bounty terms whitehats will be awarded under Safe Harbor
 
-This information is all neatly cataloged in the [Safe Harbor Registry](./key-terms.md#safe-harbor-registry) - an on-chain registry cataloging all protocol adoptions and their adoption details. For more details, review the [Safe Harbor for Protocols](./protocol.md) document.
+This information is all neatly cataloged in the [Safe Harbor Registry](./key-terms.md#safe-harbor-registry) - an on-chain registry cataloging all protocol adoptions and their adoption details. For more details, review the [Safe Harbor for Protocols](./protocol.md) document. It has also been compiled by Skylock at the [Safe Harbor Database](skylock.xyz/safeharbor/database).
 
 ## Whitehat Adoption
 
@@ -46,8 +49,8 @@ In the event of a hack targeting a protocol that has adopted Safe Harbor, whiteh
 - Have you confirmed the agreement has been duly adopted by the protocol community?
 - Are you fully aware of the risks associated with your actions, including but not limited to accidental loss of funds, claims and liabilities outside this agreement's scope, and the unclear extent of this agreement's enforceability?
 
-In the event that all the above applies, you may chose to take action to protect the protocol's assets.
+In the event that all the above applies, you may chose to take action to protect the protocol's assets. How you do this depends on the situation - perhaps offencively white-hat hacking a protocol with a proven exploit, or returning funds recovered by your MEV bot from an incident it frontran.
 
 ### Post-Intervention
 
-After the funds have been recovered, it is your responsibility to ensure their safe return to the owner protocol. If possible, we recommend contacting [SEAL911](./seal-911) immediately to advise on the fund recovery process and to assist with KYC, protocol communications, and bounty collection. Otherwise, you must contact the protocol's posted security contact and return all recovered funds to the protocol's [asset recovery address](./key-terms.md#asset-recovery-address) within 6 hours of the event, or 48 hours if reason is provided and the protocol has been made aware.
+After the funds have been recovered, it is your responsibility to ensure their safe return to the owner protocol. We strongly recommend contacting [SEAL911](./seal-911) immediately to advise on the fund recovery process and to assist with KYC, protocol communications, and bounty collection. You must also contact the protocol's posted security contact and return all recovered funds to the protocol's [asset recovery address](./key-terms.md#asset-recovery-address) within 6 hours of the event, or 48 hours if reason is provided and the protocol has been made aware.
