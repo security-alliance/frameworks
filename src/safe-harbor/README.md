@@ -2,16 +2,21 @@
 tags:
   - SEAL/Initiative
   - Protocol
-  - Whitehat
   - DAO
+  - Whitehat
+contributors:
+  - role: wrote
+    users: [robert]
 ---
 
-# Whitehat Safe Harbor
+# SEAL Whitehat Safe Harbor
 
-SEAL’s [Whitehat Safe Harbor](https://github.com/security-alliance/safe-harbor) agreement is a legal and technical framework which can be adopted by protocols and crypto communities to grant advanced permission to whitehats and MEV bots for frontrunning exploits so long as:
+SEAL’s [Whitehat Safe Harbor](https://github.com/security-alliance/safe-harbor) agreement is a framework which can be adopted by protocols and crypto communities to grant advanced permission frontrunning exploits so long as:
 
 1. Funds are returned to a designated [Asset Recovery Address](./key-terms.md#asset-recovery-address) determined by the protocol.
 2. Action is only taken in the event of an [Active Exploit](./key-terms.md#active-exploit).
+
+The goal is to create an industry where whitehats are encouraged and can act without hesitation during active exploits, increasing the chances that funds are saved or recovered.
 
 ## Documents
 
@@ -23,8 +28,8 @@ SEAL’s [Whitehat Safe Harbor](https://github.com/security-alliance/safe-harbor
 
 - [security-alliance/safe-harbor](https://github.com/security-alliance/safe-harbor): the GitHub repository housing the legal contracts and on-chain components of the agreement. Includes the official legal agreement, a summary document, and the Safe Harbor Registry.
 - [Whitehat Legal Defense Fund](https://www.notion.so/Introducing-the-First-Legal-Defense-Fund-to-Support-Crypto-Whitehats-e6792614a5b34c9f9f3f529caf975750?pvs=21): In collaboration with the [Security Research Legal Defense Fund](https://www.securityresearchlegaldefensefund.org/) (SRLDF), the Whitehat Legal Defense Fund is legal defense fund which offers grants for whitehats who act under Safe Harbor in the event that they require legal defense.
-- [Safe Harbor Agreement for Whitehats](https://docs.google.com/document/d/1paLegm9iehuCub-If9LPndTAISvT8meSdG8OvAk2VLY): the official legal agreement binding the whitehat and protocol community. Includes several exhibits, including _Exhibit F Adoption Form_, which describes the choices a protocol can make during adoption (KYC requirements, bounty %, etc.).
-- [Safe Harbor Agreement for Whitehats - Human Readable Summary](https://docs.google.com/document/d/1sTpU37r8JPEAsxG3Y-Rf0pWMOEumTc2_QijZbSpSRW0/edit?usp=sharing): a helper document to summarize the official agreement.
+- [SEAL Safe Harbor Agreement](https://docs.google.com/document/d/1paLegm9iehuCub-If9LPndTAISvT8meSdG8OvAk2VLY): the official legal agreement binding the whitehat and protocol community. Includes several exhibits, including _Exhibit F Adoption Form_, which describes the choices a protocol can make during adoption (KYC requirements, bounty %, etc.).
+- [SEAL Safe Harbor Agreement - Human Readable Summary](https://docs.google.com/document/d/1sTpU37r8JPEAsxG3Y-Rf0pWMOEumTc2_QijZbSpSRW0/edit?usp=sharing): a helper document to summarize the official agreement.
 
 ## FAQ
 
@@ -42,7 +47,7 @@ With the Safe Harbor Initiative, whitehat intervention is permitted only after a
 
 The current proposal was written by lawyers and security researchers specialized in cybersecurity incident response, web3, and global disclosure laws.
 
-The legal contract was written by web3 law firm Piper Alderman, white shoe firm Debevoise & Plimpton, and LexPunk Community legal. In addition, general support was received from the in-house legal counsel at many of the world’s largest crypto funds and projects.
+The legal contract was written by web3 law firm Piper Alderman, white shoe firm Debevoise & Plimpton, and LexPunk Community legal. In addition, general support was received from the in-house legal counsel at many of the world’s largest crypto funds and projects. You can view more about the contributors on [securityalliance.org/safe-harbor](https://www.securityalliance.org/safe-harbor)
 
 </details>
 
