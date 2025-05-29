@@ -12,11 +12,11 @@ contributors:
 
 ## Why You Should Care
 
-Protocols should care about Safe Harbor because it helps whithats save you during an active exploit, increasing the chances of a successful fund recovery. It aims to replace the status quo, where there is no standard procedue for fund recovery during an [active exploit](./key-terms.md#active-exploit). Whitehats who chose to help do so without any legal protection or assurance of reward.
+Protocols should care about Safe Harbor because it helps whitehats save you during an active exploit, increasing the chances of a successful fund recovery. It aims to replace the status quo, where there is no standard procedure for fund recovery during an [active exploit](./key-terms.md#active-exploit). Whitehats who chose to help do so without any legal protection or assurance of reward.
 
 ## Protocol Adoption
 
-Safe Harbor adoption is similar to setting up a Bug Bounty. Protocols can either do so manually, following SEAL’s [adoption checklist](https://docs.google.com/document/d/1ZfpJacBKGZR1EcfxReqSToXXSHF-iOIThU66S6M20aQ), or can work with third parties to faciliate their adoption. Safe Harbor was written explicitly with DAOs in mind, so they can adopt using the same framework as regular corperations. To get started we recommend:
+Safe Harbor adoption is similar to setting up a Bug Bounty. Protocols can either do so manually, following SEAL’s [adoption checklist](https://docs.google.com/document/d/1ZfpJacBKGZR1EcfxReqSToXXSHF-iOIThU66S6M20aQ), or can work with third parties to facilitate their adoption. Safe Harbor was written explicitly with DAOs in mind, so they can adopt using the same framework as regular corporations. To get started we recommend:
 
 1. For protocols already working with a security provider or auditing firm, contact them to see if they can help.
 2. Otherwise contact Robert, a co-lead of the Safe Harbor initiative, at *safeharbor@macwha.com* to assist with the adoption.
@@ -44,7 +44,7 @@ The adoption process is the process by which protocols bind themselves and their
 
 ## After Adoption
 
-Once a protocol has adopted Safe Harbor, maintinance is crucial for ongoing protection of any new assets. Newly published assets may warrent an update to the Safe Harbor adoption details if they are not already in scope.
+Once a protocol has adopted Safe Harbor, maintenance is crucial for ongoing protection of any new assets. Newly published assets may warrant an update to the Safe Harbor adoption details if they are not already in scope.
 
 If a protocol want to make any changes to their adoption details, for example adjusting the bounty terms or KYC requirements, they must do so before an exploit occurs. Protocols are not permitted to retroactively change their adoptions details after an exploit.
 

@@ -49,7 +49,7 @@ In the event of a hack targeting a protocol that has adopted Safe Harbor, whiteh
 - Have you confirmed the agreement has been duly adopted by the protocol community?
 - Are you fully aware of the risks associated with your actions, including but not limited to accidental loss of funds, claims and liabilities outside this agreement's scope, and the unclear extent of this agreement's enforceability?
 
-In the event that all the above applies, you may chose to take action to protect the protocol's assets. How you do this depends on the situation - perhaps offencively white-hat hacking a protocol with a proven exploit, or returning funds recovered by your MEV bot from an incident it frontran.
+In the event that all the above applies, you may chose to take action to protect the protocol's assets. How you do this depends on the situation - perhaps offensively white-hat hacking a protocol with a proven exploit, or returning funds recovered by your MEV bot from an incident it frontran.
 
 ### Post-Intervention
 
