@@ -94,7 +94,7 @@
 - [Identity and Access Management IAM](./iam/README.md)
   - [Role-Based Access Control](./iam/role-based-access-control.md)
   - [Secure Authentication](./iam/secure-authentication.md)
-  - [Access Management Best Practices](./iam/access-management-best-practices.md)
+  - [Access Management Best Practices](./iam/access-management.md)
 - [Secure Software Development](./secure-software-development/README.md)
   - [Secure Coding Standards Guidelines](./secure-software-development/secure-coding-standards-guidelines.md)
   - [Code Reviews and Peer Audits](./secure-software-development/code-reviews-peer-audits.md)
@@ -105,6 +105,12 @@
   - [Fuzz Testing](./security-testing/fuzz-testing.md)
   - [Security Regression Testing](./security-testing/security-regression-testing.md)
   - [Static Application Security Testing](./security-testing/static-application-security-testing.md)
+- [ENS](./ens/README.md)
+  - [Data Integrity & Verification](./ens/data-integrity-verification.md)
+  - [Cross-Chain Compatibility](./ens/cross-chain-compatibility.md)
+  - [Smart Contract Integration](./ens/smart-contract-integration.md)
+  - [Interface Compliance](./ens/interface-compliance.md)
+  - [Name Handling & Normalization](./ens/name-handling-normalization.md)  
 - [Safe Harbor](./safe-harbor/README.md)
   - [Key Terms](./safe-harbor/key-terms.md)
   - [Protocol](./safe-harbor/protocol.md)
@@ -121,12 +127,7 @@
   - [Hardware Encryption](./encryption/hardware-encryption.md)
   - [Partition Encryption](./encryption/partition-encryption.md)
   - [Volume Encryption](./encryption/volume-encryption.md)
-- [ENS Best Practices](./ens-best-practices/README.md)
-  - [Data Integrity & Verification](./ens-best-practices/data-integrity-verification.md)
-  - [Cross-Chain Compatibility](./ens-best-practices/cross-chain-compatibility.md)
-  - [Smart Contract Integration](./ens-best-practices/smart-contract-integration.md)
-  - [Interface Compliance](./ens-best-practices/interface-compliance.md)
-  - [Name Handling & Normalization](./ens-best-practices/name-handling-normalization.md)
+
 
 # About this
 

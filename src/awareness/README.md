@@ -6,7 +6,10 @@ tags:
   - HR
   - Engineer/Developer
 contributors:
-  - mattaereal
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [mattaereal, robert]
 ---
 
 # Security Awareness
