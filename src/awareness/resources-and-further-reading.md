@@ -5,6 +5,11 @@ tags:
   - Community & Marketing
   - HR
   - Engineer/Developer
+contributors:
+  - role: wrote
+    users: [mattaereal, zedt3ster, fredriksvantes]
+  - role: reviewed
+    users: [mattaereal]
 ---
 
 # 5. Resources & Further Reading

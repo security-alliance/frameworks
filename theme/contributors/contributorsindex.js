@@ -2,13 +2,18 @@
 const contributorsIndex = {
   "fredriksvantes": {
     "pages": [
+      "awareness/core-awareness-principles.html",
+      "awareness/cultivating-a-security-aware-mindset.html",
+      "awareness/resources-and-further-reading.html",
+      "awareness/staying-informed-and-continuous-learning.html",
+      "awareness/understanding-threat-vectors.html",
       "community-management/discord.html",
       "community-management/google.html",
       "community-management/telegram.html",
       "community-management/twitter.html"
     ],
     "roles": {
-      "wrote": ["community-management/google.html", "community-management/twitter.html", "community-management/telegram.html", "community-management/discord.html"]
+      "wrote": ["community-management/google.html", "awareness/cultivating-a-security-aware-mindset.html", "community-management/twitter.html", "community-management/telegram.html", "awareness/resources-and-further-reading.html", "awareness/understanding-threat-vectors.html", "community-management/discord.html", "awareness/core-awareness-principles.html", "awareness/staying-informed-and-continuous-learning.html"]
     },
     "company": "Ethereum Foundation",
     "avatar": "https://github.com/fredriksvantes.png",
@@ -19,9 +24,39 @@ const contributorsIndex = {
     "description": "Initial contributor to the Security Frameworks",
     "features": ["core"]
   },
+  "ghadi8": {
+    "pages": [
+      "ens/cross-chain-compatibility.html",
+      "ens/data-integrity-verification.html",
+      "ens/index.html",
+      "ens/interface-compliance.html",
+      "ens/name-handling-normalization.html",
+      "ens/smart-contract-integration.html"
+    ],
+    "roles": {
+      "wrote": ["ens/index.html", "ens/data-integrity-verification.html", "ens/name-handling-normalization.html", "ens/cross-chain-compatibility.html", "ens/smart-contract-integration.html", "ens/interface-compliance.html"]
+    },
+    "company": "JustaLab",
+    "avatar": "https://github.com/ghadi8.png",
+    "github": "https://github.com/ghadi8",
+    "website": "https://justalab.co",
+    "description": "Creator and maintainer of the ENS framework",
+    "features": ["steward"]
+  },
   "mattaereal": {
     "pages": [
+      "awareness/core-awareness-principles.html",
+      "awareness/core-awareness-principles.html",
+      "awareness/cultivating-a-security-aware-mindset.html",
+      "awareness/cultivating-a-security-aware-mindset.html",
       "awareness/index.html",
+      "awareness/index.html",
+      "awareness/resources-and-further-reading.html",
+      "awareness/resources-and-further-reading.html",
+      "awareness/staying-informed-and-continuous-learning.html",
+      "awareness/staying-informed-and-continuous-learning.html",
+      "awareness/understanding-threat-vectors.html",
+      "awareness/understanding-threat-vectors.html",
       "community-management/discord.html",
       "community-management/discord.html",
       "community-management/google.html",
@@ -34,8 +69,8 @@ const contributorsIndex = {
       "community-management/twitter.html"
     ],
     "roles": {
-      "reviewed": ["community-management/google.html", "community-management/twitter.html", "community-management/telegram.html", "community-management/discord.html", "community-management/index.html"],
-      "wrote": ["community-management/google.html", "community-management/twitter.html", "community-management/telegram.html", "community-management/discord.html", "community-management/index.html"]
+      "reviewed": ["community-management/google.html", "awareness/cultivating-a-security-aware-mindset.html", "community-management/twitter.html", "community-management/telegram.html", "awareness/resources-and-further-reading.html", "awareness/understanding-threat-vectors.html", "community-management/discord.html", "awareness/core-awareness-principles.html", "community-management/index.html", "awareness/index.html", "awareness/staying-informed-and-continuous-learning.html"],
+      "wrote": ["community-management/google.html", "awareness/cultivating-a-security-aware-mindset.html", "community-management/twitter.html", "community-management/telegram.html", "awareness/resources-and-further-reading.html", "awareness/understanding-threat-vectors.html", "community-management/discord.html", "awareness/core-awareness-principles.html", "community-management/index.html", "awareness/index.html", "awareness/staying-informed-and-continuous-learning.html"]
     },
     "company": "The Red Guild | SEAL",
     "avatar": "https://github.com/mattaereal.png",
@@ -63,9 +98,11 @@ const contributorsIndex = {
   },
   "robert": {
     "pages": [
+      "awareness/index.html",
       "community-management/index.html"
     ],
     "roles": {
+      "reviewed": ["awareness/index.html"],
       "wrote": ["community-management/index.html"]
     },
     "company": "Skylock",
@@ -78,13 +115,18 @@ const contributorsIndex = {
   },
   "zedt3ster": {
     "pages": [
+      "awareness/core-awareness-principles.html",
+      "awareness/cultivating-a-security-aware-mindset.html",
+      "awareness/resources-and-further-reading.html",
+      "awareness/staying-informed-and-continuous-learning.html",
+      "awareness/understanding-threat-vectors.html",
       "community-management/discord.html",
       "community-management/google.html",
       "community-management/telegram.html",
       "community-management/twitter.html"
     ],
     "roles": {
-      "wrote": ["community-management/google.html", "community-management/twitter.html", "community-management/telegram.html", "community-management/discord.html"]
+      "wrote": ["community-management/google.html", "awareness/cultivating-a-security-aware-mindset.html", "community-management/twitter.html", "community-management/telegram.html", "awareness/resources-and-further-reading.html", "awareness/understanding-threat-vectors.html", "community-management/discord.html", "awareness/core-awareness-principles.html", "awareness/staying-informed-and-continuous-learning.html"]
     },
     "company": "Sigma Prime",
     "avatar": "https://github.com/zedt3ster.png",

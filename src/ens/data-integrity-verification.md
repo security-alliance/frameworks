@@ -2,6 +2,9 @@
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+- role: wrote
+  users: [ghadi8]
 ---
 
 # Data Integrity & Verification
