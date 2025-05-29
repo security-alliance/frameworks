@@ -69,5 +69,14 @@
     "twitter": "https://twitter.com/bl4ckb1rd71",
     "features": ["featured"],
     "description": "Signing best practices"
+  },
+  "ghadi8": {
+    "name": "Ghadi Mhawej",
+    "avatar": "https://github.com/ghadi8.png",
+    "github": "https://github.com/ghadi8",
+    "features": ["steward"],
+    "description": "Creator and maintainer of the ENS framework",
+    "company": "JustaLab",
+    "website": "https://justalab.co"
   }
 }

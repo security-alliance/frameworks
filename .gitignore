@@ -18,3 +18,5 @@ Cargo.lock
 
 # Ignore contributors index file to prevent watch loops
 theme/contributors/contributorsindex.js
+theme/tags/tagsindex.js
+theme/tags/tagsindex.js

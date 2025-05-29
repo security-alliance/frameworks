@@ -11,7 +11,7 @@ contributors:
 
 # Google Security
 
-> **Key Takeaway:** Enhance your Google account security by implementing robust 2FA, eliminating redundant recovery options, and diligently overseeing third-party access.
+> 🔑 **Key Takeaway:** Enhance your Google account security by implementing robust 2FA, eliminating redundant recovery options, and diligently overseeing third-party access.
 
 **Google** provides a wide range of services—from email to file storage. Safeguarding your Google account is among the most critical steps you can take to protect your personal and professional data. Below are simple yet effective measures to improve your Google account security.
 

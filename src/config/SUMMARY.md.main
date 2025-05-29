@@ -47,6 +47,13 @@
 - [Identity and Access Management IAM]()
 - [Secure Software Development]()
 - [Security Testing]()
+- [ENS](./ens/README.md)
+  - [Data Integrity & Verification](./ens/data-integrity-verification.md)
+  - [Cross-Chain Compatibility](./ens/cross-chain-compatibility.md)
+  - [Smart Contract Integration](./ens/smart-contract-integration.md)
+  - [Interface Compliance](./ens/interface-compliance.md)
+  - [Name Handling & Normalization](./ens/name-handling-normalization.md)  
+- [Safe Harbor]()
 - [Encryption]()
 
 # About this
