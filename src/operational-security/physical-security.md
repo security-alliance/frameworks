@@ -23,11 +23,13 @@ Physical security is an often overlooked but crucial aspect of operational secur
 1. Travel with the minimum number of devices necessary. Leave non-essential devices at home.
 2. Backup all important data before traveling. Store backups in secure, separate locations.
 3. Remove sensitive data from devices before traveling. Consider using travel-specific devices with minimal data depending on the country you're visiting.
+4. Be mindful of what you post: House, Location, Date, Real-Time Information, and Personal Information online.
 
 ### During Travel
 1. Keep your devices with you at all times. Use secure storage options when necessary.
 2. Avoid using public Wi-Fi networks. If necessary, use a VPN to secure your connection.
 3. Avoid using untrusted charging stations. Use a USB data blocker or carry a portable charger.
+4. If someone random asks about crypto (especially on vacation), downplay your involvement
 
 ### Border Security
 1. Encrypt your devices to protect data in case they are inspected or seized.
@@ -49,6 +51,8 @@ A "wrench attack" refers to the scenario where an attacker uses physical force o
 1. Use strong locks, security doors, and window bars to prevent unauthorized entry.
 2. Install security cameras and alarm systems. Monitor the premises regularly.
 3. Use safes or locked cabinets to store devices and sensitive documents.
+4. Consider a "duress wallet"—some setups allow entering a different PIN that shows only a small balance. Have a decoy wallet with a small amount to give up, for the worst case scenerio.
+5. Prioritize your life over funds—crypto can be replaced, you can't
 
 ## Device Protection
 
@@ -56,6 +60,8 @@ A "wrench attack" refers to the scenario where an attacker uses physical force o
 1. Use laptop locks and secure your devices to immovable objects when in public or shared spaces.
 2. Use tamper-evident seals on devices to detect unauthorized access attempts.
 3. Regularly check devices for signs of tampering or unauthorized access.
+4. Where possible, use a VPN + anti-tracking tools when accessing anything crypto-related.
+
 
 ### Environmental Considerations
 1. Protect hardware wallets or other devices from extreme temperatures, humidity, and physical shocks.
