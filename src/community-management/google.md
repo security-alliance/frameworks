@@ -99,3 +99,4 @@ For those who are public figures or need heightened security, Google's **Advance
 - **Review Security Alerts:** Pay attention to any email or phone notifications from Google regarding unusual sign-ins or account changes.  
 - **Perform a Security Checkup:** Regularly visit [Google’s Security Checkup](https://myaccount.google.com/security-checkup) to identify potential issues and resolve them.
 - **Consider** using identity **monitoring** apps like [Push Security](pushsecurity.com).
+- **Update Password** Set a schedule to update your password regularly, i.e. Bi-Annually, and to note down your new backup code offline once you do so.
