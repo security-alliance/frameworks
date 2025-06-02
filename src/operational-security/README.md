@@ -18,8 +18,6 @@ The level of Operational Security to apply will differ greatly depending on the 
 ## OpSec for Organizations
 [Detecting and Mitigating Insider Threats](detecting-and-mitigating-insider-threats.md)
 
-[Google Workspace Security](g-suite-security.md)
-
 [Multisigs](Multisigs.md)
 
 Opsec Calander
@@ -34,9 +32,7 @@ Opsec Calander
 
 [Telegram](telegram.md)
 
-[Wireless Security](wireless-security.md)
 
-<<<<<<< Updated upstream
 The level of Operational Security to apply will differ greatly depending on the risk appetite the team is willing to accept.
 
 ## Framework Contents
@@ -53,5 +49,3 @@ The level of Operational Security to apply will differ greatly depending on the 
 10. [Compliance and Governance](./compliance-governance.md) - Meeting regulatory requirements and establishing governance
 11. [Web3-Specific OpSec](./web3-specific-opsec/README.md) - Operational security considerations unique to Web3
 12. [Resources and Tools](./resources-tools.md) - Useful tools, templates, and further reading
-=======
->>>>>>> Stashed changes
