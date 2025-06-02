@@ -59,13 +59,14 @@ Telegram sign-ups require a phone number, but you can also enable two-factor aut
 1. **Go to**: **Settings > Privacy and Security > Two-Step Verification**  
 2. **Set**: A strong password and recovery email (store both in a password manager)
 
-### Hide Your Phone Number
+### Hide Your Phone Number & Personal Information
 
 Making your phone number visible can expose you to unwanted contact or social engineering attacks. Restricting visibility helps safeguard your personal info.
 
 1. **Go to**: **Settings > Privacy and Security > Phone Number**  
 2. **Who can see my phone number?**: Select **Nobody**  
 3. **Who can find me by my number?**: Select **My contacts**
+4. It is recommended to also select **Nobody** in this same section for: Date of Birth and to turn Invites to 'My Contacts'.
 
 ### Disable P2P Calling
 
@@ -129,6 +130,7 @@ Third-party bots can enhance functionality but may also introduce vulnerabilitie
 1. **Use Trusted Bots**: Only add bots from reputable sources  
 2. **Review Permissions**: Limit the permissions you grant to bots  
 3. **Regular Audits**: Periodically review and remove unnecessary bots
+4. **Check Bot Username:** Always check the bot/mini-app username before establishing a connection, this will prevent interacting with a bot impersonating a real mini-app/bot
 
 ### Implement Device-Level Security
 
@@ -136,7 +138,7 @@ Protect the device you use to access Telegram to prevent unauthorized access.
 
 1. **Use Strong Passwords or Biometrics**: Secure your device with a strong passcode or biometric authentication  
 2. **Enable Device Encryption**: Ensure your device's storage is encrypted  
-3. **Install Security Software**: Use reputable antivirus and anti-malware solutions
+3. **Install Security Software**: Use reputable antivirus and anti-virus solutions
 
 ### Manage Group and Channel Admin Permissions
 
@@ -255,3 +257,5 @@ Consider adjusting the following settings based on your country, usage, and purp
 - **Exercise Caution with Mini Apps:** Avoid logging in or providing information to mini apps that redirect outside of Telegram. Triple-check the username of the mini app to ensure its legitimacy, as Telegram lacks a bot verification system. Never download or run any commands from Telegram on your device.
 - **Enhance Privacy with a VPN:** *Advanced tip:* Set up a proxy or VPN to hide your IP address while using the Telegram app.
 - **Stay Vigilant Against Scam Ads:** Be aware that anyone can post ads in channels, with 99% being scam ads. Exercise caution when interacting with advertisements.
+- **Check Bot Username:** Always check the bot/mini-app username before establishing a connection, this will prevent interacting with a bot impersonating a real mini-app/bot.
+

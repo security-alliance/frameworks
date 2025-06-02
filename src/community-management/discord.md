@@ -45,9 +45,9 @@ To enhance the security of your Discord server, take into account these suggesti
 
 a) **Enable 2FA Requirement for Moderation**
 
-- Go to Server Settings > Safety Setup > Moderation
+- Go to Server Settings > Safety Setup > Permissions
 - Toggle on "Require 2FA for moderation"
-- This ensures all moderators have an extra layer of security
+- This ensures all moderators have an extra layer of security on their user account
 
 b) **Set Appropriate Verification Level**
 
@@ -56,12 +56,11 @@ b) **Set Appropriate Verification Level**
 - Recommended: "Moderate" for public servers (requires users are registered on discord for longer then 5 min.)
 - Higher levels protect against spammers and raids
 
-c) **Enable Explicit Content Filter**
+c) **Enable DM and Spam Protection Filters**
 
-- Go to Server Settings > Safety Setup > Content Filter
-- Set to "Scan messages from all members"
-- This automatically blocks messages containing explicit images in non-age-restricted channels
-- Age-restricted channels are exempt from this filter
+- Go to Server Settings > Safety Setup > DM and Spam Protection
+- Ensure all options are toggled enabled
+- This automatically filters out detected spam messages and DMs
 
 d) **Enable Raid Protection and CAPTCHA**
 
@@ -91,8 +90,8 @@ b) **Restrict Administrative Permissions**
 - For each role, carefully review the 32 available permissions
 - Key permissions to restrict: Administrator, Manage Webhooks, Manage Server, Manage Roles, & Manage Channels
 - Never give Admin or Kick permissions to anyone you don't fully trust
-- Good permissions for moderators: Manage Channels, Manage Roles, Manage Messages, Ban Members, Delete Messages
-- Good permissions for members: View Channels, View audit logs, Create Invite, Manage Messages, Read Message History, Connect, Speak & Use Voice Activity, & Ban/Kick/Timeout
+- Good permissions for moderators: Manage Messages, Ban Members, Kick Members, and Timeout Members
+- Good permissions for members: View Channels, Create Invite, Read Message History, Connect, Speak & Use Voice Activity, & Request to Speak
 
 c) **Use Channel-Specific Permissions**
 
@@ -103,24 +102,20 @@ d) **Use the "View Server as Role" Feature**
 
 - Go to Server Settings > Roles > Select a role > View Server as Role
 - This allows you to see what members with a certain role can see and access
+- Note: If you have Admin perms, you may see channels that the role might not see due to the way Discord displays this feature
 
 ### Moderation
 
 a) **Set Up Auto-Moderation Rules**
 
-- Go to Server Settings > AutoMod
+- Go to Server Settings > Safety Setup > AutoMod
 - Set up rules for: Spam, Harmful Links, Mention Spam, Inappropriate Words
 - Configure custom keyword filters and exempted roles
 - Customize the response to spam, like blocking the message, sending an alert, or timing out the member
-- Add to the existing automod rule to block keywords in a users name, and put Support, Bot, Admin, Tech, Helpdesk, etc.
+- Add to the existing automod rule to block keywords in a users name such as: Support, Bot, Admin, Tech, Helpdesk, etc.
+- It is recommended to make a channel such as,'Automod-logs' so you can view these violations in a dedicated channel for review
 
-b) **Configure Timeout Duration**
-
-- Go to Server Settings > Safety Setup > Timeout
-- Set default duration (e.g., 60 minutes)
-- Educate moderators on using timeouts effectively
-
-c) **Establish Clear Server Rules**
+b) **Establish Clear Server Rules**
 
 - Create a #rules channel
 - Use Discord's built-in rules screening feature
@@ -130,7 +125,7 @@ c) **Establish Clear Server Rules**
 
 a) **Leverage “Default Notifications to Mentions Only”**
 
-- Go to **Server Settings > Overview** and set **Default Notifications** to **Mentions Only**.
+- Go to **Server Settings > Engagement**, scroll down and set **Default Notifications Settings** to **Mentions Only**.
 - Reduces potential spam notifications for members, making them more vigilant about suspicious or phishing content.
 
 b) **Stay Alert to New Features & Potential Exploits**
@@ -147,10 +142,12 @@ c) **Regularly Check Third-Party Bot Security**
 
 a) **Audit Bot Permissions**
 
-- Go to Server Settings > Integrations
+- Go to Server Settings > Roles > Locate Bot Role > Permissions
 - Review each bot's permissions
 - Remove unnecessary permissions
 - Remove permissions for bots that ask for Admin or other permissions that aren't needed, use least privilege with permissions at the role level and channel level.
+- Go to Server Settings > Integrations > Bots & Apps
+- Review which channels the bots / commands can be used in, and review any webhooks the bot may have created and remove any unnecesary webhooks 
 
 b) **Remove Unnecessary Bots**
 
@@ -159,9 +156,9 @@ b) **Remove Unnecessary Bots**
 c) **Implement Security/Moderation Bots**
 
 - Consider bots like:
-  - Dyno for advanced moderation and logging
-  - Carl-bot for reaction roles and custom commands
-  - Set up security Bots
+  - [Dyno](https://dyno.gg/) or [GoodKnight](https://goodknightbot.com/) for advanced moderation and logging
+  - [Carl-bot](https://carl.gg/) for reaction roles and custom commands
+  - Set up security Bots such as [Wick](https://wickbot.com/), [GoodKnight](https://goodknightbot.com/), [Hashbot](https://www.hashbot.io/), etc.
 
 #### Third party bots
 
@@ -169,11 +166,11 @@ Various third-party Discord bots offer valuable security and protection features
 
 ##### Anti-Impersonation Bots
 
-Set up custom rules to prevent other users from joining using the same username and PFP to impersonate you or other important members of the server. A popular bot in this category is Wick Bot.
+Set up custom rules to prevent other users from joining using the same username and PFP to impersonate you or other important members of the server. A popular bot in this category is [Wick Bot](https://wickbot.com/).
 
 ##### Anti-Raid Bots
 
-to prevent spam bots from joining your server all at once, an attack known as raiding, you can also set up bots with particular rules. Beemo is a good example of a bot in this category.
+to prevent spam bots from joining your server all at once, an attack known as raiding, you can also set up bots with particular rules. [Beemo](https://beemo.gg/) is a good example of a bot in this category.
 
 ##### Anti-Nuke Bots
 
@@ -181,7 +178,7 @@ This is a monitoring system to observe and note any changes (spontaneous or plan
 
 ##### Moderation & Link Whitelisting Bots
 
-Only allows approved links to be used in the discord server. A popular bot in this category is Goodknight Bot.
+Only allows approved links to be used in the discord server. A popular bot in this category is [GoodKnight Bot](https://goodknightbot.com/).
 
 _The bots above are not all-inclusive but rather a recommended list of bots to help protect your Discord server in these categories._
 
@@ -191,6 +188,7 @@ a) **Organize Channels Logically**
 
 - Use categories to group related channels
 - Suggested categories: Information, General, Voice Channels, Topic-Specific
+- Use Category sync or set specific channel related permissions for ease of use setup
 
 b) **Set Slow Mode Where Needed**
 
@@ -204,17 +202,13 @@ c) **Use Age-Restricted Channels Appropriately**
 
 ### Invites
 
-a) **Disable Permanent Invites**
+a) **Review Permanent Invites**
 
-- Server Settings > Invites
-- Un-check "Allow anyone with administrative permissions to create invites"
+- It is recommend to use a Vanity URL if you are able to boost the discord server to level 3 [nitro](https://discord.com/nitro)
+- A Vanity URL is a non-expiring, more formal looking invite which can be custom set as long as the Discord Server remains level 3 nitro at all times
+- To set a Vanity URL, Server Settings > Boost Perks > Scroll down > Custom Invite Link > Set the link you'd like 
 
-b) **Set Invite Expiration and Usage Limits**
-
-- When creating an invite: Set "Expire After" and "Max Number of Uses"
-- Recommended: 24 hours expiration, 50-100 uses
-
-c) **Regularly Audit Active Invites**
+b) **Regularly Audit Active Invites**
 
 - Server Settings > Invites
 - Review and delete unnecessary or old invites
@@ -223,17 +217,14 @@ c) **Regularly Audit Active Invites**
 
 a) **Enable Membership Screening**
 
-- Server Settings > Safety Setup > Membership Screening
-- Toggle on "Enable Membership Screening"
+- Server Settings > Access 
+- Decide which server you'd like to have, then enable 'Server Rules' and enter your rules
+- - Add questions about server rules, age verification, etc.
 
-b) **Set Up Screening Questionnaire**
+b) **Set Up Verification**
 
-- Add questions about server rules, age verification, etc.
-- Require members to agree to rules before joining
-
-c) **Set Up Membership Requirements**
-
-- Require users to react to a message or post an introduction
+- Require users to react to complete a captcha in order to gain full access to a server
+- Popular bots that provide in-server captchas are [Wick Bot](https://wickbot.com/), [Server Supervisor Bot](https://docs.serversupervisor.dev/), etc.
 - This helps filter out bots and spam accounts from joining
 
 ### Logging
@@ -245,7 +236,7 @@ a) **Enable Audit Logs**
 b) **Set Up a Private Logging Channel**
 
 - Create a private channel visible only to admins/mods
-- Use a logging bot like Logger or Dyno to send detailed logs
+- Use a logging bot like [Dyno](https://dyno.gg/) to send detailed logs, and setup more channels for bot specific logs
 
 ### Regular Reviews
 
@@ -263,6 +254,12 @@ c) **Check for Unused Channels/Roles**
 
 - Bi-annually: Delete or archive inactive channels
 - Remove roles that are no longer needed
+- Remove any permissions that roles may not need
+
+d) **Password Updates**
+
+- Quarterly: Enact a rule for all mods/admins to update their password and note down new backup codes offline
+- Mods/admins should also review their connected apps, devices/sessions, and other important user profile settings
 
 ### Cold Admin Accounts
 
@@ -303,41 +300,38 @@ b) **Review Updated Discord Moderation Resources**
 
 a) **Verification Systems**
 
-- Implement a verification bot like Wick
+- Implement a verification bot like [Wick Bot](https://wickbot.com/)
 - Require users to complete an in-channel captcha before accessing the server
 - Advance Settings: Have verification bot filter based on account age, PFP set, and timeout for incomplete captcha
 
 b) **Raid Protection**
 
-- Use anti-raid bots like Wick or Dyno
+- Use anti-raid bots like [Wick Bot](https://wickbot.com/) or [Dyno](https://dyno.gg/)
 - Configure automatic lock-down settings for suspicious activity
 
 c) **Privacy Settings**
 
 - Server Settings > Privacy Settings
 - Disable "Allow direct messages from server members"
+- Note: This is a user setting not a server setting
 
-d) **Integration Whitelisting**
+d) **Server Insights**
 
-- Server Settings > Integrations > Allow new integrations to be added by:
-- Set to "Only Administrators" to prevent unauthorized bot additions
-
-e) **Server Insights**
-
+- Server Settings > Server Insights
 - Enable Server Insights for detailed analytics
 - Use this data to inform moderation strategies and server improvements
 
-f) **Backup Systems**
+e) **Backup Systems**
 
-- Use a bot like ServerBackup to regularly backup your server configuration
+- Use a bot like [Xenon Bot](https://xenon.bot/) to regularly backup your server configuration
 - Store backups securely off-platform
 
-g) **Audit New Integration/Link Safety Settings**
+f) **Audit New Integration/Link Safety Settings**
 
 - Regularly review **Server Settings > Integrations** for newly added apps or link shorteners.
 - Disable suspicious integrations or automate link scanning with a bot that checks URLs against known phishing databases.
 
-h) **Enable Safe Direct Messaging for All Users**
+g) **Enable Safe Direct Messaging for Your User Profile**
 
 - In **User Settings > Privacy & Safety**, select **Keep Me Safe** for direct messages.
 - Encourages moderators and community members to adopt the same setting to minimize phishing DMs.
