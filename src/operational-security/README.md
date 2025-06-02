@@ -11,8 +11,32 @@ tags:
 
 Operational security, often abbreviated as **OpSec** provides a range of practices and measures designed to safeguard an organization's sensitive information, assets, and operations from unauthorized access, espionage, disruption, or compromise.
 
-Operational security is not just a concern for large corporations or government agencies; it is relevant to any project that handles sensitive information, including personal data or digital assets. The consequences of failing to implement robust OpSec measures can be severe, ranging from financial losses to reputational damage, and legal liabilities.
+Operational security is not just a concern for large corporations or government agencies; it is relevant to any project that handles sensitive information, including personal data or digital assets. The consequences of failing to implement robust OpSec measures can be severe, ranging from financial losses to reputatioCnal damage, and legal liabilities.
 
+The level of Operational Security to apply will differ greatly depending on the risk appetite the team is willing to accept.
+
+## OpSec for Organizations
+[Detecting and Mitigating Insider Threats](detecting-and-mitigating-insider-threats.md)
+
+[Google Workspace Security](g-suite-security.md)
+
+[Multisigs](Multisigs.md)
+
+Opsec Calander
+
+[Standard Operating Environment](standard-operating-environment.md)
+
+## OpSec for Individuals
+
+[Password/Secrets Management](password-secrets-management.md)
+
+[SIM Swapping](sim-swapping.md)
+
+[Telegram](telegram.md)
+
+[Wireless Security](wireless-security.md)
+
+<<<<<<< Updated upstream
 The level of Operational Security to apply will differ greatly depending on the risk appetite the team is willing to accept.
 
 ## Framework Contents
@@ -29,3 +53,5 @@ The level of Operational Security to apply will differ greatly depending on the 
 10. [Compliance and Governance](./compliance-governance.md) - Meeting regulatory requirements and establishing governance
 11. [Web3-Specific OpSec](./web3-specific-opsec/README.md) - Operational security considerations unique to Web3
 12. [Resources and Tools](./resources-tools.md) - Useful tools, templates, and further reading
+=======
+>>>>>>> Stashed changes
