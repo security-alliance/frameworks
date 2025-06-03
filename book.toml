@@ -16,9 +16,6 @@ use-default-preprocessors = true
 command = "mdbook-admonish"
 assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
 
-[preprocessor.catppuccin]
-assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
-
 [preprocessor.metadata]
 command = "cargo run --manifest-path=plugin/mdbook-metadata/Cargo.toml --locked"
 tag_colors = { "SEAL/Initiative" = "#4339db" }
@@ -27,8 +24,6 @@ tag_colors = { "SEAL/Initiative" = "#4339db" }
 
 [output.html]
 additional-css = [
-    "./theme/catppuccin.css",
-    "./theme/catppuccin-admonish.css",
     "./mdbook-admonish.css",
     "./theme/custom.css",
     "./theme/toc/pagetoc.css",
