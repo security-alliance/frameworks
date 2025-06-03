@@ -8,7 +8,7 @@ If you want to know more about the frameworks or take a peek at the live book go
 
 1. `gh repo clone security-alliance/frameworks`
 2. `git checkout develop`
-3. `cargo install mdbook mdbook-admonish mdbook-catppuccin`
+3. `cargo install mdbook mdbook-admonish`
 4. `./serve.sh`
 
 ## Collaboration
