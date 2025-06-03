@@ -37,7 +37,7 @@ Device and endpoint security should be implemented based on the sensitivity of t
 
 In Web3 environments, device and endpoint security includes additional considerations:
 
-- Securing devices used for cryptocurrency transactions and key management
+- Securing devices used for cryptocurrency transactions and wallet security
 - Protecting hardware wallets and other specialized Web3 hardware
 - Addressing the risks of browser-based Web3 interactions
 - Securing devices that participate in blockchain networks (e.g., validator nodes)

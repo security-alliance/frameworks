@@ -15,7 +15,7 @@ Custodial wallets are managed by a third party, such as an exchange or a wallet 
 ### Characteristics
 - **Managed Private Keys**: The third party has control over the private keys.
 - **Recovery Options**: Easier to recover access if credentials are lost, as the third party can assist.
-- **Security Dependence**: Security depends on the third party’s practices and infrastructure.
+- **Security Dependence**: Security depends on the third party's practices and infrastructure.
 
 ### Use Cases
 - **New Users**: Suitable for users who are new to cryptocurrency and prefer a simpler, managed solution.
@@ -32,7 +32,7 @@ Non-custodial wallets are managed by the user, who has full control over their p
 - **Responsibility**: The user is solely responsible for backing up and securing their keys.
 
 ### Use Cases
-- **Experienced Users**: Suitable for users who have a good understanding of cryptocurrency and key management.
+- **Experienced Users**: Suitable for users who have a good understanding of cryptocurrency and wallet security.
 - **Security Prioritization**: Ideal for users who prioritize security and control over convenience.
 
 ## Comparison

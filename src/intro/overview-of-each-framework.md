@@ -24,7 +24,7 @@ This section addresses security considerations specific to the user-facing compo
 
 This framework explores best practices for securing and managing online communities associated with Web3 projects, particularly on platforms like Discord and Twitter.
 
-## Key Management
+## Wallet Security
 
 This section delves into the crucial aspect of managing cryptographic keys in Web3 projects, discussing various wallet types and signing schemes.
 
