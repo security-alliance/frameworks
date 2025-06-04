@@ -3,6 +3,8 @@ use std::io;
 use mdbook::{book::Chapter, errors::Error, preprocess::CmdPreprocessor, BookItem};
 use tags::TagsPreprocessor;
 
+use crate::contributors::ContributorsPreprocessor;
+
 mod contributors;
 mod tags;
 
@@ -38,11 +40,22 @@ fn main() {
 fn handle_preprocessing() -> Result<(), Error> {
     let (ctx, mut book) = CmdPreprocessor::parse_input(io::stdin())?;
 
-    let mut preprocessors: Vec<Box<dyn Preprocessor>> = vec![Box::new(TagsPreprocessor::new(
-        &ctx,
-        "theme/tags".into(),
-        "theme/templates".into(),
-    ))];
+    //? Both contributors and tags place items directly after the chapter title,
+    //? so the final order will be the inverse of this order since processors
+    //? are run sequentially.
+    let mut preprocessors: Vec<Box<dyn Preprocessor>> = vec![
+        Box::new(ContributorsPreprocessor::new(
+            &ctx,
+            "src/config/contributors.json".into(),
+            "theme/contributors".into(),
+            "theme/templates".into(),
+        )?),
+        Box::new(TagsPreprocessor::new(
+            &ctx,
+            "theme/tags".into(),
+            "theme/templates".into(),
+        )),
+    ];
 
     // Run all preprocessors on the book's chapters
     book.for_each_mut(|item| {

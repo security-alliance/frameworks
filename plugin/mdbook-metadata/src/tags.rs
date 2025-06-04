@@ -179,6 +179,7 @@ impl TagsPreprocessor {
             return Err(Error::msg("Chapter title not found"));
         }
 
+        //? Assumes that the first line after frontmatter is the chapter title
         let parts: Vec<&str> = body.splitn(2, "\n").collect();
         if parts.len() != 2 {
             return Err(Error::msg("Chapter title not found"));
@@ -212,7 +213,7 @@ impl TagsPreprocessor {
         let tags_html = tags_template.replace("TAG_ITEMS_PLACEHOLDER", &tag_items);
 
         // Insert the tags HTML into the body
-        Ok(format!("{}\n{}\n{}", title, tags_html, body))
+        return Ok(format!("{}\n{}\n{}", title, tags_html, body));
     }
 
     // Generates the tags.css file that contains styles for each tag.
