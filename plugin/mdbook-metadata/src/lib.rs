@@ -23,6 +23,18 @@ pub fn to_id(s: &str) -> String {
     return s;
 }
 
+// Normalizes indentation by removing leading whitespace from each line
+// Required for mdbook to correctly render the content
+pub fn remove_indentation(s: &str) -> String {
+    let s = s
+        .lines()
+        .map(|line| line.trim_start())
+        .collect::<Vec<_>>()
+        .join("\n");
+
+    return s;
+}
+
 /// Writes a string to a file only if the contents of the file would change.
 ///
 /// ? mdbook automatically re-builds the book every time a file is updated,

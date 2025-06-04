@@ -2,7 +2,7 @@ use core::panic;
 use std::{collections::HashMap, f32::consts::E};
 
 use anyhow::Error;
-use mdbook_metadata::load_template;
+use mdbook_metadata::{load_template, remove_indentation};
 use minijinja::Template;
 use serde::{Deserialize, Serialize};
 
@@ -141,6 +141,8 @@ impl ContributorsPreprocessor {
         let contributors_template =
             load_template(p).ok_or(Error::msg("Failed to load contributors template"))?;
 
+        //? Need to re-declare the template each time because minijinja has
+        //? weird lifetime rules
         let mut env = minijinja::Environment::new();
         env.add_template("page-contributors", &contributors_template)
             .map_err(|e| Error::msg(format!("Failed to add template: {}", e)))?;
@@ -172,14 +174,7 @@ impl ContributorsPreprocessor {
         let rendered = tmpl.render(minijinja::context! {
             roles => role_groups,
         })?;
-
-        //? Essential to trim leading whitespace, otherwise it gets rendered as
-        //? a code block for some reason(?)
-        let rendered = rendered
-            .lines()
-            .map(|line| line.trim_start())
-            .collect::<Vec<_>>()
-            .join("\n");
+        let rendered = remove_indentation(&rendered);
 
         eprintln!("Rendered contributors:\n{}", rendered);
 

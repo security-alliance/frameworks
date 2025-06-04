@@ -4,8 +4,8 @@ use std::{
 };
 
 use anyhow::Error;
-use mdbook_metadata::{load_template, to_id, write_if_changed};
-use serde::Deserialize;
+use mdbook_metadata::{load_template, remove_indentation, to_id, write_if_changed};
+use serde::{Deserialize, Serialize};
 
 use crate::Preprocessor;
 
@@ -15,6 +15,12 @@ struct Frontmatter {
 }
 
 type Tag = String;
+
+#[derive(Debug, Serialize)]
+struct TagGroup {
+    id: String,
+    label: String,
+}
 
 /// Preprocessor for handling tags in mdbook chapters.
 ///
@@ -189,31 +195,33 @@ impl TagsPreprocessor {
         let body = parts[1];
 
         // Read the tags template
-        let tags_template = load_template(format!("{}/tags.html", self.templates_dir))
-            .unwrap_or("<div class=\"tags\">TAG_ITEMS_PLACEHOLDER</div>".to_string());
+        let p = format!("{}/page-tags.html", self.templates_dir);
+        let tags_template = load_template(p).ok_or(Error::msg("Failed to load tags template"))?;
 
-        // Read the tag item template
-        let tag_item_template = load_template(format!("{}.tag-item.html", self.templates_dir))
-            .unwrap_or(
-                "<span class=\"tag TAG_ID_PLACEHOLDER\">TAG_NAME_PLACEHOLDER</span>".to_string(),
-            );
+        //? Need to re-declare the template each time because minijinja has
+        //? weird lifetime rules
+        let mut env = minijinja::Environment::new();
+        env.add_template("page-tags", &tags_template)
+            .map_err(|e| Error::msg(format!("Failed to add template: {}", e)))?;
+        let tmpl = env
+            .get_template("page-tags")
+            .map_err(|e| Error::msg(format!("Failed to get template: {}", e)))?;
 
-        // Generate tag items HTML
-        let tag_items = tags
-            .iter()
-            .map(|tag| {
-                tag_item_template
-                    .replace("TAG_ID_PLACEHOLDER", &to_id(tag))
-                    .replace("TAG_NAME_PLACEHOLDER", tag)
+        let tag_groups = tags
+            .into_iter()
+            .map(|tag| TagGroup {
+                id: to_id(&tag),
+                label: tag,
             })
-            .collect::<Vec<_>>()
-            .join("");
+            .collect::<Vec<TagGroup>>();
 
-        // Insert tag items into tags template
-        let tags_html = tags_template.replace("TAG_ITEMS_PLACEHOLDER", &tag_items);
+        let rendered = tmpl.render(minijinja::context! {
+            tags => tag_groups,
+        })?;
+        let rendered = remove_indentation(&rendered);
 
         // Insert the tags HTML into the body
-        return Ok(format!("{}\n{}\n{}", title, tags_html, body));
+        return Ok(format!("{}\n{}\n{}", title, rendered, body));
     }
 
     // Generates the tags.css file that contains styles for each tag.
