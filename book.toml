@@ -68,12 +68,7 @@ additional-css = [
     "./theme/tags/tags.css",
     "./theme/contributors/contributors.css",
 ]
-additional-js = [
-    "./theme/main.js",
-    "./theme/toc/pagetoc.js",
-    "./theme/tags/tagsindex.js",
-    "./theme/contributors/contributorsindex.js",
-]
+additional-js = ["./theme/main.js", "./theme/toc/pagetoc.js", "./theme/tags/tagsindex.js"]
 template-path = "theme"
 copy-images = true
 default-theme = "navy"
