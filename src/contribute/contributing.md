@@ -4,10 +4,9 @@ The Security Framework is an open and collaborative project. Whether you are par
 
 This mdBook-style handbook is designed for easy collaboration and automatic deployment through continuous integration. If you'd like to join our effort, feel free to fix typos, contribute new sections, or propose enhancements.
 
-To contribute you can either:
+On each page, you will find a "Suggest an edit" button at the top-right corner. Clicking this sends you to the GitHub.com where you can suggest edits using their web interface.
 
-- Fork [this repository](https://github.com/security-alliance/frameworks), switch to the develop branch, and submit a pull request.
-- On each page, you will find a "Suggest an edit" button at the top-right corner. Clicking this sends you to the GitHub.com where you can suggest edits using their web interface.
+If you want to contribute in a more organized manner, please read below.
 
 ## Contributing
 
@@ -15,16 +14,85 @@ Before you start editing, adding or removing content, please read the [code of c
 
 The source is hosted in github repository at [github.com/security-alliance/frameworks](https://github.com/security-alliance/frameworks).
 
-The content of the Frameworks comes from the `main` branch, and when contributing we would like to you open a PR into the `development` branch.
+The content of the Frameworks main website (.org) comes from the `main` branch, and when contributing to several frameworks, or generic changes, we would like you to open a PR into the `development` branch (.dev)
+
+> ⚠️ Please sign and verify every commit.
 
 Once a new update is warranted, the content from `development` is merged into `main`.
 
+### Framework-specific branches and Stewards
+
+To understand how to contribute, follow this process:
+
+1. **Check for a framework-specific branch**: First, check if there's a [Steward](./stewards.md) for the specific framework you're interested in, and reach out. We usually have separate branches pre-develop for frameworks with stewards. Their naming convention is `fw_framework_name`, for example `fw_opsec`, `fw_community_mgmt` - the naming should be intuitive. For more information about stewards and their responsibilities, see the [Stewards](./stewards.md) section.
+
+2. **Fork the right branch**: Ideally, you will fork these framework-specific branches, since they will probably have more updated information than what's available in the develop branch.
+
+3. **Submit PR to framework specific branch**: Once you have your suggestions, submit a PR and let the steward or maintainer know you're ready for a review. Feel free to assign reviewers as well. Once submited, you'll be able to see the deployment through Vercel's automation and make any final fixes.
+
+4. **Submit PR to develop**: After reviews, a steward, a maintainer, or even yourself can submit a PR from the framework specific branch to the develop branch.
+
+5. **Become a steward**: If there's no specific branch created, then that framework is still "headless," which means you can become its steward! See more in the [Stewards](./stewards.md) section.
+
+### Local Development with mdBook
+
+If you want to locally experiment with mdBook, you can run `./serve.sh` which will automatically run mdBook when installed, serving the project for local viewing.
+
+### Handling the Summary
+
+Because of how we handle the `.org` and `.dev` domains in different branches, the main outline in `src/SUMMARY.md` is generated on the fly, based on `config/SUMMARY.develop|main`. You'll notice both differ - in `.org` we only publish reviewed frameworks, while in `.dev` we include most everything.
+
+If you need to modify the outline for a framework, please make sure to update it accordingly in `config/SUMMARY.develop`.
+
 You may explore existing issues or open a new one for missing content, although a PR is preferred. If you identify missing or unfinished content, feel free to open a PR. First, check existing PRs or branches to make sure your work is not redundant.
+
+### Attribution and Tags
+
+Most pages have tags below the heading and a way to add attribution and filtering.
+
+#### Page Tags
+
+Tags like "Community Manager", "SRE", etc. help categorize content and make it discoverable. To add tags to your page, include them in the frontmatter:
+
+```markdown
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - SRE
+---
+```
+
+Tags are currently in an exploratory phase. They are displayed at the top of each page and are also used for filtering and navigation throughout the site.
+
+#### Attribution
+
+Contributors are managed through a centralized system:
+
+1. There's a contributor 'database' at `src/config/contributors.json`, where you add contributors or get their information from.
+
+2. The file `src/config/using-contributors.md` contains all the information needed to understand how to add them to your pages.
+
+To add contributors to a page, you can use frontmatter as shown in the using-contributors guide:
+
+```markdown
+---
+title: Your Page Title
+contributors:
+  - role: wrote
+    users: [mattaereal, charlie_dev]
+  - role: reviewed
+    users: [fredriksvantes, zedt3ster]
+---
+```
+
+
 
 ### Structure and collaboration
 
-The wiki is supposed to cover all important parts of security for web3 projects.
-For contributors, we recommend focusing on specific topics contained in corresponding documents. It's best to own a single topic and work out all the details. Create a new document and add the topic to the sidebar if it's not there yet. Join the [discord server](https://discord.gg/securityalliance), let others know what you are working on in the group channel and collaborate with other contributors writing about related topics. If you are working with multiple people on a significant piece of content, you can have a dedicated branch in the repo for easier coordination.
+The book is supposed to cover all important parts of security for web3 projects.
+For contributors, we recommend focusing on specific topics contained in corresponding pages. It's best to own a single topic and work out all the details. Create a new page and add the category to the sidebar if it's not there yet. Join the [discord server](https://discord.gg/securityalliance), let others know what you are working on in the group channel and collaborate with other contributors writing about related topics. If you are working with multiple people on a significant piece of content, you can have a dedicated branch in the repo for easier coordination.
 
 ## Style guide
 
@@ -87,6 +155,6 @@ Pages with minimal content which need more work to cover the topic need to inclu
 
 This page is also opened for contributors! Suggest improvements to our style and guidelines in the github repo.
 
-## Attribution
+## About this page
 
-A lot of the content of this page comes from the [Ethereum Protocol Fellows](https://github.com/eth-protocol-fellows/protocol-studies)
+Originally based from the [Ethereum Protocol Fellows](https://github.com/eth-protocol-fellows/protocol-studies)
