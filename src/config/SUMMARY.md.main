@@ -40,7 +40,10 @@
   - [Smart Contract Integration](./ens/smart-contract-integration.md)
   - [Interface Compliance](./ens/interface-compliance.md)
   - [Name Handling & Normalization](./ens/name-handling-normalization.md)  
-- [Safe Harbor]()
+- [Safe Harbor](./safe-harbor/README.md)
+  - [Protocol](./safe-harbor/protocol.md)
+  - [Whitehat](./safe-harbor/whitehat.md)
+  - [Key Terms](./safe-harbor/key-terms.md)
 - [Encryption]()
 
 # About this
