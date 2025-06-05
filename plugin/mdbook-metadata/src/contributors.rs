@@ -95,8 +95,6 @@ impl ContributorsPreprocessor {
             })
             .collect();
 
-        eprintln!("Role aliases: {:?}", role_aliases);
-
         let role_aliases = role_aliases.into_iter().collect::<HashMap<String, Role>>();
 
         let contributors_title = ctx
@@ -107,7 +105,12 @@ impl ContributorsPreprocessor {
 
         let contributors: Vec<Contributor> = match std::fs::read_to_string(contributors_file) {
             Ok(content) => serde_json::from_str(&content).unwrap_or_default(),
-            Err(e) => return Err(Error::new(e)),
+            Err(e) => {
+                return Err(Error::msg(format!(
+                    "Failed to read contributors file '{}': {}",
+                    contributors_file, e
+                )))
+            }
         };
 
         let contributors = contributors
