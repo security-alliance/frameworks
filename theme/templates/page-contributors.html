@@ -1,0 +1,15 @@
+<div class="contributors-roles">
+    {% for role in roles %}
+    <div class="contributor-role-group">
+        <div class="contributor-role-label">{{ role.label }}:</div>
+        <div class="contributor-role-users">
+            {% for user in role.users %}
+            <a href="{{ user.github_url }}" target="_blank" class="contributor with-avatar"
+                style="background-image: url('{{ user.avatar }}');">
+                {{ user.name }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>

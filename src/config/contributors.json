@@ -1,82 +1,90 @@
-{
-  "mattaereal": {
+[
+  {
+    "slug": "mattaereal",
     "name": "matta",
+    "role": "lead",
     "avatar": "https://github.com/mattaereal.png",
     "github": "https://github.com/mattaereal",
     "twitter": "https://twitter.com/mattaereal",
     "website": "https://theredguild.org",
-    "features": ["lead"],
-    "role": "Security Knowmad",
-    "description": "Initiative lead and maintainer",
-    "company": "The Red Guild | SEAL"
+    "company": "The Red Guild | SEAL",
+    "job_title": "Security Knowmad",
+    "description": "Initiative lead and maintainer"
   },
-  "fredriksvantes": {
+  {
+    "slug": "fredriksvantes",
     "name": "Fredrik Svantes",
+    "role": "core",
     "avatar": "https://github.com/fredriksvantes.png",
     "github": "https://github.com/fredriksvantes",
     "twitter": "https://twitter.com/fredriksvantes",
     "website": "https://ethereum.org",
-    "features": ["core"],
-    "role": "Head of Security",
-    "description": "Initial contributor to the Security Frameworks",
-    "company": "Ethereum Foundation"
+    "company": "Ethereum Foundation",
+    "job_title": "Head of Security",
+    "description": "Initial contributor to the Security Frameworks"
   },
-  "zedt3ster": {
+  {
+    "slug": "zedt3ster",
     "name": "zedt3ster",
+    "role": "core",
     "avatar": "https://github.com/zedt3ster.png",
     "github": "https://github.com/zedt3ster",
     "twitter": "https://twitter.com/ethzed",
     "website": "https://sigmaprime.io",
-    "features": ["core"],
-    "role": "Director. Ethereum enthusiast ",
-    "description": "Initial contributor to the Security Frameworks",
-    "company": "Sigma Prime"
+    "company": "Sigma Prime",
+    "job_title": "Director. Ethereum enthusiast ",
+    "description": "Initial contributor to the Security Frameworks"
   },
-  "nftdreww": {
+  {
+    "slug": "nftdreww",
     "name": "NFTDreww",
+    "role": "steward",
     "avatar": "https://pbs.twimg.com/profile_images/1589726471249174536/pEqaw6FO_400x400.png",
     "github": "https://github.com/NFTDreww",
     "twitter": "https://twitter.com/nft_dreww",
-    "features": ["steward"],
-    "role": "Security Researcher",
-    "description": "Managing and curating the Community Management framework",
-    "company": "PocketUniverseZ"
+    "company": "PocketUniverseZ",
+    "job_title": "Security Researcher",
+    "description": "Managing and curating the Community Management framework"
   },
-  "robert": {
-    "name": "Robert Smith",
+  {
+    "slug": "robert",
+    "name": "Robert MacWha",
+    "role": "core",
     "avatar": "https://github.com/Robert-MacWha.png",
-    "github": "https://github.com/robert",
+    "github": "https://github.com/robert-macwha",
     "twitter": null,
     "website": "https://robert.macwha.com/",
-    "features": ["core"],
-    "role": "Full-stack developer and security enthusiast",
-    "description": "Web dev & fact checking",
-    "company": "Skylock"
+    "company": "Skylock | SEAL",
+    "job_title": "Full-stack developer and security enthusiast",
+    "description": "Web dev & fact checking"
   },
-  "tebayoso": {
+  {
+    "slug": "tebayoso",
     "name": "tebayoso",
+    "role": "contributor",
     "avatar": "https://github.com/tebayoso.png",
     "github": "https://github.com/tebayoso",
     "twitter": "https://twitter.com/tebayoso",
-    "features": ["featured"],
-    "description": "Initial implementation of tag filtering",
-    "company": "The Red Guild"
+    "company": "The Red Guild",
+    "description": "Initial implementation of tag filtering"
   },
-  "engn33r": {
+  {
+    "slug": "engn33r",
     "name": "engn33r",
+    "role": "contributor",
     "avatar": "https://github.com/engn33r.png",
     "github": "https://github.com/engn33r",
     "twitter": "https://twitter.com/bl4ckb1rd71",
-    "features": ["featured"],
     "description": "Signing best practices"
   },
-  "ghadi8": {
+  {
+    "slug": "ghadi8",
     "name": "Ghadi Mhawej",
+    "role": "steward",
     "avatar": "https://github.com/ghadi8.png",
     "github": "https://github.com/ghadi8",
-    "features": ["steward"],
     "description": "Creator and maintainer of the ENS framework",
     "company": "JustaLab",
     "website": "https://justalab.co"
   }
-}
+]
