@@ -4,9 +4,16 @@ tags:
   - Operations & Strategy
   - Devops
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
-# OpSec Fundamentals
+# OpSec Principles
 
 Operational Security (OpSec) is built upon foundational principles and processes that help organizations protect sensitive information and critical assets. This section covers the essential concepts that form the basis of an effective operational security program.
 

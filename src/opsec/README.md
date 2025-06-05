@@ -31,7 +31,7 @@ While operational security principles apply broadly, this framework addresses sp
 - Securing cryptocurrency operations and assets
 - Managing the unique insider threats in distributed teams
 - Implementing security in remote-first environments
-- Addressing the public-facing nature of blockchain transactions
+- Addressing the public-facing nature of blockchain technologies
 
 ## Using This Framework
 
