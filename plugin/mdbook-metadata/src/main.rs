@@ -47,7 +47,6 @@ fn handle_preprocessing() -> Result<(), Error> {
         Box::new(ContributorsPreprocessor::new(
             &ctx,
             "src/config/contributors.json".into(),
-            "theme/contributors".into(),
             "theme/templates".into(),
         )?),
         Box::new(TagsPreprocessor::new(
@@ -65,9 +64,7 @@ fn handle_preprocessing() -> Result<(), Error> {
 
         let frontmatter = match extract_frontmatter(chapter) {
             Some(fm) => fm,
-            None => {
-                return;
-            }
+            None => "".into(),
         };
 
         for p in &mut preprocessors {

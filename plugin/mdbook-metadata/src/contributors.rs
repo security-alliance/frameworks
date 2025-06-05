@@ -1,29 +1,32 @@
-use core::panic;
-use std::{collections::HashMap, f32::consts::E};
+use std::collections::HashMap;
 
 use anyhow::Error;
 use mdbook_metadata::{load_template, remove_indentation};
-use minijinja::Template;
 use serde::{Deserialize, Serialize};
 
-use crate::{contributors, Preprocessor};
+use crate::Preprocessor;
 
 pub struct ContributorsPreprocessor {
-    out_dir: String,
+    contributors_title: String,
     templates_dir: String,
 
     contributors: HashMap<String, Contributor>,
 
     // Maps role slugs to their display names
-    role_aliases: HashMap<String, String>,
+    role_aliases: HashMap<String, Role>,
+}
+
+#[derive(Debug, Deserialize)]
+struct Frontmatter {
+    contributors: Option<Vec<Role>>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct Contributor {
     slug: String,
     name: String,
-    features: Vec<String>,
-    role: Option<String>,
+    role: String,
+    job_title: Option<String>,
     description: Option<String>,
     company: Option<String>,
     avatar: Option<String>,
@@ -32,14 +35,17 @@ struct Contributor {
     website: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
-struct Frontmatter {
-    contributors: Option<Vec<Role>>,
+#[derive(Debug, Serialize)]
+struct ContributorGroup {
+    slug: String,
+    label: String,
+    contributors: Vec<Contributor>,
 }
 
 #[derive(Debug, Deserialize, Clone)]
 struct Role {
-    role: String,
+    label: String,
+    order: u32,
     users: Vec<String>,
 }
 
@@ -53,25 +59,51 @@ impl ContributorsPreprocessor {
     pub fn new(
         ctx: &mdbook::preprocess::PreprocessorContext,
         contributors_file: &str,
-        out_dir: &str,
         templates_dir: &str,
     ) -> Result<Self, Error> {
-        let role_aliases: HashMap<String, String> = ctx
+        let role_aliases: Vec<(String, String)> = ctx
             .config
             .get("preprocessor.contributors.role_aliases")
-            .and_then(|value| value.as_table())
-            .map(|table| {
-                table
-                    .iter()
-                    .map(|(slug, name)| {
-                        (
-                            slug.to_string(),
-                            name.as_str().unwrap_or_default().to_string(),
-                        )
+            .and_then(|v| v.as_array())
+            .map(|arr| {
+                arr.iter()
+                    .filter_map(|entry| {
+                        entry.as_array().and_then(|pair| {
+                            if pair.len() == 2 {
+                                Some((pair[0].as_str()?.to_string(), pair[1].as_str()?.to_string()))
+                            } else {
+                                None
+                            }
+                        })
                     })
                     .collect()
             })
             .unwrap_or_default();
+
+        let role_aliases: Vec<(String, Role)> = role_aliases
+            .into_iter()
+            .enumerate()
+            .map(|(i, (slug, label))| {
+                (
+                    slug.clone(),
+                    Role {
+                        label,
+                        order: i as u32,
+                        users: Vec::new(),
+                    },
+                )
+            })
+            .collect();
+
+        eprintln!("Role aliases: {:?}", role_aliases);
+
+        let role_aliases = role_aliases.into_iter().collect::<HashMap<String, Role>>();
+
+        let contributors_title = ctx
+            .config
+            .get("preprocessor.contributors.contributors_title")
+            .and_then(|value| value.as_str())
+            .ok_or(Error::msg("Missing or invalid `out_file` in book.toml"))?;
 
         let contributors: Vec<Contributor> = match std::fs::read_to_string(contributors_file) {
             Ok(content) => serde_json::from_str(&content).unwrap_or_default(),
@@ -88,7 +120,7 @@ impl ContributorsPreprocessor {
 
         return Ok(ContributorsPreprocessor {
             role_aliases,
-            out_dir: out_dir.into(),
+            contributors_title: contributors_title.into(),
             templates_dir: templates_dir.into(),
             contributors,
         });
@@ -97,6 +129,20 @@ impl ContributorsPreprocessor {
 
 impl Preprocessor for ContributorsPreprocessor {
     fn run(&mut self, frontmatter: &String, chapter: &mut mdbook::book::Chapter) {
+        // TODO: If more instances of preprocessors creating HTML pages are added,
+        // TODO: consider refactoring into a custom renderer instead.
+        if chapter.name.to_lowercase() == self.contributors_title.to_lowercase() {
+            match self.render_contributors() {
+                Ok(rendered) => {
+                    chapter.content = rendered;
+                }
+                Err(e) => {
+                    eprintln!("Error rendering contributors page: {}", e);
+                }
+            }
+            return;
+        }
+
         let frontmatter: Frontmatter = match serde_yaml::from_str(frontmatter) {
             Ok(fm) => fm,
             Err(_) => return,
@@ -115,9 +161,9 @@ impl Preprocessor for ContributorsPreprocessor {
             }
         }
     }
+
     fn finalize(&mut self) -> Result<(), anyhow::Error> {
-        // No finalization needed for contributors
-        Ok(())
+        return Ok(());
     }
 }
 
@@ -163,9 +209,9 @@ impl ContributorsPreprocessor {
                 RoleGroup {
                     label: self
                         .role_aliases
-                        .get(&role.role)
-                        .cloned()
-                        .unwrap_or(role.role),
+                        .get(&role.label)
+                        .map(|r| r.label.clone())
+                        .unwrap_or(role.label),
                     users,
                 }
             })
@@ -176,8 +222,56 @@ impl ContributorsPreprocessor {
         })?;
         let rendered = remove_indentation(&rendered);
 
-        eprintln!("Rendered contributors:\n{}", rendered);
-
         return Ok(format!("{}\n\n{}\n{}", title, rendered, body));
+    }
+
+    fn render_contributors(&self) -> Result<String, Error> {
+        // Render the main "contributors" page
+        let p = format!("{}/contributors.html", self.templates_dir);
+        let tmpl =
+            load_template(p).ok_or_else(|| Error::msg("Failed to load contributors template"))?;
+        let mut env = minijinja::Environment::new();
+        env.add_template("contributors", &tmpl)
+            .map_err(|e| Error::msg(format!("Failed to add template: {}", e)))?;
+        let tmpl = env
+            .get_template("contributors")
+            .map_err(|e| Error::msg(format!("Failed to get template: {}", e)))?;
+
+        // Construct the list of contributors
+        let mut contributor_groups: HashMap<String, ContributorGroup> = HashMap::new();
+        for (_, c) in &self.contributors {
+            let group = contributor_groups
+                .entry(c.role.clone())
+                .or_insert(ContributorGroup {
+                    slug: c.role.clone(),
+                    label: self
+                        .role_aliases
+                        .get(&c.role)
+                        .map(|r| r.label.clone())
+                        .unwrap_or(c.role.clone()),
+                    contributors: Vec::new(),
+                });
+
+            group.contributors.push(c.clone());
+        }
+
+        let mut contributor_groups = contributor_groups
+            .into_iter()
+            .map(|(_, group)| group)
+            .collect::<Vec<_>>();
+
+        // Sort based on order in role_aliases for deterministic output
+        contributor_groups.sort_by(|a, b| {
+            let a_order = self.role_aliases.get(&a.slug).map_or(u32::MAX, |r| r.order);
+            let b_order = self.role_aliases.get(&b.slug).map_or(u32::MAX, |r| r.order);
+            a_order.cmp(&b_order)
+        });
+
+        let rendered = tmpl.render(minijinja::context! {
+            contributor_groups => contributor_groups,
+        })?;
+        let rendered = remove_indentation(&rendered);
+
+        return Ok(rendered);
     }
 }
