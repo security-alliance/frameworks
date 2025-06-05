@@ -18,55 +18,18 @@
   - [Staying Informed & Continuous Learning](./awareness/staying-informed-and-continuous-learning.md)
   - [Resources & Further Reading](./awareness/resources-and-further-reading.md)
 - [Operational Security](./opsec/README.md)
-  - [Fundamentals](./opsec/fundamentals.md)  
-    - Threat Modeling overview  
-    - Core OpSec principles  
-  - [Governance & Program Management](./opsec/governance.md)  
-    - Security policies & roles  
-    - Third-party/vendor governance  
-  - [Risk Management](./opsec/risk-management.md)  
-    - Risk assessment & prioritization  
-    - Trade-off analysis  
-  - [Control Domains](./opsec/control-domains.md)
-    - [Organizational Controls](./opsec/control-domains/organizational.md)  
-      - Compliance & regulatory alignment  
-      - Supply-chain security  
-    - [People & Personnel](./opsec/control-domains/people.md)  
-      - Social-engineering defense  
-      - Insider-threat mitigation  
-      - Security training & culture  
-    - [Physical & Environmental](./opsec/control-domains/physical-environmental.md)  
-      - Secure workspace & travel security  
-      - Tamper-evidence & "evil-maid"  
-    - [Technical & Digital](./opsec/control-domains/technical.md)  
-      - Device hardening  
-      - Network & communication security  
-      - Encrypted storage & backups  
-      - Two-factor & hardware authentication  
-      - Cryptocurrency-specific controls  
-  - [Lifecycle](./opsec/lifecycle.md)
-    - [Identify Information & Assets](./opsec/lifecycle/identify.md)
-    - [Threat Modeling & Analysis](./opsec/lifecycle/threat-modeling.md)
-    - [Vulnerability Assessment](./opsec/lifecycle/vulnerability-assessment.md)
-    - [Risk Assessment & Prioritization](./opsec/lifecycle/risk-prioritization.md)
-    - [Countermeasure Selection & Implementation](./opsec/lifecycle/countermeasures.md)
-  - [Monitoring & Detection](./opsec/monitoring-detection.md)
-    - [Log Management & SIEM](./opsec/monitoring/log-management.md)
-    - [Alert Thresholds & Dashboards](./opsec/monitoring/alert-thresholds.md)
-  - [Incident Response & Recovery](./opsec/incident-response.md)
-    - [Playbooks](./opsec/incident-response/playbooks.md)
-    - [Containment, Eradication & Recovery](./opsec/incident-response/containment-recovery.md)
-  - [Continuous Improvement & Metrics](./opsec/continuous-improvement.md)
-    - [Post-Mortem & Lessons Learned](./opsec/improvement/post-mortem.md)
-    - [Security KPIs & Reporting](./opsec/improvement/security-kpis.md)
-  - [Integration & Mapping to Other Frameworks](./opsec/integration.md)
-    - [DevSecOps Integration](./opsec/integration/devsecops.md)
-    - [Privacy Framework Alignment](./opsec/integration/privacy.md)
-    - [Governance Alignment](./opsec/integration/governance.md)
-  - [Appendices](./opsec/appendices.md)
-    - [Policy & Template Library](./opsec/appendices/policies.md)
-    - [Case Studies & Exercises](./opsec/appendices/case-studies.md)
-    - [Glossary of Terms](./opsec/appendices/glossary.md)
+  - [Fundamentals]()
+    - [Core Opsec Principles](./opsec/fundamentals/core-opsec-principles.md)
+    - [Threat Modeling overview](./opsec/fundamentals/threat-modeling-overview.md)  
+  - [Governance & Program Management]()  
+  - [Risk Management]()  
+  - [Control Domains]()
+  - [Lifecycle]()
+  - [Monitoring & Detection]()
+  - [Incident Response & Recovery]()
+  - [Continuous Improvement & Metrics]()
+  - [Integration & Mapping to Other Frameworks]()
+  - [Appendices]()
 - [Wallet Security](./wallet-security/README.md)
   - [Cold vs Hot Wallet](./wallet-security/cold-vs-hot-wallet.md)
   - [Custodial vs Non-Custodial](./wallet-security/custodial-vs-non-custodial.md)
