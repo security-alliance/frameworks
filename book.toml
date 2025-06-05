@@ -60,8 +60,6 @@ role_aliases = [
 
 [output.html]
 additional-css = [
-    "./theme/catppuccin.css",
-    "./theme/catppuccin-admonish.css",
     "./mdbook-admonish.css",
     "./theme/custom.css",
     "./theme/toc/pagetoc.css",
