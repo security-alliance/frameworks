@@ -21,7 +21,6 @@ contributors:
 
 [Context / Problem statement. In this first part, we introduce the topic, in no more than a few paragraphs. For example for Threat Modeling inside Operational Security Framework: "Effective security requires understanding **what you're protecting and who you're protecting it from**. Without a structured threat model, security efforts become unfocused and inefficient. Different entities face different threats based on their assets, visibility, and technological footprint." It can be this short, or it can have more context]
 
-
 ## Practical guidance
 
 1. **Step-by-Step Actions** – numbered list users can follow.  

@@ -78,4 +78,4 @@ In Web3 environments, governance and program management must address unique chal
 4. Create transparent security reporting channels that align with community values
 5. Establish clear incident response protocols that consider the public nature of blockchain activities
 
-Effective governance and program management provide the structure needed to implement operational security measures consistently across your organization, adapting traditional approaches to the unique challenges of Web3 environments. 
+Effective governance and program management provide the structure needed to implement operational security measures consistently across your organization, adapting traditional approaches to the unique challenges of Web3 environments.

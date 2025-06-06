@@ -13,7 +13,7 @@ contributors:
     users: []
 ---
 
-# OpSec Principles
+# Principles & Concepts Overview
 
 Operational Security (OpSec) is built upon foundational principles and processes that help organizations protect sensitive information and critical assets. This section covers the essential concepts that form the basis of an effective operational security program.
 
@@ -29,43 +29,23 @@ Operational Security is a process that:
 
 The goal is to prevent adversaries from gaining access to information that could be harmful if disclosed or compromised.
 
-## Threat Modeling Overview
-
-Threat modeling is a structured approach to identifying, assessing, and mitigating security threats. It involves:
-
-- Identifying assets that need protection
-- Mapping out potential attack vectors
-- Analyzing potential threat actors and their capabilities
-- Determining the likelihood and impact of various threats
-- Developing strategies to address identified threats
-
-Effective threat modeling requires a comprehensive understanding of your systems, data flows, and potential adversaries.
-
-## Core OpSec Principles
+## Core Principles
 
 The following principles form the foundation of operational security:
 
 - **Defense in Depth**: Implementing multiple layers of security controls so that if one fails, others will provide protection.
-
 - **Principle of Least Privilege**: Granting users, systems, and processes only the minimum access rights necessary to perform their functions.
-
 - **Need-to-Know Basis**: Restricting information access to only those who require it to perform their duties.
-
 - **Compartmentalization**: Dividing information and systems into isolated segments to limit the impact of a breach.
-
 - **Continuous Monitoring and Improvement**: Regularly assessing security measures and adapting to evolving threats and vulnerabilities.
 
 ## The Five Steps of the OpSec Process
 
-**1. Identification of Critical Information**: Determine what information, if obtained by adversaries, could harm your organization or operations.
-
-**2. Threat Analysis**: Identify potential adversaries, their capabilities, and their interest in your critical information.
-
-**3. Vulnerability Assessment**: Analyze how your critical information might be exposed through vulnerabilities in your systems, processes, or personnel.
-
-**4. Risk Assessment**: Evaluate the likelihood and potential impact of various threats exploiting identified vulnerabilities.
-
-**5. Countermeasure Implementation**: Develop and deploy security controls to mitigate identified risks, considering cost, effectiveness, and operational impact.
+1. **Identification of Critical nformation**: Determine what information, if obtained by adversaries, could harm your organization or operations.
+2. **Threat Analysis**: Identify potential adversaries, their capabilities, and their interest in your critical information.
+3. **Vulnerability Assessment**: Analyze how your critical information might be exposed through vulnerabilities in your systems, processes, or personnel.
+4. **Risk Assessment**: Evaluate the likelihood and potential impact of various threats exploiting identified vulnerabilities.
+5. **Countermeasure Implementation**: Develop and deploy security controls to mitigate identified risks, considering cost, effectiveness, and operational impact.
 
 ## Web3-Specific Considerations
 

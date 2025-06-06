@@ -4,11 +4,18 @@ tags:
   - Operations & Strategy
   - Devops
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
-# Core OpSec Principles
+# Operational Security Principles
 
-Operational security is built on fundamental principles that guide the implementation of security controls and practices. These principles provide a foundation for developing a comprehensive security posture that protects your organization's assets, operations, and reputation.
+The goal is to prevent adversaries from gaining access to information that could be harmful if disclosed or compromised.
 
 > **Practical Example: Web3 Organization**
 >
@@ -19,7 +26,7 @@ Operational security is built on fundamental principles that guide the implement
 > - **Compartmentalized information**: Private keys for multi-signature wallets are distributed among trusted team members with no single person having access to all keys, and sensitive incident response procedures are only shared with the security team
 > - **Regular threat assessment**: The team conducts quarterly reviews of potential attack vectors, from smart contract vulnerabilities to [social engineering](../awareness/social-engineering.md) attempts targeting team members
 
-## Defense in Depth
+## 1. Defense in Depth
 
 Defense in Depth is the practice of layering security controls throughout your systems and processes, so that if one control fails, others will provide protection.
 
@@ -33,7 +40,7 @@ Defense in Depth is the practice of layering security controls throughout your s
 4. Review the effectiveness of security layers regularly to identify gaps
 5. Foster a [security-aware mindset](../awareness/cultivating-a-security-aware-mindset.md) across all team members
 
-## Principle of Least Privilege
+## 2. Principle of Least Privilege
 
 The Principle of Least Privilege dictates that users, systems, and processes should have only the minimum access rights necessary to perform their functions.
 
@@ -49,7 +56,7 @@ The Principle of Least Privilege dictates that users, systems, and processes sho
 6. Establish a thorough offboarding process to immediately revoke access when team members leave
 7. Remove credentials for deactivated accounts, as these can become security liabilities even when dormant
 
-## Need-to-Know Basis
+## 3. Need-to-Know Basis
 
 Information should only be shared with individuals who require that information to perform their duties.
 
@@ -63,36 +70,19 @@ Information should only be shared with individuals who require that information 
 4. Train team members on proper handling and sharing of sensitive information through regular [security training](../awareness/security-training.md)
 5. Use secure communication channels for sensitive information
 
-## Threat Modeling for OpSec
+## 4. Compartmentalization
 
-Threat modeling involves systematically identifying potential threats, vulnerabilities, and attack vectors to prioritize security controls.
-
-> **🔗 Related Framework:** For detailed methodology and implementation, see the [Threat Modeling](../threat-modeling/) framework, including guides on how to [Create and Maintain Threat Models](../threat-modeling/create-maintain-threat-models.md) and [Identify and Mitigate Threats](../threat-modeling/identity-mitigate-threats.md).
+Dividing information and systems into isolated segments to limit the impact of a breach.
 
 ### Implementation
 
-1. Identify critical assets and operations that need protection
-2. Enumerate potential threats and their impact on your organization
-3. Assess vulnerabilities that could be exploited
-4. Evaluate existing controls and their effectiveness
-5. Develop a prioritized plan to address identified risks
-6. Maintain awareness of common [threat vectors](../awareness/understanding-threat-vectors.md) relevant to your organization
+1. Segment networks and systems based on functionality and sensitivity
+2. Isolate critical assets from general-purpose systems
+3. Separate development, testing, and production environments
+4. Use separate accounts and access methods for different security domains
+5. Implement firewalls and access controls between segments
 
-## Risk Assessment and Management
-
-Systematic evaluation and prioritization of security risks to guide resource allocation and security decision-making.
-
-> **🔗 Related Framework:** For comprehensive risk management strategies, refer to [Governance](../governance/) and [Risk Management](../governance/risk-management.md).
-
-### Implementation
-
-1. Identify and categorize assets based on their value and criticality
-2. Assess threats and vulnerabilities relevant to those assets
-3. Determine the likelihood and potential impact of security incidents
-4. Implement controls based on risk levels
-5. Regularly reassess risks as the environment and threats evolve
-
-## Continuous Monitoring and Improvement
+## 5. Continuous Monitoring and Improvement
 
 Security is not a one-time implementation but a continuous process of monitoring, evaluating, and improving.
 
@@ -107,42 +97,3 @@ Security is not a one-time implementation but a continuous process of monitoring
 5. Update security controls based on new threats, vulnerabilities, and technologies
 6. Ensure team members are [staying informed and continuously learning](../awareness/staying-informed-and-continuous-learning.md) about evolving security threats
 7. Utilize available [security resources](../awareness/resources-and-further-reading.md) to keep your security practices current
-
-## Web3-Specific OpSec Principles
-
-In addition to traditional OpSec principles, Web3 environments require consideration of:
-
-> **🔗 Related Framework:** Explore the dedicated [Web3-Specific OpSec](../operational-security/web3-specific-opsec/) framework for comprehensive guidance.
-
-### Transparency vs. Privacy
-
-Balancing the transparent nature of blockchain with the need for operational privacy.
-
-### Implementation
-
-1. Understand what information is publicly visible on-chain
-2. Develop strategies to maintain operational privacy while utilizing public blockchains
-3. Use privacy-enhancing technologies where appropriate
-
-### Immutability and Finality
-
-Recognizing that blockchain transactions are generally irreversible, requiring heightened security before execution.
-
-### Implementation
-
-1. Implement robust verification procedures before executing transactions
-2. Use multi-signature requirements for high-value transactions
-3. Deploy transaction simulation tools to verify outcomes before execution
-
-### Self-Custody Responsibility
-
-> **🔗 Related Framework:** For detailed guidance on wallet security practices, see the [Wallet Security](../wallet-security/) framework.
-
-### Implementation
-
-1. Develop clear procedures for wallet security
-2. Implement separation of duties for transaction approval
-3. Balance security with operational efficiency
-4. [Stay up-to-date](../awareness/staying-up-to-date.md) with best practices in wallet security and custody solutions
-
-By adhering to these core principles, organizations can build a strong foundation for operational security that addresses both traditional and Web3-specific security challenges.
