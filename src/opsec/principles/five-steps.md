@@ -13,6 +13,10 @@ contributors:
 
 # The Five Steps of the OpSec Process
 
+> 🔑 **Key Takeaway**: OpSec is built on five critical steps: identifying what needs protection, analyzing potential threats, assessing vulnerabilities, evaluating risks, and implementing appropriate countermeasures.
+
+If we were to summarize the most crucial and important steps of Operational Security, whether it is for an individual or an organization, we would do as follows. These are not step-by-steps, but can serve as a kick-off process to be further improved after its first iteration.
+
 ## 1. Identification of Critical Information
 
 Determine what information, if obtained by adversaries, could harm your organization or operations.
@@ -45,7 +49,7 @@ Identify potential adversaries, their capabilities, and their interest in your c
 
 Analyze how your critical information might be exposed through vulnerabilities in your systems, processes, or personnel.
 
-> **🔗 Related Framework:** This connects with [Security Testing](../security-testing/) framework, including [Static Application Security Testing](../security-testing/static-application-security-testing.md) and [Dynamic Application Security Testing](../security-testing/dynamic-application-security-testing.md).
+> **🔗 Related Framework:** This connects with [Security Testing](../security-testing/) framework, including [Static Application Security Testing](../security-testing/static-application-security-testing.md), [Dynamic Application Security Testing](../security-testing/dynamic-application-security-testing.md), and vulnerability management practices.
 
 ### Implementation
 
@@ -82,38 +86,3 @@ Develop and deploy security controls to mitigate identified risks, considering c
 3. Test controls to ensure they function as intended
 4. Document procedures for maintaining and updating controls
 5. Train personnel on new security measures and their importance
-
-Threat modeling is a structured approach to identifying, assessing, and mitigating security threats. It involves:
-
-- Identifying assets that need protection
-- Mapping out potential attack vectors
-- Analyzing potential threat actors and their capabilities
-- Determining the likelihood and impact of various threats
-- Developing strategies to address identified threats
-
-> **🔗 Related Framework:** For detailed methodology and implementation, see the [Threat Modeling](../threat-modeling/) framework, including guides on how to [Create and Maintain Threat Models](../threat-modeling/create-maintain-threat-models.md) and [Identify and Mitigate Threats](../threat-modeling/identity-mitigate-threats.md).
-
-### Implementation
-
-1. Identify critical assets and operations that need protection
-2. Enumerate potential threats and their impact on your organization
-3. Assess vulnerabilities that could be exploited
-4. Evaluate existing controls and their effectiveness
-5. Develop a prioritized plan to address identified risks
-6. Maintain awareness of common [threat vectors](../awareness/understanding-threat-vectors.md) relevant to your organization
-
-Effective threat modeling requires a comprehensive understanding of your systems, data flows, and potential adversaries.
-
-## 3. Risk Assessment and Management
-
-Systematic evaluation and prioritization of security risks to guide resource allocation and security decision-making.
-
-> **🔗 Related Framework:** For comprehensive risk management strategies, refer to [Governance](../governance/) and [Risk Management](../governance/risk-management.md).
-
-### Implementation
-
-1. Identify and categorize assets based on their value and criticality
-2. Assess threats and vulnerabilities relevant to those assets
-3. Determine the likelihood and potential impact of security incidents
-4. Implement controls based on risk levels
-5. Regularly reassess risks as the environment and threats evolve

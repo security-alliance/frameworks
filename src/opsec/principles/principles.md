@@ -15,6 +15,8 @@ contributors:
 
 # Operational Security Principles
 
+> 🔑 **Key Takeaway**: Effective OpSec relies on five core principles: layered defenses, minimal access rights, need-to-know information sharing, system compartmentalization, and continuous monitoring—all working together to protect sensitive information from adversaries.
+
 The goal is to prevent adversaries from gaining access to information that could be harmful if disclosed or compromised.
 
 > **Practical Example: Web3 Organization**

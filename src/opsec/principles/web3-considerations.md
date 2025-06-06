@@ -13,9 +13,11 @@ contributors:
 
 # Web3-Specific OpSec Considerations
 
-In addition to traditional OpSec principles, Web3 environments require consideration of unique challenges:
+> 🔑 **Key Takeaway**: Web3 environments require specialized security approaches that balance blockchain transparency with privacy, address immutability risks, manage self-custody responsibilities, secure decentralized operations, mitigate smart contract vulnerabilities, and navigate community-driven security challenges.
 
-> **🔗 Related Framework:** Explore the dedicated [Web3-Specific OpSec](../operational-security/web3-specific-opsec/) framework for comprehensive guidance.
+In addition to traditional OpSec principles, Web3 environments require consideration of unique challenges. Many organizations claim to be backed only by descentralized technologies, but they later realize that part of their process is dependant on technologies that are not.
+
+<!-- > **🔗 Related Framework:** Explore the dedicated [Web3-Specific OpSec](../operational-security/web3-specific-opsec/) framework for comprehensive guidance. -->
 
 ## Transparency vs. Privacy
 

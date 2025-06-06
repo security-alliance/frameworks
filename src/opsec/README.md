@@ -31,18 +31,8 @@ This framework is organized into several interconnected components:
 8. [Lifecycle](./lifecycle.md): The continuous process of implementing and maintaining security measures
 9. [Continuous Improvement](./continuous-improvement-metrics.md): Learning from incidents and evolving security practices
 
-## Web3 Relevance
-
-While operational security principles apply broadly, this framework addresses specific considerations for Web3 organizations, including:
-
-- Balancing decentralization with security controls
-- Securing cryptocurrency operations and assets
-- Managing the unique insider threats in distributed teams
-- Implementing security in remote-first environments
-- Addressing the public-facing nature of blockchain technologies
-
 ## Using This Framework
 
 Organizations should adapt this framework to their specific needs, considering their size, resources, and risk profile. Start with the fundamentals and gradually implement more advanced controls as your security program matures.
 
-The guidance provided here is designed to be practical and actionable, with specific recommendations that can be implemented by Web3 teams of all sizes. 
+The guidance provided here is designed to be practical and actionable, with specific recommendations that can be implemented by Web3 teams of all sizes.

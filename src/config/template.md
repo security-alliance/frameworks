@@ -17,7 +17,7 @@ contributors:
 # {{ Title of this Page }}
 
 
-> 🔑 **Key Takeaway**: [When the contents for the entire page are defined, here describe in a succint way (no more than 400 words), all the key points or tl;dr so that anyone can get a good grasp of the contents just by reading it]
+Key Takeaway prompt: Without removing or modifying anything in the document, just after the heading, describe in a succint way (no more than 40 words), all the key points or tl;dr so that anyone can get a good grasp of the contents just by reading it. Don't add unnecessary sentences that sound like conclusions, like "By ensuring this..." "Doing all these...", "Having these security practinces...". Use the following format > 🔑 **Key Takeaway**: 
 
 [Context / Problem statement. In this first part, we introduce the topic, in no more than a few paragraphs. For example for Threat Modeling inside Operational Security Framework: "Effective security requires understanding **what you're protecting and who you're protecting it from**. Without a structured threat model, security efforts become unfocused and inefficient. Different entities face different threats based on their assets, visibility, and technological footprint." It can be this short, or it can have more context]
 
