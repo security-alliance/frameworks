@@ -26,7 +26,7 @@ The goal is to prevent adversaries from gaining access to information that could
 > - **Multiple security layers**: Hardware wallets for cold storage, multi-signature requirements for transactions, regular security audits, and continuous monitoring
 > - **Access control**: Only specific team members have access to deployment keys, with different permission levels for development, testing, and production environments
 > - **Compartmentalized information**: Private keys for multi-signature wallets are distributed among trusted team members with no single person having access to all keys, and sensitive incident response procedures are only shared with the security team
-> - **Regular threat assessment**: The team conducts quarterly reviews of potential attack vectors, from smart contract vulnerabilities to [social engineering](../awareness/social-engineering.md) attempts targeting team members
+> - **Regular threat assessment**: The team conducts quarterly reviews of potential attack vectors, from smart contract vulnerabilities to [social engineering](../../awareness/understanding-threat-vectors.md) attempts targeting team members
 
 ## 1. Defense in Depth
 
