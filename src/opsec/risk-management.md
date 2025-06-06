@@ -85,7 +85,7 @@ In Web3 environments, risk management must address unique challenges:
 | **Smart Contract Vulnerabilities** | Immutable code with potential security flaws |
 | **Private Key Management** | Securing cryptographic keys that control assets |
 | **Decentralized Governance** | Distributed decision-making for security matters |
-| **Protocol Interdependencies** | Risks from connected protocols and services |
+| **Protocol Inter-dependencies** | Risks from connected protocols and services |
 | **Regulatory Uncertainty** | Evolving legal landscape for blockchain technologies |
 
 ### Best Practices for Web3 Organizations
