@@ -1,3 +1,16 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
 # The Five Steps of the OpSec Process
 
 ## 1. Identification of Critical Information

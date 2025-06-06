@@ -1,3 +1,16 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
 # Web3-Specific OpSec Considerations
 
 In addition to traditional OpSec principles, Web3 environments require consideration of unique challenges:
