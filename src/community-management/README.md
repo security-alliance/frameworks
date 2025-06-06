@@ -20,7 +20,7 @@ Here, we present essential best practices to safeguard your community. In the fo
 
 ### Strong Passwords and Two-Factor Authentication (2FA)
 
-- Use unique, complex passwords for each service and store them securely in a reputable password manager. Refer to the [**Operational Security Framework**](../operational-security/README.md) and [**Key Management Framework**](../key-management/README.md) for more information on this.
+- Use unique, complex passwords for each service and store them securely in a reputable password manager. Refer to the [**Operational Security Framework**](../operational-security/README.md) and [**Wallet Security Framework**](../wallet-security/README.md) for more information on this.
 - Secure the email account linked to your community platforms with a unique password and 2FA.
 - Always enable 2FA. Prefer hardware-based tokens (e.g., Yubikey) or mobile authenticator apps over SMS-based methods, which are vulnerable to SIM-swapping.
 - If you use an authenticator app like Authy, 1Password, or Aegis to generate time-based one-time passwords (TOTP). Ensure that the secret keys are stored encrypted and protected with robust security measures.
