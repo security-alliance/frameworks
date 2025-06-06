@@ -4,43 +4,52 @@ tags:
   - Operations & Strategy
   - Devops
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 # Risk Management
 
-Effective risk management is the cornerstone of operational security. This section outlines how to identify, assess, prioritize, and mitigate security risks in your organization.
+> 🔑 **Key takeaway**: Risk management transforms threat information into actionable priorities. It helps you determine which threats matter most, where to allocate resources, and how to make security trade-offs that align with business goals.
 
-## Risk Assessment & Prioritization
+Effective risk management builds upon threat modeling to assess, prioritize, and mitigate identified security risks. While threat modeling identifies what needs protection and potential attack vectors, risk management determines which threats warrant immediate attention and resources.
 
-Risk assessment involves systematically identifying threats, vulnerabilities, and their potential impact on your organization's assets and operations.
+## Risk Assessment Process
+
+<!-- ![Risk Management Process](../assets/risk-management-process.png) -->
+
+> **🔗 Related Framework:** This process builds directly on outputs from [Threat Modeling](../threat-modeling-overview.md).
 
 ### Key Components
 
-1. **Asset Identification**: Cataloging and classifying all assets (information, systems, personnel, etc.)
-2. **Threat Identification**: Determining potential threats to those assets
-3. **Vulnerability Assessment**: Identifying weaknesses that could be exploited
-4. **Impact Analysis**: Estimating the potential consequences of a security incident
-5. **Likelihood Determination**: Assessing the probability of a threat exploiting a vulnerability
-6. **Risk Calculation**: Combining impact and likelihood to determine risk levels
+1. **Impact Analysis**: Estimating the potential consequences of a security incident
+2. **Likelihood Determination**: Assessing the probability of a threat exploiting a vulnerability
+3. **Risk Calculation**: Combining impact and likelihood to determine risk levels
+4. **Risk Prioritization**: Determining which risks to address first
 
 ### Implementation Steps
 
-1. Create and maintain an inventory of critical assets
-2. Identify threats relevant to your organization and industry
-3. Conduct regular vulnerability assessments and penetration tests
-4. Assign impact ratings based on financial, operational, and reputational factors
-5. Determine likelihood based on threat intelligence and historical data
-6. Calculate risk scores to prioritize mitigation efforts
+1. For each threat scenario identified in threat modeling, assign impact ratings based on financial, operational, and reputational factors
+2. Determine likelihood based on threat intelligence and historical data
+3. Calculate risk scores (typically Risk = Impact × Likelihood)
+4. Prioritize risks based on scores and organizational context
 
 ### Prioritization Methodology
 
 Not all risks require the same level of attention. Prioritize based on:
 
-1. **Risk Level**: Focus on high and critical risks first
-2. **Asset Value**: Prioritize risks to your most valuable assets
-3. **Mitigation Feasibility**: Consider how easily and cost-effectively a risk can be addressed
-4. **Regulatory Requirements**: Address risks with compliance implications
-5. **Strategic Alignment**: Focus on risks that align with strategic security initiatives
+| Factor | Description |
+|--------|-------------|
+| **Risk Level** | Focus on high and critical risks first |
+| **Asset Value** | Prioritize risks to your most valuable assets |
+| **Mitigation Feasibility** | Consider how easily and cost-effectively a risk can be addressed |
+| **Regulatory Requirements** | Address risks with compliance implications |
+| **Strategic Alignment** | Focus on risks that align with strategic security initiatives |
 
 ## Trade-off Analysis
 
@@ -48,19 +57,13 @@ Security decisions often involve trade-offs between security, usability, cost, a
 
 ### Key Considerations
 
-1. **Security vs. Usability**: More security controls often mean less convenience
-2. **Cost vs. Risk Reduction**: Security measures must be cost-effective
-3. **Speed vs. Security**: Fast implementation may compromise security
-4. **Centralization vs. Decentralization**: Control vs. resilience
-5. **Transparency vs. Security**: Open information vs. operational secrecy
-
-### Implementation Steps
-
-1. Clearly define the decision criteria (security benefit, cost, user impact, etc.)
-2. Identify and evaluate alternatives based on these criteria
-3. Consider both quantitative factors (costs, probabilities) and qualitative factors (user experience, reputation)
-4. Engage stakeholders to understand their perspectives and requirements
-5. Document the analysis and decision-making process for future reference
+| Trade-off | Description |
+|-----------|-------------|
+| **Security vs. Usability** | More security controls often mean less convenience |
+| **Cost vs. Risk Reduction** | Security measures must be cost-effective |
+| **Speed vs. Security** | Fast implementation may compromise security |
+| **Centralization vs. Decentralization** | Control vs. resilience |
+| **Transparency vs. Security** | Open information vs. operational secrecy |
 
 ### Decision-Making Framework
 
@@ -77,19 +80,78 @@ In Web3 environments, risk management must address unique challenges:
 
 ### Unique Risk Factors
 
-1. **Smart Contract Vulnerabilities**: Immutable code with potential security flaws
-2. **Private Key Management**: Securing cryptographic keys that control assets
-3. **Decentralized Governance**: Distributed decision-making for security matters
-4. **Protocol Interdependencies**: Risks from connected protocols and services
-5. **Regulatory Uncertainty**: Evolving legal landscape for blockchain technologies
+| Risk Factor | Description |
+|-------------|-------------|
+| **Smart Contract Vulnerabilities** | Immutable code with potential security flaws |
+| **Private Key Management** | Securing cryptographic keys that control assets |
+| **Decentralized Governance** | Distributed decision-making for security matters |
+| **Protocol Interdependencies** | Risks from connected protocols and services |
+| **Regulatory Uncertainty** | Evolving legal landscape for blockchain technologies |
 
 ### Best Practices for Web3 Organizations
 
-1. Implement robust key management practices and consider multi-signature approaches
-2. Conduct thorough code audits and formal verification of smart contracts
-3. Develop incident response plans specific to cryptocurrency-related incidents
-4. Establish clear security governance, even in decentralized structures
-5. Monitor the security posture of connected protocols and dependencies
-6. Stay informed about regulatory developments across relevant jurisdictions
+| Practice | Implementation | Primary Risk Addressed |
+|----------|----------------|------------------------|
+| **Key Management** | Implement multi-signature wallets, hardware security, and key rotation procedures | Private key compromise |
+| **Smart Contract Security** | Conduct thorough code audits, formal verification, and staged deployments | Contract vulnerabilities |
+| **Incident Response** | Develop cryptocurrency-specific incident plans with predefined actions | All attack vectors |
+| **Security Governance** | Establish clear security roles even in decentralized organizations | Governance gaps |
+| **Dependency Monitoring** | Regularly audit connected protocols and dependencies | Supply chain attacks |
+| **Regulatory Compliance** | Stay informed about evolving regulations across jurisdictions | Legal/regulatory risks |
 
-Effective risk management enables organizations to allocate security resources efficiently, focusing on the most significant risks while making informed trade-offs between competing priorities. In the Web3 space, this approach must be adapted to address the unique challenges and risk profiles of blockchain-based operations. 
+Effective risk management enables organizations to allocate security resources efficiently, focusing on the most significant risks while making informed trade-offs between competing priorities. In the Web3 space, this approach must be adapted to address the unique challenges and risk profiles of blockchain-based operations.
+
+<details>
+<summary><strong>Example: Risk Assessment for Pinnipeds Inc.</strong></summary>
+
+### Pinnipeds Inc. Risk Assessment
+
+Building on the threat vectors identified during threat modeling, Pinnipeds Inc. conducted a risk assessment:
+
+#### Risk Calculation Methodology
+
+| Rating | Impact | Likelihood |
+|--------|--------|------------|
+| **1** | Minimal | Rare |
+| **2** | Minor | Unlikely |
+| **3** | Moderate | Possible |
+| **4** | Major | Likely |
+| **5** | Severe | Almost Certain |
+
+**Formula: Risk Score = Impact × Likelihood**
+
+#### High Risk Threats (Score 15-25)
+
+| Threat Scenario | Likelihood | Impact | Risk Score | Reasoning |
+|-----------------|------------|--------|------------|-----------|
+| Treasury wallet compromise | 4 | 5 | 20 | High impact due to direct financial loss; relatively high likelihood given frequency of attacks on crypto companies |
+| Source code theft | 3 | 5 | 15 | High impact due to IP loss and potential backdoor insertion; medium likelihood based on industry intelligence |
+| Phishing of employees | 5 | 3 | 15 | Medium impact as most employees have limited access; very high likelihood based on attack trends |
+
+#### Medium Risk Threats (Score 8-14)
+
+| Threat Scenario | Likelihood | Impact | Risk Score | Reasoning |
+|-----------------|------------|--------|------------|-----------|
+| Client data breach | 3 | 4 | 12 | Major impact to reputation; moderate likelihood based on API exposure |
+| DDoS on infrastructure | 4 | 3 | 12 | Moderate impact on operations; likely to occur given industry trends |
+| AWS credentials leaked | 2 | 5 | 10 | Severe impact if exploited; unlikely due to current controls |
+
+#### Mitigation Decision Process
+
+| Factor | Approach |
+|--------|----------|
+| **Resource allocation** | 60% of security budget allocated to high-risk threats |
+| **Implementation timeline** | High-risk mitigations scheduled for completion within 30 days |
+| **Control selection criteria** | Controls evaluated based on cost, operational impact, effectiveness, and implementation time |
+
+This risk-based approach allowed Pinnipeds Inc. to make informed decisions about which security controls to implement first, focusing resources where they would have the greatest risk-reduction impact.
+
+</details>
+
+## Further Reading & Tools
+
+- [NIST Risk Management Framework](https://csrc.nist.gov/projects/risk-management)
+- [ISO 31000:2018 Risk Management Guidelines](https://www.iso.org/standard/65694.html)
+- [FAIR (Factor Analysis of Information Risk) Framework](https://www.fairinstitute.org/)
+- [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology)
+- Tools: SimpleRisk, RiskLens, IriusRisk

@@ -17,9 +17,9 @@ contributors:
 
 Effective security requires understanding **what you're protecting and who you're protecting it from**. Without a structured threat model, security efforts become unfocused and inefficient. Different entities face different threats based on their assets, visibility, and technological footprint.
 
-> **🔗 Related Framework:** For detailed approaches, see [Understanding Threat Vectors](../awareness/understanding-threat-vectors.md) and [Threat Modeling](../threat-modeling/) frameworks.
-
 ## Practical guidance
+
+> **🔗 Related Framework:** For detailed approaches, see [Understanding Threat Vectors](../awareness/understanding-threat-vectors.md) and [Threat Modeling](../threat-modeling/) frameworks.
 
 ### Asset inventory
 
@@ -34,61 +34,20 @@ Effective security requires understanding **what you're protecting and who you'r
 6. **Legal & compliance assets**: Identify digital certificates, identity documents, contracts, and regulatory compliance documentation
 
 <details>
-<summary><strong>Example: Pinnipeds Inc.</strong></summary>
+<summary><strong>Example: Pinnipeds Inc. asset inventory</strong></summary>
+
+### Pinnipeds Inc. Asset Inventory
+
 Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized their assets:
 
-**Digital value stores**:
-
-- Company treasury holding 5 BTC and 50 ETH for operations
-- Client tokens held in custody during project development
-- Test tokens on various testnets for development purposes
-
-**Credentials & access information**:
-
-- Multi-signature wallet configuration (3-of-5 signers)
-- Password manager company accounts for all employees
-- Recovery seed phrases (stored separately from devices)
-- SSH keys for server access
-- API keys for third-party services
-
-**Hardware & physical devices**:
-
-- **Computing devices**:
-  - 15 developer laptops with encrypted drives
-  - 5 company mobile phones for executives
-  - 2 physical servers for internal development
-- **Security hardware**:
-  - Hardware wallets for each founding member (3)
-  - YubiKeys for all developers for GitHub access
-  - Biometric access readers
-- **Physical security**:
-  - Office security system with cameras
-  - Card readers for building access
-  - Secure storage for sensitive documents
-
-**Infrastructure & systems**:
-
-- AWS cloud infrastructure for production environments
-- GitHub organization with private repositories
-- CI/CD pipeline tools (Jenkins, GitHub Actions)
-- Company VPN for remote work
-- Slack and Discord for internal and client communications
-
-**Sensitive information & intellectual property**:
-
-- Custom smart contract code for clients
-- Internal research on blockchain optimization
-- Client database with contact and project information
-- Financial records and business strategy documents
-- Employee personal information
-
-**Legal & compliance assets**:
-
-- Company incorporation documents
-- Client contracts and NDAs
-- Regulatory compliance documentation for different jurisdictions
-- SSL certificates for company websites
-- Code audit reports and security assessments
+| Asset Category | Items |
+|----------------|-------|
+| **Digital value stores** | • Company treasury holding 5 BTC and 50 ETH for operations<br>• Client tokens held in custody during project development<br>• Test tokens on various testnets for development purposes |
+| **Credentials & access information** | • Multi-signature wallet configuration (3-of-5 signers)<br>• Password manager company accounts for all employees<br>• Recovery seed phrases (stored separately from devices)<br>• SSH keys for server access<br>• API keys for third-party services |
+| **Hardware & physical devices** | **Computing devices:**<br>• 15 developer laptops with encrypted drives<br>• 5 company mobile phones for executives<br>• 2 physical servers for internal development<br><br>**Security hardware:**<br>• Hardware wallets for each founding member (3)<br>• YubiKeys for all developers for GitHub access<br>• Biometric access readers<br><br>**Physical security:**<br>• Office security system with cameras<br>• Card readers for building access<br>• Secure storage for sensitive documents |
+| **Infrastructure & systems** | • AWS cloud infrastructure for production environments<br>• GitHub organization with private repositories<br>• CI/CD pipeline tools (Jenkins, GitHub Actions)<br>• Company VPN for remote work<br>• Slack and Discord for internal and client communications |
+| **Sensitive information & IP** | • Custom smart contract code for clients<br>• Internal research on blockchain optimization<br>• Client database with contact and project information<br>• Financial records and business strategy documents<br>• Employee personal information |
+| **Legal & compliance assets** | • Company incorporation documents<br>• Client contracts and NDAs<br>• Regulatory compliance documentation for different jurisdictions<br>• SSL certificates for company websites<br>• Code audit reports and security assessments |
 
 </details>
 
@@ -104,93 +63,59 @@ Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized
    - Persistence level (hit-and-run vs. long-term compromise)
   
 <details>
-<summary><strong>Example: Analysis of adversaries targeting a Pinniped Inc.</strong></summary>
+<summary><strong>Example: Analysis of adversaries targeting Pinnipeds Inc.</strong></summary>
 
-**Tier 1 (Opportunistic attackers)**:
+### Pinnipeds Inc. Adversary Analysis
 
-- **Who**: Individual hackers, script kiddies, automated scanners/bots
-- **Motivations**: Quick financial gain, building reputation, opportunistic theft
-- **Capabilities**: Using public exploits, basic phishing, automated scanning tools
-- **Targets**: Public-facing infrastructure, employee email accounts, known vulnerabilities
-- **Examples**: Crypto wallet draining scams, generic phishing campaigns, website defacement
-
-**Tier 2 (Targeted attackers)**:
-
-- **Who**: Organized criminal groups, competitors, disgruntled former employees
-- **Motivations**: Financial theft, competitive advantage, sabotage, revenge
-- **Capabilities**: Custom malware, spear phishing, social engineering, persistent attacks
-- **Targets**: Company treasury wallets, intellectual property, client data, employee credentials
-- **Examples**: Targeted social engineering of specific developers, custom exploits for your systems
-
-**Tier 3 (Advanced persistent threats)**:
-
-- **Who**: Nation-state actors, sophisticated criminal syndicates, APT groups
-- **Motivations**: Strategic intelligence, large-scale financial theft, disruption
-- **Capabilities**: Zero-day exploits, supply chain attacks, long-term persistence, stealth techniques
-- **Targets**: Crypto treasury, proprietary algorithms, strategic business information, infrastructure access
-- **Examples**: Lazarus Group's systematic targeting of cryptocurrency organizations, supply chain compromises
+| Adversary Tier | Characteristics | Examples & Techniques |
+|----------------|-----------------|------------------------|
+| **Tier 1 (Opportunistic)** | **Who**: Individual hackers, script kiddies, automated scanners/bots<br>**Motivations**: Quick financial gain, building reputation, opportunistic theft<br>**Capabilities**: Using public exploits, basic phishing, automated scanning tools<br>**Targets**: Public-facing infrastructure, employee email accounts, known vulnerabilities | • Crypto wallet draining scams<br>• Generic phishing campaigns<br>• Website defacement<br>• Automated vulnerability scanning |
+| **Tier 2 (Targeted)** | **Who**: Organized criminal groups, competitors, disgruntled former employees<br>**Motivations**: Financial theft, competitive advantage, sabotage, revenge<br>**Capabilities**: Custom malware, spear phishing, social engineering, persistent attacks<br>**Targets**: Company treasury wallets, intellectual property, client data, employee credentials | • Targeted social engineering of specific developers<br>• Custom exploits for Pinnipeds' systems<br>• Extended reconnaissance operations<br>• Sophisticated phishing campaigns |
+| **Tier 3 (Advanced)** | **Who**: Nation-state actors, sophisticated criminal syndicates, APT groups<br>**Motivations**: Strategic intelligence, large-scale financial theft, disruption<br>**Capabilities**: Zero-day exploits, supply chain attacks, long-term persistence, stealth techniques<br>**Targets**: Crypto treasury, proprietary algorithms, strategic business information, infrastructure access | • Lazarus Group's systematic targeting of cryptocurrency organizations<br>• Supply chain compromises<br>• Advanced persistent threats with long dwell times<br>• Multi-stage attack campaigns |
 
 </details>
 
-### Risk assessment and mitigation
+### Attack vector mapping
 
 1. **Map potential attack vectors**:
    - Technical: Zero-day exploits, vulnerability exploitation, network attacks
    - Social: Phishing, social engineering, insider threats
    - Physical: Device theft, office intrusion, hardware tampering
    - Operational: SIM swapping, supply chain compromise, third-party breaches
-2. **Prioritize scenarios using risk calculation**: Risk = Likelihood × Impact
-3. **Implement proportional defenses**:
-   - High-value targets: Deploy defense-in-depth strategies
-   - Common user assets: Protect against frequent attack patterns
-   - Allocate resources based on risk priorities
+2. **Document potential attack scenarios** for each critical asset
+3. **Link attack vectors to adversary capabilities** identified in your adversary analysis
 
 <details>
-<summary><strong>Example: Risk Assessment for Pinnipeds Inc.</strong></summary>
+<summary><strong>Example: Attack Vector Mapping for Pinnipeds Inc.</strong></summary>
 
-Using a simple risk matrix scoring system (1-5 for both likelihood and impact) to evaluate threats and prioritize defenses:
+### Pinnipeds Inc. Attack Vector Analysis
 
-**High Risk (Score 15-25)**
+#### Critical Asset: Treasury Wallet (Financial)
 
-| Threat Scenario | Likelihood (1-5) | Impact (1-5) | Risk Score | Mitigation Strategy |
-|-----------------|------------------|--------------|------------|---------------------|
-| Treasury wallet compromise | 4 | 5 | 20 | Implement multi-sig wallet (3-of-5), hardware wallets for all signers, cold storage for 80% of funds |
-| Source code theft | 3 | 5 | 15 | Private repositories, branch protection, required code reviews, no direct commits to main |
-| Phishing of employees | 5 | 3 | 15 | Security awareness training, phishing simulations, email filtering, DMARC/SPF/DKIM |
+| Attack Vector | Description | Relevant Adversary |
+|---------------|-------------|-------------------|
+| Phishing | Targeted emails to obtain wallet credentials | Tier 1-2 attackers |
+| Social engineering | Manipulating employees to gain access | Tier 2 attackers |
+| Supply chain compromise | Compromised wallet software | Tier 3 attackers |
+| Insider threat | Disgruntled employee with access | Tier 2 attackers |
 
-**Medium Risk (Score 8-14)**
+#### Critical Asset: Source Code (Intellectual Property)
 
-| Threat Scenario | Likelihood (1-5) | Impact (1-5) | Risk Score | Mitigation Strategy |
-|-----------------|------------------|--------------|------------|---------------------|
-| Client data breach | 3 | 4 | 12 | Data encryption, access controls, audit logging, minimizing data collection |
-| DDoS on company website | 4 | 3 | 12 | CDN with DDoS protection, traffic filtering, backup hosting option |
-| Malware on developer laptops | 3 | 4 | 12 | Endpoint protection, application whitelisting, automatic updates |
-| AWS credentials leaked | 2 | 5 | 10 | IAM roles, least privilege, MFA, credential rotation, secret scanning |
+| Attack Vector | Description | Relevant Adversary |
+|---------------|-------------|-------------------|
+| GitHub account compromise | Targeting developer credentials | Tier 1-3 attackers |
+| CI/CD pipeline injection | Injecting malicious code during build | Tier 3 attackers |
+| Code repository breach | Direct attack on GitHub infrastructure | Tier 3 attackers |
+| Developer machine compromise | Targeting local development environment | Tier 2-3 attackers |
 
-**Lower Risk (Score 1-7)**
+#### Critical Asset: Client Data (Customer Information)
 
-| Threat Scenario | Likelihood (1-5) | Impact (1-5) | Risk Score | Mitigation Strategy |
-|-----------------|------------------|--------------|------------|---------------------|
-| Physical office break-in | 1 | 4 | 4 | Building security, cameras, alarm system, visitor logs |
-| Website defacement | 2 | 2 | 4 | Regular updates, WAF, static site when possible |
-| Public Wi-Fi compromise | 2 | 2 | 4 | VPN requirement for all remote work, encrypted communications |
-
-**Implementation Decisions Based on Risk Assessment:**
-
-1. **Immediate Actions (High Risk):**
-   - Moved treasury to multi-signature wallet with hardware device requirement
-   - Implemented mandatory security training with monthly phishing simulations
-   - Added branch protection rules to all repositories with required code reviews
-
-2. **Near-term Actions (Medium Risk):**
-   - Deployed endpoint protection solution on all company devices
-   - Migrated website to Cloudflare for DDoS protection
-   - Implemented secret scanning in CI/CD pipeline
-
-3. **Future Consideration (Lower Risk):**
-   - Will upgrade physical security in next office renovation
-   - Planning yearly third-party penetration testing
-   - Developing comprehensive disaster recovery plan
+| Attack Vector | Description | Relevant Adversary |
+|---------------|-------------|-------------------|
+| Database exploitation | SQL injection or other DB vulnerabilities | Tier 1-2 attackers |
+| AWS credential theft | Stolen cloud access credentials | Tier 2 attackers |
+| API vulnerabilities | Insecure API endpoints | Tier 1-2 attackers |
+| Data in transit interception | Man-in-the-middle attacks | Tier 2-3 attackers |
 
 </details>
 
@@ -205,7 +130,7 @@ Failure to implement threat modeling has led to catastrophic security breaches:
 
 Organizations that implement threat modeling can focus limited security resources on their most significant risks, avoiding both over-protection of low-value assets and under-protection of critical systems.
 
-Without threat modeling, organizations often distribute security resources evenly across all assets regardless of risk levels. A real-world example shows how costly this approach can be: a DeFi protocol spent 60% of their security budget hardening their website and marketing infrastructure while allocating only 25% to smart contract security. The result was a millionaire exploit through a contract vulnerability that proper threat modeling would have identified as their highest risk. Effective threat modeling ensures resources align with actual risk - not perceived importance - preventing the common mistake of over-securing low-value assets while leaving crown jewels vulnerable.
+Without threat modeling, organizations often distribute security resources evenly across all assets regardless of risk levels. A real-world example shows how costly this approach can be: a DeFi protocol failed to properly identify potential attack vectors, focusing extensively on their website and marketing infrastructure while overlooking smart contract security. The result was a million-dollar exploit through a contract vulnerability that proper threat modeling would have identified as a critical attack vector. Effective threat modeling ensures security teams can identify and document all potential attack paths - enabling risk management teams to later assess and prioritize these threats effectively.
 
 ## Implementation details
 

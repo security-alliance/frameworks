@@ -22,9 +22,10 @@
     - [Principles in detail](./opsec/principles/principles.md)
     - [The five steps](./opsec/principles/five-steps.md)
     - [Web3 considerations](./opsec/principles/web3-considerations.md)
-  - [Threat Modeling overview](./opsec/threat-modeling-overview.md)  
+  - [Threat Modeling overview](./opsec/threat-modeling-overview.md)
+  - [Risk Management](./opsec/risk-management.md)  
   - [Governance & Program Management]()  
-  - [Risk Management]()  
+
   - [Control Domains]()
   - [Lifecycle]()
   - [Monitoring & Detection]()
