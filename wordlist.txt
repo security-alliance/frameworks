@@ -382,3 +382,14 @@ testnet
 timelock
 upgradability
 workspace
+Pinnipeds
+testnets
+timelocks
+takedown
+workspaces
+Mortems
+levation
+exfiltration
+validators
+hotspots
+Terpin's

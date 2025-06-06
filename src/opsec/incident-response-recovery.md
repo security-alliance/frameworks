@@ -68,7 +68,7 @@ Predefined procedures for responding to specific types of security incidents hel
    - Clean or reimage affected systems
    - Restore data from clean backups
    - Implement additional security controls
-   - Update antimalware signatures and protections
+   - Update anti-malware signatures and protections
 
 ### Web3-Specific Incidents
 
