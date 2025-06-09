@@ -1,3 +1,11 @@
+---
+tags:
+  - SEAL/Initiative
+contributors:
+  - role: wrote
+    users: [robert]
+---
+
 # Key Terms
 
 ## Active Exploit
