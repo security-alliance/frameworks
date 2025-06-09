@@ -1,3 +1,20 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
 # Personal security travel guide — full
 
 > 🔑 Key Takeaway: Minimize data exposure by carrying only essential devices with full-disk encryption and updated software. Secure accounts with backup 2FA methods, avoid biometrics at borders, use trusted networks with VPNs, and never leave devices unattended. Guard against USB attacks, shoulder surfing, and hidden cameras. For crypto, use strong passphrases and never travel with seed phrases. Upon returning, scan devices for malware and consider resetting high-risk devices.

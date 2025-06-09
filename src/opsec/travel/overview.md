@@ -1,3 +1,20 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
 # Travel Security
 
 > 🔑 **Key Takeaway**: Travel introduces unique security risks to your digital assets and sensitive information. Proper preparation before, vigilance during, and careful review after travel creates a comprehensive defense strategy that balances security with practical usability.
