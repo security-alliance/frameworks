@@ -23,7 +23,7 @@ Effective risk management builds upon threat modeling to assess, prioritize, and
 
 <!-- ![Risk Management Process](../assets/risk-management-process.png) -->
 
-> **🔗 Related Framework:** This process builds directly on outputs from [Threat Modeling](../threat-modeling-overview.md).
+> **🔗 Related Framework:** This process builds directly on outputs from [Threat Modeling](./threat-modeling-overview.md).
 
 ### Key Components
 
@@ -99,10 +99,8 @@ In Web3 environments, risk management must address unique challenges:
 | **Dependency Monitoring** | Regularly audit connected protocols and dependencies | Supply chain attacks |
 | **Regulatory Compliance** | Stay informed about evolving regulations across jurisdictions | Legal/regulatory risks |
 
-Effective risk management enables organizations to allocate security resources efficiently, focusing on the most significant risks while making informed trade-offs between competing priorities. In the Web3 space, this approach must be adapted to address the unique challenges and risk profiles of blockchain-based operations.
-
 <details>
-<summary><strong>Example: Risk Assessment for Pinnipeds Inc.</strong></summary>
+<summary><strong>⬇️ Collapsable Example: Risk Assessment for Pinnipeds Inc.</strong></summary>
 
 ### Pinnipeds Inc. Risk Assessment
 
@@ -154,4 +152,4 @@ This risk-based approach allowed Pinnipeds Inc. to make informed decisions about
 - [ISO 31000:2018 Risk Management Guidelines](https://www.iso.org/standard/65694.html)
 - [FAIR (Factor Analysis of Information Risk) Framework](https://www.fairinstitute.org/)
 - [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology)
-- Tools: SimpleRisk, RiskLens, IriusRisk
+- Tools: [Eramba](https://www.eramba.org/) (open source GRC)
