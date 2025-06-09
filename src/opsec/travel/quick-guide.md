@@ -1,3 +1,20 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
 # Personal security travel guide — concise version
 
 > 🔑 Key Takeaway: Protect your digital assets while traveling through minimizing sensitive data, using encrypted devices, avoiding public networks, securing hardware wallets, maintaining physical control of devices, being cautious with USB connections, practicing social discretion, and sanitizing devices upon return.
