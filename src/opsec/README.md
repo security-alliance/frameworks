@@ -31,7 +31,7 @@ This framework is organized into several interconnected components:
 8. [Lifecycle Overview](): The continuous process of implementing and maintaining security measures
 9. [Continuous Improvement Overview](): Learning from incidents and evolving security practices
 
-## Aditional contents
+## Additional contents
 
 - [While Traveling](./opsec/travel/overview.md)
   - [Quick Guide](./opsec/travel/quick-guide.md)

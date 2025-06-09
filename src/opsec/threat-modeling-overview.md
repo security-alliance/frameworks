@@ -62,7 +62,7 @@ For these, you can use technologies such as:
 - GRC (Governance, Risk, and Compliance) platforms with asset inventory modules
 
 <details>
-<summary><strong>⬇️ Collapsable Example: Pinnipeds Inc. asset inventory</strong></summary>
+<summary><strong>⬇️ Collapsible Example: Pinnipeds Inc. asset inventory</strong></summary>
 
 ### Pinnipeds Inc. Asset Inventory
 
@@ -91,7 +91,7 @@ Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized
    - Persistence level (hit-and-run vs. long-term compromise)
   
 <details>
-<summary><strong>⬇️ Collapsable Example: Analysis of adversaries targeting Pinnipeds Inc.</strong></summary>
+<summary><strong>⬇️ Collapsible Example: Analysis of adversaries targeting Pinnipeds Inc.</strong></summary>
 
 ### Pinnipeds Inc. Adversary Analysis
 
@@ -114,7 +114,7 @@ Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized
 3. **Link attack vectors to adversary capabilities** identified in your adversary analysis
 
 <details>
-<summary><strong>⬇️ Collapsable Example: Attack Vector Mapping for Pinnipeds Inc.</strong></summary>
+<summary><strong>⬇️ Collapsible Example: Attack Vector Mapping for Pinnipeds Inc.</strong></summary>
 
 ### Pinnipeds Inc. Attack Vector Analysis
 
