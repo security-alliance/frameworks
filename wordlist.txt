@@ -402,7 +402,7 @@ MPC
 Jitsi
 Passwordless
 WebAuthn
-FIDO2
+FIDO
 Cryptomator
 redactions
 sandboxing
