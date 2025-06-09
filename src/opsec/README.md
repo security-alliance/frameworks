@@ -21,15 +21,21 @@ Operational Security (OpSec) is a systematic approach to identifying critical in
 
 This framework is organized into several interconnected components:
 
-1. [Principles & Concepts](./principles/): Core principles and concepts of operational security
+1. [Overview](./overview/): Core principles and concepts of operational security
 2. [Threat Modeling Overview](./threat-modeling-overview.md): Identifying and analyzing potential security threats
-3. [Risk Management](./risk-management.md): Identifying, assessing, and mitigating security risks
-4. [Monitoring & Detection](./monitoring.md): Continuous monitoring of security events and anomalies
-5. [Incident Response & Recovery](./incident-response-recovery.md): Handling security incidents when they occur
-6. [Governance & Program Management](./governance-program-management.md): Establishing security leadership and organizational structures
-7. [Control Domains](./control-domains.md): Key areas requiring specific security controls and practices
-8. [Lifecycle](./lifecycle.md): The continuous process of implementing and maintaining security measures
-9. [Continuous Improvement](./continuous-improvement-metrics.md): Learning from incidents and evolving security practices
+3. [Risk Management Overview](./risk-management-overview.md): Identifying, assessing, and mitigating security risks
+4. [Monitoring & Detection Overview](): Continuous monitoring of security events and anomalies
+5. [Incident Response & Recovery Overview](): Handling security incidents when they occur
+6. [Governance & Program Management Overview](): Establishing security leadership and organizational structures
+7. [Control Domains Overview](): Key areas requiring specific security controls and practices
+8. [Lifecycle Overview](): The continuous process of implementing and maintaining security measures
+9. [Continuous Improvement Overview](): Learning from incidents and evolving security practices
+
+## Additional contents
+
+- [While Traveling](./opsec/travel/overview.md)
+  - [Quick Guide](./opsec/travel/quick-guide.md)
+  - [Thorough Guide](./opsec/travel/guide.md)
 
 ## Using This Framework
 
