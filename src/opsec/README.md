@@ -33,9 +33,9 @@ This framework is organized into several interconnected components:
 
 ## Additional contents
 
-- [While Traveling](./opsec/travel/overview.md)
-  - [Quick Guide](./opsec/travel/quick-guide.md)
-  - [Thorough Guide](./opsec/travel/guide.md)
+- [While Traveling](./opsec/travel/README.md)
+  - [TL;DR](./opsec/travel/tldr.md)
+  - [Guide](./opsec/travel/guide.md)
 
 ## Using This Framework
 

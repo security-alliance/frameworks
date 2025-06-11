@@ -15,7 +15,7 @@ contributors:
     users: []
 ---
 
-# Travel Security
+# Operational Security while traveling
 
 > 🔑 **Key Takeaway**: Travel introduces unique security risks to your digital assets and sensitive information. Proper preparation before, vigilance during, and careful review after travel creates a comprehensive defense strategy that balances security with practical usability.
 
@@ -23,8 +23,8 @@ When we travel, our normal security routines are disrupted, and we face elevated
 
 The resources in this section provide practical guidance for maintaining operational security while traveling:
 
-- [Detailed Travel Security Guide](guide.md) - A comprehensive resource covering all aspects of travel security with in-depth explanations and implementation details
-- [Quick Reference Guide](quick-guide.md) - A condensed checklist format for quick security planning before and during travel
+- [OpSec Travel Guide](guide.md) - A comprehensive resource covering all aspects of travel security with in-depth explanations and implementation details
+- [Too Long; Did not Read version](quick-guide.md) - A condensed checklist format for quick security planning before and during travel
 
 ## Three-phase Security Approach
 
