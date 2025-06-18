@@ -16,6 +16,7 @@ Multisig setup, management, and administration is a crucial part in maintaining 
 - The addresses that are signers of a multisig should all be geographically separated and owned by different individuals. A single person should generally not have control over multiple signing addresses on a single multisig.
 - Documentation should be shared between signers indicating which person controls which signing address. Some users may find a benefit from using the Safe address book feature to automatically decode known addresses, but users should be aware that relying on the Safe UI is not a foolproof mechanism.
 - Generally, it is recommended that all signers of a multisig be hardware wallets or otherwise highly secured. The more secure each individual signer of the multisig is, the more secure the overall multisig is.
+- If some or all multisig signers are in the same physical location, they should not have enough signing keys present to reach quorum. Some projects implement similar rules about signers on multisigs not being on the same plane or vehicle to limit tail risk scenarios.
 
 ## Multisig secure processes
 
