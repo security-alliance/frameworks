@@ -9,3 +9,13 @@
 book
 bin
 *.code-workspace
+# Rust build artifacts
+**/target/
+**/*.rs.bk
+**/*.rmeta
+**/*.rlib
+Cargo.lock
+
+# Ignore contributors index file to prevent watch loops
+theme/contributors/contributorsindex.js
+theme/tags/tagsindex.js

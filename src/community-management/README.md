@@ -1,6 +1,11 @@
 ---
 tags:
   - Community & Marketing
+contributors:
+  - role: wrote
+    users: [mattaereal, robert]
+  - role: reviewed
+    users: [mattaereal]
 ---
 
 # Community Management
@@ -15,7 +20,7 @@ Here, we present essential best practices to safeguard your community. In the fo
 
 ### Strong Passwords and Two-Factor Authentication (2FA)
 
-- Use unique, complex passwords for each service and store them securely in a reputable password manager. Refer to the [**Operational Security Framework**](../operational-security/README.md) and [**Key Management Framework**](../key-management/README.md) for more information on this.
+- Use unique, complex passwords for each service and store them securely in a reputable password manager. Refer to the [**Operational Security Framework**](../operational-security/README.md) and [**Wallet Security Framework**](../wallet-security/README.md) for more information on this.
 - Secure the email account linked to your community platforms with a unique password and 2FA.
 - Always enable 2FA. Prefer hardware-based tokens (e.g., Yubikey) or mobile authenticator apps over SMS-based methods, which are vulnerable to SIM-swapping.
 - If you use an authenticator app like Authy, 1Password, or Aegis to generate time-based one-time passwords (TOTP). Ensure that the secret keys are stored encrypted and protected with robust security measures.
@@ -29,7 +34,7 @@ Here, we present essential best practices to safeguard your community. In the fo
 - Clearly communicate to community members that your team will never send the first direct message to them. This is important because attackers often impersonate team members and initiate direct messages to trick users into believing they are legitimate, thereby gaining their trust and potentially compromising their security.
 - Publicly define all official communication channels used by your organization.  
 
-Refer to the [**Security Awareness framework**](../awareness/README.md) to learn more about **Security Training** and **Social Engineering**.
+Refer to the [**Security Awareness framework**](../awareness/README.md) to learn more about social engineering techniques and security training best practices.
 
 ### Operational Security (OpSec)
 
@@ -41,6 +46,6 @@ For a comprehensive understanding of Operational Security, including additional 
 ### Emergency Response Plan
 
 - Prepare a clear protocol for handling security incidents, including how to quickly remove compromised accounts and warn community members.
-- Adopt a proactive mindset: it’s not a matter of if but when a breach will occur. Having a plan in place helps you act decisively and contain damage.
+- Adopt a proactive mindset: it's not a matter of if but when a breach will occur. Having a plan in place helps you act decisively and contain damage.
 
 As part of the communication team, it is crucial to know when and how to communicate effectively during an incident. This involves understanding the appropriate timing and messaging to ensure clarity and prevent misinformation. For more insights on where this role fits within an incident, refer to the [**Incident Management framework**](../incident-management/README.md).

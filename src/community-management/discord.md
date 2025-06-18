@@ -2,12 +2,18 @@
 tags:
   - Community & Marketing
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal, zedt3ster, fredriksvantes]
+  - role: reviewed
+    users: [mattaereal]
+  - role: fact_checked
+    users: [nftdreww]
 ---
 
 # Discord Security
 
-> **Key Takeaway for Discord:**  
-> To secure your Discord server, focus on implementing robust access controls and enforcing two-factor authentication for all administrators. Regularly audit roles and permissions, and maintain vigilant moderation. Educate your community about security best practices to prevent unauthorized access and protect against potential threats.
+> 🔑 **Key Takeaway for Discord:** To secure your Discord server, focus on implementing robust access controls and enforcing two-factor authentication for all administrators. Regularly audit roles and permissions, and maintain vigilant moderation. Educate your community about security best practices to prevent unauthorized access and protect against potential threats.
 
 Discord offers a variety of security features that are essential to use. Despite these, users should stay alert to threats like phishing, which can target server moderators. Such threats may appear as QR code scams, fake login screens, or misleading direct messages pretending to be from Discord support.
 
@@ -331,3 +337,4 @@ h) **Enable Safe Direct Messaging for All Users**
 - [Securing Your Server - Discord](https://discord.com/community/securing-your-server)
 - [Four Steps for a Super Safe Server - Discord](https://discord.com/safety/360043653152-four-steps-to-a-super-safe-server)
 - [How to setup a Discord server securely](https://www.ledger.com/academy/basic-basics/launch-a-crypto-project-securely/how-to-set-up-a-crypto-project-discord-server-securely)
+<!-- Test change: vie 23 may 2025 19:59:52 -03 -->
