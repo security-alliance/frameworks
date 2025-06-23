@@ -2,12 +2,19 @@
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: "wrote"
+    users: [pinalikefruit](https://github.com/pinalikefruit)
+  - role: "reviewed"
+    users: [] 
 ---
 
 # Wallet Security
 
 
-Cryptocurrency relies on cryptographic keys to secure transactions and manage ownership of digital assets. Proper wallet security is essential to protect these assets from theft, loss, and unauthorized access. This guide covers the fundamental aspects of wallet security, offering insights into different types of wallets, signing schemes, and best practices to ensure a high level of security.
+In cryptocurrency, the security of digital assets is directly tied to how control over the funds is protected. This section provides a technical deep-dive into wallet security, covering the range from fundamental concepts to advanced practices for safeguarding assets against theft, loss, and unauthorized access.
+
+The goal is to move beyond introductory concepts and provide actionable, technical knowledge for securely managing crypto assets.
 
 ## Table of Contents
 
@@ -21,13 +28,12 @@ Cryptocurrency relies on cryptographic keys to secure transactions and manage ow
 
 In this section you can:
 
-- Learn the differences between cold and hot wallets, their use cases, and how to choose the right one for your needs.
-- Understand the pros and cons of custodial and non-custodial wallets, and which type suits your security preferences.
-- Explore popular hardware wallets, their characteristics, and the importance of using them for secure key storage.
-- Get insights into different signing schemes such as EOAs, Multisig, Smart Contract Wallets, and more, including their use cases and security implications.
-- Discover various software wallets, their features, and how they can be used securely to manage cryptocurrency assets.
+- Explore wallet fundamentals, analyzing the security trade-offs of hot vs. cold wallets and the ownership implications of custodial vs. non-custodial models.
+- Receive guidance on choosing the right wallet for your threat model, from basic setups to advanced configurations like Multisignature (Multisig), Social Recovery, and Account Abstraction wallets.
+- Master transaction verification techniques, from basic smart contract interactions to the advanced verification.
+- Implement security best practices for private key and seed phrase management, including secure key mamagement workflows during development.
 
-Effective wallet security is the cornerstone of cryptocurrency security, including taking physical attacks such as the wrench attack into consideration.
+Mastering wallet security is a critical skill for any developer, user, or organization operating in the web3 ecosystem.
 
 ![security](https://github.com/security-alliance/frameworks/assets/84518844/12e2cba3-f69e-4fde-85f1-8a235b9808af)
 
