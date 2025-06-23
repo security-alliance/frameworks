@@ -4,7 +4,7 @@ tags:
   - Security Specialist
 contributors:
   - role: "wrote"
-    users: [pinalikefruit](https://github.com/pinalikefruit)
+    users: [pinalikefruit]
   - role: "reviewed"
     users: [] 
 ---
