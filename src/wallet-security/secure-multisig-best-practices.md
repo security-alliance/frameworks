@@ -2,39 +2,62 @@
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: "wrote"
+    users: [pinalikefruit]
+  - role: "reviewed"
+    users: [] 
 ---
 
-# Secure Multisig Best Practices
+## For Advanced Users & Organizations: Multisig Wallets
 
-Multisig setup, management, and administration is a crucial part in maintaining secure access over governance address or protocol funds. Some best practices for how to manage multisigs are explained below.
+### User Profile
 
-## Multisig signing addresses
+Advanced technical users, developers, Decentralized Autonomous Organizations (DAOs), and organizations responsible for managing protocol treasuries, smart contract ownership, or significant personal/collective assets.
 
-- When a new multisig is created, follow the [Safe documentation for verifying Safe creation took place properly](https://help.safe.global/en/articles/40834-verify-safe-creation).
-- A multisig should never be a 1-of-1 multisig, because this setup offers virtually no extra benefit compared to using an EOA address. The exact number of signers and the threshold of signers needed to execute a transaction is for each multisig to determine.
-- A unique address should be used for each multisig, and this address should only be used for multisig signing. This helps signers to avoid accidental signing on a different multisig.
-- The addresses that are signers of a multisig should all be geographically separated and owned by different individuals. A single person should generally not have control over multiple signing addresses on a single multisig.
-- Documentation should be shared between signers indicating which person controls which signing address. Some users may find a benefit from using the Safe address book feature to automatically decode known addresses, but users should be aware that relying on the Safe UI is not a foolproof mechanism.
-- Generally, it is recommended that all signers of a multisig be hardware wallets or otherwise highly secured. The more secure each individual signer of the multisig is, the more secure the overall multisig is.
-- If some or all multisig signers are in the same physical location, they should not have enough signing keys present to reach quorum. Some projects implement similar rules about signers on multisigs not being on the same plane or vehicle to limit tail risk scenarios.
+### Primary Goal
 
-## Multisig secure processes
+The primary objective is to eliminate single points of failure and establish robust, distributed control over high-value assets and critical smart contract functions.
 
-- Any time that a new signer is added to the multisig, the address that is to be added should be verified via multiple communication channels (i.e. via Signal message and also by voice call) to protect against the case where a communication channel is compromised.
-- A secure process should exist that all multisig signers should follow in order to securely verify and sign any multisig transaction. Without a secure process involving tools such as [safe-tx-hashes-util](https://github.com/pcaversaccio/safe-tx-hashes-util), multisig hacks such as those that impacted Radiant or ByBit are possible. Check out the [secure multisig signing process page](./secure-multisig-signing-process.md) for more details.
-- For maximum security, a separate signing device (ideally a laptop running the latest version of a secure OS like Tails or Qubes) should be used that is not used for any other activities. This helps to ensure that there is no malware that may interfere with the signing process. If a multipurpose signing device is used (for example, a developer's primary laptop), there is a much higher risk of malicious interference during the signing process. An alternative approach is booting Tails from an external USB, preferably an encrypted USB such as a Kingston IronKey Keypad 200.
-- Signers should consider the scenario where one or more team members loses access to their signing address, especially if the key is stolen or leaked. For this reason, it is not recommended to use a n-on-n multisig where all signers must always sign all transactions.
-- If a team has a multichain multisig, the signers for the Safes on different chains should generally be the same, and the threshold should also be the same.
-- Multisig teams should add monitoring to their multisig to be alerted of any unexpected changes. One tool that offers this feature is [safe-watcher](https://github.com/Gearbox-protocol/safe-watcher) from the Gearbox team.
-- If the multisig controls any time-sensitive actions, such as pausing certain actions in extreme scenarios, the team must plan how to handle such events in a timely manner.
+### Core Concept: M-of-N Scheme
 
-## Optional Multisig Feature Configurations
+A multisignature (multisig) wallet is a smart contract that requires a predefined minimum number of approvals (**M**) from a total set of authorized signers (**N**) to execute a transaction. This is known as an **M-of-N** scheme (e.g., 2-of-3, 3-of-5).
 
-- Variety of signing devices (different hardware wallets, etc.)
-- RBAC
-- Timelock
-- A duress code
+By distributing signing authority, a multisig ensures that the compromise of a single private key is insufficient to authorize the movement of funds or execute a privileged action. 
 
-## Acknowledgements
+### Setup Best Practices
 
-Some ideas were borrowed from the [EF's multisig SOP notes](https://notes.ethereum.org/@fredrik/multisig-sop) and [Manifold Finance multisig best practices](https://hackmd.io/@manifoldx/multisig-best-practices)
+*   **Threshold Selection:** The `M-of-N` threshold should be chosen to balance security and operational resilience. Avoid `N-of-N` schemes, as the loss of a single key would result in a permanent loss of access to all funds. 
+
+*   **Strategic Signer Distribution:** The security of a multisig depends entirely on the operational security (OpSec) of its individual signer keys. Storing multiple signer keys on the same device or in the same physical location negates the security benefits. Effective distribution strategies include:
+    *   Using different hardware wallet models and manufacturers.
+    *   Maintaining geographical separation for devices holding signer keys.
+    *   Assigning signer keys to different trusted individuals within an organization.
+    *   Using diverse client software to interact with the multisig to mitigate single-point-of-failure risks from a software vulnerability.
+
+*   **Practice on Testnet:** Before deploying on mainnet, thoroughly practice wallet creation, transaction signing, and owner management on a test network.
+
+*   **Timelocks:** Enforce a mandatory delay between the approval of a transaction and its execution. This provides a critical window for the community or team to detect and react to malicious proposals.
+
+*   **Role-Based Access Control (RBAC):** Implement modules that grant specific, limited permissions to certain addresses (e.g., a "pauser" or "executor" role) without making them full owners, adhering to the principle of least privilege.
+
+### Operational Best Practices
+
+
+*   **Signer Key Revocation and Replacement:** A  feature of multisigs is the ability to add, remove, or replace signer keys. If a signer's key is compromised or lost, it can be revoked and replaced with a new, secure key through a transaction approved by the remaining owners, preserving the integrity of the wallet's assets without needing to migrate funds.
+
+*   **Secure Signing Environment:** For maximum security, all signing activities should be performed on a dedicated, air-gapped, or hardened device running a secure OS (e.g., Tails, Qubes). Using a primary work laptop significantly increases the risk of malware interference.
+
+*   **Independent Transaction Verification:**  Before signing, always verify the raw transaction data (target address, function call, parameters) to ensure it matches the intended operation.
+
+*   **Out-of-Band Verification for Admin Changes:** Any critical administrative action, such as adding or replacing a signer, must be verified through multiple, independent communication channels (e.g., a video call and a signed message) to prevent social engineering attacks.
+
+*   **Active Monitoring:** Implement monitoring and alerting systems to be immediately notified of any on-chain activity related to the multisig, including proposed transactions, new signatures, and owner changes (e.g., using tools like  [safe-watcher](https://github.com/Gearbox-protocol/safe-watcher) ).
+
+*   **Documented Procedures:** Maintain clear, secure, and accessible documentation for all multisig procedures, including transaction creation, signing, and emergency recovery plans.
+
+
+
+### Acknowledgements
+
+Some ideas were borrowed from the [EF's multisig SOP notes](https://notes.ethereum.org/@fredrik/multisig-sop) and [Manifold Finance multisig best practices](https://hackmd.io/@manifoldx/multisig-best-practices).
