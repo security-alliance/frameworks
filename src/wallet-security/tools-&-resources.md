@@ -35,6 +35,8 @@ These tools are designed to help you independently verify the integrity of trans
 
 - **[safe-hash](https://github.com/Cyfrin/safe-hash-rs)**: A command-line tool for locally verifying Safe transaction data and EIP-712 messages before signing. It is designed to protect against phishing by allowing you to independently generate the hash your wallet will ask you to sign.
 - **[safeutils.openzeppelin.com](https://safeutils.openzeppelin.com/)**: A user-friendly web interface for calculating and verifying Safe transaction hashes. While convenient, remember the security advantages of using a local, offline tool like `safe-hash` for high-value transactions.
+- **[calldata.swiss-knife.xyz](https://calldata.swiss-knife.xyz/decoder)**: Web-based tool for quick decoding of transaction data.
+- **[Foundry cast](https://book.getfoundry.sh/reference/cast/cast-decode-calldata)**: A powerful command-line tool for local, offline decoding.
 
 ## Security Training
 
