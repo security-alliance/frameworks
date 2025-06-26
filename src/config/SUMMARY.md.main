@@ -126,6 +126,12 @@
   - [Interface Compliance](./ens/interface-compliance.md)
   - [Name Handling & Normalization](./ens/name-handling-normalization.md)  
 - [Safe Harbor](./safe-harbor/README.md)
+<<<<<<< develop-safe-harbor-v1
+  - [Protocol](./safe-harbor/protocol.md)
+  - [Whitehat](./safe-harbor/whitehat.md)
+  - [Key Terms](./safe-harbor/key-terms.md)
+- [Encryption]()
+=======
   - [Key Terms](./safe-harbor/key-terms.md)
   - [Protocol](./safe-harbor/protocol.md)
   - [Technical Outline](./safe-harbor/technical-outline.md)
@@ -141,6 +147,7 @@
   - [Hardware Encryption](./encryption/hardware-encryption.md)
   - [Partition Encryption](./encryption/partition-encryption.md)
   - [Volume Encryption](./encryption/volume-encryption.md)
+>>>>>>> develop
 
 # About this
 
