@@ -6,8 +6,6 @@ tags:
 contributors:
   - role: "wrote"
     users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
 ---
 
 # Signing & Verification

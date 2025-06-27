@@ -2,11 +2,9 @@
 tags:
   - Engineer/Developer
   - Security Specialist
-  contributors:
+  - Operations & Strategy
   - role: "wrote"
     users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
 ---
 
 # Cold vs. Hot Wallets
@@ -24,7 +22,6 @@ Transactions are signed offline and then broadcast to the network using a connec
 ### Types of Cold Wallets
 
 - **Hardware Wallets**: Dedicated physical devices designed specifically to store private keys offline.
-
 - **Paper Wallets**: Physical printouts or handwritten notes of private keys and QR codes.
 
 ### Use Cases

@@ -1,10 +1,10 @@
 ---
-tags: []
+tags:
+  - Engineer/Developer
+  - Security Specialist
 contributors:
   - role: "wrote"
     users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
 ---
 
 ## Social Recovery Wallets

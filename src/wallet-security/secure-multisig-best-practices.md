@@ -2,11 +2,10 @@
 tags:
   - Security Specialist
   - Operations & Strategy
+  - Engineer/Developer
 contributors:
   - role: "wrote"
-    users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
+    users: [pinalikefruit, engn33r] 
 ---
 
 ## For Advanced Users & Organizations: Multisig Wallets
@@ -46,7 +45,7 @@ By distributing signing authority, a multisig ensures that the compromise of a s
 
 *   **Signer Key Revocation and Replacement:** A  feature of multisigs is the ability to add, remove, or replace signer keys. If a signer's key is compromised or lost, it can be revoked and replaced with a new, secure key through a transaction approved by the remaining owners, preserving the integrity of the wallet's assets without needing to migrate funds.
 
-*   **Secure Signing Environment:** For maximum security, all signing activities should be performed on a dedicated, air-gapped, or hardened device running a secure OS (e.g., Tails, Qubes). Using a primary work laptop significantly increases the risk of malware interference.
+*   **Secure Signing Environment:** For maximum security, all signing activities should be performed on a dedicated, air-gapped, or hardened device running a secure OS. Using a primary work laptop significantly increases the risk of malware interference.
 
 *   **Independent Transaction Verification:**  Before signing, always verify the raw transaction data (target address, function call, parameters) to ensure it matches the intended operation.
 

@@ -6,8 +6,6 @@ tags:
 contributors:
   - role: "wrote"
     users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
 ---
 
 ## Account Abstraction Wallets
@@ -24,7 +22,7 @@ To leverage the power of smart contracts at the account level, enabling features
 
 Account Abstraction (AA) turns a user's account into a smart contract, making it programmable. Instead of being controlled directly by a single private key, the account's logic is defined by its code. This is achieved through **ERC-4337**, a standard that enables AA without requiring changes to the core Ethereum protocol. It introduces a higher-level pseudo-transaction system with several key components:
 
-*   **Smart Contract Account**: The user's wallet itself is a smart contract, containing custom logic for validating transactions (`validateUserOp`).
+*   **Smart Contract Account**: The user's wallet itself is a smart contract, containing custom logic for validating transactions.
 *   **UserOperation**: A data structure that bundles the user's intent, calldata, and signature. This object is sent to a dedicated, alternative mempool.
 *   **Bundlers**: Specialized nodes that package multiple `UserOperation` objects from the mempool into a single transaction and submit it to the `EntryPoint` contract.
 *   **EntryPoint**: A singleton smart contract that acts as the central orchestrator. It verifies and executes the bundled `UserOperations`, ensuring that accounts and paymasters have sufficient funds to pay for gas.

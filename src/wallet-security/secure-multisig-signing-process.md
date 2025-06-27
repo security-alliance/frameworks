@@ -2,11 +2,10 @@
 tags:
   - Security Specialist
   - Operations & Strategy
+  - Engineer/Developer
 contributors:
   - role: "wrote"
-    users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
+    users: [pinalikefruit,engn33r]
 ---
 
 # Verifying Multisig Transactions

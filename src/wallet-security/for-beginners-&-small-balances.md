@@ -1,10 +1,10 @@
 ---
-tags: []
+tags:
+  - Engineer/Developer
+  - Security Specialist
 contributors:
   - role: "wrote"
     users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
 ---
 
 ## For Beginners & Small Balances
@@ -34,6 +34,8 @@ While convenient, this setup carries inherent risks that the user must understan
 
 ### How to Select a Wallet
 
-When selecting a wallet, prioritize those whose code is **open-source**, as this allows for public scrutiny and independent verification by the security community. For users who are not developers, several platforms provide independent analysis to help evaluate a wallet's security. For example, [Wallet Scrutiny](https://walletscrutiny.com/) focuses on verifying if a wallet's code is verifiably open-source. Others, like [Wallet Security Ranking](https://www.coinspect.com/wallets/), provide a security score based on specific criteria such as transaction clarity, protection against known threats, and how it handles dApp permissions. 
+When selecting a wallet, prioritize those whose code is **open-source**, as this allows for public scrutiny and independent verification by the security community. For users who are not developers, several platforms provide independent analysis to help evaluate a wallet's security. 
+
+For example, [Wallet Scrutiny](https://walletscrutiny.com/) focuses on verifying if a wallet's code is verifiably open-source. Others, like [Wallet Security Ranking](https://www.coinspect.com/wallets/), provide a security score based on specific criteria such as transaction clarity, protection against known threats, and how it handles dApp permissions. 
 
 Using these tools can provide valuable data points to help you assess a wallet's security posture and make an informed decision.

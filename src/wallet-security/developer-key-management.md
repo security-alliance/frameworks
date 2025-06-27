@@ -1,26 +1,31 @@
 ---
-tags: []
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
 contributors:
   - role: "wrote"
     users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
 ---
 
 ## Developer Key Management
 
 A single mistake in private key management within a development workflow can result in the immediate and irreversible loss of all associated assets. This section outlines secure practices for handling keys in development environments.
 
-### Plain-Text and Environment Variables
+### Plain-Text Keys and Environment Variables
 
-A private key controlling real assets must **never** exist in plain text in your development environment. This includes being hard-coded in source files, saved in configuration files, or passed directly via the command line.
+A private key controlling real assets must **never** be stored in plain text. This includes being hard-coded in source files, saved in configuration files, or passed directly via the command line, as it eliminates all layers of security.
 
-> ⚠️ **`.env` files are not a secure storage mechanism for private keys.**
+A common but high-risk practice is storing private keys in `.env` files.
 
-While useful for non-sensitive configuration, storing private keys in `.env` files, even when added to `.gitignore`, is a significant security risk. They are vulnerable to:
+> ⚠️ **`.env` files are for configuration, not for secrets.** They are not a secure vault.
 
-- **Local System Compromise**: If your machine is infected with malware, these files can be easily exfiltrated.
+While `.env` files are useful for managing non-sensitive configuration data (like API URLs) and are often excluded from version control via `.gitignore`, they are fundamentally insecure for storing private keys. They are vulnerable to:
+
+- **Local System Compromise**: If your machine is infected with malware, these plain-text files can be easily found and exfiltrated.
 - **Accidental Exposure**: They can be mistakenly committed to version control, included in logs, or exposed through misconfigured server environments.
+
+For local testing with **non-funded wallets**, using a `.env` file might seem convenient. However, this should be treated as a temporary, low-security method only. It is critical to not let this practice carry over into production or any environment handling real value. Instead, developers should adopt secure secret management solutions as a default practice, even during development.
 
 Passing a key directly as a command-line argument is also highly insecure, as it is saved in your shell's history file (e.g., `.bash_history`). If this happens by accident, clear your history with `history -c`.
 

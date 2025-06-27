@@ -5,8 +5,6 @@ tags:
 contributors:
   - role: "wrote"
     users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
 ---
 
 # Tools & Resources

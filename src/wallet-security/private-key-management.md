@@ -1,10 +1,11 @@
 ---
-tags: []
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
 contributors:
   - role: "wrote"
     users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
 ---
 
 ## Private Key & Seed Phrase Management

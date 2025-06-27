@@ -5,8 +5,6 @@ tags:
 contributors:
   - role: "wrote"
     users: [pinalikefruit]
-  - role: "reviewed"
-    users: [] 
 ---
 
 # Using EIP-7702
@@ -43,5 +41,5 @@ While powerful, this feature introduces a new attack vector. If an attacker tric
 - **Assume All Addresses Have Code**: Do not assume an address is a simple EOA. Security checks that rely on `tx.origin == msg.sender` are no longer a reliable way to prevent reentrancy or atomic sandwich attacks and must be replaced with robust security patterns.
 - **Prevent Storage Conflicts**: Use standardized namespacing for storage variables (e.g., EIP-7201) to prevent conflicts when users re-delegate between different contract implementations.
 - **Implement Reentrancy Guards**: Do not rely on EOA-based assumptions to prevent reentrancy. Use the **checks-effects-interactions** pattern and dedicated reentrancy guards.
-- **Ensure Token Compatibility**: To ensure smart contract accounts can properly receive tokens, implement the necessary receiver hooks for common standards (e.g., `onERC721Received`, `onERC1155Received`).
+- **Ensure Token Compatibility**: To ensure smart contract accounts can properly receive tokens, implement the necessary receiver hooks for common standards (e.g., `onERC721Received`).
 - **Secure Initialization Flows**: Always verify signatures during wallet initialization to prevent unauthorized access or front-running attacks, as EIP-7702 does not include an `initcode` step.
