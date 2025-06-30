@@ -34,3 +34,4 @@ Adopting a hardware wallet introduces a new set of security considerations focus
 *   **Open Source:** Evaluate if the wallet's firmware and software are open-source, which allows for public auditing and verification by the security community.
 *   **Secure Element (SE)** Look for devices with a SE certified, tamper-resistant chip that protects against physical attacks. Check for high assurance ratings like `EAL6+` and features like **attestation**, which verifies the device is genuine.
 *   **Reputation & Incident:** Investigate the manufacturer's security track record, including their response to past vulnerabilities, data breaches, and overall transparency.
+* **Verify Device Integrity**: A legitimate hardware wallet will arrive uninitialized, requiring you to perform the initial setup. Reject any device that comes with a pre-set PIN, a pre-generated recovery phrase, or appears to be already configured, as it is likely compromised.
