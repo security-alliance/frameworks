@@ -32,7 +32,7 @@ In this section you can learn:
 - Explore wallet fundamentals, analyzing the security trade-offs of hot vs. cold wallets and the ownership implications of custodial vs. non-custodial models.
 - Receive guidance on choosing the right wallet for your threat model, from basic setups to advanced configurations like Multisignature (Multisig), Social Recovery, and Account Abstraction wallets.
 - Master transaction verification techniques, from basic smart contract interactions to the advanced verification.
-- Implement security best practices for private key and seed phrase management, including secure key mamagement workflows during development.
+- Implement security best practices for private key and seed phrase management, including secure key management workflows during development.
 
 Mastering wallet security is a critical skill for any developer, user, or organization operating in the web3 ecosystem.
 
