@@ -22,7 +22,7 @@ This is the most important step of a security review and often the most overlook
 Conduct internal testing before engaging an external security provider. You can do this by creating and running test vectors for your code, and leverage automated tools to identify low-hanging fruit. Here’s a list of free/open-source tools your project could use:
 
 - **Solidity**: slither, mythril, semgrep-smart-contracts
-- **Golang**: golangci-lint, go-critic, gosec, gokart
+- **Golang**: golangci-lint, go-critic, gosec
 - **Rust**: cargo audit, cargo outdated, clippy, cargo geiger, cargo tarpaulin
 
 ## Write Clear Documentation
