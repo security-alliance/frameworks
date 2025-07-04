@@ -29,8 +29,8 @@ Before diving into specific use cases, it's critical to adopt a security-first m
 
 This chapter breaks down transaction verification into key areas:
 
-- **[General Transaction Verification](./)**: An overview of the foundational security principles that apply to all types of transactions.
-- **[Verifying Multisig Transactions](../)**: A detailed guide to the two-phase process of securely signing and executing multisig transactions, including how to verify EIP-712 hashes and `execTransaction` calldata.
-- **[Verifying EIP-7702 Transactions](./)**: An analysis of the new security considerations introduced by EIP-7702, which allows EOAs to temporarily act as smart contracts, with specific guidance for both users and developers.
+- **[Standard Transaction Verification](./verifying-standard-transactions.md)**: An overview of the foundational security principles that apply to all types of transactions.
+- **[Verifying Multisig Transactions](./secure-multisig-signing-process.md)**: A detailed guide to the two-phase process of securely signing and executing multisig transactions, including how to verify EIP-712 hashes and `execTransaction` calldata.
+- **[Verifying EIP-7702 Transactions](./verifying-7702.md)**: An analysis of the new security considerations introduced by EIP-7702, which allows EOAs to temporarily act as smart contracts, with specific guidance for both users and developers.
 
 To apply these principles, this framework provides a curated list of verification and simulation tools in the **[ Tools & Resources](../appendix/tools-and-resources.md)**.

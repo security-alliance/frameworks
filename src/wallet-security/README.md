@@ -25,7 +25,6 @@ The goal is to move beyond introductory concepts and provide actionable, technic
     - [Multisig Signing Process](./secure-multisig-signing-process.md) - Detailed guide for secure multisig transaction signing.
     - [Using EIP-7702](./verifying-7702.md) -  Enabling smart contract features for EOAs and mitigating new risks.
 - [Private Key & Seed Phrase Management](./private-key-management.md) - Best practices for securing your seed phrase.
-- [Developer Key Management](./developer-key-management.md) - Secure key management workflows for development and deployment.
 - [Tools & Resources](./tools-&-resources.md) - A curated list of security tools and resources.
 
 In this section you can learn:
@@ -33,7 +32,7 @@ In this section you can learn:
 - Explore wallet fundamentals, analyzing the security trade-offs of hot vs. cold wallets and the ownership implications of custodial vs. non-custodial models.
 - Receive guidance on choosing the right wallet for your threat model, from basic setups to advanced configurations like Multisignature (Multisig) and Account Abstraction wallets.
 - Master transaction verification techniques, from basic smart contract interactions to the advanced verification.
-- Implement security best practices for private key and seed phrase management, including secure key management workflows during development.
+- Implement security best practices for private key and seed phrase management.
 
 Mastering wallet security is a critical skill for any developer, user, or organization operating in the web3 ecosystem.
 
