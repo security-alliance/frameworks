@@ -3,8 +3,11 @@ tags:
   - Engineer/Developer
   - Security Specialist
   - Operations & Strategy
-  - role: "wrote"
+contributors:
+  - role: wrote
     users: [pinalikefruit]
+  - role: reviewed
+    users: [Coinspect]
 ---
 
 # Cold vs. Hot Wallets

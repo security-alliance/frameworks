@@ -4,8 +4,10 @@ tags:
   - Security Specialist
   - Operations & Strategy
 contributors:
-  - role: "wrote"
+  - role: wrote
     users: [pinalikefruit]
+  - role: reviewed
+    users: [Coinspect]
 ---
 
 # Signing & Verification

@@ -3,8 +3,10 @@ tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
-  - role: "wrote"
+  - role: wrote
     users: [pinalikefruit]
+  - role: reviewed
+    users: [Coinspect]
 ---
 
 ## For Intermediates & Medium Balances
@@ -26,7 +28,6 @@ A **hardware wallet** is the core of this setup. This dedicated physical device 
 Adopting a hardware wallet introduces a new set of security considerations focused on physical and supply chain vectors.
 
 *   **Physical Security:** A hardware wallet is a physical asset that must be protected from theft, damage, or coercion.
-* 
 *   **Supply Chain Integrity:** Hardware wallets must *only* be purchased directly from the manufacturer or an authorized reseller to avoid receiving a tampered device.
 *   **Convenience vs. Security:** Using a hardware wallet introduces friction into the transaction process, as it requires physical access and approval on the device for every signature.
 

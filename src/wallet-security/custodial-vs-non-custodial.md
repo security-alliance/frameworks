@@ -3,9 +3,11 @@ tags:
   - Engineer/Developer
   - Security Specialist
   - Operations & Strategy
-  contributors:
-  - role: "wrote"
+contributors:
+  - role: wrote
     users: [pinalikefruit]
+  - role: reviewed
+    users: [Coinspect]
 ---
 
 # Custodial vs. Non-Custodial Wallets

@@ -4,17 +4,21 @@ tags:
   - Security Specialist
   - Devops
 contributors:
-  - role: "wrote"
+  - role: wrote
     users: [pinalikefruit]
+  - role: reviewed
+    users: [Coinspect]
 ---
 
 ## Developer Key Management
 
 A single mistake in private key management within a development workflow can result in the immediate and irreversible loss of all associated assets. This section outlines secure practices for handling keys in development environments.
 
+> ⚠️ Having servers with access to private key is inherently risky, and there is no way to protect a private key in a compromised environment. Therefore, the priority should be in securing the server and the application as much as possible along with strict access control and monitoring of the server and the key. When the signatures are valuable, consider moving to a multisig scheme so that attackers need to compromise N out of M devices instead of having a single point of failure
+
 ### Plain-Text Keys and Environment Variables
 
-A private key controlling real assets should **never** be stored in plain text. should never be stored in plain text. While encryption adds a layer of protection, the encrypted file itself can still be stolen, making the security of the decryption key (the password) and the host machine critically important.
+A private key controlling real assets should **never** be stored in plain text. While encryption adds a layer of indirection, the encrypted file itself can be extracted from a compromised environment. Thus, encrypting private keys offers a very thin layer of protection and should not be considered a definitive solution, compromises of the host machine will lead to its leakage.
 
 A common but high-risk practice is storing private keys in `.env` files.
 

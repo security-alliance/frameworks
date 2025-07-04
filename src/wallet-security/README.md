@@ -1,7 +1,9 @@
 ---
 contributors:
-  - role: "wrote"
+  - role: wrote
     users: [pinalikefruit]
+  - role: reviewed
+    users: [Coinspect]
 ---
 
 # Wallet Security
@@ -16,7 +18,7 @@ The goal is to move beyond introductory concepts and provide actionable, technic
 - [Cold vs Hot Wallet](./cold-vs-hot-wallet.md) - Understanding the security trade-offs of online and offline wallets.
 - [Wallets For Beginners & Small Balances](./for-beginners-&-small-balances.md) - Recommended setups for users with non-critical funds.
 - [Wallets For Intermediates & Medium Funds](./intermediates-&-medium-funds.md) - Security upgrades for users with significant assets.
-- [Multisig Wallets](./secure-multisig-best-practices.md) - Best practices for setting up and managing multisig wallets.
+- [Multisig Wallets For Advanced Users & High Funds](./secure-multisig-best-practices.md) - Best practices for setting up and managing multisig wallets.
 - [Account Abstraction Wallets](./account-abstraction.md) - Exploring the security features of smart contract wallets.
 - [Signing & Verification](./signing-verification.md) - An overview of secure transaction signing and verification.
     - [Verifying Standard Transactions (EOA)](./verifying-standard-transactions.md) - How to safely verify transactions from standard wallets.

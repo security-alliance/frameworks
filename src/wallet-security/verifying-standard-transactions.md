@@ -3,8 +3,10 @@ tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
-  - role: "wrote"
+  - role: wrote
     users: [pinalikefruit]
+  - role: reviewed
+    users: [Coinspect]
 ---
 
 # Verifying Standard Transactions (EOA)

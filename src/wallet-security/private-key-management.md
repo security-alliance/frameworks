@@ -4,8 +4,10 @@ tags:
   - Security Specialist
   - Operations & Strategy
 contributors:
-  - role: "wrote"
+  - role: wrote
     users: [pinalikefruit]
+  - role: reviewed
+    users: [Coinspect]
 ---
 
 ## Private Key & Seed Phrase Management
@@ -18,7 +20,7 @@ The **seed phrase** (or mnemonic phrase) is the master key to a non-custodial wa
 ### Secure Storage Practices
 
 
-The goal is to protect the seed phrase from both physical threats (theft, fire, water damage) and digital threats (hacking, malware).The foundational principle is to keep your seed phrase offline at all times.
+The goal is to protect the seed phrase from both physical threats (theft, fire, water damage) and digital threats (hacking, malware). The foundational principle is to keep your seed phrase offline at all times.
 
 As soon as a new wallet is created, back it up using one of the following offline methods. Wallet providers do not have access to your seed phrase and cannot help you recover it.
 

@@ -4,8 +4,10 @@ tags:
   - Operations & Strategy
   - Engineer/Developer
 contributors:
-  - role: "wrote"
+  - role: wrote
     users: [pinalikefruit,engn33r]
+  - role: reviewed
+    users: [Coinspect] 
 ---
 
 # Verifying Multisig Transactions

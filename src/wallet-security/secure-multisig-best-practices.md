@@ -4,8 +4,10 @@ tags:
   - Operations & Strategy
   - Engineer/Developer
 contributors:
-  - role: "wrote"
-    users: [pinalikefruit, engn33r] 
+  - role: wrote
+    users: [pinalikefruit,engn33r]
+  - role: reviewed
+    users: [Coinspect] 
 ---
 
 ## Multisig Wallets For Advanced Users & High Funds
