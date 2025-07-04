@@ -3,16 +3,36 @@ tags:
   - Security Specialist
   - Operations & Strategy
   - Devops
+contributors:
+  - role: wrote
+    users: [patrickalphac]
 ---
 
 # External Security Reviews
 
+A smart contract security audit is a time-boxed, security-based code review of a smart contract or protocol to enhance security and identify vulnerabilities. External security reviews are essential for web3 projects to protect against exploits and build trust with users and the community.
 
-External security reviews are quite common in web3 when it comes to smart contract audits which are often being done to check if the smart contracts are secure.
+## Why Are External Security Reviews Important?
 
-It's important to note though that smart contracts are not the only components that should be considered during security reviews. Any relevant off-chain software (Bridges, Oracles, Sequencers, etc.) should also be reviewed in conjunction with any on-chain application.
+According to research, significant value has been stolen from smart contracts due to vulnerabilities. The immutable nature of blockchain means that once a smart contract is deployed, it cannot be changed without proper upgrade mechanisms. The blockchain operates in an adversarial environment where protocols must be prepared for malicious actors.
 
-While external security reviews are good, they are certainly not foolproof and cannot guarantee absolute security, and for that reason this type of security testing is not a one-time event but an ongoing commitment to the safety and security of your web3 project.
+Beyond preventing hacks, external security reviews provide several key benefits:
+
+- **Enhanced Security**: Find and fix vulnerabilities before they can be exploited
+- **Team Education**: Level up your engineering team's knowledge through security best practices
+- **Trust Building**: Demonstrate maturity and safety to users and the community
+- **Risk Mitigation**: Identify business logic issues and implementation flaws
+
+## Scope of External Security Reviews
+
+While smart contract audits are common in web3, security reviews should encompass:
+
+- **Smart Contracts**: Core protocol logic, token contracts, governance mechanisms
+- **Off-chain Components**: Bridges, oracles, sequencers, APIs, and backend services
+- **Infrastructure**: Deployment scripts, access controls, and operational procedures
+- **Documentation**: Technical specifications, user guides, and security policies
+
+External security reviews are not foolproof and cannot guarantee absolute security. They represent an ongoing commitment to safety rather than a one-time event.
 
 ## Contents
 

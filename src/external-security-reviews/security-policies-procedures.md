@@ -4,6 +4,9 @@ tags:
   - Legal & Compliance
   - Operations & Strategy
   - HR
+contributors:
+  - role: wrote
+    users: [patrickalphac]
 ---
 
 # Security Policies and Procedures
