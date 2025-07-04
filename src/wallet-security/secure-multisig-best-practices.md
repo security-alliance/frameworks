@@ -5,7 +5,7 @@ tags:
   - Engineer/Developer
 contributors:
   - role: wrote
-    users: [pinalikefruit,engn33r]
+    users: [engn33r.pinalikefruit]
   - role: reviewed
     users: [Coinspect] 
 ---
@@ -22,7 +22,7 @@ The primary objective is to eliminate single points of failure and establish rob
 
 ### Core Concept: M-of-N Scheme
 
-A multisignature (multisig) wallet is a smart contract that requires a predefined minimum number of approvals (**M**) from a total set of authorized signers (**N**) to execute a transaction. This is known as an **M-of-N** scheme (e.g., 2-of-3, 3-of-5).
+A multisignature (multisig) wallet is a smart contract that requires a predefined minimum number of approvals `M` from a total set of authorized signers `N` to execute a transaction. This is known as an `M-of-N` scheme (e.g., 2-of-3, 3-of-5).
 
 By distributing signing authority, a multisig ensures that the compromise of a single private key is insufficient to authorize the movement of funds or execute a privileged action. 
 
@@ -53,7 +53,7 @@ By distributing signing authority, a multisig ensures that the compromise of a s
 
 *   **Out-of-Band Verification for Admin Changes:** Any critical administrative action, such as adding or replacing a signer, must be verified through multiple, independent communication channels (e.g., a video call and a signed message) to prevent social engineering attacks.
 
-*   **Active Monitoring:** Implement monitoring and alerting systems to be immediately notified of any on-chain activity related to the multisig, including proposed transactions, new signatures, and owner changes (e.g., using tools like  [safe-watcher](https://github.com/Gearbox-protocol/safe-watcher) ).
+*   **Active Monitoring:** Implement monitoring and alerting systems to be immediately notified of any on-chain activity related to the multisig, including proposed transactions, new signatures, and owner changes (e.g., using tools like  [Safe Watcher](https://github.com/Gearbox-protocol/safe-watcher) ).
 
 *   **Documented Procedures:** Maintain clear, secure, and accessible documentation for all multisig procedures, including transaction creation, signing, and emergency recovery plans.
 

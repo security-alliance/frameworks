@@ -37,7 +37,7 @@ Transactions are signed offline and then broadcast to the network using a connec
 
 ### What Are They?
 
-Hot wallets are actively and consistently connected to the internet.This connectivity makes them highly convenient for daily use but also inherently more vulnerable to online attacks.
+Hot wallets are actively and consistently connected to the internet. This connectivity makes them highly convenient for daily use but also inherently more vulnerable to online attacks.
 
 ### Types of Hot Wallets
 
