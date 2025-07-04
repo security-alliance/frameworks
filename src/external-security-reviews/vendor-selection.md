@@ -50,7 +50,7 @@ Public or competitive audits involve tens or hundreds of security researchers co
   - Programming languages (Solidity, Rust, Go, etc.)
   - Blockchain platforms (Ethereum, Polygon, Arbitrum, etc.)
   - Protocol types (DeFi, NFTs, DAOs, etc.)
-  - Architecture patterns (proxy contracts, multi-sig, etc.)
+  - Architecture patterns (proxy contracts, multisig, etc.)
 
 ### 4. Security Methodology
 - **Tool Usage**: Verify they use appropriate automated security tools
