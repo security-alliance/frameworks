@@ -1,6 +1,7 @@
 personal_ws-1.1 en 10000 utf-8
 aaaabbbb
 abcdef
+abi
 Acknowledgement
 Acunetix
 adraffy
@@ -45,6 +46,7 @@ CEX
 Checkmarx
 Checkov
 CIS
+cli
 CISA
 clippy
 Clippy
@@ -128,6 +130,7 @@ EOAs
 epudiation
 equifax's
 Eramba
+eternalsafe
 ETH
 Ethereum
 Etherscan
@@ -161,6 +164,7 @@ Ghostery
 gist
 gists
 Gmail
+gnosis
 GOkart
 Golang
 Golangci
@@ -249,6 +253,7 @@ NordVPN
 npm
 OAuth
 ofac
+openzeppelin
 offboarding
 offboarding
 onboarding
@@ -261,6 +266,7 @@ passcode
 passcodes
 Passwordless
 patrickalphac
+pcaversaccio
 PCI
 PFP
 Phalcon
@@ -380,6 +386,7 @@ VPC
 VPN
 WAF
 walkthrough
+walletbeat
 walletcompare
 Wargames
 WebAuthn

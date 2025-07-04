@@ -32,3 +32,14 @@ Effective wallet security is the cornerstone of cryptocurrency security, includi
 ![security](https://github.com/security-alliance/frameworks/assets/84518844/12e2cba3-f69e-4fde-85f1-8a235b9808af)
 
 [xkcd](https://xkcd.com/538/)
+
+
+## Introduction
+
+The following is the heirarchy of wallets, from least secure, and most reliant on third parties, to most secure, and least reliant on third parties. It's important to note, that the most secure choices also require the most responsibility from the user, and the least secure choices require the least responsibility from the user.
+
+1. **Custodial Wallets**: These wallets are managed by a third party, such as an exchange or a wallet service provider. They are convenient, but rely on the security practices of the third party.
+2. **Non-Custodial Wallets**: These wallets are managed by the user, which provider greater control and security, but also requires the user to take responsibility for managing their private keys.
+   1. **Hot Wallets**: These wallets are connected to the internet and are more convenient for frequent transactions but are also more vulnerable to attacks.
+   2. **Cold Wallets**: These wallets are offline and provide a higher level of security, making them suitable for long-term storage of assets.
+   3. **Multisig Wallets**: These wallets require multiple signatures to authorize a transaction, adding an extra layer of security. They are often comprised of multiple hot, cold, or hardware wallets.

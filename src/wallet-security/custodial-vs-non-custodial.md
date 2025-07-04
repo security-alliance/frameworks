@@ -2,10 +2,14 @@
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [patrickalphac]
 ---
 
 # Custodial vs. Non-Custodial Wallets
-
 
 ## Custodial Wallets
 
@@ -37,10 +41,10 @@ Non-custodial wallets are managed by the user, who has full control over their p
 
 ## Comparison
 
-| Feature             | Custodial Wallets  | Non-Custodial Wallets |
-|---------------------|--------------------|-----------------------|
-| Private Key Control | Third Party        | User                  |
-| Security            | Dependent on Third Party | High             |
-| Convenience         | High               | Moderate to Low       |
-| Recovery Options    | Easy               | User Responsibility   |
-| Use Case            | New Users, Convenience | Experienced Users, Security|
+| Feature             | Custodial Wallets        | Non-Custodial Wallets       |
+| ------------------- | ------------------------ | --------------------------- |
+| Private Key Control | Third Party              | User                        |
+| Security            | Dependent on Third Party | High                        |
+| Convenience         | High                     | Moderate to Low             |
+| Recovery Options    | Easy                     | User Responsibility         |
+| Use Case            | New Users, Convenience   | Experienced Users, Security |
