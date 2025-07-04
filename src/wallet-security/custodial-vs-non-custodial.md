@@ -34,14 +34,14 @@ Custodial wallets are managed by a third party, such as a centralized exchange 
 
 ### What Are They?
 
-Non-custodial (or  self-custody) wallets are managed directly by the user, who has sole and complete control over their private keys. The user is entirely responsible for the security, backup, and management of these keys.
+Non-custodial (or self-custody) wallets are managed directly by the user, who has sole and complete control over their private keys. The user is entirely responsible for the security, backup, and management of these keys.
 
 ### Characteristics
 
 - **User-Controlled Private Keys**: The user has exclusive control and possession of their private keys.
-- **Enhanced Security & Privacy**:  offers superior security and privacy because only the user has access to the keys. There is no intermediary.
-- **Full Responsibility**: The user is solely responsible for backing up their seed phrase and securing their private keys. Loss of keys typically means irreversible loss of funds.
-- **Web3 Interaction**: Enable seamless interaction with DApps.
+- **Eliminates Counterparty Risk**: Assets are not exposed to the risk of a third-party custodian being hacked, becoming insolvent, or freezing funds. Security becomes dependent on the user's own practices.
+- **Full Responsibility**: The user is solely responsible for backing up their seed phrase and securing their private keys. Loss of these keys means irreversible loss of funds.
+- **Web3 Interaction**: Enable seamless interaction with dApps.
 
 ### Use Cases
 - **Experienced Users & Developers**: Preferred by users who understand blockchain and wallet security best practices.
@@ -55,4 +55,4 @@ Non-custodial (or  self-custody) wallets are managed directly by the user, who h
 | **Recovery Options**        | Custodian-assisted                         | User responsibility                         |
 | **Web3 Interaction**        | Limited                                    | Direct and Full                             |
 | **Primary Risk**            | Counterparty Risk, Centralization          | User Error, Loss of Keys                    |
-| **Use Case**                | New Users, Trading on CEX, Convenience     | Full Control, DApp Use, Long-Term Storage   |
+| **Use Case**                | New Users, Trading on CEX, Convenience     | Full Control, dApp Use, Long-Term Storage   |

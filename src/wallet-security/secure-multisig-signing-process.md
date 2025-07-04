@@ -45,7 +45,7 @@ Once a transaction has the required M-of-N signatures, it can be executed. This 
 
 ## Operational Best Practices
 
-> ⚠️ **Beware of `DELEGATECALL`**: In a multisig transaction, an `operation: 1 (DELEGATECALL)` is dangerous if the target contract is not explicitly known and trusted. This opcode gives another contract full control over your wallet's context and storage.
+> ⚠️ **Beware of `DELEGATECALL`**: In a smart contract multisig transaction, an `operation: 1 (DELEGATECALL)` is dangerous if the target contract is not explicitly known and trusted. This opcode gives another contract full control over your wallet's context and storage.
 
 - **Transaction Simulation**: Before signing, use a simulator like **[Tenderly](https://tenderly.co/)** or **[Alchemy](https://www.alchemy.com/docs/reference/simulation)** to preview the transaction's outcome. This helps confirm that it will not revert and will result in the expected state changes.
 - **Hardware Wallet Standard**: All multisig signers should use hardware wallets to protect their keys from online threats. Data shown in a browser extension wallet should be treated with the same skepticism as data in the web UI.

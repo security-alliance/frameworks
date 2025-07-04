@@ -14,7 +14,7 @@ A single mistake in private key management within a development workflow can res
 
 ### Plain-Text Keys and Environment Variables
 
-A private key controlling real assets must **never** be stored in plain text. This includes being hard-coded in source files, saved in configuration files, or passed directly via the command line, as it eliminates all layers of security.
+A private key controlling real assets should **never** be stored in plain text. should never be stored in plain text. While encryption adds a layer of protection, the encrypted file itself can still be stolen, making the security of the decryption key (the password) and the host machine critically important.
 
 A common but high-risk practice is storing private keys in `.env` files.
 
@@ -31,10 +31,10 @@ Passing a key directly as a command-line argument is also highly insecure, as it
 
 ### Good Practice: Local Encrypted Keystores
 
-The standard secure practice for local development is to use an **encrypted keystore**. This is a file that contains your private key, but the file itself is encrypted with a strong password. The private key is only ever decrypted in memory by the wallet or tool when you provide the correct password.
+A recommended practice for local development is to use an **encrypted keystore**. This is a file containing your private key, encrypted with a strong password. The private key is only decrypted in memory when you provide the correct password.
 
 - **What it protects against:** Accidental exposure via version control (e.g., a `git push`), and theft of the static keystore file from a non-running machine.
-- **What it does NOT protect against:** A compromised host machine. If an attacker has malware on your computer, they can use a keylogger to capture your decryption password or access the key from memory when you use it.
+- **What it does NOT protect against:** A compromised host machine. If an attacker has malware on your computer, they can use a keylogger to capture your decryption password or access the key from memory when it is unlocked.
 
 #### Foundry Implementation
 
@@ -57,11 +57,16 @@ Development frameworks like Foundry have built-in support for this secure workfl
 
 For team-based development and production environments, a more robust solution is to use a dedicated cloud secret management service.
 
-- **How it works**: The private key is stored within the secure cloud service. Applications and developers are granted access via IAM roles and policies, authenticating to the service to request a signature. The raw private key is never exposed on the developer's machine or the application server.
+- **How it works**: The private key is stored within the cloud service. Applications and developers are granted access via IAM roles and policies. At runtime, the application authenticates to the service and fetches the secret directly into memory to perform signing operations. While this means the raw key is present in the application's memory during use, it is never stored permanently on the server's disk. 
+
+The primary advantages of this approach are centralized management, robust access controls, and detailed audit trails that monitor every time a secret is accessed.
+
+> ⚠️ Counterparty Risk: When using a cloud secret manager, you are trusting the cloud provider with custody of your private key. This introduces a level of counterparty risk, as you are relying on their infrastructure and security controls to protect your keys.
 
 ### Hardware Security Modules (HSMs)
 
 The gold standard for securing high-value private keys is a **Hardware Security Module (HSM)**.
 
 - **What it is**: An HSM is a dedicated, tamper-resistant physical device designed solely for cryptographic operations.
-- **The Core Principle**: The private key is generated inside the HSM and **can never leave it**. To sign a transaction, you send the transaction data to the HSM, which performs the signing operation internally and returns the signature.
+- **The Core Principle**: The private key is generated inside the HSM and **can never leave it**. To sign a transaction, you send the transaction data to the HSM, which performs the signing operation internally and returns only the signature.
+- **Limitation**: An HSM protects the private key from being extracted, but it does not protect against unauthorized signing requests. If the host machine that communicates with the HSM is compromised, an attacker can command the HSM to sign malicious transactions. 

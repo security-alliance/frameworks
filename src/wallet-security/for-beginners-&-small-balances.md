@@ -11,17 +11,17 @@ contributors:
 
 ### User Profile
 
-A user with foundational web3 knowledge who is actively learning and interacting with DApps. The asset value is typically non-critical, where a potential loss would not be financially significant. This profile prioritizes **ease of use** and **learning** over absolute security.
+A user with foundational web3 knowledge who is actively learning and interacting with dApps. The asset value is typically non-critical, where a potential loss would not be financially significant. This profile prioritizes **ease of use** and **learning** over protections against online threats.
 
 ### Primary Goal
 
-The primary objective is a low-friction setup for **convenience** and **DApp interaction**. This includes frequent transactions, exploring DeFi protocols, and engaging with NFTs.
+The primary objective is a low-friction setup for **convenience** and **dApp interaction**. This includes frequent transactions, exploring DeFi protocols, and engaging with NFTs.
 
 ### Recommended Setup
 
 The standard setup for this profile is a **hot wallet**, which provides the necessary internet connectivity for active use. The most common types are:
 
-*   **Browser Extension Wallets:** Integrate directly into a web browser for seamless DApp interaction.
+*   **Browser Extension Wallets:** Integrate directly into a web browser for seamless dApp interaction.
 *   **Mobile Wallets:** Applications installed on a smartphone, offering convenience and on-the-go access.
 *   **Desktop Wallets:** Software applications installed on a computer, which can sometimes offer more advanced features than mobile or browser counterparts.
 
@@ -29,7 +29,7 @@ The standard setup for this profile is a **hot wallet**, which provides the nece
 
 While convenient, this setup carries inherent risks that the user must understand and accept.
 
-*   **Online Threat Vector:** As hot wallets are internet connected, they are inherently vulnerable to **malware**, **phishing attacks**, and exploits targeting the browser or operating system.
+*   **Online Threat Vector:** As hot wallets are internet-connected, they are inherently vulnerable to malware and exploits targeting the browser or operating system.
 *   **Supply Chain Risk:** It is critical to download wallet software *only* from official, verified sources.
 
 ### How to Select a Wallet

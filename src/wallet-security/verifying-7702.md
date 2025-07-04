@@ -34,12 +34,4 @@ While powerful, this feature introduces a new attack vector. If an attacker tric
 - **Protect Your Private Key**: Delegation does not eliminate the fundamental risk of a private key compromise. If your key is stolen, an attacker can still authorize delegations.
 - **Beware of Phishing**: Be skeptical of any request to "upgrade" or "enable" smart account features, especially if it comes from an external link or pop-up.
 
-> ⚠️ Wallets will only prompt you to switch to a smart account within the wallet's native, trusted interface. Any request to do so via email, a website, or a direct message is a phishing scam.
-
-## Guidance for Developers
-
-- **Assume All Addresses Have Code**: Do not assume an address is a simple EOA. Security checks that rely on `tx.origin == msg.sender` are no longer a reliable way to prevent reentrancy or atomic sandwich attacks and must be replaced with robust security patterns.
-- **Prevent Storage Conflicts**: Use standardized namespacing for storage variables (e.g., EIP-7201) to prevent conflicts when users re-delegate between different contract implementations.
-- **Implement Reentrancy Guards**: Do not rely on EOA-based assumptions to prevent reentrancy. Use the **checks-effects-interactions** pattern and dedicated reentrancy guards.
-- **Ensure Token Compatibility**: To ensure smart contract accounts can properly receive tokens, implement the necessary receiver hooks for common standards (e.g., `onERC721Received`).
-- **Secure Initialization Flows**: Always verify signatures during wallet initialization to prevent unauthorized access or front-running attacks, as EIP-7702 does not include an `initcode` step.
+> ⚠️ Wallets will only prompt you to switch to a smart account within the wallet's native. Any request to do so via email, a website, or a direct message is a phishing scam.

@@ -9,17 +9,17 @@ contributors:
 
 # Verifying Standard Transactions (EOA)
 
-When interacting with a DApp using a standard Externally Owned Account (EOA) via a wallet, you must verify several key components of the transaction request before signing.
+When interacting with a dApp using a standard Externally Owned Account (EOA) via a wallet, you must verify several key components of the transaction request before signing.
 
 ### 1. Verify the Origin
 
 - **What to check**: The URL of the website initiating the transaction request.
-- **Why it's critical**: A malicious site can perfectly clone a legitimate DApp's interface to trick you into signing a malicious transaction. Always ensure you are on the correct, official domain.
+- **Why it's critical**: A malicious site can perfectly clone a legitimate dApp's interface to trick you into signing a malicious transaction. Always ensure you are on the correct, official domain.
 
 ### 2. Verify the Smart Contract Address
 
 - **What to check**: The contract address listed under a field like "Interacting With" in your wallet's transaction prompt.
-- **Why it's critical**: This is the actual on-chain address your transaction is being sent to. A malicious DApp will substitute a fraudulent contract address here.
+- **Why it's critical**: This is the actual on-chain address your transaction is being sent to. A malicious dApp will substitute a fraudulent contract address here.
 - **Verification Methods**:
     - **Official Documentation**: The most reliable source. Find the "Contract Addresses" or "Deployments" section in the protocol's official documentation and confirm the address matches.
     - **Block Explorer (Etherscan, Blockscout, etc.)**: Paste the address into a block explorer. Look for verification checkmarks, official labels, and a healthy transaction history.

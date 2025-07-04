@@ -21,8 +21,9 @@ Transactions are signed offline and then broadcast to the network using a connec
 
 ### Types of Cold Wallets
 
-- **Hardware Wallets**: Dedicated physical devices designed specifically to store private keys offline.
+- **Hardware Wallets**: Dedicated physical devices that store private keys offline and sign transactions without exposing the keys to a connected internet device.
 - **Paper Wallets**: Physical printouts or handwritten notes of private keys and QR codes.
+- **Software Wallets on Air-Gapped Devices**: Standard wallet software installed on a device that is permanently disconnected from the internet, used for offline transaction signing.
 
 ### Use Cases
 
@@ -37,20 +38,18 @@ Hot wallets are actively and consistently connected to the internet.This connect
 
 ### Types of Hot Wallets
 
-- **Browser Wallets (Extensions)**: Software that integrates directly into a web browser, allowing seamless interaction with DApps.
+- **Browser Wallets (Extensions)**: Software that integrates directly into a web browser, allowing seamless interaction with dApps.
 - **Mobile Wallets**: Apps installed on smartphones.
-- **Desktop Wallets**: Software applications installed on a desktop or laptop computer.
 
 ### Use Cases
 
-- **Daily Transactions & dapp Interaction**: Perfect for users who need quick and frequent access to their funds for interacting with applications.
+- **Daily Transactions & dApp Interaction**: Perfect for users who need quick and frequent access to their funds for interacting with applications.
 - **Small Balances**: Suitable for storing smaller, non-critical amounts of cryptocurrency that are used regularly.
 
 ## Comparison
 
 | **Feature** | **Cold Wallets** | **Hot Wallets** |
 | :--- | :--- | :--- |
-| **Security** | High | Moderate to Low |
 | **Convenience** | Low | High |
 | **Use Case** | Long-term storage | Daily transactions |
 | **Risk** | Physical loss/damage | Online attacks, malware |
@@ -60,6 +59,5 @@ Hot wallets are actively and consistently connected to the internet.This connect
 
 Regardless of the type, non-custodial wallets place the full burden of security on the user:
 
-- **Sole Custodian Responsibility**: You are the only one in control of your keys. Mistakes, such as exposing a seed phrase or sending funds to a wrong address, can lead to irreversible loss of funds.
 - **Online Vulnerabilities**: If the device they are on (computer or phone) is compromised, your assets can be stolen.
 - **Supply Chain Attacks**: Be cautious of both software and hardware integrity. Always download wallet software from official sources and purchase hardware wallets directly from the manufacturer to avoid receiving a tampered device.

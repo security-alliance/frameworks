@@ -7,7 +7,7 @@ contributors:
     users: [pinalikefruit]
 ---
 
-## For Intermediates & Medium Funds
+## For Intermediates & Medium Balances
 
 ### User Profile
 
@@ -15,17 +15,18 @@ An intermediate user who is comfortable with web3 interactions and is now managi
 
 ### Primary Goal
 
-The main objective is to secure funds against online threats while still retaining the ability to interact with DApps when necessary. This involves **separating the bulk of assets** from daily operational funds.
+The main objective is to secure balances against online threats while still retaining the ability to interact with dApps when necessary. This involves **separating the bulk of assets** from daily operational balances.
 
 ### Recommended Setup
 
-A **hardware wallet** is the core of this setup. This dedicated physical device stores private keys offline in a secure, tamper-resistant environment, acting as a vault for the majority of the user's funds.
+A **hardware wallet** is the core of this setup. This dedicated physical device stores private keys offline in a secure, tamper-resistant environment, acting as a vault for the majority of the user's balances.
 
 ### Key Considerations & Trade-offs
 
 Adopting a hardware wallet introduces a new set of security considerations focused on physical and supply chain vectors.
 
 *   **Physical Security:** A hardware wallet is a physical asset that must be protected from theft, damage, or coercion.
+* 
 *   **Supply Chain Integrity:** Hardware wallets must *only* be purchased directly from the manufacturer or an authorized reseller to avoid receiving a tampered device.
 *   **Convenience vs. Security:** Using a hardware wallet introduces friction into the transaction process, as it requires physical access and approval on the device for every signature.
 

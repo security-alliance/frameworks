@@ -12,7 +12,7 @@ contributors:
 
 This section provides a guide to transaction verification, from basic EOA interactions to advanced multisig operations.
 
-The rule is to **never sign blindly**. Always take the time to verify what your wallet is asking you to approve. A compromised DApp front-end or a misunderstanding of a transaction's parameters can lead to a complete loss of funds, even with a secure wallet.
+The rule is to **never sign blindly**. Always take the time to verify what your wallet is asking you to approve. A compromised dApp front-end or a misunderstanding of a transaction's parameters can lead to a complete loss of funds, even with a wallet that is not compromised.
 
 ### Core Principles of Secure Signing
 

@@ -8,7 +8,7 @@ contributors:
     users: [pinalikefruit, engn33r] 
 ---
 
-## For Advanced Users & Organizations: Multisig Wallets
+## Multisig Wallets For Advanced Users & High Funds
 
 ### User Profile
 

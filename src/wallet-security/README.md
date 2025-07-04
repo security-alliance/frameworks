@@ -17,7 +17,6 @@ The goal is to move beyond introductory concepts and provide actionable, technic
 - [Wallets For Beginners & Small Balances](./for-beginners-&-small-balances.md) - Recommended setups for users with non-critical funds.
 - [Wallets For Intermediates & Medium Funds](./intermediates-&-medium-funds.md) - Security upgrades for users with significant assets.
 - [Multisig Wallets](./secure-multisig-best-practices.md) - Best practices for setting up and managing multisig wallets.
-- [Social Recovery Wallets](./social-recovery-wallets.md) - Using trusted guardians for key recovery.
 - [Account Abstraction Wallets](./account-abstraction.md) - Exploring the security features of smart contract wallets.
 - [Signing & Verification](./signing-verification.md) - An overview of secure transaction signing and verification.
     - [Verifying Standard Transactions (EOA)](./verifying-standard-transactions.md) - How to safely verify transactions from standard wallets.
@@ -30,7 +29,7 @@ The goal is to move beyond introductory concepts and provide actionable, technic
 In this section you can learn:
 
 - Explore wallet fundamentals, analyzing the security trade-offs of hot vs. cold wallets and the ownership implications of custodial vs. non-custodial models.
-- Receive guidance on choosing the right wallet for your threat model, from basic setups to advanced configurations like Multisignature (Multisig), Social Recovery, and Account Abstraction wallets.
+- Receive guidance on choosing the right wallet for your threat model, from basic setups to advanced configurations like Multisignature (Multisig) and Account Abstraction wallets.
 - Master transaction verification techniques, from basic smart contract interactions to the advanced verification.
 - Implement security best practices for private key and seed phrase management, including secure key management workflows during development.
 
