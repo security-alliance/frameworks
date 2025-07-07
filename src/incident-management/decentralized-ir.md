@@ -1,11 +1,21 @@
+---
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+  - SRE
+contributors:
+  - role: wrote
+    users: [relotnek]
+---
+
 # Decentralized Incident Response Framework (DeIRF)
 
 A lightweight, end-to-end scaffold for security teams that work without a single authority.  
 Use it as a menu, not a mandate.
 
----
 
-## 1. Guiding Principles
+# 1. Guiding Principles
 
 | Principle | What it means in practice |
 |-----------|---------------------------|
@@ -19,7 +29,7 @@ Use it as a menu, not a mandate.
 
 ---
 
-## 2. Roles and Identities
+# 2. Roles and Identities
 
 | Role | Key duties | Identity options (at least two) |
 |------|-----------|----------------------------------|
@@ -33,7 +43,7 @@ Use it as a menu, not a mandate.
 
 ---
 
-## 3. Preparation Checklist
+# 3. Preparation Checklist
 
 | Item | Why it matters | Suggested tools |
 |------|----------------|-----------------|
@@ -46,7 +56,7 @@ Use it as a menu, not a mandate.
 
 ---
 
-## 4. Detection and Triage Flow
+# 4. Detection and Triage Flow
 
 1. **Alert fires or user reports an issue.**  
 2. **First Reporter** opens a ticket in the transparent issue tracker (GitHub security advisory or private GitLab issue).  
@@ -61,7 +71,7 @@ Use it as a menu, not a mandate.
 
 ---
 
-## 5. Containment Options
+# 5. Containment Options
 
 | Method | When to use | Pros | Cons |
 |--------|-------------|------|------|
@@ -74,7 +84,7 @@ Keep a one-liner command ready for each action and store it in the runbook.
 
 ---
 
-## 6. Eradication and Recovery
+# 6. Eradication and Recovery
 
 1. Patch or replace vulnerable code.  
 2. Peer review with at least two signers.  
@@ -88,27 +98,27 @@ Keep a one-liner command ready for each action and store it in the runbook.
 
 ---
 
-## 7. Post-Incident Actions
+# 7. Post-Incident Actions
 
 | Step | Purpose | Tool Example |
 |------|---------|-------------|
 | **Retrospective within 72 h** | Capture lessons before they fade. | Miro board, Markdown doc in repo |
 | **Update runbooks and detection rules** | Prevent repeat events. | Docs-as-code PR |
-| **Reward community reporters** | Encourage transparency. | Bug bounty payouts via OpenQ |
+| **Reward community reporters** | Encourage transparency. | Bug bounty payouts, incentive model |
 | **Public disclosure** | Build long-term trust. | Blog post plus on-chain message |
 
 ---
 
-## 8. Quick-Start Templates
+# 8. Quick-Start Templates
 
 | Need | Template location |
 |------|-------------------|
-| Incident channel message | `/templates/incident-kickoff.md` |
-| Retrospective form | `/templates/retro-form.md` |
+| Incident channel message | /templates/incident-kickoff.md |
+| Retrospective form | /templates/retro-form.md |
 
 ---
 
-## 9. Pros and Cons of Decentralized IR
+# 9. Pros and Cons of Decentralized IR
 
 | Aspect | Pros | Cons |
 |--------|------|------|
@@ -119,7 +129,7 @@ Keep a one-liner command ready for each action and store it in the runbook.
 
 ---
 
-## 10. Keep It Alive
+# 10. Keep It Alive
 
 - Run quarterly red team drills.  
 - Rotate secrets on a fixed cadence.  

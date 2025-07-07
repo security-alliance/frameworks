@@ -74,6 +74,7 @@
   - [Lessons Learned](./incident-management/lessons-learned.md)
   - [Playbooks](./incident-management/playbooks.md)
   - [SEAL 911 War Room Guidelines](./incident-management/seal-911-war-room-guidelines.md)
+  - [Decentralized Incident Response Framework (DeIRF)](./incident-management/decentralized-ir.md)
 - [Threat Modeling](./threat-modeling/README.md)
   - [Create and Maintain Threat Models](./threat-modeling/create-maintain-threat-models.md)
   - [Identity Mitigate Threats](./threat-modeling/identity-mitigate-threats.md)
