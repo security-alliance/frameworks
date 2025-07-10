@@ -51,10 +51,7 @@
 }
 
 .contributor-role-users p {
-  display: inline;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+  display: contents;
 }
 
 /* Individual contributor in the attribution area */

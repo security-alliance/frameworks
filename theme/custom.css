@@ -326,9 +326,7 @@ main p {
 }
 
 .tags p {
-  display: inline;
-  margin: 0;
-  padding: 0;
+  display: content;
 }
 
 .tag {
