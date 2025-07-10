@@ -81,7 +81,6 @@
   z-index: 10;
   border: 1px solid var(--sidebar-active-hover, #005fa3);
   text-decoration: none;
-  font-weight: bold;
 }
 
 /* Avatar styling for attribution contributors */
