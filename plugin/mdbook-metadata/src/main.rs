@@ -1,5 +1,6 @@
 use std::io;
 
+use anyhow::anyhow;
 use mdbook::{book::Chapter, errors::Error, preprocess::CmdPreprocessor, BookItem};
 use tags::TagsPreprocessor;
 
@@ -56,9 +57,11 @@ fn handle_preprocessing() -> Result<(), Error> {
         )),
     ];
 
-    for item in &mut book.sections {
+    let mut errors = Vec::new();
+
+    book.for_each_mut(|item| {
         let BookItem::Chapter(chapter) = item else {
-            continue;
+            return;
         };
 
         let frontmatter = match extract_frontmatter(chapter) {
@@ -67,8 +70,17 @@ fn handle_preprocessing() -> Result<(), Error> {
         };
 
         for p in &mut preprocessors {
-            p.run(&frontmatter, chapter)?;
+            if let Err(e) = p.run(&frontmatter, chapter) {
+                errors.push(e);
+            }
         }
+    });
+
+    if !errors.is_empty() {
+        for e in errors {
+            eprintln!("Error processing chapter: {}", e);
+        }
+        return Err(anyhow!("Errors occurred during preprocessing"));
     }
 
     for p in &mut preprocessors {
