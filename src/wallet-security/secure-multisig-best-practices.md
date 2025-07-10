@@ -5,7 +5,7 @@ tags:
   - Engineer/Developer
 contributors:
   - role: wrote
-    users: [engn33r.pinalikefruit]
+    users: [engn33r,pinalikefruit]
   - role: reviewed
     users: [Coinspect] 
 ---
