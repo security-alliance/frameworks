@@ -20,11 +20,20 @@ There are currently several ways to collaborate:
 3. Forking the repository and creating a pull request to the develop branch
 4. Commenting directly on the deployed version
 
-> ⚠️ Please sign and verify every commit.
+> ⚠️ Please sign and verify every commit. If you've accidentally created unsigned
+> commits in your history, you can resolve them by setting up [signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#gpg-commit-signature-verification)
+> on github and re-writing your history using the below commands.
+>
+> ```
+> git pull origin develop
+> git reset --soft develop
+> git commit -s -m "Commit Message"
+> git push --force
+> ```
 
 ### Framework-specific branches
 
-Before contributing, check if there's a [Steward](src/contribute/stewards.md) for the specific framework you're interested in, and reach out. We usually have separate branches pre-develop for frameworks with stewards. 
+Before contributing, check if there's a [Steward](src/contribute/stewards.md) for the specific framework you're interested in, and reach out. We usually have separate branches pre-develop for frameworks with stewards.
 
 The naming convention is `fw_framework_name`, for example `fw_opsec`, `fw_community_mgmt`. Ideally, you'll fork these framework-specific branches, as they typically have more updated information than what's available in the develop branch.
 
@@ -42,14 +51,15 @@ To comment on the live version of the book under development, you will need to l
 
 1. Fork the repository. Click on the "Fork" button at the top right corner of the page.
 2. Clone the forked repository to your local machine. Open your terminal or command prompt.
-`git clone https://github.com/your-username/frameworks.git`
+   `git clone https://github.com/your-username/frameworks.git`
 3. Check if there's a framework-specific branch you should be working on. If yes, use that branch instead of develop.
 4. Otherwise, make sure you're in the develop branch:
-`git checkout develop`
+   `git checkout develop`
 5. Inside the folder create a new branch based on the appropriate branch:
-`git checkout -b your-feature-branch`
+   `git checkout -b your-feature-branch`
 6. Make your changes.
 7. If adding new pages, consider adding appropriate tags in the frontmatter. Example:
+
 ```
 ---
 tags:
@@ -59,15 +69,16 @@ tags:
   - SRE
 ---
 ```
+
 8. If adding significant content, add attribution using the contributors system (see [using-contributors.md](src/config/using-contributors.md)).
 9. Make sure your changes don't break anything by testing it in the local setup:
-`./serve.sh`
+   `./serve.sh`
 10. Commit your changes:
-`git add .`
+    `git add .`
 11. Commit the changes with a descriptive message:
-`git commit -S -m "Fixing typos and improving readability on XXX section"`
+    `git commit -S -m "Fixing typos and improving readability on XXX section"`
 12. Push the changes to your forked repository:
-`git push origin your-feature-branch`
+    `git push origin your-feature-branch`
 13. Create a pull request. Go to your forked repository on GitHub. You should see a "Compare & pull request" button. Click on it. Provide a descriptive title and description for your pull request.
 14. Click on the "Create pull request" button.
 15. Wait for review. Once your pull request is approved, and no more changes are needed, we will merge it into the appropriate branch.
