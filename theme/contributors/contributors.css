@@ -50,6 +50,12 @@
   padding: 0;
 }
 
+.contributor-role-users p {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
 /* Individual contributor in the attribution area */
 .contributor-role-users .contributor {
   margin: 0 0.1rem 0.25rem 0;
@@ -91,12 +97,12 @@
   .contributor-role-group {
     flex-direction: column;
   }
-  
+
   .contributor-role-label {
     margin-bottom: 0.5rem;
     width: 100%;
   }
-  
+
   .contributor-role-users .contributor {
     max-width: 100%;
   }

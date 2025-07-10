@@ -4,10 +4,16 @@
         <div class="contributor-role-label">{{ role.label }}:</div>
         <div class="contributor-role-users">
             {% for user in role.users %}
+            {% if user.avatar %}
             <a href="{{ user.github_url }}" target="_blank" class="contributor with-avatar"
                 style="background-image: url('{{ user.avatar }}');">
                 {{ user.name }}
             </a>
+            {% else %}
+            <a href="{{ user.github_url }}" target="_blank" class="contributor">
+                {{ user.name }}
+            </a>
+            {% endif %}
             {% endfor %}
         </div>
     </div>

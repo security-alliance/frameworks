@@ -325,6 +325,12 @@ main p {
   clear: left;
 }
 
+.tags p {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
 .tag {
   display: inline-block;
   padding: 0.5rem 1rem;
