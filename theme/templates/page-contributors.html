@@ -7,7 +7,7 @@
             {% if user.avatar %}
             <a href="{{ user.github_url }}" target="_blank" class="contributor with-avatar"
                 style="background-image: url('{{ user.avatar }}');">
-                {{ user.name }}
+                {{ user.name }}{% if user.company %} | {{ user.company }}{% endif %}
             </a>
             {% else %}
             <a href="{{ user.github_url }}" target="_blank" class="contributor">
