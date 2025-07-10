@@ -101,7 +101,7 @@ impl ContributorsPreprocessor {
             .ok_or(Error::msg("Missing or invalid `out_file` in book.toml"))?;
 
         let contributors: Vec<Contributor> = match std::fs::read_to_string(contributors_file) {
-            Ok(content) => serde_json::from_str(&content).unwrap_or_default(),
+            Ok(content) => serde_json::from_str(&content)?,
             Err(e) => {
                 return Err(Error::msg(format!(
                     "Failed to read contributors file '{}': {}",
@@ -164,20 +164,20 @@ impl Preprocessor for ContributorsPreprocessor {
             None => return Ok(()),
         };
 
-        for role in &roles {
-            for user in &role.users {
-                match self.contributors.get(user) {
-                    Some(_) => {}
-                    None => {
-                        return Err(anyhow!(
-                            "Contributor '{}' not found in contributors list for chapter '{}'",
-                            user,
-                            chapter.name
-                        ));
-                    }
-                }
-            }
-        }
+        // for role in &roles {
+        //     for user in &role.users {
+        //         match self.contributors.get(user) {
+        //             Some(_) => {}
+        //             None => {
+        //                 return Err(anyhow!(
+        //                     "Contributor '{}' not found in contributors list for chapter '{}'",
+        //                     user,
+        //                     chapter.name
+        //                 ));
+        //             }
+        //         }
+        //     }
+        // }
 
         // Insert contributors into the chapter's content
         match self.insert_contributors(&mut chapter.content, roles.clone()) {
@@ -235,7 +235,22 @@ impl ContributorsPreprocessor {
                 let users = role
                     .users
                     .into_iter()
-                    .filter_map(|user| self.contributors.get(&user).cloned())
+                    .filter_map(|user| {
+                        self.contributors.get(&user).cloned().or({
+                            Some(Contributor {
+                                slug: user.clone(),
+                                name: user,
+                                role: "".to_string(),
+                                job_title: None,
+                                description: None,
+                                company: None,
+                                avatar: None,
+                                github: None,
+                                twitter: None,
+                                website: None,
+                            })
+                        })
+                    })
                     .collect::<Vec<_>>();
 
                 RoleGroup {
