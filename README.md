@@ -38,7 +38,6 @@ Before contributing, check if there's a [Steward](src/contribute/stewards.md) fo
 The naming convention is `fw_framework_name`, for example `fw_opsec`, `fw_community_mgmt`. Ideally, you'll fork these framework-specific branches, as they typically have more updated information than what's available in the develop branch.
 
 After making your changes:
-
 1. Submit a PR to the framework-specific branch and let the steward know
 2. After reviews, a PR can be submitted from the framework branch to the develop branch
 
