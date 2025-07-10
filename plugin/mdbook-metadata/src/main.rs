@@ -11,7 +11,7 @@ mod tags;
 /// A trait for preprocessors on the book.
 trait Preprocessor {
     /// Execute the processor on a given chapter.
-    fn run(&mut self, frontmatter: &String, chapter: &mut Chapter);
+    fn run(&mut self, frontmatter: &String, chapter: &mut Chapter) -> Result<(), Error>;
 
     /// Execute the processor after all chapters have been processed.
     fn finalize(&mut self) -> Result<(), Error>;
@@ -56,10 +56,9 @@ fn handle_preprocessing() -> Result<(), Error> {
         )),
     ];
 
-    // Run all preprocessors on the book's chapters
-    book.for_each_mut(|item| {
+    for item in &mut book.sections {
         let BookItem::Chapter(chapter) = item else {
-            return;
+            continue;
         };
 
         let frontmatter = match extract_frontmatter(chapter) {
@@ -68,9 +67,9 @@ fn handle_preprocessing() -> Result<(), Error> {
         };
 
         for p in &mut preprocessors {
-            p.run(&frontmatter, chapter);
+            p.run(&frontmatter, chapter)?;
         }
-    });
+    }
 
     for p in &mut preprocessors {
         p.finalize()?;

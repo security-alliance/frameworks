@@ -3,7 +3,7 @@ use std::{
     hash::{DefaultHasher, Hash, Hasher},
 };
 
-use anyhow::Error;
+use anyhow::{anyhow, Error};
 use mdbook_metadata::{load_template, remove_indentation, to_id, write_if_changed};
 use serde::{Deserialize, Serialize};
 
@@ -75,15 +75,25 @@ impl TagsPreprocessor {
 impl Preprocessor for TagsPreprocessor {
     /// Extracts the tags from each chapter, stores them for later use, and
     /// inserts the tag HTML into the chapter's content.
-    fn run(&mut self, frontmatter: &String, chapter: &mut mdbook::book::Chapter) {
+    fn run(
+        &mut self,
+        frontmatter: &String,
+        chapter: &mut mdbook::book::Chapter,
+    ) -> Result<(), Error> {
         let frontmatter: Frontmatter = match serde_yaml::from_str(frontmatter) {
             Ok(fm) => fm,
-            Err(_) => return,
+            Err(e) => {
+                return Err(anyhow!(
+                    "Failed to parse tags frontmatter for chapter '{}': {}",
+                    chapter.name,
+                    e
+                ));
+            }
         };
 
         let tags = match frontmatter.tags {
             Some(tags) => tags,
-            None => return,
+            None => return Ok(()),
         };
 
         // Load tags from the chapter's frontmatter
@@ -116,9 +126,15 @@ impl Preprocessor for TagsPreprocessor {
         match self.insert_tags(&mut chapter.content, tags.clone()) {
             Ok(content) => chapter.content = content,
             Err(e) => {
-                eprintln!("Error inserting tags: {}", e);
+                return Err(anyhow!(
+                    "Error inserting tags into chapter '{}': {}",
+                    chapter.name,
+                    e
+                ));
             }
         }
+
+        return Ok(());
     }
 
     /// Writes the CSS and JS files for the tags.
@@ -181,7 +197,7 @@ impl TagsPreprocessor {
     // Insert tag HTML into the chapter body.
     fn insert_tags(&self, body: &str, tags: Vec<String>) -> Result<String, Error> {
         // Find the chapter title
-        if !body.starts_with("# ") {
+        if !body.starts_with("#") {
             return Err(Error::msg("Chapter title not found"));
         }
 
