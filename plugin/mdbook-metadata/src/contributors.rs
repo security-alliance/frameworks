@@ -164,21 +164,6 @@ impl Preprocessor for ContributorsPreprocessor {
             None => return Ok(()),
         };
 
-        // for role in &roles {
-        //     for user in &role.users {
-        //         match self.contributors.get(user) {
-        //             Some(_) => {}
-        //             None => {
-        //                 return Err(anyhow!(
-        //                     "Contributor '{}' not found in contributors list for chapter '{}'",
-        //                     user,
-        //                     chapter.name
-        //                 ));
-        //             }
-        //         }
-        //     }
-        // }
-
         // Insert contributors into the chapter's content
         match self.insert_contributors(&mut chapter.content, roles.clone()) {
             Ok(content) => chapter.content = content,
@@ -231,7 +216,7 @@ impl ContributorsPreprocessor {
         let role_groups = roles
             .clone()
             .into_iter()
-            .map(|role| {
+            .map(|role| -> Result<RoleGroup, Error> {
                 let users = role
                     .users
                     .into_iter()
@@ -253,16 +238,15 @@ impl ContributorsPreprocessor {
                     })
                     .collect::<Vec<_>>();
 
-                RoleGroup {
-                    label: self
-                        .role_aliases
-                        .get(&role.role)
-                        .map(|r| r.role.clone())
-                        .unwrap_or(role.role),
-                    users,
-                }
+                let label = self
+                    .role_aliases
+                    .get(&role.role)
+                    .map(|r| r.role.clone())
+                    .ok_or_else(|| Error::msg(format!("Role alias not found: {}", role.role)))?;
+
+                Ok(RoleGroup { label, users })
             })
-            .collect::<Vec<_>>();
+            .collect::<Result<Vec<_>, Error>>()?;
 
         let rendered = tmpl.render(minijinja::context! {
             roles => role_groups,
