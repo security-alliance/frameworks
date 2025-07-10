@@ -27,7 +27,7 @@ contributors_title = "contributors"
 role_aliases = [
     [
         "wrote",
-        "Written by",
+        "Authored by",
     ],
     [
         "reviewed",
@@ -55,7 +55,7 @@ role_aliases = [
     ],
     [
         "fact-checked",
-        "Fact Checked",
+        "Verified by",
     ],
 ]
 
