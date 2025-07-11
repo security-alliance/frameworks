@@ -1,9 +1,8 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Devops
-  - Cloud
+- Engineer/Developer
+- Security Specialist
+- DevOps/SRE
 ---
 
 # Cloud Data Encryption

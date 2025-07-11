@@ -1,16 +1,16 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Devops
-  - SRE
+- Security Specialist
+- Ops/Strategy
+- DevOps/SRE
 contributors:
-  - role: wrote
-    users: [mattaereal]
-  - role: reviewed
-    users: []
-  - role: fact-checked
-    users: []
+- role: wrote
+  users:
+  - mattaereal
+- role: reviewed
+  users: []
+- role: fact-checked
+  users: []
 ---
 
 # Principles & Concepts Overview

@@ -1,3 +1,10 @@
+---
+tags:
+  - Engineer/Developer
+  - Community/Marketing
+  - Ops/Strategy
+---
+
 # Using the Contributors Database
 
 This page demonstrates how to use the centralized contributors database. Instead of specifying all the contributor details in each file, you can now simply reference contributors by their ID.

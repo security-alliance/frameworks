@@ -1,8 +1,8 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Operations & Strategy
+- Engineer/Developer
+- Security Specialist
+- Ops/Strategy
 ---
 
 # Identity and Access Management (IAM)

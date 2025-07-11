@@ -1,7 +1,7 @@
 ---
 tags:
-  - Operations & Strategy
-  - Security Specialist
+- Ops/Strategy
+- Security Specialist
 ---
 
 # Overview of Each Framework

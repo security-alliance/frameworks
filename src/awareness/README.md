@@ -1,15 +1,18 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Community & Marketing
-  - HR
-  - Engineer/Developer
+- Security Specialist
+- Ops/Strategy
+- Community/Marketing
+- HR
+- Engineer/Developer
 contributors:
-  - role: wrote
-    users: [mattaereal]
-  - role: reviewed
-    users: [mattaereal, robert]
+- role: wrote
+  users:
+  - mattaereal
+- role: reviewed
+  users:
+  - mattaereal
+  - robert
 ---
 
 # Security Awareness

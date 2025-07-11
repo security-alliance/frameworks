@@ -1,3 +1,14 @@
+---
+tags:
+  - Security Specialist
+  - Engineer/Developer
+  - Ops/Strategy
+  - DevOps/SRE
+  - HR
+  - Legal/Compliance
+  - Community/Marketing
+---
+
 # How to Navigate the Website
 
 Navigating the Security Frameworks by SEAL will be designed, in time, to be intuitive and

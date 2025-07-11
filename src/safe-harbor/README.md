@@ -1,12 +1,9 @@
 ---
-tags:
-  - SEAL/Initiative
-  - Protocol
-  - DAO
-  - Whitehat
+tags: []
 contributors:
-  - role: wrote
-    users: [robert]
+- role: wrote
+  users:
+  - robert
 ---
 
 # SEAL Whitehat Safe Harbor

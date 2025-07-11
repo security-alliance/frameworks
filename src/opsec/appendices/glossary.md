@@ -1,9 +1,8 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Devops
-  - SRE
+- Security Specialist
+- Ops/Strategy
+- DevOps/SRE
 ---
 
 # Glossary of Terms

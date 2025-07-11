@@ -1,7 +1,7 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
+- Security Specialist
+- Ops/Strategy
 ---
 
 # Detecting and Mitigating Insider Threats

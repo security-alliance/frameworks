@@ -1,3 +1,10 @@
+---
+tags:
+  - Community/Marketing
+  - Ops/Strategy
+  - HR
+---
+
 # Stewards
 
 ## What is a Framework Steward?

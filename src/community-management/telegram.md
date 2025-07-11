@@ -1,11 +1,15 @@
 ---
 tags:
-  - Community & Marketing
+- Community/Marketing
 contributors:
-  - role: wrote
-    users: [mattaereal, zedt3ster, fredriksvantes]
-  - role: reviewed
-    users: [mattaereal]
+- role: wrote
+  users:
+  - mattaereal
+  - zedt3ster
+  - fredriksvantes
+- role: reviewed
+  users:
+  - mattaereal
 ---
 
 # Telegram Security

@@ -1,7 +1,7 @@
 ---
 tags:
-  - Operations & Strategy
-  - Legal & Compliance
+- Ops/Strategy
+- Legal/Compliance
 ---
 
 # Risk Management

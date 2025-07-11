@@ -1,9 +1,9 @@
 ---
-tags:
-  - SEAL/Initiative
+tags: []
 contributors:
-  - role: wrote
-    users: [robert]
+- role: wrote
+  users:
+  - robert
 ---
 
 # Key Terms

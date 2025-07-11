@@ -1,8 +1,8 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - HR
+- Security Specialist
+- Ops/Strategy
+- HR
 ---
 
 # Human-Centered Security

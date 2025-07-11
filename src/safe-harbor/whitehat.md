@@ -1,10 +1,9 @@
 ---
-tags:
-  - SEAL/Initiative
-  - Whitehat
+tags: []
 contributors:
-  - role: wrote
-    users: [robert]
+- role: wrote
+  users:
+  - robert
 ---
 
 # Safe Harbor for Whitehats

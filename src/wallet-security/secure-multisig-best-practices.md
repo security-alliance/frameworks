@@ -1,13 +1,16 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Engineer/Developer
+- Security Specialist
+- Ops/Strategy
+- Engineer/Developer
 contributors:
-  - role: wrote
-    users: [engn33r,pinalikefruit]
-  - role: reviewed
-    users: [Coinspect] 
+- role: wrote
+  users:
+  - engn33r
+  - pinalikefruit
+- role: reviewed
+  users:
+  - Coinspect
 ---
 
 ## Multisig Wallets For Advanced Users & High Funds

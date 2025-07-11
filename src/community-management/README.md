@@ -1,11 +1,14 @@
 ---
 tags:
-  - Community & Marketing
+- Community/Marketing
 contributors:
-  - role: wrote
-    users: [mattaereal, robert]
-  - role: reviewed
-    users: [ghadi8]
+- role: wrote
+  users:
+  - mattaereal
+  - robert
+- role: reviewed
+  users:
+  - ghadi8
 ---
 
 # Community Management

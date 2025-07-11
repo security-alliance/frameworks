@@ -1,9 +1,9 @@
 ---
 tags:
-  - Security Specialist
-  - Legal & Compliance
-  - Operations & Strategy
-  - HR
+- Security Specialist
+- Legal/Compliance
+- Ops/Strategy
+- HR
 ---
 
 # Security Policies and Procedures

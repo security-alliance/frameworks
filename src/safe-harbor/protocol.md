@@ -1,11 +1,9 @@
 ---
-tags:
-  - SEAL/Initiative
-  - Protocol
-  - DAO
+tags: []
 contributors:
-  - role: wrote
-    users: [robert]
+- role: wrote
+  users:
+  - robert
 ---
 
 # Safe Harbor for Protocols

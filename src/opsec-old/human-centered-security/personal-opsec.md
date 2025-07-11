@@ -1,8 +1,7 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Individual Security
+- Security Specialist
+- Ops/Strategy
 ---
 
 # Personal OpSec for Team Members

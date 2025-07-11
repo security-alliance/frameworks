@@ -1,12 +1,16 @@
 ---
 tags:
-  - Community & Marketing
-  - Security Specialist
+- Community/Marketing
+- Security Specialist
 contributors:
-  - role: wrote
-    users: [mattaereal, zedt3ster, fredriksvantes]
-  - role: reviewed
-    users: [mattaereal]
+- role: wrote
+  users:
+  - mattaereal
+  - zedt3ster
+  - fredriksvantes
+- role: reviewed
+  users:
+  - mattaereal
 ---
 
 # Google Security

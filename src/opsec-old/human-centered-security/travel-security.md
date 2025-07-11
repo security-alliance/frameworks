@@ -1,9 +1,7 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Travel
-  - Physical Security
+- Security Specialist
+- Ops/Strategy
 ---
 
 # Travel Security

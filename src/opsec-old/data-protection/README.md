@@ -1,10 +1,8 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Devops
-  - SRE
-  - Compliance
+- Security Specialist
+- Ops/Strategy
+- DevOps/SRE
 ---
 
 # Data Protection

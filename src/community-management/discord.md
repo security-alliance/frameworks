@@ -1,14 +1,19 @@
 ---
 tags:
-  - Community & Marketing
-  - Security Specialist
+- Community/Marketing
+- Security Specialist
 contributors:
-  - role: wrote
-    users: [mattaereal, zedt3ster, fredriksvantes]
-  - role: reviewed
-    users: [mattaereal]
-  - role: fact-checked
-    users: [nftdreww]
+- role: wrote
+  users:
+  - mattaereal
+  - zedt3ster
+  - fredriksvantes
+- role: reviewed
+  users:
+  - mattaereal
+- role: fact-checked
+  users:
+  - nftdreww
 ---
 
 # Discord Security

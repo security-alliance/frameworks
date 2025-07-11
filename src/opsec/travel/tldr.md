@@ -1,18 +1,17 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Engineer/Developer
-  - Security Specialist
-  - Devops
-  - SRE
+- Security Specialist
+- Ops/Strategy
+- Engineer/Developer
+- DevOps/SRE
 contributors:
-  - role: wrote
-    users: [mattaereal]
-  - role: reviewed
-    users: []
-  - role: fact-checked
-    users: []
+- role: wrote
+  users:
+  - mattaereal
+- role: reviewed
+  users: []
+- role: fact-checked
+  users: []
 ---
 
 # Personal security travel guide — concise version

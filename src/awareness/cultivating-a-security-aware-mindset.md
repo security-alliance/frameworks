@@ -1,15 +1,19 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Community & Marketing
-  - HR
-  - Engineer/Developer
+- Security Specialist
+- Ops/Strategy
+- Community/Marketing
+- HR
+- Engineer/Developer
 contributors:
-  - role: wrote
-    users: [mattaereal, zedt3ster, fredriksvantes]
-  - role: reviewed
-    users: [mattaereal]
+- role: wrote
+  users:
+  - mattaereal
+  - zedt3ster
+  - fredriksvantes
+- role: reviewed
+  users:
+  - mattaereal
 ---
 
 # 3. Cultivating a Security-Aware Mindset

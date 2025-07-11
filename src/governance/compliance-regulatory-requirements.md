@@ -1,9 +1,9 @@
 ---
 tags:
-  - Operations & Strategy
-  - Legal & Compliance
-  - Devops
-  - HR
+- Ops/Strategy
+- Legal/Compliance
+- DevOps/SRE
+- HR
 ---
 
 # Compliance with Regulatory Requirements

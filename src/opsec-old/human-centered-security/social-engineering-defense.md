@@ -1,8 +1,7 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Human Resources
+- Security Specialist
+- Ops/Strategy
 ---
 
 # Social Engineering Defense

@@ -1,10 +1,8 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Devops
-  - Cloud
-  - SRE
+- Engineer/Developer
+- Security Specialist
+- DevOps/SRE
 ---
 
 # Compliance Checks

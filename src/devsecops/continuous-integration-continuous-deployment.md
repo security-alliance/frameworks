@@ -1,9 +1,8 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Devops
-  - SRE
+- Engineer/Developer
+- Security Specialist
+- DevOps/SRE
 ---
 
 # Continuous Integration and Continuous Deployment (CI/CD)

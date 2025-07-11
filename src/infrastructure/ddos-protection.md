@@ -1,11 +1,9 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Operations & Strategy
-  - Devops
-  - Cloud
-  - SRE
+- Engineer/Developer
+- Security Specialist
+- Ops/Strategy
+- DevOps/SRE
 ---
 
 # DDoS Protection

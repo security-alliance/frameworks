@@ -1,14 +1,15 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
+- Security Specialist
+- Ops/Strategy
 contributors:
-  - role: wrote
-    users: [mattaereal]
-  - role: reviewed
-    users: []
-  - role: fact-checked
-    users: []
+- role: wrote
+  users:
+  - mattaereal
+- role: reviewed
+  users: []
+- role: fact-checked
+  users: []
 ---
 
 # Threat Modeling Overview

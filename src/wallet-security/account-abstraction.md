@@ -1,13 +1,15 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Operations & Strategy
+- Engineer/Developer
+- Security Specialist
+- Ops/Strategy
 contributors:
-  - role: wrote
-    users: [pinalikefruit]
-  - role: reviewed
-    users: [Coinspect]
+- role: wrote
+  users:
+  - pinalikefruit
+- role: reviewed
+  users:
+  - Coinspect
 ---
 
 ## Account Abstraction Wallets

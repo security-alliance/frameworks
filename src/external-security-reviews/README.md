@@ -1,8 +1,8 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Devops
+- Security Specialist
+- Ops/Strategy
+- DevOps/SRE
 ---
 
 # External Security Reviews

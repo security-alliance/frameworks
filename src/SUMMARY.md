@@ -1,3 +1,14 @@
+---
+tags:
+  - Security Specialist
+  - Engineer/Developer
+  - Ops/Strategy
+  - DevOps/SRE
+  - HR
+  - Legal/Compliance
+  - Community/Marketing
+---
+
 # SUMMARY
 
 - [Introduction to Frameworks](./intro/introduction.md)

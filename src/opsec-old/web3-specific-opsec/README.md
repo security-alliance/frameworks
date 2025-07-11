@@ -1,9 +1,7 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Web3
-  - Blockchain
+- Security Specialist
+- Ops/Strategy
 ---
 
 # Web3-Specific Operational Security

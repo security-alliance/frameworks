@@ -1,10 +1,9 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Operations & Strategy
-  - Devops
-  - SRE
+- Engineer/Developer
+- Security Specialist
+- Ops/Strategy
+- DevOps/SRE
 ---
 
 # Operating System Security

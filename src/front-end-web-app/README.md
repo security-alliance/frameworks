@@ -1,8 +1,8 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Devops
+- Engineer/Developer
+- Security Specialist
+- DevOps/SRE
 ---
 
 # Front-End Web Application Security Best Practices

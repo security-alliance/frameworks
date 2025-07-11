@@ -1,10 +1,10 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Operations & Strategy
-  - Devops
-  - HR
+- Engineer/Developer
+- Security Specialist
+- Ops/Strategy
+- DevOps/SRE
+- HR
 ---
 
 # Access Management Best Practices

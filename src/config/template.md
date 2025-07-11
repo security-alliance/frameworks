@@ -1,17 +1,18 @@
 ---
 tags:
-  - Security Specialist
-  - Operations & Strategy
-  - Community & Marketing
-  - HR
-  - Engineer/Developer
+- Security Specialist
+- Ops/Strategy
+- Community/Marketing
+- HR
+- Engineer/Developer
 contributors:
-  - role: wrote
-    users: [mattaereal]
-  - role: reviewed
-    users: []
-  - role: fact-checked
-    users: []
+- role: wrote
+  users:
+  - mattaereal
+- role: reviewed
+  users: []
+- role: fact-checked
+  users: []
 ---
 
 # {{ Title of this Page }}

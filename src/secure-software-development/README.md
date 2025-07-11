@@ -1,8 +1,8 @@
 ---
 tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Devops
+- Engineer/Developer
+- Security Specialist
+- DevOps/SRE
 ---
 
 # Secure Software Development
