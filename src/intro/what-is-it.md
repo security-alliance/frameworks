@@ -1,14 +1,3 @@
----
-tags:
-  - Security Specialist
-  - Engineer/Developer
-  - Ops/Strategy
-  - DevOps/SRE
-  - HR
-  - Legal/Compliance
-  - Community/Marketing
----
-
 # What Is It
 
 This resource is a collection of best practices written in an abstract or general fashion to be applicable regardless of the specific technology. It serves as a comprehensive guide to help you secure various aspects of your Web3 projects and build resilience against potential threats.

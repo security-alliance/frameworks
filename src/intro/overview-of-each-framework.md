@@ -1,9 +1,3 @@
----
-tags:
-- Ops/Strategy
-- Security Specialist
----
-
 # Overview of Each Framework
 
 > **Important Disclaimer**: The frameworks presented in this documentation are living documents that evolve with the Web3 security landscape. They may undergo restructuring, updates, or modifications in the future to reflect emerging threats, new best practices, and community feedback. We recommend regularly checking for updates to ensure you're working with the most current security guidelines.

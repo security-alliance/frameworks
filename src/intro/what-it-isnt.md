@@ -1,14 +1,3 @@
----
-tags:
-  - Security Specialist
-  - Engineer/Developer
-  - Ops/Strategy
-  - DevOps/SRE
-  - HR
-  - Legal/Compliance
-  - Community/Marketing
----
-
 # What It Isn't
 
 This resource isn't just a compilation of existing information. While it may initially seem like a collection of curated content, its primary focus is on providing in-depth, practical guidance.

@@ -1,14 +1,3 @@
----
-tags:
-  - Security Specialist
-  - Engineer/Developer
-  - Ops/Strategy
-  - DevOps/SRE
-  - HR
-  - Legal/Compliance
-  - Community/Marketing
----
-
 # Introduction to Frameworks
 
 Welcome to the Security Frameworks by Security Alliance (SEAL), a curated resource for those seeking knowledge in the realm of blockchain security. Our organization, a collective of dedicated security specialists, is on a mission to spread awareness and educate the community about best practices and potential pitfalls in Web3 security.
