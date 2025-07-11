@@ -26,13 +26,16 @@
 
 /* Colored Tag Span. Displayed at the top of tagged pages */
 .tag {
-    margin: 0 5px 10px 0;
+    margin: 0 5px 5px 0;
     padding: 5px 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: white;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1;
 }
 
 /* Tag Search Styles */
@@ -315,29 +318,17 @@ main p {
 
 /* Ensure tags are displayed properly */
 .tags {
-  display: block;
   margin-top: 1rem; /* Add space above tags to separate from contributors */
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
   margin-bottom: 1rem;
   clear: left;
 }
 
 .tags p {
-  display: content;
-}
-
-.tag {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  color: white;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 1;
-  height: auto;
+  display: contents;
 }
 
 .contributors-title {

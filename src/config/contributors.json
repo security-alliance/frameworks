@@ -96,8 +96,8 @@
     "features": [
       "steward"
     ],
-    "role": "Security Researcher",
-    "description": "Creator and maintainer of Wallet Security Framework",
+    "role": "steward",
+    "description": "Steward of Wallet-Security framework",
     "company": "Coinspect",
     "website": "https://www.coinspect.com/"
   }
