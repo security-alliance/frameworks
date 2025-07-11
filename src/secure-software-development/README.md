@@ -3,6 +3,9 @@ tags:
 - Engineer/Developer
 - Security Specialist
 - DevOps/SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
 ---
 
 # Secure Software Development

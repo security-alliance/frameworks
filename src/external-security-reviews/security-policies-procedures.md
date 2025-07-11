@@ -4,6 +4,9 @@ tags:
 - Legal/Compliance
 - Ops/Strategy
 - HR
+contributors:
+  - role: wrote
+    users: [mattaereal]
 ---
 
 # Security Policies and Procedures

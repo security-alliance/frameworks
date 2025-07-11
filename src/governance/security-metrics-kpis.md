@@ -2,6 +2,11 @@
 tags:
 - Ops/Strategy
 - Legal/Compliance
+contributors:
+  - role: wrote
+    users: [fredriksvantes]
+  - role: reviewed
+    users: [mattaereal]
 ---
 
 # Security Metrics and KPIs

@@ -1,6 +1,9 @@
 ---
 tags:
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
 ---
 
 # Security Regression Testing

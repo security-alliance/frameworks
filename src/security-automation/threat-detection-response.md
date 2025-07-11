@@ -3,6 +3,9 @@ tags:
 - Engineer/Developer
 - Security Specialist
 - DevOps/SRE
+contributors:
+  - role: wrote
+    users: [fredriksvantes, mattaereal]
 ---
 
 # Threat Detection and Response

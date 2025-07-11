@@ -3,6 +3,11 @@ tags:
 - Engineer/Developer
 - Security Specialist
 - DevOps/SRE
+contributors:
+  - role: wrote
+    users: [fredriksvantes]
+  - role: reviewed
+    users: [mattaereal]
 ---
 
 # Infrastructure as Code

@@ -4,6 +4,11 @@ tags:
 - Legal/Compliance
 - DevOps/SRE
 - HR
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [fredriksvantes]
 ---
 
 # Compliance with Regulatory Requirements

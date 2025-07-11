@@ -1,6 +1,9 @@
 ---
 tags:
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
 ---
 
 # Static Application Security Testing (SAST)

@@ -3,6 +3,9 @@ tags:
 - Engineer/Developer
 - Security Specialist
 - Ops/Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal, fredriksvantes]
 ---
 
 # DNS and Domain Registration

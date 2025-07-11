@@ -31,3 +31,6 @@ package-lock.json
 
 # Claude Code configuration
 CLAUDE.md
+
+# Claude work directory - contains scripts and analysis files
+.claude-work/

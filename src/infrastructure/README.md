@@ -3,6 +3,11 @@ tags:
 - Engineer/Developer
 - Security Specialist
 - DevOps/SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [fredriksvantes, robert]
 ---
 
 # Infrastructure

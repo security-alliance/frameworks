@@ -2,6 +2,9 @@
 tags:
 - Security Specialist
 - Ops/Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal]
 ---
 
 # Communication Strategies

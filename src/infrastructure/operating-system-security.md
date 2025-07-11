@@ -4,6 +4,9 @@ tags:
 - Security Specialist
 - Ops/Strategy
 - DevOps/SRE
+contributors:
+  - role: wrote
+    users: [mattaereal, fredriksvantes]
 ---
 
 # Operating System Security

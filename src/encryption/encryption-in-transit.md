@@ -2,6 +2,9 @@
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [fredriksvantes]
 ---
 
 # Encryption in Transit

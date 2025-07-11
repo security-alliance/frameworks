@@ -2,6 +2,11 @@
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [fredriksvantes]
+  - role: reviewed
+    users: [mattaereal]
 ---
 
 # Hardware Encryption
