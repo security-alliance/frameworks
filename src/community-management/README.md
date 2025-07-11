@@ -3,11 +3,9 @@ tags:
   - Community & Marketing
 contributors:
   - role: wrote
-    users: [mattaereal, robert, ghadi8, robert, tebayoso, engn33r, robert, robert, engn33r]
+    users: [mattaereal, robert]
   - role: reviewed
-    users: [mattaereal, robert, tebayoso, robert, ghadi8, robert, robert, engn33r, tebayoso]
-  - role: fact-checked
-    users: [mattaereal, robert, ghadi8, tebayoso, robert, engn33r, tebayoso, robert, ghadi8]
+    users: [ghadi8]
 ---
 
 # Community Management
