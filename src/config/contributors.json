@@ -87,12 +87,15 @@
     "company": "JustaLab",
     "website": "https://justalab.co"
   },
-  "pinalikefruit": {
+  {
+    "slug": "pinalikefruit",
     "name": "Piña",
     "avatar": "https://github.com/pinalikefruit.png",
     "github": "https://github.com/pinalikefruit",
     "twitter": "https://x.com/pinalikefruit",
-    "features": ["steward"],
+    "features": [
+      "steward"
+    ],
     "role": "Security Researcher",
     "description": "Creator and maintainer of Wallet Security Framework",
     "company": "Coinspect",

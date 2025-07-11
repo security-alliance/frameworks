@@ -1,5 +1,6 @@
 use std::io;
 
+use anyhow::anyhow;
 use mdbook::{book::Chapter, errors::Error, preprocess::CmdPreprocessor, BookItem};
 use tags::TagsPreprocessor;
 
@@ -11,7 +12,7 @@ mod tags;
 /// A trait for preprocessors on the book.
 trait Preprocessor {
     /// Execute the processor on a given chapter.
-    fn run(&mut self, frontmatter: &String, chapter: &mut Chapter);
+    fn run(&mut self, frontmatter: &String, chapter: &mut Chapter) -> Result<(), Error>;
 
     /// Execute the processor after all chapters have been processed.
     fn finalize(&mut self) -> Result<(), Error>;
@@ -56,7 +57,8 @@ fn handle_preprocessing() -> Result<(), Error> {
         )),
     ];
 
-    // Run all preprocessors on the book's chapters
+    let mut errors = Vec::new();
+
     book.for_each_mut(|item| {
         let BookItem::Chapter(chapter) = item else {
             return;
@@ -68,9 +70,18 @@ fn handle_preprocessing() -> Result<(), Error> {
         };
 
         for p in &mut preprocessors {
-            p.run(&frontmatter, chapter);
+            if let Err(e) = p.run(&frontmatter, chapter) {
+                errors.push(e);
+            }
         }
     });
+
+    if !errors.is_empty() {
+        for e in errors {
+            eprintln!("Error processing chapter: {}", e);
+        }
+        return Err(anyhow!("Errors occurred during preprocessing"));
+    }
 
     for p in &mut preprocessors {
         p.finalize()?;

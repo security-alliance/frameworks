@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use anyhow::Error;
+use anyhow::{anyhow, Error};
 use mdbook_metadata::{load_template, remove_indentation};
 use serde::{Deserialize, Serialize};
 
@@ -44,8 +44,7 @@ struct ContributorGroup {
 
 #[derive(Debug, Deserialize, Clone)]
 struct Role {
-    label: String,
-    order: u32,
+    role: String,
     users: Vec<String>,
 }
 
@@ -82,13 +81,11 @@ impl ContributorsPreprocessor {
 
         let role_aliases: Vec<(String, Role)> = role_aliases
             .into_iter()
-            .enumerate()
-            .map(|(i, (slug, label))| {
+            .map(|(slug, label)| {
                 (
                     slug.clone(),
                     Role {
-                        label,
-                        order: i as u32,
+                        role: label,
                         users: Vec::new(),
                     },
                 )
@@ -104,7 +101,7 @@ impl ContributorsPreprocessor {
             .ok_or(Error::msg("Missing or invalid `out_file` in book.toml"))?;
 
         let contributors: Vec<Contributor> = match std::fs::read_to_string(contributors_file) {
-            Ok(content) => serde_json::from_str(&content).unwrap_or_default(),
+            Ok(content) => serde_json::from_str(&content)?,
             Err(e) => {
                 return Err(Error::msg(format!(
                     "Failed to read contributors file '{}': {}",
@@ -131,7 +128,11 @@ impl ContributorsPreprocessor {
 }
 
 impl Preprocessor for ContributorsPreprocessor {
-    fn run(&mut self, frontmatter: &String, chapter: &mut mdbook::book::Chapter) {
+    fn run(
+        &mut self,
+        frontmatter: &String,
+        chapter: &mut mdbook::book::Chapter,
+    ) -> Result<(), Error> {
         // TODO: If more instances of preprocessors creating HTML pages are added,
         // TODO: consider refactoring into a custom renderer instead.
         if chapter.name.to_lowercase() == self.contributors_title.to_lowercase() {
@@ -140,29 +141,42 @@ impl Preprocessor for ContributorsPreprocessor {
                     chapter.content = rendered;
                 }
                 Err(e) => {
-                    eprintln!("Error rendering contributors page: {}", e);
+                    return Err(anyhow!("Error rendering contributors page: {}", e));
                 }
             }
-            return;
+            return Ok(());
         }
 
         let frontmatter: Frontmatter = match serde_yaml::from_str(frontmatter) {
             Ok(fm) => fm,
-            Err(_) => return,
+            Err(e) => {
+                eprintln!("Failed to parse frontmatter: {}", frontmatter);
+                return Err(anyhow!(
+                    "Failed to parse contributors frontmatter for chapter '{}': {}",
+                    chapter.name,
+                    e
+                ));
+            }
         };
 
         let roles = match frontmatter.contributors {
             Some(roles) => roles,
-            None => return,
+            None => return Ok(()),
         };
 
         // Insert contributors into the chapter's content
         match self.insert_contributors(&mut chapter.content, roles.clone()) {
             Ok(content) => chapter.content = content,
             Err(e) => {
-                eprintln!("Error inserting contributors: {}", e);
+                return Err(anyhow!(
+                    "Error inserting contributors into chapter '{}': {}",
+                    chapter.name,
+                    e
+                ));
             }
         }
+
+        return Ok(());
     }
 
     fn finalize(&mut self) -> Result<(), anyhow::Error> {
@@ -173,7 +187,7 @@ impl Preprocessor for ContributorsPreprocessor {
 impl ContributorsPreprocessor {
     fn insert_contributors(&self, body: &str, roles: Vec<Role>) -> Result<String, Error> {
         // Find the chapter title
-        if !body.starts_with("# ") {
+        if !body.starts_with("#") {
             return Err(Error::msg("Chapter title not found"));
         }
 
@@ -202,23 +216,37 @@ impl ContributorsPreprocessor {
         let role_groups = roles
             .clone()
             .into_iter()
-            .map(|role| {
+            .map(|role| -> Result<RoleGroup, Error> {
                 let users = role
                     .users
                     .into_iter()
-                    .filter_map(|user| self.contributors.get(&user).cloned())
+                    .filter_map(|user| {
+                        self.contributors.get(&user).cloned().or({
+                            Some(Contributor {
+                                slug: user.clone(),
+                                name: user,
+                                role: "".to_string(),
+                                job_title: None,
+                                description: None,
+                                company: None,
+                                avatar: None,
+                                github: None,
+                                twitter: None,
+                                website: None,
+                            })
+                        })
+                    })
                     .collect::<Vec<_>>();
 
-                RoleGroup {
-                    label: self
-                        .role_aliases
-                        .get(&role.label)
-                        .map(|r| r.label.clone())
-                        .unwrap_or(role.label),
-                    users,
-                }
+                let label = self
+                    .role_aliases
+                    .get(&role.role)
+                    .map(|r| r.role.clone())
+                    .ok_or_else(|| Error::msg(format!("Role alias not found: {}", role.role)))?;
+
+                Ok(RoleGroup { label, users })
             })
-            .collect::<Vec<_>>();
+            .collect::<Result<Vec<_>, Error>>()?;
 
         let rendered = tmpl.render(minijinja::context! {
             roles => role_groups,
@@ -250,7 +278,7 @@ impl ContributorsPreprocessor {
                     label: self
                         .role_aliases
                         .get(&c.role)
-                        .map(|r| r.label.clone())
+                        .map(|r| r.role.clone())
                         .unwrap_or(c.role.clone()),
                     contributors: Vec::new(),
                 });
@@ -265,8 +293,8 @@ impl ContributorsPreprocessor {
 
         // Sort based on order in role_aliases for deterministic output
         contributor_groups.sort_by(|a, b| {
-            let a_order = self.role_aliases.get(&a.slug).map_or(u32::MAX, |r| r.order);
-            let b_order = self.role_aliases.get(&b.slug).map_or(u32::MAX, |r| r.order);
+            let a_order = self.role_aliases.get(&a.slug).map_or("", |r| &r.role);
+            let b_order = self.role_aliases.get(&b.slug).map_or("", |r| &r.role);
             a_order.cmp(&b_order)
         });
 
