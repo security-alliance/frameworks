@@ -28,7 +28,7 @@ contributors:
     users: [mattaereal, charlie_dev]
   - role: reviewed
     users: [fredriksvantes, zedt3ster]
-  - role: fact_checked
+  - role: fact-checked
     users: [nftdreww]
 ---
 ```
@@ -81,6 +81,6 @@ When using the role-based format, contributors will be displayed in sections bas
 
 - `wrote`: People who authored the content
 - `reviewed`: People who reviewed the content for accuracy
-- `fact_checked`: People who verified the factual correctness
+- `fact-checked`: People who verified the factual correctness
 
 This creates a clear attribution system showing who contributed to each page in what capacity.
