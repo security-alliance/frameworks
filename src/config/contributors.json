@@ -87,16 +87,20 @@
     "company": "JustaLab",
     "website": "https://justalab.co"
   },
-  "patrickalphac": {
+  {
+    "slug": "patrickalphac",
     "name": "Patrick Collins",
     "avatar": "https://github.com/patrickalphac.png",
     "github": "https://github.com/patrickalphac",
     "twitter": "https://twitter.com/patrickalphac",
     "website": "https://cyfrin.io",
-    "features": ["core"],
+    "features": [
+      "steward"
+    ],
     "description": "Co-founder of Cyfrin",
     "company": "Cyfrin",
     "role": "Smart Contract Security Researcher & Educator"
+  },
   {
     "slug": "pinalikefruit",
     "name": "Piña",
