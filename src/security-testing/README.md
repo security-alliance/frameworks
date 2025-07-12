@@ -33,5 +33,5 @@ For smart contracts in particular, here is when to use each type of testing:
 - **Unit Testing**: Always. And aim for high "code coverage" (i.e. unit test as many paths as possible)
 - **Integration Testing**: Always. This can also be combined with fork testing.
 - **Fuzz Testing**: Always. Most unit tests can be fuzz tests.
-- **Static Analysis**: Always. Use tools like [Aderyn](https://github.com/Cyfrin/aderyn) and [Slither](https://github.com/crytic/slither) to analyze the code for vulnerabilities.
+- **Static Analysis**: Always. Use tools like [Slither](https://github.com/crytic/slither) and [Aderyn](https://github.com/Cyfrin/aderyn) to analyze the code for vulnerabilities.
 - **Formal Verification**: Dependent. Anywhere functions are math heavy, stateless, or functionality matches another system, this should be used.
