@@ -12,11 +12,11 @@ contributors:
 
 # Static Analysis
 
-Static analysis is when we look at our code or have some tool look at our code without actually executing it. Unlike dynamic testing (unit tests, fuzz tests, integration tests), static analysis examines your code's structure, syntax, and patterns to identify potential vulnerabilities and code quality issues.
+At a high level, static analysis examines the structure, syntax, and patterns of your code without executing it. There are many forms of static analysis, and compilers like solc rely on these techniques. From a security perspective, static analysis can help identify potential vulnerabilities and code quality issues.
 
-Think of static analysis as having an automated code reviewer that never gets tired and knows every common vulnerability pattern.
+Some static analysis tools are helpful for finding bugs too. Unlike dynamic testing (unit tests, fuzz tests, integration tests), these bug-finding-focused static analysis examines your code's structure, syntax, and patterns to identify potential vulnerabilities and code quality issues. You can think of these static analysis as being an automated code reviewer that never gets tired and knows common vulnerability patterns.
 
-## What is Static Analysis?
+## Static Analysis in Practice
 
 Static analysis tools parse your source code and analyze it against known vulnerability patterns, coding standards, and best practices. They can quickly identify issues like:
 
@@ -52,4 +52,4 @@ A static analysis tool will automatically detect this reentrancy pattern and fla
 
 This document incorporates knowledge from:
 - [Cyfrin Updraft Security Testing Curriculum](https://updraft.cyfrin.io)
-- [Trail of Bits secure contracts](https://secure-contracts.com/) 
+- [Trail of Bits secure contracts](https://secure-contracts.com/program-analysis/slither/docs/src/api/static_analysis.html) 

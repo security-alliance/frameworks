@@ -18,13 +18,15 @@ This is the highest level of assurance you can achieve in smart contract testing
 
 ## What is Formal Verification?
 
-Think of formal verification as converting your code into mathematical expressions and then using powerful solvers to prove whether certain properties can be broken. Instead of testing with random inputs like fuzzing, formal verification explores **every possible execution path** mathematically.
+Think of formal verification as translating your code into a mathematical model and using formal reasoning to prove whether certain properties hold. Unlike fuzzing, which tests the program with many random inputs, formal verification explores the program’s behavior through modeling rather than relying on specific test cases.
 
 For example, if you want to prove that a function should never revert, formal verification will create mathematical representations of all possible code paths and determine if any input could cause a revert.
 
 ## Symbolic Execution
 
-The most popular technique for formal verification in smart contracts is **symbolic execution**. Here's how it works:
+The most popular technique for formal verification in smart contracts is **symbolic execution**. In a nutshell, symbolic execution explores **every possible execution path** mathematically.
+
+Here's how it works:
 
 ### 1. Explore All Possible Paths
 
