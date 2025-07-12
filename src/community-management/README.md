@@ -5,7 +5,7 @@ contributors:
   - role: wrote
     users: [mattaereal, robert]
   - role: reviewed
-    users: [mattaereal]
+    users: [ghadi8]
 ---
 
 # Community Management
