@@ -3,6 +3,7 @@ aaaabbbb
 abcdef
 Acknowledgement
 Acunetix
+aderyn
 Aeón
 Aereal
 AES
@@ -38,6 +39,7 @@ COBIT
 codebase
 Coinbase
 collab
+collateralized
 Comodo
 Config
 Cooldown
@@ -51,6 +53,7 @@ CSRF
 curation
 curations
 customizable
+cvc
 CyberSec
 Cybersecurity
 DAI
@@ -76,6 +79,7 @@ encrypt
 Enigmail
 EOA
 EOAs
+erc
 ETH
 Ethereum
 Etherscan
@@ -102,7 +106,9 @@ Golangci
 Gosec
 GPG
 Hackenproof
+halmos
 HashiCorp
+hevm
 HIDS
 HIPAA
 HSM
@@ -119,6 +125,7 @@ incentivize
 inevitableeth
 influencer
 Integrations
+invariant
 IPFS
 IRP
 IRT
@@ -162,6 +169,7 @@ Phalcon
 PII
 pre
 Pretexting
+prover
 pseudonymization
 Qubes
 Qwertycards
@@ -173,6 +181,7 @@ repo
 reputational
 Revolut
 SAST
+satisfiable
 scalable
 Scalability
 SDLC
@@ -184,6 +193,7 @@ sexualized
 Shamir
 Shamir's
 SIEM
+smt
 SMS
 Snyk
 socio
@@ -195,6 +205,7 @@ Spokeo
 Squarespace
 SRE
 SSID
+stateful
 SSL
 SSO
 StackDriver
@@ -222,6 +233,7 @@ untrusted
 USDC
 Veracode
 Vercel
+vyper
 VLAN
 VLANs
 VPC
