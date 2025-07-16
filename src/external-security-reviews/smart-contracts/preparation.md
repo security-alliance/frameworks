@@ -10,7 +10,6 @@ contributors:
 
 # Preparation
 
-
 A common misconception is that when doing a security review, you can just hand off the written code and let reviewers do their work. This approach is inefficient and costly, as auditors will spend time on issues you could have resolved beforehand. Proper preparation maximizes the value of your security review investment and helps auditors focus on complex vulnerabilities rather than basic issues.
 
 ## How to Get the Most Out of Your Security Review

@@ -7,43 +7,34 @@ contributors:
     users: [patrickalphac]
 ---
 
-# Expectation
+# Expectations
 
-A security review is a time-boxed assessment where security researchers comprehensively review a smart contract or protocol codebase to find, report, and help mitigate vulnerabilities, issues, and improvements.
 
-A security review engagement is divided into four phases:
-- **Scoping Phase**: The project team prepares the codebase, and gives the security researchers a specific scope to work on.
-- **Initial Assessment Phase**: Researchers will conduct a preliminary analysis of the codebase to identify potential security issues and define the scope of the review.
-- **Mitigation Phase**: After the initial assessment, the team will work on fixing identified issues, with ongoing support from the auditors.
-- **Final Report Phase**: Auditors will review the implemented fixes and provide a final report
-
-## What to Expect from a Security Review
-
-### Scoping Phase
+## Scoping Phase
 The team looking for a security review will agree with the auditors/security researchers the exact parameters of the review. What *exact* contracts should they review? What should they not review? This is incredibly important so the can clearly estimate timelines on how long a review may take. This is also where compensation is discussed, usually the more aspects a team wants to review, the more expensive the audit will be.
 
-### Initial Assessment Phase
+## Initial Assessment Phase
 - **Automated Testing**: Auditors will run various automated security tools including static analysis, fuzz testing, formal verification, and unit testing to identify basic vulnerabilities
 - **Manual Code Review**: Security researchers will manually analyze the code to understand context, complexity, and identify deeper vulnerabilities that automated tools might miss
 - **Documentation Review**: Auditors will review project specifications and documentation to understand intended functionality
 
-### Deliverables
+## Deliverables
 
 A comprehensive security review will generate the following:
 
-#### Initial Report
+### Initial Report
 - **Vulnerability Identification**: Security vulnerabilities classified by severity (High, Medium, Low)
 - **Proof of Concept**: Demonstration of potential exploit scenarios where applicable
 - **Gas Optimizations**: Recommendations for improving contract efficiency
 - **Informational Findings**: Code quality improvements and best practice recommendations
 - **Mitigation Strategies**: Specific recommendations for addressing each identified issue
 
-#### Mitigation Phase
+### Mitigation Phase
 - **Fix Review Period**: Time allocated for your team to address identified vulnerabilities
 - **Collaborative Support**: Ongoing communication with auditors during the fix implementation
 - **Code Re-review**: Assessment of implemented fixes to ensure issues are properly resolved
 
-#### Final Report
+### Final Report
 - **Updated Assessment**: Review of all implemented fixes and their effectiveness
 - **Residual Risk Analysis**: Documentation of any remaining risks or limitations
 - **Public Publication**: In web3, audit reports are commonly published publicly to build community trust
