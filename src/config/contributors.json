@@ -44,7 +44,7 @@
     "twitter": "https://twitter.com/nft_dreww",
     "company": "PocketUniverseZ",
     "job_title": "Security Researcher",
-    "description": "Managing and curating the Community Management framework"
+    "description": "Steward of Community Management framework"
   },
   {
     "slug": "robert",
@@ -83,7 +83,8 @@
     "role": "steward",
     "avatar": "https://github.com/ghadi8.png",
     "github": "https://github.com/ghadi8",
-    "description": "Creator and maintainer of the ENS framework",
+    "job_title": "Creator and maintainer of the ENS framework",
+    "description": "Steward of ENS framework",
     "company": "JustaLab",
     "website": "https://justalab.co"
   },
@@ -94,12 +95,10 @@
     "github": "https://github.com/patrickalphac",
     "twitter": "https://twitter.com/patrickalphac",
     "website": "https://cyfrin.io",
-    "features": [
-      "steward"
-    ],
-    "description": "Co-founder of Cyfrin",
+    "job_title": "Cyfrin Co-founder and CEO",
+    "description": "Steward of Security Testing framework",
     "company": "Cyfrin",
-    "role": "Smart Contract Security Researcher & Educator"
+    "role": "steward"
   },
   {
     "slug": "pinalikefruit",
@@ -107,9 +106,6 @@
     "avatar": "https://github.com/pinalikefruit.png",
     "github": "https://github.com/pinalikefruit",
     "twitter": "https://x.com/pinalikefruit",
-    "features": [
-      "steward"
-    ],
     "role": "steward",
     "description": "Steward of Wallet-Security framework",
     "company": "Coinspect",

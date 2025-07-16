@@ -33,7 +33,7 @@ There are currently several ways to collaborate:
 
 ### Framework-specific branches
 
-Before contributing, check if there's a [Steward](src/contribute/stewards.md) for the specific framework you're interested in, and reach out. We usually have separate branches pre-develop for frameworks with stewards.
+Before contributing, check if there's a [Steward](https://frameworks.securityalliance.dev/contribute/contributors.html#stewards) for the specific framework you're interested in, and reach out. We usually have separate branches pre-develop for frameworks with stewards.
 
 The naming convention is `fw_framework_name`, for example `fw_opsec`, `fw_community_mgmt`. Ideally, you'll fork these framework-specific branches, as they typically have more updated information than what's available in the develop branch.
 
