@@ -6,7 +6,7 @@ mkdir -p bin
 
 # Download and extract mdBook
 echo "Downloading mdBook v0.4.40..."
-curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin 
+curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.52/mdbook-v0.4.52-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin 
 
 # Install Rust (needed for the prebuild script)
 echo "Installing Rust..."
