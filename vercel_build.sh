@@ -5,7 +5,7 @@ set -e  # Exit immediately if a command fails
 mkdir -p bin
 
 # Download and extract mdBook
-echo "Downloading mdBook v0.4.40..."
+echo "Downloading mdBook v0.4.52..."
 curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.52/mdbook-v0.4.52-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin 
 
 # Install Rust (needed for the prebuild script)
