@@ -7,7 +7,7 @@ contributors:
   - role: wrote
     users: [pinalikefruit]
   - role: reviewed
-    users: [Coinspect]
+    users: [Coinspect, patrickalphac]
 ---
 
 # Cold vs. Hot Wallets
@@ -22,11 +22,18 @@ Cold wallets are cryptocurrency wallets that store private keys in an offline en
 
 Transactions are signed offline and then broadcast to the network using a connected device, ensuring the private keys  are stored on device with minimal connectivity.
 
+> ❓ Did you know?
+> 
+> Most cold wallets come with some way to connect to the internet, such as via a USB connection. This technically makes them "hot" when connected. However, the key distinction is that they are not continuously online and are designed to minimize exposure to online threats.
+
 ### Types of Cold Wallets
 
 - **Hardware Wallets**: Dedicated physical devices that store private keys offline and sign transactions without exposing the keys to a connected internet device.
 - **Paper Wallets**: Physical printouts or handwritten notes of private keys and QR codes.
 - **Software Wallets on Air-Gapped Devices**: Standard wallet software installed on a device that is permanently disconnected from the internet, used for offline transaction signing.
+- **Brain Wallets**: Private keys that are memorized.
+- **Account Abstraction Wallets**: Using smart contracts to manage keys and transactions without exposing private keys.
+- **Multisig Wallets**: Require multiple signatures to authorize a transaction, enhancing security.
 
 ### Use Cases
 
@@ -51,11 +58,11 @@ Hot wallets are actively and consistently connected to the internet. This connec
 
 ## Comparison
 
-| **Feature** | **Cold Wallets** | **Hot Wallets** |
-| :--- | :--- | :--- |
-| **Convenience** | Low | High |
-| **Use Case** | Long-term storage | Daily transactions |
-| **Risk** | Physical loss/damage | Online attacks, malware |
+| **Feature**     | **Cold Wallets**     | **Hot Wallets**         |
+| :-------------- | :------------------- | :---------------------- |
+| **Convenience** | Low                  | High                    |
+| **Use Case**    | Long-term storage    | Daily transactions      |
+| **Risk**        | Physical loss/damage | Online attacks, malware |
 
 
 ## **Key Security Considerations**
