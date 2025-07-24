@@ -42,7 +42,7 @@ By distributing signing authority, a multisig ensures that the compromise of a s
 
 *   **Role-Based Access Control (RBAC):** Implement modules that grant specific, limited permissions to certain addresses (e.g., a "pauser" or "executor" role) without making them full owners, adhering to the principle of least privilege.
 
-*   **Disaster Recovery Plan:** Establish a clear, documented process for what to do when a signer is compromised, the Safe{Wallet} UI is down, or other emergencies arise. These should be done at regular intervals.
+*   **Disaster Recovery Plan:** Establish a clear, documented process for what to do when a signer is compromised, the multi-signature UI is down, or other emergencies arise. These should be done at regular intervals.
 
 
 ### Operational Best Practices
