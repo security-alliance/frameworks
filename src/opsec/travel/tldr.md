@@ -37,7 +37,8 @@ contributors:
 - Prefer cellular data or personal hotspots over public Wi-Fi; disable automatic Wi-Fi connections.  
 - Use a trusted VPN and consider a portable router to encrypt traffic on public networks.  
 - Turn off Wi-Fi, Bluetooth, AirDrop, and Nearby Share when not in use to reduce attack surface.  
-- Keep devices on you or locked; use cable locks and hotel safes.  
+- Keep devices on you or locked; use cable locks and hotel safes.
+- Be cognizant of what you are posting on Social Media in real time. Delay posting a location by 1-2 days to avoid anyone tracking you.
 - Avoid public USB charging stations ("juice jacking"); use your own charger or a USB data blocker.  
 - Use privacy screens on laptops and phones; be mindful of shoulder surfing and phishing attempts.  
 - Don't discuss sensitive information publicly; be alert for hidden cameras or microphones in accommodations.  
