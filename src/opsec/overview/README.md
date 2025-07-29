@@ -15,7 +15,7 @@ contributors:
 
 # Overview
 
-Operational Security (OpSec) is a practical approach that helps organizations protect sensitive information and critical assets through both foundational security concepts and actionable implementation processes. This section covers the essential frameworks that form the basis of an effective operational security program.
+Operational Security (OpSec) is a practical approach that helps organizations protect sensitive information and critical assets through both foundational security concepts and actionable implementation processes. In simple terms, it means identifying what information is valuable, understanding who might try to steal or misuse it, figuring out how it could be accessed, and then putting the right protections in place to prevent that from happening. This section covers the essential frameworks that form the basis of an effective operational security program.
 
 ## What is Operational Security?
 
@@ -27,7 +27,7 @@ Operational Security is a systematic process that:
 4. Evaluates risks in a business context
 5. Deploys targeted controls to mitigate identified risks
 
-The goal is to prevent unauthorized access to systems and information that could cause operational, financial, or reputational harm if compromised.
+The goal is to prevent unauthorized access to systems and information that, if compromised, could lead to operational, financial, or reputational harm. To achieve this, modern Operational Security frameworks should adopt zero trust security model, which assumes no user, or device is inherently trustworthy. Instead, every access request must be explicitly verified, regardless of origin or credentials.
 
 ## Security Fundamentals
 
