@@ -22,7 +22,7 @@ This document outlines a practical implementation process for operational securi
 - This process provides a **sequential workflow** for security teams to follow
 - The fundamentals establish **enduring principles** that shape security architecture
 
-While this process offers a concrete methodology for implementation, the fundamentals establish the ongoing security approaches that must be maintained throughout your systems. Both elements must work together - the fundamentals guide your overall approach, while this process provides the tactical roadmap.
+While this process offers a concrete methodology for implementation, the fundamentals establish the ongoing security approaches that must be maintained throughout your systems. Both elements must work together: the fundamentals guide your overall approach, while this process provides the tactical roadmap.
 
 For organizations just beginning their security journey, start here with these concrete implementation steps.
 
@@ -35,18 +35,18 @@ Map and document the assets that would cause significant harm to your organizati
 ### Implementation Actions
 
 1. Conduct asset discovery across your environment using both automated tools and manual inventorying
-   - For digital assets: Use network scanning, CMDB tools, and cloud resource inventories
-   - For physical assets: Document hardware, systems and access points
+   - Digital assets: Use network scanning, CMDB tools, and cloud resource inventories
+   - Physical assets: Document hardware, systems and access points
 2. Apply a practical classification system with clear, actionable categories
    - High-value assets: Direct financial impact if compromised (e.g., private keys, treasury wallets)
    - Operational assets: Required for continued business operations
-   - Sensitive data: Customer information, intellectual property, strategic plans
+   - Sensitive data: Includes Customer information, intellectual property, strategic plans
 3. Map information flows to understand how data moves between systems
 4. Assign specific owners responsible for each asset category
 5. Establish a sustainable review cadence based on your environment
    - High-volatility environments: Monthly reviews
    - Stable environments: Quarterly reviews
-   - Document trigger events requiring immediate review (acquisitions, new products, etc.)
+   - Document trigger events that require immediate reassessment (e.g., acquisitions, new product, etc.)
 
 ## 2. Practical Threat Analysis
 
