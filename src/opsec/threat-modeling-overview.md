@@ -205,8 +205,13 @@ Goal: Steal crypto assets
 
 ## Further Reading & Tools
 
+### Frameworks & References
+
 - [NIST SP 800-154: Guide to Data-Centric System Threat Modeling](https://csrc.nist.gov/publications/detail/sp/800-154/draft)
 - [OWASP Threat Modeling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html)
 - [Microsoft STRIDE Model](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
-- Tools: [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling), [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/)
+
+### Visualization & Modeling Tools
+- [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling), 
+- [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/)
