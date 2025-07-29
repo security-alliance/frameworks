@@ -154,7 +154,7 @@ Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized
 | Initial development | Create baseline threat model before launching any crypto project |
 | Regular reviews | Update quarterly or when significant changes occur |
 | After incidents | Revise after any security breach or near-miss |
-| Team changes | Review when onboarding key personnel |
+| Team changes | Review when onboarding and offboarding key personnel |
 
 **Role-specific considerations:**
 
