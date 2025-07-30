@@ -123,6 +123,7 @@
   - [Fuzz Testing](./security-testing/fuzz-testing.md)
   - [Security Regression Testing](./security-testing/security-regression-testing.md)
   - [Static Application Security Testing](./security-testing/static-application-security-testing.md)
+  - [Manual Review](./security-testing/manual-review.md)
 - [ENS](./ens/README.md)
   - [Data Integrity & Verification](./ens/data-integrity-verification.md)
   - [Cross-Chain Compatibility](./ens/cross-chain-compatibility.md)
