@@ -4,12 +4,18 @@ Official repository to the Security Frameworks by SEAL. This repository contains
 
 If you want to know more about the frameworks or take a peek at the live book go to the following branches: [Main](frameworks.securityalliance.org), [Development](frameworks.securityalliance.dev).
 
+# Prerequisites
+
+- [Rust/cargo](https://www.rust-lang.org/tools/install) (For building/serving mdBook)
+- [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (For linting markdown files)
+- [GNU Aspell](https://sourceforge.net/projects/aspell/) (For spell checking)
+- [just](https://github.com/casey/just) (For running commands)
+
 ## Quick installation and local setup
 
 1. `gh repo clone security-alliance/frameworks`
 2. `git checkout develop`
-3. `cargo install mdbook mdbook-admonish`
-4. `./serve.sh`
+3. `just serve`
 
 ## Collaboration
 
@@ -38,8 +44,9 @@ Before contributing, check if there's a [Steward](https://frameworks.securityall
 The naming convention is `fw_framework_name`, for example `fw_opsec`, `fw_community_mgmt`. Ideally, you'll fork these framework-specific branches, as they typically have more updated information than what's available in the develop branch.
 
 After making your changes:
-1. Submit a PR to the framework-specific branch and let the steward know
-2. After reviews, a PR can be submitted from the framework branch to the develop branch
+1. Run the linting command `just lint`
+2. Submit a PR to the framework-specific branch and let the steward know
+3. After reviews, a PR can be submitted from the framework branch to the develop branch
 
 If there's no specific branch created, that framework is still "headless," which means you can become its steward! See more in the [Stewards](src/contribute/stewards.md) section.
 
@@ -72,7 +79,7 @@ tags:
 
 8. If adding significant content, add attribution using the contributors system (see [using-contributors.md](src/config/using-contributors.md)).
 9. Make sure your changes don't break anything by testing it in the local setup:
-   `./serve.sh`
+   `just serve`
 10. Commit your changes:
     `git add .`
 11. Commit the changes with a descriptive message:
@@ -92,5 +99,3 @@ Editors merge PRs and push suggestions to the main branch which will be reflecte
 2. `git fetch origin develop`
 3. `git merge origin/develop`
 4. Manually merge files, solve conflicts and add a description.
-
-- Using the `serve.sh` script instead of mdBook `serve` command is needed to be able to see properly the local deployment.
