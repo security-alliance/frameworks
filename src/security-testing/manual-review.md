@@ -31,7 +31,7 @@ The approach to manual review can vary from person to person or team to team. Th
 	    ![structural diagram](images/structural-diagram.png)  
 		 
 ## Manual review:
-1. **Understand the flow** from [unit tests](security-testing/unit-testing.md):  
+1. **Understand the flow** from [unit tests](unit-testing.md):  
 	Test cases are important. It gives you understanding of how the setup is, what state needs to be in place for the users to start using entry point of the system. also it gives you time to test more offensive scenarios (after verifying unit tests) instead of using most of the time in testing general scenarios.
 	- When math formulas are involved or complex interconnected calls are involved, debugging the values of variables helps sometime to see how the state changes are happening e.g what is the value of variable x/totalStakedEth before the specific internal/external call. or what it becomes after that call.  
 	- Debugging can be done in many ways. depending on which framework you are using. Some examples are.  
@@ -163,9 +163,9 @@ One reason for writing down doubts, ideas, possible issues is, when you start go
 2. Write and test edge cases from notes taken while manually reviewing contracts.
 
 ## Automated review:
-1. [static analysis](security-testing/static-analysis.md)
-2. [Fuzz Testing](security-testing/fuzz-testing.md)
-3. [formal verification](security-testing/formal-verification.md)
+1. [static analysis](static-analysis.md)
+2. [Fuzz Testing](fuzz-testing.md)
+3. [formal verification](formal-verification.md)
 
 ## Report writing
 1. Discussing doubts and found issues with audit team to come on conclusion.
