@@ -36,7 +36,7 @@ To understand how to contribute, follow this process:
 
 ### Local Development with mdBook
 
-If you want to locally experiment with mdBook, you can run `./serve.sh` which will automatically run mdBook when installed, serving the project for local viewing.
+If you want to locally experiment with mdBook, you can run `just serve` which will automatically run mdBook when installed, serving the project for local viewing.
 
 ### Handling the Summary
 

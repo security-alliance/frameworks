@@ -4,7 +4,7 @@
 - [How to Navigate the Website](./intro/how-to-navigate-the-website.md)
 - [Overview of Each Framework](./intro/overview-of-each-framework.md)
 
-# Frameworks
+## Frameworks
 
 - [Community Management](./community-management/README.md)
   - [Discord](./community-management/discord.md)
@@ -27,19 +27,19 @@
   - [While Traveling](./opsec/travel/README.md)
     - [Guide](./opsec/travel/guide.md)
     - [TL;DR](./opsec/travel/tldr.md)
-  - [Governance & Program Management]()
-  - [Control Domains]()
-  - [Lifecycle]()
-  - [Monitoring & Detection]()
-  - [Incident Response & Recovery]()
-  - [Continuous Improvement & Metrics]()
-  - [Integration & Mapping to Other Frameworks]()
-  - [Appendices]()
+  - [Governance & Program Management](./opsec/governance-program-management.md)
+  - [Control Domains](./opsec/control-domains.md)
+  - [Lifecycle](./opsec/lifecycle.md)
+  - [Monitoring & Detection](./opsec/monitoring-detection.md)
+  - [Incident Response & Recovery](./opsec/incident-response-recovery.md)
+  - [Continuous Improvement & Metrics](./opsec/continuous-improvement-metrics.md)
+  - [Integration & Mapping to Other Frameworks](./opsec/integration-mapping.md)
+  - [Appendices](./opsec/appendices.md)
 - [Wallet Security](./wallet-security/README.md)
   - [Custodial vs Non-Custodial](./wallet-security/custodial-vs-non-custodial.md)
   - [Cold vs Hot Wallet](./wallet-security/cold-vs-hot-wallet.md)
   - [Wallets For Beginners & Small Balances](./wallet-security/for-beginners-&-small-balances.md)
-  - [Wallets For Intermediates & Medium Funds ](./wallet-security/intermediates-&-medium-funds.md)
+  - [Wallets For Intermediates & Medium Funds](./wallet-security/intermediates-&-medium-funds.md)
   - [Multisig Wallets For Advanced Users & High Funds](./wallet-security/secure-multisig-best-practices.md)
   - [Account Abstraction Wallets](./wallet-security/account-abstraction.md)
   - [Signing & Verification](./wallet-security/signing-verification.md)
@@ -145,8 +145,7 @@
   - [Partition Encryption](./encryption/partition-encryption.md)
   - [Volume Encryption](./encryption/volume-encryption.md)
 
-
-# About this
+## About this
 
 - [What It Is](./intro/what-is-it.md)
 - [What It Isn't](./intro/what-it-isnt.md)
@@ -154,12 +153,12 @@
   - [Contributors](./contribute/contributors.md)
   - [Stewards](./contribute/stewards.md)
 
-# Practical Guides
+## Practical Guides
 
 <!-- - Step-by-step implementation — can be omitted
 - Case studies — an idea -->
 
-# Additional Resources
+## Additional Resources
 
 <!-- - Tools and software recommendations
 - Further reading and references -->
