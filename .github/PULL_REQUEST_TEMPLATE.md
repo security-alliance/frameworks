@@ -12,17 +12,7 @@ Thank you for contributing to the Security Frameworks! Before you open a PR, mak
 <!--
 ℹ️ Checking for typos locally
 1. Install [aspell](https://www.gnu.org/software/aspell/) for your platform.
-2. Navigate to the project root and run:
-```
- for f in **/*.md ; do echo $f ; aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case list  < $f | sort | uniq -c ; done
-```
-
-ℹ️ Fixing typos
-1. Fix typos: Open the relevant files and fix any identified typos.
-2. Update wordlist: If a flagged word is actually a project-specific term add it to `wordlist.txt` in the project root.
-   Each word should be listed on a separate line.
- * 🚧 Remember:
-    * When adding new words it must NOT have any spaces or special characters within or around it.
-    * \`wordlist\` is NOT case sensitive.
-    * Use backticks to quote code variables so as to not bloat the \`wordlist\`.
+2. Install [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
+3. Install [just](https://github.com/casey/just)
+4. Run `just lint`
 -->
