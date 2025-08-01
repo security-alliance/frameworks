@@ -104,7 +104,7 @@ For protocols that want white-glove support, SEAL offers guided onboarding at no
 
 For teams that want to do it themselves, we provide a clear step-by-step guide, including templates for scope definitions, template DAO proposals, and on-chain registration instructions.
 
-→ [View the Self-Adoption Guide](https://securityalliance.notion.site/public-seal-safe-harbor-self-adoption-guide)
+→ [View the Self-Adoption Guide](./self-adoption-guide.md)
 
 ### 3. Adopt Through a Third-Party Provider
 

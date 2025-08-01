@@ -51,7 +51,7 @@ You have 3 ways to adopt:
 
 1. **Self-adopt using our guide:**
     
-    → [Self-Adoption Guide](https://securityalliance.notion.site/public-seal-safe-harbor-self-adoption-guide?pvs=74)
+    → [Self-Adoption Guide](./self-adoption-guide.md)
     
 2. **Get help from SEAL (free):**
     

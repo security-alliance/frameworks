@@ -18,7 +18,7 @@ To do this effectively, protocols should cover all public and legal bases: defin
 
 The first step is defining the **scope**. This information informs whitehats about how and when they can intervene. It includes which assets are covered, where to send rescued funds, how to contact your team, what bounties apply, and any identity requirements.
 
-- Refer to the scope walkthrough: [Scope Definitions & Tips](https://www.notion.so/PUBLIC-SEAL-Safe-Harbor-Scope-Terms-23c8d08fc71e8009bb89c44a9eb7c3c8?pvs=21)
+- Refer to the scope walkthrough: [Scope Definitions & Tips](./scope-terms.md)
 - DAO Template: [DAO Scope Template](https://docs.google.com/document/d/1zsyutbSpQrwkmEA_XicABoRkSR25IQr92tOPgZOixN4/edit)
 - Non-DAO Template: [Non-DAO Scope Template](https://docs.google.com/document/d/1kcgeq2GmmuSHyMzbl0mlgRhMHag-av4B4TdLZFqdoSE/edit)
 
@@ -41,7 +41,7 @@ Whether you're a DAO or a centralized team, you'll need to publish your adoption
 
 **If you are NOT doing on-chain via DAO proposal:**
 
-- Follow the guide: [SEAL Safe Harbor On-Chain Adoption](https://www.notion.so/PUBLIC-SEAL-Safe-Harbor-On-Chain-Adoption-23c8d08fc71e80b48e0dcc6f9b5dff5e?pvs=21)
+- Follow the guide: [SEAL Safe Harbor On-Chain Adoption](./on-chain-adoption-guide.md)
 
 **If you ARE doing this in your DAO proposal:**
 

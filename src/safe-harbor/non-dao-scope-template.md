@@ -12,7 +12,7 @@ contributors:
 
 ## **Adoption Details**
 
-# \<PROTOCOL\_NAME> will adopt the agreement with the following parameters. For a full description of these adoption details, review the [Safe Harbor Scope](https://securityalliance.notion.site/safe-harbor-scope) document.1) **Asset Recovery Address: Addresses controlled by \<PROTOCOL\_NAME>, which recovered funds will be returned to in the event of a hack.**|           |             |
+# \<PROTOCOL\_NAME> will adopt the agreement with the following parameters. For a full description of these adoption details, review the [Safe Harbor Scope](./scope-terms.md) document.1) **Asset Recovery Address: Addresses controlled by \<PROTOCOL\_NAME>, which recovered funds will be returned to in the event of a hack.**|           |             |
 | --------- | ----------- |
 | **Chain** | **Address** |
 |           |             |

@@ -67,7 +67,7 @@ Adoption of the agreement complements audits by providing an additional layer of
 
 ## **Adoption Details**
 
-\<PROTOCOL\_NAME> will adopt the agreement with the following parameters. For a full description of these adoption details, review the [Safe Harbor Scope](https://securityalliance.notion.site/safe-harbor-scope) document.
+\<PROTOCOL\_NAME> will adopt the agreement with the following parameters. For a full description of these adoption details, review the [Safe Harbor Scope](./scope-terms.md) document.
 
 1. **Asset Recovery Address: Addresses controlled by \<PROTOCOL\_NAME>, which recovered funds will be returned to in the event of a hack.**
 
@@ -179,7 +179,7 @@ Adopting the SEAL Whitehat Safe Harbor Agreement equips \<PROTOCOL\_NAME> with a
 
 - **SEAL Whitehat Safe Harbor Agreement**:[ GitHub Repository](https://github.com/security-alliance/safe-harbor)
 
-- **SEAL Whitehat Safe Harbor Agreement Overview:** [Notion](https://securityalliance.notion.site/public-safe-harbor?source=copy_link)
+- **SEAL Whitehat Safe Harbor Agreement Overview:** [Notion](./README.md)
 
 - **\<PROTOCOL\_NAME>** **Bug Bounty**: \<LINK\_TO\_BUG\_BOUNTY>
 

@@ -41,7 +41,7 @@ Protocols can adopt on-chain using **one of three methods**:
 
 ### 1. SEAL Self-Adoption Website (Fastest Method)
 
-1. Navigate to the [SEAL Self-Adoption Tool](https://www.notion.so/PUBLIC-SEAL-Safe-Harbor-On-Chain-Adoption-23c8d08fc71e80b48e0dcc6f9b5dff5e?pvs=21) (coming soon).
+1. Navigate to the [SEAL Self-Adoption Tool](http://TODOBYROBERT) (coming soon).
 2. Fill in your scope details (Asset Recovery Address, Assets Under Scope, Bounty Terms, etc.).
 3. Choose one of the following:
     - **Direct adoption** using a connected wallet (creates and registers your agreement immediately).
