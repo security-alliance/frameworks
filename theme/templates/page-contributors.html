@@ -1,0 +1,21 @@
+<div class="contributors-roles">
+    {% for role in roles %}
+    <div class="contributor-role-group">
+        <div class="contributor-role-label">{{ role.label }}:</div>
+        <div class="contributor-role-users">
+            {% for user in role.users %}
+            {% if user.avatar %}
+            <a href="{{ user.github }}" target="_blank" class="contributor with-avatar"
+                style="background-image: url('{{ user.avatar }}');">
+                {{ user.name }}{% if user.company %} | {{ user.company }}{% endif %}
+            </a>
+            {% else %}
+            <a href="{{ user.github }}" target="_blank" class="contributor">
+                {{ user.name }}
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
