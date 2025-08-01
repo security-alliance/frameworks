@@ -50,6 +50,10 @@
   padding: 0;
 }
 
+.contributor-role-users p {
+  display: contents;
+}
+
 /* Individual contributor in the attribution area */
 .contributor-role-users .contributor {
   margin: 0 0.1rem 0.25rem 0;
@@ -75,7 +79,6 @@
   z-index: 10;
   border: 1px solid var(--sidebar-active-hover, #005fa3);
   text-decoration: none;
-  font-weight: bold;
 }
 
 /* Avatar styling for attribution contributors */
@@ -91,12 +94,12 @@
   .contributor-role-group {
     flex-direction: column;
   }
-  
+
   .contributor-role-label {
     margin-bottom: 0.5rem;
     width: 100%;
   }
-  
+
   .contributor-role-users .contributor {
     max-width: 100%;
   }

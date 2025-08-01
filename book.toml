@@ -14,33 +14,63 @@ use-default-preprocessors = true
 
 [preprocessor.admonish]
 command = "mdbook-admonish"
-assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
-
-[preprocessor.catppuccin]
-assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
+assets_version = "3.0.2"    # do not edit: managed by `mdbook-admonish install`
 
 [preprocessor.metadata]
 command = "cargo run --manifest-path=plugin/mdbook-metadata/Cargo.toml --locked"
+
+[preprocessor.tags]
 tag_colors = { "SEAL/Initiative" = "#4339db" }
+
+[preprocessor.contributors]
+contributors_title = "contributors"
+role_aliases = [
+    [
+        "wrote",
+        "Authored by",
+    ],
+    [
+        "reviewed",
+        "Reviewed by",
+    ],
+    [
+        "edited",
+        "Edited by",
+    ],
+    [
+        "lead",
+        "Leadership",
+    ],
+    [
+        "core",
+        "Core Contributors",
+    ],
+    [
+        "steward",
+        "Stewards",
+    ],
+    [
+        "contributor",
+        "Contributors",
+    ],
+    [
+        "fact-checked",
+        "Verified by",
+    ],
+]
+
 
 [output]
 
 [output.html]
 additional-css = [
-    "./theme/catppuccin.css",
-    "./theme/catppuccin-admonish.css",
     "./mdbook-admonish.css",
     "./theme/custom.css",
     "./theme/toc/pagetoc.css",
     "./theme/tags/tags.css",
     "./theme/contributors/contributors.css",
 ]
-additional-js = [
-    "./theme/main.js",
-    "./theme/toc/pagetoc.js",
-    "./theme/tags/tagsindex.js",
-    "./theme/contributors/contributorsindex.js",
-]
+additional-js = ["./theme/main.js", "./theme/toc/pagetoc.js", "./theme/tags/tagsindex.js"]
 template-path = "theme"
 copy-images = true
 default-theme = "navy"
