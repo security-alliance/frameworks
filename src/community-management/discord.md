@@ -7,7 +7,7 @@ contributors:
     users: [mattaereal, zedt3ster, fredriksvantes]
   - role: reviewed
     users: [mattaereal]
-  - role: fact_checked
+  - role: fact-checked
     users: [nftdreww]
 ---
 
