@@ -34,7 +34,7 @@ This guide is categorized into four sections:
 
 ### **Perform a quick threat model**
 
-Even if you are already traveling, take 5 minutes to map out your risks. Identify **what assets** you’re carrying (laptops, phones, hardware wallets, seed phrases, account access), **who might target them** (thieves, cybercrmiminals, border agents, etc.), and **how attacks might happen** (device theft, tampering, malware, coercion). For each threat, plan a mitigation. For example, if you’re carrying a hardware wallet, a threat is pickpocketing – mitigation could be keeping it attached to yourself (just don’t use ledger’s necklace) and securing it with a secure PIN/passphrase (no patterns, not repeated across devices).
+Even if you are already traveling, take 5 minutes to map out your risks. Identify **what assets** you're carrying (laptops, phones, hardware wallets, seed phrases, account access), **who might target them** (thieves, cybercriminals, border agents, etc.), and **how attacks might happen** (device theft, tampering, malware, coercion). For each threat, plan a mitigation. For example, if you're carrying a hardware wallet, a threat is pickpocketing – mitigation could be keeping it attached to yourself (just don't use ledger's necklace) and securing it with a secure PIN/passphrase (no patterns, not repeated across devices).
 
 This exercise keeps security measures proportionate to your situation.
 
@@ -140,7 +140,7 @@ Remember that **hidden cameras or microphones** could exist in unfamiliar enviro
 
 **Keep a low profile**: as mentioned, [don't flaunt crypto wealth or gear.](https://www.unchained.com/blog/7-tips-traveling-bitcoin#:~:text=,or%20clothing%20with%20bitcoin%20logos) For example, if attending a blockchain conference, consider using an alias on your name badge that doesn't explicitly say your company or title, and don't display that badge outside the venue. When moving around, secure your laptop in a nondescript sleeve or bag (instead of one with a well-known conference brand). The goal is to avoid drawing the attention of both petty thieves and more organized attackers by limiting the signals that you're a high-value crypto target.
 
-Don't fall into security by obscurity. Don't asume that by going "stealth", you cannot be the victim of an attack. These section's suggestions don't replace the rest.
+Don't fall into security by obscurity. Don't assume that by going "stealth", you cannot be the victim of an attack. These section's suggestions don't replace the rest.
 
 ### **Traveling with high-value crypto or duties**
 
