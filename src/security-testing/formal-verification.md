@@ -112,8 +112,8 @@ contract HalmosTest is Test {
     }
 
     // Symbolic execution test with Halmos
-    // Run with: halmos --function check_hellFunc_doesnt_revert_halmos
-    function check_hellFunc_doesnt_revert_halmos(uint128 num) public view {
+    // Run with: halmos --function check_hellFunc_doesn't_revert_halmos
+    function check_hellFunc_doesn't_revert_halmos(uint128 num) public view {
         (bool success,) = address(fvc).staticcall(
             abi.encodeWithSelector(fvc.hellFunc.selector, num)
         );
@@ -127,7 +127,7 @@ contract HalmosTest is Test {
 When you run this test, Halmos will output:
 
 ```bash
-[FAIL] check_hellFunc_doesnt_revert_halmos(uint128) (paths: 10/18, time: 3.05s)
+[FAIL] check_hellFunc_doesn't_revert_halmos(uint128) (paths: 10/18, time: 3.05s)
 Counterexample:
     p_num_uint128 = 0x0000000000000000000000000000000000000063 (99)
 ```

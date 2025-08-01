@@ -1,0 +1,74 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "languageSettings": [
+    {
+      "languageId": "markdown",
+      "locale": "en-US"
+    }
+  ],
+  "dictionaries": [
+    "en-us",
+    "web3-crypto",
+    "security-terms", 
+    "technical-terms",
+    "project-specific"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "web3-crypto",
+      "path": "./dictionaries/web3-crypto.txt",
+      "description": "Web3, blockchain, DeFi, and cryptocurrency terms"
+    },
+    {
+      "name": "security-terms", 
+      "path": "./dictionaries/security-terms.txt",
+      "description": "Cybersecurity, OPSEC, and information security terms"
+    },
+    {
+      "name": "technical-terms",
+      "path": "./dictionaries/technical-terms.txt", 
+      "description": "General programming and technical terms"
+    },
+    {
+      "name": "project-specific",
+      "path": "./dictionaries/project-specific.txt",
+      "description": "Project-specific names, tools, and acronyms"
+    }
+  ],
+  "files": [
+    "src/**/*.md",
+    "*.md",
+    "plugin/**/*.md"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    ".git/**",
+    "book/**",
+    "target/**",
+    ".claude-work/**",
+    "**/*.lock",
+    "**/*.log"
+  ],
+  "ignoreWords": [
+    "weren",
+    "doesn",
+    "aren",
+    "shouldn"
+  ],
+  "flagWords": [],
+  "allowCompoundWords": true,
+  "caseSensitive": false,
+  "minWordLength": 3,
+  "includeDefaultDictionaries": true,
+  "maxNumberOfProblems": 1000,
+  "maxDuplicateProblems": 5,
+  "import": [],
+  "overrides": [
+    {
+      "filename": "**/*.md",
+      "includeRegExpList": ["CStyleComment", "string"],
+      "ignoreRegExpList": ["Urls", "Email"]
+    }
+  ]
+}
