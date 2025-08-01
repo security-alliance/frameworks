@@ -1,6 +1,9 @@
 ---
 tags:
   - SEAL/Initiative
+  - Protocol
+  - DAO
+  - Whitehat
 contributors:
   - role: wrote
     users: [dickson]

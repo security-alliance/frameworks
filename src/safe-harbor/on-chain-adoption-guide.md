@@ -1,6 +1,9 @@
 ---
 tags:
   - SEAL/Initiative
+  - Protocol
+  - DAO
+  - Whitehat
 contributors:
   - role: wrote
     users: [dickson]
@@ -108,4 +111,4 @@ If you prefer deploying via code or need custom integrations, you can use SEAL�
 
 If you ever need help or have any questions, don’t hesitate to reach out!
 
-📬 Contact us at: dickson[at]securityalliance.org or robert[at]securityalliance.org
+📬 Contact us at: [safe-harbor@securityalliance.org](mailto:safe-harbor@securityalliance.org)

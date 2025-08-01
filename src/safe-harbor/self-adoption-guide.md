@@ -1,6 +1,9 @@
 ---
 tags:
   - SEAL/Initiative
+  - Protocol
+  - DAO
+  - Whitehat
 contributors:
   - role: wrote
     users: [dickson]
@@ -102,4 +105,4 @@ Once everything is live, it's time to communicate publicly. This signals to whit
 
 If your protocol ever needs help with adoption, SEAL is happy to help answer any questions, walk you through adoption, amplify announcements, etc
 
-📬 Contact us at: dickson[at]securityalliance.org or robert[at]securityalliance.org
+📬 Contact us at: [safe-harbor@securityalliance.org](mailto:safe-harbor@securityalliance.org)

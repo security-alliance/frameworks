@@ -1,35 +1,26 @@
 ---
 tags:
   - SEAL/Initiative
+  - Protocol
+  - DAO
+  - Whitehat
 contributors:
   - role: wrote
     users: [dickson]
 ---
 
-# Checklist To See if Safe Harbor is Right for You
+# Safe Harbor Eligibility Checklist
 
-Is your protocol ready for a crisis? Use this checklist to evaluate whether adopting the **SEAL Safe Harbor Agreement** makes sense for your protocol.
+Use this checklist to evaluate whether adopting the **SEAL Whitehat Safe Harbor Agreement** makes sense for your protocol.
 
-## ❓ Do You Need Safe Harbor?
+## ❓Can Safe Harbor Help Your Protocol?
 
-- [ ]  **Could your protocol be exploited on-chain?**
-    
-    Does your protocol have user funds in smart contracts? If yes, you’re a target.
-    
-- [ ]  **Do you want to enable whitehats to intervene during active exploits?**
-    
-    If something goes wrong, would you want trusted whitehats to legally rescue funds?
-    
-- [ ]  **Do you already have a bug bounty or security disclosure program?**
-    
-    Safe Harbor complements this by covering **live attacks**. But having an existing Bug Bounty program is highly encouraged.
-    
-- [ ]  **Do you want to reduce risk for your users and treasury?**
-    
-    Protocols with Safe Harbor increase the odds of recovering funds *without* legal ambiguity.
-    
+- [ ]  **Do you hold user funds in smart contracts?** Without Safe Harbor, whitehats who could save your users' funds might hesitate to act due to legal uncertainty around "unauthorized access."
+- [ ]  **Do you want whitehats to help during active attacks?** Safe Harbor gives ethical hackers legal protection to intervene immediately, before attackers can drain your protocol.
+- [ ]  **Do you already have a bug bounty or security disclosure program?** Safe Harbor fills the critical gap your bug bounty can't cover - live attacks happening right now when disclosure timelines don't matter.
+- [ ]  **Do you want to increase the odds of recovering funds?** Safe Harbor encourages rescue attempts by trusted whitehats.
 
-If you checked any of the above - Safe Harbor is probably right for you.
+If you checked any of the above - you can benefit from adopting our Safe Harbor.
 
 ---
 
@@ -41,7 +32,7 @@ If you checked any of the above - Safe Harbor is probably right for you.
 4. Update your Terms of Service and documentation
 5. Make a public announcement to inform users and whitehats
 
-It’s fast (<1 hour), flexible (DAO or non-DAO).
+It’s fast, flexible (DAO or non-DAO), and aligns with industry standards.
 
 ---
 
@@ -51,7 +42,7 @@ You have 3 ways to adopt:
 
 1. **Self-adopt using our guide:**
     
-    → [Self-Adoption Guide](./self-adoption-guide.md)
+    → [Self-Adoption Guide](https://securityalliance.notion.site/public-seal-safe-harbor-self-adoption-guide?pvs=74)
     
 2. **Get help from SEAL (free):**
     
@@ -62,8 +53,10 @@ You have 3 ways to adopt:
     → Immunefi: [Immunefi Integration Form](https://docs.google.com/forms/d/e/1FAIpQLSehHw_KyNfSr9YbnO1AB3OZ4cvVS2oInIxdveCPguR9GSxZFQ/viewform)
     
 
+Find out more about Safe Harbor [here](https://securityalliance.notion.site/public-safe-harbor?pvs=74)
+
 ---
 
 If you ever need help or have any questions, don’t hesitate to reach out!
 
-📬 Contact us at: dickson[at]securityalliance.org or robert[at]securityalliance.org
+📬 Contact us at: [safe-harbor@securityalliance.org](mailto:safe-harbor@securityalliance.org)

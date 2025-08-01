@@ -130,7 +130,7 @@
   - [Interface Compliance](./ens/interface-compliance.md)
   - [Name Handling & Normalization](./ens/name-handling-normalization.md)  
 - [Safe Harbor](./safe-harbor/README.md)
-  - [Checklist To See if Safe Harbor is Right for You](./safe-harbor/self-checklist.md)
+  - [Safe Harbor Eligibility Checklist](./safe-harbor/self-checklist.md)
   - [Self-Adoption Guide](./safe-harbor/self-adoption-guide.md)
   - [Safe Harbor Scope Terms](./safe-harbor/scope-terms.md)
   - [On-Chain Adoption Guide](./safe-harbor/on-chain-adoption-guide.md)
