@@ -108,7 +108,7 @@ Whether whitehats keep their bounty directly or return everything first.
 
 **Rule:**
 
-- Cannot set retainable = true if Aggregate Bounty Cap is enabled.
+- Cannot set retainable to true if Aggregate Bounty Cap is enabled.
 
 ---
 
