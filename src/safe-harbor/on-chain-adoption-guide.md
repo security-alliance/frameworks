@@ -64,7 +64,7 @@ If your protocol uses a multisig, you can adopt on-chain securely without writin
     - Deploy the agreement manually via your preferred method (SEAL tool or custom deploy).
 2. Open your Gnosis Safe and go to the **Transaction Builder** app.
 3. Enter the **Safe Harbor Registry address**:
-    - Default for most EVM chains: `0xB4aaAfD63b78971BB0D3561d0577133b965A1704`
+    - Default for most EVM chains: `[0x1eaCD100B0546E433fbf4d773109cAD482c34686](https://etherscan.io/address/0x1eaCD100B0546E433fbf4d773109cAD482c34686)`
     - Full address list: [Registry Addresses](https://github.com/security-alliance/safe-harbor).
 4. Select the method: `adoptSafeHarbor(address agreementAddress)` and input your deployed AgreementV2 contract address.
 5. Add the transaction and simulate it:
