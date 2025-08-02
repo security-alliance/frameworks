@@ -22,7 +22,7 @@ Use this checklist to evaluate whether adopting the **SEAL Whitehat Safe Harbor 
 
 If you checked any of the above - you can benefit from adopting our Safe Harbor.
 
----
+
 
 ## 🎯 What Does Adoption Involve?
 
@@ -34,7 +34,7 @@ If you checked any of the above - you can benefit from adopting our Safe Harbor.
 
 It’s fast, flexible (DAO or non-DAO), and aligns with industry standards.
 
----
+
 
 ## 🚀 Ready to Get Started?
 

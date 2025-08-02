@@ -13,7 +13,6 @@ contributors:
 
 This guide explains how protocols can register their Safe Harbor adoption on-chain. Registering ensures your adoption is **public, verifiable, and enforceable**.
 
----
 
 ## Why On-Chain Adoption Matters
 
@@ -23,7 +22,6 @@ On-chain registration:
 - Signals to whitehats that your protocol is officially covered under the agreement.
 - Publishes your terms (scope, bounty, contacts) on-chain in a way thatâ€™s **traceable and verifiable**, even if updated later.
 
----
 
 ## Three Ways to Adopt On-Chain
 
@@ -33,14 +31,14 @@ Protocols can adopt on-chain using **one of three methods**:
 2. **Through a multisig (e.g., Gnosis Safe)**
 3. **Foundry script or custom code**
 
----
+
 
 ### Important Note
 
 - The address that registers **represents your protocol on-chain**.
 - Most protocols use **multisigs** for this step.
 
----
+
 
 ### 1. SEAL Self-Adoption Website (Fastest Method)
 
@@ -51,7 +49,7 @@ Protocols can adopt on-chain using **one of three methods**:
     - **Generate an Agreement** for later registration (useful for multisig or custom workflows).
     - **Export JSON** for use in Foundry scripts.
 
----
+
 
 ### 2. Multisig Adoption (Gnosis Safe)
 
@@ -71,7 +69,7 @@ If your protocol uses a multisig, you can adopt on-chain securely without writin
     - You should see a `SafeHarborAdoption` event with your multisig as the `entity`.
 6. Collect signatures and execute.
 
----
+
 
 ### 3. Foundry Script / Custom Code
 
@@ -99,7 +97,7 @@ If you prefer deploying via code or need custom integrations, you can use SEALâ€
     
     
 
----
+
 
 ## Key Contracts
 
