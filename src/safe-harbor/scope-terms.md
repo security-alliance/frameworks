@@ -97,7 +97,7 @@ The maximum total bounty payout across all whitehats for a single incident. Boun
 
 **Rule:**
 
-- If you set an Aggregate Bounty Cap, you must set retainable = false so all funds return to the protocol first, then bounties are distributed.
+- If you set an Aggregate Bounty Cap, you must set retainable to false so all funds return to the protocol first, then bounties are distributed.
 
 ### 4.5 Retainable
 
