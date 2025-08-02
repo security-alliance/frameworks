@@ -134,8 +134,6 @@
   - [Self-Adoption Guide](./safe-harbor/self-adoption-guide.md)
   - [Safe Harbor Scope Terms](./safe-harbor/scope-terms.md)
   - [On-Chain Adoption Guide](./safe-harbor/on-chain-adoption-guide.md)
-  - [DAO Proposal Template](./safe-harbor/dao-proposal-template.md)
-  - [Non-DAO Scope Template](./safe-harbor/non-dao-scope-template.md)
   - [Whitehat](./safe-harbor/whitehat.md)
 - [Encryption](./encryption/README.md)
   - [Cloud Data Encryption](./encryption/cloud-data-encryption.md)
