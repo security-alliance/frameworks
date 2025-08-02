@@ -6,7 +6,7 @@ tags:
   - Whitehat
 contributors:
   - role: wrote
-    users: [robert, Dickson]
+    users: [robert, dickson]
 ---
 
 # SEAL Whitehat Safe Harbor
