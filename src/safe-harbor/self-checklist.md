@@ -15,7 +15,7 @@ Use this checklist to evaluate whether adopting the **SEAL Whitehat Safe Harbor 
 
 ## ❓Can Safe Harbor Help Your Protocol?
 
-- [ ]  **Do you hold user funds in smart contracts?** Without Safe Harbor, whitehats who could save your users' funds might hesitate to act due to legal uncertainty around "unauthorized access."
+- [ ]  **Do you hold user funds in smart contracts?** Without Safe Harbor, whitehats who could save your users' funds might hesitate to act due to legal uncertainty around unauthorized access.
 - [ ]  **Do you want whitehats to help during active attacks?** Safe Harbor gives ethical hackers legal protection to intervene immediately, before attackers can drain your protocol.
 - [ ]  **Do you already have a bug bounty or security disclosure program?** Safe Harbor fills the critical gap your bug bounty can't cover - live attacks happening right now when disclosure timelines don't matter.
 - [ ]  **Do you want to increase the odds of recovering funds?** Safe Harbor encourages rescue attempts by trusted whitehats.
