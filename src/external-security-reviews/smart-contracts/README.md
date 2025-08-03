@@ -36,7 +36,7 @@ A security review engagement is typically divided into four phases:
 ### Audit Methodologies
 - **Static Analysis**: Automated code scanning for known vulnerability patterns
 - **Dynamic Analysis**: Runtime testing and fuzzing
-- **Manual Review**: Expert analysis of business logic and complex vulnerabilities
+- [**Manual Review**](manual-review.md): Expert analysis of business logic and complex vulnerabilities
 - **Formal Verification**: Mathematical proofs of contract correctness (where applicable)
 
 ## Types of Smart Contract Audits
