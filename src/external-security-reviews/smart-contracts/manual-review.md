@@ -58,7 +58,6 @@ The approach to manual review can vary from person to person or team to team. Th
     >While this section focuses more on manual approach, automated testing approaches like fuzzing and F.V can be useful here for checking possible invariant violations across multiple paths.
 
     As can be seen below everything boil downs to each path. even the ternary expression is a path eventually.  
-
     ```solidity
     // It may lack a general meaning, but it aims to demonstrate the code with multiple execution paths.
     function withdraw(uint256 amount, bool emergency) public {
@@ -88,7 +87,6 @@ The approach to manual review can vary from person to person or team to team. Th
     In next example, because every value (`_amount`, `minRequired`) can go above and below, the results can vary. If the result is used for some operations like decreasing the `drivingScore` in `burnFuelAndReduce()` for example.
 
     E.g depending on the amounts are same (as they were while filling the fuel) or increased or decreased, the value of `fuelReduction` will change and while subtracting it from the `drivingScore[msg.sender]` it needs to be handled accordingly. which also creates different paths.
-
     ```solidity
     function fillFuelAndCalculate(uint256 _amount) public {
             require(_amount > minRequired, "ERR");
@@ -111,7 +109,6 @@ One reason for writing down doubts, ideas, possible issues is, when you start go
     - Try to break business logic while going through every code block. ( again note down the thing that needs to be tested)  
     - Write down things to revisit after the code is fixed. E.g: In the review you noticed that if specific functionality would be added based on doubts asked or based on the suggested fixes etc, there are chances of something to go wrong for example. Note it down and check in the Fixed code review.  
     - The minimal markdown file for taking notes might look like this:  
-
     ```markdown
     # Project Name
     ## Scope:  
