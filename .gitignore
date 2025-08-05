@@ -21,13 +21,10 @@ theme/contributors/contributorsindex.js
 theme/tags/tagsindex.js
 
 # Ignore claude-code installation
-claude-code
-@anthropic-ai/claude-code
+.claude*
+CLAUDE.md
 
 # Node.js dependencies
 node_modules/
 package.json
 package-lock.json
-
-# Claude Code configuration
-CLAUDE.md
