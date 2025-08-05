@@ -16,18 +16,24 @@ The approach to manual review can vary from person to person or team to team. Th
 ## Gather resources  
 
 1. Scope.
+
 2. commit hash.
+
 3. Documentation and specification links.
+
 4. Invariant list, if present already.
 
 ## Smart contract higher overview  
 
-1. **Documentation and whitepaper walkthrough**.
-2. **Simplified math formulas:** Get simplified math formulas if the protocol has any any custom/fancy formulas implemented.
-3. Get a **high level idea** behind the project: Through diagrams, developer walkthrough.
-4. Get a **structural overview** of the project: Check how integration of contracts and functions is happening throughout the protocol.
-5. **Create a diagram:** Based on the structural and functional understanding the high level diagram can be created if required.  
+1. **Documentation and whitepaper walkthrough**.  
 
+2. **Simplified math formulas:** Get simplified math formulas if the protocol has any any custom/fancy formulas implemented.
+
+3. Get a **high level idea** behind the project: Through diagrams, developer walkthrough.
+
+4. Get a **structural overview** of the project: Check how integration of contracts and functions is happening throughout the protocol.
+
+5. **Create a diagram:** Based on the structural and functional understanding the high level diagram can be created if required.  
     - The diagram can be modified over a time as you get more understanding.  
     - The diagram can grow more complex and detailed depending on the time.  
     - There are many tools that can be used like Excalidraw, Miro, Lucidchart etc.  
@@ -46,18 +52,23 @@ The approach to manual review can vary from person to person or team to team. Th
 
 2. **Choose least dependent contract to review one by one:**  
   This can be done by looking into a diagram and current understanding of the smart contract functionality. For example in this case it's a Token contracts that is least dependent ( in fact the functionality from that contract is getting used in other contracts so other smart contracts are dependent on it).
+
 3. **Checklist reviews:**
     - Known smart contracts vulnerabilities.
     - Smart Contract Weakness Classification (SWC)
     - Project specific checklists (e.g When dealing with bridges it's also important to check bridge specific checklists).
+
 4. **Maintain list of invariants** for every functions (Can be useful later for other tests/fuzzing/F.V).
+
 5. **Offensively analyze the code** to check logical issues and also out of the box issues.
+
 6. **Visit all paths:**
     Visiting all paths in a smart contract is crucial from a security perspective. For example, in the below withdraw() function, every path has its own potential security implications and behavior that needs to be verified. Sometimes these unexpected paths lead us to potential bugs.
 
     >While this section focuses more on manual approach, automated testing approaches like fuzzing and F.V can be useful here for checking possible invariant violations across multiple paths.
 
     As can be seen below everything boil downs to each path. even the ternary expression is a path eventually.  
+
     ```solidity
     // It may lack a general meaning, but it aims to demonstrate the code with multiple execution paths.
     function withdraw(uint256 amount, bool emergency) public {
@@ -87,6 +98,7 @@ The approach to manual review can vary from person to person or team to team. Th
     In next example, because every value (`_amount`, `minRequired`) can go above and below, the results can vary. If the result is used for some operations like decreasing the `drivingScore` in `burnFuelAndReduce()` for example.
 
     E.g depending on the amounts are same (as they were while filling the fuel) or increased or decreased, the value of `fuelReduction` will change and while subtracting it from the `drivingScore[msg.sender]` it needs to be handled accordingly. which also creates different paths.
+
     ```solidity
     function fillFuelAndCalculate(uint256 _amount) public {
             require(_amount > minRequired, "ERR");
@@ -107,8 +119,9 @@ One reason for writing down doubts, ideas, possible issues is, when you start go
     - Doubts: Research on it, Ask applicable doubts to developers.  
     - Edge cases: for later testing. E.g: [test] Possible reentrancy in unstake() function.  
     - Try to break business logic while going through every code block. ( again note down the thing that needs to be tested)  
-    - Write down things to revisit after the code is fixed. E.g: In the review you noticed that if specific functionality would be added based on doubts asked or based on the suggested fixes etc, there are chances of something to go wrong for example. Note it down and check in the Fixed code review.  
+    - Write down things to revisit after the code is fixed. E.g: In the review you noticed that if specific functionality would be added based on doubts asked or based on the suggested fixes etc, there are chances of something to go wrong for example. Note it down and check in the **Fixed code review**.  
     - The minimal markdown file for taking notes might look like this:  
+
     ```markdown
     # Project Name
     ## Scope:  
@@ -165,36 +178,48 @@ One reason for writing down doubts, ideas, possible issues is, when you start go
 
 ## Functional testing  
 
-1. Check any missing test cases that should be covered.
-2. Write and test edge cases from notes taken while manually reviewing contracts.
+1. Check any missing test cases that should be covered.  
+
+2. Write and test edge cases from notes taken while manually reviewing contracts.  
 
 ## Automated review  
 
-1. [static analysis](../../security-testing/static-analysis.md)
-2. [Fuzz Testing](../../security-testing/fuzz-testing.md)
-3. [formal verification](../../security-testing/formal-verification.md)
+1. [static analysis](../../security-testing/static-analysis.md)  
+
+2. [Fuzz Testing](../../security-testing/fuzz-testing.md)  
+
+3. [formal verification](../../security-testing/formal-verification.md)  
 
 ## Report writing  
 
-1. Discussing doubts and found issues with audit team to come on conclusion.
-2. Discussing and conveying issues to developers.
+1. Discussing doubts and found issues with audit team to come on conclusion.  
+
+2. Discussing and conveying issues to developers.  
+
 3. Report writing:
     While structure of the issue/bug to write in the report can vary, These are some of the things that are helpful to include:
-    - Issues can contains detailed description, recommendation, severity, status, fixed in commit, acknowledgment from developers.
+    - Issues can contain detailed description, recommendation, severity, status, fixed in commit, acknowledgment from developers.
     - References to correct functions and line numbers while writing issues.
     - Example and POC, helpful for critical bugs.
     - Checking the grammar/style for better readability.
 
 ## Fixed code review  
 
-1. **Code comparison** helps in identifying updates and detecting any deviations from expected changes.
-2. **Reviewing updated code** to check unexpected changes.
-3. **Running all the tests** on updated code.
-4. **Write new tests for the updated code** if required.
-5. **Go through checklists again** for updated functionality (depending on what is updated).
-6. **Check things/notes that needs to be revisited** from Manual review:
-    Sometimes you can have some things noted E.g: adding this fix to the code can create this problem.
+1. **Code comparison** helps in identifying updates and detecting any deviations from expected changes.  
+
+2. **Reviewing updated code** to check unexpected changes.  
+
+3. **Running all the tests** on updated code.  
+
+4. **Write new tests for the updated code** if required.  
+
+5. **Go through checklists again** for updated functionality (depending on what is updated).  
+
+6. **Check things/notes that needs to be revisited** from **Manual review**:
+    Sometimes you can have some things noted E.g: adding this fix to the code can create this problem.  
+
 7. **Update the report**, issue's status based on the updated code.
+
     - Change status.
     - Add 'fixed in' commit link/hash.
     - Add comments from audit team (when required).
