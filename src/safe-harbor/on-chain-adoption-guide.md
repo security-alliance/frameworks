@@ -13,7 +13,6 @@ contributors:
 
 This guide explains how protocols can register their Safe Harbor adoption on-chain. Registering ensures your adoption is **public, verifiable, and enforceable**.
 
-
 ## Why On-Chain Adoption Matters
 
 On-chain registration:
@@ -21,7 +20,6 @@ On-chain registration:
 - Makes your Safe Harbor adoption **public and transparent**.
 - Signals to whitehats that your protocol is officially covered under the agreement.
 - Publishes your terms (scope, bounty, contacts) on-chain in a way thatâ€™s **traceable and verifiable**, even if updated later.
-
 
 ## Three Ways to Adopt On-Chain
 
@@ -31,14 +29,10 @@ Protocols can adopt on-chain using **one of three methods**:
 2. **Through a multisig (e.g., Gnosis Safe)**
 3. **Foundry script or custom code**
 
-
-
 ### Important Note
 
 - The address that registers **represents your protocol on-chain**.
 - Most protocols use **multisigs** for this step.
-
-
 
 ### 1. SEAL Self-Adoption Website (Fastest Method)
 
@@ -49,13 +43,11 @@ Protocols can adopt on-chain using **one of three methods**:
     - **Generate an Agreement** for later registration (useful for multisig or custom workflows).
     - **Export JSON** for use in Foundry scripts.
 
-
-
 ### 2. Multisig Adoption (Gnosis Safe)
 
 If your protocol uses a multisig, you can adopt on-chain securely without writing custom code.
 
-### Steps:
+### Steps
 
 1. **Generate your AgreementV2 contract**:
     - Use the SEAL Self-Adoption Tool to **create an agreement contract payload** for your scope.
@@ -68,8 +60,6 @@ If your protocol uses a multisig, you can adopt on-chain securely without writin
 5. Add the transaction and simulate it:
     - You should see a `SafeHarborAdoption` event with your multisig as the `entity`.
 6. Collect signatures and execute.
-
-
 
 ### 3. Foundry Script / Custom Code
 
@@ -94,10 +84,6 @@ If you prefer deploying via code or need custom integrations, you can use SEALâ€
 - Deploy your agreement directly: `AgreementFactoryV2.create(AgreementDetailsV2 memory details, address registry, address owner)`
 - Register it: `SafeHarborRegistryV2.adoptSafeHarbor(address agreementAddress)`
 - Use the deployed [Registry & Factory Addresses](https://github.com/security-alliance/safe-harbor/blob/main/README.md)
-    
-    
-
-
 
 ## Key Contracts
 

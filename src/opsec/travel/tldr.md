@@ -20,6 +20,7 @@ contributors:
 > 🔑 Key Takeaway: Protect your digital assets while traveling through minimizing sensitive data, using encrypted devices, avoiding public networks, securing hardware wallets, maintaining physical control of devices, being cautious with USB connections, practicing social discretion, and sanitizing devices upon return.
 
 ## Before traveling  
+
 - Remove or securely store any data, devices, or documents not essential for the trip. Less sensitive material reduces risk if lost or stolen.  
 - Perform a quick threat model: list what you carry, who may target you, and how. Plan mitigations accordingly.  
 - Enable full-disk encryption on all devices; update OS, firmware, and apps before departure.  
@@ -34,6 +35,7 @@ contributors:
 - Research local laws on encryption and tech; carry travel letters or sanitized devices if needed for border crossings.
 
 ## While traveling  
+
 - Prefer cellular data or personal hotspots over public Wi-Fi; disable automatic Wi-Fi connections.  
 - Use a trusted VPN and consider a portable router to encrypt traffic on public networks.  
 - Turn off Wi-Fi, Bluetooth, AirDrop, and Nearby Share when not in use to reduce attack surface.  
@@ -47,6 +49,7 @@ contributors:
 - Consider portable door locks and tamper-evident bags to secure your room and devices overnight.
 
 ## Returning home  
+
 - Change passwords and verify 2FA on accounts accessed during travel, preferably from trusted devices and networks.  
 - Scan devices for malware and unusual behavior; factory reset if you suspect compromise.  
 - Inspect hardware wallets for tampering; transfer funds if compromised or suspicious.  
@@ -54,6 +57,7 @@ contributors:
 - Report incidents to your security or IT team; share lessons learned to improve future security.
 
 ## High-risk traveler extras  
+
 - Use burner or loaner devices with minimal data; assume they may be compromised and plan to wipe them post-trip.  
 - Power down and encrypt devices before border crossings to limit data exposure.  
 - Disable biometrics completely pre-travel to avoid compelled unlocks.  

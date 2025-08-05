@@ -7,6 +7,7 @@ This page demonstrates how to use the centralized contributors database. Instead
 ### Basic Contributors List
 
 In your markdown frontmatter, simply list the contributor IDs:
+
 ```markdown
 ---
 title: Your Page Title
@@ -20,6 +21,7 @@ contributors:
 ### Role-Based Contributors
 
 You can also specify contributors with their roles, which will display them in organized sections:
+
 ```markdown
 ---
 title: Your Page Title

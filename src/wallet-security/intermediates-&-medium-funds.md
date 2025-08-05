@@ -27,13 +27,13 @@ A **hardware wallet** is the core of this setup. This dedicated physical device 
 
 Adopting a hardware wallet introduces a new set of security considerations focused on physical and supply chain vectors.
 
-*   **Physical Security:** A hardware wallet is a physical asset that must be protected from theft, damage, or coercion.
-*   **Supply Chain Integrity:** Hardware wallets must *only* be purchased directly from the manufacturer or an authorized reseller to avoid receiving a tampered device.
-*   **Convenience vs. Security:** Using a hardware wallet introduces friction into the transaction process, as it requires physical access and approval on the device for every signature.
+* **Physical Security:** A hardware wallet is a physical asset that must be protected from theft, damage, or coercion.
+* **Supply Chain Integrity:** Hardware wallets must *only* be purchased directly from the manufacturer or an authorized reseller to avoid receiving a tampered device.
+* **Convenience vs. Security:** Using a hardware wallet introduces friction into the transaction process, as it requires physical access and approval on the device for every signature.
 
 ### How to Select a Hardware Wallet
 
-*   **Open Source:** Evaluate if the wallet's firmware and software are open-source, which allows for public auditing and verification by the security community.
-*   **Secure Element (SE)** Look for devices with a SE certified, tamper-resistant chip that protects against physical attacks. Check for high assurance ratings like `EAL6+` and features like **attestation**, which verifies the device is genuine.
-*   **Reputation & Incident:** Investigate the manufacturer's security track record, including their response to past vulnerabilities, data breaches, and overall transparency.
+* **Open Source:** Evaluate if the wallet's firmware and software are open-source, which allows for public auditing and verification by the security community.
+* **Secure Element (SE)** Look for devices with a SE certified, tamper-resistant chip that protects against physical attacks. Check for high assurance ratings like `EAL6+` and features like **attestation**, which verifies the device is genuine.
+* **Reputation & Incident:** Investigate the manufacturer's security track record, including their response to past vulnerabilities, data breaches, and overall transparency.
 * **Verify Device Integrity**: A legitimate hardware wallet will arrive uninitialized, requiring you to perform the initial setup. Reject any device that comes with a pre-set PIN, a pre-generated recovery phrase, or appears to be already configured, as it is likely compromised.

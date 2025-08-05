@@ -22,8 +22,6 @@ Use this checklist to evaluate whether adopting the **SEAL Whitehat Safe Harbor 
 
 If you checked any of the above - you can benefit from adopting our Safe Harbor.
 
-
-
 ## 🎯 What Does Adoption Involve?
 
 1. Define your scope (what’s covered, where funds go, bounty %, etc.)
@@ -34,24 +32,21 @@ If you checked any of the above - you can benefit from adopting our Safe Harbor.
 
 It’s fast, flexible (DAO or non-DAO), and aligns with industry standards.
 
-
-
 ## 🚀 Ready to Get Started?
 
 You have 3 ways to adopt:
 
 1. **Self-adopt using our guide:**
-    
+
     → [Self-Adoption Guide](https://securityalliance.notion.site/public-seal-safe-harbor-self-adoption-guide?pvs=74)
-    
+
 2. **Get help from SEAL (free):**
-    
+
     → [Apply for onboarding](https://form.typeform.com/to/QF3YjWno)
-    
+
 3. **Adopt via a third-party:**
-    
+
     → Immunefi: [Immunefi Integration Form](https://docs.google.com/forms/d/e/1FAIpQLSehHw_KyNfSr9YbnO1AB3OZ4cvVS2oInIxdveCPguR9GSxZFQ/viewform)
-    
 
 Find out more about Safe Harbor [here](https://securityalliance.notion.site/public-safe-harbor?pvs=74)
 

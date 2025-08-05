@@ -9,7 +9,6 @@ tags:
 
 # Infrastructure as Code
 
-
 Infrastructure as Code (IaC) is the managing and provisioning computing infrastructure through machine-readable definition files, rather than manual  configuration or interactive configuration tools. Automating security within IaC helps ensure that infrastructure is configured securely and consistently.
 
 ## Benefits of Automating Security in IaC

@@ -123,4 +123,4 @@ Ensuring appropriate security controls throughout the employment lifecycle.
 4. **DAO Participants**: Establish security expectations in decentralized organizations
 5. **Key Recovery**: Implement procedures for key recovery when team members depart
 
-Effective people and personnel controls recognize that security is fundamentally a human issue. By addressing social engineering, insider threats, and security awareness, organizations can transform their people from potential vulnerabilities into a critical line of defense. 
+Effective people and personnel controls recognize that security is fundamentally a human issue. By addressing social engineering, insider threats, and security awareness, organizations can transform their people from potential vulnerabilities into a critical line of defense.

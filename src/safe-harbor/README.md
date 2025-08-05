@@ -13,9 +13,8 @@ contributors:
 
 ![](./images/whitehat-full-logo-blue.svg)
 
-
-> 💡 An industry-standard framework, letting your protocol pre-authorize whitehats to rescue funds during active exploits 
-> 
+> 💡 An industry-standard framework, letting your protocol pre-authorize whitehats to rescue funds during active exploits
+>
 
 ---
 
@@ -26,13 +25,12 @@ contributors:
   </video>
 </div>
 
-
 ---
 
 ## What is Safe Harbor?
 
 > When your protocol is under attack, every second counts. Safe Harbor gives you a way to fight back.
-> 
+>
 
 Safe Harbor is a legal and technical framework that lets your protocol pre-authorize whitehats to step in during active exploits, rescue funds, and return them - fast, safely, and with clear legal protection for everyone involved.
 
@@ -50,19 +48,19 @@ By adopting Safe Harbor, protocols allow:
 
 ---
 
-## Vetted by industry leaders and top Web3 lawyers:
+## Vetted by industry leaders and top Web3 lawyers
 
 > Safe Harbor was developed over two years with direct input and rigorous legal review from experts at a16z Crypto, Cooley, Debevoise & Plimpton, Filecoin Foundation, MetaLeX, Paradigm, Piper Alderman, Powerhouse, and more.
-> 
+>
 
 ![legal.png](./images/legal.png)
 
 ---
 
-## Who’s Adopted Safe Harbor:
+## Who’s Adopted Safe Harbor
 
 > Safe Harbor is already protecting $16B+ in assets across leading DeFi protocols. Current adopters include Uniswap, Pendle, PancakeSwap, Balancer, Silo Finance, Zksync, and more. See the [full up-to-date list](https://safeharbor.securityalliance.org/).
-> 
+>
 
 | ![Uniswap](./images/Uniswap_logo.png) | ![Pendle](./images/Pendle_logo.png) | ![ZkSync](./images/Zksync_logo.png) | ![Balancer](./images/Balancer_logo.png) |
 |:-----------------------------------:|:----------------------------------:|:----------------------------------:|:-------------------------------------:|
@@ -98,7 +96,7 @@ For protocols that want white-glove support, SEAL offers guided onboarding at no
 → [Apply for the SEAL Onboarding Waitlist](https://form.typeform.com/to/QF3YjWno)
 
 > Space is limited - we prioritize high-impact protocols and critical infrastructure
-> 
+>
 
 ### 2. Self-Adopt Using Our Guide
 
@@ -108,24 +106,20 @@ For teams that want to do it themselves, we provide a clear step-by-step guide, 
 
 ### 3. Adopt Through a Third-Party Provider
 
-Safe Harbor is also supported by select ecosystem partners who offer adoption workflows as part of their existing services. 
+Safe Harbor is also supported by select ecosystem partners who offer adoption workflows as part of their existing services.
 
 → [Adopt via Immunefi](https://docs.google.com/forms/d/e/1FAIpQLSehHw_KyNfSr9YbnO1AB3OZ4cvVS2oInIxdveCPguR9GSxZFQ/viewform)
-
-
-
 
 Safe Harbor doesn’t require a legal entity, legal counsel, or new infrastructure. Just define your terms, publish your scope, and your protocol is protected.
 
 > Whether you're a DAO or not, adopting Safe Harbor is a low-lift way to enable real-time defense and recover funds during live exploits.
-> 
+>
 
 ---
 
 ## Whitehats Work
 
 > 💡 SEAL911 and the broader whitehat community have already helped protocols recover over $150M from live attacks - proving that fast, responsible intervention is possible.
-
 
 ---
 
@@ -144,7 +138,7 @@ An *active exploit* is one that’s already in progress or imminent - for exampl
 Bug bounties reward whitehats for responsibly disclosing vulnerabilities *before* they’re exploited. Safe Harbor kicks in *after* an exploit is underway - when there’s no time for disclosure, and whitehats need legal cover to intervene and recover funds in real time.
 
 </details>
-    
+
 <details>
 <summary>What are the risks?</summary>
 
@@ -153,14 +147,14 @@ There is little to no risk. The status quo is the protocol is hacked and the hac
 Whitehats only receive protection if they follow every requirement. If no exploit happens, nothing changes. If they do not follow Safe Harbor, they’re a blackhat
 
 </details>
-    
+
 <details>
 <summary>Can DAOs adopt it?</summary>
 
-Yes. Safe Harbor was built with DAOs in mind. No legal entity is required - just a governance vote and public on-chain registration. Many protocols who have adopted are DAOs (ex: Uniswap, Balancer, Zksync) 
+Yes. Safe Harbor was built with DAOs in mind. No legal entity is required - just a governance vote and public on-chain registration. Many protocols who have adopted are DAOs (ex: Uniswap, Balancer, Zksync)
 
 </details>
-    
+
 <details>
 <summary>Can Non-DAOs adopt it?</summary>
 
@@ -186,7 +180,7 @@ Nope. Safe Harbor uses on-chain registration and public adoption details - no si
 <summary>What if a blackhat initiates a hack with one account, then “whitehats” it with another account to get the bounty?</summary>
 
 They’re not covered. Safe Harbor protections **only** apply to whitehats who are fully independent from the original exploit. If someone initiates a hack and then tries to “rescue” the funds with another address, they’re still considered a blackhat - **no bounty, no legal protection, and fully liable**.
-    
+
 To reduce this risk even further, we recommend protocols set their Safe Harbor bounty cap **at or below** their existing bug bounty. This way, there’s no financial incentive to attempt an exploit - it's easier, safer, and more profitable to report the bug through your standard disclosure process than to fake a whitehat rescue under legal risk.
 
 </details>
@@ -195,7 +189,7 @@ To reduce this risk even further, we recommend protocols set their Safe Harbor b
 <summary>Can we modify the Safe Harbor legal contract?</summary>
 
 We strongly discourage protocols from modifying the legal language of the Safe Harbor agreement. The framework is designed as a **standard** across the industry, so whitehats can understand the rules quickly and act confidently during emergencies.
-    
+
 That said, the agreement is built with flexibility where it matters: you define your scope - such as which contracts are covered, Asset Recovery Addresses, bounty terms, and KYC requirements. These parameters are designed to give you control without breaking the shared standard that makes Safe Harbor effective.
 
 </details>
@@ -204,8 +198,7 @@ That said, the agreement is built with flexibility where it matters: you define 
 <summary>Should our legal team review the Safe Harbor agreement?</summary>
 
 It’s optional. The agreement has already been vetted by leading law firms (Cooley, Debevoise & Plimpton, Piper Alderman) and adopted by top-tier protocols like Uniswap, Balancer, and Pendle.
-    
+
 That said, if your legal team wants to review it for extra peace of mind, they absolutely can. Just keep in mind: the agreement is a community standard designed for consistency, so major edits aren’t recommended (and usually unnecessary).
 
 </details>
-

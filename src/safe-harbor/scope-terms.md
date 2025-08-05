@@ -13,8 +13,6 @@ contributors:
 
 When adopting Safe Harbor, you’ll define specific parameters that control what’s covered and how whitehat rescues work. Below is an explanation of each term with tips and best practices.
 
-
-
 ## 1. Asset Recovery Address
 
 The address where whitehats must return rescued funds after an exploit.
@@ -24,8 +22,6 @@ The address where whitehats must return rescued funds after an exploit.
 - Use a highly secure smart contract wallet (e.g., Gnosis Safe or governance-controlled address).
 - Ensure it can handle large inflows, potentially a significant portion of your TVL.
 - Please refer to [this framework on Wallet Multisig Security](https://frameworks.securityalliance.dev/wallet-security/secure-multisig-best-practices.html)
-
-
 
 ## 2. Security Contact
 
@@ -59,8 +55,6 @@ The on-chain contracts or accounts that whitehats can legally interact with unde
 
 - If your protocol deploys many contracts, include your deployer address EOA/Multisig/Governance Addresses with All. This avoids the need for updates.
 - Keep this list current - if you launch new deployments and they aren’t covered, whitehats can’t legally intervene.
-
-
 
 ## 4. Bounty Terms
 
@@ -109,8 +103,6 @@ Whether whitehats keep their bounty directly or return everything first.
 **Rule:**
 
 - Cannot set retainable to true if Aggregate Bounty Cap is enabled.
-
-
 
 ## 5. Identity Verification
 

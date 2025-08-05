@@ -7,7 +7,6 @@ tags:
 
 # Zero-Trust Principles
 
-
 The Zero-Trust security model assumes that threats can exist both inside and outside the network. It requires strict verification for every user and device attempting to access resources, regardless of their location.
 
 ## Key Principles

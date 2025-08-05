@@ -51,4 +51,4 @@ The appendices are designed to be living resources that evolve over time. Organi
 3. **Submit New Resources**: Develop and share new templates, exercises, or reference materials
 4. **Collaborate**: Work together to enhance the quality and relevance of these resources
 
-By contributing to these resources, you help strengthen the operational security practices of the broader Web3 community. 
+By contributing to these resources, you help strengthen the operational security practices of the broader Web3 community.

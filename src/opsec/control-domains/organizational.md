@@ -96,4 +96,4 @@ Establishing clear security responsibilities and accountability throughout the o
 4. **Pseudonymous Contributors**: Develop trust models for pseudonymous team members
 5. **DAO Structures**: Integrate security governance into decentralized autonomous organizations
 
-Effective organizational controls provide the structure needed to implement and maintain operational security throughout your organization. By establishing clear governance, compliance processes, and supply chain controls, you create a foundation for all other security measures. 
+Effective organizational controls provide the structure needed to implement and maintain operational security throughout your organization. By establishing clear governance, compliance processes, and supply chain controls, you create a foundation for all other security measures.

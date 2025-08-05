@@ -37,8 +37,6 @@ Organizations that implement threat modeling can focus limited security resource
 
 Effective threat modeling ensures security teams can identify and document all potential attack paths - enabling risk management teams to later assess and prioritize these threats effectively. Without threat modeling, organizations often distribute security resources evenly across all assets regardless of risk levels.
 
-
-
 ## Practical guidance
 
 > **🔗 Related Framework:** For detailed approaches, see [Understanding Threat Vectors](../awareness/understanding-threat-vectors.md) and [Threat Modeling](../threat-modeling/) frameworks.
@@ -213,5 +211,6 @@ Goal: Steal crypto assets
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
 
 ### Visualization & Modeling Tools
-- [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling), 
+
+- [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling),
 - [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/)

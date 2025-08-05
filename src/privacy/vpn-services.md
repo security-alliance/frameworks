@@ -6,7 +6,6 @@ tags:
 
 # VPN Services
 
-
 Virtual Private Networks (VPNs) can help increase online privacy. They encrypt your internet traffic and hide your IP address, increases the protection of your data from eavesdroppers and provide you additional anonymity online.
 
 ## Choosing a VPN Service

@@ -20,7 +20,6 @@ While unit tests verify individual functions work in isolation (often with mocke
 
 In smart contract development, this means testing your contracts against real protocols, oracles, and blockchain state rather than mocked versions.
 
-
 ## What are Fork Tests?
 
 Fork tests involve creating a local copy of the blockchain state at a specific block height, allowing you to run your smart contracts against real data and interactions. This is crucial for testing how your contracts will behave in production conditions, especially when they rely on external systems like oracles or other protocols.
@@ -42,4 +41,5 @@ Running a fork test can be as straightforward as pointing to contract addresses 
 ## References
 
 This document incorporates knowledge from:
+
 - [Cyfrin Updraft Security Testing Curriculum](https://updraft.cyfrin.io)

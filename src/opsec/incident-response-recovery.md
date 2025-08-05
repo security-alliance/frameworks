@@ -21,12 +21,12 @@ Predefined procedures for responding to specific types of security incidents hel
    - Remotely wipe device if possible
    - Change passwords for accounts accessible from the device
    - Revoke authentication tokens and certificates
-   
+
 2. **Investigation Steps**:
    - Determine what data was on the device
    - Assess potential access to systems and accounts
    - Review logs for any access after loss/theft
-   
+
 3. **Recovery Actions**:
    - Issue replacement device with clean installation
    - Restore necessary data from backups
@@ -39,12 +39,12 @@ Predefined procedures for responding to specific types of security incidents hel
    - Reset credentials and revoke sessions
    - Review activity for signs of lateral movement
    - Notify relevant stakeholders
-   
+
 2. **Investigation Steps**:
    - Determine the attack vector (phishing, credential stuffing, etc.)
    - Identify all actions taken by the attacker
    - Assess impact on data and systems
-   
+
 3. **Recovery Actions**:
    - Implement additional security controls
    - Restore affected systems to known good state
@@ -57,13 +57,13 @@ Predefined procedures for responding to specific types of security incidents hel
    - Preserve evidence for analysis
    - Activate incident response team
    - Notify relevant stakeholders
-   
+
 2. **Investigation Steps**:
    - Identify the malware type and capabilities
    - Determine the infection vector
    - Assess the scope of the infection
    - Identify data and systems potentially affected
-   
+
 3. **Recovery Actions**:
    - Clean or reimage affected systems
    - Restore data from clean backups
@@ -78,12 +78,12 @@ Predefined procedures for responding to specific types of security incidents hel
    - Transfer assets to secure wallets if possible
    - Revoke permissions associated with the key
    - Notify relevant stakeholders
-   
+
 2. **Investigation Steps**:
    - Determine how the key was compromised
    - Review blockchain transactions for unauthorized activity
    - Assess impact on assets and systems
-   
+
 3. **Recovery Actions**:
    - Generate new keys using secure procedures
    - Update key management practices
@@ -95,12 +95,12 @@ Predefined procedures for responding to specific types of security incidents hel
    - Pause contract functions if possible
    - Alert users and stakeholders
    - Implement circuit breaker if available
-   
+
 2. **Investigation Steps**:
    - Analyze the exploit and vulnerability
    - Assess impact on assets and users
    - Determine remediation options
-   
+
 3. **Recovery Actions**:
    - Deploy fixed contract
    - Implement recovery plan for affected assets
@@ -167,4 +167,4 @@ Actions to take after an incident has been resolved.
 4. **Training Updates**: Incorporating lessons into security training
 5. **Threat Intelligence Sharing**: Contributing to community knowledge when appropriate
 
-Effective incident response requires preparation, practice, and continuous improvement. By developing comprehensive playbooks and procedures, organizations can respond quickly and effectively to security incidents, minimizing their impact and facilitating rapid recovery. 
+Effective incident response requires preparation, practice, and continuous improvement. By developing comprehensive playbooks and procedures, organizations can respond quickly and effectively to security incidents, minimizing their impact and facilitating rapid recovery.

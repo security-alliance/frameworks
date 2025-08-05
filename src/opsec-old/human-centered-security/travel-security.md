@@ -91,4 +91,4 @@ Travel security integrates with several other security frameworks:
 2. [Digital Identity and Access Management](../digital-identity-access/) for authentication during travel
 3. [Physical Security](../physical-security/) for protecting physical assets
 
-By implementing comprehensive travel security measures, organizations can significantly reduce risks associated with business travel while enabling team members to work effectively and safely when away from their primary work location. 
+By implementing comprehensive travel security measures, organizations can significantly reduce risks associated with business travel while enabling team members to work effectively and safely when away from their primary work location.

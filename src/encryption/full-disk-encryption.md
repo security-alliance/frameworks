@@ -6,7 +6,6 @@ tags:
 
 # Full Disk Encryption
 
-
 Full disk encryption protects all data stored on a device in the event that it's stolen or lost. Today, all major Operating Systems for workstations, servers and mobile phones have full disk encryption capabilities built in, and sometimes enabled by default. Check which full disk encryption is built into your operating system, and enable it if not enabled by default.
 
 ## Best Practices

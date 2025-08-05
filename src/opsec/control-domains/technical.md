@@ -155,4 +155,4 @@ Technical controls specifically designed to address the unique security challeng
 4. **Gas Limit Setting**: Controlling transaction costs and preventing attacks
 5. **Contract Interaction Verification**: Verifying contract behavior before approval
 
-Effective technical and digital controls provide a strong foundation for operational security. By implementing comprehensive device, network, data, and authentication protections, organizations can significantly reduce their attack surface and better protect their digital assets. 
+Effective technical and digital controls provide a strong foundation for operational security. By implementing comprehensive device, network, data, and authentication protections, organizations can significantly reduce their attack surface and better protect their digital assets.

@@ -14,4 +14,4 @@ jobs:
       continue-on-error: true
       with:
         globs: |
-          src/*.md
+          src/**/*.md

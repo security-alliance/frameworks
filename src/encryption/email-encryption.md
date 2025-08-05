@@ -10,7 +10,7 @@ Email is insecure and un-encrypted by default, but can become more secure by fol
 
 ## Best Practices
 
-1. **Implement S/MIME or PGP**: 
+1. **Implement S/MIME or PGP**:
    - **S/MIME**: Secure/Multipurpose Internet Mail Extensions (S/MIME) is a widely accepted protocol for sending digitally signed and encrypted messages. It requires a certificate from a trusted Certificate Authority (CA). Popular email clients like Microsoft Outlook and Apple Mail support S/MIME.
      - **Example**:
        1. Obtain an S/MIME certificate from a trusted CA (e.g., Comodo, Symantec).
