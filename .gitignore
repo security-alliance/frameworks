@@ -21,7 +21,8 @@ theme/contributors/contributorsindex.js
 theme/tags/tagsindex.js
 
 # Ignore claude-code installation
-.claude*
+.claude/
+.claude-work/
 CLAUDE.md
 
 # Node.js dependencies
