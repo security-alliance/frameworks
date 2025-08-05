@@ -4,7 +4,7 @@
 - [How to Navigate the Website](./intro/how-to-navigate-the-website.md)
 - [Overview of Each Framework](./intro/overview-of-each-framework.md)
 
-# Frameworks
+## Frameworks
 
 - [Community Management](./community-management/README.md)
   - [Discord](./community-management/discord.md)
@@ -17,26 +17,43 @@
   - [Cultivating a Security-Aware Mindset](./awareness/cultivating-a-security-aware-mindset.md)
   - [Staying Informed & Continuous Learning](./awareness/staying-informed-and-continuous-learning.md)
   - [Resources & Further Reading](./awareness/resources-and-further-reading.md)
-- [Operational Security](./operational-security/README.md)
-  - [Detecting and Mitigating Insider Threats](./operational-security/detecting-and-mitigating-insider-threats.md)
-  - [G Suite Security](./operational-security/g-suite-security.md)
-  - [Password and Secrets Management](./operational-security/password-secrets-management.md)
-  - [Physical Security](./operational-security/physical-security.md)
-  - [SIM Swapping](./operational-security/sim-swapping.md)
-  - [Standard Operating Environment](./operational-security/standard-operating-environment.md)
-  - [Telegram](./operational-security/telegram.md)
-  - [Wireless Security](./operational-security/wireless-security.md)
-- [Key Management](./key-management/README.md)
-  - [Cold vs Hot Wallet](./key-management/cold-vs-hot-wallet.md)
-  - [Custodial vs Non-Custodial](./key-management/custodial-vs-non-custodial.md)
-  - [Hardware Wallets](./key-management/hardware-wallets.md)
-  - [Signing Schemes](./key-management/signing-schemes.md)
-  - [Software Wallets](./key-management/software-wallets.md)
+- [Operational Security](./opsec/README.md)
+  - [Overview](./opsec/overview/README.md)  
+    - [Security Fundamentals](./opsec/overview/security-fundamentals.md)
+    - [Implementation Process](./opsec/overview/implementation-process.md)
+    - [Web3 considerations](./opsec/overview/web3-considerations.md)
+  - [Threat Modeling Overview](./opsec/threat-modeling-overview.md)
+  - [Risk Management Overview](./opsec/risk-management-overview.md)
+  - [While Traveling](./opsec/travel/README.md)
+    - [Guide](./opsec/travel/guide.md)
+    - [TL;DR](./opsec/travel/tldr.md)
+  - [Governance & Program Management](./opsec/governance-program-management.md)
+  - [Control Domains](./opsec/control-domains.md)
+  - [Lifecycle](./opsec/lifecycle.md)
+  - [Monitoring & Detection](./opsec/monitoring-detection.md)
+  - [Incident Response & Recovery](./opsec/incident-response-recovery.md)
+  - [Continuous Improvement & Metrics](./opsec/continuous-improvement-metrics.md)
+  - [Integration & Mapping to Other Frameworks](./opsec/integration-mapping.md)
+  - [Appendices](./opsec/appendices.md)
+- [Wallet Security](./wallet-security/README.md)
+  - [Custodial vs Non-Custodial](./wallet-security/custodial-vs-non-custodial.md)
+  - [Cold vs Hot Wallet](./wallet-security/cold-vs-hot-wallet.md)
+  - [Wallets For Beginners & Small Balances](./wallet-security/for-beginners-&-small-balances.md)
+  - [Wallets For Intermediates & Medium Funds](./wallet-security/intermediates-&-medium-funds.md)
+  - [Multisig Wallets For Advanced Users & High Funds](./wallet-security/secure-multisig-best-practices.md)
+  - [Account Abstraction Wallets](./wallet-security/account-abstraction.md)
+  - [Signing & Verification](./wallet-security/signing-verification.md)
+    - [Verifying Standard Transactions (EOA)](./wallet-security/verifying-standard-transactions.md)
+    - [Multisig Signing Process](./wallet-security/secure-multisig-signing-process.md)
+    - [Using EIP-7702](./wallet-security/verifying-7702.md)
+  - [Private Key & Seed Phrase Management](./wallet-security/private-key-management.md)
+  - [Tools & Resources](./wallet-security/tools-&-resources.md)
 - [External Security Reviews](./external-security-reviews/README.md)
-  - [Expectation](./external-security-reviews/expectation.md)
-  - [Preparation](./external-security-reviews/preparation.md)
+  - [Smart Contract Audits](./external-security-reviews/smart-contracts/README.md)
+    - [Expectations](./external-security-reviews/smart-contracts/expectation.md)
+    - [Preparation Guide](./external-security-reviews/smart-contracts/preparation.md)
+    - [Vendor Selection](./external-security-reviews/smart-contracts/vendor-selection.md)
   - [Security Policies and Procedures](./external-security-reviews/security-policies-procedures.md)
-  - [Vendor Selection](./external-security-reviews/vendor-selection.md)
 - [Vulnerability Disclosure](./vulnerability-disclosure/README.md)
   - [Security Contact](./vulnerability-disclosure/security-contact.md)
   - [Bug Bounties](./vulnerability-disclosure/bug-bounties.md)
@@ -101,10 +118,11 @@
   - [Secure Code Repositories and Version Control](./secure-software-development/secure-code-repositories-version-control.md)
   - [Threat Modeling and Secure Design Principles](./secure-software-development/threat-modeling-secure-design-principles.md)
 - [Security Testing](./security-testing/README.md)
-  - [Dynamic Application Security Testing](./security-testing/dynamic-application-security-testing.md)
+  - [Unit Testing](./security-testing/unit-testing.md)
+  - [Integration Testing](./security-testing/integration-testing.md)
   - [Fuzz Testing](./security-testing/fuzz-testing.md)
-  - [Security Regression Testing](./security-testing/security-regression-testing.md)
-  - [Static Application Security Testing](./security-testing/static-application-security-testing.md)
+  - [Static Analysis](./security-testing/static-analysis.md)
+  - [Formal Verification](./security-testing/formal-verification.md)
 - [ENS](./ens/README.md)
   - [Data Integrity & Verification](./ens/data-integrity-verification.md)
   - [Cross-Chain Compatibility](./ens/cross-chain-compatibility.md)
@@ -112,9 +130,10 @@
   - [Interface Compliance](./ens/interface-compliance.md)
   - [Name Handling & Normalization](./ens/name-handling-normalization.md)  
 - [Safe Harbor](./safe-harbor/README.md)
-  - [Key Terms](./safe-harbor/key-terms.md)
-  - [Protocol](./safe-harbor/protocol.md)
-  - [Technical Outline](./safe-harbor/technical-outline.md)
+  - [Safe Harbor Eligibility Checklist](./safe-harbor/self-checklist.md)
+  - [Self-Adoption Guide](./safe-harbor/self-adoption-guide.md)
+  - [Safe Harbor Scope Terms](./safe-harbor/scope-terms.md)
+  - [On-Chain Adoption Guide](./safe-harbor/on-chain-adoption-guide.md)
   - [Whitehat](./safe-harbor/whitehat.md)
 - [Encryption](./encryption/README.md)
   - [Cloud Data Encryption](./encryption/cloud-data-encryption.md)
@@ -128,8 +147,7 @@
   - [Partition Encryption](./encryption/partition-encryption.md)
   - [Volume Encryption](./encryption/volume-encryption.md)
 
-
-# About this
+## About this
 
 - [What It Is](./intro/what-is-it.md)
 - [What It Isn't](./intro/what-it-isnt.md)
@@ -137,12 +155,12 @@
   - [Contributors](./contribute/contributors.md)
   - [Stewards](./contribute/stewards.md)
 
-# Practical Guides
+## Practical Guides
 
 <!-- - Step-by-step implementation — can be omitted
 - Case studies — an idea -->
 
-# Additional Resources
+## Additional Resources
 
 <!-- - Tools and software recommendations
 - Further reading and references -->
