@@ -12,7 +12,7 @@ contributors:
 
 # Cold vs. Hot Wallets
 
-The primary distinction between wallet types is their connectivity to the internet. This factor dictates their security threat model, risk profile, and ideal use cases. 
+The primary distinction between wallet types is their connectivity to the internet. This factor dictates their security threat model, risk profile, and ideal use cases.
 
 ## Cold Wallets
 
@@ -23,7 +23,7 @@ Cold wallets are cryptocurrency wallets that store private keys in an offline en
 Transactions are signed offline and then broadcast to the network using a connected device, ensuring the private keys  are stored on device with minimal connectivity.
 
 > ❓ Did you know?
-> 
+>
 > Most cold wallets come with some way to connect to the internet, such as via a USB connection. This technically makes them "hot" when connected. However, the key distinction is that they are not continuously online and are designed to minimize exposure to online threats.
 
 ### Types of Cold Wallets
@@ -63,7 +63,6 @@ Hot wallets are actively and consistently connected to the internet. This connec
 | **Convenience** | Low                  | High                    |
 | **Use Case**    | Long-term storage    | Daily transactions      |
 | **Risk**        | Physical loss/damage | Online attacks, malware |
-
 
 ## **Key Security Considerations**
 

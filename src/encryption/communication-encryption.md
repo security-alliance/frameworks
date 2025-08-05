@@ -6,7 +6,6 @@ tags:
 
 # Secure Messaging Systems
 
-
 Using secure messaging systems is crucial for protecting the privacy and integrity of your communications. Here are some popular messaging systems that offer end-to-end encryption and those that do not by default.
 
 ## End-to-End Encrypted Messaging Systems
@@ -30,7 +29,6 @@ Using secure messaging systems is crucial for protecting the privacy and integri
    - End-to-end encryption for messages and calls
    - Open source with a strong focus on privacy.
    - [Wire](https://wire.com/)
-
 
 ## Messaging Systems Without Default End-to-End Encryption
 

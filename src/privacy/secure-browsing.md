@@ -6,7 +6,6 @@ tags:
 
 # Secure Browsing
 
-
 Secure browsing is essential to protect your privacy and personal information while using the internet.
 
 ## Best Practices for Secure Browsing

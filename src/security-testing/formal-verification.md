@@ -135,6 +135,7 @@ Counterexample:
 **Formal verification found that input `99` causes the function to revert!**
 
 This bug would be difficult to find through:
+
 - Manual review (very complex to trace)
 - Unit testing (would need to test that exact input)
 - Fuzz testing (might miss this specific edge case)
@@ -146,29 +147,36 @@ But formal verification explored all mathematical paths and proved the bug exist
 Formal verification is not a silver bullet:
 
 ### Path Explosion Problem
+
 Complex contracts can have too many execution paths for tools to explore in reasonable time.
 
 ### Significant Effort Required
+
 Often, to get this right, this technique requires significant effort to be used. You need to understand how they work, their limitations, and how to help them.
 
 ### Specification Challenge
+
 You must clearly define what properties you want to prove. If your specification is wrong, verification is useless.
 
 ### Solver Limitations
+
 Sometimes solvers cannot find solutions to complex mathematical problems within reasonable timeouts.
 
 ## Tools and Frameworks
 
 **Symbolic Execution Tools:**
+
 - [Halmos](https://github.com/a16z/halmos) - Symbolic testing for Foundry
 - [HEVM](https://github.com/ethereum/hevm) - Haskell EVM with symbolic execution
 - [certora prover](https://github.com/Certora/CertoraProver)
 
 **SMT/SAT Solvers:**
+
 - [Z3](https://github.com/Z3Prover/z3) - Microsoft's theorem prover
 - [CVC4](https://cvc4.github.io/) - Automatic theorem prover
 
 **Built-in Options:**
+
 - Solidity SMT Checker - Built into the compiler
 
 ## References
