@@ -73,8 +73,11 @@ Read detailed incident reports and analysis (available from sources like Verizon
   - [Etherscan Token Approval Checker](https://etherscan.io/tokenapprovalchecker) - Monitor smart contract approvals
 
 - **Wallet Security:**
-  - [Software Wallets comparison](https://walletcompare.xyz) - Compare security features of different crypto wallets
+  - [wise-signer](https://wise-signer.cyfrin.io/) - Game to learn how to verify transaction information on your wallets
+  - [Qualified Signer Certification](https://updraft.cyfrin.io/certifications/qualified-web3-signer) - Certification for verifying transaction information
+  - [Software and Hardware Wallets comparison](https://wallet.page) - Compare security features of different crypto wallets
   - [Hardware Wallets comparison](https://www.hardware-wallets.net/) - Compare security features of different hardware wallets  
+  - [Wallet Scrutiny](https://walletscrutiny.com/) - Analyze wallet security and features
   - [Hardware Wallet Resources](https://trezor.io/learn) - Educational content about hardware wallet security
 
 ## 5.7. Security Tools and Services
