@@ -110,5 +110,17 @@
     "description": "Steward of Wallet-Security framework",
     "company": "Coinspect",
     "website": "https://www.coinspect.com/"
+  },
+  {
+    "slug": "dickson",
+    "name": "Dickson Wu",
+    "role": "contributor",
+    "avatar": "https://github.com/DicksonWu654.png",
+    "github": "https://github.com/DicksonWu654",
+    "twitter": "https://x.com/DicksonWuML",
+    "website": "https://skylock.xyz/",
+    "company": "SEAL",
+    "job_title": "Safe Harbor",
+    "description": "Safe Harbor contributor"
   }
 ]
