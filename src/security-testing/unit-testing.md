@@ -251,13 +251,6 @@ function testTransfer() public {
 }
 ```
 
-## Evaluating your test suite
-
-Once you’ve built a test suite that follows best practices, with strong unit and integration tests, and high coverage (e.g., 90%+ line coverage and 100% branch coverage), the next step is to evaluate its effectiveness, not just its completeness.
-
-A powerful way to do this is through mutation testing. This technique introduces small changes ("mutations") to your codebase, such as flipping a boolean or changing an operator. A strong test suite should catch and fail when these changes are introduced. If a mutation doesn’t cause a test to fail, it may highlight a gap in your tests — even if your coverage appears high.
-
-Mutation testing helps surface weak spots in logic validation and complements traditional metrics like code coverage. For more details, see the Mutation Testing section.
 
 ## Common Smart Contract Tools and Frameworks
 - [Foundry (Solidity)](https://github.com/foundry-rs/foundry): 

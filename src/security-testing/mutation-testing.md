@@ -8,11 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [nbelenkov]
+  - role: reviewed
+    users: [patrickalphac]
 ---
 
-# Mutation Testing
-
-Once you have a very good testing framework, you might ask yourself, 'How can I improve?' The difficulty lies in easily identifying areas that can be covered in more detail. This is where mutation testing comes in. 
 
 ## What is Mutation Testing?
 
