@@ -55,7 +55,7 @@ Depending on the framework you use and the protocol you are building, you will h
 
 Here are some examples of types of issues that mutation testing is particularly effective at spotting and types of operators you should consider using:
 
-- **Logic Errors:** Off-by-one errors, incorrect comparison operators, wrong arithmetic operations, and logical operator mistakes.
+- **Logic Errors:** [Off-by-one errors](https://en.wikipedia.org/wiki/Off-by-one_error), incorrect comparison operators, wrong arithmetic operations, and logical operator mistakes.
 - **Edge Case Failures:** Boundary condition bugs, empty value handling, Overflow/underflow issues.
 - **Validation:** Missing access controls, Insufficient validation.
 
