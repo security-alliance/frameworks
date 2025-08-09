@@ -12,10 +12,21 @@ If you want to know more about the frameworks or take a peek at the live book go
 - [just](https://github.com/casey/just) (For running commands)
 
 ## Quick installation and local setup
+### Option 1: Using DevContainer (Recommended for Contributors)
+If you have VSCode with the Dev Containers extension and [Dev Container Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) installed:
 
 1. `gh repo clone security-alliance/frameworks`
-2. `git checkout develop`
-3. `just serve`
+2. `git checkout develop` 
+3. Open in VSCode and run "Dev Containers: Reopen in Container"
+4. Once inside the container: `just serve`
+
+### Option 2: Local Installation
+If you prefer to install dependencies locally:
+
+1. Install prerequisites
+2. `gh repo clone security-alliance/frameworks`
+3. `git checkout develop`
+4. `just serve`
 
 ## Collaboration
 

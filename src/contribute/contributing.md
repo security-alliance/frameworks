@@ -34,6 +34,15 @@ To understand how to contribute, follow this process:
 
 5. **Become a steward**: If there's no specific branch created, then that framework is still "headless," which means you can become its steward! See more in the [Stewards](./stewards.md) section.
 
+### Using DevContainer to contribute (Recommended)
+
+The easiest way to get started is using our pre-configured devcontainer:
+
+1. **Prerequisites**: VSCode with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. **Open the project**: VSCode will detect the devcontainer configuration
+3. **Reopen in container**: Command Palette → "Dev Containers: Reopen in Container"
+4. **Start developing**: The container includes all prerequisites requires to run `just serve` and `just lint` locally
+
 ### Local Development with mdBook
 
 If you want to locally experiment with mdBook, you can run `just serve` which will automatically run mdBook when installed, serving the project for local viewing.
