@@ -34,6 +34,33 @@ To understand how to contribute, follow this process:
 
 5. **Become a steward**: If there's no specific branch created, then that framework is still "headless," which means you can become its steward! See more in the [Stewards](./stewards.md) section.
 
+### Using DevContainer to contribute (Recommended)
+
+The easiest way to get started is using our pre-configured devcontainer. Choose the approach that works best for you:
+
+#### Option A: VSCode with Dev Containers Extension
+
+1. **Prerequisites**: VSCode with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. **Open the project**: VSCode will detect the devcontainer configuration
+3. **Reopen in container**: Command Palette (Ctrl+Shift+P) → "Dev Containers: Reopen in Container"
+4. **Start developing**: All tools are pre-installed and ready to use
+
+#### Option B: DevContainer CLI Only (No VSCode Required)
+
+**Using DevContainer CLI:**
+- Install [DevContainer CLI](https://github.com/devcontainers/cli)
+```bash
+git clone https://github.com/security-alliance/frameworks.git
+cd frameworks && git checkout develop
+devcontainer up --workspace-folder .
+devcontainer exec --workspace-folder . bash
+# Get the IP address of the container, by running `hostname -I | awk '{print $1}'`. Should be printed automatically in the terminal after the creation as well
+# Inside container: just serve
+# Access the mdBook at http://<IP>:3000
+```
+
+**(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
+
 ### Local Development with mdBook
 
 If you want to locally experiment with mdBook, you can run `just serve` which will automatically run mdBook when installed, serving the project for local viewing.
