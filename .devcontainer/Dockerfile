@@ -8,8 +8,13 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     aspell \
     aspell-en \
+    curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js 20.x (LTS) from NodeSource
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
 
 # Switch to vscode user
 USER vscode
@@ -24,10 +29,9 @@ RUN /home/vscode/.cargo/bin/cargo install mdbook mdbook-admonish
 # Install just command runner
 RUN /home/vscode/.cargo/bin/cargo install just
 
-# Copy markdownlint-cli2 from its Docker image (need root for this)
+# Install markdownlint-cli2 globally via npm (need root for global install)
 USER root
-COPY --from=davidanson/markdownlint-cli2:latest /usr/local/bin/markdownlint-cli2 /usr/local/bin/markdownlint-cli2
-RUN chmod +x /usr/local/bin/markdownlint-cli2
+RUN npm install -g markdownlint-cli2
 
 # Switch back to vscode user
 USER vscode
