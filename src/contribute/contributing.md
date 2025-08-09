@@ -57,17 +57,14 @@ docker run -it --rm -v "$(pwd):/workspace" -w /workspace -p 3000:3000 frameworks
 ```
 
 **Using DevContainer CLI:**
+- Install [DevContainer CLI](https://github.com/devcontainers/cli)
 ```bash
 git clone https://github.com/security-alliance/frameworks.git
 cd frameworks && git checkout develop
 npx @devcontainers/cli up --workspace-folder .
-# Note the container ID from output, then:
-docker exec -it [container-id] bash
+npx @devcontainers/cli exec --workspace-folder . bash
 # Inside container: just serve
 ```
-
-
-Now you can start developing! The container includes all prerequisites required to run `just serve` and `just lint` locally.
 
 **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
 

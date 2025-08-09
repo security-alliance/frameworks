@@ -38,8 +38,7 @@ docker run -it --rm -v "$(pwd):/workspace" -w /workspace -p 3000:3000 frameworks
 gh repo clone security-alliance/frameworks
 cd frameworks && git checkout develop
 npx @devcontainers/cli up --workspace-folder .
-# Note the container ID from output, then:
-docker exec -it [container-id] bash
+npx @devcontainers/cli exec --workspace-folder . bash
 # Inside container: just serve
 ```
 
