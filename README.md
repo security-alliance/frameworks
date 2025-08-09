@@ -23,23 +23,16 @@ If you have VSCode with the Dev Containers extension and [Dev Container Extensio
 
 ### Option 2: Using DevContainer with Docker (No VSCode Required)
 
-**Using Docker directly:**
-```bash
-gh repo clone security-alliance/frameworks
-cd frameworks && git checkout develop
-docker build -t frameworks-devcontainer .devcontainer/
-docker run -it --rm -v "$(pwd):/workspace" -w /workspace -p 3000:3000 frameworks-devcontainer bash
-# Inside container: just serve
-```
-
 **Using DevContainer CLI:**
 - Install [DevContainer CLI](https://github.com/devcontainers/cli)
 ```bash
 gh repo clone security-alliance/frameworks
 cd frameworks && git checkout develop
-npx @devcontainers/cli up --workspace-folder .
-npx @devcontainers/cli exec --workspace-folder . bash
+devcontainer up --workspace-folder .
+devcontainer exec --workspace-folder . bash
+# Get the IP address of the container, by running `hostname -I | awk '{print $1}'`. Should be printed automatically in the terminal after the creation as well
 # Inside container: just serve
+# Access the mdBook at http://<IP>:3000
 ```
 
 ### Option 3: Local Installation

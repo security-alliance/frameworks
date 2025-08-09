@@ -45,25 +45,18 @@ The easiest way to get started is using our pre-configured devcontainer. Choose 
 3. **Reopen in container**: Command Palette (Ctrl+Shift+P) → "Dev Containers: Reopen in Container"
 4. **Start developing**: All tools are pre-installed and ready to use
 
-#### Option B: Docker Only (No VSCode Required)
-
-**Build and run locally:**
-```bash
-git clone https://github.com/security-alliance/frameworks.git
-cd frameworks && git checkout develop
-docker build -t frameworks-devcontainer .devcontainer/
-docker run -it --rm -v "$(pwd):/workspace" -w /workspace -p 3000:3000 frameworks-devcontainer bash
-# Inside container: just serve
-```
+#### Option B: DevContainer CLI Only (No VSCode Required)
 
 **Using DevContainer CLI:**
 - Install [DevContainer CLI](https://github.com/devcontainers/cli)
 ```bash
 git clone https://github.com/security-alliance/frameworks.git
 cd frameworks && git checkout develop
-npx @devcontainers/cli up --workspace-folder .
-npx @devcontainers/cli exec --workspace-folder . bash
+devcontainer up --workspace-folder .
+devcontainer exec --workspace-folder . bash
+# Get the IP address of the container, by running `hostname -I | awk '{print $1}'`. Should be printed automatically in the terminal after the creation as well
 # Inside container: just serve
+# Access the mdBook at http://<IP>:3000
 ```
 
 **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.

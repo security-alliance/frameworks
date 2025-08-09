@@ -29,11 +29,7 @@
     "forwardPorts": [
         3000
     ],
-    "runArgs": [
-        "-p",
-        "3000:3000"
-    ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
-    "postCreateCommand": "echo 'DevContainer ready! Run \"just serve\" to start the mdBook server.'"
+    "postCreateCommand": "echo 'DevContainer ready! Run \"just serve\" to start the mdBook server.' && ip=$(hostname -I | awk '{print $1}'); echo \"After running 'just serve', access the mdBook at http://$ip:3000\""
 }
