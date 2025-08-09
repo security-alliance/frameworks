@@ -15,8 +15,6 @@ This guide walks you through the full process of self-adopting the SEAL Safe Har
 
 To do this effectively, protocols should cover all public and legal bases: defining a clear scope, obtaining DAO approval (if applicable), registering on-chain, updating their terms of service, and making a public announcement.
 
-
-
 ## 1. Scope Definition
 
 The first step is defining the **scope**. This information informs whitehats about how and when they can intervene. It includes which assets are covered, where to send rescued funds, how to contact your team, what bounties apply, and any identity requirements.
@@ -24,8 +22,6 @@ The first step is defining the **scope**. This information informs whitehats abo
 - Refer to the scope walkthrough: [Scope Definitions & Tips](./scope-terms.md)
 - DAO Template: [DAO Scope Template](https://docs.google.com/document/d/1zsyutbSpQrwkmEA_XicABoRkSR25IQr92tOPgZOixN4/edit)
 - Non-DAO Template: [Non-DAO Scope Template](https://docs.google.com/document/d/1kcgeq2GmmuSHyMzbl0mlgRhMHag-av4B4TdLZFqdoSE/edit)
-
-
 
 ## 2. DAO Proposal (If applicable)
 
@@ -35,8 +31,6 @@ If you are a DAO, this is a critical step. It formalizes permission from the com
 - Use the DAO Proposal draft from Step 1 where you defined the scope. Feel free to edit the proposal to reflect your DAO’s tone and format.
 - Push your proposal through governance, temp check → formal proposal → Snapshot/Tally/etc.
 - (Optional) Include the **on-chain adoption call** in the proposal itself for a full end-to-end flow.
-
-
 
 ## 3. On-Chain Adoption
 
@@ -51,9 +45,7 @@ Whether you're a DAO or a centralized team, you'll need to publish your adoption
 - On-chain adoption involves two parts:
     1. Creating the AgreementV2 contract (the "terms" container)
     2. Registering it in the Safe Harbor Registry (this is what matters for whitehats)
-- The DAO proposal should handle **step 2**, while step 1 can be done beforehand using the SEAL Self-Adoption Tool.
-
-
+- The DAO proposal should handle **step 2**, while step 1 can be done beforehand by following the guide: [SEAL Safe Harbor On-Chain Adoption](./on-chain-adoption-guide.md) (**IMPORTANT**: Be sure to set the `owner` of the agreement to your DAO address)
 
 ## 4. Update Terms of Service & Docs
 
@@ -83,8 +75,6 @@ Under your documentation's "Security" or "Bug Bounty" section, include:
 > 
 
 Replace `[here]` with your actual registry listing or agreement address.
-
-
 
 ## 5. Announcement
 

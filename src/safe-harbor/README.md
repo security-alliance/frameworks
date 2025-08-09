@@ -13,11 +13,7 @@ contributors:
 
 ![](./images/whitehat-full-logo-blue.svg)
 
-
 > 💡 An industry-standard framework, letting your protocol pre-authorize whitehats to rescue funds during active exploits 
-> 
-
----
 
 <div align="center">
   <video controls width="600" preload="none">
@@ -26,13 +22,9 @@ contributors:
   </video>
 </div>
 
-
----
-
 ## What is Safe Harbor?
 
 > When your protocol is under attack, every second counts. Safe Harbor gives you a way to fight back.
-> 
 
 Safe Harbor is a legal and technical framework that lets your protocol pre-authorize whitehats to step in during active exploits, rescue funds, and return them - fast, safely, and with clear legal protection for everyone involved.
 
@@ -42,38 +34,28 @@ By adopting Safe Harbor, protocols allow:
 - Remove legal ambiguity and delays
 - Boost the odds of recovering user funds
 
----
-
 ## Why we started Safe Harbor
 
 > 💡 We started Safe Harbor after the Nomad hack, where over $190M was drained over the course of hours while whitehats stood by, willing to help, but unable to act without legal protection. With Safe Harbor, our goal is to make sure that never happens again and to empower whitehats to rescue funds.
 
----
-
-## Vetted by industry leaders and top Web3 lawyers:
+## Vetted by industry leaders and top Web3 lawyers
 
 > Safe Harbor was developed over two years with direct input and rigorous legal review from experts at a16z Crypto, Cooley, Debevoise & Plimpton, Filecoin Foundation, MetaLeX, Paradigm, Piper Alderman, Powerhouse, and more.
-> 
 
 ![legal.png](./images/legal.png)
 
----
-
-## Who’s Adopted Safe Harbor:
+## Who's Adopted Safe Harbor
 
 > Safe Harbor is already protecting $16B+ in assets across leading DeFi protocols. Current adopters include Uniswap, Pendle, PancakeSwap, Balancer, Silo Finance, Zksync, and more. See the [full up-to-date list](https://safeharbor.securityalliance.org/).
-> 
 
 | ![Uniswap](./images/Uniswap_logo.png) | ![Pendle](./images/Pendle_logo.png) | ![ZkSync](./images/Zksync_logo.png) | ![Balancer](./images/Balancer_logo.png) |
 |:-----------------------------------:|:----------------------------------:|:----------------------------------:|:-------------------------------------:|
 | [Gov Proposal](https://www.tally.xyz/gov/uniswap/proposal/79) | Non-DAO Adoption | [Gov Proposal](https://www.tally.xyz/gov/zksync/proposal/35395412545014978447594654620386134175315194219985614464693911512436668500487?govId=eip155:324:0x496869a7575A1f907D1C5B1eca28e4e9E382afAb) | [Gov Proposal](https://snapshot.box/#/s:balancer.eth/proposal/0x8c3fd2550184ec28653c46e959782f1a3127ca8aa6a5652494a9c29ad77d9b55) |
 
----
-
-## **How Does Safe Harbor Work?**
+## How Does Safe Harbor Work?
 
 - **Protocols pre-authorize rescues:** You clearly define when and how whitehats are allowed to step in - covering what assets are protected, where to return funds, and what bounty terms apply, etc
-- **Whitehats act only during active exploits:** Safe Harbor **only** applies when an exploit is already in progress or imminent - e.g., in the mempool, or after initial funds have been drained. It’s *not* for bug bounty reports, and it does not protect blackhats. Only whitehats who rescue funds without initiating the exploit are covered.
+- **Whitehats act only during active exploits:** Safe Harbor **only** applies when an exploit is already in progress or imminent - e.g., in the mempool, or after initial funds have been drained. It's *not* for bug bounty reports, and it does not protect blackhats. Only whitehats who rescue funds without initiating the exploit are covered.
 - **Funds are returned, bounty is automatic:** Whitehats must send rescued funds to your official recovery addresses within 72 hours. Bounties are enforceable and pre-defined - no negotiation, no chaos.
 
 **Other key protections:**
@@ -81,9 +63,7 @@ By adopting Safe Harbor, protocols allow:
 - You can choose to allow anonymous whitehats or require KYC.
 - Whitehats must follow established guidelines for responsible intervention
 - You define exactly which contracts, and chains are protected.
-- The agreement is only valid if funds are returned and the protocol’s rules are followed
-
----
+- The agreement is only valid if funds are returned and the protocol's rules are followed
 
 ## How to adopt?
 
@@ -93,12 +73,11 @@ Here are a few options:
 
 ### 1. Get Help from SEAL
 
-For protocols that want white-glove support, SEAL offers guided onboarding at no cost. We’ll walk you through scoping, governance language, on-chain registration, etc.
+For protocols that want white-glove support, SEAL offers guided onboarding at no cost. We'll walk you through scoping, governance language, on-chain registration, etc.
 
 → [Apply for the SEAL Onboarding Waitlist](https://form.typeform.com/to/QF3YjWno)
 
 > Space is limited - we prioritize high-impact protocols and critical infrastructure
-> 
 
 ### 2. Self-Adopt Using Our Guide
 
@@ -112,22 +91,13 @@ Safe Harbor is also supported by select ecosystem partners who offer adoption wo
 
 → [Adopt via Immunefi](https://docs.google.com/forms/d/e/1FAIpQLSehHw_KyNfSr9YbnO1AB3OZ4cvVS2oInIxdveCPguR9GSxZFQ/viewform)
 
-
-
-
-Safe Harbor doesn’t require a legal entity, legal counsel, or new infrastructure. Just define your terms, publish your scope, and your protocol is protected.
+Safe Harbor doesn't require a legal entity, legal counsel, or new infrastructure. Just define your terms, publish your scope, and your protocol is protected.
 
 > Whether you're a DAO or not, adopting Safe Harbor is a low-lift way to enable real-time defense and recover funds during live exploits.
-> 
-
----
 
 ## Whitehats Work
 
 > 💡 SEAL911 and the broader whitehat community have already helped protocols recover over $150M from live attacks - proving that fast, responsible intervention is possible.
-
-
----
 
 ## FAQ
 

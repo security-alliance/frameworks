@@ -11,9 +11,7 @@ contributors:
 
 # Safe Harbor Scope Terms
 
-When adopting Safe Harbor, you’ll define specific parameters that control what’s covered and how whitehat rescues work. Below is an explanation of each term with tips and best practices.
-
-
+When adopting Safe Harbor, you'll define specific parameters that control what's covered and how whitehat rescues work. Below is an explanation of each term with tips and best practices.
 
 ## 1. Asset Recovery Address
 
@@ -25,8 +23,6 @@ The address where whitehats must return rescued funds after an exploit.
 - Ensure it can handle large inflows, potentially a significant portion of your TVL.
 - Please refer to [this framework on Wallet Multisig Security](https://frameworks.securityalliance.dev/wallet-security/secure-multisig-best-practices.html)
 
-
-
 ## 2. Security Contact
 
 The person or team whitehats must notify after completing a rescue.
@@ -35,8 +31,6 @@ The person or team whitehats must notify after completing a rescue.
 
 - Provide multiple points of contact (email, Signal, Telegram) for redundancy.
 - Make sure these methods of notification are checked in case of an active exploit. Whitehats should reach out within 6 hours of a rescue
-
----
 
 ## 3. Assets Under Scope
 
@@ -58,9 +52,7 @@ The on-chain contracts or accounts that whitehats can legally interact with unde
 **Tips:**
 
 - If your protocol deploys many contracts, include your deployer address EOA/Multisig/Governance Addresses with All. This avoids the need for updates.
-- Keep this list current - if you launch new deployments and they aren’t covered, whitehats can’t legally intervene.
-
-
+- Keep this list current - if you launch new deployments and they aren't covered, whitehats can't legally intervene.
 
 ## 4. Bounty Terms
 
@@ -110,8 +102,6 @@ Whether whitehats keep their bounty directly or return everything first.
 
 - Cannot set retainable to true if Aggregate Bounty Cap is enabled.
 
-
-
 ## 5. Identity Verification
 
 Determines whether whitehats must verify their identity.
@@ -125,9 +115,7 @@ Determines whether whitehats must verify their identity.
 **Tips:**
 
 - Most protocols choose Named (KYC) for compliance.
-- Some opt for crypto-native option of protecting the whitehat’s anonymity.
-
----
+- Some opt for crypto-native option of protecting the whitehat's anonymity.
 
 ## 6. Diligence Requirements
 
