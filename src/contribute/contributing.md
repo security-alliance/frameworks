@@ -36,17 +36,40 @@ To understand how to contribute, follow this process:
 
 ### Using DevContainer to contribute (Recommended)
 
-The easiest way to get started is using our pre-configured devcontainer:
+The easiest way to get started is using our pre-configured devcontainer. Choose the approach that works best for you:
 
-1. **Prerequisites**: VSCode with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+#### Option A: VSCode with Dev Containers Extension
 
-2. **Open the project**: VSCode will detect the devcontainer configuration.
+1. **Prerequisites**: VSCode with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. **Open the project**: VSCode will detect the devcontainer configuration
+3. **Reopen in container**: Command Palette (Ctrl+Shift+P) → "Dev Containers: Reopen in Container"
+4. **Start developing**: All tools are pre-installed and ready to use
 
-3. **Reopen in container**: Command Palette → "Dev Containers: Reopen in Container".
+#### Option B: Docker Only (No VSCode Required)
 
-4. **Start developing**: The container includes all prerequisites required to run `just serve` and `just lint` locally.
+**Build and run locally:**
+```bash
+git clone https://github.com/security-alliance/frameworks.git
+cd frameworks && git checkout develop
+docker build -t frameworks-devcontainer .devcontainer/
+docker run -it --rm -v "$(pwd):/workspace" -w /workspace -p 3000:3000 frameworks-devcontainer bash
+# Inside container: just serve
+```
 
-5. **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
+**Using DevContainer CLI:**
+```bash
+git clone https://github.com/security-alliance/frameworks.git
+cd frameworks && git checkout develop
+npx @devcontainers/cli up --workspace-folder .
+# Note the container ID from output, then:
+docker exec -it [container-id] bash
+# Inside container: just serve
+```
+
+
+Now you can start developing! The container includes all prerequisites required to run `just serve` and `just lint` locally.
+
+**(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
 
 ### Local Development with mdBook
 
