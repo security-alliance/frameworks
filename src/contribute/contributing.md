@@ -38,10 +38,15 @@ To understand how to contribute, follow this process:
 
 The easiest way to get started is using our pre-configured devcontainer:
 
-1. **Prerequisites**: VSCode with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-2. **Open the project**: VSCode will detect the devcontainer configuration
-3. **Reopen in container**: Command Palette → "Dev Containers: Reopen in Container"
-4. **Start developing**: The container includes all prerequisites requires to run `just serve` and `just lint` locally
+1. **Prerequisites**: VSCode with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+
+2. **Open the project**: VSCode will detect the devcontainer configuration.
+
+3. **Reopen in container**: Command Palette → "Dev Containers: Reopen in Container".
+
+4. **Start developing**: The container includes all prerequisites required to run `just serve` and `just lint` locally.
+
+5. **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
 
 ### Local Development with mdBook
 
