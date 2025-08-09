@@ -1,5 +1,6 @@
 {
     "name": "Security Frameworks DevContainer",
+    "image": "shadow654/frameworks-devcontainer:latest",
     "build": {
         "dockerfile": "Dockerfile"
     },
