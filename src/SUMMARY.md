@@ -33,7 +33,7 @@
   - [Monitoring & Detection](./opsec/monitoring-detection.md)
   - [Incident Response & Recovery](./opsec/incident-response-recovery.md)
   - [Continuous Improvement & Metrics](./opsec/continuous-improvement-metrics.md)
-  - [Integration & Mapping to Other Frameworks](./opsec/integration-mapping.md)
+  - [Integration & Mapping to Other Frameworks](./opsec/integration.md)
   - [Appendices](./opsec/appendices.md)
 - [Wallet Security](./wallet-security/README.md)
   - [Custodial vs Non-Custodial](./wallet-security/custodial-vs-non-custodial.md)
