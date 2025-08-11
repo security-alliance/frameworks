@@ -31,6 +31,7 @@ Autotasks
 axie
 backdoors
 backend
+Balancer
 Beemo
 Binance
 Biometric
@@ -63,6 +64,7 @@ Checkmarx
 Checkov
 CIS
 CISA
+cli
 clippy
 Clippy
 Cloudflare
@@ -112,6 +114,8 @@ Cyfrin
 Cypherock
 DAI
 dao
+DAO
+DAO's
 dapp
 Darknet
 DAST
@@ -123,6 +127,7 @@ DeFi
 DeIRF
 Dependabot
 dependant
+deployer
 descentralized
 Deseat
 dev
@@ -133,6 +138,7 @@ Discoverability
 discoverable
 DIY
 DLP
+DocuSign
 DNS
 DNSSEC
 Dojo
@@ -174,6 +180,7 @@ fallbacks
 FDE
 fedcba
 Fernández
+Filecoin
 Fi
 FIDO
 Fredrik
@@ -198,6 +205,7 @@ Ghostery
 gist
 gists
 Gmail
+Gnosis
 GOkart
 Golang
 Golangci
@@ -246,6 +254,7 @@ jammer
 JEA
 JIT
 Jitsi
+JSON
 KeepAss
 KeePassXC
 keychain
@@ -263,6 +272,7 @@ Lockdown
 LUKS
 Mailvelope
 mainnet
+markdownlint
 Matías
 Matta
 mattaereal
@@ -294,6 +304,7 @@ MVNO
 Mythril
 namehash
 Nano
+natively
 nformation
 NFT
 nftdreww
@@ -319,22 +330,27 @@ patrickalphac
 pauser
 PCI
 Pectra
+Pendle
 PFP
 Phalcon
 pickpocketing
 PII
 pinalikefruit
+PNG
 pinniped
 Pinnipeds
 plimpton
+Polymarket
 poofing
 practinces
 pre
+Predefining
 preprocessor
 Pretexting
 programmatically
 prover
 pseudonymity
+rata
 pseudonymization
 Qubes
 Qwertycards
@@ -354,6 +370,8 @@ reputational
 requestor
 resolvability
 resolvers
+retainable
+Retainable
 Resolvers
 responder
 Revolut
@@ -428,6 +446,7 @@ timelock
 timelocks
 TLS
 TOTP
+TOS
 touchpoint
 TPM
 travelandleisure
@@ -441,6 +460,7 @@ uncollateralized
 uncompromised
 underflows
 unencrypted
+Uniswap
 Unrekt
 untrusted
 upgradability
@@ -464,6 +484,7 @@ VLANs
 VPC
 VPN
 vyper
+Waitlist
 WAF
 walkthrough
 walletcompare
@@ -473,6 +494,7 @@ WebAuthn
 webhook
 Webhooks
 whitehat
+whitehat's
 whitehats
 Whitepages
 whitepapers
@@ -500,5 +522,6 @@ Zcash
 zedt
 Zerouali
 ZK
+Zksync
 ZWJ
 zzzzz

@@ -3,8 +3,8 @@ tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
-- role: wrote
-  users: [ghadi8]
+  - role: wrote
+    users: [ghadi8]
 ---
 
 # Smart Contract Integration

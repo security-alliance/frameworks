@@ -11,7 +11,7 @@ contributors:
 
 # Self-Adoption Guide
 
-This guide walks you through the full process of self-adopting the SEAL Safe Harbor Agreement for your protocol. The goal is to provide whitehats with legal clarity and confidence to rescue funds when it matters most.
+This guide walks you through the full process of self-adopting the SEAL Safe Harbor Agreement for your protocol. The goal is to provide whitehats with legal clarity and confidence to rescue funds when it matters most. 
 
 To do this effectively, protocols should cover all public and legal bases: defining a clear scope, obtaining DAO approval (if applicable), registering on-chain, updating their terms of service, and making a public announcement.
 
@@ -45,7 +45,7 @@ Whether you're a DAO or a centralized team, you'll need to publish your adoption
 - On-chain adoption involves two parts:
     1. Creating the AgreementV2 contract (the "terms" container)
     2. Registering it in the Safe Harbor Registry (this is what matters for whitehats)
-- The DAO proposal should handle **step 2**, while step 1 can be done beforehand using the SEAL Self-Adoption Tool.
+- The DAO proposal should handle **step 2**, while step 1 can be done beforehand by following the guide: [SEAL Safe Harbor On-Chain Adoption](./on-chain-adoption-guide.md) (**IMPORTANT**: Be sure to set the `owner` of the agreement to your DAO address)
 
 ## 4. Update Terms of Service & Docs
 
@@ -56,10 +56,10 @@ To ensure all users are informed and legally covered, update your Terms of Servi
 Add the following language to your TOS:
 
 > User Agreement to be Bound By Agreement, Consent to Attempted Eligible Funds Rescues and Payment of Bounties
->
->
+> 
+> 
 > The User hereby acknowledges and agrees to, and consents to be bound by the terms and conditions of, that certain Safe Harbor Agreement for Whitehats, adopted by the Protocol Community on [INSERT DATE HERE] (the ”Whitehat Agreement”), available here [https://bafybeigvd7z4iemq7vrdcczgyu2afm7egxwrggftiplydc3vdrdmgccwvu.ipfs.w3s.link](https://bafybeigvd7z4iemq7vrdcczgyu2afm7egxwrggftiplydc3vdrdmgccwvu.ipfs.w3s.link/), as a "User" and member of the "Protocol Community" thereunder. Without limiting the generality of the foregoing:
->
+> 
 > - the User hereby consents to Whitehats attempting Eligible Funds Rescues of any and all Tokens deposited into the Protocol by the User and the deduction of Bounties out of User’s deposited Tokens to compensate Eligible Whitehats for successful Eligible Funds Rescues;
 > - the User acknowledges and agrees that Tokens may be lost, stolen, suffer diminished value, or become disabled or frozen in connection with attempts at Eligible Funds Rescues, and assumes all the risk of the foregoing;
 > - the User acknowledges and agrees that payment of the Bounty as a deduction from User’s Tokens to an Eligible Whitehat may constitute a taxable disposition by the User of the deducted Tokens, and agrees to assume to all risk of such adverse tax treatment; and
@@ -72,7 +72,7 @@ This is also found in Exhibit D in the legal agreement
 Under your documentation's "Security" or "Bug Bounty" section, include:
 
 > "This protocol has adopted the SEAL Safe Harbor Agreement for Whitehats, which empowers approved security researchers to intervene during active exploits to rescue funds. Full adoption details, scope, and bounty terms are publicly available [here]."
->
+> 
 
 Replace `[here]` with your actual registry listing or agreement address.
 
@@ -83,12 +83,12 @@ Once everything is live, it's time to communicate publicly. This signals to whit
 - Use Twitter, Discord, forums, and governance portals.
 - Highlight your on-chain registration, bounty terms, and any DAO vote.
 - Example announcement:
-
+    
     > Today, we’re proud to announce that [Protocol Name] has officially adopted the @_seal_org Safe Harbor Agreement - a legal and technical framework that empowers whitehats to rescue funds during active exploits.
-    >
-    >
+    > 
+    > 
     > This move brings us into alignment with some of the most security-forward protocols in the space - Uniswap, Pendle, Balancer - as we take real steps to defend our community and user funds.
-    >
+    > 
 - Feel free to coordinate with SEAL - we're happy to co-announce and amplify it.
 
 ---
