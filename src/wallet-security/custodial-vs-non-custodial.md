@@ -18,7 +18,7 @@ The distinction between custodial and non-custodial wallets centers on who contr
 
 ### What Are They?
 
-Custodial wallets are managed by a third party, such as a centralized exchange (CEX) or a dedicated wallet service provider. In this model, the third party holds and manages the private keys on behalf of the user. 
+Custodial wallets are managed by a third party, such as a centralized exchange (CEX) or a dedicated wallet service provider. In this model, the third party holds and manages the private keys on behalf of the user.
 
 ### Characteristics
 
@@ -46,6 +46,7 @@ Non-custodial (or self-custody) wallets are managed directly by the user, who ha
 - **Web3 Interaction**: Enable seamless interaction with dApps.
 
 ### Use Cases
+
 - **Experienced Users & Developers**: Preferred by users who understand blockchain and wallet security best practices.
 - **Security & Control Prioritization**: Ideal for users who prioritize full control over their assets and are willing to undertake the responsibility of self-custody.
 

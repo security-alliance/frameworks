@@ -21,9 +21,9 @@ The goal is to move beyond introductory concepts and provide actionable, technic
 - [Multisig Wallets For Advanced Users & High Funds](./secure-multisig-best-practices.md) - Best practices for setting up and managing multisig wallets.
 - [Account Abstraction Wallets](./account-abstraction.md) - Exploring the security features of smart contract wallets.
 - [Signing & Verification](./signing-verification.md) - An overview of secure transaction signing and verification.
-    - [Verifying Standard Transactions (EOA)](./verifying-standard-transactions.md) - How to safely verify transactions from standard wallets.
-    - [Multisig Signing Process](./secure-multisig-signing-process.md) - Detailed guide for secure multisig transaction signing.
-    - [Using EIP-7702](./verifying-7702.md) -  Enabling smart contract features for EOAs and mitigating new risks.
+  - [Verifying Standard Transactions (EOA)](./verifying-standard-transactions.md) - How to safely verify transactions from standard wallets.
+  - [Multisig Signing Process](./secure-multisig-signing-process.md) - Detailed guide for secure multisig transaction signing.
+  - [Using EIP-7702](./verifying-7702.md) -  Enabling smart contract features for EOAs and mitigating new risks.
 - [Private Key & Seed Phrase Management](./private-key-management.md) - Best practices for securing your seed phrase.
 - [Tools & Resources](./tools-&-resources.md) - A curated list of security tools and resources.
 

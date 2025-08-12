@@ -6,7 +6,6 @@ tags:
 
 # Incident Detection and Response
 
-
 You don't want to be that project which has funds stolen, and then don't notice it for multiple days. Early detection and effective response to security incidents will help minimize damage.
 
 ## Key Components of Incident Detection
