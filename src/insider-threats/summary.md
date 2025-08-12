@@ -13,7 +13,7 @@ contributors:
 # Summary
 
 *   **Who are DPRK IT Workers?** They are North Korean individuals, often operating from abroad (primarily China and Russia), who use fraudulent identities to secure remote IT jobs. Their primary goal is to generate revenue for the North Korean regime, which may involve legitimate work but also opens the door to espionage, data theft, extortion, and future hacking activities.
-*   **How to Spot Them During Hiring:**
+*   **How to Spot DPRK IT Workers During Hiring:**
     *   Focus on detecting **fraud and misrepresentation**, not stereotypes. Look for inconsistencies across their CV, digital profiles, and interview answers.
     *   During video interviews, insist the camera is on. Watch for AI-generated faces, obscured or generic backgrounds, and an inability to answer small-talk questions related to their claimed location or nationality.
     *   Scrutinize their GitHub profile for red flags like a recent account creation date with years of "faked" commit history, "copied" repositories from legitimate projects, spam-like contributions, or interactions with other suspicious accounts.
