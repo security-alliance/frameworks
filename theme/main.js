@@ -1,16 +1,13 @@
 const bookmarkPrefix = "bookmarks_";
 const tagPrefix = "tag_";
 
-// TODO: Find a way to pass tags metadata into handlebars, so we can initiatize tags at build time
+// TODO: Find a way to pass tags metadata into handlebars, so we can initialize tags at build time
 window.addEventListener("load", () => {
     updateBookmarkIcon();
 
     window.tagsData = tagsIndex;
     addBookmarkedToTags();
     createSearchableTags();
-
-    // Ensure text wraps tightly around contributors boxes
-    ensureContributorBoxWrapping();
 
     //* Setup event listeners for dropdowns & tags
     const tagsToggle = document.getElementById('tags-toggle');

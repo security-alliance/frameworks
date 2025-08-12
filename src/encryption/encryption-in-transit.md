@@ -6,7 +6,6 @@ tags:
 
 # Encryption in Transit
 
-
 Encryption in transit means how data is being encrypted while it flows across networks. This is important as you don't want anyone eavesdropping on your traffic, and by following best practices such as the ones below, you can reduce the risk of that:
 
 ## Best Practices

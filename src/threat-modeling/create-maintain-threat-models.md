@@ -6,7 +6,6 @@ tags:
 
 # Create and Maintain Threat Models
 
-
 Creating and maintaining threat models help identify potential security risks and develop mitigation strategies to protect the project.
 
 ## Steps to Create a Threat Model

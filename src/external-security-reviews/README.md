@@ -41,4 +41,4 @@ External security reviews are not foolproof and cannot guarantee absolute securi
 There are many different kinds of external security reviews, and we have some context on many of them here.
 
 1. [Smart Contract Audits](./smart-contracts/README.md)
-5. [Security Policies and Procedures](./security-policies-and-procedures.md)
+2. [Security Policies and Procedures](./security-policies-and-procedures.md)

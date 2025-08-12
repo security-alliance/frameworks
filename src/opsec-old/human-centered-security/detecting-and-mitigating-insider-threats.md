@@ -47,14 +47,13 @@ Understanding what motivates insider threats is crucial for detection and preven
 * Some insiders don't realize the value of what they're compromising
 * They may not understand the security implications of their actions
 
-
 ### Some Examples
 
-- The 2020 Twitter breach exemplifies compromised insiders - employees with legitimate access were socially engineered to provide their credentials, allowing attackers to take control of high-profile accounts[^2]. While the employees didn't intend harm, they became unwitting insider threats after being manipulated.
+* The 2020 Twitter breach exemplifies compromised insiders - employees with legitimate access were socially engineered to provide their credentials, allowing attackers to take control of high-profile accounts[^2]. While the employees didn't intend harm, they became unwitting insider threats after being manipulated.
 
-- Similarly, the 2022 Ronin Network hack ($625 million) began with social engineering of a Sky Mavis senior engineer. This employee became a compromised insider, giving attackers access to four validator nodes. Combined with a third-party validator, this allowed the massive cryptocurrency theft[^3]. This demonstrates how social engineering creates insider threats even when employees have no malicious intent.
+* Similarly, the 2022 Ronin Network hack ($625 million) began with social engineering of a Sky Mavis senior engineer. This employee became a compromised insider, giving attackers access to four validator nodes. Combined with a third-party validator, this allowed the massive cryptocurrency theft[^3]. This demonstrates how social engineering creates insider threats even when employees have no malicious intent.
 
-- The 2019 SIM-swapping attacks represent a more direct insider threat scenario. Mobile carrier employees were bribed or socially engineered to transfer victims' phone numbers to attacker-controlled SIMs. In Michael Terpin's case against AT&T, an employee allegedly accepted payment to compromise his account, leading to $24 million in cryptocurrency theft[^4]. This represents both compromised insiders and potentially malicious insiders who knowingly participated in exchange for payment.
+* The 2019 SIM-swapping attacks represent a more direct insider threat scenario. Mobile carrier employees were bribed or socially engineered to transfer victims' phone numbers to attacker-controlled SIMs. In Michael Terpin's case against AT&T, an employee allegedly accepted payment to compromise his account, leading to $24 million in cryptocurrency theft[^4]. This represents both compromised insiders and potentially malicious insiders who knowingly participated in exchange for payment.
 
 These examples highlight the intersection of social engineering and insider threats, where external attackers manipulate employees to gain unauthorized access.
 

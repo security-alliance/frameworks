@@ -111,4 +111,4 @@ Protecting the physical security of servers, network equipment, and other critic
 4. **Hardware Security Modules**: Physical protection of HSMs
 5. **Key Ceremony Security**: Physical controls for key generation events
 
-Effective physical and environmental security controls address risks that are often overlooked in digital-focused organizations. By implementing appropriate physical protections, organizations can prevent attacks that bypass technical controls through physical access or tampering. 
+Effective physical and environmental security controls address risks that are often overlooked in digital-focused organizations. By implementing appropriate physical protections, organizations can prevent attacks that bypass technical controls through physical access or tampering.

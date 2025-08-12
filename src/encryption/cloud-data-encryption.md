@@ -8,7 +8,6 @@ tags:
 
 # Cloud Data Encryption
 
-
 You should consider using the best practices below, in order to ensure that data stored in the cloud
 is protected from unauthorized access:
 

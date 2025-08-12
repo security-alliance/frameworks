@@ -153,7 +153,7 @@ If you manage Telegram groups or channels, properly configuring admin permission
 
 ### Passcode Lock
 
-- **Settings > Privacy and Security > Passcode Lock:** This feature adds a passcode to access your Telegram app after a period of inactivity. The default setting is "away for 1 hour." 
+- **Settings > Privacy and Security > Passcode Lock:** This feature adds a passcode to access your Telegram app after a period of inactivity. The default setting is "away for 1 hour."
   - **Recommendations:**
     - **Store Passcode Securely:** Do not lose this passcode—store it offline if needed.
     - **Unique Passcode:** Ensure it is different from your phone's unlock passcode.
@@ -170,8 +170,8 @@ If you manage Telegram groups or channels, properly configuring admin permission
 - **Security Measures:**
   - **SMS Codes:** Telegram sends a code via SMS, which is not secure.
   - **Email Recovery:** Offers email recovery, which is more secure but lacks options for authenticator apps or hardware keys.
-- **Important:** 
-  - **Backup Password:** If you lose this password, access to your account may be compromised. 
+- **Important:**
+  - **Backup Password:** If you lose this password, access to your account may be compromised.
   - **Secure Storage:** Write it down offline and ensure it is not lost.
 
 #### Additional Privacy Settings

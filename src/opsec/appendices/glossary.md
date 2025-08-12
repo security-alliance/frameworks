@@ -178,4 +178,4 @@ This glossary provides definitions for key terms used throughout the Operational
 
 **Web3**: The concept of a new iteration of the web which incorporates concepts such as decentralization, blockchain technologies, and token-based economics.
 
-This glossary provides a common language for discussing operational security concepts. Understanding these terms is essential for effective communication about security risks, controls, and practices in both traditional and Web3 environments. 
+This glossary provides a common language for discussing operational security concepts. Understanding these terms is essential for effective communication about security risks, controls, and practices in both traditional and Web3 environments.

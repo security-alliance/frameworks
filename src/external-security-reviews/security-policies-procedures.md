@@ -11,7 +11,6 @@ contributors:
 
 # Security Policies and Procedures
 
-
 As part of the external security review, it could be beneficial to also review the internal security policies and procedures as well.
 Some of the things that could be relevant to review are:
 

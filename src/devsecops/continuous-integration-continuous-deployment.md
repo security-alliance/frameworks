@@ -8,7 +8,6 @@ tags:
 
 # Continuous Integration and Continuous Deployment (CI/CD)
 
-
 Continuous Integration and Continuous Deployment are there to ensure good code quality and create rapid and secure deployments. Some best practices are:
 
 1. Ensure every PR undergoes CI testing (e.g., GitHub Actions) that must pass before merging. CI tests should at least include unit tests, integration tests, and checks for known vulnerabilities in dependencies.

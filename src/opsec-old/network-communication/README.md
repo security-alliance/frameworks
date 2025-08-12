@@ -42,4 +42,4 @@ In Web3 environments, network and communication security includes additional con
 - Protection against blockchain-specific network attacks
 - Balancing transparency with confidentiality in blockchain communications
 
-The guidance in this section addresses both traditional and Web3-specific network and communication security considerations. 
+The guidance in this section addresses both traditional and Web3-specific network and communication security considerations.
