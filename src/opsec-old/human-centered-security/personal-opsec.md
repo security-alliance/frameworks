@@ -94,4 +94,4 @@ Personal operational security (OpSec) extends beyond the workplace, encompassing
 2. Understand what organizational support is available for personal security incidents
 3. Maintain awareness of current threats targeting individuals in your industry or role
 
-By implementing personal OpSec practices, team members can significantly reduce security risks that originate outside the workplace while maintaining a reasonable balance between security and quality of life. 
+By implementing personal OpSec practices, team members can significantly reduce security risks that originate outside the workplace while maintaining a reasonable balance between security and quality of life.

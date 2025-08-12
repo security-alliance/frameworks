@@ -7,7 +7,6 @@ tags:
 
 # Code Signing
 
-
 Code signing ensures that the code has not been tampered with, and verifies the identity of the developer. Here are some best practices that could be followed:
 
 1. Ensure all Pull Requests (PRs) are signed with the user’s GPG key.

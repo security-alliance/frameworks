@@ -157,4 +157,4 @@ Fostering an organizational culture that values and prioritizes security.
 4. **Security-Conscious Development Culture**: Integrating security into development practices
 5. **Responsible Disclosure Culture**: Fostering appropriate vulnerability disclosure
 
-Continuous improvement in security requires a systematic approach to learning, measuring, and adapting. By implementing robust metrics, assessment processes, and a culture of security awareness, organizations can evolve their security practices to address emerging threats and changing environments. 
+Continuous improvement in security requires a systematic approach to learning, measuring, and adapting. By implementing robust metrics, assessment processes, and a culture of security awareness, organizations can evolve their security practices to address emerging threats and changing environments.

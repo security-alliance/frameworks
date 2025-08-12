@@ -43,4 +43,4 @@ While Web3 introduces unique security challenges, it does not replace the need f
 - Network and communication security
 - Human-centered security approaches
 
-By combining Web3-specific security measures with traditional operational security practices, organizations can build a comprehensive security posture suitable for the decentralized ecosystem. 
+By combining Web3-specific security measures with traditional operational security practices, organizations can build a comprehensive security posture suitable for the decentralized ecosystem.

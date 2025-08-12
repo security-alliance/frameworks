@@ -17,4 +17,4 @@ lint:
     @echo "Spell check complete!"
     @echo ""
     @echo "Running markdownlint..."
-    markdownlint-cli2 ./src/*.md
+    markdownlint-cli2 ./src/**/*.md

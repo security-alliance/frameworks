@@ -104,4 +104,4 @@ In Web3 environments, the OpSec Lifecycle must address unique considerations:
 - **Risk Assessment**: Evaluating the immutable nature of blockchain transactions
 - **Countermeasures**: Implementing controls specific to cryptocurrency and blockchain operations
 
-By adapting the OpSec Lifecycle to these considerations, Web3 organizations can develop security programs that address their unique risk profiles. 
+By adapting the OpSec Lifecycle to these considerations, Web3 organizations can develop security programs that address their unique risk profiles.

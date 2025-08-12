@@ -14,7 +14,6 @@ contributors:
 A lightweight, end-to-end scaffold for security teams that work without a single authority.  
 Use it as a menu, not a mandate.
 
-
 # 1. Guiding Principles
 
 | Principle | What it means in practice |

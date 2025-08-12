@@ -132,4 +132,4 @@ Monitoring infrastructure, applications, and services supporting blockchain oper
 4. **Infrastructure Security Monitoring**: Tracking security events in supporting infrastructure
 5. **Team Member Activity Monitoring**: Detecting unusual access or activities
 
-Effective monitoring and detection enable organizations to identify security threats quickly, reducing the potential impact of security incidents. By implementing comprehensive monitoring across both traditional and Web3-specific environments, organizations can maintain visibility into their security posture and respond promptly to emerging threats. 
+Effective monitoring and detection enable organizations to identify security threats quickly, reducing the potential impact of security incidents. By implementing comprehensive monitoring across both traditional and Web3-specific environments, organizations can maintain visibility into their security posture and respond promptly to emerging threats.

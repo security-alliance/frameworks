@@ -34,6 +34,7 @@ A security review engagement is typically divided into four phases:
 - **Final Report Phase**: Auditors review implemented fixes and provide a comprehensive final report
 
 ### Audit Methodologies
+
 - **Static Analysis**: Automated code scanning for known vulnerability patterns
 - **Dynamic Analysis**: Runtime testing and fuzzing
 - **Manual Review**: Expert analysis of business logic and complex vulnerabilities
@@ -42,12 +43,14 @@ A security review engagement is typically divided into four phases:
 ## Types of Smart Contract Audits
 
 ### Private Audits
+
 - Dedicated security researchers assigned to your project
 - Confidential and personalized attention
 - Higher cost but comprehensive coverage
 - Direct communication with audit team
 
 ### Public/Competitive Audits
+
 - Multiple researchers competing for prizes
 - Diverse perspectives and approaches
 - More cost-effective option

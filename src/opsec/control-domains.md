@@ -50,4 +50,4 @@ In Web3 environments, control implementation must address unique challenges:
 3. **Smart Contract Security**: Controls specific to blockchain-based code
 4. **Community Governance**: Balancing centralized security controls with decentralized governance
 
-The following sections detail the specific controls within each domain, providing guidance on implementation and best practices tailored to Web3 organizations. 
+The following sections detail the specific controls within each domain, providing guidance on implementation and best practices tailored to Web3 organizations.

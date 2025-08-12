@@ -18,11 +18,11 @@ Social engineering encompasses various manipulation techniques that exploit huma
 Regardless of the specific social engineering technique, several core defensive measures are effective:
 
 1. **Implement Verification Protocols**: Establish multi-step verification procedures for sensitive requests, especially those involving financial transactions, credential changes, or access modifications
-   
+
 2. **Develop a Questioning Culture**: Encourage team members to verify unexpected requests through alternative communication channels, even when they appear to come from trusted sources
-   
+
 3. **Technical Controls**: Deploy appropriate filtering, monitoring, and access control systems to detect and prevent social engineering attempts
-   
+
 4. **Regular Training**: Conduct ongoing security awareness training with realistic scenarios based on current threats
 
 5. **Clear Reporting Mechanisms**: Create simple, accessible ways for team members to report suspected social engineering attempts
@@ -73,4 +73,4 @@ The goal of social engineering defense is not just to prevent specific attacks b
 2. Develop and practice "security skepticism" as a valued trait
 3. Design systems and processes with human behavior in mind, acknowledging that perfect compliance is unrealistic
 
-Combining technical controls with human awareness and organizational procedures, teams can significantly reduce their vulnerability to social engineering attacks. 
+Combining technical controls with human awareness and organizational procedures, teams can significantly reduce their vulnerability to social engineering attacks.
