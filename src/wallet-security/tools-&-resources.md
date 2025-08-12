@@ -27,7 +27,7 @@ Before choosing a wallet, it is essential to consult independent, community-trus
 Transaction simulators allow you to preview the exact outcome of a transaction before signing it, preventing errors and security risks.
 
 - **[Tenderly](https://tenderly.co/)**: A platform that allows you to simulate transactions and preview, helping to prevent transaction failures, security risks, and unnecessary gas costs.
-- **[Alchemy Simulation APIs](https://www.alchemy.com/docs/reference/simulation)**: An API suite that predicts the precise impact of a transaction before it reaches the blockchain. 
+- **[Alchemy Simulation APIs](https://www.alchemy.com/docs/reference/simulation)**: An API suite that predicts the precise impact of a transaction before it reaches the blockchain.
 
 ## Transaction Verification
 

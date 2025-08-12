@@ -42,4 +42,4 @@ In Web3 environments, device and endpoint security includes additional considera
 - Addressing the risks of browser-based Web3 interactions
 - Securing devices that participate in blockchain networks (e.g., validator nodes)
 
-The guidance in this section addresses both traditional and Web3-specific device and endpoint security considerations. 
+The guidance in this section addresses both traditional and Web3-specific device and endpoint security considerations.

@@ -15,6 +15,7 @@ contributors:
 The objective of Security testing, while most likely impossible, is to ensure that applications and systems are resilient to attacks and free from vulnerabilities. This section covers various security testing methodologies, including dynamic and static application security testing, fuzz testing, and security regression testing.
 
 There are several types of testing:
+
 - **Unit Testing**: Tests individual components or functions of the codebase.
 - **Integration Testing**: Tests the interaction between different components or systems.
 - **Fuzz Testing**: Tests the application by providing random or unexpected inputs to identify vulnerabilities.
@@ -25,11 +26,12 @@ Some types of testing overlap, for example, a unit test could also be a fuzz tes
 
 ## Goal
 
-The goal of security testing is to identify vulnerabilities and weaknesses in the codebase, while also making sure that the code behaves the same way even after changes. Different types of testing can help achieve this goal in different ways. There is no "one size fits all" solution, and the choice of testing methodology depends on the specific requirements and constraints of the project. 
+The goal of security testing is to identify vulnerabilities and weaknesses in the codebase, while also making sure that the code behaves the same way even after changes. Different types of testing can help achieve this goal in different ways. There is no "one size fits all" solution, and the choice of testing methodology depends on the specific requirements and constraints of the project.
 
-## Smart Contracts 
+## Smart Contracts
 
 For smart contracts in particular, here is when to use each type of testing:
+
 - **Unit Testing**: Always. And aim for high "code coverage" (i.e. unit test as many paths as possible)
 - **Integration Testing**: Always. This can also be combined with fork testing.
 - **Fuzz Testing**: Always. Most unit tests can be fuzz tests.

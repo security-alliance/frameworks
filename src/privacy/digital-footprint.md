@@ -6,7 +6,6 @@ tags:
 
 # Digital Footprint
 
-
 Your digital footprint is the trail of data you leave behind while using the internet.
 
 ## Understanding Your Digital Footprint

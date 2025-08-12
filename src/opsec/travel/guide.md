@@ -56,7 +56,7 @@ If your company uses Mobile Device Management (MDM) on phones or laptops, verify
 
 Plan for how you’ll access accounts that use two-factor authentication if your main device is unavailable. For authenticator apps (TOTP codes), **print out backup codes** for your important accounts and keep them **securely** in services like 1Password or NordPass. Alternatively, consider storing them elsewhere physically (not on your phone). If your 2FA is tied to a phone number (SMS or voice), **disable SMS for 2FA**. For technologies that are unfortunately dependent on phone numbers, use a separate line (not your personal one) from services like Google Voice, Burner App or SLYFONE. Transfer your number to an eSIM since [they are harder to physically steal or swap than a physical SIM](https://support.apple.com/en-ca/118227#:~:text=Use%20eSIM%20while%20traveling%20internationally,obtain%2C%20carry%2C%20and%20swap). You can also register a backup 2FA method (e.g. add a secondary phone or a backup hardware key to your accounts) in case of emergency.
 
-Ensure your password manager is accessible – many like 1Password have a *Travel Mode* that removes sensitive vaults from your device while you travel (you can restore them later). This limits exposure if your [device is searched or seized](https://www.schneier.com/blog/archives/2025/04/cell-phone-opsec-for-border-crossings.html). 
+Ensure your password manager is accessible – many like 1Password have a *Travel Mode* that removes sensitive vaults from your device while you travel (you can restore them later). This limits exposure if your [device is searched or seized](https://www.schneier.com/blog/archives/2025/04/cell-phone-opsec-for-border-crossings.html).
 
 ### **Secure your wallets and keys**
 
@@ -124,7 +124,7 @@ Avoid plug-and-play charging stations at airports or malls. The risk of [“**ju
 
 ### **Screen privacy and social engineering**
 
-Practice situational awareness when working in public spaces. [**Shoulder surfing**](https://www.trio.so/blog/shoulder-surfing-in-computer-security) is a real threat – someone nearby could be watching you enter passwords or PIN codes. Use a **privacy screen filter** on your laptop or phone to narrow the viewing angle. This makes it much harder for anyone not directly in front of your screen to read it. Sit with your back to a wall when possible, and shield the keypad with your body or hand when typing sensitive info. 
+Practice situational awareness when working in public spaces. [**Shoulder surfing**](https://www.trio.so/blog/shoulder-surfing-in-computer-security) is a real threat – someone nearby could be watching you enter passwords or PIN codes. Use a **privacy screen filter** on your laptop or phone to narrow the viewing angle. This makes it much harder for anyone not directly in front of your screen to read it. Sit with your back to a wall when possible, and shield the keypad with your body or hand when typing sensitive info.
 
 In crowded conferences or airports, be cautious if someone you don't know strikes up conversation — might be trying to distract you or talk about crypto; scammers might engage you to glean info or even attempt to get you to unlock your device. **Don't log in to critical accounts in front of others** – you never know who's looking.
 
@@ -208,7 +208,7 @@ Disable cloud auto-sync of sensitive data; you don’t want customs inadvertentl
 
 ### **Enhanced device protections**
 
-High-risk users should layer additional defenses. **Lockdown Mode** (on iOS) or Android’s equivalent secure modes should be enabled if there’s any chance of targeted spyware (these modes disable exploit-prone services and attachments). Use messaging apps with end-to-end encryption and disappearing messages (NOT Telegram, Signal is a good example) for any sensitive communications – assume that standard SMS or emails could be monitored. 
+High-risk users should layer additional defenses. **Lockdown Mode** (on iOS) or Android’s equivalent secure modes should be enabled if there’s any chance of targeted spyware (these modes disable exploit-prone services and attachments). Use messaging apps with end-to-end encryption and disappearing messages (NOT Telegram, Signal is a good example) for any sensitive communications – assume that standard SMS or emails could be monitored.
 
 Consider using a **Faraday bag** for phones when not in use, if you suspect active tracking or exploitation (this prevents any signals in or out, though use sparingly as it also blocks your calls). If you leave a device in your hotel, you can put it in a tamper-evident bag and seal it, or at least take measures like noting the exact placement or taking a photo, so you can detect if it was disturbed. Some high-risk individuals even **weigh their devices** before and after travel to detect the addition of hardware implants (a change in weight could indicate something like a chip added) – this is an extreme step, but shows the level of caution possible. At the very least, physically inspect your devices for new scratches, screws that look tampered with, or unexpected behavior.
 

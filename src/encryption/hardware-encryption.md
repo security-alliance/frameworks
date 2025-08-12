@@ -6,7 +6,6 @@ tags:
 
 # Hardware Encryption
 
-
 Hardware encryption, such as HSM, uses dedicated hardware to encrypt data, providing robust security. Utilizing a HSM is a fairly specialized thing, but consumers are for example often using TPM.
 
 ## Best Practices

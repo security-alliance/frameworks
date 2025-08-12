@@ -342,4 +342,4 @@ This procedure outlines the steps for generating and securing cryptographic keys
 [Space for assessment notes and observations]
 ```
 
-These templates provide starting points for developing comprehensive security policies and procedures. Organizations should customize these templates to address their specific security requirements, organizational structure, and risk profile. 
+These templates provide starting points for developing comprehensive security policies and procedures. Organizations should customize these templates to address their specific security requirements, organizational structure, and risk profile.

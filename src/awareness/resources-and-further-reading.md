@@ -32,7 +32,7 @@ Read detailed incident reports and analysis (available from sources like Verizon
 
 **Example Resources:**
 
-- Personal security checklist: [Digital Defense](https://digital-defense.io) (we are currently developing a version of this based on frameworks, will be available at https://check.frameworks.securityalliance.dev).
+- Personal security checklist: [Digital Defense](https://digital-defense.io) (we are currently developing a version of this based on frameworks, will be available at <https://check.frameworks.securityalliance.dev>).
 - Interactive phishing simulation: [Phishing Dojo](https://phishing.therektgames.com).
 - [SEAL's blog](https://securityalliance.org/news) on frameworks.
 

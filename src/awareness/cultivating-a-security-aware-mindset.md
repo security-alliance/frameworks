@@ -34,7 +34,7 @@ A community manager receives a direct message on Discord that looks like it come
 
 ## 3.2 Awareness in Community Settings
 
-### Unique Challenges on Social Platforms:
+### Unique Challenges on Social Platforms
 
 - **Platform-Specific Red Flags:**
 Each community platform—Discord, Twitter, Telegram—has its own quirks.

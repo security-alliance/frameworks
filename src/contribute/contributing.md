@@ -87,8 +87,6 @@ contributors:
 ---
 ```
 
-
-
 ### Structure and collaboration
 
 The book is supposed to cover all important parts of security for web3 projects.

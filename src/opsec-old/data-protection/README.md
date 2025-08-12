@@ -44,4 +44,4 @@ In Web3 environments, data protection includes additional considerations:
 - The implications of immutable data stored on blockchains
 - Privacy-preserving techniques for blockchain interactions
 
-The guidance in this section addresses both traditional and Web3-specific data protection considerations, helping organizations implement appropriate safeguards regardless of their technological environment. 
+The guidance in this section addresses both traditional and Web3-specific data protection considerations, helping organizations implement appropriate safeguards regardless of their technological environment.

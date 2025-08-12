@@ -7,7 +7,6 @@ tags:
 
 # Integrated Development Environments (IDEs)
 
-
 Integrated Development Environments (IDEs) are essential tools for developers, but they also need to be secured. Consider implementing the following best practices:
 
 1. Ensure IDEs are configured securely, with plugins and extensions only installed from trusted sources. Some IDEs have features that allow for automated execution of files in folders. Use restricted mode if you don't fully trust a project.

@@ -8,7 +8,6 @@ tags:
 
 # Encryption
 
-
 Encryption is a fundamental aspect of securing data, ensuring that sensitive information remains confidential and protected from unauthorized access. This section covers various types of encryption and best practices for implementing them effectively.
 
 ## Contents

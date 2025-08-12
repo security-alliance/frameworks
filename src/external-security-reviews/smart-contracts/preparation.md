@@ -15,9 +15,11 @@ A common misconception is that when doing a security review, you can just hand o
 ## How to Get the Most Out of Your Security Review
 
 ## Set a Goal for the Review
+
 This is the most important step of a security review and often the most overlooked. By setting a scope that is not too large or undefined, you are more likely to have a successful audit. If the project is very large, you may want to focus on the most critical aspects of the project.
 
 ## Internal Due Diligence
+
 Conduct internal testing before engaging an external security provider. You can do this by creating and running test vectors for your code, and leverage automated tools to identify low-hanging fruit. Here’s a list of free/open-source tools your project could use:
 
 - **Solidity**: slither, mythril, semgrep-smart-contracts
@@ -25,6 +27,7 @@ Conduct internal testing before engaging an external security provider. You can 
 - **Rust**: cargo audit, cargo outdated, clippy, cargo geiger, cargo tarpaulin
 
 ## Write Clear Documentation
+
 Providing comprehensive documentation is essential for auditors to understand your protocol's intended functionality. Since 80% of all bugs are due to business logic issues, auditors need to understand what your protocol should do, not just what the code does.
 
 Documentation should include:
@@ -37,6 +40,7 @@ Documentation should include:
 - **Access Control / Privileged Roles**: Record all roles and their privileges.
 
 ## Provide a Robust Test Suite
+
 Maintaining a comprehensive test suite that covers significant portions of your codebase allows auditors to focus on finding vulnerabilities rather than understanding basic functionality. Before an audit, ensure you have:
 
 - **Unit Tests**: Test individual functions and components
@@ -46,6 +50,7 @@ Maintaining a comprehensive test suite that covers significant portions of your 
 - **Formal Verification**: If applicable, use formal methods to prove correctness of critical components
 
 ## Conduct an Initial Code Walkthrough
+
 The first step in a security audit should be a high-level video walkthrough where you:
 
 - Explain your codebase architecture and key components

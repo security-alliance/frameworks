@@ -51,5 +51,6 @@ A static analysis tool will automatically detect this reentrancy pattern and fla
 ## References
 
 This document incorporates knowledge from:
+
 - [Cyfrin Updraft Security Testing Curriculum](https://updraft.cyfrin.io)
-- [Trail of Bits secure contracts](https://secure-contracts.com/program-analysis/slither/docs/src/api/static_analysis.html) 
+- [Trail of Bits secure contracts](https://secure-contracts.com/program-analysis/slither/docs/src/api/static_analysis.html)

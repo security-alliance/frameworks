@@ -6,7 +6,6 @@ tags:
 
 # SIM Swapping
 
-
 SIM swapping occurs when a threat actor trick a mobile phone provider into transferring a victim's phone number to a SIM card that the criminals control. This allows the criminals to intercept the victim's text messages and phone calls, including any two-factor authentication codes. With access to the victim's phone number, the criminals can then gain unauthorized access to the victim's accounts.
 
 ## Stop Using SMS-Based 2FA
@@ -27,7 +26,6 @@ Not sure where to start? Here’s a brief list of services to inspire you:
 - **Crypto Exchanges**: Coinbase, Gemini, Binance
 - **Domain Registrars**: GoDaddy, Squarespace
 - **Banking**: PayPal, Revolut
-
 
 ## Switch to a High-Security Carrier
 
@@ -51,7 +49,6 @@ For an added bonus, you might consider creating a new Google account under a fak
 #### Efani
 
 [Efani](https://www.efani.com/) is an MVNO using AT&T’s and Verizon’s networks and is designed for high-risk individuals. Efani has negotiated agreements in which they are responsible for manually approving requests to modify subscriber accounts instead of allowing agents at AT&T or Verizon to make those changes. Efani also masks your information before submitting it to the MNOs, making it harder for an insider to locate your account.
-
 
 ## Place a Note on Your Carrier Account
 
