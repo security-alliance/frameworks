@@ -8,9 +8,10 @@ If you want to know more about the frameworks or take a peek at the live book go
 
 - [Rust/cargo](https://www.rust-lang.org/tools/install) (For building/serving mdBook)
 - [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (For linting markdown files)
-- [GNU Aspell](https://sourceforge.net/projects/aspell/) (For spell checking)
+- [GNU Aspell](https://sourceforge.net/projects/aspell/) (For spell checking) - Note: For macOs you can use [Homebrew](https://brew.sh/) to install aspell. Just run `brew install aspell`.
 - [just](https://github.com/casey/just) (For running commands)
 - [Docker](https://docs.docker.com/get-docker/) (Optional: For running the devcontainer)
+- [GitHub CLI](https://cli.github.com/) (Optional: For using `gh` to interact with GitHub)
 
 ## Quick installation and local setup
 ### Option 1: Using DevContainer (Recommended)

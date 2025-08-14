@@ -34,11 +34,13 @@ To understand how to contribute, follow this process:
 
 5. **Become a steward**: If there's no specific branch created, then that framework is still "headless," which means you can become its steward! See more in the [Stewards](./stewards.md) section.
 
-### Using DevContainer to contribute (Recommended)
+### Development Environment Setup
 
-The easiest way to get started is using our pre-configured devcontainer. Choose the approach that works best for you:
+Choose the development approach that works best for you:
 
-#### Option A: VSCode with Dev Containers Extension
+#### Option A: DevContainer with VSCode (Recommended)
+
+The easiest way to get started is using our pre-configured devcontainer with VSCode:
 
 1. **Prerequisites**: VSCode with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 2. **Open the project**: VSCode will detect the devcontainer configuration
@@ -58,6 +60,32 @@ devcontainer exec --workspace-folder . bash
 # Inside container: just serve
 # Access the mdBook at http://<IP>:3000
 ```
+
+#### Option C: Local Installation
+
+If you prefer to install dependencies locally on your machine:
+
+**Prerequisites:**
+- [Rust/cargo](https://www.rust-lang.org/tools/install) (For building/serving mdBook)
+- [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (For linting markdown files)
+- [GNU Aspell](https://sourceforge.net/projects/aspell/) (For spell checking) - Note: For macOs you can use [Homebrew](https://brew.sh/) to install aspell. Just run `brew install aspell`.
+- [just](https://github.com/casey/just) (For running commands)
+- [Docker](https://docs.docker.com/get-docker/) (Optional: For running the devcontainer)
+- [GitHub CLI](https://cli.github.com/) (Optional: For using `gh` to interact with GitHub)
+
+**Setup:**
+1. Install all prerequisites listed above
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/security-alliance/frameworks.git
+   cd frameworks && git checkout develop
+   ```
+3. Start the development server:
+   ```bash
+   just serve
+   ```
+
+
 
 **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
 
