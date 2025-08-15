@@ -6,7 +6,6 @@ tags:
 
 # Mobile Application Security
 
-
 Mobile applications are increasingly used as front-ends for web3 protocols. As more projects are using mobile applications, it also becomes an increasing target for threat actors. Below, you can find some suggestions to help protect your mobile application:
 
 ## Best Practices

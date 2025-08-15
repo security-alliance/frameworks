@@ -6,7 +6,6 @@ tags:
 
 # Dependency Awareness
 
-
 Dependency awareness is the practice of understanding and managing all the external libraries, frameworks, and components that a software project relies on. Dependencies can introduce vulnerabilities and risks, which means it's important to keep track of them and ensure they are secure.
 
 ## Importance of Dependency Awareness

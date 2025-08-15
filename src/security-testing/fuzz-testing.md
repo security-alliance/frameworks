@@ -140,6 +140,7 @@ Now you may notice that there is another scenario where our code could have an i
 2. Then call this function again with any other number
 
 It takes **2 calls** for our invariant to be broken:
+
 1. Call `doStuff` with `7`
 2. Call `doStuff` with any other number
 
@@ -149,7 +150,7 @@ Our fuzz test written above will never be able to find this example because as i
 
 ### Stateful Fuzz Tests (Invariant Tests)
 
-So, in smart contract testing, we can do **"stateful fuzzing"** instead. 
+So, in smart contract testing, we can do **"stateful fuzzing"** instead.
 
 **Stateful Fuzzing**: The state of our previous fuzz run is the starting state of our next fuzz run.
 
@@ -211,7 +212,6 @@ In an actual smart contract, your invariants won't be that a balloon shouldn't p
 - [Foundry](https://github.com/foundry-rs/foundry/)
 - [Echidna](https://github.com/crytic/echidna)
 - [Medusa](https://github.com/crytic/medusa)
-
 
 ## Best Practices
 

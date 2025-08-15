@@ -19,6 +19,7 @@ Unit testing is the foundation of smart contract security testing. While fuzz te
 Unit testing involves testing individual components or functions of your codebase in isolation. In smart contract development, this means testing each function with known inputs to verify expected outputs and state changes.
 
 **Why Unit Tests Matter for Security:**
+
 - Catch basic logic errors before they become vulnerabilities
 - Ensure access controls work as expected
 - Verify arithmetic operations don't have overflow/underflow issues
@@ -135,12 +136,14 @@ Unit tests should test your contract logic in isolation. When your contracts dep
 ### Why Mock in Unit Tests?
 
 **Problems with real external dependencies in unit tests:**
+
 - **Slow**: Network calls and complex state slow down tests
 - **Unpredictable**: External state changes make tests non-deterministic  
 - **Expensive**: RPC calls cost money and hit rate limits
 - **Complex**: Hard to test edge cases with real systems
 
 **Benefits of mocking:**
+
 - **Fast**: No network calls or complex state
 - **Predictable**: You control exactly what the mock returns
 - **Comprehensive**: Easy to test all edge cases and failure scenarios
@@ -183,6 +186,7 @@ contract MyContractTest is Test {
 ### When NOT to Mock
 
 **Don't mock when:**
+
 - Testing the integration between YOUR contracts
 - The external dependency is simple and deterministic
 - You're specifically testing the interaction with the external system
@@ -190,6 +194,7 @@ contract MyContractTest is Test {
 ## Best Practices
 
 ### 1. Achieve High Code Coverage
+
 Aim for 90%+ line coverage and 100% branch coverage on critical functions:
 
 ```bash
@@ -198,6 +203,7 @@ forge coverage
 ```
 
 ### 2. Test All Access Controls
+
 ```solidity
 function testOnlyOwnerCanMint() public {
     vm.prank(alice); // Alice is not owner
@@ -211,6 +217,7 @@ function testOnlyOwnerCanMint() public {
 ```
 
 ### 3. Test Arithmetic Operations
+
 ```solidity
 function testNoOverflowOnMint() public {
     // Set total supply to near max uint256
@@ -224,6 +231,7 @@ function testNoOverflowOnMint() public {
 ```
 
 ### 4. Use Descriptive Test Names
+
 ```solidity
 function testTransferFailsWhenRecipientIsZeroAddress() public {
     // Clear what this test does
@@ -235,6 +243,7 @@ function testMintIncreasesTotalSupplyAndRecipientBalance() public {
 ```
 
 ### 5. Arrange, Act, Assert Pattern
+
 ```solidity
 function testTransfer() public {
     // Arrange
@@ -252,7 +261,8 @@ function testTransfer() public {
 ```
 
 ## Common Smart Contract Tools and Frameworks
-- [Foundry (Solidity)](https://github.com/foundry-rs/foundry): 
+
+- [Foundry (Solidity)](https://github.com/foundry-rs/foundry):
 - [Hardhat (Solidity)](https://hardhat.org/)
 - [Moccasin (Vyper)](https://github.com/Cyfrin/moccasin)
 - [Anchor (Rust)](https://www.anchor-lang.com/docs)
@@ -260,4 +270,5 @@ function testTransfer() public {
 ## References
 
 This document incorporates knowledge from:
+
 - [Cyfrin Updraft Security Testing Curriculum](https://updraft.cyfrin.io)

@@ -8,7 +8,6 @@ tags:
 
 # Security Testing
 
-
 Security testing is a crucial part of the DevSecOps process, as it helps identify vulnerabilities early on so that they can be taken care of before they become an issue in production.
 
 1. Integrate SAST tools into the CI/CD pipeline to analyze source code for vulnerabilities.

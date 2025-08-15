@@ -6,7 +6,6 @@ tags:
 
 # Code Reviews and Peer Audits
 
-
 Code reviews and peer audits help identifying and mitigating security vulnerabilities in software. They involve systematically examining code to ensure it adheres to the security standards and best practices of the project.
 
 ## Best Practices for Code Reviews

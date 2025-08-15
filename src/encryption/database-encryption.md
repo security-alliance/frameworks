@@ -6,7 +6,6 @@ tags:
 
 # Database Encryption
 
-
 Often, databases contains information that should not be publicly available. In order to protect your database, you may consider implementing the following best practices:
 
 ## Best Practices

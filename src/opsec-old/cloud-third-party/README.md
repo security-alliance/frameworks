@@ -42,4 +42,4 @@ In Web3 environments, cloud and third-party security includes additional conside
 - The assessment of smart contract dependencies
 - The security of Web3 development and deployment tools
 
-The guidance in this section addresses both traditional and Web3-specific cloud and third-party security considerations. 
+The guidance in this section addresses both traditional and Web3-specific cloud and third-party security considerations.
