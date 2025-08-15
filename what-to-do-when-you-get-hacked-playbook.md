@@ -1,5 +1,4 @@
 ---
-title: In Case of a Compromise
 tags:
   - incident-management
   - security
@@ -29,7 +28,7 @@ _______________
 
 
 ```
-If you need additional help, feel free to message **SEAL-911** on Telegram at any time.  
+If you need additional help, feel free to message [SEAL-911](https://t.me/seal_911_bot) on Telegram at any time.  
 But, seriously, don’t even look below this line until your computer is off.
 
 Use a clean mobile device (phone/tablet) to read and follow this guide. You’re likely still being watched until your compromised device is offline.
@@ -102,23 +101,27 @@ These are indirect indicators that application state, memory, or integrity has b
 *Applies to: Traders, Investors, everyday Crypto users.*  
 *Focus: Secure your crypto and accounts.*
 
-### 1. Move Funds Immediately
+### 1.1 Move Funds Immediately
 
 - On your clean device (mobile, tablet, new computer), create a new wallet.  
 - Back up your seed phrase offline only (write it on 2 pieces of paper).  
 - Move assets starting with the highest value or most at-risk (e.g., $100k in USDC is a priority).  
-- Always move tokens, NFTs, DeFi positions **before** the native asset (like ETH). You need ETH to pay gas fees.
+-  Always move tokens, NFTs, DeFi positions **before** the native asset (like ETH). You will need native assets to pay transaction / gas fees to transfer tokens.
 
-### 2. Prioritize Account Lock-down
+### 1.2 Prioritize Account Lock-down
 
-Attackers generally want to steal:  
-1. Your Crypto  
-2. Takeover Telegram account  
-3. Takeover Twitter account  
+Attackers generally want to:  
 
-However, they will not empty your wallets (or reveal their presence) if they believe you have access to more assets elsewhere, e.g., protocol control, bridges, or centralized exchanges. They may wait patiently for you to log in to critical services and then launch targeted attacks.
+1. Steal your Crypto
+    
+2. Take over your Telegram account
+   
+3. Take over your Twitter account  
 
-If you are one of multiple signers on a multisig, attackers will try to compromise other signers.
+However, they will not empty your wallets or reveal their presence if they believe they can get access to a bigger prize elsewhere (e.g., protocol control, bridges, or centralized exchange accounts). They may wait patiently for you to log in to these critical services and then launch targeted attacks.
+
+
+For example, if  you are one of multiple signers on a multisig, attackers may try to compromise other signers before taking action.
 
 If your protocol has no obvious admin backdoor, attackers may look for alternative ways to profit (e.g., infinite mint exploits).
 
@@ -127,7 +130,7 @@ If your protocol has no obvious admin backdoor, attackers may look for alternati
 For each affected account, you must:
 
 1. Remove all active sessions except the current one.  
-2. Change the password to a strong, unique one using your phone or iPad.  
+2. Change the password to a strong, unique one using your phone / tablet or a password manager.  
 3. Turn on MFA via Google Authenticator (Cloud Sync OFF) and/or YubiKey.  
 4. Remove any recovery email addresses or phone numbers.  
 5. Remove any 2FA via SMS or Email.
@@ -138,7 +141,7 @@ For each affected account, you must:
 2. Centralized Exchanges  
 3. Bank accounts / saved credit/debit cards  
 4. Business/company logins  
-5. Twitter (sessions, password)  
+5. Twitter ([Sessions](https://twitter.com/settings/sessions), [PW](https://x.com/settings/password))  
 6. Telegram  
 7. Google Account  
 8. Apple/iCloud  
@@ -255,7 +258,7 @@ If a team member is compromised, take immediate protocol-level actions:
 
 ### Start a War Room
 
-- Contact SEAL911  
+- Contact [SEAL-911](https://t.me/seal_911_bot) 
 - Designate a response lead as point of contact  
 - Collect timeline of events from compromised member  
 - Decide on signer rotation or threshold adjustments  
@@ -263,29 +266,35 @@ If a team member is compromised, take immediate protocol-level actions:
 ### Reminders
 
 - This is a team risk, not just individual failure  
-- Communicate early, act quickly, keep logs  
+- Communicate early, act quickly, keep detailed logs, and collect any supporting evidence  
 
 ---
 
 ## Recovery Tips & Reminders (All Tiers)
 
+- Transfer assets to secure or newly generated wallets
 - Rebuild affected machines completely (wipe & reinstall)  
 - Never restore full-device backups  
-- Use fresh installs from official sources only  
-- Terminate Telegram and Discord active sessions  
+- Use fresh installs from official sources only
+- Temporarily disable or rotate all privileged access credentials (signer roles, admin roles, infrastructure and deployment roles, etc.)
+- Terminate active sessions (e.g. Telegram, Discord)
 - Use sandbox tools to check files/URLs (e.g., VirusTotal)  
-- Consider public statement if social accounts were abused  
+- Consider a public statement if social accounts were abused  
 
-Stay alert for login attempts or notifications — indication you might still be compromised.
+Stay alert for login attempts or notifications that indicate you might still be compromised or targeted.
 
 Did you really keep your device off? Did you really change all passwords?
 
 ### Harden Your Security
 
-- Set up MFA with Google Authenticator (Cloud sync **OFF**)  
-- Use a password manager  
+- Set up MFA with a hardware or software authenticator (Cloud sync **OFF**)  
+- Use a password manager to generate strong passwords 
 - Get a Ledger or Trezor and **use it properly!**  
-- Further secure your Twitter and Telegram accounts  
+- Further secure your Twitter and Telegram accounts
+- Set up MFA via Google Authenticator with Cloud sync turned OFF. 
+-  Use a hardware wallet (e.g. Trezor or Ledger) and secure it [properly](https://www.ledger.com/academy/security/the-safest-way-to-use-metamask#:~:text=The%20difference%20is%20that%20your%20Ledger%20seed%20phrase%20has%20never%20been%20exposed%20online%2C%20while%20you%20can%E2%80%99t%20say%20the%20same%20for%20any%20software%20wallet%20seed%20phrase.)!!!!!!!!!!!!!
+- [Further secure your Twitter account(s)](https://securityalliance.notion.site/Twitter-Security-Self-Audit-8fdb80d93a144dbab0f0cc4ff59c2131)
+- [Further secure your Telegram account(s)](https://securityalliance.notion.site/Telegram-Security-Self-Audit-863507aa2ea84360be8e6f30c61e6b0d) 
 
 ---
 
