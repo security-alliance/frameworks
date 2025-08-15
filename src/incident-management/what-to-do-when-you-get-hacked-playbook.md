@@ -5,7 +5,6 @@ tags:
   - crypto
 ---
 
-# In Case of a Compromise
 
 👋 Hello! We have reason to believe your computer is compromised. Your assets & accounts are at risk.
 
