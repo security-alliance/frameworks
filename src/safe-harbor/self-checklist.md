@@ -48,7 +48,7 @@ You have 3 ways to adopt:
    
    → Immunefi: [Immunefi Integration Form](https://docs.google.com/forms/d/e/1FAIpQLSehHw_KyNfSr9YbnO1AB3OZ4cvVS2oInIxdveCPguR9GSxZFQ/viewform)
 
-Find out more about Safe Harbor [here](./README.md)
+Find out more about Safe Harbor [here](./index.md)
 
 ---
 
