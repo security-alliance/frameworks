@@ -8,14 +8,41 @@ If you want to know more about the frameworks or take a peek at the live book go
 
 - [Rust/cargo](https://www.rust-lang.org/tools/install) (For building/serving mdBook)
 - [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (For linting markdown files)
-- [GNU Aspell](https://sourceforge.net/projects/aspell/) (For spell checking)
+- [GNU Aspell](https://sourceforge.net/projects/aspell/) (For spell checking) - Note: For macOs you can use [Homebrew](https://brew.sh/) to install aspell. Just run `brew install aspell`.
 - [just](https://github.com/casey/just) (For running commands)
+- [Docker](https://docs.docker.com/get-docker/) (Optional: For running the devcontainer)
+- [GitHub CLI](https://cli.github.com/) (Optional: For using `gh` to interact with GitHub)
 
 ## Quick installation and local setup
+### Option 1: Using DevContainer (Recommended)
+If you have VSCode with the Dev Containers extension and [Dev Container Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) installed:
 
 1. `gh repo clone security-alliance/frameworks`
-2. `git checkout develop`
-3. `just serve`
+2. `git checkout develop` 
+3. Open in VSCode and run "Dev Containers: Reopen in Container"
+4. Once inside the container: `just serve`
+
+### Option 2: Using DevContainer with Docker (No VSCode Required)
+
+**Using DevContainer CLI:**
+- Install [DevContainer CLI](https://github.com/devcontainers/cli)
+```bash
+gh repo clone security-alliance/frameworks
+cd frameworks && git checkout develop
+devcontainer up --workspace-folder .
+devcontainer exec --workspace-folder . bash
+# Get the IP address of the container, by running `hostname -I | awk '{print $1}'`. Should be printed automatically in the terminal after the creation as well
+# Inside container: just serve
+# Access the mdBook at http://<IP>:3000
+```
+
+### Option 3: Local Installation
+If you prefer to install dependencies locally:
+
+1. Install prerequisites listed above
+2. `gh repo clone security-alliance/frameworks`
+3. `git checkout develop`
+4. `just serve`
 
 ## Collaboration
 

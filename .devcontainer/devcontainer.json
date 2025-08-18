@@ -3,7 +3,11 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "features": {},
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "installDirectlyFromGitHubRelease": true
+        }
+    },
     "customizations": {
         "vscode": {
             "extensions": [
@@ -26,5 +30,5 @@
     ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
-    "postCreateCommand": "echo 'DevContainer ready! Run \"just serve\" to start the mdBook server.'"
+    "postCreateCommand": "echo 'DevContainer ready! Run \"just serve\" to start the mdBook server.' && ip=$(hostname -I | awk '{print $1}'); echo \"After running 'just serve', access the mdBook at http://$ip:3000\""
 }
