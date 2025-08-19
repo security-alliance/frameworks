@@ -1,0 +1,1 @@
+import{r as t,j as i}from"./index-DpRQqlfr.js";const s=t.createContext(void 0);function a({children:e}){const[r,o]=t.useState([]);return i.jsx(s.Provider,{value:{selectedTags:r,setSelectedTags:o,isFilterActive:r.length>0},children:e})}function u(){const e=t.useContext(s);if(e===void 0)throw new Error("useTagFilter must be used within a TagProvider");return e}export{a as T,u};
