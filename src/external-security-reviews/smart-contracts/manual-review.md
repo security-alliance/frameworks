@@ -10,64 +10,107 @@ contributors:
 
 # Manual Review
 
-Manual review of a smart contract is the process where a security engineer carefully reads through the source code to identify potential vulnerabilities, logic errors, and design flaws.
+Manual review of a smart contract is the process of carefully examining the source code to identify potential vulnerabilities, logic errors, and design flaws.
 The approach to manual review can vary from person to person or team to team. This document outlines some of the possible things the process can comprise.
 
 ## Gather resources  
 
-1. Scope.
+1. **Scope:**  
+This can be a link to the code repository. e.g. Github, Gitlab link which consist of all the smart contracts required to be reviewed.
 
-2. commit hash.
+2. **commit hash:**  
+Agree on a specific commit hash from the repository and freeze the previously defined scope. Avoid continuous modifications to the codebase. Any changes should be communicated, and the commit hash should be updated for the code under review.
 
-3. Documentation and specification links.
+3. **Documentation and specification:**  
+    - Documentation describes how the code works, how to use it, and its expected functionality.
+    - Specification defines the exact requirements, constraints, and behaviors the system must meet, including invariants that must always hold true.
+        - Invariant is the property of the system that should always hold. Invariants can be useful for checking the expected behavior of the system when the certain actions or a transaction flow is executed. Invariants are useful in many testing approaches, including manual reviews, where a reviewer checks whether a specific property can be violated for a function under any sequence of function calls.
+        - Get simplified math formulas if the protocol has any custom/fancy formulas implemented.
 
-4. Invariant list, if present already.
+4. **Tests:**  
+Tests are important for understanding the expected behavior and ensuring that the system works as intended. The following types of tests can be useful for understanding and verifying the code:  
+    - [unit tests](../../security-testing/unit-testing.md): Unit tests ensure that individual functions behave correctly under expected conditions.
+    - [Integration Tests](../../security-testing/integration-testing.md): Integration tests verify that your smart contracts work correctly with real external systems.
 
 ## Smart contract higher overview  
 
-1. **Documentation and whitepaper walkthrough**.  
+1. **Documentation and whitepaper walkthrough:**  
+Go through the whitepaper and documentation to gain a better understanding of the project and to see how the proposed business logic is structured. What are the involved components.
 
-2. **Simplified math formulas:** Get simplified math formulas if the protocol has any any custom/fancy formulas implemented.
+2. **High level idea:**  
+Get a high level idea behind the project: Through diagrams, developer walkthrough.
 
-3. Get a **high level idea** behind the project: Through diagrams, developer walkthrough.
+3. **Structural overview:**  
+Get a structural overview of the project: Check how integration of contracts and functions is happening throughout the protocol.
 
-4. Get a **structural overview** of the project: Check how integration of contracts and functions is happening throughout the protocol.
-
-5. **Create a diagram:** Based on the structural and functional understanding the high level diagram can be created if required.  
+4. **Create a diagram::**  
+Based on the structural and functional understanding the high level diagram can be created if required.  
     - The diagram can be modified over a time as you get more understanding.  
     - The diagram can grow more complex and detailed depending on the time.  
-    - There are many tools that can be used like Excalidraw, Miro, Lucidchart etc.  
+    - There are many tools that can be used like Excalidraw, Miro, Lucidchart, Mermaid etc.  
     - High level structural example of staking diagram:  
-     ![structural diagram](images/structural-diagram.png)  
+
+    ```mermaid
+    classDiagram
+	direction LR
+	class Token {
+	  +mint()
+	  +burn()
+	  +transfer()
+	  +transferFrom()
+	}
+	class Staking {
+	  +constructor()
+	  +stake()
+	  +unstake()
+	  +getStakedAmount()
+	  +getTotalStaked()
+	}
+	class Rewards {
+	  +calculateRewards()
+	  +claimRewards()
+	  +initialize()
+	}
+	class Bridge {
+	  +transferToChain()
+	  +transferFromChain()
+	}
+	Token --> Staking: used in
+	Staking --> Token
+	Staking --> Rewards
+	Staking --> Bridge : bridges token
+    ```
 
 ## Manual review
 
-1. **Understand the flow** from [unit tests](../../security-testing/unit-testing.md):  
- Test cases are important. It gives you understanding of how the setup is, what state needs to be in place for the users to start using entry point of the system. also it gives you time to test more offensive scenarios (after verifying unit tests) instead of using most of the time in testing general scenarios.
+1. **Understand the flow:**  
+Understand the flow from [unit](../../security-testing/unit-testing.md) and [Integration](../../security-testing/integration-testing.md) tests. Test cases are important. They give you an understanding of how the setup works and what state needs to be in place for users to start using the system’s entry points. They also give you time to test more offensive or edge-case scenarios (after verifying unit tests) instead of spending most of your time testing general scenarios.
 
-    - When math formulas are involved or complex interconnected calls are involved, debugging the values of variables helps sometime to see how the state changes are happening e.g what is the value of variable x/totalStakedEth before the specific internal/external call. or what it becomes after that call.  
+    - When math formulas or complex interconnected calls are involved, debugging the values of variables helps sometime to see how the state changes are happening e.g. what is the value of variable `x/totalStakedEth` before the specific internal/external call. or what it becomes after that call.  
     - Debugging can be done in many ways. depending on which framework you are using. Some examples are.  
         - Foundry - native debugger, console logs in the contracts, Tenderly debugger, simbolik.  
         - Hardhat - console logs in the contracts, debuggers like Hardhat-tracer, Tenderly debugger.  
 
 2. **Choose least dependent contract to review one by one:**  
-  This can be done by looking into a diagram and current understanding of the smart contract functionality. For example in this case it's a Token contracts that is least dependent ( in fact the functionality from that contract is getting used in other contracts so other smart contracts are dependent on it).
+  This can be done by looking into a diagram and current understanding of the smart contract functionality. For example in this case it's a Token contract that is least dependent ( in fact the functionality from that contract is getting used in other contracts so other smart contracts are dependent on it).
 
-3. **Checklist reviews:**
+3. **Checklist reviews:**  
     - Known smart contracts vulnerabilities.
-    - Smart Contract Weakness Classification (SWC)
-    - Project specific checklists (e.g When dealing with bridges it's also important to check bridge specific checklists).
+    - Smart Contract Weakness Classification (SWC).
+    - Project specific checklists (e.g. When dealing with bridges it's also important to check bridge specific checklists).
 
-4. **Maintain list of invariants** for every functions (Can be useful later for other tests/fuzzing/F.V).
+4. **Maintain a list of invariants:**  
+Maintain a list of invariants for every functions (Can be useful later for other tests/fuzzing/F.V).
 
-5. **Offensively analyze the code** to check logical issues and also out of the box issues.
+5. **Offensively analyze the code:**  
+Offensively analyze the code to identify logical issues, edge cases, and any conditions that could break invariants.  
 
-6. **Visit all paths:**
-    Visiting all paths in a smart contract is crucial from a security perspective. For example, in the below withdraw() function, every path has its own potential security implications and behavior that needs to be verified. Sometimes these unexpected paths lead us to potential bugs.
+6. **Visit all paths:**  
+    Visiting all paths in a smart contract is crucial from a security perspective. For example, in the below `withdraw()` function, every path has its own potential security implications and behavior that needs to be verified. Sometimes these unexpected paths lead us to potential bugs.
 
-    >While this section focuses more on manual approach, automated testing approaches like fuzzing and F.V can be useful here for checking possible invariant violations across multiple paths.
+    > While this section focuses more on manual approach, automated testing approaches like fuzzing and F.V can be useful here for checking possible invariant violations across multiple paths.
 
-    As can be seen below everything boil downs to each path. even the ternary expression is a path eventually.  
+    As can be seen below, everything boils down to each path. Even the ternary expression is ultimately a path.  
 
     ```solidity
     // It may lack a general meaning, but it aims to demonstrate the code with multiple execution paths.
@@ -97,7 +140,7 @@ The approach to manual review can vary from person to person or team to team. Th
 
     In next example, because every value (`_amount`, `minRequired`) can go above and below, the results can vary. If the result is used for some operations like decreasing the `drivingScore` in `burnFuelAndReduce()` for example.
 
-    E.g depending on the amounts are same (as they were while filling the fuel) or increased or decreased, the value of `fuelReduction` will change and while subtracting it from the `drivingScore[msg.sender]` it needs to be handled accordingly. which also creates different paths.
+    E.g. depending on the amounts are same (as they were while filling the fuel) or increased or decreased, the value of `fuelReduction` will change and while subtracting it from the `drivingScore[msg.sender]` it needs to be handled accordingly. which also creates different paths.
 
     ```solidity
     function fillFuelAndCalculate(uint256 _amount) public {
@@ -184,46 +227,57 @@ One reason for writing down doubts, ideas, possible issues is, when you start go
 
 ## Automated review  
 
-1. [static analysis](../../security-testing/static-analysis.md)  
+While automated review can be classified as a different approach from manual review, it is useful to use techniques such as [static analysis](../../security-testing/static-analysis.md) to identify low-hanging bugs by triaging warnings from tools like [Slither](https://github.com/crytic/slither), [Wake](https://github.com/Ackee-Blockchain/wake), [aderyn](https://github.com/Cyfrin/aderyn) etc.
 
-2. [Fuzz Testing](../../security-testing/fuzz-testing.md)  
-
-3. [formal verification](../../security-testing/formal-verification.md)  
+> There are other types of automated testing approaches, such as [Fuzz Testing](../../security-testing/fuzz-testing.md) and [formal verification](../../security-testing/formal-verification.md), can also be helpful at different stages of the audit life-cycle, though they are less directly related to manual review.
 
 ## Report writing  
 
-1. Discussing doubts and found issues with audit team to come on conclusion.  
+1. **Doubts and issue discussion with internal team:**  
+Discuss any doubts and identified issues with the internal team or, if applicable, with the team of reviewers working in parallel on the project. This will help you reach a conclusion.  
 
-2. Discussing and conveying issues to developers.  
+2. **Doubts and issue discussion with the developers or project team:**  
+Discuss and convey issues to the developers or project teams, as applicable. The goal is the technical dev. members of team should get issues so they can try to fix them. It can save time in large projects once the report is delivered.  
 
-3. Report writing:
-    While structure of the issue/bug to write in the report can vary, These are some of the things that are helpful to include:
-    - Issues can contain detailed description, recommendation, severity, status, fixed in commit, acknowledgment from developers.
+3. **Report writing:**  
+    While the structure of a report and the issues/bugs it documents may vary, the following elements are helpful to include:
+    - Public link to the code repository.
+    - The commit hash pointing to the recently reviewed commit.
+    - Issues can include a detailed description, recommendations, severity, status, the commit where the issue was fixed, and acknowledgments from developers.
     - References to correct functions and line numbers while writing issues.
     - Example and POC, helpful for critical bugs.
     - Checking the grammar/style for better readability.
 
 ## Fixed code review  
 
-1. **Code comparison** helps in identifying updates and detecting any deviations from expected changes.  
+For checking fixed code, it may be necessary to repeat previously performed actions, depending on what has changed. Some actions can include:  
 
-2. **Reviewing updated code** to check unexpected changes.  
+1. **Code comparison:**  
+This helps in identifying updates and detecting deviations from expected changes. For example, on a visual level, changes may be observed in functions that were not expected to change.
 
-3. **Running all the tests** on updated code.  
+2. **Reviewing updated code:**  
+Review the updated code to check expected and unexpected changes.  
 
-4. **Write new tests for the updated code** if required.  
+3. **Run all the tests:**  
+Run all available tests on the updated code to ensure the newly updated code does not break any invariant.  
 
-5. **Go through checklists again** for updated functionality (depending on what is updated).  
+4. **Write new tests for the updated code:**  
+If the updated code creates any new control flow paths it's necessary to write tests to visit those paths and to ensure it yields the expected output.  
 
-6. **Check things/notes that needs to be revisited** from **Manual review**:
-    Sometimes you can have some things noted E.g: adding this fix to the code can create this problem.  
+5. **Go through checklists again:**  
+For the updated functionality (depending on what has been changed), review the checklists to ensure that no vulnerabilities remain or have been introduced.  
 
-7. **Update the report**, issue's status based on the updated code.
+6. **Check things/notes that needs to be revisited:**  
+Check items or notes that need to be revisited from the manual review. Sometimes you may have observations noted, e.g., Adding this fix to the code can create this problem.  
 
-    - Change status.
-    - Add 'fixed in' commit link/hash.
-    - Add comments from audit team (when required).
+7. **Update the report:**  
+Update the report and issue status based on the updated code.
+    - Change the status.
+    - Add/update most recently reviewed commit link/hash.
+    - Add comments from the audit team (when required).
+        - These may include, for example, the reason why an issue remains open, any unresolved security concerns, or even new issues created by the fixes, but are not limited to these.
     - Add comments from the project team (when required).
+        - These may include the reasons why an issue is acknowledged, or mitigations that will not be implemented at the smart contract level, but are not limited to these.
 
 ## Final thoughts  
 
