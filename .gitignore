@@ -26,8 +26,6 @@ claude-code
 
 # Node.js dependencies
 node_modules/
-package.json
-package-lock.json
 
 # Claude Code configuration
 CLAUDE.md
