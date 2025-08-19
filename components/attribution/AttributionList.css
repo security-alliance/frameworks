@@ -1,0 +1,155 @@
+/* Attribution styling to match the current framework design */
+.attribution-container {
+  margin: 24px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.role-section {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.role-section:last-child {
+  margin-bottom: 0;
+}
+
+.role-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #9ca3af;
+  margin: 0;
+  min-width: 120px;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+.contributors-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex: 1;
+}
+
+.contributor-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contributor-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.contributor-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contributor-name-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.contributor-name {
+  font-weight: 500;
+  color: #e5e7eb;
+  font-size: 15px;
+}
+
+.contributor-company {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.contributor-link {
+  color: #9ca3af;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.contributor-link:hover {
+  color: #60a5fa;
+}
+
+/* Light mode adjustments */
+@media (prefers-color-scheme: light) {
+  .attribution-container {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .role-title {
+    color: #6b7280;
+  }
+  
+  .contributor-name {
+    color: #1f2937;
+  }
+  
+  .contributor-company {
+    color: #6b7280;
+  }
+  
+  .contributor-avatar {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .contributor-link {
+    color: #6b7280;
+  }
+  
+  .contributor-link:hover {
+    color: #2563eb;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .attribution-container {
+    padding: 16px;
+  }
+  
+  .role-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .role-title {
+    min-width: auto;
+    padding-top: 0;
+    margin-bottom: 4px;
+  }
+  
+  .contributor-item {
+    gap: 10px;
+  }
+  
+  .contributor-avatar {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .contributor-name {
+    font-size: 14px;
+  }
+  
+  .contributor-company {
+    font-size: 11px;
+  }
+}

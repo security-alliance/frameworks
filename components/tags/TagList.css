@@ -1,0 +1,45 @@
+/* Tag styling to match the current framework design */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.tag-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  border: 1px solid transparent;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Removed hover and active states to make tags unclickable */
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .tag-item {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Removed hover effects for dark mode */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tag-container {
+    gap: 4px;
+  }
+  
+  .tag-item {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+}

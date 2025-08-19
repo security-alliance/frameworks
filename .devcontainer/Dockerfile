@@ -19,15 +19,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 # Switch to vscode user
 USER vscode
 
-# Install Rust and Cargo for vscode user
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/home/vscode/.cargo/bin:${PATH}"
-
-# Install mdBook and mdbook-admonish
-RUN /home/vscode/.cargo/bin/cargo install mdbook mdbook-admonish
-
-# Install just command runner
-RUN /home/vscode/.cargo/bin/cargo install just
 
 # Install markdownlint-cli2 globally via npm (need root for global install)
 USER root
@@ -38,6 +29,3 @@ USER vscode
 
 # Set working directory
 WORKDIR /workspace
-
-# Ensure cargo is in PATH for vscode user
-RUN echo 'export PATH="/home/vscode/.cargo/bin:$PATH"' >> /home/vscode/.bashrc
