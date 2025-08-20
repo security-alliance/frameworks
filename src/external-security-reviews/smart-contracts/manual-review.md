@@ -106,7 +106,7 @@ Maintain a list of invariants for every functions (Can be useful later for other
 Offensively analyze the code to identify logical issues, edge cases, and any conditions that could break invariants.  
 
 6. **Visit all paths:**  
-    Visiting all paths in a smart contract is crucial from a security perspective. For example, in the below `withdraw()` function, every path has its own potential security implications and behavior that needs to be verified. Sometimes these unexpected paths lead us to potential bugs.
+    Visiting all paths in a smart contract is crucial from a security perspective. For example, in the below `withdraw()` function, every path has its own potential security implications and behavior that needs to be verified. Sometimes these unexpected paths lead us to potential bugs. Generally frameworks provide tools to check test coverage, like the [forge coverage](https://getfoundry.sh/forge/reference/coverage/) command which can be used to generate code coverage reports for tests.
 
     > While this section focuses more on manual approach, automated testing approaches like fuzzing and formal verification can be useful here for checking possible invariant violations across multiple paths.
 
