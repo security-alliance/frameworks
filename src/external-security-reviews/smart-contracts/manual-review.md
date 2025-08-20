@@ -87,7 +87,7 @@ Based on the structural and functional understanding the high level diagram can 
 Understand the flow from [unit](../../security-testing/unit-testing.md) and [Integration](../../security-testing/integration-testing.md) tests. Test cases are important. They give you an understanding of how the setup works and what state needs to be in place for users to start using the system’s entry points. They also give you time to test more offensive or edge-case scenarios (after verifying unit tests) instead of spending most of your time testing general scenarios.
 
     - When math formulas or complex interconnected calls are involved, debugging the values of variables helps sometime to see how the state changes are happening e.g. what is the value of variable `x/totalStakedEth` before the specific internal/external call. or what it becomes after that call.  
-    - Debugging can be done in many ways. depending on which framework you are using. Some examples are.  
+    - Debugging can be done in many ways, depending on which framework you are using. Some examples are.  
         - Foundry - native debugger, console logs in the contracts, Tenderly debugger, simbolik.  
         - Hardhat - console logs in the contracts, debuggers like Hardhat-tracer, Tenderly debugger.  
 
