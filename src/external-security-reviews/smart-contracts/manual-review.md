@@ -160,7 +160,7 @@ One reason for writing down questions, ideas, possible issues is, when you start
     - Take notes to check your understanding.
     - Questions: Ask developers for clarity.
     - Edge cases: for later testing. E.g: [test] Possible reentrancy in unstake() function.  
-    - Try to break business logic while going through every code block. ( again note down the thing that needs to be tested)  
+    - Try to break down the business logic while going through every code block. (again note down the thing that needs to be tested)  
     - Write down things to revisit after the code is fixed. E.g: In the review you noticed that if specific functionality would be added based on doubts asked or based on the suggested fixes etc, there are chances of something to go wrong for example. Note it down and check in the **Fixed code review**.  
     - The minimal markdown file for taking notes might look like this:  
 
