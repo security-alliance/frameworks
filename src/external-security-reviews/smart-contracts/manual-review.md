@@ -43,7 +43,7 @@ Get a high level idea behind the project: Through diagrams, developer walkthroug
 3. **Structural overview:**  
 Get a structural overview of the project: Check how integration of contracts and functions is happening throughout the protocol.
 
-4. **Create a diagram::**  
+4. **Create a diagram:**  
 Based on the structural and functional understanding the high level diagram can be created if required.  
     - The diagram can be modified over a time as you get more understanding.  
     - The diagram can grow more complex and detailed depending on the time.  
