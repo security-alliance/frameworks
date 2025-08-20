@@ -253,7 +253,7 @@ Discuss and convey issues to the developers or project teams, as applicable. The
 For checking fixed code, it may be necessary to repeat previously performed actions, depending on what has changed. To avoid repeating work, you can:
 
 1. **Code comparison:**  
-This helps in identifying updates and detecting deviations from expected changes. For example, on a visual level, changes may be observed in functions that were not expected to change.
+This helps in identifying updates and detecting deviations from expected changes. For example, a git diff may reveal changes in functions that should not have been changed.
 
 2. **Reviewing updated code:**  
 Review the updated code to check expected and unexpected changes.  
