@@ -108,7 +108,7 @@ Offensively analyze the code to identify logical issues, edge cases, and any con
 6. **Visit all paths:**  
     Visiting all paths in a smart contract is crucial from a security perspective. For example, in the below `withdraw()` function, every path has its own potential security implications and behavior that needs to be verified. Sometimes these unexpected paths lead us to potential bugs.
 
-    > While this section focuses more on manual approach, automated testing approaches like fuzzing and F.V can be useful here for checking possible invariant violations across multiple paths.
+    > While this section focuses more on manual approach, automated testing approaches like fuzzing and formal verification can be useful here for checking possible invariant violations across multiple paths.
 
     As can be seen below, everything boils down to each path. Even the ternary expression is ultimately a path.  
 
