@@ -158,7 +158,7 @@ Offensively analyze the code to identify logical issues, edge cases, and any con
 7. **Write down notes, doubts and edge cases:**  
 One reason for writing down questions, ideas, possible issues is, when you start going through these issues as you encounter new path you can see more doubts, possible issues in your mind. So sometimes it becomes a loop where you will keep thinking about new ideas while exploring previous/current one.  
     - Take notes to check your understanding.
-    - Doubts: Research on it, Ask applicable doubts to developers.  
+    - Questions: Ask developers for clarity.
     - Edge cases: for later testing. E.g: [test] Possible reentrancy in unstake() function.  
     - Try to break business logic while going through every code block. ( again note down the thing that needs to be tested)  
     - Write down things to revisit after the code is fixed. E.g: In the review you noticed that if specific functionality would be added based on doubts asked or based on the suggested fixes etc, there are chances of something to go wrong for example. Note it down and check in the **Fixed code review**.  
