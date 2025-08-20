@@ -24,7 +24,7 @@ Agree on a specific commit hash from the repository and freeze the previously de
 3. **Documentation and specification:**  
     - Documentation describes how the code works, how to use it, and its expected functionality.
     - Specification defines the exact requirements, constraints, and behaviors the system must meet, including invariants that must always hold true.
-        - Invariant is the property of the system that should always hold. Invariants can be useful for checking the expected behavior of the system when the certain actions or a transaction flow is executed. Invariants are useful in many testing approaches, including manual reviews, where a reviewer checks whether a specific property can be violated for a function under any sequence of function calls.
+        - Invariants are the properties of the system that should always hold. Invariants can be useful for checking the expected behavior of the system when the certain actions or a transaction flow is executed. Invariants are useful in many testing approaches, including manual reviews, where a reviewer checks whether a specific property can be violated for a function under any sequence of function calls.
         - Get simplified math formulas if the protocol has any custom/fancy formulas implemented.
 
 4. **Tests:**  
