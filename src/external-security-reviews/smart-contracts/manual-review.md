@@ -234,7 +234,7 @@ While automated review can be classified as a different approach from manual rev
 ## Report writing  
 
 1. **Doubts and issue discussion with internal team:**  
-Discuss any doubts and identified issues with the internal team or, if applicable, with the team of reviewers working in parallel on the project. This will help you reach a conclusion.  
+Discuss any questions and identified issues with the internal team or, if applicable, with the team of reviewers working in parallel on the project. This will help you reach a conclusion.  
 
 2. **Doubts and issue discussion with the developers or project team:**  
 Discuss and convey issues to the developers or project teams, as applicable. The goal is the technical dev. members of team should get issues so they can try to fix them. It can save time in large projects once the report is delivered.  
