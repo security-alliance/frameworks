@@ -92,7 +92,7 @@ Understand the flow from [unit](../../security-testing/unit-testing.md) and [Int
         - Hardhat - console logs in the contracts, debuggers like Hardhat-tracer, Tenderly debugger.  
 
 2. **Choose least dependent contract to review one by one:**  
-  This can be done by looking into a diagram and current understanding of the smart contract functionality. For example in this case it's a Token contract that is least dependent ( in fact the functionality from that contract is getting used in other contracts so other smart contracts are dependent on it).
+  This can be done by looking into a diagram and current understanding of the smart contract functionality. For example in this case it's a Token contract that is least dependent (in fact the functionality from that contract is getting used in other contracts so other smart contracts are dependent on it).
 
 3. **Checklist reviews:**  
     - Known smart contracts vulnerabilities.
