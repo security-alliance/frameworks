@@ -226,7 +226,7 @@ One reason for writing down questions, ideas, possible issues is, when you start
 
 ## Automated review  
 
-While automated review can be classified as a different approach from manual review, it is useful to use techniques such as [static analysis](../../security-testing/static-analysis.md) to identify low-hanging bugs by triaging warnings from tools like [Slither](https://github.com/crytic/slither), [Wake](https://github.com/Ackee-Blockchain/wake), [aderyn](https://github.com/Cyfrin/aderyn) etc.
+While automated review can be classified as a different approach from manual review, it is useful to use techniques such as [static analysis](../../security-testing/static-analysis.md) to identify low-hanging bugs by triaging warnings from tools like [Slither](https://github.com/crytic/slither), [Wake](https://github.com/Ackee-Blockchain/wake), [Aderyn](https://github.com/Cyfrin/aderyn) etc.
 
 > There are other types of automated testing approaches, such as [Fuzz Testing](../../security-testing/fuzz-testing.md) and [formal verification](../../security-testing/formal-verification.md), can also be helpful at different stages of the audit life-cycle, though they are less directly related to manual review.
 
