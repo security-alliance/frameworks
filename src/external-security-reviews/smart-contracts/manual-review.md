@@ -113,7 +113,6 @@ Offensively analyze the code to identify logical issues, edge cases, and any con
     As can be seen below, everything boils down to each path. Even the ternary expression is ultimately a path.  
 
     ```solidity
-    // It may lack a general meaning, but it aims to demonstrate the code with multiple execution paths.
     function withdraw(uint256 amount, bool emergency) public {
             require(amount > 0, "Withdraw amount must be greater than 0");
             uint256 balance = balances[msg.sender];
