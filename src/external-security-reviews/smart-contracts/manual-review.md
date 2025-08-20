@@ -100,7 +100,7 @@ Understand the flow from [unit](../../security-testing/unit-testing.md) and [Int
     - Project specific checklists (e.g. When dealing with bridges it's also important to check bridge specific checklists).
 
 4. **Maintain a list of invariants:**  
-Maintain a list of invariants for every functions (Can be useful later for other tests/fuzzing/F.V).
+Maintain a list of invariants for every functions (Can be useful later for other tests/fuzzing/format verification).
 
 5. **Offensively analyze the code:**  
 Offensively analyze the code to identify logical issues, edge cases, and any conditions that could break invariants.  
