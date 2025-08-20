@@ -18,7 +18,7 @@ The approach to manual review can vary from person to person or team to team. Th
 1. **Scope:**  
 This can be a link to the code repository. e.g. Github, Gitlab link which consist of all the smart contracts required to be reviewed.
 
-2. **commit hash:**  
+2. **Commit hash:**  
 Agree on a specific commit hash from the repository and freeze the previously defined scope. Avoid continuous modifications to the codebase. Any changes should be communicated, and the commit hash should be updated for the code under review.
 
 3. **Documentation and specification:**  
