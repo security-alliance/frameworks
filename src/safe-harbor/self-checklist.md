@@ -38,7 +38,7 @@ You have 3 ways to adopt:
 
 1. **Self-adopt using our guide:**
    
-   → [Self-Adoption Guide](https://securityalliance.notion.site/public-seal-safe-harbor-self-adoption-guide?pvs=74)
+   → [Self-Adoption Guide](./self-adoption-guide.md)
    
 2. **Get help from SEAL (free):**
    
@@ -48,7 +48,7 @@ You have 3 ways to adopt:
    
    → Immunefi: [Immunefi Integration Form](https://docs.google.com/forms/d/e/1FAIpQLSehHw_KyNfSr9YbnO1AB3OZ4cvVS2oInIxdveCPguR9GSxZFQ/viewform)
 
-Find out more about Safe Harbor [here](https://securityalliance.notion.site/public-safe-harbor?pvs=74)
+Find out more about Safe Harbor [here](./index.md)
 
 ---
 
