@@ -1,9 +1,21 @@
+---
+title: "Introduction"
+tags:
+  - SEAL/Initiative
+
+---
+
+import { TagList } from '../../../components/tags/TagList'
+import { AttributionList } from '../../../components/attribution/AttributionList'
 import { TagProvider } from '../../../components/tags/TagContext'
+import { TagFilter } from '../../../components/tags/TagFilter'
 
 <TagProvider>
+<TagFilter />
 
 # Introduction to Frameworks
 
+<TagList tags={frontmatter.tags} />
 
 Welcome to the Security Frameworks by Security Alliance (SEAL), a curated resource for those seeking knowledge in the realm of blockchain security. Our organization, a collective of dedicated security specialists, is on a mission to spread awareness and educate the community about best practices and potential pitfalls in Web3 security.
 
@@ -17,7 +29,7 @@ Regardless of your background—whether in Web2, Web3, or beyond—these guideli
 
 ## How to Contribute
 
-Read our [Contribution Guide]() to learn how you can contribute to this project.
+Read our [Contribution Guide](../contribute/contributing.md) to learn how you can contribute to this project.
 
 ## Who We Are
 

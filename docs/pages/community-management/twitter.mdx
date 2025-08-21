@@ -1,5 +1,5 @@
 ---
-title: "X (Twitter) Security"
+title: "Twitter"
 tags:
   - Community & Marketing
 contributors:
@@ -7,6 +7,7 @@ contributors:
     users: [mattaereal, zedt3ster, fredriksvantes]
   - role: reviewed
     users: [mattaereal]
+
 ---
 
 import { TagList } from '../../../components/tags/TagList'
@@ -15,13 +16,12 @@ import { TagProvider } from '../../../components/tags/TagContext'
 import { TagFilter } from '../../../components/tags/TagFilter'
 
 <TagProvider>
-
 <TagFilter />
+
 
 # Twitter Security
 
 <TagList tags={frontmatter.tags} />
----
 <AttributionList contributors={frontmatter.contributors} />
 
 > 🔑 **Key Takeaway for Twitter (X):** To secure your Twitter account, prioritize using an authenticator app or security key over SMS-based 2FA, remove your phone number, and regularly review third-party app permissions. Ensure your recovery settings are robust and frequently monitor account activity to safeguard your online presence and maintain community trust.
@@ -29,6 +29,8 @@ import { TagFilter } from '../../../components/tags/TagFilter'
 A compromised **X** account can harm not only you but also your community. Attackers often use phishing tactics—like SIM swaps or fake login screens—to seize control of your profile. A few simple steps can significantly reduce these risks.
 
 Securing your Twitter account is not particularly hard or time consuming, so consider following the best practices below.
+
+---
 
 ## Essential Security Measures
 
@@ -114,7 +116,5 @@ Using a unique password for Twitter is crucial. If you haven't set one, now is t
   - If you choose to use a recovery phone number, which we generally strongly advise against, make sure it isn't your main mobile number. Instead, use a separate VoIP or alternative line to minimize the risk of SIM swapping.
 
 - If you received an email about any content moderation, login, or any email from "X"; ensure the email is from "@x.com"
-
----
 
 </TagProvider>

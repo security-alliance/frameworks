@@ -1,0 +1,31 @@
+---
+title: "Identity and Access Management"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+
+---
+
+import { TagList } from '../../../components/tags/TagList'
+import { AttributionList } from '../../../components/attribution/AttributionList'
+import { TagProvider } from '../../../components/tags/TagContext'
+import { TagFilter } from '../../../components/tags/TagFilter'
+
+<TagProvider>
+<TagFilter />
+
+# Identity and Access Management (IAM)
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Identity and Access Management (IAM) is defined as managing who has access to your systems and data, and ensuring that access is secure and appropriate. Effective IAM practices help prevent unauthorized access, reduce the risk of insider threats, and ensure that users have the necessary access to perform their roles efficiently.
+
+## Contents
+
+1. [Role-Based Access Control (RBAC)](/iam/role-based-access-control)
+2. [Secure Authentication](/iam/secure-authentication)
+3. [Access Management Best Practices](/iam/access-management)
+
+</TagProvider>

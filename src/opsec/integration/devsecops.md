@@ -1,1 +1,0 @@
-# DevSecOps Integration

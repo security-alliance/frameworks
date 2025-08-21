@@ -1,0 +1,28 @@
+---
+title: "Asset Inventory"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - SRE
+
+---
+
+import { TagList } from '../../../components/tags/TagList'
+import { AttributionList } from '../../../components/attribution/AttributionList'
+import { TagProvider } from '../../../components/tags/TagContext'
+import { TagFilter } from '../../../components/tags/TagFilter'
+
+<TagProvider>
+<TagFilter />
+
+# Asset Inventory
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+An asset inventory means having information about everything related to your project, meaning for example contracts, hardware, software, cloud providers, dependencies and network components. This is important, as if you don't have awareness of your assets then how are you going to be able to protect them?
+
+You should at the very least document as much as you can with regards to your assets, and update this on a regular basis. It is highly recommended to also assign ownership of each asset, so that someone ensures the safety of this asset. Classifying them based on their criticality and sensitivity also helps you prioritize them with regards to security measures.
+
+</TagProvider>
