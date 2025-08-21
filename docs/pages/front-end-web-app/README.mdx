@@ -1,0 +1,32 @@
+---
+title: "Readme"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+
+---
+
+import { TagList } from '../../../components/tags/TagList'
+import { AttributionList } from '../../../components/attribution/AttributionList'
+import { TagProvider } from '../../../components/tags/TagContext'
+import { TagFilter } from '../../../components/tags/TagFilter'
+
+<TagProvider>
+<TagFilter />
+
+# Front-End Web Application Security Best Practices
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Often an overlooked area, but ensuring the security of your front-end web and potential mobile applications is crucial for protecting your users. If the front-end web application is compromised, it could have severe effects on your users as they for example could start interacting with a malicious contract instead of your official contract.
+
+## Contents
+
+1. [Web Application Security](/front-end-web-app/web-application-security)
+2. [Mobile Application Security](/front-end-web-app/mobile-application-security)
+3. [Common Vulnerabilities](/front-end-web-app/common-vulnerabilities)
+4. [Security Tools and Resources](/front-end-web-app/security-tools-resources)
+
+</TagProvider>

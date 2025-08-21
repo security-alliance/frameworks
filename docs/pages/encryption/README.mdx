@@ -1,0 +1,37 @@
+---
+title: "Encryption"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - Cloud
+
+---
+
+import { TagList } from '../../../components/tags/TagList'
+import { AttributionList } from '../../../components/attribution/AttributionList'
+import { TagProvider } from '../../../components/tags/TagContext'
+import { TagFilter } from '../../../components/tags/TagFilter'
+
+<TagProvider>
+<TagFilter />
+
+# Encryption
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Encryption is a fundamental aspect of securing data, ensuring that sensitive information remains confidential and protected from unauthorized access. This section covers various types of encryption and best practices for implementing them effectively.
+
+## Contents
+
+1. [Cloud Data Encryption](/encryption/cloud-data-encryption)
+2. [Communication Encryption](/encryption/communication-encryption)
+3. [Encryption in Transit](/encryption/encryption-in-transit)
+4. [Database Encryption](/encryption/database-encryption)
+5. [Email Encryption](/encryption/email-encryption)
+6. [File Encryption](/encryption/file-encryption)
+7. [Full Disk Encryption](/encryption/full-disk-encryption)
+8. [Hardware Encryption](/encryption/hardware-encryption)
+
+</TagProvider>

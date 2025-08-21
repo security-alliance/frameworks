@@ -19,13 +19,11 @@ import { TagProvider } from '../../../components/tags/TagContext'
 import { TagFilter } from '../../../components/tags/TagFilter'
 
 <TagProvider>
+<TagFilter />
 
 # 1. Core Awareness Principles
 
-<TagFilter />
-
 <TagList tags={frontmatter.tags} />
----
 <AttributionList contributors={frontmatter.contributors} />
 
 > 🔑 **Key Takeaway**: Security awareness is built on fundamental principles like threat recognition, risk assessment, and zero trust verification. These principles form the foundation of a security-conscious culture where every individual plays a vital role in protecting organizational assets.
@@ -50,5 +48,3 @@ Security is a shared responsibility that requires commitment at all levels of th
 > **Real-World Example**: A company might receive a seemingly routine email from a "vendor" requesting updated banking details. An employee with a strong zero trust mindset will independently verify the request through known contact numbers or an established internal process, thereby avoiding a potential fraud.
 
 </TagProvider>
-
----
