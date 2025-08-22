@@ -7,7 +7,7 @@ tags:
   - SRE
 contributors:
   - role: wrote
-    users: [patrickalphac, mattaereal]
+    users: [patrickalphac, mattaereal, nbelenkov]
 ---
 
 # Security Testing
@@ -37,3 +37,11 @@ For smart contracts in particular, here is when to use each type of testing:
 - **Fuzz Testing**: Always. Most unit tests can be fuzz tests.
 - **Static Analysis**: Always. Use tools like [Slither](https://github.com/crytic/slither) and [Aderyn](https://github.com/Cyfrin/aderyn) to analyze the code for vulnerabilities.
 - **Formal Verification**: Dependent. Anywhere functions are math heavy, stateless, or functionality matches another system, this should be used.
+
+## Evaluating your test suite
+
+To ensure you're meeting the goals of security testing, it's essential to evaluate the quality and completeness of your test suite. This can be done through several approaches:
+- **Coverage Analysis**: High code and branch coverage helps assess how thoroughly your test suite exercises different execution paths. Aim for comprehensive coverage to reduce blind spots.
+- **Mutation Testing**: This technique measures the effectiveness of your test suite. It works by introducing small changes (or "mutations") to the code and checking whether the tests detect and fail on those changes. If a mutation doesn’t cause a failure, it may indicate a gap in your test logic.
+
+Together, methods like these can give a more complete picture of how well your tests validate both expected and unexpected behaviors.
