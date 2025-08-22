@@ -129,6 +129,7 @@
   - [Fuzz Testing](./security-testing/fuzz-testing.md)
   - [Static Analysis](./security-testing/static-analysis.md)
   - [Formal Verification](./security-testing/formal-verification.md)
+  - [Mutation Testing](./security-testing/mutation-testing.md)
 - [ENS](./ens/README.md)
   - [Data Integrity & Verification](./ens/data-integrity-verification.md)
   - [Cross-Chain Compatibility](./ens/cross-chain-compatibility.md)
