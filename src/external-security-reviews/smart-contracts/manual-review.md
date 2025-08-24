@@ -96,8 +96,10 @@ Understand the flow from [unit](../../security-testing/unit-testing.md) and [Int
 
 3. **Checklist reviews:**  
     - Known smart contracts vulnerabilities.
-    - Smart Contract Weakness Classification (SWC).
     - Project specific checklists (e.g. When dealing with bridges it's also important to check bridge specific checklists).
+    - Checklists may vary over time and can become outdated. Below are some examples for reference:
+        - [Smart Contract Security Field Guide](https://scsfg.io/hackers/)
+        - [Smart Contract Security Verification Standard](https://github.com/ComposableSecurity/SCSVS?tab=readme-ov-file#table-of-contents)
 
 4. **Maintain a list of invariants:**  
 Maintain a list of invariants for every functions (Can be useful later for other tests/fuzzing/format verification).
@@ -137,7 +139,7 @@ Offensively analyze the code to identify logical issues, edge cases, and any con
     }
     ```  
 
-    In next example, because every value (`_amount`, `minRequired`) can go above and below, the results can vary. If the result is used for some operations like decreasing the `drivingScore` in `burnFuelAndReduce()` for example.
+    In next example, because every value (`_amount`, `minRequired`) can go increase or decrease, the results can vary. If the result is used for some operations like decreasing the `drivingScore` in `burnFuelAndReduce()` for example.
 
     E.g. depending on the amounts are same (as they were while filling the fuel) or increased or decreased, the value of `fuelReduction` will change and while subtracting it from the `drivingScore[msg.sender]` it needs to be handled accordingly. which also creates different paths.
 
@@ -158,10 +160,10 @@ Offensively analyze the code to identify logical issues, edge cases, and any con
 7. **Write down notes, doubts and edge cases:**  
 One reason for writing down questions, ideas, possible issues is, when you start going through these issues as you encounter new path you can see more doubts, possible issues in your mind. So sometimes it becomes a loop where you will keep thinking about new ideas while exploring previous/current one.  
     - Take notes to check your understanding.
-    - Questions: Ask developers for clarity.
-    - Edge cases: for later testing. E.g: [test] Possible reentrancy in unstake() function.  
-    - Try to break down the business logic while going through every code block. (again note down the thing that needs to be tested)  
-    - Write down things to revisit after the code is fixed. E.g: In the review you noticed that if specific functionality would be added based on doubts asked or based on the suggested fixes etc, there are chances of something to go wrong for example. Note it down and check in the **Fixed code review**.  
+    - Write down any questions to ask developers when you need clarification.
+    - Note down edge cases for later testing. E.g: [test] Possible reentrancy in unstake() function.
+    - Try to break down the business logic while going through every code block. (again note down the thing that needs to be tested)
+    - Write down things to revisit after the code is fixed. E.g: In the review you noticed that if specific functionality would be added based on doubts asked or based on the suggested fixes etc, there are chances of something to go wrong for example. Note it down and check in the **Fixed code review**.
 
 The minimal markdown file for taking notes might look like this:  
 
