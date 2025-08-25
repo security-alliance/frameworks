@@ -50,6 +50,7 @@
   - [Tools & Resources](./wallet-security/tools-&-resources.md)
 - [External Security Reviews](./external-security-reviews/README.md)
   - [Smart Contract Audits](./external-security-reviews/smart-contracts/README.md)
+    - [Manual Review](./external-security-reviews/smart-contracts/manual-review.md)
     - [Expectations](./external-security-reviews/smart-contracts/expectation.md)
     - [Preparation Guide](./external-security-reviews/smart-contracts/preparation.md)
     - [Vendor Selection](./external-security-reviews/smart-contracts/vendor-selection.md)
