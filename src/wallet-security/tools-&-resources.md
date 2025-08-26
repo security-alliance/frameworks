@@ -37,11 +37,13 @@ These tools are designed to help you independently verify the integrity of trans
 - **[Safe Utils](https://safeutils.openzeppelin.com/)**: A user-friendly web interface for calculating and verifying Safe transaction hashes. While convenient, remember the security advantages of using a local, offline tool like `safe-hash` for high-value transactions.
 - **[calldata.swiss-knife.xyz](https://calldata.swiss-knife.xyz/decoder)**: Web-based tool for quick decoding of transaction data.
 - **[Foundry cast](https://book.getfoundry.sh/reference/cast/cast-decode-calldata)**: A powerful command-line tool for local, offline decoding.
+- **[Safe Multisig Transaction Hashes](https://github.com/pcaversaccio/safe-tx-hashes-util)**: A Bash script that locally calculates domain and message hashes using the EIP-712 standard. It allows you to generate the exact hash that your hardware wallet will display.
 
 ## Security Training
 
 These tools allow you to practice identifying threats in a safe, simulated environment.
 
+- **[The Phishing Dojo](https://www.phishingdojo.com/)**: An interactive threat simulation platform designed to train users to recognize real-world security risks. It offers realistic, in-browser scenarios covering phishing emails, fraudulent wallet signing requests, spoofed block explorer data, and malicious DApps, all without requiring any special setup or browser extensions.
 - **[Wise Signer](https://wise-signer.cyfrin.io/)**: An interactive platform that challenges users to identify safe and dangerous transactions before signing them. It is an excellent tool for learning to recognize common phishing attacks and deceptive transaction patterns without risking real assets.
 - **[Web3 Wallet Security Courses](https://updraft.cyfrin.io/career-tracks/web3-wallet-security/)**: Offers a structured curriculum for hands-on security training, guiding users from foundational concepts in "Web3 Wallet Security Basics" to advanced techniques. The advanced course covers critical topics like Safe multisig configuration, EIP-712 signature verification, and real-world hack analysis.
 - **[How to Multisig](https://howtomultisig.com/)**: A dedicated resource with best practices on how to implement secure standard operating procedures for multisig wallets.
