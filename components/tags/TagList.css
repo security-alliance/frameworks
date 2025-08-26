@@ -21,8 +21,6 @@
   white-space: nowrap;
 }
 
-/* Removed hover and active states to make tags unclickable */
-
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   .tag-item {

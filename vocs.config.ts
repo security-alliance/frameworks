@@ -54,9 +54,10 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/opsec/README' },
             {
-              text: 'Overview Details', // TODO: UNDERSTAND LINK POSITION HERE
+              text: 'Overview Details', 
               collapsed: true,
               items: [
+                { text: 'Highlights', link: '/opsec/overview/README' },
                 { text: 'Security Fundamentals', link: '/opsec/overview/security-fundamentals' },
                 { text: 'Implementation Process', link: '/opsec/overview/implementation-process' },
                 { text: 'Web3 considerations', link: '/opsec/overview/web3-considerations' },
@@ -126,17 +127,18 @@ export default defineConfig({
             { text: 'Security Policies and Procedures', link: '/external-security-reviews/security-policies-procedures' },
           ]
         },
-        // TODO: UNDERSTANDING LINK POSITIONING AS IT DOESNT MATCH (GITHUB/.DEV)
-        // {
-        //   text: 'Security Testing',
-        //   collapsed: true,
-        //   items: [
-        //     { text: 'Overview', link: '/security-testing/README' },
-        //     { text: 'Fuzz Testing', link: '/security-testing/fuzz-testing' },
-        //     { text: 'Security Regression Testing', link: '/security-testing/integration-testing' },
-        //     { text: 'Static Application Security Testing', link: '/security-testing/static-analysis' },
-        //   ]
-        // },
+        {
+          text: 'Security Testing',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/security-testing/README' },
+            { text: 'Unit Testing', link: '/security-testing/unit-testing' },
+            { text: 'Integration Testing', link: '/security-testing/integration-testing' },
+            { text: 'Fuzz Testing', link: '/security-testing/fuzz-testing' },
+            { text: 'Static Analysis', link: '/security-testing/static-analysis' },
+            { text: 'Formal Verification', link: '/security-testing/formal-verification' }
+          ]
+        },
         {
           text: 'ENS',
           collapsed: true,

@@ -27,7 +27,7 @@ import { TagFilter } from '../../../components/tags/TagFilter'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-# {{ Title of this Page }}
+# Title of this Page 
 
 Key Takeaway prompt: Without removing or modifying anything in the document, just after the heading, describe in a succint way (no more than 40 words), all the key points or tl;dr so that anyone can get a good grasp of the contents just by reading it. Don't add unnecessary sentences that sound like conclusions, like "By ensuring this..." "Doing all these...", "Having these security practinces...". Use the following format > 🔑 **Key Takeaway**:
 
@@ -55,17 +55,17 @@ Cross-linking reduces duplication, following docs-as-code best practice.
 
 ## 5  Common pitfalls & examples
 
-Real-world breach snippets or failure stories that illustrate mistakes to avoid.  <!-- :contentReference[oaicite:6]{index=6} -->
+Real-world breach snippets or failure stories that illustrate mistakes to avoid.  {/* :contentReference[oaicite:6]{index=6} */}
 
 ## 6  Quick-reference / Cheat sheet
 
-A compact table or numbered list for on-the-job use, inspired by OWASP cheat sheets.  <!-- :contentReference[oaicite:7]{index=7} -->
+A compact table or numbered list for on-the-job use, inspired by OWASP cheat sheets.  {/* :contentReference[oaicite:7]{index=7} */}
 
 ## 7  Further Reading & Tools
 
 Automatically generated from the `references:` field or add authoritative links here.
 
-<!--
+{/*
 CITATION SOURCES
 turn0search0  Jekyll front-matter basics – validates YAML metadata structure.  
 turn0search2  NIST practice guides use an executive-summary section.  
@@ -79,6 +79,6 @@ turn0search11 CISA advisories supply risk context references.
 turn0search12 OWASP Cheat Sheet project cited for quick-reference idea.  
 turn0search13 Kubernetes “page content types” shows cross-linking strategy.  
 turn0search10 NIST CSF overview underpins risk-management rationale.
--->
+*/}
 
 </TagProvider>

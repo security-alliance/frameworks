@@ -4,14 +4,19 @@
 
 // Tag color mapping for consistent styling across components
 export const TAG_COLORS: Record<string, string> = {
-  'Security Specialist': '#9F2026',     // red
-  'Operations & Strategy': '#9A055D',   // purple  
-  'Community & Marketing': '#5B2371',   // violet
-  'HR': '#285AD2',                      // blue
-  'Engineer/Developer': '#B2439F',      // pink
-  'Devops': '#059669',                  // emerald
-  'SRE': '#ea580c',                     // orange
-  'SEAL/Initiative': '#4339db',         // indigo
+  'Security Specialist': '#9F2026',   
+  'Operations & Strategy': '#9A055D',   
+  'Community & Marketing': '#5B2371', 
+  'HR': '#285AD2',                  
+  'Engineer/Developer': '#B2439F',  
+  'Devops': '#5C234A',                 
+  'SRE': '#2E51BA',                    
+  'SEAL/Initiative': '#4339db',
+  'Cloud': '#0873B5',
+  'Dao': '#5112C1',
+  'legal--compliance': '#0525B1',
+  'protocol': '#495EA9',
+  'whitehat': '#571A70',
 }
 
 /**
