@@ -9,11 +9,8 @@ contributors:
     users: [patrickalphac]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -56,4 +53,7 @@ There are many different kinds of external security reviews, and we have some co
 1. [Smart Contract Audits](/external-security-reviews/smart-contracts/README)
 2. [Security Policies and Procedures](/external-security-reviews/security-policies-procedures)
 
+---
+
 </TagProvider>
+<ContributeFooter />

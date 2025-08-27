@@ -10,11 +10,8 @@ contributors:
     users: [robert, dickson]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 import logo from './images/whitehat-full-logo-blue.svg'
 import legal from './images/legal.png'
 
@@ -195,4 +192,7 @@ That said, if your legal team wants to review it for extra peace of mind, they a
 
 </details>
 
+---
+
 </TagProvider>
+<ContributeFooter />

@@ -10,11 +10,8 @@ contributors:
     users: [Coinspect]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -51,4 +48,7 @@ Adopting a hardware wallet introduces a new set of security considerations focus
 * **Reputation & Incident:** Investigate the manufacturer's security track record, including their response to past vulnerabilities, data breaches, and overall transparency.
 * **Verify Device Integrity**: A legitimate hardware wallet will arrive uninitialized, requiring you to perform the initial setup. Reject any device that comes with a pre-set PIN, a pre-generated recovery phrase, or appears to be already configured, as it is likely compromised.
 
+---
+
 </TagProvider>
+<ContributeFooter />

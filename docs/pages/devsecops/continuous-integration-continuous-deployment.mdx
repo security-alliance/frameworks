@@ -8,10 +8,7 @@ tags:
 
 ---
 
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -30,4 +27,7 @@ Continuous Integration and Continuous Deployment are there to ensure good code q
 5. Use isolated environments for building and testing to prevent contamination between different stages of the pipeline.
 6. Implement strict access controls for CI/CD pipelines to limit who can modify the pipeline configurations.
 
+---
+
 </TagProvider>
+<ContributeFooter />

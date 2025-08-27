@@ -8,17 +8,14 @@ contributors:
 
 ---
 
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
 
 # Wallet Security
 
-{/*TODO: Contributors not showing*/}
+
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
@@ -54,4 +51,7 @@ Mastering wallet security is a critical skill for any developer, user, or organi
 
 [xkcd](https://xkcd.com/538/)
 
+---
+
 </TagProvider>
+<ContributeFooter />

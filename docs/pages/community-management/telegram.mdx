@@ -10,10 +10,7 @@ contributors:
 
 ---
 
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -290,4 +287,7 @@ Attackers can exploit Telegram's group chat features to intercept and manipulate
 - **Alice** sends the payment to what she believes are Bob's details but are actually those of Fake Bob.
 - The attacker now controls both ends of the conversation, having successfully redirected the funds.
 
+---
+
 </TagProvider>
+<ContributeFooter />

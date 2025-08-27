@@ -6,10 +6,8 @@ tags:
   - SRE
 ---
 
-import { TagList } from '../../../../../components/tags/TagList'
-import { AttributionList } from '../../../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../../../components/tags/TagContext'
-import { TagFilter } from '../../../../../components/tags/TagFilter'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
 
 <TagProvider>
 <TagFilter />
@@ -58,4 +56,7 @@ A Standard Operating Environment (SOE) refers to a standardized and controlled c
 2. Require the use of VPNs for remote access to the organization's network. Ensure VPNs use strong encryption protocols.
 3. Secure wireless networks using WPA3 or WPA2 with AES encryption. Regularly update Wi-Fi passwords and manage access to authorized devices only.
 
+---
+
 </TagProvider>
+<ContributeFooter />

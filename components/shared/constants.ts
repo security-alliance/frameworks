@@ -13,10 +13,10 @@ export const TAG_COLORS: Record<string, string> = {
   'SRE': '#2E51BA',                    
   'SEAL/Initiative': '#4339db',
   'Cloud': '#0873B5',
-  'Dao': '#5112C1',
-  'legal--compliance': '#0525B1',
-  'protocol': '#495EA9',
-  'whitehat': '#571A70',
+  'DAO': '#5112C1',
+  'Legal & Compliance': '#0525B1',
+  'Protocol': '#495EA9',
+  'Whitehat': '#571A70',
 }
 
 /**

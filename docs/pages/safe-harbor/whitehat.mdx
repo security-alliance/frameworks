@@ -8,11 +8,8 @@ contributors:
     users: [robert]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -69,4 +66,7 @@ In the event that all the above applies, you may chose to take action to protect
 
 After the funds have been recovered, it is your responsibility to ensure their safe return to the owner protocol. We strongly recommend contacting [SEAL911](incident-management/seal-911-war-room-guidelines) immediately to advise on the fund recovery process and to assist with KYC, protocol communications, and bounty collection. You must also contact the protocol's posted security contact and return all recovered funds to the protocol's [asset recovery address]() {/*TODO: link not found (./key-terms.md#asset-recovery-address)*/} within 6 hours of the event, or 48 hours if reason is provided and the protocol has been made aware.
 
+---
+
 </TagProvider>
+<ContributeFooter />

@@ -7,10 +7,7 @@ tags:
 
 ---
 
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -30,4 +27,7 @@ If a threat actor obtains access to your repository, it could have very severe c
 6. Require all commits to be signed to verify the identity of contributors and ensure the integrity of the code.
 7. Regularly update dependencies and use tools to check for and manage vulnerabilities in dependencies.
 
+---
+
 </TagProvider>
+<ContributeFooter />

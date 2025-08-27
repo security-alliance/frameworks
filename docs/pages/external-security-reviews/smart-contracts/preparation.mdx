@@ -9,11 +9,9 @@ contributors:
     users: [patrickalphac]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../../components/tags/TagList'
-import { AttributionList } from '../../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../../components/tags/TagContext'
-import { TagFilter } from '../../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
 
 <TagProvider>
 <TagFilter />
@@ -74,4 +72,7 @@ The first step in a security audit should be a high-level video walkthrough wher
 
 This walkthrough helps auditors understand your system quickly and focus their time on security analysis rather than code comprehension.
 
+---
+
 </TagProvider>
+<ContributeFooter />

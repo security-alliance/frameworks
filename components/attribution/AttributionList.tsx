@@ -24,7 +24,7 @@ const ROLE_ALIASES: Record<string, string> = {
 }
 
 function getContributor(slug: string): Contributor | null {
-  const contributor = (contributorsData as Record<string, Contributor>)[slug]
+  const contributor = (contributorsData as unknown as Record<string, Contributor>)[slug]
   return contributor || null
 }
 

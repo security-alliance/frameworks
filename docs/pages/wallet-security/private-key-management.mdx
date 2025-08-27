@@ -11,11 +11,8 @@ contributors:
     users: [Coinspect]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -71,4 +68,7 @@ While you can use the same keys for years, it is a best practice to periodically
 
 Establish a clear, secure protocol for a trusted next-of-kin to access your assets in case of incapacitation or death. This may involve sealed instructions stored with a lawyer or in a safe deposit box.
 
+---
+
 </TagProvider>
+<ContributeFooter />

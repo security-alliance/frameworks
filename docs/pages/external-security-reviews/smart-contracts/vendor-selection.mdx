@@ -8,11 +8,9 @@ contributors:
     users: [patrickalphac]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../../components/tags/TagList'
-import { AttributionList } from '../../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../../components/tags/TagContext'
-import { TagFilter } from '../../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
 
 <TagProvider>
 <TagFilter />
@@ -105,4 +103,7 @@ If you see codebases that they reviewed were hacked, this doesn't mean that the 
 
 Additionally, comparing sequential audits of the same codebase can be misleading. If auditor A reviews codebase X, and then auditor B reviews the same codebase and finds more bugs, some insight from auditor A could have been used to find those extra bugs. However, if two auditors review the same codebase at the same time, this can be a much better comparison of the two auditors.
 
+---
+
 </TagProvider>
+<ContributeFooter />

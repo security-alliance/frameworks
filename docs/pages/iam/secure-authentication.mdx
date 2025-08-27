@@ -9,10 +9,7 @@ tags:
 
 ---
 
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -36,4 +33,7 @@ Secure authentication is essential for verifying the identity of team members an
 2. Implement monitoring and alerting for suspicious authentication attempts, such as repeated failed logins or logins from unusual locations.
 3. Provide training on secure authentication practices and the importance of protecting authentication credentials.
 
+---
+
 </TagProvider>
+<ContributeFooter />

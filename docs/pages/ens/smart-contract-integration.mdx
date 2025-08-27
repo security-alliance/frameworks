@@ -8,11 +8,8 @@ contributors:
     users: [ghadi8]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -41,4 +38,7 @@ import { TagFilter } from '../../../components/tags/TagFilter'
 
 **Rationale**: ENS can serve as more than just a human-readable address layer, it can function as critical infrastructure for contract systems. Using ENS for implementation pointers enables flexible and upgradeable architectures, as contract dependencies can be redirected without requiring contract redeployment. This pattern supports robust governance models while maintaining a consistent user interface. Additionally, using ENS to register official extensions creates a trust layer that helps users identify legitimate protocol integrations, while storing protocol metadata in ENS records improves discoverability and system documentation.
 
+---
+
 </TagProvider>
+<ContributeFooter />

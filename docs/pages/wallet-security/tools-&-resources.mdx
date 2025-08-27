@@ -10,11 +10,8 @@ contributors:
     users: [Coinspect]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -59,4 +56,7 @@ These tools allow you to practice identifying threats in a safe, simulated envir
 - **[Web3 Wallet Security Courses](https://updraft.cyfrin.io/career-tracks/web3-wallet-security/)**: Offers a structured curriculum for hands-on security training, guiding users from foundational concepts in "Web3 Wallet Security Basics" to advanced techniques. The advanced course covers critical topics like Safe multisig configuration, EIP-712 signature verification, and real-world hack analysis.
 - **[How to Multisig](https://howtomultisig.com/)**: A dedicated resource with best practices on how to implement secure standard operating procedures for multisig wallets.
 
+---
+
 </TagProvider>
+<ContributeFooter />

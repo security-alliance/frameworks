@@ -9,11 +9,9 @@ contributors:
     users: [patrickalphac]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../../components/tags/TagList'
-import { AttributionList } from '../../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../../components/tags/TagContext'
-import { TagFilter } from '../../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
 
 <TagProvider>
 <TagFilter />
@@ -77,4 +75,7 @@ This section contains detailed guidance on different aspects of smart contract s
 2. [Preparation Guide](/external-security-reviews/smart-contracts/preparation) - How to prepare for a successful audit
 3. [Vendor Selection](/external-security-reviews/smart-contracts/vendor-selection) - Choosing the right security auditor
 
+---
+
 </TagProvider>
+<ContributeFooter />

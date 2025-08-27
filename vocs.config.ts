@@ -3,9 +3,10 @@ import { defineConfig } from 'vocs'
 export default defineConfig({
   banner: {
     content: '***This is a work in progress and not a release. We are looking for volunteers. See Issues and Contribution to know how to collaborate.***',
-    height: '40px',
+    height: '20px',
     backgroundColor: '#8b5cf6',
-    textColor: 'white'
+    textColor: 'white',
+    dismissable: false
   },
   title: 'Security Frameworks by SEAL',
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
@@ -330,9 +331,10 @@ export default defineConfig({
       items: [
         { text: 'What It Is', link: '/intro/what-is-it' },
         { text: 'What It Isn\'t', link: '/intro/what-it-isnt' },
-        { text: 'Contributing', link: '/contribute/contributing',
-          collapsed: true,
+        { text: 'Contributing',
+          collapsed: false,
           items: [
+            { text: 'Overview', link: '/contribute/contributing' },
             { text: 'Contributors', link: '/contribute/contributors' },
             { text: 'Stewards', link: '/contribute/stewards' },
             

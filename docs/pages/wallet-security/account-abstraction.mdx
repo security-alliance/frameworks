@@ -11,11 +11,8 @@ contributors:
     users: [Coinspect]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -63,4 +60,7 @@ Account Abstraction (AA) turns a user's account into a smart contract, making it
 * **Key Revocation**: If the primary signing key is compromised, the recovery process allows you to swap it out for a new one without having to move all assets to a new wallet address.
 * **Advanced Guardian Setups**: For enhanced security, guardian roles can be implemented using **Multi-Party Computation (MPC)**. In an MPC-based recovery, guardians hold cryptographic shares that are used collectively to authorize a recovery action. This method allows guardians to produce a valid signature through a distributed computation using their individual shares, without ever reconstructing a single master key on any device.
 
+---
+
 </TagProvider>
+<ContributeFooter />

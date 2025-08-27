@@ -13,10 +13,7 @@ contributors:
     users: [mattaereal]
 ---
 
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -47,4 +44,7 @@ Security is a shared responsibility that requires commitment at all levels of th
   
 > **Real-World Example**: A company might receive a seemingly routine email from a "vendor" requesting updated banking details. An employee with a strong zero trust mindset will independently verify the request through known contact numbers or an established internal process, thereby avoiding a potential fraud.
 
+---
+
 </TagProvider>
+<ContributeFooter />

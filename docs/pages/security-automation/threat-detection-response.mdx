@@ -8,10 +8,7 @@ tags:
 
 ---
 
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -48,4 +45,7 @@ Imagine that your SIEM system detects unusual login activity from an IP address 
 5. **Recovery**: The affected systems are restored to normal operation, and any necessary security patches or updates are applied.
 6. **Lessons Learned**: A post-incident review is conducted to identify any gaps in the threat detection and response process and to implement improvements for future incidents.
 
+---
+
 </TagProvider>
+<ContributeFooter />

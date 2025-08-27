@@ -8,11 +8,9 @@ contributors:
     users: [patrickalphac]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../../components/tags/TagList'
-import { AttributionList } from '../../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../../components/tags/TagContext'
-import { TagFilter } from '../../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
 
 <TagProvider>
 <TagFilter />
@@ -78,4 +76,7 @@ The following are *incredibly rough estimates* for timelines/costs based on Soli
 - **Ongoing Process**: Security should be viewed as a continuous journey, not a one-time event
 - **Emergency Preparedness**: Even audited protocols should have incident response plans and emergency communication channels
 
+---
+
 </TagProvider>
+<ContributeFooter />

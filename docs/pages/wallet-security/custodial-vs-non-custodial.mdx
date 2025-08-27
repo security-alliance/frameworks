@@ -11,11 +11,8 @@ contributors:
     users: [Coinspect]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -73,4 +70,7 @@ Non-custodial (or self-custody) wallets are managed directly by the user, who ha
 | **Primary Risk**            | Counterparty Risk, Centralization          | User Error, Loss of Keys                    |
 | **Use Case**                | New Users, Trading on CEX, Convenience     | Full Control, dApp Use, Long-Term Storage   |
 
+---
+
 </TagProvider>
+<ContributeFooter />

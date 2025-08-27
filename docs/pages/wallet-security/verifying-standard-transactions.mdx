@@ -10,11 +10,8 @@ contributors:
     users: [Coinspect]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -53,4 +50,7 @@ When interacting with a dApp using a standard Externally Owned Account (EOA) via
 - **What to check**: The estimated gas fee for the transaction.
 - **Why it's critical**: An unusually high gas fee for a simple operation can be a red flag, potentially indicating an inefficient or malicious contract designed to waste user funds.
 
+---
+
 </TagProvider>
+<ContributeFooter />

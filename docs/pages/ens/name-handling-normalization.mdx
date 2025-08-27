@@ -8,11 +8,8 @@ contributors:
   users: [ghadi8]
 
 ---
-{/*TODO: Contributors not showing*/}
-import { TagList } from '../../../components/tags/TagList'
-import { AttributionList } from '../../../components/attribution/AttributionList'
-import { TagProvider } from '../../../components/tags/TagContext'
-import { TagFilter } from '../../../components/tags/TagFilter'
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -51,4 +48,7 @@ import { TagFilter } from '../../../components/tags/TagFilter'
 
 **Rationale**: Emoji are increasingly common in ENS names but introduce technical challenges. Emoji can be composed of multiple code points, including zero-width joiners (ZWJ) and variation selectors, making proper handling critical. Incorrect emoji implementation can cause names to appear differently across platforms or fail to resolve correctly. Emoji rendering also varies significantly between operating systems and browsers, requiring thorough cross-platform testing to ensure consistent user experience.
 
+---
+
 </TagProvider>
+<ContributeFooter />
