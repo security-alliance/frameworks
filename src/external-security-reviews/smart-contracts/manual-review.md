@@ -95,7 +95,7 @@ Understand the flow from [unit](../../security-testing/unit-testing.md) and [Int
   This can be done by looking into a diagram and current understanding of the smart contract functionality. For example in this case it's a Token contract that is least dependent (in fact the functionality from that contract is getting used in other contracts so other smart contracts are dependent on it).
 
 3. **Checklist reviews:**  
-    - Known smart contracts vulnerabilities.
+    - Known smart contract vulnerabilities checklist.
     - Project specific checklists (e.g. When dealing with bridges it's also important to check bridge specific checklists).
     - Checklists may vary over time and can become outdated. Below are some examples for reference:
         - [Smart Contract Security Field Guide](https://scsfg.io/hackers/)
@@ -164,8 +164,7 @@ One reason for writing down questions, ideas, possible issues is, when you start
     - Note down edge cases for later testing. E.g: [test] Possible reentrancy in unstake() function.
     - Try to break down the business logic while going through every code block. (again note down the thing that needs to be tested)
     - Write down things to revisit after the code is fixed. E.g: In the review you noticed that if specific functionality would be added based on doubts asked or based on the suggested fixes etc, there are chances of something to go wrong for example. Note it down and check in the **Fixed code review**.
-
-The minimal markdown file for taking notes might look like this:  
+    - The minimal markdown file for taking notes might look like this:  
 
     ```markdown
     # Project Name
@@ -250,7 +249,7 @@ Discuss and convey issues to the developers or project teams, as applicable. The
     - Example and POC, helpful for critical bugs.
     - Checking the grammar/style for better readability.
 
-## Fixed code review  
+## Updated code review  
 
 For checking fixed code, it may be necessary to repeat previously performed actions, depending on what has changed. To avoid repeating work, you can:
 
