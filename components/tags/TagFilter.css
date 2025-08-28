@@ -1,9 +1,81 @@
 /* Tag Filter Component Styling */
 .tag-filter {
-  position: relative;
-  right: -300px;
-  top: -82px;
+  position: fixed;
+  right: 850px;
+  top: 10px;
   z-index: 9999;
+}
+
+/* Responsive positioning for different screen sizes */
+@media (max-width: 1900px) {
+  .tag-filter {
+    right: 830px;
+  }
+}
+@media (max-width: 1810px) {
+  .tag-filter {
+    right: 800px;
+  }
+}
+
+@media (max-width: 1760px) {
+  .tag-filter {
+    right: 750px;
+  }
+}
+
+@media (max-width: 1650px) {
+  .tag-filter {
+    right: 700px;
+  }
+}
+
+@media (max-width: 1560px) {
+  .tag-filter {
+    right: 650px;
+  }
+}
+
+@media (max-width: 1470px) {
+  .tag-filter {
+    right: 600px;
+  }
+}
+
+@media (max-width: 1380px) {
+  .tag-filter {
+    right: 550px;
+  }
+}
+
+@media (max-width: 1330px) {
+  .tag-filter {
+    right: 500px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .tag-filter {
+    right: 450px;
+  }
+}
+
+@media (max-width: 1220px) {
+  .tag-filter {
+    right: 400px;
+  }
+}
+
+@media (max-width: 1175px) {
+  .tag-filter {
+    right: 350px;
+  }
+}
+
+@media (max-width: 1130px) {
+  .tag-filter {
+    right: 300px;
+  }
 }
 
 /* For smaller screens, position filter inline with content */
@@ -15,6 +87,22 @@
     z-index: auto;
     display: inline-block;
     margin: 0 0 16px 0;
+  }
+  
+  /* Fix dropdown positioning for static positioning */
+  .tag-filter-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    width: 320px;
+    max-width: 90vw; /* Prevent overflow on very small screens */
+  }
+  
+  /* Ensure dropdown appears above other content */
+  .tag-filter {
+    position: relative;
+    z-index: 1000;
   }
 }
 
@@ -72,14 +160,7 @@
   }
 }
 
-/* For larger screens with filter, move content up to fill filter space */
-@media (min-width: 1081px) {
-  .vocs_H1{
-    font-size: var(--vocs-fontSize_h1);
-    letter-spacing: -0.02em;
-    margin-top:-55px;
-  }
-}
+
 
 .tag-filter-toggle {
   display: flex;
@@ -144,6 +225,7 @@
   left: 0;
   right: 0;
   max-width: 320px;
+  min-width: 250px;
   background: #1f2937;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
@@ -333,11 +415,6 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .tag-filter-dropdown {
-    min-width: 280px;
-    left: -50px;
-  }
-
   .tag-filter-toggle {
     padding: 6px 12px;
     font-size: 13px;
