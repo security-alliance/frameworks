@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTagFilter } from './TagContext'
-import { getAllTags, getTagsIndex } from '../../utils/pages-index'
-import { getTagColor } from '../shared/constants'
+import { getTagColor, TAG_COLORS } from '../shared/constants'
+import tagsFetched from '../../utils/fetched-tags.json'
 import './TagFilter.css'
 
 interface TagFilterProps {
@@ -14,13 +14,26 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
 
-  const tagsIndex = getTagsIndex()
+  const pageTagsMap = tagsFetched?.pageTagsMap || {}
   
-  // Get available tags from pages index if not provided
-  const allTags = availableTags || getAllTags()
-  const tags = query ? allTags.filter(t => t.toLowerCase().includes(query.toLowerCase())) : allTags
+  const tagsIndex: Record<string, string[]> = {}
+  Object.entries(pageTagsMap).forEach(([page, pageTags]) => {
+    pageTags.forEach(tag => {
+      if (!tagsIndex[tag]) {
+        tagsIndex[tag] = []
+      }
+      if (!tagsIndex[tag].includes(page)) {
+        tagsIndex[tag].push(page)
+      }
+    })
+  })
+  
+  const dynamicTags = tagsFetched?.allTags || []
+  const constantsTags = Object.keys(TAG_COLORS)
+  const allKnownTags = [...new Set([...dynamicTags, ...constantsTags])].sort()
+  const allAvailableTags = availableTags || allKnownTags
+  const tags = query ? allAvailableTags.filter(t => t.toLowerCase().includes(query.toLowerCase())) : allAvailableTags
 
-  // Load persisted selection and filter mode on mount
   useEffect(() => {
     try {
       const raw = localStorage.getItem('selected_tags')
@@ -82,6 +95,13 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
       if (sidebar instanceof HTMLElement) {
         sidebar.classList.remove('filtered')
+        
+        // Reset opacity for all links when filters are cleared
+        sidebar.querySelectorAll('a').forEach(link => {
+          if (link instanceof HTMLElement) {
+            link.style.opacity = ''
+          }
+        })
       }
       return
     }
@@ -133,8 +153,8 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
         
         // Force styling with inline styles to ensure visibility
         if (link instanceof HTMLElement) {
-          link.style.backgroundColor = 'rgba(139, 92, 246, 0.2)'
-          link.style.borderLeft = '4px solid #7c3aed'
+          link.style.backgroundColor = '#4339db2e'
+          link.style.borderLeft = '4px solid #4339DB'
           link.style.paddingLeft = '12px'
           link.style.fontWeight = '600'
           
@@ -170,10 +190,31 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     if (sidebar instanceof HTMLElement) {
       sidebar.classList.add('filtered')
       
-      // Dim non-selected links
+      // Dim non-selected links, but exclude logo and brand elements
       sidebar.querySelectorAll('a:not(.selected)').forEach(link => {
         if (link instanceof HTMLElement) {
-          link.style.opacity = '0.4'
+          // Skip logo, brand, and navigation elements that shouldn't be dimmed
+          const isLogoOrBrand = link.querySelector('img') || 
+                               link.querySelector('svg') || 
+                               link.classList.contains('logo') ||
+                               link.classList.contains('brand') ||
+                               link.getAttribute('href') === '/' ||
+                               link.getAttribute('href') === '' ||
+                               link.textContent?.includes('Frameworks') ||
+                               link.textContent?.includes('Security Frameworks') ||
+                               link.closest('.logo') ||
+                               link.closest('.brand') ||
+                               link.closest('[data-testid="logo"]') ||
+                               link.parentElement?.classList.contains('logo') ||
+                               link.parentElement?.classList.contains('brand') ||
+                               // Vocs-specific selectors
+                               link.closest('header') ||
+                               link.classList.contains('vocs_nav_logo') ||
+                               link.classList.contains('vocs_header_logo')
+          
+          if (!isLogoOrBrand) {
+            link.style.opacity = '0.4'
+          }
         }
       })
     }
@@ -191,12 +232,10 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     setSelectedTags([])
   }
 
-  const hasActiveFilters = selectedTags.length > 0
-
   return (
     <div className="tag-filter">
       <button 
-        className={`tag-filter-toggle ${isOpen ? 'active' : ''} ${hasActiveFilters ? 'has-filters' : ''}`}
+        className={`tag-filter-toggle ${isOpen ? 'active' : ''} ${selectedTags.length > 0 ? 'has-filters' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
@@ -204,7 +243,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
           <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
         </svg>
         Filter by Tags
-        {hasActiveFilters && (
+        {selectedTags.length > 0 && (
           <span className="filter-count">{selectedTags.length}</span>
         )}
       </button>
@@ -213,7 +252,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
         <div className="tag-filter-dropdown">
           <div className="tag-filter-header">
             <h3>Filter by Tags</h3>
-            {hasActiveFilters && (
+            {selectedTags.length > 0 && (
               <button 
                 className="clear-filters"
                 onClick={clearAll}
@@ -252,27 +291,6 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
               </label>
             ))}
           </div>
-
-          {hasActiveFilters && (
-            <div className="active-filters">
-              <span className="active-filters-label">Active filters:</span>
-              <div className="active-filters-list">
-                {selectedTags.map(tag => (
-                  <button
-                    key={tag}
-                    className="active-filter-item"
-                    onClick={() => toggleTag(tag)}
-                    style={{ backgroundColor: getTagColor(tag) }}
-                  >
-                    {tag}
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                    </svg>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       )}
 

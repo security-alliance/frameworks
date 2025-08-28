@@ -18,7 +18,7 @@ export default defineConfig({
       collapsed: false,
       items: [
         { text: 'Introduction to Frameworks', link: '/intro/introduction' },
-        { text: 'How to Navigate', link: '/intro/how-to-navigate-the-website' },
+        { text: 'How to Navigate the Website', link: '/intro/how-to-navigate-the-website' },
         { text: 'Overview of each Framework', link: '/intro/overview-of-each-framework' },
       ]
     },
@@ -28,7 +28,7 @@ export default defineConfig({
       items: [
         {
           text: 'Community Management',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/community-management/README' },
             { text: 'Discord', link: '/community-management/discord' },
@@ -39,7 +39,7 @@ export default defineConfig({
         },
         {
           text: 'Awareness',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/awareness/README' },
             { text: 'Core Awareness Principles', link: '/awareness/core-awareness-principles' },
@@ -51,12 +51,12 @@ export default defineConfig({
         },
         {
           text: 'Operational Security',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/opsec/README' },
             {
               text: 'Overview Details', 
-              collapsed: true,
+              collapsed: false,
               items: [
                 { text: 'Highlights', link: '/opsec/overview/README' },
                 { text: 'Security Fundamentals', link: '/opsec/overview/security-fundamentals' },
@@ -68,7 +68,7 @@ export default defineConfig({
             { text: 'Risk Management Overview', link: '/opsec/risk-management-overview' },
             {
               text: 'While Traveling',
-              collapsed: true,
+              collapsed: false,
               items: [
                 { text: 'Overview', link: '/opsec/travel/README' },
                 { text: 'Guide', link: '/opsec/travel/guide' },
@@ -87,7 +87,7 @@ export default defineConfig({
         },
         {
           text: 'Wallet Security',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/wallet-security/README' },
             { text: 'Custodial vs Non-Custodial', link: '/wallet-security/custodial-vs-non-custodial' },
@@ -98,7 +98,7 @@ export default defineConfig({
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
             {
               text: 'Signing & Verification',
-              collapsed: true,
+              collapsed: false,
               items: [
                 { text: 'Overview', link: '/wallet-security/signing-verification' },
                 { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
@@ -112,12 +112,12 @@ export default defineConfig({
         },
         {
           text: 'External Security Reviews',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/external-security-reviews/README' },
             {
               text: 'Smart Contract Audits',
-              collapsed: true,
+              collapsed: false,
               items: [
                 { text: 'Overview', link: '/external-security-reviews/smart-contracts/README' },
                 { text: 'Expectations', link: '/external-security-reviews/smart-contracts/expectation' },
@@ -130,7 +130,7 @@ export default defineConfig({
         },
         {
           text: 'Security Testing',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/security-testing/README' },
             { text: 'Unit Testing', link: '/security-testing/unit-testing' },
@@ -142,7 +142,7 @@ export default defineConfig({
         },
         {
           text: 'ENS',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/ens/README' },
             { text: 'Data Integrity & Verification', link: '/ens/data-integrity-verification' },
@@ -154,7 +154,7 @@ export default defineConfig({
         },
         {
           text: 'Safe Harbor',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/safe-harbor/README' },
             { text: 'Safe Harbor Eligibility Checklist', link: '/safe-harbor/self-checklist' },
@@ -166,7 +166,7 @@ export default defineConfig({
         },
         {
           text: 'Vulnerability Disclosure',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/vulnerability-disclosure/README' },
             { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact' },
@@ -175,7 +175,7 @@ export default defineConfig({
         },
         {
           text: 'Infrastructure',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/infrastructure/README' },
             { text: 'Asset Inventory', link: '/infrastructure/asset-inventory' },
@@ -190,7 +190,7 @@ export default defineConfig({
         },
         {
           text: 'Monitoring',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/monitoring/README' },
             { text: 'Guidelines', link: '/monitoring/guidelines' },
@@ -199,7 +199,7 @@ export default defineConfig({
         },
         {
           text: 'Front-End/Web Application',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/front-end-web-app/README' },
             { text: 'Web Application Security', link: '/front-end-web-app/web-application-security' },
@@ -210,7 +210,7 @@ export default defineConfig({
         },
         {
           text: 'Incident Management',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/incident-management/README' },
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
@@ -223,7 +223,7 @@ export default defineConfig({
         },
         {
           text: 'Threat Modeling',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/threat-modeling/README' },
             { text: 'Create and Maintain Threat Models', link: '/threat-modeling/create-maintain-threat-models' },
@@ -232,7 +232,7 @@ export default defineConfig({
         },
         {
           text: 'Governance',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/governance/README' },
             { text: 'Compliance with Regulatory Requirements', link: '/governance/compliance-regulatory-requirements' },
@@ -242,7 +242,7 @@ export default defineConfig({
         },
         {
           text: 'DevSecOps',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/devsecops/README' },
             { text: 'Code Signing', link: '/devsecops/code-signing' },
@@ -254,7 +254,7 @@ export default defineConfig({
         },
         {
           text: 'Privacy',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/privacy/README' },
             { text: 'Secure Browsing', link: '/privacy/secure-browsing' },
@@ -268,7 +268,7 @@ export default defineConfig({
         },
         {
           text: 'Supply Chain',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/supply-chain/README' },
             { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness' },
@@ -277,7 +277,7 @@ export default defineConfig({
         },
         {
           text: 'Security Automation',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/security-automation/README' },
             { text: 'Threat Detection and Response', link: '/security-automation/threat-detection-response' },
@@ -287,7 +287,7 @@ export default defineConfig({
         },
         {
           text: 'Identity and Access Management IAM',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/iam/README' },
             { text: 'Role-Based Access Control', link: '/iam/role-based-access-control' },
@@ -297,7 +297,7 @@ export default defineConfig({
         },
         {
           text: 'Secure Software Development',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/secure-software-development/README' },
             { text: 'Secure Coding Standards Guidelines', link: '/secure-software-development/secure-coding-standards-guidelines' },
@@ -308,7 +308,7 @@ export default defineConfig({
         },
         {
           text: 'Encryption',
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: 'Overview', link: '/encryption/README' },
             { text: 'Cloud Data Encryption', link: '/encryption/cloud-data-encryption' },
