@@ -13,4 +13,4 @@ By default the timelock contract is set to be its own admin. This means that any
 
 When using a timelock the simulation for the multisig transaction will not show the execution of the transaction but instead the addition of the pending transaction to the timelock. The pending transaction can be simulated manually as shown in [Simulation testing](transaction-verification-and-signing.md#2-simulation-testing).
 
-![Timelock configuration diagram](assets/image2.png)
+![Timelock configuration diagram](assets/timelock-configuration-diagram.png)
