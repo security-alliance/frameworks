@@ -70,7 +70,7 @@ This checklist ensures all multisig participants have the knowledge and skills n
 
 ### Personal Security
 
-- [ ] I have enabled 2FA on all accounts with approved methods (YubiKey preferred) per [Personal Security (OpSec)](./personal-security-opsec.md)
+- [ ] I have enabled 2FA on all accounts with approved methods (YubiKey preferred) per [Personal Security (OpSec)](../../opsec/personal-security-opsec.md)
 - [ ] I use dedicated devices or accounts for multisig operations when required
 - [ ] I have implemented travel security procedures appropriate for my risk level
 - [ ] I understand incident reporting procedures for security concerns
@@ -143,7 +143,7 @@ Additional requirements from [Use Case Specific Requirements](./use-case-specifi
 - [ ] [Seed Phrase Security](./seed-phrase-security.md) - Key protection procedures
 - [ ] [Transaction Verification & Signing](./transaction-verification-and-signing.md) - Signing procedures
 - [ ] [Emergency Procedures](./emergency-procedures.md) - Crisis response protocols
-- [ ] [Personal Security (OpSec)](./personal-security-opsec.md) - Account and device security
+- [ ] [Personal Security (OpSec)](../../opsec/personal-security-opsec.md) - Account and device security
 
 ### Role-Specific Documentation
 

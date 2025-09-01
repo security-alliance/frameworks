@@ -49,7 +49,7 @@ contributors:
 - [Transaction Verification & Signing](./transaction-verification-and-signing.md) - Safely verify and sign transactions
 - [Emergency Procedures](./emergency-procedures.md) - Handle key compromise and emergencies
 - [Signing When UI is Down](./signing-when-ui-is-down.md) - Use backup interfaces
-- [Personal Security (OpSec)](./personal-security-opsec.md) - Protect your accounts and devices
+- [Personal Security (OpSec)](../../opsec/personal-security-opsec.md) - Protect your accounts and devices
 - [Incident Reporting](./incident-reporting.md) - Report security issues and incidents
 - [Offboarding](./offboarding.md) - Safely leave a multisig role
 
