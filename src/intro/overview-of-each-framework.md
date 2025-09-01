@@ -51,7 +51,6 @@ This section addresses security considerations specific to the user-facing compo
 This section outlines protocols for handling security incidents, including communication strategies, detection and response procedures, lessons learned, and playbooks, including specific guidelines for SEAL 911 War Room.
 
 ## Threat Modeling
-
 This framework provides guidance on creating and maintaining threat models, as well as identifying and mitigating potential threats to Web3 projects.
 
 ## Governance
@@ -83,7 +82,6 @@ This framework covers best practices for managing user identities and access con
 This section focuses on integrating security practices throughout the software development lifecycle, including secure coding standards, code reviews, and secure design principles.
 
 ## Security Testing
-
 This framework explores various methods of testing Web3 projects for security vulnerabilities, including dynamic and static application security testing, fuzz testing, and security regression testing.
 
 ## ENS
