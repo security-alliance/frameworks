@@ -54,9 +54,11 @@ If your company uses Mobile Device Management (MDM) on phones or laptops, verify
 
 ### **Protect Accounts with 2FA redundancy**
 
-Plan for how you’ll access accounts that use two-factor authentication if your main device is unavailable. For authenticator apps (TOTP codes), **print out backup codes** for your important accounts and keep them **securely** in services like 1Password or NordPass. Alternatively, consider storing them elsewhere physically (not on your phone). If your 2FA is tied to a phone number (SMS or voice), **disable SMS for 2FA**. For technologies that are unfortunately dependent on phone numbers, use a separate line (not your personal one) from services like Google Voice, Burner App or SLYFONE. Transfer your number to an eSIM since [they are harder to physically steal or swap than a physical SIM](https://support.apple.com/en-ca/118227#:~:text=Use%20eSIM%20while%20traveling%20internationally,obtain%2C%20carry%2C%20and%20swap). You can also register a backup 2FA method (e.g. add a secondary phone or a backup hardware key to your accounts) in case of emergency.
+Plan for how you’ll access accounts that use two-factor authentication if your main device is unavailable. For authenticator apps (TOTP codes), **print out backup codes** for your important accounts and keep them **securely** in services like 1Password or NordPass. Alternatively, consider storing them elsewhere physically (not on your phone). If your 2FA is tied to a phone number (SMS or voice), **disable SMS for 2FA**. For technologies that are unfortunately dependent on phone numbers, use a separate line (not your personal one) from services like Google Voice, Burner App or SLYFONE. Transfer your number to an eSIM since [they are harder to physically steal or swap than a physical SIM](https://support.apple.com/en-ca/118227#:~:text=Use%20eSIM%20while%20traveling%20internationally,obtain%2C%20carry%2C%20and%20swap).
 
 Ensure your password manager is accessible – many like 1Password have a *Travel Mode* that removes sensitive vaults from your device while you travel (you can restore them later). This limits exposure if your [device is searched or seized](https://www.schneier.com/blog/archives/2025/04/cell-phone-opsec-for-border-crossings.html). 
+
+You can also register a backup or alternative 2FA method, like a secondary phone (the device) or a PIN-protected hardware key to be used as a passkey. We discourage the use of software passkeys, particularly if you are using a password manager to store both your passwords and passkeys, as this creates a single point of failure.
 
 ### **Secure your wallets and keys**
 
@@ -68,7 +70,7 @@ Ensure your password manager is accessible – many like 1Password have a *Trave
 
 On your smartphone, take advantage of security settings **before** you travel. Set a strong passcode (not just a 4-digit PIN or pattern). Consider **disabling Touch ID/Face ID** if you might face situations where someone could force-unlock your device using your biometrics – in many jurisdictions, authorities can compel a fingerprint or face scan more easily than a memorized password[.](https://www.schneier.com/blog/archives/2025/04/cell-phone-opsec-for-border-crossings.html#:~:text=deactivate%20biometric%20security%20and%20require,10%20failed%20PIN%20unlock%20attempts) At a minimum, know how to quickly and [**temporarily disable biometrics**](https://news.ycombinator.com/item?id=43630624); for example, on an iPhone, [holding the side button and a volume button will trigger an emergency mode that requires the passcode to unlock](https://www.themacguys.com/essential-travel-security-tips-for-apple-devices/). On Android, use *Lockdown* mode if available (which only temporarily disables biometrics and is different from iOS Lockdown Mode).
 
-If you have an iPhone, enable **Lockdown Mode** (extreme protection on iOS) even if you are not at [high risk or traveling to a high-threat region](https://www.themacguys.com/essential-travel-security-tips-for-apple-devices/#:~:text=This%20mode%20is%20ideal%20when,or%20dealing%20with%20sensitive%20data) – but be aware [it restricts many features](https://www.perplexity.ai/search/what-features-does-lockdown-mo-r.c4j_bwQROXa76ynZeOMA), though totally worth it.
+If you have an iPhone, enable **Lockdown Mode** (extreme protection on iOS) even if you are not at [high risk or traveling to a high-threat region](https://www.themacguys.com/essential-travel-security-tips-for-apple-devices/#:~:text=This%20mode%20is%20ideal%20when,or%20dealing%20with%20sensitive%20data) – but be aware [it restricts many features](https://support.apple.com/en-gb/105120), though totally worth it.
 
 Disabling or restricting USB debugging on Android and using iOS USB restricted mode helps prevent unauthorized physical USB access and reduces risks from malicious cables or compromised charging stations.
 
@@ -97,6 +99,8 @@ If traveling to [countries with strict tech](https://www.perplexity.ai/search/co
 Share your itinerary and contact information with a trusted peer so they can assist or monitor for any issues.
 
 Finally, schedule critical work (especially high-value transactions) for **before or after** your trip if possible, so you’re not forced to do ultra-sensitive actions on the road. Criminals usually play with the “time-sensitive factor,” trying to trick you into doing something quick and urgent, by committing something reckless.
+
+---
 
 ## While traveling
 
@@ -164,6 +168,8 @@ Petty thieves may look beyond obvious valuables. Simply locking items in a dorm 
 
 Above all, maintain an **alert posture**: be aware of who’s around when you’re working, and if something feels off (like someone persistently hovering or a device acting strangely), don’t ignore it. You can always relocate, power down your device, or otherwise cut off exposure at the first sign of trouble.
 
+---
+
 ## Returning home
 
 ### **Secure your accounts and passwords**
@@ -190,6 +196,8 @@ Re-enable any data or accounts you put in "travel mode." For instance, if you us
 
 **Update your threat model** based on your experience: did any new threats emerge, or did some precautions prove unnecessary? Use that to improve future travel prep. Finally, share key lessons with your team. Sharing what you've learned from each trip and tweaking your security practices contributes to a stronger security culture for everyone!
 
+---
+
 ## Additional precautions for high-risk travelers
 
 *This section is for Web3 professionals who have **elevated privileges or profiles** – for example, access to multisig treasury keys, leadership roles, or possession of sensitive organizational secrets. These users may be targeted more deliberately by criminals or even nation-states. In addition to all the precautions above, high-risk travelers should take further steps:*
@@ -205,6 +213,11 @@ If feasible, travel with clean devices that **don't contain sensitive data**. Le
 High-risk individuals may face increased scrutiny or device searches at borders due to the sensitive nature of their data or their roles (e.g., journalists). **Before crossing borders**, purge or secure sensitive information. Turn off devices before landing (some experts even recommend **encrypting and then powering down** devices – [a powered-off device with strong encryption is extremely hard to access](https://www.reddit.com/r/technology/comments/1jl9dxg/how_to_lock_down_your_phone_if_youre_traveling_to)).
 
 Disable cloud auto-sync of sensitive data; you don’t want customs inadvertently accessing company cloud drives if they inspect your laptop. If asked to unlock devices, having them powered off gives you an opportunity to state that it’s encrypted and requires a passphrase (which you should have memorized, not written down). It’s wise for high-risk travelers to **disable biometrics entirely before travel** – use PIN/password only, as mentioned – so you cannot be compelled or tricked via fingerprint/face. Know your legal rights in the countries you transit; in some places you can refuse to unlock (though it may mean the device is held or you are denied entry), while in others you might face penalties. This is a personal risk decision – but the best case is to carry *nothing* truly incriminating or irreplaceable across a checkpoint. For ultra-sensitive data, use secure communication channels to retrieve it at destination rather than carrying it. For instance, an executive could store confidential files in a secure cloud drive they access over VPN once abroad, rather than carrying them on a laptop.
+
+Border checks/immigration checks often require you to share your travel plans, including hotel information and airline details. Having a physical copy of them (printouts, ingress-egress) means you do not need to access your devices in front of agents or potential cameras while being scrutinized. This will also prevent the need to let them peek at them to provide information, thereby risking the disclosure of sensitive personal information.
+
+Since COVID, many nations have moved to digital immigration paperwork. This often requires the use of an email address. You should consider a dedicated email address for interaction with government agencies, instead of an email address that might have a public/open-source affiliation with cryptocurrency (or other sensitive topics).
+
 
 ### **Enhanced device protections**
 
