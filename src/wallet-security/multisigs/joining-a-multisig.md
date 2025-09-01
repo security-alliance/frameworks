@@ -5,7 +5,9 @@ tags:
   - Multisig Security
 contributors:
   - role: wrote
-    users: [isaac, geoffrey, louis, pablo, dickson]
+    users: [isaac, geoffrey, louis, pablo]
+  - role: reviewed
+    users: [dickson]
 ---
 
 # Joining a Multisig
