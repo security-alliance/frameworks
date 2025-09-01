@@ -13,10 +13,6 @@
   border-radius: 6px;
 }
 
-.frameworks-main-content {
-  /* No margin adjustments needed - we're highlighting existing sidebar */
-}
-
 /* Add styles for highlighted sidebar links - broader selectors */
 :global(aside.filtered a:not(.selected),
         nav.filtered a:not(.selected),
@@ -40,9 +36,6 @@
 
 /* Light mode adjustments */
 @media (prefers-color-scheme: light) {
-  .frameworks-header-controls {
-    /* No additional styling needed for transparent background */
-  }
   
   :global(aside a.selected,
           nav a.selected, 

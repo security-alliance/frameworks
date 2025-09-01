@@ -2,7 +2,7 @@
 .tag-filter {
   position: fixed;
   right: 850px;
-  top: 10px;
+  top: calc(10px + var(--vocs_Banner_bannerHeight, 0px));
   z-index: 9999;
 }
 
@@ -12,6 +12,7 @@
     right: 830px;
   }
 }
+
 @media (max-width: 1810px) {
   .tag-filter {
     right: 800px;
@@ -88,7 +89,7 @@
     display: inline-block;
     margin: 0 0 16px 0;
   }
-  
+
   /* Fix dropdown positioning for static positioning */
   .tag-filter-dropdown {
     position: absolute;
@@ -96,9 +97,10 @@
     left: 0;
     right: auto;
     width: 320px;
-    max-width: 90vw; /* Prevent overflow on very small screens */
+    max-width: 90vw;
+    /* Prevent overflow on very small screens */
   }
-  
+
   /* Ensure dropdown appears above other content */
   .tag-filter {
     position: relative;
@@ -131,12 +133,11 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark mode support for header filter */
-@media (prefers-color-scheme: dark) {
-  .header-filter {
-    background: rgba(31, 41, 55, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
+/* Light mode support for header filter */
+:root:not(.dark) .tag-filter-toggle {
+  background: #f6f6f6;
+  border: 1px solid #ececec;
+  color: #838383;
 }
 
 /* Responsive positioning for header filter */
@@ -159,8 +160,6 @@
     top: 8px;
   }
 }
-
-
 
 .tag-filter-toggle {
   display: flex;
