@@ -53,8 +53,6 @@ This section outlines protocols for handling security incidents, including commu
 ## Threat Modeling
 This framework provides guidance on creating and maintaining threat models, as well as identifying and mitigating potential threats to Web3 projects.
 
-This framework provides guidance on creating and maintaining threat models, as well as identifying and mitigating potential threats to Web3 projects.
-
 ## Governance
 
 This section addresses risk management, regulatory compliance, and security metrics for Web3 projects, ensuring proper oversight and control.
@@ -84,8 +82,6 @@ This framework covers best practices for managing user identities and access con
 This section focuses on integrating security practices throughout the software development lifecycle, including secure coding standards, code reviews, and secure design principles.
 
 ## Security Testing
-This framework explores various methods of testing Web3 projects for security vulnerabilities, including dynamic and static application security testing, fuzz testing, and security regression testing.
-
 This framework explores various methods of testing Web3 projects for security vulnerabilities, including dynamic and static application security testing, fuzz testing, and security regression testing.
 
 ## ENS
