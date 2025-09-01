@@ -121,7 +121,55 @@
     "twitter": "https://x.com/DicksonWuML",
     "website": "https://skylock.xyz/",
     "company": "SEAL",
-    "job_title": "Safe Harbor",
-    "description": "Safe Harbor contributor"
+    "job_title": "Safe Harbor & Certs",
+    "description": "Safe Harbor & Certs"
+  },
+  {
+    "slug": "isaac",
+    "name": "Isaac Patka",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/ipatka",
+    "github": "https://github.com/ipatka",
+    "twitter": "https://x.com/isaacpatka",
+    "website": "https://www.shield3.com/",
+    "company": "SEAL | Shield3",
+    "job_title": "Co-Founder",
+    "description": "SEAL Certs & SEAL Wargames"
+  },
+  {
+    "slug": "geoffrey",
+    "name": "Geoffrey Arone",
+    "role": "contributor",
+    "avatar": "https://media.licdn.com/dms/image/v2/D5603AQHaOzZtLX5_QQ/profile-displayphoto-shrink_400_400/B56ZRIF6UpGoAk-/0/1736376296995?e=1759363200&v=beta&t=3boiMOJSF2Atl-RCgwQMefrH4SHfjq5z2y2dvKNBGaI",
+    "github": "https://www.linkedin.com/in/geoffreyarone/",
+    "twitter": "https://www.linkedin.com/in/geoffreyarone/",
+    "website": "https://www.shield3.com/",
+    "company": "Shield3",
+    "job_title": "Co-Founder",
+    "description": "Shield3 Co-Founder"
+  },
+  {
+    "slug": "louis",
+    "name": "Louis Marquenet",
+    "role": "contributor",
+    "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQFTCK6104FvTg/profile-displayphoto-shrink_400_400/B4DZWg3KoYHkAg-/0/1742160571438?e=1759363200&v=beta&t=vJwuFnJBZzNh-aA2ooo8teB9GhadTSmlnnWQz4dvqDY",
+    "github": "https://www.linkedin.com/in/louis-marquenet-389a61112/",
+    "twitter": "https://www.linkedin.com/in/louis-marquenet-389a61112/",
+    "website": "https://www.opsek.io/",
+    "company": "Opsek",
+    "job_title": "Head of Operations",
+    "description": "Opsek Head of Operations"
+  },
+  {
+    "slug": "pablo",
+    "name": "Pablo Sabbatella",
+    "role": "contributor",
+    "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQGdahp1zo5Lyw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722376426528?e=1759363200&v=beta&t=AjAIWxKbJsNZAlP08PqNV7bYW6nPS-S9Jmn12Qnfd7Q",
+    "github": "https://www.linkedin.com/in/psabbatella/",
+    "twitter": "https://x.com/pablosabbatella",
+    "website": "https://www.opsek.io/",
+    "company": "SEAL | Opsek",
+    "job_title": "Founder",
+    "description": "Opsek Founder"
   }
 ]
