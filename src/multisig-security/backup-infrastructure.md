@@ -1,3 +1,23 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Backup Infrastructure
 
 ## UI alternatives
@@ -31,7 +51,7 @@ Ensure signer preparedness:
 - Test backup RPCs during non-emergency periods
 - Document procedures for switching to backup infrastructure
 
-**Reference:** Detailed usage instructions for signers are provided in [Section 4.6](signing-when-ui-is-down.md) (Signing When UI is Down).
+**Reference:** Detailed usage instructions for signers are provided in [Section 4.6](./signing-when-ui-is-down.md) (Signing When UI is Down).
 
 ## Block Explorer backup options
 

@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Emergency Procedures
 
 When security incidents occur, quick and decisive action is critical. This guide covers procedures for key compromise, lost access, and communication breaches.
@@ -15,7 +25,7 @@ When security incidents occur, quick and decisive action is critical. This guide
 ### Recovery Process
 
 1. **Isolate** - Quarantine potentially compromised devices
-2. **New hardware setup** - Set up fresh wallet with new seed following [Hardware Wallet Setup](hardware-wallet-setup.md)
+2. **New hardware setup** - Set up fresh wallet with new seed following [Hardware Wallet Setup](./hardware-wallet-setup.md)
 3. **Coordinate replacement** - Plan signer replacement transaction with team
 4. **Execute replacement** - Replace compromised signer on multisig, following steps for signer rotation in [General Rules](general-rules.md)
 5. **Verify security** - Confirm new setup before resuming operations
@@ -38,7 +48,7 @@ Since you can't sign with your key, verify identity through alternative methods:
 
 ### Replacement Coordination
 
-1. **Generate new hardware wallet** following standard setup procedures in [Hardware Wallet Setup](hardware-wallet-setup.md)
+1. **Generate new hardware wallet** following standard setup procedures in [Hardware Wallet Setup](./hardware-wallet-setup.md)
 2. **Verify new address** through identity verification process above
 3. **Coordinate timing** with other signers for replacement transaction
 4. **Execute replacement** once team confirms identity
@@ -184,8 +194,8 @@ Current multisig status:
 
 ## Related Documents
 
-- [Incident Reporting](incident-reporting.md) - Formal incident reporting procedures
-- [Communication Setup](communication-setup.md) - Backup communication channels
-- [Hardware Wallet Setup](hardware-wallet-setup.md) - Device replacement procedures
-- [Seed Phrase Security](seed-phrase-security.md) - Key recovery procedures
-- [Personal Security (OpSec)](personal-security-opsec.md) - Account security measures
+- [Incident Reporting](./incident-reporting.md) - Formal incident reporting procedures
+- [Communication Setup](./communication-setup.md) - Backup communication channels
+- [Hardware Wallet Setup](./hardware-wallet-setup.md) - Device replacement procedures
+- [Seed Phrase Security](./seed-phrase-security.md) - Key recovery procedures
+- [Personal Security (OpSec)](./personal-security-opsec.md) - Account security measures

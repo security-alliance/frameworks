@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Seed Phrase Security
 
 ## Storage requirements
@@ -23,7 +33,7 @@ For extra security, split seed into 3 pieces:
 
 Storing sensitive devices or documents in a tamper evident bag offers high confidentiality and integrity. You can sign & date these bags, and also take a picture of its serial number.
 
-![Tamper evident bag example](assets/tamper-evident-bag-example.png)
+![Tamper evident bag example](./assets/tamper-evident-bag-example.png)
 
 **Use case:**
 You can put your Piece 1: Words 1-16 of your seed, inside a safe.

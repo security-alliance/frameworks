@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Timelock Configuration
 
 For sensitive protocol operations like configuration changes or upgrades it is recommended to use a timelock contract (ex. [OpenZeppelin Timelock Controller](https://docs.openzeppelin.com/contracts/5.x/api/governance#TimelockController)) to stage transactions on-chain for final verification before execution. It is not necessary to have a long delay. Some timelock contracts are even configured with 0 delay. The key is to have the full transaction payload fully on chain after signature with a final opportunity to review it and cancel it.
@@ -11,6 +21,6 @@ By default the timelock contract is set to be its own admin. This means that any
 
 ## Simulation Consideration
 
-When using a timelock the simulation for the multisig transaction will not show the execution of the transaction but instead the addition of the pending transaction to the timelock. The pending transaction can be simulated manually as shown in [Simulation testing](transaction-verification-and-signing.md#2-simulation-testing).
+When using a timelock the simulation for the multisig transaction will not show the execution of the transaction but instead the addition of the pending transaction to the timelock. The pending transaction can be simulated manually as shown in [Simulation testing](./transaction-verification-and-signing.md#2-simulation-testing).
 
-![Timelock configuration diagram](assets/timelock-configuration-diagram.png)
+![Timelock configuration diagram](./assets/timelock-configuration-diagram.png)

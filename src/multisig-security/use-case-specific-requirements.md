@@ -1,9 +1,19 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Use Case Specific Requirements
 
 ## Treasury Multisigs
 
 ### Key requirements:
-- **Allowance module** required for all msigs (see [Section 3.2](setup-and-configuration.md#modules--guards))
+- **Allowance module** required for all msigs (see [Section 3.2](./setup-and-configuration.md#modules--guards))
 
 ## Emergency response Multisigs
 
@@ -24,7 +34,7 @@
 ## Smart contract control Multisigs
 
 ### On-chain constraints:
-- [**Timelock contracts**](timelock-configuration.md) for major changes (upgrades, significant parameter changes)
+- [**Timelock contracts**](./timelock-configuration.md) for major changes (upgrades, significant parameter changes)
 - Parameter limits enforced by smart contracts where feasible
 
 ### Threshold considerations:

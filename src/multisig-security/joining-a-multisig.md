@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Joining a Multisig
 
 It is recommended to always create a fresh address on a hardware wallet for each new multisig.

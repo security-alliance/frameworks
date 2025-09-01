@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # General Rules
 
 ## Thresholds & Configuration
@@ -13,7 +23,7 @@
 
 ## Communication & Documentation
 
-- In the event of loss of access to keys or potential compromise of keys or communication channels, the signer must immediately notify the other multisig participants and emailing your security contact - [4.8 Incident Reporting](incident-reporting.md)
+- In the event of loss of access to keys or potential compromise of keys or communication channels, the signer must immediately notify the other multisig participants and emailing your security contact - [4.8 Incident Reporting](./incident-reporting.md)
 - Signers should use dedicated communication channels for multisig operations and maintain backup ways of reaching other signers
 - All multisigs should be documented in the protocol documenting its purpose, general operating rules, multisig wallet address, and list of signer addresses
 - Signers should verify their addresses by signing a message stating their affiliation and the multisig they intend to join (entity affiliation is ok)
@@ -28,7 +38,7 @@
 
 **If the original key is accessible:**
 - The signer proves ownership of a new address by signing a message with their existing address.
-- The signer must follow the steps in [3.3 Signer Verification process](registration-and-documentation.md#signer-verification-process)
+- The signer must follow the steps in [3.3 Signer Verification process](./registration-and-documentation.md#signer-verification-process)
 
 **If the original key is lost:**
 The signer must verify their identity to the other signers through alternative methods such as:
@@ -38,5 +48,5 @@ The signer must verify their identity to the other signers through alternative m
 
 ## Training & Drills
 
-- All signers should complete training as outlined in this guide - [Training Checklist](training-checklist.md)
+- All signers should complete training as outlined in this guide - [Training Checklist](./training-checklist.md)
 - For multisigs that perform emergency operations like pausing, teams should have processes to regularly conduct drills to ensure operational readiness and signer availability

@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Training Checklist
 
 This checklist ensures all multisig participants have the knowledge and skills necessary for secure operations. Complete all applicable sections before beginning multisig operations.
@@ -6,7 +16,7 @@ This checklist ensures all multisig participants have the knowledge and skills n
 
 ### Planning & Setup
 
-- [ ] I have classified my multisig using the impact and operational framework from [Planning & Classification](planning-and-classification.md)
+- [ ] I have classified my multisig using the impact and operational framework from [Planning & Classification](./planning-and-classification.md)
 - [ ] I have selected appropriate thresholds based on the classification guidance
 - [ ] I have identified and verified all signers for the multisig
 - [ ] I have deployed the multisig with correct configuration
@@ -14,15 +24,15 @@ This checklist ensures all multisig participants have the knowledge and skills n
 
 ### Documentation & Communication
 
-- [ ] I have classified and documented the new multisig using templates from [Registration & Documentation](registration-and-documentation.md)
-- [ ] I have set up primary and backup communication channels per [Communication Setup](communication-setup.md)
+- [ ] I have classified and documented the new multisig using templates from [Registration & Documentation](./registration-and-documentation.md)
+- [ ] I have set up primary and backup communication channels per [Communication Setup](./communication-setup.md)
 - [ ] I have tested emergency notification procedures
 - [ ] I have documented emergency contact information
 
 ### Ongoing Management
 
-- [ ] I have established procedures for regular reviews and updates per [Ongoing Management](ongoing-management.md)
-- [ ] I have set up backup infrastructure and tested alternative UIs per [Backup Infrastructure](backup-infrastructure.md)
+- [ ] I have established procedures for regular reviews and updates per [Ongoing Management](./ongoing-management.md)
+- [ ] I have set up backup infrastructure and tested alternative UIs per [Backup Infrastructure](./backup-infrastructure.md)
 - [ ] I have verified all signers have completed training requirements
 - [ ] I understand signer rotation procedures for my multisig type
 
@@ -30,37 +40,37 @@ This checklist ensures all multisig participants have the knowledge and skills n
 
 ### Hardware & Security Setup
 
-- [ ] I have purchased recommended hardware wallet from authorized source per [Hardware Wallet Setup](hardware-wallet-setup.md)
+- [ ] I have purchased recommended hardware wallet from authorized source per [Hardware Wallet Setup](./hardware-wallet-setup.md)
 - [ ] I have set up my hardware wallet with proper firmware and PIN
 - [ ] I have created and tested backup hardware wallet with same seed
-- [ ] I have stored my seed phrase securely using approved methods from [Seed Phrase Security](seed-phrase-security.md)
+- [ ] I have stored my seed phrase securely using approved methods from [Seed Phrase Security](./seed-phrase-security.md)
 - [ ] I have created dedicated accounts for each multisig I'm signing for
 
 ### Operational Readiness
 
-- [ ] I have joined multisig communication channels (primary and backup) per [Communication Setup](communication-setup.md)
-- [ ] I have verified my signer address using the required signature process from [Joining a Multisig](joining-a-multisig.md)
+- [ ] I have joined multisig communication channels (primary and backup) per [Communication Setup](./communication-setup.md)
+- [ ] I have verified my signer address using the required signature process from [Joining a Multisig](./joining-a-multisig.md)
 - [ ] I understand my multisig's classification and response time requirements
 - [ ] I have completed a test transaction with the multisig team
 
 ### Transaction Verification
 
-- [ ] I can use approved verification tools (Safe CLI Utils, OpenZeppelin SafeUtils for EVM) from [Transaction Verification & Signing](transaction-verification-and-signing.md)
+- [ ] I can use approved verification tools (Safe CLI Utils, OpenZeppelin SafeUtils for EVM) from [Transaction Verification & Signing](./transaction-verification-and-signing.md)
 - [ ] I understand how to verify transaction hashes before signing
 - [ ] I can decode and verify transaction details (amounts, recipients, contract calls)
 - [ ] I have practiced verifying both simple transfers and complex transactions
 
 ### Emergency Preparedness
 
-- [ ] I have downloaded backup UIs (Eternal Safe for EVM, Squads public client for Solana) per [Backup Infrastructure](backup-infrastructure.md)
-- [ ] I know how to sign transactions when primary UI is down per [Signing When UI is Down](signing-when-ui-is-down.md)
-- [ ] I understand emergency procedures for key compromise and communication failures per [Emergency Procedures](emergency-procedures.md)
+- [ ] I have downloaded backup UIs (Eternal Safe for EVM, Squads public client for Solana) per [Backup Infrastructure](./backup-infrastructure.md)
+- [ ] I know how to sign transactions when primary UI is down per [Signing When UI is Down](./signing-when-ui-is-down.md)
+- [ ] I understand emergency procedures for key compromise and communication failures per [Emergency Procedures](./emergency-procedures.md)
 - [ ] I have tested backup communication methods with my team
-- [ ] I know who to contact for security incidents and emergencies per [Incident Reporting](incident-reporting.md)
+- [ ] I know who to contact for security incidents and emergencies per [Incident Reporting](./incident-reporting.md)
 
 ### Personal Security
 
-- [ ] I have enabled 2FA on all accounts with approved methods (YubiKey preferred) per [Personal Security (OpSec)](personal-security-opsec.md)
+- [ ] I have enabled 2FA on all accounts with approved methods (YubiKey preferred) per [Personal Security (OpSec)](./personal-security-opsec.md)
 - [ ] I use dedicated devices or accounts for multisig operations when required
 - [ ] I have implemented travel security procedures appropriate for my risk level
 - [ ] I understand incident reporting procedures for security concerns
@@ -69,14 +79,14 @@ This checklist ensures all multisig participants have the knowledge and skills n
 
 - [ ] I have read and understand all sections of this security framework
 - [ ] I understand my specific role requirements based on multisig classification
-- [ ] I know how to properly offboard when leaving a multisig role per [Offboarding](offboarding.md)
+- [ ] I know how to properly offboard when leaving a multisig role per [Offboarding](./offboarding.md)
 - [ ] I commit to following these security procedures and reporting any deviations
 
 ## Specialized Training by Use Case
 
 ### Emergency Response Multisigs
 
-Additional requirements from [Use Case Specific Requirements](use-case-specific-requirements.md):
+Additional requirements from [Use Case Specific Requirements](./use-case-specific-requirements.md):
 
 - [ ] I understand 24/7 availability requirements
 - [ ] I have participated in emergency simulation drills
@@ -91,7 +101,7 @@ Additional requirements from [Use Case Specific Requirements](use-case-specific-
 
 ### Smart Contract Control Multisigs
 
-- [ ] I understand timelock configuration per [Timelock Configuration](timelock-configuration.md)
+- [ ] I understand timelock configuration per [Timelock Configuration](./timelock-configuration.md)
 - [ ] I know how to verify staged transactions
 - [ ] I understand higher threshold requirements for upgrades
 
@@ -128,26 +138,26 @@ Additional requirements from [Use Case Specific Requirements](use-case-specific-
 
 ### Required Reading Completed
 
-- [ ] [General Rules](general-rules.md) - Core requirements for all multisigs
-- [ ] [Hardware Wallet Setup](hardware-wallet-setup.md) - Device security requirements
-- [ ] [Seed Phrase Security](seed-phrase-security.md) - Key protection procedures
-- [ ] [Transaction Verification & Signing](transaction-verification-and-signing.md) - Signing procedures
-- [ ] [Emergency Procedures](emergency-procedures.md) - Crisis response protocols
-- [ ] [Personal Security (OpSec)](personal-security-opsec.md) - Account and device security
+- [ ] [General Rules](./general-rules.md) - Core requirements for all multisigs
+- [ ] [Hardware Wallet Setup](./hardware-wallet-setup.md) - Device security requirements
+- [ ] [Seed Phrase Security](./seed-phrase-security.md) - Key protection procedures
+- [ ] [Transaction Verification & Signing](./transaction-verification-and-signing.md) - Signing procedures
+- [ ] [Emergency Procedures](./emergency-procedures.md) - Crisis response protocols
+- [ ] [Personal Security (OpSec)](./personal-security-opsec.md) - Account and device security
 
 ### Role-Specific Documentation
 
 **For Administrators:**
-- [ ] [Planning & Classification](planning-and-classification.md)
-- [ ] [Setup & Configuration](setup-and-configuration.md)
-- [ ] [Registration & Documentation](registration-and-documentation.md)
-- [ ] [Communication Setup](communication-setup.md)
-- [ ] [Ongoing Management](ongoing-management.md)
+- [ ] [Planning & Classification](./planning-and-classification.md)
+- [ ] [Setup & Configuration](./setup-and-configuration.md)
+- [ ] [Registration & Documentation](./registration-and-documentation.md)
+- [ ] [Communication Setup](./communication-setup.md)
+- [ ] [Ongoing Management](./ongoing-management.md)
 
 **For Specialized Use Cases:**
-- [ ] [Use Case Specific Requirements](use-case-specific-requirements.md)
-- [ ] [Backup Infrastructure](backup-infrastructure.md)
-- [ ] [Timelock Configuration](timelock-configuration.md) (if applicable)
+- [ ] [Use Case Specific Requirements](./use-case-specific-requirements.md)
+- [ ] [Backup Infrastructure](./backup-infrastructure.md)
+- [ ] [Timelock Configuration](./timelock-configuration.md) (if applicable)
 
 ## Certification and Acknowledgment
 

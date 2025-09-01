@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Signing When UI is Down
 
 If the default interfaces for either Safe or Squads are down or suspected of being compromised, these alternatives enable continued critical signing operations. As a signer, you should familiarize yourself with these tools and practice signing transactions with your team.
@@ -18,15 +28,15 @@ If the default interfaces for either Safe or Squads are down or suspected of bei
 #### Setup
 
 1. Select network and enter an RPC URL
-   ![Eternal Safe network selection](assets/eternal-safe-network-selection.png)
+   ![Eternal Safe network selection](./assets/eternal-safe-network-selection.png)
 2. Enter Safe address and load
-   ![Eternal Safe address entry](assets/eternal-safe-address-entry.png)
+   ![Eternal Safe address entry](./assets/eternal-safe-address-entry.png)
 3. Eternal Safe will automatically detect Ether balances but not ERC20 tokens. They can be added manually
-   ![Eternal Safe token configuration](assets/eternal-safe-token-configuration.png)
+   ![Eternal Safe token configuration](./assets/eternal-safe-token-configuration.png)
 
 #### Transaction Verification
 
-**Critical**: It is still essential to verify hashes and calldata from Eternal Safe. Follow the verification steps in [Transaction Verification & Signing](transaction-verification-and-signing.md).
+**Critical**: It is still essential to verify hashes and calldata from Eternal Safe. Follow the verification steps in [Transaction Verification & Signing](./transaction-verification-and-signing.md).
 
 #### Smart Link System
 
@@ -57,14 +67,14 @@ Once all signatures are collected, execute the transaction. **Note**: Prior to e
 
 1. If running locally, follow setup instructions in https://github.com/Squads-Protocol/public-v4-client and access via http://localhost:8080
 2. Enter RPC URL in settings
-   ![Squads RPC configuration](assets/squads-rpc-configuration.png)
+   ![Squads RPC configuration](./assets/squads-rpc-configuration.png)
 3. Enter multisig address in the **lower** text box (Search for Multisig Config) and select the detected Multisig Config
-   ![Squads multisig selection](assets/squads-multisig-selection.png)
+   ![Squads multisig selection](./assets/squads-multisig-selection.png)
 
 #### Transaction Operations
 
 4. Create, approve, or execute transactions. *Smart Links* are not needed for Solana as all transactions are on chain and accessible via the RPC without an API
-   ![Squads transaction interface](assets/squads-transaction-interface.png)
+   ![Squads transaction interface](./assets/squads-transaction-interface.png)
 
 ## Security Considerations
 
@@ -108,7 +118,7 @@ When using backup systems:
 
 ## Related Documents
 
-- [Backup Infrastructure](backup-infrastructure.md) - Overview of backup systems
-- [Transaction Verification & Signing](transaction-verification-and-signing.md) - Verification procedures
-- [Emergency Procedures](emergency-procedures.md) - General emergency response
-- [Communication Setup](communication-setup.md) - Backup communication during outages
+- [Backup Infrastructure](./backup-infrastructure.md) - Overview of backup systems
+- [Transaction Verification & Signing](./transaction-verification-and-signing.md) - Verification procedures
+- [Emergency Procedures](./emergency-procedures.md) - General emergency response
+- [Communication Setup](./communication-setup.md) - Backup communication during outages

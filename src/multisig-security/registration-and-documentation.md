@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Registration & Documentation
 
 Proper documentation is essential for multisig security and accountability. This guide covers the registration process and required documentation.
@@ -48,7 +58,7 @@ Each signer must provide a verification signature linking their identity to thei
 2. **Share signature** with multisig team
 3. **Update registration** with verified information
 
-Detailed steps for collecting this information are provided below in [4.3 Joining a Multisig](joining-a-multisig.md).
+Detailed steps for collecting this information are provided below in [4.3 Joining a Multisig](./joining-a-multisig.md).
 
 **Note**: Entity affiliations are acceptable - the goal is accountability, not doxxing.
 
@@ -89,7 +99,7 @@ Transaction: [Link to executed transaction]
 ### Initial Registration
 - Complete registration template with all required fields
 - Verification signatures from all signers
-- Classification assessment from [Planning & Classification](planning-and-classification.md)
+- Classification assessment from [Planning & Classification](./planning-and-classification.md)
 - Submit to protocol security team
 
 ### Ongoing Maintenance
@@ -100,6 +110,6 @@ Transaction: [Link to executed transaction]
 
 ## Related Documents
 
-- [Planning & Classification](planning-and-classification.md) - How to classify your multisig
-- [Joining a Multisig](joining-a-multisig.md) - Signer verification process
-- [Ongoing Management](ongoing-management.md) - Maintaining documentation over time
+- [Planning & Classification](./planning-and-classification.md) - How to classify your multisig
+- [Joining a Multisig](./joining-a-multisig.md) - Signer verification process
+- [Ongoing Management](./ongoing-management.md) - Maintaining documentation over time

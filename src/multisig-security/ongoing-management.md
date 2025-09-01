@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Ongoing Management
 
 ## Regular reviews
@@ -17,7 +27,7 @@ Follow these procedures for adding, removing, or replacing signers:
 - Update all documentation immediately after change
 
 ### Replacing signers
-Follow steps on section [2.3 Signer Rotation](general-rules.md#signer-rotation) 
+Follow steps on section [2.3 Signer Rotation](./general-rules.md#signer-rotation) 
 
 ## Documentation updates
 

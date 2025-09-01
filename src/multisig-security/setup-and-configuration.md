@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Setup & Configuration
 
 This guide covers the technical deployment and configuration of multisigs on supported networks.
@@ -21,7 +31,7 @@ This guide covers the technical deployment and configuration of multisigs on sup
 
 It is recommended, but not required to authorize a separate transaction proposer for a Safe. This address can prepare transactions for signers to sign but is not an authorized signer on the Safe. Therefore **there is no risk of malicious signatures which can affect the Safe assets**. This wallet can hold no funds and simply act as a proposer. The primary reason to have a delegated proposer is that the hash verification utilities depend on the Safe API (unless details are entered manually). Until a transaction is **proposed** it does not show up in the API so the hash verification tools cannot detect it.
 
-![Delegated proposer configuration interface](assets/delegated-proposer-configuration-interface.png)
+![Delegated proposer configuration interface](./assets/delegated-proposer-configuration-interface.png)
 
 ## Modules & Guards
 
@@ -50,11 +60,11 @@ Do not install any other modules or guards without explicit governance approval 
 ## Pre-Launch Checklist
 
 - [ ] Safe deployed with correct threshold
-- [ ] All signer addresses added and [verified](registration-and-documentation.md#signer-verification-process)
+- [ ] All signer addresses added and [verified](./registration-and-documentation.md#signer-verification-process)
 - [ ] Allowance module configured (if required)
 - [ ] Test transaction completed successfully
 - [ ] All signers confirmed they can sign
-- [ ] [Communication channels](communication-setup.md) tested during transaction
+- [ ] [Communication channels](./communication-setup.md) tested during transaction
 - [ ] Safe addresses documented for all networks
 
 Once setup is complete, proceed to Section 3.3 for registration and documentation requirements.
@@ -68,6 +78,6 @@ It is generally recommended **not** to use nested safe on protocol multisigs unl
 ## Next Steps
 
 After completing setup:
-1. [Registration & Documentation](registration-and-documentation.md) - Document your multisig
-2. [Communication Setup](communication-setup.md) - Establish secure communication
-3. [Hardware Wallet Setup](hardware-wallet-setup.md) - Ensure all signers are properly configured
+1. [Registration & Documentation](./registration-and-documentation.md) - Document your multisig
+2. [Communication Setup](./communication-setup.md) - Establish secure communication
+3. [Hardware Wallet Setup](./hardware-wallet-setup.md) - Ensure all signers are properly configured

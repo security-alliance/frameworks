@@ -1,3 +1,13 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
 # Planning & Classification
 
 Before setting up a new multisig, take time to properly assess its role and requirements. This planning phase will guide all subsequent configuration decisions and help ensure appropriate security measures.
@@ -103,7 +113,7 @@ Combine your impact and operational assessments. Below are some example configur
 
 ### Step 4: Document Your Decision
 
-Record your classification decision in the [Registration template](registration-and-documentation.md#registration-template).
+Record your classification decision in the [Registration template](./registration-and-documentation.md#registration-template).
 
 ## Important Notes
 
@@ -115,10 +125,10 @@ Record your classification decision in the [Registration template](registration-
 - When operational patterns change
 - When financial exposure changes significantly
 
-This classification will guide your threshold selection ([Section 2.1](general-rules.md#thresholds--configuration)), signer requirements, and operational procedures throughout the rest of this guide.
+This classification will guide your threshold selection ([Section 2.1](./general-rules.md#thresholds--configuration)), signer requirements, and operational procedures throughout the rest of this guide.
 
 ## Next Steps
 
 After completing classification, proceed to:
-1. [Setup & Configuration](setup-and-configuration.md) - Deploy your multisig
-2. [Registration & Documentation](registration-and-documentation.md) - Document your setup
+1. [Setup & Configuration](./setup-and-configuration.md) - Deploy your multisig
+2. [Registration & Documentation](./registration-and-documentation.md) - Document your setup
