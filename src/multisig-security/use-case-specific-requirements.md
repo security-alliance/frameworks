@@ -1,0 +1,32 @@
+# Use Case Specific Requirements
+
+## Treasury Multisigs
+
+### Key requirements:
+- **Allowance module** required for all msigs (see [Section 3.2](setup-and-configuration.md#modules--guards))
+
+## Emergency response Multisigs
+
+### Training & Drills:
+- Bi-annual paging system tests to verify alert functionality
+- Annual full emergency simulation with all signers
+
+### Additional requirements:
+- Geographic distribution encouraged for 24/7 coverage
+- 24/7 availability for threshold number of signers
+
+## Capital allocation Multisigs
+
+### Operational constraints:
+- Encourage on-chain constraints wherever possible (smart contract limits, parameter bounds)
+- Protocol expertise required for all signers
+
+## Smart contract control Multisigs
+
+### On-chain constraints:
+- [**Timelock contracts**](timelock-configuration.md) for major changes (upgrades, significant parameter changes)
+- Parameter limits enforced by smart contracts where feasible
+
+### Threshold considerations:
+- Higher thresholds for contract upgrades (consider 7/9+)
+- Lower thresholds acceptable for highly constrained operations (rate setting with bounds and a backup recovery mechanism to replace the multisig)
