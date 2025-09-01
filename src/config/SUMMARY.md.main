@@ -65,6 +65,9 @@
   - [Safe Harbor Scope Terms](./safe-harbor/scope-terms.md)
   - [On-Chain Adoption Guide](./safe-harbor/on-chain-adoption-guide.md)
   - [Whitehat](./safe-harbor/whitehat.md)
+- Incident Management
+  - [SEAL 911 War Room Guidelines](./incident-management/seal-911-war-room-guidelines.md)
+  - [Decentralized Incident Response Framework (DeIRF)](./incident-management/decentralized-ir.md)
 - [Insider Threats](./insider-threats/README.md)
   - [General Information](./insider-threats/general-information.md)
   - [Techniques, Tactics and Procedures](./insider-threats/techniques-tactics-and-procedures.md)
