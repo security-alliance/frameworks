@@ -63,6 +63,7 @@ Ensure your password manager is accessible – many like 1Password have a *Trave
 **Hardware wallets (e.g. Ledger, Trezor):** Update the firmware and test the device before you leave, don’t do this while traveling. **Do NOT bring any written seed phrases** under any circumstance – seed backups are unencrypted keys that are far easier to steal or copy than a hardware device. Leave seed backups in a secure place and travel only with your hardware wallet. Enable all security features on the device (set a strong PIN, and use a BIP39 passphrase for example, if supported) so that even if the device is stolen, the amount of required information to access your crypto, is high. Carry hardware wallets and security keys **in your carry-on or under your sight**, not in checked luggage, to avoid loss or tampering.
 
 **Yubikeys and 2FA tokens:** Bring them to protect logins (they’re the best MFA) and make sure they’re enabled on your critical accounts. Keep them on your person or in a separate bag from your laptop/phone so that a thief or snoop can’t easily steal both at once. If you have a **spare hardware wallet or Yubikey**, you might leave one at home as a backup in case the one you carry is lost. Add, when possible, an extra layer of security to the token, such as a PIN code.
+Carry your own chargers and cables to avoid malicious or tampered accessories; avoid borrowing from unknown sources.
 
 ### **Lock down phones**
 
@@ -97,6 +98,7 @@ If traveling to [countries with strict tech](https://www.perplexity.ai/search/co
 Share your itinerary and contact information with a trusted peer so they can assist or monitor for any issues.
 
 Finally, schedule critical work (especially high-value transactions) for **before or after** your trip if possible, so you’re not forced to do ultra-sensitive actions on the road. Criminals usually play with the “time-sensitive factor,” trying to trick you into doing something quick and urgent, by committing something reckless.
+Maintain an offline or printed list of emergency contacts.
 
 ## While traveling
 

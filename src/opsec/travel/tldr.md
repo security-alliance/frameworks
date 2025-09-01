@@ -29,9 +29,11 @@ contributors:
 - Use password manager travel modes to hide sensitive vaults while away.  
 - Update and test hardware wallets; never travel with written seed phrases.  
 - Carry hardware wallets and 2FA tokens on your person; keep spares securely at home.  
+- Carry your own chargers and cables; avoid borrowing unknown accessories.  
 - Use strong phone passcodes; disable biometrics in risky scenarios; enable Lockdown Mode if available.  
 - Minimize your digital footprint: avoid public travel announcements and crypto branding.  
 - Prepare an emergency plan: who to notify if devices are lost or compromised, and how to revoke access quickly.  
+- Keep an offline list of emergency contacts.  
 - Research local laws on encryption and tech; carry travel letters or sanitized devices if needed for border crossings.
 
 ## While traveling  
