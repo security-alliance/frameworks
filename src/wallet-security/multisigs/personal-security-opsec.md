@@ -122,3 +122,5 @@ Implement additional measures based on your risk level and operational needs
 - Professional security assessments for critical roles
 
 Remember: Perfect security doesn't exist - focus on practical improvements that significantly reduce your risk while remaining operationally feasible.
+
+For the full OpSec article, see [Operational Security](../../opsec/README.md).

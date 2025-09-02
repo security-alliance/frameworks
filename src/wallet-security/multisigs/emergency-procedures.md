@@ -200,4 +200,4 @@ Current multisig status:
 - [Communication Setup](./communication-setup.md) - Backup communication channels
 - [Hardware Wallet Setup](./hardware-wallet-setup.md) - Device replacement procedures
 - [Seed Phrase Security](./seed-phrase-security.md) - Key recovery procedures
-- [Personal Security (OpSec)](../../opsec/personal-security-opsec.md) - Account security measures
+- [Personal Security (OpSec)](./personal-security-opsec.md) - Account security measures
