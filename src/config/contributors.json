@@ -171,5 +171,29 @@
     "company": "SEAL | Opsek",
     "job_title": "Founder",
     "description": "Opsek Founder"
+  },
+  {
+    "slug": "blackbigswan",
+    "name": "blackbigswan",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/shortdoom",
+    "github": "https://github.com/shortdoom",
+    "twitter": "https://x.com/blackbigswan",
+    "website": "",
+    "company": "",
+    "job_title": "Frameworks Contributor",
+    "description": "Frameworks Contributor"
+  },
+  {
+    "slug": "yaniv",
+    "name": "Yaniv Sofer",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/u/47369984?v=4",
+    "github": "https://github.com/YSSofer",
+    "twitter": "",
+    "website": "",
+    "company": "EY",
+    "job_title": "Frameworks Reviewer",
+    "description": "Frameworks Reviewer"
   }
 ]
