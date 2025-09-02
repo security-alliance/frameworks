@@ -1,1 +1,0 @@
-# Transaction Verification & Signing

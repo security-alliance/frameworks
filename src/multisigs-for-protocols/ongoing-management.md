@@ -1,1 +1,0 @@
-# Ongoing Management

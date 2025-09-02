@@ -1,1 +1,0 @@
-# Seed Phrase Security
