@@ -69,6 +69,10 @@ Do not install any other modules or guards without explicit governance approval 
 - [ ] [Communication channels](./communication-setup.md) tested during transaction
 - [ ] Safe addresses documented for all networks
 
+### Practice on Testnet
+
+Before deploying on mainnet, thoroughly practice wallet creation, transaction signing, and owner management on a test network.
+
 Once setup is complete, proceed to Section 3.3 for registration and documentation requirements.
 
 ## Nested Safes
@@ -83,3 +87,7 @@ After completing setup:
 1. [Registration & Documentation](./registration-and-documentation.md) - Document your multisig
 2. [Communication Setup](./communication-setup.md) - Establish secure communication
 3. [Hardware Wallet Setup](./hardware-wallet-setup.md) - Ensure all signers are properly configured
+
+## Active Monitoring
+
+Implement monitoring and alerting systems to be immediately notified of any on-chain activity related to the multisig, including proposed transactions, new signatures, and owner changes (e.g., using tools like [Safe Watcher](https://github.com/Gearbox-protocol/safe-watcher)).

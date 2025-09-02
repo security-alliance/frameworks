@@ -18,6 +18,7 @@ Proper transaction verification protects against UI compromise attacks and ensur
 
 ### Basic Rules
 - **Use hardware wallet** & back up the seed phrase
+- **Secure signing environment**: For maximum security, all signing activities should be performed on a dedicated, air-gapped, or hardened device running a secure OS. Using a primary work laptop significantly increases the risk of malware interference.
 - **Verify the address** according to this guide upon joining any multisig
 - **Check transactions** you see in the queue - if unclear what the transaction should do and why, don't sign it and ask for explanation
 - **Require "how to check" guide** for every transaction

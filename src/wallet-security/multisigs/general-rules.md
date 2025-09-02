@@ -23,12 +23,28 @@ contributors:
 - No multisigs should use modules/guards except those mentioned in this guide unless clear justification and security review is provided
 - Threshold exceptions can be made for multisigs that are used in frequent operations but are highly constrained by smart contracts. For example, rate setting operations with tight bounds and a backup recovery mechanism to replace the multisig.
 
+### Threshold Selection
+
+Avoid `N-of-N` schemes, as the loss of a single key would result in a permanent loss of access to all funds.
+
+### Strategic Signer Distribution
+
+The security of a multisig depends entirely on the operational security (OpSec) of its individual signer keys. Storing multiple signer keys on the same device or in the same physical location negates the security benefits. Effective distribution strategies include:
+- Using different hardware wallet models and manufacturers.
+- Maintaining geographical separation for devices holding signer keys.
+- Assigning signer keys to different trusted individuals within an organization.
+- Using diverse client software to interact with the multisig to mitigate single-point-of-failure risks from a software vulnerability.
+
 ## Communication & Documentation
 
 - In the event of loss of access to keys or potential compromise of keys or communication channels, the signer must immediately notify the other multisig participants and emailing your security contact - [4.8 Incident Reporting](./incident-reporting.md)
 - Signers should use dedicated communication channels for multisig operations and maintain backup ways of reaching other signers
 - All multisigs should be documented in the protocol documenting its purpose, general operating rules, multisig wallet address, and list of signer addresses
 - Signers should verify their addresses by signing a message stating their affiliation and the multisig they intend to join (entity affiliation is ok)
+
+### Out-of-Band Verification for Admin Changes
+
+Any critical administrative action, such as adding or replacing a signer, must be verified through multiple, independent communication channels (e.g., a video call and a signed message) to prevent social engineering attacks.
 
 ## Signer rotation
 
