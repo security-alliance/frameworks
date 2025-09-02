@@ -9,17 +9,6 @@ contributors:
   - role: reviewed
     users: [dickson]
 ---
-
----
-tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Multisig Security
-contributors:
-  - role: wrote
-    users: [isaac, geoffrey, louis, pablo, dickson]
----
-
 # Backup Infrastructure
 
 ## UI alternatives
