@@ -8,6 +8,8 @@ tags:
 contributors:
 - role: wrote
   users: [blackbigswan]
+- role: reviewed
+  users: [yaniv, dickson]
 ---
 
 # Techniques, Tactics, and Procedures
