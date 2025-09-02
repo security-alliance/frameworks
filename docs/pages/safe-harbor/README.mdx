@@ -12,8 +12,6 @@ contributors:
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-import logo from './images/whitehat-full-logo-blue.svg'
-import legal from './images/legal.png'
 
 <TagProvider>
 <TagFilter />
@@ -23,13 +21,13 @@ import legal from './images/legal.png'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-<img src={logo} alt="Whitehat Logo" />
+<img src="/safe-harbor/whitehat-full-logo-blue.svg" alt="Whitehat Logo" />
 
 > 💡 An industry-standard framework, letting your protocol pre-authorize whitehats to rescue funds during active exploits 
 
 <div align="center">
   <video controls width="600" preload="none">
-    <source src="./images/Protocol_Explainer_Video.mp4" type="video/mp4" />
+    <source src="/safe-harbor/Protocol_Explainer_Video.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 </div>
@@ -54,14 +52,13 @@ By adopting Safe Harbor, protocols allow:
 
 > Safe Harbor was developed over two years with direct input and rigorous legal review from experts at a16z Crypto, Cooley, Debevoise & Plimpton, Filecoin Foundation, MetaLeX, Paradigm, Piper Alderman, Powerhouse, and more.
 
-<img src={legal} alt="Legal Logo" />
+<img src="/safe-harbor/legal.png" alt="Legal Logo" />
 
 ## Who's Adopted Safe Harbor
 
 > Safe Harbor is already protecting $16B+ in assets across leading DeFi protocols. Current adopters include Uniswap, Pendle, PancakeSwap, Balancer, Silo Finance, Zksync, and more. See the [full up-to-date list](https://safeharbor.securityalliance.org/).
 
-{/*TODO: img links (/safe-harbor/images/Uniswap_logo.png)(./images/Pendle_logo.png)(./images/Zksync_logo.png)(./images/Balancer_logo.png)*/}
-| [Uniswap]() | [Pendle]() | [ZkSync]() | [Balancer]() |
+| <img src="/safe-harbor/Uniswap_logo.png" alt="Uniswap Logo" width="100" /> | <img src="/safe-harbor/Pendle_logo.png" alt="Pendle Logo" width="100" /> | <img src="/safe-harbor/Zksync_logo.png" alt="ZkSync Logo" width="100" /> | <img src="/safe-harbor/Balancer_logo.png" alt="Balancer Logo" width="100" /> |
 |:-----------------------------------:|:----------------------------------:|:----------------------------------:|:-------------------------------------:|
 | [Gov Proposal](https://www.tally.xyz/gov/uniswap/proposal/79) | Non-DAO Adoption | [Gov Proposal](https://www.tally.xyz/gov/zksync/proposal/35395412545014978447594654620386134175315194219985614464693911512436668500487?govId=eip155:324:0x496869a7575A1f907D1C5B1eca28e4e9E382afAb) | [Gov Proposal](https://snapshot.box/#/s:balancer.eth/proposal/0x8c3fd2550184ec28653c46e959782f1a3127ca8aa6a5652494a9c29ad77d9b55) |
 

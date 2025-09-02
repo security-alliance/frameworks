@@ -8,7 +8,7 @@ install:
 
 # Serve the Vocs site locally with hot reload
 serve: 
-    npm run docs:dev -- --host 0.0.0.0 --port 5173
+    npm run docs:dev -- --host port 5173
 
 # Build the static Vocs site
 build: install

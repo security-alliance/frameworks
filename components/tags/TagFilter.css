@@ -338,6 +338,7 @@
   right: 0;
   bottom: 0;
   z-index: 999;
+  pointer-events: none;
 }
 
 /* Light mode adjustments */

@@ -213,6 +213,11 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/external-security-reviews/smart-contracts/manual-review": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "SRE"
+    ],
     "/external-security-reviews/smart-contracts/preparation": [
       "Security Specialist",
       "Operations & Strategy",

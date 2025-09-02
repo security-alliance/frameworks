@@ -1,8 +1,8 @@
 import { defineConfig } from 'vocs'
 
-export default defineConfig({
+const config = {
   banner: {
-    content: '***This is a work in progress and not a release. We are looking for volunteers. See Issues and Contribution to know how to collaborate.***',
+    content: '***This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.***',
     height: '20px',
     backgroundColor: '#8b5cf6',
     textColor: 'white',
@@ -10,8 +10,8 @@ export default defineConfig({
   },
   title: 'Security Frameworks by SEAL',
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
-  logoUrl: '/logo.svg',
-  iconUrl: '/favicon.svg',
+  logoUrl: '/logo/frameworks-full-circle.svg',
+  iconUrl: '/logo/favicon.svg',
   sidebar: [
     {
       text: 'Introduction',
@@ -55,7 +55,7 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/opsec/README' },
             {
-              text: 'Overview Details', 
+              text: 'Overview Details',
               collapsed: false,
               items: [
                 { text: 'Highlights', link: '/opsec/overview/README' },
@@ -75,14 +75,14 @@ export default defineConfig({
                 { text: 'TL;DR', link: '/opsec/travel/tldr' },
               ]
             },
-            // { text: 'Governance & Program Management', link: '/opsec/governance-program-management' },
-            // { text: 'Control Domains', link: '/opsec/control-domains' },
-            // { text: 'Lifecycle', link: '/opsec/lifecycle' },
-            // { text: 'Monitoring & Detection', link: '/opsec/monitoring-detection' },
-            // { text: 'Incident Response & Recovery', link: '/opsec/incident-response-recovery' },
-            // { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics' },
-            // { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration' },
-            // { text: 'Appendices', link: '/opsec/appendices' },
+            { text: 'Governance & Program Management', link: '/opsec/governance-program-management' },
+            { text: 'Control Domains', link: '/opsec/control-domains' },
+            { text: 'Lifecycle', link: '/opsec/lifecycle' },
+            { text: 'Monitoring & Detection', link: '/opsec/monitoring-detection' },
+            { text: 'Incident Response & Recovery', link: '/opsec/incident-response-recovery' },
+            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics' },
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration' },
+            { text: 'Appendices', link: '/opsec/appendices' },
           ]
         },
         {
@@ -120,48 +120,13 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: 'Overview', link: '/external-security-reviews/smart-contracts/README' },
+                { text: 'Manual Review', link: '/external-security-reviews/smart-contracts/manual-review' },
                 { text: 'Expectations', link: '/external-security-reviews/smart-contracts/expectation' },
                 { text: 'Preparation Guide', link: '/external-security-reviews/smart-contracts/preparation' },
                 { text: 'Vendor Selection', link: '/external-security-reviews/smart-contracts/vendor-selection' },
               ]
             },
             { text: 'Security Policies and Procedures', link: '/external-security-reviews/security-policies-procedures' },
-          ]
-        },
-        {
-          text: 'Security Testing',
-          collapsed: false,
-          items: [
-            { text: 'Overview', link: '/security-testing/README' },
-            { text: 'Unit Testing', link: '/security-testing/unit-testing' },
-            { text: 'Integration Testing', link: '/security-testing/integration-testing' },
-            { text: 'Fuzz Testing', link: '/security-testing/fuzz-testing' },
-            { text: 'Static Analysis', link: '/security-testing/static-analysis' },
-            { text: 'Formal Verification', link: '/security-testing/formal-verification' }
-          ]
-        },
-        {
-          text: 'ENS',
-          collapsed: false,
-          items: [
-            { text: 'Overview', link: '/ens/README' },
-            { text: 'Data Integrity & Verification', link: '/ens/data-integrity-verification' },
-            { text: 'Cross-Chain Compatibility', link: '/ens/cross-chain-compatibility' },
-            { text: 'Smart Contract Integration', link: '/ens/smart-contract-integration' },
-            { text: 'Interface Compliance', link: '/ens/interface-compliance' },
-            { text: 'Name Handling & Normalization', link: '/ens/name-handling-normalization' },
-          ]
-        },
-        {
-          text: 'Safe Harbor',
-          collapsed: false,
-          items: [
-            { text: 'Overview', link: '/safe-harbor/README' },
-            { text: 'Safe Harbor Eligibility Checklist', link: '/safe-harbor/self-checklist' },
-            { text: 'Self-Adoption Guide', link: '/safe-harbor/self-adoption-guide' },
-            { text: 'Safe Harbor Scope Terms', link: '/safe-harbor/scope-terms' },
-            { text: 'On-Chain Adoption Guide', link: '/safe-harbor/on-chain-adoption-guide' },
-            { text: 'Whitehat', link: '/safe-harbor/whitehat' },
           ]
         },
         {
@@ -218,7 +183,7 @@ export default defineConfig({
             { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
             { text: 'Playbooks', link: '/incident-management/playbooks' },
             { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/seal-911-war-room-guidelines' },
-            { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/decentralized-ir' },
+            { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/decentralized-ir', dev: true },
           ]
         },
         {
@@ -230,6 +195,13 @@ export default defineConfig({
             { text: 'Identity Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats' },
           ]
         },
+        //ADD SECTION Insider Threats TODO main
+  //       - [Insider Threats](./insider-threats/README.md)
+  //        - [General Information](./insider-threats/general-information.md)
+  //        - [Techniques, Tactics and Procedures](./insider-threats/techniques-tactics-and-procedures.md)
+  //        - [Mitigating DPRK IT Workers](./insider-threats/mitigating-dprk-it-workers.md)
+  //        - [Case Studies](./insider-threats/case-studies.md)
+  //        - [Summary](./insider-threats/summary.md)
         {
           text: 'Governance',
           collapsed: false,
@@ -307,20 +279,68 @@ export default defineConfig({
           ]
         },
         {
-          text: 'Encryption',
+          text: 'Security Testing',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/encryption/README' },
-            { text: 'Cloud Data Encryption', link: '/encryption/cloud-data-encryption' },
-            { text: 'Communication Encryption', link: '/encryption/communication-encryption' },
-            { text: 'Database Encryption', link: '/encryption/database-encryption' },
-            { text: 'Email Encryption', link: '/encryption/email-encryption' },
-            { text: 'Encryption in Transit', link: '/encryption/encryption-in-transit' },
-            { text: 'File Encryption', link: '/encryption/file-encryption' },
-            { text: 'Full Disk Encryption', link: '/encryption/full-disk-encryption' },
-            { text: 'Hardware Encryption', link: '/encryption/hardware-encryption' },
-            { text: 'Partition Encryption', link: '/encryption/partition-encryption' },
-            { text: 'Volume Encryption', link: '/encryption/volume-encryption' },
+            { text: 'Overview', link: '/security-testing/README' },
+            { text: 'Unit Testing', link: '/security-testing/unit-testing' },
+            { text: 'Integration Testing', link: '/security-testing/integration-testing' },
+            { text: 'Fuzz Testing', link: '/security-testing/fuzz-testing' },
+            { text: 'Static Analysis', link: '/security-testing/static-analysis' },
+            { text: 'Formal Verification', link: '/security-testing/formal-verification' }
+          //ADD FILE TODO [Mutation Testing](./security-testing/mutation-testing.md)
+          ]
+        },
+        {
+          text: 'ENS',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/ens/README' },
+            { text: 'Data Integrity & Verification', link: '/ens/data-integrity-verification' },
+            { text: 'Cross-Chain Compatibility', link: '/ens/cross-chain-compatibility' },
+            { text: 'Smart Contract Integration', link: '/ens/smart-contract-integration' },
+            { text: 'Interface Compliance', link: '/ens/interface-compliance' },
+            { text: 'Name Handling & Normalization', link: '/ens/name-handling-normalization' },
+          ]
+        },
+        {
+          text: 'Safe Harbor',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/safe-harbor/README' },
+            { text: 'Safe Harbor Eligibility Checklist', link: '/safe-harbor/self-checklist' },
+            { text: 'Self-Adoption Guide', link: '/safe-harbor/self-adoption-guide' },
+            { text: 'Safe Harbor Scope Terms', link: '/safe-harbor/scope-terms' },
+            { text: 'On-Chain Adoption Guide', link: '/safe-harbor/on-chain-adoption-guide' },
+            { text: 'Whitehat', link: '/safe-harbor/whitehat' },
+          ]
+        },
+        {
+          text: 'Monitoring',
+          collapsed: false,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/monitoring/README', dev: true },
+            { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
+            { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
+          ]
+        },
+        {
+          text: 'Encryption',
+          collapsed: false,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/encryption/README', dev: true },
+            { text: 'Cloud Data Encryption', link: '/encryption/cloud-data-encryption', dev: true },
+            { text: 'Communication Encryption', link: '/encryption/communication-encryption', dev: true },
+            { text: 'Database Encryption', link: '/encryption/database-encryption', dev: true },
+            { text: 'Email Encryption', link: '/encryption/email-encryption', dev: true },
+            { text: 'Encryption in Transit', link: '/encryption/encryption-in-transit', dev: true },
+            { text: 'File Encryption', link: '/encryption/file-encryption', dev: true },
+            { text: 'Full Disk Encryption', link: '/encryption/full-disk-encryption', dev: true },
+            { text: 'Hardware Encryption', link: '/encryption/hardware-encryption', dev: true },
+            { text: 'Partition Encryption', link: '/encryption/partition-encryption', dev: true },
+            { text: 'Volume Encryption', link: '/encryption/volume-encryption', dev: true },
           ]
         },
       ]
@@ -337,7 +357,7 @@ export default defineConfig({
             { text: 'Overview', link: '/contribute/contributing' },
             { text: 'Contributors', link: '/contribute/contributors' },
             { text: 'Stewards', link: '/contribute/stewards' },
-            
+
           ]
         },
       ]
@@ -345,11 +365,11 @@ export default defineConfig({
   ],
   socials: [
     {
-      icon: 'github',
+      icon: 'github' as const,
       link: 'https://github.com/security-alliance/frameworks',
     },
     {
-      icon: 'discord',
+      icon: 'discord' as const,
       link: 'https://discord.com/invite/securityalliance',
     },
   ],
@@ -357,4 +377,19 @@ export default defineConfig({
     pattern: 'https://github.com/security-alliance/frameworks/edit/develop/docs/pages/:path',
     text: 'Suggest changes to this page'
   }
-})
+}
+
+function filterDevItems(items: any[]): any[] {
+  return items
+    .filter(item => !item.dev)
+    .map(item => ({
+      ...item,
+      items: item.items ? filterDevItems(item.items) : undefined,
+    }))
+}
+
+if (process.env.VERCEL_GIT_COMMIT_REF === 'main') {
+  config.sidebar = filterDevItems(config.sidebar)
+}
+
+export default defineConfig(config)

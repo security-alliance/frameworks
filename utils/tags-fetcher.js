@@ -2,7 +2,6 @@
 
 /**
  * Build script to fetch tags from MDX frontmatter
- * Run this during build to create a complete tag list for the filter
  */
 
 const fs = require('fs');
@@ -128,7 +127,7 @@ function fetchTags() {
   const outputPath = './utils/fetched-tags.json';
   fs.writeFileSync(outputPath, JSON.stringify(tagsFetched, null, 2));
   
-  console.log(`✅ Generated tags with ${allTags.length} tags`);
+  console.log(`${allTags.length} tags fetched`);
   
   return tagsFetched;
 }
