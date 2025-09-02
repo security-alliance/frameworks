@@ -123,5 +123,17 @@
     "company": "SEAL",
     "job_title": "Safe Harbor",
     "description": "Safe Harbor contributor"
+  },
+  {
+    "slug": "yaniv",
+    "name": "Yaniv Sofer",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/u/47369984?v=4",
+    "github": "https://github.com/YSSofer",
+    "twitter": "",
+    "website": "",
+    "company": "EY",
+    "job_title": "Framework Reviewer",
+    "description": "Framework Reviewer"
   }
 ]
