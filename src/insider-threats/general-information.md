@@ -9,7 +9,7 @@ contributors:
 - role: wrote
   users: [blackbigswan]
 - role: reviewed
-  users: [dickson, yaniv]
+  users: [yaniv, dickson]
 ---
 
 # General Information

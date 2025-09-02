@@ -125,6 +125,18 @@
     "description": "Safe Harbor contributor"
   },
   {
+    "slug": "blackbigswan",
+    "name": "blackbigswan",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/shortdoom",
+    "github": "https://github.com/shortdoom",
+    "twitter": "https://x.com/blackbigswan",
+    "website": "",
+    "company": "",
+    "job_title": "Frameworks Contributor",
+    "description": "Frameworks Contributor"
+  },
+  {
     "slug": "yaniv",
     "name": "Yaniv Sofer",
     "role": "contributor",
@@ -133,7 +145,7 @@
     "twitter": "",
     "website": "",
     "company": "EY",
-    "job_title": "Framework Reviewer",
-    "description": "Framework Reviewer"
+    "job_title": "Frameworks Reviewer",
+    "description": "Frameworks Reviewer"
   }
 ]

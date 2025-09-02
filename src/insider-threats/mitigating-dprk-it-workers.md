@@ -7,9 +7,9 @@ tags:
   - Engineer/Developer
 contributors:
 - role: wrote
-  users: [blackbigswan].
+  users: [blackbigswan]
 - role: reviewed
-  users: [dickson, yaniv]
+  users: [yaniv, dickson]
 ---
 
 # Mitigating DPRK IT Workers
