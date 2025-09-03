@@ -196,12 +196,12 @@ const config = {
           ]
         },
         //ADD SECTION Insider Threats TODO main
-  //       - [Insider Threats](./insider-threats/README.md)
-  //        - [General Information](./insider-threats/general-information.md)
-  //        - [Techniques, Tactics and Procedures](./insider-threats/techniques-tactics-and-procedures.md)
-  //        - [Mitigating DPRK IT Workers](./insider-threats/mitigating-dprk-it-workers.md)
-  //        - [Case Studies](./insider-threats/case-studies.md)
-  //        - [Summary](./insider-threats/summary.md)
+        //       - [Insider Threats](./insider-threats/README.md)
+        //        - [General Information](./insider-threats/general-information.md)
+        //        - [Techniques, Tactics and Procedures](./insider-threats/techniques-tactics-and-procedures.md)
+        //        - [Mitigating DPRK IT Workers](./insider-threats/mitigating-dprk-it-workers.md)
+        //        - [Case Studies](./insider-threats/case-studies.md)
+        //        - [Summary](./insider-threats/summary.md)
         {
           text: 'Governance',
           collapsed: false,
@@ -288,7 +288,7 @@ const config = {
             { text: 'Fuzz Testing', link: '/security-testing/fuzz-testing' },
             { text: 'Static Analysis', link: '/security-testing/static-analysis' },
             { text: 'Formal Verification', link: '/security-testing/formal-verification' }
-          //ADD FILE TODO [Mutation Testing](./security-testing/mutation-testing.md)
+            //ADD FILE TODO [Mutation Testing](./security-testing/mutation-testing.md)
           ]
         },
         {
@@ -351,7 +351,8 @@ const config = {
       items: [
         { text: 'What It Is', link: '/intro/what-is-it' },
         { text: 'What It Isn\'t', link: '/intro/what-it-isnt' },
-        { text: 'Contributing',
+        {
+          text: 'Contributing',
           collapsed: false,
           items: [
             { text: 'Overview', link: '/contribute/contributing' },

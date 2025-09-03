@@ -12,6 +12,10 @@ mkdir -p docs/pages
 # Install dependencies (in case Vercel doesn't automatically do it)
 npm install
 
+# Mermaid rendering
+npm install playwright
+npx playwright install --with-deps chromium
+
 # Build the Vocs site
 npm run docs:build
 
