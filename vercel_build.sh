@@ -10,7 +10,7 @@ mkdir -p docs/pages
 # cp -r src/assets/* docs/pages/assets/
 
 # Install dependencies (in case Vercel doesn't automatically do it)
-npm install
+npm install & npx playwright install --with-deps
 
 # Build the Vocs site
 npm run docs:build
