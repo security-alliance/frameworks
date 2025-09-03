@@ -12,7 +12,7 @@ contributors:
   users: [yaniv, dickson]
 ---
 
-# Insider Threats (DPRK)
+# DPRK IT Workers
 
 This framework serves as an entry point to understanding the organizational and personal risks related to "Insider Threats," most commonly (though not exclusively) associated with "DPRK IT Workers" - the North Korean hacker-freelancers. This framework is targeted at projects affected by insider threat actors as well as projects wanting to harden their posture against these actors.
 
