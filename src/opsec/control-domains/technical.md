@@ -126,6 +126,42 @@ Strengthening authentication through multiple factors and hardware-based solutio
 4. **Social Recovery**: Implementing secure key recovery through trusted contacts
 5. **DApp Authentication**: Securing connections to decentralized applications
 
+## Device Security (Basic requirements)
+
+- Full disk encryption enabled (FileVault/BitLocker)
+- Automatic updates enabled on all devices
+- Screen lock after 5 minutes inactivity on computers, 30 seconds on mobile
+- Strong passcodes (6+ digits or alphanumeric on mobile)
+- Endpoint protection software on computers
+- No admin rights for daily use accounts (create separate admin account)
+
+## Account Security Basics
+
+Practical guidance to harden individual and team accounts used across systems and services.
+
+### Baseline Requirements
+
+1. 2FA enabled on all accounts (authenticator apps or hardware keys).
+2. Use a password manager with unique, strong passwords for every account.
+3. Remove phone numbers from account recovery where possible; prefer backup codes and hardware keys.
+4. Perform regular security checkups: revoke unused app permissions and active sessions.
+5. Maintain a separate backup email for account recovery, distinct from the primary email.
+
+### For extra security
+
+**YubiKeys**: Use hardware security keys instead of authenticator apps
+- Provides stronger protection against phishing and SIM swapping
+- Recommended: 3 keys (primary, backup, secure storage)
+- Models: YubiKey 5C NFC, YubiKey 5C Nano
+
+**Cold backup accounts**: Separate email/phone for sensitive account recovery
+- Backup / cold accounts are tied to sensitive accounts (AppleID, Telegram, Signal, WhatsApp, Password Manager etc). Such email addresses must never be shared with anyone and kept private to remain secure and not targeted.
+
+Example: random44@gmail is tied to your AppleID, and you are only logged in (the email) on a separate secure device. If your main device (laptop) gets compromised, you will be able to recover your account or revoke sessions, moreover your cold account won't be affected / compromised. It prevents people from targeting your accounts by not knowing your email linked to it.
+- Use different providers from primary accounts (Gmail, Proton)
+- Only access from secure devices
+- Never used for regular communications
+
 ## Cryptocurrency-Specific Controls
 
 Technical controls specifically designed to address the unique security challenges of cryptocurrency operations.
