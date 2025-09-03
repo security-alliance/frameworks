@@ -195,13 +195,18 @@ const config = {
             { text: 'Identity Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats' },
           ]
         },
-        //ADD SECTION Insider Threats TODO main
-        //       - [Insider Threats](./insider-threats/README.md)
-        //        - [General Information](./insider-threats/general-information.md)
-        //        - [Techniques, Tactics and Procedures](./insider-threats/techniques-tactics-and-procedures.md)
-        //        - [Mitigating DPRK IT Workers](./insider-threats/mitigating-dprk-it-workers.md)
-        //        - [Case Studies](./insider-threats/case-studies.md)
-        //        - [Summary](./insider-threats/summary.md)
+        {
+          text: 'Insider Threats',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/insider-threats/README' },
+            { text: 'General Information', link: '/insider-threats/general-information' },
+            { text: 'Techniques, Tactics and Procedures', link: '/insider-threats/techniques-tactics-and-procedures' },
+            { text: 'Mitigating DPRK IT Workers', link: '/insider-threats/mitigating-dprk-it-workers' },
+            { text: 'Case Studies', link: '/insider-threats/case-studies' },
+            { text: 'Summary', link: '/insider-threats/summary' },
+          ]
+        },
         {
           text: 'Governance',
           collapsed: false,
@@ -287,8 +292,8 @@ const config = {
             { text: 'Integration Testing', link: '/security-testing/integration-testing' },
             { text: 'Fuzz Testing', link: '/security-testing/fuzz-testing' },
             { text: 'Static Analysis', link: '/security-testing/static-analysis' },
-            { text: 'Formal Verification', link: '/security-testing/formal-verification' }
-            //ADD FILE TODO [Mutation Testing](./security-testing/mutation-testing.md)
+            { text: 'Formal Verification', link: '/security-testing/formal-verification' },
+            { text: 'Mutation Testing', link: '/security-testing/mutation-testing' }
           ]
         },
         {
