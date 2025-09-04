@@ -9,7 +9,7 @@ contributors:
     users: [the-caliber]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, MermaidRenderer } from '../../../../components'
 
 {/*TODO: contributor not showing */}
 <TagProvider>
@@ -60,36 +60,36 @@ Based on the structural and functional understanding the high level diagram can 
     - There are many tools that can be used like Excalidraw, Miro, Lucidchart, Mermaid etc.  
     - High level structural example of staking diagram:  
 
-   ```mermaid
-    classDiagram
-	direction LR
-	class Token {
-	  +mint()
-	  +burn()
-	  +transfer()
-	  +transferFrom()
-	}
-	class Staking {
-	  +constructor()
-	  +stake()
-	  +unstake()
-	  +getStakedAmount()
-	  +getTotalStaked()
-	}
-	class Rewards {
-	  +calculateRewards()
-	  +claimRewards()
-	  +initialize()
-	}
-	class Bridge {
-	  +transferToChain()
-	  +transferFromChain()
-	}
-	Token --> Staking: used in
-	Staking --> Token
-	Staking --> Rewards
-	Staking --> Bridge : bridges token
-    ``` 
+<MermaidRenderer 
+id="manual-review-diagram"
+code={`classDiagram
+direction LR
+class Token {
+  +mint()
+  +burn()
+  +transfer()
+  +transferFrom()
+}
+class Staking {
+  +constructor()
+  +stake()
+  +unstake()
+  +getStakedAmount()
+  +getTotalStaked()
+}
+class Rewards {
+  +calculateRewards()
+  +claimRewards()
+  +initialize()
+}
+class Bridge {
+  +transferToChain()
+  +transferFromChain()
+}
+Token --> Staking: used in
+Staking --> Token
+Staking --> Rewards
+Staking --> Bridge : bridges token`} />
 
 ## Manual review
 
