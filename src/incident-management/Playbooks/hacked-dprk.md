@@ -5,8 +5,7 @@ tags:
 contributors:
   - role: wrote
     users: [SEAL]
-  - role: reviewed
-    users: [00xWizard]
+  
 ---
 
 # BEFORE YOU CONTINUE FOLLOW THIS GUIDE TO PROTECT YOUR ASSETS

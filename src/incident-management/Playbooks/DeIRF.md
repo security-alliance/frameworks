@@ -7,8 +7,7 @@ tags:
 contributors:
   - role: wrote
     users: [relotnek]
-  - role: reviewed
-    users: [00xWizard]
+  
 ---
 
 # Decentralized Incident Response Framework (DeIRF)

@@ -6,8 +6,7 @@ tags:
 contributors:
   - role: wrote
     users: [SEAL]
-  - role: reviewed
-    users: [00xWizard]
+  
 ---
 
 # SEAL 911

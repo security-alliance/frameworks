@@ -5,8 +5,7 @@ tags:
 contributors:
   - role: wrote
     users: [SEAL]
-  - role: reviewed
-    users: [00xWizard]
+  
 ---
 
 # You've Been Hacked by ELUSIVE COMET
