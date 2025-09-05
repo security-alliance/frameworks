@@ -1,5 +1,5 @@
-[
-  {
+{
+  "mattaereal": {
     "slug": "mattaereal",
     "name": "matta",
     "role": "lead",
@@ -11,7 +11,7 @@
     "job_title": "Security Knowmad",
     "description": "Initiative lead and maintainer"
   },
-  {
+  "fredriksvantes": {
     "slug": "fredriksvantes",
     "name": "Fredrik Svantes",
     "role": "core",
@@ -23,7 +23,7 @@
     "job_title": "Head of Security",
     "description": "Initial contributor to the Security Frameworks"
   },
-  {
+  "zedt3ster": {
     "slug": "zedt3ster",
     "name": "zedt3ster",
     "role": "core",
@@ -32,21 +32,22 @@
     "twitter": "https://twitter.com/ethzed",
     "website": "https://sigmaprime.io",
     "company": "Sigma Prime",
-    "job_title": "Director. Ethereum enthusiast ",
+    "job_title": "Director. Ethereum enthusiast",
     "description": "Initial contributor to the Security Frameworks"
   },
-  {
+  "nftdreww": {
     "slug": "nftdreww",
     "name": "NFTDreww",
     "role": "steward",
     "avatar": "https://pbs.twimg.com/profile_images/1589726471249174536/pEqaw6FO_400x400.png",
     "github": "https://github.com/NFTDreww",
     "twitter": "https://twitter.com/nft_dreww",
+    "website": null,
     "company": "PocketUniverseZ",
     "job_title": "Security Researcher",
     "description": "Steward of Community Management framework"
   },
-  {
+  "robert": {
     "slug": "robert",
     "name": "Robert MacWha",
     "role": "core",
@@ -58,61 +59,67 @@
     "job_title": "Full-stack developer and security enthusiast",
     "description": "Web dev & fact checking"
   },
-  {
+  "tebayoso": {
     "slug": "tebayoso",
     "name": "tebayoso",
     "role": "contributor",
     "avatar": "https://avatars.githubusercontent.com/tebayoso",
     "github": "https://github.com/tebayoso",
     "twitter": "https://twitter.com/tebayoso",
+    "website": null,
     "company": "The Red Guild",
+    "job_title": null,
     "description": "Initial implementation of tag filtering"
   },
-  {
+  "engn33r": {
     "slug": "engn33r",
     "name": "engn33r",
     "role": "contributor",
     "avatar": "https://avatars.githubusercontent.com/engn33r",
     "github": "https://github.com/engn33r",
     "twitter": "https://twitter.com/bl4ckb1rd71",
+    "website": null,
+    "company": null,
+    "job_title": null,
     "description": "Signing best practices"
   },
-  {
+  "ghadi8": {
     "slug": "ghadi8",
     "name": "Ghadi Mhawej",
     "role": "steward",
     "avatar": "https://avatars.githubusercontent.com/ghadi8",
     "github": "https://github.com/ghadi8",
     "twitter": "https://twitter.com/ghadi8798",
-    "job_title": "Creator and maintainer of the ENS framework",
-    "description": "Steward of ENS framework",
+    "website": "https://justalab.co",
     "company": "JustaLab",
-    "website": "https://justalab.co"
+    "job_title": "Creator and maintainer of the ENS framework",
+    "description": "Steward of ENS framework"
   },
-  {
+  "patrickalphac": {
     "slug": "patrickalphac",
     "name": "Patrick Collins",
+    "role": "steward",
     "avatar": "https://avatars.githubusercontent.com/patrickalphac",
     "github": "https://github.com/patrickalphac",
     "twitter": "https://twitter.com/patrickalphac",
     "website": "https://cyfrin.io",
-    "job_title": "Cyfrin Co-founder and CEO",
-    "description": "Steward of Security Testing framework",
     "company": "Cyfrin",
-    "role": "steward"
+    "job_title": "Cyfrin Co-founder and CEO",
+    "description": "Steward of Security Testing framework"
   },
-  {
+  "pinalikefruit": {
     "slug": "pinalikefruit",
     "name": "Piña",
+    "role": "steward",
     "avatar": "https://avatars.githubusercontent.com/pinalikefruit",
     "github": "https://github.com/pinalikefruit",
     "twitter": "https://x.com/pinalikefruit",
-    "role": "steward",
-    "description": "Steward of Wallet-Security framework",
+    "website": "https://www.coinspect.com/",
     "company": "Coinspect",
-    "website": "https://www.coinspect.com/"
+    "job_title": null,
+    "description": "Steward of Wallet-Security framework"
   },
-  {
+  "dickson": {
     "slug": "dickson",
     "name": "Dickson Wu",
     "role": "contributor",
@@ -123,5 +130,29 @@
     "company": "SEAL",
     "job_title": "Safe Harbor",
     "description": "Safe Harbor contributor"
+  },
+  "blackbigswan": {
+    "slug": "blackbigswan",
+    "name": "blackbigswan",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/shortdoom",
+    "github": "https://github.com/shortdoom",
+    "twitter": "https://x.com/blackbigswan",
+    "website": null,
+    "company": null,
+    "job_title": "Frameworks Contributor",
+    "description": "Frameworks Contributor"
+  },
+  "yaniv": {
+    "slug": "yaniv",
+    "name": "Yaniv Sofer",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/u/47369984?v=4",
+    "github": "https://github.com/YSSofer",
+    "twitter": "",
+    "website": "",
+    "company": "EY",
+    "job_title": "Frameworks Reviewer",
+    "description": "Frameworks Reviewer"
   }
-]
+}

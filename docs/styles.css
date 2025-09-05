@@ -31,3 +31,13 @@
 :root:not(.dark) .vocs_DocsLayout {
     color: #060606;
 }
+:root:not(.dark) .vocs_Sidebar_item {
+    color: #060606;
+}
+:root:not(.dark) .vocs_Blockquote>.vocs_Paragraph {
+    color: #0706069e;
+    font-weight: bolder;
+}
+:root:not(.dark) .vocs_Blockquote {
+    color: #060606;
+}

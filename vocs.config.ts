@@ -361,8 +361,8 @@ const config = {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/contribute/contributing' },
-            { text: 'Contributors', link: '/contribute/contributors' },
-            { text: 'Stewards', link: '/contribute/stewards' },
+            { text: 'Spotlight Zone', link: '/contribute/spotlight-zone' },
+            { text: 'Stewardship', link: '/contribute/stewards' },
 
           ]
         },

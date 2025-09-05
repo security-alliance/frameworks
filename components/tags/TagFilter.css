@@ -140,6 +140,16 @@
   color: #838383;
 }
 
+:root:not(.dark) .tag-filter-dropdown {
+  background-color: #94b3df;
+}
+:root:not(.dark) .tag-filter-header h3 {
+  color: #00000096;
+}
+:root:not(.dark) .tag-filter-search input {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
 /* Responsive positioning for header filter */
 @media (max-width: 1200px) {
   .header-filter {

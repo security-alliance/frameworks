@@ -1,4 +1,4 @@
-import contributorsData from '../../data/contributors.json';
+import contributorsData from '../../docs/pages/config/contributors.json';
 import './Contributors.css';
 
 interface Contributor {
