@@ -31,5 +31,5 @@
     ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
-    "postCreateCommand": "echo 'DevContainer ready! Run \"npm run docs:dev --host 0.0.0.0\" to start the Vocs server.' && ip=$(hostname -I | awk '{print $1}'); echo \"After running 'npm run docs:dev', access the site at http://$ip:3000\""
+    "postCreateCommand": "echo 'DevContainer ready! Run \"npm run docs:dev -- --host port 5173\" to start the Vocs server.' && ip=$(hostname -I | awk '{print $1}'); echo \"After running 'npm run docs:dev', access the site at http://$ip:5173\""
 }

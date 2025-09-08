@@ -2,17 +2,10 @@
     height: 80% !important;
 }
 
-.vocs_DocsLayout_content_withSidebar {
-    margin-left: max(calc((100vw - calc(70ch + (3rem * 2))) / 2), 300px);
-}
+
 
 .vocs_DocsLayout_gutterLeft {
     justify-content: flex-start;
-    width: unset;
-}
-
-.vocs_DocsLayout_gutterRight {
-    justify-content: flex-end;
     width: unset;
 }
 
@@ -22,7 +15,6 @@
         width: calc(100vw - var(--vocs-content_width) - var(--vocs_DocsLayout_leftGutterWidth));
     }
 }
-
 
 .vocs_DesktopTopNav_logoWrapper {
     display: none;
@@ -40,4 +32,8 @@
 }
 :root:not(.dark) .vocs_Blockquote {
     color: #060606;
+}
+
+.vocs_Sidebar_footerContent{
+    margin-bottom: calc(10px + var(--vocs_Banner_bannerHeight, 0px));
 }

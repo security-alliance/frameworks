@@ -3,14 +3,14 @@ import { defineConfig } from 'vocs'
 const config = {
   banner: {
     content: '***This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.***',
-    height: '20px',
+    height: '30px',
     backgroundColor: '#8b5cf6',
     textColor: 'white',
     dismissable: false
   },
   title: 'Security Frameworks by SEAL',
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
-  logoUrl: '/logo/frameworks-full-circle.svg',
+  logoUrl: '/logo/frameworks-full.svg',
   iconUrl: '/logo/favicon.svg',
   sidebar: [
     {
