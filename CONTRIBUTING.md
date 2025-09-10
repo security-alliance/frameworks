@@ -1,3 +1,13 @@
+<!-- 
+This file is a duplicate of the CONTRIBUTE.md in src/contribute. 
+
+Both files contain the same content: the src/config file is there to render the content on the website, 
+while this copy is needed to make it highlighted in the repository dashboard.
+
+⚠️ If you make updates here, make sure to update the src/contribute/CONTRIBUTE.md as well, and vice versa, 
+so both stay in sync.
+-->
+
 # **Contributing Guidelines**
 
 The SEAL Security Framework is an open and collaborative project. Whether you are part of the Security Alliance or not, we welcome your contributions! Help us to build the documentation and improve security in the blockchain ecosystem.
@@ -42,7 +52,7 @@ All contributions should follow this workflow:
 If you’re interested in a framework that doesn’t currently have an active steward, you can **become one yourself**. See the [Stewards guide](/docs/pages/contribute
 /stewards) for details on responsibilities and how to get started.
 
-**⚠️ Please sign and verify all commits.**
+**⚠️ Please sign and verify all commits.** (If you have unsigned commits, follow the “Fixing Unsigned Commits” section below to update them)
 
 ## Development Environment Setup
 
@@ -109,6 +119,63 @@ npx just serve
 ```
 
 **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
+
+# Fixing Unsigned Commits
+
+If you accidentally made unsigned commits in your fork, you’ll need to rewrite them so they show as **Verified** before opening a PR.
+
+## 1. Rebase your recent commits
+
+- Understand how many commits you have to fix
+- Run this command, replacing `N` with the number of commits to go back (starting from the latest one):
+
+```bash
+git rebase -i HEAD~N
+```
+
+---
+
+## 2. Mark commits to fix
+
+In the editor that opens:
+
+- Change `pick` → `edit` for each unsigned commit.
+- Save and exit.
+
+---
+
+## 3. Re-sign each commit
+
+For each commit you’re editing:
+
+```bash
+git commit --amend -S --no-edit
+git rebase --continue
+```
+
+Repeat until all commits are re-signed.
+
+---
+
+## 4. Push your changes
+
+Since history was rewritten, you need to **force-push**:
+
+```bash
+git push --force
+```
+
+---
+
+## 5. Verify
+
+Check locally:
+
+```bash
+git log --show-signature
+```
+
+Or look at your branch on GitHub — commits should show a green **Verified** badge.
 
 ## Contributor Tasks Beyond Content Changes
 
