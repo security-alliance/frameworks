@@ -8,17 +8,17 @@ while this copy is used to render the content on the website.
 so both stay in sync.
 -->
 
-# **Contributing Guidelines**
+# **Contributing guidelines**
 
-The SEAL Security Framework is an open and collaborative project. Whether you are part of the Security Alliance or not, we welcome your contributions! Help us to build the documentation and improve security in the blockchain ecosystem.
+The Security Frameworks is an open and collaborative initiative. Whether you are part of the Security Alliance or not, we welcome your contributions! Help us build the documentation and improve security in the blockchain ecosystem.
 
 This handbook is designed for easy collaboration and automatic deployment through continuous integration. If you'd like to join our effort, feel free to fix typos, contribute new sections, or propose enhancements.
 
 **Before contributing, please read our [Code of Conduct](https://github.com/security-alliance/frameworks/blob/develop/CODE_OF_CONDUCT.md)** to ensure that all interactions remain respectful, inclusive, and constructive.
 
-Join our [Discord](https://discord.gg/securityalliance) server, let others know what you are working on in the ‘frameworks-reviewers’ group channel and collaborate with other contributors writing about related topics.
+Join our [Discord](https://discord.gg/securityalliance) server, let others know what you are working on in the ‘frameworks-reviewers’ group channel, and collaborate with other contributors writing about related topics.
 
-## Live Versions
+## Live versions
 
 The source code for the Security Frameworks is hosted on GitHub: [github.com/security-alliance/frameworks](https://github.com/security-alliance/frameworks).
 
@@ -27,17 +27,17 @@ The source code for the Security Frameworks is hosted on GitHub: [github.com/sec
 
 When contributing, **please submit your Pull Requests to the development branch**. Once changes are reviewed and approved, they will be merged into the **main branch** for publication on the stable site.
 
-## Ways to Contribute
+## Ways to contribute
 
 There are several ways to contribute, depending on your preference and the scope of your changes. First, check existing PRs or branches to make sure your work has not been previously ****submitted**.**
 
-### 1. Quick Edits
+### 1. Quick edits
 
 - Use the **“Contribute today!”** button at the bottom of any page
-- Make minor fixes like typos, formatting, or small clarifications
+- Make fixes, formatting, and clarifications, favoring major modifications over just a few grammar mistakes
 - Changes go through GitHub’s web interface without requiring local setup
 
-### 2. Add a New Section or Expand an Existing One
+### 2. Add a new section or expand an existing one
 
 All contributions should follow this workflow:
 
@@ -45,20 +45,22 @@ All contributions should follow this workflow:
 2. **Follow the `template.mdx` page** when creating or expanding content. It contains pre-defined components and structure required for consistency in MDX files.
 3. **Make your changes** in MDX (typos, improvements, or new content) on your fork.
 4. **Open a Pull Request (PR) against the `develop` branch** of this repository. Once submitted, you can see the deployment through Vercel’s automation and make any final adjustments.
-5. **Notify reviewers** by tagging a steward or maintainer, or by requesting reviews directly in your PR.
-6. Once reviewed and approved, your changes will be merged into `develop`.
-7. Periodically, reviewed content from `develop` is merged into `main` for the stable site.
+5. **Notify reviewers** by tagging a steward or maintainer, requesting reviews directly in your PR.
+6. Additionally, you can paste your PR and/or potential associated issues to the `framework-reviewers` Discord channel.
+7. Once reviewed and approved, your changes will be merged into `develop`.
+8. Don't forget to add yourself to the YAML header of the file you're modifying, given that is the way we provide attribution. You should also create your profile inside the contributors list, at `src/config/contributors.json`.
+9. Periodically, reviewed content from `develop` is merged into `main` for the stable site.
 
 If you’re interested in a framework that doesn’t currently have an active steward, you can **become one yourself**. See the [Stewards guide](/docs/pages/contribute
 /stewards) for details on responsibilities and how to get started.
 
 **⚠️ Please sign and verify all commits.** (If you have unsigned commits, follow the “Fixing Unsigned Commits” section below to update them)
 
-## Development Environment Setup
+## Development environment setup
 
 Choose the development approach that works best for you:
 
-### Option A: DevContainer with VSCode (Recommended)
+### Option A: DevContainer with VSCode
 
 The easiest way to get started is using our pre-configured devcontainer with VSCode:
 
@@ -68,8 +70,9 @@ The easiest way to get started is using our pre-configured devcontainer with VSC
 4. **Start developing**: All tools are pre-installed and ready to use
 
 ### Option B: DevContainer CLI Only (No VSCode Required)
+Since you won't require extensions for the initiative to work, you can just create a devcontainer using the CLI and access it through whatever mean you think suits you best.
 
-**Using DevContainer CLI:**
+**Using DevContainer CLI (Recommended):**
 
 - Install [DevContainer CLI](https://github.com/devcontainers/cli)
 
@@ -84,7 +87,7 @@ devcontainer exec --workspace-folder . bash
 
 ```
 
-### Option C: Local Installation
+### Option C: Local installation
 
 If you prefer to install dependencies locally on your machine:
 
@@ -120,7 +123,7 @@ npx just serve
 
 **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
 
-# Fixing Unsigned Commits
+# Fixing unsigned commits
 
 If you accidentally made unsigned commits in your fork, you’ll need to rewrite them so they show as **Verified** before opening a PR.
 
@@ -177,11 +180,11 @@ git log --show-signature
 
 Or look at your branch on GitHub — commits should show a green **Verified** badge.
 
-## Contributor Tasks Beyond Content Changes
+## Contributor tasks beyond content changes
 
 When contributing to the Security Frameworks, there are several additional responsibilities to ensure your updates integrate smoothly into the site and maintain proper structure:
 
-### 1. Page Tags
+### 1. Page tags
 
 - Assign appropriate tags at the top of your pages in the frontmatter to help categorize content by role, topic, or skill level:
 
@@ -196,7 +199,7 @@ tags:
 
 - Proper tagging makes your contribution discoverable and filterable on the site.
 
-### 2. Contributors Metadata
+### 2. Contributors metadata
 
 - Add yourself and other relevant contributors to the page frontmatter:
 
@@ -238,41 +241,54 @@ Example of a category with multiple pages:
 
 This ensures that new content appears correctly in the site’s navigation for readers on the `.dev` site while staying hidden from the stable `.org` site until ready.
 
-## Style Guide
+## Style guide
 
 Wiki pages follow standard MDX.
 
-The audience of this wiki is technical and the content should reflect that. There are many guides on technical and documentation writing you can learn from, for example you can check [this lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get started.
+The audience of this wiki is technical, and the content should reflect that. There are many guides on technical and documentation writing you can learn from, for example, you can check [this lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get started.
 
-### Writing Guidelines
+### Writing guidelines
 
 - Write in an objective, explanatory tone; avoid unnecessary simplifications.
 - Use concise sentences and break down complex ideas with bullet points, tables, images, or block-quotes.
 - Always link your resources and verify them
 - Introduce acronyms and technical jargon before using them.
-- Web3 changes fast, write the content to be as much future proof as possible
-- Do **not** submit content fully generated by AI, however we recommend using it to fix grammar or phrasing
+- Web3 changes fast, write the content to be as future-proof as possible
+- Do **not** submit content entirely generated by AI; however, we recommend using it to fix grammar or phrasing
 - Consider tutorials or hands-on guides for practical steps.
 - Use visualizations (mermaid, diagrams, tables) to clarify concepts.
 - Add recommended reading or dependencies at the top of a page if relevant.
 - Focus on delivering credible, formal, technical content without unnecessary high-level introductions; use examples, comparisons, or anecdotes to clarify complex topics.
 - You can use mermaid diagrams for visualizations
 
-### Content Standardization
+### Content standardization
 
 - Use **American English** consistently.
 - Follow consistent terminology, capitalization, and nomenclature (see [Ethereum.org style guide](https://ethereum.org/contributing/style-guide/content-standardization)).
-- Usage of images and visualizations is encouraged. If you are using an image created by a third party, make sure its license allows it and provide link to the original. For creating your own visualizations, we suggest [excalidraw.com](https://github.com/excalidraw/excalidraw).
+- Usage of images and visualizations is encouraged. If you are using an image created by a third party, make sure its license allows it and provide a link to the original. For creating your own visualizations, we suggest [excalidraw.com](https://github.com/excalidraw/excalidraw).
 - Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it fits, for example in block-quotes.
 
-### Linking Resources
+### Visual representation / drawings
+Like GitHub, we also support Mermaid!
+
+You can use codeblocks using the `mermaid` keyword, and you can create beautiful graphical representations.
+There's a [playground](https://www.mermaidchart.com/play#pako:eNqrVkrOT0lVslIqyExVKMksyUlVCM9ILFEIy89JSc3NLypRSMlPLc5TL1HISCxLtY_JU4CBGCW3IE9XP5fgGCUFKwUjVBlHX0-fSLCEMYqEn3-wK1jYxDQmT6kWAEyMIfc) where you can jump straight to draw!
+
+```mermaid
+pie title What Voldemort doesn't have?
+         "FRIENDS" : 2
+         "FAMILY" : 3
+         "NOSE" : 45
+```
+
+### Linking resources
 
 - Prefer descriptive names for external links (e.g., `inevitableeth.com` instead of “this wiki”).
 - Avoid overwhelming readers with too many inline links; consider a **Resources** section at the bottom.
 - Use relative paths for internal links and heading IDs for specific sections.
 - Provide archived mirrors or snapshots for important external references.
 
-### In-Page Notices
+### In-page notices
 
 - Use block-quote notices at the top of pages for context.
 - **Incomplete pages** should include a stub notice:
