@@ -1,8 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "Running Vercel prebuild for Vocs with manual Chromium..."
-
+echo "Running Vercel prebuild for Vocs"
 # Ensure docs/pages exists
 mkdir -p docs/pages
 
