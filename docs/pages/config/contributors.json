@@ -154,5 +154,29 @@
     "company": "EY",
     "job_title": "Frameworks Reviewer",
     "description": "Frameworks Reviewer"
+  },
+  "relotnek": {
+    "slug": "relotnek",
+    "name": "relotnek",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/u/1391674?v=4",
+    "github": "https://github.com/relotnek",
+    "twitter": "https://twitter.com/relotnek",
+    "website": null,
+    "company": "Filecoin Foundation",
+    "job_title": "Frameworks Contributor",
+    "description": "Frameworks Contributor"
+  },
+  "the-caliber": {
+    "slug": "the-caliber",
+    "name": "Caliber",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/u/132760011?v=4",
+    "github": "https://github.com/the-caliber",
+    "twitter": "https://x.com/caliber_tweets",
+    "website": "https://www.calibersec.com/",
+    "company": null,
+    "job_title": "Frameworks Contributor",
+    "description": "Frameworks Contributor"
   }
 }
