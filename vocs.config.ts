@@ -196,15 +196,15 @@ const config = {
           ]
         },
         {
-          text: 'Insider Threats',
+          text: 'DPRK IT Workers',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/insider-threats/README' },
-            { text: 'General Information', link: '/insider-threats/general-information' },
-            { text: 'Techniques, Tactics and Procedures', link: '/insider-threats/techniques-tactics-and-procedures' },
-            { text: 'Mitigating DPRK IT Workers', link: '/insider-threats/mitigating-dprk-it-workers' },
-            { text: 'Case Studies', link: '/insider-threats/case-studies' },
-            { text: 'Summary', link: '/insider-threats/summary' },
+            { text: 'Overview', link: '/dprk-it-workers/README' },
+            { text: 'General Information', link: '/dprk-it-workers/general-information' },
+            { text: 'Techniques, Tactics and Procedures', link: '/dprk-it-workers/techniques-tactics-and-procedures' },
+            { text: 'Mitigating DPRK IT Workers', link: '/dprk-it-workers/mitigating-dprk-it-workers' },
+            { text: 'Case Studies', link: '/dprk-it-workers/case-studies' },
+            { text: 'Summary', link: '/dprk-it-workers/summary' },
           ]
         },
         {

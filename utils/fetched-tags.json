@@ -121,6 +121,48 @@
       "Devops",
       "SRE"
     ],
+    "/dprk-it-workers": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Community & Marketing",
+      "HR",
+      "Engineer/Developer"
+    ],
+    "/dprk-it-workers/case-studies": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Community & Marketing",
+      "HR",
+      "Engineer/Developer"
+    ],
+    "/dprk-it-workers/general-information": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Community & Marketing",
+      "HR",
+      "Engineer/Developer"
+    ],
+    "/dprk-it-workers/mitigating-dprk-it-workers": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Community & Marketing",
+      "HR",
+      "Engineer/Developer"
+    ],
+    "/dprk-it-workers/summary": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Community & Marketing",
+      "HR",
+      "Engineer/Developer"
+    ],
+    "/dprk-it-workers/techniques-tactics-and-procedures": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Community & Marketing",
+      "HR",
+      "Engineer/Developer"
+    ],
     "/encryption": [
       "Engineer/Developer",
       "Security Specialist",
@@ -384,48 +426,6 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
-    ],
-    "/insider-threats": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Community & Marketing",
-      "HR",
-      "Engineer/Developer"
-    ],
-    "/insider-threats/case-studies": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Community & Marketing",
-      "HR",
-      "Engineer/Developer"
-    ],
-    "/insider-threats/general-information": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Community & Marketing",
-      "HR",
-      "Engineer/Developer"
-    ],
-    "/insider-threats/mitigating-dprk-it-workers": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Community & Marketing",
-      "HR",
-      "Engineer/Developer"
-    ],
-    "/insider-threats/summary": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Community & Marketing",
-      "HR",
-      "Engineer/Developer"
-    ],
-    "/insider-threats/techniques-tactics-and-procedures": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Community & Marketing",
-      "HR",
-      "Engineer/Developer"
     ],
     "/intro/introduction": [
       "SEAL/Initiative"
