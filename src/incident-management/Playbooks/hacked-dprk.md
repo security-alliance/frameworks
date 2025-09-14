@@ -32,12 +32,12 @@ In this method, the hackers will impersonate a person that you know or are likel
 
 
 
-![screenshot](../Playbooks/resources/example1.png)
+![screenshot](https://frameworks-static.s3.us-east-2.amazonaws.com/images/incident-management/playbooks/example1.png)
 > A message sent by a North Korean hacker impersonating an investor  
 
 When you visit this link and try to join the call, you will encounter an “error” and be prompted to fix it yourself.  
 
-![screenshot](../Playbooks/resources/example2.png)
+![screenshot](https://frameworks-static.s3.us-east-2.amazonaws.com/images/incident-management/playbooks/example2.png)
 > A fake error shown by the North Korean website  
 
 The instructions that you are provided will install malware on your computer.
@@ -47,11 +47,12 @@ The instructions that you are provided will install malware on your computer.
 ## 2. The Fake PDF
 In this method, you are sent a link to download a report, slide deck, or other plausible document.  
 
-![screenshot](../Playbooks/resources/example3.png)
+![screenshot](https://frameworks-static.s3.us-east-2.amazonaws.com/images/incident-management/playbooks/example3.png)
 > An example of a North Korean hacker attempting to share a link to malware  
 
 
-![screenshot](../Playbooks/resources/example4.png)
+![screenshot](https://frameworks-static.s3.us-east-2.amazonaws.com/images/incident-management/playbooks/example4.png)
 > An older example of a North Korean phishing email  
+
 
 If you download and run this file, you will have executed the malware. The first thing the malware does is open the PDF file you were expecting, so that you do not suspect you were infected.
