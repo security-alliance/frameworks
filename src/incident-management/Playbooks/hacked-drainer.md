@@ -14,7 +14,7 @@ If you’ve been sent this document, then we believe that your funds have been s
 
 In general, when we refer to a drainer, we’re referring to one of a small number of popular drainer software available. A drainer customer (or “affiliate”) will purchase access to the drainer software from the drainer developer. From there, the affiliate will upload it to phishing websites and promote it via social media, such as Twitter. You can think of drainers like how a franchised restaurant owner will buy the rights to use the logo from the corporation and then pay royalties for every sale.
 
-![screenshot](../Playbooks/resources/example5.png)
+![screenshot](https://frameworks-static.s3.us-east-2.amazonaws.com/images/incident-management/playbooks/example5.png)
 ---
 
 ## How Drainers Work
@@ -31,3 +31,4 @@ Drainers use a variety of different tactics to gain control over your wallet and
 ## Recovery
 
 Depending on which type of drainer you were impacted on, you might need to take different actions to recover control of your wallet.
+
