@@ -16,7 +16,7 @@ ELUSIVE COMET is a threat actor which specializes in impersonation and social en
 
 ---
 
-![screenshot](../Playbooks/resources/example6.png)
+![screenshot](https://frameworks-static.s3.us-east-2.amazonaws.com/images/incident-management/playbooks/example6.png)
 
 > ELUSIVE COMET account reaching out to a potential victim
 
@@ -24,19 +24,20 @@ Once on the Zoom call, ELUSIVE COMET applies pressure and time urgency to convin
 
 ---
 
-![screenshot](../Playbooks/resources/example7.png)
+![screenshot](https://frameworks-static.s3.us-east-2.amazonaws.com/images/incident-management/playbooks/example7.png)
 > ELUSIVE COMET hackers on the Zoom call. Note the presence of a user named “Zoom”
 
 ELUSIVE COMET requires that victims share their entire screen because Zoom contains a feature which allows users to request remote control access, but only if the target is sharing their entire screen. When the victim shares their screen, ELUSIVE COMET requests control from the “Zoom” user, which results in this prompt.
 
 ---
 
-![screenshot](../Playbooks/resources/example8.png)
+![screenshot](https://frameworks-static.s3.us-east-2.amazonaws.com/images/incident-management/playbooks/example8.png)
 > Prompt shown by Zoom when ELUSIVE COMET requests remote control
 
 Once the victim approves this request, ELUSIVE COMET uses the remote control to install malware to the victim’s computer. At this point, they are able to steal private keys, sensitive files, login sessions, and other valuable information. They use this to steal crypto, but also to perpetuate their scam by hijacking the victim’s social media accounts and sending out phishing messages to more people.
 
 ---
 
-![screenshot](../Playbooks/resources/example9.png)
+![screenshot](https://frameworks-static.s3.us-east-2.amazonaws.com/images/incident-management/playbooks/example9.png)
 > A message sent from an account belonging to a victim of ELUSIVE COMET
+
