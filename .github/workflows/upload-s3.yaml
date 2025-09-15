@@ -1,0 +1,79 @@
+name: Upload Media to S3
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+    types: [opened, synchronize, reopened]
+  workflow_dispatch: {}
+
+jobs:
+  upload-media:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      - name: Find added media files
+        id: find_files
+        run: |
+          git fetch origin develop
+          git diff --name-only origin/develop ${{ github.sha }} \
+            | grep -Ei '\.(png|jpg|jpeg|gif|svg|mp4)$' > new_media.txt || true
+          echo "Files found for upload:"
+          cat new_media.txt
+
+      - name: Upload media files to S3
+        id: upload_files
+        run: |
+          UPLOADED_FILES=""
+          while read file; do
+            if [ -f "$file" ]; then
+              s3_path="${file#./}"
+              aws s3 cp "$file" "s3://frameworks-static/$s3_path"
+              UPLOADED_FILES+="- https://frameworks-static.s3.us-east-2.amazonaws.com/$s3_path"$'\n'
+            fi
+          done < new_media.txt
+          echo "UPLOADED_FILES<<EOF" >> $GITHUB_ENV
+          echo "$UPLOADED_FILES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Comment on PR with uploaded media links
+        if: env.UPLOADED_FILES != ''
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const files = `${{ env.UPLOADED_FILES }}`;
+            const body = `
+            ⚠️ The following media files were uploaded to the S3 bucket:
+
+            ${files}
+
+            Please update your project to reference these links.
+            `;
+            if (context.payload.pull_request) {
+              github.rest.issues.createComment({
+                issue_number: context.payload.pull_request.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body
+              });
+            }
+
+      - name: Clean temporary files
+        run: rm -f new_media.txt
