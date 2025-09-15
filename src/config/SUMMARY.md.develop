@@ -100,7 +100,7 @@
   - [Communication Strategies](./incident-management/communication-strategies.md)
   - [Incident Detection and Response](./incident-management/incident-detection-and-response.md)
   - [Lessons Learned](./incident-management/lessons-learned.md)
-- [Playbooks](./incident-management/playbooks/README.md)
+  - [Playbooks](./incident-management/playbooks/README.md)
   - [Decentralized Incident Response Framework](./incident-management/playbooks/DeIRF.md)
   - [You have been hacked by North-Korea](./incident-management/playbooks/hacked-dprk.md)
   - [You have been hacked by a Drainer](./incident-management/playbooks/hacked-drainer.md)
