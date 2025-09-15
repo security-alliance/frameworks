@@ -64,7 +64,7 @@ jobs:
 
             ${files}
 
-            Please update your project to reference these links.
+            Please update your project to use these links and remove the corresponding images/videos from the repository.
             `;
             if (context.payload.pull_request) {
               github.rest.issues.createComment({
