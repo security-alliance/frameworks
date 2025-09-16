@@ -1,4 +1,4 @@
-# Contributor Covenant Code of Conduct
+# Frameworks Code of Conduct
 
 ## Our Pledge
 
@@ -12,29 +12,46 @@ and orientation.
 We pledge to act and interact in ways that contribute to an open, welcoming,
 diverse, inclusive, and healthy community.
 
+## Alignment with the Security Alliance (SEAL) Code of Conduct
+
+This project follows the [Security Alliance (SEAL) Code of Conduct](https://www.securityalliance.org/news/Code_of_conduct), which sets expectations for all members and contributors across the organization.
+
+At SEAL, we commit to:
+
+- **Be Accountable** – Take responsibility for commitments and actions.
+- **Act Ethically** – Never exploit skills or information for malicious advantage.
+- **Protect Sensitive Information** – Handle confidential data responsibly.
+- **Speak the Truth** – Be honest in communications, reporting, and attribution.
+- **Respect Others** – Treat colleagues, users, and competitors with respect.
+- **Stay Informed** – Continuously learn and share knowledge to protect others.
+
+**How This Applies to Our Initiative:**
+
+SEAL’s Code establishes the baseline expectations for all contributors. In this initiative, you are expected to meet SEAL’s standards ***and*** the additional guidelines outlined below.
+
 ## Our Standards
 
 Examples of behavior that contributes to a positive environment for our
 community include:
 
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
-* Accepting responsibility and apologizing to those affected by our mistakes,
-  and learning from the experience
-* Focusing on what is best not just for us as individuals, but for the
-  overall community
+- Demonstrating empathy and kindness toward other people
+- Being respectful of differing opinions, viewpoints, and experiences
+- Giving and gracefully accepting constructive feedback
+- Accepting responsibility and apologizing to those affected by our mistakes,
+and learning from the experience
+- Focusing on what is best not just for us as individuals, but for the
+overall community
 
 Examples of unacceptable behavior include:
 
-* The use of sexualized language or imagery, and sexual attention or
-  advances of any kind
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or email
-  address, without their explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
-  professional setting
+- The use of sexualized language or imagery, and sexual attention or
+advances of any kind
+- Trolling, insulting or derogatory comments, and personal or political attacks
+- Public or private harassment
+- Publishing others' private information, such as a physical or email
+address, without their explicit permission
+- Other conduct which could reasonably be considered inappropriate in a
+professional setting
 
 ## Enforcement Responsibilities
 
@@ -113,14 +130,12 @@ the community.
 
 ## Attribution
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage],
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/),
 version 2.0, available at
 https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
 
 Community Impact Guidelines were inspired by [Mozilla's code of conduct
 enforcement ladder](https://github.com/mozilla/diversity).
-
-[homepage]: https://www.contributor-covenant.org
 
 For answers to common questions about this code of conduct, see the FAQ at
 https://www.contributor-covenant.org/faq. Translations are available at
