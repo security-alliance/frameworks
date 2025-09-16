@@ -506,6 +506,24 @@
       "Devops",
       "SRE"
     ],
+    "/opsec/core-concepts/implementation-process": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/core-concepts/overview": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/opsec/core-concepts/security-fundamentals": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/core-concepts/web3-considerations": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/opsec/governance-program-management": [
       "Security Specialist",
       "Operations & Strategy",
@@ -642,18 +660,6 @@
       "Operations & Strategy",
       "Devops",
       "SRE"
-    ],
-    "/opsec/overview/implementation-process": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/overview/security-fundamentals": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/overview/web3-considerations": [
-      "Security Specialist",
-      "Operations & Strategy"
     ],
     "/opsec/principles/five-steps": [
       "Security Specialist",

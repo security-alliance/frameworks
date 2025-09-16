@@ -55,10 +55,10 @@ const config = {
           items: [
             { text: 'Overview', link: '/opsec/overview' },
             {
-              text: 'Overview Details',
+              text: 'Opsec Core Concepts',
               collapsed: false,
               items: [
-                { text: 'Highlights', link: '/opsec/overview/README' },
+                { text: 'Overview', link: '/opsec/overview/overview' },
                 { text: 'Security Fundamentals', link: '/opsec/overview/security-fundamentals' },
                 { text: 'Implementation Process', link: '/opsec/overview/implementation-process' },
                 { text: 'Web3 considerations', link: '/opsec/overview/web3-considerations' },
