@@ -55,13 +55,12 @@ const config = {
           items: [
             { text: 'Overview', link: '/opsec/overview' },
             {
-              text: 'Opsec Core Concepts',
+              text: 'OpSec Core Concepts',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/opsec/overview/overview' },
-                { text: 'Security Fundamentals', link: '/opsec/overview/security-fundamentals' },
-                { text: 'Implementation Process', link: '/opsec/overview/implementation-process' },
-                { text: 'Web3 considerations', link: '/opsec/overview/web3-considerations' },
+                { text: 'Security Fundamentals', link: '/opsec/core-concepts/security-fundamentals' },
+                { text: 'Implementation Process', link: '/opsec/core-concepts/implementation-process' },
+                { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
             { text: 'Threat Modeling Overview', link: '/opsec/threat-modeling-overview' },
