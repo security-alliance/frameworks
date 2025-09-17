@@ -101,7 +101,7 @@
   - [Incident Detection and Response](./incident-management/incident-detection-and-response.md)
   - [Lessons Learned](./incident-management/lessons-learned.md)
   - [Playbooks](./incident-management/playbooks/README.md)
-    - [Decentralized Incident Response Framework](./incident-management/playbooks/DeIRF.md)
+    - [Decentralized Incident Response Framework](./incident-management/playbooks/deirf.md)
     - [You have been hacked by North-Korea](./incident-management/playbooks/hacked-dprk.md)
     - [You have been hacked by a Drainer](./incident-management/playbooks/hacked-drainer.md)
     - [You have been hacked by Elusive Comet](./incident-management/playbooks/hacked-elusive-comet.md)
