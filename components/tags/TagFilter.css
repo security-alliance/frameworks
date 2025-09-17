@@ -136,18 +136,30 @@
 /* Light mode support for header filter */
 :root:not(.dark) .tag-filter-toggle {
   background: #f6f6f6;
-  border: 1px solid #ececec;
+  border: 1px solid #908f8f;
   color: #838383;
+}
+
+:root:not(.dark) .clear-filters {
+  color: #f61a1a;
+}
+
+
+:root:not(.dark) .tag-filter-toggle:hover {
+  border-color: #303030;
+  color: #1e1e1e;
 }
 
 :root:not(.dark) .tag-filter-dropdown {
   background-color: #94b3df;
 }
+
 :root:not(.dark) .tag-filter-header h3 {
   color: #00000096;
 }
+
 :root:not(.dark) .tag-filter-search input {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgb(255 255 255 / 29%);
 }
 
 /* Responsive positioning for header filter */

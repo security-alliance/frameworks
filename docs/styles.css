@@ -2,8 +2,6 @@
     height: 80% !important;
 }
 
-
-
 .vocs_DocsLayout_gutterLeft {
     justify-content: flex-start;
     width: unset;
@@ -23,17 +21,79 @@
 :root:not(.dark) .vocs_DocsLayout {
     color: #060606;
 }
-:root:not(.dark) .vocs_Sidebar_item {
-    color: #060606;
+
+:root:not(.dark) .vocs_Sidebar_item[data-active="true"] {
+    font-weight: 500;
 }
+
+:root:not(.dark) .vocs_Sidebar_item {
+    font-weight: 400;
+}
+
+:root:not(.dark) .vocs_Blockquote {
+    border-left: 2px solid #000000;
+}
+
+:root:not(.dark) .vocs_Sidebar_sectionHeader .vocs_Sidebar_item {
+    color: #000000;
+    font-weight: 450;
+}
+
 :root:not(.dark) .vocs_Blockquote>.vocs_Paragraph {
     color: #0706069e;
     font-weight: bolder;
 }
+
 :root:not(.dark) .vocs_Blockquote {
     color: #060606;
 }
 
-.vocs_Sidebar_footerContent{
+:root:not(.dark) .vocs_DesktopSearch_search {
+    border: 1px solid #908f8f;
+}
+
+:root:not(.dark) .vocs_DesktopSearch_search:hover {
+    border-color: #303030;
+    color: #1e1e1e;
+}
+
+
+:root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft {
+    border: 1px solid #908f8f;
+}
+
+:root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft:hover {
+    border-color: #303030;
+    color: #1e1e1e;
+}
+
+:root:not(.dark) .vocs_AiCtaDropdown_buttonRight.vocs_AiCtaDropdown_buttonRight {
+    border: 1px solid #908f8f;
+}
+
+:root:not(.dark) .vocs_AiCtaDropdown_buttonRight.vocs_AiCtaDropdown_buttonRight:hover {
+    border-color: #303030;
+    color: #1e1e1e;
+}
+
+:root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft {
+    border: 1px solid #908f8f;
+}
+
+:root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft:hover {
+    border-color: #303030;
+    color: #1e1e1e;
+}
+
+:root:not(.dark) .vocs_AiCtaDropdown_dropdownMenuContent {
+    border: 1px solid #908f8f;
+}
+
+:root:not(.dark) .vocs_AiCtaDropdown_dropdownMenuContent:hover {
+    border-color: #303030;
+    color: #1e1e1e;
+}
+
+.vocs_Sidebar_footerContent {
     margin-bottom: calc(10px + var(--vocs_Banner_bannerHeight, 0px));
 }
