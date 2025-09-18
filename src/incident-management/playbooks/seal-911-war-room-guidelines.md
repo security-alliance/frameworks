@@ -2,6 +2,11 @@
 tags:
   - Security Specialist
   - Operations & Strategy
+
+contributors:
+  - role: wrote
+    users: [SEAL]
+  
 ---
 
 # SEAL 911
