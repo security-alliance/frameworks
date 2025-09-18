@@ -2,11 +2,12 @@
 tags:
   - Security Specialist
   - Operations & Strategy
-  - Devops
+  - DevOps
   - SRE
 contributors:
   - role: wrote
     users: [relotnek]
+  
 ---
 
 # Decentralized Incident Response Framework (DeIRF)
