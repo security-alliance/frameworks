@@ -102,7 +102,7 @@
   - [Lessons Learned](./incident-management/lessons-learned.md)
   - [Playbooks](./incident-management/playbooks/README.md)
     - [Malware Infection](./incident-management/playbooks/malware.md)
-    - [North Korea (DPRK) Attack](./incident-management/playbooks/hacked-dpkr.md)
+    - [North Korea (DPRK) Attack](./incident-management/playbooks/hacked-dprk.md)
     - [Wallet Drainer Attack](./incident-management/playbooks/hacked-drainer.md)
     - [ELUSIVE COMET Attack](./incident-management/playbooks/hacked-elusive-comet.md)
     - [SEAL 911 War Room Guidelines](./incident-management/playbooks/seal-911-war-room-guidelines.md)
