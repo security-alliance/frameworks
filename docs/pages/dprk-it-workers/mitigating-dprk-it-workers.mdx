@@ -24,7 +24,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 This section discusses ways you can harden your organization against DPRK IT Workers, both before and after a potential hiring. All of the strategies covered in the prior section, [**Techniques, Tactics, and Procedures**](/dprk-it-workers/techniques-tactics-and-procedures), still apply but serve a more 'active' role to identify DPRK IT Workers during recruiting or within your organization. Here, we will discuss mitigation strategies that limit the effects of a DPRK IT Worker infiltration and what you should do after identifying a successful infiltration.
 
-#### Hardening your hiring processes
+## Hardening your hiring processes
 1.  Apply all the steps from the sections [Am I Interviewing a DPRK IT Worker?](/dprk-it-workers/techniques-tactics-and-procedures#am-i-interviewing-a-dprk-it-worker) and [Did I hire a DPRK IT Worker?](/dprk-it-workers/techniques-tactics-and-procedures#did-i-hire-a-dprk-it-worker). **It's important to educate all of your non-DPRK employees on these points, especially people responsible for hiring, developer relations, talent hunting, and community management.**
 2.  Introduce a culture of background checks. Do not take a prospective developer's claims at face value. **Even the most basic OSINT check can often discover deep inconsistencies. Check GitHub commit history, check Twitter history, and Google the full name of the developer.**
     1.  Is the work experience claimed in the CV reflected on GitHub?
@@ -38,7 +38,7 @@ This section discusses ways you can harden your organization against DPRK IT Wor
 5.  You could ask about North Korea on call and observe the reaction. There's a so-called "F**k Kim Jong Un" test, where interviewer is asking to repeat the phrase and North Koreans are banned from saying it and they drop the call immediately. Obviously, it won't be effective for 'facilitators' but it will most likely be effective for North Koreans themselves. Do not rely on it as a panacea.
 6.  Regardless of our tips of not focusing on "Asian man in his 20-30s" that particular appearance is still the most common (If not cloaked under the generative AI). Similarly, Korean-English accents.
 
-#### Hardening your organization
+## Hardening your organization
 1.  Define and implement tight access control rules for all of your employees, especially remote ones. Avoid giving privileged access to workers who did not pass 100% of the tests and filtering criteria for DPRK IT Workers (all the points already discussed). Specific examples of privileged access include:
     1.  Do not give admin permissions to your GitHub organization and repositories, including for build releases, adding members, and repository settings.
     2.  Do not give publishing permissions on any package managers. The publishers of your packages are a critical supply chain risk; they need to be 100% vetted.
@@ -50,7 +50,7 @@ This section discusses ways you can harden your organization against DPRK IT Wor
 5.  **DO NOT allow hired contributors to use throwaway Github accounts for the work at your company!** It's part of the DPRK IT Worker tactics to save their main accounts from being discovered.
 6. If your project allows, it may be beneficial to establish a public codebase on GitHub and have your remote workers make at least *some* public contributions related to your project. If all of your codebase is supposed to stay private, at least list all of the contributors (CODEOWNERS) in a special repository created only for such purpose. Security researchers like SEAL911 scan such public codebases and will notify you privately if they suspect DPRK IT Workers are contributing to your project.
 
-#### I hired a DPRK IT Worker. What now?
+## I hired a DPRK IT Worker. What now?
 1.  Contact security professionals if you're unable to handle the situation alone. You can reach out to SEAL911 (@seal_911_bot on Telegram).
 2.  **You do not need to end the engagement abruptly. It's important to maintain a facade while you deal with access revocation and mitigate any immediate risks to your organization.** Act normally, but start preparing an actionable plan immediately and aim to remove the DPRK IT Worker within the next few days at most. If your organization is properly siloed from insider threats, you shouldn't have much of an issue firing the worker almost immediately after conducting a post-mortem review.
 3.  **Check if you did not hire more than one DPRK IT Worker. In the majority of cases, we find more DPRK IT Workers within the same organization.** They do not always come as a recommendation from an already-discovered DPRK IT Worker; they simply already know how to abuse your hiring process.
@@ -65,7 +65,7 @@ This section discusses ways you can harden your organization against DPRK IT Wor
 12. You do not need to inform the DPRK IT Worker about the actual reasons for termination. You can cite downsizing, poor performance, lack of cultural fit, or any other reason.
 13. **In the post-mortem phase, you will need to halt all development on the affected infrastructure.** For companies that hired a DPRK IT Worker as a "Core Engineer," this may sometimes mean several weeks of re-auditing all code and infrastructure. **You should stop and do it.** At the same time, build a threat model to prevent the situation from recurring and to limit its effects if it does happen again. You can remove the DPRK IT Worker's code from your codebase. **DPRK IT Workers will claim this code as part of their work experience in their future job searches.** The decision is ultimately yours. While not removing the code helps security researchers like those at SEAL911 track these workers, our recommendation is to remove it to protect your project and deny adding credibility to DPRK IT Worker.
 
-#### Data collection
+## Data collection
 1.  You should collect the following data before firing the DPRK IT Worker. This data will help organizations like SEAL with future mitigation and the discovery of other actors.
     1.  Full Legal Name
     2.  Phone
@@ -89,7 +89,7 @@ This section discusses ways you can harden your organization against DPRK IT Wor
     17. Did they refer anyone else?
     18. Were they referred by someone else?
 
-#### Overview of risks to your organization
+## Overview of risks to your organization
 1.  **Defrauding the company:** The company is paying someone whose identity they do not know.
 2.  **Subpar operational security:** DPRK IT workers share credentials among themselves in open channels, have a poor command of Git, and unintentionally or intentionally leak the access they are granted to third parties.
 3.  **Extortion:** They may try to extort more money after a job is finished.
