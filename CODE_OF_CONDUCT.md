@@ -12,6 +12,23 @@ and orientation.
 We pledge to act and interact in ways that contribute to an open, welcoming,
 diverse, inclusive, and healthy community.
 
+## Alignment with the Security Alliance (SEAL) Code of Conduct
+
+This initiative follows the [Security Alliance (SEAL) Code of Conduct](https://www.securityalliance.org/news/Code_of_conduct), which sets expectations for all members and contributors across the organization.
+
+At SEAL, we commit to:
+
+- **Be Accountable** – Take responsibility for commitments and actions.
+- **Act Ethically** – Never exploit skills or information for malicious advantage.
+- **Protect Sensitive Information** – Handle confidential data responsibly.
+- **Speak the Truth** – Be honest in communications, reporting, and attribution.
+- **Respect Others** – Treat colleagues, users, and competitors with respect.
+- **Stay Informed** – Continuously learn and share knowledge to protect others.
+
+**How This Applies to Our Initiative:**
+
+SEAL’s Code establishes the baseline expectations for all contributors. In this initiative, you are expected to meet SEAL’s standards ***and*** the additional guidelines outlined below.
+
 ## Our Standards
 
 Examples of behavior that contributes to a positive environment for our
