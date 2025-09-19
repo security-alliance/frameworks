@@ -1,0 +1,114 @@
+/* ContributeFooter component styles */
+.contribute-footer {
+  margin: 1.5rem 0 1rem 0;
+  padding: 0.75rem 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+}
+
+.contribute-footer-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contribute-footer-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4339db; /* SEAL Blue */
+  margin-bottom: 0.5rem;
+}
+
+.contribute-footer-text {
+  font-size: 1.1rem;
+  color: var(--fg);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.contribute-footer-subtitle {
+  font-size: 1rem;
+  color: #6C757D; /* Gray from SEAL palette */
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.contribute-footer-link {
+  color: #4339db; /* SEAL Blue */
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.contribute-footer-link:hover {
+  color: #352eb0; /* Darker SEAL Blue */
+}
+
+.contribute-footer-button {
+  display: inline-block;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background-color: #4339db;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  margin-top: 0.25rem;
+}
+
+.contribute-footer-button:hover {
+  background-color: #352eb0; /* Darker SEAL Blue */
+  border-color: #352eb0;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(67, 57, 219, 0.2);
+}
+
+/* Dark theme styling for contribute footer */
+html.ayu .contribute-footer,
+html.coal .contribute-footer,
+html.navy .contribute-footer {
+  background-color: transparent;
+  border: none;
+}
+
+html.ayu .contribute-footer-title,
+html.coal .contribute-footer-title,
+html.navy .contribute-footer-title {
+  color: #6b63e8; /* Brighter SEAL Blue for dark themes */
+}
+
+html.ayu .contribute-footer-subtitle,
+html.coal .contribute-footer-subtitle,
+html.navy .contribute-footer-subtitle {
+  color: #a8adb2; /* Lighter gray for dark themes */
+}
+
+html.ayu .contribute-footer-link,
+html.coal .contribute-footer-link,
+html.navy .contribute-footer-link {
+  color: #6b63e8; /* Brighter SEAL Blue for dark themes */
+}
+
+html.ayu .contribute-footer-link:hover,
+html.coal .contribute-footer-link:hover,
+html.navy .contribute-footer-link:hover {
+  color: #8c85f0; /* Even brighter SEAL Blue for dark themes */
+}
+
+html.ayu .contribute-footer-button,
+html.coal .contribute-footer-button,
+html.navy .contribute-footer-button {
+  color: #FFFFFF;
+  border-color: #6b63e8; /* Brighter SEAL Blue for dark themes */
+  background-color: #6b63e8;
+}
+
+html.ayu .contribute-footer-button:hover,
+html.coal .contribute-footer-button:hover,
+html.navy .contribute-footer-button:hover {
+  background-color: #8c85f0; /* Even brighter SEAL Blue for dark themes */
+  border-color: #8c85f0;
+  color: #1a1a1a; /* Darker background for contrast */
+  box-shadow: 0 4px 8px rgba(107, 99, 232, 0.3);
+}
