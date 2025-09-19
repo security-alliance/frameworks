@@ -1,10 +1,10 @@
 <!-- 
-This file is a duplicate of the CONTRIBUTE.md in src/contribute. 
+This file is a duplicate of the contributing.mdx in docs/contribute. 
 
-Both files contain the same content: the src/config file is there to render the content on the website, 
+Both files contain the same content: the docs/config file is there to render the content on the website, 
 while this copy is needed to make it highlighted in the repository dashboard.
 
-⚠️ If you make updates here, make sure to update the src/contribute/CONTRIBUTE.md as well, and vice versa, 
+⚠️ If you make updates here, make sure to update the docs/contribute/contributing.mdx as well, and vice versa, 
 so both stay in sync.
 -->
 
