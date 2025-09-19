@@ -56,7 +56,7 @@ All contributions should follow this workflow:
 5. **Notify reviewers** by tagging a steward or maintainer, requesting reviews directly in your PR.
 6. Additionally, you can paste your PR and/or potential associated issues to the `framework-reviewers` Discord channel.
 7. Once reviewed and approved, your changes will be merged into `develop`.
-8. Don't forget to add yourself to the YAML header of the file you're modifying, given that is the way we provide attribution. You should also create your profile inside the contributors list, at `src/config/contributors.json`.
+8. Don't forget to add yourself to the YAML header of the file you're modifying, given that is the way we provide attribution. You should also create your profile inside the contributors list, at `docs/config/contributors.json`.
 9. Periodically, reviewed content from `develop` is merged into `main` for the stable site.
 
 If you’re interested in a framework that doesn’t currently have an active steward, you can **become one yourself**. See the [Stewards guide](/docs/pages/contribute
@@ -119,15 +119,15 @@ If you prefer to install dependencies locally on your machine:
     
 3. **Install Node.js dependencies:**
 
-```bash
-npm install
-```
+    ```bash
+    npm install
+    ```
 
-1. Start the local development server
+4. Start the local development server
 
-```bash
-npx just serve
-```
+    ```bash
+    npx just serve
+    ```
 
 **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
 
