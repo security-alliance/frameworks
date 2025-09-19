@@ -1,21 +1,12 @@
----
-title: "Contribute"
----
+<!-- 
+This file is a duplicate of the contributing.mdx in docs/contribute. 
 
-{/*
-This file is a duplicate of the CONTRIBUTE.md at the root level. 
+Both files contain the same content: the docs/config file is there to render the content on the website, 
+while this copy is needed to make it highlighted in the repository dashboard.
 
-Both files contain the same content: the root-level file is there to be highlighted in the repository dashboard, 
-while this copy is used to render the content on the website. 
-
-⚠️ If you make updates here, make sure to update the root CONTRIBUTE.md as well, and vice versa, 
+⚠️ If you make updates here, make sure to update the docs/contribute/contributing.mdx as well, and vice versa, 
 so both stay in sync.
-*/}
-
-import { ContributeFooter, TagFilter, TagProvider, MermaidRenderer } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+-->
 
 # **Contributing guidelines**
 
@@ -38,7 +29,7 @@ When contributing, **please submit your Pull Requests to the development branch*
 
 ## Ways to contribute
 
-1. **Check for a framework-specific branch**: First, check if there's a [Steward](./stewards) for the specific framework you're interested in, and reach out. We usually have separate branches pre-develop for frameworks with stewards. Their naming convention is `fw_framework_name`, for example `fw_opsec`, `fw_community_mgmt` - the naming should be intuitive. For more information about stewards and their responsibilities, see the [Stewards](./stewards) section.
+There are several ways to contribute, depending on your preference and the scope of your changes. First, check existing PRs or branches to make sure your work has not been previously ****submitted**.**
 
 ### 1. Quick edits
 
@@ -283,12 +274,12 @@ Like GitHub, we also support Mermaid!
 You can use codeblocks using the `mermaid` keyword, and you can create beautiful graphical representations.
 There's a [playground](https://www.mermaidchart.com/play#pako:eNqrVkrOT0lVslIqyExVKMksyUlVCM9ILFEIy89JSc3NLypRSMlPLc5TL1HISCxLtY_JU4CBGCW3IE9XP5fgGCUFKwUjVBlHX0-fSLCEMYqEn3-wK1jYxDQmT6kWAEyMIfc) where you can jump straight to draw!
 
-<MermaidRenderer 
-id="manual-diagram"
-code={`pie title What Voldemort doesn't have?
+```mermaid
+pie title What Voldemort doesn't have?
          "FRIENDS" : 2
          "FAMILY" : 3
-         "NOSE" : 45`} />
+         "NOSE" : 45
+```
 
 ### Linking resources
 
@@ -316,8 +307,3 @@ This page is also open for contributions! Suggest improvements to our style and 
 ## About this page
 
 Originally inspired by the [Ethereum Protocol Fellows](https://github.com/eth-protocol-fellows/protocol-studies)
-
----
-
-</TagProvider>
-<ContributeFooter />
