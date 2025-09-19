@@ -1,0 +1,27 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Official repository to the Security Frameworks by SEAL. This repository contains the entire structure and contents of the frameworks. Feel free to suggest from new categories to grammar corrections. Collaboration is open to everyone. **This is a work in progress.**",
+  "main": "index.js",
+  "devDependencies": {
+    "vocs": "^1.0.13"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "npm run generate-tags && vocs dev",
+    "docs:build": "npm run generate-tags && vocs build",
+    "docs:preview": "vocs preview",
+    "generate-tags": "node utils/tags-fetcher.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "just-install": "^2.0.2",
+    "mermaid": "^11.11.0",
+    "playwright": "^1.55.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.8.1"
+  }
+}

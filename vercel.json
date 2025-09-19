@@ -1,11 +1,36 @@
 {
-    "buildCommand": "bash vercel_build.sh",
-    "outputDirectory": "book",
-    "redirects": [
-        {
-          "source": "/book",
-          "destination": "/",
-          "permanent": true
-        }
-      ]
-  }
+  "buildCommand": "bash vercel_build.sh",
+  "outputDirectory": "docs/dist",
+  "redirects": [
+    {
+      "source": "/intro/",
+      "destination": "/intro/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/contribute/",
+      "destination": "/contribute/contributing",
+      "permanent": true
+    },
+    {
+      "source": "/intro",
+      "destination": "/intro/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/contribute",
+      "destination": "/contribute/contributing",
+      "permanent": true
+    },
+    {
+      "source": "/:section",
+      "destination": "/:section/overview",
+      "permanent": true
+    },
+    {
+      "source": "/:section/",
+      "destination": "/:section/overview",
+      "permanent": true
+    }
+  ]
+}
