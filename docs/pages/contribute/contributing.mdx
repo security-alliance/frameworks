@@ -11,7 +11,7 @@ so both stay in sync.
 ---
 title: "Contribute"
 ---
-import { ContributeFooter, TagFilter, TagProvider } from '../../../components'
+import { ContributeFooter, TagFilter, TagProvider, MermaidRenderer } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -282,12 +282,12 @@ Like GitHub, we also support Mermaid!
 You can use codeblocks using the `mermaid` keyword, and you can create beautiful graphical representations.
 There's a [playground](https://www.mermaidchart.com/play#pako:eNqrVkrOT0lVslIqyExVKMksyUlVCM9ILFEIy89JSc3NLypRSMlPLc5TL1HISCxLtY_JU4CBGCW3IE9XP5fgGCUFKwUjVBlHX0-fSLCEMYqEn3-wK1jYxDQmT6kWAEyMIfc) where you can jump straight to draw!
 
-```mermaid
-pie title What Voldemort doesn't have?
+<MermaidRenderer 
+id="manual-diagram"
+code={`pie title What Voldemort doesn't have?
          "FRIENDS" : 2
          "FAMILY" : 3
-         "NOSE" : 45
-```
+         "NOSE" : 45`} />
 
 ### Linking resources
 
