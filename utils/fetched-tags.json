@@ -16,8 +16,11 @@
     "Protocol",
     "SEAL/Initiative",
     "SRE",
+    "Security",
     "Security Specialist",
+    "Threat Actors",
     "Travel",
+    "Wallet Drainers",
     "Web3",
     "Whitehat"
   ],
@@ -339,12 +342,6 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/incident-management/decentralized-ir": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
     "/incident-management/incident-detection-and-response": [
       "Security Specialist",
       "Operations & Strategy"
@@ -361,11 +358,29 @@
       "Devops",
       "SRE"
     ],
-    "/incident-management/playbooks": [
+    "/incident-management/playbooks/decentralized-ir": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/incident-management/playbooks/hacked-drainer": [
+      "Security",
+      "Wallet Drainers"
+    ],
+    "/incident-management/playbooks/hacked-elusive-comet": [
+      "Security",
+      "Threat Actors"
+    ],
+    "/incident-management/playbooks/malware": [
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/incident-management/seal-911-war-room-guidelines": [
+    "/incident-management/playbooks/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/incident-management/playbooks/seal-911-war-room-guidelines": [
       "Security Specialist",
       "Operations & Strategy"
     ],

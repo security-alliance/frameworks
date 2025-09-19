@@ -180,9 +180,20 @@ const config = {
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
             { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
             { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
-            { text: 'Playbooks', link: '/incident-management/playbooks' },
-            { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/seal-911-war-room-guidelines' },
-            { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/decentralized-ir', dev: true },
+            {
+              text: 'Playbooks',
+              collapsed: false,
+              dev: true,
+              items: [
+                { text: 'Overview', link: '/incident-management/playbooks/overview', dev: true },
+                { text: 'Malware Infection', link: '/incident-management/playbooks/malware', dev: true },
+                { text: 'North Korea (DPRK) Attack', link: '/incident-management/playbooks/hacked-dprk', dev: true },
+                { text: 'Wallet Drainer Attack', link: '/incident-management/playbooks/hacked-drainer', dev: true },
+                { text: 'ELUSIVE COMET Attack', link: '/incident-management/playbooks/hacked-elusive-comet', dev: true },
+                { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines', dev: true },
+                { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir', dev: true },
+              ]
+            },
           ]
         },
         {
