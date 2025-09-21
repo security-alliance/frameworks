@@ -1,0 +1,19 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.8.2
+2 info using node@v22.5.1
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/chirag/Github-dev-work/frameworks/.npmrc
+5 silly config load:file:/Users/chirag/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm view react-dom description dist-tags.latest homepage version time
+8 verbose argv "view" "--json" "--" "react-dom" "description" "dist-tags.latest" "homepage" "version" "time"
+9 verbose logfile logs-max:10 dir:/Users/chirag/Github-dev-work/frameworks/node_cache/_logs/2025-10-13T09_47_10_371Z-
+10 verbose logfile /Users/chirag/Github-dev-work/frameworks/node_cache/_logs/2025-10-13T09_47_10_371Z-debug-0.log
+11 silly logfile done cleaning log files
+12 http fetch GET 200 https://registry.npmjs.org/react-dom 677ms (cache miss)
+13 verbose cwd /Users/chirag/Github-dev-work/frameworks
+14 verbose os Darwin 24.1.0
+15 verbose node v22.5.1
+16 verbose npm  v10.8.2
+17 verbose exit 0
+18 info ok
