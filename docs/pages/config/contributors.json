@@ -193,14 +193,14 @@
   },
   "Raiders0786": {
     "slug": "Raiders0786",
-    "name": "Chirag",
-    "role": "contributor",
+    "name": "Raiders",
+    "role": "steward",
     "avatar": "https://avatars.githubusercontent.com/Raiders0786",
     "github": "https://github.com/Raiders0786",
-    "twitter": null,
-    "website": null,
-    "company": null,
-    "job_title": "Frameworks Contributor",
-    "description": "DNS and Domain Registration Security contributor"
+    "twitter": "https://x.com/__Raiders",
+    "website": "https://web3sec.news",
+    "company": "Web3Sec.News",
+    "job_title": "Founder",
+    "description": "Steward of DNS and Domain Registration Security"
   }
 }
