@@ -190,5 +190,17 @@
     "company": "SEAL",
     "job_title": "Frameworks Contributors",
     "description": "Frameworks Contributors"
+  },
+  "Raiders0786": {
+    "slug": "Raiders0786",
+    "name": "Chirag",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/Raiders0786",
+    "github": "https://github.com/Raiders0786",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": "Frameworks Contributor",
+    "description": "DNS and Domain Registration Security contributor"
   }
 }
