@@ -42,7 +42,7 @@ Each step represents a potential attack vector where responses can be intercepte
 
 ## DNS-Level Security
 
-### DNSSEC Implementation
+### 1. DNSSEC Implementation
 DNSSEC provides cryptographic authentication of DNS responses.
 
 1. **Enable DNSSEC signing** at your DNS provider
@@ -50,7 +50,7 @@ DNSSEC provides cryptographic authentication of DNS responses.
 3. **Monitor DNSSEC validation** status regularly
 4. **Test configuration** using tools like DNSViz or Verisign DNSSEC Debugger
 
-### CAA Records
+### 2. CAA Records
 Certificate Authority Authorization records specify which CAs can issue certificates for your domain.
 
 ```dns
@@ -59,7 +59,7 @@ example.com. CAA 0 issue "digicert.com"
 example.com. CAA 0 iodef "mailto:security@example.com"
 ```
 
-### Email Security Configuration
+### 3. Email Security Configuration
 
 #### SPF (Sender Policy Framework)
 ```dns
@@ -81,7 +81,7 @@ _mta-sts.example.com. TXT "v=STSv1; id=20240101000000"
 
 ## Registrar Security
 
-### Choosing a Secure Registrar
+### 1. Choosing a Secure Registrar
 
 #### Enterprise-Grade Registrars (Recommended)
 - **MarkMonitor**: Used by Fortune 500 companies, requires legal documentation for changes
@@ -94,27 +94,27 @@ _mta-sts.example.com. TXT "v=STSv1; id=20240101000000"
 - Consumer-focused services (Google Domains/Squarespace)
 - Resellers (additional attack surface)
 
-### Registrar-Level Protections
+### 2. Registrar-Level Protections
 
-#### 1. Registry Lock (EPP Lock)
+#### Registry Lock (EPP Lock)
 Registry lock prevents unauthorized transfers at the registry level, not just the registrar.
 - **What it does**: Requires manual verification with the registry for any changes
 - **How to enable**: Contact enterprise registrars for registry-operator level locks
 - **Note**: Different from standard transfer locks which only prevent transfers between registrars
 
-#### 2. Multi-Factor Authentication
+#### Multi-Factor Authentication
 - **Hardware Security Keys** (YubiKey/FIDO2): Most secure option
 - **TOTP Applications**: Minimum acceptable standard
 - **Avoid SMS 2FA**: Vulnerable to SIM swapping
 
-#### 3. Dedicated Security Contact Email
+#### Dedicated Security Contact Email
 ```
 ❌ admin@yourdomain.com (circular dependency)
 ❌ personal@gmail.com (too many attack vectors)
 ✅ domain-security-only@protonmail.com (isolated, dedicated purpose)
 ```
 
-#### 4. Access Control Best Practices
+#### Access Control Best Practices
 - Document all personnel with registrar access
 - Use role-based access where available
 - Implement approval workflows for critical changes
@@ -122,7 +122,7 @@ Registry lock prevents unauthorized transfers at the registry level, not just th
 
 ## Monitoring and Detection
 
-### DNS Record Monitoring
+### 1. DNS Record Monitoring
 Watch for these warning signs:
 - Nameserver (NS) record changes
 - TTL values dropping below 300 seconds
@@ -131,12 +131,12 @@ Watch for these warning signs:
 - CAA record removal
 - DNSSEC disabled unexpectedly
 
-### Certificate Transparency Monitoring
+### 2. Certificate Transparency Monitoring
 - Monitor CT logs for unauthorized certificate issuance
 - Set up alerts for new certificates via services like crt.sh monitoring
 - Watch for wildcard certificates if you don't use them
 
-### Passive DNS Monitoring
+### 3. Passive DNS Monitoring
 Track historical DNS resolution data to detect:
 - Brief record changes (often missed in periodic checks)
 - Geographic anomalies in resolved IPs
