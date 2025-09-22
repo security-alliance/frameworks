@@ -110,6 +110,25 @@ const config = {
           ]
         },
         {
+          text: 'Multisig for Protocols',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/wallet-security/overview' },
+            {
+              text: 'Signing & Verification',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/wallet-security/signing-verification' },
+                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
+                { text: 'Multisig Signing Process', link: '/wallet-security/secure-multisig-signing-process' },
+                { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
+              ]
+            },
+            { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
+            { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
+          ]
+        },
+        {
           text: 'External Security Reviews',
           collapsed: false,
           items: [
