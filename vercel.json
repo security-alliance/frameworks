@@ -3,6 +3,16 @@
   "outputDirectory": "docs/dist",
   "redirects": [
     {
+      "source": "",
+      "destination": "/intro/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "destination": "/intro/introduction",
+      "permanent": true
+    },
+    {
       "source": "/intro/",
       "destination": "/intro/introduction",
       "permanent": true
