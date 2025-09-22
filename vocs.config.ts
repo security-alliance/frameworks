@@ -113,19 +113,38 @@ const config = {
           text: 'Multisig for Protocols',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/wallet-security/overview' },
+            { text: 'Overview', link: '/multisig-for-protocols' },
+            { text: 'General Rules', link: '/multisig-for-protocols/general-rules' },
             {
-              text: 'Signing & Verification',
+              text: 'Multisig Administration',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/wallet-security/signing-verification' },
-                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
-                { text: 'Multisig Signing Process', link: '/wallet-security/secure-multisig-signing-process' },
-                { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
+                { text: 'Planning & Classification', link: '/multisig-for-protocols/planning-and-classification' },
+                { text: 'Setup & Configuration', link: '/multisig-for-protocols/setup-and-configuration' },
+                { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation' },
+                { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup' },
+                { text: 'Ongoing Management', link: '/multisig-for-protocols/ongoing-management' },
+                { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements' },
+                { text: 'Backup Infrastructure', link: '/multisig-for-protocols/backup-infrastructure' },
+                { text: 'Timelock Configuration', link: '/multisig-for-protocols/timelock-configuration' },
               ]
             },
-            { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
-            { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
+            {
+              text: 'For Signers',
+              collapsed: false,
+              items: [
+                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
+                { text: 'Seed Phrase Security', link: '/multisig-for-protocols/seed-phrase-security' },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
+                { text: 'Transaction Verification & Signing', link: '/multisig-for-protocols/transaction-verification-and-signing' },
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
+                { text: 'Signing When UI is Down', link: '/multisig-for-protocols/signing-when-ui-is-down' },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting' },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },
+              ]
+            },
+            { text: 'Training Checklist', link: '/multisig-for-protocols/training-checklist' },
           ]
         },
         {
