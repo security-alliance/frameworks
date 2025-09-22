@@ -1,13 +1,41 @@
+---
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo]
+  - role: reviewed
+    users: [dickson]
+---
+
+import {
+  TagList,
+  AttributionList,
+  TagProvider,
+  TagFilter,
+  ContributeFooter,
+} from "../../../components";
+
+<TagProvider>
+<TagFilter />
+
 # Multisig Administration
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 This section covers everything for setting up and running protocol multisigs.
 
-- [Planning & Classification](./planning-and-classification.md)
-- [Setup & Configuration](./setup-and-configuration.md)
-- [Registration & Documentation](./registration-and-documentation.md)
-- [Communication Setup](./communication-setup.md)
-- [Ongoing Management](./ongoing-management.md)
-- [Use-Case Specific Requirements](./use-case-specific-requirements.md)
-- [Backup Infrastructure](./backup-infrastructure.md)
-- [Timelock Configuration](./timelock-configuration.md)
+- [Planning & Classification](/multisig-for-protocols/planning-and-classification)
+- [Setup & Configuration](/multisig-for-protocols/setup-and-configuration)
+- [Registration & Documentation](/multisig-for-protocols/registration-and-documentation)
+- [Communication Setup](/multisig-for-protocols/communication-setup)
+- [Ongoing Management](/multisig-for-protocols/ongoing-management)
+- [Use-Case Specific Requirements](/multisig-for-protocols/use-case-specific-requirements)
+- [Backup Infrastructure](/multisig-for-protocols/backup-infrastructure)
+- [Timelock Configuration](/multisig-for-protocols/timelock-configuration)
 
+</TagProvider>
+<ContributeFooter />

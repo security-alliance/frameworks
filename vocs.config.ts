@@ -113,12 +113,13 @@ const config = {
           text: 'Multisig for Protocols',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/multisig-for-protocols' },
+            { text: 'Overview', link: '/multisig-for-protocols/overview' },
             { text: 'General Rules', link: '/multisig-for-protocols/general-rules' },
             {
               text: 'Multisig Administration',
               collapsed: false,
               items: [
+                { text: 'Overview', link: '/multisig-for-protocols/administration' },
                 { text: 'Planning & Classification', link: '/multisig-for-protocols/planning-and-classification' },
                 { text: 'Setup & Configuration', link: '/multisig-for-protocols/setup-and-configuration' },
                 { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation' },
@@ -133,6 +134,7 @@ const config = {
               text: 'For Signers',
               collapsed: false,
               items: [
+                { text: 'Overview', link: '/multisig-for-protocols/for-signers' },
                 { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
                 { text: 'Seed Phrase Security', link: '/multisig-for-protocols/seed-phrase-security' },
                 { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },

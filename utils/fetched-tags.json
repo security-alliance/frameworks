@@ -11,16 +11,14 @@
     "Human Resources",
     "Individual Security",
     "Legal & Compliance",
+    "Multisig Security",
     "Operations & Strategy",
     "Physical Security",
     "Protocol",
     "SEAL/Initiative",
     "SRE",
-    "Security",
     "Security Specialist",
-    "Threat Actors",
     "Travel",
-    "Wallet Drainers",
     "Web3",
     "Whitehat"
   ],
@@ -365,12 +363,12 @@
       "SRE"
     ],
     "/incident-management/playbooks/hacked-drainer": [
-      "Security",
-      "Wallet Drainers"
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/incident-management/playbooks/hacked-elusive-comet": [
-      "Security",
-      "Threat Actors"
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/incident-management/playbooks/malware": [
       "Security Specialist",
@@ -460,6 +458,116 @@
     "/monitoring/thresholds": [
       "Engineer/Developer",
       "Security Specialist"
+    ],
+    "/multisig-for-protocols/administration": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/backup-infrastructure": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/communication-setup": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/emergency-procedures": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/for-signers": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/general-rules": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/hardware-wallet-setup": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/incident-reporting": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/joining-a-multisig": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/offboarding": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/ongoing-management": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/personal-security-opsec": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/planning-and-classification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/registration-and-documentation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/seed-phrase-security": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/setup-and-configuration": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/signing-when-ui-is-down": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/timelock-configuration": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/training-checklist": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/transaction-verification-and-signing": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/use-case-specific-requirements": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
     ],
     "/opsec/appendices/case-studies": [
       "Security Specialist",
