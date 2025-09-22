@@ -83,7 +83,7 @@ Safe will generate a Tenderly simulation automatically. For additional assurance
 2. Paste the calldata from the Safe UI or from the hash verification tool
 3. Specify the Safe address as the From address
 
-![Tenderly simulation setup](./assets/tenderly-simulation-setup.png)
+![Tenderly simulation setup](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/tenderly-simulation-setup.png)
 
 #### 3. Hash & Calldata Verification
 
@@ -152,12 +152,12 @@ The Squads UI will provide a simulation link for a transaction once it has been 
 
 ### SOL Transfer Verification
 
-![SOL transfer transaction overview](./assets/sol-transfer-transaction-overview.png)
+![SOL transfer transaction overview](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/sol-transfer-transaction-overview.png)
 [Transaction Link](https://app.squads.so/squads/e4knHMRYwCTQH879dRoTUvWwKR9jy5jE52kh2iy4kL2/transactions/2sAD1s2cpN8xkDKpsjF3mgpAZ5T6Ly4Zuattr6eMzmjG)
 [Simulation Link](https://explorer.solana.com/tx/inspector?signatures=%255B%25221111111111111111111111111111111111111111111111111111111111111111%2522%252C%25221111111111111111111111111111111111111111111111111111111111111111%2522%255D&message=gAIAAgZwPe7Z%252FXshAtomCcciz6nV7UMyPHih06vc7yk9ty6UoAl%252BvEzOMR3HvSFhM2GWdWNVeRQBVmsO%252BMzLyKmaMKEz7jI0LiZeXnyTOKjFEy5Th61mABykSj2asFCSBK3vw7WMKRhm0xquPpdNaEAeFg%252FN30zo7KzBfmzdI3QlkLN55QMGRm%252FlIRcy%252F%252BytunLDm%252Be8jOW7xfcSayxDmzpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS9ir2PAxknA4YchoA50xsGOmMh%252FMWqcxS3WgQCJFjjgQEAAUBAAAEAAQABQLAXBUABQIBAgwCAAAAgJaYAAAAAAAFAgEDDAIAAABAS0wAAAAAAAA%253D)
 
 On the simulation page scroll down to **System Program Instruction**
-![System Program Instruction details](./assets/system-program-instruction-details.png)
+![System Program Instruction details](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/system-program-instruction-details.png)
 This shows the destination address for the SOL (H2p…Kr) and the Instruction Data. The instruction data can be interpreted as follows.
 
 **Example instruction data interpretation:**
@@ -188,7 +188,7 @@ For the amount portion (`80 96 98 00 00 00 00 00`):
 [Simulation Link](https://explorer.solana.com/tx/inspector?signatures=%255B%25221111111111111111111111111111111111111111111111111111111111111111%2522%252C%25221111111111111111111111111111111111111111111111111111111111111111%2522%255D&message=gAIABQmMKRhm0xquPpdNaEAeFg%252FN30zo7KzBfmzdI3QlkLN55Ql%252BvEzOMR3HvSFhM2GWdWNVeRQBVmsO%252BMzLyKmaMKEzxF5adOSOc03j8RtbcEMRZfSyDhZDpj%252Bf89egzdX3712eUpW3sOB32puEK85AjoAlc8KSleU8LnaIbhD8fK9eRgMGRm%252FlIRcy%252F%252BytunLDm%252Be8jOW7xfcSayxDmzpAAAAAjJclj04kifG7PRApFI4NgwtaE5na%252FxCEBI572Nvp%252BFnuMjQuJl5efJM4qMUTLlOHrWYAHKRKPZqwUJIEre%252FDtQcHMS0dQdpx8PsoDBZizWXr6y4IWcDLrj%252Fb3LJshuCvBt324ddloZPZy%252BFGzut5rBy0he1fWzeROoz1hX7%252FAKkjFIZmLK%252FFij24PsSNF79CaJVsjsMSZHrKijSzMR7OjgQEAAUBAAAEAAQABQLAXBUABQYBAgYHCQgBAQgEAwcCAQoMQEIPAAAAAAAGAbqmLEkSumVVR1a24Yy6rkkWI1IASK6g1AQ30DXoTsREAAEF)
 
 On the simulation page scroll down to **Associated Token Program: Create Idempotent** & **Token Program Instruction**
-![Token Program Instruction details](./assets/token-program-instruction-details.png)
+![Token Program Instruction details](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/token-program-instruction-details.png)
 This shows the destination address for the USDS in section 3 (H2p…Kr) and the Instruction Data. The instruction data can be interpreted as follows.
 ```
 0c 40 42 0f 00 00 00 00 00 00 06
@@ -207,7 +207,7 @@ This shows the destination address for the USDS in section 3 (H2p…Kr) and the 
 
 ### Configuration Change Verification
 
-![Configuration change transaction overview](./assets/configuration-change-transaction-overview.png)
+![Configuration change transaction overview](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/configuration-change-transaction-overview.png)
 [Transaction Link](https://app.squads.so/squads/e4knHMRYwCTQH879dRoTUvWwKR9jy5jE52kh2iy4kL2/transactions/4KDPpv27fQmbWteQjSZLku8sGxNfoDqtYG4mZQp2zbiq)
 Simulation does NOT seem to work for configuration changes, but we have another way we can verify it!
 
@@ -217,11 +217,11 @@ Simulation does NOT seem to work for configuration changes, but we have another 
 3. Scroll down to **Squads Multisig Program: Config Transaction Create**
    1. Expand all fields to view the decoded transaction data
 
-![Squads Multisig Program details](./assets/squads-multisig-program-details.png)
+![Squads Multisig Program details](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/squads-multisig-program-details.png)
 
 ### Step 3: Sign
 Sign the transaction but do not execute. When signing the Squads UI will show you the expected hash that will appear on the Ledger.
-![Squads signing interface](./assets/squads-signing-interface.png)
+![Squads signing interface](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/squads-signing-interface.png)
 
 ### Step 4: Execute
 Once all signatures are collected, execute the transaction.

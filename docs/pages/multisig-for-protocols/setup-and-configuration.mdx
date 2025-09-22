@@ -41,7 +41,7 @@ This guide covers the technical deployment and configuration of multisigs on sup
 
 It is recommended, but not required to authorize a separate transaction proposer for a Safe. This address can prepare transactions for signers to sign but is not an authorized signer on the Safe. Therefore **there is no risk of malicious signatures which can affect the Safe assets**. This wallet can hold no funds and simply act as a proposer. The primary reason to have a delegated proposer is that the hash verification utilities depend on the Safe API (unless details are entered manually). Until a transaction is **proposed** it does not show up in the API so the hash verification tools cannot detect it.
 
-![Delegated proposer configuration interface](./assets/delegated-proposer-configuration-interface.png)
+![Delegated proposer configuration interface](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/delegated-proposer-configuration-interface.png)
 
 ## Modules & Guards
 
