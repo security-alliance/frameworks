@@ -146,7 +146,7 @@ const config = {
                 { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },
               ]
             },
-            { text: 'Training Checklist', link: '/multisig-for-protocols/training-checklist' },
+            { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist' },
           ]
         },
         {
