@@ -19,7 +19,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-DNS (Domain Name System) is the backbone of the internet, translating domain names into IP addresses. In Web3, domain security is particularly critical as compromised domains can lead to irreversible financial losses through wallet drainers and phishing attacks. Unlike traditional web applications where stolen funds can sometimes be recovered, blockchain transactions are permanent, making domain security a matter of financial survival for Web3 projects.
+DNS (Domain Name System) is the backbone of the internet, translating domain names into IP addresses. In Web3, domain security is particularly critical as compromised domains can lead to irreversible financial losses through wallet drainers and phishing attacks. Unlike traditional web applications where stolen funds can sometimes be recovered, blockchain transactions are permanent. 
+
+Moreover, DNS controls your email infrastructure through MX records - once compromised, attackers gain the keys to your entire organization through password resets and intercepted communications, making domain security a matter of both financial and operational survival.
 
 ## Understanding the Attack Surface
 
@@ -31,10 +33,10 @@ When users type your domain, their request traverses multiple trust points:
 4. TLD registry servers
 5. Your authoritative nameservers
 
-Each step represents a potential attack vector where responses can be intercepted, modified, or poisoned. This multi-step process creates numerous opportunities for attackers to redirect users to malicious sites while their browser still shows the correct domain name.
+Each step represents a potential attack surface where responses can be intercepted, modified, or poisoned. This multi-step process creates numerous opportunities for attackers to redirect users to malicious sites while their browser still shows the correct domain name.
 
 ### Common Attack Vectors
-- **Social Engineering at Registrars**: Attackers convince support staff they're legitimate owners using publicly available information
+- **Social Engineering at Registrars**: Attackers convince/bribe support staff they're legitimate owners using publicly available information
 - **Expired Domain Sniping**: Domains that expire enter a grace period before becoming publicly available to anyone
 - **DNS Hijacking**: Unauthorized changes to DNS records redirecting traffic to malicious servers
 - **Email Interception**: Compromised MX records allowing password reset attacks and communication interception
@@ -58,12 +60,26 @@ Certificate Authority Authorization (CAA) records specify which Certificate Auth
 
 **How it protects you**: Without CAA records, any Certificate Authority can issue SSL certificates for your domain. Attackers could potentially obtain fake certificates and use them in sophisticated phishing attacks that appear to have valid SSL encryption.
 
+Before setting CAA records, identify which CA issued your current certificate:
+- **Command line**: `openssl s_client -connect yourdomain.com:443 -servername yourdomain.com | openssl x509 -noout -issuer`
+- **Web tools**: [SSL Labs Server Test](https://www.ssllabs.com/ssltest/) provides comprehensive certificate analysis including issuer information
+- **Browser**: Click the padlock icon → Certificate details → Issuer information
+
 **Setup process**: Add CAA records to your DNS zone. Most DNS providers allow you to add these through their web interface:
 
 ```dns
+# Allow only specific CAs to issue certificates
 example.com. CAA 0 issue "letsencrypt.org"
 example.com. CAA 0 issue "digicert.com"
+
+# Send violation reports when unauthorized CAs attempt issuance
 example.com. CAA 0 iodef "mailto:security@example.com"
+
+# Control wildcard certificate issuance separately
+example.com. CAA 0 issuewild "letsencrypt.org"
+
+# Completely disable all certificate issuance (useful for non-web domains)
+example.com. CAA 0 issue ";"
 ```
 
 ### 3. Email Security Configuration
@@ -72,21 +88,13 @@ Email security records protect against email spoofing and phishing attacks. When
 #### SPF (Sender Policy Framework)
 SPF records specify which mail servers are authorized to send emails on behalf of your domain. This prevents attackers from spoofing your domain in phishing emails.
 
-**How it protects you**: Without SPF, anyone can send emails claiming to be from your domain. Attackers use this for sophisticated phishing campaigns that appear to come from your legitimate email address.
+**How it protects you**: Without SPF, anyone can send emails claiming to be from your domain. Attackers use this for sophisticated phishing campaigns that appear to come from your legitimate email address. 
+
+This is particularly dangerous as attackers can impersonate executives or team members to target your own organization and users - imagine receiving a "urgent wire transfer" request from your CFO's email address, or your users getting a "mandatory wallet update" from your official support email.
 
 **Setup**: Add an SPF record to your DNS zone:
 ```dns
 example.com. TXT "v=spf1 include:_spf.google.com ~all"
-```
-
-#### DMARC (Domain-based Message Authentication)
-DMARC builds on SPF and DKIM to provide policy enforcement for email authentication. It tells receiving mail servers what to do with emails that fail authentication checks.
-
-**How it protects you**: DMARC prevents email spoofing by instructing receiving servers to reject or quarantine emails that fail authentication, protecting your users from phishing attacks.
-
-**Setup**: Add a DMARC record to your DNS zone:
-```dns
-_dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com; ruf=mailto:forensics@example.com"
 ```
 
 #### DKIM (DomainKeys Identified Mail)
@@ -106,6 +114,16 @@ MTA-STS enforces encrypted connections between mail servers, preventing man-in-t
 _mta-sts.example.com. TXT "v=STSv1; id=20240101000000"
 ```
 
+#### DMARC (Domain-based Message Authentication)
+DMARC builds on SPF and DKIM to provide policy enforcement for email authentication. It tells receiving mail servers what to do with emails that fail authentication checks.
+
+**How it protects you**: DMARC prevents email spoofing by instructing receiving servers to reject or quarantine emails that fail authentication, protecting your users from phishing attacks.
+
+**Setup**: Add a DMARC record to your DNS zone:
+```dns
+_dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com; ruf=mailto:forensics@example.com"
+```
+
 ## Registrar Security
 
 ### 1. Choosing a Secure Registrar
@@ -115,7 +133,6 @@ Your domain registrar is the company that manages your domain registration with 
 These registrars are designed for high-value domains and have security measures that consumer registrars lack:
 
 - **MarkMonitor**: Used by Fortune 500 companies, requires legal documentation for changes, dedicated security team
-- **CSC (Corporation Service Company)**: Registry-level domain locks, dedicated account management, mandatory multi-factor authentication
 - **AWS Route53**: IAM policy integration, CloudTrail logging, uses Amazon Registrar for major TLDs (but check TLD support)
 - **Cloudflare Registrar**: No markup pricing, automatic DNSSEC, built-in DDoS protection, requires Cloudflare services
 
@@ -123,6 +140,7 @@ These registrars are designed for high-value domains and have security measures 
 These registrars are designed for personal use and lack the security measures needed for Web3 projects:
 
 - **GoDaddy**: History of social engineering vulnerabilities, call center support vulnerable to manipulation
+- **Namecheap**: While better than GoDaddy, still vulnerable to social engineering and lacks enterprise-grade security controls
 - **Consumer-focused services** (Google Domains/Squarespace): Designed for personal use, not enterprise security
 - **Resellers**: Add another layer of complexity and potential attack surface
 
@@ -131,7 +149,15 @@ These registrars are designed for personal use and lack the security measures ne
 #### Registry Lock (EPP Lock)
 Registry lock prevents unauthorized transfers at the registry level, not just the registrar. This is the strongest protection available for domain security.
 
-**How it protects you**: Standard transfer locks only prevent transfers between registrars, but registry locks require manual verification with the registry operator (like Verisign for .com domains) for any changes, making social engineering attacks much more difficult.
+**EPP Status Codes** that protect your domain:
+- `clientTransferProhibited`: Prevents domain transfers to another registrar
+- `clientUpdateProhibited`: Prevents any DNS or contact information changes
+- `clientDeleteProhibited`: Prevents domain deletion
+- `serverTransferProhibited`: Registry-level transfer protection (stronger than client-level)
+- `serverUpdateProhibited`: Registry-level update protection
+- `serverDeleteProhibited`: Registry-level deletion protection
+
+**How it protects you**: Standard transfer locks only prevent transfers between registrars, but registry locks with full EPP protections prevent ALL unauthorized changes including DNS updates, contact modifications, and deletions. Server-level locks require manual verification with the registry operator (like Verisign for .com domains), making social engineering attacks at the registrar level completely ineffective.
 
 **Setup**: Contact enterprise registrars for registry-operator level locks. This typically requires additional fees and documentation but provides the highest level of security.
 
@@ -149,10 +175,12 @@ Use a dedicated email address for domain security that's completely separate fro
 **Why this matters**: If your main domain is compromised, you need a way to receive security notifications and regain control. Using the same domain creates a circular dependency.
 
 ```
-❌ admin@yourdomain.com (circular dependency)
-❌ personal@gmail.com (too many attack vectors)
-✅ domain-security-only@protonmail.com (isolated, dedicated purpose)
+❌ admin@yourdomain.com (circular dependency - if domain is hijacked, you lose email access)
+❌ personal@gmail.com (too many attack vectors, likely used across multiple services)
+⚠️ domain-security@protonmail.com (better than gmail, but still a shared service)
+✅ security@yourcompany-domains.com (best - separate domain dedicated to domain management)
 ```
+As a bestpractice register a separate domain specifically for domain management (e.g., `yourproject-domains.com` or `yourproject-security.com`) with a different registrar than your main domain. This ensures you maintain communication channels even if your primary domain is completely compromised.
 
 #### Access Control Best Practices
 Limit and monitor who has access to your domain registrar account, as each person with access represents a potential attack vector.
