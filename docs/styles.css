@@ -101,3 +101,9 @@
 .vocs_Outline_item {
     margin-bottom: 0.3rem;
 }
+
+@media (max-width: 360px) {
+    .vocs_MobileTopNav_navigation .vocs_MobileTopNav_navigation_compact {
+       display: none;
+    }
+}

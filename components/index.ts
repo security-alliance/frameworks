@@ -15,4 +15,5 @@ export { AttributionList } from './attribution/AttributionList'
 export { ContributeFooter } from './footer/ContributeFooter'
 export { Contributors } from './contributors/Contributors'
 export { default as MermaidRenderer } from './mermaid/MermaidRenderer';
+export { ThemeToggle } from './theme/ThemeToggle';
 export * from './shared/constants'
