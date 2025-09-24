@@ -197,12 +197,17 @@ Limit and monitor who has access to your domain registrar account, as each perso
 DNS record monitoring involves continuously checking your domain's DNS records for unauthorized changes. Attackers often modify DNS records to redirect traffic to malicious servers while keeping your site partially functional.
 
 **What to watch for**:
-- **Nameserver (NS) record changes**: Attackers change your nameservers to point to their own DNS servers
-- **TTL values dropping below 300 seconds**: Very low TTLs can indicate preparation for rapid DNS changes
-- **New A/AAAA records or changes to existing ones**: IP address changes could redirect users to malicious sites
-- **MX record modifications**: Email server changes could intercept password reset emails
+- **Nameserver (NS) record changes**: Attackers change your nameservers to point to their own DNS servers, giving them complete control over all DNS records
+- **TTL values dropping below 60 seconds**: Very low TTLs can indicate preparation for rapid DNS changes during an attack
 - **CAA record removal**: Allows any Certificate Authority to issue certificates for your domain
 - **DNSSEC disabled unexpectedly**: Removes cryptographic protection from DNS responses
+
+**If nameservers remain unchanged, also monitor**:
+- **A/AAAA record modifications**: IP address changes could redirect users to malicious sites
+- **MX record modifications**: Email server changes could intercept password reset emails
+- **TXT record changes**: Could affect email security (SPF/DMARC) or domain validation
+
+**Note**: If attackers change your NS records, they control everything. But attackers with DNS panel access might make subtle changes without touching NS records to avoid detection, which is why monitoring individual record types remains important.
 
 ### 2. Certificate Transparency Monitoring
 Certificate Transparency (CT) logs are public records of all SSL certificates issued by Certificate Authorities. Monitoring these logs helps detect unauthorized certificate issuance.
