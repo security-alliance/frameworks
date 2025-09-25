@@ -267,10 +267,10 @@ Passive DNS monitoring tracks historical DNS resolution data across the internet
    - **Why it's critical**: Very low TTLs can indicate preparation for rapid DNS changes (attack preparation)
    - **Response**: Investigate why TTL was lowered, verify it's legitimate
 
-### High Priority Alerts (Investigate Within Hours)
+### High Priority Alerts (When NS Unchanged)
 
 1. **A Record Changed**
-   - **What it monitors**: Changes to IP address mappings
+   - **What it monitors**: IP redirects without NS changes
    - **Why it's important**: Could redirect users to malicious servers
    - **Response**: Verify the new IP address is legitimate and expected
 
