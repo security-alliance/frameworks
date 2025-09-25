@@ -191,6 +191,44 @@ Limit and monitor who has access to your domain registrar account, as each perso
 - Implement approval workflows for critical changes
 - Regular access audits (quarterly minimum)
 
+#### WHOIS Privacy Protection
+WHOIS records contain personal information about domain owners that is publicly accessible by default, including names, addresses, phone numbers, and email addresses.
+
+**Why it matters**: Without WHOIS privacy, your personal information is exposed to:
+- Attackers gathering information for social engineering attacks
+- Spammers harvesting contact details
+- Competitors researching your infrastructure
+- Anyone running a simple WHOIS lookup
+
+**Setup**:
+- Enable WHOIS privacy/proxy service through your registrar (often free or low-cost)
+- Use company information instead of personal details where privacy isn't available
+- Consider using a separate business entity for domain registration
+- Be aware that some TLDs (.us, .ca) don't allow WHOIS privacy
+
+**Important**: WHOIS privacy doesn't affect your legal ownership - you remain the legitimate owner, the privacy service just shields your personal information from public view.
+
+#### Domain Expiration Protection
+Domain expiration is a critical yet often overlooked security risk. When domains expire, they enter a grace period before becoming publicly available, creating an opportunity for attackers to snipe your domain.
+
+**Expiration timeline**:
+- Day 0: Domain expires (site goes down)
+- Day 1-45: Auto-renew grace period (can renew at normal price)
+- Day 46-75: Redemption period (costs 10x+ to recover)
+- Day 76-80: Pending delete
+- Day 81: Public availability (bot armies compete to register)
+
+**Protection measures**:
+- **Enable auto-renewal** on all critical domains
+- **Set multiple renewal reminders** at 90, 60, 30, and 7 days before expiration
+- **Register domains for maximum period** (up to 10 years for most TLDs)
+- **Use a domain monitoring service** that alerts on upcoming expirations
+- **Document renewal dates** in your security calendar
+- **Ensure payment methods stay current** - expired credit cards are a common cause of accidental expiration
+- **Designate a backup person** responsible for domain renewals
+
+**Pro tip**: Set calendar reminders to check auto-renewal status quarterly - don't assume it's working until you verify.
+
 ## Monitoring and Detection
 
 ### 1. DNS Record Monitoring
