@@ -207,6 +207,12 @@ DNS record monitoring involves continuously checking your domain's DNS records f
 - **MX record modifications**: Email server changes could intercept password reset emails
 - **TXT record changes**: Could affect email security (SPF/DMARC) or domain validation
 
+**Tools for DNS monitoring**:
+- [MXToolbox](https://mxtoolbox.com/) - Comprehensive DNS record monitoring and alerts
+- [DNSViz](https://dnsviz.net/) - DNSSEC chain validation and debugging
+- [DNS Dumpster](https://dnsdumpster.com/) - DNS reconnaissance and record discovery
+- [Hetrix Tools](https://hetrix.tools/) - Free DNS monitoring with email alerts
+
 **Note**: If attackers change your NS records, they control everything. But attackers with DNS panel access might make subtle changes without touching NS records to avoid detection, which is why monitoring individual record types remains important.
 
 ### 2. Certificate Transparency Monitoring
@@ -214,9 +220,9 @@ Certificate Transparency (CT) logs are public records of all SSL certificates is
 
 **Why it matters**: Attackers sometimes obtain fake SSL certificates for legitimate domains to make phishing sites appear more credible. CT monitoring helps you detect these certificates before they're used in attacks.
 
-**Setup**:
-- Monitor CT logs for unauthorized certificate issuance
-- Set up alerts for new certificates via services like crt.sh monitoring
+**Setup and tools**:
+- [crt.sh](https://crt.sh/) - Search and monitor CT logs for your domain
+- [Cert Spotter](https://sslmate.com/certspotter/) - Free CT monitoring with API access
 - Watch for wildcard certificates if you don't use them (could indicate broader compromise)
 
 ### 3. Passive DNS Monitoring
@@ -226,6 +232,11 @@ Passive DNS monitoring tracks historical DNS resolution data across the internet
 - **Brief record changes**: Attackers often make quick changes to avoid detection
 - **Geographic anomalies**: DNS records resolving to unexpected countries or regions
 - **Suspicious hosting provider changes**: Sudden switches to hosting providers known for malicious activity
+
+**Tools for passive DNS**:
+- [PassiveTotal (RiskIQ)](https://community.riskiq.com/) - Comprehensive passive DNS database
+- [Mnemonic Passive DNS](https://passivedns.mnemonic.no/) - Free passive DNS lookup
+- [SecurityTrails](https://securitytrails.com/) - Historical DNS and WHOIS data
 
 ## Setting Up Alerts
 
@@ -311,38 +322,24 @@ Domain security is exponentially more critical in Web3 compared to traditional w
 
 - **Irreversible transactions**: Unlike traditional banking where stolen funds can sometimes be recovered, blockchain transactions are permanent. Once funds are stolen through a domain hijack, they're gone forever.
 - **Direct wallet interactions**: Users connect their wallets directly to your domain, giving attackers immediate access to user funds without needing to compromise individual accounts.
-- **Smart contract immutability**: While smart contracts are secure, they can't help if users never reach them because they're redirected to malicious sites.
 - **Reputation damage**: One domain hijack incident can permanently destroy protocol trust, as users lose confidence in the project's security practices.
-
-### Additional Web3 Protections
-Beyond traditional domain security measures, Web3 projects should implement additional protections:
-
-- **ENS domains as backup communication**: Use Ethereum Name Service domains as alternative communication channels that are harder to compromise
-- **Multiple warning channels**: Implement redundant communication systems (Twitter, Discord, Telegram) to warn users during incidents
-- **Decentralized hosting for security notices**: Use IPFS or other decentralized hosting for critical security notices that can't be taken down
-- **On-chain DNS record verification**: Maintain cryptographically signed DNS record hashes on-chain for tamper-proof verification
 
 ## Historical Context
 
 ### Notable Domain Security Incidents
 Domain hijacking has impacted numerous Web3 projects:
-- **[Curve Finance (2022)](https://rekt.news/curve-finance-rekt)**: DNS hijacking led to $575k in stolen funds through frontend compromise
+- **[Curve Finance (2025)](https://news.curve.finance/curve-domain-incident/)**: Domain hijacking at the registrar level, unrelated to any breach of Curve’s infrastructure.
+- **[Puffer Finance (2024)](https://www.kucoin.com/news/articles/the-trojan-horse-of-web3-puffer-finance-attack-exposes-centralized-vulnerabilities)**: DNS hijack exploited centralized infrastructure vulnerabilities
+- **[Compound Finance (2024)](https://www.bitget.com/news/detail/12560604092919)**: Domain takeover attempt prevented by registry lock
 - **[Galxe (2023)](https://help.galxe.com/en/articles/8452958-october-6th-dns-security-incident-statement-guide)**: DNS hijack resulted in over 1,100 wallets drained for $270k
-- **[Compound Finance (2024)](https://www.bitget.com/news/detail/12560604092919#:~:text=The%20attack%20was%20first%20detected%20when%20users,to%20access%20Compound%20Finance%27s%20interface%20at%20compound.)**: Domain takeover attempt prevented by registry lock
+- **[Curve Finance (2022)](https://rekt.news/curve-finance-rekt)**: DNS hijacking led to $575k in stolen funds through frontend compromise
 
-These incidents highlight the critical importance of proper domain security measures.
+These incidents highlight the critical importance of proper domain security measures and the recurring nature of these attacks.
 
 ## References and Resources
 
-### Tools
-- [DNSViz](https://dnsviz.net/) - DNSSEC visualization and debugging
-- [Certificate Transparency Search](https://crt.sh/) - Monitor certificate issuance
-- [DNS Dumpster](https://dnsdumpster.com/) - DNS reconnaissance tool
-- [MXToolbox](https://mxtoolbox.com/) - DNS and email configuration testing
-- [Passive DNS](https://passivedns.mnemonic.no/) - Historical DNS resolution data
-
 ### Incident Response Contacts
-- [SEAL Alliance](https://www.securityalliance.org/contact) - Web3 emergency response team
+- [SEAL Alliance TG Bot](https://t.me/seal_911_bot) - Web3 emergency response team
 - Your registrar's security team (document contact info)
 - Local FBI/law enforcement cybercrime division
 
