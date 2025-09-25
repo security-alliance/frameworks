@@ -67,7 +67,7 @@ Before setting CAA records, identify which CA issued your current certificate:
 
 **Setup process**: Add CAA records to your DNS zone. Most DNS providers allow you to add these through their web interface:
 
-```dns
+```
 # Allow only specific CAs to issue certificates
 example.com. CAA 0 issue "letsencrypt.org"
 example.com. CAA 0 issue "digicert.com"
@@ -93,7 +93,7 @@ SPF records specify which mail servers are authorized to send emails on behalf o
 This is particularly dangerous as attackers can impersonate executives or team members to target your own organization and users - imagine receiving a "urgent wire transfer" request from your CFO's email address, or your users getting a "mandatory wallet update" from your official support email.
 
 **Setup**: Add an SPF record to your DNS zone:
-```dns
+```
 example.com. TXT "v=spf1 include:_spf.google.com ~all"
 ```
 
@@ -110,7 +110,7 @@ MTA-STS enforces encrypted connections between mail servers, preventing man-in-t
 **How it protects you**: Without MTA-STS, emails can be intercepted in transit. This is especially critical for password reset emails and other sensitive communications.
 
 **Setup**: Add an MTA-STS record to your DNS zone:
-```dns
+```
 _mta-sts.example.com. TXT "v=STSv1; id=20240101000000"
 ```
 
@@ -120,7 +120,7 @@ DMARC builds on SPF and DKIM to provide policy enforcement for email authenticat
 **How it protects you**: DMARC prevents email spoofing by instructing receiving servers to reject or quarantine emails that fail authentication, protecting your users from phishing attacks.
 
 **Setup**: Add a DMARC record to your DNS zone:
-```dns
+```
 _dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com; ruf=mailto:forensics@example.com"
 ```
 
@@ -303,7 +303,6 @@ Passive DNS monitoring tracks historical DNS resolution data across the internet
 2. **Update security measures** based on lessons learned
 3. **Consider legal action** if appropriate
 4. **Publish transparency report** to rebuild trust
-
 
 ## Web3-Specific Considerations
 
