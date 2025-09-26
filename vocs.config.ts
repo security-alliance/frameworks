@@ -136,7 +136,6 @@ const config = {
               items: [
                 { text: 'Overview', link: '/multisig-for-protocols/for-signers' },
                 { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
-                { text: 'Seed Phrase Security', link: '/multisig-for-protocols/seed-phrase-security' },
                 { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
                 { text: 'Transaction Verification & Signing', link: '/multisig-for-protocols/transaction-verification-and-signing' },
                 { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
