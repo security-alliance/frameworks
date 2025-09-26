@@ -145,7 +145,7 @@ const config = {
             { text: 'Asset Inventory', link: '/infrastructure/asset-inventory' },
             { text: 'Cloud Infrastructure', link: '/infrastructure/cloud' },
             { text: 'DDoS Protection', link: '/infrastructure/ddos-protection' },
-            { text: 'DNS and Domain Registration', link: '/infrastructure/dns-and-domain-registration' },
+            { text: 'DNS and Domain Registration Security', link: '/infrastructure/dns-and-domain-registration-security' },
             { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management' },
             { text: 'Network Security', link: '/infrastructure/network-security' },
             { text: 'Operating System Security', link: '/infrastructure/operating-system-security' },
