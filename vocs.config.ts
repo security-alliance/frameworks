@@ -105,7 +105,7 @@ const config = {
                 { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
               ]
             },
-            { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
+            { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
           ]
         },
