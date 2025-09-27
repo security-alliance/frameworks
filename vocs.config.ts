@@ -124,7 +124,6 @@ const config = {
                 { text: 'Setup & Configuration', link: '/multisig-for-protocols/setup-and-configuration' },
                 { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation' },
                 { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup' },
-                { text: 'Ongoing Management', link: '/multisig-for-protocols/ongoing-management' },
                 { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements' },
                 { text: 'Timelock Configuration', link: '/multisig-for-protocols/timelock-configuration' },
               ]
