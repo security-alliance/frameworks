@@ -126,7 +126,6 @@ const config = {
                 { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup' },
                 { text: 'Ongoing Management', link: '/multisig-for-protocols/ongoing-management' },
                 { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements' },
-                { text: 'Backup Infrastructure', link: '/multisig-for-protocols/backup-infrastructure' },
                 { text: 'Timelock Configuration', link: '/multisig-for-protocols/timelock-configuration' },
               ]
             },
@@ -139,7 +138,7 @@ const config = {
                 { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
                 { text: 'Transaction Verification & Signing', link: '/multisig-for-protocols/transaction-verification-and-signing' },
                 { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
-                { text: 'Signing When UI is Down', link: '/multisig-for-protocols/signing-when-ui-is-down' },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure' },
                 { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
                 { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting' },
                 { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },

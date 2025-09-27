@@ -464,11 +464,6 @@
       "Security Specialist",
       "Multisig Security"
     ],
-    "/multisig-for-protocols/backup-infrastructure": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Multisig Security"
-    ],
     "/multisig-for-protocols/communication-setup": [
       "Engineer/Developer",
       "Security Specialist",
@@ -539,7 +534,7 @@
       "Security Specialist",
       "Multisig Security"
     ],
-    "/multisig-for-protocols/signing-when-ui-is-down": [
+    "/multisig-for-protocols/backup-signing-and-infrastructure": [
       "Engineer/Developer",
       "Security Specialist",
       "Multisig Security"
