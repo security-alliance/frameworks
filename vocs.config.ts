@@ -119,7 +119,7 @@ const config = {
               text: 'Multisig Administration',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/multisig-for-protocols/administration' },
+
                 { text: 'Planning & Classification', link: '/multisig-for-protocols/planning-and-classification' },
                 { text: 'Setup & Configuration', link: '/multisig-for-protocols/setup-and-configuration' },
                 { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation' },
@@ -131,7 +131,7 @@ const config = {
               text: 'For Signers',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/multisig-for-protocols/for-signers' },
+
                 { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
                 { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
                 { text: 'Transaction Verification & Signing', link: '/multisig-for-protocols/transaction-verification-and-signing' },

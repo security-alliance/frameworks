@@ -459,22 +459,12 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/multisig-for-protocols/administration": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Multisig Security"
-    ],
     "/multisig-for-protocols/communication-setup": [
       "Engineer/Developer",
       "Security Specialist",
       "Multisig Security"
     ],
     "/multisig-for-protocols/emergency-procedures": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Multisig Security"
-    ],
-    "/multisig-for-protocols/for-signers": [
       "Engineer/Developer",
       "Security Specialist",
       "Multisig Security"
