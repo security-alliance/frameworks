@@ -5,9 +5,9 @@ tags:
   - Multisig Security
 contributors:
   - role: wrote
-    users: [isaac, geoffrey, louis, pablo]
+    users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
-    users: [dickson, pinalikefruit]
+    users: [pinalikefruit, engn33r]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -28,7 +28,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 - All signers must use hardware wallets
 - Multisigs managing assets on behalf of a DAO should set unlimited allowance with primary DAO agent
 - Signers on multisigs with critical protocol configuration or security roles are discouraged from using their addresses for other purposes. They should create a brand new wallet for that purpose instead.
-- No multisigs should use modules/guards except those mentioned in this guide unless clear justification and security review is provided
+- No multisigs should use modules/guards except those mentioned in [Setup & Configuration → Modules & Guards](/multisig-for-protocols/setup-and-configuration#modules--guards) unless clear justification and security review is provided
 - Threshold exceptions can be made for multisigs that are used in frequent operations but are highly constrained by smart contracts. For example, rate setting operations with tight bounds and a backup recovery mechanism to replace the multisig.
 
 ### Threshold Selection
@@ -45,7 +45,7 @@ The security of a multisig depends entirely on the operational security (OpSec) 
 
 ## Communication & Documentation
 
-- In the event of loss of access to keys or potential compromise of keys or communication channels, the signer must immediately notify the other multisig participants and emailing your security contact - [4.8 Incident Reporting](/multisig-for-protocols/incident-reporting)
+- In the event of loss of access to keys or potential compromise of keys or communication channels, the signer must immediately notify the other multisig participants and email your security contact - [Incident Reporting](/multisig-for-protocols/incident-reporting)
 - Signers should use dedicated communication channels for multisig operations and maintain backup ways of reaching other signers
 - All multisigs should be documented in the protocol documenting its purpose, general operating rules, multisig wallet address, and list of signer addresses
 - Signers should verify their addresses by signing a message stating their affiliation and the multisig they intend to join (entity affiliation is ok)
@@ -64,7 +64,7 @@ Any critical administrative action, such as adding or replacing a signer, must b
 
 **If the original key is accessible:**
 - The signer proves ownership of a new address by signing a message with their existing address.
-- The signer must follow the steps in [3.3 Signer Verification process](/multisig-for-protocols/registration-and-documentation#signer-verification-process)
+- The signer must follow the steps in [Signer Verification process](/multisig-for-protocols/registration-and-documentation#signer-verification-process)
 
 **If the original key is lost:**
 The signer must verify their identity to the other signers through alternative methods such as:
@@ -74,7 +74,7 @@ The signer must verify their identity to the other signers through alternative m
 
 ## Training & Drills
 
-- All signers should complete training as outlined in this guide - [Implementation Checklist](/multisig-for-protocols/implementation-checklist)
+- All signers should complete training as outlined in the [Implementation Checklist](/multisig-for-protocols/implementation-checklist)
 - For multisigs that perform emergency operations like pausing, teams should have processes to regularly conduct drills to ensure operational readiness and signer availability
 
 </TagProvider>

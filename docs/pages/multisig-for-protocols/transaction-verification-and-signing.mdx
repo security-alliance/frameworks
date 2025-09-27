@@ -5,9 +5,9 @@ tags:
   - Multisig Security
 contributors:
   - role: wrote
-    users: [isaac, geoffrey, louis, pablo]
+    users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
-    users: [dickson, pinalikefruit]
+    users: [pinalikefruit, engn33r]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -20,14 +20,14 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Proper transaction verification protects against UI compromise attacks and ensures you're signing exactly what you intend. This guide covers verification procedures for both EVM and Solana networks.
+Proper transaction verification protects against UI compromise attacks and ensures you're signing exactly what you intend. This page covers verification procedures for both EVM and Solana networks.
 
 ## General Signing Guidelines
 
 ### Basic Rules
 - **Use hardware wallet** & back up the seed phrase
 - **Secure signing environment**: For maximum security, all signing activities should be performed on a dedicated, air-gapped, or hardened device running a secure OS. Using a primary work laptop significantly increases the risk of malware interference.
-- **Verify the address** according to this guide upon joining any multisig
+- **Verify the address** according to the procedures on this page upon joining any multisig
 - **Check transactions** you see in the queue - if unclear what the transaction should do and why, don't sign it and ask for explanation
 - **Require "how to check" guide** for every transaction
 - **Verify addresses & sums** through third party sources (message from fellow multisig co-signer is not sufficient)
@@ -128,7 +128,7 @@ To verify this hash, use the `--nested-safe-address` and `--nested-safe-nonce` o
 
 ## Solana Transaction Verification
 
-This guide helps you verify Squads multisig proposals and signatures to ensure:
+This section helps you verify Squads multisig proposals and signatures to ensure:
 - Proposal contains expected information (sender, receiver, token, quantity)
 - No unauthorized interactions are included
 - Signers are signing the expected proposal
@@ -148,7 +148,7 @@ Initiate the proposal on the Squads UI. This may include:
 - Modifying the signers or threshold of the multisig
 
 #### Step 2: Simulation
-The Squads UI will provide a simulation link for a transaction once it has been proposed and signed by the first signer. Simulation is helpful for token or SOL transfers, but as of writing this guide it fails for configuration changes. However, there is still a way to inspect the configuration change before execution.
+The Squads UI will provide a simulation link for a transaction once it has been proposed and signed by the first signer. Simulation is helpful for token or SOL transfers, but as of writing this page it fails for configuration changes. However, there is still a way to inspect the configuration change before execution.
 
 ### SOL Transfer Verification
 
@@ -185,7 +185,7 @@ For the amount portion (`80 96 98 00 00 00 00 00`):
 ### USDS Transfer Verification
 
 [Transaction Link](https://app.squads.so/squads/e4knHMRYwCTQH879dRoTUvWwKR9jy5jE52kh2iy4kL2/transactions/CpPSRtvsZjhYrQwXKg72JwnLYsFQEmCkKLLA1v97ggTF)
-[Simulation Link](https://explorer.solana.com/tx/inspector?signatures=%255B%25221111111111111111111111111111111111111111111111111111111111111111%2522%252C%25221111111111111111111111111111111111111111111111111111111111111111%2522%255D&message=gAIABQmMKRhm0xquPpdNaEAeFg%252FN30zo7KzBfmzdI3QlkLN55Ql%252BvEzOMR3HvSFhM2GWdWNVeRQBVmsO%252BMzLyKmaMKEzxF5adOSOc03j8RtbcEMRZfSyDhZDpj%252Bf89egzdX3712eUpW3sOB32puEK85AjoAlc8KSleU8LnaIbhD8fK9eRgMGRm%252FlIRcy%252F%252BytunLDm%252Be8jOW7xfcSayxDmzpAAAAAjJclj04kifG7PRApFI4NgwtaE5na%252FxCEBI572Nvp%252BFnuMjQuJl5efJM4qMUTLlOHrWYAHKRKPZqwUJIEre%252FDtQcHMS0dQdpx8PsoDBZizWXr6y4IWcDLrj%252Fb3LJshuCvBt324ddloZPZy%252BFGzut5rBy0he1fWzeROoz1hX7%252FAKkjFIZmLK%252FFij24PsSNF79CaJVsjsMSZHrKijSzMR7OjgQEAAUBAAAEAAQABQLAXBUABQYBAgYHCQgBAQgEAwcCAQoMQEIPAAAAAAAGAbqmLEkSumVVR1a24Yy6rkkWI1IASK6g1AQ30DXoTsREAAEF)
+[Simulation Link](https://explorer.solana.com/tx/inspector?signatures=%255B%25221111111111111111111111111111111111111111111111111111111111111111%2522%252C%25221111111111111111111111111111111111111111111111111111111111111111%2522%255D&message=gAIABQmMKRhm0xquPpdNaEAeFg%252FN30zo7KzBfmzdI3QlkLN55Ql%252BvEzOMR3HvSFhM2GWdWNVeRQBVmsO%252BMzLyKmaMKEzxF5adOSOc03j8RtbcEMRZfSyDhZDpj%252Bf89egzdX3712eUpW3sOB32puEK85AjoAlc8KSleU8LnaIbhD8fK9eRgMGRm%252FlIRcy%252F%252BytunLDm%252Be8jOW7xfcSayxDmzpAAAAAjJclj04kifG7PRApFI4NgwtaE5na%252FxCEBI572Nvp%252BFnuMjQuJl5efJM4qMUTLlOHrWYAHKRKPZqwUJIEre%252FDtQcHMS0dQdpx8PsoDBZizWXr6y4IWcDLrj%252Fb3LJshuCvBt324ddloZPZy%252BFGzut5rBy0he1fWzeROoz1hX7%252FAKkVxPfrULPMJ%252BJHEroegjMTe9e7y7fbwd%252BuhToyuOMfEQQEAAUBAAAEAAQABQLAXBUABQYBAgYHCQgBAQgEAwcCAQoMQEIPAAAAAAAGAbqmLEkSumVVR1a24Yy6rkkWI1IASK6g1AQ30DXoTsREAAEF))
 
 On the simulation page scroll down to **Associated Token Program: Create Idempotent** & **Token Program Instruction**
 ![Token Program Instruction details](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/token-program-instruction-details.png)
