@@ -116,7 +116,7 @@ const config = {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/multisig-for-protocols/overview' },
-            { text: 'General Rules', link: '/multisig-for-protocols/general-rules' },
+
             {
               text: 'Multisig Administration',
               collapsed: false,
