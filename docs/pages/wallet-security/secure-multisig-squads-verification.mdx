@@ -1,0 +1,67 @@
+---
+title: "Squads Multisig: Step-by-Step Verification"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: reviewed
+    users: [pinalikefruit, engn33r]
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Squads Multisig: Step-by-Step Verification
+Limited tooling is available for Solana verification compared to EVM. Exercise extra caution and cross-verify with team members.
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Workflow
+
+1) Initial Proposal (SOL transfer, token transfer, signer/threshold change)
+
+2) Simulation
+
+- Squads UI provides a simulation link after first signature
+- Simulation is helpful for transfers; configuration changes often fail, but you can still inspect data via explorer
+
+## SOL Transfer Verification
+
+- Use explorer simulation to view System Program Instruction
+- Interpret instruction bytes; convert lamports to SOL (1e9)
+
+![SOL transfer transaction overview](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/sol-transfer-transaction-overview.png)
+
+## USDS Transfer Verification
+
+- Review Associated Token Program and Token Program instruction
+- Interpret bytes; confirm decimals and amounts
+
+![Token Program Instruction details](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/token-program-instruction-details.png)
+
+## Configuration Change Verification
+
+- Use the transaction account page; open first transaction in history
+- Expand Squads Multisig Program: Config Transaction Create to inspect decoded data
+
+![Squads Multisig Program details](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/squads-multisig-program-details.png)
+
+## Signing & Execution
+
+- Sign (do not execute) and confirm expected hash on Ledger
+- Execute after collecting all signatures
+
+---
+
+Useful Tools: hex-to-decimal converters; calldata/decoder tools
+
+</TagProvider>
+<ContributeFooter />
+

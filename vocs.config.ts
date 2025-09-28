@@ -102,6 +102,8 @@ const config = {
                 { text: 'Overview', link: '/wallet-security/signing-verification' },
                 { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
                 { text: 'Multisig Signing Process', link: '/wallet-security/secure-multisig-signing-process' },
+                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-safe-verification' },
+                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-squads-verification' },
                 { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
               ]
             },
@@ -134,7 +136,7 @@ const config = {
 
                 { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
                 { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
-                { text: 'Transaction Verification & Signing', link: '/multisig-for-protocols/transaction-verification-and-signing' },
+
                 { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
                 { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure' },
                 { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
