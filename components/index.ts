@@ -14,5 +14,6 @@ export { withTagFiltering, TagFilteringLayout } from './tags/withTagFiltering'
 export { AttributionList } from './attribution/AttributionList'
 export { ContributeFooter } from './footer/ContributeFooter'
 export { Contributors } from './contributors/Contributors'
+export { BenchmarkList } from './benchmark/Benchmark'
 export { default as MermaidRenderer } from './mermaid/MermaidRenderer';
 export * from './shared/constants'

@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .vocs_NavLogo_logoImage {
     height: 80% !important;
 }
