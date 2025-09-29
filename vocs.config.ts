@@ -1,4 +1,4 @@
-import { defineConfig, ColorScheme } from 'vocs'
+import { defineConfig } from 'vocs'
 
 const config = {
   banner: {
@@ -12,9 +12,6 @@ const config = {
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
   logoUrl: '/logo/frameworks-full.svg',
   iconUrl: '/logo/favicon.svg',
-  theme: {
-    colorScheme: 'dark' as ColorScheme
-  },
   sidebar: [
     {
       text: 'Introduction',
