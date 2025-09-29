@@ -66,11 +66,13 @@ Once a transaction has the required M-of-N signatures, it can be executed. This 
 
 - **Transaction Simulation**: Before signing, use a simulator like **[Tenderly](https://tenderly.co/)** or **[Alchemy](https://www.alchemy.com/docs/reference/simulation)** to preview the transaction's outcome. This helps confirm that it will not revert and will result in the expected state changes.
 - **Hardware Wallet Standard**: All multisig signers should use hardware wallets to protect their keys from online threats. Data shown in a browser extension wallet should be treated with the same skepticism as data in the web UI.
+- **Secure signing environment**: Use a dedicated, air-gapped, or hardened device. Avoid primary work laptops.
 - **Alternative Frontends**: To further reduce reliance on a single public UI, consider using an alternative or self-hosted multisig interface.
 - **Separate browser/profile for signing**: Use a dedicated browser or browser profile when interacting with signing UIs to reduce cross-extension/session risk.
 - **Require a "how to check" guide**: Every transaction should include explicit verification instructions for signers.
 - **Verify addresses and amounts via independent sources**: Do not rely solely on messages from co-signers.
-- **Communicate status**: After review, state whether a transaction is ready to execute.
+- **Check transactions in the queue**: If unclear what a transaction does and why, do not sign; ask for explanation.
+- **Communicate status**: After review, state whether a transaction is ready to execute and confirm after signing ("checked, signed, X more required").
 - **Last signer executes**: If executable immediately, the last signer should execute; otherwise coordinate clearly.
 - **Re-verify before execution**: Treat execution as a fresh signing event and re-check parameters.
 - **Use checksummed addresses**: Always use checksummed format to prevent copy/paste or case errors.

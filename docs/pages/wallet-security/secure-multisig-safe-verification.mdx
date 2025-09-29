@@ -26,10 +26,18 @@ Hash verification protects against UI compromise attacks where malicious transac
 
 ## General Signing Guidelines
 
-- Use hardware wallet and back up the seed phrase
-- Use a separate browser or browser profile for signing
-- Secure signing environment (dedicated or hardened device)
-- Communicate transaction status and re-verify before execution
+### Basic Rules
+- **Use hardware wallet** & back up the seed phrase
+- **Use a separate browser or browser profile for signing** to minimize extension/session cross-contamination and reduce attack surface on your primary profile
+- **Secure signing environment**: For maximum security, all signing activities should be performed on a dedicated, air-gapped, or hardened device running a secure OS. Using a primary work laptop significantly increases the risk of malware interference.
+- **Verify the address** according to the procedures on this page upon joining any multisig
+- **Check transactions** you see in the queue - if unclear what the transaction should do and why, don't sign it and ask for explanation
+- **Require "how to check" guide** for every transaction
+- **Verify addresses & sums** through third party sources (message from fellow multisig co-signer is not sufficient)
+- **Communicate transaction status**: Tell other signers whether the transaction can be executed right away or not
+- **Confirm after signing**: Communicate once you've checked and signed ("checked, signed, X more required")
+- **Last signer executes**: If the transaction can be executed right away, the last signer does it. If they can't execute, communicate with other signers
+- **Re-verify before execution**: If executing an already signed transaction, check it as if you were signing it
 
 ## Key Definitions (EVM)
 
@@ -39,9 +47,21 @@ Hash verification protects against UI compromise attacks where malicious transac
 
 ## Recommended Tools
 
-- Safe Tx Hashes Util (CLI)
-- OpenZeppelin Safe Utils (Web UI)
-- Lido Safe TX Hashes Calculation, Cyfrin Safe Hashes RS
+### Safe Tx Hashes Util (CLI): Most comprehensive verification tool
+- ✅ Calldata decoding (except in interactive mode), signature verification, risk warnings
+- ✅ Supports all Safe features including nested Safes
+- ⚠️ Requires command line familiarity
+
+### OpenZeppelin Safe Utils (Web UI): User-friendly alternative
+- ✅ Simple web interface, calldata verification
+- ❌ Limited features
+- Does not currently support non-transaction signature verification
+- Does not warn for risky transaction types
+- ⚠️ May lag behind CLI tool capabilities
+
+### Other Tools
+- Lido Safe TX Hashes Calculation
+- Cyfrin Safe Hashes RS
 
 ## 1) Transaction Preparation
 
@@ -65,16 +85,22 @@ Note: For complex batch transactions that include a delegateCall to multisend, m
 
 ## 3) Hash & Calldata Verification
 
-- CLI: `./safe_hashes.sh --network [NETWORK] --address [SAFE_ADDRESS] --nonce [NONCE]`
-- Interactive mode available (enter details manually)
-- Web UI alternative via OpenZeppelin Safe Utils
-- Always use checksummed addresses
+**Using CLI tool:**
+```bash
+./safe_hashes.sh --network [NETWORK] --address [SAFE_ADDRESS] --nonce [NONCE]
+```
+
+The CLI tool pulls the queued transaction from the Safe API for verification. If Safe infrastructure is compromised, it's possible the tool will show a hash that matches the UI, but the transaction is still not what you intend to sign. However, if you also verify the calldata output by the tool, you can be sure you are signing the correct data.
+
+**Interactive mode** (no Safe API dependency): Use `--interactive` to enter all transaction details manually. Note that in interactive mode the tool does not decode the calldata, so it's important to perform the calldata verification in step 5.
 
 ### Using web UI (OpenZeppelin Safe Utils)
 1. Navigate to OpenZeppelin Safe Utils
 2. Enter Safe address (checksummed)
 3. Select network and enter nonce
 4. Review generated hashes and decoded calldata
+
+Important: Both tools require checksummed addresses:
 
 ### Checksummed address examples
 - ✅ Correct: `0xA79C6968E3c75aE4eF388370d1f142720D498fEC`
