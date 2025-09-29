@@ -10,7 +10,13 @@ contributors:
     users: [pinalikefruit, engn33r]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import {
+  TagList,
+  AttributionList,
+  TagProvider,
+  TagFilter,
+  ContributeFooter,
+} from "../../../components";
 
 <TagProvider>
 <TagFilter />
@@ -26,7 +32,8 @@ If the default interfaces for either Safe or Squads are down or suspected of bei
 
 ### EVM Networks
 
-**Eternal Safe - Decentralized fork of Safe{Wallet}**
+**Eternal Safe - Decentralized fork of Safe\{Wallet\}**
+
 - GitHub: https://github.com/eternalsafe/wallet
 - Hosted (IPFS): https://eternalsafe.eth.limo (requires bring your own RPC)
 - Local: Can be downloaded and run locally
@@ -36,6 +43,7 @@ Note: Local/alternative UIs may not be actively maintained. Treat them as emerge
 ### Solana
 
 **Squads Public Client - Open source Squads V4 interface**
+
 - GitHub: https://github.com/Squads-Protocol/public-v4-client
 - Features: Verifiable build, self-hostable with Docker, IPFS distribution
 - Local: Can be built and run locally
@@ -43,6 +51,7 @@ Note: Local/alternative UIs may not be actively maintained. Treat them as emerge
 ### Mobile (Safe)
 
 **Safe Android App**
+
 - GitHub: https://github.com/safe-global/safe-android
 - App Store: https://apps.apple.com/us/app/safe-wallet/id1515759131
 - Play Store: https://play.google.com/store/apps/details?id=io.gnosis.safe
@@ -50,13 +59,16 @@ Note: Local/alternative UIs may not be actively maintained. Treat them as emerge
 ## RPC Backup Options
 
 ### Basic guidance:
+
 - Multiple providers: Set up accounts with 2-3 different RPC services
   - eg. Alchemy, Infura, Chainstack, Quicknode, Tenderly
 - Avoid correlation: Choose providers that don't share infrastructure, if that information is available
 - Private RPCs preferred: Public RPC URLs are typically not sufficient for reliable operation
 
 ### Administrator responsibilities
+
 Ensure signer preparedness:
+
 - Provide access to offline UI tools listed above
 - Verify signers have practiced using backup interfaces
 - Test backup RPCs during non-emergency periods
@@ -65,9 +77,11 @@ Ensure signer preparedness:
 ## Block Explorer Backup Options
 
 ### EVM Networks
+
 Etherscan provides the default block explorer for nearly all EVM chains. In the event that Etherscan is compromised or goes down, it is important to have backup options that can be used for monitoring and investigating transactions.
 
 **Blockscout - Open source Etherscan alternative**
+
 - https://www.blockscout.com/
 - Available for all EVM networks
 - Can also be [self-hosted](https://github.com/blockscout/blockscout), although it requires significant time to run full node and index
@@ -75,9 +89,11 @@ Etherscan provides the default block explorer for nearly all EVM chains. In the 
 More explorers: A broader list of network explorers is maintained here: https://explorer.swiss-knife.xyz/
 
 ### Solana Networks
+
 Both explorer.solana.com and Solscan are reliable options for Solana transaction exploration and decoding.
 
 **explorer.solana.com** - https://explorer.solana.com/
+
 - Can be [self-hosted](https://github.com/solana-foundation/explorer) using open source code
 
 **Solscan** - https://solscan.io/
@@ -91,6 +107,7 @@ Both explorer.solana.com and Solscan are reliable options for Solana transaction
 ### Eternal Safe - Decentralized fork of Safe\{Wallet\}
 
 #### Access Options
+
 - **GitHub**: https://github.com/eternalsafe/wallet
 - **Hosted (IPFS)**: https://eternalsafe.eth.limo (requires bring your own RPC)
 - **Local**: Can be downloaded and run locally
@@ -113,8 +130,9 @@ Both explorer.solana.com and Solscan are reliable options for Solana transaction
 Once a transaction has been signed by one signer, a **Smart Link** is created which can be forwarded to the next signer to add their signature. The transactions do not go to any centralized backend.
 
 **Example Smart Link:**
+
 ```
-Please sign this Eternal Safe transaction for the Safe: base:0xA79C6968E3c75aE4eF388370d1f142720D498fEC. 
+Please sign this Eternal Safe transaction for the Safe: base:0xA79C6968E3c75aE4eF388370d1f142720D498fEC.
 Current confirmations: 1 of 2.
 https://eternalsafe.eth.limo/transactions/tx/?safe=base:0xA79C6968E3c75aE4eF388370d1f142720D498fEC&tx=eyJzaWduYXR1cmVzIjp7ImRhdGFUeXBlIjoiTWFwIiwidmFsdWUiOltbIjB4NDBiYjMyZjA4NjJkMjI3ODEzYzg2ZmQ4M2E3YjNjOWRiOTA3NGUyYSIseyJzaWduZXIiOiIweDQwYkIzMkYwODYyRDIyNzgxM2M4NkZEODNBN0IzYzlkYjkwNzRFMkEiLCJkYXRhIjoiMHgwZDMxZTZjODIxZjBhMGZlM2M5NmNlZWY4ZDNhM2JhZmU3YmZmZTliODQ0ZWNkYzBkYWNmNzc0MzFkODQ0NjU4MTgwZjUwNmZlMjZiZjMzOTQwY2VhOTJiMzlhNDNjODRkMDRhNThiMGY1ODQ2NzhlNzE0YTllMWJkMzE0NTg5ZjFiIn1dXX0sImRhdGEiOnsiZGF0YSI6IjB4IiwiYmFzZUdhcyI6IjAiLCJnYXNQcmljZSI6IjAiLCJzYWZlVHhHYXMiOiIwIiwiZ2FzVG9rZW4iOiIweDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCJub25jZSI6NCwicmVmdW5kUmVjZWl2ZXIiOiIweDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCJ2YWx1ZSI6IjEwMDAwMDAwMDAwMDAwMDAiLCJ0byI6IjB4RTBiY2ZlNWUzMEFCYTBCNDZmMTNCMEMyNENiQzQ3MERDQTNlYjg2NSIsIm9wZXJhdGlvbiI6MH19
 ```
@@ -128,6 +146,7 @@ Once all signatures are collected, execute the transaction. **Note**: Prior to e
 ### Squads Public Client - Open source Squads V4 interface
 
 #### Access Options
+
 - **GitHub**: https://github.com/Squads-Protocol/public-v4-client
 - **Hosted**: https://backup.app.squads.so/
 - **Features**: Verifiable build, self-hostable with Docker, IPFS distribution
@@ -143,7 +162,7 @@ Once all signatures are collected, execute the transaction. **Note**: Prior to e
 
 #### Transaction Operations
 
-4. Create, approve, or execute transactions. *Smart Links* are not needed for Solana as all transactions are on chain and accessible via the RPC without an API
+4. Create, approve, or execute transactions. _Smart Links_ are not needed for Solana as all transactions are on chain and accessible via the RPC without an API
    ![Squads transaction interface](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/squads-transaction-interface.png)
 
 ## Security Considerations
@@ -151,6 +170,7 @@ Once all signatures are collected, execute the transaction. **Note**: Prior to e
 ### Enhanced Verification
 
 When using backup systems:
+
 - **Extra caution required**: Be more thorough with verification procedures
 - **Multiple verification methods**: Use additional tools to cross-check transaction details
 - **Team confirmation**: Verify with other signers before proceeding with critical transactions
@@ -165,11 +185,13 @@ When using backup systems:
 ## Testing and Preparation
 
 ### Regular Practice
+
 - **Monthly testing**: Practice using backup interfaces during normal operations
 - **Team coordination**: Ensure all signers can operate backup systems
 - **Process documentation**: Update procedures based on practice sessions
 
 ### Emergency Drills
+
 - **Simulated outages**: Practice coordinating with backup systems during drills
 - **Communication testing**: Verify backup communication channels work with backup UIs
 - **Time measurement**: Track how long backup system activation takes
@@ -177,11 +199,13 @@ When using backup systems:
 ## Troubleshooting
 
 ### Common Issues
+
 - **RPC connectivity**: Switch to alternative RPC providers if connection fails
 - **Transaction loading**: Refresh or try different network endpoints
 - **Signature verification**: Use multiple verification tools when in doubt
 
 ### Support Resources
+
 - **GitHub documentation**: Refer to project documentation for technical issues
 - **Team assistance**: Coordinate with other signers for problem-solving
 - **Alternative tools**: Have multiple backup options available
@@ -192,7 +216,5 @@ When using backup systems:
 - [Emergency Procedures](/multisig-for-protocols/emergency-procedures) - General emergency response
 - [Communication Setup](/multisig-for-protocols/communication-setup) - Backup communication during outages
 
-
 </TagProvider>
 <ContributeFooter />
-

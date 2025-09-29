@@ -459,6 +459,11 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/multisig-for-protocols/backup-signing-and-infrastructure": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
     "/multisig-for-protocols/communication-setup": [
       "Engineer/Developer",
       "Security Specialist",
@@ -470,6 +475,11 @@
       "Multisig Security"
     ],
     "/multisig-for-protocols/hardware-wallet-setup": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/implementation-checklist": [
       "Engineer/Developer",
       "Security Specialist",
       "Multisig Security"
@@ -510,16 +520,6 @@
       "Multisig Security"
     ],
     "/multisig-for-protocols/setup-and-configuration": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Multisig Security"
-    ],
-    "/multisig-for-protocols/backup-signing-and-infrastructure": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Multisig Security"
-    ],
-    "/multisig-for-protocols/training-checklist": [
       "Engineer/Developer",
       "Security Specialist",
       "Multisig Security"
@@ -1025,17 +1025,7 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/seed-phrase-management": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
     "/wallet-security/secure-multisig-best-practices": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Engineer/Developer"
-    ],
-    "/wallet-security/secure-multisig-signing-process": [
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer"
@@ -1045,7 +1035,17 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/wallet-security/secure-multisig-signing-process": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Engineer/Developer"
+    ],
     "/wallet-security/secure-multisig-squads-verification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/wallet-security/seed-phrase-management": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
