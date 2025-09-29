@@ -83,7 +83,7 @@
 :root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft:hover {
     border-color: #303030;
     color: #1e1e1e;
-}
+} 
 
 :root:not(.dark) .vocs_AiCtaDropdown_dropdownMenuContent {
     border: 1px solid #908f8f;
