@@ -358,6 +358,14 @@ const config = {
             { text: 'Volume Encryption', link: '/encryption/volume-encryption', dev: true },
           ]
         },
+        {
+          text: 'Treasury Operations',
+          collapsed: false,
+          dev: true,
+          items: [
+            { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification', dev: true },
+          ]
+        },
       ]
     },
     {

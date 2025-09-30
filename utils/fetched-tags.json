@@ -5,22 +5,23 @@
     "Community & Marketing",
     "Compliance",
     "DAO",
+    "DeFi",
     "Devops",
     "Engineer/Developer",
     "HR",
     "Human Resources",
     "Individual Security",
     "Legal & Compliance",
+    "Operations",
     "Operations & Strategy",
     "Physical Security",
     "Protocol",
+    "Risk Management",
     "SEAL/Initiative",
     "SRE",
-    "Security",
     "Security Specialist",
-    "Threat Actors",
     "Travel",
-    "Wallet Drainers",
+    "Treasury Ops",
     "Web3",
     "Whitehat"
   ],
@@ -365,12 +366,12 @@
       "SRE"
     ],
     "/incident-management/playbooks/hacked-drainer": [
-      "Security",
-      "Wallet Drainers"
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/incident-management/playbooks/hacked-elusive-comet": [
-      "Security",
-      "Threat Actors"
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/incident-management/playbooks/malware": [
       "Security Specialist",
@@ -920,6 +921,13 @@
     "/threat-modeling/overview": [
       "Engineer/Developer",
       "Security Specialist"
+    ],
+    "/treasury-ops/transaction-verification": [
+      "Treasury Ops",
+      "Protocol",
+      "Operations",
+      "Risk Management",
+      "DeFi"
     ],
     "/vulnerability-disclosure/bug-bounties": [
       "Engineer/Developer",
