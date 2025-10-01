@@ -32,32 +32,35 @@ Large cryptocurrency transfers require rigorous verification because transaction
 
 ### Pre-Transfer Setup (48 Hours Before)
 
-#### Generate Fresh Deposit Address
+#### Choose Appropriate Deposit Address
 
-Always create a new address for large incoming transfers. Never reuse addresses from previous large transfers.
-
-**Why use fresh addresses?** Prevents counterparties from viewing your entire treasury balance/history and isolates each major transfer for clean audit trails.
+The address strategy depends on your custody model:
 
 **For Institutional Custody** (Coinbase, Anchorage, BitGo):
+- **Always generate a fresh deposit address** for large incoming transfers
 - **Verify you're on the correct website** - check URL carefully, bookmark the official site, watch for phishing lookalikes
 - Use the platform's "offline deposit address" or "new address" function
+- **Why fresh addresses?** Prevents counterparties from viewing your entire treasury balance/history and isolates each major transfer for clean audit trails
 
-**For Self-Custody**:
-- Use hardware wallet with verified firmware
-- Document derivation path: `m/44'/60'/0'/0/x` (Ethereum) or `m/84'/0'/0'/0/x` (Bitcoin)
-- Generate addresses in air-gapped device/environment 
+**For Self-Custody Multisigs**:
+- **Use your established, proven multisig address** that has been successfully tested in prior transactions
+- **Never generate a fresh multisig for large transfers** - multisig setup is complex and a new deployment risks misconfiguration
+- The battle-tested multisig you've been using is safer than a newly created one
+- Document the multisig configuration: threshold (e.g., 3-of-5), signer addresses, and deployment transaction
+- Verify multisig configuration on block explorer before providing address to sender 
 
 #### Address Verification Protocol
 
 Have 2-3 team members independently verify the address:
 
 ```
-1. Generate address in custody platform
-2. Person A: Verify via custody UI (if applicable)
-3. Person B: Verify via hardware wallet (if applicable)
-5. Perform checksum validation:
+1. Retrieve address from custody platform or multisig interface
+2. Person A: Verify via custody UI or block explorer (multisig configuration)
+3. Person B: Independently verify via separate block explorer or multisig interface
+4. Perform checksum validation:
    - Ethereum: EIP-55 checksum
    - Bitcoin: Bech32 checksum
+5. For multisigs: Verify threshold and signer configuration match expected setup
 ```
 
 **For transfers >$1M**: Require all verifiers to sign a document confirming they verified the address character-by-character.
@@ -135,9 +138,10 @@ Require video call with minimum 2 _internal_ people present.
 1. **Address Reconfirmation**
    - Read deposit address character-by-character from your screen
    - Sender confirms they see identical address on their screen
-   - **Critical: "Read ONLY from your custody platform or hardware wallet"**
+   - **Critical: "Read ONLY from your custody platform or multisig interface (Safe, Zodiac, etc.)"**
    - **Do NOT copy from email, Etherscan, any block explorer, or any intermediary source**
-   - **Only trust the address shown directly in your custody interface or on your hardware wallet**
+   - **Only trust the address shown directly in your custody interface or multisig platform**
+   - For multisigs: State the configuration (e.g., "3-of-5 multisig at address 0x...")
    - This prevents compromised email, address poisoning, and man-in-the-middle attacks from causing misdirection
 
 2. **Test Transaction Review**
@@ -285,7 +289,7 @@ Minimum 2 _internal_ people present, verify:
    
 4. Approvers use MFA to approve:
    - Hardware security key, biometric, or authenticator app
-   - For hardware wallets: verify address on device screen
+   - For multisigs: Each signer verifies transaction details on their signing device
    - Verbally confirm: "I approve this transaction"
 
 5. Final approval triggers broadcast to blockchain
@@ -336,9 +340,10 @@ See the[Multisigs for Protocols](/wallet-security/multisigs-for-protocols/overvi
 
 ### Address Verification
 
-**Hardware wallet display verification:**
-- Always check address on hardware wallet
-- Never trust computer display alone
+**Multisig and custody interface verification:**
+- Always verify addresses directly from your custody platform or multisig interface (Safe, Zodiac, etc.)
+- For multisigs: Cross-check configuration (threshold, signers) on block explorer
+- Never trust copy-pasted addresses from email or chat
 - Verify entire address character-by-character
 
 **Address poisoning defense:**
@@ -380,8 +385,8 @@ See the[Multisigs for Protocols](/wallet-security/multisigs-for-protocols/overvi
 1. **Test everything**: Small test transactions can catch human errors
 2. **Verify independently**: Multiple people through different channels
 3. **Never rush**: Urgency benefits attackers, not you
-4. **Hardware wallet verification**: Trust the device, not the computer
-5. **Verify addresses**: Verify addresses during video calls
+4. **Use multisig for self-custody**: Multiple signers prevent single points of failure
+5. **Verify addresses live**: Always verify addresses during video calls from authoritative sources
 
 **In cryptocurrency, there are no chargebacks.** Every transaction is final. The procedures in this guide may seem extensive, but preventing a single mistake justifies significant operational overhead.
 
