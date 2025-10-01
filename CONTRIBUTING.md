@@ -231,7 +231,7 @@ Example of a category with multiple pages:
   collapsed: false,
   dev: true,                // Indicates this category is in development
   items: [
-    { text: 'Overview', link: '/monitoring/README', dev: true },  // Example page
+    { text: 'Overview', link: '/monitoring/README', dev: true },  // Indicates this page is in development
     { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
     { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
   ]
@@ -240,6 +240,30 @@ Example of a category with multiple pages:
 ```
 
 This ensures that new content appears correctly in the site’s navigation for readers on the `.dev` site while staying hidden from the stable `.org` site until ready.
+
+### 4. Error Checking
+
+Before pushing changes, always make sure your build works without errors:
+
+- Run 
+    ```bash
+    npx just build
+    ```
+    or
+    ```bash
+    npm run docs:build
+    ```
+- Preview the updated content locally with:
+    ```bash
+    npm run docs:preview
+    ```
+    or
+    ```bash
+    npx just preview
+    ```
+    (The preview runs at port `4173` by default.)
+    
+This helps catch build or formatting issues early so reviewers see clean contributions.
 
 ## Style guide
 
