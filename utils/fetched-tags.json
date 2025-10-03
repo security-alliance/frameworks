@@ -16,8 +16,11 @@
     "Protocol",
     "SEAL/Initiative",
     "SRE",
+    "Security",
     "Security Specialist",
+    "Threat Actors",
     "Travel",
+    "Wallet Drainers",
     "Web3",
     "Whitehat"
   ],
@@ -362,12 +365,12 @@
       "SRE"
     ],
     "/incident-management/playbooks/hacked-drainer": [
-      "Security Specialist",
-      "Operations & Strategy"
+      "Security",
+      "Wallet Drainers"
     ],
     "/incident-management/playbooks/hacked-elusive-comet": [
-      "Security Specialist",
-      "Operations & Strategy"
+      "Security",
+      "Threat Actors"
     ],
     "/incident-management/playbooks/malware": [
       "Security Specialist",
