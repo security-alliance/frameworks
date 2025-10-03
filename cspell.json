@@ -9,12 +9,7 @@
         }
     ],
     "dictionaries": [
-        "project-specific-words",
-        "softwareTerms",
-        "computing-acronyms",
-        "software-tools",
-        "cryptocurrencies",
-        "companies"
+        "project-specific-words"
     ],
     "allowCompoundWords": true,
     "ignorePaths": [
