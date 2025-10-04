@@ -9,10 +9,15 @@ tags:
 contributors:
   - role: wrote
     users: [dickson]
-
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import {
+  TagList,
+  AttributionList,
+  TagProvider,
+  TagFilter,
+  ContributeFooter,
+} from "../../../components";
 
 <TagProvider>
 <TagFilter />
@@ -26,8 +31,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 Large cryptocurrency transfers require rigorous verification because transactions are irreversible. This guide covers both receiving and sending significant amounts, with security measures scaling to transfer size.
 
----
-
 ## Part 1: Receiving Large Transfers
 
 ### Pre-Transfer Setup (48 Hours Before)
@@ -37,17 +40,19 @@ Large cryptocurrency transfers require rigorous verification because transaction
 The address strategy depends on your custody model:
 
 **For Institutional Custody** (Coinbase, Anchorage, BitGo):
+
 - **Always generate a fresh deposit address** for large incoming transfers
 - **Verify you're on the correct website** - check URL carefully, bookmark the official site, watch for phishing lookalikes
 - Use the platform's "offline deposit address" or "new address" function
 - **Why fresh addresses?** Prevents counterparties from viewing your entire treasury balance/history and isolates each major transfer for clean audit trails
 
 **For Self-Custody Multisigs**:
+
 - **Use your established, proven multisig address** that has been successfully tested in prior transactions
 - **Never generate a fresh multisig for large transfers** - multisig setup is complex and a new deployment risks misconfiguration
 - The battle-tested multisig you've been using is safer than a newly created one
 - Document the multisig configuration: threshold (e.g., 3-of-5), signer addresses, and deployment transaction
-- Verify multisig configuration on block explorer before providing address to sender 
+- Verify multisig configuration on block explorer before providing address to sender
 
 #### Address Verification Protocol
 
@@ -70,6 +75,7 @@ Have 2-3 team members independently verify the address:
 This should occur **24-48 hours before the main transfer**.
 
 **Phase 1: Sender → You (Incoming Test)**
+
 ```
 1. Sender sends small amount (0.001 ETH or 0.0001 BTC) to your new address
 2. Verify receipt through multiple sources:
@@ -80,6 +86,7 @@ This should occur **24-48 hours before the main transfer**.
 ```
 
 **Phase 2: You → Sender (Outgoing Test)**
+
 ```
 4. Send test amount BACK to another address you control
 5. You confirm you received the return transaction
@@ -90,12 +97,14 @@ This should occur **24-48 hours before the main transfer**.
 #### Coordinate with Sender
 
 Provide via encrypted channel (PGP email or Signal):
+
 - Deposit address
 - Network specification (Ethereum mainnet chain ID 1, Bitcoin mainnet)
 - Test transaction hash (incoming only)
 - Video call scheduled time for live transfer
 
 Request from sender:
+
 - Source wallet addresses they'll send from
 - Approximate transfer timing: specific date and time window
   - Example: "Tuesday, March 15th, 2:00-6:00 PM EST"
@@ -103,6 +112,7 @@ Request from sender:
 - Whether they'll use single or multiple transactions
 
 **Best practices for transaction splitting:**
+
 - **\<$10M**: Single transaction preferred (simpler, one confirmation cycle, cleaner records)
 - **\>$10M**: Consider 2-3 separate transactions (reduces single-transaction risk, allows staged confirmation, provides pause points to verify each step)
 - **\>$50M**: Multiple transactions strongly recommended with 30-minute intervals between each
@@ -112,6 +122,7 @@ Request from sender:
 Establish code phrase during initial verified meeting. Use this phrase to authenticate any address changes or unusual requests. Example: "What was the name of the restaurant where we finalized the agreement?" Exchange secondary contact numbers for key personnel - if primary contact requests changes, call secondary to confirm. Maintain out-of-band verification: if request comes via email, confirm via phone.
 
 **Red flags that should trigger immediate verification:**
+
 - Urgent requests to bypass procedures or claims of "emergency"
 - Requests to send to "temporary" or "new" address without proper verification
 - Pressure to skip test transactions or any rushed requests
@@ -125,6 +136,7 @@ If anything feels wrong, STOP and verify through multiple channels. Urgency is a
 Require video call with minimum 2 _internal_ people present.
 
 **Liveness and identity verification** (prevents AI deepfakes):
+
 ```
 1. Ask participant to hold up specific number of fingers (change unpredictably)
 2. Ask them to wave their hand in front of their face
@@ -136,6 +148,7 @@ Require video call with minimum 2 _internal_ people present.
 **Critical confirmations during call:**
 
 1. **Address Reconfirmation**
+
    - Read deposit address character-by-character from your screen
    - Sender confirms they see identical address on their screen
    - **Critical: "Read ONLY from your custody platform or multisig interface (Safe, Zodiac, etc.)"**
@@ -145,6 +158,7 @@ Require video call with minimum 2 _internal_ people present.
    - This prevents compromised email, address poisoning, and man-in-the-middle attacks from causing misdirection
 
 2. **Test Transaction Review**
+
    - Display test transaction on block explorer during call
    - Confirm sender sees same transaction hash
    - Review the bidirectional test from 24-48 hours ago
@@ -164,6 +178,7 @@ Require video call with minimum 2 _internal_ people present.
 Wait for enough confirmations that a chain reorganization becomes economically infeasible or cryptographically impossible.
 
 **Monitoring phases:**
+
 ```
 1. Transaction Broadcast: Appears in mempool, verify correct parameters
 2. First Confirmation: Included in a block
@@ -179,6 +194,7 @@ Wait for enough confirmations that a chain reorganization becomes economically i
 - **Solana**: ~12.8 seconds
 
 **On-call updates from Technical Operator:**
+
 - "Transaction in mempool, parameters correct"
 - "Block 1 confirmed, no anomalies"
 - "Block 12 confirmed, [X.XXX] ETH received and final"
@@ -186,20 +202,21 @@ Wait for enough confirmations that a chain reorganization becomes economically i
 #### Dual Confirmation Requirement
 
 Before ending call, verify through TWO sources:
+
 1. Custody platform showing updated balance
 2. Block explorer showing confirmed transaction
 
 #### Post-Receipt Actions
 
 **Immediate (within 15 min):**
+
 - Document transaction hash, block number, timestamp
 - Record amount in native units and USD equivalent
 - Note all personnel involved
 
 **Within 30 minutes:**
-- Email confirmation to sender with transaction details
 
----
+- Email confirmation to sender with transaction details
 
 ## Part 2: Sending Large Cryptocurrency Transfers
 
@@ -208,6 +225,7 @@ Before ending call, verify through TWO sources:
 #### Authorization
 
 Document and obtain approvals:
+
 - Purpose of transfer
 - Recipient verification
 - Amount and timeline
@@ -281,12 +299,12 @@ Minimum 2 _internal_ people present, verify:
    - "Sending [X.XXXXX] ETH"
    - "To address: 0x[read full address character-by-character]"
    - "On network: Ethereum mainnet, chain ID 1"
-   
+
 3. Each approver independently verifies on their device:
    - Destination matches authorized recipient
    - Amount matches approved transfer
    - Network is correct
-   
+
 4. Approvers use MFA to approve:
    - Hardware security key, biometric, or authenticator app
    - For multisigs: Each signer verifies transaction details on their signing device
@@ -332,21 +350,23 @@ After transaction reaches finality:
 
 ## Multi-Signature Best Practices
 
-See the[Multisigs for Protocols](/wallet-security/multisigs-for-protocols/overview) guide.
+See the Multisigs for Protocols guide.
 
----
+# TODO: Add link to Multisigs for Protocols guide. AFTER IT IS MERGED
 
 ## Critical Risk Mitigations
 
 ### Address Verification
 
 **Multisig and custody interface verification:**
+
 - Always verify addresses directly from your custody platform or multisig interface (Safe, Zodiac, etc.)
 - For multisigs: Cross-check configuration (threshold, signers) on block explorer
 - Never trust copy-pasted addresses from email or chat
 - Verify entire address character-by-character
 
 **Address poisoning defense:**
+
 - Never copy from transaction history
 - Always copy from authoritative source
 - Use custody platform address books when available
@@ -354,11 +374,13 @@ See the[Multisigs for Protocols](/wallet-security/multisigs-for-protocols/overvi
 ### Communication Security
 
 **Email compromise prevention:**
+
 - Address confirmation during video call prevents MITM
 - Live verbal verification catches discrepancies
 - Code phrases for authentication
 
 **Social engineering defense:**
+
 - Never accept urgent bypass requests
 - Callback on known numbers to verify
 - Any request to skip verification triggers security review
@@ -366,6 +388,7 @@ See the[Multisigs for Protocols](/wallet-security/multisigs-for-protocols/overvi
 ### Multi-Party Controls
 
 **Prevents single-actor fraud:**
+
 - Multiple personnel
 - Video recording of approvals
 - Separation of duties: requester ≠ approver ≠ technical executor
@@ -373,6 +396,7 @@ See the[Multisigs for Protocols](/wallet-security/multisigs-for-protocols/overvi
 ### Transaction Parameter Security
 
 **Custody platform policy engines:**
+
 - Enforce withdrawal limits automatically
 - Block transactions to non-whitelisted addresses
 - Require elevated approvals above thresholds
@@ -396,4 +420,3 @@ The cost of verification is measured in minutes. The cost of a mistake is measur
 
 </TagProvider>
 <ContributeFooter />
-
