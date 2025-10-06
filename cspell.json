@@ -1,0 +1,28 @@
+{
+    "version": "0.2",
+    "language": "en-US",
+    "dictionaryDefinitions": [
+        {
+            "name": "project-specific-words",
+            "path": "./wordlist.txt",
+            "addWords": true
+        }
+    ],
+    "dictionaries": [
+        "project-specific-words"
+    ],
+    "allowCompoundWords": true,
+    "ignorePaths": [
+        "node_modules",
+        "dist",
+        ".git",
+        ".next",
+        "/docs/pages/config/contributors.json",
+        "/docs/public",
+        "./justfile"
+    ],
+    "ignoreRegExpList": [
+        "users:\\s*\\[[^\\]]*\\]",
+        "```[a-zA-Z0-9]*[\\s\\S]*?```"
+    ]
+}
