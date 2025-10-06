@@ -28,7 +28,7 @@ Mutation testing is a technique used to evaluate the quality of a test suite by 
 
 ## How does it work?
 
-The exact behaviour varies depending on the tool used, but the general flow looks like this:
+The exact behavior varies depending on the tool used, but the general flow looks like this:
 
 1. **Mutant Generation**: The mutation testing tool automatically modifies your source code in small ways (e.g., changing a `+` to a `-`, or replacing a `<` with a `=<`).
 2. **Test Execution**: The full test suite is run against each mutant version of the code.
@@ -51,7 +51,7 @@ There is a wide range of mutations that you can have, ranging from common softwa
 **Solidity specific**
 
 - **Data Location Keyword Replacement:** Changing `memory` to `storage` and vice versa.
-- **Call Type Replacement:** Changin `delegatecall()` to `call()`.
+- **Call Type Replacement:** Changing `delegatecall()` to `call()`.
 - **Modifier Deletion or Insertion:** Removing or inserting for example `onlyOwner()` modifier.
 - **Exception Handling Deletion:** Remove `require()` statements.
 
@@ -142,7 +142,7 @@ In summary, mutation testing is a great tool if used correctly, but it is not a 
 - [SuMo](https://github.com/MorenaBarboni/SuMo-SOlidity-MUtator) by MorenaBarboni
 - [vertigo-rs](https://github.com/RareSkills/vertigo-rs) by RareSkills
 - [Gambit](https://github.com/Certora/gambit) by Certora
-- [UniversalMutator](https://github.com/sambacha/universalmutator/tree/new-solidity-rules) by sambacha. However, it is a generalised mutation testing framework, which may lack the Solidity-specific mutators that the others contain.
+- [UniversalMutator](https://github.com/sambacha/universalmutator/tree/new-solidity-rules) by sambacha. However, it is a generalized mutation testing framework, which may lack the Solidity-specific mutators that the others contain.
 
 ## References
 

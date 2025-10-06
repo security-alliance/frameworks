@@ -11,8 +11,7 @@ Thank you for contributing to the Security Frameworks! Before you open a PR, mak
 
 <!--
 ℹ️ Checking for typos locally
-1. Install [aspell](https://www.gnu.org/software/aspell/) for your platform.
-2. Install [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
-3. Install [just](https://github.com/casey/just)
-4. Run `npx just lint`
+1. Install [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
+2. Install [just](https://github.com/casey/just)
+3. Run `npx just lint`
 -->
