@@ -10,8 +10,8 @@ const config = {
   },
   title: 'Security Frameworks by SEAL',
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
-  logoUrl: '/logo/frameworks-full.svg',
-  iconUrl: '/logo/favicon.svg',
+  logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
+  iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
   sidebar: [
     {
       text: 'Introduction',
