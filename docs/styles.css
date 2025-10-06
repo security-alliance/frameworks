@@ -99,3 +99,7 @@
 .vocs_Sidebar_footerContent {
     margin-bottom: calc(10px + var(--vocs_Banner_bannerHeight, 0px));
 }
+
+.vocs_Outline_item {
+    margin-bottom: 0.3rem;
+}
