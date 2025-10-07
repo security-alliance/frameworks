@@ -1,4 +1,31 @@
+---
+title: "Custodial Treasury Security: Inventory & Controls Framework"
+tags:
+  - Treasury Ops
+  - Operations
+  - Risk Management
+contributors:
+  - role: wrote
+    users: [dickson]
+  - role: reviewed
+    users: [relotnek]
+---
+
+import {
+  TagList,
+  AttributionList,
+  TagProvider,
+  TagFilter,
+  ContributeFooter,
+} from "../../../components";
+
+<TagProvider>
+<TagFilter />
+
 # Custodial Treasury Security: Inventory & Controls Framework
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 Proper documentation and classification of custodial accounts is essential for institutional treasury security. This guide covers the security assessment, classification, and control frameworks for crypto assets held with third-party custodians.
 
@@ -545,3 +572,8 @@ Treasury Lead: _________________ Date: _______
 
 Next Review Due: YYYY-MM-DD
 ```
+
+---
+
+</TagProvider>
+<ContributeFooter />
