@@ -16,6 +16,7 @@ Calculate the total value at risk in this account:
 
 - Current market value of all assets held
 - Include value of any active positions (e.g., staked assets, DeFi deposits)
+- What is the financial impact if unavailable for 7 days?
 
 #### Operational Impact
 
@@ -23,16 +24,24 @@ Assess the consequences if this account becomes unavailable:
 
 - What specific operations require this account?
 - Do you have a secondary custody account that can handle these operations?
-- What is the financial impact if unavailable for 7 days?
+- What is the reputational impact if this account is compromised or unavailable?
+
+#### Regulatory Impact
+
+Evaluate regulatory and compliance consequences:
+
+- Are assets in this account subject to regulatory reporting requirements (SEC filings, audit requirements)?
+- Does this account hold regulated assets (e.g., stablecoins subject to reserves reporting)?
+- What are the regulatory deadlines that could be missed if this account is unavailable?
 
 #### Impact Classification
 
-| Level        | Financial Exposure | Operational Dependency                       |
-| ------------ | ------------------ | -------------------------------------------- |
-| **Low**      | \<$100K            | No critical operations depend on it          |
-| **Medium**   | $100K - $1M        | Important but alternative funding available  |
-| **High**     | $1M - $10M         | Critical operations, limited alternatives    |
-| **Critical** | \>$10M             | Business-critical, no alternatives for weeks |
+| Level        | Financial Exposure (% of Total Assets) | Operational Dependency                       | Regulatory Impact                                    |
+| ------------ | -------------------------------------- | -------------------------------------------- | ---------------------------------------------------- |
+| **Low**      | \<1%                                   | No critical operations depend on it          | No regulatory reporting tied to this account         |
+| **Medium**   | 1% - 10%                               | Important but alternative funding available  | Periodic reporting; delays manageable                |
+| **High**     | 10% - 25%                              | Critical operations, limited alternatives    | Regular regulatory filings; delays cause violations  |
+| **Critical** | \>25%                                  | Business-critical, no alternatives for weeks | Real-time reporting requirements; SEC filings; audit |
 
 ### Step 2: Operational Assessment
 
@@ -62,7 +71,7 @@ Assess how transactions are executed:
 - Are transactions handled manually or through automated systems?
 - Do approvers need to coordinate across timezones?
 
-Note: Single-approver configurations should only be used for low-value operational accounts (\<$10K) with additional compensating controls like strict spending limits and daily reconciliation.
+Note: Single-approver configurations should only be used for low-value operational accounts (\<0.1%) with additional compensating controls like strict spending limits and daily reconciliation.
 
 #### Operational Classification
 
@@ -79,9 +88,10 @@ Combine impact and operational assessments to determine required controls.
 
 | Use Case                      | Impact      | Operational   | Approvers | MFA Requirement    | Whitelist Delay | Additional Controls                         |
 | ----------------------------- | ----------- | ------------- | --------- | ------------------ | --------------- | ------------------------------------------- |
-| Primary Reserve (>$50M)       | Critical    | Cold Vault    | 5-7       | Hardware mandatory | 72 hours        | Geographic distribution                     |
-| Secondary Reserve ($10M-$50M) | Critical    | Cold Vault    | 4-5       | Hardware mandatory | 48 hours        | Geographic distribution                     |
-| Active Treasury ($1M-$10M)    | High        | Warm Storage  | 3-4       | Hardware mandatory | 24 hours        | Daily reconciliation, velocity limits       |
+| Primary Reserve (>25% assets) | Critical    | Cold Vault    | 5-7       | Hardware mandatory | 72 hours        | Geographic distribution, MPC recommended    |
+| Secondary Reserve (10-25%)    | Critical    | Cold Vault    | 4-5       | Hardware mandatory | 48 hours        | Geographic distribution, MPC recommended    |
+| Active Treasury (5-10%)       | High        | Warm Storage  | 3-4       | Hardware mandatory | 24 hours        | Daily reconciliation, velocity limits       |
+| Trading Capital (variable)    | High        | Active Ops    | 3         | Hardware mandatory | None            | Real-time monitoring, simulation required   |
 | Trading Capital               | High        | Active Ops    | 3         | Hardware mandatory | None            | Real-time monitoring, simulation required   |
 | DeFi Positions                | Medium-High | Warm Storage  | 3         | Hardware mandatory | 24 hours        | Contract whitelist, position monitoring     |
 | Liquidation Protection        | Medium-High | Time-Critical | 2         | Hardware required  | None            | Pre-approved destinations, automated alerts |
@@ -102,6 +112,8 @@ For Critical and High impact accounts, implement additional security layers beyo
 #### Access Security
 
 - Hardware security keys (FIDO2/WebAuthn) mandatory for all approvers
+  - Secure fallback: Each approver must register minimum 2 hardware keys stored in separate secure locations
+  - Key loss procedure: Temporary access via backup key + additional approver verification via multiple channels + mandatory key replacement within 48 hours
 - IP whitelisting with 24-hour change approval delay
 - Device fingerprinting with new device approval process
 - Session timeout and re-authentication for sensitive operations
@@ -271,11 +283,12 @@ Name/Role | Level    | MFA Method   | Device ID | Added Date
 Note: Track all access changes using Access Change Template
 
 Approval Thresholds:
-Transaction Value | Required Approvers | Time Delay | Additional Requirements
-<$10K          | 1 | None       | MFA only
-$10K - $100K   | 2 | 4 hours    | MFA
-$100K - $1M    | 3 | 24 hours   | Test transaction
->$1M           | 4 | 48 hours   | Multi-channel confirmation, test tx
+Transaction Value (% of Total Assets) | Required Approvers | Time Delay | Additional Requirements
+<0.1%          | 1 | None       | MFA
+0.1% - 1%   | 3 | 4 hours    | MFA
+1% - 10%    | 4 | 24 hours   | Multi-channel confirmation, test transaction
+10% - 25%    | 5 | 24 hours   | Multi-channel confirmation, test transaction
+>25%           | 7 | 48 hours   | Multi-channel confirmation, test transaction
 
 Separation of Duties:
 [ ] Initiators cannot approve own transactions
