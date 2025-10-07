@@ -922,6 +922,11 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/treasury-operations/classification-registration-and-documentation": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
     "/treasury-operations/transaction-verification": [
       "Treasury Ops",
       "Protocol",
