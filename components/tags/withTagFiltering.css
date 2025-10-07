@@ -1,0 +1,72 @@
+/* Tag Filtering Layout Component Styling */
+.frameworks-page-wrapper {
+  position: relative;
+}
+
+.frameworks-header-controls {
+  position: fixed;
+  top: 16px;
+  right: 280px; /* Position near search bar */
+  z-index: 1000;
+  background: transparent;
+  padding: 0;
+  border-radius: 6px;
+}
+
+/* Add styles for highlighted sidebar links - broader selectors */
+:global(aside.filtered a:not(.selected),
+        nav.filtered a:not(.selected),
+        .sidebar.filtered a:not(.selected),
+        #sidebar.filtered a:not(.selected)) {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+:global(aside a.selected,
+        nav a.selected, 
+        .sidebar a.selected,
+        #sidebar a.selected,
+        a.selected) {
+  background-color: rgba(96, 165, 250, 0.15) !important;
+  border-left: 4px solid #60a5fa !important;
+  padding-left: 12px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease;
+}
+
+/* Light mode adjustments */
+@media (prefers-color-scheme: light) {
+  
+  :global(aside a.selected,
+          nav a.selected, 
+          .sidebar a.selected,
+          #sidebar a.selected,
+          a.selected) {
+    background-color: rgba(37, 99, 235, 0.15) !important;
+    border-left-color: #2563eb !important;
+  }
+}
+
+/* Responsive positioning for different screen sizes */
+@media (max-width: 1200px) {
+  .frameworks-header-controls {
+    right: 200px;
+  }
+}
+
+@media (max-width: 900px) {
+  .frameworks-header-controls {
+    right: 60px;
+    top: 12px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .frameworks-header-controls {
+    position: fixed;
+    top: 8px;
+    right: 50px;
+    left: auto;
+  }
+}

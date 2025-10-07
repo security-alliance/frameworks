@@ -1,0 +1,219 @@
+
+/* Contributor page styling */
+.contributors-page-container {
+  margin: 2rem 0;
+}
+
+.contributors-description {
+  max-width: 800px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contributors-divider {
+  margin: 2rem 0;
+  border: 0;
+  height: 1px;
+  background: #e1e4e8;
+}
+
+.contributors-group {
+  margin-bottom: 3rem;
+}
+
+.contributors-group h2 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+/* Grid layout for the contributors listing page */
+.contributors-page-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0 1rem;
+  max-width: 800px;
+}
+
+/* Individual contributor card */
+.contributors-page-card {
+  background: var(--sidebar-bg);
+  border: 1px solid var(--theme-popup-border);
+  border-radius: 6px;
+  padding: 0.5rem 0.4rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+.contributors-page-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.contributors-page-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+  
+.contributors-page-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-right: 0.4rem;
+  word-break: break-word;
+}
+
+.contributors-page-badge {
+  font-size: 0.6rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-left: 0.2rem;
+}
+
+.steward-badge {
+  background-color: #0366d6;
+    color: white;
+}
+
+.contributors-page-role {
+  font-size: 0.8rem;
+  color: #586069;
+  margin-bottom: 0.4rem;
+  font-style: italic;
+}
+
+.contributors-page-company {
+  font-size: 0.8rem;
+  color: var(--fg);
+  margin: 0.4rem 0 0.4rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--quote-bg, rgba(0,0,0,0.05));
+  border: 1px solid var(--theme-popup-border);
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Dark theme specific adjustments */
+html.ayu .contributors-page-company,
+html.coal .contributors-page-company,
+html.navy .contributors-page-company {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.contributors-page-description {
+  font-size: 0.7rem;
+  line-height: 1.3;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--theme-popup-border);
+  padding-bottom: 0.5rem;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.contributors-page-social {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: auto;
+  margin-bottom: 0.3rem;
+  justify-content: center;
+}
+
+.contributor-link {
+  color: #586069;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+}
+
+.contributor-link:hover {
+  transform: scale(1.15);
+  color: #0066cc;
+}
+
+/* SVG icon styling */
+.contributor-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .contributors-page-list {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contributors-page-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contributors-page-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border: 2px solid var(--theme-popup-border);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: var(--sidebar-bg);
+}
+
+.contributor-contributions {
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem;
+  text-align: center;
+  background-color: var(--quote-bg, rgba(0,0,0,0.05));
+  border-radius: 4px;
+  border: 1px dashed var(--theme-popup-border);
+}
+
+/* Lead contributors specific styling */
+.lead-contributors-group .contributors-page-card,
+.leadership-group .contributors-page-card {
+  border-left: 3px solid #e34c26;
+}
+
+/* Core contributors specific styling */
+.core-contributors-group .contributors-page-card {
+  border-left: 3px solid #28a745;
+}
+
+/* Stewards specific styling */
+.stewards-group .contributors-page-card {
+  border-left: 3px solid #0366d6;
+}
+
+/* Regular contributors styling */
+.contributors-group .contributors-page-card {
+  border-left: 3px solid #6f42c1;
+}
+
+/* Featured contributors styling */
+.featured-group .contributors-page-card {
+  border-left: 3px solid #f6c32c;
+}
