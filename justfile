@@ -21,7 +21,7 @@ preview: install
 # Run all linting checks
 lint:
     @echo "Running spell check..."
-    @for f in docs/pages/**/*.mdx ; do echo $f ; aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case list  < $f | sort | uniq -c ; done
+    npx cspell ./docs/pages/**/*.mdx
     @echo "Spell check complete!"
     @echo ""
     @echo "Running markdownlint..."

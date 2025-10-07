@@ -4,14 +4,16 @@
   "description": "Official repository to the Security Frameworks by SEAL. This repository contains the entire structure and contents of the frameworks. Feel free to suggest from new categories to grammar corrections. Collaboration is open to everyone. **This is a work in progress.**",
   "main": "index.js",
   "devDependencies": {
+    "cspell": "^9.2.1",
     "vocs": "^1.0.13"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "npm run generate-tags && vocs dev",
-    "docs:build": "npm run generate-tags && vocs build",
+    "docs:dev": "npm run generate-tags && npm run mermaid-wrapper && vocs dev",
+    "docs:build": "npm run generate-tags && npm run mermaid-wrapper && vocs build",
     "docs:preview": "vocs preview",
-    "generate-tags": "node utils/tags-fetcher.js"
+    "generate-tags": "node utils/tags-fetcher.js",
+    "mermaid-wrapper": "node utils/mermaid-block-wrapper.js"
   },
   "keywords": [],
   "author": "",
