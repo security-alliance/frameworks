@@ -1,0 +1,108 @@
+---
+title: "Operational Security"
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+  - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Operational Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Operational Security (OpSec) is a systematic approach to identifying critical information, determining threats to that information, analyzing vulnerabilities, assessing risks, and implementing countermeasures to protect sensitive data and operations. This framework provides comprehensive guidance for implementing effective operational security practices in Web2 and Web3 environments.
+
+## Core Components
+
+This framework is organized into several interconnected components:
+
+1. OpSec Core Concepts:
+   - [Security Fundamentals](/opsec/core-concepts/security-fundamentals) – Core principles that form the foundation of effective operational security
+   - [Operational Implementation Process](/opsec/core-concepts/implementation-process) – Step-by-step actions for applying operational security in practice
+   - [Web3 Considerations](/opsec/core-concepts/web3-considerations) – Unique challenges and security practices for decentralized environments
+2. [Threat Modeling Overview](/opsec/threat-modeling-overview): Identifying and analyzing potential security threats
+3. [Risk Management Overview](/opsec/risk-management-overview): Identifying, assessing, and mitigating security risks
+4. [Monitoring & Detection Overview](/opsec/monitoring-detection): Continuous monitoring of security events and anomalies
+5. [Incident Response & Recovery Overview](/opsec/incident-response-recovery): Handling security incidents when they occur
+6. [Governance & Program Management Overview](/opsec/governance-program-management): Establishing security leadership and organizational structures
+7. [Control Domains Overview](/opsec/control-domains): Key areas requiring specific security controls and practices
+8. [Lifecycle Overview](/opsec/lifecycle): The continuous process of implementing and maintaining security measures
+9. [Continuous Improvement Overview](/opsec/continuous-improvement-metrics): Learning from incidents and evolving security practices
+
+## Additional contents
+
+- [While Traveling](/opsec/travel/overview)
+  - [TL;DR](/opsec/travel/tldr)
+  - [Guide](/opsec/travel/guide)
+  
+## What is Operational Security?
+
+Operational Security is a systematic process that:
+
+1. Maps and secures critical information and assets
+2. Identifies and analyzes relevant threats
+3. Discovers and addresses exploitable vulnerabilities
+4. Evaluates risks in a business context
+5. Deploys targeted controls to mitigate identified risks
+
+The goal is to prevent unauthorized access to systems and information that, if compromised, could lead to operational, financial, or reputational harm. To achieve this, modern Operational Security frameworks should adopt zero trust security model, which assumes no user, or device is inherently trustworthy. Instead, every access request must be explicitly verified, regardless of origin or credentials.
+
+## Security Fundamentals
+
+The following fundamentals form the foundation of effective operational security:
+
+- **Layered Protection**: Implementing multiple overlapping security controls so that if one mechanism fails, others will continue to protect your assets.
+- **Minimal Access Scopes**: Granting users, systems, and processes only the specific permissions they need to perform their required functions and nothing more.
+- **Information Flow Control**: Ensuring sensitive information is only accessible to those with a legitimate need to know, with restrictions on how that information can be shared and used.
+- **System Isolation**: Segmenting systems and networks into isolated zones to contain security breaches and limit lateral movement.
+- **Continuous Visibility**: Maintaining ongoing awareness of your security posture through active monitoring, testing, and continuous improvement.
+
+Check the [Security Fundamentals](/opsec/core-concepts/security-fundamentals) for practical application guidance.
+
+## Operational Implementation Process
+
+1. **Critical Asset Identification**: Map and document the assets that would cause significant harm to your organization if compromised.
+2. **Practical Threat Analysis**: Identify specific, relevant threat actors and their tactics based on your organization's profile.
+3. **Actionable Vulnerability Assessment**: Systematically identify and validate weaknesses in your environment through practical testing.
+4. **Contextual Risk Evaluation**: Analyze identified risks in the context of your business to drive informed decision-making.
+5. **Targeted Control Deployment**: Implement security controls that address prioritized risks while minimizing operational friction.
+
+Check out the [Operational Implementation Process](/opsec/core-concepts/implementation-process) for detailed implementation actions.
+
+## Web3-Specific Considerations
+
+In Web3 environments, operational security must address unique challenges:
+
+- **Transparency vs. Privacy**: Balancing blockchain transparency with the need for operational secrecy
+- **Decentralized Operations**: Securing operations across distributed teams and systems
+- **Cryptocurrency Security**: Protecting digital assets and private keys
+- **Smart Contract Vulnerabilities**: Addressing the immutable nature of deployed code
+- **Community Dynamics**: Managing security in open, community-driven projects
+
+Check out [Web3 considerations](/opsec/core-concepts/web3-considerations) for more details on these topics.
+
+## Using This Framework
+
+Organizations should adapt this framework to their specific needs, considering their size, resources, and risk profile. Start with the fundamentals and gradually implement more advanced controls as your security program matures.
+
+The guidance provided here is designed to be practical and actionable, with specific recommendations that can be implemented by Web3 teams of all sizes.
+
+---
+
+</TagProvider>
+<ContributeFooter />
