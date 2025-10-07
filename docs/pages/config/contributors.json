@@ -190,5 +190,17 @@
     "company": "SEAL",
     "job_title": "Frameworks Contributors",
     "description": "Frameworks Contributors"
+  },
+  "bsamuels453": {
+    "slug": "bsamuels453",
+    "name": "Ben S",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/bsamuels453",
+    "github": "https://github.com/bsamuels453",
+    "twitter": "https://x.com/thebensams",
+    "website": "https://bsamuels.net/",
+    "company": "Trail of Bits",
+    "job_title": "Director of Engineering for Blockchain",
+    "description": "Frameworks Contributors"
   }
 }

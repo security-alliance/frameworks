@@ -8,7 +8,7 @@ contributors:
   - role: wrote
     users: [dickson]
   - role: reviewed
-    users: [relotnek]
+    users: [relotnek, bsamuels453]
 ---
 
 import {
@@ -115,15 +115,14 @@ Combine impact and operational assessments to determine required controls.
 
 | Use Case                      | Impact      | Operational   | Approvers | MFA Requirement    | Whitelist Delay | Additional Controls                         |
 | ----------------------------- | ----------- | ------------- | --------- | ------------------ | --------------- | ------------------------------------------- |
-| Primary Reserve (>25% assets) | Critical    | Cold Vault    | 5-7       | Hardware mandatory | 72 hours        | Geographic distribution, MPC recommended    |
-| Secondary Reserve (10-25%)    | Critical    | Cold Vault    | 4-5       | Hardware mandatory | 48 hours        | Geographic distribution, MPC recommended    |
-| Active Treasury (5-10%)       | High        | Warm Storage  | 3-4       | Hardware mandatory | 24 hours        | Daily reconciliation, velocity limits       |
-| Trading Capital (variable)    | High        | Active Ops    | 3         | Hardware mandatory | None            | Real-time monitoring, simulation required   |
-| Trading Capital               | High        | Active Ops    | 3         | Hardware mandatory | None            | Real-time monitoring, simulation required   |
-| DeFi Positions                | Medium-High | Warm Storage  | 3         | Hardware mandatory | 24 hours        | Contract whitelist, position monitoring     |
-| Liquidation Protection        | Medium-High | Time-Critical | 2         | Hardware required  | None            | Pre-approved destinations, automated alerts |
-| Operational Wallet            | Medium      | Active Ops    | 2         | Hardware required  | 12 hours        | Daily caps, weekly audit                    |
-| Payments                      | Low         | Active Ops    | 2         | Standard TOTP      | 6 hours         | Per-tx cap, monthly aggregate limit         |
+| Payments                      | Low         | Active Ops    | 2         | Standard TOTP      | 6 hours         | **Baseline (all accounts):** Dedicated devices for custody access, address whitelisting enabled, test small amount to new addresses before full transaction, transaction simulation. **Low-specific:** Per-transaction cap, monthly aggregate limit         |
+| Operational Wallet            | Medium      | Active Ops    | 2         | Hardware required  | 12 hours        | All Low controls + daily transaction caps, weekly reconciliation, monthly audit                    |
+| Liquidation Protection        | Medium-High | Time-Critical | 2         | Hardware required  | None            | All Low/Medium controls + automated alerts for position health, real-time monitoring |
+| DeFi Positions                | Medium-High | Warm Storage  | 3         | Hardware mandatory | 24 hours        | All Low/Medium controls + smart contract whitelist, position monitoring, daily reconciliation     |
+| Trading Capital (variable)    | High        | Active Ops    | 3         | Hardware mandatory | 6 hours         | All Low/Medium controls + smart contract whitelist, real-time monitoring, daily reconciliation   |
+| Active Treasury (5-10%)       | High        | Warm Storage  | 3-4       | Hardware mandatory | 24 hours        | All Low/Medium controls + transaction velocity limits, SIEM monitoring， multi-channel confirmation       |
+| Secondary Reserve (10-25%)    | Critical    | Cold Vault    | 4-5       | Hardware mandatory | 48 hours        | All Low/Medium/High controls + geographic distribution of approvers, MPC recommended    |
+| Primary Reserve (>25% assets) | Critical    | Cold Vault    | 5-7       | Hardware mandatory | 72 hours        | All Low/Medium/High controls + geographic distribution of approvers, MPC recommended    |
 
 ### Step 4: Enhanced Controls for High-Risk Accounts
 
@@ -144,18 +143,19 @@ For DeFi interactions: refer to the [DeFi Risk Assessment Guide](https://entetha
 - Hardware security keys (FIDO2/WebAuthn) mandatory for all approvers
   - Secure fallback: Each approver must register minimum 2 hardware keys stored in separate secure locations
   - Key loss procedure: Temporary access via backup key + additional approver verification via multiple channels + mandatory key replacement within 48 hours
-- IP whitelisting with 24-hour change approval delay
+- IP whitelisting with 24-hour change approval delay - if treasury software supports application-level IP whitelisting, restrict to VPN IP range only
 - Device fingerprinting with new device approval process
 - Session timeout and re-authentication for sensitive operations
 - Dedicated credentials: Use separate email addresses and passwords exclusively for custody access, not shared with other corporate systems
 
 #### Device Security
 
-- Dedicated secure workstations for custody access only
+- Dedicated secure workstations and mobile devices for custody access only (no general browsing, email, or other corporate activities)
 - Network isolation on separate VLAN/segment
-- VPN mandatory for all platform access
+- VPN mandatory for all platform access; if treasury platform supports it, configure IP whitelisting to only allow access from VPN IP addresses
 - Full disk encryption with automatic screen lock
 - MDM-enforced security baseline with remote wipe capability
+- Mobile endpoint security monitoring (e.g., iVerify) for devices used as second factors or keystores, without requiring full MDM admin control
 
 #### MPC for Large Holdings
 
