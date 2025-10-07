@@ -137,6 +137,36 @@ For organizations managing >10% of total assets or >$10M equivalent in a single 
 - Establish clear key refresh and rotation procedures
 - Document recovery procedures and test annually
 
+#### Zero Trust Architecture Alternative
+
+A zero trust architecture can be implemented by centralizing all access through a single, highly secure environment (such as a bastion host or isolated cloud workspace), rather than relying on individual endpoint security.
+
+- **Bastion Host Approach:** Deploy hardened jump server that acts as sole gateway to custody platforms
+  - All custody sessions route through bastion with full session recording
+  - Bastion enforces MFA, device posture checks, and approved software versions
+  - No direct custody access from employee devices
+  - Centralized patch management and security configuration
+  
+- **Cloud Workspace Isolation:** Use browser-isolated environments (Citrix, AWS WorkSpaces, Azure Virtual Desktop)
+  - Custody access occurs only within controlled virtual environment
+  - Copy/paste and download restrictions prevent data exfiltration
+  - Session timeout and automatic workspace destruction after use
+  - Eliminates risk from compromised employee devices
+
+#### Security Monitoring & Logging
+
+#### Security Monitoring & Logging
+
+For Critical and High impact accounts, implement centralized security monitoring:
+
+- **SIEM Deployment:** Deploy SIEM to centralize logs from custody platforms, authentication systems, and access devices. Create real-time correlation rules for suspicious patterns (failed authentication, geographic anomalies, policy changes).
+
+- **Internal Incident Response:** Build dedicated incident response capability for custody-related security events. Define clear escalation procedures, maintain 24/7 on-call rotation for Critical accounts, and establish playbooks for custody compromise scenarios.
+
+- **Essential Log Sources:** Authentication events, transaction attempts, policy modifications, access changes, whitelist updates, IP address changes, new device enrollments, and approval workflows.
+
+For Medium and Low impact accounts, leverage custodian's native audit logs with weekly manual review and automated alerting for critical events (new device enrollment, policy changes, transactions above threshold).
+
 ---
 
 ## Documentation Templates
