@@ -189,20 +189,52 @@ async function main() {
     });
   }
 
+  // Check if we're on main branch (same logic as vocs.config.ts filterDevItems)
+  const isMainBranch = process.env.VERCEL_GIT_COMMIT_REF === 'main';
+  console.log(`Branch check: ${isMainBranch ? 'main (filtering dev: true pages)' : 'develop (including all pages)'}`);
+
   // Derive allowed routes from sidebar config (preferred) or fallback to Vercel static output
   let allowedRoutes = undefined;
   if (fs.existsSync(vocsConfigPath)) {
     try {
       const cfg = fs.readFileSync(vocsConfigPath, 'utf8');
-      // Match link: '/path' or link: "/path"
-      const linkRegex = /link:\s*(['"])(.*?)\1/g;
+      
+      // Extract all link and dev pairs by scanning line-by-line
+      // This approach handles nested objects better than complex regex
+      const lines = cfg.split('\n');
       const routes = new Set();
-      let m;
-      while ((m = linkRegex.exec(cfg)) !== null) {
-        if (m[2]) routes.add(m[2]);
+      
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const linkMatch = line.match(/link:\s*(['"])(.*?)\1/);
+        
+        if (linkMatch) {
+          const link = linkMatch[2];
+          
+          // Check for dev: true on the same line or nearby lines (within 3 lines before)
+          let hasDev = false;
+          for (let j = Math.max(0, i - 3); j <= i; j++) {
+            if (lines[j].includes('dev:') && lines[j].includes('true')) {
+              hasDev = true;
+              break;
+            }
+          }
+          
+          // On main branch: skip pages with dev: true
+          // On other branches: include all pages
+          if (isMainBranch && hasDev) {
+            console.log(`  Skipping dev page: ${link}`);
+            continue;
+          }
+          
+          routes.add(link);
+        }
       }
+      
       if (routes.size > 0) allowedRoutes = routes;
-    } catch {}
+    } catch (e) {
+      console.warn('Failed to parse vocs.config.ts:', e.message);
+    }
   }
   if (!allowedRoutes && fs.existsSync(vercelStaticDir)) {
     // Fallback: walk .vercel/output/static and collect all directories that contain index.html
