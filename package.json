@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "just-install": "^2.0.2",
     "mermaid": "^11.11.0",
     "playwright": "^1.55.0",

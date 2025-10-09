@@ -11,4 +11,7 @@ npm install
 # Build the Vocs site
 npm run docs:build
 
-echo "Vocs build completed successfully!"
+# Post-build searchbar indexing
+node utils/searchbar-indexing.js
+
+echo "✅ Vocs build + searchbar index completed successfully!"
