@@ -6,10 +6,10 @@ echo "Running Vercel prebuild for Vocs"
 mkdir -p docs/pages
 
 # Install dependencies
-npm install
+pnpm install --frozen-lockfile
 
 # Build the Vocs site
-npm run docs:build
+pnpm run docs:build
 
 # Post-build searchbar indexing
 node utils/searchbar-indexing.js

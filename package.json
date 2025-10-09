@@ -5,12 +5,14 @@
   "main": "index.js",
   "devDependencies": {
     "cspell": "^9.2.1",
+    "tailwindcss": "4.0.7",
     "vocs": "^1.0.13"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "npm run generate-tags && npm run mermaid-wrapper && vocs dev",
-    "docs:build": "npm run generate-tags && npm run mermaid-wrapper && vocs build",
+    "docs:dev": "pnpm run generate-tags && pnpm run mermaid-wrapper && vocs dev",
+    "docs:build": "pnpm run generate-tags && pnpm run mermaid-wrapper && vocs build",
+    "postdocs:build": "node utils/searchbar-indexing.js",
     "docs:preview": "vocs preview",
     "generate-tags": "node utils/tags-fetcher.js",
     "mermaid-wrapper": "node utils/mermaid-block-wrapper.js"
@@ -18,10 +20,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "packageManager": "pnpm@10.15.0",
   "dependencies": {
     "gray-matter": "^4.0.3",
     "just-install": "^2.0.2",
     "mermaid": "^11.11.0",
+    "minisearch": "^6.3.0",
     "playwright": "^1.55.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
