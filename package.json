@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "pnpm run generate-tags && pnpm run mermaid-wrapper && vocs dev",
+    "docs:dev": "pnpm run generate-tags && pnpm run mermaid-wrapper && vocs dev --host 0.0.0.0 --port 5173",
     "docs:build": "pnpm run generate-tags && pnpm run mermaid-wrapper && vocs build",
     "postdocs:build": "node utils/searchbar-indexing.js",
     "docs:preview": "vocs preview",
@@ -20,6 +20,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "pnpm": {
+    "trustedDependencies": [
+      "esbuild",
+      "just-install"
+    ],
+    "ignoredBuiltDependencies": [
+      "just-install"
+    ],
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
   "packageManager": "pnpm@10.15.0",
   "dependencies": {
     "gray-matter": "^4.0.3",
