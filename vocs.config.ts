@@ -345,16 +345,6 @@ const config = {
           ]
         },
         {
-          text: 'Monitoring',
-          collapsed: false,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/monitoring/overview', dev: true },
-            { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
-            { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
-          ]
-        },
-        {
           text: 'Encryption',
           collapsed: false,
           dev: true,
