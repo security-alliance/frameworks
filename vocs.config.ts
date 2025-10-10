@@ -75,13 +75,13 @@ const config = {
               ]
             },
             { text: 'Governance & Program Management', link: '/opsec/governance-program-management', dev: true },
-            { text: 'Control Domains', link: '/opsec/control-domains', dev: true },
-            { text: 'Lifecycle', link: '/opsec/lifecycle', dev: true },
+            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
+            { text: 'Lifecycle', link: '/opsec/lifecycle/overview', dev: true },
             { text: 'Monitoring & Detection', link: '/opsec/monitoring-detection', dev: true },
             { text: 'Incident Response & Recovery', link: '/opsec/incident-response-recovery', dev: true },
             { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
-            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration', dev: true },
-            { text: 'Appendices', link: '/opsec/appendices', dev: true }
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
+            { text: 'Appendices', link: '/opsec/appendices/overview', dev: true }
           ]
         },
         {
