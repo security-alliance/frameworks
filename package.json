@@ -10,10 +10,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "npm run generate-tags && npm run mermaid-wrapper && vocs dev",
-    "docs:build": "npm run generate-tags && npm run mermaid-wrapper && vocs build",
+    "docs:build": "npm run generate-tags && npm run mermaid-wrapper && sync-contributing && vocs build",
     "docs:preview": "vocs preview",
     "generate-tags": "node utils/tags-fetcher.js",
-    "mermaid-wrapper": "node utils/mermaid-block-wrapper.js"
+    "mermaid-wrapper": "node utils/mermaid-block-wrapper.js",
+    "sync-contributing": "node utils/sync-contributing.js"
   },
   "keywords": [],
   "author": "",
