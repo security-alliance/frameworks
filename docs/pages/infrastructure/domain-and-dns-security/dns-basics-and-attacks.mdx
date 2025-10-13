@@ -10,7 +10,7 @@ contributors:
     users: [DicksonWu654]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, MermaidRenderer } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -29,7 +29,8 @@ Flows vary by resolver caching and configuration, but commonly involve:
 4. TLD nameservers
 5. Authoritative nameservers
 
-```mermaid
+
+<MermaidRenderer id="mermaid-diagram" code={`
 flowchart LR
   User[User / Stub Resolver]\
   -->|cache miss| RecResolver[Recursive Resolver]\
@@ -38,7 +39,8 @@ flowchart LR
   TLD --> Auth[Authoritative Nameservers]
   Auth --> RecResolver
   RecResolver -->|validated response| User
-```
+`} />
+
 
 ## Common Attack Vectors
 

@@ -19,6 +19,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=20 <21"
+  },
   "dependencies": {
     "gray-matter": "^4.0.3",
     "just-install": "^2.0.2",
