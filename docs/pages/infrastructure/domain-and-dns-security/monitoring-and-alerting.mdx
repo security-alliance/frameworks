@@ -1,0 +1,55 @@
+---
+title: "Monitoring, Alerts, and GitOps for DNS"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [Raiders0786]
+  - role: reviewed
+    users: [DicksonWu654]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Monitoring, Alerts, and GitOps for DNS
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## What to Watch
+
+- NS changes; DNSSEC broken; CAA removed/overridden; sudden TTL drops (note: low TTL is common with CDNs; Cloudflare "Auto" often 300s)
+- When NS unchanged: A/AAAA, MX, TXT (SPF/DMARC) modifications
+
+Note: Child zones override parent CAA. Parameters like `accounturi` and `validationmethods` can provide finer control.
+
+## Monitoring Tools
+
+- MXToolbox, HetrixTools, SecurityTrails (change tracking/historical)
+- DNSViz (DNSSEC chain validation and debugging)
+- Passive DNS: Mnemonic, SecurityTrails, RiskIQ (historical resolution)
+
+## GitOps & Zone Control
+
+- OctoDNS and DNSControl enable auditable, reviewed DNS changes via code and CI.
+
+## Certificate Transparency Monitoring
+
+- crt.sh and Cert Spotter for new/unauthorized certs (watch wildcards if unused).
+
+## Alerts & Incident Response (Quick Reference)
+
+Critical alerts: Registrar changed, NS changed, DNSSEC broken, CAA removed, TTL under 60s. High priority (NS unchanged): A/MX/TXT changes, DMARC policy weakened, unexpected certificate issued.
+
+Incident response: Verify compromise; access registrar; contact security team; document; contain (registry lock, NS updates); communicate; recover (audit records, reset credentials); investigate; improve.
+
+---
+</TagProvider>
+<ContributeFooter />
+
+

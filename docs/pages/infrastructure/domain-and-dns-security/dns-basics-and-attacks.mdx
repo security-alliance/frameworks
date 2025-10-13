@@ -1,0 +1,77 @@
+---
+title: "DNS Basics & Common Attacks"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [Raiders0786]
+  - role: reviewed
+    users: [DicksonWu654]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, MermaidRenderer } from '../../../../components'
+
+export const dnsFlowDiagram = `flowchart TD
+    Start([User types:<br/>example.com]) --> Cache{Check<br/>Cache?}
+    
+    Cache -->|Found| Fast[Return IP instantly<br/>93.184.216.34]
+    Cache -->|Not Found| Recursive[Your ISP DNS<br/>Recursive Resolver]
+    
+    Recursive -->|1. Where is .com?| Root[Root Server<br/>.]
+    Root -->|2. Ask TLD| Recursive
+    
+    Recursive -->|3. Where is example.com?| TLD[TLD Server<br/>.com]
+    TLD -->|4. Ask Authoritative| Recursive
+    
+    Recursive -->|5. What's the IP?| Auth[Authoritative Server<br/>example.com]
+    Auth -->|6. IP: 93.184.216.34<br/>TTL: 24h| Recursive
+    
+    Recursive -->|7. Validated & Cached| Result[Return IP<br/>93.184.216.34]
+    
+    Fast --> Connect([Connect to Website])
+    Result --> Connect
+    
+    style Start fill:#e1f5ff
+    style Connect fill:#d4edda
+    style Root fill:#fff3cd
+    style TLD fill:#fff3cd
+    style Auth fill:#d1ecf1
+    style Recursive fill:#e7e7ff
+    style Fast fill:#a8e6cf
+    style Cache fill:#ffeaa7`;
+
+<TagProvider>
+<TagFilter />
+
+# DNS Basics & Common Attacks
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## How DNS Resolution Works
+
+When users type your domain, their request may traverse multiple trust points (flows vary by resolver caching, stub resolver config, and provider):
+1. Local device cache
+2. ISP/recursive DNS resolver
+3. Root nameservers
+4. TLD registry servers
+5. Your authoritative nameservers
+
+<MermaidRenderer 
+  id="dns-resolution-flow"
+  code={dnsFlowDiagram}
+/>
+
+## Common Attack Vectors
+
+- Social Engineering at Registrars: Attackers convince/bribe support staff they're legitimate owners using publicly available information
+- Expired Domain Sniping: Domains that expire enter a grace period before becoming publicly available to anyone
+- DNS Hijacking: Unauthorized changes to DNS records redirecting traffic to malicious servers
+- Email Interception (MX tampering): Password reset attacks and communication interception
+- DNS Tunneling: Encoding data within DNS queries for covert communication channels, often used for data exfiltration
+- DNS Cache Poisoning: Injecting forged responses into a resolver's cache to redirect subsequent queries
+
+---
+</TagProvider>
+<ContributeFooter />
