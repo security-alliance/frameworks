@@ -22,12 +22,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Mer
 
 ## How DNS Resolution Works
 
-Flows vary by resolver caching and configuration, but commonly involve:
+When users type your domain, their request may traverse multiple trust points (flows vary by resolver caching, stub resolver config, and provider):
 1. Local device cache
-2. Recursive resolver
+2. ISP/recursive DNS resolver
 3. Root nameservers
-4. TLD nameservers
-5. Authoritative nameservers
+4. TLD registry servers
+5. Your authoritative nameservers
 
 
 <MermaidRenderer id="mermaid-diagram" code={`
@@ -44,12 +44,12 @@ flowchart LR
 
 ## Common Attack Vectors
 
-- Social Engineering at Registrars
-- Expired Domain Sniping
-- DNS Hijacking
-- Email Interception (MX tampering)
-- DNS Tunneling
-- DNS Cache Poisoning
+- Social Engineering at Registrars: Attackers convince/bribe support staff they're legitimate owners using publicly available information
+- Expired Domain Sniping: Domains that expire enter a grace period before becoming publicly available to anyone
+- DNS Hijacking: Unauthorized changes to DNS records redirecting traffic to malicious servers
+- Email Interception (MX tampering): Password reset attacks and communication interception
+- DNS Tunneling: Encoding data within DNS queries for covert communication channels, often used for data exfiltration
+- DNS Cache Poisoning: Injecting forged responses into a resolver’s cache to redirect subsequent queries
 
 ---
 </TagProvider>
