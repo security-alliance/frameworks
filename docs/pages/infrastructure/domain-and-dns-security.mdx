@@ -1,5 +1,5 @@
 ---
-title: "DNS and Domain Registration Security"
+title: "Domain & DNS Security"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -16,7 +16,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagProvider>
 <TagFilter />
 
-# DNS and Domain Registration Security
+# Domain & DNS Security
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
@@ -25,37 +25,46 @@ DNS (Domain Name System) is the backbone of the internet, translating domain nam
 
 Moreover, DNS controls your email infrastructure through MX records - once compromised, attackers gain the keys to your entire organization through password resets and intercepted communications, making domain security a matter of both financial and operational survival.
 
-## Understanding the Attack Surface
-
-### How DNS Resolution Works
-When users type your domain, their request traverses multiple trust points:
-1. Local device cache
-2. ISP DNS resolver  
-3. Root nameservers
-4. TLD registry servers
-5. Your authoritative nameservers
-
-Each step represents a potential attack surface where responses can be intercepted, modified, or poisoned. This multi-step process creates numerous opportunities for attackers to redirect users to malicious sites while their browser still shows the correct domain name.
-
-### Common Attack Vectors
-- **Social Engineering at Registrars**: Attackers convince/bribe support staff they're legitimate owners using publicly available information
-- **Expired Domain Sniping**: Domains that expire enter a grace period before becoming publicly available to anyone
-- **DNS Hijacking**: Unauthorized changes to DNS records redirecting traffic to malicious servers
-- **Email Interception**: Compromised MX records allowing password reset attacks and communication interception
-- **DNS Tunneling**: Encoding data within DNS queries for covert communication channels, often used for data exfiltration
+> This page is now an overview. See the subpages in this section for details:
+> - DNS Basics & Common Attacks
+> - DNSSEC, CAA, and Email Security
+> - Registrar Security & Registry Locks
+> - Monitoring, Alerts, and GitOps for DNS
 
 ## DNS-Level Security
 
-### 1. DNSSEC Implementation
+### 1. DNSSEC Implementation (summary)
 DNSSEC (DNS Security Extensions) provides cryptographic authentication of DNS responses, preventing attackers from redirecting your users to malicious sites by tampering with DNS queries. Think of it as a digital signature that proves the DNS response came from the legitimate source.
 
 **How it protects you**: Without DNSSEC, attackers can intercept DNS queries and return fake IP addresses, redirecting users to malicious sites that look identical to yours. DNSSEC prevents this by cryptographically signing all DNS responses.
 
-**Setup process**:
-1. **Enable DNSSEC signing** at your DNS provider (most providers have this as a simple toggle)
-2. **Publish DS records** to your registrar (your DNS provider will give you these records)
-3. **Monitor DNSSEC validation** status regularly using online tools
-4. **Test configuration** using tools like DNSViz or Verisign DNSSEC Debugger
+**Setup process (practical)**:
+1) **Enable signing at the DNS provider**
+   - Turn on DNSSEC in zone settings. Provider generates KSK/ZSK, signs the zone, and shows DS parameters:
+     - Key Tag
+     - Algorithm (commonly 13 ECDSAP256SHA256; sometimes 8 RSASHA256, 15 ECDSAP384SHA384)
+     - Digest Type (2 SHA-256; sometimes 4 SHA-384)
+     - Digest (hex)
+2) **Publish DS at the registrar**
+   - Create a DS with the exact four fields above. Prefer Algorithm 13 with Digest Type 2 unless registrar only supports others.
+   - If both 2 and 4 are offered, pick 2 for widest compatibility.
+   
+   Registrar DS template
+   
+   Owner: yourdomain.tld  
+   Key Tag: 2371  
+   Algorithm: 13  
+   Digest Type: 2  
+   Digest: 5C9F3E7B3F...A1C7
+3) **Verify validation path**
+   - After propagation, validate from a validating resolver. Use `dig +dnssec`, `kdig`, or web tools:
+     - https://dnssec-analyzer.verisignlabs.com/yourdomain.org
+     - https://dnsviz.net/d/yourdomain.org/analyze/
+4) **Monitor DNSSEC validation** regularly and set alerts on DS changes/DNSKEY rollovers.
+
+Security posture notes
+- DNSSEC authenticates data; it does not encrypt queries. Use DoT/DoH for transport privacy when needed.
+- Harden registrar accounts, protect transfer locks, and monitor for DS changes; DS removal downgrades protection.
 
 ### 2. CAA Records
 Certificate Authority Authorization (CAA) records specify which Certificate Authorities (CAs) are allowed to issue SSL certificates for your domain. This prevents unauthorized certificate issuance, which attackers could use to create fake SSL certificates for your domain.
@@ -106,24 +115,46 @@ DKIM adds a digital signature to your emails, allowing receiving servers to veri
 
 **Setup**: Configure with your email provider and publish public keys in DNS (your email provider will provide the specific records).
 
-#### MTA-STS (Mail Transfer Agent Strict Transport Security)
-MTA-STS enforces encrypted connections between mail servers, preventing man-in-the-middle attacks on email transmission.
+#### MTA-STS (Mail Transfer Agent Strict Transport Security) — summary
+MTA-STS enforces encrypted connections between mail servers, preventing downgrade and man-in-the-middle attacks on SMTP transport.
 
 **How it protects you**: Without MTA-STS, emails can be intercepted in transit. This is especially critical for password reset emails and other sensitive communications.
 
-**Setup**: Add an MTA-STS record to your DNS zone:
-```
-_mta-sts.example.com. TXT "v=STSv1; id=20240101000000"
-```
+Generic MTA-STS deployment guide
+1. Understand purpose: enforce TLS, prevent downgrade/MitM on SMTP.
+2. Create policy file over HTTPS at: https://mta-sts.<your-domain>/.well-known/mta-sts.txt
+   - Basic structure:
+     
+     version: STSv1  
+     mode: [testing | enforce | none]  
+     mx: <mail-server1>  
+     mx: <mail-server2>  
+     max_age: <seconds>
+   - Example:
+     
+     version: STSv1  
+     mode: enforce  
+     mx: smtp.example.com  
+     mx: alt1.smtp.example.com  
+     max_age: 86400
+3. Host the policy via HTTPS (valid cert) — e.g., your web host, Cloudflare Pages/Workers, S3+CloudFront.
+4. Publish DNS TXT at `_mta-sts.<your-domain>` with value `v=STSv1; id=<policy-version-timestamp>`.
+5. Start with `mode: testing`, review reports (if enabled), then move to `enforce`.
+6. Ensure all MX hosts present valid TLS certificates matching hostnames. `max_age` controls cache duration.
+
+Provider-specific tips
+- Google Workspace: manage MX in Admin console; host policy yourself; add TXT via DNS.
+- Cloudflare: host policy on Workers/Pages; manage TXT in DNS; HTTPS auto via Cloudflare SSL.
+- Amazon SES: host on S3 or CloudFront; manage TXT in Route 53; ensure domains are verified.
 
 #### DMARC (Domain-based Message Authentication)
 DMARC builds on SPF and DKIM to provide policy enforcement for email authentication. It tells receiving mail servers what to do with emails that fail authentication checks.
 
 **How it protects you**: DMARC prevents email spoofing by instructing receiving servers to reject or quarantine emails that fail authentication, protecting your users from phishing attacks.
 
-**Setup**: Add a DMARC record to your DNS zone:
+**Setup**: Add a DMARC record to your DNS zone (prioritize aggregate reports; failure reports are rarely supported and raise privacy concerns):
 ```
-_dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com; ruf=mailto:forensics@example.com"
+_dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com"
 ```
 
 ## Registrar Security
@@ -148,28 +179,28 @@ These registrars are designed for personal use and lack the security measures ne
 
 ### 2. Registrar-Level Protections
 
-#### Registry Lock (EPP Lock)
+#### Registry Lock (EPP Lock) — summary
 Registry lock prevents unauthorized transfers at the registry level, not just the registrar. This is the strongest protection available for domain security.
 
-**EPP Status Codes** that protect your domain:
+**EPP Status Codes** that protect your domain (apply to registry objects like nameserver sets and contacts, not DNS zone edits at your DNS hosting panel):
 - `clientTransferProhibited`: Prevents domain transfers to another registrar
-- `clientUpdateProhibited`: Prevents any DNS or contact information changes
+- `clientUpdateProhibited`: Prevents updates to registry objects (not provider DNS records)
 - `clientDeleteProhibited`: Prevents domain deletion
 - `serverTransferProhibited`: Registry-level transfer protection (stronger than client-level)
 - `serverUpdateProhibited`: Registry-level update protection
 - `serverDeleteProhibited`: Registry-level deletion protection
 
-**How it protects you**: Standard transfer locks only prevent transfers between registrars, but registry locks with full EPP protections prevent ALL unauthorized changes including DNS updates, contact modifications, and deletions. Server-level locks require manual verification with the registry operator (like Verisign for .com domains), making social engineering attacks at the registrar level completely ineffective.
+**How it protects you**: Standard transfer locks only prevent transfers between registrars. Registry locks with server-level protections block transfers/deletions and critical registry updates, but they do not block record edits in your DNS provider panel. Server-level locks typically require manual verification with the registry operator (for example, Verisign for .com), greatly reducing the impact of registrar-level social engineering.
 
 **Setup**: Contact enterprise registrars for registry-operator level locks. This typically requires additional fees and documentation but provides the highest level of security.
 
-#### Multi-Factor Authentication
+#### Multi-Factor Authentication — summary
 Multi-factor authentication (MFA) adds an extra layer of security beyond just passwords, which are easily compromised through phishing or data breaches.
 
-**Authentication options** (in order of security):
-- **Hardware Security Keys** (YubiKey/FIDO2): Most secure option, immune to phishing
-- **TOTP Applications** (Google Authenticator, Authy): Minimum acceptable standard
-- **Avoid SMS 2FA**: Vulnerable to SIM swapping attacks
+**Authentication guidance**:
+- Strongly prefer **Hardware Security Keys (FIDO2/WebAuthn, e.g., YubiKey)** — phishing resistant
+- **Avoid SMS 2FA** — susceptible to SIM swap
+- Use **TOTP** only as a fallback when hardware keys are not possible
 
 #### Dedicated Security Contact Email
 Use a dedicated email address for domain security that's completely separate from your main domain and personal accounts.
@@ -193,7 +224,7 @@ Limit and monitor who has access to your domain registrar account, as each perso
 - Implement approval workflows for critical changes
 - Regular access audits (quarterly minimum)
 
-#### WHOIS Privacy Protection
+#### WHOIS Privacy Protection — summary
 WHOIS records contain personal information about domain owners that is publicly accessible by default, including names, addresses, phone numbers, and email addresses.
 
 **Why it matters**: Without WHOIS privacy, your personal information is exposed to:
@@ -208,7 +239,7 @@ WHOIS records contain personal information about domain owners that is publicly 
 - Consider using a separate business entity for domain registration
 - Be aware that some TLDs (.us, .ca) don't allow WHOIS privacy
 
-**Important**: WHOIS privacy doesn't affect your legal ownership - you remain the legitimate owner, the privacy service just shields your personal information from public view.
+**Important**: WHOIS is legacy; prefer **RDAP** for structured, standardized registration data. WHOIS privacy does not affect legal ownership — it shields contact data from public view. Example RDAP lookup tools and CLI clients provide richer outputs and links to registrar/registry RDAP endpoints.
 
 #### Domain Expiration Protection
 Domain expiration is a critical yet often overlooked security risk. When domains expire, they enter a grace period before becoming publicly available, creating an opportunity for attackers to snipe your domain.
@@ -233,13 +264,13 @@ Domain expiration is a critical yet often overlooked security risk. When domains
 
 ## Monitoring and Detection
 
-### 1. DNS Record Monitoring
+### 1. DNS Record Monitoring — summary
 DNS record monitoring involves continuously checking your domain's DNS records for unauthorized changes. Attackers often modify DNS records to redirect traffic to malicious servers while keeping your site partially functional.
 
 **What to watch for**:
 - **Nameserver (NS) record changes**: Attackers change your nameservers to point to their own DNS servers, giving them complete control over all DNS records
-- **TTL values dropping below 60 seconds**: Very low TTLs can indicate preparation for rapid DNS changes during an attack
-- **CAA record removal**: Allows any Certificate Authority to issue certificates for your domain
+- **TTL values dropping very low**: Low TTL is common with CDNs/auto-scaling; not inherently malicious, but sudden drops can precede rapid changes. Note that some providers use fixed TTLs (for example, Cloudflare “Auto” = 300s for many records).
+- **CAA record removal or override**: Parent CAA is overridden by child zones; parameters like `accounturi` and `validationmethods` can provide finer control.
 - **DNSSEC disabled unexpectedly**: Removes cryptographic protection from DNS responses
 
 **If nameservers remain unchanged, also monitor**:
@@ -249,9 +280,12 @@ DNS record monitoring involves continuously checking your domain's DNS records f
 
 **Tools for DNS monitoring**:
 - [MXToolbox](https://mxtoolbox.com/) - Comprehensive DNS record monitoring and alerts
-- [DNSViz](https://dnsviz.net/) - DNSSEC chain validation and debugging
-- [DNS Dumpster](https://dnsdumpster.com/) - DNS reconnaissance and record discovery
 - [Hetrix Tools](https://hetrix.tools/) - Free DNS monitoring with email alerts
+- [SecurityTrails](https://securitytrails.com/) - Change tracking and historical DNS
+
+**GitOps/Zone control tooling** (auditable changes):
+- [OctoDNS](https://github.com/octodns/octodns)
+- [DNSControl](https://github.com/StackExchange/dnscontrol)
 
 **Note**: If attackers change your NS records, they control everything. But attackers with DNS panel access might make subtle changes without touching NS records to avoid detection, which is why monitoring individual record types remains important.
 
@@ -375,6 +409,11 @@ Domain hijacking has impacted numerous Web3 projects:
 - **[Curve Finance (2022)](https://rekt.news/curve-finance-rekt)**: DNS hijacking led to $575k in stolen funds through frontend compromise
 
 These incidents highlight the critical importance of proper domain security measures and the recurring nature of these attacks.
+
+### Additional References
+- ICANN Compliance Notices: https://www.icann.org/compliance/notices
+- GoDaddy incident coverage: https://threatpost.com/godaddy-employees-tricked-compromise-cryptocurrency/161520/
+- Low-tech high-impact breaches: https://krebsonsecurity.com/2023/02/when-low-tech-hacks-cause-high-impact-breaches/
 
 ## References and Resources
 

@@ -1,0 +1,56 @@
+---
+title: "DNS Basics & Common Attacks"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [Raiders0786]
+  - role: reviewed
+    users: [DicksonWu654]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# DNS Basics & Common Attacks
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## How DNS Resolution Works
+
+Flows vary by resolver caching and configuration, but commonly involve:
+1. Local device cache
+2. Recursive resolver
+3. Root nameservers
+4. TLD nameservers
+5. Authoritative nameservers
+
+```mermaid
+flowchart LR
+  User[User / Stub Resolver]\
+  -->|cache miss| RecResolver[Recursive Resolver]\
+  RecResolver --> Root[Root Nameservers]
+  Root --> TLD[TLD Nameservers]
+  TLD --> Auth[Authoritative Nameservers]
+  Auth --> RecResolver
+  RecResolver -->|validated response| User
+```
+
+## Common Attack Vectors
+
+- Social Engineering at Registrars
+- Expired Domain Sniping
+- DNS Hijacking
+- Email Interception (MX tampering)
+- DNS Tunneling
+- DNS Cache Poisoning
+
+---
+</TagProvider>
+<ContributeFooter />
+
+

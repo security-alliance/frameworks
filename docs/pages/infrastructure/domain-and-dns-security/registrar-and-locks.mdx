@@ -1,0 +1,53 @@
+---
+title: "Registrar Security & Registry Locks"
+tags:
+  - Operations & Strategy
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [Raiders0786]
+  - role: reviewed
+    users: [DicksonWu654]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Registrar Security & Registry Locks
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Enterprise vs Consumer Registrars
+
+- MarkMonitor (enterprise)
+- AWS Route53 Registrar (check TLD support)
+- Cloudflare Registrar (with Cloudflare stack)
+
+See also: ICANN Compliance Notices and notable incidents for registrar risk context.
+
+## Registry Lock (EPP) vs DNS Panel
+
+EPP statuses apply to registry objects (transfers, deletes, some updates), not DNS zone edits at your provider panel.
+
+Common statuses:
+- `clientTransferProhibited`, `clientUpdateProhibited`, `clientDeleteProhibited`
+- `serverTransferProhibited`, `serverUpdateProhibited`, `serverDeleteProhibited`
+
+Registry locks do not block record edits in provider DNS; they do block transfers/deletes and critical registry updates. Server-level locks often require manual verification with the registry.
+
+## MFA Guidance
+
+- Prefer FIDO2/WebAuthn hardware keys; avoid SMS; TOTP as fallback.
+
+## WHOIS vs RDAP
+
+Prefer RDAP for structured data and links to registrar/registry endpoints. Use RDAP CLIs or web tools for audits.
+
+---
+</TagProvider>
+<ContributeFooter />
+
+

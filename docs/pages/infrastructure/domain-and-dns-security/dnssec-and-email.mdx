@@ -1,0 +1,57 @@
+---
+title: "DNSSEC, CAA, and Email Security"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [Raiders0786]
+  - role: reviewed
+    users: [DicksonWu654]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# DNSSEC, CAA, and Email Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## DNSSEC Implementation
+
+Practical setup:
+1) Enable signing at DNS provider (provider generates KSK/ZSK; shows DS parameters: Key Tag, Algorithm, Digest Type, Digest).
+2) Publish DS at registrar — prefer Algorithm 13, Digest Type 2 where supported.
+3) Verify validation via:
+   - https://dnssec-analyzer.verisignlabs.com/yourdomain.org
+   - https://dnsviz.net/d/yourdomain.org/analyze/
+4) Monitor validation and DS/DNSKEY changes.
+
+Security notes:
+- DNSSEC authenticates data, not transport. Consider DoT/DoH for privacy.
+- Harden registrar accounts; removal of DS downgrades protection.
+
+## CAA Records
+
+Limit which CAs can issue certs; use `iodef` for violation reports and `issuewild` for wildcard control. Child-zone CAA overrides parent CAA.
+
+## Email Security (SPF, DKIM, DMARC, MTA-STS)
+
+DMARC baseline example (aggregate only):
+```
+_dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com"
+```
+
+MTA-STS (summary):
+1. Host HTTPS policy at `https://mta-sts.<domain>/.well-known/mta-sts.txt`
+2. Publish TXT at `_mta-sts.<domain>` with `v=STSv1; id=<timestamp>`
+3. Start with `mode: testing`, then `enforce`; ensure MX TLS certs valid.
+
+---
+</TagProvider>
+<ContributeFooter />
+
+

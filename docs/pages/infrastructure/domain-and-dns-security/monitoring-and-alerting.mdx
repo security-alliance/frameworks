@@ -1,0 +1,45 @@
+---
+title: "Monitoring, Alerts, and GitOps for DNS"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [Raiders0786]
+  - role: reviewed
+    users: [DicksonWu654]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Monitoring, Alerts, and GitOps for DNS
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## What to Watch
+
+- NS changes; DNSSEC broken; CAA removed/overridden; sudden TTL drops (note: low TTL is common with CDNs; Cloudflare "Auto" often 300s)
+- When NS unchanged: A/AAAA, MX, TXT (SPF/DMARC) modifications
+
+## Monitoring Tools
+
+- MXToolbox, HetrixTools, SecurityTrails (change tracking/historical)
+
+## GitOps & Zone Control
+
+- OctoDNS and DNSControl enable auditable, reviewed DNS changes via code and CI.
+
+## Certificate Transparency Monitoring
+
+- crt.sh and Cert Spotter for new/unauthorized certs (watch wildcards if unused).
+
+---
+</TagProvider>
+<ContributeFooter />
+
+
