@@ -470,13 +470,13 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/appendices/policies": [
+    "/opsec/appendices/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
     ],
-    "/opsec/appendices": [
+    "/opsec/appendices/policies": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -489,6 +489,12 @@
       "SRE"
     ],
     "/opsec/control-domains/organizational": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/opsec/control-domains/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -507,12 +513,6 @@
       "SRE"
     ],
     "/opsec/control-domains/technical": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/control-domains": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -542,13 +542,13 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/integration": [
+    "/opsec/integration/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
     ],
-    "/opsec/lifecycle": [
+    "/opsec/lifecycle/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -687,13 +687,13 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/opsec/risk-management-overview": [
+    "/opsec/risk-management/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
     ],
-    "/opsec/risk-management": [
+    "/opsec/risk-management-overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
