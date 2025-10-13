@@ -92,7 +92,7 @@ If you prefer to install dependencies locally on your machine:
 
 **Prerequisites:**
 
-- Node.js 20.x (use `.nvmrc` with `nvm use`), npm
+- Node.js (v18 or later) and npm (for running Vocs locally)
 - [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (For linting markdown files)
 - [Docker](https://docs.docker.com/get-docker/) (Optional: For running the devcontainer)
 - [GitHub CLI](https://cli.github.com/) (Optional: For using `gh` to interact with GitHub)
@@ -116,19 +116,9 @@ If you prefer to install dependencies locally on your machine:
 4. Start the local development server
 
     ```bash
-    nvm use && npx just serve
+    npx just serve
     ```
 5. Once the server is running, access the site at port ```5173```
-
-**Local docs build/preview**
-
-```bash
-nvm use
-npm run docs:build
-npm run docs:preview
-```
-
-If you encounter Node/ESM issues, ensure you ran `nvm use` to switch to Node 20.x.
 
 **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
 
