@@ -36,3 +36,4 @@ CLAUDE.md
 
 # Build folder
 **/dist/
+node_cache/
