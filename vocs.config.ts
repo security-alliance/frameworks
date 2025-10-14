@@ -408,7 +408,7 @@ function filterDevItems(items: any[]): any[] {
     }))
 }
 
-if (process.env.VERCEL_GIT_COMMIT_REF === 'main') {
+if (process.env.CF_PAGES_BRANCH === 'main') {
   config.sidebar = filterDevItems(config.sidebar)
 }
 
