@@ -164,7 +164,6 @@ function detectCurrentBranch() {
 // Resolves the active branch from environment variables or Git.
 function resolveCurrentBranch() {
   const candidates = [
-    process.env.VERCEL_GIT_COMMIT_REF,
     process.env.CF_PAGES_BRANCH,
     process.env.BRANCH,
     process.env.GITHUB_REF_NAME,
@@ -225,14 +224,14 @@ function loadSidebarConfig(branchName) {
     .replace(/\bas const\b/g, '');
 
   const loader = new Function('defineConfig', sanitized);
-  const previousRef = Object.prototype.hasOwnProperty.call(process.env, 'VERCEL_GIT_COMMIT_REF')
-    ? process.env.VERCEL_GIT_COMMIT_REF
+  const previousRef = Object.prototype.hasOwnProperty.call(process.env, 'CF_PAGES_BRANCH')
+    ? process.env.CF_PAGES_BRANCH
     : undefined;
 
   if (branchName) {
-    process.env.VERCEL_GIT_COMMIT_REF = branchName;
+    process.env.CF_PAGES_BRANCH = branchName;
   } else {
-    delete process.env.VERCEL_GIT_COMMIT_REF;
+    delete process.env.CF_PAGES_BRANCH;
   }
 
   try {
@@ -242,9 +241,9 @@ function loadSidebarConfig(branchName) {
     return null;
   } finally {
     if (previousRef === undefined) {
-      delete process.env.VERCEL_GIT_COMMIT_REF;
+      delete process.env.CF_PAGES_BRANCH;
     } else {
-      process.env.VERCEL_GIT_COMMIT_REF = previousRef;
+      process.env.CF_PAGES_BRANCH = previousRef;
     }
   }
 }
