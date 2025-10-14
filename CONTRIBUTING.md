@@ -80,7 +80,7 @@ cd frameworks && git checkout develop
 devcontainer up --workspace-folder .
 devcontainer exec --workspace-folder . bash
 # Get the IP address of the container, by running `hostname -I | awk '{print $1}'`. Should be printed automatically in the terminal after the creation as well
-# Inside container: npx just serve
+# Inside container: pnpm exec just serve
 # Access the docs at http://<IP>:5173
 
 ```
@@ -91,7 +91,7 @@ If you prefer to install dependencies locally on your machine:
 
 **Prerequisites:**
 
-- Node.js (v18 or later) and npm (for running Vocs locally)
+- Node.js (v18 or later) and pnpm (for running Vocs locally)
 - [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (For linting markdown files)
 - [Docker](https://docs.docker.com/get-docker/) (Optional: For running the devcontainer)
 - [GitHub CLI](https://cli.github.com/) (Optional: For using `gh` to interact with GitHub)
@@ -109,13 +109,13 @@ If you prefer to install dependencies locally on your machine:
 3. **Install Node.js dependencies:**
 
     ```bash
-    npm install
+    pnpm install
     ```
 
 4. Start the local development server
 
     ```bash
-    npx just serve
+    pnpm exec just serve
     ```
 5. Once the server is running, access the site at port ```5173```
 
@@ -235,8 +235,8 @@ This ensures that new content appears correctly in the site’s navigation for r
 
 Before pushing changes, always make sure your build works without errors:
 
-- Run `npx just build` or `npm run docs:build`
-- Preview the updated content locally at port `4173` with: `npx just preview` or `npm run docs:preview`
+- Run `pnpm exec just build` or `pnpm run docs:build`
+- Preview the updated content locally at port `4173` with: `pnpm exec just preview` or `pnpm run docs:preview`
 
 This helps catch build or formatting issues early so reviewers see clean contributions.
 

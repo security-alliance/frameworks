@@ -75,13 +75,13 @@ const config = {
               ]
             },
             { text: 'Governance & Program Management', link: '/opsec/governance-program-management', dev: true },
-            { text: 'Control Domains', link: '/opsec/control-domains', dev: true },
-            { text: 'Lifecycle', link: '/opsec/lifecycle', dev: true },
+            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
+            { text: 'Lifecycle', link: '/opsec/lifecycle/overview', dev: true },
             { text: 'Monitoring & Detection', link: '/opsec/monitoring-detection', dev: true },
             { text: 'Incident Response & Recovery', link: '/opsec/incident-response-recovery', dev: true },
             { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
-            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration', dev: true },
-            { text: 'Appendices', link: '/opsec/appendices', dev: true }
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
+            { text: 'Appendices', link: '/opsec/appendices/overview', dev: true }
           ]
         },
         {
@@ -342,16 +342,6 @@ const config = {
             { text: 'Safe Harbor Scope Terms', link: '/safe-harbor/scope-terms' },
             { text: 'On-Chain Adoption Guide', link: '/safe-harbor/on-chain-adoption-guide' },
             { text: 'Whitehat', link: '/safe-harbor/whitehat' },
-          ]
-        },
-        {
-          text: 'Monitoring',
-          collapsed: false,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/monitoring/overview', dev: true },
-            { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
-            { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
           ]
         },
         {
