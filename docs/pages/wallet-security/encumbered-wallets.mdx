@@ -1,5 +1,5 @@
 ---
-title: "Account Abstraction"
+title: "TEE-based Encumbered Wallets"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -8,7 +8,7 @@ contributors:
   - role: wrote
     users: [njelich]
   - role: reviewed
-    users: [njelich]
+    users: [pinalikefruit]
 
 ---
 
@@ -24,7 +24,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ### User Profile
 
-Advanced users, developers, and organizations seeking programmable security and customizable transaction policies, that don't want to (EVM, Solana, Sui) or can't (Bitcoin, Litecoin, Dogecoin, XRP) make fully customizable logic on each chain individually. Additionally, encumbered wallets can run within an encrypted runtime thus providing a level of transaction privacy.
+Advanced users, developers, and organizations wanting to implement fine-grained security policies, that don't want to (EVM, Solana, Sui) or can't (Bitcoin, Litecoin, Dogecoin, XRP) make fully customizable logic on each chain individually. Additionally, encumbered wallets can use encrypted storage thus providing a level of transaction privacy.
 
 ### Primary Goal
 
@@ -63,7 +63,7 @@ TEEs enable private keys to be generated, stored, and used within a protected en
 * External observers cannot see the encumbrance rules or key operations
 * Attestation proves the wallet is running authentic, unmodified code
 
-This hardware-level protection makes TEE-based encumbered wallets significantly more secure than software-only solutions, as even root access to the host system cannot compromise the keys or policies within the TEE.
+This hardware-level protection makes TEE-based encumbered wallets significantly more secure than software-only solutions, as even root or physical access to the host system cannot compromise the keys or policies within the TEE.
 
 ### Key Benefits & Features
 
@@ -95,7 +95,8 @@ This hardware-level protection makes TEE-based encumbered wallets significantly 
 ### Security Considerations & Best Practices
 
 * Implement threshold or multi-party computation-based key custody rather than placing sole trust in a single TEE enclave. Use multi-party threshold signatures or distributed key generation so that a single compromised node cannot break the entire system, providing resilience against both hardware attacks and operational failures.
-* Migrate to or support next-generation TEE environments that provide memory integrity protection such as Intel TME-MK, AMD SEV-SNP with enhanced integrity, ARM Confidential Compute Architecture (CCA), or Intel TDX. These newer implementations offer better protection against memory aliasing attacks and provide hardware-level integrity guarantees that older TEE implementations lack.
+* Incorporate economic incentive mechanisms such as staking requirements for TEE operators to align security incentives through cryptoeconomic design. Require operators to post collateral that can be slashed for malicious behavior, attestation failures, or policy violations, creating financial disincentives for compromise attempts and encouraging proactive security maintenance of TEE infrastructure.
+* Carefully evaluate TEE technology selection based on application memory requirements and security priorities. For encumbered wallet applications with modest memory needs (under 256MB), prefer Intel SGX v1 (Client SGX) which provides integrity protection against hardware attacks, whereas applications requiring larger secure memory may need to accept the trade-offs of newer implementations like Scalable SGX or SEV-SNP that offer greater memory capacity but lack integrity protection against physical attacks.
 * Establish continuous re-attestation processes that periodically re-verify enclave conformance on a regular schedule such as hourly or per-block intervals. This helps detect drift, tampering, or compromise attempts over time and ensures that the enclave maintains its security properties throughout its operational lifetime.
 * Implement dual-attestation architectures for cloud-deployed nodes by requiring both Intel DCAP quotes and cloud provider attestation services (such as Azure MAA or AWS Nitro Attestation). This approach provides defense-in-depth by anchoring trust through multiple independent attestation roots with different threat models and security assumptions.
 * Maintain transparent attestation policy publication by documenting and publicly sharing allowed CPU models, TCB versions, QE/PCS builds, and upgrade paths. This enables operators and auditors to verify compliance independently while providing clear guidance for secure deployment configurations and helping detect potentially compromised or outdated systems.
@@ -106,6 +107,7 @@ This hardware-level protection makes TEE-based encumbered wallets significantly 
 Austgen, J., Fábrega, A., Kelkar, M., Vilardell, D., Allen, S., Babel, K., Yu, J., & Juels, A. (2024, December 3). Liquefaction: Privately liquefying blockchain assets. arXiv.org. https://arxiv.org/abs/2412.02634
 Dai, W., Deng, J., Wang, Q., Cui, C., Zou, D., & Jin, H. (2018). SBLWT: a secure blockchain lightweight wallet based on TrustZone. IEEE Access, 6, 40638–40648. https://doi.org/10.1109/access.2018.2856864
 Yu, J. (n.d.). PASS: A Provenanced Access Subaccount System for Blockchain Wallets [Stanford University]. https://cs191.stanford.edu/projects/Yu,%20Jay_Systems%20191W.pdf
+Aublin, P.-L., Mahhouk, M., & Kapitza, R. (n.d.). Towards TEEs with Large Secure Memory and Integrity Protection Against HW Attacks [IIJ Innovation Institute, TU Braunschweig]. https://systex22.github.io/papers/systex22-final15.pdf
 
 ---
 
