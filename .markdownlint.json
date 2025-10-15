@@ -10,7 +10,8 @@
   },
   "MD025": false,
   "MD033": {
-    "allowed_elements": ["details", "summary", "br", "img", "sup", "sub", "kbd"]
+    "allowed_elements": ["details", "summary", "br", "img", "sup", "sub", "kbd", "TagList", "AttributionList", "TagProvider", "TagFilter", "ContributeFooter"]
   },
-  "MD041": false
+  "MD041": false,
+  "MD037": false
 }
