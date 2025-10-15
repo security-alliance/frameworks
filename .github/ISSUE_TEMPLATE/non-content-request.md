@@ -12,6 +12,10 @@ _Select the category that best fits this issue:_
 - [ ] Tech (infrastructure, tooling, tech stack)
 - [ ] Other
 
+## Contribution intent
+- [ ] I can work on implementing this
+- [ ] I'm raising this for discussion/someone else to handle
+
 ## What content are you looking to add?
 _Some examples can be:_
 - I want to create a new framework about xxxxxx
