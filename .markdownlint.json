@@ -22,6 +22,8 @@
       "p",
       "em",
       "strong",
+      "video",
+      "source",
       "TagList",
       "AttributionList",
       "TagProvider",
