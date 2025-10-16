@@ -38,14 +38,14 @@ limit the effects of a DPRK IT Worker infiltration and what you should do after 
 2. Introduce a culture of background checks. Do not take a prospective developer's claims at face value. **Even the
     most basic OSINT check can often discover deep inconsistencies. Check GitHub commit history, check Twitter history, and
     Google the full name of the developer.**
-    2.1 Is the work experience claimed in the CV reflected on GitHub?
-    2.2 Does the potential employee indicate any physical presence anywhere?
-    2.3 Is the potential employee writing non-AI-generated posts and replying to anything other than job offers on
+     1. Is the work experience claimed in the CV reflected on GitHub?
+     2. Does the potential employee indicate any physical presence anywhere?
+     3. Is the potential employee writing non-AI-generated posts and replying to anything other than job offers on
         Twitter?
-    2.4 Did you find any name collisions after searching for the potential employee's name in Google?
-    2.5 Did you check the potential employee's nickname in Google? Maybe they have already appeared as a threat actor in
+     4. Did you find any name collisions after searching for the potential employee's name in Google?
+     5. Did you check the potential employee's nickname in Google? Maybe they have already appeared as a threat actor in
         a past report?
-    2.6 **Remember the best discovery rule:** You're looking for misrepresentations, mismatches, and obfuscation, not
+     6. **Remember the best discovery rule:** You're looking for misrepresentations, mismatches, and obfuscation, not
         for North Koreans specifically. Tick your boxes on the first three and only then proceed to decide if you're potentially
         dealing with a North Korean.
 3. **Do not try to undercut developer market salaries.** DPRK IT Workers will always accept low-ball offers without
@@ -64,13 +64,13 @@ limit the effects of a DPRK IT Worker infiltration and what you should do after 
 1. Define and implement tight access control rules for all of your employees, especially remote ones. Avoid giving
     privileged access to workers who did not pass 100% of the tests and filtering criteria for DPRK IT Workers (all the
     points already discussed). Specific examples of privileged access include:
-    1.1 Do not give admin permissions to your GitHub organization and repositories, including for build releases, adding
+     1. Do not give admin permissions to your GitHub organization and repositories, including for build releases, adding
         members, and repository settings.
-    1.2 Do not give publishing permissions on any package managers. The publishers of your packages are a critical
+     2. Do not give publishing permissions on any package managers. The publishers of your packages are a critical
         supply chain risk; they need to be 100% vetted.
-    1.3 Do not add your remote employees as multisignature wallet signers. The signer role should be reserved only for
+     3. Do not add your remote employees as multisignature wallet signers. The signer role should be reserved only for
         high-trust individuals, not based on the dedication of the developer you are working with.
-    1.4 Do not give unlimited access to cloud instances. Scope permissions to the minimal access required for each
+     4. Do not give unlimited access to cloud instances. Scope permissions to the minimal access required for each
         individual or team, including setting minimal expiration times for access tokens (e.g. access tokens should expire
         within hours, not weeks).
 2. Define a lead developer - a highly trusted individual you've met in real life and are sure of their background - as
@@ -139,27 +139,27 @@ limit the effects of a DPRK IT Worker infiltration and what you should do after 
 
 1. You should collect the following data before firing the DPRK IT Worker. This data will help organizations like SEAL
 with future mitigation and the discovery of other actors.
-    1.1 Full Legal Name
-    1.2 Phone
-    1.3 Email(s)
-    1.4 Location (City/State)
-    1.5 LinkedIn
-    1.6 Telegram/Discord
-    1.7 GitHub
-    1.8 Copy of Resume
-    1.9 Date Hired
-    1.10 Sourcing (Where were they hired from? Telegram, Staffing, Recruiter, etc.)
-    1.11 Company Email (Yes/No)
-    1.12 IP addresses (from email or any other sources at your disposal)
-    1.13 Managed Laptop (Yes/No)
-            1.13.1 Shipment address (for the laptop or other items)
-    1.14 KYC data (ID/Passport/Bills document scans)
-    1.15 Photos/Screenshots (physical appearance, potentially from a video call)
-    1.16 Payment data **(Extremely important!)**
-            1.16.1 On-chain addresses provided for payment
-            1.16.2 Bank data
-    1.17 Did they refer anyone else?
-    1.18 Were they referred by someone else?
+     1. Full Legal Name
+     2. Phone
+     3. Email(s)
+     4. Location (City/State)
+     5. LinkedIn
+     6. Telegram/Discord
+     7. GitHub
+     8. Copy of Resume
+     9. Date Hired
+     10. Sourcing (Where were they hired from? Telegram, Staffing, Recruiter, etc.)
+     11. Company Email (Yes/No)
+     12. IP addresses (from email or any other sources at your disposal)
+     13. Managed Laptop (Yes/No)
+             1. Shipment address (for the laptop or other items)
+     14. KYC data (ID/Passport/Bills document scans)
+     15. Photos/Screenshots (physical appearance, potentially from a video call)
+     16. Payment data **(Extremely important!)**
+             1. On-chain addresses provided for payment
+             2. Bank data
+     17. Did they refer anyone else?
+     18. Were they referred by someone else?
 
 ## Overview of risks to your organization
 
