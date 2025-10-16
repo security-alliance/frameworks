@@ -21,6 +21,7 @@
       "div",
       "p",
       "em",
+      "strong",
       "TagList",
       "AttributionList",
       "TagProvider",
