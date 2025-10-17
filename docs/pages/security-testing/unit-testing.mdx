@@ -9,7 +9,6 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac]
-
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -22,11 +21,15 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Unit testing is the foundation of smart contract security testing. While fuzz tests can find edge cases and integration tests verify system interactions, unit tests ensure that individual functions behave correctly under expected conditions. Every smart contract should have comprehensive unit test coverage before moving to more advanced testing methodologies.
+Unit testing is the foundation of smart contract security testing. While fuzz tests can find edge cases and integration
+tests verify system interactions, unit tests ensure that individual functions behave correctly under expected
+conditions. Every smart contract should have comprehensive unit test coverage before moving to more advanced testing
+methodologies.
 
 ## Overview
 
-Unit testing involves testing individual components or functions of your codebase in isolation. In smart contract development, this means testing each function with known inputs to verify expected outputs and state changes.
+Unit testing involves testing individual components or functions of your codebase in isolation. In smart contract
+development, this means testing each function with known inputs to verify expected outputs and state changes.
 
 **Why Unit Tests Matter for Security:**
 
@@ -38,18 +41,19 @@ Unit testing involves testing individual components or functions of your codebas
 
 ## The Foundation of Security Testing
 
-As mentioned in your security testing strategy, unit testing should **always** be implemented with high code coverage. Think of unit tests as your first line of defense against bugs that could become security vulnerabilities.
+As mentioned in your security testing strategy, unit testing should **always** be implemented with high code coverage.
+Think of unit tests as your first line of defense against bugs that could become security vulnerabilities.
 
 ```solidity
 // Example: Simple token contract
 contract SimpleToken {
     mapping(address => uint256) public balances;
     uint256 public totalSupply;
-    
+
     function transfer(address to, uint256 amount) public {
         require(balances[msg.sender] >= amount, "Insufficient balance");
         require(to != address(0), "Cannot transfer to zero address");
-        
+
         balances[msg.sender] -= amount;
         balances[to] += amount;
     }
@@ -73,7 +77,7 @@ contract SimpleTokenTest is Test {
     SimpleToken token;
     address alice = address(0x1);
     address bob = address(0x2);
-    
+
     function setUp() public {
         token = new SimpleToken();
         // Give Alice some initial balance
@@ -84,21 +88,21 @@ contract SimpleTokenTest is Test {
         );
         token.setTotalSupply(1000);
     }
-    
+
     function testTransferSuccess() public {
         vm.prank(alice);
         token.transfer(bob, 100);
-        
+
         assertEq(token.balances(alice), 900);
         assertEq(token.balances(bob), 100);
     }
-    
+
     function testTransferFailsInsufficientBalance() public {
         vm.prank(alice);
         vm.expectRevert("Insufficient balance");
         token.transfer(bob, 2000); // More than Alice has
     }
-    
+
     function testTransferFailsZeroAddress() public {
         vm.prank(alice);
         vm.expectRevert("Cannot transfer to zero address");
@@ -141,14 +145,16 @@ function testTransferAmountFuzz(uint256 amount) public {
 
 ## Mocking External Dependencies
 
-Unit tests should test your contract logic in isolation. When your contracts depend on external systems like oracles, other protocols, or complex state, you should mock these dependencies to create predictable, fast, and controlled test conditions.
+Unit tests should test your contract logic in isolation. When your contracts depend on external systems like oracles,
+other protocols, or complex state, you should mock these dependencies to create predictable, fast, and controlled test
+conditions.
 
 ### Why Mock in Unit Tests?
 
 **Problems with real external dependencies in unit tests:**
 
 - **Slow**: Network calls and complex state slow down tests
-- **Unpredictable**: External state changes make tests non-deterministic  
+- **Unpredictable**: External state changes make tests non-deterministic
 - **Expensive**: RPC calls cost money and hit rate limits
 - **Complex**: Hard to test edge cases with real systems
 
@@ -161,7 +167,8 @@ Unit tests should test your contract logic in isolation. When your contracts dep
 
 ### Example Mock
 
-For example, if you are interacting with an ERC20 that has very odd functionality, an easier way to test working with it would be to make a mock of that contract.
+For example, if you are interacting with an ERC20 that has very odd functionality, an easier way to test working with it
+would be to make a mock of that contract.
 
 ```solidity
 // SPDX-License-Identifier: UNLICENSED
@@ -219,7 +226,7 @@ function testOnlyOwnerCanMint() public {
     vm.prank(alice); // Alice is not owner
     vm.expectRevert("Ownable: caller is not the owner");
     token.mint(alice, 100);
-    
+
     vm.prank(owner);
     token.mint(alice, 100); // Should succeed
     assertEq(token.balances(alice), 100);
@@ -233,7 +240,7 @@ function testNoOverflowOnMint() public {
     // Set total supply to near max uint256
     uint256 nearMaxSupply = type(uint256).max - 100;
     token.setTotalSupply(nearMaxSupply);
-    
+
     vm.prank(owner);
     vm.expectRevert(); // Should revert on overflow
     token.mint(alice, 200);
@@ -259,17 +266,16 @@ function testTransfer() public {
     // Arrange
     uint256 initialBalance = 1000;
     uint256 transferAmount = 100;
-    
+
     // Act
     vm.prank(alice);
     token.transfer(bob, transferAmount);
-    
+
     // Assert
     assertEq(token.balances(alice), initialBalance - transferAmount);
     assertEq(token.balances(bob), transferAmount);
 }
 ```
-
 
 ## Common Smart Contract Tools and Frameworks
 

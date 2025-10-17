@@ -10,11 +10,9 @@ contributors:
     users: []
   - role: fact-checked
     users: []
-
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
 
 <TagProvider>
 <TagFilter />
@@ -24,36 +22,55 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Effective security operations are built on five practical fundamentals: layered protective measures, minimized access scopes, controlled information flows, system isolation, and continuous visibility — working together to secure critical assets in dynamic environments.
+> 🔑 **Key Takeaway**: Effective security operations are built on five practical fundamentals: layered protective
+> measures, minimized access scopes, controlled information flows, system isolation, and continuous visibility — working
+> together to secure critical assets in dynamic environments.
 
 ## Relationship to Implementation Process
 
-This document outlines the foundational security approaches that should be embedded throughout your organization's operations. They complement the practical [Operational Implementation Process](/opsec/core-concepts/implementation-process), which defines specific action steps:
+This document outlines the foundational security approaches that should be embedded throughout your organization's
+operations. They complement the practical
+[Operational Implementation Process](/opsec/core-concepts/implementation-process),
+which defines specific action steps:
 
 - These fundamentals establish **enduring approaches** that shape your security architecture
 - The implementation process provides a **sequential workflow** for security teams to follow
 
-While these fundamentals provide the security principles that should be consistently applied across your environment, the implementation process offers a structured methodology for putting security into practice. Both elements must work in concert - these fundamentals guide your overall approach, while the implementation process provides the tactical roadmap.
+While these fundamentals provide the security principles that should be consistently applied across your environment,
+the implementation process offers a structured methodology for putting security into practice. Both elements must work
+in concert - these fundamentals guide your overall approach, while the implementation process provides the tactical
+roadmap.
 
-For organizations just beginning their security journey, start with the [Operational Implementation Process](/opsec/core-concepts/implementation-process) for concrete steps.
+For organizations just beginning their security journey, start with the
+[Operational Implementation Process](/opsec/core-concepts/implementation-process) for concrete steps.
 
-The ultimate goal is to prevent unauthorized access to systems and information that could cause operational, financial, or reputational harm if compromised.
+The ultimate goal is to prevent unauthorized access to systems and information that could cause operational, financial,
+or reputational harm if compromised.
 
 > **Practical Example: Web3 Organization**
 >
-> Consider a Web3 project managing a DeFi protocol with a treasury of $10M in assets. Practical security fundamentals in action include:
+> Consider a Web3 project managing a DeFi protocol with a treasury of $10M in assets. Practical security fundamentals in
+> action include:
 >
-> - **Layered protection**: Hardware security modules for key storage, multi-signature requirements (3-of-5) for transactions, automated monitoring for unusual patterns, and regular third-party security audits
-> - **Minimal access scopes**: Deployment keys accessible only to specific DevOps team members, with different permission levels strictly enforced between development, staging, and production environments
-> - **Information flow control**: Private keys for multi-signature wallets distributed among trusted team members based on role, with sensitive incident response procedures restricted to the security team
-> - **System isolation**: Clear separation between development environments and production systems, with treasury management isolated from day-to-day operations
-> - **Continuous visibility**: Real-time monitoring systems tracking transaction patterns, weekly security reviews, and quarterly penetration tests with findings addressed in prioritized sprints
+> - **Layered protection**: Hardware security modules for key storage, multi-signature requirements (3-of-5) for
+> transactions, automated monitoring for unusual patterns, and regular third-party security audits
+> - **Minimal access scopes**: Deployment keys accessible only to specific DevOps team members, with different
+> permission levels strictly enforced between development, staging, and production environments
+> - **Information flow control**: Private keys for multi-signature wallets distributed among trusted team members based
+> on role, with sensitive incident response procedures restricted to the security team
+> - **System isolation**: Clear separation between development environments and production systems, with treasury
+> management isolated from day-to-day operations
+> - **Continuous visibility**: Real-time monitoring systems tracking transaction patterns, weekly security reviews, and
+> quarterly penetration tests with findings addressed in prioritized sprints
 
 ## 1. Layered Protection
 
-Implement multiple overlapping security controls so that if one mechanism fails, others will continue to protect your assets.
+Implement multiple overlapping security controls so that if one mechanism fails, others will continue to protect your
+assets.
 
-> **🔗 Related Framework:** This approach is reinforced in frameworks like [Infrastructure](/infrastructure/overview) with [Zero-Trust Principles](/infrastructure/zero-trust-principles) and [Network Security](/infrastructure/network-security).
+> **🔗 Related Framework:** This approach is reinforced in frameworks like [Infrastructure](/infrastructure/overview)
+> with [Zero-Trust Principles](/infrastructure/zero-trust-principles) and
+> [Network Security](/infrastructure/network-security).
 
 ### Practical Application
 
@@ -76,9 +93,11 @@ Implement multiple overlapping security controls so that if one mechanism fails,
 
 ## 2. Minimal Access Scopes
 
-Grant users, systems, and processes only the specific permissions they need to perform their required functions and nothing more.
+Grant users, systems, and processes only the specific permissions they need to perform their required functions and
+nothing more.
 
-> **🔗 Related Framework:** For detailed implementation, see [Identity and Access Management](/iam/overview) and [Role-Based Access Control](/iam/role-based-access-control).
+> **🔗 Related Framework:** For detailed implementation, see [Identity and Access Management](/iam/overview) and
+> [Role-Based Access Control](/iam/role-based-access-control).
 
 ### Practical Application
 
@@ -105,9 +124,11 @@ Grant users, systems, and processes only the specific permissions they need to p
 
 ## 3. Information Flow Control
 
-Ensure sensitive information is only accessible to those with a legitimate need to know, with restrictions on how that information can be shared and used.
+Ensure sensitive information is only accessible to those with a legitimate need to know, with restrictions on how that
+information can be shared and used.
 
-{/* > **🔗 Related Framework:** This approach is supported by practices in [Data Protection](/opsec/old/data-protection/overview) and aspects of [Privacy](). */}
+{/* > **🔗 Related Framework:** This approach is supported by practices in [Data
+Protection](/opsec/old/data-protection/overview) and aspects of [Privacy](/privacy/overview). */}
 
 ### Practical Application
 
@@ -165,7 +186,9 @@ Segment systems and networks into isolated zones to contain security breaches an
 
 Maintain ongoing awareness of your security posture through active monitoring, testing, and continuous improvement.
 
-> **🔗 Related Framework:** For implementation details, see the [Monitoring](/monitoring/overview) framework, including [Guidelines](/monitoring/guidelines) and [Thresholds](/monitoring/thresholds). Also relevant is [Incident Management](/incident-management/overview) for response to detected issues.
+> **🔗 Related Framework:** For implementation details, see the [Monitoring](/monitoring/overview) framework, including
+> [Guidelines](/monitoring/guidelines) and [Thresholds](/monitoring/thresholds). Also relevant is
+> [Incident Management](/incident-management/overview) for response to detected issues.
 
 ### Practical Application
 
