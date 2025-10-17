@@ -69,6 +69,47 @@ For organizations managing >10% of total assets or >$10M equivalent in a single 
 - Establish clear key refresh and rotation procedures
 - Document recovery procedures and test annually
 
+### Custody/MPC Policy Thresholds for Treasury Operations
+
+- Minimum of 3 distinct approvers across roles (e.g., Treasury, Security, Finance)
+- Target majority approval (≥50% of designated approver group; e.g., 3/5, 4/7)
+- Scale quorum size with assets-at-risk and operational blast radius
+- Enforce separation of duties: requester cannot be an approver; admins cannot unilaterally execute withdrawals
+
+Policy scope definitions (examples):
+
+- Emergency Freeze: Temporarily block withdrawals/policy changes across workspaces
+- Protocol Parameters: Custody/policy engine settings, risk rules, policy changes
+- Capital Allocation: Movements between accounts, exchanges, or strategies
+- Treasury – Large: Routine treasury transfers above internal threshold
+- Treasury – Small: Routine operational transfers below internal threshold
+- Constrained DeFi: Time-sensitive interactions with pre-approved protocols/contracts
+
+Suggested approver thresholds (treasury contexts):
+
+| Operation            | Impact   | Urgency        | Approver Threshold            |
+| -------------------- | -------- | -------------- | ----------------------------- |
+| Emergency Freeze     | Critical | Emergency      | 2/4                           |
+| Protocol Parameters  | High     | Routine        | 4/7 (7/9+ for upgrades)       |
+| Capital Allocation   | High     | Time-Sensitive | 3/5                           |
+| Treasury - Large     | High     | Routine        | 4/7                           |
+| Treasury - Small     | Medium   | Routine        | 3/5                           |
+| Constrained DeFi     | Medium   | Time-Sensitive | 2/3                           |
+
+## Custody Policy Engine Rules
+
+Most custody/MPC platforms provide a policy engine that evaluates transaction rules and takes one of three actions: allow, block, or require additional approvals.
+
+Core rule elements:
+
+- Action: allow | block | escalate (require more approvers)
+- Asset selector: all assets or specific assets/tokens
+- Amount limits: per-transaction limit and optional rolling window aggregation
+- Source and destination selectors: account/wallet groups, internal vs external addresses, exchanges
+- Transaction type: transfers, contract interactions, approvals/signing
+- Initiators and approvers: who can initiate and who must authorize (with thresholds)
+- Rule identity and ordering: each rule has an ID; engines typically evaluate rules in order (first-match wins)
+
 ## Zero Trust Architecture Alternative
 
 A Zero Trust architecture involves continuous verification of user, device, and context, rather than reliance on a single perimeter or network location. Centralizing access through a secure environment (such as a bastion host or isolated cloud workspace) can support Zero Trust principles when combined with strong identity and device posture enforcement.
