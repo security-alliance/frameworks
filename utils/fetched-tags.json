@@ -922,7 +922,17 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/treasury-operations/classification-registration-and-documentation": [
+    "/treasury-operations/classification": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/enhanced-controls": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/registration-documents": [
       "Treasury Ops",
       "Operations",
       "Risk Management"
