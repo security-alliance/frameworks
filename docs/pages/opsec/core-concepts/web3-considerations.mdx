@@ -10,11 +10,9 @@ contributors:
     users: []
   - role: fact-checked
     users: []
-
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
 
 <TagProvider>
 <TagFilter />
@@ -24,11 +22,16 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Web3 environments require specialized security approaches that balance blockchain transparency with privacy, address immutability risks, manage self-custody responsibilities, secure decentralized operations, mitigate smart contract vulnerabilities, and navigate community-driven security challenges.
+> 🔑 **Key Takeaway**: Web3 environments require specialized security approaches that balance blockchain transparency
+> with privacy, address immutability risks, manage self-custody responsibilities, secure decentralized operations,
+> mitigate smart contract vulnerabilities, and navigate community-driven security challenges.
 
-In addition to traditional OpSec principles, Web3 environments require consideration of unique challenges. Many organizations claim to be backed only by decentralized technologies, but they later realize that part of their process is dependant on technologies that are not.
+In addition to traditional OpSec principles, Web3 environments require consideration of unique challenges. Many
+organizations claim to be backed only by decentralized technologies, but they later realize that part of their process
+is dependant on technologies that are not.
 
-{/* > **🔗 Related Framework:** Explore the dedicated [Web3-Specific OpSec](/operational-security/web3-specific-opsec/) framework for comprehensive guidance. */}
+{/* > **🔗 Related Framework:** Explore the dedicated [Web3-Specific OpSec](/operational-security/web3-specific-opsec/)
+framework for comprehensive guidance. */}
 
 ## Transparency vs. Privacy
 
@@ -64,7 +67,8 @@ Recognizing that blockchain transactions are generally irreversible, requiring h
 3. Deploy transaction simulation tools to verify outcomes before execution
    - Use Tenderly or similar platforms to simulate transactions in a fork of the chain
    - Verify gas estimates and test with small amounts first when using new contracts\
-   - Use auxiliary tools such as [Safe Multi-sig Transaction Hashes](https://github.com/pcaversaccio/safe-tx-hashes-util)
+   - Use auxiliary tools such as
+   [Safe Multi-sig Transaction Hashes](https://github.com/pcaversaccio/safe-tx-hashes-util)
 4. Establish secure deployment practices for smart contracts
    - Use formal verification tools before mainnet deployment
    - Implement deployment scripts with dry-run functionality
@@ -75,7 +79,8 @@ Recognizing that blockchain transactions are generally irreversible, requiring h
 
 Managing private keys and digital assets with appropriate security controls.
 
-> **🔗 Related Framework:** For detailed guidance on wallet security practices, see the [Wallet Security](/wallet-security/overview) framework.
+> **🔗 Related Framework:** For detailed guidance on wallet security practices, see the
+> [Wallet Security](/wallet-security/overview) framework.
 
 ### Suggested steps
 
@@ -91,7 +96,8 @@ Managing private keys and digital assets with appropriate security controls.
    - Define thresholds for different security requirements (e.g., `<$10K`, `$10K-$100K`, `>$100K`)
    - Implement tiered wallet architecture (hot wallets for operations, cold storage for reserves)
    - Establish secure methods for replenishing hot wallets from cold storage
-4. [Stay up-to-date](/awareness/staying-informed-and-continuous-learning) with best practices in wallet security and custody solutions
+4. [Stay up-to-date](/awareness/staying-informed-and-continuous-learning) with best practices in wallet security and
+custody solutions
    - Subscribe to security advisory services for cryptocurrencies
    - Follow developments in MPC (Multi-Party Computation) wallet technologies
    - Regularly review and test recovery procedures
