@@ -4,7 +4,9 @@
   "description": "Official repository to the Security Frameworks by SEAL. This repository contains the entire structure and contents of the frameworks. Feel free to suggest from new categories to grammar corrections. Collaboration is open to everyone. **This is a work in progress.**",
   "main": "index.js",
   "devDependencies": {
+    "@types/react": "^19.2.2",
     "cspell": "^9.2.1",
+    "typescript": "^5.9.3",
     "vocs": "^1.0.13"
   },
   "scripts": {
