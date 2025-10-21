@@ -102,12 +102,10 @@ const config = {
                 { text: 'Overview', link: '/wallet-security/signing-verification' },
                 { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
                 { text: 'Multisig Signing Process', link: '/wallet-security/secure-multisig-signing-process' },
-                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-safe-verification', dev: true },
-                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-squads-verification', dev: true },
                 { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
               ]
             },
-            { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
+            { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
           ]
         },
