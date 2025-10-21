@@ -10,8 +10,13 @@ benchmarks:
   - title: "Check host mounts"
     description: >
       Ensure the container only mounts your workspace.  
-      No access to sensitive host paths like `/`, `/home`, `.ssh`, or `/var/run/docker.sock`. 
-      If network access or host paths are required, they should be opened on a case-by-case basis. 
+      No access to sensitive host paths like `/`, `/home`, `.ssh`, or `/var/run/docker.sock`.
+
+  - title: "Network Isolation"
+    description: >
+      By default fully isolate devcontainers from the network. If network access is required, 
+      alloy only specific hosts or ports, avoid LAN access, and avoid binding container ports 
+      to the host.
 
   - title: "Inspect setup scripts"
     description: >
