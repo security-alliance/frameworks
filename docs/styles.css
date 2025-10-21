@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .vocs_NavLogo_logoImage {
     height: 80% !important;
 }
@@ -83,7 +85,7 @@
 :root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft:hover {
     border-color: #303030;
     color: #1e1e1e;
-}
+} 
 
 :root:not(.dark) .vocs_AiCtaDropdown_dropdownMenuContent {
     border: 1px solid #908f8f;
@@ -96,4 +98,8 @@
 
 .vocs_Sidebar_footerContent {
     margin-bottom: calc(10px + var(--vocs_Banner_bannerHeight, 0px));
+}
+
+.vocs_Outline_item {
+    margin-bottom: 0.3rem;
 }

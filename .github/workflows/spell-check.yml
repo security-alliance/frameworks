@@ -22,37 +22,31 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 2
 
-      - name: Install aspell
-        run: sudo apt-get update && sudo apt-get install -y aspell
-
-      - name: Find and check typos in Markdown files
+      - name: Find and check typos in mdx files
         id: find_typos
         run: |
           echo "Checking for typos..."
-          # https://unix.stackexchange.com/a/9500
-          IFS=$'\n'
-          set -f
-          for file in $(find . -name "*.md" ); do
-            output="$(aspell --lang=en_US --mode=markdown --home-dir=. --personal=wordlist.txt --ignore-case=true --camel-case list <$file)"
-            echo "$output"
-            # Exit if aspell has errors
-            if [ $? -ne 0 ]; then
-              exit 1
-            fi
-            if [[ -n "$output" ]]; then
-              # Format output.
-              output=$(echo "$output" | sed 's/^/    1. /')
-              TYPOS+="- 📄 $file:"
-              TYPOS+=$'\n'
-              TYPOS+="$output"
-              TYPOS+=$'\n'
-            fi
-          done
-          {
-            echo 'TYPOS<<EOF'
-            echo "$TYPOS"
-            echo EOF
-          } >> "$GITHUB_ENV"
+          set -o pipefail
+          # Run cspell and capture output, but don't fail yet
+          output=$(npx cspell lint "docs/pages/**/*.mdx" --no-progress --no-summary || true)
+
+          if [[ -n "$output" ]]; then
+            echo "Typos found, formatting output..."
+            formatted=$(echo "$output" | nl -w2 -s'. ')
+            TYPOS+="- 📄 docs/pages:"
+            TYPOS+=$'\n'
+            TYPOS+='```'
+            TYPOS+=$'\n'
+            TYPOS+="$formatted"
+            TYPOS+=$'\n'
+            TYPOS+='```'
+            TYPOS+=$'\n\n'
+            {
+              echo 'TYPOS<<EOF'
+              echo "$TYPOS"
+              echo EOF
+            } >> "$GITHUB_ENV"
+          fi
 
       - name: Comment on pull request
         if: env.TYPOS != ''
@@ -61,7 +55,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const author = '${{github.event.pull_request.user.login}}';
-            const typos = `${{ env.TYPOS }}`;
+            const typos = process.env.TYPOS;
             const body = `
             Hi @${author},
 
@@ -72,11 +66,11 @@ jobs:
             ## ℹ️ Here's how to fix them:
             - **Fix typos:** Open the relevant files and fix any identified typos.
             - **Update wordlist:** If a flagged word is actually a project-specific term add it to \`wordlist.txt\` in the project root.
-                Each word should be listed on a separate line. [Learn more.](http://aspell.net/man-html/Format-of-the-Personal-and-Replacement-Dictionaries.html)
+              Each word should be listed on a separate line.
             - **🚧 Remember:**
               - When adding new words it MUST NOT have any spaces or special characters within or around it.
               - \`wordlist\` is NOT case sensitive.
-              - Use backticks to quote code variables so as to not bloat the \`wordlist\`.
+              - If code variables are flagged, wrap them in backticks instead of adding them to the \`wordlist\`. This way they are treated as code and won’t bloat the \`wordlist\` with project-specific identifiers.
             `;
 
             github.rest.issues.createComment({
