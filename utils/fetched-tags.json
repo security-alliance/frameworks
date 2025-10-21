@@ -798,6 +798,14 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/secure-software-development/devcontainer-security": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/secure-software-development/devcontainers": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/secure-software-development/overview": [
       "Engineer/Developer",
       "Security Specialist",

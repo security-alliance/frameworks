@@ -305,6 +305,8 @@ const config = {
             { text: 'Code Reviews and Peer Audits', link: '/secure-software-development/code-reviews-peer-audits', dev: true },
             { text: 'Secure Code Repositories and Version Control', link: '/secure-software-development/secure-code-repositories-version-control', dev: true },
             { text: 'Threat Modeling and Secure Design Principles', link: '/secure-software-development/threat-modeling-secure-design-principles', dev: true },
+            { text: 'Devcontainers', link: '/secure-software-development/secure-development-environments', dev: true },
+            { text: 'Devcontainer Security', link: '/secure-software-development/devcontainer-security', dev: true },
           ]
         },
         {
