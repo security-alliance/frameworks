@@ -362,6 +362,10 @@
       "Devops",
       "SRE"
     ],
+    "/incident-management/playbooks/hacked-dprk": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/incident-management/playbooks/hacked-drainer": [
       "Security Specialist",
       "Operations & Strategy"
@@ -1025,30 +1029,20 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/wallet-security/private-key-management": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/wallet-security/secure-multisig-best-practices": [
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer"
     ],
-    "/wallet-security/secure-multisig-safe-verification": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
     "/wallet-security/secure-multisig-signing-process": [
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer"
-    ],
-    "/wallet-security/secure-multisig-squads-verification": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/wallet-security/seed-phrase-management": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
     ],
     "/wallet-security/signing-verification": [
       "Engineer/Developer",
