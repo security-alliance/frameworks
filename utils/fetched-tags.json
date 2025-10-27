@@ -1,24 +1,17 @@
 {
   "allTags": [
-    "Blockchain",
     "Cloud",
     "Community & Marketing",
-    "Compliance",
     "DAO",
     "Devops",
     "Engineer/Developer",
     "HR",
-    "Human Resources",
-    "Individual Security",
     "Legal & Compliance",
     "Operations & Strategy",
-    "Physical Security",
     "Protocol",
     "SEAL/Initiative",
     "SRE",
     "Security Specialist",
-    "Travel",
-    "Web3",
     "Whitehat"
   ],
   "pageTagsMap": {
@@ -80,13 +73,6 @@
     ],
     "/community-management/twitter": [
       "Community & Marketing"
-    ],
-    "/config/template": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Community & Marketing",
-      "HR",
-      "Engineer/Developer"
     ],
     "/devsecops/code-signing": [
       "Engineer/Developer",
@@ -361,6 +347,10 @@
       "Devops",
       "SRE"
     ],
+    "/incident-management/playbooks/hacked-dprk": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/incident-management/playbooks/hacked-drainer": [
       "Security Specialist",
       "Operations & Strategy"
@@ -458,25 +448,7 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/opsec/appendices/case-studies": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/appendices/glossary": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
     "/opsec/appendices/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/appendices/policies": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -488,31 +460,7 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/control-domains/organizational": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
     "/opsec/control-domains/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/control-domains/people": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/control-domains/physical-environmental": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/control-domains/technical": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -560,134 +508,7 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/old/cloud-third-party/g-suite-security": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "HR"
-    ],
-    "/opsec/old/cloud-third-party/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/old/core-opsec-principles": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/old/data-protection/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE",
-      "Compliance"
-    ],
-    "/opsec/old/device-endpoint-security/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/old/device-endpoint-security/standard-operating-environment": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/old/digital-identity-access/password-secrets-management": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/old/digital-identity-access/sim-swapping": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/old/human-centered-security/detecting-and-mitigating-insider-threats": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/old/human-centered-security/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "HR"
-    ],
-    "/opsec/old/human-centered-security/personal-opsec": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Individual Security"
-    ],
-    "/opsec/old/human-centered-security/social-engineering-defense": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Human Resources"
-    ],
-    "/opsec/old/human-centered-security/travel-security": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Travel",
-      "Physical Security"
-    ],
-    "/opsec/old/network-communication/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/old/network-communication/telegram": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/old/network-communication/wireless-security": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/old/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/old/physical-security/overview": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/old/web3-specific-opsec/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Web3",
-      "Blockchain"
-    ],
     "/opsec/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/principles/five-steps": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/principles/overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/principles/principles": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/principles/web3-considerations": [
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/opsec/risk-management/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -707,7 +528,6 @@
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer",
-      "Security Specialist",
       "Devops",
       "SRE"
     ],
@@ -715,7 +535,6 @@
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer",
-      "Security Specialist",
       "Devops",
       "SRE"
     ],
@@ -723,7 +542,6 @@
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer",
-      "Security Specialist",
       "Devops",
       "SRE"
     ],
@@ -986,5 +804,36 @@
       "Engineer/Developer",
       "Security Specialist"
     ]
+  },
+  "sectionMappings": {
+    "Community Management": "community-management",
+    "Awareness": "awareness",
+    "Operational Security": "opsec",
+    "OpSec Core Concepts": "opsec",
+    "While Traveling": "opsec",
+    "Wallet Security": "wallet-security",
+    "Signing & Verification": "wallet-security",
+    "External Security Reviews": "external-security-reviews",
+    "Smart Contract Audits": "external-security-reviews",
+    "Vulnerability Disclosure": "vulnerability-disclosure",
+    "Infrastructure": "infrastructure",
+    "Monitoring": "monitoring",
+    "Front-End/Web Application": "front-end-web-app",
+    "Incident Management": "incident-management",
+    "Playbooks": "incident-management",
+    "Threat Modeling": "threat-modeling",
+    "DPRK IT Workers": "dprk-it-workers",
+    "Governance": "governance",
+    "DevSecOps": "devsecops",
+    "Privacy": "privacy",
+    "Supply Chain": "supply-chain",
+    "Security Automation": "security-automation",
+    "Identity and Access Management IAM": "iam",
+    "Secure Software Development": "secure-software-development",
+    "Security Testing": "security-testing",
+    "ENS": "ens",
+    "Safe Harbor": "safe-harbor",
+    "Encryption": "encryption",
+    "Contributing": "contribute"
   }
 }

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTagFilter } from './TagContext'
-import { getTagColor, TAG_COLORS } from '../shared/constants'
+import { getTagColor } from '../shared/constants'
 import tagsFetched from '../../utils/fetched-tags.json'
 import './TagFilter.css'
 
@@ -13,114 +13,159 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
   const { selectedTags, setSelectedTags } = useTagFilter()
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
+  const prevSelectedTagsRef = useRef<string[]>([])
+  const isControllingsidebar = useRef(false)
+  const mutationObserverRef = useRef<MutationObserver | null>(null)
+  const lastControlTimestamp = useRef<number>(0)
+  const filterContainerRef = useRef<HTMLDivElement>(null)
 
   const pageTagsMap = tagsFetched?.pageTagsMap || {}
   
-  const tagsIndex: Record<string, string[]> = {}
+  // Create tags index once and memoize it
+  const tagsIndex: Record<string, string[]> = useMemo(() => {
+    const index: Record<string, string[]> = {}
   Object.entries(pageTagsMap).forEach(([page, pageTags]) => {
     pageTags.forEach(tag => {
-      if (!tagsIndex[tag]) {
-        tagsIndex[tag] = []
-      }
-      if (!tagsIndex[tag].includes(page)) {
-        tagsIndex[tag].push(page)
-      }
-    })
-  })
-  
-  const dynamicTags = tagsFetched?.allTags || []
-  const constantsTags = Object.keys(TAG_COLORS)
-  const allKnownTags = [...new Set([...dynamicTags, ...constantsTags])].sort()
-  const allAvailableTags = availableTags || allKnownTags
-  const tags = query ? allAvailableTags.filter(t => t.toLowerCase().includes(query.toLowerCase())) : allAvailableTags
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem('selected_tags')
-      if (raw) {
-        const saved = JSON.parse(raw)
-        if (Array.isArray(saved) && saved.length) {
-          setSelectedTags(saved)
+        if (!index[tag]) {
+          index[tag] = []
         }
-      }
-
-    } catch {}
-  }, [setSelectedTags])
-
-  useEffect(() => {
-    // Notify parent
-    if (onTagSelect) {
-      onTagSelect(selectedTags)
-    }
-
-    // Persist to localStorage
-    try { 
-      localStorage.setItem('selected_tags', JSON.stringify(selectedTags))
-    } catch {}
-
-    // Apply OR logic and highlight existing sidebar links
-    // Try various selectors for Vocs sidebar structure
-    const sidebarSelectors = [
-      'aside a', // Vocs uses aside for sidebar
-      'nav a',   // Sometimes nav
-      '.sidebar a', // Class-based
-      '[data-testid="sidebar"] a', // Data attribute
-      '.vocs_sidebar a', // Vocs-specific class
-      '#sidebar a' // Fallback ID
-    ]
-    
-    // Remove all previous selections and clear inline styles
-    sidebarSelectors.forEach(selector => {
-      document.querySelectorAll(selector).forEach((link) => {
-        link.classList.remove('selected')
-        
-        // Clear inline styles
-        if (link instanceof HTMLElement) {
-          link.style.backgroundColor = ''
-          link.style.borderLeft = ''
-          link.style.paddingLeft = ''
-          link.style.fontWeight = ''
-          link.style.opacity = ''
-          
-          // Remove tag indicators
-          const indicators = link.querySelector('.sidebar-tag-indicators')
-          if (indicators) {
-            indicators.remove()
-          }
+        if (!index[tag].includes(page)) {
+          index[tag].push(page)
         }
       })
     })
-
-    if (selectedTags.length === 0) {
-      const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
-      if (sidebar instanceof HTMLElement) {
-        sidebar.classList.remove('filtered')
-        
-        // Reset opacity for all links when filters are cleared
-        sidebar.querySelectorAll('a').forEach(link => {
-          if (link instanceof HTMLElement) {
-            link.style.opacity = ''
-          }
-        })
+    return index
+  }, [pageTagsMap])
+  
+  // Helper function to find which top-level sidebar sections contain matching pages
+  const getSectionsWithMatchingPages = (selectedPages: Set<string>) => {
+    const sectionsWithMatches = new Set<string>()
+    
+    // Map pages to their top-level sections based on URL structure
+    selectedPages.forEach(page => {
+      // Extract the first part of the path to determine the section
+      const pathParts = page.split('/').filter(Boolean)
+      if (pathParts.length > 0) {
+        const topLevelSection = pathParts[0]
+        sectionsWithMatches.add(topLevelSection)
       }
+    })
+    
+    return sectionsWithMatches
+  }
+
+  /**
+   * Controls sidebar section collapse/expand states based on selected tags
+   * Only runs when tags change (add/remove), then hands control back to user
+   * Throttled to prevent rapid re-triggers during navigation
+   */
+  const controlSidebarSections = (selectedPages: Set<string>) => {
+    // Throttle to prevent rapid re-triggers (e.g. during navigation)
+    const now = Date.now()
+    const timeSinceLastControl = now - lastControlTimestamp.current
+    if (timeSinceLastControl < 1000) {
       return
     }
-
-    // OR logic: union of all pages (any tag matches)
-    const selectedPages = new Set<string>()
-    selectedTags.forEach(tag => {
-      const pages = tagsIndex[tag] || []
-      pages.forEach(page => selectedPages.add(page))
+    lastControlTimestamp.current = now
+    
+    // Only control sections if we actually have selected tags
+    if (selectedTags.length === 0) {
+      return
+    }
+    
+    // Set flag to indicate we're programmatically controlling the sidebar
+    isControllingsidebar.current = true
+    
+    const sectionsWithMatches = getSectionsWithMatchingPages(selectedPages)
+    
+    // Find the sidebar and specifically target child sections within "Frameworks"
+    const sidebar = document.querySelector('aside')
+    if (!sidebar) return
+    
+    // Find the "Frameworks" section first
+    const frameworksSection = Array.from(sidebar.querySelectorAll('nav > div > section')).find(section => {
+      const titleElement = section.querySelector('div > div, div > a')
+      return titleElement?.textContent?.trim() === 'Frameworks'
     })
+    
+    if (!frameworksSection) {
+      return
+    }
+    
+    // Find all child sections within the Frameworks section and toggle them based on matches
+    const childSections = frameworksSection.querySelectorAll('section')
+    
+    childSections.forEach(section => {
+      const sectionTitleElement = section.querySelector('div > div, div > a')
+      const sectionTitle = sectionTitleElement?.textContent?.trim()
+      
+      if (!sectionTitle) return
+      
+      // Use the pre-generated section mappings from fetched-tags.json
+      const sectionMappings: Record<string, string> = tagsFetched?.sectionMappings || {}
+      const sectionUrlSegment = sectionMappings[sectionTitle]
+      
+      const shouldExpand = sectionUrlSegment && sectionsWithMatches.has(sectionUrlSegment)
+      
+      // Find the collapse/expand button
+      const collapseButton = section.querySelector('[role="button"]')
+      if (!collapseButton) return
+      
+      // Detect if section is currently collapsed by checking for visible links
+      const allLinksInSection = section.querySelectorAll('a')
+      const visibleLinks = Array.from(allLinksInSection).filter(link => {
+        const style = getComputedStyle(link)
+        return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0'
+      })
+      
+      const isCurrentlyCollapsed = visibleLinks.length === 0
+      
+      // Only click if we need to change the state
+      if (shouldExpand && isCurrentlyCollapsed) {
+        // Need to expand
+        ;(collapseButton as HTMLElement).click()
+      } else if (!shouldExpand && !isCurrentlyCollapsed) {
+        // Need to collapse
+        ;(collapseButton as HTMLElement).click()
+      }
+    })
+    
+    // Reset flag after a delay to allow for any triggered events to settle
+    setTimeout(() => {
+      isControllingsidebar.current = false
+    }, 500)
+  }
 
-    console.log('Selected tags:', selectedTags)
-    console.log('Selected pages:', Array.from(selectedPages))
-    console.log('Tags index:', tagsIndex)
-
-    // Highlight matching pages in existing sidebar - try multiple approaches
+  /**
+   * Applies highlighting to selected pages in the sidebar
+   * Highlights matching links and dims non-matching ones
+   */
+  const reapplyHighlighting = (selectedPages: Set<string>) => {
+    // Clear all previous highlighting and styles first
+    const allLinksForClearing = document.querySelectorAll('aside a, nav a, .sidebar a')
+    allLinksForClearing.forEach((link) => {
+      link.classList.remove('selected')
+      if (link instanceof HTMLElement) {
+        link.style.backgroundColor = ''
+        link.style.borderLeft = ''
+        link.style.paddingLeft = ''
+        link.style.fontWeight = ''
+        link.style.opacity = ''
+        
+        // Remove tag indicators
+        const indicators = link.querySelector('.sidebar-tag-indicators')
+        if (indicators) {
+          indicators.remove()
+        }
+      }
+    })
+    
+    // Highlight matching pages in the sidebar using multiple search strategies
     selectedPages.forEach((page) => {
+      let link: Element | null = null
+      
       // Try exact href match
-      let link = document.querySelector(`a[href="${page}"]`)
+      link = document.querySelector(`a[href="${page}"]`)
       
       // Try href ending with page
       if (!link) {
@@ -133,17 +178,20 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
         link = document.querySelector(`a[href*="${pageWithoutSlash}"]`)
       }
       
-      // Try within sidebar containers
+      // Try flexible matching across all sidebar links
       if (!link) {
-        sidebarSelectors.forEach(selector => {
-          if (!link) {
-            link = document.querySelector(`${selector.replace(' a', '')} a[href$="${page}"]`)
+        const allLinks = document.querySelectorAll('aside a')
+        Array.from(allLinks).forEach(linkEl => {
+          const href = linkEl.getAttribute('href')
+          if (href && href !== '/' && href.length > 1) {
+            if (href.includes(page) || (page.includes(href) && href.length > 3)) {
+              if (!link) link = linkEl
+            }
           }
         })
       }
       
       if (link) {
-        console.log('Highlighting link:', link.getAttribute('href'), link.textContent)
         link.classList.add('selected')
         
         // Find which selected tags apply to this page
@@ -151,7 +199,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
           tagsIndex[tag] && tagsIndex[tag].includes(page)
         )
         
-        // Force styling with inline styles to ensure visibility
+        // Apply highlighting styles
         if (link instanceof HTMLElement) {
           link.style.backgroundColor = '#4339db2e'
           link.style.borderLeft = '4px solid #4339DB'
@@ -164,7 +212,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
             existingIndicators.remove()
           }
           
-          // Add colored tag indicators
+          // Add colored tag indicators for each matching tag
           if (pageTags.length > 0) {
             const indicators = document.createElement('div')
             indicators.className = 'sidebar-tag-indicators'
@@ -180,12 +228,10 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
             link.appendChild(indicators)
           }
         }
-      } else {
-        console.log('Could not find link for page:', page)
       }
     })
 
-    // Add filtered state to sidebar and dim non-selected links
+    // Re-apply dimming to non-selected links
     const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
     if (sidebar instanceof HTMLElement) {
       sidebar.classList.add('filtered')
@@ -218,14 +264,389 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
         }
       })
     }
-  }, [selectedTags, onTagSelect, tagsIndex])
+  }
+
+  /**
+   * Sets up MutationObserver to watch for manual section toggles
+   * This observer only watches for manual section toggles to reapply highlighting
+   * It does NOT control which sections should be open/closed
+   */
+  const setupSidebarObserver = () => {
+    // Clean up existing observer
+    if (mutationObserverRef.current) {
+      mutationObserverRef.current.disconnect()
+    }
+
+    const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
+    if (!sidebar || selectedTags.length === 0) {
+      return
+    }
+
+    const observer = new MutationObserver((mutations) => {
+      // Only react if we're not currently controlling the sidebar
+      if (isControllingsidebar.current) {
+        return
+      }
+
+      let shouldReapplyHighlighting = false
+      let detectedSectionToggle = false
+
+      mutations.forEach((mutation) => {
+        // Check if any nodes were added/removed (indicating section toggle)
+        if (mutation.type === 'childList' && (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0)) {
+          // Only consider it a section toggle if MULTIPLE links are added/removed at once
+          // This filters out navigation changes which usually affect single elements
+          const addedLinks = Array.from(mutation.addedNodes).filter(node => 
+            node.nodeType === Node.ELEMENT_NODE && 
+            ((node as Element).tagName === 'A' || (node as Element).querySelector('a'))
+          )
+          
+          const removedLinks = Array.from(mutation.removedNodes).filter(node => 
+            node.nodeType === Node.ELEMENT_NODE && 
+            ((node as Element).tagName === 'A' || (node as Element).querySelector('a'))
+          )
+          
+          // Only react if multiple links changed (actual section toggle)
+          if (addedLinks.length > 2 || removedLinks.length > 2) {
+            detectedSectionToggle = true
+            shouldReapplyHighlighting = true
+          }
+        }
+        
+        // Also check for attribute changes on section elements
+        if (mutation.type === 'attributes') {
+          const target = mutation.target as HTMLElement
+          if (target.hasAttribute('aria-expanded') || target.hasAttribute('data-collapsed') || target.classList.contains('levelCollapsed')) {
+            detectedSectionToggle = true
+            shouldReapplyHighlighting = true
+          }
+        }
+      })
+
+      if (shouldReapplyHighlighting && detectedSectionToggle) {
+        // Get current selected pages
+        const selectedPages = new Set<string>()
+        selectedTags.forEach(tag => {
+          const pages = tagsIndex[tag] || []
+          pages.forEach(page => selectedPages.add(page))
+        })
+
+        // Reapply highlighting after a brief delay to let DOM settle
+        setTimeout(() => {
+          reapplyHighlighting(selectedPages)
+        }, 20)
+      }
+    })
+
+    // Observe the entire sidebar for changes - including attributes for collapse state
+    observer.observe(sidebar, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['aria-expanded', 'data-collapsed', 'class']
+    })
+
+    mutationObserverRef.current = observer
+  }
+  
+
+  /**
+   * Clears all highlighting styles and resets the sidebar to default state
+   */
+  const clearAllHighlighting = () => {
+    // Remove all selected classes and inline styles from all links
+    const allLinks = document.querySelectorAll('aside a, nav a, .sidebar a, [data-testid="sidebar"] a, .vocs_sidebar a, #sidebar a')
+    allLinks.forEach((link) => {
+      link.classList.remove('selected')
+      
+      if (link instanceof HTMLElement) {
+        link.style.backgroundColor = ''
+        link.style.borderLeft = ''
+        link.style.paddingLeft = ''
+        link.style.fontWeight = ''
+        link.style.opacity = ''
+        
+        // Remove tag indicators
+        const indicators = link.querySelector('.sidebar-tag-indicators')
+        if (indicators) {
+          indicators.remove()
+        }
+      }
+    })
+    
+    // Remove filtered class from sidebar
+    const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
+    if (sidebar instanceof HTMLElement) {
+      sidebar.classList.remove('filtered')
+    }
+    
+    // Clean up observer
+    if (mutationObserverRef.current) {
+      mutationObserverRef.current.disconnect()
+      mutationObserverRef.current = null
+    }
+    
+    // Reset throttle timestamp
+    lastControlTimestamp.current = 0
+  }
+
+  // Only use tags that actually exist in sidebar files (from fetched-tags.json)
+  const dynamicTags = tagsFetched?.allTags || []
+  const allAvailableTags = availableTags || dynamicTags
+  const tags = query ? allAvailableTags.filter(t => t.toLowerCase().includes(query.toLowerCase())) : allAvailableTags
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem('selected_tags')
+      if (raw) {
+        const saved = JSON.parse(raw)
+        if (Array.isArray(saved) && saved.length) {
+          setSelectedTags(saved)
+        }
+      }
+
+    } catch {}
+  }, [setSelectedTags])
+
+  useEffect(() => {
+    // Notify parent
+    if (onTagSelect) {
+      onTagSelect(selectedTags)
+    }
+
+    // Persist to localStorage
+    try { 
+      localStorage.setItem('selected_tags', JSON.stringify(selectedTags))
+    } catch {}
+  }, [selectedTags, onTagSelect])
+
+  /**
+   * Main effect for sidebar section control - only runs when tags actually change
+   * Handles expanding/collapsing sections and applying highlighting
+   */
+  useEffect(() => {
+    // Prevent feedback loops
+    if (isControllingsidebar.current) {
+      return
+    }
+    
+    // Check if tags actually changed (not just a re-render)
+    const prevTags = prevSelectedTagsRef.current
+    const prevSorted = [...prevTags].sort().join(',')
+    const currentSorted = [...selectedTags].sort().join(',')
+    const tagsChanged = prevSorted !== currentSorted
+    
+    if (!tagsChanged) {
+      // Update ref on initial load
+      if (prevTags.length === 0 && selectedTags.length > 0) {
+        prevSelectedTagsRef.current = [...selectedTags]
+      }
+      return
+    }
+    
+    // Update the ref for next comparison
+    prevSelectedTagsRef.current = [...selectedTags]
+    
+    // Clear highlighting if no tags selected
+    if (selectedTags.length === 0) {
+      clearAllHighlighting()
+      return
+    }
+
+    // Collect all pages matching selected tags (OR logic: union)
+    const selectedPages = new Set<string>()
+    selectedTags.forEach(tag => {
+      const pages = tagsIndex[tag] || []
+      pages.forEach(page => selectedPages.add(page))
+    })
+
+    // Control sidebar sections, then apply highlighting after DOM settles
+    controlSidebarSections(selectedPages)
+    
+    setTimeout(() => {
+      reapplyHighlighting(selectedPages)
+      setupSidebarObserver()
+      
+      // Retry if no links were highlighted
+      setTimeout(() => {
+        const highlightedCount = document.querySelectorAll('aside a.selected').length
+        if (highlightedCount === 0 && selectedPages.size > 0) {
+          reapplyHighlighting(selectedPages)
+        }
+      }, 100)
+    }, 50)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedTags])
+
+  /**
+   * Cleanup effect - handles clearing sidebar styling when tags are cleared
+   */
+  useEffect(() => {
+    // Prevent interference with sidebar control
+    if (isControllingsidebar.current) {
+      return
+    }
+    
+    // Check if tags were cleared by user
+    const prevTags = prevSelectedTagsRef.current
+    const tagsWereCleared = prevTags.length > 0 && selectedTags.length === 0
+    
+    if (tagsWereCleared) {
+      // Clear all styling from sidebar links
+      const sidebarSelectors = [
+        'aside a',
+        'nav a',
+        '.sidebar a',
+        '[data-testid="sidebar"] a',
+        '.vocs_sidebar a',
+        '#sidebar a'
+      ]
+      
+      sidebarSelectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach((link) => {
+          link.classList.remove('selected')
+          
+          if (link instanceof HTMLElement) {
+            link.style.backgroundColor = ''
+            link.style.borderLeft = ''
+            link.style.paddingLeft = ''
+            link.style.fontWeight = ''
+            link.style.opacity = ''
+            
+            const indicators = link.querySelector('.sidebar-tag-indicators')
+            if (indicators) {
+              indicators.remove()
+            }
+          }
+        })
+      })
+
+      const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
+      if (sidebar instanceof HTMLElement) {
+        sidebar.classList.remove('filtered')
+        
+        sidebar.querySelectorAll('a').forEach(link => {
+          if (link instanceof HTMLElement) {
+            link.style.opacity = ''
+          }
+        })
+      }
+    }
+  }, [selectedTags])
+
+  /**
+   * Persistent observer setup and highlight maintenance
+   * Ensures observer is active and highlights are maintained when tags are selected
+   * Checks every 50ms for missing highlights or undimmed links
+   */
+  useEffect(() => {
+    if (selectedTags.length > 0) {
+      // Get selected pages
+      const selectedPages = new Set<string>()
+      selectedTags.forEach(tag => {
+        const pages = tagsIndex[tag] || []
+        pages.forEach(page => selectedPages.add(page))
+      })
+      
+      // Ensure observer is set up
+      const checkAndSetupObserver = () => {
+        if (!mutationObserverRef.current) {
+          setupSidebarObserver()
+        }
+      }
+      
+      // Check if highlights and dimming are properly applied
+      const checkAndReapplyHighlights = () => {
+        const expectedHighlights = selectedPages.size
+        const currentHighlights = document.querySelectorAll('aside a.selected').length
+        const allVisibleLinks = document.querySelectorAll('aside a')
+        let needsReapply = false
+        
+        // Check if highlights are missing
+        if (currentHighlights < expectedHighlights && expectedHighlights > 0) {
+          needsReapply = true
+        }
+        
+        // Check if non-selected links need dimming
+        const nonSelectedLinks = Array.from(allVisibleLinks).filter(link => 
+          !link.classList.contains('selected') &&
+          link instanceof HTMLElement &&
+          !link.querySelector('img') &&
+          !link.querySelector('svg') &&
+          link.getAttribute('href') !== '/'
+        )
+        
+        const undimmedNonSelectedLinks = nonSelectedLinks.filter(link => {
+          if (link instanceof HTMLElement) {
+            return link.style.opacity !== '0.4'
+          }
+          return false
+        })
+        
+        if (undimmedNonSelectedLinks.length > 0) {
+          needsReapply = true
+        }
+        
+        if (needsReapply) {
+          reapplyHighlighting(selectedPages)
+        }
+      }
+      
+      // Check immediately
+      checkAndSetupObserver()
+      checkAndReapplyHighlights()
+      
+      // Periodic check to maintain highlights
+      const intervalId = setInterval(() => {
+        checkAndSetupObserver()
+        checkAndReapplyHighlights()
+      }, 50)
+      
+      return () => clearInterval(intervalId)
+    }
+  }, [selectedTags, tagsIndex])
+
+  // Cleanup observer on unmount
+  useEffect(() => {
+    return () => {
+      if (mutationObserverRef.current) {
+        mutationObserverRef.current.disconnect()
+      }
+    }
+  }, [])
+
+  /**
+   * Click outside handler to close dropdown while keeping sidebar scrollable
+   */
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      
+      if (filterContainerRef.current && !filterContainerRef.current.contains(target)) {
+        setIsOpen(false)
+      }
+    }
+
+    // Add listener with a small delay to avoid closing immediately on open
+    const timeoutId = setTimeout(() => {
+      document.addEventListener('mousedown', handleClickOutside)
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen])
 
   const toggleTag = (tag: string) => {
-    setSelectedTags((prev: string[]) => 
-      prev.includes(tag) 
+    setSelectedTags((prev: string[]) => {
+      const newTags = prev.includes(tag) 
         ? prev.filter((t: string) => t !== tag)
         : [...prev, tag]
-    )
+      return newTags
+    })
   }
 
   const clearAll = () => {
@@ -233,7 +654,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
   }
 
   return (
-    <div className="tag-filter">
+    <div className="tag-filter" ref={filterContainerRef}>
       <button 
         className={`tag-filter-toggle ${isOpen ? 'active' : ''} ${selectedTags.length > 0 ? 'has-filters' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
