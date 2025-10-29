@@ -63,7 +63,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     // Throttle to prevent rapid re-triggers (e.g. during navigation)
     const now = Date.now()
     const timeSinceLastControl = now - lastControlTimestamp.current
-    if (timeSinceLastControl < 1000) {
+    if (timeSinceLastControl < 100) {
       return
     }
     lastControlTimestamp.current = now
@@ -133,7 +133,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     // Reset flag after a delay to allow for any triggered events to settle
     setTimeout(() => {
       isControllingsidebar.current = false
-    }, 500)
+    }, 100)
   }
 
   /**
@@ -425,11 +425,6 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
    * Handles expanding/collapsing sections and applying highlighting
    */
   useEffect(() => {
-    // Prevent feedback loops
-    if (isControllingsidebar.current) {
-      return
-    }
-    
     // Check if tags actually changed (not just a re-render)
     const prevTags = prevSelectedTagsRef.current
     const prevSorted = [...prevTags].sort().join(',')
@@ -474,7 +469,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
           reapplyHighlighting(selectedPages)
         }
       }, 100)
-    }, 50)
+    }, 100)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTags])
 
