@@ -798,6 +798,10 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/secure-software-development/devcontainer-security": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/secure-software-development/overview": [
       "Engineer/Developer",
       "Security Specialist",
@@ -809,6 +813,10 @@
       "Devops"
     ],
     "/secure-software-development/secure-coding-standards-guidelines": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/secure-software-development/secure-development-environments": [
       "Engineer/Developer",
       "Security Specialist"
     ],
