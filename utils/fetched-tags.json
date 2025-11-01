@@ -478,11 +478,6 @@
       "Security Specialist",
       "Multisig Security"
     ],
-    "/multisig-for-protocols/hardware-wallet-setup": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Multisig Security"
-    ],
     "/multisig-for-protocols/implementation-checklist": [
       "Engineer/Developer",
       "Security Specialist",
@@ -1025,7 +1020,7 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/intermediates-&-medium-funds": [
+    "/wallet-security/hardware-wallet-setup": [
       "Engineer/Developer",
       "Security Specialist"
     ],

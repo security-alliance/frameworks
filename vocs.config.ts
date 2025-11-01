@@ -137,7 +137,7 @@ const config = {
               dev: true,
               items: [
 
-                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup', dev: true },
+                { text: 'Hardware Wallet Setup', link: '/wallet-security/intermediates-&-medium-funds', dev: true },
                 { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig', dev: true },
 
                 { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures', dev: true },
