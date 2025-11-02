@@ -202,5 +202,17 @@
     "company": "Trail of Bits",
     "job_title": "Director of Engineering for Blockchain",
     "description": "Frameworks Contributors"
+  },
+  "ElliotFriedman": {
+    "slug": "ElliotFriedman",
+    "name": "Elliot",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/ElliotFriedman",
+    "github": "https://github.com/ElliotFriedman",
+    "twitter": "https://x.com/Elliot0x",
+    "website": "",
+    "company": "",
+    "job_title": "",
+    "description": ""
   }
 }
