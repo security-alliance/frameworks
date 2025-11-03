@@ -188,8 +188,8 @@
     "twitter": "https://x.com/_SEAL_Org",
     "website": "https://securityalliance.org",
     "company": "SEAL",
-    "job_title": "Frameworks Contributors",
-    "description": "Frameworks Contributors"
+    "job_title": "Frameworks Contributor",
+    "description": "Frameworks Contributor"
   },
   "bsamuels453": {
     "slug": "bsamuels453",
@@ -201,7 +201,7 @@
     "website": "https://bsamuels.net/",
     "company": "Trail of Bits",
     "job_title": "Director of Engineering for Blockchain",
-    "description": "Frameworks Contributors"
+    "description": "Frameworks Contributor"
   },
   "ElliotFriedman": {
     "slug": "ElliotFriedman",
@@ -210,9 +210,9 @@
     "avatar": "https://avatars.githubusercontent.com/ElliotFriedman",
     "github": "https://github.com/ElliotFriedman",
     "twitter": "https://x.com/Elliot0x",
-    "website": "",
-    "company": "",
-    "job_title": "",
-    "description": ""
+    "website": "https://kleidi.io/",
+    "company": "Solidity Labs",
+    "job_title": "Founder & Engineer",
+    "description": "Frameworks Contributor"
   }
 }
