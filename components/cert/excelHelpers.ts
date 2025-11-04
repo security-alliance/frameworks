@@ -128,7 +128,7 @@ export async function exportToExcel(
     const a = document.createElement("a");
     a.href = url;
     const timestamp = new Date().toISOString().replace(/T/, '-').replace(/:/g, '-').split('.')[0];
-    a.download = `certification-checklist-${timestamp}.xlsx`;
+    a.download = `sfc-${timestamp}.xlsx`;
     a.click();
     URL.revokeObjectURL(url);
 }
