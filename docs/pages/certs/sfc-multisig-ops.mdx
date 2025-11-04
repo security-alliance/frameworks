@@ -4,142 +4,142 @@ tags:
   - SEAL/Initiative
   - Certs
 cert:
-- id: section-1
+- id: ms-1
   title: Governance & Inventory
   controls:
-  - id: 1.1.1
+  - id: ms-1.1.1
     description: Do you maintain documented policies and procedures governing your multisig
       operations?
     title: Policies Governing Multisig Operations
-  - id: 1.1.2
+  - id: ms-1.1.2
     description: Is there a clearly named person or team accountable for multisig operations
       (policy upkeep, reviews, hygiene)?
     title: Named Responsible Multisig Owner
-  - id: 1.1.3
+  - id: ms-1.1.3
     description: Do you operate a documented maintenance process to keep multisig documentation
       current after any operational or signer change?
     title: Multisig Documentation Maintenance Process
-  - id: 1.2.1
+  - id: ms-1.2.1
     description: Do you keep an up‑to‑date registry of all multisigs (address, network, purpose,
       threshold, modules/guards, admin roles, etc)?
     title: Current Multisig Registry Details
-  - id: 1.2.2
+  - id: ms-1.2.2
     description: Do you maintain an up‑to‑date list of authorized signers and map them to the
       correct multisigs?
     title: Authorized Signer Mapping Registry
-- id: section-2
+- id: ms-2
   title: Risk Assessment & Management
   controls:
-  - id: '2.1'
+  - id: ms-2.1.1
     description: Do you define and maintain a formal classification system for multisig wallets
       that covers both impact factors and operational needs?
     title: Formal Multisig Classification System
-  - id: '2.2'
+  - id: ms-2.1.2
     description: Do you maintain documented criteria that map each classification level to required
       controls (thresholds, quorum composition, review cadence, etc)?
     title: Classification Criteria and Controls
-  - id: '2.3'
+  - id: ms-2.1.3
     description: Do you periodically review and update classifications and associated controls
       when conditions change?
     title: Review and Update Classifications
-  - id: '2.4'
+  - id: ms-2.1.4
     description: Do you maintain documented policies on the use of timelocks, modules and guards,
       including justification and security review requirements for any exceptions?
     title: Timelocks, Modules, and Guards Policies
-  - id: '2.5'
+  - id: ms-2.1.5
     description: Do you maintain a documented exception approval process for deviations from
       standard multisig policies, including justification requirements, and authorization levels?
     title: Exception Approval Process for Multisig
-- id: section-3
+- id: ms-3
   title: Signer Security & Access Control
   controls:
-  - id: '3.1'
+  - id: ms-3.1.1
     description: Do you maintain a documented process for cryptographic attestation of address
       ownership and signer affiliation for multisig signers?
     title: Cryptographic Signer Identity Attestation
-  - id: '3.2'
+  - id: ms-3.1.2
     description: Do you maintain a documented standard for signer key management?
     title: Signer Key Management Standard
-  - id: '3.3'
+  - id: ms-3.1.3
     description: Do you maintain documented policies and procedures for securely backing up
       and protecting signer seed phrases and recovery materials?
     title: Signer Seed Backups and Protection
-  - id: '3.4'
+  - id: ms-3.1.4
     description: Do you operate a documented lifecycle for adding, replacing, and removing signers,
       including offboarding and periodic access reviews?
     title: Multisig Signer Lifecycle Management
-  - id: '3.5'
+  - id: ms-3.1.5
     description: Do you have a documented training and readiness program for signers before
       they are authorized to participate?
     title: Signer Training and Readiness Program
-- id: section-4
+- id: ms-4
   title: Operational Procedures
   controls:
-  - id: '4.1'
+  - id: ms-4.1.1
     description: Do you maintain documented processes for transaction initiation, approval,
       simulation, execution, and confirmation, including who is authorized to initiate?
     title: Documented Transaction Lifecycle Procedures
-  - id: '4.2'
+  - id: ms-4.1.2
     description: Do you maintain documented signing and verification procedures that must be
       followed before any signatures are applied?
     title: Signing and Verification Procedures
-  - id: '4.3'
+  - id: ms-4.1.3
     description: Do you maintain audit trails and retention for transaction reviews, approvals,
       execution, and post‑execution confirmation?
     title: Audit Trails and Retention
-  - id: '4.4'
+  - id: ms-4.1.4
     description: Do you maintain a policy defining enhanced controls for high‑risk transactions
       (emergency actions, large transfers, protocol configuration changes)?
     title: Policy for High-Risk Transactions
-  - id: '4.5'
+  - id: ms-4.1.5
     description: Do you maintain documented standards for multisig technology and tools, and
       a formal evaluation process for adopting new ones?
     title: Multisig Standards and Evaluation
-  - id: '4.6'
+  - id: ms-4.1.6
     description: Do you maintain documented backup infrastructure for multisig operations (alternate
       signing interfaces, RPC/explorers, failover procedures), and test their use?
     title: Backup Infrastructure for Multisig
-- id: section-5
+- id: ms-5
   title: Communication & Coordination
   controls:
-  - id: '5.1'
+  - id: ms-5.1.1
     description: Do you maintain dedicated primary and backup communication channels for multisig
       operations with documented membership controls and onboarding/offboarding procedures?
     title: Multisig Primary and Backup Communications
-  - id: '5.2'
+  - id: ms-5.1.2
     description: Do you have procedures to verify the identity of signers during sensitive communications,
       with periodic checks to ensure authenticity?
     title: Signer Identity Verification Procedures
-  - id: '5.3'
+  - id: ms-5.1.3
     description: Do you maintain documented escalation policies that define response-time expectations,
       on-call coverage, and procedures for urgent coordination?
     title: Documented Escalation and On-Call Policies
-  - id: '5.4'
+  - id: ms-5.1.4
     description: Do you maintain procedures for responding to suspected communication channel
       compromise, including switching to backup channels and out-of-band verification, and ensure
       signers know how to invoke them?
     title: Channel Compromise Response and Verification
-  - id: '5.5'
+  - id: ms-5.1.5
     description: Do you maintain and distribute an up-to-date emergency contact list for multisig
       operations?
     title: Emergency Contacts for Multisig
-- id: section-6
+- id: ms-6
   title: Emergency Operations
   controls:
-  - id: '6.1'
+  - id: ms-6.1.1
     description: Do you maintain written emergency playbooks covering key compromise, lost access,
       and urgent protocol actions?
     title: Emergency Playbooks for Compromise
-  - id: '6.2'
+  - id: ms-6.1.2
     description: For critical/emergency‑class multisigs, do you provide 24/7 paging to reach
       the required threshold and document escalation paths?
     title: 24/7 Paging for Emergency Multisigs
-  - id: '6.3'
+  - id: ms-6.1.3
     description: Do you maintain monitoring infrastructure and procedures to detect unauthorized,
       anomalous, or suspicious activity across all multisigs, with documented alerting and escalation
       paths?
     title: Multisig Monitoring and Alerts
-  - id: '6.4'
+  - id: ms-6.1.4
     description: Do you conduct periodic rehearsals and drills of emergency playbooks to test
       response procedures, communication channels, and signer coordination under simulated emergency
       conditions?
