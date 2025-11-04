@@ -183,12 +183,10 @@ const config = {
             { text: 'Overview', link: '/incident-management/overview', dev: true },
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies', dev: true },
             { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response', dev: true },
-            { text: 'Lessons Learned', link: '/incident-management/lessons-learned', dev: true },
-            { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines' },
-            { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir' },
+            { text: 'Lessons Learned', link: '/incident-management/lessons-learned', dev: true }, 
             {
               text: 'Playbooks',
-              collapsed: true,
+              collapsed: false,
               dev: true,
               items: [
                 { text: 'Overview', link: '/incident-management/playbooks/overview', dev: true },

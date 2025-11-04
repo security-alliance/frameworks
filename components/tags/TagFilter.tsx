@@ -37,17 +37,24 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     return index
   }, [pageTagsMap])
   
-  // Helper function to find which top-level sidebar sections contain matching pages
+  // Helper function to find which sidebar sections contain matching pages
+  // Returns both top-level sections (e.g., "incident-management") and nested subsections (e.g., "playbooks")
   const getSectionsWithMatchingPages = (selectedPages: Set<string>) => {
     const sectionsWithMatches = new Set<string>()
     
-    // Map pages to their top-level sections based on URL structure
+    // Map pages to their sections based on URL structure
     selectedPages.forEach(page => {
-      // Extract the first part of the path to determine the section
+      // Extract all parts of the path to handle nested sections
       const pathParts = page.split('/').filter(Boolean)
+      
+      // Add top-level section (e.g., "incident-management")
       if (pathParts.length > 0) {
-        const topLevelSection = pathParts[0]
-        sectionsWithMatches.add(topLevelSection)
+        sectionsWithMatches.add(pathParts[0])
+      }
+      
+      // Add nested subsections
+      if (pathParts.length > 1) {
+        sectionsWithMatches.add(pathParts[1])
       }
     })
     
@@ -92,45 +99,55 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       return
     }
     
-    // Find all child sections within the Frameworks section and toggle them based on matches
-    const childSections = frameworksSection.querySelectorAll('section')
-    
-    childSections.forEach(section => {
-      const sectionTitleElement = section.querySelector('div > div, div > a')
-      const sectionTitle = sectionTitleElement?.textContent?.trim()
-      
-      if (!sectionTitle) return
-      
-      // Use the pre-generated section mappings from fetched-tags.json
-      const sectionMappings: Record<string, string> = tagsFetched?.sectionMappings || {}
-      const sectionUrlSegment = sectionMappings[sectionTitle]
-      
-      const shouldExpand = sectionUrlSegment && sectionsWithMatches.has(sectionUrlSegment)
-      
-      // Find the collapse/expand button
-      const collapseButton = section.querySelector('[role="button"]')
-      if (!collapseButton) return
-      
-      // Detect if section is currently collapsed by checking for visible links
-      const allLinksInSection = section.querySelectorAll('a')
-      const visibleLinks = Array.from(allLinksInSection).filter(link => {
-        const style = getComputedStyle(link)
-        return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0'
+    // Helper function to toggle sections based on matches
+    const toggleSections = (sections: NodeListOf<Element>) => {
+      sections.forEach(section => {
+        const sectionTitleElement = section.querySelector('div > div, div > a')
+        const sectionTitle = sectionTitleElement?.textContent?.trim()
+        
+        if (!sectionTitle) return
+        
+        // Use the pre-generated section mappings from fetched-tags.json
+        const sectionMappings: Record<string, string> = tagsFetched?.sectionMappings || {}
+        const sectionUrlSegment = sectionMappings[sectionTitle]
+        
+        const shouldExpand = sectionUrlSegment && sectionsWithMatches.has(sectionUrlSegment)
+        
+        // Find the collapse/expand button
+        const collapseButton = section.querySelector('[role="button"]')
+        if (!collapseButton) return
+        
+        // Detect if section is currently collapsed by checking for visible links
+        const allLinksInSection = section.querySelectorAll('a')
+        const visibleLinks = Array.from(allLinksInSection).filter(link => {
+          const style = getComputedStyle(link)
+          return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0'
+        })
+        
+        const isCurrentlyCollapsed = visibleLinks.length === 0
+        
+        // Only click if we need to change the state
+        if (shouldExpand && isCurrentlyCollapsed) {
+          // Need to expand
+          ;(collapseButton as HTMLElement).click()
+        } else if (!shouldExpand && !isCurrentlyCollapsed) {
+          // Need to collapse
+          ;(collapseButton as HTMLElement).click()
+        }
       })
-      
-      const isCurrentlyCollapsed = visibleLinks.length === 0
-      
-      // Only click if we need to change the state
-      if (shouldExpand && isCurrentlyCollapsed) {
-        // Need to expand
-        ;(collapseButton as HTMLElement).click()
-      } else if (!shouldExpand && !isCurrentlyCollapsed) {
-        // Need to collapse
-        ;(collapseButton as HTMLElement).click()
-      }
-    })
+    }
     
-    // Reset flag after a delay to allow for any triggered events to settle
+    // First pass: toggle all currently visible sections (top-level)
+    const childSections = frameworksSection.querySelectorAll('section')
+    toggleSections(childSections)
+    
+    // Second pass: wait for DOM to update, then toggle newly visible nested subsections
+    setTimeout(() => {
+      const updatedSections = frameworksSection.querySelectorAll('section')
+      toggleSections(updatedSections)
+    }, 200)
+    
+    // Reset flag after all passes complete
     setTimeout(() => {
       isControllingsidebar.current = false
     }, 100)
@@ -162,36 +179,46 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     
     // Highlight matching pages in the sidebar using multiple search strategies
     selectedPages.forEach((page) => {
-      let link: Element | null = null
+      let matchingLinks: Element[] = []
       
-      // Try exact href match
-      link = document.querySelector(`a[href="${page}"]`)
-      
-      // Try href ending with page
-      if (!link) {
-        link = document.querySelector(`a[href$="${page}"]`)
+      // Try exact href match in sidebar only (get ALL matches, not just first)
+      let links = document.querySelectorAll(`aside a[href="${page}"]`)
+      if (links.length > 0) {
+        matchingLinks = Array.from(links)
       }
       
-      // Try href containing page (without leading slash)
-      if (!link) {
+      // Try href ending with page in sidebar only
+      if (matchingLinks.length === 0) {
+        links = document.querySelectorAll(`aside a[href$="${page}"]`)
+        if (links.length > 0) {
+          matchingLinks = Array.from(links)
+        }
+      }
+      
+      // Try href containing page in sidebar only (without leading slash)
+      if (matchingLinks.length === 0) {
         const pageWithoutSlash = page.startsWith('/') ? page.slice(1) : page
-        link = document.querySelector(`a[href*="${pageWithoutSlash}"]`)
+        links = document.querySelectorAll(`aside a[href*="${pageWithoutSlash}"]`)
+        if (links.length > 0) {
+          matchingLinks = Array.from(links)
+        }
       }
       
       // Try flexible matching across all sidebar links
-      if (!link) {
+      if (matchingLinks.length === 0) {
         const allLinks = document.querySelectorAll('aside a')
         Array.from(allLinks).forEach(linkEl => {
           const href = linkEl.getAttribute('href')
           if (href && href !== '/' && href.length > 1) {
             if (href.includes(page) || (page.includes(href) && href.length > 3)) {
-              if (!link) link = linkEl
+              matchingLinks.push(linkEl)
             }
           }
         })
       }
       
-      if (link) {
+      // Apply highlighting to ALL matching links (handles duplicate sidebar entries)
+      matchingLinks.forEach(link => {
         link.classList.add('selected')
         
         // Find which selected tags apply to this page
@@ -228,7 +255,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
             link.appendChild(indicators)
           }
         }
-      }
+      })
     })
 
     // Re-apply dimming to non-selected links
