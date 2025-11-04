@@ -1,0 +1,60 @@
+name: Non Content Request
+description: Strategy, tech, or other non-content related issues and ideas.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to share your feedback or idea for Frameworks.
+        
+        _Please be as detailed as possible so we understand the issue or opportunity — and so we and other contributors 
+        can provide feedback._
+
+  - type: checkboxes
+    id: type_of_request
+    attributes:
+      label: "Type of request"
+      description: "Select the category that best fits this issue:"
+      options:
+        - label: "Strategy (planning, high-level discussions, roadmap)"
+        - label: "Tech (infrastructure, tooling, tech stack)"
+        - label: "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Why are you raising this issue?"
+      description: "Describe the problem, suggestion, or idea in detail (e.g., something isn’t working as expected, a feature could be improved, a new tool might be helpful, or you have a strategic idea to share)."
+      placeholder: "Explain the issue, improvement, or idea you're proposing."
+    validations:
+      required: true
+
+  - type: textarea
+    id: why_needed
+    attributes:
+      label: "Why do you think it is important?"
+      description: "If it is not self-explanatory, or relatively clear, add a few sentences explaining how it matters to Frameworks."
+      placeholder: "Add reasoning or context here."
+    validations:
+      required: false
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: "Can you justify your argument or provide additional resources?"
+      description: "Add any resources or references that support your idea or help explain your reasoning."
+      placeholder: "Add any helpful resources or evidence here."
+    validations:
+      required: false
+  
+  - type: checkboxes
+    id: contribution_intent
+    attributes:
+      label: "Contribution intent"
+      description: "Tell us how you’d like to contribute."
+      options:
+        - label: "I can work on implementing this"
+        - label: "I'm raising this for discussion/someone else to handle"
+    validations:
+      required: true
