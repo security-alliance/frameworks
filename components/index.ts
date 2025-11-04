@@ -15,5 +15,7 @@ export { AttributionList } from './attribution/AttributionList'
 export { ContributeFooter } from './footer/ContributeFooter'
 export { Contributors } from './contributors/Contributors'
 export { BenchmarkList } from './benchmark/Benchmark'
+export { CertList } from './cert/CertList'
+export type { Control, Section, CertListProps, ControlState, ControlData } from './cert/types'
 export { default as MermaidRenderer } from './mermaid/MermaidRenderer';
 export * from './shared/constants'

@@ -1,6 +1,7 @@
 {
   "allTags": [
     "Blockchain",
+    "Certs",
     "Cloud",
     "Community & Marketing",
     "Compliance",
@@ -63,6 +64,34 @@
       "Community & Marketing",
       "HR",
       "Engineer/Developer"
+    ],
+    "/certs/certification-guidelines": [
+      "SEAL/Initiative",
+      "Certs"
+    ],
+    "/certs/faq": [
+      "SEAL/Initiative",
+      "Certs"
+    ],
+    "/certs/sfc-dns-registrar": [
+      "SEAL/Initiative",
+      "Certs"
+    ],
+    "/certs/sfc-incident-response": [
+      "SEAL/Initiative",
+      "Certs"
+    ],
+    "/certs/sfc-multisig-ops": [
+      "SEAL/Initiative",
+      "Certs"
+    ],
+    "/certs/sfc-treasury-ops": [
+      "SEAL/Initiative",
+      "Certs"
+    ],
+    "/certs/sfc-workspace-security": [
+      "SEAL/Initiative",
+      "Certs"
     ],
     "/community-management/discord": [
       "Community & Marketing",
@@ -360,6 +389,10 @@
       "Operations & Strategy",
       "Devops",
       "SRE"
+    ],
+    "/incident-management/playbooks/hacked-dprk": [
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/incident-management/playbooks/hacked-drainer": [
       "Security Specialist",
@@ -942,6 +975,11 @@
       "Operations & Strategy"
     ],
     "/wallet-security/custodial-vs-non-custodial": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/wallet-security/encumbered-wallets": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
