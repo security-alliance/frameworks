@@ -13,7 +13,8 @@ const stateToText: Record<ControlState, string> = {
  */
 export async function exportToExcel(
     sections: Section[],
-    controlData: Record<string, ControlData>
+    controlData: Record<string, ControlData>,
+    name?: string,
 ): Promise<void> {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet("Certification Checklist");
@@ -22,7 +23,7 @@ export async function exportToExcel(
     worksheet.columns = [
         { header: "Section", key: "section", width: 12 },
         { header: "Control ID", key: "id", width: 15 },
-        { header: "Question", key: "question", width: 75 },
+        { header: "Question", key: "question", width: 100 },
         { header: "Response", key: "response", width: 12 },
         { header: "N/A Justification", key: "justification", width: 40 },
         { header: "Evidence / Notes", key: "notes", width: 50 },
@@ -70,7 +71,6 @@ export async function exportToExcel(
             const row = worksheet.addRow(rowData);
             const rowNumber = row.number;
 
-            // Add dropdown validation for Response column (column D)
             const responseCell = worksheet.getCell(`D${rowNumber}`);
             responseCell.dataValidation = {
                 type: "list",
@@ -88,7 +88,6 @@ export async function exportToExcel(
             worksheet.getCell(`A${rowNumber}`).alignment = { vertical: "middle", horizontal: "left" };
             worksheet.getCell(`B${rowNumber}`).alignment = { vertical: "middle", horizontal: "left" };
 
-            // Add light border to control rows
             row.eachCell((cell) => {
                 cell.border = {
                     top: { style: "thin", color: { argb: "FFD1D5DB" } },
@@ -102,7 +101,6 @@ export async function exportToExcel(
         });
     });
 
-    // Auto-filter on all columns (excluding section header rows)
     worksheet.autoFilter = {
         from: "A1",
         to: `F${worksheet.rowCount}`,
@@ -128,7 +126,8 @@ export async function exportToExcel(
     const a = document.createElement("a");
     a.href = url;
     const timestamp = new Date().toISOString().replace(/T/, '-').replace(/:/g, '-').split('.')[0];
-    a.download = `sfc-${timestamp}.xlsx`;
+    const name_part = name ? `${name}` : 'sfc';
+    a.download = `${name_part}-${timestamp}.xlsx`;
     a.click();
     URL.revokeObjectURL(url);
 }

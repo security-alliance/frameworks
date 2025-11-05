@@ -23,4 +23,5 @@ export interface Section {
 
 export interface CertListProps {
     sections: Section[];
+    name: string;
 }

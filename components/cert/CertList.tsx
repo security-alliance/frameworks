@@ -4,7 +4,7 @@ import { CertListProps, ControlData } from "./types";
 import { CertSection } from "./CertSection";
 import { exportToExcel, importFromExcel } from "./excelHelpers";
 
-export function CertList({ sections }: CertListProps) {
+export function CertList({ sections, name }: CertListProps) {
     const [controlData, setControlData] = useState<Record<string, ControlData>>({});
     const [error, setError] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -19,7 +19,7 @@ export function CertList({ sections }: CertListProps) {
     const handleExport = async () => {
         try {
             setError(null);
-            await exportToExcel(sections, controlData);
+            await exportToExcel(sections, controlData, name);
         } catch (err) {
             setError(`Export failed: ${err instanceof Error ? err.message : "Unknown error"}`);
         }
