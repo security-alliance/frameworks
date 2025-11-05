@@ -27,8 +27,13 @@ claude-code
 # Node.js dependencies
 node_modules/
 
+# pnpm artifacts
+pnpm-lock.yaml
+.pnpm-store/
+
 # Claude Code configuration
 CLAUDE.md
 
 # Build folder
 **/dist/
+node_cache/

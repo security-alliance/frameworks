@@ -1,5 +1,5 @@
 <div align="center">
-<img src="/src/logo/frameworks-full.svg" height="100px" />
+<img src="https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg" height="100px" />
 </div>
 
 ---

@@ -51,8 +51,7 @@ All contributions should follow this workflow:
 8. Don't forget to add yourself to the YAML header of the file you're modifying, given that is the way we provide attribution. You should also create your profile inside the contributors list, at `docs/config/contributors.json`.
 9. Periodically, reviewed content from `develop` is merged into `main` for the stable site.
 
-If you’re interested in a framework that doesn’t currently have an active steward, you can **become one yourself**. See the [Stewards guide](/docs/pages/contribute
-/stewards) for details on responsibilities and how to get started.
+If you’re interested in a framework that doesn’t currently have an active steward, you can **become one yourself**. See the [Stewards guide](/docs/pages/contribute/stewards.mdx) for details on responsibilities and how to get started.
 
 **⚠️ Please sign and verify all commits.** (If you have unsigned commits, follow the “Fixing Unsigned Commits” section below to update them)
 
@@ -95,7 +94,6 @@ If you prefer to install dependencies locally on your machine:
 
 - Node.js (v18 or later) and npm (for running Vocs locally)
 - [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (For linting markdown files)
-- [GNU Aspell](https://sourceforge.net/projects/aspell/) (For spell checking) - Note: For macOS you can use [Homebrew](https://brew.sh/) to install aspell. Just run `brew install aspell`.
 - [Docker](https://docs.docker.com/get-docker/) (Optional: For running the devcontainer)
 - [GitHub CLI](https://cli.github.com/) (Optional: For using `gh` to interact with GitHub)
 
@@ -120,6 +118,7 @@ If you prefer to install dependencies locally on your machine:
     ```bash
     npx just serve
     ```
+5. Once the server is running, access the site at port ```5173```
 
 **(Optional) Authenticate with GitHub CLI**: The GitHub CLI (`gh`) is already preinstalled in the devcontainer. You can authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your development environment.
 
@@ -136,16 +135,12 @@ If you accidentally made unsigned commits in your fork, you’ll need to rewrite
 git rebase -i HEAD~N
 ```
 
----
-
 ## 2. Mark commits to fix
 
 In the editor that opens:
 
 - Change `pick` → `edit` for each unsigned commit.
 - Save and exit.
-
----
 
 ## 3. Re-sign each commit
 
@@ -158,8 +153,6 @@ git rebase --continue
 
 Repeat until all commits are re-signed.
 
----
-
 ## 4. Push your changes
 
 Since history was rewritten, you need to **force-push**:
@@ -167,8 +160,6 @@ Since history was rewritten, you need to **force-push**:
 ```bash
 git push --force
 ```
-
----
 
 ## 5. Verify
 
@@ -227,11 +218,11 @@ Example of a category with multiple pages:
 
 ```tsx
 {
-  text: 'Monitoring',       // Category name visible in the sidebar
+  text: 'Monitoring', // Category name visible in the sidebar
   collapsed: false,
-  dev: true,                // Indicates this category is in development
+  dev: true, // Indicates this category is in development
   items: [
-    { text: 'Overview', link: '/monitoring/README', dev: true },  // Example page
+    { text: 'Overview', link: '/monitoring/README', dev: true }, // Indicates this page is in development
     { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
     { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
   ]
@@ -240,6 +231,15 @@ Example of a category with multiple pages:
 ```
 
 This ensures that new content appears correctly in the site’s navigation for readers on the `.dev` site while staying hidden from the stable `.org` site until ready.
+
+### 4. Error Checking
+
+Before pushing changes, always make sure your build works without errors:
+
+- Run `npx just build` or `npm run docs:build`
+- Preview the updated content locally at port `4173` with: `npx just preview` or `npm run docs:preview`
+
+This helps catch build or formatting issues early so reviewers see clean contributions.
 
 ## Style guide
 
@@ -298,7 +298,7 @@ pie title What Voldemort doesn't have?
 
 Pages with minimal content which need more work to cover the topic need to include a notice:
 
-> ⚠️ This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the framework by [contributing](/contribute/contributing) and expanding it.
+> ⚠️ This article is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stub), help the framework by [contributing](/docs/pages/contribute/contributing.mdx) and expanding it.
 
 ## Anything else?
 

@@ -16,11 +16,8 @@
     "Protocol",
     "SEAL/Initiative",
     "SRE",
-    "Security",
     "Security Specialist",
-    "Threat Actors",
     "Travel",
-    "Wallet Drainers",
     "Web3",
     "Whitehat"
   ],
@@ -365,12 +362,12 @@
       "SRE"
     ],
     "/incident-management/playbooks/hacked-drainer": [
-      "Security",
-      "Wallet Drainers"
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/incident-management/playbooks/hacked-elusive-comet": [
-      "Security",
-      "Threat Actors"
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/incident-management/playbooks/malware": [
       "Security Specialist",
@@ -406,7 +403,29 @@
       "Cloud",
       "SRE"
     ],
-    "/infrastructure/dns-and-domain-registration": [
+    "/infrastructure/domain-and-dns-security/dns-basics-and-attacks": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/infrastructure/domain-and-dns-security/dnssec-and-email": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/infrastructure/domain-and-dns-security/monitoring-and-alerting": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/infrastructure/domain-and-dns-security/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/infrastructure/domain-and-dns-security/registrar-and-locks": [
+      "Operations & Strategy",
+      "Security Specialist"
+    ],
+    "/infrastructure/domain-and-dns-security": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
@@ -473,13 +492,13 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/appendices/policies": [
+    "/opsec/appendices/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
     ],
-    "/opsec/appendices": [
+    "/opsec/appendices/policies": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -492,6 +511,12 @@
       "SRE"
     ],
     "/opsec/control-domains/organizational": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/opsec/control-domains/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -510,12 +535,6 @@
       "SRE"
     ],
     "/opsec/control-domains/technical": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/control-domains": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -545,13 +564,13 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/integration": [
+    "/opsec/integration/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
     ],
-    "/opsec/lifecycle": [
+    "/opsec/lifecycle/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -690,13 +709,13 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/opsec/risk-management-overview": [
+    "/opsec/risk-management/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
     ],
-    "/opsec/risk-management": [
+    "/opsec/risk-management-overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
