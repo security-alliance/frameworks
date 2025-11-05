@@ -1,0 +1,52 @@
+---
+title: "Overview"
+tags:
+  - SEAL/Initiative
+  - Certs
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# SEAL Certification Framework (Certs)
+
+Certs is a certification framework developed by SEAL to provide standardized guidelines and evaluation criteria for assessing the security of DeFi protocols. Certs provides targeted modular certifications (e.g., [Incident Response](/certs/sfc-incident-response.mdx), [Treasury Ops](/certs/sfc-treasury-ops.mdx)) that can independently validate specific aspects of a protocol's security posture.
+
+Using Certs will help ensure that protocols follow best practices for their security operations, and provides a standard set of criteria for comparing the security of different protocols.
+
+Certs is fully open-source and freely available for any protocol to use.
+
+## How it Works
+
+Certs comprises a set of modular certifications, similar to SOC 2 or ISO 27001. Each certification focuses on a specific area of security and includes controls relevant to that area. Protocols can use certifications independently to evaluate their security posture through self-assessment, or protocols can pursue formal certification through a third-party audit by a SEAL-partnered auditor. After completing a certification with a third-party auditor, protocols can publicly display their certification status and are issued an on-chain badge to demonstrate their completion of the certification.
+
+## Available Certifications
+
+- **[Incident Response](/certs/sfc-incident-response.mdx)** - Detection, response procedures, team coordination, emergency operations
+- **[Multisig Ops](/certs/sfc-multisig-ops.mdx)** - Governance, signer security, transaction verification
+- **[Treasury Ops](/certs/sfc-treasury-ops.mdx)** - Treasury architecture, transaction security, DeFi risk management
+- **[Workspace Security](/certs/sfc-workspace-security.mdx)** - Device security, account management, credential handling
+- **[DNS Security](/certs/sfc-dns-registrar.mdx)** - Domain management, DNS configurations, registrar protection
+
+## FAQ
+
+<details>
+<summary>What's the difference between self-assessments and certified audits?</summary>
+
+Self-assessments are completed by the protocol team themselves, using the Certs framework as a guide. They are useful for protocols to internally evaluate their own security posture and identify areas for improvement. Self-assessments are not verified by a third party and do not result in a formal certification or an endorsed badge.
+
+Certified audits are completed by a SEAL-partnered third-party auditor. They involve a thorough and independent evaluation of the protocol's security controls against the Certs framework. Upon successful completion of a certified audit, protocols receive a formal certification and an on-chain badge to demonstrate their achievement.
+
+</details>
+
+<details>
+<summary>How are certifications issued?</summary>
+
+Upon the successful completion of a certified audit by a third-party auditor, protocols are issued a certification through the Ethereum Attestation Service (EAS). Certifications will expire after [TODO: DURATION - may vary by certification] and protocols will need to undergo a re-audit to renew their certification.
+
+</details>
+
+</TagProvider>
+<ContributeFooter />

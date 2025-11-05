@@ -372,13 +372,13 @@ const config = {
       text: 'Certs',
       collapsed: false,
       items: [
+        { text: 'Overview', link: '/certs/overview' },
         { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
         { text: 'Incident Response', link: '/certs/sfc-incident-response' },
         { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
         { text: 'Treasury Operations', link: '/certs/sfc-treasury-ops' },
         { text: 'Workspace Security', link: '/certs/sfc-workspace-security' },
         { text: 'Certification Guidelines', link: '/certs/certification-guidelines' },
-        { text: 'Certs FAQ', link: '/certs/faq' },
       ]
     },
     {
