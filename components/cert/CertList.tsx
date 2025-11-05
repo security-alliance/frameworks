@@ -1,13 +1,22 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./control.css";
 import { CertListProps, ControlData } from "./types";
 import { CertSection } from "./CertSection";
 import { exportToExcel, importFromExcel } from "./excelHelpers";
 
 export function CertList({ sections, name }: CertListProps) {
-    const [controlData, setControlData] = useState<Record<string, ControlData>>({});
+    const storageKey = `certList-${name}`;
+    const [controlData, setControlData] = useState<Record<string, ControlData>>(() => {
+        const saved = localStorage.getItem(storageKey);
+        return saved ? JSON.parse(saved) : {};
+    });
+
     const [error, setError] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        localStorage.setItem(storageKey, JSON.stringify(controlData));
+    }, [controlData, storageKey]);
 
     const handleControlChange = useCallback((controlId: string, data: ControlData) => {
         setControlData(prev => ({
