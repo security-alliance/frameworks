@@ -6,16 +6,21 @@ import { exportToExcel, importFromExcel } from "./excelHelpers";
 
 export function CertList({ sections, name }: CertListProps) {
     const storageKey = `certList-${name}`;
-    const [controlData, setControlData] = useState<Record<string, ControlData>>(() => {
-        const saved = localStorage.getItem(storageKey);
-        return saved ? JSON.parse(saved) : {};
-    });
-
     const [error, setError] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const [controlData, setControlData] = useState<Record<string, ControlData>>({});
 
     useEffect(() => {
-        localStorage.setItem(storageKey, JSON.stringify(controlData));
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+            setControlData(JSON.parse(saved));
+        }
+    }, [storageKey]);
+
+    useEffect(() => {
+        if (Object.keys(controlData).length > 0 || localStorage.getItem(storageKey)) {
+            localStorage.setItem(storageKey, JSON.stringify(controlData));
+        }
     }, [controlData, storageKey]);
 
     const handleControlChange = useCallback((controlId: string, data: ControlData) => {
