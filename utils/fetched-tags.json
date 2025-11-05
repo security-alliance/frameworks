@@ -11,6 +11,7 @@
     "Human Resources",
     "Individual Security",
     "Legal & Compliance",
+    "Multisig Security",
     "Operations & Strategy",
     "Physical Security",
     "Protocol",
@@ -361,6 +362,10 @@
       "Devops",
       "SRE"
     ],
+    "/incident-management/playbooks/hacked-dprk": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/incident-management/playbooks/hacked-drainer": [
       "Security Specialist",
       "Operations & Strategy"
@@ -479,6 +484,76 @@
     "/monitoring/thresholds": [
       "Engineer/Developer",
       "Security Specialist"
+    ],
+    "/multisig-for-protocols/backup-signing-and-infrastructure": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/communication-setup": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/emergency-procedures": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/hardware-wallet-setup": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/implementation-checklist": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/incident-reporting": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/joining-a-multisig": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/offboarding": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/personal-security-opsec": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/planning-and-classification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/registration-and-documentation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/setup-and-configuration": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/use-case-specific-requirements": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
     ],
     "/opsec/appendices/case-studies": [
       "Security Specialist",

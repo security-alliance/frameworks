@@ -20,7 +20,7 @@ USER vscode
 
 # Install markdownlint-cli2 globally via npm (need root for global install)
 USER root
-RUN npm install -g markdownlint-cli2
+RUN npm install -g pnpm@10.15.0 markdownlint-cli2
 
 # Switch back to vscode user
 USER vscode

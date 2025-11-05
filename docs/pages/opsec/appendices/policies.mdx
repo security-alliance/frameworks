@@ -5,11 +5,9 @@ tags:
   - Operations & Strategy
   - Devops
   - SRE
-
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
 
 <TagProvider>
 <TagFilter />
@@ -19,7 +17,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-This library provides templates and examples of security policies, procedures, and other documents that organizations can adapt to their specific needs. These templates serve as starting points for developing comprehensive security documentation.
+This library provides templates and examples of security policies, procedures, and other documents that organizations
+can adapt to their specific needs. These templates serve as starting points for developing comprehensive security
+documentation.
 
 ## Core Security Policies
 
@@ -29,12 +29,16 @@ This library provides templates and examples of security policies, procedures, a
 # Information Security Policy
 
 ## Purpose
+
 This policy establishes the framework for protecting information assets and technology resources of [ORGANIZATION NAME].
 
 ## Scope
-This policy applies to all employees, contractors, consultants, temporary staff, and other workers at [ORGANIZATION NAME], including personnel affiliated with third parties.
+
+This policy applies to all employees, contractors, consultants, temporary staff, and other workers at [ORGANIZATION
+NAME], including personnel affiliated with third parties.
 
 ## Policy Statements
+
 1. [ORGANIZATION NAME] shall maintain an information security program that:
    - Protects the confidentiality, integrity, and availability of information
    - Complies with applicable legal and regulatory requirements
@@ -54,12 +58,15 @@ This policy applies to all employees, contractors, consultants, temporary staff,
    - Support continuous improvement of security practices
 
 ## Roles and Responsibilities
+
 [Define specific security roles and responsibilities]
 
 ## Compliance
+
 Violations of this policy may result in disciplinary action, up to and including termination of employment or contract.
 
 ## Related Documents
+
 - Acceptable Use Policy
 - Access Control Policy
 - Incident Response Policy
@@ -71,12 +78,15 @@ Violations of this policy may result in disciplinary action, up to and including
 # Access Control Policy
 
 ## Purpose
+
 This policy establishes requirements for controlling access to [ORGANIZATION NAME]'s information systems and data.
 
 ## Scope
+
 This policy applies to all systems, data, and users within [ORGANIZATION NAME].
 
 ## Policy Statements
+
 1. Access Control Principles
    - All access shall be granted based on the principle of least privilege
    - Access rights shall be reviewed regularly
@@ -93,9 +103,11 @@ This policy applies to all systems, data, and users within [ORGANIZATION NAME].
    - Users shall not share access credentials
 
 ## Implementation Guidelines
+
 [Specific implementation guidelines for access control]
 
 ## Exceptions
+
 Exceptions to this policy must be documented and approved by [ROLE].
 ```
 
@@ -107,12 +119,17 @@ Exceptions to this policy must be documented and approved by [ROLE].
 # Cryptocurrency Key Management Policy
 
 ## Purpose
-This policy establishes requirements for the secure management of cryptographic keys used for cryptocurrency transactions and operations.
+
+This policy establishes requirements for the secure management of cryptographic keys used for cryptocurrency
+transactions and operations.
 
 ## Scope
-This policy applies to all cryptographic keys used to secure cryptocurrency assets and operations at [ORGANIZATION NAME].
+
+This policy applies to all cryptographic keys used to secure cryptocurrency assets and operations at [ORGANIZATION
+NAME].
 
 ## Policy Statements
+
 1. Key Generation and Storage
    - Private keys shall be generated using secure methods
    - Critical keys shall be stored in hardware security modules or hardware wallets
@@ -129,9 +146,11 @@ This policy applies to all cryptographic keys used to secure cryptocurrency asse
    - No single individual shall have access to full recovery information
 
 ## Implementation Guidelines
+
 [Specific implementation guidelines for key management]
 
 ## Roles and Responsibilities
+
 [Define specific roles and responsibilities for key management]
 ```
 
@@ -141,12 +160,15 @@ This policy applies to all cryptographic keys used to secure cryptocurrency asse
 # Smart Contract Deployment Policy
 
 ## Purpose
+
 This policy establishes requirements for the secure development and deployment of smart contracts.
 
 ## Scope
+
 This policy applies to all smart contracts developed, deployed, or maintained by [ORGANIZATION NAME].
 
 ## Policy Statements
+
 1. Development Requirements
    - Smart contracts shall follow secure coding guidelines
    - All contracts shall undergo peer review
@@ -168,9 +190,11 @@ This policy applies to all smart contracts developed, deployed, or maintained by
    - Upgrade mechanisms shall be secured with appropriate controls
 
 ## Implementation Guidelines
+
 [Specific implementation guidelines for smart contract deployment]
 
 ## Roles and Responsibilities
+
 [Define specific roles and responsibilities for contract deployment]
 ```
 
@@ -182,9 +206,11 @@ This policy applies to all smart contracts developed, deployed, or maintained by
 # Security Incident Response Procedure
 
 ## Purpose
+
 This procedure outlines the steps to be followed when responding to security incidents.
 
 ## Incident Detection and Reporting
+
 1. Detection Sources
    - Automated alerts from monitoring systems
    - Reports from users or team members
@@ -196,6 +222,7 @@ This procedure outlines the steps to be followed when responding to security inc
    - Escalation criteria and process
 
 ## Incident Response Phases
+
 1. Preparation
    - Necessary tools and resources
    - Team roles and responsibilities
@@ -227,9 +254,11 @@ This procedure outlines the steps to be followed when responding to security inc
    - Improvement implementation
 
 ## Communication Guidelines
+
 [Guidelines for internal and external communication during incidents]
 
 ## Specific Incident Types
+
 [Specific procedures for different types of incidents]
 ```
 
@@ -239,9 +268,11 @@ This procedure outlines the steps to be followed when responding to security inc
 # Cryptocurrency Key Ceremony Procedure
 
 ## Purpose
+
 This procedure outlines the steps for generating and securing cryptographic keys for cryptocurrency operations.
 
 ## Preparation
+
 1. Required Materials
    - Hardware wallets or HSMs
    - Backup materials (metal plates, recovery phrase cards)
@@ -259,6 +290,7 @@ This procedure outlines the steps for generating and securing cryptographic keys
    - Environmental controls
 
 ## Key Generation Process
+
 1. Device Preparation
    - Verification of device authenticity
    - Firmware verification
@@ -275,6 +307,7 @@ This procedure outlines the steps for generating and securing cryptographic keys
    - Secure storage preparation
 
 ## Security Controls
+
 1. Physical Security
    - Access control to ceremony location
    - Video recording requirements
@@ -291,6 +324,7 @@ This procedure outlines the steps for generating and securing cryptographic keys
    - Storage of ceremony documentation
 
 ## Post-Ceremony Actions
+
 [Actions to be taken after the ceremony is complete]
 ```
 
@@ -302,12 +336,14 @@ This procedure outlines the steps for generating and securing cryptographic keys
 # Security Assessment Checklist
 
 ## System Information
+
 - System Name: ________________
 - System Owner: ________________
 - Assessment Date: ________________
 - Assessor: ________________
 
 ## Access Controls
+
 - [ ] User access is based on least privilege
 - [ ] Strong authentication is enforced
 - [ ] Privileged accounts are restricted
@@ -315,6 +351,7 @@ This procedure outlines the steps for generating and securing cryptographic keys
 - [ ] Password policies are enforced
 
 ## Network Security
+
 - [ ] Firewalls are properly configured
 - [ ] Network traffic is monitored
 - [ ] Remote access is secured
@@ -322,6 +359,7 @@ This procedure outlines the steps for generating and securing cryptographic keys
 - [ ] Encrypted protocols are used for sensitive data
 
 ## Data Protection
+
 - [ ] Sensitive data is identified and classified
 - [ ] Data encryption is implemented
 - [ ] Data backups are performed regularly
@@ -329,6 +367,7 @@ This procedure outlines the steps for generating and securing cryptographic keys
 - [ ] Data destruction procedures are in place
 
 ## System Security
+
 - [ ] Systems are patched regularly
 - [ ] Antimalware protection is implemented
 - [ ] System hardening is performed
@@ -336,6 +375,7 @@ This procedure outlines the steps for generating and securing cryptographic keys
 - [ ] Change management processes are followed
 
 ## Physical Security
+
 - [ ] Physical access controls are in place
 - [ ] Environmental controls are implemented
 - [ ] Equipment is protected from theft or damage
@@ -343,6 +383,7 @@ This procedure outlines the steps for generating and securing cryptographic keys
 - [ ] Physical security incidents are monitored
 
 ## Incident Response
+
 - [ ] Incident response procedures are documented
 - [ ] Staff is trained on incident response
 - [ ] Incidents are reported and tracked
@@ -350,10 +391,13 @@ This procedure outlines the steps for generating and securing cryptographic keys
 - [ ] Lessons learned are implemented
 
 ## Additional Notes
+
 [Space for assessment notes and observations]
 ```
 
-These templates provide starting points for developing comprehensive security policies and procedures. Organizations should customize these templates to address their specific security requirements, organizational structure, and risk profile.
+These templates provide starting points for developing comprehensive security policies and procedures. Organizations
+should customize these templates to address their specific security requirements, organizational structure, and risk
+profile.
 
 ---
 

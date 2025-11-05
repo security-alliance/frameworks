@@ -1,0 +1,67 @@
+name: Content Request
+description: Request new content or updates to existing framework content
+title: "Use the guide below to format your title correctly"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to submit a proposal for adding or updating content on Frameworks.
+        
+        _Please be as detailed as possible so we understand what you’d like to change — or so other contributors 
+        can pick up your request and fulfill it._
+
+  - type: markdown
+    attributes:
+      value: |
+        **Title formatting:**
+        - If related to a specific framework: `framework_name Framework: description`
+        - If framework is unknown or general content: `Content(add): description`
+  
+  - type: checkboxes
+    id: type_of_request
+    attributes:
+      label: "Type of request"
+      description: "Select what type of content update you’re requesting."
+      options:
+        - label: "Add new content"
+        - label: "Update existing content"
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested_content
+    attributes:
+      label: "What content are you suggesting for?"
+      description: "Be as specific as possible (e.g., new framework about X, new page on Y framework, update section Z in [framework] to include, etc.)"
+      placeholder: "Describe what new or updated content you are requesting."
+    validations:
+      required: true
+
+  - type: textarea
+    id: why_needed
+    attributes:
+      label: "Why do you think this update or modification is needed"
+      description: "If it is not self-explanatory, or relatively clear, add a few sentences explaining why it is needed."
+      placeholder: "Add reasoning or context here."
+    validations:
+      required: false
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: "Can you justify your argument or provide additional resources?"
+      description: "Here add as many resources as you can to sustain your argument or provide information from which we can research/base the content."
+      placeholder: "Add any helpful resources or evidence here."
+    validations:
+      required: false
+  
+  - type: checkboxes
+    id: contribution_intent
+    attributes:
+      label: "Contribution intent"
+      description: "Tell us how you’d like to contribute."
+      options:
+        - label: "I can provide/create this content myself"
+        - label: "I'm identifying a need for others to address"
+    validations:
+      required: true
