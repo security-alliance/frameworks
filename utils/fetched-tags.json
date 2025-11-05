@@ -519,18 +519,6 @@
       "Security Specialist",
       "Multisig Security"
     ],
-    "/opsec/appendices/case-studies": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/appendices/glossary": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
     "/opsec/appendices/overview": [
       "Security Specialist",
       "Operations & Strategy",
@@ -847,6 +835,11 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/wallet-security/encumbered-wallets": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/wallet-security/for-beginners-&-small-balances": [
       "Engineer/Developer",
       "Security Specialist"
@@ -896,6 +889,9 @@
     "While Traveling": "opsec",
     "Wallet Security": "wallet-security",
     "Signing & Verification": "wallet-security",
+    "Multisig for Protocols": "multisig-for-protocols",
+    "Multisig Administration": "multisig-for-protocols",
+    "For Signers": "multisig-for-protocols",
     "External Security Reviews": "external-security-reviews",
     "Smart Contract Audits": "external-security-reviews",
     "Vulnerability Disclosure": "vulnerability-disclosure",
