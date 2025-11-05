@@ -408,7 +408,29 @@
       "Cloud",
       "SRE"
     ],
-    "/infrastructure/dns-and-domain-registration": [
+    "/infrastructure/domain-and-dns-security/dns-basics-and-attacks": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/infrastructure/domain-and-dns-security/dnssec-and-email": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/infrastructure/domain-and-dns-security/monitoring-and-alerting": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/infrastructure/domain-and-dns-security/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/infrastructure/domain-and-dns-security/registrar-and-locks": [
+      "Operations & Strategy",
+      "Security Specialist"
+    ],
+    "/infrastructure/domain-and-dns-security": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
