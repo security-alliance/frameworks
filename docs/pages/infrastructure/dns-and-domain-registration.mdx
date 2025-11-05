@@ -70,6 +70,7 @@ Each step represents a potential attack vector where responses can be intercepte
 ## DNS-Level Security
 
 ### 1. DNSSEC Implementation
+<<<<<<< HEAD
 DNSSEC (DNS Security Extensions) provides cryptographic authentication of DNS responses, preventing attackers from redirecting your users to malicious sites by tampering with DNS queries. Think of it as a digital signature that proves the DNS response came from the legitimate source.
 
 **How it protects you**: Without DNSSEC, attackers can intercept DNS queries and return fake IP addresses, redirecting users to malicious sites that look identical to yours. DNSSEC prevents this by cryptographically signing all DNS responses.
@@ -102,6 +103,8 @@ Each step represents a potential attack vector where responses can be intercepte
 ## DNS-Level Security
 
 ### DNSSEC Implementation
+=======
+>>>>>>> 1286c13 (style: add consistent numbering to DNS security section headings)
 DNSSEC provides cryptographic authentication of DNS responses.
 
 1. **Enable DNSSEC signing** at your DNS provider
@@ -109,11 +112,15 @@ DNSSEC provides cryptographic authentication of DNS responses.
 3. **Monitor DNSSEC validation** status regularly
 4. **Test configuration** using tools like DNSViz or Verisign DNSSEC Debugger
 
+<<<<<<< HEAD
 ### CAA Records
 <<<<<<< HEAD
 Certificate Authority Author**UNEXPECTED_CA_CERTization records specify which CAs can issue certificates for your domain.
 >>>>>>> 314331b (feat: comprehensive DNS and domain registration security guide)
 =======
+=======
+### 2. CAA Records
+>>>>>>> 1286c13 (style: add consistent numbering to DNS security section headings)
 Certificate Authority Authorization records specify which CAs can issue certificates for your domain.
 >>>>>>> f718796 (refactor: improve DNS security documentation formatting and content)
 
@@ -123,6 +130,7 @@ example.com. CAA 0 issue "digicert.com"
 example.com. CAA 0 iodef "mailto:security@example.com"
 ```
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 ### 3. Email Security Configuration
 Email security records protect against email spoofing and phishing attacks. When your domain is compromised, attackers often change email settings to intercept password reset emails and other sensitive communications.
@@ -135,6 +143,9 @@ SPF records specify which mail servers are authorized to send emails on behalf o
 **Setup**: Add an SPF record to your DNS zone:
 =======
 ### Email Security Configuration
+=======
+### 3. Email Security Configuration
+>>>>>>> 1286c13 (style: add consistent numbering to DNS security section headings)
 
 #### SPF (Sender Policy Framework)
 >>>>>>> 314331b (feat: comprehensive DNS and domain registration security guide)
@@ -181,6 +192,7 @@ _mta-sts.example.com. TXT "v=STSv1; id=20240101000000"
 ## Registrar Security
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### 1. Choosing a Secure Registrar
 Your domain registrar is the company that manages your domain registration with the central registry. This is often the weakest link in domain security, as many registrars have poor security practices and are vulnerable to social engineering attacks.
 
@@ -223,6 +235,9 @@ Use a dedicated email address for domain security that's completely separate fro
 
 =======
 ### Choosing a Secure Registrar
+=======
+### 1. Choosing a Secure Registrar
+>>>>>>> 1286c13 (style: add consistent numbering to DNS security section headings)
 
 #### Enterprise-Grade Registrars (Recommended)
 - **MarkMonitor**: Used by Fortune 500 companies, requires legal documentation for changes
@@ -235,27 +250,32 @@ Use a dedicated email address for domain security that's completely separate fro
 - Consumer-focused services (Google Domains/Squarespace)
 - Resellers (additional attack surface)
 
-### Registrar-Level Protections
+### 2. Registrar-Level Protections
 
-#### 1. Registry Lock (EPP Lock)
+#### Registry Lock (EPP Lock)
 Registry lock prevents unauthorized transfers at the registry level, not just the registrar.
 - **What it does**: Requires manual verification with the registry for any changes
 - **How to enable**: Contact enterprise registrars for registry-operator level locks
 - **Note**: Different from standard transfer locks which only prevent transfers between registrars
 
-#### 2. Multi-Factor Authentication
+#### Multi-Factor Authentication
 - **Hardware Security Keys** (YubiKey/FIDO2): Most secure option
 - **TOTP Applications**: Minimum acceptable standard
 - **Avoid SMS 2FA**: Vulnerable to SIM swapping
 
+<<<<<<< HEAD
 #### 3. Dedicated Security Contact Email
 >>>>>>> 314331b (feat: comprehensive DNS and domain registration security guide)
+=======
+#### Dedicated Security Contact Email
+>>>>>>> 1286c13 (style: add consistent numbering to DNS security section headings)
 ```
 ❌ admin@yourdomain.com (circular dependency)
 ❌ personal@gmail.com (too many attack vectors)
 ✅ domain-security-only@protonmail.com (isolated, dedicated purpose)
 ```
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #### Access Control Best Practices
 Limit and monitor who has access to your domain registrar account, as each person with access represents a potential attack vector.
@@ -264,6 +284,9 @@ Limit and monitor who has access to your domain registrar account, as each perso
 =======
 #### 4. Access Control Best Practices
 >>>>>>> 314331b (feat: comprehensive DNS and domain registration security guide)
+=======
+#### Access Control Best Practices
+>>>>>>> 1286c13 (style: add consistent numbering to DNS security section headings)
 - Document all personnel with registrar access
 - Use role-based access where available
 - Implement approval workflows for critical changes
@@ -271,6 +294,7 @@ Limit and monitor who has access to your domain registrar account, as each perso
 
 ## Monitoring and Detection
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 ### 1. DNS Record Monitoring
@@ -363,6 +387,9 @@ Passive DNS monitoring tracks historical DNS resolution data across the internet
 =======
 ### DNS Record Monitoring
 >>>>>>> f718796 (refactor: improve DNS security documentation formatting and content)
+=======
+### 1. DNS Record Monitoring
+>>>>>>> 1286c13 (style: add consistent numbering to DNS security section headings)
 Watch for these warning signs:
 - Nameserver (NS) record changes
 - TTL values dropping below 300 seconds
@@ -371,12 +398,12 @@ Watch for these warning signs:
 - CAA record removal
 - DNSSEC disabled unexpectedly
 
-### Certificate Transparency Monitoring
+### 2. Certificate Transparency Monitoring
 - Monitor CT logs for unauthorized certificate issuance
 - Set up alerts for new certificates via services like crt.sh monitoring
 - Watch for wildcard certificates if you don't use them
 
-### Passive DNS Monitoring
+### 3. Passive DNS Monitoring
 Track historical DNS resolution data to detect:
 - Brief record changes (often missed in periodic checks)
 - Geographic anomalies in resolved IPs
