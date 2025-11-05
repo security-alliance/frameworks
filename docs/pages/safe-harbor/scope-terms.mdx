@@ -8,7 +8,6 @@ tags:
 contributors:
   - role: wrote
     users: [dickson]
-
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -21,7 +20,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-When adopting Safe Harbor, you'll define specific parameters that control what's covered and how whitehat rescues work. Below is an explanation of each term with tips and best practices.
+When adopting Safe Harbor, you'll define specific parameters that control what's covered and how whitehat rescues work.
+Below is an explanation of each term with tips and best practices.
 
 ## 1. Asset Recovery Address
 
@@ -40,7 +40,8 @@ The person or team whitehats must notify after completing a rescue.
 **Tips:**
 
 - Provide multiple points of contact (email, Signal, Telegram) for redundancy.
-- Make sure these methods of notification are checked in case of an active exploit. Whitehats should reach out within 6 hours of a rescue
+- Make sure these methods of notification are checked in case of an active exploit. Whitehats should reach out within 6
+hours of a rescue
 
 ## 3. Assets Under Scope
 
@@ -55,13 +56,16 @@ The on-chain contracts or accounts that whitehats can legally interact with unde
 
 **Examples:**
 
-- All: Use for factories or deployer addresses that create vaults, pools, or markets. Covers all current and future instances.
+- All: Use for factories or deployer addresses that create vaults, pools, or markets. Covers all current and future
+instances.
 - None: Use for single vault contracts where funds are concentrated and no child contracts exist.
-- ExistingOnly / FutureOnly: Very rarely used; typically for protocols with legal or operational constraints on future contracts.
+- ExistingOnly / FutureOnly: Very rarely used; typically for protocols with legal or operational constraints on future
+contracts.
 
 **Tips:**
 
-- If your protocol deploys many contracts, include your deployer address EOA/Multisig/Governance Addresses with All. This avoids the need for updates.
+- If your protocol deploys many contracts, include your deployer address EOA/Multisig/Governance Addresses with All.
+This avoids the need for updates.
 - Keep this list current - if you launch new deployments and they aren't covered, whitehats can't legally intervene.
 
 ## 4. Bounty Terms
@@ -99,7 +103,8 @@ The maximum total bounty payout across all whitehats for a single incident. Boun
 
 **Rule:**
 
-- If you set an Aggregate Bounty Cap, you must set retainable to false so all funds return to the protocol first, then bounties are distributed.
+- If you set an Aggregate Bounty Cap, you must set retainable to false so all funds return to the protocol first, then
+bounties are distributed.
 
 ### 4.5 Retainable
 
@@ -133,7 +138,9 @@ Additional compliance checks for whitehats before bounty payout (applies only if
 
 Generic Template:
 
-`<PROTOCOL_NAME> requires all eligible whitehats to undergo Know Your Customer (KYC) verification and be screened against global sanctions lists, including US, UK, and EU regulations. This process ensures that all bounty recipients are compliant with legal and regulatory standards before qualifying for payment.`
+`<PROTOCOL_NAME> requires all eligible whitehats to undergo Know Your Customer (KYC) verification and be screened
+against global sanctions lists, including US, UK, and EU regulations. This process ensures that all bounty recipients
+are compliant with legal and regulatory standards before qualifying for payment.`
 
 ---
 

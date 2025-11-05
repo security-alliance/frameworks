@@ -6,11 +6,9 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac]
-
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
 
 <TagProvider>
 <TagFilter />
@@ -22,13 +20,19 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ## Scoping Phase
 
-The team looking for a security review will agree with the auditors/security researchers the exact parameters of the review. What *exact* contracts should they review? What should they not review? This is incredibly important so the can clearly estimate timelines on how long a review may take. This is also where compensation is discussed, usually the more aspects a team wants to review, the more expensive the audit will be.
+The team looking for a security review will agree with the auditors/security researchers the exact parameters of the
+review. What *exact* contracts should they review? What should they not review? This is incredibly important so the can
+clearly estimate timelines on how long a review may take. This is also where compensation is discussed, usually the more
+aspects a team wants to review, the more expensive the audit will be.
 
 ## Initial Assessment Phase
 
-- **Automated Testing**: Auditors will run various automated security tools including static analysis, fuzz testing, formal verification, and unit testing to identify basic vulnerabilities
-- **Manual Code Review**: Security researchers will manually analyze the code to understand context, complexity, and identify deeper vulnerabilities that automated tools might miss
-- **Documentation Review**: Auditors will review project specifications and documentation to understand intended functionality
+- **Automated Testing**: Auditors will run various automated security tools including static analysis, fuzz testing,
+  formal verification, and unit testing to identify basic vulnerabilities
+- **Manual Code Review**: Security researchers will manually analyze the code to understand context, complexity, and
+  identify deeper vulnerabilities that automated tools might miss
+- **Documentation Review**: Auditors will review project specifications and documentation to understand intended
+  functionality
 
 ## Deliverables
 
@@ -56,12 +60,14 @@ A comprehensive security review will generate the following:
 
 ## Timeline and Cost Expectations
 
-The following are *incredibly rough estimates* for timelines/costs based on Solidity smart contract audits from around the industry. Actual timelines and costs will vary significantly based on the complexity of the codebase, the number of contracts, and the specific requirements of the project.
+The following are *incredibly rough estimates* for timelines/costs based on Solidity smart contract audits from around
+the industry. Actual timelines and costs will vary significantly based on the complexity of the codebase, the number of
+contracts, and the specific requirements of the project.
 
 ### Duration
 
 - **Small Projects** (< 1000 lines): 1-2 weeks
-- **Medium Projects** (1000-4000 lines): 2-5 weeks  
+- **Medium Projects** (1000-4000 lines): 2-5 weeks
 - **Large Projects** (> 4000 lines): 5+ weeks
 
 ### Cost Range
@@ -71,10 +77,12 @@ The following are *incredibly rough estimates* for timelines/costs based on Soli
 
 ## Important Limitations
 
-- **No Guarantee**: Audits do not guarantee bug-free code or complete security. However, the engagement with the team should still provide value (teaching better security practices, improving code quality, etc.)
+- **No Guarantee**: Audits do not guarantee bug-free code or complete security. However, the engagement with the team
+  should still provide value (teaching better security practices, improving code quality, etc.)
 - **Snapshot in Time**: Audits assess code at a specific commit hash - any changes create unaudited code
 - **Ongoing Process**: Security should be viewed as a continuous journey, not a one-time event
-- **Emergency Preparedness**: Even audited protocols should have incident response plans and emergency communication channels
+- **Emergency Preparedness**: Even audited protocols should have incident response plans and emergency communication
+  channels
 
 ---
 

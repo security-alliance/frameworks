@@ -8,7 +8,6 @@ tags:
 contributors:
   - role: wrote
     users: [relotnek]
-
 ---
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
@@ -20,7 +19,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-A lightweight, end-to-end scaffold for security teams that work without a single authority.  
+A lightweight, end-to-end scaffold for security teams that work without a single authority.
 Use it as a menu, not a mandate.
 
 ## 1. Guiding Principles
@@ -66,10 +65,11 @@ Use it as a menu, not a mandate.
 
 ## 4. Detection and Triage Flow
 
-1. **Alert fires or user reports an issue.**  
-2. **First Reporter** opens a ticket in the transparent issue tracker (GitHub security advisory or private GitLab issue).  
-3. **Triage Lead** checks severity matrix.  
-4. If **P1**, spin up a temporary incident channel with a predefined template.  
+1. **Alert fires or user reports an issue.**
+2. **First Reporter** opens a ticket in the transparent issue tracker (GitHub security advisory or private GitLab
+issue).
+3. **Triage Lead** checks severity matrix.
+4. If **P1**, spin up a temporary incident channel with a predefined template.
 5. Assign Leads and set T-minus deadlines.
 
 | Pros | Cons |
@@ -94,10 +94,10 @@ Keep a one-liner command ready for each action and store it in the runbook.
 
 ## 6. Eradication and Recovery
 
-1. Patch or replace vulnerable code.  
-2. Peer review with at least two signers.  
-3. Deploy to staging with replay of attack scenario.  
-4. Roll forward to production by multisig or automated pipeline.  
+1. Patch or replace vulnerable code.
+2. Peer review with at least two signers.
+3. Deploy to staging with replay of attack scenario.
+4. Roll forward to production by multisig or automated pipeline.
 5. Verify by monitoring metrics and logs for stability.
 
 | Automation hint | Keep it simple |
@@ -139,10 +139,10 @@ Keep a one-liner command ready for each action and store it in the runbook.
 
 ## 10. Keep It Alive
 
-- Run quarterly red team drills.  
-- Rotate secrets on a fixed cadence.  
-- Review identity proofs every six months.  
-- Measure mean time to detect and contain.  
+- Run quarterly red team drills.
+- Rotate secrets on a fixed cadence.
+- Review identity proofs every six months.
+- Measure mean time to detect and contain.
 - Iterate on this framework during each retrospective.
 
 > **Remember**: Simplicity plus strong fundamentals beat heavy processes every time.
