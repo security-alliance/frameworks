@@ -119,6 +119,18 @@
     "job_title": null,
     "description": "Steward of Wallet-Security framework"
   },
+  "njelich": {
+    "slug": "njelich",
+    "name": "Noah",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/njelich",
+    "github": "https://github.com/njelich",
+    "twitter": "https://x.com/NoahJelich",
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "description": "Frameworks Contributor"
+  },
   "dickson": {
     "slug": "dickson",
     "name": "Dickson Wu",
@@ -190,5 +202,53 @@
     "company": "SEAL",
     "job_title": "Frameworks Contributors",
     "description": "Frameworks Contributors"
+  },
+  "isaac": {
+    "slug": "isaac",
+    "name": "Isaac Patka",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/ipatka",
+    "github": "https://github.com/ipatka",
+    "twitter": "https://x.com/isaacpatka",
+    "website": "https://www.shield3.com/",
+    "company": "SEAL | Shield3",
+    "job_title": "Co-Founder",
+    "description": "SEAL Certs & SEAL Wargames"
+  },
+  "geoffrey": {
+    "slug": "geoffrey",
+    "name": "Geoffrey Arone",
+    "role": "contributor",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHbkVGOCK1z6wdvZ2uBu80DExL70BmS-W-gg&s",
+    "github": null,
+    "twitter": null,
+    "website": "https://www.shield3.com/",
+    "company": "Shield3",
+    "job_title": "Co-Founder",
+    "description": "Shield3 Co-Founder"
+  },
+  "louis": {
+    "slug": "louis",
+    "name": "Louis Marquenet",
+    "role": "contributor",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsvu2pjxvA4aXUQPmyZTWzRS5thvfCX8frIg&s",
+    "github": null,
+    "twitter": null,
+    "website": "https://www.opsek.io/",
+    "company": "Opsek",
+    "job_title": "Head of Operations",
+    "description": "Opsek Head of Operations"
+  },
+  "pablo": {
+    "slug": "pablo",
+    "name": "Pablo Sabbatella",
+    "role": "contributor",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrOgjCQOqU_zKjkWq9K7HbGHWUavQ5rwP8Cg&s",
+    "github": null,
+    "twitter": "https://x.com/pablosabbatella",
+    "website": "https://www.opsek.io/",
+    "company": "SEAL | Opsek",
+    "job_title": "Founder",
+    "description": "Opsek Founder"
   }
 }

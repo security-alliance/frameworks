@@ -12,6 +12,9 @@ const config = {
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
   logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
+  ogImageUrl: {
+    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.png'
+  },
   sidebar: [
     {
       text: 'Introduction',
@@ -95,6 +98,7 @@ const config = {
             { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-&-medium-funds' },
             { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
+            { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets', dev: true },
             {
               text: 'Signing & Verification',
               collapsed: true,
@@ -107,6 +111,45 @@ const config = {
             },
             { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
+          ]
+        },
+        {
+          text: 'Multisig for Protocols',
+          collapsed: false,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/multisig-for-protocols/overview', dev: true },
+
+            {
+              text: 'Multisig Administration',
+              collapsed: false,
+              dev: true,
+              items: [
+
+                { text: 'Planning & Classification', link: '/multisig-for-protocols/planning-and-classification', dev: true },
+                { text: 'Setup & Configuration', link: '/multisig-for-protocols/setup-and-configuration', dev: true },
+                { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation', dev: true },
+                { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup', dev: true },
+                { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements', dev: true },
+              ]
+            },
+            {
+              text: 'For Signers',
+              collapsed: false,
+              dev: true,
+              items: [
+
+                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup', dev: true },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig', dev: true },
+
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures', dev: true },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure', dev: true },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec', dev: true },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting', dev: true },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding', dev: true },
+              ]
+            },
+            { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist', dev: true },
           ]
         },
         {
