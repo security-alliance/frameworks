@@ -427,13 +427,27 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       const raw = localStorage.getItem('selected_tags')
       if (raw) {
         const saved = JSON.parse(raw)
-        if (Array.isArray(saved) && saved.length) {
-          setSelectedTags(saved)
+        // Validate that saved is an array, has items, and only contains valid tags
+        if (Array.isArray(saved) && saved.length > 0) {
+          // Filter out any tags that don't exist in the current tag list
+          const validTags = saved.filter(tag => allAvailableTags.includes(tag))
+          if (validTags.length > 0) {
+            setSelectedTags(validTags)
+          } else {
+            // If no valid tags, clear localStorage
+            localStorage.removeItem('selected_tags')
+          }
+        } else if (saved.length === 0) {
+          // Empty array saved, remove it
+          localStorage.removeItem('selected_tags')
         }
       }
-
-    } catch {}
-  }, [setSelectedTags])
+    } catch (e) {
+      // If parsing fails, clear corrupted data
+      console.warn('Failed to parse saved tags, clearing localStorage', e)
+      localStorage.removeItem('selected_tags')
+    }
+  }, [setSelectedTags, allAvailableTags])
 
   useEffect(() => {
     // Notify parent
@@ -441,9 +455,14 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       onTagSelect(selectedTags)
     }
 
-    // Persist to localStorage
+    // Persist to localStorage or clear if empty
     try { 
-      localStorage.setItem('selected_tags', JSON.stringify(selectedTags))
+      if (selectedTags.length > 0) {
+        localStorage.setItem('selected_tags', JSON.stringify(selectedTags))
+      } else {
+        // Clear localStorage when no tags are selected
+        localStorage.removeItem('selected_tags')
+      }
     } catch {}
   }, [selectedTags, onTagSelect])
 
@@ -673,6 +692,10 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
 
   const clearAll = () => {
     setSelectedTags([])
+    // Also explicitly clear localStorage to ensure clean state
+    try {
+      localStorage.removeItem('selected_tags')
+    } catch {}
   }
 
   return (

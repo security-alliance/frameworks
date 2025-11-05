@@ -101,7 +101,7 @@ const config = {
             { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets', dev: true },
             {
               text: 'Signing & Verification',
-              collapsed: true,
+              collapsed: false,
               items: [
                 { text: 'Overview', link: '/wallet-security/signing-verification' },
                 { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
@@ -115,7 +115,7 @@ const config = {
         },
         {
           text: 'Multisig for Protocols',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/multisig-for-protocols/overview', dev: true },
@@ -159,7 +159,7 @@ const config = {
             { text: 'Overview', link: '/external-security-reviews/overview' },
             {
               text: 'Smart Contract Audits',
-              collapsed: true,
+              collapsed: false,
               items: [
                 { text: 'Overview', link: '/external-security-reviews/smart-contracts/overview' },
                 { text: 'Manual Review', link: '/external-security-reviews/smart-contracts/manual-review' },
