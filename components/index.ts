@@ -19,3 +19,4 @@ export { CertList } from './cert/CertList'
 export type { Control, Section, CertListProps, ControlState, ControlData } from './cert/types'
 export { default as MermaidRenderer } from './mermaid/MermaidRenderer';
 export * from './shared/constants'
+export { CertifiedProtocols } from './certified-protocols/CertifiedProtocols'

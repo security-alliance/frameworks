@@ -373,11 +373,17 @@ const config = {
       collapsed: false,
       items: [
         { text: 'Overview', link: '/certs/overview' },
-        { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
-        { text: 'Incident Response', link: '/certs/sfc-incident-response' },
-        { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
-        { text: 'Treasury Operations', link: '/certs/sfc-treasury-ops' },
-        { text: 'Workspace Security', link: '/certs/sfc-workspace-security' },
+        { text: 'Certified Partners', link: '/certs/certified-partners' },
+        { text: 'Certified Protocols', link: '/certs/certified-protocols' },
+        {
+          text: 'SEAL Certification Frameworks', collapsed: true, items: [
+            { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
+            { text: 'Incident Response', link: '/certs/sfc-incident-response' },
+            { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
+            { text: 'Treasury Operations', link: '/certs/sfc-treasury-ops' },
+            { text: 'Workspace Security', link: '/certs/sfc-workspace-security' },
+          ]
+        },
         { text: 'Certification Guidelines', link: '/certs/certification-guidelines' },
       ]
     },
