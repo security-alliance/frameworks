@@ -37,14 +37,52 @@ Certs comprises a set of modular certifications, similar to SOC 2 or ISO 27001. 
 
 Self-assessments are completed by the protocol team themselves, using the Certs framework as a guide. They are useful for protocols to internally evaluate their own security posture and identify areas for improvement. Self-assessments are not verified by a third party and do not result in a formal certification or an endorsed badge.
 
-Certified audits are completed by a SEAL-partnered third-party auditor. They involve a thorough and independent evaluation of the protocol's security controls against the Certs framework. Upon successful completion of a certified audit, protocols receive a formal certification and an on-chain badge to demonstrate their achievement.
+Certified audits are completed by a third-party vendor through SEAL's [partner program](/certs/certified-partners.mdx). They involve a thorough and independent evaluation of the protocol's security controls against the Certs framework. Upon successful completion of a certified audit, protocols receive a formal attestation on-chain.
+
+</details>
+<details>
+<summary>What is an attestation?</summary>
+
+Attestations are certificates issued on-chain through the [Ethereum Attestation Service (EAS)](https://ethereum.org/en/developers/docs/standards/tokens/eas/) by SEAL to protocols that successfully complete a certified audit. Attestations serve as verifiable proof that a protocol has met the requirements of a given Certs certification.
+
+Attestations do not indicate that a protocol is completely secure or free from issues. Blockchain security is always evolving and novel vulnerabilities aries regularly. Instead, attestations demonstrate that a protocol has implemented a set of standardized best-practices to manage and mitigate security risks.
+
+</details>
+<details>
+<summary>What if a protocol doesn't meet all the certification requirements?</summary>
+
+Protocols going through a certified audit that don't meet all the certification requirements will receive a report from the auditor detailing the gaps in their security posture. If the protocol decides to address the gaps, they can work with the auditor to complete a re-assessment of the controls.
 
 </details>
 
 <details>
-<summary>How are certifications issued?</summary>
+<summary>What kind of evidence is required?</summary>
 
-Upon the successful completion of a certified audit by a third-party auditor, protocols are issued a certification through the Ethereum Attestation Service (EAS). Certifications will expire after [TODO: DURATION - may vary by certification] and protocols will need to undergo a re-audit to renew their certification.
+Evidence requirements vary by certification and control. Generally, protocols need to provide documentation, screenshots, or other artifacts demonstrating the implementation of each control. This might mean a list of signer addresses for a multisig, incident response playbooks, or screenshots of DNS configurations.
+
+</details>
+<details>
+<summary>Who can see our attestation?</summary>
+
+Attestations are publicly accessible on-chain through the EAS. The detailed audit reports and evidence provided during the audit process are confidential between the protocol and the auditor. 
+
+</details>
+<details>
+<summary>Can we use the SEAL logo / badge?</summary>
+
+Protocols that successfully complete a certified audit will receive a badge from SEAL. Protocols are welcome to display this badge on their website or documentation to demonstrate their certification.
+
+</details>
+<details>
+<summary>Is there a list of certified protocols?</summary>
+
+SEAL maintains a list of protocols that have completed certified audits. You can find the list [here](/certs/certified-protocols.mdx).
+
+</details>
+<details>
+<summary>Can a project lose their certification?</summary>
+
+Yes, certifications can be revoked if a protocol is found to be non-compliant with the certification requirements for an extended period of time. Certifications are also time-limited and require periodic re-assessment to maintain.
 
 </details>
 
