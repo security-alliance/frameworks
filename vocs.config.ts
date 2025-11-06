@@ -186,15 +186,25 @@ const config = {
           collapsed: false,
           dev: true,
           items: [
-            { text: 'Overview', link: '/infrastructure/overview', dev: true },
-            { text: 'Asset Inventory', link: '/infrastructure/asset-inventory', dev: true },
-            { text: 'Cloud Infrastructure', link: '/infrastructure/cloud', dev: true },
-            { text: 'DDoS Protection', link: '/infrastructure/ddos-protection', dev: true },
-            { text: 'DNS and Domain Registration', link: '/infrastructure/dns-and-domain-registration', dev: true },
-            { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management', dev: true },
-            { text: 'Network Security', link: '/infrastructure/network-security', dev: true },
-            { text: 'Operating System Security', link: '/infrastructure/operating-system-security', dev: true },
-            { text: 'Zero-Trust Principles', link: '/infrastructure/zero-trust-principles', dev: true },
+            { text: 'Overview', link: '/infrastructure/overview' },
+            { text: 'Asset Inventory', link: '/infrastructure/asset-inventory' },
+            { text: 'Cloud Infrastructure', link: '/infrastructure/cloud' },
+            { text: 'DDoS Protection', link: '/infrastructure/ddos-protection' },
+            {
+              text: 'Domain & DNS Security',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
+                { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
+                { text: 'DNSSEC, CAA, and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
+                { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
+                { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
+              ]
+            },
+            { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management' },
+            { text: 'Network Security', link: '/infrastructure/network-security' },
+            { text: 'Operating System Security', link: '/infrastructure/operating-system-security' },
+            { text: 'Zero-Trust Principles', link: '/infrastructure/zero-trust-principles' },
           ]
         },
         {
