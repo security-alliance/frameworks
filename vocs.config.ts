@@ -12,6 +12,9 @@ const config = {
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
   logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
+  ogImageUrl: {
+    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.png'
+  },
   sidebar: [
     {
       text: 'Introduction',
@@ -95,6 +98,7 @@ const config = {
             { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-&-medium-funds' },
             { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
+            { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets', dev: true },
             {
               text: 'Signing & Verification',
               collapsed: false,
@@ -136,10 +140,7 @@ const config = {
               collapsed: false,
               dev: true,
               items: [
-
-                { text: 'Hardware Wallet Setup', link: '/wallet-security/intermediates-&-medium-funds', dev: true },
                 { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig', dev: true },
-
                 { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures', dev: true },
                 { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure', dev: true },
                 { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec', dev: true },
@@ -184,15 +185,25 @@ const config = {
           collapsed: false,
           dev: true,
           items: [
-            { text: 'Overview', link: '/infrastructure/overview', dev: true },
-            { text: 'Asset Inventory', link: '/infrastructure/asset-inventory', dev: true },
-            { text: 'Cloud Infrastructure', link: '/infrastructure/cloud', dev: true },
-            { text: 'DDoS Protection', link: '/infrastructure/ddos-protection', dev: true },
-            { text: 'DNS and Domain Registration', link: '/infrastructure/dns-and-domain-registration', dev: true },
-            { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management', dev: true },
-            { text: 'Network Security', link: '/infrastructure/network-security', dev: true },
-            { text: 'Operating System Security', link: '/infrastructure/operating-system-security', dev: true },
-            { text: 'Zero-Trust Principles', link: '/infrastructure/zero-trust-principles', dev: true },
+            { text: 'Overview', link: '/infrastructure/overview' },
+            { text: 'Asset Inventory', link: '/infrastructure/asset-inventory' },
+            { text: 'Cloud Infrastructure', link: '/infrastructure/cloud' },
+            { text: 'DDoS Protection', link: '/infrastructure/ddos-protection' },
+            {
+              text: 'Domain & DNS Security',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
+                { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
+                { text: 'DNSSEC, CAA, and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
+                { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
+                { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
+              ]
+            },
+            { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management' },
+            { text: 'Network Security', link: '/infrastructure/network-security' },
+            { text: 'Operating System Security', link: '/infrastructure/operating-system-security' },
+            { text: 'Zero-Trust Principles', link: '/infrastructure/zero-trust-principles' },
           ]
         },
         {
