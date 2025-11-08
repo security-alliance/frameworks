@@ -274,3 +274,9 @@ Zerouali
 ZK
 Zksync
 ZWJ
+DCAP
+Fábrega
+Kelkar
+Juels
+SBLWT
+Provenanced

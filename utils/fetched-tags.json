@@ -13,6 +13,7 @@
     "Individual Security",
     "Legal & Compliance",
     "Operations",
+    "Multisig Security",
     "Operations & Strategy",
     "Physical Security",
     "Protocol",
@@ -365,6 +366,10 @@
       "Devops",
       "SRE"
     ],
+    "/incident-management/playbooks/hacked-dprk": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/incident-management/playbooks/hacked-drainer": [
       "Security Specialist",
       "Operations & Strategy"
@@ -407,7 +412,29 @@
       "Cloud",
       "SRE"
     ],
-    "/infrastructure/dns-and-domain-registration": [
+    "/infrastructure/domain-and-dns-security/dns-basics-and-attacks": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/infrastructure/domain-and-dns-security/dnssec-and-email": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/infrastructure/domain-and-dns-security/monitoring-and-alerting": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/infrastructure/domain-and-dns-security/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/infrastructure/domain-and-dns-security/registrar-and-locks": [
+      "Operations & Strategy",
+      "Security Specialist"
+    ],
+    "/infrastructure/domain-and-dns-security": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
@@ -462,6 +489,76 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/multisig-for-protocols/backup-signing-and-infrastructure": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/communication-setup": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/emergency-procedures": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/hardware-wallet-setup": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/implementation-checklist": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/incident-reporting": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/joining-a-multisig": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/offboarding": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/personal-security-opsec": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/planning-and-classification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/registration-and-documentation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/setup-and-configuration": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/use-case-specific-requirements": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
     "/opsec/appendices/case-studies": [
       "Security Specialist",
       "Operations & Strategy",
@@ -474,13 +571,13 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/appendices/policies": [
+    "/opsec/appendices/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
     ],
-    "/opsec/appendices": [
+    "/opsec/appendices/policies": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -493,6 +590,12 @@
       "SRE"
     ],
     "/opsec/control-domains/organizational": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/opsec/control-domains/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -511,12 +614,6 @@
       "SRE"
     ],
     "/opsec/control-domains/technical": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/control-domains": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -546,13 +643,13 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/integration": [
+    "/opsec/integration/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
     ],
-    "/opsec/lifecycle": [
+    "/opsec/lifecycle/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
@@ -691,13 +788,13 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/opsec/risk-management-overview": [
+    "/opsec/risk-management/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
     ],
-    "/opsec/risk-management": [
+    "/opsec/risk-management-overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Devops",

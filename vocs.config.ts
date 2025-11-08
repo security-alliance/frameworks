@@ -12,6 +12,9 @@ const config = {
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
   logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
+  ogImageUrl: {
+    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.png'
+  },
   sidebar: [
     {
       text: 'Introduction',
@@ -71,17 +74,17 @@ const config = {
               items: [
                 { text: 'Overview', link: '/opsec/travel/overview' },
                 { text: 'Guide', link: '/opsec/travel/guide' },
-                { text: 'TL;DR', link: '/opsec/travel/tldr' },
+                { text: 'TL;DR', link: '/opsec/travel/tldr', dev: true },
               ]
             },
-            { text: 'Governance & Program Management', link: '/opsec/governance-program-management' },
-            { text: 'Control Domains', link: '/opsec/control-domains' },
-            { text: 'Lifecycle', link: '/opsec/lifecycle' },
-            { text: 'Monitoring & Detection', link: '/opsec/monitoring-detection' },
-            { text: 'Incident Response & Recovery', link: '/opsec/incident-response-recovery' },
-            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics' },
-            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration' },
-            { text: 'Appendices', link: '/opsec/appendices' },
+            { text: 'Governance & Program Management', link: '/opsec/governance-program-management', dev: true },
+            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
+            { text: 'Lifecycle', link: '/opsec/lifecycle/overview', dev: true },
+            { text: 'Monitoring & Detection', link: '/opsec/monitoring-detection', dev: true },
+            { text: 'Incident Response & Recovery', link: '/opsec/incident-response-recovery', dev: true },
+            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
+            { text: 'Appendices', link: '/opsec/appendices/overview', dev: true }
           ]
         },
         {
@@ -95,6 +98,7 @@ const config = {
             { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-&-medium-funds' },
             { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
+            { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets', dev: true },
             {
               text: 'Signing & Verification',
               collapsed: false,
@@ -107,6 +111,45 @@ const config = {
             },
             { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
+          ]
+        },
+        {
+          text: 'Multisig for Protocols',
+          collapsed: false,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/multisig-for-protocols/overview', dev: true },
+
+            {
+              text: 'Multisig Administration',
+              collapsed: false,
+              dev: true,
+              items: [
+
+                { text: 'Planning & Classification', link: '/multisig-for-protocols/planning-and-classification', dev: true },
+                { text: 'Setup & Configuration', link: '/multisig-for-protocols/setup-and-configuration', dev: true },
+                { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation', dev: true },
+                { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup', dev: true },
+                { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements', dev: true },
+              ]
+            },
+            {
+              text: 'For Signers',
+              collapsed: false,
+              dev: true,
+              items: [
+
+                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup', dev: true },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig', dev: true },
+
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures', dev: true },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure', dev: true },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec', dev: true },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting', dev: true },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding', dev: true },
+              ]
+            },
+            { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist', dev: true },
           ]
         },
         {
@@ -131,21 +174,33 @@ const config = {
         {
           text: 'Vulnerability Disclosure',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/vulnerability-disclosure/overview' },
-            { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact' },
-            { text: 'Bug Bounties', link: '/vulnerability-disclosure/bug-bounties' },
+            { text: 'Overview', link: '/vulnerability-disclosure/overview', dev: true },
+            { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact', dev: true },
+            { text: 'Bug Bounties', link: '/vulnerability-disclosure/bug-bounties', dev: true },
           ]
         },
         {
           text: 'Infrastructure',
           collapsed: false,
+          dev: true,
           items: [
             { text: 'Overview', link: '/infrastructure/overview' },
             { text: 'Asset Inventory', link: '/infrastructure/asset-inventory' },
             { text: 'Cloud Infrastructure', link: '/infrastructure/cloud' },
             { text: 'DDoS Protection', link: '/infrastructure/ddos-protection' },
-            { text: 'DNS and Domain Registration', link: '/infrastructure/dns-and-domain-registration' },
+            {
+              text: 'Domain & DNS Security',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
+                { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
+                { text: 'DNSSEC, CAA, and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
+                { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
+                { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
+              ]
+            },
             { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management' },
             { text: 'Network Security', link: '/infrastructure/network-security' },
             { text: 'Operating System Security', link: '/infrastructure/operating-system-security' },
@@ -155,31 +210,35 @@ const config = {
         {
           text: 'Monitoring',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/monitoring/overview' },
-            { text: 'Guidelines', link: '/monitoring/guidelines' },
-            { text: 'Thresholds', link: '/monitoring/thresholds' },
+            { text: 'Overview', link: '/monitoring/overview', dev: true },
+            { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
+            { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
           ]
         },
         {
           text: 'Front-End/Web Application',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/front-end-web-app/overview' },
-            { text: 'Web Application Security', link: '/front-end-web-app/web-application-security' },
-            { text: 'Mobile Application Security', link: '/front-end-web-app/mobile-application-security' },
-            { text: 'Common Vulnerabilities', link: '/front-end-web-app/common-vulnerabilities' },
-            { text: 'Security Tools and Resources', link: '/front-end-web-app/security-tools-resources' },
+            { text: 'Overview', link: '/front-end-web-app/overview', dev: true },
+            { text: 'Web Application Security', link: '/front-end-web-app/web-application-security', dev: true },
+            { text: 'Mobile Application Security', link: '/front-end-web-app/mobile-application-security', dev: true },
+            { text: 'Common Vulnerabilities', link: '/front-end-web-app/common-vulnerabilities', dev: true },
+            { text: 'Security Tools and Resources', link: '/front-end-web-app/security-tools-resources', dev: true },
           ]
         },
         {
           text: 'Incident Management',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/incident-management/overview' },
-            { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
-            { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
-            { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
+            { text: 'Overview', link: '/incident-management/overview', dev: true },
+            { text: 'Communication Strategies', link: '/incident-management/communication-strategies', dev: true },
+            { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response', dev: true },
+            { text: 'Lessons Learned', link: '/incident-management/lessons-learned', dev: true },
+            { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines' },
+            { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir' },
             {
               text: 'Playbooks',
               collapsed: false,
@@ -199,10 +258,11 @@ const config = {
         {
           text: 'Threat Modeling',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/threat-modeling/overview' },
-            { text: 'Create and Maintain Threat Models', link: '/threat-modeling/create-maintain-threat-models' },
-            { text: 'Identity Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats' },
+            { text: 'Overview', link: '/threat-modeling/overview', dev: true },
+            { text: 'Create and Maintain Threat Models', link: '/threat-modeling/create-maintain-threat-models', dev: true },
+            { text: 'Identity Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats', dev: true },
           ]
         },
         {
@@ -220,77 +280,84 @@ const config = {
         {
           text: 'Governance',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/governance/overview' },
-            { text: 'Compliance with Regulatory Requirements', link: '/governance/compliance-regulatory-requirements' },
-            { text: 'Risk Management', link: '/governance/risk-management' },
-            { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis' },
+            { text: 'Overview', link: '/governance/overview', dev: true },
+            { text: 'Compliance with Regulatory Requirements', link: '/governance/compliance-regulatory-requirements', dev: true },
+            { text: 'Risk Management', link: '/governance/risk-management', dev: true },
+            { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
           ]
         },
         {
           text: 'DevSecOps',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/devsecops/overview' },
-            { text: 'Code Signing', link: '/devsecops/code-signing' },
-            { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment' },
-            { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments' },
-            { text: 'Repository Hardening', link: '/devsecops/repository-hardening' },
-            { text: 'Security Testing', link: '/devsecops/security-testing' },
+            { text: 'Overview', link: '/devsecops/overview', dev: true },
+            { text: 'Code Signing', link: '/devsecops/code-signing', dev: true },
+            { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment', dev: true },
+            { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments', dev: true },
+            { text: 'Repository Hardening', link: '/devsecops/repository-hardening', dev: true },
+            { text: 'Security Testing', link: '/devsecops/security-testing', dev: true },
           ]
         },
         {
           text: 'Privacy',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/privacy/overview' },
-            { text: 'Secure Browsing', link: '/privacy/secure-browsing' },
-            { text: 'Data Removal Services', link: '/privacy/data-removal-services' },
-            { text: 'Digital Footprint', link: '/privacy/digital-footprint' },
-            { text: 'Encrypted Communication Tools', link: '/privacy/encrypted-communication-tools' },
-            { text: 'Financial Privacy Services', link: '/privacy/financial-privacy-services' },
-            { text: 'Privacy-Focused Operating Systems and Tools', link: '/privacy/privacy-focused-operating-systems-tools' },
-            { text: 'VPN Services', link: '/privacy/vpn-services' },
+            { text: 'Overview', link: '/privacy/overview', dev: true },
+            { text: 'Secure Browsing', link: '/privacy/secure-browsing', dev: true },
+            { text: 'Data Removal Services', link: '/privacy/data-removal-services', dev: true },
+            { text: 'Digital Footprint', link: '/privacy/digital-footprint', dev: true },
+            { text: 'Encrypted Communication Tools', link: '/privacy/encrypted-communication-tools', dev: true },
+            { text: 'Financial Privacy Services', link: '/privacy/financial-privacy-services', dev: true },
+            { text: 'Privacy-Focused Operating Systems and Tools', link: '/privacy/privacy-focused-operating-systems-tools', dev: true },
+            { text: 'VPN Services', link: '/privacy/vpn-services', dev: true },
           ]
         },
         {
           text: 'Supply Chain',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/supply-chain/overview' },
-            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness' },
-            { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts' },
+            { text: 'Overview', link: '/supply-chain/overview', dev: true },
+            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness', dev: true },
+            { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts', dev: true },
           ]
         },
         {
           text: 'Security Automation',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/security-automation/overview' },
-            { text: 'Threat Detection and Response', link: '/security-automation/threat-detection-response' },
-            { text: 'Compliance Checks', link: '/security-automation/compliance-checks' },
-            { text: 'Infrastructure as Code', link: '/security-automation/infrastructure-as-code' },
+            { text: 'Overview', link: '/security-automation/overview', dev: true },
+            { text: 'Threat Detection and Response', link: '/security-automation/threat-detection-response', dev: true },
+            { text: 'Compliance Checks', link: '/security-automation/compliance-checks', dev: true },
+            { text: 'Infrastructure as Code', link: '/security-automation/infrastructure-as-code', dev: true },
           ]
         },
         {
           text: 'Identity and Access Management IAM',
           collapsed: false,
+          dev: true,
           items: [
             { text: 'Overview', link: '/iam/overview' },
-            { text: 'Role-Based Access Control', link: '/iam/role-based-access-control' },
-            { text: 'Secure Authentication', link: '/iam/secure-authentication' },
-            { text: 'Access Management Best Practices', link: '/iam/access-management' },
+            { text: 'Role-Based Access Control', link: '/iam/role-based-access-control', dev: true },
+            { text: 'Secure Authentication', link: '/iam/secure-authentication', dev: true },
+            { text: 'Access Management Best Practices', link: '/iam/access-management', dev: true },
           ]
         },
         {
           text: 'Secure Software Development',
           collapsed: false,
+          dev: true,
           items: [
-            { text: 'Overview', link: '/secure-software-development/overview' },
-            { text: 'Secure Coding Standards Guidelines', link: '/secure-software-development/secure-coding-standards-guidelines' },
-            { text: 'Code Reviews and Peer Audits', link: '/secure-software-development/code-reviews-peer-audits' },
-            { text: 'Secure Code Repositories and Version Control', link: '/secure-software-development/secure-code-repositories-version-control' },
-            { text: 'Threat Modeling and Secure Design Principles', link: '/secure-software-development/threat-modeling-secure-design-principles' },
+            { text: 'Overview', link: '/secure-software-development/overview', dev: true },
+            { text: 'Secure Coding Standards Guidelines', link: '/secure-software-development/secure-coding-standards-guidelines', dev: true },
+            { text: 'Code Reviews and Peer Audits', link: '/secure-software-development/code-reviews-peer-audits', dev: true },
+            { text: 'Secure Code Repositories and Version Control', link: '/secure-software-development/secure-code-repositories-version-control', dev: true },
+            { text: 'Threat Modeling and Secure Design Principles', link: '/secure-software-development/threat-modeling-secure-design-principles', dev: true },
           ]
         },
         {
@@ -328,16 +395,6 @@ const config = {
             { text: 'Safe Harbor Scope Terms', link: '/safe-harbor/scope-terms' },
             { text: 'On-Chain Adoption Guide', link: '/safe-harbor/on-chain-adoption-guide' },
             { text: 'Whitehat', link: '/safe-harbor/whitehat' },
-          ]
-        },
-        {
-          text: 'Monitoring',
-          collapsed: false,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/monitoring/overview', dev: true },
-            { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
-            { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
           ]
         },
         {
