@@ -5,9 +5,9 @@ tags:
   - Security Specialist
 contributors:
   - role: wrote
-    users: [pinalikefruit]
+    users: [pinalikefruit, isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
-    users: [Coinspect]
+    users: [Coinspect, engn33r]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -41,8 +41,7 @@ tamper-resistant environment, acting as a vault for the majority of the user's b
 Adopting a hardware wallet introduces a new set of security considerations focused on physical and supply chain vectors.
 
 * **Physical Security:** A hardware wallet is a physical asset that must be protected from theft, damage, or coercion.
-* **Supply Chain Integrity:** Hardware wallets must *only* be purchased directly from the manufacturer or an authorized
-reseller to avoid receiving a tampered device.
+* **Supply Chain Integrity:** Hardware wallets must only be purchased directly from the manufacturer or an authorized reseller to avoid receiving a tampered device.
 * **Convenience vs. Security:** Using a hardware wallet introduces friction into the transaction process, as it requires
 physical access and approval on the device for every signature.
 
@@ -58,6 +57,26 @@ vulnerabilities, data breaches, and overall transparency.
 * **Verify Device Integrity**: A legitimate hardware wallet will arrive uninitialized, requiring you to perform the
 initial setup. Reject any device that comes with a pre-set PIN, a pre-generated recovery phrase, or appears to be
 already configured, as it is likely compromised.
+
+## Initial Setup
+
+### Purchase & Verification
+ - Verify tamper-resistant packaging is untouched
+ - Check for authenticity indicators on packaging
+
+### Device Configuration
+- Update firmware to latest version before creating accounts
+- Configure PIN - Use unique, strong PIN (different from other devices)
+- Generate seed following device instructions
+- Create accounts as needed
+
+## Backup Device (For Critical Operations & Multisigs)
+
+Maintain a backup hardware wallet to avoid needing to access your seed phrase if your primary device fails.
+- Second hardware wallet with same seed phrase
+- Test both devices can create valid signatures
+- Store backup securely
+- Monthly verification that backup device functions correctly
 
 ---
 
