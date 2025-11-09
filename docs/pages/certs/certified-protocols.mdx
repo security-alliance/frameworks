@@ -4,91 +4,12 @@ tags:
   - SEAL/Initiative
   - Certs
 protocols:
-  - name: "Aave"
+  - name: "GreyLabs"
     logo: "https://icons.llama.fi/aave.png"
     website: "https://aave.com"
-    certifications:
-      - type: "sfc-ir"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-ms"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Origin"
-    logo: "https://icons.llama.fi/origin-protocol.png"
-    website: "https://originprotocol.com"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Pendle"
-    logo: "https://icons.llama.fi/pancakeswap.jpg"
-    website: "https://pendle.finance"
-    certifications:
-      - type: "sfc-ir"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-ms"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-dns"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Origin"
-    logo: "https://icons.llama.fi/origin-protocol.png"
-    website: "https://originprotocol.com"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Aave"
-    logo: "https://icons.llama.fi/aave.png"
-    website: "https://aave.com"
-    certifications:
-      - type: "sfc-dns"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-tro"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Pendle"
-    logo: "https://icons.llama.fi/pancakeswap.jpg"
-    website: "https://pendle.finance"
-    certifications:
-      - type: "sfc-tro"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-ms"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Origin"
-    logo: "https://icons.llama.fi/origin-protocol.png"
-    website: "https://originprotocol.com"
-    certifications:
-      - type: "sfc-ms"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-tro"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Aave"
-    logo: "https://icons.llama.fi/aave.png"
-    website: "https://aave.com"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Pendle"
-    logo: "https://icons.llama.fi/pancakeswap.jpg"
-    website: "https://pendle.finance"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Origin"
-    logo: "https://icons.llama.fi/origin-protocol.png"
-    website: "https://originprotocol.com"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertifiedProtocols } from '../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertifiedProtocolsWrapper } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -102,7 +23,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 
 The following protocols have successfully completed SEAL certifications and received on-chain attestations via the Ethereum Attestation Service (EAS). For more details on each certification, click on the respective badges or view the relevant SFC document.
 
-<CertifiedProtocols protocols={frontmatter.protocols} />
+<CertifiedProtocolsWrapper protocolInfo={frontmatter.protocols} />
 
 </TagProvider>
 <ContributeFooter />

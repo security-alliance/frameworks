@@ -16,6 +16,7 @@
     "Physical Security",
     "Protocol",
     "SEAL/Initiative",
+    "SFC",
     "SRE",
     "Security Specialist",
     "Travel",
@@ -69,29 +70,42 @@
       "SEAL/Initiative",
       "Certs"
     ],
+    "/certs/certified-partners": [
+      "SEAL/Initiative",
+      "Certs"
+    ],
+    "/certs/certified-protocols": [
+      "SEAL/Initiative",
+      "Certs"
+    ],
     "/certs/overview": [
       "SEAL/Initiative",
       "Certs"
     ],
     "/certs/sfc-dns-registrar": [
       "SEAL/Initiative",
-      "Certs"
+      "Certs",
+      "SFC"
     ],
     "/certs/sfc-incident-response": [
       "SEAL/Initiative",
-      "Certs"
+      "Certs",
+      "SFC"
     ],
     "/certs/sfc-multisig-ops": [
       "SEAL/Initiative",
-      "Certs"
+      "Certs",
+      "SFC"
     ],
     "/certs/sfc-treasury-ops": [
       "SEAL/Initiative",
-      "Certs"
+      "Certs",
+      "SFC"
     ],
     "/certs/sfc-workspace-security": [
       "SEAL/Initiative",
-      "Certs"
+      "Certs",
+      "SFC"
     ],
     "/community-management/discord": [
       "Community & Marketing",

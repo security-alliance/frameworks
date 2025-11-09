@@ -1,19 +1,19 @@
 import React from 'react';
 import './CertifiedProtocols.css';
 
-interface Certification {
+export interface Certification {
   type: string;
   attestationUrl: string;
 }
 
-interface CertifiedProtocol {
+export interface CertifiedProtocol {
   name: string;
   logo: string;
   website: string;
   certifications: Certification[];
 }
 
-interface CertifiedProtocolsProps {
+export interface CertifiedProtocolsProps {
   protocols: CertifiedProtocol[];
 }
 
