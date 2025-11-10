@@ -15,10 +15,12 @@
     with our patched version in the appropriate Cloudflare Pages output directory.
 
   High-level flow
-  1) Check branch via CF_PAGES_BRANCH (main vs develop/other).
+  1) Check branch via CF_PAGES_BRANCH or VERCEL_GIT_COMMIT_REF (main vs develop/other).
   2) Locate the generated search index file by scanning common output paths:
-     - docs/dist/.vocs                        (local build output)
      - dist/.vocs                             (Cloudflare Pages build output)
+     - .vercel/output/static/.vocs            (Vercel build output)
+     - /vercel/path0/docs/dist/.vocs          (Vercel build environment path)
+     - docs/dist/.vocs                        (local build output)
   3) Parse vocs.config.ts sidebar to collect allowed routes (excluding dev: true on main).
   4) Walk docs/pages and extract sections using markdown headings (#, ##, etc.).
   5) Filter to only allowed routes and build a MiniSearch index (code tags stripped).
@@ -35,6 +37,9 @@ const pagesDir = path.join(workspaceRoot, 'docs', 'pages');
 const distVocsDir = path.join(workspaceRoot, 'docs', 'dist', '.vocs');
 const cfPagesDistVocsDir = path.join(workspaceRoot, 'dist', '.vocs');
 const cfPagesStaticDir = path.join(workspaceRoot, 'dist');
+const vercelVocsDir = path.join(workspaceRoot, '.vercel', 'output', 'static', '.vocs');
+const vercelPath0DistVocsDir = '/vercel/path0/docs/dist/.vocs';
+const vercelStaticDir = path.join(workspaceRoot, '.vercel', 'output', 'static');
 const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.ts');
 
 function walkFiles(dir, out = []) {
@@ -129,9 +134,9 @@ function extractSectionsFromMdx(raw) {
 }
 
 async function main() {
-  // Determine where the built search index exists (try Cloudflare Pages dist, docs/dist)
+  // Determine where the built search index exists (try Cloudflare Pages dist, Vercel output, docs/dist)
   // Try these directories in order; pick the first that contains the index
-  const candidateDirs = [cfPagesDistVocsDir, distVocsDir];
+  const candidateDirs = [cfPagesDistVocsDir, vercelVocsDir, vercelPath0DistVocsDir, distVocsDir];
 
   let baseDirForIndex = undefined;
   let fileName = undefined;
@@ -166,6 +171,8 @@ async function main() {
   // And mirror to common output locations if they exist or can be created
   if (baseDirForIndex !== distVocsDir) payloadTargets.push(path.join(distVocsDir, fileName));
   if (baseDirForIndex !== cfPagesDistVocsDir) payloadTargets.push(path.join(cfPagesDistVocsDir, fileName));
+  if (baseDirForIndex !== vercelVocsDir) payloadTargets.push(path.join(vercelVocsDir, fileName));
+  if (baseDirForIndex !== vercelPath0DistVocsDir) payloadTargets.push(path.join(vercelPath0DistVocsDir, fileName));
 
   const files = walkFiles(pagesDir);
   const documents = [];
@@ -192,7 +199,8 @@ async function main() {
   }
 
   // Check if we're on main branch (same logic as vocs.config.ts filterDevItems)
-  const isMainBranch = process.env.CF_PAGES_BRANCH === 'main';
+  // Support both Cloudflare Pages and Vercel environment variables
+  const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main';
   console.log(`Branch check: ${isMainBranch ? 'main (filtering dev: true pages)' : 'develop (including all pages)'}`);
 
   // Derive allowed routes from sidebar config (preferred) or fallback to Cloudflare Pages static output
@@ -238,31 +246,37 @@ async function main() {
       console.warn('Failed to parse vocs.config.ts:', e.message);
     }
   }
-  if (!allowedRoutes && fs.existsSync(cfPagesStaticDir)) {
-    // Fallback: walk dist directory and collect all directories that contain index.html
+  if (!allowedRoutes) {
+    // Fallback: walk dist/static directory and collect all directories that contain index.html
     // (This happens when vocs.config.ts parsing fails or yields no routes)
-    const stack = [cfPagesStaticDir];
-    const routes = new Set();
-    while (stack.length) {
-      const dir = stack.pop();
-      const entries = fs.readdirSync(dir, { withFileTypes: true });
-      let hasIndex = false;
-      for (const e of entries) {
-        if (e.isFile() && e.name === 'index.html') hasIndex = true;
+    // Try Vercel static dir first, then Cloudflare Pages
+    const staticDir = fs.existsSync(vercelStaticDir) ? vercelStaticDir : 
+                      fs.existsSync(cfPagesStaticDir) ? cfPagesStaticDir : null;
+    
+    if (staticDir) {
+      const stack = [staticDir];
+      const routes = new Set();
+      while (stack.length) {
+        const dir = stack.pop();
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        let hasIndex = false;
+        for (const e of entries) {
+          if (e.isFile() && e.name === 'index.html') hasIndex = true;
+        }
+        if (hasIndex) {
+          const rel = normalizeSlashes(path.relative(staticDir, dir));
+          const route = '/' + rel.replace(/^\/?/, '');
+          routes.add(route === '/.' || route === '/' ? '/' : route);
+        }
+        for (const e of entries) {
+          if (e.isDirectory()) stack.push(path.join(dir, e.name));
+        }
       }
-      if (hasIndex) {
-        const rel = normalizeSlashes(path.relative(cfPagesStaticDir, dir));
-        const route = '/' + rel.replace(/^\/?/, '');
-        routes.add(route === '/.' || route === '/' ? '/' : route);
-      }
-      for (const e of entries) {
-        if (e.isDirectory()) stack.push(path.join(dir, e.name));
-      }
+      // Remove non-doc routes
+      routes.delete('/');
+      routes.delete('/404');
+      allowedRoutes = routes;
     }
-    // Remove non-doc routes
-    routes.delete('/');
-    routes.delete('/404');
-    allowedRoutes = routes;
   }
 
   // Filter documents to only include routes present in the sidebar
@@ -287,9 +301,14 @@ async function main() {
   // Write the regenerated index to all discovered .vocs directories
   const payload = JSON.stringify(json);
   for (const target of payloadTargets) {
-    fs.mkdirSync(path.dirname(target), { recursive: true });  // Ensure directory exists
-    fs.writeFileSync(target, payload);
-    console.log(`Search index written (${filteredDocuments.length} sections): ${target}`);
+    try {
+      fs.mkdirSync(path.dirname(target), { recursive: true });  // Ensure directory exists
+      fs.writeFileSync(target, payload);
+      console.log(`Search index written (${filteredDocuments.length} sections): ${target}`);
+    } catch (err) {
+      // Skip targets that aren't writable (e.g., Vercel paths on CF Pages or vice versa)
+      console.log(`Skipping ${target}: ${err.code === 'EACCES' ? 'permission denied' : err.message}`);
+    }
   }
 }
 
