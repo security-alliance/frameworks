@@ -12,10 +12,9 @@ contributors:
     users: []
   - role: fact-checked
     users: []
-
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -25,15 +24,27 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key takeaway**: Risk management transforms threat information into actionable priorities. It helps you determine which threats matter most, where to allocate resources, and how to make security trade-offs that align with business goals.
+> 🔑 **Key takeaway**: Risk management transforms threat information into actionable priorities. It helps you determine
+> which threats matter most, where to allocate resources, and how to make security trade-offs that align with business
+> goals.
 
-Effective risk management builds upon threat modeling to assess, prioritize, and mitigate identified security risks. While threat modeling identifies what needs protection and potential attack vectors, risk management determines which threats warrant immediate attention and resources.
+Effective risk management builds upon threat modeling to assess, prioritize, and mitigate identified security risks.
+While threat modeling identifies what needs protection and potential attack vectors, risk management determines which
+threats warrant immediate attention and resources.
+
+## Section Outline
+
+- [Risk Assessment & Prioritization](/opsec/risk-management/risk-assessment-prioritization) — convert threat
+intelligence into ranked action plans.
+- [Trade-off Analysis](/opsec/risk-management/trade-off-analysis) — balance security investment against usability,
+speed, and cost.
 
 ## Risk Assessment Process
 
-{/* ![Risk Management Process](../assets/risk-management-process.png) */}
+{/* ![Risk Management Process](../../assets/risk-management-process.png) */}
 
-> **🔗 Related Framework:** This process builds directly on outputs from [Threat Modeling](/opsec/threat-modeling-overview).
+> **🔗 Related Framework:** This process builds directly on outputs from [Threat
+> Modeling](/opsec/threat-modeling-overview).
 
 ### Key Components
 
@@ -44,7 +55,8 @@ Effective risk management builds upon threat modeling to assess, prioritize, and
 
 ### Implementation Steps
 
-1. For each threat scenario identified in threat modeling, assign impact ratings based on financial, operational, and reputational factors
+1. For each threat scenario identified in threat modeling, assign impact ratings based on financial, operational, and
+reputational factors
 2. Determine likelihood based on threat intelligence and historical data
 3. Calculate risk scores (typically Risk = Impact × Likelihood)
 4. Prioritize risks based on scores and organizational context
@@ -63,7 +75,8 @@ Not all risks require the same level of attention. Prioritize based on:
 
 ## Trade-off Analysis
 
-Security decisions often involve trade-offs between security, usability, cost, and other factors. Trade-off analysis helps make informed decisions.
+Security decisions often involve trade-offs between security, usability, cost, and other factors. Trade-off analysis
+helps make informed decisions.
 
 ### Key Considerations
 
@@ -109,7 +122,9 @@ In Web3 environments, risk management must address unique challenges:
 | **Dependency Monitoring** | Regularly audit connected protocols and dependencies | Supply chain attacks |
 | **Regulatory Compliance** | Stay informed about evolving regulations across jurisdictions | Legal/regulatory risks |
 
-Effective risk management enables organizations to allocate security resources efficiently, focusing on the most significant risks while making informed trade-offs between competing priorities. In the Web3 space, this approach must be adapted to address the unique challenges and risk profiles of blockchain-based operations.
+Effective risk management enables organizations to allocate security resources efficiently, focusing on the most
+significant risks while making informed trade-offs between competing priorities. In the Web3 space, this approach must
+be adapted to address the unique challenges and risk profiles of blockchain-based operations.
 
 <details>
 <summary><strong>Example: Risk Assessment for Pinnipeds Inc.</strong></summary>
@@ -128,7 +143,7 @@ Building on the threat vectors identified during threat modeling, Pinnipeds Inc.
 | **4** | Major | Likely |
 | **5** | Severe | Almost Certain |
 
-**Formula: Risk Score = Impact × Likelihood**
+**Formula:** Risk Score = Impact × Likelihood
 
 #### High Risk Threats (Score 15-25)
 
@@ -154,7 +169,8 @@ Building on the threat vectors identified during threat modeling, Pinnipeds Inc.
 | **Implementation timeline** | High-risk mitigations scheduled for completion within 30 days |
 | **Control selection criteria** | Controls evaluated based on cost, operational impact, effectiveness, and implementation time |
 
-This risk-based approach allowed Pinnipeds Inc. to make informed decisions about which security controls to implement first, focusing resources where they would have the greatest risk-reduction impact.
+This risk-based approach allowed Pinnipeds Inc. to make informed decisions about which security controls to implement
+first, focusing resources where they would have the greatest risk-reduction impact.
 
 </details>
 
