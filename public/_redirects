@@ -1,0 +1,4 @@
+# Cloudflare Pages Redirects Configuration
+
+# Remove .html extension from all pages (301 permanent redirect)
+/*.html /:splat 301
