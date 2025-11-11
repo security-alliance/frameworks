@@ -369,7 +369,7 @@ const config = {
       ]
     },
     {
-      text: 'Certs',
+      text: 'SEAL Certifications',
       collapsed: false,
       items: [
         { text: 'Overview', link: '/certs/overview' },

@@ -55,6 +55,10 @@ function ProtocolCard({ protocol }: ProtocolCardProps) {
 }
 
 export function CertifiedProtocols({ protocols }: CertifiedProtocolsProps) {
+  if (!protocols || protocols.length === 0) {
+    return
+  }
+
   return (
     <div className="certified-protocols">
       {protocols.map((protocol) => (

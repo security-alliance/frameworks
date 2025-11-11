@@ -1,91 +1,10 @@
 ---
-title: "Certified Protocols"
+title: "Certified Auditors"
 tags:
   - SEAL/Initiative
-  - Certs
-protocols:
-  - name: "Aave"
-    logo: "https://icons.llama.fi/aave.png"
-    website: "https://aave.com"
-    certifications:
-      - type: "sfc-ir"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-ms"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Origin"
-    logo: "https://icons.llama.fi/origin-protocol.png"
-    website: "https://originprotocol.com"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Pendle"
-    logo: "https://icons.llama.fi/pancakeswap.jpg"
-    website: "https://pendle.finance"
-    certifications:
-      - type: "sfc-ir"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-ms"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-dns"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Origin"
-    logo: "https://icons.llama.fi/origin-protocol.png"
-    website: "https://originprotocol.com"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Aave"
-    logo: "https://icons.llama.fi/aave.png"
-    website: "https://aave.com"
-    certifications:
-      - type: "sfc-dns"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-tro"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Pendle"
-    logo: "https://icons.llama.fi/pancakeswap.jpg"
-    website: "https://pendle.finance"
-    certifications:
-      - type: "sfc-tro"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-ms"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Origin"
-    logo: "https://icons.llama.fi/origin-protocol.png"
-    website: "https://originprotocol.com"
-    certifications:
-      - type: "sfc-ms"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "sfc-tro"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Aave"
-    logo: "https://icons.llama.fi/aave.png"
-    website: "https://aave.com"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Pendle"
-    logo: "https://icons.llama.fi/pancakeswap.jpg"
-    website: "https://pendle.finance"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-  - name: "Origin"
-    logo: "https://icons.llama.fi/origin-protocol.png"
-    website: "https://originprotocol.com"
-    certifications:
-      - type: "Incident Response"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
-      - type: "Multisig Ops"
-        attestationUrl: "https://base.easscan.org/attestation/view/0x..."
+  - Certifications
+auditors:
+
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertifiedProtocols } from '../../../components'
@@ -98,13 +17,16 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-**TODO: Populate this page manually for certified partner auditors**
+SEAL Certification works with a select group of third-party auditing firms to provide certification audits. SEAL-certified auditors have demonstrated expertise in blockchain security and are authorized to conduct audits against the SEAL Certification Framework (SEAL Certifications). 
 
-The following auditing firms have partnered with SEAL to provide third-party audits for protocols pursuing SEAL attestation. These firms have demonstrated expertise in blockchain security and are authorized to conduct audits against the SEAL Certification Framework (Certs). 
+Auditors that are not SEAL-certified may also perform audits using the SEAL Certifications Framework independantly, but will not be listed here and will not be able to issue SEAL certification attestations.
 
-Firms not listed here may still utilize the SEAL Certs frameworks, but have not been reviewed and cannot issue official SEAL attestations.
+If your firm is interested in learning more about becoming a SEAL-approved auditor, please reach out through our [interest form](https://securityalliance.typeform.com/CertsAuditor).
 
-<CertifiedProtocols protocols={frontmatter.protocols} />
+{/* TODO: Uncomment me once we have auditors to list */}
+{/* The following auditing firms have partnered with SEAL to provide third-party audits for protocols pursuing SEAL attestation. These firms have demonstrated expertise in blockchain security and are authorized to conduct audits against the SEAL Certification Framework (SEAL Certifications). */}
+
+<CertifiedProtocols protocols={frontmatter.auditors} />
 
 </TagProvider>
 <ContributeFooter />
