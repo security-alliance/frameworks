@@ -416,11 +416,6 @@
       "Operations & Strategy",
       "Security Specialist"
     ],
-    "/infrastructure/domain-and-dns-security": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
     "/infrastructure/identity-and-access-management": [
       "Engineer/Developer",
       "Security Specialist"
@@ -918,6 +913,7 @@
     "Smart Contract Audits": "external-security-reviews",
     "Vulnerability Disclosure": "vulnerability-disclosure",
     "Infrastructure": "infrastructure",
+    "Domain & DNS Security": "infrastructure",
     "Monitoring": "monitoring",
     "Front-End/Web Application": "front-end-web-app",
     "Incident Management": "incident-management",
