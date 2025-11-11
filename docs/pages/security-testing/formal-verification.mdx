@@ -9,7 +9,6 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac]
-
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -22,19 +21,27 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Formal verification is the act of proving or disproving a given property of a system using a mathematical model. While fuzz testing tries to break properties by throwing random data at your system, formal verification tries to break properties using mathematical proofs.
+Formal verification is the act of proving or disproving a given property of a system using a mathematical model. While
+fuzz testing tries to break properties by throwing random data at your system, formal verification tries to break
+properties using mathematical proofs.
 
-This is the highest level of assurance you can achieve in smart contract testing - mathematical certainty that your code behaves correctly under all possible conditions. The downside, is that it is often the most time-consuming to get correct.
+This is the highest level of assurance you can achieve in smart contract testing - mathematical certainty that your code
+behaves correctly under all possible conditions. The downside, is that it is often the most time-consuming to get
+correct.
 
 ## What is Formal Verification?
 
-Think of formal verification as translating your code into a mathematical model and using formal reasoning to prove whether certain properties hold. Unlike fuzzing, which tests the program with many random inputs, formal verification explores the program’s behavior through modeling rather than relying on specific test cases.
+Think of formal verification as translating your code into a mathematical model and using formal reasoning to prove
+whether certain properties hold. Unlike fuzzing, which tests the program with many random inputs, formal verification
+explores the program’s behavior through modeling rather than relying on specific test cases.
 
-For example, if you want to prove that a function should never revert, formal verification will create mathematical representations of all possible code paths and determine if any input could cause a revert.
+For example, if you want to prove that a function should never revert, formal verification will create mathematical
+representations of all possible code paths and determine if any input could cause a revert.
 
 ## Symbolic Execution
 
-The most popular technique for formal verification in smart contracts is **symbolic execution**. In a nutshell, symbolic execution explores **every possible execution path** mathematically.
+The most popular technique for formal verification in smart contracts is **symbolic execution**. In a nutshell, symbolic
+execution explores **every possible execution path** mathematically.
 
 Here's how it works:
 
@@ -57,7 +64,7 @@ If our property is "this function should never revert", symbolic execution will 
 
 These paths become boolean expressions:
 
-**Path 1**: `a < type(uint256).max`  
+**Path 1**: `a < type(uint256).max`
 **Path 2**: `a == type(uint256).max AND a + 1 < a`
 
 ### 3. Feed to SMT/SAT Solver
@@ -78,11 +85,13 @@ If the solver returns `sat` (satisfiable), it found an input that breaks your pr
 
 ## Real-World Example: Complex Math Functions
 
-Here's where formal verification really shines - catching bugs in complex mathematical code that would be nearly impossible to find manually or through testing.
+Here's where formal verification really shines - catching bugs in complex mathematical code that would be nearly
+impossible to find manually or through testing.
 
-Consider this [intentionally confusing contract with custom operators](https://github.com/Cyfrin/sc-exploits-minimized/blob/main/src/invariant-break/FormalVerificationCatches.sol):
+Consider this
+[intentionally confusing contract with custom operators](https://github.com/Cyfrin/sc-exploits-minimized/blob/main/src/invariant-break/FormalVerificationCatches.sol):
 
-*It has been truncated for space here*
+*It has been truncated for space here:*
 
 ```solidity
 // Custom type with confusing operator overloads
@@ -162,7 +171,8 @@ Complex contracts can have too many execution paths for tools to explore in reas
 
 ### Significant Effort Required
 
-Often, to get this right, this technique requires significant effort to be used. You need to understand how they work, their limitations, and how to help them.
+Often, to get this right, this technique requires significant effort to be used. You need to understand how they work,
+their limitations, and how to help them.
 
 ### Specification Challenge
 
@@ -191,7 +201,9 @@ Sometimes solvers cannot find solutions to complex mathematical problems within 
 
 ## References
 
-This document was inspired by [this article](https://patrickalphac.medium.com/formal-verification-symbolic-execution-the-security-silver-bullet-38e0ac9072eb) and the [Cyfrin Updraft formal verification curriculum](https://updraft.cyfrin.io/courses/formal-verification).
+This document was inspired by
+[this article](https://patrickalphac.medium.com/formal-verification-symbolic-execution-the-security-silver-bullet-38e0ac9072eb)
+and the [Cyfrin Updraft formal verification curriculum](https://updraft.cyfrin.io/courses/formal-verification).
 
 ---
 

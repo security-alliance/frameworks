@@ -26,6 +26,12 @@ claude-code
 
 # Node.js dependencies
 node_modules/
+package-lock.json
+.pnpm-store/
+
+# pnpm artifacts
+pnpm-lock.yaml
+.pnpm-store/
 
 # Claude Code configuration
 CLAUDE.md

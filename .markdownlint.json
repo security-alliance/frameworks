@@ -8,9 +8,36 @@
   "MD024": {
     "siblings_only": true
   },
+  "MD026": false,
   "MD025": false,
   "MD033": {
-    "allowed_elements": ["details", "summary", "br", "img", "sup", "sub", "kbd"]
+    "allowed_elements": [
+      "details",
+      "summary",
+      "br",
+      "img",
+      "sup",
+      "sub",
+      "kbd",
+      "div",
+      "p",
+      "em",
+      "html",
+      "head",
+      "meta",
+      "body",
+      "strong",
+      "video",
+      "source",
+      "TagList",
+      "AttributionList",
+      "TagProvider",
+      "TagFilter",
+      "ContributeFooter",
+      "Contributors"
+    ]
   },
+  "MD037": false,
+  "MD040": false,
   "MD041": false
 }
