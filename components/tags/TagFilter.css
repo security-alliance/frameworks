@@ -205,13 +205,11 @@
 }
 
 .tag-filter-toggle.active {
-  background: rgba(55, 65, 81, 0.95);
-  border-color: #60a5fa;
+  border-color: #ffffff;
 }
 
 .tag-filter-toggle.has-filters {
-  border-color: #60a5fa;
-  color: #60a5fa;
+  color: #ffffff;
 }
 
 .filter-count {
@@ -247,7 +245,7 @@
   right: 0;
   max-width: 320px;
   min-width: 250px;
-  background: #1f2937;
+  background: #1a191b;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
