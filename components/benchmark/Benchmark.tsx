@@ -94,11 +94,30 @@ function BenchmarkCard({ benchmark }: { benchmark: Benchmark }) {
 }
 
 export function BenchmarkList({ benchmarks }: BenchmarkProps) {
-    return (
-        <div className="grid gap-3 benchmark-list">
-            {benchmarks.map((b, idx) => (
-                <BenchmarkCard key={`${b.title}-${idx}`} benchmark={b} />
-            ))}
-        </div>
-    );
+    try {
+        return (
+            <div className="grid gap-3 benchmark-list">
+                {benchmarks.map((b, idx) => (
+                    <BenchmarkCard key={`${b.title}-${idx}`} benchmark={b} />
+                ))}
+            </div>
+        );
+    } catch (error: unknown) {
+        console.error("Error rendering BenchmarkList:", error);
+
+        let message = "An unknown error occurred.";
+        if (error instanceof Error) {
+            message = error.message;
+        } else if (typeof error === "string") {
+            message = error;
+        }
+
+        return (
+            <div>
+                <p className="text-red-600">An error occurred while loading the benchmarks.</p>
+                <p>{message}</p>
+            </div>
+        );
+    }
+
 }
