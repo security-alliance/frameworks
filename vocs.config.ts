@@ -385,6 +385,7 @@ const config = {
           ]
         },
         { text: 'Certification Guidelines', link: '/certs/certification-guidelines' },
+        { text: 'Contributions', link: '/certs/contributions' },
       ]
     },
     {
