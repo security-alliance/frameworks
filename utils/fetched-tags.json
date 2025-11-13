@@ -1,7 +1,7 @@
 {
   "allTags": [
     "Blockchain",
-    "Certs",
+    "Certifications",
     "Cloud",
     "Community & Marketing",
     "Compliance",
@@ -68,43 +68,47 @@
     ],
     "/certs/certification-guidelines": [
       "SEAL/Initiative",
-      "Certs"
+      "Certifications"
     ],
     "/certs/certified-partners": [
       "SEAL/Initiative",
-      "Certs"
+      "Certifications"
     ],
     "/certs/certified-protocols": [
       "SEAL/Initiative",
-      "Certs"
+      "Certifications"
+    ],
+    "/certs/contributions": [
+      "SEAL/Initiative",
+      "Certifications"
     ],
     "/certs/overview": [
       "SEAL/Initiative",
-      "Certs"
+      "Certifications"
     ],
     "/certs/sfc-dns-registrar": [
       "SEAL/Initiative",
-      "Certs",
+      "Certifications",
       "SFC"
     ],
     "/certs/sfc-incident-response": [
       "SEAL/Initiative",
-      "Certs",
+      "Certifications",
       "SFC"
     ],
     "/certs/sfc-multisig-ops": [
       "SEAL/Initiative",
-      "Certs",
+      "Certifications",
       "SFC"
     ],
     "/certs/sfc-treasury-ops": [
       "SEAL/Initiative",
-      "Certs",
+      "Certifications",
       "SFC"
     ],
     "/certs/sfc-workspace-security": [
       "SEAL/Initiative",
-      "Certs",
+      "Certifications",
       "SFC"
     ],
     "/community-management/discord": [
