@@ -26,9 +26,14 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Travel introduces unique security risks to your digital assets and sensitive information. Proper preparation before, vigilance during, and careful review after travel creates a comprehensive defense strategy that balances security with practical usability.
+Travel introduces unique security risks to your digital assets and sensitive information. Proper preparation before,
+vigilance during, and careful review after travel creates a comprehensive defense strategy that balances security
+with practical usability.
 
-When we travel, our normal security routines are disrupted, and we face elevated risks from physical theft, digital surveillance, border inspections, and social engineering. Web3 professionals face additional challenges when traveling with crypto assets or access to treasury funds. The resources in this guide provide practical guidance for maintaining operational security while traveling.
+When we travel, our normal security routines are disrupted, and we face elevated risks from physical theft, digital
+surveillance, border inspections, and social engineering. Web3 professionals face additional challenges when traveling
+with crypto assets or access to treasury funds. The resources in this guide provide practical guidance for maintaining
+operational security while traveling.
 
 > 🔑 Key Takeaway: Minimize data exposure by carrying only essential devices with full-disk encryption and updated
 > software. Secure accounts with backup 2FA methods, avoid biometrics at borders, use trusted networks with VPNs, and
@@ -71,8 +76,8 @@ Even if you are already traveling, take 5 minutes to map out your risks. Identif
 (laptops, phones, hardware wallets, seed phrases, account access), **who might target them** (thieves, cybercriminals,
 border agents, etc.), and **how attacks might happen** (device theft, tampering, malware, coercion). For each threat,
 plan a mitigation. For example, if you're carrying a hardware wallet, a threat is pickpocketing – mitigation could be
-keeping it attached to yourself (just don't use ledger's necklace) and securing it with a secure PIN/passphrase (no
-patterns, not repeated across devices).
+keeping it attached to yourself (just don't use ledger's necklace visibly) and securing it with a secure PIN/passphrase
+(no patterns, not repeated across devices).
 
 This exercise keeps security measures proportionate to your situation.
 
@@ -83,11 +88,15 @@ OSes have this by default (e.g. BitLocker for Windows, FileVault for MacOS, LUKS
 just ensure a strong password/PIN is set).
 
 Use popular devices like iPhones and Pixels. Install the latest OS and app updates since these patch security
-vulnerabilities. This does not mean that using the latest versions is the safest take, but usually there's a balanced trade-off when they got security patches. You can also consider to install any of the mobile security applications there are, which adds a layer of security and also reminds you of important security updates.
+vulnerabilities. This does not mean that using the latest versions is the safest take, but usually there's a balanced
+trade-off when they got security patches. You can also consider to install — only trustworthy — mobile security
+applications, which try to add a layer of control and also reminds you of important security updates.
 
-**Note:** On iOS, due to sandboxing, apps can't scan the entire OS for malware, so many security apps focus on VPN, phishing web protection, breach alerts, etc.
+**Note:** On iOS, due to sandboxing, apps can't scan the entire OS for malware, so many security apps focus on VPN,
+phishing web protection, breach alerts, etc.
 
-If you must bring high-risk confidential data, consider encrypting those files individually using tools like VeraCrypt, FileVault, BitLocker, LUKS/dm-crypt, and more.
+If you must bring high-risk confidential data, consider encrypting those files individually using tools like VeraCrypt,
+FileVault, BitLocker, LUKS/dm-crypt, and more.
 
 ### **Back up and prepare for loss**
 
@@ -102,11 +111,11 @@ needed. Pack chargers and cables so you won’t need to borrow unknown ones (whi
 ### **Protect Accounts with 2FA redundancy**
 
 Plan for how you'll access accounts that use two-factor authentication if your main device is unavailable. For
-authenticator apps (TOTP codes), **print out backup codes** for your important accounts and keep them **securely** in
-services like 1Password or NordPass (you can check passwordmanager.com for more information on which one to pick). Alternatively, consider storing them elsewhere physically (not on your phone). If
-your 2FA is tied to a phone number (SMS or voice), **disable SMS for 2FA**. For technologies that are unfortunately
-dependent on phone numbers, use a separate line (not your personal one) from services like Google Voice, Burner App or
-SLYFONE. Transfer your number to an eSIM since
+authenticator apps (TOTP codes), **export backup codes** for your important accounts and keep them **securely** in
+services like 1Password or NordPass (you can check passwordmanager.com for more information on which one to pick).
+Alternatively, consider storing them elsewhere physically. If your 2FA is tied to a phone number (SMS or voice),
+**disable SMS for 2FA**. For technologies that are unfortunately dependent on phone numbers, use a separate line
+(not your personal one) from services like Google Voice, Burner App or SLYFONE. Transfer your number to an eSIM since
 [they are harder to physically steal or swap than a physical SIM](https://support.apple.com/en-ca/118227#:~:text=Use%20eSIM%20while%20traveling%20internationally,obtain%2C%20carry%2C%20and%20swap).
 
 Ensure your password manager is accessible – many like 1Password have a *Travel Mode* that removes sensitive vaults from
@@ -114,21 +123,22 @@ your device while you travel (you can restore them later). This limits exposure 
 [device is searched or seized](https://www.schneier.com/blog/archives/2025/04/cell-phone-opsec-for-border-crossings.html).
 
 You can also register a backup or alternative 2FA method, like a secondary phone (the device) or a PIN-protected
-hardware key to be used as a passkey. We discourage the use of software passkeys, particularly if you are using a
-password manager to store both your passwords and passkeys, as this creates a single point of failure.
+hardware key to be used as a passkey. Be responsible with the use of software passkeys, particularly in situations
+where you are using a password manager to store both your passwords and passkeys, as this creates a single point of
+failure.
 
 ### **Secure your wallets and keys**
 
-**Hardware wallets (e.g. Ledger, Trezor):** Update the firmware and test the device before you leave, don’t do this
+**Hardware wallets (e.g. Ledger, Trezor):** Update the firmware and test the device before you leave, don't do this
 while traveling. **Do NOT bring any written seed phrases** under any circumstance – seed backups are unencrypted keys
-that are far easier to steal or copy than a hardware device. Leave seed backups in a secure place and travel only with
-your hardware wallet. Enable all security features on the device (set a strong PIN, and use a BIP39 passphrase for
+that are far easier to steal or copy than a hardware device. Leave seed backups in a secure place, travel only with
+your hardware wallet if necessary. Enable all security features on the device (set a strong PIN, and use a BIP39 passphrase for
 example, if supported) so that even if the device is stolen, the amount of required information to access your crypto,
 is high. Carry hardware wallets and security keys **in your carry-on or under your sight**, not in checked luggage, to
 avoid loss or tampering.
 
-**Yubikeys and 2FA tokens:** Bring them to protect logins (they’re the best MFA) and make sure they’re enabled on your
-critical accounts. Keep them on your person or in a separate bag from your laptop/phone so that a thief or snoop can’t
+**Yubikeys and 2FA tokens:** Bring them to protect logins and make sure they're enabled on your
+critical accounts. Keep them on your person or in a separate bag from your laptop/phone so that a thief or snoop can't
 easily steal both at once. If you have a **spare hardware wallet or Yubikey**, you might leave one at home as a backup
 in case the one you carry is lost. Add, when possible, an extra layer of security to the token, such as a PIN code.
 
@@ -181,7 +191,10 @@ devices or even your house) are vulnerable. Consider sharing trip photos and cry
 you return or only with trusted contacts. Ensure your social media privacy settings are tightened so strangers can't
 see your travel posts.
 
-When registering for events, use privacy-focused tools like iOS's **Hide My Email** or create burner emails through providers like Tuta. ProtonMail has had some controversy lately, but could still be a good alternative. If you don't need to keep the inbox at all, just create a throwaway mail, there are plenty of options out there. Avoid giving out personal details unnecessarily during registration—use minimal, generic info to reduce your digital footprint.
+When registering for events, use privacy-focused tools like iOS's **Hide My Email** or create burner emails through
+providers like Tuta. ProtonMail has had some controversy lately, but could still be a good alternative. If you don't
+need to keep the inbox at all, just create a throwaway mail, there are plenty of options out there. Avoid giving out
+personal details unnecessarily during registration—use minimal, generic info to reduce your digital footprint.
 
 **Discretion** is key: if possible,
 [don't advertise that you work in crypto](https://www.unchained.com/blog/7-tips-traveling-bitcoin#:~:text=,or%20clothing%20with%20bitcoin%20logos)
@@ -246,7 +259,8 @@ Never leave your devices (laptops, phones, hardware wallets) **unattended or uns
 person or within sight whenever possible. In a conference or cafe, use a cable lock for your laptop if you must step
 away briefly, take it with you or get someone you trust to watch it over for you.
 
-In hotels/Airbnbs, **use the room safe** for small devices when you're out, knowing that they can usually be easily opened by an experienced thief, or consider a portable travel safe/bag you can lock to a fixed object. A
+In hotels/Airbnbs, **use the room safe** for small devices when you're out. These safes can easily be opened by an experienced
+thief or rogue/malicious staff. Consider a portable travel safe/bag you can lock to a fixed object. A
 [**portable door lock**](https://www.travelandleisure.com/sabre-portable-door-lock-review-7643179#:~:text=schedule%20and%20explore%20fascinating%20destinations,star%20ratings%20at%20Amazon)
 or door jammer for your room can add an extra barrier against intruders (useful in rentals without chain locks). This
 simple gadget prevents anyone (even with a key) from opening your door while you're inside, giving you peace of mind at
@@ -263,21 +277,19 @@ snatched[.](https://www.cisa.gov/sites/default/files/publications/Cybersecurity%
 ### **Beware of public USB charging**
 
 Avoid plug-and-play charging stations at airports or malls. The risk of
-[“**juice jacking**”](https://www.cypherock.com/blogs/post-safe-vacation-tips-while-traveling-with-crypto?srsltid=AfmBOopuzAsUtNwqCqfUBteTEyH4MOTvIaRhoXoIUyNHH8Yv5XzILrSr#:~:text=Stay%20away%20from%20Public%20charger,stations)
-is that a malicious charging kiosk or cable can inject malware or siphon data when you connect via USB. Stick to using
-your own charger plugged into a power outlet, or use a **USB data blocker** (a little adapter that only passes power,
-not data). Similarly, do not plug unknown USB drives into your laptop – if someone hands you a free USB stick at an
-event, assume it could be a trap.
+["**juice jacking**"](https://www.cypherock.com/blogs/post-safe-vacation-tips-while-traveling-with-crypto?srsltid=AfmBOopuzAsUtNwqCqfUBteTEyH4MOTvIaRhoXoIUyNHH8Yv5XzILrSr#:~:text=Stay%20away%20from%20Public%20charger,stations), although small,
+is that a malicious charging kiosk or cable can inject malware or siphon data when you connect via USB. Depending on
+your profile risk, you might encounter technologies that mimic different kind of cables and accessories with the same
+purpose. These exist out of the box, and have been widely used by red-teamers and pentesters (re OMG cable).
+
+Stick to using your own charger plugged into a power outlet, or use a **USB data blocker** (a little adapter that
+only passes power, not data). Similarly, do not plug unknown USB drives into your laptop – if someone hands you
+a free USB stick at an event, assume it could be a trap.
 [**USBGuard**](https://github.com/USBGuard/usbguard#:~:text=USBGuard%20is%20a%20software%20framework,may%20interact%20with%20the%20system)
 software (for Linux) or equivalent can be used to restrict USB device access on your computer, allowing only
 whitelisted devices. This tool can prevent an unknown USB from automatically tampering with your system by requiring
-authorization for new devices. At a minimum, disable any “USB autorun” features and consider locking down ports if your
+authorization for new devices. At a minimum, disable any "USB autorun" features and consider locking down ports if your
 OS allows.
-
-Note: The chances that you're a victim of a juice jacking attack, at common shared areas like an airport are really,
-really low, and probably mostly unseen or unheard of. Regardless of that, depending on your profile risk, you might
-encounter technologies that mimick different kind of cables and accessories with the same purpose. These exist out of
-the box, and have been widely used by red-teamers and pentesters.
 
 ### **Screen privacy and social engineering**
 
@@ -324,8 +336,8 @@ nondescript sleeve or bag (instead of one with a well-known conference brand). T
 attention of both petty thieves and more organized attackers by limiting the signals that you're a high-value crypto
 target.
 
-Don't fall into security by obscurity. Don't assume that by going "stealth", you cannot be the victim of an attack.
-These section's suggestions don't replace the rest.
+Don't rely on security through obscurity. Going "stealth" doesn't make you immune to attacks. The suggestions in
+this section are meant to complement, not replace, the other security measures.
 
 ### **Traveling with high-value crypto or duties**
 
@@ -340,10 +352,10 @@ of anyone, including cameras). Consider that
 so your threat profile is
 elevated[.](https://www.unchained.com/blog/7-tips-traveling-bitcoin#:~:text=If%20you%27re%20traveling%20to%20an,in%20your%20belongings%20while%20traveling)
 Adjust your security: for instance, **enable a passphrase or a pin on any single-signature wallet** you carry so that
-even if someone obtains your hardware wallet, they can’t access funds without that passphrase. For large amounts, rely
-on multi-sig – you might carry one key on you and leave another key(s) with trusted parties so no single person has all
+even if someone obtains your hardware wallet, they can't access funds without that passphrase. For large amounts, rely
+on multi-sigs, verifying payloads before signing – you might carry one key on you and leave another key(s) with trusted parties so no single person has all
 signing power while traveling. In short, treat any on-trip crypto operations with more care than you would in the
-office.
+office or at home.
 
 ### While presenting or doing public appearances
 
@@ -437,7 +449,7 @@ deliberately by criminals or even nation-states. In addition to all the precauti
 take further steps:*
 
 For high-profile or recognizable individuals, keeping a low profile is essential. Beyond avoiding branded merchandise, a
-simple yet effective tactic is wearing a COVID N95 mask or similar face covering. It's socially accepted, draws no
+simple yet effective tactic is wearing an N95 mask or similar face covering. It's socially accepted, draws no
 attention, and helps protect your identity — making it harder for adversaries to target or track you during public
 events.
 
@@ -534,7 +546,10 @@ mitigate threats that could have followed you home.
 
 Travel OpSec isn't about fear, it's about intention. You decide what to bring, what to leave behind, and how much risk you're willing to carry. The less you expose, the less you have to defend. Harden what matters, strip everything else, and stay aware of your surroundings.
 
-Security on the road isn't a checklist you tick once. It's a posture you maintain. Updates, encryption, strong authentication, minimal data, trusted paths—these are your baseline. From there, you layer according to your context. Some trips need burner devices and strict compartmentalization. Others just need good hygiene and awareness. The point is to make those decisions consciously, not out of habit or convenience.
+Security on the road isn't a checklist you tick once. It's a posture you maintain. Updates, encryption, strong
+authentication, minimal data, trusted paths—these are your baseline. From there, you layer additional controls
+according to your context. Some trips need burner devices and strict compartmentalization. Others just need good
+hygiene and awareness. The point is to make those decisions consciously, not out of habit or convenience.
 
 When you return, assume that anything exposed has to be re-evaluated. Rotate credentials, wipe or rebuild if needed, and adjust your threat model based on what you experienced. Each trip should make you sharper, not more complacent.
 
