@@ -1,4 +1,10 @@
 {
-  "buildCommand": "bash vercel_build.sh",
-  "outputDirectory": "docs/dist"
-}
+    "buildCommand": "pnpm run docs:build && pnpm run postdocs:build",
+    "outputDirectory": "docs/dist",
+    "git": {
+      "deploymentEnabled": {
+        "main": false,
+        "develop": false
+      }
+    }
+  }
