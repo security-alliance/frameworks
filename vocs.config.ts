@@ -98,7 +98,7 @@ const config = {
             { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-&-medium-funds' },
             { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
-            { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets'},
+            { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets' },
             {
               text: 'Signing & Verification',
               collapsed: false,
@@ -117,34 +117,34 @@ const config = {
           text: 'Multisig for Protocols',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/multisig-for-protocols/overview'},
+            { text: 'Overview', link: '/multisig-for-protocols/overview' },
 
             {
               text: 'Multisig Administration',
               collapsed: false,
               items: [
                 { text: 'Planning & Classification', link: '/multisig-for-protocols/planning-and-classification' },
-                { text: 'Setup & Configuration', link: '/multisig-for-protocols/setup-and-configuration'},
-                { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation'},
-                { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup'},
-                { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements'},
+                { text: 'Setup & Configuration', link: '/multisig-for-protocols/setup-and-configuration' },
+                { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation' },
+                { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup' },
+                { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements' },
               ]
             },
             {
               text: 'For Signers',
               collapsed: false,
               items: [
-                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup'},
-                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig'},
+                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
 
-                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures'},
-                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure'},
-                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec'},
-                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting'},
-                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding'},
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure' },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting' },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },
               ]
             },
-            { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist'},
+            { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist' },
           ]
         },
         {
@@ -198,7 +198,7 @@ const config = {
             { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management', dev: true },
             { text: 'Network Security', link: '/infrastructure/network-security', dev: true },
             { text: 'Operating System Security', link: '/infrastructure/operating-system-security', dev: true },
-            { text: 'Zero-Trust Principles', link: '/infrastructure/zero-trust-principles', dev: true},
+            { text: 'Zero-Trust Principles', link: '/infrastructure/zero-trust-principles', dev: true },
           ]
         },
         {
@@ -227,21 +227,21 @@ const config = {
           text: 'Incident Management',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/incident-management/overview'},
+            { text: 'Overview', link: '/incident-management/overview' },
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
-            { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response'},
-            { text: 'Lessons Learned', link: '/incident-management/lessons-learned'},
+            { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
+            { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
             {
               text: 'Playbooks',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/incident-management/playbooks/overview'},
-                { text: 'Malware Infection', link: '/incident-management/playbooks/malware'},
-                { text: 'North Korea (DPRK) Attack', link: '/incident-management/playbooks/hacked-dprk'},
-                { text: 'Wallet Drainer Attack', link: '/incident-management/playbooks/hacked-drainer'},
-                { text: 'ELUSIVE COMET Attack', link: '/incident-management/playbooks/hacked-elusive-comet'},
-                { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines'},
-                { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir'},
+                { text: 'Overview', link: '/incident-management/playbooks/overview' },
+                { text: 'Malware Infection', link: '/incident-management/playbooks/malware' },
+                { text: 'North Korea (DPRK) Attack', link: '/incident-management/playbooks/hacked-dprk' },
+                { text: 'Wallet Drainer Attack', link: '/incident-management/playbooks/hacked-drainer' },
+                { text: 'ELUSIVE COMET Attack', link: '/incident-management/playbooks/hacked-elusive-comet' },
+                { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines' },
+                { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir' },
               ]
             },
           ]
@@ -406,6 +406,26 @@ const config = {
             { text: 'Volume Encryption', link: '/encryption/volume-encryption', dev: true },
           ]
         },
+      ]
+    },
+    {
+      text: 'SEAL Certifications',
+      collapsed: false,
+      items: [
+        { text: 'Overview', link: '/certs/overview' },
+        { text: 'Certified Partners', link: '/certs/certified-partners' },
+        { text: 'Certified Protocols', link: '/certs/certified-protocols', dev: true },
+        {
+          text: 'SEAL Certification Frameworks', collapsed: true, items: [
+            { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
+            { text: 'Incident Response', link: '/certs/sfc-incident-response' },
+            { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
+            { text: 'Treasury Operations', link: '/certs/sfc-treasury-ops' },
+            { text: 'Workspace Security', link: '/certs/sfc-workspace-security' },
+          ]
+        },
+        { text: 'Certification Guidelines', link: '/certs/certification-guidelines' },
+        { text: 'Contributions', link: '/certs/contributions' },
       ]
     },
     {
