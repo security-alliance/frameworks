@@ -38,3 +38,5 @@ CLAUDE.md
 
 # Build folder
 **/dist/
+
+.direnv

@@ -1,0 +1,137 @@
+/* Color Variables */
+:root {
+  /* Certification badge colors */
+  --cert-incident-bg: #fee2e2;
+  --cert-incident-text: #991b1b;
+  --cert-multisig-bg: #dbeafe;
+  --cert-multisig-text: #1e40af;
+  --cert-treasury-bg: #d1fae5;
+  --cert-treasury-text: #065f46;
+  --cert-workspace-bg: #e9d5ff;
+  --cert-workspace-text: #6b21a8;
+  --cert-dns-bg: #fed7aa;
+  --cert-dns-text: #9a3412;
+}
+
+:root:not(.dark) {
+  /* Light mode uses same colors */
+}
+
+/* Certified Protocols Grid */
+.certified-protocols {
+  --card-border: var(--border-card);
+  --card-text: var(--color-text-primary);
+  --card-bg: var(--bg-card);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 2rem 0;
+  border: 2px solid var(--card-border);
+  background: var(--card-bg);
+}
+
+@media (min-width: 425px) {
+  .certified-protocols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 600px) {
+  .certified-protocols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Protocol Card */
+.protocol-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  cursor: pointer;
+  border-bottom: 2px solid var(--card-border);
+  border-right: 2px solid var(--card-border);
+  margin-bottom: -1px;
+  margin-right: -1px;
+}
+
+.protocol-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.protocol-header:hover .protocol-name {
+  text-decoration: underline;
+}
+
+.protocol-logo {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+}
+
+.protocol-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--card-text);
+}
+
+/* Certification Badges */
+.cert-badges {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cert-badge {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: transform 0.2s;
+  margin-left: -0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cert-badge:first-child {
+  margin-left: 0;
+}
+
+.cert-badge:hover {
+  transform: scale(1.1);
+  z-index: 1;
+  position: relative;
+}
+
+.sfc-ir {
+  background: var(--cert-incident-bg);
+  color: var(--cert-incident-text);
+}
+
+.sfc-ms {
+  background: var(--cert-multisig-bg);
+  color: var(--cert-multisig-text);
+}
+
+.sfc-tro {
+  background: var(--cert-treasury-bg);
+  color: var(--cert-treasury-text);
+}
+
+.sfc-ws {
+  background: var(--cert-workspace-bg);
+  color: var(--cert-workspace-text);
+}
+
+.sfc-dns {
+  background: var(--cert-dns-bg);
+  color: var(--cert-dns-text);
+}

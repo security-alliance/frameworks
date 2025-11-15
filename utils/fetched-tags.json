@@ -1,5 +1,7 @@
 {
   "allTags": [
+    "Blockchain",
+    "Certifications",
     "Cloud",
     "Community & Marketing",
     "DAO",
@@ -11,6 +13,7 @@
     "Operations & Strategy",
     "Protocol",
     "SEAL/Initiative",
+    "SFC",
     "SRE",
     "Security Specialist",
     "Whitehat"
@@ -57,6 +60,51 @@
       "Community & Marketing",
       "HR",
       "Engineer/Developer"
+    ],
+    "/certs/certification-guidelines": [
+      "SEAL/Initiative",
+      "Certifications"
+    ],
+    "/certs/certified-partners": [
+      "SEAL/Initiative",
+      "Certifications"
+    ],
+    "/certs/certified-protocols": [
+      "SEAL/Initiative",
+      "Certifications"
+    ],
+    "/certs/contributions": [
+      "SEAL/Initiative",
+      "Certifications"
+    ],
+    "/certs/overview": [
+      "SEAL/Initiative",
+      "Certifications"
+    ],
+    "/certs/sfc-dns-registrar": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
+    "/certs/sfc-incident-response": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
+    "/certs/sfc-multisig-ops": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
+    "/certs/sfc-treasury-ops": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
+    "/certs/sfc-workspace-security": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
     ],
     "/community-management/discord": [
       "Community & Marketing",
