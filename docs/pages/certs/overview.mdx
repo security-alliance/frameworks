@@ -1,0 +1,108 @@
+---
+title: "Overview"
+tags:
+  - SEAL/Initiative
+  - Certifications
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# SEAL Certification Framework
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+SEAL Certifications is a certification framework developed by SEAL to provide standardized guidelines and evaluation criteria for assessing the security of DeFi protocols. SEAL Certifications provides targeted modular certifications (e.g., [Incident Response](/certs/sfc-incident-response.mdx), [Treasury Ops](/certs/sfc-treasury-ops.mdx)) that can independently validate specific aspects of a protocol's security posture.
+
+Using SEAL Certifications will help ensure that protocols follow best practices for their security operations, and provides a standard set of criteria for comparing the security of different protocols.
+
+SEAL Certifications is fully open-source and freely available for any protocol to use.
+
+## How it Works
+
+Unlike broad certifications like SOC 2 or ISO 27001, SEAL Certifications focus on specific focus areas based on the highest impact needs of protocols, based on what SEAL has observed throughout the industry and in interviews with pilot protocols. Each certification focuses on a specific area of security and includes controls relevant to that area. Protocols can use certifications independently to evaluate their security posture through self-assessment, or protocols can pursue formal certification through a third-party audit by a SEAL-partnered auditor. After completing a certification with a third-party auditor, protocols can publicly display their certification status and are issued an on-chain badge to demonstrate their completion of the certification.
+
+## Available Certifications
+
+- **[DNS Security](/certs/sfc-dns-registrar.mdx)** - Domain management, DNS configurations, registrar protection
+- **[Incident Response](/certs/sfc-incident-response.mdx)** - Detection, response procedures, team coordination, emergency operations
+- **[Multisig Ops](/certs/sfc-multisig-ops.mdx)** - Governance, signer security, transaction verification
+- **[Treasury Ops](/certs/sfc-treasury-ops.mdx)** - Treasury architecture, transaction security, DeFi risk management
+- **[Workspace Security](/certs/sfc-workspace-security.mdx)** - Device security, account management, credential handling
+
+## FAQ
+
+<details>
+<summary>When will Certifications start being issued?</summary>
+
+SEAL is currently working with several auditors and protocols to finalize the certification process. We expect to begin issuing certifications in Q1 2026.
+
+In the meantime, protocols are welcome to begin using the SEAL Certifications framework for self-assessments and internal evaluations.
+
+</details>
+<details>
+<summary>What's the difference between self-assessments and certified audits?</summary>
+
+Self-assessments are completed by the protocol team themselves, using the SEAL Certifications framework as a guide. They are useful for protocols to internally evaluate their own security posture and identify areas for improvement. Self-assessments are not verified by a third party and do not result in a formal certification or an endorsed badge.
+
+Certified audits are completed by a third-party vendor through SEAL's [partner program](/certs/certified-partners.mdx). They involve a thorough and independent evaluation of the protocol's security controls against the SEAL Certifications framework. Upon successful completion of a certified audit, protocols receive a formal attestation on-chain.
+
+</details>
+<details>
+<summary>What is an attestation?</summary>
+
+Attestations are certificates issued on-chain through the [Ethereum Attestation Service (EAS)](https://ethereum.org/en/developers/docs/standards/tokens/eas/) by SEAL to protocols that successfully complete a certified audit. Attestations serve as verifiable proof that a protocol has met the requirements of a given SEAL Certifications certification.
+
+Attestations do not indicate that a protocol is completely secure or free from issues. Blockchain security is always evolving and novel vulnerabilities arise regularly. Instead, attestations demonstrate that a protocol has implemented a set of standardized best-practices to manage and mitigate security risks.
+
+</details>
+<details>
+<summary>What if a protocol doesn't meet all the certification requirements?</summary>
+
+Protocols going through a certified audit that don't meet all the certification requirements will receive a report from the auditor detailing the gaps in their security posture. If the protocol decides to address the gaps, they can work with the auditor to complete a re-assessment of the controls.
+
+</details>
+
+<details>
+<summary>What kind of evidence is required?</summary>
+
+Evidence requirements vary by certification and control. Generally, protocols need to provide documentation, screenshots, or other artifacts demonstrating the implementation of each control. This might mean a list of signer addresses for a multisig, incident response playbooks, or screenshots of DNS configurations.
+
+</details>
+<details>
+<summary>Who can see our attestation?</summary>
+
+Attestations are publicly accessible on-chain through the EAS. The detailed audit reports and evidence provided during the audit process are confidential between the protocol and the auditor. 
+
+</details>
+<details>
+<summary>Can we use the SEAL logo / badge?</summary>
+
+Protocols that successfully complete a certified audit will receive a badge from SEAL. Protocols are welcome to display this badge on their website or documentation to demonstrate their certification.
+
+</details>
+<details>
+<summary>Is there a list of certified protocols?</summary>
+
+SEAL will maintain a list of protocols that have successfully completed certified audits after the certification program is fully launched.
+
+{/* SEAL maintains a list of protocols that have completed certified audits. You can find the list [here](/certs/certified-protocols.mdx). */}
+
+</details>
+<details>
+<summary>How can auditors become certified?</summary>
+
+SEAL works with a group of third-party auditing firms to provide certification audits. For more information on the process or now to become certified, see our [Certified Auditors](/certs/certified-partners.mdx) page.
+
+</details>
+<details>
+<summary>Can a project lose their certification?</summary>
+
+Yes, certifications can be revoked if a protocol is found to be non-compliant with the certification requirements for an extended period of time. Certifications are also time-limited and require periodic re-assessment to maintain.
+
+</details>
+
+</TagProvider>

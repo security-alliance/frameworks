@@ -1,0 +1,31 @@
+---
+title: "Certified Auditors"
+tags:
+  - SEAL/Initiative
+  - Certifications
+auditors:
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertifiedProtocols } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Certified Partners
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+SEAL Certification works with a select group of third-party auditing firms to provide certification audits. SEAL-certified auditors have demonstrated expertise in blockchain security and are authorized to conduct audits against SEAL Certifications. 
+
+Auditors that are not SEAL-certified may also perform audits using the SEAL Certifications Framework independantly, but will not be listed here and will not be able to issue SEAL certification attestations.
+
+If your firm is interested in learning more about becoming a SEAL-approved auditor, please reach out through our [interest form](https://securityalliance.typeform.com/CertsAuditor).
+
+{/* TODO: Uncomment me once we have auditors to list */}
+{/* The following auditing firms have partnered with SEAL to provide third-party audits for protocols pursuing SEAL attestation. These firms have demonstrated expertise in blockchain security and are authorized to conduct audits against the SEAL Certification Framework (SEAL Certifications). */}
+
+<CertifiedProtocols protocols={frontmatter.auditors} />
+
+</TagProvider>
