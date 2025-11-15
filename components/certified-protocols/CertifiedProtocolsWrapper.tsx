@@ -19,6 +19,7 @@ interface CertifiedProtocolsWrapperProps {
   protocolInfo: ProtocolFrontmatter[];
 }
 
+// TODO: Setup prod endpoint once available
 const API_ENDPOINT = 'https://certs-db.robert-9db.workers.dev/attestations';
 
 const certTypeMap: Record<string, string> = {
