@@ -17,13 +17,9 @@ export const TAG_COLORS: Record<string, string> = {
   'Legal & Compliance': '#0525B1',
   'Protocol': '#495EA9',
   'Whitehat': '#571A70',
-  'Blockchain': '#1fc527',
-  'Compliance': '#059669',
-  'Human Resources': '#7c2d12',
-  'Individual Security': '#b91c1c',
-  'Physical Security': '#92400e',
-  'Travel': '#7c3aed',
-  'Web3': '#1e40af',
+  'Certifications': '#EA580C',
+  'Multisig Security': '#2DD4BF',
+  'SFC': '#9333EA'
 }
 
 /**

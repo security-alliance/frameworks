@@ -1,6 +1,5 @@
 {
   "allTags": [
-    "Blockchain",
     "Certifications",
     "Cloud",
     "Community & Marketing",
@@ -979,6 +978,8 @@
     "ENS": "ens",
     "Safe Harbor": "safe-harbor",
     "Encryption": "encryption",
+    "SEAL Certifications": "certs",
+    "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"
   }
 }
