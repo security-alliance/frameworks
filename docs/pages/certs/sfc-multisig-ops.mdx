@@ -7,144 +7,165 @@ tags:
 cert:
 - id: ms-1
   title: Governance & Inventory
+  ref: /multisig-for-protocols/planning-and-classification
   controls:
   - id: ms-1.1.1
+    title: Policies Governing Multisig Operations
     description: Do you maintain documented policies and procedures governing your multisig
       operations?
-    title: Policies Governing Multisig Operations
   - id: ms-1.1.2
+    title: Named Responsible Multisig Owner
     description: Is there a clearly named person or team accountable for multisig operations
       (policy upkeep, reviews, hygiene)?
-    title: Named Responsible Multisig Owner
   - id: ms-1.1.3
+    title: Multisig Documentation Maintenance Process
+    ref: /multisig-for-protocols/registration-and-documentation#ongoing-management
     description: Do you operate a documented maintenance process to keep multisig documentation
       current after any operational or signer change?
-    title: Multisig Documentation Maintenance Process
   - id: ms-1.2.1
+    title: Current Multisig Registry Details
+    ref: /multisig-for-protocols/registration-and-documentation#registration-template
     description: Do you keep an up-to-date registry of all multisigs (address, network, purpose,
       threshold, modules/guards, admin roles, etc)?
-    title: Current Multisig Registry Details
   - id: ms-1.2.2
+    title: Authorized Signer Mapping Registry
+    ref: /multisig-for-protocols/registration-and-documentation#registration-template
     description: Do you maintain an up-to-date list of authorized signers and map them to the
       correct multisigs?
-    title: Authorized Signer Mapping Registry
 - id: ms-2
   title: Risk Assessment & Management
   controls:
   - id: ms-2.1.1
+    title: Formal Multisig Classification System
+    ref: /multisig-for-protocols/use-case-specific-requirements#timelock-configuration
     description: Do you define and maintain a formal classification system for multisig wallets
       that covers both impact factors and operational needs?
-    title: Formal Multisig Classification System
   - id: ms-2.1.2
+    title: Classification Criteria and Controls
+    ref: /multisig-for-protocols/use-case-specific-requirements#timelock-configuration
     description: Do you maintain documented criteria that map each classification level to required
       controls (thresholds, quorum composition, review cadence, etc)?
-    title: Classification Criteria and Controls
   - id: ms-2.1.3
+    title: Review and Update Classifications
+    ref: /multisig-for-protocols/use-case-specific-requirements#timelock-configuration
     description: Do you periodically review and update classifications and associated controls
       when conditions change?
-    title: Review and Update Classifications
   - id: ms-2.1.4
+    title: Timelocks, Modules, and Guards Policies
+    ref: /multisig-for-protocols/setup-and-configuration/#modules--guards
     description: Do you maintain documented policies on the use of timelocks, modules and guards,
       including justification and security review requirements for any exceptions?
-    title: Timelocks, Modules, and Guards Policies
   - id: ms-2.1.5
+    title: Exception Approval Process for Multisig
     description: Do you maintain a documented exception approval process for deviations from
       standard multisig policies, including justification requirements, and authorization levels?
-    title: Exception Approval Process for Multisig
 - id: ms-3
   title: Signer Security & Access Control
   controls:
   - id: ms-3.1.1
+    title: Cryptographic Signer Identity Attestation
+    ref: /multisig-for-protocols/registration-and-documentation#signer-verification-process
     description: Do you maintain a documented process for cryptographic attestation of address
       ownership and signer affiliation for multisig signers?
-    title: Cryptographic Signer Identity Attestation
   - id: ms-3.1.2
-    description: Do you maintain a documented standard for signer key management?
     title: Signer Key Management Standard
+    ref: /wallet-security/private-key-management
+    description: Do you maintain a documented standard for signer key management?
   - id: ms-3.1.3
+    title: Signer Seed Backups and Protection
+    ref: /wallet-security/private-key-management
     description: Do you maintain documented policies and procedures for securely backing up
       and protecting signer seed phrases and recovery materials?
-    title: Signer Seed Backups and Protection
   - id: ms-3.1.4
+    title: Multisig Signer Lifecycle Management
+    ref: /multisig-for-protocols/registration-and-documentation#signer-changes
     description: Do you operate a documented lifecycle for adding, replacing, and removing signers,
       including offboarding and periodic access reviews?
-    title: Multisig Signer Lifecycle Management
   - id: ms-3.1.5
+    title: Signer Training and Readiness Program
+    ref: /multisig-for-protocols/implementation-checklist#for-signers
     description: Do you have a documented training and readiness program for signers before
       they are authorized to participate?
-    title: Signer Training and Readiness Program
 - id: ms-4
   title: Operational Procedures
   controls:
   - id: ms-4.1.1
+    title: Documented Transaction Lifecycle Procedures
     description: Do you maintain documented processes for transaction initiation, approval,
       simulation, execution, and confirmation, including who is authorized to initiate?
-    title: Documented Transaction Lifecycle Procedures
   - id: ms-4.1.2
+    title: Signing and Verification Procedures
+    ref: /wallet-security/secure-multisig-signing-process
     description: Do you maintain documented signing and verification procedures that must be
       followed before any signatures are applied?
-    title: Signing and Verification Procedures
   - id: ms-4.1.3
+    title: Audit Trails and Retention
     description: Do you maintain audit trails and retention for transaction reviews, approvals,
       execution, and post-execution confirmation?
-    title: Audit Trails and Retention
   - id: ms-4.1.4
+    title: Policy for High-Risk Transactions
     description: Do you maintain a policy defining enhanced controls for high-risk transactions
       (emergency actions, large transfers, protocol configuration changes)?
-    title: Policy for High-Risk Transactions
   - id: ms-4.1.5
+    title: Multisig Standards and Evaluation
     description: Do you maintain documented standards for multisig technology and tools, and
       a formal evaluation process for adopting new ones?
-    title: Multisig Standards and Evaluation
   - id: ms-4.1.6
+    title: Backup Infrastructure for Multisig
+    ref: /multisig-for-protocols/backup-signing-and-infrastructure
     description: Do you maintain documented backup infrastructure for multisig operations (alternate
       signing interfaces, RPC/explorers, failover procedures), and test their use?
-    title: Backup Infrastructure for Multisig
 - id: ms-5
   title: Communication & Coordination
   controls:
   - id: ms-5.1.1
+    title: Multisig Primary and Backup Communications
+    ref: /multisig-for-protocols/communication-setup
     description: Do you maintain dedicated primary and backup communication channels for multisig
       operations with documented membership controls and onboarding/offboarding procedures?
-    title: Multisig Primary and Backup Communications
   - id: ms-5.1.2
+    title: Signer Identity Verification Procedures
+    ref: /multisig-for-protocols/registration-and-documentation#signer-verification-process
     description: Do you have procedures to verify the identity of signers during sensitive communications,
       with periodic checks to ensure authenticity?
-    title: Signer Identity Verification Procedures
   - id: ms-5.1.3
+    title: Documented Escalation and On-Call Policies
     description: Do you maintain documented escalation policies that define response-time expectations,
       on-call coverage, and procedures for urgent coordination?
-    title: Documented Escalation and On-Call Policies
   - id: ms-5.1.4
+    title: Channel Compromise Response and Verification
     description: Do you maintain procedures for responding to suspected communication channel
       compromise, including switching to backup channels and out-of-band verification, and ensure
       signers know how to invoke them?
-    title: Channel Compromise Response and Verification
   - id: ms-5.1.5
+    title: Emergency Contacts for Multisig
     description: Do you maintain and distribute an up-to-date emergency contact list for multisig
       operations?
-    title: Emergency Contacts for Multisig
 - id: ms-6
   title: Emergency Operations
   controls:
   - id: ms-6.1.1
+    title: Emergency Playbooks for Compromise
+    ref: /multisig-for-protocols/emergency-procedures
     description: Do you maintain written emergency playbooks covering key compromise, lost access,
       and urgent protocol actions?
-    title: Emergency Playbooks for Compromise
   - id: ms-6.1.2
+    title: 24/7 Paging for Emergency Multisigs
+    ref: /multisig-for-protocols/communication-setup#paging-system-criticalemergency-multisigs
     description: For critical/emergency-class multisigs, do you provide 24/7 paging to reach
       the required threshold and document escalation paths?
-    title: 24/7 Paging for Emergency Multisigs
   - id: ms-6.1.3
+    title: Multisig Monitoring and Alerts
+    ref: /multisig-for-protocols/setup-and-configuration#active-monitoring
     description: Do you maintain monitoring infrastructure and procedures to detect unauthorized,
       anomalous, or suspicious activity across all multisigs, with documented alerting and escalation
       paths?
-    title: Multisig Monitoring and Alerts
   - id: ms-6.1.4
+    title: Rehearsals for Emergency Playbooks
+    ref: /multisig-for-protocols/use-case-specific-requirements#training--drills
     description: Do you conduct periodic rehearsals and drills of emergency playbooks to test
       response procedures, communication channels, and signer coordination under simulated emergency
       conditions?
-    title: Rehearsals for Emergency Playbooks
 
 ---
 
