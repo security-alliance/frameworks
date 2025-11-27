@@ -1,0 +1,347 @@
+/* Color Variables */
+:root {
+  /* Primary colors */
+  --color-primary: #4339db;
+  --color-primary-dark: #3730a3;
+  --color-primary-text: #ffffff;
+
+  /* Success colors */
+  --color-success: #10b981;
+  --color-success-dark: #059669;
+  --color-success-text: #ffffff;
+
+  /* Neutral/NA colors */
+  --color-neutral: #6b7280;
+  --color-neutral-dark: #4b5563;
+  --color-neutral-light: #9ca3af;
+  --color-neutral-text: #ffffff;
+
+  /* Text colors */
+  --color-text-muted: #9ca3af;
+  --color-text-primary: #e5e7eb;
+  --color-text-strong: #ffffff;
+
+  /* Background and border colors (dark mode) */
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-state-no: rgba(255, 255, 255, 0.05);
+  --border-card: rgba(255, 255, 255, 0.1);
+  --border-state-no: rgba(255, 255, 255, 0.2);
+}
+
+:root:not(.dark) {
+  /* Text colors (light mode) */
+  --color-text-muted: #6b7280;
+  --color-text-primary: #1f2937;
+  --color-text-strong: #202020;
+
+  /* Background and border colors (light mode) */
+  --bg-card: rgba(0, 0, 0, 0.02);
+  --bg-state-no: rgba(0, 0, 0, 0.02);
+  --border-card: rgba(0, 0, 0, 0.08);
+  --border-state-no: rgba(0, 0, 0, 0.2);
+}
+
+/* Control List */
+.control-list {
+  --card-bg: var(--bg-card);
+  --card-border: var(--border-card);
+  --card-text: var(--color-text-primary);
+  --card-muted: var(--color-text-muted);
+  --card-strong: var(--color-text-strong);
+  --state-no-bg: var(--bg-state-no);
+  --state-no-border: var(--border-state-no);
+  --state-yes-bg: var(--color-success);
+  --state-yes-border: var(--color-success-dark);
+  --state-yes-text: var(--color-success-text);
+  --state-na-bg: var(--color-neutral);
+  --state-na-border: var(--color-neutral-dark);
+  --state-na-text: var(--color-neutral-text);
+}
+
+:root:not(.dark) .control-list {
+  --state-na-bg: var(--color-neutral-light);
+  --state-na-border: var(--color-neutral);
+}
+
+/* Control Card */
+.control-card {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+.control-title {
+  color: var(--card-strong);
+}
+
+.control-description {
+  color: var(--card-muted);
+}
+
+.control-info-btn {
+  border-color: var(--card-border);
+  color: var(--card-text);
+}
+
+.control-popup-strong {
+  color: var(--card-strong);
+}
+
+/* Expandable Content */
+.control-expanded-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.control-expanded-content.expanded {
+  max-height: 800px;
+  transition: max-height 0.3s ease-in;
+}
+
+.control-expanded-inner {
+  border-color: var(--card-border);
+  color: var(--card-muted);
+  margin-left: 24px;
+}
+
+.control-expanded-inner ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 20px;
+  margin: 4px 0;
+}
+
+.control-expanded-inner li {
+  margin-bottom: 2px;
+}
+
+/* Control State Button */
+.control-state-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.control-state-no {
+  background: var(--state-no-bg);
+  border-color: var(--state-no-border);
+  color: transparent;
+}
+
+.control-state-yes {
+  background: var(--state-yes-bg);
+  border-color: var(--state-yes-border);
+  color: var(--state-yes-text);
+}
+
+.control-state-na {
+  background: var(--state-na-bg);
+  border-color: var(--state-na-border);
+  color: var(--state-na-text);
+}
+
+.control-state-btn:hover {
+  opacity: 0.8;
+}
+
+/* Section Toggle Button */
+.cert-section-toggle {
+  border-color: var(--border-card);
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+}
+
+.cert-section-toggle:hover {
+  opacity: 0.7;
+}
+
+/* Section Content */
+.cert-section-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-out;
+}
+
+.cert-section-content.expanded {
+  grid-template-rows: 1fr;
+}
+
+.cert-section-content>* {
+  overflow: hidden;
+}
+
+/* Section Progress */
+.section-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .section-progress-bar {
+    display: none;
+  }
+}
+
+.section-progress-bar {
+  width: 80px;
+  height: 8px;
+  background: var(--border-card);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+}
+
+.section-progress-fill-yes {
+  height: 100%;
+  background: var(--color-success);
+  transition: width 0.3s ease;
+}
+
+.section-progress-fill-na {
+  height: 100%;
+  background: var(--color-neutral);
+  transition: width 0.3s ease;
+}
+
+:root:not(.dark) .section-progress-fill-na {
+  background: var(--color-neutral-light);
+}
+
+.section-progress-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* Certification List Container */
+.cert-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Action Buttons */
+.cert-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.cert-action-btn {
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid;
+}
+
+.cert-export-btn {
+  background: var(--color-primary);
+  border-color: var(--color-primary-dark);
+  color: var(--color-primary-text);
+}
+
+.cert-export-btn:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(67, 57, 219, 0.3);
+}
+
+.cert-export-btn:active {
+  transform: translateY(0);
+}
+
+.cert-import-btn {
+  background: transparent;
+  border-color: var(--border-card);
+  color: var(--color-text-primary);
+}
+
+.cert-import-btn:hover {
+  background: var(--bg-card);
+  border-color: var(--color-text-primary);
+}
+
+.cert-import-btn:active {
+  transform: scale(0.98);
+}
+
+/* Error Message */
+.cert-error-message {
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  font-weight: 500;
+}
+
+:root:not(.dark) .cert-error-message {
+  background: rgba(239, 68, 68, 0.05);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: #dc2626;
+}
+
+/* Control Inputs Section */
+.control-inputs-section {
+  border-color: var(--border-card);
+}
+
+.control-label {
+  color: var(--card-strong);
+}
+
+.control-textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-card);
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--bg-card);
+  color: var(--card-text);
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.control-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.control-textarea::placeholder {
+  color: var(--card-muted);
+  opacity: 0.6;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .cert-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cert-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
