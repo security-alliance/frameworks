@@ -56,13 +56,23 @@ export const CertSection = memo(function CertSection({
                     )}
                 </div>
                 <SectionProgress completed={completedCount} na={naCount} total={section.controls.length} />
+                {section.ref && (
+                    <a
+                        type="button"
+                        className="w-6 h-6 me-2 rounded-full border border-solid bg-transparent cursor-pointer flex items-center justify-center text-sm font-medium cert-section-toggle"
+                        aria-label="More info"
+                        href={section.ref}
+                    >
+                        i
+                    </a>
+                )}
                 <button
                     type="button"
                     className="w-6 h-6 rounded-full border border-solid bg-transparent cursor-pointer flex items-center justify-center text-sm font-medium cert-section-toggle"
                     aria-hidden="true"
                     tabIndex={-1}
                 >
-                    {expanded ? "−" : "+"}
+                    {expanded ? "-" : "+"}
                 </button>
             </div>
             <div
@@ -74,7 +84,7 @@ export const CertSection = memo(function CertSection({
                         <ControlCard
                             key={control.id}
                             control={control}
-                            data={controlData[control.id] || { state: "no", justification: control.guide || "", evidence: control.evidence || "" }}
+                            data={controlData[control.id] || { state: "no", justification: control.justification || "", evidence: control.evidence || "" }}
                             onControlChange={(data) => onControlChange(control.id, data)}
                         />
                     ))}

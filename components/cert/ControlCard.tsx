@@ -87,7 +87,17 @@ export const ControlCard = memo(function ControlCard({
                         {control.description}
                     </div>
                 </div>
-                <div className="ml-auto pl-3">
+                <div className="ml-auto pl-3 flex flex-row gap-2">
+                    {control.ref && (
+                        <a
+                            type="button"
+                            className="w-6 h-6 rounded-full border border-solid bg-transparent cursor-pointer flex items-center justify-center text-sm font-medium control-info-btn"
+                            aria-label="More info"
+                            href={control.ref}
+                        >
+                            i
+                        </a>
+                    )}
                     <button
                         type="button"
                         onClick={handleToggleExpanded}
@@ -97,7 +107,7 @@ export const ControlCard = memo(function ControlCard({
                         aria-expanded={expanded}
                         aria-controls={`justification-${control.id}`}
                     >
-                        {expanded ? "-" : "i"}
+                        {expanded ? "-" : "+"}
                     </button>
                 </div>
             </div>
