@@ -40,3 +40,4 @@ CLAUDE.md
 **/dist/
 
 .direnv
+.envrc
