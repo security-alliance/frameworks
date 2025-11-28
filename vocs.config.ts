@@ -12,6 +12,9 @@ const config = {
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
   logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
+  ogImageUrl: {
+    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.png'
+  },
   sidebar: [
     {
       text: 'Introduction',
@@ -95,6 +98,7 @@ const config = {
             { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-&-medium-funds' },
             { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
+            { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets' },
             {
               text: 'Signing & Verification',
               collapsed: false,
@@ -107,6 +111,40 @@ const config = {
             },
             { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
+          ]
+        },
+        {
+          text: 'Multisig for Protocols',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/multisig-for-protocols/overview' },
+
+            {
+              text: 'Multisig Administration',
+              collapsed: false,
+              items: [
+                { text: 'Planning & Classification', link: '/multisig-for-protocols/planning-and-classification' },
+                { text: 'Setup & Configuration', link: '/multisig-for-protocols/setup-and-configuration' },
+                { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation' },
+                { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup' },
+                { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements' },
+              ]
+            },
+            {
+              text: 'For Signers',
+              collapsed: false,
+              items: [
+                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
+
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure' },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting' },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },
+              ]
+            },
+            { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist' },
           ]
         },
         {
@@ -141,13 +179,22 @@ const config = {
         {
           text: 'Infrastructure',
           collapsed: false,
-          dev: true,
           items: [
             { text: 'Overview', link: '/infrastructure/overview', dev: true },
             { text: 'Asset Inventory', link: '/infrastructure/asset-inventory', dev: true },
             { text: 'Cloud Infrastructure', link: '/infrastructure/cloud', dev: true },
             { text: 'DDoS Protection', link: '/infrastructure/ddos-protection', dev: true },
-            { text: 'DNS and Domain Registration', link: '/infrastructure/dns-and-domain-registration', dev: true },
+            {
+              text: 'Domain & DNS Security',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
+                { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
+                { text: 'DNSSEC, CAA, and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
+                { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
+                { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
+              ]
+            },
             { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management', dev: true },
             { text: 'Network Security', link: '/infrastructure/network-security', dev: true },
             { text: 'Operating System Security', link: '/infrastructure/operating-system-security', dev: true },
@@ -180,24 +227,21 @@ const config = {
           text: 'Incident Management',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/incident-management/overview', dev: true },
-            { text: 'Communication Strategies', link: '/incident-management/communication-strategies', dev: true },
-            { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response', dev: true },
-            { text: 'Lessons Learned', link: '/incident-management/lessons-learned', dev: true },
-            { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines' },
-            { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir' },
+            { text: 'Overview', link: '/incident-management/overview' },
+            { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
+            { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
+            { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
             {
               text: 'Playbooks',
               collapsed: false,
-              dev: true,
               items: [
-                { text: 'Overview', link: '/incident-management/playbooks/overview', dev: true },
-                { text: 'Malware Infection', link: '/incident-management/playbooks/malware', dev: true },
-                { text: 'North Korea (DPRK) Attack', link: '/incident-management/playbooks/hacked-dprk', dev: true },
-                { text: 'Wallet Drainer Attack', link: '/incident-management/playbooks/hacked-drainer', dev: true },
-                { text: 'ELUSIVE COMET Attack', link: '/incident-management/playbooks/hacked-elusive-comet', dev: true },
-                { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines', dev: true },
-                { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir', dev: true },
+                { text: 'Overview', link: '/incident-management/playbooks/overview' },
+                { text: 'Malware Infection', link: '/incident-management/playbooks/malware' },
+                { text: 'North Korea (DPRK) Attack', link: '/incident-management/playbooks/hacked-dprk' },
+                { text: 'Wallet Drainer Attack', link: '/incident-management/playbooks/hacked-drainer' },
+                { text: 'ELUSIVE COMET Attack', link: '/incident-management/playbooks/hacked-elusive-comet' },
+                { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines' },
+                { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir' },
               ]
             },
           ]
@@ -367,6 +411,26 @@ const config = {
       ]
     },
     {
+      text: 'SEAL Certifications',
+      collapsed: false,
+      items: [
+        { text: 'Overview', link: '/certs/overview' },
+        { text: 'Certified Partners', link: '/certs/certified-partners' },
+        { text: 'Certified Protocols', link: '/certs/certified-protocols', dev: true },
+        {
+          text: 'SEAL Certification Frameworks', collapsed: true, items: [
+            { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
+            { text: 'Incident Response', link: '/certs/sfc-incident-response' },
+            { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
+            { text: 'Treasury Operations', link: '/certs/sfc-treasury-ops' },
+            { text: 'Workspace Security', link: '/certs/sfc-workspace-security' },
+          ]
+        },
+        { text: 'Certification Guidelines', link: '/certs/certification-guidelines' },
+        { text: 'Contributions', link: '/certs/contributions' },
+      ]
+    },
+    {
       text: 'About this',
       collapsed: false,
       items: [
@@ -410,7 +474,7 @@ function filterDevItems(items: any[]): any[] {
     }))
 }
 
-if (process.env.VERCEL_GIT_COMMIT_REF === 'main') {
+if (process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main') {
   config.sidebar = filterDevItems(config.sidebar)
 }
 
