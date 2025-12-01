@@ -1,0 +1,38 @@
+---
+title: "Linear - Individual"
+tags:
+  - Business Tools
+  - Individual Security
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Linear Configuration Guide
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> This checklist is adapted from [Auditware's W3OSC](https://github.com/AuditWare-io/W3OSC) standards.
+
+## Individual Account Settings
+
+- Settings >
+    - [ ]  Sessions, Personal API keys, & Authorized Applications > **Review and remove any unnecessary or unrecognized**
+    - [ ]  Passkeys > Add a passkey (recommended)
+	- [ ]  Connected Accounts > **Review and remove any unnecessary or unrecognized**
+
+---
+
+**Related**: For workspace-level Linear security, see the [Organization Linear Guide](/account-security/organizations/linear).
+
+---
+
+</TagProvider>
+<ContributeFooter />
+

@@ -1,0 +1,40 @@
+---
+title: "Mercury - Individual"
+tags:
+  - Business Tools
+  - Individual Security
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Mercury Configuration Guide
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> This checklist is adapted from [Auditware's W3OSC](https://github.com/AuditWare-io/W3OSC) standards.
+
+## Individual Account Settings
+
+- Personal >
+    - Security >
+        - [ ]  Two-factor authentication > **On**
+        - [ ]  Active sessions > **Review and remove any unused or unrecognized**
+        - [ ]  Linked profiles > **Review and remove any unnecessary or unrecognized**
+        - [ ]  Remembered devices > **Review and remove any unused or unrecognized**
+
+---
+
+**Related**: For company-level Mercury settings, see the [Organization Mercury Guide](/account-security/organizations/mercury).
+
+---
+
+</TagProvider>
+<ContributeFooter />
+

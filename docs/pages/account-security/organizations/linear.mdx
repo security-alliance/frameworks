@@ -1,0 +1,39 @@
+---
+title: "Linear - Organization"
+tags:
+  - Business Tools
+  - Organization Security
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Linear Configuration Guide
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> This checklist is adapted from [Auditware's W3OSC](https://github.com/AuditWare-io/W3OSC) standards.
+
+## Admin Settings
+
+- [ ]  Administration >
+    - [ ]  Members > **Review and remove any unnecessary or unrecognized**
+    - **Security >**
+        - [ ]  Invite links > **Off**
+        - [ ]  Approved email domains > **Review and remove any unnecessary or unrecognized**
+        - [ ]  Workspace restrictions > **Restrict all**
+        - [ ]  Integrations & applications > **Control third-party applications**
+    - [ ]  API > OAuth Applications, Webhooks, & Member API keys > **Review and remove any unnecessary or unrecognized**
+    - [ ]  Applications > **Review and remove any unnecessary or unrecognized**
+
+---
+
+</TagProvider>
+<ContributeFooter />
+

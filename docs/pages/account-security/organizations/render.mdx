@@ -1,0 +1,33 @@
+---
+title: "Render - Organization"
+tags:
+  - DevOps Accounts
+  - Organization Security
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Render Configuration Guide
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> This checklist is adapted from [Auditware's W3OSC](https://github.com/AuditWare-io/W3OSC) standards.
+
+## Workspace Settings
+
+- Workspace Settings >
+    - [ ]  Team Members > **Review and remove any unnecessary or unrecognized**
+    - [ ]  Audit Logs > It is highly recommended that you sign up for an **Organization or Enterprise** plan in order to enable this
+
+---
+
+</TagProvider>
+<ContributeFooter />
+

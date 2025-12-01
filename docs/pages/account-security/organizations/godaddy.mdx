@@ -1,0 +1,35 @@
+---
+title: "GoDaddy - Organization"
+tags:
+  - DevOps Accounts
+  - Organization Security
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# GoDaddy Configuration Guide
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> This checklist is adapted from [Auditware's W3OSC](https://github.com/AuditWare-io/W3OSC) standards.
+
+## Domain Security
+
+- [ ]  Domain Settings > DNS > DNSSEC > **On**
+
+---
+
+**Related**: For comprehensive DNS security guidance, see [Infrastructure - Domain & DNS Security](/infrastructure/domain-and-dns-security/overview).
+
+---
+
+</TagProvider>
+<ContributeFooter />
+

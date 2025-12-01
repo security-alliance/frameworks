@@ -1,0 +1,43 @@
+---
+title: "Notion - Individual"
+tags:
+  - Business Tools
+  - Individual Security
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Notion Configuration Guide
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> This checklist is adapted from [Auditware's W3OSC](https://github.com/AuditWare-io/W3OSC) standards.
+
+## Individual Account Settings
+
+- Account Settings:
+    - [ ]  My account > Password > If enabled (not using SSO), Enable **2-step verification**
+        - Use **Code from authenticator**
+        - DO NOT use **Text me a code**
+    - [ ]  My account > Support access > **Disabled**
+    - [ ]  My account > Devices > Log out of any unnecessary
+    - [ ]  My settings > Privacy > Cookie Settings > Only **Strictly necessary**
+    - [ ]  My settings > Privacy > Profile discoverability > **Disabled**
+    - [ ]  My connections > Review and disconnect any unnecessary
+
+---
+
+**Related**: For workspace-level Notion security, see the [Organization Notion Guide](/account-security/organizations/notion).
+
+---
+
+</TagProvider>
+<ContributeFooter />
+

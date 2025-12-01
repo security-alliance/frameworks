@@ -1,0 +1,35 @@
+---
+title: "Mercury - Organization"
+tags:
+  - Business Tools
+  - Organization Security
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Mercury Configuration Guide
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> This checklist is adapted from [Auditware's W3OSC](https://github.com/AuditWare-io/W3OSC) standards.
+
+## Company Settings
+
+- Company >
+    - [ ]  Controls > ACH authorization > **On**
+    - [ ]  Approvals > Dual admin approval > **On**
+    - [ ]  Integrations > **Review and remove any unused or unrecognized**
+    - [ ]  API Tokens > **Review and remove any unused or unrecognized**
+
+---
+
+</TagProvider>
+<ContributeFooter />
+
