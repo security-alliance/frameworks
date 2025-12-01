@@ -54,6 +54,7 @@ authorize the movement of funds or execute a privileged action.
 - All signers must use hardware wallets
 - Multisigs managing assets on behalf of a DAO should set unlimited allowance with primary DAO agent
 - Signers on multisigs with critical protocol configuration or security roles are discouraged from using their addresses for other purposes. They should create a brand new wallet for that purpose instead.
+- All signing wallets should be monitored for any activity that is not directly related to multi-sig operations.
 - No multisigs should use modules/guards except those mentioned in [Setup & Configuration → Modules & Guards](/multisig-for-protocols/setup-and-configuration#modules--guards) unless clear justification and security review is provided
 - Threshold exceptions can be made for multisigs that are used in frequent operations but are highly constrained by smart contracts. For example, rate setting operations with tight bounds and a backup recovery mechanism to replace the multisig.
 
@@ -69,13 +70,11 @@ The security of a multisig depends entirely on the operational security (OpSec) 
 - Assigning signer keys to different trusted individuals within an organization.
 - Using diverse client software to interact with the multisig to mitigate single-point-of-failure risks from a software vulnerability.
 
-#### Signer Role Diversity
+#### Signer Composition Requirements
 
-Signers should be diverse individuals to reduce risk of multiple compromised accounts - a mix of executives, developers, and operational roles is recommended.
-
-#### External Party Signers
-
-Multi-sigs managing high value wallets and contracts should have at least 1 additional required signer that is external to the organization (such as a security partner or trusted advisor).
+- **Role Diversity**: Signers should be diverse individuals to reduce risk of multiple compromised accounts - a mix of executives, developers, and operational roles is recommended
+- **Technical Expertise**: Include a high number of competent, well-vetted technical signers that will understand full transaction details and effects in your signing quorum
+- **External Parties**: Multi-sigs managing high value wallets and contracts should have at least 1 additional required signer that is external to the organization (such as a security partner or trusted advisor)
 
 ### Communication & Documentation
 

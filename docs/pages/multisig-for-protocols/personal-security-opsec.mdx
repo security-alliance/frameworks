@@ -65,7 +65,19 @@ Example: random44@gmail is tied to your AppleID, and you are only logged in (the
 
 ### Dedicated Signing Machines
 
-Multi-sig operations must be performed on devices dedicated only to these transactions and verification tools. All network access should be default blocked, with only the minimum necessary IPs to execute these transaction signatures allowed. Signing devices must be operated on private, authenticated networks or over trusted VPNs.
+- Multi-sig operations must be performed on devices dedicated only to these transactions and verification tools
+- All network access should be default blocked, with only the minimum necessary IPs to execute these transaction signatures allowed
+- Signing devices must be operated on private, authenticated networks or over trusted VPNs
+
+### Air-Gapped Machine Options
+
+- For highest security, physically remove or disable the network interface
+- Use USB drives (with strict auto-run restrictions) or QR codes to transfer transaction data
+
+### Advanced OS-Level Controls
+
+- Consider employing SELinux or similar tools for advanced security configurations
+- Restrict file system access and inter-process communications
 
 ### Network Monitoring Tools
 

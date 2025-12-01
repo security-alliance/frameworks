@@ -124,5 +124,9 @@ After completing setup:
 
 Implement monitoring and alerting systems to be immediately notified of any on-chain activity related to the multisig, including proposed transactions, new signatures, and owner changes (e.g., using tools like [Safe Watcher](https://github.com/Gearbox-protocol/safe-watcher)).
 
+### Immutable Monitoring Channels
+
+Monitoring channels (e.g. email, Slack or Telegram chats) must be immutable (or trigger alerts when their configuration changes or logs are deleted/tampered with) and redundant such that an admin could not disable or tamper with one monitoring channel without generating an alert on the other channel.
+
 </TagProvider>
 <ContributeFooter />
