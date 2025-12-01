@@ -1,0 +1,63 @@
+---
+title: "Treasury Operations Security"
+tags:
+  - Treasury Ops
+  - Operations
+  - Risk Management
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import {
+  TagList,
+  AttributionList,
+  TagProvider,
+  TagFilter,
+  ContributeFooter,
+} from "../../../components";
+
+<TagProvider>
+<TagFilter />
+
+# Treasury Operations Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 💡 Institutional-grade security frameworks for managing custodial treasury accounts and large cryptocurrency transfers
+
+## What is Treasury Operations Security?
+
+Treasury operations security provides protocols and frameworks for organizations managing significant cryptocurrency holdings through custodial accounts. These guides help you classify accounts by risk, implement appropriate security controls, maintain proper documentation, and execute large transfers safely.
+
+## Core Components
+
+### [Classification Framework](./classification)
+
+Assess and classify custodial accounts based on financial impact and operational requirements. Determine appropriate security controls, approval thresholds, and monitoring levels for each account.
+
+### [Registration Documents](./registration-documents)
+
+Standardized templates for registering custodial accounts, tracking access changes, documenting security configurations, and performing quarterly reviews.
+
+### [Enhanced Controls](./enhanced-controls)
+
+Additional security measures for high-risk and critical accounts, including MPC recommendations, zero-trust architecture, and advanced monitoring.
+
+### [Transaction Verification](./transaction-verification)
+
+Step-by-step protocols for receiving and sending large cryptocurrency transfers, including address verification, test transactions, and multi-party confirmation requirements.
+
+## Getting Started
+
+1. **Classify your accounts** using the [Classification Framework](./classification) to determine risk levels
+2. **Register each account** using the [Registration Documents](./registration-documents) templates
+3. **Implement controls** based on classification, with [Enhanced Controls](./enhanced-controls) for high-risk accounts
+4. **Follow verification protocols** from [Transaction Verification](./transaction-verification) for all large transfers
+
+---
+
+</TagProvider>
+<ContributeFooter />
+
