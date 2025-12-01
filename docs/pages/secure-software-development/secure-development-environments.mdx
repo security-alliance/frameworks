@@ -10,7 +10,7 @@ contributors:
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
-# Devcontainers & Secure Development Environments
+# Secure Development Environments
 
 <TagProvider>
 <TagFilter />
@@ -31,42 +31,47 @@ Developers often hold high-value access:
 
 A compromise on a single developer machine can escalate into a full organization breach.
 
+### Common Risk Scenarios
+
+1. **Recruitment Scams:** Fake assignments designed to steal credentials or implant malware.
+
+2. **Malicious Dependencies:** Supply-chain attacks via typosquatting or compromised packages that run hidden install or build scripts.
+
+3. **Auto-Executing Tooling:** IDEs, language servers, or build systems that automatically run code when a project is opened or dependencies are installed.
+
+4. **Embedded Setup Scripts:** Convenience helpers like setup.sh or Docker build steps that assume trust and are often executed without review.
+
+5. **Git Hook Abuse:** Hidden automation in .git/hooks or .husky/ that triggers on clone, commit, or push to hijack SSH or exfiltrate tokens.
+
+> When in doubt: isolate first, inspect second, execute last.
+
 ## Running Untrusted Code Safely
 
 Even source code can execute malicious behavior — during install, build, or developer tooling automation.
 
-### Common Risk Scenarios
+| Scenario | Risk Level | Isolation Method |
+| --- | --- | --- |
+| Recruitment Assignment | High | Codespace or VM |
+| Testing established open-source library | Medium | Devcontainer |
+| Running internal company code | Low | Devcontainer / Standard Environment |
 
-1. **Recruitment Scams**  
-   Fake assignments designed to steal credentials or implant malware.
+### Local Isolation
 
-2. **Malicious Dependencies**  
-   Supply-chain attacks via typosquatting or compromised packages that run hidden install or build scripts.
-
-3. Auto-Executing Tooling
-IDEs, language servers, or build systems that automatically run code when a project is opened or dependencies are installed.
-
-4. Embedded Setup Scripts
-Convenience helpers like setup.sh or Docker build steps that assume trust and are often executed without review.
-
-5. Git Hook Abuse
-Hidden automation in .git/hooks or .husky/ that triggers on clone, commit, or push to hijack SSH or exfiltrate tokens.
-
-> When in doubt: isolate first, inspect second, execute last.
-
-## Local Isolation: Devcontainers
+#### Devcontainers
 
 Devcontainers provide a reproducible environment using Docker sandboxing.
 
-### Benefits  
+**Benefits**  
+
 - Filesystem isolation  
 - Consistent tooling  
-- Disposable environments  
+- Disposable & fully reproducible environments  
 
-### Caveats  
+**Caveats**  
+
 - Misconfigured containers may share host network or secrets
 
-### Before You Run a Devcontainer
+**Before You Run a Devcontainer**
 
 - Review `.devcontainer.json` for:
   - Root privilege use
@@ -80,9 +85,63 @@ Devcontainers provide a reproducible environment using Docker sandboxing.
 
 Frameworks provides a hardened default devcontainer to standardize secure development.
 
-## Cloud Isolation: Codespaces
+#### Userspace Isolation
 
-Codespaces extend devcontainers into cloud-hosted secure environments.
+Userspace isolation tools like firejail or bubblewrap can sandbox processes without full containerization. They operate using Linux namespace and seccomp filtering, resulting in lower overhead and faster setup.
+
+```bash
+# https://firejail.wordpress.com/documentation-2/firefox-guide/
+# 
+# Launches a "fresh install" of Firefox with no access to local files,
+# no system access, custom DNS, and no saved data. 
+firejail --private --dns=1.1.1.1 --dns=9.9.9.9 firefox -no-remote
+
+# Launches a "work" profile with write-access to the ~/work directory for
+# a persistent isolated profile. 
+firejail --private=/home/username/work firefox -no-remote
+```
+
+**Benefits**
+
+- Filesystem isolation
+- Network isolation
+- Lower overhead than full containers
+
+**Caveats**
+
+- Non-reproducible environments
+- More complex for repeated use
+- Requires Linux host
+
+**Best Practices**
+
+- Use to quickly sandbox untrusted scripts or tools
+- Before running ensure maximal isolation is enabled
+
+#### Virtual Machines
+
+For maximum local isolation, consider virtual machines using tools like VirtualBox or VMware. VMs provide full kernel and hardware isolation at the cost of higher resource usage. Software running inside a VM has no access to the host system unless explicitly shared, and VMs can be easily reset to a clean state.
+
+For particularly sensitive environments, consider using dedicated hardware or a VM hypervisor like Qubes OS that enforce strong compartmentalization between different tasks.
+
+**Benefits**
+
+- Full Kernel Isolation
+- Strong, explicit security boundaries
+- Disposable environments
+
+**Caveats**
+
+- High resource usage
+- Slower setup and teardown
+
+**Best Practices**
+
+- Use for highly sensitive or untrusted code, especially from unknown and unverified sources
+
+### Cloud Isolation: Codespaces
+
+Codespaces extend devcontainers into cloud-hosted secure environments. They make it much easier to run untrusted code without risking local machine compromise compared to VMs or hardware isolation.
 
 - Stronger isolation from host machine  
 - Ideal for evaluating unknown contributors or external code  
@@ -99,14 +158,79 @@ Browsers and extensions are prime targets for credential theft and wallet compro
 **Best Practices**
 
 - Use a **separate browser or profile** for development
+  - Consider using a dedicated browser install or a userspace-isolated profile with Firejail/Bubblewrap
 - Disable or isolate sensitive extensions
 - If blockchain wallets are required:
   - Use a **development-only** wallet
   - Never store real value assets in dev environments
 
-If separation isn’t possible:
-- Use Incognito mode with extensions disabled
+## Example Profiles
 
+### Frontend Developer
+
+Focuses on frontend applications with moderate risk. Requires access to a backend API and deployment pipelines.
+
+- **Development:** Use Codespaces or Devcontainers for reproducible and isolated environments while developing.
+- **Backend Access:** Use development-only credentials stored in a basic [secret manager](./secret-management.mdx) or environment variables.
+- **Browser:** Use any browser profile with extensions disabled when they may impact site rendering.
+- **Deployment:** Automated deployments via CI/CD with no production database access.
+
+### Fullstack Developer
+
+Focuses on both frontend and backend development. Requires write access to the database and deployment systems.
+
+- **Development:** Use Codespaces or Devcontainers to isolate development environments.
+- **Backend Access:** Develop against a local or staging database. Use a [secret manager](./secret-management.mdx) for sensitive credentials.
+- **Deployment:** Deploy via CI/CD pipelines with no direct production database or production access.
+
+### Smart Contract Developer
+
+Focuses on blockchain and smart contract development. Requires access to test networks and wallet management.
+
+- **Development:** Use Codespaces or Devcontainers for isolated environments.
+- **Wallets:** Use development-only wallets with no real assets.
+- **Chain:** Use testnet or local forks like Anvil to avoid leaking data.
+- **Deployment:** Deploy smart contracts from a production-only account via CI/CD or a deployer multisig.
+
+### Security Researcher
+
+Analyzes untrusted code, libraries, or dependencies. May actively handle malicious code, so requires maximum isolation to prevent host compromise.
+
+- **Development:** Use cloud Codespaces or local VMs for maximum isolation with snapshot capability.
+- **Network:** Disable network access when analyzing malware or use isolated network segments.
+- **Browser:** Use isolated browser within Codespace or VM; never use personal browser.
+- **Credentials:** Never use real credentials, tokens, or SSH keys in analysis environments.
+
+## Tools & Solutions
+
+### Local Isolation
+
+| Tool | Description | Best For |
+| --- | --- | --- |
+| [Devcontainers](https://containers.dev/) | Reproducible containerized development environments | Standardized team environments |
+| [Firejail](https://firejail.wordpress.com/) | Linux userspace sandboxing tool | Quick isolation of untrusted code |
+| [Bubblewrap](https://wiki.archlinux.org/title/Bubblewrap) | Lightweight sandboxing for Linux | Isolating individual applications |
+
+### Cloud Isolation
+
+| Tool | Description | Best For |
+| --- | --- | --- |
+| [GitHub Codespaces](https://github.com/features/codespaces) | Cloud-hosted devcontainers integrated with GitHub | Isolated development for GitHub projects |
+
+### Browser Isolation
+| Tool | Description | Best For |
+| --- | --- | --- |
+| Browser Profiles | Separate browser profiles for development | Isolating development from personal browsing |
+| Separate Browsers | Dedicated browser installs for development | Full separation of development and personal use |
+| [Firejail](https://wiki.archlinux.org/title/Firejail)/[Bubblewrap](https://wiki.archlinux.org/title/Bubblewrap) | Userspace sandboxing for browsers | Fully isolating browser sessions with system sandboxing |
+
+### Virtual Machine Isolation
+
+| Tool | Description | Best For |
+| --- | --- | --- |
+| [VirtualBox](https://www.virtualbox.org/) | Free, cross-platform VM hypervisor | General-purpose VM isolation |
+| [VMware](https://www.vmware.com/) | Enterprise-grade VM solutions | Professional/enterprise use |
+| [Qubes OS](https://www.qubes-os.org/) | Security-focused OS with VM compartmentalization | Maximum security compartmentalization |
 
 <ContributeFooter />
 </TagProvider>
