@@ -1,0 +1,58 @@
+---
+title: "Secure Devcontainers"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [robert]
+benchmarks:
+  - title: "Check host mounts"
+    description: >
+      Ensure the container only mounts your workspace.  
+      No access to sensitive host paths like `/`, `/home`, `.ssh`, or `/var/run/docker.sock`.
+
+  - title: "Network Isolation"
+    description: >
+      By default fully isolate devcontainers from the network. If network access is required, 
+      alloy only specific hosts or ports, avoid LAN access, and avoid binding container ports 
+      to the host.
+
+  - title: "Inspect setup scripts"
+    description: >
+      Review `Dockerfile`, `devcontainer.json`, and any post-create commands.  
+      Look for unsafe commands such as `sudo`, `--privileged`, or `curl | bash`.
+
+  - title: "Verify base image"
+    description: >
+      Confirm the base image is from a trusted source and pinned to a version or digest.  
+      Avoid unverified or `latest` tags.
+
+  - title: "Run as non-root"
+    description: >
+      The container should run as a normal user (like `vscode` or `developer`), not as root.
+
+  - title: "Use isolation"
+    description: >
+      If uncertain, open untrusted repositories in remote or disposable environments  
+      (e.g., Codespaces, sandbox VMs) rather than your main machine.
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, BenchmarkList } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Devcontainer Security Checklist
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+While devcontainers can improve security, a maliciously or incorrectly configured devcontainer can still break the sandbox and access your system.  When using pre-built devcontainers you should always inspect the `.devcontainer.json` before running.  Did you check frameworks' devcontainer?
+
+<BenchmarkList benchmarks={frontmatter.benchmarks} />
+
+For more information on devcontainer security, consider reviewing other [security](https://some-natalie.dev/blog/securing-devcontainers) [checklists](https://www.sentinelone.com/cybersecurity-101/cloud-security/container-security-checklist/#the-10-key-container-security-checklists), or use [theredguild's devcontainer](https://github.com/theredguild/devcontainer) as a starting point for your own.
+
+</TagProvider>
+<ContributeFooter />
