@@ -5,7 +5,7 @@ tags:
   - Security Specialist
 contributors:
   - role: wrote
-    users: [robert]
+    users: [robert, njelich]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -18,35 +18,95 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Secure development environments reduce the risk of compromise when working with untrusted or unpredictable code. This section covers practical ways to contain risk using Devcontainers, Codespaces, and basic browser hygiene.
+Secure development environments reduce the risk of compromise when working with untrusted or unpredictable code. This guide focuses on practical sandboxing strategies using Devcontainers, Codespaces, and secure browser practices.
 
-## Securely Running Untrusted Code
+## Why Secure Development Environments Matter
 
-### When you might need this
+Developers often hold high-value access:
 
-Developers routinely execute unverified code. We (mostly) know not to run random binaries.  But we often forget that source code *is* executable code.
-1. **Recruitment Scams** use fake job offers or "technical assignments" to trick developers into running infected code. Once ran, the infected repo can compromise the developer's machine and expose private code or credentials.
-2. **Malicious Dependencies** mimic trusted packages or infiltrate supply chains. When installed, they execute hidden and malicious code that can steal secrets or tamper with builds.
+- SSH keys and access tokens
+- Private codebases
+- CI/CD systems
+- Deployment pipelines
 
-### Devcontainers
+A compromise on a single developer machine can escalate into a full organization breach.
 
-Devcontainers are locally run development environments packaged as docker containers. They provide consistent, declarative and isolated environments for software development. Since they're built on docker, devcontainers share the same sandboxing and security model with network and filesystem isolation.
+## Running Untrusted Code Safely
 
-Devcontainers can be used to improve security and reliability for most projects without introducing developer complexity. For instructions on how to setup devcontainers [theredguild](https://blog.theredguild.org/where-do-you-run-your-code/) offers an excellent introduction.
+Even source code can execute malicious behavior — during install, build, or developer tooling automation.
 
-Importantly, while devcontainers can improve isolation, they won't always. Before running a new devcontainer you should inspect the `.devcontainer.json` to ensure sandboxing. Review [Devcontainer Security](./devcontainer-security.mdx) for more information.
+### Common Risk Scenarios
 
-For security and convenience, Frameworks provides a [devcontainer](.devcontainer/Dockerfile) for local development. In addition to the security benefits Devcontainers also standardize development environments so it doesn't just "work on my machine."
+1. **Recruitment Scams**  
+   Fake assignments designed to steal credentials or implant malware.
 
-### Codespaces
+2. **Malicious Dependencies**  
+   Supply-chain attacks via typosquatting or compromised packages that run hidden install or build scripts.
 
-Codespaces are cloud-hosted devcontainers. Like devcontainers they provide a declarative and isolated environment. However, since codespaces aren't run on your machine, they can be more secure when granting the containers access to external systems (IE network or filesystem). Popular codespaces include [Github Codespace](https://github.com/features/codespaces) and the self-hosted [coder](https://coder.com/).
+3. Auto-Executing Tooling
+IDEs, language servers, or build systems that automatically run code when a project is opened or dependencies are installed.
 
-Codespaces can be used when you're willing to give up some convenience for increased security. They should be used when running completely untrusted code, for example if running code from a recruiter or someone you don't know. When uncertain, prefer disposable environments that can be recreated from scratch after each session
+4. Embedded Setup Scripts
+Convenience helpers like setup.sh or Docker build steps that assume trust and are often executed without review.
 
-## Browser Security
+5. Git Hook Abuse
+Hidden automation in .git/hooks or .husky/ that triggers on clone, commit, or push to hijack SSH or exfiltrate tokens.
 
-Attackers can target your browser extensions to steal private keys or propose malicious transactions. Best practice is to maintain a separate browser / browser profile for development. If a wallet is required, use a development wallet that only holds as much as you are comfortable loosing. If using a separate browser profile is impractical, you can use incognito mode after ensuring all sensitive extensions are disabled.
+> When in doubt: isolate first, inspect second, execute last.
 
-</TagProvider>
+## Local Isolation: Devcontainers
+
+Devcontainers provide a reproducible environment using Docker sandboxing.
+
+### Benefits  
+- Filesystem isolation  
+- Consistent tooling  
+- Disposable environments  
+
+### Caveats  
+- Misconfigured containers may share host network or secrets
+
+### Before You Run a Devcontainer
+
+- Review `.devcontainer.json` for:
+  - Root privilege use
+  - Host mounts
+  - Docker-in-Docker access
+  - Secret exposures
+- Prefer trusted base images
+- Disable unneeded networking (`--network=none`) when possible
+
+> For in-depth configuration: see [Devcontainer Security](./devcontainer-security.mdx)
+
+Frameworks provides a hardened default devcontainer to standardize secure development.
+
+## Cloud Isolation: Codespaces
+
+Codespaces extend devcontainers into cloud-hosted secure environments.
+
+- Stronger isolation from host machine  
+- Ideal for evaluating unknown contributors or external code  
+- Simple to reset to a clean state after use  
+
+See comparison of GitHub Codespaces, Coder, GitPod and DevPod [here](https://www.vcluster.com/blog/comparing-coder-vs-codespaces-vs-gitpod-vs-devpod).
+
+> If you can’t trust the code, don’t run it locally.
+
+## Browser Security for Developers
+
+Browsers and extensions are prime targets for credential theft and wallet compromise.
+
+**Best Practices**
+
+- Use a **separate browser or profile** for development
+- Disable or isolate sensitive extensions
+- If blockchain wallets are required:
+  - Use a **development-only** wallet
+  - Never store real value assets in dev environments
+
+If separation isn’t possible:
+- Use Incognito mode with extensions disabled
+
+
 <ContributeFooter />
+</TagProvider>
