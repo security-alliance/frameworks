@@ -15,7 +15,6 @@ cert:
       objectives, and roles?
   - id: ir-1.1.2
     title: Incident Commander and IR Roles
-    ref: 
     description: Do you have a designated incident commander and incident response team with
       clearly defined roles, responsibilities, and decision-making authority? Is the incident
       commander role clearly established to coordinate response activities, make time-sensitive
@@ -27,7 +26,6 @@ cert:
       strategies for potential attack vectors?
   - id: ir-1.2.2
     title: Designated Signer Roles for Emergency Actions
-    ref: /multisig-for-protocols/registration-and-documentation#registration-template
     description: Do you have designated signer roles with documented authority and procedures
       for executing emergency transactions (pausing, freezing, parameter changes)?
   - id: ir-1.2.3
@@ -45,12 +43,12 @@ cert:
       and reviewing public communications?
   - id: ir-1.3.1
     title: Procedures for Cross-Team Incident Coordination
-    ref: /multisig-for-protocols/communication-setup
+    ref:  /incident-management/communication-strategies
     description: Do you have documented procedures for coordinating between technical teams
       (Core Devs/Auditors) and operational teams (Security Council/Communications) during incidents?
   - id: ir-1.3.2
     title: External Protocol Stakeholder Contact Methods
-    ref: /multisig-for-protocols/communication-setup
+    ref: /incident-management/communication-strategies
     description: Do you maintain contact methods & communication channels for external companies
       that run protocols you depend on, or that depend on your protocol?
 - id: ir-2
@@ -59,7 +57,6 @@ cert:
   controls:
   - id: ir-2.1.1
     title: 24/7 Monitoring and After-Hours Procedures
-    ref: /multisig-for-protocols/setup-and-configuration#active-monitoring
     description: Do you maintain documented monitoring coverage for critical systems, protocols,
       and infrastructure components with 24/7 capabilities and procedures for after-hours alert
       handling?
@@ -84,7 +81,6 @@ cert:
       and forensic analysis?
 - id: ir-3
   title: Pager Systems & Escalation
-  ref: /multisig-for-protocols/communication-setup#paging-system-criticalemergency-multisigs
   controls:
   - id: ir-3.1.1
     title: Redundant Paging Systems with Testing
@@ -127,7 +123,6 @@ cert:
       including signer availability and cross-timezone challenges?
   - id: ir-4.2.1
     title: Documented Criteria for Major Response Decisions
-    ref: 
     description: Do you have documented criteria for major response decisions (system shutdown,
       public disclosure, external assistance) and escalation policies for when to engage leadership?
   - id: ir-4.2.2
@@ -143,7 +138,7 @@ cert:
   controls:
   - id: ir-5.1.1
     title: Multiple Channels for Global Signer Reach
-    ref: /multisig-for-protocols/communication-setup
+    ref: /incident-management/communication-strategies
     description: Do you maintain multiple communication channels (primary and backup) with documented
       procedures for reaching signers across time zones, including during emergencies?
   - id: ir-5.2.1
@@ -156,7 +151,7 @@ cert:
       with minimal coordination time?
   - id: ir-5.2.3
     title: Multiple Signing Methods and Backups
-    ref: /wallet-security/secure-multisig-best-practices/#operational-best-practices
+    ref: /wallet-security/secure-multisig-best-practices/#setup-best-practices
     description: Do you maintain multiple signing methods and backup procedures for signers
       transaction execution?
   - id: ir-5.2.4
@@ -197,7 +192,6 @@ cert:
   controls:
   - id: ir-7.1.1
     title: Regular Incident Response Drills and Evaluation
-    ref: /multisig-for-protocols/emergency-procedures#emergency-drill-procedures
     description: Do you conduct regular incident response drills that test pager systems, escalation
       procedures, team coordination, monitoring systems, containment procedures, and recovery
       processes? Do you evaluate drill performance, identify gaps, and track improvement actions

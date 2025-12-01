@@ -41,7 +41,6 @@ cert:
       and DNS hosting providers?
 - id: dns-3
   title: Access Control & Authentication
-  ref: /infrastructure/domain-and-dns-security/registrar-and-locks#multi-factor-authentication
   controls:
   - id: dns-3.1.1
     title: Procedures for Registrar Access
@@ -86,6 +85,7 @@ cert:
       violations?
   - id: dns-4.3.1
     title: Documented Domain Lock Procedures
+    ref: /infrastructure/domain-and-dns-security/registrar-and-locks#registry-lock-epp-lock
     description: Do you maintain documented procedures for implementing domain locks (transfer
       locks, registry locks, EPP status codes)?
   - id: dns-4.3.2
@@ -107,7 +107,6 @@ cert:
       and expiration prevention (auto-renewal, multiple reminders, backup payment methods)?
   - id: dns-5.1.2
     title: Secure Domain Transfer Procedures
-    ref: /infrastructure/domain-and-dns-security/registrar-and-locks#registry-lock-epp-lock
     description: Do you maintain documented procedures for secure domain transfers between registrars?
   - id: dns-5.2.1
     title: DNS Change Management Procedures
@@ -123,7 +122,6 @@ cert:
       all critical domains?
   - id: dns-6.1.2
     title: DNS Compromise Indicators Monitoring
-    ref: /infrastructure/domain-and-dns-security/monitoring-and-alerting/#passive-dns-monitoring
     description: Do you monitor for specific indicators of DNS compromise (TTL changes, nameserver
       modifications, record anomalies)?
   - id: dns-6.1.3
@@ -133,7 +131,6 @@ cert:
       unauthorized certificate issuance?
   - id: dns-6.2.1
     title: Unauthorized Domain Registration Monitoring
-    ref: /infrastructure/domain-and-dns-security/registrar-and-locks#registry-lock-epp-lock
     description: Do you monitor domain registration status and registrar lock settings for unauthorized
       changes?
   - id: dns-6.2.2
