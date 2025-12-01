@@ -5,17 +5,23 @@
     "Cloud",
     "Community & Marketing",
     "DAO",
+    "DeFi",
     "Devops",
     "Engineer/Developer",
     "HR",
     "Legal & Compliance",
+    "Operations",
     "Multisig Security",
     "Operations & Strategy",
     "Protocol",
+    "Risk Management",
     "SEAL/Initiative",
     "SFC",
     "SRE",
     "Security Specialist",
+    "Travel",
+    "Treasury Ops",
+    "Web3",
     "Whitehat"
   ],
   "pageTagsMap": {
@@ -866,6 +872,33 @@
     "/threat-modeling/overview": [
       "Engineer/Developer",
       "Security Specialist"
+    ],
+    "/treasury-operations/classification": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/enhanced-controls": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/overview": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/registration-documents": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/transaction-verification": [
+      "Treasury Ops",
+      "Protocol",
+      "Operations",
+      "Risk Management",
+      "DeFi"
     ],
     "/vulnerability-disclosure/bug-bounties": [
       "Engineer/Developer",

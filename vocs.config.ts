@@ -406,6 +406,18 @@ const config = {
             { text: 'Volume Encryption', link: '/encryption/volume-encryption', dev: true },
           ]
         },
+        {
+          text: 'Treasury Operations',
+          collapsed: false,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/treasury-operations/overview', dev: true },
+            { text: 'Custodial Inventory & Controls', link: '/treasury-operations/classification', dev: true },
+            { text: 'Registration Documents', link: '/treasury-operations/registration-documents', dev: true },
+            { text: 'Enhanced Controls for High-Risk Accounts', link: '/treasury-operations/enhanced-controls', dev: true },
+            { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification', dev: true },
+          ]
+        },
       ]
     },
     {
@@ -417,6 +429,7 @@ const config = {
         { text: 'Certified Protocols', link: '/certs/certified-protocols', dev: true },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
+            { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
             { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
             { text: 'Incident Response', link: '/certs/sfc-incident-response' },
             { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
