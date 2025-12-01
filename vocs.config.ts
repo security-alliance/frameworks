@@ -106,10 +106,12 @@ const config = {
                 { text: 'Overview', link: '/wallet-security/signing-verification' },
                 { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
                 { text: 'Multisig Signing Process', link: '/wallet-security/secure-multisig-signing-process' },
+                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-safe-verification', dev: true },
+                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-squads-verification', dev: true },
                 { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
               ]
             },
-            { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
+            { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
           ]
         },
@@ -134,14 +136,12 @@ const config = {
               text: 'For Signers',
               collapsed: false,
               items: [
-                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
-                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
-
-                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
-                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure' },
-                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
-                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting' },
-                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig', dev: true },
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures', dev: true },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure', dev: true },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec', dev: true },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting', dev: true },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding', dev: true },
               ]
             },
             { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist' },
