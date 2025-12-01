@@ -69,6 +69,14 @@ The security of a multisig depends entirely on the operational security (OpSec) 
 - Assigning signer keys to different trusted individuals within an organization.
 - Using diverse client software to interact with the multisig to mitigate single-point-of-failure risks from a software vulnerability.
 
+#### Signer Role Diversity
+
+Signers should be diverse individuals to reduce risk of multiple compromised accounts - a mix of executives, developers, and operational roles is recommended.
+
+#### External Party Signers
+
+Multi-sigs managing high value wallets and contracts should have at least 1 additional required signer that is external to the organization (such as a security partner or trusted advisor).
+
 ### Communication & Documentation
 
 - In the event of loss of access to keys or potential compromise of keys or communication channels, the signer must immediately notify the other multisig participants and email your security contact - [Incident Reporting](/multisig-for-protocols/incident-reporting)
@@ -113,6 +121,8 @@ owner management on a test network.
 * **Timelocks:** Enforce a mandatory delay between the approval of a transaction and its execution. This provides a
 critical window for the community or team to detect and react to malicious proposals.
 
+* **Veto Quorum:** Establish a smaller veto group separate from the confirmation quorum to review and confirm transaction legitimacy. Organizations can establish veto quorums to bypass time-locks in case of emergency. The standard quorum plus two additional signers should be required to bypass.
+
 * **Role-Based Access Control (RBAC):** Implement modules that grant specific, limited permissions to certain addresses
 (e.g., a "pauser" or "executor" role) without making them full owners, adhering to the principle of least privilege.
 
@@ -143,6 +153,14 @@ related to the multisig, including proposed transactions, new signatures, and ow
 
 * **Documented Procedures:** Maintain clear, secure, and accessible documentation for all multisig procedures, including transaction creation, signing, and emergency recovery plans.
 * **General Signing Guidelines:** Use hardware wallets, dedicated signing profiles, and re-verify before execution. Require a "how to check" guide and communicate status after signing (e.g., "checked, signed, X more required"). Last signer executes when applicable.
+
+## Contract-Level Security
+
+* **Invariant Enforcement:** Design contracts to enforce invariants and expected state changes such as token balance changes, ownership and administration, and proxy implementation addresses. Ensure contracts automatically revert transactions if any invariant is violated.
+
+* **Address Whitelisting:** Approved smart contract and wallet addresses must be added to a whitelist that is enforced at the contract-level. Interactions with all other addresses should be denied and revert the transaction. Updating the whitelist should require an extra signer in addition to the standard transaction approval quorum.
+
+For detailed configuration guidance, see [Setup & Configuration → Contract-Level Controls](/multisig-for-protocols/setup-and-configuration#contract-level-controls).
 
 ## Acknowledgements
 
