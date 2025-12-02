@@ -345,8 +345,9 @@ const config = {
           dev: true,
           items: [
             { text: 'Overview', link: '/secure-software-development/overview', dev: true },
-            { text: 'Devcontainer Security', link: '/secure-software-development/devcontainer-security', dev: true },
+            { text: 'Development Environments', link: '/secure-software-development/secure-development-environments', dev: true },
             { text: 'Secret Management', link: '/secure-software-development/secret-management', dev: true },
+            { text: 'Devcontainer Checklist', link: '/secure-software-development/devcontainer-security', dev: true },
             // { text: 'Secure Coding Standards Guidelines', link: '/secure-software-development/secure-coding-standards-guidelines', dev: true },
             // { text: 'Code Reviews and Peer Audits', link: '/secure-software-development/code-reviews-peer-audits', dev: true },
             // { text: 'Secure Code Repositories and Version Control', link: '/secure-software-development/secure-code-repositories-version-control', dev: true },
