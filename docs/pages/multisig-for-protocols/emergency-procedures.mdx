@@ -10,13 +10,7 @@ contributors:
     users: [pinalikefruit, engn33r]
 ---
 
-import {
-  TagList,
-  AttributionList,
-  TagProvider,
-  TagFilter,
-  ContributeFooter,
-} from "../../../components";
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -41,7 +35,7 @@ When security incidents occur, quick and decisive action is critical. This page 
 ### Recovery Process
 
 1. **Isolate** - Quarantine potentially compromised devices
-2. **New hardware setup** - Set up fresh wallet with new seed following [Hardware Wallet Setup](/multisig-for-protocols/hardware-wallet-setup)
+2. **New hardware setup** - Set up fresh wallet with new seed following [Hardware Wallet Setup](/wallet-security/intermediates-&-medium-funds)
 3. **Coordinate replacement** - Plan signer replacement transaction with team
 4. **Execute replacement** - Replace compromised signer on multisig, following steps for signer rotation in [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices)
 5. **Verify security** - Confirm new setup before resuming operations
@@ -58,14 +52,13 @@ When security incidents occur, quick and decisive action is critical. This page 
 ### Identity Verification Process
 
 Since you can't sign with your key, verify identity through alternative methods:
-
 - **Video call** with other signers
 - **Authentication** via verified social media account
 - **Other pre-arranged verification methods**
 
 ### Replacement Coordination
 
-1. **Generate new hardware wallet** following standard setup procedures in [Hardware Wallet Setup](./hardware-wallet-setup)
+1. **Generate new hardware wallet** following standard setup procedures in [Hardware Wallet Setup](/wallet-security/intermediates-&-medium-funds)
 2. **Verify new address** through identity verification process above
 3. **Coordinate timing** with other signers for replacement transaction
 4. **Execute replacement** once team confirms identity
@@ -76,7 +69,6 @@ Since you can't sign with your key, verify identity through alternative methods:
 ### If Telegram/Signal/Discord Gets Taken Over
 
 #### Immediate Actions
-
 1. **Assume all recent messages are suspect** - Don't trust recent communication
 2. **Use backup channels** to alert team about compromise
 3. **Change passwords** and enable additional security on compromised account
@@ -229,9 +221,10 @@ Current multisig status:
 
 - [Incident Reporting](/multisig-for-protocols/incident-reporting) - Formal incident reporting procedures
 - [Communication Setup](/multisig-for-protocols/communication-setup) - Backup communication channels
-- [Hardware Wallet Setup](/multisig-for-protocols/hardware-wallet-setup) - Device replacement procedures
-- [Seed Phrase Management](/wallet-security/private-key-management) - Key recovery procedures
+- [Hardware Wallet Setup](/wallet-security/intermediates-&-medium-funds) - Device replacement procedures
+- [Seed Phrase Management](/wallet-security/seed-phrase-management) - Key recovery procedures
 - [Personal Security (OpSec)](/multisig-for-protocols/personal-security-opsec) - Account security measures
+
 
 </TagProvider>
 <ContributeFooter />
