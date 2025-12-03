@@ -111,20 +111,20 @@ cert:
     title: DNS Change Validation and Approval
 - id: ws-4
   title: Password & Credential Management
+  ref: /secure-software-development/secret-management
   controls:
   - id: ws-4.1.1
-    description: Do you maintain documented password requirements with risk-based complexity
-      and rotation standards?
-    title: Password Policy Requirements and Rotation
+    description: Do you maintain procedures for credential rotation based on risk, time intervals,
+      or security events?
+    title: Credential Policy Requirements and Rotation
+    ref: /secure-software-development/secret-management#rotation
   - id: ws-4.1.2
     description: Do you have procedures for secure password storage and transmission (password
       managers, encrypted channels)?
     title: Secure Password Storage and Transmission
+    ref: /secure-software-development/secret-management#storage
   - id: ws-4.2.1
-    description: Do you maintain procedures for credential rotation based on risk, time intervals,
-      or security events?
-    title: Credential Rotation Based on Risk
-  - id: ws-4.2.2
+    ref: # TODO
     description: Do you have enhanced controls for high-privilege credentials (admin accounts,
       service accounts, API keys)?
     title: Enhanced Controls for High-Privilege Credentials
