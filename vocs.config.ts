@@ -106,10 +106,12 @@ const config = {
                 { text: 'Overview', link: '/wallet-security/signing-verification' },
                 { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
                 { text: 'Multisig Signing Process', link: '/wallet-security/secure-multisig-signing-process' },
+                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-safe-verification', dev: true },
+                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-squads-verification', dev: true },
                 { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
               ]
             },
-            { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
+            { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
           ]
         },
@@ -134,14 +136,12 @@ const config = {
               text: 'For Signers',
               collapsed: false,
               items: [
-                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
-                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
-
-                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
-                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure' },
-                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
-                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting' },
-                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig', dev: true },
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures', dev: true },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure', dev: true },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec', dev: true },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting', dev: true },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding', dev: true },
               ]
             },
             { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist' },
@@ -406,6 +406,18 @@ const config = {
             { text: 'Volume Encryption', link: '/encryption/volume-encryption', dev: true },
           ]
         },
+        {
+          text: 'Treasury Operations',
+          collapsed: false,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/treasury-operations/overview', dev: true },
+            { text: 'Custodial Inventory & Controls', link: '/treasury-operations/classification', dev: true },
+            { text: 'Registration Documents', link: '/treasury-operations/registration-documents', dev: true },
+            { text: 'Enhanced Controls for High-Risk Accounts', link: '/treasury-operations/enhanced-controls', dev: true },
+            { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification', dev: true },
+          ]
+        },
       ]
     },
     {
@@ -417,6 +429,7 @@ const config = {
         { text: 'Certified Protocols', link: '/certs/certified-protocols', dev: true },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
+            { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
             { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
             { text: 'Incident Response', link: '/certs/sfc-incident-response' },
             { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
