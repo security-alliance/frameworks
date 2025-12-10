@@ -4,17 +4,23 @@
     "Cloud",
     "Community & Marketing",
     "DAO",
+    "DeFi",
     "Devops",
     "Engineer/Developer",
     "HR",
     "Legal & Compliance",
+    "Operations",
     "Multisig Security",
     "Operations & Strategy",
     "Protocol",
+    "Risk Management",
     "SEAL/Initiative",
     "SFC",
     "SRE",
     "Security Specialist",
+    "Travel",
+    "Treasury Ops",
+    "Web3",
     "Whitehat"
   ],
   "pageTagsMap": {
@@ -528,11 +534,6 @@
       "Security Specialist",
       "Multisig Security"
     ],
-    "/multisig-for-protocols/hardware-wallet-setup": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Multisig Security"
-    ],
     "/multisig-for-protocols/implementation-checklist": [
       "Engineer/Developer",
       "Security Specialist",
@@ -871,6 +872,33 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/treasury-operations/classification": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/enhanced-controls": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/overview": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/registration-documents": [
+      "Treasury Ops",
+      "Operations",
+      "Risk Management"
+    ],
+    "/treasury-operations/transaction-verification": [
+      "Treasury Ops",
+      "Protocol",
+      "Operations",
+      "Risk Management",
+      "DeFi"
+    ],
     "/vulnerability-disclosure/bug-bounties": [
       "Engineer/Developer",
       "Security Specialist"
@@ -912,20 +940,30 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/private-key-management": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
     "/wallet-security/secure-multisig-best-practices": [
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer"
     ],
+    "/wallet-security/secure-multisig-safe-verification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/wallet-security/secure-multisig-signing-process": [
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer"
+    ],
+    "/wallet-security/secure-multisig-squads-verification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/wallet-security/seed-phrase-management": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/wallet-security/signing-verification": [
       "Engineer/Developer",

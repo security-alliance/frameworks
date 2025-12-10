@@ -200,8 +200,32 @@
     "twitter": "https://x.com/_SEAL_Org",
     "website": "https://securityalliance.org",
     "company": "SEAL",
-    "job_title": "Frameworks Contributors",
-    "description": "Frameworks Contributors"
+    "job_title": "Frameworks Contributor",
+    "description": "Frameworks Contributor"
+  },
+  "bsamuels453": {
+    "slug": "bsamuels453",
+    "name": "Ben S",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/bsamuels453",
+    "github": "https://github.com/bsamuels453",
+    "twitter": "https://x.com/thebensams",
+    "website": "https://bsamuels.net/",
+    "company": "Trail of Bits",
+    "job_title": "Director of Engineering for Blockchain",
+    "description": "Frameworks Contributor"
+  },
+  "ElliotFriedman": {
+    "slug": "ElliotFriedman",
+    "name": "Elliot",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/ElliotFriedman",
+    "github": "https://github.com/ElliotFriedman",
+    "twitter": "https://x.com/Elliot0x",
+    "website": "https://kleidi.io/",
+    "company": "Solidity Labs",
+    "job_title": "Founder & Engineer",
+    "description": "Frameworks Contributor"
   },
   "isaac": {
     "slug": "isaac",
@@ -250,7 +274,7 @@
     "company": "SEAL | Opsek",
     "job_title": "Founder",
     "description": "Opsek Founder"
-  },  
+  },
   "Raiders0786": {
     "slug": "Raiders0786",
     "name": "Raiders",
