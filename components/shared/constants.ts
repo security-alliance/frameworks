@@ -19,7 +19,11 @@ export const TAG_COLORS: Record<string, string> = {
   'Whitehat': '#571A70',
   'Certifications': '#EA580C',
   'Multisig Security': '#2DD4BF',
-  'SFC': '#9333EA'
+  'SFC': '#9333EA',
+  'DeFi': '#0ce66d',
+  'Operations': '#a1fdaa',
+  'Risk Management': '#933176',
+  'Treasury Ops': '#f00120',
 }
 
 /**
