@@ -15,6 +15,7 @@ const config = {
   ogImageUrl: {
     '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.png'
   },
+  checkDeadlinks: "warn" as const,
   sidebar: [
     {
       text: 'Introduction',
