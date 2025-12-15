@@ -74,6 +74,13 @@ Do not install any other modules or guards without explicit governance approval 
 
 ## Contract-Level Controls
 
+**Advanced Configuration Warning:** The following contract-level controls are advanced security features that can provide additional protection but require careful implementation. Before implementing any guards or modules:
+
+- **Conduct thorough research** on available guard implementations and their compatibility with your multisig setup
+- **Ensure all guards are well-audited** by reputable security firms before deployment
+- **Test extensively** on testnets to verify functionality and edge cases
+- **Understand the risks**: Incorrect configuration or incompatible guards can render your multisig unusable, potentially locking access to funds permanently
+
 ### Address Whitelisting
 
 Approved smart contract and wallet addresses must be added to a whitelist that is enforced at the contract-level. Interactions with all other addresses should be denied and revert the transaction. Updating the whitelist should require an extra signer in addition to the standard transaction approval quorum.
