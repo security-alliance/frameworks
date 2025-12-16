@@ -40,8 +40,12 @@ const CERT_META = {
  * Generate HTML template for a printable checklist
  */
 function generateHTML(title, subtitle, sections, certName) {
-  const sectionCount = sections.length;
-  const controlCount = sections.reduce((sum, s) => sum + s.controls.length, 0);
+  // Sanitize inputs
+  title = escapeHtml(title);
+  subtitle = escapeHtml(subtitle);
+  certName = sanitizeCertName(certName);
+
+  const controlCount = sections.reduce((sum, s) => sum + (s.controls?.length || 0), 0);
 
   return `<!doctype html>
 <html lang="en">
@@ -286,7 +290,7 @@ ${sections.flatMap((s, i) => {
       <div class="section">
         <h2>${title}</h2>
         <ul class="controls">
-${chunk.map(c => `
+${chunk.filter(c => c && typeof c === 'object').map(c => `
           <li class="control">
             <div class="box"></div>
             <div>
@@ -314,12 +318,21 @@ ${chunk.map(c => `
  */
 function escapeHtml(text) {
   if (!text) return '';
-  return text
+  return String(text)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+/**
+ * Sanitize certName for safe use in URLs and filenames
+ * Only allow alphanumeric, hyphens, and underscores
+ */
+function sanitizeCertName(name) {
+  if (!name || typeof name !== 'string') return '';
+  return name.replace(/[^a-zA-Z0-9_-]/g, '');
 }
 
 /**
