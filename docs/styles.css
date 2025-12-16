@@ -113,23 +113,33 @@ details .vocs_Paragraph {
   /* Hide navigation and decorative elements */
   .vocs_Banner,
   .vocs_DesktopTopNav,
+  .vocs_DesktopTopNav_curtain,
+  .vocs_DesktopSearch_search,
   .vocs_MobileTopNav,
   .vocs_Sidebar,
   .vocs_DocsLayout_gutterLeft,
   .vocs_DocsLayout_gutterRight,
+  .vocs_DocsLayout_gutterTop,
+  .vocs_DocsLayout_gutterTop_offsetLeftGutter,
+  .vocs_DocsLayout_gutterTopCurtain,
+  .vocs_DocsLayout_gutterTopCurtain_withSidebar,
   .vocs_Outline,
   .vocs_AiCtaDropdown,
   .vocs_Sidebar_backLink,
   .vocs_Footer,
-  .cert-actions {
+  .cert-actions,
+  .tag-filter {
     display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   /* Full width content */
   .vocs_DocsLayout_content {
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 0.5in !important;
+    padding: 0.3in !important;
   }
 
   /* Clean backgrounds */
@@ -146,13 +156,6 @@ details .vocs_Paragraph {
     print-color-adjust: exact;
   }
 
-  /* Show link URLs */
-  a[href^="http"]:after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
-    color: #555 !important;
-  }
-
   /* Don't break inside these elements */
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
@@ -160,5 +163,44 @@ details .vocs_Paragraph {
 
   pre, blockquote, table {
     page-break-inside: avoid;
+  }
+
+  /* === Certification checklist print styles === */
+
+  /* Hide interactive elements in cert pages */
+  .section-progress,
+  .cert-section-toggle,
+  .control-info-btn,
+  .control-expanded-content,
+  .control-inputs-section {
+    display: none !important;
+  }
+
+  /* Force sections to expand */
+  .cert-section-content {
+    grid-template-rows: 1fr !important;
+  }
+
+  .cert-section-content > * {
+    overflow: visible !important;
+  }
+
+  /* Clean control cards for print */
+  .control-card {
+    padding: 6px 0 !important;
+    border: none !important;
+    border-bottom: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Checkbox styling for print */
+  .control-state-btn {
+    border: 1.5px solid #222 !important;
+    border-radius: 2px !important;
+    background: white !important;
+    color: transparent !important;
   }
 }
