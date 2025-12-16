@@ -15,11 +15,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && vocs dev --host 0.0.0.0 --port 5173",
     "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && vocs build",
-    "postdocs:build": "node utils/searchbar-indexing.js",
+    "postdocs:build": "node utils/searchbar-indexing.js && pnpm run generate-printables",
     "docs:preview": "vocs preview",
     "generate-tags": "node utils/tags-fetcher.js",
     "mermaid-wrapper": "node utils/mermaid-block-wrapper.js",
-    "generate-indexes": "node utils/generate-folder-indexes.js"
+    "generate-indexes": "node utils/generate-folder-indexes.js",
+    "generate-printables": "node utils/generate-printable-checklists.js"
   },
   "keywords": [],
   "author": "",
