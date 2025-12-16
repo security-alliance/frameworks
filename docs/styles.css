@@ -107,3 +107,58 @@ details .vocs_Paragraph {
 .vocs_Outline_item {
     margin-bottom: 0.3rem;
 }
+
+/* Print stylesheet - hide chrome, optimize for paper */
+@media print {
+  /* Hide navigation and decorative elements */
+  .vocs_Banner,
+  .vocs_DesktopTopNav,
+  .vocs_MobileTopNav,
+  .vocs_Sidebar,
+  .vocs_DocsLayout_gutterLeft,
+  .vocs_DocsLayout_gutterRight,
+  .vocs_Outline,
+  .vocs_AiCtaDropdown,
+  .vocs_Sidebar_backLink,
+  .vocs_Footer,
+  .cert-actions {
+    display: none !important;
+  }
+
+  /* Full width content */
+  .vocs_DocsLayout_content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0.5in !important;
+  }
+
+  /* Clean backgrounds */
+  body,
+  .vocs_DocsLayout {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Ensure text is readable */
+  * {
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Show link URLs */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555 !important;
+  }
+
+  /* Don't break inside these elements */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  pre, blockquote, table {
+    page-break-inside: avoid;
+  }
+}
