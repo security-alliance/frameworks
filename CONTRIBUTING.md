@@ -110,7 +110,7 @@ If you prefer to install dependencies locally on your machine:
 
 **Prerequisites:**
 
-- Node.js (v22 or later, [required by vocs](https://github.com/wevm/vocs/blob/main/package.json)) and pnpm (for running Vocs locally)
+- Node.js (v22 or later) and pnpm (for running Vocs locally)
 - [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) (For linting markdown files)
 - [Docker](https://docs.docker.com/get-docker/) (Optional: For running the devcontainer)
 - [GitHub CLI](https://cli.github.com/) (Optional: For using `gh` to interact with GitHub)

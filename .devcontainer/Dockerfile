@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Node.js 22.x (required by vocs >=1.2.0, see https://github.com/wevm/vocs/blob/main/package.json)
+# Install Node.js 22.x (LTS) from NodeSource
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install -y nodejs
 
