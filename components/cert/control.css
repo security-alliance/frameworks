@@ -283,6 +283,24 @@
   transform: scale(0.98);
 }
 
+.cert-print-btn {
+  background: transparent;
+  border-color: var(--border-card);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cert-print-btn:hover {
+  background: var(--bg-card);
+  border-color: var(--color-text-primary);
+}
+
+.cert-print-btn:active {
+  transform: scale(0.98);
+}
+
 /* Error Message */
 .cert-error-message {
   padding: 12px 16px;
