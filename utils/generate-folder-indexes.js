@@ -37,6 +37,12 @@ function toTitleCase(input) {
 function parseFrontmatter(raw) {
   if (matter) {
     return matter(raw).data || {};
+    try {
+      return matter(raw).data || {};
+    } catch (error) {
+      console.warn(`gray-matter failed to parse frontmatter, falling back to basic parser: ${error.message}`);
+      // fall through to basic parser below
+    }
   }
 
   const match = raw.match(/^---\n([\s\S]*?)\n---/);
