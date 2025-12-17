@@ -31,7 +31,8 @@ import {
 
 ## Core Principles
 
-Large cryptocurrency transfers require rigorous verification because transactions are irreversible. This guide covers both receiving and sending significant amounts, with security measures scaling to transfer size.
+Large cryptocurrency transfers require rigorous verification because transactions are irreversible. This guide covers
+both receiving and sending significant amounts, with security measures scaling to transfer size.
 
 ## Part 1: Receiving Large Transfers
 
@@ -46,7 +47,8 @@ The address strategy depends on your custody model:
 - **Always generate a fresh deposit address** for large incoming transfers
 - **Verify you're on the correct website** - check URL carefully, bookmark the official site, watch for phishing lookalikes
 - Use the platform's "offline deposit address" or "new address" function
-- **Why fresh addresses?** Prevents counterparties from viewing your entire treasury balance/history and isolates each major transfer for clean audit trails
+- **Why fresh addresses?** Prevents counterparties from viewing your entire treasury balance/history and isolates each
+  major transfer for clean audit trails
 
 **For Self-Custody Multisigs**:
 
@@ -76,7 +78,7 @@ Have 2-3 team members independently verify the address:
 
 This should occur **24-48 hours before the main transfer**.
 
-**Phase 1: Sender → You (Incoming Test)**
+**Phase 1: Sender → You (Incoming Test): **
 
 ```
 1. Sender sends small amount (0.001 ETH or 0.0001 BTC) to your new address
@@ -87,14 +89,15 @@ This should occur **24-48 hours before the main transfer**.
 3. Document transaction hash and confirmation time
 ```
 
-**Phase 2: You → Sender (Outgoing Test)**
+**Phase 2: You → Sender (Outgoing Test): **
 
 ```
 4. Send test amount BACK to another address you control
 5. You confirm you received the return transaction
 ```
 
-**Why bidirectional?** Proves address can both receive AND withdraw funds before large transfer arrives, and confirms both parties control their stated addresses.
+**Why bidirectional?** Proves address can both receive AND withdraw funds before large transfer arrives, and confirms
+both parties control their stated addresses.
 
 #### Coordinate with Sender
 
@@ -116,14 +119,22 @@ Request from sender:
 **Best practices for transaction splitting:**
 
 - **\<$10M**: Single transaction preferred (simpler, one confirmation cycle, cleaner records)
-- **\>$10M**: Consider 2-3 separate transactions (reduces single-transaction risk, allows staged confirmation, provides pause points to verify each step)
+- **\>$10M**: Consider 2-3 separate transactions (reduces single-transaction risk, allows staged confirmation, provides
+  pause points to verify each step)
 - **\>$50M**: Multiple transactions strongly recommended with 30-minute intervals between each
 **Anti-Duress Protocols:**
 
-Since kidnapping and other forms of duress have been employed by criminals to steal cryptocurrency, organizations should prepare for this. Establish a duress word that indicates a transfer is not being made of your own free will. Once the duress word is mentioned during an exchange involving the transfer, law enforcement will be contacted and the transaction not processed. Procedures should be put in place with concrete run books for these situations. Safe words should not appear in run books or any digital format.
+Since kidnapping and other forms of duress have been employed by criminals to steal cryptocurrency, organizations should
+prepare for this. Establish a duress word that indicates a transfer is not being made of your own free will. Once the
+duress word is mentioned during an exchange involving the transfer, law enforcement will be contacted and the
+transaction not processed. Procedures should be put in place with concrete run books for these situations. Safe words
+should not appear in run books or any digital format.
 **Anti-Social-Engineering Protocols:**
 
-Establish code phrase during initial verified meeting. Use this phrase to authenticate any address changes or unusual requests. Example: "What was the name of the restaurant where we finalized the agreement?" Exchange secondary contact numbers for key personnel - if primary contact requests changes, call secondary to confirm. Maintain out-of-band verification: if request comes via email, confirm via phone.
+Establish code phrase during initial verified meeting. Use this phrase to authenticate any address changes or unusual
+requests. Example: "What was the name of the restaurant where we finalized the agreement?" Exchange secondary contact
+numbers for key personnel - if primary contact requests changes, call secondary to confirm. Maintain out-of-band
+verification: if request comes via email, confirm via phone.
 
 **Red flags that should trigger immediate verification:**
 
@@ -131,7 +142,8 @@ Establish code phrase during initial verified meeting. Use this phrase to authen
 - Requests to send to "temporary" or "new" address without proper verification
 - Pressure to skip test transactions or any rushed requests
 
-If anything feels wrong, STOP and verify through multiple channels. Urgency is an attacker's favorite tool - legitimate counterparties will understand security delays.
+If anything feels wrong, STOP and verify through multiple channels. Urgency is an attacker's favorite tool - legitimate
+counterparties will understand security delays.
 
 ### Day of Transfer
 
@@ -272,7 +284,8 @@ Most custody platforms support whitelisting:
 4. Test transaction AFTER whitelist approval
 ```
 
-**Why cooling-off periods?** Prevents attackers who gain account access from immediately adding malicious addresses and draining funds. Gives time for legitimate personnel to notice unauthorized changes.
+**Why cooling-off periods?** Prevents attackers who gain account access from immediately adding malicious addresses and
+draining funds. Gives time for legitimate personnel to notice unauthorized changes.
 
 ### Day of Transfer
 
@@ -416,7 +429,8 @@ See the Multisigs for Protocols guide.
 4. **Use multisig for self-custody**: Multiple signers prevent single points of failure
 5. **Verify addresses live**: Always verify addresses during video calls from authoritative sources
 
-**In cryptocurrency, there are no chargebacks.** Every transaction is final. The procedures in this guide may seem extensive, but preventing a single mistake justifies significant operational overhead.
+**In cryptocurrency, there are no chargebacks.** Every transaction is final. The procedures in this guide may seem
+extensive, but preventing a single mistake justifies significant operational overhead.
 
 The cost of verification is measured in minutes. The cost of a mistake is measured in millions.
 

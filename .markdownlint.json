@@ -34,7 +34,11 @@
       "TagProvider",
       "TagFilter",
       "ContributeFooter",
-      "Contributors"
+      "Contributors",
+      "CertifiedProtocols",
+      "CertList",
+      "CertifiedProtocolsWrapper",
+      "MermaidRenderer"
     ]
   },
   "MD037": false,

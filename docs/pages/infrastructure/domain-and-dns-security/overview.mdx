@@ -21,46 +21,67 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-DNS (Domain Name System) is the backbone of the internet, translating domain names into IP addresses. In Web3, domain security is particularly critical as compromised domains can lead to irreversible financial losses through wallet drainers and phishing attacks. Unlike traditional web applications where stolen funds can sometimes be recovered, blockchain transactions are permanent. 
+DNS (Domain Name System) is the backbone of the internet, translating domain names into IP addresses. In Web3, domain
+security is particularly critical as compromised domains can lead to irreversible financial losses through wallet
+drainers and phishing attacks. Unlike traditional web applications where stolen funds can sometimes be recovered,
+blockchain transactions are permanent.
 
-Moreover, DNS controls your email infrastructure through MX records - once compromised, attackers gain the keys to your entire organization through password resets and intercepted communications, making domain security a matter of both financial and operational survival.
+Moreover, DNS controls your email infrastructure through MX records - once compromised, attackers gain the keys to your
+entire organization through password resets and intercepted communications, making domain security a matter of both
+financial and operational survival.
 
 ## Web3-Specific Considerations
 
 ### Why Domain Security is Critical in Web3
 
-Domain security is exponentially more critical in Web3 compared to traditional web applications due to the unique characteristics of blockchain technology:
+Domain security is exponentially more critical in Web3 compared to traditional web applications due to the unique
+characteristics of blockchain technology:
 
-- **Irreversible transactions**: Unlike traditional banking where stolen funds can sometimes be recovered, blockchain transactions are permanent. Once funds are stolen through a domain hijack, they're gone forever.
-- **Direct wallet interactions**: Users connect their wallets directly to your domain, giving attackers immediate access to user funds without needing to compromise individual accounts.
-- **Reputation damage**: One domain hijack incident can permanently destroy protocol trust, as users lose confidence in the project's security practices.
+- **Irreversible transactions**: Unlike traditional banking where stolen funds can sometimes be recovered, blockchain
+  transactions are permanent. Once funds are stolen through a domain hijack, they're gone forever.
+- **Direct wallet interactions**: Users connect their wallets directly to your domain, giving attackers immediate access
+  to user funds without needing to compromise individual accounts.
+- **Reputation damage**: One domain hijack incident can permanently destroy protocol trust, as users lose confidence in
+  the project's security practices.
 
 ## Historical Context
 
 ### Notable Domain Security Incidents
 
 Domain hijacking has impacted numerous Web3 projects:
-- **[Curve Finance (2025)](https://news.curve.finance/curve-domain-incident/)**: Domain hijacking at the registrar level, unrelated to any breach of Curve's infrastructure.
-- **[Puffer Finance (2024)](https://www.kucoin.com/news/articles/the-trojan-horse-of-web3-puffer-finance-attack-exposes-centralized-vulnerabilities)**: DNS hijack exploited centralized infrastructure vulnerabilities
-- **[Compound Finance (2024)](https://www.bitget.com/news/detail/12560604092919)**: Domain takeover attempt prevented by registry lock
-- **[Galxe (2023)](https://help.galxe.com/en/articles/8452958-october-6th-dns-security-incident-statement-guide)**: DNS hijack resulted in over 1,100 wallets drained for $270k
-- **[Curve Finance (2022)](https://rekt.news/curve-finance-rekt)**: DNS hijacking led to $575k in stolen funds through frontend compromise
+
+- **[Curve Finance (2025)](https://news.curve.finance/curve-domain-incident/)**: Domain hijacking at the registrar
+  level, unrelated to any breach of Curve's infrastructure.
+- **[Puffer Finance
+  (2024)](https://www.kucoin.com/news/articles/the-trojan-horse-of-web3-puffer-finance-attack-exposes-centralized-vulnerabilities)**:
+  DNS hijack exploited centralized infrastructure vulnerabilities
+- **[Compound Finance (2024)](https://www.bitget.com/news/detail/12560604092919)**: Domain takeover attempt prevented by
+  registry lock
+- **[Galxe (2023)](https://help.galxe.com/en/articles/8452958-october-6th-dns-security-incident-statement-guide)**: DNS
+  hijack resulted in over 1,100 wallets drained for $270k
+- **[Curve Finance (2022)](https://rekt.news/curve-finance-rekt)**: DNS hijacking led to $575k in stolen funds through
+  frontend compromise
 
 These incidents highlight the critical importance of proper domain security measures and the recurring nature of these attacks.
 
 ## References and Resources
 
 ### Incident Response Contacts
+
 - [SEAL Alliance TG Bot](https://t.me/seal_911_bot) - Web3 emergency response team
 - Your registrar's security team (document contact info)
 - Local FBI/law enforcement cybercrime division
 
 ### Standards and Best Practices
-- [NIST Special Publication 800-81-2](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-81-2.pdf) - Secure Domain Name System Deployment Guide
+
+- [NIST Special Publication 800-81-2](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-81-2.pdf) -
+  Secure Domain Name System Deployment Guide
 - [ICANN DNSSEC Resources](https://www.icann.org/resources/pages/dnssec-what-is-it-why-important-2019-03-05-en)
 - [RFC 8461](https://datatracker.ietf.org/doc/html/rfc8461) - MTA-STS specification
 - [RFC 7489](https://datatracker.ietf.org/doc/html/rfc7489) - DMARC specification
-- [DNS Security in Web3: Attacks & Monitoring Setup Explained](https://web3secnews.substack.com/p/the-hidden-dns-threats-that-could) - Comprehensive Web3 DNS security guide
+- [DNS Security in Web3: Attacks & Monitoring Setup
+  Explained](https://web3secnews.substack.com/p/the-hidden-dns-threats-that-could) - Comprehensive Web3 DNS security
+  guide
 
 ---
 </TagProvider>

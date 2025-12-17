@@ -28,7 +28,8 @@ The verification process is divided into two distinct phases: signing the off-ch
 
 ## Key Definitions (EVM)
 
-- **Domain Hash**: EIP-712 domain separator, unique to each Safe. Ensures signatures cannot be replayed on other networks or Safes.
+- **Domain Hash**: EIP-712 domain separator, unique to each Safe. Ensures signatures cannot be replayed on other
+  networks or Safes.
 - **Message Hash**: Raw hash of transaction parameters. This appears on your hardware wallet.
 - **SafeTxHash**: Combined hash of domain + message hash. Used for nested Safe approvals.
 
@@ -81,22 +82,29 @@ the network.
 > dangerous if the target contract is not explicitly known and trusted. This opcode gives another contract full control
 > over your wallet's context and storage.
 
-- **Transaction Simulation**: Before signing, use a simulator like **[Tenderly](https://tenderly.co/)** or **[Alchemy](https://www.alchemy.com/docs/reference/simulation)** to preview the transaction's outcome. This helps confirm that it will not revert and will result in the expected state changes.
-- **Hardware Wallet Standard**: All multisig signers should use hardware wallets to protect their keys from online threats. Data shown in a browser extension wallet should be treated with the same skepticism as data in the web UI.
+- **Transaction Simulation**: Before signing, use a simulator like **[Tenderly](https://tenderly.co/)** or
+  **[Alchemy](https://www.alchemy.com/docs/reference/simulation)** to preview the transaction's outcome. This helps
+  confirm that it will not revert and will result in the expected state changes.
+- **Hardware Wallet Standard**: All multisig signers should use hardware wallets to protect their keys from online
+  threats. Data shown in a browser extension wallet should be treated with the same skepticism as data in the web UI.
 - **Secure signing environment**: Use a dedicated, air-gapped, or hardened device. Avoid primary work laptops.
-- **Alternative Frontends**: To further reduce reliance on a single public UI, consider using an alternative or self-hosted multisig interface.
-- **Separate browser/profile for signing**: Use a dedicated browser or browser profile when interacting with signing UIs to reduce cross-extension/session risk.
+- **Alternative Frontends**: To further reduce reliance on a single public UI, consider using an alternative or
+  self-hosted multisig interface.
+- **Separate browser/profile for signing**: Use a dedicated browser or browser profile when interacting with signing UIs
+  to reduce cross-extension/session risk.
 - **Require a "how to check" guide**: Every transaction should include explicit verification instructions for signers.
 - **Verify addresses and amounts via independent sources**: Do not rely solely on messages from co-signers.
 - **Check transactions in the queue**: If unclear what a transaction does and why, do not sign; ask for explanation.
-- **Communicate status**: After review, state whether a transaction is ready to execute and confirm after signing ("checked, signed, X more required").
+- **Communicate status**: After review, state whether a transaction is ready to execute and confirm after signing
+  ("checked, signed, X more required").
 - **Last signer executes**: If executable immediately, the last signer should execute; otherwise coordinate clearly.
 - **Re-verify before execution**: Treat execution as a fresh signing event and re-check parameters.
 - **Use checksummed addresses**: Always use checksummed format to prevent copy/paste or case errors.
 
 ### Simulation notes with timelocks
 
-When using a timelock, simulations may show the staging event rather than actual execution. Inspect the staged payload and verify cancellation/execution roles and parameters before proceeding.
+When using a timelock, simulations may show the staging event rather than actual execution. Inspect the staged payload
+and verify cancellation/execution roles and parameters before proceeding.
 
 ---
 
