@@ -9,8 +9,8 @@
     "Engineer/Developer",
     "HR",
     "Legal & Compliance",
-    "Operations",
     "Multisig Security",
+    "Operations",
     "Operations & Strategy",
     "Protocol",
     "Risk Management",
@@ -18,9 +18,7 @@
     "SFC",
     "SRE",
     "Security Specialist",
-    "Travel",
     "Treasury Ops",
-    "Web3",
     "Whitehat"
   ],
   "pageTagsMap": {
@@ -85,6 +83,11 @@
     "/certs/overview": [
       "SEAL/Initiative",
       "Certifications"
+    ],
+    "/certs/sfc-devops-infrastructure": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
     ],
     "/certs/sfc-dns-registrar": [
       "SEAL/Initiative",
@@ -999,6 +1002,7 @@
     "ENS": "ens",
     "Safe Harbor": "safe-harbor",
     "Encryption": "encryption",
+    "Treasury Operations": "treasury-operations",
     "SEAL Certifications": "certs",
     "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"
