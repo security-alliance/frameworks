@@ -118,10 +118,6 @@
       "Community & Marketing",
       "Security Specialist"
     ],
-    "/community-management/google": [
-      "Community & Marketing",
-      "Security Specialist"
-    ],
     "/community-management/overview": [
       "Community & Marketing"
     ],
@@ -593,6 +589,10 @@
       "Devops",
       "SRE"
     ],
+    "/opsec/browser/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/opsec/continuous-improvement-metrics": [
       "Security Specialist",
       "Operations & Strategy",
@@ -617,17 +617,14 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/opsec/governance-program-management": [
+    "/opsec/endpoint/overview": [
       "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Operations & Strategy"
     ],
-    "/opsec/incident-response-recovery": [
-      "Security Specialist",
+    "/opsec/google/overview": [
+      "Community & Marketing",
       "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Security Specialist"
     ],
     "/opsec/integration/overview": [
       "Security Specialist",
@@ -635,17 +632,9 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/lifecycle/overview": [
+    "/opsec/mfa/overview": [
       "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/monitoring-detection": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Operations & Strategy"
     ],
     "/opsec/overview": [
       "Security Specialist",
@@ -653,13 +642,7 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/risk-management-overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/threat-modeling-overview": [
+    "/opsec/passwords/overview": [
       "Security Specialist",
       "Operations & Strategy"
     ],
