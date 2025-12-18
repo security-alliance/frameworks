@@ -1,5 +1,5 @@
 ---
-title: "Risk Management Overview"
+title: "Risk Management"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -14,7 +14,7 @@ contributors:
     users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -32,12 +32,19 @@ Effective risk management builds upon threat modeling to assess, prioritize, and
 While threat modeling identifies what needs protection and potential attack vectors, risk management determines which
 threats warrant immediate attention and resources.
 
+## Section Outline
+
+- [Risk Assessment & Prioritization](/opsec/old/risk-management/risk-assessment-prioritization) — convert threat
+intelligence into ranked action plans.
+- [Trade-off Analysis](/opsec/old/risk-management/trade-off-analysis) — balance security investment against usability,
+speed, and cost.
+
 ## Risk Assessment Process
 
-{/* ![Risk Management Process](../assets/risk-management-process.png)*/}
+{/* ![Risk Management Process](../../assets/risk-management-process.png) */}
 
 > **🔗 Related Framework:** This process builds directly on outputs from [Threat
-> Modeling](/opsec/threat-modeling-overview).
+> Modeling](/opsec/old/threat-modeling-overview).
 
 ### Key Components
 
@@ -97,7 +104,7 @@ In Web3 environments, risk management must address unique challenges:
 ### Unique Risk Factors
 
 | Risk Factor | Description |
-| ------------- | ------------ |
+| ------------- | ------------- |
 | **Smart Contract Vulnerabilities** | Immutable code with potential security flaws |
 | **Private Key Management** | Securing cryptographic keys that control assets |
 | **Decentralized Governance** | Distributed decision-making for security matters |
@@ -115,8 +122,12 @@ In Web3 environments, risk management must address unique challenges:
 | **Dependency Monitoring** | Regularly audit connected protocols and dependencies | Supply chain attacks |
 | **Regulatory Compliance** | Stay informed about evolving regulations across jurisdictions | Legal/regulatory risks |
 
+Effective risk management enables organizations to allocate security resources efficiently, focusing on the most
+significant risks while making informed trade-offs between competing priorities. In the Web3 space, this approach must
+be adapted to address the unique challenges and risk profiles of blockchain-based operations.
+
 <details>
-<summary><strong>⬇️ Collapsable Example: Risk Assessment for Pinnipeds Inc.</strong></summary>
+<summary><strong>Example: Risk Assessment for Pinnipeds Inc.</strong></summary>
 
 ### Pinnipeds Inc. Risk Assessment
 
@@ -169,7 +180,7 @@ first, focusing resources where they would have the greatest risk-reduction impa
 - [ISO 31000:2018 Risk Management Guidelines](https://www.iso.org/standard/65694.html)
 - [FAIR (Factor Analysis of Information Risk) Framework](https://www.fairinstitute.org/)
 - [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology)
-- Tools: [Eramba](https://www.eramba.org/) (open source GRC)
+- Tools: SimpleRisk, RiskLens, IriusRisk
 
 ---
 
