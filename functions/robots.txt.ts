@@ -2,7 +2,8 @@ export function onRequest(context: { env: { CF_PAGES_BRANCH?: string; }; }) {
   const branch = context.env.CF_PAGES_BRANCH;
   const isMain = branch === 'main';
 
-  const header = `# As a condition of accessing this website, you agree to abide by the following
+  const body = isMain
+    ? `# As a condition of accessing this website, you agree to abide by the following
 # content signals:
 
 # (a) If a content-signal = yes, you may collect content for the corresponding
@@ -26,10 +27,8 @@ export function onRequest(context: { env: { CF_PAGES_BRANCH?: string; }; }) {
 # ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF
 # RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
 # AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
-`;
 
-const rules = isMain
-? `User-agent: *
+User-agent: *
 Allow: /
 
 User-agent: Amazonbot
@@ -56,13 +55,9 @@ Disallow: /
 User-agent: meta-externalagent
 Disallow: /
 `
-: `User-agent: *
+    : `User-agent: *
 Disallow: /
 `;
-
-  // Build the robots.txt content
-  const body = `${header}
-${rules}`.trim();
 
   return new Response(body + '\n', {
     headers: {
