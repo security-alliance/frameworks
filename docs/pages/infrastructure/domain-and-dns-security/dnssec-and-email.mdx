@@ -1,5 +1,5 @@
 ---
-title: "DNSSEC, CAA, and Email Security"
+title: "DNSSEC, CAA, SMTP DANE and Email Security"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -15,7 +15,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagProvider>
 <TagFilter />
 
-# DNSSEC, CAA, and Email Security
+# DNSSEC, CAA, SMTP DANE and Email Security
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
@@ -108,6 +108,31 @@ example.com. CAA 0 issuewild "letsencrypt.org"
 # Completely disable all certificate issuance (useful for non-web domains)
 example.com. CAA 0 issue ";"
 ```
+
+## SMTP DANE
+
+DNS-based Authentication of Named Entities (DANE) is an email security protocol relies on TLSA DNS records secured via DNSSEC. \
+The TLSA record contains information on the MX and the certificate in use, allowing a secure connection to be made to using that certificate. \
+This prevents both MiTM and downgrade attacks.
+
+If no record is found, SMTP DANE supporting clients will fall back to their usual connection flow.
+
+*While traditional PKI relies on trusted CAs, DANE allows domain owners to specify their own certificates, relying instead on DNSSEC to authenticate the certificate.*
+
+**Current industry support**: Of the major providers, Microsoft is the only one that currently supports SMTP DANE since it's [RFC](https://datatracker.ietf.org/doc/html/rfc7672) was published in 2015. \
+Notable smaller implementers include Comcast, Protonmail and Cisco
+
+**Implementation**: For those interested, a simple step-by-step tutorial can be found here for Exchange Online: https://learn.microsoft.com/en-us/purview/how-smtp-dane-works#inbound-smtp-dane-with-dnssec \
+And for the brave, the Dutch Internet Standards Platform has published detailed documentation on various aspects of supporting SMTP DANE on a self-hosted MX like postfix. \
+https://github.com/internetstandards/toolbox-wiki/blob/main/DANE-for-SMTP-how-to.md#reliable-certificate-rollover
+
+**Example TLSA Record**: \
+smtpdane.mx.microsoft. TLSA 900 "3 1 1 c495d9e40f7e625be22f83cc64305182ab0fe74232de30db8b218d09650cb0ea"
+
+**Further reading**:
+- https://learn.microsoft.com/en-us/purview/how-smtp-dane-works
+- https://docs.cloud.google.com/dns/docs/dnssec-advanced#tlsa
+- https://datatracker.ietf.org/doc/html/rfc7672
 
 ## Email Security Configuration
 
