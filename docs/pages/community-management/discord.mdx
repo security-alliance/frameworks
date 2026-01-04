@@ -119,7 +119,7 @@ These settings and practices apply to server administrators with elevated privil
 >
 > **Administrator** should ideally be reserved for a single admin role with minimal members. It is recommended to have no more than 2-3 admins with this privilege in order to reduce risk due to account compromise and insider threats, but to retain some redundancy.
 >
-> Bots often require **Administrator** permissions with no flexibility. In these cases, it is recommended to mitigate this risk by monitoring the Discord audit logs frequently or to create alerts on a private channel to notify when admin permissions are exercised within the server.
+> Minimal bots actually need **Administrator** permissions. Review what permissions a bot actually needs and do not default to Admin permissions just because developers request it as the easy option. If a bot does require Administrator, mitigate this risk by monitoring the Discord audit logs frequently or create alerts on a private channel to notify when admin permissions are exercised within the server.
 >
 > Permissions can also be set at the channel level. It is important to check your private channels for any permission overrides that may have been set!
 
@@ -131,8 +131,7 @@ These settings and practices apply to server administrators with elevated privil
     - [ ] Remove permissions for bots that ask for Admin or other permissions that aren't needed — use least privilege with permissions at the role level and channel level
     - [ ] Uninstall any bots that aren't actively used or needed
     - [ ] Confirm all bots and apps are [**Verified**](https://support-dev.discord.com/hc/en-us/articles/23926564536471-How-Do-I-Get-My-App-Verified)
-    - [ ] Restrict command permissions of integrations where possible (Manage > Roles & Members / Channels / Command Overrides)
-    - [ ] Allow new integrations to be added by > **Only Administrators** (to prevent unauthorized bot additions)
+    - [ ] Restrict command permissions of integrations where possible (Server Settings > Integrations > Manage Bot/App > **Roles & Members** / **Channels**)
 - Server Settings > Integrations > Webhooks:
     - [ ] Review and remove any unnecessary webhooks
     - [ ] Reevaluate necessity of webhooks with excessive permissions
