@@ -111,16 +111,17 @@ example.com. CAA 0 issue ";"
 
 ## SMTP DANE
 
-DNS-based Authentication of Named Entities (DANE) is an email security protocol relies on TLSA DNS records secured via DNSSEC. \
-The TLSA record contains information on the MX and the certificate in use, allowing a secure connection to be made to using that certificate. \
-This prevents both MiTM and downgrade attacks.
+DNS-based Authentication of Named Entities (DANE) is an email security protocol that relies on TLSA DNS records secured via DNSSEC. \
+The TLSA record contains information on the MX and the certificate in use, allowing a secure connection to be made using that certificate. \
+This prevents both MiTM and downgrade attacks. \
+DANE requires DNSSEC to be enabled on your domain - without it, TLSA records can be spoofed and offer no security benefit.
 
 If no record is found, SMTP DANE supporting clients will fall back to their usual connection flow.
 
 *While traditional PKI relies on trusted CAs, DANE allows domain owners to specify their own certificates, relying instead on DNSSEC to authenticate the certificate.*
 
 **Current industry support**: Of the major providers, Microsoft is the only one that currently supports SMTP DANE since it's [RFC](https://datatracker.ietf.org/doc/html/rfc7672) was published in 2015. \
-Notable smaller implementers include Comcast, Protonmail and Cisco
+Notable smaller implementers include Comcast, Protonmail, Cisco, Fastmail, Posteo and Mailbox.org.
 
 **Implementation**: For those interested, a simple step-by-step tutorial can be found here for Exchange Online: https://learn.microsoft.com/en-us/purview/how-smtp-dane-works#inbound-smtp-dane-with-dnssec \
 And for the brave, the Dutch Internet Standards Platform has published detailed documentation on various aspects of supporting SMTP DANE on a self-hosted MX like postfix. \
@@ -128,11 +129,20 @@ https://github.com/internetstandards/toolbox-wiki/blob/main/DANE-for-SMTP-how-to
 
 **Example TLSA Record**: \
 smtpdane.mx.microsoft. TLSA 900 "3 1 1 c495d9e40f7e625be22f83cc64305182ab0fe74232de30db8b218d09650cb0ea"
+- _25._tcp.smtpdane.mx.microsoft. → Host + port (SMTP uses 25/TCP)
+- TLSA → Record type for DANE
+- 900 → TTL in seconds
+- 3 1 1 →
+
+  - Usage 3 = Bind to end-entity cert
+  - Selector 1 = Public key info
+  - Match 1 = SHA-256 hash
+- Hex string → Hash of the MX certificate's public key
 
 **Further reading**:
 - https://learn.microsoft.com/en-us/purview/how-smtp-dane-works
-- https://docs.cloud.google.com/dns/docs/dnssec-advanced#tlsa
 - https://datatracker.ietf.org/doc/html/rfc7672
+- https://docs.cloud.google.com/dns/docs/dnssec-advanced#tlsa (only general docs, no google mail support as of writing)
 
 ## Email Security Configuration
 
