@@ -105,6 +105,10 @@ For organizations managing multisig wallets, seed phrase security requires addit
 > with custom encryption than from an attacker discovering a securely stored backup. Evaluate whether strong physical
 > security alone may be sufficient for your threat model.
 
+The reason to encrypt seed phrases is that if they are discovered unencrypted, the wallet is permanently compromised.
+However, if you encrypt your seed phrase, you are much more likely to forget the encryption when trying to restore the
+wallet. If you have stored the seed securely, it is unlikely to be discovered in the first place.
+
 Never store seed phrases in plain text or on an internet connected device. For additional protection, seed phrases can optionally be encrypted through some method. For example:
 - Seed phrases can be mixed in a randomly generated, recorded order
 - Have a 25th secret word
