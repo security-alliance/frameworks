@@ -281,16 +281,52 @@ Also regularly:
 
 ### Cold Admin Accounts
 
-A "Cold" Admin Account provides an extra layer of security for the server owner and is highly resistant to phishing.
+A Cold Admin account provides enhanced security because it serves exclusively as the server owner and is not used for everyday activities. If a regular admin account is compromised, attackers gain full access to the server or account, making it challenging to involve support and potentially requiring days or weeks to resolve the issue. Using a Cold Admin means creating a separate account dedicated solely to ownership functions, keeping it isolated from routine operations.
 
-**Setup:**
-- Create a new account on a separate device never used for chatting or clicking links
-- Create a new email account for the cold account
-- Factory reset the device used for this account
+#### What is a Cold Device?
 
-**Usage:**
-- Use only for: managing bots, modifying server settings, responding to compromises
-- Never use this account for regular server activities
+A Cold Device is a factory-reset device with no previous configuration. This should be a dedicated phone or laptop — you can use an old iPhone/Android, Windows device, or even a Chromebook to keep costs down. Everyone involved in setup and maintenance must ONLY access the Cold Admin account from a cold device.
+
+#### Cold Admin Setup
+
+**Step 1: Create a dedicated email account**
+
+Create a brand new Gmail account specifically for this Discord account. Do not use a VPN during this process, and it's best to use an incognito browser. After creating the Gmail account:
+
+- [ ] Set up 2FA immediately (authenticator app recommended, or Security Key for maximum security)
+- [ ] Ensure "Skip password when possible" is **off**
+- [ ] Do not add a phone number to the account
+- [ ] Note down the 10 backup codes **offline on paper** (DO NOT store online)
+- [ ] Write down the email, password, and backup codes on paper and store securely
+
+**Step 2: Create the Discord account**
+
+Head to https://discord.com and create a new account using the Gmail account you just created.
+
+- [ ] Write down the email, username, password, and date of birth **offline**
+- [ ] Use a username that is not related to your project
+- [ ] Give the profile a profile picture in **My Account > Edit User Profile**
+- [ ] Go to **Content & Social** and disable DMs from server members and set spam filter to maximum
+- [ ] Set the account status to **Invisible** so no one can see if it's online (click profile in bottom left > change status)
+
+**Step 3: Join the server and transfer ownership**
+
+- [ ] Send the Cold Admin account a friend request from your personal Discord account
+- [ ] Have the Cold Admin join the Discord server and complete verification like a normal account
+- [ ] Assign the Cold Admin the highest admin role
+- [ ] Have the Cold Admin send a few messages in a private team chat
+- [ ] Wait approximately 24 hours, send a few more messages, then transfer ownership
+
+**To transfer ownership:** Go to **Server Settings > Members** > Search for the Cold Admin account > Click the three dots > Select **Transfer Ownership** > Input 2FA > Confirm
+
+> ⚠️ **CRITICAL:** Triple-check that you are transferring to the correct Cold Admin account. If you transfer to the wrong account, recovery will be extremely difficult.
+
+#### Use of Cold Admin Account
+
+- **Do not** use the Cold Admin account for day-to-day operations
+- Log into both the Gmail and Discord account at least once a month (set a phone reminder)
+- Use only for: inviting/adding bots, making major changes only the server owner can perform
+- If an incident or compromise occurs, log into the Cold Admin to regain control — the server owner always maintains full access rights
 
 ---
 
