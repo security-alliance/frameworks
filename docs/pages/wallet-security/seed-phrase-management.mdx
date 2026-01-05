@@ -99,8 +99,14 @@ For organizations managing multisig wallets, seed phrase security requires addit
 
 ### Seed Phrase Encryption
 
-Never store seed phrases in plain text or on an internet connected device. Seed phrases must be encrypted through some method. For example:
-- Seed phrases must be mixed in a randomly generated, recorded order
+> ⚠️ **Warning: Encryption adds recovery risk.** Only implement custom encryption schemes if you are sophisticated and
+> have robust documentation practices. If you forget your encryption method or passphrase, your funds are **permanently
+> inaccessible**—there is no recovery option. Many users and organizations face greater risk of locking themselves out
+> with custom encryption than from an attacker discovering a securely stored backup. Evaluate whether strong physical
+> security alone may be sufficient for your threat model.
+
+Never store seed phrases in plain text or on an internet connected device. For additional protection, seed phrases can optionally be encrypted through some method. For example:
+- Seed phrases can be mixed in a randomly generated, recorded order
 - Have a 25th secret word
 - Require a passphrase to be imported into a wallet
 
