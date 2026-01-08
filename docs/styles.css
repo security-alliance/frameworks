@@ -110,6 +110,10 @@ details .vocs_Paragraph {
 
 /* Print stylesheet - hide chrome, optimize for paper */
 @media print {
+  /* Force light color scheme */
+  :root {
+    color-scheme: light only !important;
+  }
   /* Hide navigation and decorative elements */
   .vocs_Banner,
   .vocs_DesktopTopNav,
