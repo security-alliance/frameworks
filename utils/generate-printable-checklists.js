@@ -63,6 +63,7 @@ function generateHTML(title, subtitle, sections, certName) {
 
     /* ---- Typography ---- */
     :root {
+      color-scheme: light only;
       --ink: #111;
       --muted: #555;
       --line: #ddd;
@@ -77,6 +78,14 @@ function generateHTML(title, subtitle, sections, certName) {
       color: var(--ink);
       background: #fff;
     }
+    *, *::before, *::after {
+      color-scheme: light only;
+    }
+    html, body {
+      height: 100%;
+      background-color: #fff !important;
+      color: #111 !important;
+    }
 
     /* ---- Layout ---- */
     .page {
@@ -84,6 +93,7 @@ function generateHTML(title, subtitle, sections, certName) {
       margin: 0 auto;
       padding: 0.25in 0.35in;
       box-sizing: border-box;
+      background: #fff;
     }
 
     .header {
@@ -143,6 +153,7 @@ function generateHTML(title, subtitle, sections, certName) {
       padding: 8px 8px 6px;
       margin: 0 0 10px;
       box-sizing: border-box;
+      background: #fff;
     }
 
     .cont {
@@ -171,6 +182,8 @@ function generateHTML(title, subtitle, sections, certName) {
       grid-template-columns: 14px 1fr;
       gap: 8px;
       align-items: start;
+      box-sizing: border-box;
+      background: #fff;
     }
 
     .box {

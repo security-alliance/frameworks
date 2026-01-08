@@ -110,6 +110,10 @@ details .vocs_Paragraph {
 
 /* Print stylesheet - hide chrome, optimize for paper */
 @media print {
+  /* Force light color scheme */
+  :root {
+    color-scheme: light only !important;
+  }
   /* Hide navigation and decorative elements */
   .vocs_Banner,
   .vocs_DesktopTopNav,
@@ -142,15 +146,23 @@ details .vocs_Paragraph {
     padding: 0.3in !important;
   }
 
-  /* Clean backgrounds */
+  /* Force light mode backgrounds on everything */
+  html,
   body,
-  .vocs_DocsLayout {
+  .vocs_DocsLayout,
+  .vocs_DocsLayout_content,
+  main,
+  article,
+  section,
+  div {
     background: white !important;
-    color: black !important;
+    background-color: white !important;
   }
 
-  /* Ensure text is readable */
-  * {
+  /* Ensure all text is black */
+  *,
+  *::before,
+  *::after {
     color: black !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -191,9 +203,18 @@ details .vocs_Paragraph {
     border: none !important;
     border-bottom: 1px solid #ddd !important;
     border-radius: 0 !important;
-    background: transparent !important;
+    background: white !important;
+    background-color: white !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
+  }
+
+  /* Control list container */
+  .control-list,
+  .cert-list-container,
+  .cert-section {
+    background: white !important;
+    background-color: white !important;
   }
 
   /* Checkbox styling for print */
@@ -201,6 +222,23 @@ details .vocs_Paragraph {
     border: 1.5px solid #222 !important;
     border-radius: 2px !important;
     background: white !important;
+    background-color: white !important;
     color: transparent !important;
+  }
+
+  /* Section headers */
+  .cert-section-header {
+    background: white !important;
+    background-color: white !important;
+    border-color: #ddd !important;
+  }
+
+  /* Control text colors */
+  .control-title {
+    color: black !important;
+  }
+
+  .control-description {
+    color: #333 !important;
   }
 }
