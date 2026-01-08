@@ -113,6 +113,10 @@ details .vocs_Paragraph {
   /* Force light color scheme */
   :root {
     color-scheme: light only !important;
+@media print {
+  /* Force light color scheme */
+  :root {
+    color-scheme: light only !important;
   }
   /* Hide navigation and decorative elements */
   .vocs_Banner,
