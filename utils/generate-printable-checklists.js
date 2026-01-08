@@ -64,6 +64,7 @@ function generateHTML(title, subtitle, sections, certName) {
     /* ---- Typography ---- */
     :root {
       color-scheme: light only;
+      color-scheme: light only;
       --ink: #111;
       --muted: #555;
       --line: #ddd;
