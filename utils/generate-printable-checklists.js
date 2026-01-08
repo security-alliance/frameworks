@@ -71,7 +71,14 @@ function generateHTML(title, subtitle, sections, certName) {
       --seal-blue: #0F0A27;
       --seal-accent: #7A78FF;
     }
-    html, body { height: 100%; }
+    *, *::before, *::after {
+      color-scheme: light only;
+    }
+    html, body { 
+      height: 100%;
+      background-color: #fff !important;
+      color: #111 !important;
+    }
     body {
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
