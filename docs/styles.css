@@ -191,9 +191,18 @@ details .vocs_Paragraph {
     border: none !important;
     border-bottom: 1px solid #ddd !important;
     border-radius: 0 !important;
-    background: transparent !important;
+    background: white !important;
+    background-color: white !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
+  }
+
+  /* Control list container */
+  .control-list,
+  .cert-list-container,
+  .cert-section {
+    background: white !important;
+    background-color: white !important;
   }
 
   /* Checkbox styling for print */
@@ -201,6 +210,23 @@ details .vocs_Paragraph {
     border: 1.5px solid #222 !important;
     border-radius: 2px !important;
     background: white !important;
+    background-color: white !important;
     color: transparent !important;
+  }
+
+  /* Section headers */
+  .cert-section-header {
+    background: white !important;
+    background-color: white !important;
+    border-color: #ddd !important;
+  }
+
+  /* Control text colors */
+  .control-title {
+    color: black !important;
+  }
+
+  .control-description {
+    color: #333 !important;
   }
 }
