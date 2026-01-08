@@ -142,15 +142,23 @@ details .vocs_Paragraph {
     padding: 0.3in !important;
   }
 
-  /* Clean backgrounds */
+  /* Force light mode backgrounds on everything */
+  html,
   body,
-  .vocs_DocsLayout {
+  .vocs_DocsLayout,
+  .vocs_DocsLayout_content,
+  main,
+  article,
+  section,
+  div {
     background: white !important;
-    color: black !important;
+    background-color: white !important;
   }
 
-  /* Ensure text is readable */
-  * {
+  /* Ensure all text is black */
+  *,
+  *::before,
+  *::after {
     color: black !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
