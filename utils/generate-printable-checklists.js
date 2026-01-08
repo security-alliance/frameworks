@@ -93,6 +93,7 @@ function generateHTML(title, subtitle, sections, certName) {
       margin: 0 auto;
       padding: 0.25in 0.35in;
       box-sizing: border-box;
+      box-sizing: border-box;
       background: #fff;
     }
 
