@@ -154,6 +154,7 @@ function generateHTML(title, subtitle, sections, certName) {
       padding: 8px 8px 6px;
       margin: 0 0 10px;
       box-sizing: border-box;
+      box-sizing: border-box;
       background: #fff;
     }
 
