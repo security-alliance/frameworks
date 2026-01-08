@@ -193,6 +193,7 @@ function generateHTML(title, subtitle, sections, certName) {
       border-radius: 2px;
       margin-top: 2px;
       box-sizing: border-box;
+      background: #fff;
     }
 
     .ctitle {
