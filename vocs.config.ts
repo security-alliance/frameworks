@@ -81,8 +81,14 @@ const config = {
                 { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
-            { text: 'Threat Modeling Overview', link: '/opsec/threat-modeling-overview' },
-            { text: 'Risk Management Overview', link: '/opsec/risk-management-overview' },
+            { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
+            { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
+            { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
+            { text: 'Password Management', link: '/opsec/passwords/overview', dev: true },
+            { text: 'Google Workspace Security', link: '/opsec/google/overview', dev: true },
+            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
+            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
             {
               text: 'While Traveling',
               collapsed: false,
@@ -92,13 +98,6 @@ const config = {
                 { text: 'TL;DR', link: '/opsec/travel/tldr', dev: true },
               ]
             },
-            { text: 'Governance & Program Management', link: '/opsec/governance-program-management', dev: true },
-            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
-            { text: 'Lifecycle', link: '/opsec/lifecycle/overview', dev: true },
-            { text: 'Monitoring & Detection', link: '/opsec/monitoring-detection', dev: true },
-            { text: 'Incident Response & Recovery', link: '/opsec/incident-response-recovery', dev: true },
-            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
-            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
             { text: 'Appendices', link: '/opsec/appendices/overview', dev: true }
           ]
         },
@@ -444,7 +443,6 @@ const config = {
         { text: 'Certified Protocols', link: '/certs/certified-protocols', dev: true },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
-            { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
             { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
             { text: 'Incident Response', link: '/certs/sfc-incident-response' },
             { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
