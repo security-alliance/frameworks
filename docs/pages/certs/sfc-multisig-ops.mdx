@@ -88,6 +88,10 @@ cert:
     description: Do you maintain audit trails and retention for transaction reviews, approvals,
       execution, and post-execution confirmation?
     title: Audit Trails and Retention
+  - id: ms-4.1.3b
+    description: Do you require each signer to independently verify transaction details through a separate interface or data source before signing,
+      rather than relying solely on the initiator's representation?
+    title: Independent Transaction Verification Requirement
   - id: ms-4.1.4
     description: Do you maintain a policy defining enhanced controls for high-risk transactions
       (emergency actions, large transfers, protocol configuration changes)?
@@ -100,11 +104,6 @@ cert:
     description: Do you maintain documented backup infrastructure for multisig operations (alternate
       signing interfaces, RPC/explorers, failover procedures), and test their use?
     title: Backup Infrastructure for Multisig
-  - id: ms-4.1.7
-    description: Do you require each signer to independently verify transaction details (recipient
-      address, value, calldata) through a separate interface or data source before signing,
-      rather than relying solely on the initiator's representation?
-    title: Independent Transaction Verification Requirement
 - id: ms-5
   title: Communication & Coordination
   controls:
