@@ -122,7 +122,7 @@
 /* Grid Layout - Enhanced */
 .contributors-page-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
   padding: 0 0.5rem;
   max-width: 1400px;
@@ -135,7 +135,7 @@
   border-radius: 6px;
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  transition: all 0.2s ease, z-index 0s 0.2s;
   display: grid;
   grid-template-rows: auto auto auto 1fr auto;
   align-items: start;
@@ -143,6 +143,8 @@
   font-size: 0.875rem;
   position: relative;
   min-height: 280px;
+  min-width: 250px;
+  isolation: isolate;
 }
 
 .contributors-page-card:hover {
@@ -212,11 +214,12 @@
   align-items: center;
   gap: 0.5rem;
   width: 100%;
+  margin-top: 10px;
 }
 
 .contributors-page-name {
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
   word-break: break-word;
   color: var(--fg);
   line-height: 1.3;
@@ -270,35 +273,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Badge Count Indicator - Enhanced */
-.contributors-badge-count {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.35rem 0.75rem;
-  background: linear-gradient(135deg,
-      var(--vocs-color_codeInlineBg),
-      var(--sidebar-bg));
-  border: 2px solid var(--theme-popup-border);
-  border-radius: 16px;
-  font-weight: 800;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.contributors-badge-count::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
 .badge-count-number {
   font-size: 0.8125rem;
   color: var(--fg);
@@ -319,7 +293,6 @@
   font-size: 0.75rem;
   color: var(--fg);
   padding: 0.5rem 0.75rem;
-  background: var(--quote-bg, rgba(0, 0, 0, 0.05));
   border: 1px solid var(--theme-popup-border);
   border-radius: 6px;
   width: 100%;
@@ -327,7 +300,7 @@
 }
 
 .steward-label {
-  font-size: 0.625rem;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -346,11 +319,11 @@
 
 /* Description */
 .contributors-page-description {
-  font-size: 0.8rem;
+  font-size: .7rem;
   color: var(--fg);
-  opacity: 0.8;
-  line-height: 1.4;
-  padding: 0.5rem 0;
+  margin-bottom: .5rem;
+  border-bottom: 1px dashed var(--theme-popup-border);
+  padding-bottom: .5rem;
   text-align: center;
 }
 
@@ -417,9 +390,33 @@
   justify-content: center;
 }
 
-/* Group-Specific Styling - Enhanced */
-.leadership-group .contributors-page-card {
-  border-left: 4px solid #e34c26;
+/* Elevate card when badge tooltip is shown to prevent neighboring card borders from showing through */
+.contributors-page-card:has(.badge-wrapper:hover) {
+  z-index: 10;
+  transition-delay: 0s;
+}
+
+
+.contributors-page-role {
+  font-size: .8rem;
+  color: #586069;
+  margin-bottom: .4rem;
+  font-style: italic;
+}
+
+.contributors-page-company {
+  font-size: .8rem;
+  color: var(--fg);
+  margin: .4rem 0;
+  font-weight: 500;
+  padding: .25rem .5rem;
+  border: 1px solid var(--theme-popup-border);
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .core-contributors-group .contributors-page-card {
@@ -432,6 +429,8 @@
 
 .contributors-group .contributors-page-card {
   border-left: 4px solid #a855f7;
+  border-right: 1px solid #ffffff17;
+  border-bottom: 1px solid #ffffff17;
 }
 
 /* Corner Accent for elite contributors */
@@ -508,10 +507,6 @@
     font-size: 1rem;
   }
 
-  .contributors-page-name {
-    font-size: 1.125rem;
-  }
-
   .contributors-page-badges {
     margin: 1rem 0 0.5rem;
     padding-top: 1rem;
@@ -526,11 +521,5 @@
 
   .stat-number {
     font-size: 2.5rem;
-  }
-}
-
-@media (min-width: 1400px) {
-  .contributors-page-list {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
