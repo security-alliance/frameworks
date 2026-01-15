@@ -1,6 +1,5 @@
 {
   "allTags": [
-    "Blockchain",
     "Certifications",
     "Cloud",
     "Community & Marketing",
@@ -10,8 +9,8 @@
     "Engineer/Developer",
     "HR",
     "Legal & Compliance",
-    "Operations",
     "Multisig Security",
+    "Operations",
     "Operations & Strategy",
     "Protocol",
     "Risk Management",
@@ -19,9 +18,7 @@
     "SFC",
     "SRE",
     "Security Specialist",
-    "Travel",
     "Treasury Ops",
-    "Web3",
     "Whitehat"
   ],
   "pageTagsMap": {
@@ -87,6 +84,11 @@
       "SEAL/Initiative",
       "Certifications"
     ],
+    "/certs/sfc-devops-infrastructure": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
     "/certs/sfc-dns-registrar": [
       "SEAL/Initiative",
       "Certifications",
@@ -113,10 +115,6 @@
       "SFC"
     ],
     "/community-management/discord": [
-      "Community & Marketing",
-      "Security Specialist"
-    ],
-    "/community-management/google": [
       "Community & Marketing",
       "Security Specialist"
     ],
@@ -591,6 +589,10 @@
       "Devops",
       "SRE"
     ],
+    "/opsec/browser/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/opsec/continuous-improvement-metrics": [
       "Security Specialist",
       "Operations & Strategy",
@@ -615,17 +617,14 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/opsec/governance-program-management": [
+    "/opsec/endpoint/overview": [
       "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Operations & Strategy"
     ],
-    "/opsec/incident-response-recovery": [
-      "Security Specialist",
+    "/opsec/google/overview": [
+      "Community & Marketing",
       "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Security Specialist"
     ],
     "/opsec/integration/overview": [
       "Security Specialist",
@@ -633,17 +632,9 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/lifecycle/overview": [
+    "/opsec/mfa/overview": [
       "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/monitoring-detection": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Operations & Strategy"
     ],
     "/opsec/overview": [
       "Security Specialist",
@@ -651,13 +642,7 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/risk-management-overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/threat-modeling-overview": [
+    "/opsec/passwords/overview": [
       "Security Specialist",
       "Operations & Strategy"
     ],
@@ -1017,6 +1002,9 @@
     "ENS": "ens",
     "Safe Harbor": "safe-harbor",
     "Encryption": "encryption",
+    "Treasury Operations": "treasury-operations",
+    "SEAL Certifications": "certs",
+    "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"
   }
 }
