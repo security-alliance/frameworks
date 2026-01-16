@@ -5,7 +5,7 @@ tags:
   - Security Specialist
 contributors:
   - role: wrote
-    users: [pinalikefruit, isaac, geoffrey, louis, pablo, dickson]
+    users: [pinalikefruit, isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [Coinspect, engn33r]
 ---
@@ -36,39 +36,69 @@ when necessary. This involves **separating the bulk of assets** from daily opera
 A **hardware wallet** is the core of this setup. This dedicated physical device stores private keys offline in a secure,
 tamper-resistant environment, acting as a vault for the majority of the user's balances.
 
+Hardware wallets are the cornerstone of secure asset storage and your last line of defense against attacks. All other security controls could fail and your hardware wallet would still keep you safe when used properly.
+
 ## Key Considerations & Trade-offs
 
 Adopting a hardware wallet introduces a new set of security considerations focused on physical and supply chain vectors.
 
-* **Physical Security:** A hardware wallet is a physical asset that must be protected from theft, damage, or coercion.
-* **Supply Chain Integrity:** Hardware wallets must only be purchased directly from the manufacturer or an authorized reseller to avoid receiving a tampered device.
+* **Physical Security:** A hardware wallet is a physical asset that must be protected from theft, damage, or coercion. Wallets should be physically secured in a safe or secret hiding place when not in use.
 * **Convenience vs. Security:** Using a hardware wallet introduces friction into the transaction process, as it requires
 physical access and approval on the device for every signature.
 
 ## How to Select a Hardware Wallet
 
+* **Large Screen:** Ensure your device has a large screen that supports displaying full transaction data. Wallets with clear signing technology are highly recommended.
+* **Touch Screen PIN:** Use touch screen PIN entry with shuffled buttons.
+* **Brute Force Protection:** PIN entry must have time-based lockouts to prevent brute force attacks.
 * **Open Source:** Evaluate if the wallet's firmware and software are open-source, which allows for public auditing and
 verification by the security community.
-* **Secure Element (SE)** Look for devices with a SE certified, tamper-resistant chip that protects against physical
+* **Secure Element (SE):** Look for devices with a SE certified, tamper-resistant chip that protects against physical
 attacks. Check for high assurance ratings like `EAL6+` and features like **attestation**, which verifies the device is
 genuine.
 * **Reputation & Incident:** Investigate the manufacturer's security track record, including their response to past
 vulnerabilities, data breaches, and overall transparency.
-* **Verify Device Integrity**: A legitimate hardware wallet will arrive uninitialized, requiring you to perform the
+* **Verify Device Integrity:** A legitimate hardware wallet will arrive uninitialized, requiring you to perform the
 initial setup. Reject any device that comes with a pre-set PIN, a pre-generated recovery phrase, or appears to be
 already configured, as it is likely compromised.
+
+### Brand Diversification
+
+Consider diversifying wallet brands amongst your team to reduce risk of 0-day and supply chain vulnerabilities impacting multi-sig quorums.
 
 ## Initial Setup
 
 ### Purchase & Verification
- - Verify tamper-resistant packaging is untouched
- - Check for authenticity indicators on packaging
+
+- **Direct Purchase:** Purchase your wallet directly from the manufacturer, do not purchase from a reseller. Use a pseudonym and ideally have it delivered to a P.O. box or secure locker.
+- Verify tamper-resistant packaging is untouched
+- Check for authenticity indicators on packaging
+
+### Device Authenticity Verification
+
+Before using a new hardware wallet, verify its authenticity:
+
+- **Ledger:** Follow [Ledger's device verification guide](https://support.ledger.com/article/4404389367057-zd#h_01FPAFSEH1S9Q6B0NN21ZNKFHS)
+- **GridPlus:** Follow [GridPlus authenticity verification](https://docs.gridplus.io/lattice1/lattice1-guides/how-to-verify-that-your-lattice1-is-authentic)
+- **Trezor:** Follow [Trezor authentication guide](https://trezor.io/learn/a/authenticate-trezor-safe-5)
 
 ### Device Configuration
+
 - Update firmware to latest version before creating accounts
+- **Strong PIN:** Use at least a 6-digit PIN, but the longer the better
 - Configure PIN - Use unique, strong PIN (different from other devices)
+- Wallets must have a PIN requirement or biometric factor required to access the wallet and approve transactions
+
+### Key Generation
+
+- **Generate New Keys:** Generate new private keys on the device, do not import them from your computer or another device
+- **No Digital Storage:** Never export or store your private keys or seed phrases in any digital format, including pictures or in password managers
 - Generate seed following device instructions
 - Create accounts as needed
+
+### Clear Signing
+
+Use Clear Signing support when available, but never rely on it alone - always fully verify transactions manually.
 
 ## Backup Device (For Critical Operations & Multisigs)
 

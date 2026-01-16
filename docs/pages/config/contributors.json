@@ -286,5 +286,17 @@
     "company": "Web3Sec.News & Digibastion.com",
     "job_title": "Creator",
     "description": "Steward of DNS and Domain Registration Security"
+  },
+  "auditware": {
+    "slug": "auditware",
+    "name": "Auditware",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/auditware",
+    "github": "https://github.com/Auditware",
+    "twitter": "https://x.com/audit_wizard",
+    "website": "https://www.auditware.io/",
+    "company": "Auditware",
+    "job_title": null,
+    "description": "Industry leading OpSec audits, security tools, and code reviews performed by true security wizards"
   }
 }

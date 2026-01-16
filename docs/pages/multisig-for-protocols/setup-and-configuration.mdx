@@ -5,7 +5,7 @@ tags:
   - Multisig Security
 contributors:
   - role: wrote
-    users: [isaac, geoffrey, louis, pablo, dickson]
+    users: [isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [pinalikefruit, engn33r]
 ---
@@ -37,6 +37,14 @@ This page covers the technical deployment and configuration of multisigs on supp
 2. Connect wallet of the deploying signer
 3. Create new multisig with your determined threshold and signer addresses
 
+## Self-Hosted Multisig UI
+
+Multi-sig coordination UIs should be self-hosted to eliminate supply chain risk. Hosted UI should be IP restricted to allow access only from signer machines.
+
+Deploy from [Safe Wallet Monorepo](https://github.com/safe-global/safe-wallet-monorepo/tree/dev/apps/web). While it should not be your final line of defense, securing the UI does protect your verification process from being compromised by supply-chain attacks.
+
+For emergency situations when the primary UI is unavailable, see [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure).
+
 ## Delegated Proposer
 
 It is recommended, but not required to authorize a separate transaction proposer for a Safe. This address can prepare transactions for signers to sign but is not an authorized signer on the Safe. Therefore **there is no risk of malicious signatures which can affect the Safe assets**. This wallet can hold no funds and simply act as a proposer. The primary reason to have a delegated proposer is that the hash verification utilities depend on the Safe API (unless details are entered manually). Until a transaction is **proposed** it does not show up in the API so the hash verification tools cannot detect it.
@@ -54,9 +62,32 @@ If your multisig will hold any assets on behalf of the DAO, set up governance re
 - **Grant allowance to**: DAO Agent 
 - **Amount**: Max value for each token held
 
+### Zodiac Delay Modifier (Time-Locks)
+
+Consider using [Zodiac Modifier Delay](https://github.com/gnosisguild/zodiac-modifier-delay/tree/main) or equivalent for implementing on-chain time-lock transaction delays to Safe wallets.
+
+See [Use Case Specific Requirements](/multisig-for-protocols/use-case-specific-requirements#timelock-configuration) for detailed timelock configuration guidance.
+
 ### Other Modules
 
 Do not install any other modules or guards without explicit governance approval and security review.
+
+## Contract-Level Controls
+
+**Advanced Configuration Warning:** The following contract-level controls are advanced security features that can provide additional protection but require careful implementation. Before implementing any guards or modules:
+
+- **Conduct thorough research** on available guard implementations and their compatibility with your multisig setup
+- **Ensure all guards are well-audited** by reputable security firms before deployment
+- **Test extensively** on testnets to verify functionality and edge cases
+- **Understand the risks**: Incorrect configuration or incompatible guards can render your multisig unusable, potentially locking access to funds permanently
+
+### Address Whitelisting
+
+Approved smart contract and wallet addresses must be added to a whitelist that is enforced at the contract-level. Interactions with all other addresses should be denied and revert the transaction. Updating the whitelist should require an extra signer in addition to the standard transaction approval quorum.
+
+### Invariant Enforcement
+
+Design contracts to enforce invariants and expected state changes such as token balance changes, ownership and administration, and proxy implementation addresses. Ensure contracts automatically revert transactions if any invariant is violated.
 
 ## Initial Testing
 
@@ -99,6 +130,10 @@ After completing setup:
 ## Active Monitoring
 
 Implement monitoring and alerting systems to be immediately notified of any on-chain activity related to the multisig, including proposed transactions, new signatures, and owner changes (e.g., using tools like [Safe Watcher](https://github.com/Gearbox-protocol/safe-watcher)).
+
+### Immutable Monitoring Channels
+
+Monitoring channels (e.g. email, Slack or Telegram chats) must be immutable (or trigger alerts when their configuration changes or logs are deleted/tampered with) and redundant such that an admin could not disable or tamper with one monitoring channel without generating an alert on the other channel.
 
 </TagProvider>
 <ContributeFooter />
