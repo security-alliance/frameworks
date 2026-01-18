@@ -9,19 +9,20 @@ cert:
   title: Governance & Domain Management
   controls:
   - id: dns-1.1.1
-    description: Is there a clearly designated person or team accountable for domain security? 
+    description: Is there a clearly designated person accountable for domain security? 
       At minimum, accountability scope includes policy maintenance, security reviews, 
       renewal management, access control oversight, and incident escalation.
     title: Accountability for Domain Security
   - id: dns-1.2.1
     description: Do you maintain a comprehensive inventory of all domains, including ownership,
-      purpose, criticality classification, and expiration dates?
+      purpose, criticality classification (e.g., based on whether external-facing and whether
+      users may transact funds), and expiration dates?
     title: Domain Inventory and Attributes
   - id: dns-1.2.2
-    description: Do you document and maintain current configuration baselines for all critical
-      domains? At minimum, baselines must include DNS record configurations, security settings 
+    description: Do you document and maintain current configuration baselines for all domains?
+      At minimum, baselines must include DNS record configurations, security settings 
       (DNSSEC, CAA), and registrar account configurations.
-    title: Current Configuration Baselines for Critical Domains
+    title: Current Configuration Baselines for Domains
 - id: dns-2
   title: Risk Assessment & Classification
   controls:
@@ -53,7 +54,9 @@ cert:
     title: Multi-factor Authentication for Registrar Accounts
   - id: dns-3.1.3
     description: Do you use a dedicated security contact email for domain management that is
-      hosted on a different domain than your primary domain?
+      hosted on a different domain than your primary domain? At minimum, the email must not
+      be a personal email address, must be used exclusively for domain security purposes, and
+      must be an alias that notifies multiple people.
     title: Dedicated Domain Security Contact Email
   - id: dns-3.1.4
     description: Do you conduct periodic access reviews for all personnel with domain management
@@ -68,21 +71,21 @@ cert:
   title: Technical Security Controls
   controls:
   - id: dns-4.1.1
-    description: Do you maintain documented standards for DNS security configurations (DNSSEC,
-      CAA records, TTL policies)?
+    description: Do you configure DNS security settings (DNSSEC, CAA records, TTL policies),
+      with documented standards?
     title: DNS Security Configuration Standards
   - id: dns-4.2.1
-    description: Do you maintain documented standards for email authentication (SPF, DKIM, DMARC,
-      MTA-STS)?
+    description: Do you configure email authentication (SPF, DKIM, DMARC, MTA-STS), with
+      documented standards?
     title: Email Authentication Protocol Standards
   - id: dns-4.2.2
     description: Do you have procedures for monitoring and responding to DMARC reports and policy
       violations?
     title: DMARC Monitoring and Response Procedures
   - id: dns-4.3.1
-    description: Do you maintain documented procedures for implementing domain locks (transfer
-      locks, registry locks, EPP status codes)?
-    title: Documented Domain Lock Procedures
+    description: Do you implement domain locks (transfer locks, registry locks, EPP status codes),
+      with documented procedures?
+    title: Domain Lock Implementation
   - id: dns-4.3.2
     description: Do you have procedures for out-of-band verification of domain changes through
       registrar support channels?
@@ -95,13 +98,15 @@ cert:
   title: Monitoring & Detection
   controls:
   - id: dns-5.1.1
-    description: Do you maintain continuous monitoring for unauthorized DNS record changes across
-      all critical domains? At minimum, monitoring must cover nameserver changes, A/AAAA record
-      changes for critical domains, MX record changes, CAA record removal, and DNSSEC status changes.
+    description: Do you monitor for unauthorized DNS record changes across all domains (whether
+      through your registrar, third-party services, or your own tools)? At minimum, monitoring
+      must cover nameserver changes, A/AAAA record changes, MX record changes, CAA record removal,
+      and DNSSEC status changes.
     title: Continuous Monitoring for DNS Changes
   - id: dns-5.1.2
     description: Do you monitor for specific indicators of DNS compromise (TTL changes, nameserver
-      modifications, record anomalies)?
+      modifications, record anomalies), whether through your registrar, third-party services,
+      or your own tools?
     title: DNS Compromise Indicators Monitoring
   - id: dns-5.1.3
     description: Do you have automated monitoring for Certificate Transparency logs to detect
@@ -110,8 +115,8 @@ cert:
     title: Automated Certificate Transparency Monitoring
   - id: dns-5.2.1
     description: Do you monitor your own domain registration status and lock settings for unauthorized
-      changes? At minimum, regularly verify that registry locks remain active and registrar
-      account settings are unchanged.
+      changes (whether through your registrar, third-party services, or your own tools)? At minimum,
+      regularly verify that registry locks remain active and registrar account settings are unchanged.
     title: Domain Registration Status Monitoring
   - id: dns-5.2.2
     description: Do you monitor for and prevent domain expiration risks? At minimum, enable
