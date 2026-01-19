@@ -10,6 +10,7 @@ permissions:
   pull-requests: write
   issues: write
   contents: read
+  id-token: write
 
 jobs:
   upload-images:
@@ -20,19 +21,23 @@ jobs:
     # Conditional execution: Only run if ALL conditions are met:
     # 1. Comment is on a pull request (not a regular issue)
     # 2. Comment starts with '/img-bot' command
-    # 3. Commenter has appropriate permissions (COLLABORATOR + admin, maintain or triage permissions)
+    # 3. Commenter has appropriate permissions (COLLABORATOR/MEMBER/OWNER)
     if: |
       github.event.issue.pull_request &&
       startsWith(github.event.comment.body, '/img-bot') &&
-       github.event.comment.author_association == 'COLLABORATOR'
+      (
+        github.event.comment.author_association == 'COLLABORATOR' ||
+        github.event.comment.author_association == 'MEMBER' ||
+        github.event.comment.author_association == 'OWNER'
+      )
 
     runs-on: ubuntu-latest
 
     steps:
-      # Step 0: Check collaborator permissions
-      - name: Check collaborator permission
-        id: check-collaborator
-        uses: actions/github-script@v7
+      # Step 0: Verify user permissions
+      - name: Verify user permissions
+        id: check-permissions
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
             const allowed = ['admin', 'maintain', 'triage'];
@@ -49,17 +54,18 @@ jobs:
 
             if (!allowed.includes(perm)) {
               core.setFailed(`User ${username} has insufficient permissions (${perm}).`);
-            } else {
-              console.log(`✅ User ${username} allowed (${perm} permission).`);
+              return;
             }
+
+            console.log(`✅ User ${username} allowed (${perm} permission).`);
 
       # Step 1: Acknowledge the command by adding a reaction
       - name: React to command
-        uses: actions/github-script@v7
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
             // Add an "eyes" emoji reaction to the comment to show we're processing
-            github.rest.reactions.createForIssueComment({
+            await github.rest.reactions.createForIssueComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               comment_id: context.payload.comment.id,
@@ -69,17 +75,22 @@ jobs:
       # Step 2: Extract GitHub image URLs from the comment
       - name: Extract GitHub image URLs
         id: extract-urls
-        uses: actions/github-script@v7
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
             const comment = context.payload.comment.body;
 
             // Extract URLs from comment using regex
-            const urlRegex = /(https:\/\/[^\s]+)/g;
+            const urlRegex = /(https:\/\/[^\s\]\)]+)/g;
             const urls = comment.match(urlRegex) || [];
 
             const validatedUrls = [];
             const validationErrors = [];
+
+            // Only allowed hostname
+            const ALLOWED_HOSTNAME = 'private-user-images.githubusercontent.com';
+
+            const VALID_PATH_PATTERN = /^\/\d+\/\d+-[a-f0-9-]{36}\.(png|jpg|jpeg)$/i;
 
             for (const url of urls) {
               if (url === '/img-bot') continue;
@@ -88,30 +99,59 @@ jobs:
                 const urlObj = new URL(url);
 
                 if (urlObj.protocol !== 'https:') {
-                  validationErrors.push(`${url}: Only HTTPS URLs are allowed`);
+                  validationErrors.push(`Only HTTPS URLs are allowed`);
                   continue;
                 }
 
-                // Ensure it's a valid GitHub-hosted image
+                // Strict hostname validation
                 const hostname = urlObj.hostname.toLowerCase();
-                const isValidGitHubHost =
-                  hostname.includes('user-images.githubusercontent.com') ||
-                  hostname.includes('private-user-images.githubusercontent.com') ||
-                  (hostname.includes('github.com') && url.includes('/assets/'));
 
-                if (!isValidGitHubHost) {
-                  validationErrors.push(`${url}: Not a valid GitHub image URL`);
+                if (hostname !== ALLOWED_HOSTNAME) {
+                  validationErrors.push(`Invalid hostname '${hostname}'. Only ${ALLOWED_HOSTNAME} URLs are accepted.`);
                   continue;
                 }
 
-                validatedUrls.push(url);
+                // Validate pathname format
+                const pathname = decodeURIComponent(urlObj.pathname);
+                
+                // Check for path traversal attempts
+                if (pathname.includes('..') || pathname.includes('//') || pathname.includes('\\')) {
+                  validationErrors.push(`Invalid path pattern detected`);
+                  continue;
+                }
+
+                // Validate path matches expected GitHub image URL format
+                if (!VALID_PATH_PATTERN.test(pathname)) {
+                  validationErrors.push(`URL path does not match expected GitHub image format`);
+                  continue;
+                }
+
+                // Must have JWT token (required for authentication)
+                if (!urlObj.searchParams.has('jwt')) {
+                  validationErrors.push(`URL missing required JWT token. Please copy the full image URL from GitHub.`);
+                  continue;
+                }
+
+                // Store original URL for download, sanitized for logging
+                const sanitizedUrl = `${urlObj.protocol}//${urlObj.hostname}${urlObj.pathname}?jwt=[REDACTED]`;
+                
+                validatedUrls.push({
+                  original: url,
+                  sanitized: sanitizedUrl
+                });
               } catch (error) {
-                validationErrors.push(`${url}: Invalid URL format - ${error.message}`);
+                validationErrors.push(`Invalid URL format - ${error.message}`);
               }
             }
 
             if (validatedUrls.length === 0 && validationErrors.length === 0) {
-              throw new Error('No GitHub-hosted image URLs found in comment.');
+              throw new Error(
+                'No valid GitHub image URLs found in comment.\n\n' +
+                'To get the correct URL:\n' +
+                '1. Refresh the PR page (important - JWT tokens expire in ~5 minutes)\n' +
+                '2. Right-click the image and select "Copy image address"\n' +
+                '3. Paste the URL in your /img-bot comment'
+              );
             }
 
             if (validationErrors.length > 0) {
@@ -122,28 +162,20 @@ jobs:
             }
 
             console.log(`Extracted ${validatedUrls.length} GitHub image URL(s)`);
-            console.log(
-              'URLs:',
-              validatedUrls.map(u => {
-                const truncated = u.length > 60 ? u.substring(0, 60) + '...' : u;
-                return truncated;
-              })
-            );
+            console.log('URLs (sanitized):', validatedUrls.map(u => u.sanitized));
 
-            // Return validated URLs as JSON array
-            return validatedUrls;
+            // Warn about JWT expiration
+            console.log('⚠️  Note: JWT tokens expire in ~5 minutes. Ensure URLs were copied from a freshly loaded page.');
+
+            // Return only the original URLs for processing (script needs full URL with JWT)
+            return validatedUrls.map(u => u.original);
           result-encoding: json
 
       # Step 3: Validate that all required AWS secrets are configured
-      - name: Validate AWS secrets
+      - name: Validate OIDC authentication
         run: |
-          if [ -z "${{ secrets.AWS_ACCESS_KEY_ID }}" ]; then
-            echo "::error::AWS_ACCESS_KEY_ID secret is not configured"
-            exit 1
-          fi
-
-          if [ -z "${{ secrets.AWS_SECRET_ACCESS_KEY }}" ]; then
-            echo "::error::AWS_SECRET_ACCESS_KEY secret is not configured"
+          if [ -z "${{ secrets.AWS_ROLE_ARN }}" ]; then
+            echo "::error::AWS_ROLE_ARN secret is not configured"
             exit 1
           fi
 
@@ -157,28 +189,36 @@ jobs:
             exit 1
           fi
 
-          echo "✓ All AWS secrets are configured"
+          echo "✓ OIDC authentication configured"
+
+      # Step 3b: Configure AWS credentials using OIDC
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722 # v4.1.0
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-session-name: img-bot-${{ github.run_id }}
 
       # Step 4: Checkout repository
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       # Step 5: Setup Node.js and pnpm
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
         with:
           node-version: "20"
 
       # Step 6: Install pnpm
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
         with:
           version: 10.15.0
           run_install: false
 
       # Step 7: Cache pnpm dependencies
       - name: Cache pnpm dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         id: pnpm-cache
         with:
           path: |
@@ -194,72 +234,78 @@ jobs:
           # Install dependencies using pnpm
           pnpm install --frozen-lockfile
 
-      # Step 9: Write URLs to file for the processing script
+      # Step 9: Write URLs to a temp file for the processing script
       - name: Write URLs to file
-        uses: actions/github-script@v7
-        env:
-          URLS_JSON: ${{ steps.extract-urls.outputs.result }}
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
             const fs = require('fs');
+            const path = require('path');
 
-            const urls = JSON.parse(process.env.URLS_JSON);
+            // Get URLs directly from the step output (already JSON)
+            const urls = ${{ steps.extract-urls.outputs.result }};
 
-            fs.writeFileSync('urls.json', JSON.stringify(urls, null, 2));
+            // Write to a secure temp location
+            const urlsPath = path.join(process.env.RUNNER_TEMP || '/tmp', 'urls.json');
+            fs.writeFileSync(urlsPath, JSON.stringify(urls, null, 2), { mode: 0o600 });
 
-            console.log(`Wrote ${urls.length} URL(s) to urls.json`);
+            // Export path for next step
+            core.exportVariable('URLS_FILE_PATH', urlsPath);
+
+            console.log(`Wrote ${urls.length} URL(s) to secure temp file`);
 
       # Step 10: Process and upload images
       - name: Process and upload images
         id: process
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URLS_FILE_PATH: ${{ env.URLS_FILE_PATH }}
         run: |
           # Run script and capture output
+          TEMP_OUTPUT=$(mktemp)
           set +e
-          node .github/scripts/process-images.js > output.log 2>&1
+          node .github/scripts/process-images.js > "$TEMP_OUTPUT" 2>&1
           EXIT_CODE=$?
           set -e
 
           # Extract RESULTS from script output
-          RESULTS=$(perl -0777 -pe 's/.*RESULTS:\s*//s' output.log 2>/dev/null || echo '')
+          RESULTS=$(perl -0777 -pe 's/.*RESULTS:\s*//s' "$TEMP_OUTPUT" 2>/dev/null || echo '')
           RESULTS=$(echo "$RESULTS" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 
           # Validate and write results
+          RESULTS_PATH=$(mktemp)
           if [ -z "$RESULTS" ] || ! echo "$RESULTS" | grep -q '^\['; then
             echo "::error::Failed to extract valid RESULTS from script output"
-            echo "Script output:"
-            tail -20 output.log
+            tail -20 "$TEMP_OUTPUT" | grep -v -E '(jwt=|token=|Bearer |Authorization:)'
+            rm -f "$TEMP_OUTPUT"
             exit 1
           fi
 
-          echo "$RESULTS" > results.json
-
-          if [ ! -f results.json ]; then
-            echo "::error::Failed to create results.json"
-            exit 1
-          fi
+          echo "$RESULTS" > "$RESULTS_PATH"
+          echo "RESULTS_FILE_PATH=$RESULTS_PATH" >> $GITHUB_ENV
 
           # Show script output for debugging (only if script failed)
           if [ "$EXIT_CODE" -ne 0 ]; then
-            echo "Script output:"
-            cat output.log
+            echo "Script output (filtered):"
+            cat "$TEMP_OUTPUT" | grep -v -E '(jwt=|token=|Bearer |Authorization:)'
           fi
+
+          # Clean up temp output
+          rm -f "$TEMP_OUTPUT"
 
       # Step 11: Comment results back to PR and check for failures
       - name: Comment results and check failures
-        uses: actions/github-script@v7
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        env:
+          RESULTS_FILE_PATH: ${{ env.RESULTS_FILE_PATH }}
         with:
           script: |
             const fs = require('fs');
             let results;
             try {
-              const resultsPath = 'results.json';
-              if (!fs.existsSync(resultsPath)) {
+              const resultsPath = process.env.RESULTS_FILE_PATH;
+              if (!resultsPath || !fs.existsSync(resultsPath)) {
                 throw new Error('Results file not found - workflow may have failed before processing');
               }
               
@@ -282,47 +328,51 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.payload.issue.number,
-                body: `❌ **Error**: Failed to parse workflow results: ${error.message}\n\nPlease check the workflow logs for details.`
+                body: `❌ **Error**: Failed to parse workflow results.\n\nPlease check the workflow logs for details.`
               });
               throw error;
             }
 
-            function sanitizeUrl(url) {
-              if (!url) return '';
-              return url.replace(/[<>]/g, '');
+            // URL sanitization to prevent markdown injection
+            function sanitizeUrl(str) {
+              if (!str) return '';
+              return str
+                .replace(/[<>]/g, '')
+                .replace(/[\[\]()]/g, '')
+                .replace(/\n/g, ' ')
+                .replace(/\|/g, '\\|')
+                .substring(0, 500);
             }
-
-            // Build comment body with results
-            let commentBody = '## 🖼️ Image(s) Upload Results\n\n';
-            commentBody += '**Next steps**: Copy the S3 URLs below and add them in the PR files.\n\n';
 
             // Separate successful and failed uploads
             const successful = results.filter(r => r.success);
             const failed = results.filter(r => !r.success);
 
-            // Add successful uploads section
+            // Build comment body with results
+            let commentBody = '## Image Upload Results\n\n';
+
+            // Add successful uploads as a table with preview
             if (successful.length > 0) {
-              commentBody += '### ✅ Uploaded\n\n';
-              successful.forEach((result, index) => {
+              commentBody += '| S3 URL | Preview |\n';
+              commentBody += '|:------:|:-------:|\n';
+
+              successful.forEach((result) => {
                 const safeS3Url = sanitizeUrl(result.s3Url);
-                
-                commentBody += `${index + 1}. **S3 URL**: ${safeS3Url}\n`;
-                commentBody += '---\n\n';
+                commentBody += `| \`${safeS3Url}\` | <img src="${result.s3Url}" width="200" /> |\n`;
               });
+
+              commentBody += '\n**Next step:** Copy the URL and use it in your contribution:\n';
+              commentBody += '```md\n![alt text](S3_URL)\n```\n\n';
             }
 
             // Add failed uploads section
             if (failed.length > 0) {
-              commentBody += '### ❌ Failed Uploads\n\n';
-              failed.forEach((result, index) => {
-                const safeUrl = sanitizeUrl(result.originalUrl);
-                commentBody += `${index + 1}. **URL**: ${safeUrl}\n`;
-                commentBody += `   **Error**: ${result.error}\n\n`;
+              commentBody += '**Failed:**\n';
+              failed.forEach((result) => {
+                const safeError = sanitizeUrl(result.error);
+                commentBody += `- ${safeError}\n`;
               });
             }
-
-            // Add summary
-            commentBody += `\n*Processed ${results.length} image(s): ${successful.length} successful, ${failed.length} failed*`;
 
             // Post comment to PR
             await github.rest.issues.createComment({
@@ -337,20 +387,22 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               comment_id: context.payload.comment.id,
-              content: successful.length === results.length ? 'hooray' : ''
+              content: successful.length === results.length ? 'hooray' : 'confused'
             });
 
       # Step 12: Check for failures and fail workflow if needed
       - name: Check for failures
+        env:
+          RESULTS_FILE_PATH: ${{ env.RESULTS_FILE_PATH }}
         run: |
-          # Read results from file (written by processing step)
-          if [ ! -f results.json ]; then
+          # Read results from file
+          if [ -z "$RESULTS_FILE_PATH" ] || [ ! -f "$RESULTS_FILE_PATH" ]; then
             echo "::error::Results file not found"
             exit 1
           fi
 
           # Count failed uploads using jq (JSON processor)
-          FAILED=$(jq '[.[] | select(.success == false)] | length' results.json)
+          FAILED=$(jq '[.[] | select(.success == false)] | length' "$RESULTS_FILE_PATH")
 
           # If any uploads failed, exit with error
           if [ "$FAILED" -gt 0 ]; then
@@ -365,5 +417,12 @@ jobs:
         if: always()
         run: |
           # Remove temporary files
-          rm -f urls.json output.log results.json
+          if [ -n "$URLS_FILE_PATH" ] && [ -f "$URLS_FILE_PATH" ]; then
+            shred -u "$URLS_FILE_PATH" 2>/dev/null || rm -f "$URLS_FILE_PATH"
+          fi
+          if [ -n "$RESULTS_FILE_PATH" ] && [ -f "$RESULTS_FILE_PATH" ]; then
+            shred -u "$RESULTS_FILE_PATH" 2>/dev/null || rm -f "$RESULTS_FILE_PATH"
+          fi
+          # Clean up any stray temp files
+          rm -f urls.json output.log results.json 2>/dev/null || true
           echo "✓ Cleaned up temporary files"
