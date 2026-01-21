@@ -1,5 +1,6 @@
 ---
-title: "DNSSEC, CAA, SMTP DANE and Email Security"
+title: "DNSSEC, CAA, SMTP DANE and Email Security | SEAL"
+description: "Implement DNSSEC for cryptographic DNS authentication, CAA records to control certificate issuance, and email security with SPF, DKIM, MTA-STS, and DMARC to prevent spoofing attacks."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -25,6 +26,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 DNSSEC (DNS Security Extensions) provides cryptographic authentication of DNS responses, preventing attackers from redirecting your users to malicious sites by tampering with DNS queries. Think of it as a digital signature that proves the DNS response came from the legitimate source.
 
 **How it protects you**: Without DNSSEC, attackers can intercept DNS queries and return fake IP addresses, redirecting users to malicious sites that look identical to yours. DNSSEC prevents this by cryptographically signing all DNS responses.
+While most client devices and many recursive resolvers do not perform DNSSEC validation on general DNS queries, DNSSEC is sometimes required and often preferred as a foundational component for security-sensitive internet protocols and features such as SMTP DANE, SSHFP, and CAA.
 
 **Preconditions**: 
 - Domain is using the provider's nameservers
@@ -86,6 +88,13 @@ DNSSEC (DNS Security Extensions) provides cryptographic authentication of DNS re
 Certificate Authority Authorization (CAA) records specify which Certificate Authorities (CAs) are allowed to issue SSL certificates for your domain. This prevents unauthorized certificate issuance, which attackers could use to create fake SSL certificates for your domain.
 
 **How it protects you**: Without CAA records, any Certificate Authority can issue SSL certificates for your domain. Attackers could potentially obtain fake certificates and use them in sophisticated phishing attacks that appear to have valid SSL encryption.
+A well behaved CA not explicitly permitted via CAA records will deny certificate requests for that domain. \
+While CA compromises are rare, history shows they do happen — and in such cases, attackers could potentially bypass or ignore CAA entirely. \
+Notable incidents include:
+- [DigiNotar (2011)](https://en.wikipedia.org/wiki/DigiNotar)
+- [Comodo (2011)](https://www.theregister.com/2011/03/28/comodo_gate_hacker_breaks_cover/) \
+Honorable mention, where it’s unclear whether CAA would have prevented the issue:
+- [Symantec Mis‑Issuance (2015–2017)](https://groups.google.com/a/chromium.org/g/blink-dev/c/eUAKwjihhBs/m/rpxMXjZHCQAJ)
 
 Before setting CAA records, identify which CA issued your current certificate:
 - **Command line**: `openssl s_client -connect yourdomain.com:443 -servername yourdomain.com | openssl x509 -noout -issuer`
@@ -93,6 +102,10 @@ Before setting CAA records, identify which CA issued your current certificate:
 - **Browser**: Click the padlock icon → Certificate details → Issuer information
 
 **Setup process**: Add CAA records to your DNS zone. Most DNS providers allow you to add these through their web interface:
+
+With the issuers full name in hand we now need to map it to the "Issuer Domain Name".
+There is no centralized repository mapping public CA's to their issuer domain names but they are generally easily found with a simple search for f.x. "Let's Encrypt CAA". \
+The Common CA Database also provides a comprehensive collection to reference: https://ccadb.org/resources
 
 ```
 # Allow only specific CAs to issue certificates
@@ -234,6 +247,8 @@ MTA-STS enforces encrypted connections between mail servers, preventing man-in-t
 DMARC builds on SPF and DKIM to provide policy enforcement for email authentication. It tells receiving mail servers what to do with emails that fail authentication checks.
 
 **How it protects you**: DMARC prevents email spoofing by instructing receiving servers to reject or quarantine emails that fail authentication, protecting your users from phishing attacks.
+Without it, emails breaking SPF/DKIM may still be delivered by some providers (like Gmail, Outlook), often to the inbox or spam folder, sometimes with a warning banner (e.g., "This message may not be from…")
+DMARC also enables aggregate (rua) and forensic (ruf) reporting, giving domain owners visibility into who is sending email on their behalf - legitimate or otherwise.
 
 **Setup**: Add a DMARC record to your DNS zone:
 
