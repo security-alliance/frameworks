@@ -1,6 +1,13 @@
 import { defineConfig } from 'vocs'
 
+const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main'
+
 const config = {
+  vite: {
+    define: {
+      __IS_MAIN_BRANCH__: JSON.stringify(isMainBranch)
+    }
+  },
   banner: {
     content: '***This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.***',
     height: '30px',
@@ -484,7 +491,7 @@ function filterDevItems(items: any[]): any[] {
     }))
 }
 
-if (process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main') {
+if (isMainBranch) {
   config.sidebar = filterDevItems(config.sidebar)
 }
 
