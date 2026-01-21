@@ -52,7 +52,7 @@ First, check existing PRs or branches to make sure your work has not been previo
 All contributions should follow this workflow:
 
 1. **Fork the repository** to your own GitHub account.
-2. **Follow the `template.mdx` page** when creating or expanding content. It contains pre-defined components and
+2. **Follow the `docs/pages/config/template.mdx` page** when creating or expanding content. It contains pre-defined components and
 structure required for consistency in MDX files.
 3. **Make your changes** in MDX (typos, improvements, or new content) on your fork.
 4. **Open a Pull Request (PR) against the `develop` branch** of this repository. Once submitted, you can see the
