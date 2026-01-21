@@ -9,145 +9,158 @@ cert:
   title: Governance & Domain Management
   controls:
   - id: dns-1.1.1
+    title: Domain Management Policies and Procedures
     description: Do you maintain documented policies and procedures governing domain management
       operations?
-    title: Domain Management Policies and Procedures
   - id: dns-1.1.2
+    title: Accountability for Domain Security
     description: Is there a clearly designated person or team accountable for domain security
       (policy maintenance, security reviews, renewal management)?
-    title: Accountability for Domain Security
   - id: dns-1.2.1
+    title: Domain Inventory and Attributes
     description: Do you maintain a comprehensive inventory of all domains including ownership,
       purpose, criticality classification, expiration dates, and relationships to business services/applications?
-    title: Domain Inventory and Attributes
   - id: dns-1.2.2
+    title: Current Configuration Baselines for Critical Domains
     description: Do you document and maintain current configuration baselines for all critical
       domains (DNS records, security settings, registrar configurations)?
-    title: Current Configuration Baselines for Critical Domains
 - id: dns-2
   title: Risk Assessment & Classification
   controls:
   - id: dns-2.1.1
+    title: Formal Domain Classification System
     description: Do you maintain a formal classification system for domains based on criticality,
       financial exposure, and operational impact?
-    title: Formal Domain Classification System
   - id: dns-2.1.2
+    title: Mapping Domain Classifications to Controls
     description: Do you map domain classifications to required security controls (monitoring
       frequency, approval requirements, backup procedures)?
-    title: Mapping Domain Classifications to Controls
   - id: dns-2.2.1
+    title: Registrar and DNS Provider Security Criteria
     description: Do you maintain security evaluation criteria for selecting domain registrars
       and DNS hosting providers?
-    title: Registrar and DNS Provider Security Criteria
 - id: dns-3
   title: Access Control & Authentication
   controls:
   - id: dns-3.1.1
+    title: Procedures for Registrar Access
+    ref: /infrastructure/domain-and-dns-security/registrar-and-locks#access-control-best-practices
     description: Do you maintain documented procedures for managing access to domain registrar
       accounts?
-    title: Procedures for Registrar Access
   - id: dns-3.1.2
+    title: Multi-factor Authentication for Registrar Accounts
+    ref: /infrastructure/domain-and-dns-security/registrar-and-locks/#multi-factor-authentication
     description: Do you enforce multi-factor authentication requirements for all registrar and
       DNS management accounts?
-    title: Multi-factor Authentication for Registrar Accounts
   - id: dns-3.1.3
+    title: Dedicated Domain Security Contact Email
+    ref: /infrastructure/domain-and-dns-security/registrar-and-locks/#dedicated-security-contact-email
     description: Do you maintain a separate, dedicated security contact email for domain management
       that is independent from your primary domain?
-    title: Dedicated Domain Security Contact Email
   - id: dns-3.1.4
+    title: Periodic Access Reviews for Domain Privileges
     description: Do you conduct periodic access reviews for all personnel with domain management
       privileges?
-    title: Periodic Access Reviews for Domain Privileges
   - id: dns-3.2.1
+    title: Approval Workflows for Critical Domain Operations
     description: Do you maintain documented approval workflows for critical domain operations
       (transfers, deletions, nameserver changes)?
-    title: Approval Workflows for Critical Domain Operations
 - id: dns-4
   title: Technical Security Controls
+  ref: /infrastructure/domain-and-dns-security/dnssec-and-email
   controls:
   - id: dns-4.1.1
+    title: DNS Security Configuration Standards
+    ref: /infrastructure/domain-and-dns-security/dnssec-and-email#dnssec-implementation
     description: Do you maintain documented standards for DNS security configurations (DNSSEC,
       CAA records, TTL policies)?
-    title: DNS Security Configuration Standards
   - id: dns-4.2.1
+    title: Email Authentication Protocol Standards
+    ref: /infrastructure/domain-and-dns-security/dnssec-and-email#email-security-configuration
     description: Do you maintain documented standards for email authentication (SPF, DKIM, DMARC,
       MTA-STS)?
-    title: Email Authentication Protocol Standards
   - id: dns-4.2.2
+    title: DMARC Monitoring and Response Procedures
     description: Do you have procedures for monitoring and responding to DMARC reports and policy
       violations?
-    title: DMARC Monitoring and Response Procedures
   - id: dns-4.3.1
+    title: Documented Domain Lock Procedures
+    ref: /infrastructure/domain-and-dns-security/registrar-and-locks#registry-lock-epp-lock
     description: Do you maintain documented procedures for implementing domain locks (transfer
       locks, registry locks, EPP status codes)?
-    title: Documented Domain Lock Procedures
   - id: dns-4.3.2
     description: Do you have procedures for out-of-band verification of domain changes through
       registrar support channels?
     title: Out of Band Domain Change Verification
   - id: dns-4.3.3
+    title: TLS Certificate Lifecycle Management Procedures
     description: Do you maintain documented procedures for TLS certificate lifecycle management,
       including issuance, renewal, revocation, and monitoring for expiration across all domains
       and services?
-    title: TLS Certificate Lifecycle Management Procedures
 - id: dns-5
   title: Operational Procedures
   controls:
   - id: dns-5.1.1
+    title: Domain Registration Lifecycle Procedures
+    ref: /infrastructure/domain-and-dns-security/registrar-and-locks#domain-expiration-protection
     description: Do you maintain documented procedures for domain registration, renewal, decommissioning,
       and expiration prevention (auto-renewal, multiple reminders, backup payment methods)?
-    title: Domain Registration Lifecycle Procedures
   - id: dns-5.1.2
-    description: Do you maintain documented procedures for secure domain transfers between registrars?
     title: Secure Domain Transfer Procedures
+    description: Do you maintain documented procedures for secure domain transfers between registrars?
   - id: dns-5.2.1
-    description: Do you maintain formal change management procedures for DNS record modifications?
     title: DNS Change Management Procedures
+    description: Do you maintain formal change management procedures for DNS record modifications?
 - id: dns-6
   title: Monitoring & Detection
+  ref: /infrastructure/domain-and-dns-security/monitoring-and-alerting#dns-record-monitoring
   controls:
   - id: dns-6.1.1
+    title: Continuous Monitoring for DNS Changes
+    ref: /infrastructure/domain-and-dns-security/monitoring-and-alerting/#passive-dns-monitoring
     description: Do you maintain continuous monitoring for unauthorized DNS record changes across
       all critical domains?
-    title: Continuous Monitoring for DNS Changes
   - id: dns-6.1.2
+    title: DNS Compromise Indicators Monitoring
     description: Do you monitor for specific indicators of DNS compromise (TTL changes, nameserver
       modifications, record anomalies)?
-    title: DNS Compromise Indicators Monitoring
   - id: dns-6.1.3
+    title: Monitor Certificate Transparency Logs
+    ref: /infrastructure/domain-and-dns-security/monitoring-and-alerting/#certificate-transparency-monitoring
     description: Do you maintain procedures for monitoring Certificate Transparency logs for
       unauthorized certificate issuance?
-    title: Monitor Certificate Transparency Logs
   - id: dns-6.2.1
+    title: Unauthorized Domain Registration Monitoring
     description: Do you monitor domain registration status and registrar lock settings for unauthorized
       changes?
-    title: Unauthorized Domain Registration Monitoring
   - id: dns-6.2.2
+    title: Detecting Domain Expiration Risks
+    ref: /infrastructure/domain-and-dns-security/registrar-and-locks#domain-expiration-protection
     description: Do you maintain procedures for detecting and responding to domain expiration
       risks?
-    title: Detecting Domain Expiration Risks
 - id: dns-7
   title: Incident Response
+  ref: /infrastructure/domain-and-dns-security/monitoring-and-alerting#incident-response-plan
   controls:
   - id: dns-7.1.1
+    title: Domain Hijacking Incident Response
     description: Do you maintain incident response procedures specific to domain hijacking and
       DNS compromise scenarios?
-    title: Domain Hijacking Incident Response
   - id: dns-7.1.2
+    title: Registrar and DNS Emergency Contacts
     description: Do you maintain emergency contact information for registrars and DNS hosting
       providers?
-    title: Registrar and DNS Emergency Contacts
   - id: dns-7.2.1
+    title: Emergency Registry Lock Activation
     description: Do you maintain procedures for emergency registry lock activation to prevent
       unauthorized domain changes?
-    title: Emergency Registry Lock Activation
   - id: dns-7.2.2
-    description: Do you have documented procedures for regaining control of compromised domains?
     title: Regaining Control of Compromised Domains
+    description: Do you have documented procedures for regaining control of compromised domains?
   - id: dns-7.2.3
+    title: DNS Record Integrity Validation Procedures
     description: Do you maintain procedures for validating DNS record integrity after incident
       recovery?
-    title: DNS Record Integrity Validation Procedures
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertList } from '../../../components'

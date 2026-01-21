@@ -4,6 +4,7 @@ export interface Control {
     description: string;
     justification?: string;
     evidence?: string;
+    ref?: string;
 }
 
 export type ControlState = "no" | "yes" | "na";
@@ -19,6 +20,7 @@ export interface Section {
     title: string;
     description?: string;
     controls: Control[];
+    ref?: string;
 }
 
 export interface CertListProps {
