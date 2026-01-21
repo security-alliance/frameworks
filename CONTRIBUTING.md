@@ -19,6 +19,9 @@ If you'd like to join our effort, feel free to fix typos, contribute new section
 [Code of Conduct](https://github.com/security-alliance/frameworks/blob/develop/CODE_OF_CONDUCT.md)**
 to ensure that all interactions remain respectful, inclusive, and constructive.
 
+**Before contributing to SEAL Certifications** specifically, please read the [SEAL Certifications
+Contributing Guide](/certs/contributions.mdx) for details on the certification framework and project specifics.
+
 Join our [Discord](https://discord.gg/securityalliance) server, let others know what you are working on in the
 ‘frameworks-reviewers’ group channel, and collaborate with other contributors writing about related topics.
 
@@ -101,7 +104,6 @@ devcontainer exec --workspace-folder . bash
 # Get the IP address of the container, by running `hostname -I | awk '{print $1}'`. Should be printed automatically in the terminal after the creation as well
 # Inside container: pnpm exec just serve
 # Access the docs at http://<IP>:5173
-
 ```
 
 ### Option C: Local installation
@@ -118,7 +120,6 @@ If you prefer to install dependencies locally on your machine:
 **Setup:**
 
 1. Install all prerequisites listed above
-
 2. Clone the repository:
 
     ```bash
@@ -199,10 +200,24 @@ Or look at your branch on GitHub — commits should show a green **Verified** ba
 When contributing to the Security Frameworks, there are several additional responsibilities to ensure your updates
 integrate smoothly into the site and maintain proper structure:
 
-### 1. Page tags
+### 1. Frontmatter
 
-- Assign appropriate tags at the top of your pages in the frontmatter to help categorize content by role, topic, or
-skill level:
+Every page requires frontmatter at the top of the file. Here are the key fields:
+
+#### Title and Description
+
+Add a title and description to every page you add:
+
+```yaml
+---
+title: "Your Page Title"
+description: "A brief description of the page content."
+---
+```
+
+#### Tags
+
+Assign tags to categorize content by role, topic, or skill level:
 
 ```yaml
 ---
@@ -210,14 +225,13 @@ tags:
   - Engineer/Developer
   - Security Specialist
 ---
-
 ```
 
-- Proper tagging makes your contribution discoverable and filterable on the site.
+Proper tagging makes your contribution discoverable and filterable on the site.
 
-### 2. Contributors metadata
+#### Contributors
 
-- Add yourself and other relevant contributors to the page frontmatter:
+Add yourself and other relevant contributors:
 
 ```yaml
 ---
@@ -227,13 +241,15 @@ contributors:
   - role: reviewed
     users: [reviewer1, reviewer2]
 ---
-
 ```
 
-- Contributors are **managed centrally**:
-    1. **Contributor database:** `docs/pages/config/contributors.json`
-    2. **Usage guide:** `docs/pages/config/using-contributors.mdx`
-- This helps track contributions and ensures proper attribution for edits and reviews.
+Contributors are **managed centrally**:
+- **Contributor database:** `docs/pages/config/contributors.json`
+- **Usage guide:** `docs/pages/config/using-contributors.mdx`
+
+This helps track contributions and ensures proper attribution.
+
+For a complete frontmatter example, see the [template file](/docs/pages/config/template.mdx).
 
 ### 3. Sidebar / Navigation
 
@@ -332,7 +348,6 @@ pie title What Voldemort doesn't have?
 - **Incomplete pages** should include a stub notice:
 
 > ⚠️ This article is still in progress. Help the framework by contributing and expanding it.
->
 
 Pages with minimal content which need more work to cover the topic need to include a notice:
 
