@@ -21,3 +21,4 @@ export { default as MermaidRenderer } from './mermaid/MermaidRenderer';
 export * from './shared/constants'
 export { CertifiedProtocols } from './certified-protocols/CertifiedProtocols'
 export { CertifiedProtocolsWrapper } from './certified-protocols/CertifiedProtocolsWrapper'
+export { DevOnly } from './dev-only/DevOnly'
