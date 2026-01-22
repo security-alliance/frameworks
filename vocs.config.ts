@@ -190,7 +190,7 @@ const config = {
               items: [
                 { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
                 { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
-                { text: 'DNSSEC, CAA, and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
+                { text: 'DNSSEC, CAA, SMTP DANE and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
                 { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
                 { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
               ]
