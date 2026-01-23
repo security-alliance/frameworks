@@ -1,10 +1,12 @@
 import contributorsData from '../../docs/pages/config/contributors.json';
 import './Contributors.css';
 import BadgeDisplay from './BadgeDisplay';
+import { getBadgeConfig, BADGE_ICONS } from '../shared/badgeConfig';
 
 interface Badge {
   name: string;
-  assigned: string;
+  assigned?: string;
+  lastActive?: string;
   framework?: string;
 }
 
@@ -18,17 +20,129 @@ interface Contributor {
   website: string | null;
   company: string | null;
   job_title: string | null;
-  steward: string[];
   badges: Badge[];
   description: string;
 }
 
-// Helper to format steward array with "&" between items
-function formatStewards(stewards: string[]): string {
-  if (!stewards || stewards.length === 0) return '';
-  if (stewards.length === 1) return stewards[0];
-  if (stewards.length === 2) return `${stewards[0]} & ${stewards[1]}`;
-  return stewards.slice(0, -1).join(', ') + ' & ' + stewards[stewards.length - 1];
+// Extract framework names from Framework-Steward badges
+function getStewardFrameworks(badges: Badge[]): string[] {
+  return badges
+    .filter(b => b.name === 'Framework-Steward' && b.framework)
+    .map(b => b.framework as string);
+}
+
+// Helper to format frameworks with "&" between items
+function formatFrameworks(frameworks: string[]): string {
+  if (!frameworks || frameworks.length === 0) return '';
+  if (frameworks.length === 1) return frameworks[0];
+  if (frameworks.length === 2) return `${frameworks[0]} & ${frameworks[1]}`;
+  return frameworks.slice(0, -1).join(', ') + ' & ' + frameworks[frameworks.length - 1];
+}
+
+// Get role badge info for a contributor
+function getRoleBadgeInfo(role: string, badges: Badge[]): { label: string; badgeName: string; color: string; description: string; tier: string } | null {
+  if (role === 'lead') {
+    const config = getBadgeConfig('Lead');
+    return { label: 'Lead', badgeName: 'Lead', color: config.color, description: config.description, tier: config.tier || 'epic' };
+  }
+  if (role === 'core') {
+    const config = getBadgeConfig('Core-Contributor');
+    return { label: 'Core', badgeName: 'Core-Contributor', color: config.color, description: config.description, tier: config.tier || 'legendary' };
+  }
+  if (role === 'steward') {
+    const config = getBadgeConfig('Framework-Steward');
+    const frameworks = getStewardFrameworks(badges);
+    return {
+      label: 'Steward',
+      badgeName: 'Framework-Steward',
+      color: config.color,
+      tier: config.tier || 'legendary',
+      description: frameworks.length > 0
+        ? `Steward of ${formatFrameworks(frameworks)}`
+        : config.description
+    };
+  }
+  return null;
+}
+
+// Helper component for role badge overlay
+function RoleBadgeOverlay({ role, badges }: { role: string; badges: Badge[] }) {
+  const roleInfo = getRoleBadgeInfo(role, badges);
+  if (!roleInfo) return null;
+  return (
+    <div
+      className="role-badge-overlay"
+      style={{ '--role-color': roleInfo.color } as React.CSSProperties}
+    >
+      <div className="role-badge-icon-svg">
+        {BADGE_ICONS[roleInfo.badgeName] || BADGE_ICONS['default']}
+      </div>
+      <span className="role-badge-simple-tooltip">{roleInfo.label}</span>
+    </div>
+  );
+}
+
+// Helper component for steward info
+function StewardInfo({ badges }: { badges: Badge[] }) {
+  const frameworks = getStewardFrameworks(badges);
+  if (frameworks.length === 0) return null;
+  return (
+    <div className="contributors-page-steward">
+      <span className="steward-label">Steward:</span>
+      <span className="steward-name">{formatFrameworks(frameworks)}</span>
+    </div>
+  );
+}
+
+// Get activity status from badges: 'active' | 'dormant' | 'none'
+function getActivityStatus(badges: Badge[]): 'active' | 'dormant' | 'none' {
+  const hasActive = badges.some(b =>
+    b.name === 'Active-Last-7d' || b.name === 'Active-Last-30d'
+  );
+  if (hasActive) return 'active';
+
+  const hasDormant = badges.some(b => b.name === 'Dormant-90d+');
+  if (hasDormant) return 'dormant';
+
+  return 'none';
+}
+
+// Get the most recent activity date from badges
+function getLastActivityDate(badges: Badge[]): Date | null {
+  const activityBadge = badges.find(b =>
+    b.name === 'Active-Last-7d' || b.name === 'Active-Last-30d' || b.name === 'Dormant-90d+'
+  );
+  if (activityBadge?.lastActive) {
+    return new Date(activityBadge.lastActive);
+  }
+  return null;
+}
+
+// Sort contributors by activity within their group
+function sortByActivity(contributors: Contributor[]): Contributor[] {
+  return [...contributors].sort((a, b) => {
+    const statusA = getActivityStatus(a.badges || []);
+    const statusB = getActivityStatus(b.badges || []);
+
+    // Priority: active > none > dormant
+    const priority = { active: 0, none: 1, dormant: 2 };
+    if (priority[statusA] !== priority[statusB]) {
+      return priority[statusA] - priority[statusB];
+    }
+
+    // Within same status, sort by most recent activity date (newest first)
+    const dateA = getLastActivityDate(a.badges || []);
+    const dateB = getLastActivityDate(b.badges || []);
+
+    if (dateA && dateB) {
+      return dateB.getTime() - dateA.getTime();
+    }
+    if (dateA) return -1;
+    if (dateB) return 1;
+
+    // Fallback to alphabetical by name
+    return a.name.localeCompare(b.name);
+  });
 }
 
 interface ContributorGroup {
@@ -51,19 +165,19 @@ export function Contributors() {
   const groups: ContributorGroup[] = [
     {
       label: "Leadership",
-      contributors: contributors.filter(c => c.role === "lead")
+      contributors: sortByActivity(contributors.filter(c => c.role === "lead"))
     },
     {
       label: "Stewards",
-      contributors: contributors.filter(c => c.role === "steward")
+      contributors: sortByActivity(contributors.filter(c => c.role === "steward"))
     },
     {
       label: "Core Contributors",
-      contributors: contributors.filter(c => c.role === "core")
+      contributors: sortByActivity(contributors.filter(c => c.role === "core"))
     },
     {
       label: "Contributors",
-      contributors: contributors.filter(c => c.role === "contributor")
+      contributors: sortByActivity(contributors.filter(c => c.role === "contributor"))
     }
   ].filter(group => group.contributors.length > 0);
 
@@ -101,7 +215,7 @@ export function Contributors() {
                   id={contributor.name.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9_-]/g, '')}
                   style={{ '--card-index': index } as React.CSSProperties}
                 >
-                  {/* Avatar */}
+                  {/* Avatar with role badge */}
                   <div className="avatar-wrapper">
                     <img
                       className="contributors-page-avatar"
@@ -109,37 +223,40 @@ export function Contributors() {
                       alt={`${contributor.name}'s avatar`}
                       loading="lazy"
                     />
+                    {(contributor.role === 'lead' || contributor.role === 'core' || contributor.role === 'steward') && (
+                      <RoleBadgeOverlay role={contributor.role} badges={contributor.badges || []} />
+                    )}
                   </div>
 
                   {/* Header with name */}
                   <div className="contributors-page-header">
-                    <div className="contributors-page-name">{contributor.name}</div>
+                    <div className="contributors-page-name">
+                      {contributor.name}
+                    </div>
                   </div>
 
-                  {/* Company */}
-                  {contributor.company && (
-                    <div className="contributors-page-company">{contributor.company}</div>
-                  )}
-
-                  {/* Job Title */}
-                  {contributor.job_title && (
-                    <div className="contributors-page-role">{contributor.job_title}</div>
-                  )}
-
-                  {/* Steward info */}
-                  {contributor.steward && contributor.steward.length > 0 && (
-                    <div className="contributors-page-steward">
-                      <span className="steward-label">Steward:</span>
-                      <span className="steward-name">{formatStewards(contributor.steward)}</span>
+                  {/* Content area - flexible section */}
+                  <div className="contributors-page-content">
+                    {/* Company */}
+                    <div className={`contributors-page-company ${!contributor.company ? 'empty-placeholder' : ''}`}>
+                      {contributor.company || '\u00A0'}
                     </div>
-                  )}
 
-                  {/* Description - only show for non-stewards */}
-                  {contributor.description && contributor.role !== "steward" && (
-                    <div className="contributors-page-description">
-                      {contributor.description}
+                    {/* Job Title */}
+                    <div className={`contributors-page-role ${!contributor.job_title ? 'empty-placeholder' : ''}`}>
+                      {contributor.job_title || '\u00A0'}
                     </div>
-                  )}
+
+                    {/* Steward info */}
+                    <StewardInfo badges={contributor.badges || []} />
+
+                    {/* Description - only show for non-stewards */}
+                    {contributor.description && contributor.role !== "steward" && (
+                      <div className="contributors-page-description">
+                        {contributor.description}
+                      </div>
+                    )}
+                  </div>
 
                   {/* Badges display */}
                   {contributor.badges && contributor.badges.length > 0 && (

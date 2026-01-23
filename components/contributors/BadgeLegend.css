@@ -32,6 +32,11 @@
   gap: 1.5rem;
 }
 
+/* Make cards in the left column grow to fill the height */
+.badge-legend-column:first-child .badge-legend-category {
+  flex: 1;
+}
+
 .badge-legend-category {
   padding: 1.25rem;
   background: var(--quote-bg, rgba(255, 255, 255, 0.5));
@@ -122,16 +127,59 @@
 
 .badge-legend-note {
   margin-top: 1.5rem;
-  padding: 1rem;
+  padding: 0.875rem 1rem;
   background: rgba(251, 191, 36, 0.1);
   border-radius: 8px;
   font-size: 0.8125rem;
   color: #92400e;
   border-left: 3px solid #fbbf24;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.badge-legend-note strong {
+.legend-note-text {
+  line-height: 1.4;
+}
+
+.legend-note-text strong {
   font-weight: 700;
+}
+
+.legend-note-arrow {
+  font-size: 1rem;
+  color: #f59e0b;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
+/* Visual indicator in legend note */
+.legend-new-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3);
+  flex-shrink: 0;
+}
+
+.legend-pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: legend-pulse 2s ease-in-out infinite;
+}
+
+@keyframes legend-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
 }
 
 /* Dark mode adjustments */

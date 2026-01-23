@@ -1,128 +1,16 @@
 import React from 'react';
 import './BadgeLegend.css';
+import { BADGE_CONFIG, BadgeCategory } from '../shared/badgeConfig';
 
-interface BadgeInfo {
-  name: string;
-  label: string;
-  description: string;
-  category: 'role' | 'milestone' | 'activity';
-}
+// Convert BADGE_CONFIG to array format for the legend
+const BADGE_LEGEND = Object.entries(BADGE_CONFIG).map(([name, config]) => ({
+  name,
+  label: config.label,
+  description: config.description,
+  category: config.category
+}));
 
-const BADGE_LEGEND: BadgeInfo[] = [
-  // Role Badges (Blue)
-  {
-    name: 'Framework-Steward',
-    label: 'Framework Steward',
-    description: 'Official maintainer responsible for framework quality',
-    category: 'role'
-  },
-  {
-    name: 'Core-Contributor',
-    label: 'Core Team',
-    description: 'Elite contributor with governance duties',
-    category: 'role'
-  },
-  {
-    name: 'Lead',
-    label: 'Lead',
-    description: 'Initiative lead and project maintainer',
-    category: 'role'
-  },
-  // Milestone Badges (Green)
-  {
-    name: 'Contributor-5',
-    label: 'Bronze Contributor',
-    description: '5+ merged contributions',
-    category: 'milestone'
-  },
-  {
-    name: 'Contributor-10',
-    label: 'Gold Contributor',
-    description: '10+ merged contributions',
-    category: 'milestone'
-  },
-  {
-    name: 'Contributor-25',
-    label: 'Diamond Contributor',
-    description: '25+ merged contributions',
-    category: 'milestone'
-  },
-  {
-    name: 'Reviewer-10',
-    label: 'Skilled Reviewer',
-    description: '10+ code reviews completed',
-    category: 'milestone'
-  },
-  {
-    name: 'Reviewer-25',
-    label: 'Review Master',
-    description: '25+ code reviews completed',
-    category: 'milestone'
-  },
-  {
-    name: 'Issue-Opener-5',
-    label: 'Issue Reporter',
-    description: '5+ issues opened',
-    category: 'milestone'
-  },
-  {
-    name: 'Issue-Opener-10',
-    label: 'Active Reporter',
-    description: '10+ issues opened',
-    category: 'milestone'
-  },
-  {
-    name: 'Issue-Opener-25',
-    label: 'Master Reporter',
-    description: '25+ issues opened',
-    category: 'milestone'
-  },
-  {
-    name: 'First-Contribution',
-    label: 'First Contribution',
-    description: 'Made their first contribution to the project',
-    category: 'milestone'
-  },
-  {
-    name: 'First-Review',
-    label: 'First Review',
-    description: 'Completed their first code review',
-    category: 'milestone'
-  },
-  {
-    name: 'Early-Contributor',
-    label: 'Early Contributor',
-    description: 'Among the first contributors to the project',
-    category: 'milestone'
-  },
-  // Activity Badges (Yellow)
-  {
-    name: 'Active-Last-7d',
-    label: 'Recently Active',
-    description: 'Active in the last 7 days',
-    category: 'activity'
-  },
-  {
-    name: 'Active-Last-30d',
-    label: 'Active Contributor',
-    description: 'Active in the last 30 days',
-    category: 'activity'
-  },
-  {
-    name: 'New-Joiner',
-    label: 'New Joiner',
-    description: 'Welcome to the community!',
-    category: 'activity'
-  },
-  {
-    name: 'Dormant-90d+',
-    label: 'Dormant',
-    description: 'Inactive for 90+ days',
-    category: 'activity'
-  }
-];
-
-const CATEGORY_INFO = {
+const CATEGORY_INFO: Record<BadgeCategory, { label: string; color: string; description: string }> = {
   role: {
     label: 'Role Badges',
     color: '#3b82f6',
@@ -140,7 +28,7 @@ const CATEGORY_INFO = {
   }
 };
 
-function CategoryCard({ category }: { category: 'role' | 'milestone' | 'activity' }) {
+function CategoryCard({ category }: { category: BadgeCategory }) {
   const info = CATEGORY_INFO[category];
   const badges = BADGE_LEGEND.filter(b => b.category === category);
 
@@ -192,20 +80,26 @@ export function BadgeLegend() {
       </p>
 
       <div className="badge-legend-categories">
-        {/* Left column: Role + Activity (shorter lists) */}
+        {/* Left column: Role + Activity*/}
         <div className="badge-legend-column">
           <CategoryCard category="role" />
           <CategoryCard category="activity" />
         </div>
 
-        {/* Right column: Milestone (longer list) */}
+        {/* Right column: Milestone */}
         <div className="badge-legend-column">
           <CategoryCard category="milestone" />
         </div>
       </div>
 
       <div className="badge-legend-note">
-        <strong>Note:</strong> Badges with a pulsing indicator were earned within the last 7 days.
+        <span className="legend-note-text">
+          <strong>Badges earned within the last 30 days display a golden pulsing indicator</strong>
+        </span>
+        <span className="legend-note-arrow">→</span>
+        <span className="legend-new-indicator">
+          <span className="legend-pulse-dot"></span>
+        </span>
       </div>
     </div>
   );

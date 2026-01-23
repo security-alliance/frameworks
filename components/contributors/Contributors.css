@@ -55,7 +55,7 @@
   opacity: 0.7;
 }
 
-/* Group Heading Enhanced */
+/* Group Heading */
 .contributors-group-heading {
   display: flex;
   align-items: center;
@@ -119,7 +119,7 @@
   background: linear-gradient(90deg, var(--vocs-color_codeInlineBg), transparent);
 }
 
-/* Grid Layout - Enhanced */
+/* Grid Layout */
 .contributors-page-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -128,7 +128,7 @@
   max-width: 1400px;
 }
 
-/* Contributor Card - Simple Design */
+/* Contributor Card */
 .contributors-page-card {
   background: var(--sidebar-bg);
   border: 1px solid var(--theme-popup-border);
@@ -136,9 +136,9 @@
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease, z-index 0s 0.2s;
-  display: grid;
-  grid-template-rows: auto auto auto 1fr auto;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   font-size: 0.875rem;
   position: relative;
@@ -151,7 +151,16 @@
   transform: translateY(-3px);
 }
 
-/* Avatar - Enhanced with wrapper */
+/* Content wrapper */
+.contributors-page-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Avatar */
 .avatar-wrapper {
   position: relative;
   display: flex;
@@ -186,7 +195,6 @@
   border: 3px solid var(--sidebar-bg);
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
-  animation: badgeBounce 2s ease-in-out infinite;
   z-index: 3;
 }
 
@@ -195,16 +203,89 @@
   box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
 }
 
-@keyframes badgeBounce {
+/* Role badge overlay on avatar corner */
+.role-badge-overlay {
+  position: absolute;
+  bottom: -4px;
+  right: calc(50% - 48px);
+  width: 32px;
+  height: 32px;
+  z-index: 3;
+  cursor: pointer;
+}
 
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
+.role-badge-overlay .role-badge-icon-svg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--sidebar-bg);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
 
-  50% {
-    transform: translateY(-4px) scale(1.05);
-  }
+.role-badge-overlay .role-badge-icon-svg svg {
+  width: 100%;
+  height: 100%;
+}
+
+.role-badge-overlay:hover {
+  z-index: 99999;
+}
+
+.role-badge-overlay:hover .role-badge-icon-svg {
+  transform: scale(1.15);
+}
+
+/* Simple tooltip for role badge */
+.role-badge-simple-tooltip {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 8px);
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 999999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.role-badge-simple-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #111827;
+}
+
+.role-badge-overlay:hover .role-badge-simple-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Light mode for simple role tooltip */
+:root:not(.dark) .role-badge-simple-tooltip {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  color: #111827;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+:root:not(.dark) .role-badge-simple-tooltip::before {
+  border-right-color: #ffffff;
 }
 
 /* Header Section */
@@ -354,11 +435,12 @@
   height: 18px;
 }
 
-/* Badge Display Section - Enhanced */
+/* Badge Display Section */
 .contributors-page-badges {
   padding-top: 0.75rem;
   border-top: 1px solid var(--theme-popup-border);
   width: 100%;
+  margin-top: auto;
 }
 
 .contributors-page-badges::before {
@@ -390,9 +472,9 @@
   justify-content: center;
 }
 
-/* Elevate card when badge tooltip is shown to prevent neighboring card borders from showing through */
+/* Elevate card when badge tooltip is shown */
 .contributors-page-card:has(.badge-wrapper:hover) {
-  z-index: 10;
+  z-index: 99999;
   transition-delay: 0s;
 }
 
@@ -402,6 +484,12 @@
   color: #586069;
   margin-bottom: .4rem;
   font-style: italic;
+}
+
+/* Empty placeholders */
+.empty-placeholder {
+  visibility: hidden;
+  border-color: transparent !important;
 }
 
 .contributors-page-company {
