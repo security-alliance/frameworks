@@ -33,8 +33,8 @@ importers:
         specifier: ^19.2.1
         version: 19.2.1(react@19.2.1)
       react-router-dom:
-        specifier: ^7.10.0
-        version: 7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+        specifier: ^7.12.0
+        version: 7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
     devDependencies:
       '@types/exceljs':
         specifier: ^1.3.2
@@ -53,7 +53,7 @@ importers:
         version: 4.0.7
       vocs:
         specifier: ^1.2.1
-        version: 1.2.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-router-dom@7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(rollup@4.53.3)(typescript@5.9.3)
+        version: 1.2.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-router-dom@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(rollup@4.53.3)(typescript@5.9.3)
 
 packages:
 
@@ -2815,8 +2815,8 @@ packages:
   hastscript@9.0.1:
     resolution: {integrity: sha512-g7df9rMFX/SPi34tyGCyUBREQoKkapwdY/T04Qn9TDWfHhAYt4/I0gMVirzK5wEzeUqIjEB+LXC/ypb7Aqno5w==}
 
-  hono@4.10.7:
-    resolution: {integrity: sha512-icXIITfw/07Q88nLSkB9aiUrd8rYzSweK681Kjo/TSggaGbOX4RRyxxm71v+3PC8C/j+4rlxGeoTRxQDkaJkUw==}
+  hono@4.11.4:
+    resolution: {integrity: sha512-U7tt8JsyrxSRKspfhtLET79pU8K+tInj5QZXs1jSugO1Vq5dFj3kmZsRldo29mTBfcjDRVRXrEZ6LS63Cog9ZA==}
     engines: {node: '>=16.9.0'}
 
   html-void-elements@3.0.0:
@@ -3587,15 +3587,15 @@ packages:
       '@types/react':
         optional: true
 
-  react-router-dom@7.10.0:
-    resolution: {integrity: sha512-Q4haR150pN/5N75O30iIsRJcr3ef7p7opFaKpcaREy0GQit6uCRu1NEiIFIwnHJQy0bsziRFBweR/5EkmHgVUQ==}
+  react-router-dom@7.12.0:
+    resolution: {integrity: sha512-pfO9fiBcpEfX4Tx+iTYKDtPbrSLLCbwJ5EqP+SPYQu1VYCXdy79GSj0wttR0U4cikVdlImZuEZ/9ZNCgoaxwBA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
 
-  react-router@7.10.0:
-    resolution: {integrity: sha512-FVyCOH4IZ0eDDRycODfUqoN8ZSR2LbTvtx6RPsBgzvJ8xAXlMZNCrOFpu+jb8QbtZnpAd/cEki2pwE848pNGxw==}
+  react-router@7.12.0:
+    resolution: {integrity: sha512-kTPDYPFzDVGIIGNLS5VJykK0HfHLY5MF3b+xj0/tTyNYL1gF1qs7u67Z9jEhQk2sQ98SUaHxlG31g1JtF7IfVw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: '>=18'
@@ -4728,9 +4728,9 @@ snapshots:
 
   '@fortawesome/fontawesome-free@6.7.2': {}
 
-  '@hono/node-server@1.19.6(hono@4.10.7)':
+  '@hono/node-server@1.19.6(hono@4.11.4)':
     dependencies:
-      hono: 4.10.7
+      hono: 4.11.4
 
   '@iconify/types@2.0.0': {}
 
@@ -7152,7 +7152,7 @@ snapshots:
       property-information: 7.1.0
       space-separated-tokens: 2.0.2
 
-  hono@4.10.7: {}
+  hono@4.11.4: {}
 
   html-void-elements@3.0.0: {}
 
@@ -7962,13 +7962,13 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuqs@2.8.2(react-router-dom@7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-router@7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1):
+  nuqs@2.8.2(react-router-dom@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-router@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1):
     dependencies:
       '@standard-schema/spec': 1.0.0
       react: 19.2.1
     optionalDependencies:
-      react-router: 7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      react-router-dom: 7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      react-router: 7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      react-router-dom: 7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
 
   on-finished@2.4.1:
     dependencies:
@@ -8195,13 +8195,13 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.7
 
-  react-router-dom@7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
+  react-router-dom@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
-      react-router: 7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      react-router: 7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
 
-  react-router@7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
+  react-router@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       cookie: 1.1.1
       react: 19.2.1
@@ -8803,10 +8803,10 @@ snapshots:
       lightningcss: 1.30.2
       yaml: 2.8.2
 
-  vocs@1.2.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-router-dom@7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(rollup@4.53.3)(typescript@5.9.3):
+  vocs@1.2.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-router-dom@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(rollup@4.53.3)(typescript@5.9.3):
     dependencies:
       '@floating-ui/react': 0.27.16(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      '@hono/node-server': 1.19.6(hono@4.10.7)
+      '@hono/node-server': 1.19.6(hono@4.11.4)
       '@mdx-js/mdx': 3.1.1
       '@mdx-js/react': 3.1.1(@types/react@19.2.7)(react@19.2.1)
       '@mdx-js/rollup': 3.1.1(rollup@4.53.3)
@@ -8836,7 +8836,7 @@ snapshots:
       cross-spawn: 7.0.6
       fs-extra: 11.3.2
       hastscript: 8.0.0
-      hono: 4.10.7
+      hono: 4.11.4
       mark.js: 8.11.1
       mdast-util-directive: 3.1.0
       mdast-util-from-markdown: 2.0.2
@@ -8847,7 +8847,7 @@ snapshots:
       mdast-util-to-hast: 13.2.1
       mdast-util-to-markdown: 2.1.2
       minisearch: 7.2.0
-      nuqs: 2.8.2(react-router-dom@7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-router@7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)
+      nuqs: 2.8.2(react-router-dom@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-router@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)
       ora: 7.0.1
       p-limit: 5.0.0
       picomatch: 4.0.3
@@ -8857,7 +8857,7 @@ snapshots:
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
       react-intersection-observer: 9.16.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      react-router: 7.10.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      react-router: 7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       rehype-autolink-headings: 7.1.0
       rehype-class-names: 2.0.0
       rehype-mermaid: 3.0.0(playwright@1.57.0)
