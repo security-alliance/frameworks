@@ -1,0 +1,581 @@
+:root {
+  --badge-transition: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --badge-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Badge Display Container */
+.badge-display {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s var(--badge-easing);
+  overflow: visible !important;
+}
+
+.badge-display.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Badge Summary */
+.badge-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--vocs-color_codeInlineBg), transparent);
+  border: 2px solid var(--theme-popup-border);
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.badge-count {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--fg);
+  line-height: 1;
+}
+
+.badge-count-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fg);
+  opacity: 0.7;
+}
+
+/* Badges Container */
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+  overflow: visible !important;
+}
+
+.badges-container.stack {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Badge Wrapper */
+.badge-wrapper {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+}
+
+.badge-wrapper:hover {
+  z-index: 99999;
+}
+
+/* Badge Card - Premium Design */
+.badge-card {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--sidebar-bg) 0%, var(--quote-bg, rgba(0, 0, 0, 0.05)) 100%);
+  border: 3px solid var(--theme-popup-border);
+  cursor: pointer;
+  overflow: visible;
+  transition: all 0.4s var(--badge-easing);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Compact Mode */
+.badge-display.compact .badge-card {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border-width: 2px;
+}
+
+.badge-display.compact .badge-tier-indicator {
+  display: none;
+}
+
+/* Category-Based Border Styling */
+.badge-wrapper.role .badge-card {
+  border-color: #3b82f6;
+  border-width: 3px;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2), 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+.badge-wrapper.milestone .badge-card {
+  border-color: #10b981;
+  border-width: 3px;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2), 0 4px 16px rgba(16, 185, 129, 0.3);
+}
+
+.badge-wrapper.activity .badge-card {
+  border-color: #fbbf24;
+  border-width: 3px;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2), 0 4px 16px rgba(251, 191, 36, 0.3);
+}
+
+/* Tier-Based Styling */
+.badge-wrapper.tier-legendary .badge-card {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.badge-wrapper.tier-epic .badge-card {
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+}
+
+.badge-wrapper.tier-rare .badge-card {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.badge-wrapper.tier-common .badge-card {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+/* Hover Effects */
+.badge-wrapper:hover .badge-card {
+  transform: translateY(-6px) scale(1.08);
+}
+
+.badge-wrapper.role:hover .badge-card {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3), 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+.badge-wrapper.milestone:hover .badge-card {
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3), 0 8px 24px rgba(16, 185, 129, 0.4);
+}
+
+.badge-wrapper.activity:hover .badge-card {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3), 0 8px 24px rgba(251, 191, 36, 0.4);
+}
+
+/* Newly Earned Badge */
+.badge-wrapper.newly-earned .badge-card {
+  box-shadow: 0 0 0 2px var(--badge-color), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure hover effects work on newly-earned badges too */
+.badge-wrapper.newly-earned:hover .badge-card {
+  transform: translateY(-6px) scale(1.08);
+}
+
+.badge-wrapper.newly-earned.activity:hover .badge-card {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3), 0 8px 24px rgba(251, 191, 36, 0.4);
+}
+
+/* New Indicator */
+.new-indicator {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border-radius: 50%;
+  border: 3px solid var(--sidebar-bg);
+  box-shadow: 0 0 0 2px #fbbf24, 0 2px 8px rgba(251, 191, 36, 0.5);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.4);
+  }
+}
+
+/* Tier Indicator */
+.badge-tier-indicator {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-size: 0.875rem;
+  background: var(--sidebar-bg);
+  border: 2px solid var(--badge-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 5;
+  transition: transform 0.3s var(--badge-easing);
+}
+
+.badge-wrapper:hover .badge-tier-indicator {
+  transform: scale(1.15) rotate(12deg);
+}
+
+/* Badge Icon Container */
+.badge-icon-container {
+  width: 45px;
+  height: 45x;
+  position: relative;
+  transition: transform 0.4s var(--badge-easing);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.badge-wrapper:hover .badge-icon-container {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.badge-icon-container svg {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Tooltip */
+.badge-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  color: white;
+  padding: 0.875rem;
+  border-radius: 10px;
+  width: 220px;
+  max-width: 220px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 999999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+:root:not(.dark) .badge-tooltip {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  color: #111827;
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+:root:not(.dark) .badge-tooltip::before {
+  border-top-color: #ffffff;
+}
+
+:root:not(.dark) .tooltip-description {
+  color: #4b5563;
+}
+
+:root:not(.dark) .tooltip-footer {
+  border-top-color: rgba(15, 23, 42, 0.1);
+}
+
+:root:not(.dark) .tooltip-date {
+  color: #6b7280;
+}
+
+.badge-wrapper:hover .badge-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.badge-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: #111827;
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+}
+
+.tooltip-header strong {
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  flex: 1;
+  word-wrap: break-word;
+}
+
+.tier-badge {
+  font-size: 0.5625rem;
+  font-weight: 800;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tier-badge.tier-legendary {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #78350f;
+}
+
+.tier-badge.tier-epic {
+  background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+  color: white;
+}
+
+.tier-badge.tier-rare {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+}
+
+.tier-badge.tier-common {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.tooltip-description {
+  font-size: 0.75rem;
+  color: #d1d5db;
+  margin-bottom: 0.625rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.tooltip-footer {
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tooltip-date {
+  font-size: 0.6875rem;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+
+/* Alternative: Position tooltip below if there's not enough space above */
+.badges-container.tooltip-below .badge-tooltip {
+  bottom: auto;
+  top: calc(100% + 12px);
+}
+
+.badges-container.tooltip-below .badge-tooltip::before {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: #1f2937;
+}
+
+.new-badge-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #78350f;
+  font-weight: 800;
+  font-size: 0.5625rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-style: normal;
+}
+
+/* SVG Animations */
+.badge-main {
+  transform-origin: center;
+}
+
+@keyframes badgePulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.badge-glow {
+  transform-origin: center;
+}
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.08);
+  }
+}
+
+.badge-ring {
+  transform-origin: center;
+}
+
+@keyframes ringRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes accentFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.badge-core {
+  transform-origin: center;
+}
+
+@keyframes coreExpand {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* Dark mode adjustments for badges */
+:root.dark .badge-card {
+  background: linear-gradient(135deg, var(--sidebar-bg, #1f2937) 0%, var(--quote-bg, rgba(255, 255, 255, 0.05)) 100%);
+  border-color: var(--theme-popup-border, #374151);
+}
+
+:root.dark .badge-wrapper.role .badge-card {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 2px rgb(96 165 250 / 85%), 2px 2px 3px rgba(96, 165, 250, 0.35);
+}
+
+:root.dark .badge-wrapper.milestone .badge-card {
+  border-color: #34d399;
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 70%), 2px 2px 3px rgba(52, 211, 153, 0.35);
+}
+
+:root.dark .badge-wrapper.activity .badge-card {
+  border-color: #fcd34d;
+  box-shadow: 0 0 0 2px rgb(252 211 77 / 70%), 2px 2px 3px rgba(252, 211, 77, 0.35);
+}
+
+:root.dark .badge-wrapper.tier-legendary .badge-card {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(245, 158, 11, 0.15) 100%);
+}
+
+:root.dark .badge-wrapper.tier-epic .badge-card {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(147, 51, 234, 0.15) 100%);
+}
+
+:root.dark .badge-wrapper.tier-rare .badge-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.15) 100%);
+}
+
+:root.dark .badge-wrapper.tier-common .badge-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.15) 100%);
+}
+
+:root.dark .badge-wrapper.role:hover .badge-card {
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 100%), 0 8px 24px rgba(96, 165, 250, 0.45);
+}
+
+:root.dark .badge-wrapper.milestone:hover .badge-card {
+  border-color: #6ee7b7;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 100%), 0 8px 24px rgba(52, 211, 153, 0.45);
+}
+
+:root.dark .badge-wrapper.activity:hover .badge-card {
+  border-color: #fde68a;
+  box-shadow: 0 0 0 3px rgba(252, 211, 77, 100%), 0 8px 24px rgba(252, 211, 77, 0.45);
+}
+
+:root.dark .new-indicator {
+  border-color: var(--sidebar-bg, #1f2937);
+}
+
+:root.dark .badge-tier-indicator {
+  background: var(--sidebar-bg, #1f2937);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .badge-card {
+    width: 56px;
+    height: 56px;
+  }
+
+  .badge-icon-container {
+    width: 40px;
+    height: 40px;
+  }
+
+  .badge-display.compact .badge-card {
+    width: 40px;
+    height: 40px;
+  }
+
+  .badge-display.compact .badge-icon-container {
+    width: 28px;
+    height: 28px;
+  }
+
+  .badge-tooltip {
+    min-width: 220px;
+    max-width: 280px;
+    font-size: 0.875rem;
+  }
+
+  .badges-container {
+    gap: 0.5rem;
+  }
+}
