@@ -1,4 +1,4 @@
-import { getTagColor, getTagId } from '../shared/constants'
+import { getTagColor, getTagId } from '../shared/tagColors'
 import './TagList.css'
 
 interface TagListProps {
