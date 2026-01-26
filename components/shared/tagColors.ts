@@ -1,8 +1,7 @@
 /**
- * Shared constants for the components
+ * Tag colors
  */
 
-// Tag color mapping for consistent styling across components
 export const TAG_COLORS: Record<string, string> = {
   'Security Specialist': '#9F2026',   
   'Operations & Strategy': '#9A055D',   
