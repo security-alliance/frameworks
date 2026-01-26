@@ -6,7 +6,7 @@ interface Contributor {
   name: string;
   role: string;
   avatar: string;
-  github: string;
+  github: string | null;
   twitter: string | null;
   website: string | null;
   company: string | null;
@@ -17,6 +17,14 @@ interface Contributor {
 interface ContributorGroup {
   label: string;
   contributors: Contributor[];
+}
+
+// Helper to create a slug for heading IDs (matching Vocs slugify behavior)
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
 }
 
 export function Contributors() {
@@ -45,9 +53,26 @@ export function Contributors() {
   return (
     <div>
       
-      {groups.map((group) => (
+      {groups.map((group) => {
+        const headingSlug = slugify(group.label);
+        return (
         <div key={group.label} className={`contributors-group ${group.label.toLowerCase().replace(' ', '-')}-group`}>
-          <h2>{group.label}</h2>
+          <h2 className="vocs_H2 vocs_Heading">
+            <div id={headingSlug} className="vocs_Heading_slugTarget"></div>
+            {group.label}
+            <a 
+              className="vocs_Anchor vocs_Autolink" 
+              aria-hidden="true" 
+              tabIndex={-1} 
+              href={`#${headingSlug}`}
+            >
+              <div 
+                data-autolink-icon="true" 
+                className="vocs_Div vocs_AutolinkIcon" 
+                style={{ '--vocs_AutolinkIcon_iconUrl': 'url(/.vocs/icons/link.svg)' } as React.CSSProperties}
+              ></div>
+            </a>
+          </h2>
           <div className="contributors-page-list">
             {group.contributors.map((contributor) => (
               <div
@@ -106,7 +131,8 @@ export function Contributors() {
             ))}
           </div>
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
