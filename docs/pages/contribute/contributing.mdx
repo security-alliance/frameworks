@@ -1,5 +1,6 @@
 ---
-title: "Contribute"
+title: "Contributing Guide | Security Alliance"
+description: "Contribute to SEAL Security Frameworks: fix typos, add new sections, or propose enhancements. Help us build the documentation and improve security in the blockchain ecosystem"
 ---
 
 {/*
@@ -212,11 +213,39 @@ Or look at your branch on GitHub — commits should show a green **Verified** ba
 When contributing to the Security Frameworks, there are several additional responsibilities to ensure your updates
 integrate smoothly into the site and maintain proper structure:
 
-### 1. Page tags
+### 1. Frontmatter
 
-- Assign appropriate tags at the top of your pages in the frontmatter to help categorize content by role, topic, or
+Every page requires frontmatter at the top of the file. Here are the key fields:
 
-skill level:
+#### Title and Description
+
+Add a title and description to every page you add:
+
+```yaml
+---
+title: "Your Page Title | Security Alliance"
+# SEO meta description: 140-160 chars. Start with the framework/topic name, include
+# searchable terms (tool names, attack types, standards), use action verbs.
+description: "Your description here, 140-160 characters."
+---
+```
+
+**Titles** should be concise and descriptive—avoid generic names like "Overview" or "Guide" alone.
+Use "Preparing for a Smart Contract Audit" instead of "Preparation". Keep titles under 60 characters
+(including the `| Security Alliance` suffix) so they display fully in search results. If your title
+is too long, use `| SEAL` instead.
+
+**Meta descriptions** appear in search results and determine whether researchers click through.
+Aim for 140-160 characters, include searchable terms whitehats use (tool names, attack types,
+standards), and use action verbs. See
+[Google's guide](https://developers.google.com/search/docs/appearance/snippet) for more details.
+
+- ✅ `"Smart contract audits: scoping, static analysis, manual review, and formal verification."`
+- ❌ `"This page covers security topics."` (too vague, no searchable terms)
+
+#### Tags
+
+Assign tags to categorize content by role, topic, or skill level:
 
 ```yaml
 ---
@@ -226,11 +255,11 @@ tags:
 ---
 ```
 
-- Proper tagging makes your contribution discoverable and filterable on the site.
+Proper tagging makes your contribution discoverable and filterable on the site.
 
-### 2. Contributors metadata
+#### Contributors
 
-- Add yourself and other relevant contributors to the page frontmatter:
+Add yourself and other relevant contributors:
 
 ```yaml
 ---
@@ -242,10 +271,13 @@ contributors:
 ---
 ```
 
-- Contributors are **managed centrally**:
-    1. **Contributor database:** `docs/pages/config/contributors.json`
-    2. **Usage guide:** `docs/pages/config/using-contributors.mdx`
-- This helps track contributions and ensures proper attribution for edits and reviews.
+Contributors are **managed centrally**:
+- **Contributor database:** `docs/pages/config/contributors.json`
+- **Usage guide:** `docs/pages/config/using-contributors.mdx`
+
+This helps track contributions and ensures proper attribution.
+
+For a complete frontmatter example, see the [template file](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx?plain=1).
 
 ### 3. Sidebar / Navigation
 
