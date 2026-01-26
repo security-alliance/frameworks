@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTagFilter } from './TagContext'
-import { getTagColor } from '../shared/constants'
+import { getTagColor } from '../shared/tagColors'
 import tagsFetched from '../../utils/fetched-tags.json'
 import './TagFilter.css'
 

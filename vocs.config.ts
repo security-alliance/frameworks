@@ -1,6 +1,13 @@
 import { defineConfig } from 'vocs'
 
+const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main'
+
 const config = {
+  vite: {
+    define: {
+      __IS_MAIN_BRANCH__: JSON.stringify(isMainBranch)
+    }
+  },
   banner: {
     content: '***This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.***',
     height: '30px',
@@ -13,7 +20,7 @@ const config = {
   logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
   ogImageUrl: {
-    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.png'
+    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png'
   },
   checkDeadlinks: "warn" as const,
   sidebar: [
@@ -190,7 +197,7 @@ const config = {
               items: [
                 { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
                 { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
-                { text: 'DNSSEC, CAA, and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
+                { text: 'DNSSEC, CAA, SMTP DANE and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
                 { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
                 { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
               ]
@@ -485,7 +492,7 @@ function filterDevItems(items: any[]): any[] {
     }))
 }
 
-if (process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main') {
+if (isMainBranch) {
   config.sidebar = filterDevItems(config.sidebar)
 }
 
