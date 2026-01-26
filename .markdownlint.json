@@ -38,7 +38,8 @@
       "CertifiedProtocols",
       "CertList",
       "CertifiedProtocolsWrapper",
-      "MermaidRenderer"
+      "MermaidRenderer",
+      "DevOnly"
     ]
   },
   "MD037": false,
