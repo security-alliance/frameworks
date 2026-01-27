@@ -477,6 +477,8 @@ const config = {
       items: [
         { text: 'Overview', link: '/guides/overview' },
         { text: 'Discord Security', link: '/guides/discord' },
+        { text: 'Telegram Security', link: '/guides/telegram' },
+        { text: 'Twitter/X Security', link: '/guides/twitter' },
       ]
     },
     {
