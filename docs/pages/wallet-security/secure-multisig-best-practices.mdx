@@ -7,7 +7,7 @@ tags:
   - Engineer/Developer
 contributors:
   - role: wrote
-    users: [engn33r, pinalikefruit, isaac, geoffrey, louis, pablo, dickson]
+    users: [engn33r, pinalikefruit, isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [Coinspect]
 
@@ -55,6 +55,7 @@ authorize the movement of funds or execute a privileged action.
 - All signers must use hardware wallets
 - Multisigs managing assets on behalf of a DAO should set unlimited allowance with primary DAO agent
 - Signers on multisigs with critical protocol configuration or security roles are discouraged from using their addresses for other purposes. They should create a brand new wallet for that purpose instead.
+- All signing wallets should be monitored for any activity that is not directly related to multi-sig operations.
 - No multisigs should use modules/guards except those mentioned in [Setup & Configuration → Modules & Guards](/multisig-for-protocols/setup-and-configuration#modules--guards) unless clear justification and security review is provided
 - Threshold exceptions can be made for multisigs that are used in frequent operations but are highly constrained by smart contracts. For example, rate setting operations with tight bounds and a backup recovery mechanism to replace the multisig.
 
@@ -69,6 +70,12 @@ The security of a multisig depends entirely on the operational security (OpSec) 
 - Maintaining geographical separation for devices holding signer keys.
 - Assigning signer keys to different trusted individuals within an organization.
 - Using diverse client software to interact with the multisig to mitigate single-point-of-failure risks from a software vulnerability.
+
+#### Signer Composition Requirements
+
+- **Role Diversity**: Signers should be diverse individuals to reduce risk of multiple compromised accounts - a mix of executives, developers, and operational roles is recommended
+- **Technical Expertise**: Include a high number of competent, well-vetted technical signers that will understand full transaction details and effects in your signing quorum
+- **External Parties**: Multi-sigs managing high value wallets and contracts should have at least 1 additional required signer that is external to the organization (such as a security partner or trusted advisor)
 
 ### Communication & Documentation
 
@@ -114,6 +121,8 @@ owner management on a test network.
 * **Timelocks:** Enforce a mandatory delay between the approval of a transaction and its execution. This provides a
 critical window for the community or team to detect and react to malicious proposals.
 
+* **Veto Quorum:** Establish a smaller veto group separate from the confirmation quorum to review and confirm transaction legitimacy. Organizations can establish veto quorums to bypass time-locks in case of emergency. The standard quorum plus two additional signers should be required to bypass.
+
 * **Role-Based Access Control (RBAC):** Implement modules that grant specific, limited permissions to certain addresses
 (e.g., a "pauser" or "executor" role) without making them full owners, adhering to the principle of least privilege.
 
@@ -144,6 +153,14 @@ related to the multisig, including proposed transactions, new signatures, and ow
 
 * **Documented Procedures:** Maintain clear, secure, and accessible documentation for all multisig procedures, including transaction creation, signing, and emergency recovery plans.
 * **General Signing Guidelines:** Use hardware wallets, dedicated signing profiles, and re-verify before execution. Require a "how to check" guide and communicate status after signing (e.g., "checked, signed, X more required"). Last signer executes when applicable.
+
+## Contract-Level Security
+
+* **Invariant Enforcement:** Design contracts to enforce invariants and expected state changes such as token balance changes, ownership and administration, and proxy implementation addresses. Ensure contracts automatically revert transactions if any invariant is violated.
+
+* **Address Whitelisting:** Approved smart contract and wallet addresses must be added to a whitelist that is enforced at the contract-level. Interactions with all other addresses should be denied and revert the transaction. Updating the whitelist should require an extra signer in addition to the standard transaction approval quorum.
+
+For detailed configuration guidance, see [Setup & Configuration → Contract-Level Controls](/multisig-for-protocols/setup-and-configuration#contract-level-controls).
 
 ## Acknowledgements
 
