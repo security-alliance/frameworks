@@ -150,16 +150,16 @@ cert:
       operations to untrusted addresses must be flagged as high risk.
     title: Signing and Verification Procedures
   - id: ms-4.1.3
+    description: Do you require each signer to independently verify transaction details
+      through a separate interface or data source before signing, rather than relying
+      solely on the initiator's representation?
+    title: Independent Transaction Verification Requirement
+  - id: ms-4.1.4
     description: Do you maintain audit trails and retention for transaction reviews, approvals,
       execution, and post-execution confirmation? At minimum, audit trails must be retained
       for 3 years and include proposer, approvers, verification evidence, timestamps, and
       any issues encountered.
     title: Audit Trails and Retention
-  - id: ms-4.1.4
-    description: Do you require each signer to independently verify transaction details
-      through a separate interface or data source before signing, rather than relying
-      solely on the initiator's representation?
-    title: Independent Transaction Verification Requirement
   - id: ms-4.1.5
     description: Do you apply enhanced controls for high-risk transactions (emergency
       actions, large transfers, protocol configuration changes), with a documented policy?
