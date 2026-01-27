@@ -105,6 +105,7 @@ A well behaved CA not explicitly permitted via CAA records will deny certificate
 While CA compromises are rare, history shows they do happen — and in such cases, attackers could potentially bypass
 or ignore CAA entirely. \
 Notable incidents include:
+
 - [DigiNotar (2011)](https://en.wikipedia.org/wiki/DigiNotar)
 - [Comodo (2011)](https://www.theregister.com/2011/03/28/comodo_gate_hacker_breaks_cover/) \
 Honorable mention, where it’s unclear whether CAA would have prevented the issue:
@@ -120,8 +121,10 @@ Before setting CAA records, identify which CA issued your current certificate:
 **Setup process**: Add CAA records to your DNS zone. Most DNS providers allow you to add these through their web interface:
 
 With the issuers full name in hand we now need to map it to the "Issuer Domain Name".
-There is no centralized repository mapping public CA's to their issuer domain names but they are generally easily found with a simple search for f.x. "Let's Encrypt CAA". \
-The Common CA Database also provides a comprehensive collection to reference: https://ccadb.org/resources
+There is no centralized repository mapping public CA's to their issuer domain names but they are generally easily found with
+a simple search for f.x. "Let's Encrypt CAA". \
+The Common CA Database also provides a
+[comprehensive collection to reference](https://ccadb.org/resources).
 
 ```
 # Allow only specific CAs to issue certificates
@@ -140,24 +143,31 @@ example.com. CAA 0 issue ";"
 
 ## SMTP DANE
 
-DNS-based Authentication of Named Entities (DANE) is an email security protocol that relies on TLSA DNS records secured via DNSSEC. \
-The TLSA record contains information on the MX and the certificate in use, allowing a secure connection to be made using that certificate. \
+DNS-based Authentication of Named Entities (DANE) is an email security protocol that relies on TLSA DNS
+records secured via DNSSEC. The TLSA record contains information on the MX and the certificate in use,
+allowing a secure connection to be made using that certificate.
 This prevents both MiTM and downgrade attacks. \
 DANE requires DNSSEC to be enabled on your domain - without it, TLSA records can be spoofed and offer no security benefit.
 
 If no record is found, SMTP DANE supporting clients will fall back to their usual connection flow.
 
-*While traditional PKI relies on trusted CAs, DANE allows domain owners to specify their own certificates, relying instead on DNSSEC to authenticate the certificate.*
+*While traditional PKI relies on trusted CAs, DANE allows domain owners to specify their own certificates,
+relying instead on DNSSEC to authenticate the certificate.*
 
-**Current industry support**: Of the major providers, Microsoft is the only one that currently supports SMTP DANE since it's [RFC](https://datatracker.ietf.org/doc/html/rfc7672) was published in 2015. \
-Notable smaller implementers include Comcast, Protonmail, Cisco, Fastmail, Posteo and Mailbox.org.
+**Current industry support**: Of the major providers, Microsoft is the only one that currently supports
+SMTP DANE since its [RFC](https://datatracker.ietf.org/doc/html/rfc7672) was published in 2015. Notable
+smaller implementers include Comcast, Protonmail, Cisco, Fastmail, Posteo and Mailbox.org.
 
-**Implementation**: For those interested, a simple step-by-step tutorial can be found here for Exchange Online: https://learn.microsoft.com/en-us/purview/how-smtp-dane-works#inbound-smtp-dane-with-dnssec \
-And for the brave, the Dutch Internet Standards Platform has published detailed documentation on various aspects of supporting SMTP DANE on a self-hosted MX like postfix. \
-https://github.com/internetstandards/toolbox-wiki/blob/main/DANE-for-SMTP-how-to.md#reliable-certificate-rollover
+**Implementation**: For those interested, a simple step-by-step tutorial can be found here for
+[Exchange Online](https://learn.microsoft.com/en-us/purview/how-smtp-dane-works#inbound-smtp-dane-with-dnssec).
+And for the brave, the Dutch Internet Standards Platform has published
+[detailed documentation](https://github.com/internetstandards/toolbox-wiki/blob/main/DANE-for-SMTP-how-to.md#reliable-certificate-rollover)
+on various aspects of supporting SMTP DANE on a self-hosted MX like postfix.
 
-**Example TLSA Record**: \
+**Example TLSA Record**:
+
 smtpdane.mx.microsoft. TLSA 900 "3 1 1 c495d9e40f7e625be22f83cc64305182ab0fe74232de30db8b218d09650cb0ea"
+
 - _25._tcp.smtpdane.mx.microsoft. → Host + port (SMTP uses 25/TCP)
 - TLSA → Record type for DANE
 - 900 → TTL in seconds
@@ -169,9 +179,11 @@ smtpdane.mx.microsoft. TLSA 900 "3 1 1 c495d9e40f7e625be22f83cc64305182ab0fe7423
 - Hex string → Hash of the MX certificate's public key
 
 **Further reading**:
-- https://learn.microsoft.com/en-us/purview/how-smtp-dane-works
-- https://datatracker.ietf.org/doc/html/rfc7672
-- https://docs.cloud.google.com/dns/docs/dnssec-advanced#tlsa (only general docs, no google mail support as of writing)
+
+- [Microsoft SMTP DANE](https://learn.microsoft.com/en-us/purview/how-smtp-dane-works)
+- [RFC 7672](https://datatracker.ietf.org/doc/html/rfc7672)
+- [Google Cloud DNSSEC](https://docs.cloud.google.com/dns/docs/dnssec-advanced#tlsa) (only general docs, no
+  Google Mail support as of writing)
 
 ## Email Security Configuration
 

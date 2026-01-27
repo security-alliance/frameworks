@@ -296,3 +296,9 @@ Zerouali
 ZK
 Zksync
 ZWJ
+cyberattacks
+SSHFP
+Notar
+TLSA
+Posteo
+smtpdane

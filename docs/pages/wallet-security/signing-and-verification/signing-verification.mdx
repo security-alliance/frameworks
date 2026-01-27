@@ -40,7 +40,9 @@ you are authorizing. Always use independent tools to confirm that what you see i
 - **Simulate Before Signing**: Before approving any non-trivial transaction, use a simulation tool. These tools act as a
 "sandbox," showing you the human-readable outcome before you commit, protecting you from unexpected results and
 malicious contracts.
-  - Warning: Simulations can be spoofed - always apply critical thinking and good judgement during transaction reviews since a simulation can display one thing and then do something else entirely when actually executed on chain
+  - Warning: Simulations can be spoofed - always apply critical thinking and good judgement during
+    transaction reviews since a simulation can display one thing and then do something else entirely
+    when actually executed on chain
 - **The Hardware Wallet is the Source of Truth**: Your hardware wallet's trusted display is your last line of defense
 against UI spoofing. If the information on your computer screen does not perfectly match what is on your hardware
 device, reject the transaction immediately.
@@ -61,7 +63,8 @@ Concrete, end-to-end Squads verification flow (proposal anatomy, simulations, de
 - **[Verifying Multisig Transactions](/wallet-security/signing-and-verification/secure-multisig-signing-process)**:
 Conceptual two-phase model (off-chain EIP-712 signing and on-chain execTransaction) and best practices.
 - **[Verifying EIP-7702 Transactions](/wallet-security/signing-and-verification/verifying-7702)**:
-An analysis of the new security considerations introduced by EIP-7702, which allows EOAs to temporarily act as smart contracts, with specific guidance for both users and developers.
+An analysis of the new security considerations introduced by EIP-7702, which allows EOAs to temporarily
+act as smart contracts, with specific guidance for both users and developers.
 
 To apply these principles, this framework provides a curated list of verification and simulation tools in the **[Tools &
 Resources](/wallet-security/tools-&-resources)**.

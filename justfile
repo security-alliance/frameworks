@@ -21,8 +21,8 @@ preview: install
 # Run all linting checks
 lint:
     @echo "Running spell check..."
-    npx cspell ./docs/pages/**/*.mdx
+    find ./docs/pages -name "*.mdx" -print0 | xargs -0 npx cspell
     @echo "Spell check complete!"
     @echo ""
     @echo "Running markdownlint..."
-    markdownlint-cli2 ./docs/pages/**/*.mdx
+    find ./docs/pages -name "*.mdx" -print0 | xargs -0 markdownlint-cli2
