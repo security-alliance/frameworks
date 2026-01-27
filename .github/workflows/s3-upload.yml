@@ -191,14 +191,6 @@ jobs:
 
           echo "✓ OIDC authentication configured"
 
-      # Step 3b: Configure AWS credentials using OIDC
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722 # v4.1.0
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
-          role-session-name: img-bot-${{ github.run_id }}
-
       # Step 4: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -253,6 +245,14 @@ jobs:
             core.exportVariable('URLS_FILE_PATH', urlsPath);
 
             console.log(`Wrote ${urls.length} URL(s) to secure temp file`);
+
+      # Step 9b: Configure AWS credentials using OIDC (just-in-time before upload)
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722 # v4.1.0
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-session-name: img-bot-${{ github.run_id }}
 
       # Step 10: Process and upload images
       - name: Process and upload images
