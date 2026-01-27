@@ -433,7 +433,7 @@ const config = {
         { text: 'Overview', link: '/guides/overview' },
         {
           text: 'Account Management',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/guides/account_management/overview' },
             { text: 'Discord Security', link: '/guides/account_management/discord' },
