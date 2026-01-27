@@ -134,6 +134,16 @@ function extractSectionsFromMdx(raw) {
 }
 
 async function main() {
+  // Only run this script in CI/deployment environments (Vercel or Cloudflare Pages)
+  // Skip during local builds
+  const isVercel = !!process.env.VERCEL;
+  const isCloudflarePages = !!process.env.CF_PAGES;
+
+  if (!isVercel && !isCloudflarePages) {
+    console.log('Skipping search index generation: not running in a deployment environment (Vercel or Cloudflare Pages)');
+    return;
+  }
+
   // Determine where the built search index exists (try Cloudflare Pages dist, Vercel output, docs/dist)
   // Try these directories in order; pick the first that contains the index
   const candidateDirs = [cfPagesDistVocsDir, vercelVocsDir, vercelPath0DistVocsDir, distVocsDir];
