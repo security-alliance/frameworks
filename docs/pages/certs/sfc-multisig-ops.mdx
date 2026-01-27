@@ -10,184 +10,240 @@ cert:
   title: Governance & Inventory
   controls:
   - id: ms-1.1.1
-    description: Do you maintain documented policies and procedures governing your multisig
-      operations?
-    title: Policies Governing Multisig Operations
-  - id: ms-1.1.2
-    description: Is there a clearly named person or team accountable for multisig operations
-      (policy upkeep, reviews, hygiene)?
+    description: Is there a clearly named person or team accountable for multisig
+      operations? At minimum, accountability scope includes policy maintenance, signer
+      onboarding/offboarding coordination, documentation currency, periodic review scheduling,
+      and incident escalation.
     title: Named Responsible Multisig Owner
-  - id: ms-1.1.3
-    description: Do you operate a documented maintenance process to keep multisig documentation
-      current after any operational or signer change?
+  - id: ms-1.1.2
+    description: Do you keep multisig documentation current after any operational or signer
+      change, with a documented process? At minimum, documentation must be updated
+      within 24 hours for security-critical changes and within 3 days for routine changes.
     title: Multisig Documentation Maintenance Process
   - id: ms-1.2.1
-    description: Do you keep an up-to-date registry of all multisigs (address, network, purpose,
-      threshold, modules/guards, admin roles, etc)?
+    description: Do you maintain an up-to-date registry of all multisigs? At minimum, the
+      registry must include address, network, threshold, classification, purpose, signer
+      addresses, controlled contracts, on-chain roles, and last review date.
     title: Current Multisig Registry Details
   - id: ms-1.2.2
-    description: Do you maintain an up-to-date list of authorized signers and map them to the
-      correct multisigs?
+    description: Do you maintain an up-to-date list of authorized signers mapped to the
+      correct multisigs? At minimum, the signer mapping must be reviewed quarterly with
+      documented evidence of review.
     title: Authorized Signer Mapping Registry
 - id: ms-2
   title: Risk Assessment & Management
   controls:
   - id: ms-2.1.1
-    description: Do you define and maintain a formal classification system for multisig wallets
-      that covers both impact factors and operational needs?
+    description: Do you classify multisig wallets based on both impact factors (financial
+      exposure, protocol criticality, reputational risk) and operational needs (response
+      time requirements, coordination complexity), with a formal documented system?
     title: Formal Multisig Classification System
   - id: ms-2.1.2
-    description: Do you maintain documented criteria that map each classification level to required
-      controls (thresholds, quorum composition, review cadence, etc)?
+    description: Do you map each classification level to required controls (thresholds,
+      quorum composition, review cadence, etc), with documented criteria? At minimum,
+      higher-risk classifications must require stronger controls (more signers, higher
+      thresholds).
     title: Classification Criteria and Controls
   - id: ms-2.1.3
-    description: Do you periodically review and update classifications and associated controls
-      when conditions change?
+    description: Do you periodically review and update classifications and associated
+      controls when conditions change, with a documented process? At minimum, reviews
+      must occur every 6 months, with triggered reviews when TVL changes significantly,
+      new products launch, protocol upgrades occur, or security incidents happen.
     title: Review and Update Classifications
   - id: ms-2.1.4
-    description: Do you maintain documented policies on the use of timelocks, modules and guards,
-      including justification and security review requirements for any exceptions?
+    description: Do you define when timelocks, modules, and guards are required based on
+      multisig classification, and what security review is needed before enabling any
+      module or guard, with documented policies?
     title: Timelocks, Modules, and Guards Policies
   - id: ms-2.1.5
-    description: Do you maintain a documented exception approval process for deviations from
-      standard multisig policies, including justification requirements, and authorization levels?
+    description: Do you have an exception approval process for deviations from standard
+      multisig policies, with documentation? At minimum, exceptions must include an expiry
+      date, documented compensating controls, a remediation plan to return to compliance,
+      and higher-level approval for Critical-class exceptions.
     title: Exception Approval Process for Multisig
   - id: ms-2.1.6
-    description: Do you maintain documented policies for segregating assets across multiple
-      wallets based on value, operational needs, and risk tolerance (e.g., hot/cold separation,
-      treasury distribution)?
+    description: Do you segregate assets across multiple wallets based on value, operational
+      needs, and risk tolerance (e.g., hot/cold separation, treasury distribution), with
+      documented policies?
     title: Wallet Segregation Policy
   - id: ms-2.1.7
-    description: Do you maintain documented policies for contract-level security controls
-      that complement multisig governance (e.g., address whitelisting, invariant enforcement,
-      parameter bounds)?
+    description: Do you implement contract-level security controls that complement multisig
+      governance (e.g., address whitelisting, invariant enforcement, parameter bounds),
+      with documented policies?
     title: Contract-Level Access Controls Policy
 - id: ms-3
   title: Signer Security & Access Control
   controls:
   - id: ms-3.1.1
-    description: Do you maintain a documented process for cryptographic attestation of address
-      ownership and signer affiliation for multisig signers?
+    description: Do you perform cryptographic attestation of address ownership and signer
+      affiliation, with a documented process? At minimum, the process must include message
+      signing with the intended signer address, verification via an independent tool, and
+      documented proof of verification.
     title: Cryptographic Signer Identity Attestation
   - id: ms-3.1.2
-    description: Do you maintain a documented standard for signer key management?
+    description: Do you enforce signer key management standards, with documentation? At
+      minimum, hardware wallets are required for all multisig operations, and signers must
+      use dedicated signing addresses exclusively for multisig operations.
     title: Signer Key Management Standard
   - id: ms-3.1.3
-    description: Do you maintain documented policies and procedures for securely backing up
-      and protecting signer seed phrases and recovery materials?
+    description: Do you securely back up and protect signer seed phrases and recovery
+      materials, with documented policies and procedures?
     title: Signer Seed Backups and Protection
   - id: ms-3.1.4
-    description: Do you maintain documented requirements ensuring seed phrases are disaster
-      resistant, geographically distributed, theft resistant, and operator loss resistant?
+    description: Do you ensure seed phrases are disaster resistant (geographically
+      distributed), theft resistant (no single point of compromise), and operator loss
+      resistant (recoverable with absence of one operator), with documented requirements?
+      At minimum, seed phrases must never be stored digitally, in cloud storage, or
+      photographed.
     title: Seed Phrase Security Properties
   - id: ms-3.1.5
-    description: Do you operate a documented lifecycle for adding, replacing, and removing signers,
-      including offboarding and periodic access reviews?
+    description: Do you manage signer lifecycle for adding, replacing, and removing signers,
+      including offboarding and periodic access reviews, with a documented process? At
+      minimum, offboarded signers must be removed within 48-72 hours for Emergency-class
+      multisigs, 7 days for Critical-class, and 14 days for others. Access reviews must
+      occur quarterly.
     title: Multisig Signer Lifecycle Management
   - id: ms-3.1.6
-    description: Do you have a documented training and readiness program for signers before
-      they are authorized to participate?
+    description: Do you train signers before they are authorized to participate, with a
+      documented program? At minimum, training must cover transaction verification,
+      emergency procedures, and security best practices, with annual refreshers and updates
+      within 30 days of significant procedure changes. Training should include practical
+      skills assessment.
     title: Signer Training and Readiness Program
   - id: ms-3.1.7
-    description: Do you maintain documented standards for hardware wallet capabilities required
-      for multisig signing (e.g., display requirements, clear signing support, PIN security
-      features, PIN time-based lockouts, firmware integrity verification, and brute force
-      protection mechanisms)?
+    description: Do you enforce hardware wallet capability standards for multisig signing
+      (e.g., display requirements, clear signing support, PIN security features, PIN
+      time-based lockouts, firmware integrity verification, and brute force protection
+      mechanisms), with documented requirements?
     title: Hardware Wallet Standards
   - id: ms-3.1.8
-    description: Do you maintain documented requirements for hardware wallet procurement through
-      verified supply chains (direct from manufacturer or authorized resellers), including
-      device authenticity verification procedures?
+    description: Do you procure hardware wallets through verified supply chains (direct
+      from manufacturer or authorized resellers), including device authenticity verification
+      procedures, with documented requirements?
     title: Hardware Wallet Procurement and Authenticity
   - id: ms-3.1.9
     description: Do you require signers to use dedicated wallet addresses exclusively for
       multisig operations, with policies prohibiting use for other purposes?
     title: Dedicated Signing Addresses
   - id: ms-3.1.10
-    description: Do you maintain documented standards for signer device security (e.g.,
-      requirements for dedicated signing devices or network isolation for high-value operations)?
+    description: Do you enforce signer device security standards (e.g., requirements for
+      dedicated signing devices or network isolation for high-value operations), with
+      documentation?
     title: Dedicated Signing Environment
   - id: ms-3.1.11
-    description: Do you maintain documented requirements for signer diversity across organizational
-      roles, external parties, and geographic distribution appropriate to the multisig classification?
+    description: Do you ensure signer diversity across organizational roles, external
+      parties, and geographic distribution appropriate to the multisig classification,
+      with documented requirements?
     title: Signer Diversity Requirements
 - id: ms-4
   title: Operational Procedures
   controls:
   - id: ms-4.1.1
-    description: Do you maintain documented processes for transaction initiation, approval,
-      simulation, execution, and confirmation, including who is authorized to initiate?
+    description: Do you follow defined processes for transaction initiation, approval,
+      simulation, execution, and confirmation, including who is authorized to initiate,
+      with documentation? At minimum, transaction simulation is required for all transactions.
     title: Documented Transaction Lifecycle Procedures
   - id: ms-4.1.2
-    description: Do you maintain documented signing and verification procedures that must be
-      followed before any signatures are applied?
+    description: Do you follow signing and verification procedures before any signatures
+      are applied, with documentation? At minimum, verification must include chain ID,
+      target address, calldata (decoded), value, nonce, and operation type. DELEGATECALL
+      operations to untrusted addresses must be flagged as high risk.
     title: Signing and Verification Procedures
   - id: ms-4.1.3
-    description: Do you maintain audit trails and retention for transaction reviews, approvals,
-      execution, and post-execution confirmation?
-    title: Audit Trails and Retention
-  - id: ms-4.1.4
-    description: Do you require each signer to independently verify transaction details through 
-      a separate interface or data source before signing, rather than relying solely on the 
-      initiator's representation?
+    description: Do you require each signer to independently verify transaction details
+      through a separate interface or data source before signing, rather than relying
+      solely on the initiator's representation?
     title: Independent Transaction Verification Requirement
+  - id: ms-4.1.4
+    description: Do you maintain audit trails and retention for transaction reviews, approvals,
+      execution, and post-execution confirmation? At minimum, audit trails must be retained
+      for 3 years and include proposer, approvers, verification evidence, timestamps, and
+      any issues encountered.
+    title: Audit Trails and Retention
   - id: ms-4.1.5
-    description: Do you maintain a policy defining enhanced controls for high-risk transactions
-      (emergency actions, large transfers, protocol configuration changes)?
+    description: Do you apply enhanced controls for high-risk transactions (emergency
+      actions, large transfers, protocol configuration changes), with a documented policy?
+      At minimum, high-risk transactions must require mandatory simulation, a waiting
+      period where operationally feasible, and elevated threshold approval. High-risk
+      transaction thresholds must be defined based on multisig
+      classification and reviewed periodically.
     title: Policy for High-Risk Transactions
   - id: ms-4.1.6
-    description: Do you maintain documented standards for multisig technology and tools, and
-      a formal evaluation process for adopting new ones?
+    description: Do you evaluate and standardize multisig technology and tools, with a
+      formal documented process for adopting new ones? At minimum, evaluation must consider
+      whether tools are open source or have been audited by at least 2 reputable firms,
+      have no known critical unpatched vulnerabilities, and have established ecosystem
+      adoption.
     title: Multisig Standards and Evaluation
   - id: ms-4.1.7
-    description: Do you maintain documented backup infrastructure for multisig operations (alternate
-      signing interfaces, RPC/explorers, failover procedures), and test their use?
+    description: Do you have backup infrastructure for multisig operations, with
+      documentation? At minimum, backup infrastructure must include an alternate signing
+      UI, backup RPC providers (2-3 different services), and an alternate block explorer.
     title: Backup Infrastructure for Multisig
 - id: ms-5
   title: Communication & Coordination
   controls:
   - id: ms-5.1.1
-    description: Do you maintain dedicated primary and backup communication channels for multisig
-      operations with documented membership controls and onboarding/offboarding procedures?
+    description: Do you maintain dedicated primary and backup communication channels for
+      multisig operations, with documented membership controls and onboarding/offboarding
+      procedures? At minimum, channels must use end-to-end encryption, require MFA for
+      access, and use invitation-based membership. Primary and backup channels must be
+      on different platforms.
     title: Multisig Primary and Backup Communications
   - id: ms-5.1.2
-    description: Do you have procedures to verify the identity of signers during sensitive communications,
-      with periodic checks to ensure authenticity?
+    description: Do you verify the identity of signers during sensitive communications,
+      with documented procedures? At minimum, acceptable methods include pre-established
+      code words, video call confirmation, or verification via a secondary authenticated
+      channel.
     title: Signer Identity Verification Procedures
   - id: ms-5.1.3
-    description: Do you maintain documented escalation policies that define response-time expectations,
-      on-call coverage, and procedures for urgent coordination?
+    description: Do you have escalation policies that define response-time expectations,
+      on-call coverage, and procedures for urgent coordination, with documentation? At
+      minimum, response times must align with operational classification - Emergency less
+      than 2 hours, Time-Sensitive 2-12 hours, Routine 24-48 hours.
     title: Documented Escalation and On-Call Policies
   - id: ms-5.1.4
-    description: Do you maintain procedures for responding to suspected communication channel
-      compromise, including switching to backup channels and out-of-band verification, and ensure
-      signers know how to invoke them?
+    description: Do you have procedures for responding to suspected communication channel
+      compromise, including switching to backup channels and out-of-band verification?
+      At minimum, all signers must know how to invoke these procedures, and procedures
+      must be tested annually.
     title: Channel Compromise Response and Verification
   - id: ms-5.1.5
-    description: Do you maintain and distribute an up-to-date emergency contact list for multisig
-      operations?
+    description: Do you maintain and distribute an up-to-date emergency contact list for
+      multisig operations? At minimum, the list must be reviewed every 6 months with
+      documented confirmation that contacts remain valid, and must include protocol
+      security team, external security resources, legal/compliance contacts, and backup
+      contacts for reaching signers in emergencies.
     title: Emergency Contacts for Multisig
 - id: ms-6
   title: Emergency Operations
   controls:
   - id: ms-6.1.1
-    description: Do you maintain written emergency playbooks covering key compromise, lost access,
-      and urgent protocol actions?
+    description: Do you have written emergency playbooks covering key compromise, lost
+      access, communication channel compromise, and urgent protocol actions? At minimum,
+      each scenario must have step-by-step procedures and escalation paths.
     title: Emergency Playbooks for Compromise
   - id: ms-6.1.2
-    description: For critical/emergency-class multisigs, do you provide 24/7 paging to reach
-      the required threshold and document escalation paths?
+    description: Do you have 24/7 paging capability for critical/emergency-class multisigs
+      to reach the required threshold and document escalation paths? At minimum, paging
+      capability must be tested quarterly to verify signers can be reached within expected
+      response times.
     title: 24/7 Paging for Emergency Multisigs
   - id: ms-6.1.3
-    description: Do you maintain monitoring infrastructure and procedures to detect unauthorized,
-      anomalous, or suspicious activity across all multisigs, with documented alerting and escalation
-      paths, and ensure monitoring and alerting channels are protected against tampering, with
-      alerts triggered on configuration changes or unauthorized access?
+    description: Do you have monitoring infrastructure and procedures to detect unauthorized,
+      anomalous, or suspicious activity across all multisigs, with documented alerting and
+      escalation paths? At minimum, monitoring must detect signer/threshold changes, transfers
+      exceeding defined thresholds, nonce gaps, interactions with previously unknown addresses,
+      failed transactions, and module/guard changes. Monitoring infrastructure must be
+      protected against tampering.
     title: Multisig Monitoring and Alerts
   - id: ms-6.1.4
-    description: Do you conduct periodic rehearsals and drills of emergency playbooks to test
-      response procedures, communication channels, and signer coordination under simulated emergency
-      conditions?
+    description: Do you conduct periodic rehearsals and drills of emergency playbooks to
+      test response procedures, communication channels, and signer coordination, with a
+      documented schedule? At minimum, drills must occur annually, or bi-annually for
+      Emergency-class multisigs, and after major procedure changes. Documentation must
+      include drill date, participants, response times achieved, issues identified, and
+      improvements made.
     title: Rehearsals for Emergency Playbooks
 
 ---
