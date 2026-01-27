@@ -1,5 +1,6 @@
 ---
-title: "Seed Phrase Management"
+title: "Seed Phrase Management | Security Alliance"
+description: "Secure seed phrase management: physical written copies, metal backups, and 3-piece splitting strategies. Emergency access plans, tamper-evident bags, and prohibited digital storage practices."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -82,10 +83,69 @@ Under no circumstances should you ever store your seed phrase in any of the foll
 - Sending it in an email, even to yourself.
 - Storing it in a plain text file on a computer or phone.
 - Sharing it with anyone. Wallet providers will **never** ask for your seed phrase.
-- Never use a device obtained from an untrusted source, such as a conference, hackathon, or third-party online marketplace, as it may be tampered with.
 - Password managers or digital storage
 - Traveling with seed phrases
 - Storing all pieces in same location
+- Using a device obtained from an untrusted source, such as a conference, hackathon, or third-party online marketplace, as it may be tampered with.
+
+## Organizational Seed Phrase Security
+
+For organizations managing multisig wallets, seed phrase security requires additional properties beyond individual storage:
+
+### Security Properties
+
+- **Disaster Resistant**: The seed phrase is either duplicated or split, with components/copies secured across multiple geographic locations. This way, if disaster strikes, keys can be recovered from other locations.
+- **Theft Resistant**: An attacker gaining access to one piece of physical storage media for the seed phrase would not allow them to rebuild the wallet on its own
+- **Operator Loss Resistant**: Reconstituting the seed phrase should be possible with the absence of one or more operators
+
+### Seed Phrase Encryption
+
+> ⚠️ **Warning: Encryption adds recovery risk.** Only implement custom encryption schemes if you are sophisticated and
+> have robust documentation practices. If you forget your encryption method or passphrase, your funds are **permanently
+> inaccessible**—there is no recovery option. Many users and organizations face greater risk of locking themselves out
+> with custom encryption than from an attacker discovering a securely stored backup. Evaluate whether strong physical
+> security alone may be sufficient for your threat model.
+
+The reason to encrypt seed phrases is that if they are discovered unencrypted, the wallet is permanently compromised.
+However, if you encrypt your seed phrase, you are much more likely to forget the encryption when trying to restore the
+wallet. If you have stored the seed securely, it is unlikely to be discovered in the first place.
+
+Never store seed phrases in plain text or on an internet connected device. For additional protection, seed phrases can optionally be encrypted through some method. For example:
+- Seed phrases can be mixed in a randomly generated, recorded order
+- Have a 25th secret word
+- Require a passphrase to be imported into a wallet
+
+Regardless of the method, the related secret value should be stored in a password manager. (**Do not store your seed phrase in a password manager.**)
+
+### Advanced Backup Options
+
+**Key Splitting**
+
+Split the key into multiple shards and securely distribute them:
+- Use [Shamir's Secret Sharing algorithm](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing) for N of M key shards
+- Consider using this [Shamir Secret Sharing implementation](https://github.com/privy-io/shamir-secret-sharing)
+- Seed phrases can be sharded using Shamir's Secret Sharing algorithm, with each shard recommended to be shared with a trusted guardian (3rd party custodian service, family members, password manager, personal physical media, etc.)
+
+**Multi-Share Backups**
+
+Use device-supported multi-share backups where available:
+- [Trezor Multi-Share Backup](https://trezor.io/learn/a/multi-share-backup-on-trezor)
+
+**Secure Distribution**
+
+Give shards to trusted family members, put in bank safe deposit boxes, and keep hidden around your house.
+
+> **Note**: If you're concerned about targeted attacks like kidnapping or home invasions, consider avoiding storing any shards in your primary residence.
+
+### Multisig Social Recovery
+
+**Optional Self-Recovery**: 
+- Seed phrase backups are not strictly necessary with a healthy quorum
+- Multi-sig signing wallets should not be used for any other purpose and could be re-provisioned by existing quorum admins
+- Maintain a healthy enough signing pool that loss of access to a few accounts at once could be recovered from
+- Personal backup methods for admins are required to maintain access to on-chain assets in the event of loss of access to hardware wallets
+
+**Quorum Social Recovery**: If access to wallet is lost, the quorum can vote to edit members to replace the inaccessible wallet.
 
 ### Ongoing Security Hygiene
 

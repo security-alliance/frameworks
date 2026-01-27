@@ -1,5 +1,6 @@
 ---
-title: "Safe Multisig: Step-by-Step Verification"
+title: "Safe Multisig Verification | SEAL"
+description: "Safe multisig transaction verification: hash verification using CLI tools or OpenZeppelin Safe Utils, Tenderly simulations, calldata review, and nested Safe approval flows."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -12,7 +13,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -59,6 +60,8 @@ Please see the [Tools & Resources](/wallet-security/tools-&-resources) page for 
 
 - Run Tenderly simulation from Safe UI; verify expected events and transfers
 - If using a timelock, expect a staged transaction event rather than execution
+
+Warning: Simulations can be spoofed - always apply critical thinking and good judgement during transaction reviews since a simulation can display one thing and then do something else entirely when actually executed on chain
 
 ![Tenderly simulation setup](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/tenderly-simulation-setup.png)
 

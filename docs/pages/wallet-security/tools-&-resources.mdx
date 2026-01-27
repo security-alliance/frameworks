@@ -1,11 +1,12 @@
 ---
-title: "Tools & Resources"
+title: "Wallet Security Tools & Resources | SEAL"
+description: "Wallet security tools: Wallet Scrutiny, Tenderly simulations, Safe transaction hash verification, calldata decoders, and interactive training platforms like Phishing Dojo and Wise Signer."
 tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
   - role: wrote
-    users: [pinalikefruit]
+    users: [pinalikefruit, auditware]
   - role: reviewed
     users: [Coinspect]
 ---
@@ -36,6 +37,29 @@ device security, and threat prevention to help users choose safer, more trustwor
 - **[Wallet Beat](https://beta.walletbeat.eth.limo/wallet/summary/)**: Aims to provide a comprehensive list of wallets,
 their functionality, practices, and support for certain standards.
 
+## Hardware Wallets
+
+Hardware wallets provide the highest level of security for storing cryptocurrency by keeping private keys offline and
+isolated from potentially compromised computers.
+
+- **[Top 9 Cryptocurrency Hardware Wallets for 2025](https://patrickalphac.medium.com/top-9-cryptocurrency-hardware-wallets-for-2025-security-researcher-review-9fcb16d771e0)**: A comprehensive security researcher review comparing the top hardware wallets, including analysis of security features, usability, and recommendations for different use cases.
+
+## Wallet Applications
+
+### Rabby Wallet
+
+- Install [Rabby wallet](https://rabby.io/)
+  - Verify open source code
+  - Enable pre-sign security checks (e.g. new address warnings)
+  - Use built-in transaction simulation
+
+### MetaMask with Security Snaps (Alternative)
+
+- Install [MetaMask](https://metamask.io/)
+- Install recommended security Snaps:
+  - [Tenderly Snap](https://snaps.metamask.io/snap/npm/tenderly/metamask-snap/) - Allows you to easily simulate transactions before confirming them
+  - [Forta Network Snap](https://snaps.metamask.io/snap/npm/forta-network/metamask-snap/) - Scam and malicious address detection
+
 ## Transaction Simulation
 
 Transaction simulators allow you to preview the exact outcome of a transaction before signing it, preventing errors and
@@ -46,6 +70,27 @@ prevent transaction failures, security risks, and unnecessary gas costs.
 - **[Alchemy Simulation APIs](https://www.alchemy.com/docs/reference/simulation)**: An API suite that predicts the
 precise impact of a transaction before it reaches the blockchain.
 
+## Monitoring & Alerting
+
+Implement continuous monitoring to detect unauthorized or suspicious activity on your multisig wallets.
+
+### Multisig Monitoring
+
+- [Gearbox Safe Watcher](https://github.com/Gearbox-protocol/safe-watcher) or equivalent for monitoring and alerts
+  - Connect to Telegram for notifications
+  - Monitor for suspicious delegateCall transactions
+
+### Network Security
+
+For dedicated signing machines, implement network-level protections:
+
+- **[DeFi DNS Whitelist](https://github.com/0xKoda/defi-dns-whitelist/tree/main)**: A curated whitelist of legitimate DeFi domains that can be used as a firewall for dedicated signing machines
+- **[Little Snitch](https://www.obdev.at/products/littlesnitch/index.html)** (macOS): Active firewall and network monitoring
+- **[Lulu](https://objective-see.org/products/lulu.html)** (macOS): Free, open-source network monitor
+- **[Glasswire](https://www.glasswire.com/)** (Windows): Network monitoring with firewall capabilities
+
+For more on network security configuration, see [Personal Security (OpSec)](/multisig-for-protocols/personal-security-opsec#network-security).
+
 ## Transaction Verification
 
 These tools are designed to help you independently verify the integrity of transaction data, especially for multisig
@@ -54,6 +99,7 @@ operations.
 - **[Safe Multisig Transaction Hashes](https://github.com/pcaversaccio/safe-tx-hashes-util)**: A Bash script that
 locally calculates domain and message hashes using the EIP-712 standard. It allows you to generate the exact hash that
 your hardware wallet will display.
+- **[Cyfrin Safe TX Hashes](https://github.com/Cyfrin/safe-tx-hashes)**: for additional support without relying on Safe API.
 - **[Safe Utils](https://safeutils.openzeppelin.com/)**: A user-friendly web interface for calculating and verifying
 Safe transaction hashes. While convenient, remember the security advantages of using a local, offline tool like
 `safe-hash` for high-value transactions.

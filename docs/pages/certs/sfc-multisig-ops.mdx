@@ -1,5 +1,6 @@
 ---
-title: "Multisig Operations"
+title: "SFC: Multisig Operations | Security Alliance"
+description: "SFC Multisig Operations certification: governance, signer security, transaction verification, emergency playbooks, communication protocols, and 24/7 paging for critical multisigs."
 tags:
   - SEAL/Initiative
   - Certifications
@@ -51,6 +52,16 @@ cert:
     description: Do you maintain a documented exception approval process for deviations from
       standard multisig policies, including justification requirements, and authorization levels?
     title: Exception Approval Process for Multisig
+  - id: ms-2.1.6
+    description: Do you maintain documented policies for segregating assets across multiple
+      wallets based on value, operational needs, and risk tolerance (e.g., hot/cold separation,
+      treasury distribution)?
+    title: Wallet Segregation Policy
+  - id: ms-2.1.7
+    description: Do you maintain documented policies for contract-level security controls
+      that complement multisig governance (e.g., address whitelisting, invariant enforcement,
+      parameter bounds)?
+    title: Contract-Level Access Controls Policy
 - id: ms-3
   title: Signer Security & Access Control
   controls:
@@ -66,13 +77,40 @@ cert:
       and protecting signer seed phrases and recovery materials?
     title: Signer Seed Backups and Protection
   - id: ms-3.1.4
+    description: Do you maintain documented requirements ensuring seed phrases are disaster
+      resistant, geographically distributed, theft resistant, and operator loss resistant?
+    title: Seed Phrase Security Properties
+  - id: ms-3.1.5
     description: Do you operate a documented lifecycle for adding, replacing, and removing signers,
       including offboarding and periodic access reviews?
     title: Multisig Signer Lifecycle Management
-  - id: ms-3.1.5
+  - id: ms-3.1.6
     description: Do you have a documented training and readiness program for signers before
       they are authorized to participate?
     title: Signer Training and Readiness Program
+  - id: ms-3.1.7
+    description: Do you maintain documented standards for hardware wallet capabilities required
+      for multisig signing (e.g., display requirements, clear signing support, PIN security
+      features, PIN time-based lockouts, firmware integrity verification, and brute force
+      protection mechanisms)?
+    title: Hardware Wallet Standards
+  - id: ms-3.1.8
+    description: Do you maintain documented requirements for hardware wallet procurement through
+      verified supply chains (direct from manufacturer or authorized resellers), including
+      device authenticity verification procedures?
+    title: Hardware Wallet Procurement and Authenticity
+  - id: ms-3.1.9
+    description: Do you require signers to use dedicated wallet addresses exclusively for
+      multisig operations, with policies prohibiting use for other purposes?
+    title: Dedicated Signing Addresses
+  - id: ms-3.1.10
+    description: Do you maintain documented standards for signer device security (e.g.,
+      requirements for dedicated signing devices or network isolation for high-value operations)?
+    title: Dedicated Signing Environment
+  - id: ms-3.1.11
+    description: Do you maintain documented requirements for signer diversity across organizational
+      roles, external parties, and geographic distribution appropriate to the multisig classification?
+    title: Signer Diversity Requirements
 - id: ms-4
   title: Operational Procedures
   controls:
@@ -89,14 +127,19 @@ cert:
       execution, and post-execution confirmation?
     title: Audit Trails and Retention
   - id: ms-4.1.4
+    description: Do you require each signer to independently verify transaction details through 
+      a separate interface or data source before signing, rather than relying solely on the 
+      initiator's representation?
+    title: Independent Transaction Verification Requirement
+  - id: ms-4.1.5
     description: Do you maintain a policy defining enhanced controls for high-risk transactions
       (emergency actions, large transfers, protocol configuration changes)?
     title: Policy for High-Risk Transactions
-  - id: ms-4.1.5
+  - id: ms-4.1.6
     description: Do you maintain documented standards for multisig technology and tools, and
       a formal evaluation process for adopting new ones?
     title: Multisig Standards and Evaluation
-  - id: ms-4.1.6
+  - id: ms-4.1.7
     description: Do you maintain documented backup infrastructure for multisig operations (alternate
       signing interfaces, RPC/explorers, failover procedures), and test their use?
     title: Backup Infrastructure for Multisig
@@ -138,7 +181,8 @@ cert:
   - id: ms-6.1.3
     description: Do you maintain monitoring infrastructure and procedures to detect unauthorized,
       anomalous, or suspicious activity across all multisigs, with documented alerting and escalation
-      paths?
+      paths, and ensure monitoring and alerting channels are protected against tampering, with
+      alerts triggered on configuration changes or unauthorized access?
     title: Multisig Monitoring and Alerts
   - id: ms-6.1.4
     description: Do you conduct periodic rehearsals and drills of emergency playbooks to test
