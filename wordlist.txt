@@ -51,6 +51,7 @@ Cypherock
 dapp
 Darknet
 DCAP
+Deauthorize
 debevoise
 DeFi
 DeIRF

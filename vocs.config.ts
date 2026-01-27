@@ -45,7 +45,6 @@ const config = {
             { text: 'Discord', link: '/community-management/discord' },
             { text: 'Twitter', link: '/community-management/twitter' },
             { text: 'Telegram', link: '/community-management/telegram' },
-            { text: 'Google', link: '/community-management/google' },
           ]
         },
         {
@@ -428,6 +427,14 @@ const config = {
       ]
     },
     {
+      text: 'Guides',
+      collapsed: false,
+      items: [
+        { text: 'Overview', link: '/guides/overview' },
+        { text: 'Discord Security', link: '/guides/discord' },
+      ]
+    },
+    {
       text: 'SEAL Certifications',
       collapsed: false,
       items: [
@@ -436,6 +443,7 @@ const config = {
         { text: 'Certified Protocols', link: '/certs/certified-protocols', dev: true },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
+            { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
             { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
             { text: 'Incident Response', link: '/certs/sfc-incident-response' },
             { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
