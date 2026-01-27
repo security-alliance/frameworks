@@ -20,7 +20,7 @@ const config = {
   logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
   ogImageUrl: {
-    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.png'
+    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png'
   },
   checkDeadlinks: "warn" as const,
   sidebar: [
@@ -110,12 +110,12 @@ const config = {
               text: 'Signing & Verification',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/wallet-security/signing-verification' },
-                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
-                { text: 'Multisig Signing Process', link: '/wallet-security/secure-multisig-signing-process' },
-                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-safe-verification', dev: true },
-                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-squads-verification', dev: true },
-                { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
+                { text: 'Overview', link: '/wallet-security/signing-and-verification/signing-verification' },
+                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/signing-and-verification/verifying-standard-transactions' },
+                { text: 'Multisig Signing Process', link: '/wallet-security/signing-and-verification/secure-multisig-signing-process' },
+                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-safe-verification', dev: true },
+                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-squads-verification', dev: true },
+                { text: 'Using EIP-7702', link: '/wallet-security/signing-and-verification/verifying-7702' },
               ]
             },
             { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },

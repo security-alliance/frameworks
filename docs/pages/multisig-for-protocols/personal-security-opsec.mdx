@@ -7,7 +7,7 @@ tags:
   - Multisig Security
 contributors:
   - role: wrote
-    users: [isaac, geoffrey, louis, pablo, dickson]
+    users: [isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [pinalikefruit, engn33r]
 ---
@@ -75,6 +75,36 @@ linked to it.
 - Offline storage when not in use
 - Justification: Reduces attack surface for high-value operations
 
+## Network Security
+
+### Dedicated Signing Machines
+
+- Multi-sig operations must be performed on devices dedicated only to these transactions and verification tools
+- All network access should be default blocked, with only the minimum necessary IPs to execute these transaction signatures allowed
+- Signing devices must be operated on private, authenticated networks or over trusted VPNs
+
+### Air-Gapped Machine Options
+
+- For highest security, physically remove or disable the network interface
+- Use USB drives (with strict auto-run restrictions) or QR codes to transfer transaction data
+
+### Advanced OS-Level Controls
+
+- Consider employing SELinux or similar tools for advanced security configurations
+- Restrict file system access and inter-process communications
+
+### Network Monitoring Tools
+
+Organizations must implement active network monitoring on signing devices:
+
+- [Little Snitch](https://www.obdev.at/products/littlesnitch/index.html) for active firewall and network monitoring
+- [Lulu](https://objective-see.org/products/lulu.html) as a free, open source alternative to Little Snitch
+- [Glasswire](https://www.glasswire.com/) can be used for Windows machines
+
+### DNS Security
+
+Use [DeFi DNS Whitelist](https://github.com/0xKoda/defi-dns-whitelist/tree/main) as a firewall for dedicated signing machines.
+
 ## Communication Security
 
 ### Basic requirements
@@ -97,6 +127,10 @@ If the account connects on a new device these codes will change & you will recei
 - Hide phone number (use username only)
 - Safety number verification for all contacts
 - Disappearing messages for sensitive chats
+
+### URL Navigation Safety
+
+Links to URLs containing transaction requests or confirmation data (even those provided by trusted parties) must never be clicked - they must be navigated to by using bookmarks or typing them out manually.
 
 ### For extra security
 
