@@ -413,54 +413,6 @@ const config = {
           ]
         },
         {
-          text: 'Account Security Guides',
-          collapsed: false,
-          items: [
-            { text: 'Overview', link: '/account-security/overview', dev: true },
-            {
-              text: 'For Individuals',
-              collapsed: true,
-              items: [
-                { text: 'Overview', link: '/account-security/individuals/overview', dev: true },
-                { text: 'Discord', link: '/account-security/individuals/discord', dev: true },
-                { text: 'GitHub', link: '/account-security/individuals/github', dev: true },
-                { text: 'GoDaddy', link: '/account-security/individuals/godaddy', dev: true },
-                { text: 'Google', link: '/account-security/individuals/google', dev: true },
-                { text: 'Linear', link: '/account-security/individuals/linear', dev: true },
-                { text: 'Mercury', link: '/account-security/individuals/mercury', dev: true },
-                { text: 'Notion', link: '/account-security/individuals/notion', dev: true },
-                { text: 'Render', link: '/account-security/individuals/render', dev: true },
-                { text: 'Sentry', link: '/account-security/individuals/sentry', dev: true },
-                { text: 'Signal', link: '/account-security/individuals/signal', dev: true },
-                { text: 'Telegram', link: '/account-security/individuals/telegram', dev: true },
-                { text: 'Trello', link: '/account-security/individuals/trello', dev: true },
-                { text: 'Vercel', link: '/account-security/individuals/vercel', dev: true },
-                { text: 'X (Twitter)', link: '/account-security/individuals/twitter-x', dev: true },
-              ]
-            },
-            {
-              text: 'For Organizations',
-              collapsed: true,
-              items: [
-                { text: 'Overview', link: '/account-security/organizations/overview', dev: true },
-                { text: 'Discord', link: '/account-security/organizations/discord', dev: true },
-                { text: 'GitHub', link: '/account-security/organizations/github', dev: true },
-                { text: 'GoDaddy', link: '/account-security/organizations/godaddy', dev: true },
-                { text: 'Google Workspace', link: '/account-security/organizations/google', dev: true },
-                { text: 'Linear', link: '/account-security/organizations/linear', dev: true },
-                { text: 'Mercury', link: '/account-security/organizations/mercury', dev: true },
-                { text: 'Notion', link: '/account-security/organizations/notion', dev: true },
-                { text: 'Render', link: '/account-security/organizations/render', dev: true },
-                { text: 'Sentry', link: '/account-security/organizations/sentry', dev: true },
-                { text: 'Slack', link: '/account-security/organizations/slack', dev: true },
-                { text: 'Telegram', link: '/account-security/organizations/telegram', dev: true },
-                { text: 'Vercel', link: '/account-security/organizations/vercel', dev: true },
-                { text: 'X (Twitter)', link: '/account-security/organizations/twitter-x', dev: true },
-              ]
-            },
-          ]
-        },
-        {
           text: 'Treasury Operations',
           collapsed: false,
           dev: true,
@@ -480,8 +432,19 @@ const config = {
       items: [
         { text: 'Overview', link: '/guides/overview' },
         { text: 'Discord Security', link: '/guides/discord' },
+        { text: 'GitHub Security', link: '/guides/github' },
+        { text: 'GoDaddy Security', link: '/guides/godaddy' },
+        { text: 'Linear Security', link: '/guides/linear' },
+        { text: 'Mercury Security', link: '/guides/mercury' },
+        { text: 'Notion Security', link: '/guides/notion' },
+        { text: 'Render Security', link: '/guides/render' },
+        { text: 'Sentry Security', link: '/guides/sentry' },
+        { text: 'Signal Security', link: '/guides/signal' },
+        { text: 'Slack Security', link: '/guides/slack' },
         { text: 'Telegram Security', link: '/guides/telegram' },
+        { text: 'Trello Security', link: '/guides/trello' },
         { text: 'Twitter/X Security', link: '/guides/twitter' },
+        { text: 'Vercel Security', link: '/guides/vercel' },
       ]
     },
     {

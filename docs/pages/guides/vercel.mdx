@@ -1,0 +1,93 @@
+---
+title: "Vercel Security | Security Alliance"
+description: "Secure your Vercel account and team: enable 2FA, review access tokens, manage team members, configure deployment protection, and ensure sensitive environment variables are properly secured."
+tags:
+  - DevOps Accounts
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Vercel Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway for Vercel:** Secure your Vercel account by enabling two-factor authentication, reviewing personal
+> access tokens, and ensuring team-level security policies are enforced. Configure deployment protection, mark sensitive
+> environment variables appropriately, and regularly audit team member access and integrations.
+
+This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
+
+---
+
+## For Individuals
+
+These settings apply to your personal Vercel account. All team members and admins should configure these on their own accounts.
+
+### Individual Account Settings
+
+For individual Vercel accounts, ensure you have:
+
+- [ ]  Two-factor authentication enabled on your account
+- [ ]  Review and remove any unnecessary personal access tokens
+- [ ]  Review connected Git accounts and remove any unnecessary connections
+
+---
+
+## For Team Members
+
+These guidelines apply to team members who use Vercel but don't have full administrative access.
+
+Team members should:
+- Ensure their individual account settings are configured according to the checklist above
+- Enable two-factor authentication on their account
+- Regularly review and remove any unnecessary personal access tokens
+- Be aware of which projects they have access to and report any unexpected access
+- Never share environment variables or secrets outside of approved channels
+
+---
+
+## For Admins
+
+These settings and practices apply to Vercel team administrators with elevated privileges.
+
+### Team Settings
+
+- Team Settings >
+    - Members >
+        - [ ] Team Members > **Review and remove any unnecessary or unrecognized**
+        - [ ] Pending Invitations > **Review and remove any unnecessary or unrecognized**
+    - [ ] Access Groups > **Review and remove any unnecessary or unrecognized**
+    - [ ] Webhooks > **Review and remove any unnecessary or unrecognized**
+    - Security & Privacy >
+        - [ ] Protected Git Scopes > **Ensure Git scope is configured**
+        - [ ] Environment Variable Policies > Enforce Sensitive Environment Variables > **Enabled**
+        - [ ] SAML Single Sign-On > **Disabled**
+        - [ ] Two-Factor Authentication Enforcement > **Enabled**
+        - IP Address Visibility >
+            - [ ] IP addresses in Vercel Dashboard > **Enabled**
+            - [ ] IP addresses in Log Drains > **Enabled**
+    - Deployment Protection >
+        - [ ] Projects > **Ensure all are protected**
+        - [ ] Access > **Review and remove any unnecessary or unrecognized**
+    - [ ] Environment Variables > **Review and ensure all secrets are marked as Sensitive**
+
+### Project Settings
+
+- Project Settings > Security >
+    - [ ]  Build Logs and Source Protection > **Enabled**
+    - [ ] Git Fork Protection > **Enabled**
+    - [ ] Secure Backend Access With OIDC Federation > **Team**
+
+---
+
+</TagProvider>
+<ContributeFooter />

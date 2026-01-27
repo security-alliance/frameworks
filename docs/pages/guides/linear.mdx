@@ -1,0 +1,73 @@
+---
+title: "Linear Security | Security Alliance"
+description: "Secure your Linear workspace with passkeys, session management, controlled integrations, and workspace restrictions to protect your project management data."
+tags:
+  - Business Tools
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Linear Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway for Linear:** Secure your Linear account with passkeys, regularly review sessions and connected applications, and for workspaces, disable invite links, restrict approved email domains, and control third-party integrations to protect sensitive project data.
+
+This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
+
+---
+
+## For Individuals
+
+These settings apply to your personal Linear account. All team members and admins should configure these on their own accounts.
+
+### Individual Account Settings
+
+- Settings >
+    - [ ]  Sessions, Personal API keys, & Authorized Applications > **Review and remove any unnecessary or unrecognized**
+    - [ ]  Passkeys > Add a passkey (recommended)
+    - [ ]  Connected Accounts > **Review and remove any unnecessary or unrecognized**
+
+---
+
+## For Team Members
+
+These guidelines apply to team members who use Linear for project management but don't have administrative access.
+
+Team members should:
+- Ensure their individual account settings are configured according to the checklist above
+- Use passkeys for stronger authentication when available
+- Be cautious about authorizing third-party applications to access Linear
+- Report any suspicious workspace activity to administrators
+
+---
+
+## For Admins
+
+These settings and practices apply to Linear workspace administrators with elevated privileges.
+
+### Admin Settings
+
+- [ ]  Administration >
+    - [ ]  Members > **Review and remove any unnecessary or unrecognized**
+    - **Security >**
+        - [ ]  Invite links > **Off**
+        - [ ]  Approved email domains > **Review and remove any unnecessary or unrecognized**
+        - [ ]  Workspace restrictions > **Restrict all**
+        - [ ]  Integrations & applications > **Control third-party applications**
+    - [ ]  API > OAuth Applications, Webhooks, & Member API keys > **Review and remove any unnecessary or unrecognized**
+    - [ ]  Applications > **Review and remove any unnecessary or unrecognized**
+
+---
+
+</TagProvider>
+<ContributeFooter />
