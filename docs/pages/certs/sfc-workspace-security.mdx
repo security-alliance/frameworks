@@ -44,6 +44,10 @@ cert:
     description: Do you have procedures for provisioning devices according to security requirements
       and verifying ongoing compliance?
     title: Device Provisioning and Compliance
+  - id: ws-2.1.3
+    description: Do you maintain procedures for device procurement through verified supply chains
+      and verification of device integrity upon receipt?
+    title: Device Supply Chain Security
   - id: ws-2.2.1
     description: Do you enforce authentication requirements for device access (password complexity,
       timeout settings, lock screens)?
@@ -71,10 +75,18 @@ cert:
     description: Do you maintain endpoint detection and response (EDR) or mobile device management
       (MDM) solutions on organizational devices with documented deployment and monitoring procedures?
     title: EDR/MDM Deployment and Monitoring
-  - id: ws-2.5.1
+  - id: ws-2.5.2
     description: Do you have procedures for responding to EDR/MDM alerts and enforcing compliance
       with security policies through these platforms?
     title: EDR/MDM Alert Response Procedures
+  - id: ws-2.6.1
+    description: Do you maintain policies for browser and application security (browser isolation,
+      extension approval, external file handling)?
+    title: Browser and Application Security
+  - id: ws-2.7.1
+    description: Do you maintain requirements for physical workspace security for both on-site
+      and remote work environments?
+    title: Physical Workspace Security
 - id: ws-3
   title: Account Management & Access Control
   controls:
@@ -102,6 +114,10 @@ cert:
     description: Do you have procedures for verifying ownership and preventing unauthorized
       use of organizational external accounts?
     title: Ownership Verification for External Accounts
+  - id: ws-3.3.3
+    description: Do you maintain policies for account security controls (recovery method restrictions,
+      organizational identity verification)?
+    title: Account Security Controls
   - id: ws-3.4.1
     description: Do you maintain security procedures for domain registration and DNS management
       (registrar lock, change controls)?
@@ -129,6 +145,10 @@ cert:
     description: Do you have enhanced controls for high-privilege credentials (admin accounts,
       service accounts, API keys)?
     title: Enhanced Controls for High-Privilege Credentials
+  - id: ws-4.2.3
+    description: Do you maintain policies prohibiting credential sharing and requiring individual
+      accounts for accountability?
+    title: Account Sharing Prohibition
 - id: ws-5
   title: Development Environment Security
   controls:
@@ -194,16 +214,31 @@ cert:
       with regular updates?
     title: Workspace Security Awareness Program Updates
   - id: ws-8.1.4
+    description: Do you conduct regular phishing simulations and social engineering awareness
+      exercises with follow-up training for personnel who fail?
+    title: Phishing and Social Engineering Testing
+  - id: ws-8.1.5
     description: Do you maintain comprehensive offboarding procedures including access revocation,
       device return, and credential rotation?
     title: 'Offboarding Procedures: Access Revocation and Return'
-  - id: ws-8.1.5
+  - id: ws-8.1.6
     description: Do you maintain procedures for adjusting access rights when employees change
       roles?
     title: Adjusting Access Rights on Role Change
-  - id: ws-8.1.6
+  - id: ws-8.1.7
     description: Do you conduct periodic reviews to identify and remove unnecessary access permissions?
     title: Periodic Review of Access Permissions
+- id: ws-9
+  title: Insider Threat & Third-Party Access
+  controls:
+  - id: ws-9.1.1
+    description: Do you conduct insider threat assessments to identify potential damage scenarios
+      and ensure access is minimized for each role?
+    title: Insider Threat Assessment
+  - id: ws-9.1.2
+    description: Do you maintain procedures for managing third-party access (time-limits,
+      purpose-specific permissions, audit trails)?
+    title: Third-Party Access Management
 
 ---
 
