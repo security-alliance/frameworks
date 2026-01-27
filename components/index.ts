@@ -19,7 +19,5 @@ export { CertList } from './cert/CertList'
 export type { Control, Section, CertListProps, ControlState, ControlData } from './cert/types'
 export { default as MermaidRenderer } from './mermaid/MermaidRenderer';
 export * from './shared/tagColors'
-export { CertifiedProtocols } from './certified-protocols/CertifiedProtocols'
-export { CertifiedProtocolsWrapper } from './certified-protocols/CertifiedProtocolsWrapper'
 export { BadgeLegend } from './contributors/BadgeLegend'
 export { DevOnly } from './dev-only/DevOnly'

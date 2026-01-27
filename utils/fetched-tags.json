@@ -72,10 +72,6 @@
       "SEAL/Initiative",
       "Certifications"
     ],
-    "/certs/certified-protocols": [
-      "SEAL/Initiative",
-      "Certifications"
-    ],
     "/certs/contributions": [
       "SEAL/Initiative",
       "Certifications"
@@ -347,6 +343,14 @@
     "/governance/security-metrics-kpis": [
       "Operations & Strategy",
       "Legal & Compliance"
+    ],
+    "/guides/discord": [
+      "Community & Marketing",
+      "Security Specialist"
+    ],
+    "/guides/overview": [
+      "Community & Marketing",
+      "Security Specialist"
     ],
     "/iam/access-management": [
       "Engineer/Developer",
@@ -931,40 +935,40 @@
       "Operations & Strategy",
       "Engineer/Developer"
     ],
-    "/wallet-security/secure-multisig-safe-verification": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/wallet-security/secure-multisig-signing-process": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Engineer/Developer"
-    ],
-    "/wallet-security/secure-multisig-squads-verification": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
     "/wallet-security/seed-phrase-management": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/wallet-security/signing-verification": [
+    "/wallet-security/signing-and-verification/secure-multisig-safe-verification": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/wallet-security/signing-and-verification/secure-multisig-signing-process": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Engineer/Developer"
+    ],
+    "/wallet-security/signing-and-verification/secure-multisig-squads-verification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/wallet-security/signing-and-verification/signing-verification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/wallet-security/signing-and-verification/verifying-7702": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/wallet-security/signing-and-verification/verifying-standard-transactions": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/wallet-security/tools-&-resources": [
-      "Engineer/Developer",
-      "Security Specialist"
-    ],
-    "/wallet-security/verifying-7702": [
-      "Engineer/Developer",
-      "Security Specialist"
-    ],
-    "/wallet-security/verifying-standard-transactions": [
       "Engineer/Developer",
       "Security Specialist"
     ]
@@ -1003,6 +1007,7 @@
     "Safe Harbor": "safe-harbor",
     "Encryption": "encryption",
     "Treasury Operations": "treasury-operations",
+    "Guides": "guides",
     "SEAL Certifications": "certs",
     "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"
