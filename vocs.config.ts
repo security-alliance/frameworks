@@ -458,6 +458,9 @@ const config = {
                 { text: 'X (Twitter)', link: '/account-security/organizations/twitter-x', dev: true },
               ]
             },
+          ]
+        },
+        {
           text: 'Treasury Operations',
           collapsed: false,
           dev: true,
