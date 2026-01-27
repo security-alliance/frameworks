@@ -35,24 +35,10 @@ const config = {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/community-management/overview' },
+            { text: 'Discord', link: '/community-management/discord' },
             { text: 'Twitter', link: '/community-management/twitter' },
             { text: 'Telegram', link: '/community-management/telegram' },
             { text: 'Google', link: '/community-management/google' },
-          ]
-        },
-        {
-          text: 'Guides',
-          collapsed: false,
-          items: [
-            { text: 'Overview', link: '/guides/overview' },
-            {
-              text: 'Community Management',
-              collapsed: false,
-              items: [
-                { text: 'Overview', link: '/guides/community-management/overview' },
-                { text: 'Discord Security', link: '/guides/community-management/discord' },
-              ]
-            },
           ]
         },
         {
@@ -432,6 +418,14 @@ const config = {
             { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification', dev: true },
           ]
         },
+      ]
+    },
+    {
+      text: 'Guides',
+      collapsed: false,
+      items: [
+        { text: 'Overview', link: '/guides/overview' },
+        { text: 'Discord Security', link: '/guides/discord' },
       ]
     },
     {
