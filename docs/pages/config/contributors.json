@@ -437,5 +437,17 @@
       { "name": "Reviewer-25", "assigned": "2025-11-10" },
       { "name": "Active-Last-7d", "lastActive": "2026-01-23" }
     ]
+  },
+  "auditware": {
+    "slug": "auditware",
+    "name": "Auditware",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/auditware",
+    "github": "https://github.com/Auditware",
+    "twitter": "https://x.com/audit_wizard",
+    "website": "https://www.auditware.io/",
+    "company": "Auditware",
+    "job_title": null,
+    "description": "Industry leading OpSec audits, security tools, and code reviews performed by true security wizards"
   }
 }
