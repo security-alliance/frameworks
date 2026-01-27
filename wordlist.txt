@@ -89,6 +89,7 @@ Ethlint
 Excalidraw
 Exfiltrating
 exfiltration
+Forta
 Falco
 FDE
 fedcba
