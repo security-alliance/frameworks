@@ -1,11 +1,13 @@
 ---
+title: "Multisig Use Case Requirements | SEAL"
+description: "Multisig requirements by use case: treasury with allowance modules, emergency response with 24/7 availability, capital allocation with on-chain constraints, and smart contract control with timelocks."
 tags:
   - Engineer/Developer
   - Security Specialist
   - Multisig Security
 contributors:
   - role: wrote
-    users: [isaac, geoffrey, louis, pablo, dickson]
+    users: [isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [pinalikefruit, engn33r]
 ---
@@ -25,6 +27,31 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### Key requirements:
 
 - **Allowance module** required for all multisigs (see [Modules & Guards](/multisig-for-protocols/setup-and-configuration#modules--guards))
+
+### Hot/Cold Wallet Separation
+
+- Hot wallet must be used as an intermediary for treasury wallets
+- Cold wallet must store the majority of assets
+- Only basic transfers to the hot wallet address allowed
+- Hot wallet must have a minimum 2-of-3 signer quorum
+
+### Wallet Segregation
+
+- Very high value assets must be distributed amongst separate wallets to prevent potential loss of all assets
+- At least 3 equally funded cold wallets is recommended
+- Segregated wallets should be managed by different multi-sigs
+- Seldom used wallets should have increased time-lock periods
+- Any activity on seldom used wallets should trigger alerts to the entire team
+
+### External Signer Requirements
+
+- Multi-sigs managing high value wallets and contracts should have at least 1 additional required signer that is external to the organization (such as a security partner or trusted advisor)
+
+### External Transaction Monitoring
+
+- A third party outside of the organization should be set up to monitor time locked transactions for anomalies and unintended transaction effects
+- The external monitor must perform transaction simulation of all pending transactions
+- Monitor reports must be delivered at least 48 business hours before the time lock for a transaction lapses in order to provide adequate time to respond in the event of an anomaly
 
 ## Emergency response Multisigs
 
@@ -68,9 +95,19 @@ The Safe will be the sole contract that has the Proposer role on the timelock co
 The Safe, or an address of a multisig signer, or other desired EOA can be set as the canceller or executor on the timelock contract.
 By default the timelock contract is set to be its own admin. This means that any changes to timelock contract roles also go through the timelock stage.
 
+### Veto Quorum
+
+- Establish a smaller veto group separate from the confirmation quorum to review and confirm transaction legitimacy
+- Organizations can establish veto quorums to bypass time-locks in case of emergency
+- The standard quorum plus two additional signers should be required to bypass
+
+### Recommended Time-Lock Delays
+
+Time-locks should delay transactions a minimum of 3 days.
+
 ### Simulation Consideration
 
-When using a timelock the simulation for the multisig transaction will not show the execution of the transaction but instead the addition of the pending transaction to the timelock. The pending transaction can be simulated manually as shown in [Simulation testing](/wallet-security/secure-multisig-safe-verification).
+When using a timelock the simulation for the multisig transaction will not show the execution of the transaction but instead the addition of the pending transaction to the timelock. The pending transaction can be simulated manually as shown in [Simulation testing](/wallet-security/signing-and-verification/secure-multisig-safe-verification).
 
 ![Timelock configuration diagram](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/timelock-configuration-diagram.png)
 

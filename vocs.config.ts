@@ -1,6 +1,13 @@
 import { defineConfig } from 'vocs'
 
+const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main'
+
 const config = {
+  vite: {
+    define: {
+      __IS_MAIN_BRANCH__: JSON.stringify(isMainBranch)
+    }
+  },
   banner: {
     content: '***This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.***',
     height: '30px',
@@ -13,8 +20,9 @@ const config = {
   logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
   ogImageUrl: {
-    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.png'
+    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png'
   },
+  checkDeadlinks: "warn" as const,
   sidebar: [
     {
       text: 'Introduction',
@@ -37,7 +45,6 @@ const config = {
             { text: 'Discord', link: '/community-management/discord' },
             { text: 'Twitter', link: '/community-management/twitter' },
             { text: 'Telegram', link: '/community-management/telegram' },
-            { text: 'Google', link: '/community-management/google' },
           ]
         },
         {
@@ -66,8 +73,14 @@ const config = {
                 { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
-            { text: 'Threat Modeling Overview', link: '/opsec/threat-modeling-overview' },
-            { text: 'Risk Management Overview', link: '/opsec/risk-management-overview' },
+            { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
+            { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
+            { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
+            { text: 'Password Management', link: '/opsec/passwords/overview', dev: true },
+            { text: 'Google Workspace Security', link: '/opsec/google/overview', dev: true },
+            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
+            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
             {
               text: 'While Traveling',
               collapsed: false,
@@ -77,13 +90,6 @@ const config = {
                 { text: 'TL;DR', link: '/opsec/travel/tldr', dev: true },
               ]
             },
-            { text: 'Governance & Program Management', link: '/opsec/governance-program-management', dev: true },
-            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
-            { text: 'Lifecycle', link: '/opsec/lifecycle/overview', dev: true },
-            { text: 'Monitoring & Detection', link: '/opsec/monitoring-detection', dev: true },
-            { text: 'Incident Response & Recovery', link: '/opsec/incident-response-recovery', dev: true },
-            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
-            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
             { text: 'Appendices', link: '/opsec/appendices/overview', dev: true }
           ]
         },
@@ -103,12 +109,12 @@ const config = {
               text: 'Signing & Verification',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/wallet-security/signing-verification' },
-                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
-                { text: 'Multisig Signing Process', link: '/wallet-security/secure-multisig-signing-process' },
-                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-safe-verification', dev: true },
-                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/secure-multisig-squads-verification', dev: true },
-                { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
+                { text: 'Overview', link: '/wallet-security/signing-and-verification/signing-verification' },
+                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/signing-and-verification/verifying-standard-transactions' },
+                { text: 'Multisig Signing Process', link: '/wallet-security/signing-and-verification/secure-multisig-signing-process' },
+                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-safe-verification', dev: true },
+                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-squads-verification', dev: true },
+                { text: 'Using EIP-7702', link: '/wallet-security/signing-and-verification/verifying-7702' },
               ]
             },
             { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
@@ -190,7 +196,7 @@ const config = {
               items: [
                 { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
                 { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
-                { text: 'DNSSEC, CAA, and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
+                { text: 'DNSSEC, CAA, SMTP DANE and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
                 { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
                 { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
               ]
@@ -466,6 +472,14 @@ const config = {
       ]
     },
     {
+      text: 'Guides',
+      collapsed: false,
+      items: [
+        { text: 'Overview', link: '/guides/overview' },
+        { text: 'Discord Security', link: '/guides/discord' },
+      ]
+    },
+    {
       text: 'SEAL Certifications',
       collapsed: false,
       items: [
@@ -530,7 +544,7 @@ function filterDevItems(items: any[]): any[] {
     }))
 }
 
-if (process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main') {
+if (isMainBranch) {
   config.sidebar = filterDevItems(config.sidebar)
 }
 
