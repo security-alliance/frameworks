@@ -45,7 +45,6 @@ const config = {
             { text: 'Discord', link: '/community-management/discord' },
             { text: 'Twitter', link: '/community-management/twitter' },
             { text: 'Telegram', link: '/community-management/telegram' },
-            { text: 'Google', link: '/community-management/google' },
           ]
         },
         {
