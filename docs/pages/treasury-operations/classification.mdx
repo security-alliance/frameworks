@@ -28,7 +28,9 @@ import {
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Proper documentation and classification of custodial accounts is essential for institutional treasury security. This guide focuses on the security assessment and classification framework for crypto assets held with third-party custodians.
+Proper documentation and classification of custodial accounts is essential for institutional treasury security. This
+guide focuses on the security assessment and classification framework for crypto assets held with third-party
+custodians.
 
 > See also: [Registration Documents](./registration-documents) and [Enhanced Controls for High-Risk Accounts](./enhanced-controls)
 
@@ -101,7 +103,8 @@ Assess how transactions are executed:
 - Are transactions handled manually or through automated systems?
 - Do approvers need to coordinate across timezones?
 
-Note: Single-approver configurations should only be used for low-value operational accounts (\<0.1%) with additional compensating controls like strict spending limits and daily reconciliation.
+Note: Single-approver configurations should only be used for low-value operational accounts (\<0.1%) with additional
+compensating controls like strict spending limits and daily reconciliation.
 
 #### Operational Classification
 
@@ -116,20 +119,18 @@ Note: Single-approver configurations should only be used for low-value operation
 
 Combine impact and operational assessments to determine required controls.
 
-| Use Case                      | Impact      | Operational   | Approvers | MFA Requirement    | Whitelist Delay | Additional Controls                         |
-| ----------------------------- | ----------- | ------------- | --------- | ------------------ | --------------- | ------------------------------------------- |
-| Payments                      | Low         | Active Ops    | 2         | Standard TOTP      | 6 hours         | **Baseline (all accounts):** Dedicated devices for custody access, address whitelisting enabled, test small amount to new addresses before full transaction, transaction simulation. **Low-specific:** Per-transaction cap, monthly aggregate limit         |
-| Operational Wallet            | Medium      | Active Ops    | 2         | Hardware required  | 12 hours        | All Low controls + daily transaction caps, weekly reconciliation, monthly audit                    |
-| Liquidation Protection        | Medium-High | Time-Critical | 2         | Hardware required  | None            | All Low/Medium controls + automated alerts for position health, real-time monitoring |
-| DeFi Positions                | Medium-High | Warm Storage  | 3         | Hardware mandatory | 24 hours        | All Low/Medium controls + smart contract whitelist, position monitoring, daily reconciliation     |
-| Trading Capital (variable)    | High        | Active Ops    | 3         | Hardware mandatory | 6 hours         | All Low/Medium controls + smart contract whitelist, real-time monitoring, daily reconciliation   |
-| Active Treasury (5-10%)       | High        | Warm Storage  | 3-4       | Hardware mandatory | 24 hours        | All Low/Medium controls + transaction velocity limits, SIEM monitoring， multi-channel confirmation       |
-| Secondary Reserve (10-25%)    | Critical    | Cold Vault    | 4-5       | Hardware mandatory | 48 hours        | All Low/Medium/High controls + geographic distribution of approvers, MPC recommended    |
-| Primary Reserve (>25% assets) | Critical    | Cold Vault    | 5-7       | Hardware mandatory | 72 hours        | All Low/Medium/High controls + geographic distribution of approvers, MPC recommended    |
+| Use Case | Impact | Operational | Approvers | MFA Requirement | Whitelist Delay | Additional Controls |
+| --- | --- | --- | --- | --- | --- | --- |
+| Payments | Low | Active Ops | 2 | Standard TOTP | 6 hours | **Baseline (all accounts):** Dedicated devices for custody access, address whitelisting enabled, test small amount to new addresses before full transaction, transaction simulation. **Low-specific:** Per-transaction cap, monthly aggregate limit |
+| Operational Wallet | Medium | Active Ops | 2 | Hardware required | 12 hours | All Low controls + daily transaction caps, weekly reconciliation, monthly audit |
+| Liquidation Protection | Medium-High | Time-Critical | 2 | Hardware required | None | All Low/Medium controls + automated alerts for position health, real-time monitoring |
+| DeFi Positions | Medium-High | Warm Storage | 3 | Hardware mandatory | 24 hours | All Low/Medium controls + smart contract whitelist, position monitoring, daily reconciliation |
+| Trading Capital (variable) | High | Active Ops | 3 | Hardware mandatory | 6 hours | All Low/Medium controls + smart contract whitelist, real-time monitoring, daily reconciliation |
+| Active Treasury (5-10%) | High | Warm Storage | 3-4 | Hardware mandatory | 24 hours | All Low/Medium controls + transaction velocity limits, SIEM monitoring, multi-channel confirmation |
+| Secondary Reserve (10-25%) | Critical | Cold Vault | 4-5 | Hardware mandatory | 48 hours | All Low/Medium/High controls + geographic distribution of approvers, MPC recommended |
+| Primary Reserve (>25% assets) | Critical | Cold Vault | 5-7 | Hardware mandatory | 72 hours | All Low/Medium/High controls + geographic distribution of approvers, MPC recommended |
 
 ### Step 4: Document Your Decision
-
-
 
 - Record impact level and operational type with justification
 - Capture approver thresholds and required controls

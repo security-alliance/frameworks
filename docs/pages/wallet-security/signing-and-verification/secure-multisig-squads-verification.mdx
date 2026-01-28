@@ -10,7 +10,6 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
-
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -19,6 +18,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagFilter />
 
 # Squads Multisig: Step-by-Step Verification
+
 Limited tooling is available for Solana verification compared to EVM. Exercise extra caution and cross-verify with team members.
 
 <TagList tags={frontmatter.tags} />
@@ -33,7 +33,9 @@ Limited tooling is available for Solana verification compared to EVM. Exercise e
 - Squads UI provides a simulation link after first signature
 - Simulation is helpful for transfers; configuration changes often fail, but you can still inspect data via explorer
 
-Warning: Simulations can be spoofed - always apply critical thinking and good judgement during transaction reviews since a simulation can display one thing and then do something else entirely when actually executed on chain
+Warning: Simulations can be spoofed - always apply critical thinking and good judgement during
+transaction reviews since a simulation can display one thing and then do something else entirely when
+actually executed on chain
 
 ## SOL Transfer Verification
 
@@ -43,9 +45,11 @@ Warning: Simulations can be spoofed - always apply critical thinking and good ju
 
 On the simulation page scroll down to **System Program Instruction**
 ![System Program Instruction details](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/system-program-instruction-details.png)
-This shows the destination address for the SOL (H2p…Kr) and the Instruction Data. The instruction data can be interpreted as follows.
+This shows the destination address for the SOL (H2p…Kr) and the Instruction Data. The instruction data can be
+interpreted as follows.
 
 **Example instruction data interpretation:**
+
 ```
 02 00 00 00 80 96 98 00 00 00 00 00
 ```
@@ -63,6 +67,7 @@ This shows the destination address for the SOL (H2p…Kr) and the Instruction Da
 
 Quick verification method:
 For the amount portion (`80 96 98 00 00 00 00 00`):
+
 - Reverse the order: `00 00 00 00 00 98 96 80`
 - Convert hex to decimal: `0x989680` = 10,000,000
 - Divide by 1,000,000,000: 10,000,000 ÷ 1,000,000,000 = 0.01 SOL
@@ -74,7 +79,9 @@ For the amount portion (`80 96 98 00 00 00 00 00`):
 
 On the simulation page scroll down to **Associated Token Program: Create Idempotent** & **Token Program Instruction**
 ![Token Program Instruction details](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/token-program-instruction-details.png)
-This shows the destination address for the USDS in the Token Program Instruction (H2p…Kr) and the Instruction Data. The instruction data can be interpreted as follows.
+This shows the destination address for the USDS in the Token Program Instruction (H2p…Kr) and the Instruction Data. The
+instruction data can be interpreted as follows.
+
 ```
 0c 40 42 0f 00 00 00 00 00 00 06
 ```
@@ -98,7 +105,8 @@ Simulation does NOT seem to work for configuration changes, but we have another 
 
 1. Copy the transaction ID ([4KDPpv27fQmbWteQjSZLku8sGxNfoDqtYG4mZQp2zbiq](https://explorer.solana.com/address/4KDPpv27fQmbWteQjSZLku8sGxNfoDqtYG4mZQp2zbiq?signatures=%255B%25221111111111111111111111111111111111111111111111111111111111111111%2522%252C%25221111111111111111111111111111111111111111111111111111111111111111%2522%255D&message=gAIABQmMKRhm0xquPpdNaEAeFg%252FN30zo7KzBfmzdI3QlkLN55Ql%252BvEzOMR3HvSFhM2GWdWNVeRQBVmsO%252BMzLyKmaMKEzxF5adOSOc03j8RtbcEMRZfSyDhZDpj%252Bf89egzdX3712eUpW3sOB32puEK85AjoAlc8KSleU8LnaIbhD8fK9eRgMGRm%252FlIRcy%252F%252BytunLDm%252Be8jOW7xfcSayxDmzpAAAAAjJclj04kifG7PRApFI4NgwtaE5na%252FxCEBI572Nvp%252BFnuMjQuJl5efJM4qMUTLlOHrWYAHKRKPZqwUJIEre%252FDtQcHMS0dQdpx8PsoDBZizWXr6y4IWcDLrj%252Fb3LJshuCvBt324ddloZPZy%252BFGzut5rBy0he1fWzeROoz1hX7%252FAKkVxPfrULPMJ%252BJHEroegjMTe9e7y7fbwd%252BuhToyuOMfEQQEAAUBAAAEAAQABQLAXBUABQYBAgYHCQgBAQgEAwcCAQoMQEIPAAAAAAAGAbqmLEkSumVVR1a24Yy6rkkWI1IASK6g1AQ30DXoTsREAAEF))
    1. This will take you to an 'account' page on the Solana explorer representing just this transaction
-2. Click the [first transaction](https://explorer.solana.com/tx/36QYWYC9a5eCtd8QNkdjWmqUyY21wNYBNRtuQrtPqJRg1QbeL8rmVKume21VwrQRjJHZjkHVMMWA1sYWtF4wfZ6u) in the history of this 'transaction account'
+2. Click the [first transaction](https://explorer.solana.com/tx/36QYWYC9a5eCtd8QNkdjWmqUyY21wNYBNRtuQrtPqJRg1QbeL8rmVKume21VwrQRjJHZjkHVMMWA1sYWtF4wfZ6u)
+   in the history of this 'transaction account'
 3. Scroll down to **Squads Multisig Program: Config Transaction Create**
    1. Expand all fields to view the decoded transaction data
 
@@ -110,8 +118,5 @@ Simulation does NOT seem to work for configuration changes, but we have another 
 - Execute after collecting all signatures
 - Once all signatures are collected, execute the transaction.
 
-
-
 </TagProvider>
 <ContributeFooter />
-

@@ -39,26 +39,33 @@ For Critical and High impact custodial accounts, implement the following control
 - Simulation requirement: All transactions must be simulated before execution
 - Address verification: Verify new addresses against three independent sources
 
-For DeFi interactions: refer to the [DeFi Risk Assessment Guide](https://entethalliance.org/specs/defi-risks/v1/) for recommended procedures.
+For DeFi interactions: refer to the [DeFi Risk Assessment Guide](https://entethalliance.org/specs/defi-risks/v1/) for
+recommended procedures.
 
 ## Access Security
 
 - Hardware security keys (FIDO2/WebAuthn) mandatory for all approvers
   - Secure fallback: Each approver must register minimum 2 hardware keys stored in separate secure locations
-  - Key loss procedure: Temporary access via backup key + additional approver verification via multiple channels + mandatory key replacement within 48 hours
-- IP whitelisting with 24-hour change approval delay - if treasury software supports application-level IP whitelisting, restrict to VPN IP range only
+  - Key loss procedure: Temporary access via backup key + additional approver verification via multiple channels +
+    mandatory key replacement within 48 hours
+- IP whitelisting with 24-hour change approval delay - if treasury software supports application-level IP whitelisting,
+  restrict to VPN IP range only
 - Device fingerprinting with new device approval process
 - Session timeout and re-authentication for sensitive operations
-- Dedicated credentials: Use separate email addresses and passwords exclusively for custody access, not shared with other corporate systems
+- Dedicated credentials: Use separate email addresses and passwords exclusively for custody access, not shared with
+  other corporate systems
 
 ## Device Security
 
-- Dedicated secure workstations and mobile devices for custody access only (no general browsing, email, or other corporate activities)
+- Dedicated secure workstations and mobile devices for custody access only (no general browsing, email, or other
+  corporate activities)
 - Network isolation on separate VLAN/segment
-- VPN mandatory for all platform access; if treasury platform supports it, configure IP whitelisting to only allow access from VPN IP addresses
+- VPN mandatory for all platform access; if treasury platform supports it, configure IP whitelisting to only allow
+  access from VPN IP addresses
 - Full disk encryption with automatic screen lock
 - MDM-enforced security baseline with remote wipe capability
-- Mobile endpoint security monitoring (e.g., iVerify) for devices used as second factors or keystores, without requiring full MDM admin control
+- Mobile endpoint security monitoring (e.g., iVerify) for devices used as second factors or keystores, without requiring
+  full MDM admin control
 
 ## MPC for Large Holdings
 
@@ -99,7 +106,8 @@ Suggested approver thresholds (treasury contexts):
 
 ## Custody Policy Engine Rules
 
-Most custody/MPC platforms provide a policy engine that evaluates transaction rules and takes one of three actions: allow, block, or require additional approvals.
+Most custody/MPC platforms provide a policy engine that evaluates transaction rules and takes one of three actions:
+allow, block, or require additional approvals.
 
 Core rule elements:
 
@@ -113,7 +121,10 @@ Core rule elements:
 
 ## Zero Trust Architecture Alternative
 
-A Zero Trust architecture involves continuous verification of user, device, and context, rather than reliance on a single perimeter or network location. Centralizing access through a secure environment (such as a bastion host or isolated cloud workspace) can support Zero Trust principles when combined with strong identity and device posture enforcement.
+A Zero Trust architecture involves continuous verification of user, device, and context, rather than reliance on a
+single perimeter or network location. Centralizing access through a secure environment (such as a bastion host or
+isolated cloud workspace) can support Zero Trust principles when combined with strong identity and device posture
+enforcement.
 
 - Bastion Host Approach: Deploy a hardened jump server that acts as the sole gateway to custody platforms.
   - All custody sessions route through the bastion with full session recording
@@ -121,7 +132,8 @@ A Zero Trust architecture involves continuous verification of user, device, and 
   - No direct custody access from employee devices
   - Centralized patch management and security configuration
   
-- Cloud Workspace Isolation: Use browser-isolated or virtual workspace environments (e.g., Citrix, AWS WorkSpaces, Azure Virtual Desktop)
+- Cloud Workspace Isolation: Use browser-isolated or virtual workspace environments (e.g., Citrix, AWS WorkSpaces, Azure
+  Virtual Desktop)
   - Custody access occurs only within a controlled virtual environment
   - Copy/paste and download restrictions prevent data exfiltration
   - Session timeout and automatic workspace destruction after use
@@ -131,13 +143,19 @@ A Zero Trust architecture involves continuous verification of user, device, and 
 
 For Critical and High impact accounts, implement centralized security monitoring:
 
-- SIEM Deployment: Deploy SIEM to centralize logs from custody platforms, authentication systems, and access devices. Create real-time correlation rules for suspicious patterns (failed authentication, geographic anomalies, policy changes).
+- SIEM Deployment: Deploy SIEM to centralize logs from custody platforms, authentication systems, and access devices.
+  Create real-time correlation rules for suspicious patterns (failed authentication, geographic anomalies, policy
+  changes).
 
-- Internal Incident Response: Build dedicated incident response capability for custody-related security events. Define clear escalation procedures, maintain 24/7 on-call rotation for Critical accounts, and establish playbooks for custody compromise scenarios.
+- Internal Incident Response: Build dedicated incident response capability for custody-related security events. Define
+  clear escalation procedures, maintain 24/7 on-call rotation for Critical accounts, and establish playbooks for custody
+  compromise scenarios.
 
-- Essential Log Sources: Authentication events, transaction attempts, policy modifications, access changes, whitelist updates, IP address changes, new device enrollments, and approval workflows.
+- Essential Log Sources: Authentication events, transaction attempts, policy modifications, access changes, whitelist
+  updates, IP address changes, new device enrollments, and approval workflows.
 
-For Medium and Low impact accounts, leverage custodian's native audit logs with weekly manual review and automated alerting for critical events (new device enrollment, policy changes, transactions above threshold).
+For Medium and Low impact accounts, leverage custodian's native audit logs with weekly manual review and automated
+alerting for critical events (new device enrollment, policy changes, transactions above threshold).
 
 ---
 
@@ -148,5 +166,3 @@ For Medium and Low impact accounts, leverage custodian's native audit logs with 
 
 </TagProvider>
 <ContributeFooter />
-
-
