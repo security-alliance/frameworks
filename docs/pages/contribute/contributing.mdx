@@ -11,7 +11,8 @@ while this copy is used to render the content on the website.
 
 This file is automatically synced to the root level CONTRIBUTING.md during the build process (stripped of MDX-specific elements).
 
-⚠️ When making changes, only edit this file - the root CONTRIBUTING.md will be updated automatically when running the build command.
+⚠️ When making changes, only edit this file - the root CONTRIBUTING.md will be updated automatically when running the
+build command.
 */}
 
 import { ContributeFooter, TagFilter, TagProvider, MermaidRenderer } from '../../../components'
@@ -67,7 +68,7 @@ PRs or branches to make sure your work has not been previously ****submitted**.*
 All contributions should follow this workflow:
 
 1. **Fork the repository** to your own GitHub account.
-2. **Follow the `template.mdx` page** when creating or expanding content. It contains pre-defined components and
+2. **Follow the [`template.mdx`](/config/template) page** when creating or expanding content. It contains pre-defined components and
 structure required for consistency in MDX files.
 3. **Make your changes** in MDX (typos, improvements, or new content) on your fork.
 4. **Open a Pull Request (PR) against the `develop` branch** of this repository. Once submitted, you can see the
@@ -157,12 +158,12 @@ If you prefer to install dependencies locally on your machine:
 authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your
 development environment.
 
-# Fixing unsigned commits
+## Fixing unsigned commits
 
 If you accidentally made unsigned commits in your fork, you’ll need to rewrite them so they show as **Verified** before
 opening a PR.
 
-## 1. Rebase your recent commits
+### 1. Rebase your recent commits
 
 - Understand how many commits you have to fix
 - Run this command, replacing `N` with the number of commits to go back (starting from the latest one):
@@ -171,14 +172,14 @@ opening a PR.
 git rebase -i HEAD~N
 ```
 
-## 2. Mark commits to fix
+### 2. Mark commits to fix
 
 In the editor that opens:
 
 - Change `pick` → `edit` for each unsigned commit.
 - Save and exit.
 
-## 3. Re-sign each commit
+### 3. Re-sign each commit
 
 For each commit you’re editing:
 
@@ -189,7 +190,7 @@ git rebase --continue
 
 Repeat until all commits are re-signed.
 
-## 4. Push your changes
+### 4. Push your changes
 
 Since history was rewritten, you need to **force-push**:
 
@@ -197,7 +198,7 @@ Since history was rewritten, you need to **force-push**:
 git push --force
 ```
 
-## 5. Verify
+### 5. Verify
 
 Check locally:
 
@@ -271,6 +272,7 @@ contributors:
 ```
 
 Contributors are **managed centrally**:
+
 - **Contributor database:** `docs/pages/config/contributors.json`
 - **Usage guide:** `docs/pages/config/using-contributors.mdx`
 
