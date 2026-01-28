@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && pnpm run generate-printables && vocs dev --host 0.0.0.0 --port 5173",
+    "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && vocs dev --host 0.0.0.0 --port 5173",
     "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && pnpm run generate-printables && vocs build",
     "postdocs:build": "node utils/searchbar-indexing.js",
     "docs:preview": "vocs preview",

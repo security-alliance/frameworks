@@ -314,7 +314,7 @@ ${sections.flatMap((s, i) => {
       <div class="section">
         <h2>${title}</h2>
         <ul class="controls">
-${chunk.filter(c => c && typeof c === 'object').map(c => `
+${chunk.filter(c => c && typeof c === 'object' && typeof c.title === 'string').map(c => `
           <li class="control">
             <div class="box"></div>
             <div>
@@ -391,9 +391,17 @@ function main() {
       return;
     }
 
-    const certName = file.replace('.mdx', '');
+    const rawCertName = file.replace('.mdx', '');
+    const certName = sanitizeCertName(rawCertName);
+
+    // Skip if sanitization produced empty string (malformed filename)
+    if (!certName) {
+      console.log(`  Skipping ${file} - invalid cert name after sanitization`);
+      return;
+    }
+
     const title = data.title || certName;
-    const meta = CERT_META[certName] || {};
+    const meta = CERT_META[rawCertName] || {};
     const subtitle = meta.subtitle || `SEAL Framework Checklist for ${title}`;
 
     const html = generateHTML(title, subtitle, data.cert, certName);
