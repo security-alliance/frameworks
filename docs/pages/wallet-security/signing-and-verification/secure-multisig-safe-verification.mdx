@@ -10,7 +10,6 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
-
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -23,21 +22,28 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Hash verification protects against UI compromise attacks where malicious transactions are injected into the signing flow. The goal is to ensure that what you see in the UI matches what your hardware wallet actually signs.
+Hash verification protects against UI compromise attacks where malicious transactions are injected into the signing
+flow. The goal is to ensure that what you see in the UI matches what your hardware wallet actually signs.
 
 ## General Signing Guidelines
 
 ### Basic Rules
+
 - **Use hardware wallet** & back up the seed phrase
-- **Use a separate browser or browser profile for signing** to minimize extension/session cross-contamination and reduce attack surface on your primary profile
-- **Secure signing environment**: For maximum security, all signing activities should be performed on a dedicated, air-gapped, or hardened device running a secure OS. Using a primary work laptop significantly increases the risk of malware interference.
+- **Use a separate browser or browser profile for signing** to minimize extension/session cross-contamination and reduce
+  attack surface on your primary profile
+- **Secure signing environment**: For maximum security, all signing activities should be performed on a dedicated,
+  air-gapped, or hardened device running a secure OS. Using a primary work laptop significantly increases the risk of
+  malware interference.
 - **Verify the address** according to the procedures on this page upon joining any multisig
-- **Check transactions** you see in the queue - if unclear what the transaction should do and why, don't sign it and ask for explanation
+- **Check transactions** you see in the queue - if unclear what the transaction should do and why, don't sign it and ask
+  for explanation
 - **Require "how to check" guide** for every transaction
 - **Verify addresses & sums** through third party sources (message from fellow multisig co-signer is not sufficient)
 - **Communicate transaction status**: Tell other signers whether the transaction can be executed right away or not
 - **Confirm after signing**: Communicate once you've checked and signed ("checked, signed, X more required")
-- **Last signer executes**: If the transaction can be executed right away, the last signer does it. If they can't execute, communicate with other signers
+- **Last signer executes**: If the transaction can be executed right away, the last signer does it. If they can't
+  execute, communicate with other signers
 - **Re-verify before execution**: If executing an already signed transaction, check it as if you were signing it
 
 ## Key Definitions (EVM)
@@ -61,11 +67,14 @@ Please see the [Tools & Resources](/wallet-security/tools-&-resources) page for 
 - Run Tenderly simulation from Safe UI; verify expected events and transfers
 - If using a timelock, expect a staged transaction event rather than execution
 
-Warning: Simulations can be spoofed - always apply critical thinking and good judgement during transaction reviews since a simulation can display one thing and then do something else entirely when actually executed on chain
+Warning: Simulations can be spoofed - always apply critical thinking and good judgement during
+transaction reviews since a simulation can display one thing and then do something else entirely when
+actually executed on chain
 
 ![Tenderly simulation setup](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/tenderly-simulation-setup.png)
 
 Manual simulation (when needed):
+
 1. Paste the contract address in the contract field
 2. Paste the calldata from the Safe UI or from the hash verification tool
 3. Specify the Safe address as the From address
@@ -75,15 +84,21 @@ Note: For complex batch transactions that include a delegateCall to multisend, m
 ## 3) Hash & Calldata Verification
 
 **Using CLI tool:**
+
 ```bash
 ./safe_hashes.sh --network [NETWORK] --address [SAFE_ADDRESS] --nonce [NONCE]
 ```
 
-The CLI tool pulls the queued transaction from the Safe API for verification. If Safe infrastructure is compromised, it's possible the tool will show a hash that matches the UI, but the transaction is still not what you intend to sign. However, if you also verify the calldata output by the tool, you can be sure you are signing the correct data.
+The CLI tool pulls the queued transaction from the Safe API for verification. If Safe infrastructure is compromised,
+it's possible the tool will show a hash that matches the UI, but the transaction is still not what you intend to sign.
+However, if you also verify the calldata output by the tool, you can be sure you are signing the correct data.
 
-**Interactive mode** (no Safe API dependency): Use `--interactive` to enter all transaction details manually. Note that in interactive mode the tool does not decode the calldata, so it's important to perform the calldata verification in step 5.
+**Interactive mode** (no Safe API dependency): Use `--interactive` to enter all transaction details manually. Note that
+in interactive mode the tool does not decode the calldata, so it's important to perform the calldata verification in
+step 5.
 
 ### Using web UI (OpenZeppelin Safe Utils)
+
 1. Navigate to OpenZeppelin Safe Utils
 2. Enter Safe address (checksummed)
 3. Select network and enter nonce
@@ -92,10 +107,12 @@ The CLI tool pulls the queued transaction from the Safe API for verification. If
 Important: Both tools require checksummed addresses:
 
 ### Checksummed address examples
+
 - ✅ Correct: `0xA79C6968E3c75aE4eF388370d1f142720D498fEC`
 - ❌ Incorrect: `0xa79c6968e3c75ae4ef388370d1f142720d498fec`
 
-- Interactive mode note: In interactive mode the CLI does not decode calldata; be sure to perform the calldata verification in step 5.
+- Interactive mode note: In interactive mode the CLI does not decode calldata; be sure to perform the calldata
+  verification in step 5.
 
 ## 4) Hash Comparison
 
@@ -127,4 +144,3 @@ Signers should not all use identical tools. Cross-verify results between multipl
 
 </TagProvider>
 <ContributeFooter />
-

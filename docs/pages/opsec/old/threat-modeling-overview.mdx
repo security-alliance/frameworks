@@ -100,7 +100,7 @@ For these, you can use technologies such as:
 Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized their assets:
 
 | Asset Category | Items |
-|----------------|-------|
+| ---------------- | ------- |
 | **Digital value stores** | • Company treasury holding 5 BTC and 50 ETH for operations<br />• Client tokens held in custody during project development<br />• Test tokens on various testnets for development purposes |
 | **Credentials & access information** | • Multi-signature wallet configuration (3-of-5 signers)<br />• Password manager company accounts for all employees<br />• Recovery seed phrases (stored separately from devices)<br />• SSH keys for server access<br />• API keys for third-party services |
 | **Hardware & physical devices** | **Computing devices:**<br />• 15 developer laptops with encrypted drives<br />• 5 company mobile phones for executives<br />• 2 physical servers for internal development<br />**Security hardware:**<br />• Hardware wallets for each founding member (3)<br />• YubiKeys for all developers for GitHub access<br />• Biometric access readers<br />**Physical security:**<br />• Office security system with cameras<br />• Card readers for building access<br />• Secure storage for sensitive documents |
@@ -127,7 +127,7 @@ Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized
 ### Pinnipeds Inc. Adversary Analysis
 
 | Adversary Tier | Characteristics | Examples & Techniques |
-|----------------|-----------------|------------------------|
+| ---------------- | ----------------- | ------------------------ |
 | **Tier 1 (Opportunistic)** | **Who**: Individual hackers, script kiddies, automated scanners/bots<br />**Motivations**: Quick financial gain, building reputation, opportunistic theft<br />**Capabilities**: Using public exploits, basic phishing, automated scanning tools<br />**Targets**: Public-facing infrastructure, employee email accounts, known vulnerabilities | • Crypto wallet draining scams<br />• Generic phishing campaigns<br />• Website defacement<br />• Automated vulnerability scanning |
 | **Tier 2 (Targeted)** | **Who**: Organized criminal groups, competitors, disgruntled former employees<br />**Motivations**: Financial theft, competitive advantage, sabotage, revenge<br />**Capabilities**: Custom malware, spear phishing, social engineering, persistent attacks<br />**Targets**: Company treasury wallets, intellectual property, client data, employee credentials | • Targeted social engineering of specific developers<br />• Custom exploits for Pinnipeds' systems<br />• Extended reconnaissance operations<br />• Sophisticated phishing campaigns |
 | **Tier 3 (Advanced)** | **Who**: Nation-state actors, sophisticated criminal syndicates, APT groups<br />**Motivations**: Strategic intelligence, large-scale financial theft, disruption<br />**Capabilities**: Zero-day exploits, supply chain attacks, long-term persistence, stealth techniques<br />**Targets**: Crypto treasury, proprietary algorithms, strategic business information, infrastructure access | • Lazarus Group's systematic targeting of cryptocurrency organizations<br />• Supply chain compromises<br />• Advanced persistent threats with long dwell times<br />• Multi-stage attack campaigns |
@@ -152,7 +152,7 @@ Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized
 #### Critical Asset: Treasury Wallet (Financial)
 
 | Attack Vector | Description | Relevant Adversary |
-|---------------|-------------|-------------------|
+| --------------- | ------------- | ------------------- |
 | Phishing | Targeted emails to obtain wallet credentials | Tier 1-2 attackers |
 | Social engineering | Manipulating employees to gain access | Tier 2 attackers |
 | Supply chain compromise | Compromised wallet software | Tier 3 attackers |
@@ -161,7 +161,7 @@ Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized
 #### Critical Asset: Source Code (Intellectual Property)
 
 | Attack Vector | Description | Relevant Adversary |
-|---------------|-------------|-------------------|
+| --------------- | ------------- | ------------------- |
 | GitHub account compromise | Targeting developer credentials | Tier 1-3 attackers |
 | CI/CD pipeline injection | Injecting malicious code during build | Tier 3 attackers |
 | Code repository breach | Direct attack on GitHub infrastructure | Tier 3 attackers |
@@ -170,7 +170,7 @@ Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized
 #### Critical Asset: Client Data (Customer Information)
 
 | Attack Vector | Description | Relevant Adversary |
-|---------------|-------------|-------------------|
+| --------------- | ------------- | ------------------- |
 | Database exploitation | SQL injection or other DB vulnerabilities | Tier 1-2 attackers |
 | AWS credential theft | Stolen cloud access credentials | Tier 2 attackers |
 | API vulnerabilities | Insecure API endpoints | Tier 1-2 attackers |
@@ -181,7 +181,7 @@ Pinnipeds Inc. is a small company with 15 employees. Here's how they categorized
 ## Implementation details
 
 | When to implement | Description |
-|-------------------|-------------|
+| ------------------- | ------------- |
 | Initial development | Create baseline threat model before launching any crypto project |
 | Regular reviews | Update quarterly or when significant changes occur |
 | After incidents | Revise after any security breach or near-miss |
@@ -207,7 +207,7 @@ The STRIDE framework, developed by Microsoft in the late 1990s, offers a systema
 categorizing threats. It maps directly to key security properties that must be protected in any system:
 
 | STRIDE Category | Security Property Violated | Description | Example in Web3 | Common Mitigations |
-|-----------------|----------------------------|-------------|-----------------|-------------------|
+| ----------------- | ---------------------------- | ------------- | ----------------- | ------------------- |
 | **S**poofing | Authentication | Impersonating something or someone else | Phishing attacks to steal wallet credentials | Strong MFA, hardware security keys, signing operations |
 | **T**ampering | Integrity | Modifying data or code | Smart contract manipulation through vulnerable functions | Integrity checks, code signing, immutable audit logs |
 | **R**epudiation | Non-repudiation | Denying performed actions | Disputing transaction authorization | Blockchain transaction signing, comprehensive logging |
