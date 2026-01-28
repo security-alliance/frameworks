@@ -28,7 +28,9 @@ import {
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-If the default interfaces for either Safe or Squads are down or suspected of being compromised, these alternatives enable continued critical signing operations. As a signer, you should familiarize yourself with these tools and practice signing transactions with your team.
+If the default interfaces for either Safe or Squads are down or suspected of being compromised, these alternatives
+enable continued critical signing operations. As a signer, you should familiarize yourself with these tools and practice
+signing transactions with your team.
 
 ## UI Alternatives
 
@@ -36,27 +38,28 @@ If the default interfaces for either Safe or Squads are down or suspected of bei
 
 **Eternal Safe - Decentralized fork of Safe\{Wallet\}**
 
-- GitHub: https://github.com/eternalsafe/wallet
-- Hosted (IPFS): https://eternalsafe.eth.limo (requires bring your own RPC)
+- GitHub: [https://github.com/eternalsafe/wallet](https://github.com/eternalsafe/wallet)
+- Hosted (IPFS): [https://eternalsafe.eth.limo](https://eternalsafe.eth.limo) (requires bring your own RPC)
 - Local: Can be downloaded and run locally
 
-Note: Local/alternative UIs may not be actively maintained. Treat them as emergency options and perform extra verification. Please DYOR.
+Note: Local/alternative UIs may not be actively maintained. Treat them as emergency options and perform extra
+verification. Please DYOR.
 
 ### Solana
 
-**Squads Public Client - Open source Squads V4 interface**
+**Squads Public Client - Open source Squads V4 interface: **
 
-- GitHub: https://github.com/Squads-Protocol/public-v4-client
+- GitHub: [https://github.com/Squads-Protocol/public-v4-client](https://github.com/Squads-Protocol/public-v4-client)
 - Features: Verifiable build, self-hostable with Docker, IPFS distribution
 - Local: Can be built and run locally
 
 ### Mobile (Safe)
 
-**Safe Mobile Apps**
+**Safe Mobile Apps: **
 
-- GitHub: https://github.com/safe-global/safe-wallet-monorepo/tree/dev/apps/mobile
-- App Store: https://apps.apple.com/us/app/safe-mobile/id6748754793
-- Play Store: https://play.google.com/store/apps/details?id=global.safe.mobileapp
+- GitHub: [https://github.com/safe-global/safe-wallet-monorepo/tree/dev/apps/mobile](https://github.com/safe-global/safe-wallet-monorepo/tree/dev/apps/mobile)
+- App Store: [https://apps.apple.com/us/app/safe-mobile/id6748754793](https://apps.apple.com/us/app/safe-mobile/id6748754793)
+- Play Store: [https://play.google.com/store/apps/details?id=global.safe.mobileapp](https://play.google.com/store/apps/details?id=global.safe.mobileapp)
 
 ## RPC Backup Options
 
@@ -80,29 +83,32 @@ Ensure signer preparedness:
 
 ### EVM Networks
 
-Etherscan provides the default block explorer for nearly all EVM chains. In the event that Etherscan is compromised or goes down, it is important to have backup options that can be used for monitoring and investigating transactions.
+Etherscan provides the default block explorer for nearly all EVM chains. In the event that Etherscan is compromised or
+goes down, it is important to have backup options that can be used for monitoring and investigating transactions.
 
-**Blockscout - Open source Etherscan alternative**
+**Blockscout - Open source Etherscan alternative: **
 
-- https://www.blockscout.com/
+- [https://www.blockscout.com/](https://www.blockscout.com/)
 - Available for all EVM networks
-- Can also be [self-hosted](https://github.com/blockscout/blockscout), although it requires significant time to run full node and index
+- Can also be [self-hosted](https://github.com/blockscout/blockscout), although it requires significant time to run full
+  node and index
 
-More explorers: A broader list of network explorers is maintained here: https://explorer.swiss-knife.xyz/
+More explorers: A broader list of network explorers is maintained here: [https://explorer.swiss-knife.xyz/](https://explorer.swiss-knife.xyz/)
 
 ### Solana Networks
 
 Both explorer.solana.com and Solscan are reliable options for Solana transaction exploration and decoding.
 
-**explorer.solana.com** - https://explorer.solana.com/
+**explorer.solana.com** - [https://explorer.solana.com/](https://explorer.solana.com/)
 
 - Can be [self-hosted](https://github.com/solana-foundation/explorer) using open source code
 
-**Solscan** - https://solscan.io/
+**Solscan** - [https://solscan.io/](https://solscan.io/)
 
 ## Preparation
 
-**It is recommended to download dependencies ahead of time and store them in a secure location** so they are easily accessible during emergencies.
+**It is recommended to download dependencies ahead of time and store them in a secure location** so they are easily
+accessible during emergencies.
 
 ## EVM Networks
 
@@ -110,8 +116,8 @@ Both explorer.solana.com and Solscan are reliable options for Solana transaction
 
 #### Access Options
 
-- **GitHub**: https://github.com/eternalsafe/wallet
-- **Hosted (IPFS)**: https://eternalsafe.eth.limo (requires bring your own RPC)
+- **GitHub**: [https://github.com/eternalsafe/wallet](https://github.com/eternalsafe/wallet)
+- **Hosted (IPFS)**: [https://eternalsafe.eth.limo](https://eternalsafe.eth.limo) (requires bring your own RPC)
 - **Local**: Can be downloaded and run locally
 
 #### Setup
@@ -137,11 +143,13 @@ Both explorer.solana.com and Solscan are reliable options for Solana transaction
 
 #### Transaction Verification
 
-**Critical**: It is still essential to verify hashes and calldata from Eternal Safe. Follow the verification steps in [Safe Multisig: Step-by-Step Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification).
+**Critical**: It is still essential to verify hashes and calldata from Eternal Safe. Follow the verification steps in
+[Safe Multisig: Step-by-Step Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification).
 
 #### Smart Link System
 
-Once a transaction has been signed by one signer, a **Smart Link** is created which can be forwarded to the next signer to add their signature. The transactions do not go to any centralized backend.
+Once a transaction has been signed by one signer, a **Smart Link** is created which can be forwarded to the next signer
+to add their signature. The transactions do not go to any centralized backend.
 
 **Example Smart Link:**
 
@@ -153,7 +161,8 @@ https://eternalsafe.eth.limo/transactions/tx/?safe=base:0xA79C6968E3c75aE4eF3883
 
 #### Execution
 
-Once all signatures are collected, execute the transaction. **Note**: Prior to execution you can manually simulate using Tenderly by entering the transaction data, but an automatic simulation link will not be available.
+Once all signatures are collected, execute the transaction. **Note**: Prior to execution you can manually simulate using
+Tenderly by entering the transaction data, but an automatic simulation link will not be available.
 
 ## Solana
 
@@ -161,14 +170,15 @@ Once all signatures are collected, execute the transaction. **Note**: Prior to e
 
 #### Access Options
 
-- **GitHub**: https://github.com/Squads-Protocol/public-v4-client
-- **Hosted**: https://backup.app.squads.so/
+- **GitHub**: [https://github.com/Squads-Protocol/public-v4-client](https://github.com/Squads-Protocol/public-v4-client)
+- **Hosted**: [https://backup.app.squads.so/](https://backup.app.squads.so/)
 - **Features**: Verifiable build, self-hostable with Docker, IPFS distribution
 - **Local**: Can be built and run locally
 
 #### Setup
 
-1. If running locally, follow setup instructions in https://github.com/Squads-Protocol/public-v4-client and access via http://localhost:8080
+1. If running locally, follow setup instructions in [https://github.com/Squads-Protocol/public-v4-client](https://github.com/Squads-Protocol/public-v4-client)
+ and access via `http://localhost:8080`
 2. Enter RPC URL in settings
    ![Squads RPC configuration](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/squads-rpc-configuration.png)
 3. Enter multisig address in the **lower** text box (Search for Multisig Config) and select the detected Multisig Config
@@ -176,7 +186,8 @@ Once all signatures are collected, execute the transaction. **Note**: Prior to e
 
 #### Transaction Operations
 
-4. Create, approve, or execute transactions. _Smart Links_ are not needed for Solana as all transactions are on chain and accessible via the RPC without an API
+1. Create, approve, or execute transactions. _Smart Links_ are not needed for Solana as all transactions are on chain
+   and accessible via the RPC without an API
    ![Squads transaction interface](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/squads-transaction-interface.png)
 
 ## Security Considerations
@@ -226,7 +237,8 @@ When using backup systems:
 
 ## Related Documents
 
-- [Safe Multisig: Step-by-Step Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification) - Verification procedures
+- [Safe Multisig: Step-by-Step
+Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification) - Verification procedures
 - [Emergency Procedures](/multisig-for-protocols/emergency-procedures) - General emergency response
 - [Communication Setup](/multisig-for-protocols/communication-setup) - Backup communication during outages
 
