@@ -37,7 +37,7 @@ later.
 
 The process involves **two steps**:
 
-1. **Deploy your AgreementV2 contract** (containing your scope details)
+1. **Create your Agreement contract** via the AgreementFactory (containing your scope details)
 2. **Register the agreement** with the Safe Harbor Registry
 
 ## Three Ways to Deploy and Register
@@ -57,7 +57,7 @@ multisig/DAO.
     - **WARNING**: Be sure to set the `owner` of the agreement to your multisig or DAO address if you're registering
     with them.
 3. Choose one of the following:
-    - **Generate an Agreement** to deploy your AgreementV2 contract via the SEAL tool
+    - **Generate an Agreement** to deploy your Agreement contract via the SEAL tool
     - **Export JSON** for use in Foundry scripts
 4. **Deploy your agreement** using the generated parameters
 5. **Register separately** using either:
@@ -70,21 +70,19 @@ If your protocol uses a multisig, you can register on-chain securely after deplo
 
 **Steps:**
 
-1. **First, deploy your AgreementV2 contract**:
+1. **First, create your Agreement contract**:
     - Use the SEAL Self-Adoption Tool to generate the deployment parameters
-    - Deploy via the AgreementFactoryV2 using your preferred method
+    - Deploy via the AgreementFactory using your preferred method
     - **WARNING:** Be sure to set the `owner` of the agreement to your multisig address
 
 2. **Register with your multisig**:
 
     - Open your Gnosis Safe and go to the **Transaction Builder** app
-    - Enter the **Safe Harbor Registry address**:
-        - Default for most EVM chains: `0x1eaCD100B0546E433fbf4d773109cAD482c34686`
-        - Full address list: [Registry Addresses](https://github.com/security-alliance/safe-harbor)
-    - Select the method: `adoptSafeHarbor(address agreementAddress)` and input your deployed AgreementV2 contract
+    - Enter the **Safe Harbor Registry address**: `0x326733493E143b8904716E7A64A9f4fb6A185a2c`
+    - Select the method: `adoptSafeHarbor(address agreementAddress)` and input your deployed Agreement contract
     address
     - Add the transaction and simulate it:
-        - You should see a `SafeHarborAdoption` event with your multisig as the `entity`
+        - You should see a `SafeHarborAdoption` event with your multisig as the `adopter`
     - Collect signatures and execute
 
 ### 3. Foundry Script / Custom Code
@@ -95,34 +93,41 @@ your own.
 **Using SEAL's Foundry Script:**
 
 - Repository: [security-alliance/safe-harbor](https://github.com/security-alliance/safe-harbor)
-- Script: `registry-contracts/script/v2/AdoptSafeHarborV2.s.sol`
+- Script: `registry-contracts/script/AdoptSafeHarbor.s.sol`
 
 **Steps:**
 
 1. Generate your **scope JSON** via the SEAL tool or manually prepare it using
-`registry-contracts/agreementDetailsV2.json` as a template
-2. Paste the JSON into: `registry-contracts/agreementDetailsV2.json`
+`registry-contracts/examples/agreementDetails.json` as a template
+2. Paste the JSON into: `registry-contracts/agreementDetails.json`
 3. Run the script:
 
     - By default, the script will set the deployer as the owner of the agreement
     - You can change this by setting `AGREEMENT_OWNER` in your `.env` file to your desired owner address
-    - By default, the script will not register the agreement - you can change this by setting `DEPLOY_REGISTRY` to
+    - By default, the script will not register the agreement - you can change this by setting `ADOPT_TO_REGISTRY` to
     `true` in your `.env` file
     - The script can handle both deployment and registration
 
 **Manual Method:**
 
-1. Deploy your agreement: `AgreementFactoryV2.create(AgreementDetailsV2 memory details, address registry, address
-owner)`
-2. Register it: `SafeHarborRegistryV2.adoptSafeHarbor(address agreementAddress)`
-3. Use the deployed [Registry & Factory Addresses](https://github.com/security-alliance/safe-harbor/blob/main/README.md)
+1. Create your agreement: Call `AgreementFactory.create(AgreementDetails memory details, address chainValidator, address owner, bytes32 salt)`
+2. Register it: Call `SafeHarborRegistry.adoptSafeHarbor(address agreementAddress)`
 
-## Key Contracts
+## V3 Contract Addresses
 
-- **Agreement Factory:** Deploys AgreementV2 contracts
-- **Safe Harbor Registry:** Registers adoption and makes it official
-- **Deployed Addresses:** [View Registry & Factory
-Addresses](https://github.com/security-alliance/safe-harbor/blob/main/README.md)
+V3 contracts are deployed via [CreateX](https://github.com/pcaversaccio/createx) with deterministic addresses across all
+supported EVM chains.
+
+| Contract | Address | Description |
+| -------- | ------- | ----------- |
+| **SafeHarborRegistry** | `0x326733493E143b8904716E7A64A9f4fb6A185a2c` | Main registry for protocol adoptions |
+| **ChainValidator** (proxy) | `0xd01C76ccE414d9B0a294abAFD94feD2e0B88675D` | Validates CAIP-2 chain IDs |
+| **AgreementFactory** | `0xcf317fE605397bC3fae6DAD06331aE5154F277fF` | Factory for creating Agreement contracts |
+
+> **Note:** These addresses are the same on all supported EVM chains due to CREATE3 deployment.
+
+> **Note:** The V3 contracts have been audited by [Cyfrin](https://www.cyfrin.io/). The smart contracts are bytecode equivilant to the [hash](https://github.com/security-alliance/safe-harbor/tree/0b0abb8b627eff87e2f7b52bf8ec484cd6ce0e32) of the audit. The audit can be found [here](https://github.com/security-alliance/safe-harbor/blob/main/documents/2026-01-13-cyfrin-safe-harbor-v2.0.pdf)
+
 
 ---
 
