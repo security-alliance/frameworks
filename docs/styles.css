@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../components";
 
 details .vocs_Paragraph {
     margin-bottom: var(--vocs-space_24);
