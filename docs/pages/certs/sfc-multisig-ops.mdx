@@ -12,24 +12,20 @@ cert:
   - id: ms-1.1.1
     description: Is there a clearly named person or team accountable for multisig
       operations? At minimum, accountability scope includes policy maintenance, signer
-      onboarding/offboarding coordination, documentation currency, periodic review scheduling,
-      and incident escalation.
+      onboarding/offboarding coordination, ensuring multisig documentation remains accurate
+      and up to date, periodic review scheduling, and incident escalation.
     title: Named Responsible Multisig Owner
   - id: ms-1.1.2
     description: Do you keep multisig documentation current after any operational or signer
-      change, with a documented process? At minimum, documentation must be updated
-      within 24 hours for security-critical changes and within 3 days for routine changes.
+      change, with a documented process (e.g., signer lists, multisig assignments, threshold
+      changes)? At minimum, documentation must be updated within 24 hours for
+      security-critical changes and within 3 days for routine changes.
     title: Multisig Documentation Maintenance Process
   - id: ms-1.2.1
     description: Do you maintain an up-to-date registry of all multisigs? At minimum, the
       registry must include address, network, threshold, classification, purpose, signer
       addresses, controlled contracts, on-chain roles, and last review date.
     title: Current Multisig Registry Details
-  - id: ms-1.2.2
-    description: Do you maintain an up-to-date list of authorized signers mapped to the
-      correct multisigs? At minimum, the signer mapping must be reviewed quarterly with
-      documented evidence of review.
-    title: Authorized Signer Mapping Registry
 - id: ms-2
   title: Risk Assessment & Management
   controls:
@@ -41,8 +37,9 @@ cert:
   - id: ms-2.1.2
     description: Do you map each classification level to required controls (thresholds,
       quorum composition, review cadence, etc), with documented criteria? At minimum,
-      higher-risk classifications must require stronger controls (more signers, higher
-      thresholds).
+      multisigs must have at least 3 distinct signers with a signing threshold of 50%
+      or greater, and higher-risk classifications must require stronger controls
+      (more signers, higher thresholds).
     title: Classification Criteria and Controls
   - id: ms-2.1.3
     description: Do you periodically review and update classifications and associated
@@ -57,9 +54,10 @@ cert:
     title: Timelocks, Modules, and Guards Policies
   - id: ms-2.1.5
     description: Do you have an exception approval process for deviations from standard
-      multisig policies, with documentation? At minimum, exceptions must include an expiry
-      date, documented compensating controls, a remediation plan to return to compliance,
-      and higher-level approval for Critical-class exceptions.
+      multisig policies, with documentation? At minimum, exceptions must include documented
+      justification, an expiry date, documented compensating controls, a remediation plan
+      to return to compliance, and executive or security-lead approval for Critical-class
+      exceptions.
     title: Exception Approval Process for Multisig
   - id: ms-2.1.6
     description: Do you segregate assets across multiple wallets based on value, operational
@@ -67,10 +65,12 @@ cert:
       documented policies?
     title: Wallet Segregation Policy
   - id: ms-2.1.7
-    description: Do you implement contract-level security controls that complement multisig
-      governance (e.g., address whitelisting, invariant enforcement, parameter bounds),
-      with documented policies?
-    title: Contract-Level Access Controls Policy
+    description: Have you evaluated contract-level security controls that could complement
+      multisig governance (e.g., address whitelisting, invariant enforcement, parameter
+      bounds, modules, guards) and limit the impact of a compromise, and documented your
+      decisions? Where such controls are applicable, do you maintain documented policies
+      for their implementation and use?
+    title: Contract-Level Security Controls Evaluation
 - id: ms-3
   title: Signer Security & Access Control
   controls:
@@ -83,7 +83,8 @@ cert:
   - id: ms-3.1.2
     description: Do you enforce signer key management standards, with documentation? At
       minimum, hardware wallets are required for all multisig operations, and signers must
-      use dedicated signing addresses exclusively for multisig operations.
+      use a fresh, dedicated signing address for each multisig, exclusively for that
+      multisig's operations.
     title: Signer Key Management Standard
   - id: ms-3.1.3
     description: Do you securely back up and protect signer seed phrases and recovery
@@ -98,18 +99,19 @@ cert:
     title: Seed Phrase Security Properties
   - id: ms-3.1.5
     description: Do you manage signer lifecycle for adding, replacing, and removing signers,
-      including offboarding and periodic access reviews, with a documented process? At
-      minimum, offboarded signers must be removed within 48-72 hours for Emergency-class
-      multisigs, 7 days for Critical-class, and 14 days for others. Access reviews must
-      occur quarterly.
+      including offboarding and periodic access reviews (confirming each signer still
+      controls their key), with a documented process? At minimum, offboarded signers must
+      be removed within 48-72 hours for Emergency-class multisigs, 7 days for Critical-class,
+      and 14 days for others. Access reviews must occur quarterly.
     title: Multisig Signer Lifecycle Management
   - id: ms-3.1.6
-    description: Do you train signers before they are authorized to participate, with a
-      documented program? At minimum, training must cover transaction verification,
-      emergency procedures, and security best practices, with annual refreshers and updates
-      within 30 days of significant procedure changes. Training should include practical
+    description: Do you ensure signers are knowledgeable in relevant security areas before
+      they are authorized to participate, with a documented program? At minimum, the program
+      must cover transaction verification, emergency procedures, and security best practices
+      including phishing and social engineering awareness, with annual refreshers and updates
+      within 30 days of significant procedure changes. The program should include practical
       skills assessment.
-    title: Signer Training and Readiness Program
+    title: Signer Security Knowledge and Readiness Program
   - id: ms-3.1.7
     description: Do you enforce hardware wallet capability standards for multisig signing
       (e.g., display requirements, clear signing support, PIN security features, PIN
@@ -151,8 +153,9 @@ cert:
     title: Signing and Verification Procedures
   - id: ms-4.1.3
     description: Do you require each signer to independently verify transaction details
-      through a separate interface or data source before signing, rather than relying
-      solely on the initiator's representation?
+      before signing, by comparing transaction hashes across at least two independent
+      interfaces or data sources (e.g., web UI and CLI tool, or web and mobile app),
+      rather than relying solely on the initiator's representation?
     title: Independent Transaction Verification Requirement
   - id: ms-4.1.4
     description: Do you maintain audit trails and retention for transaction reviews, approvals,
@@ -163,10 +166,9 @@ cert:
   - id: ms-4.1.5
     description: Do you apply enhanced controls for high-risk transactions (emergency
       actions, large transfers, protocol configuration changes), with a documented policy?
-      At minimum, high-risk transactions must require mandatory simulation, a waiting
-      period where operationally feasible, and elevated threshold approval. High-risk
-      transaction thresholds must be defined based on multisig
-      classification and reviewed periodically.
+      At minimum, high-risk transactions must require a waiting period where operationally
+      feasible and elevated threshold approval. High-risk transaction thresholds must be
+      defined based on multisig classification and reviewed periodically.
     title: Policy for High-Risk Transactions
   - id: ms-4.1.6
     description: Do you evaluate and standardize multisig technology and tools, with a
@@ -180,6 +182,11 @@ cert:
       documentation? At minimum, backup infrastructure must include an alternate signing
       UI, backup RPC providers (2-3 different services), and an alternate block explorer.
     title: Backup Infrastructure for Multisig
+  - id: ms-4.1.8
+    description: Do you have a policy for private transaction submission when appropriate
+      (e.g., MEV/front-running mitigations), and do you document when private relays or
+      protected submission methods are required based on transaction type and risk?
+    title: Private Transaction Submission Policy
 - id: ms-5
   title: Communication & Coordination
   controls:
@@ -221,21 +228,23 @@ cert:
   - id: ms-6.1.1
     description: Do you have written emergency playbooks covering key compromise, lost
       access, communication channel compromise, and urgent protocol actions? At minimum,
-      each scenario must have step-by-step procedures and escalation paths.
+      each scenario must have step-by-step procedures and escalation paths. Emergency
+      playbooks must be accessible through at least one backup method independent of the
+      primary documentation platform.
     title: Emergency Playbooks for Compromise
   - id: ms-6.1.2
     description: Do you have 24/7 paging capability for critical/emergency-class multisigs
       to reach the required threshold and document escalation paths? At minimum, paging
-      capability must be tested quarterly to verify signers can be reached within expected
-      response times.
+      capability must cover all signers including external parties, and must be tested
+      quarterly to verify signers can be reached within expected response times.
     title: 24/7 Paging for Emergency Multisigs
   - id: ms-6.1.3
     description: Do you have monitoring infrastructure and procedures to detect unauthorized,
       anomalous, or suspicious activity across all multisigs, with documented alerting and
       escalation paths? At minimum, monitoring must detect signer/threshold changes, transfers
       exceeding defined thresholds, nonce gaps, interactions with previously unknown addresses,
-      failed transactions, and module/guard changes. Monitoring infrastructure must be
-      protected against tampering.
+      failed transactions, module/guard changes, and low balances on submitter/proposer
+      addresses. Monitoring infrastructure must be protected against tampering.
     title: Multisig Monitoring and Alerts
   - id: ms-6.1.4
     description: Do you conduct periodic rehearsals and drills of emergency playbooks to
