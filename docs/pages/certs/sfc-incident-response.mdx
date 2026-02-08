@@ -14,10 +14,10 @@ cert:
       objectives, and roles?
     title: Documented Incident Response Policy
   - id: ir-1.1.2
-    description: Do you have a designated incident commander and incident response team with
-      clearly defined roles, responsibilities, and decision-making authority? Is the incident
-      commander role clearly established to coordinate response activities, make time-sensitive
-      decisions, and ensure clear accountability during incidents?
+    description: Do you have a designated incident commander (with a designated backup) and
+      incident response team with clearly defined roles, responsibilities, and decision-making
+      authority? Is the incident commander role clearly established to coordinate response
+      activities, make time-sensitive decisions, and ensure clear accountability during incidents?
     title: Incident Commander and IR Roles
   - id: ir-1.2.1
     description: Do you have designated subject matter experts (ex. Core Devs) who understand
@@ -58,16 +58,20 @@ cert:
       handling?
     title: 24/7 Monitoring and After-Hours Procedures
   - id: ir-2.2.1
-    description: Do you have automated alerting configured with embedded playbooks for security
-      events, detecting false alarms, and operational issues?
+    description: Do you have automated alerting configured for security events and operational
+      issues, with embedded playbooks that include triage guidance for distinguishing true
+      incidents from false positives?
     title: Automated Alerting with Playbooks
   - id: ir-2.2.2
     description: Do you conduct regular alert testing and drills to ensure monitoring systems
-      function correctly under various scenarios?
+      function correctly under various scenarios? At minimum, testing must validate the full
+      production alerting pipeline from event detection through to responder notification
+      and acknowledgment.
     title: Regular Alert Testing and Drills
   - id: ir-2.2.3
-    description: Do you have documented procedures for alert triage, classification, and escalation
-      to appropriate response teams?
+    description: Do you have documented procedures for alert triage, classification, and
+      escalation to appropriate response personnel, including time-based escalation triggers
+      and management notification requirements for high-severity incidents?
     title: Procedures for Alert Triage and Escalation
   - id: ir-2.2.4
     description: Do you maintain log retention policies with adequate preservation periods for
@@ -75,17 +79,19 @@ cert:
       and forensic analysis?
     title: Log Retention Policies for Forensics
   - id: ir-2.3.1
-    description: Do you maintain procedures for monitoring leaked credentials and compromised
-      accounts associated with the organization?
-    title: Leaked Credential Monitoring
+    description: Do you maintain procedures for detecting exposed or leaked credentials and
+      compromised accounts associated with the organization (e.g., dark web monitoring, breach
+      database scanning, secret scanning in code repositories)?
+    title: Leaked Credential Detection
   - id: ir-2.3.2
-    description: Do you have procedures for monitoring organizational social media accounts & websites
-      for indicators of compromise or unauthorized activity?
-    title: Social Media Compromise Monitoring
+    description: Do you have procedures for monitoring organizational social media accounts and
+      websites for unauthorized access or activity?
+    title: Social Media and Website Compromise Monitoring
   - id: ir-2.3.3
-    description: Do you maintain requirements for immutable logging and tamper-evident alerting
-      channels that trigger alerts if logs are altered or monitoring is disabled?
-    title: Immutable Logging and Tamper-Evident Alerting
+    description: Do you maintain requirements for tamper-evident logging of security-relevant
+      events (including access logs, alerting system logs, and infrastructure logs) that trigger
+      alerts if logs are altered or monitoring is disabled?
+    title: Tamper-Evident Logging and Alerting Integrity
 - id: ir-3
   title: Pager Systems & Escalation
   controls:
@@ -94,17 +100,10 @@ cert:
       testing?
     title: Redundant Paging Systems with Testing
   - id: ir-3.1.2
-    description: Do you maintain current on-call schedules with documented coverage requirements
-      and backup procedures?
-    title: Maintain On-Call Coverage Schedules
-  - id: ir-3.1.3
-    description: Do you have documented escalation procedures with time-based triggers and management
-      notification requirements?
-    title: Documented Time-Based Escalation Procedures
-  - id: ir-3.2.1
-    description: Do you define and track response time targets for different incident severity
-      levels?
-    title: Define and Track Response Time Targets
+    description: Do you maintain current on-call schedules that ensure adequate coverage for
+      your protocol's operational needs, with documented backup procedures when on-call
+      personnel are unreachable?
+    title: On-Call Coverage and Backup Procedures
 - id: ir-4
   title: Response Procedures & Coordination
   controls:
@@ -118,10 +117,10 @@ cert:
       containment, evidence preservation, and stakeholder notification?
     title: Step-by-Step Initial Response Procedures
   - id: ir-4.1.3
-    description: Do you maintain role-based playbooks that define specific responsibilities
-      for different team members (Core Devs, Auditors, Signers, Communications, Legal) during
-      incidents?
-    title: Role-Based Incident Playbooks by Role
+    description: Do you maintain role-specific action checklists that define step-by-step
+      responsibilities for each team role (Core Devs, Auditors, Signers, Communications,
+      Legal) during incidents?
+    title: Role-Specific Incident Action Checklists
   - id: ir-4.1.4
     description: Do you maintain procedures for coordinating multisig operations during incidents
       including signer availability and cross-timezone challenges?
@@ -132,12 +131,8 @@ cert:
     title: Documented Criteria for Major Response Decisions
   - id: ir-4.2.2
     description: Do you maintain contact information and procedures for engaging external expertise
-      (forensics, legal, specialized consultants)?
+      (forensics, specialized consultants)?
     title: External Expertise Engagement Contacts
-  - id: ir-4.2.3
-    description: Do you maintain emergency cards or quick-reference materials containing key
-      personnel and response steps for each protocol component?
-    title: Emergency Cards with Key Response Steps
 - id: ir-5
   title: Signer Operations & Emergency Transactions
   controls:
@@ -170,8 +165,9 @@ cert:
       channels when needed?
     title: Dedicated Incident Communication Channels
   - id: ir-6.1.2
-    description: Do you have documented procedures for incident status reporting including frequency,
-      format, and distribution lists?
+    description: Do you have documented procedures for providing regular status updates during
+      active incidents, including update frequency, format, and distribution lists for internal
+      and external stakeholders?
     title: Incident Status Reporting Procedures
   - id: ir-6.1.3
     description: Do you maintain secure communication procedures for sensitive incident information?
@@ -192,10 +188,12 @@ cert:
   title: Drills & Testing
   controls:
   - id: ir-7.1.1
-    description: Do you conduct regular incident response drills that test pager systems, escalation
-      procedures, team coordination, monitoring systems, containment procedures, and recovery
-      processes? Do you evaluate drill performance, identify gaps, and track improvement actions
-      based on both exercise findings and real incident experience?
+    description: Do you conduct regular incident response drills that test pager systems,
+      escalation procedures, team coordination, monitoring systems, containment procedures,
+      and recovery processes, and evaluate drill performance to identify gaps and track
+      improvement actions? At minimum, drills must occur annually, cover different incident
+      types across exercises, and be documented with drill date, participants, gaps identified,
+      and corrective actions tracked to completion.
     title: Regular Incident Response Drills and Evaluation
 
 ---
