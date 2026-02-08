@@ -10,6 +10,11 @@
   --color-success-dark: #059669;
   --color-success-text: #ffffff;
 
+  /* Partial/Warning colors */
+  --color-partial: #f59e0b;
+  --color-partial-dark: #d97706;
+  --color-partial-text: #ffffff;
+
   /* Neutral/NA colors */
   --color-neutral: #6b7280;
   --color-neutral-dark: #4b5563;
@@ -53,6 +58,9 @@
   --state-yes-bg: var(--color-success);
   --state-yes-border: var(--color-success-dark);
   --state-yes-text: var(--color-success-text);
+  --state-partial-bg: var(--color-partial);
+  --state-partial-border: var(--color-partial-dark);
+  --state-partial-text: var(--color-partial-text);
   --state-na-bg: var(--color-neutral);
   --state-na-border: var(--color-neutral-dark);
   --state-na-text: var(--color-neutral-text);
@@ -190,6 +198,12 @@
   color: var(--state-yes-text);
 }
 
+.control-state-partial {
+  background: var(--state-partial-bg);
+  border-color: var(--state-partial-border);
+  color: var(--state-partial-text);
+}
+
 .control-state-na {
   background: var(--state-na-bg);
   border-color: var(--state-na-border);
@@ -253,6 +267,12 @@
 .section-progress-fill-yes {
   height: 100%;
   background: var(--color-success);
+  transition: width 0.3s ease;
+}
+
+.section-progress-fill-partial {
+  height: 100%;
+  background: var(--color-partial);
   transition: width 0.3s ease;
 }
 

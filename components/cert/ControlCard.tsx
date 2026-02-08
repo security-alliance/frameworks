@@ -10,19 +10,22 @@ interface ControlCardProps {
 
 const nextState: Record<ControlState, ControlState> = {
     no: "yes",
-    yes: "na",
+    yes: "partial",
+    partial: "na",
     na: "no",
 };
 
 const stateLabels: Record<ControlState, string> = {
     yes: "✓",
+    partial: "½",
     na: "—",
     no: "",
 };
 
 const stateActionLabels: Record<ControlState, string> = {
     no: "Mark as completed",
-    yes: "Mark as not applicable",
+    yes: "Mark as partially implemented",
+    partial: "Mark as not applicable",
     na: "Reset to incomplete",
 };
 

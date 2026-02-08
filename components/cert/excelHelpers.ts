@@ -4,6 +4,7 @@ import { ControlData, ControlState, Section } from "./types";
 const stateToText: Record<ControlState, string> = {
     no: "No",
     yes: "Yes",
+    partial: "Partial",
     na: "N/A",
 };
 
@@ -80,10 +81,10 @@ export async function exportToExcel(
             responseCell.dataValidation = {
                 type: "list",
                 allowBlank: false,
-                formulae: ['"No,Yes,N/A"'],
+                formulae: ['"No,Yes,Partial,N/A"'],
                 showErrorMessage: true,
                 errorTitle: "Invalid Response",
-                error: "Please select: No, Yes, or N/A",
+                error: "Please select: No, Yes, Partial, or N/A",
             };
             responseCell.alignment = { vertical: "middle", horizontal: "left" };
 
@@ -169,6 +170,8 @@ export async function importFromExcel(file: File): Promise<Record<string, Contro
     const textToState: Record<string, ControlState> = {
         no: "no",
         yes: "yes",
+        partial: "partial",
+        "partially implemented": "partial",
         "n/a": "na",
     };
 
@@ -190,7 +193,7 @@ export async function importFromExcel(file: File): Promise<Record<string, Contro
             const state = textToState[response];
             if (!state) {
                 throw new Error(
-                    `Invalid response value "${response}" found at row ${rowNumber}. Valid values are: No, Yes, N/A`
+                    `Invalid response value "${response}" found at row ${rowNumber}. Valid values are: No, Yes, Partial, N/A`
                 );
             }
 
