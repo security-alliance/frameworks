@@ -2,6 +2,7 @@ export interface Control {
     id: string;
     title: string;
     description: string;
+    baselines?: string[];
     justification?: string;
     evidence?: string;
 }

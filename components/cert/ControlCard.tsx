@@ -86,6 +86,16 @@ export const ControlCard = memo(function ControlCard({
                     <div className={`text-md control-description ${completedStyles}`}>
                         {control.description}
                     </div>
+                    {control.baselines && control.baselines.length > 0 && (
+                        <div className={`control-baselines ${completedStyles}`}>
+                            <div className="control-baselines-label">Baseline Requirements</div>
+                            <ul className="control-baselines-list">
+                                {control.baselines.map((baseline, idx) => (
+                                    <li key={idx}>{baseline}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
                 <div className="ml-auto pl-3">
                     <button
