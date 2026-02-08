@@ -4,6 +4,7 @@ import { ControlData, ControlState, Section } from "./types";
 const stateToText: Record<ControlState, string> = {
     no: "No",
     yes: "Yes",
+    partial: "Partial",
     na: "N/A",
 };
 
@@ -23,7 +24,8 @@ export async function exportToExcel(
     worksheet.columns = [
         { header: "Section", key: "section", width: 12 },
         { header: "Control ID", key: "id", width: 15 },
-        { header: "Question", key: "question", width: 100 },
+        { header: "Question", key: "question", width: 80 },
+        { header: "Baseline Requirements", key: "baselines", width: 60 },
         { header: "Response", key: "response", width: 12 },
         { header: "N/A Justification", key: "justification", width: 40 },
         { header: "Evidence / Notes", key: "notes", width: 50 },
@@ -46,7 +48,7 @@ export async function exportToExcel(
     sections.forEach((section, sectionIndex) => {
         // Add section header row (merged across all columns)
         const sectionHeaderRow = worksheet.getRow(currentRow);
-        worksheet.mergeCells(currentRow, 1, currentRow, 6);
+        worksheet.mergeCells(currentRow, 1, currentRow, 7);
 
         const sectionCell = sectionHeaderRow.getCell(1);
         sectionCell.value = `Section ${sectionIndex + 1} — ${section.title}`;
@@ -59,10 +61,14 @@ export async function exportToExcel(
         // Add control rows for this section
         section.controls.forEach((control) => {
             const data = controlData[control.id] || { state: "no", justification: "", evidence: "" };
+            const baselinesText = control.baselines?.length
+                ? control.baselines.map((b, i) => `${i + 1}. ${b}`).join("\n")
+                : "";
             const rowData = {
                 section: `Section ${sectionIndex + 1}`,
                 id: control.id,
                 question: control.description,
+                baselines: baselinesText,
                 response: stateToText[data.state],
                 justification: data.justification,
                 notes: data.evidence,
@@ -71,20 +77,21 @@ export async function exportToExcel(
             const row = worksheet.addRow(rowData);
             const rowNumber = row.number;
 
-            const responseCell = worksheet.getCell(`D${rowNumber}`);
+            const responseCell = worksheet.getCell(`E${rowNumber}`);
             responseCell.dataValidation = {
                 type: "list",
                 allowBlank: false,
-                formulae: ['"No,Yes,N/A"'],
+                formulae: ['"No,Yes,Partial,N/A"'],
                 showErrorMessage: true,
                 errorTitle: "Invalid Response",
-                error: "Please select: No, Yes, or N/A",
+                error: "Please select: No, Yes, Partial, or N/A",
             };
             responseCell.alignment = { vertical: "middle", horizontal: "left" };
 
             worksheet.getCell(`C${rowNumber}`).alignment = { wrapText: true, vertical: "top", horizontal: "left" };
-            worksheet.getCell(`E${rowNumber}`).alignment = { wrapText: true, vertical: "top", horizontal: "left" };
+            worksheet.getCell(`D${rowNumber}`).alignment = { wrapText: true, vertical: "top", horizontal: "left" };
             worksheet.getCell(`F${rowNumber}`).alignment = { wrapText: true, vertical: "top", horizontal: "left" };
+            worksheet.getCell(`G${rowNumber}`).alignment = { wrapText: true, vertical: "top", horizontal: "left" };
             worksheet.getCell(`A${rowNumber}`).alignment = { vertical: "middle", horizontal: "left" };
             worksheet.getCell(`B${rowNumber}`).alignment = { vertical: "middle", horizontal: "left" };
 
@@ -103,7 +110,7 @@ export async function exportToExcel(
 
     worksheet.autoFilter = {
         from: "A1",
-        to: `F${worksheet.rowCount}`,
+        to: `G${worksheet.rowCount}`,
     };
 
     // Freeze the header row
@@ -163,6 +170,8 @@ export async function importFromExcel(file: File): Promise<Record<string, Contro
     const textToState: Record<string, ControlState> = {
         no: "no",
         yes: "yes",
+        partial: "partial",
+        "partially implemented": "partial",
         "n/a": "na",
     };
 
@@ -170,9 +179,9 @@ export async function importFromExcel(file: File): Promise<Record<string, Contro
         if (rowNumber === 1) return; // Skip header row
 
         const idCell = row.getCell(2); // Column B: Control ID
-        const responseCell = row.getCell(4); // Column D: Response
-        const justificationCell = row.getCell(5); // Column E: N/A Justification
-        const notesCell = row.getCell(6); // Column F: Evidence / Notes
+        const responseCell = row.getCell(5); // Column E: Response
+        const justificationCell = row.getCell(6); // Column F: N/A Justification
+        const notesCell = row.getCell(7); // Column G: Evidence / Notes
 
         const id = idCell.value?.toString().trim();
         const response = responseCell.value?.toString().trim().toLowerCase();
@@ -184,7 +193,7 @@ export async function importFromExcel(file: File): Promise<Record<string, Contro
             const state = textToState[response];
             if (!state) {
                 throw new Error(
-                    `Invalid response value "${response}" found at row ${rowNumber}. Valid values are: No, Yes, N/A`
+                    `Invalid response value "${response}" found at row ${rowNumber}. Valid values are: No, Yes, Partial, N/A`
                 );
             }
 
