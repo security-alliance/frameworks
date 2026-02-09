@@ -2,16 +2,20 @@
   "allTags": [
     "Certifications",
     "Cloud",
+    "Communication Platforms",
     "Community & Marketing",
     "DAO",
+    "DevOps Accounts",
     "DeFi",
     "Devops",
     "Engineer/Developer",
     "HR",
+    "Individual Security",
     "Legal & Compliance",
     "Multisig Security",
     "Operations",
     "Operations & Strategy",
+    "Organization Security",
     "Protocol",
     "Risk Management",
     "SEAL/Initiative",
@@ -22,6 +26,127 @@
     "Whitehat"
   ],
   "pageTagsMap": {
+    "/account-security/individuals/discord": [
+      "Communication Platforms",
+      "Individual Security"
+    ],
+    "/account-security/individuals/github": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/individuals/godaddy": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/individuals/google": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/linear": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/mercury": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/notion": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/overview": [
+      "Individual Security",
+      "Security Specialist"
+    ],
+    "/account-security/individuals/render": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/individuals/sentry": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/individuals/signal": [
+      "Communication Platforms",
+      "Individual Security"
+    ],
+    "/account-security/individuals/telegram": [
+      "Communication Platforms",
+      "Individual Security"
+    ],
+    "/account-security/individuals/trello": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/twitter-x": [
+      "Communication Platforms",
+      "Individual Security"
+    ],
+    "/account-security/individuals/vercel": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/organizations/discord": [
+      "Communication Platforms",
+      "Organization Security"
+    ],
+    "/account-security/organizations/github": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/organizations/godaddy": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/organizations/google": [
+      "Business Tools",
+      "Organization Security"
+    ],
+    "/account-security/organizations/linear": [
+      "Business Tools",
+      "Organization Security"
+    ],
+    "/account-security/organizations/mercury": [
+      "Business Tools",
+      "Organization Security"
+    ],
+    "/account-security/organizations/notion": [
+      "Business Tools",
+      "Organization Security"
+    ],
+    "/account-security/organizations/overview": [
+      "Organization Security",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/account-security/organizations/render": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/organizations/sentry": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/organizations/slack": [
+      "Communication Platforms",
+      "Organization Security"
+    ],
+    "/account-security/organizations/telegram": [
+      "Communication Platforms",
+      "Organization Security"
+    ],
+    "/account-security/organizations/twitter-x": [
+      "Communication Platforms",
+      "Organization Security"
+    ],
+    "/account-security/organizations/vercel": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/awareness/core-awareness-principles": [
       "Security Specialist",
       "Operations & Strategy",
@@ -69,10 +194,6 @@
       "Certifications"
     ],
     "/certs/certified-partners": [
-      "SEAL/Initiative",
-      "Certifications"
-    ],
-    "/certs/certified-protocols": [
       "SEAL/Initiative",
       "Certifications"
     ],

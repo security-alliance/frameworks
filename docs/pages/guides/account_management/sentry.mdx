@@ -1,0 +1,86 @@
+---
+title: "Sentry Security | Security Alliance"
+description: "Secure your Sentry account and organization: enable 2FA, review API tokens, manage team members, and configure proper security settings."
+tags:
+  - DevOps Accounts
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Sentry Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway for Sentry:** Secure your Sentry account by enabling two-factor authentication, regularly reviewing
+> API tokens and authorized applications, and ensuring organization-wide security policies are enforced. Remove any
+> unnecessary integrations and audit team member access to minimize attack surface.
+
+This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
+
+---
+
+## For Individuals
+
+These settings apply to your personal Sentry account. All team members and admins should configure these on their own accounts.
+
+### Individual Account Settings
+
+- User Settings >
+    - **Account >**
+        - Security >
+            - [ ]  Sessions > **Sign out of all devices**
+            - [ ]  Two-Factor Authentication > **Add App or U2F**
+        - [ ]  Authorized Applications > **Review and remove any unnecessary or unrecognized**
+        - [ ]  Identities > **Review and remove any unnecessary or unrecognized**
+    - **API >**
+        - [ ]  Applications > **Review and remove any unnecessary or unrecognized**
+        - [ ]  User Auth Tokens > **Review and remove any unnecessary or unrecognized**
+
+---
+
+## For Team Members
+
+These guidelines apply to team members who use Sentry but don't have full administrative access.
+
+Team members should:
+- Ensure their individual account settings are configured according to the checklist above
+- Enable two-factor authentication on their account
+- Regularly review and remove any unnecessary API tokens or authorized applications
+- Report any suspicious activity or unrecognized access to administrators
+
+---
+
+## For Admins
+
+These settings and practices apply to Sentry organization administrators with elevated privileges.
+
+### Organization Settings
+
+- Organization >
+    - [ ] Members > **Review and remove any unnecessary or unrecognized**
+    - **Security & Privacy >**
+        - [ ] Require Two-Factor Authentication > **On**
+        - [ ] Allow Join Requests > **Off**
+    - **Data Scrubbing >**
+        - [ ] Prevent Storing of IP Addresses > **Off**
+    - [ ] Integrations > **Review and remove any unnecessary or unrecognized**
+
+### Developer Settings
+
+- Developer Settings >
+    - [ ] Organization Tokens > **Review and remove any unnecessary or unrecognized**
+    - [ ] Custom Integrations > **Review and remove any unnecessary or unrecognized**
+
+---
+
+</TagProvider>
+<ContributeFooter />

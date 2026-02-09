@@ -431,7 +431,27 @@ const config = {
       collapsed: false,
       items: [
         { text: 'Overview', link: '/guides/overview' },
-        { text: 'Discord Security', link: '/guides/discord' },
+        {
+          text: 'Account Management',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/guides/account_management/overview' },
+            { text: 'Discord Security', link: '/guides/account_management/discord' },
+            { text: 'GitHub Security', link: '/guides/account_management/github' },
+            { text: 'GoDaddy Security', link: '/guides/account_management/godaddy' },
+            { text: 'Linear Security', link: '/guides/account_management/linear' },
+            { text: 'Mercury Security', link: '/guides/account_management/mercury' },
+            { text: 'Notion Security', link: '/guides/account_management/notion' },
+            { text: 'Render Security', link: '/guides/account_management/render' },
+            { text: 'Sentry Security', link: '/guides/account_management/sentry' },
+            { text: 'Signal Security', link: '/guides/account_management/signal' },
+            { text: 'Slack Security', link: '/guides/account_management/slack' },
+            { text: 'Telegram Security', link: '/guides/account_management/telegram' },
+            { text: 'Trello Security', link: '/guides/account_management/trello' },
+            { text: 'Twitter/X Security', link: '/guides/account_management/twitter' },
+            { text: 'Vercel Security', link: '/guides/account_management/vercel' },
+          ]
+        },
       ]
     },
     {
@@ -440,7 +460,6 @@ const config = {
       items: [
         { text: 'Overview', link: '/certs/overview' },
         { text: 'Certified Partners', link: '/certs/certified-partners' },
-        { text: 'Certified Protocols', link: '/certs/certified-protocols', dev: true },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
             { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
