@@ -460,7 +460,6 @@ const config = {
       items: [
         { text: 'Overview', link: '/certs/overview' },
         { text: 'Certified Partners', link: '/certs/certified-partners' },
-        { text: 'Certified Protocols', link: '/certs/certified-protocols', dev: true },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
             { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
