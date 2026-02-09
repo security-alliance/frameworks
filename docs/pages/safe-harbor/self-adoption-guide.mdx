@@ -47,7 +47,7 @@ adoption.
 - DAOs do **not** need a legal entity. Safe Harbor was designed to allow on-chain communities to adopt the agreement
 natively.
 - Use the DAO Proposal draft from Step 1 where you defined the scope. Feel free to edit the proposal to reflect your
-DAO’s tone and format.
+DAO's tone and format.
 - Push your proposal through governance, temp check → formal proposal → Snapshot/Tally/etc.
 - (Optional) Include the **on-chain adoption call** in the proposal itself for a full end-to-end flow.
 
@@ -63,7 +63,7 @@ publicly visible and enforceable.
 **If you ARE doing this in your DAO proposal:**
 
 - On-chain adoption involves two parts:
-    1. Creating the AgreementV2 contract (the "terms" container)
+    1. Creating the Agreement contract via the AgreementFactory (the "terms" container)
     2. Registering it in the Safe Harbor Registry (this is what matters for whitehats)
 - The DAO proposal should handle **step 2**, while step 1 can be done beforehand by following the guide:
 [SEAL Safe Harbor On-Chain Adoption](/safe-harbor/on-chain-adoption-guide)
@@ -81,17 +81,17 @@ Add the following language to your TOS:
 >
 >
 > The User hereby acknowledges and agrees to, and consents to be bound by the terms and conditions of, that certain Safe
-> Harbor Agreement for Whitehats, adopted by the Protocol Community on [INSERT DATE HERE] (the ”Whitehat Agreement”),
+> Harbor Agreement for Whitehats, adopted by the Protocol Community on [INSERT DATE HERE] (the "Whitehat Agreement"),
 > available here
-> [https://bafybeigvd7z4iemq7vrdcczgyu2afm7egxwrggftiplydc3vdrdmgccwvu.ipfs.w3s.link](https://bafybeigvd7z4iemq7vrdcczgyu2afm7egxwrggftiplydc3vdrdmgccwvu.ipfs.w3s.link/),
+> [https://bafkreiernns2f4nv2uzvwtzjc2jboyivsu2mixz33y3xo7cvtllsuao6jy.ipfs.w3s.link](https://bafkreiernns2f4nv2uzvwtzjc2jboyivsu2mixz33y3xo7cvtllsuao6jy.ipfs.w3s.link),
 > as a "User" and member of the "Protocol Community" thereunder. Without limiting the generality of the foregoing:
 >
 > - the User hereby consents to Whitehats attempting Eligible Funds Rescues of any and all Tokens deposited into the
-> Protocol by the User and the deduction of Bounties out of User’s deposited Tokens to compensate Eligible Whitehats for
+> Protocol by the User and the deduction of Bounties out of User's deposited Tokens to compensate Eligible Whitehats for
 > successful Eligible Funds Rescues;
 > - the User acknowledges and agrees that Tokens may be lost, stolen, suffer diminished value, or become disabled or
 > frozen in connection with attempts at Eligible Funds Rescues, and assumes all the risk of the foregoing;
-> - the User acknowledges and agrees that payment of the Bounty as a deduction from User’s Tokens to an Eligible
+> - the User acknowledges and agrees that payment of the Bounty as a deduction from User's Tokens to an Eligible
 > Whitehat may constitute a taxable disposition by the User of the deducted Tokens, and agrees to assume to all risk of
 > such adverse tax treatment; and
 > - the User agrees to hold the other Protocol Community Members harmless from any loss, liability or other damages
@@ -118,13 +118,13 @@ that your protocol is protected.
 - Highlight your on-chain registration, bounty terms, and any DAO vote.
 - Example announcement:
 
-    > Today, we’re proud to announce that [Protocol Name] has officially adopted the @_seal_org Safe Harbor Agreement -
-a legal and technical framework that empowers whitehats to rescue funds during active exploits.
+    > Today, we're proud to announce that [Protocol Name] has officially adopted the @_seal_org Safe Harbor Agreement -
+    a legal and technical framework that empowers whitehats to rescue funds during active exploits.
     >
     >
     > This move brings us into alignment with some of the most security-forward protocols in the space - Uniswap,
     Pendle, Balancer - as we take real steps to defend our community and user funds.
-    >
+
 - Feel free to coordinate with SEAL - we're happy to co-announce and amplify it.
 
 ---
