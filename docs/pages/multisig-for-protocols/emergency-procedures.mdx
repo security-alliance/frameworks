@@ -1,4 +1,6 @@
 ---
+title: "Multisig Emergency Procedures | SEAL"
+description: "Handle multisig key compromise, lost access, and communication breaches. 30-minute immediate action checklist, identity verification processes, key recovery, and emergency notification templates."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -20,7 +22,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-When security incidents occur, quick and decisive action is critical. This page covers procedures for key compromise, lost access, and communication breaches.
+When security incidents occur, quick and decisive action is critical. This page covers procedures for key compromise,
+lost access, and communication breaches.
 
 ## Key Compromise
 
@@ -37,7 +40,8 @@ When security incidents occur, quick and decisive action is critical. This page 
 1. **Isolate** - Quarantine potentially compromised devices
 2. **New hardware setup** - Set up fresh wallet with new seed following [Hardware Wallet Setup](/wallet-security/intermediates-&-medium-funds)
 3. **Coordinate replacement** - Plan signer replacement transaction with team
-4. **Execute replacement** - Replace compromised signer on multisig, following steps for signer rotation in [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices)
+4. **Execute replacement** - Replace compromised signer on multisig, following steps for signer rotation in [Secure
+   Multisig Best Practices](/wallet-security/secure-multisig-best-practices)
 5. **Verify security** - Confirm new setup before resuming operations
 
 ## Lost Key Access
@@ -52,6 +56,7 @@ When security incidents occur, quick and decisive action is critical. This page 
 ### Identity Verification Process
 
 Since you can't sign with your key, verify identity through alternative methods:
+
 - **Video call** with other signers
 - **Authentication** via verified social media account
 - **Other pre-arranged verification methods**
@@ -69,6 +74,7 @@ Since you can't sign with your key, verify identity through alternative methods:
 ### If Telegram/Signal/Discord Gets Taken Over
 
 #### Immediate Actions
+
 1. **Assume all recent messages are suspect** - Don't trust recent communication
 2. **Use backup channels** to alert team about compromise
 3. **Change passwords** and enable additional security on compromised account
@@ -224,7 +230,6 @@ Current multisig status:
 - [Hardware Wallet Setup](/wallet-security/intermediates-&-medium-funds) - Device replacement procedures
 - [Seed Phrase Management](/wallet-security/seed-phrase-management) - Key recovery procedures
 - [Personal Security (OpSec)](/multisig-for-protocols/personal-security-opsec) - Account security measures
-
 
 </TagProvider>
 <ContributeFooter />

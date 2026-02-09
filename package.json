@@ -26,15 +26,9 @@
   "author": "",
   "license": "ISC",
   "pnpm": {
-    "trustedDependencies": [
+    "onlyBuiltDependencies": [
       "esbuild",
       "just-install"
-    ],
-    "ignoredBuiltDependencies": [
-      "just-install"
-    ],
-    "onlyBuiltDependencies": [
-      "esbuild"
     ]
   },
   "packageManager": "pnpm@10.15.0",
@@ -47,6 +41,6 @@
     "playwright": "^1.57.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "react-router-dom": "^7.10.0"
+    "react-router-dom": "^7.12.0"
   }
 }

@@ -1,30 +1,152 @@
 {
   "allTags": [
-    "Blockchain",
     "Certifications",
     "Cloud",
+    "Communication Platforms",
     "Community & Marketing",
     "DAO",
+    "DevOps Accounts",
     "DeFi",
     "Devops",
     "Engineer/Developer",
     "HR",
+    "Individual Security",
     "Legal & Compliance",
-    "Operations",
     "Multisig Security",
+    "Operations",
     "Operations & Strategy",
+    "Organization Security",
     "Protocol",
     "Risk Management",
     "SEAL/Initiative",
     "SFC",
     "SRE",
     "Security Specialist",
-    "Travel",
     "Treasury Ops",
-    "Web3",
     "Whitehat"
   ],
   "pageTagsMap": {
+    "/account-security/individuals/discord": [
+      "Communication Platforms",
+      "Individual Security"
+    ],
+    "/account-security/individuals/github": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/individuals/godaddy": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/individuals/google": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/linear": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/mercury": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/notion": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/overview": [
+      "Individual Security",
+      "Security Specialist"
+    ],
+    "/account-security/individuals/render": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/individuals/sentry": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/individuals/signal": [
+      "Communication Platforms",
+      "Individual Security"
+    ],
+    "/account-security/individuals/telegram": [
+      "Communication Platforms",
+      "Individual Security"
+    ],
+    "/account-security/individuals/trello": [
+      "Business Tools",
+      "Individual Security"
+    ],
+    "/account-security/individuals/twitter-x": [
+      "Communication Platforms",
+      "Individual Security"
+    ],
+    "/account-security/individuals/vercel": [
+      "DevOps Accounts",
+      "Individual Security"
+    ],
+    "/account-security/organizations/discord": [
+      "Communication Platforms",
+      "Organization Security"
+    ],
+    "/account-security/organizations/github": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/organizations/godaddy": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/organizations/google": [
+      "Business Tools",
+      "Organization Security"
+    ],
+    "/account-security/organizations/linear": [
+      "Business Tools",
+      "Organization Security"
+    ],
+    "/account-security/organizations/mercury": [
+      "Business Tools",
+      "Organization Security"
+    ],
+    "/account-security/organizations/notion": [
+      "Business Tools",
+      "Organization Security"
+    ],
+    "/account-security/organizations/overview": [
+      "Organization Security",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/account-security/organizations/render": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/organizations/sentry": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/organizations/slack": [
+      "Communication Platforms",
+      "Organization Security"
+    ],
+    "/account-security/organizations/telegram": [
+      "Communication Platforms",
+      "Organization Security"
+    ],
+    "/account-security/organizations/twitter-x": [
+      "Communication Platforms",
+      "Organization Security"
+    ],
+    "/account-security/organizations/vercel": [
+      "DevOps Accounts",
+      "Organization Security"
+    ],
+    "/account-security/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/awareness/core-awareness-principles": [
       "Security Specialist",
       "Operations & Strategy",
@@ -75,10 +197,6 @@
       "SEAL/Initiative",
       "Certifications"
     ],
-    "/certs/certified-protocols": [
-      "SEAL/Initiative",
-      "Certifications"
-    ],
     "/certs/contributions": [
       "SEAL/Initiative",
       "Certifications"
@@ -86,6 +204,11 @@
     "/certs/overview": [
       "SEAL/Initiative",
       "Certifications"
+    ],
+    "/certs/sfc-devops-infrastructure": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
     ],
     "/certs/sfc-dns-registrar": [
       "SEAL/Initiative",
@@ -113,10 +236,6 @@
       "SFC"
     ],
     "/community-management/discord": [
-      "Community & Marketing",
-      "Security Specialist"
-    ],
-    "/community-management/google": [
       "Community & Marketing",
       "Security Specialist"
     ],
@@ -349,6 +468,14 @@
     "/governance/security-metrics-kpis": [
       "Operations & Strategy",
       "Legal & Compliance"
+    ],
+    "/guides/discord": [
+      "Community & Marketing",
+      "Security Specialist"
+    ],
+    "/guides/overview": [
+      "Community & Marketing",
+      "Security Specialist"
     ],
     "/iam/access-management": [
       "Engineer/Developer",
@@ -591,6 +718,10 @@
       "Devops",
       "SRE"
     ],
+    "/opsec/browser/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/opsec/continuous-improvement-metrics": [
       "Security Specialist",
       "Operations & Strategy",
@@ -615,17 +746,14 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/opsec/governance-program-management": [
+    "/opsec/endpoint/overview": [
       "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Operations & Strategy"
     ],
-    "/opsec/incident-response-recovery": [
-      "Security Specialist",
+    "/opsec/google/overview": [
+      "Community & Marketing",
       "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Security Specialist"
     ],
     "/opsec/integration/overview": [
       "Security Specialist",
@@ -633,17 +761,9 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/lifecycle/overview": [
+    "/opsec/mfa/overview": [
       "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/monitoring-detection": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Operations & Strategy"
     ],
     "/opsec/overview": [
       "Security Specialist",
@@ -651,13 +771,7 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/risk-management-overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/threat-modeling-overview": [
+    "/opsec/passwords/overview": [
       "Security Specialist",
       "Operations & Strategy"
     ],
@@ -946,40 +1060,40 @@
       "Operations & Strategy",
       "Engineer/Developer"
     ],
-    "/wallet-security/secure-multisig-safe-verification": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/wallet-security/secure-multisig-signing-process": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Engineer/Developer"
-    ],
-    "/wallet-security/secure-multisig-squads-verification": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
     "/wallet-security/seed-phrase-management": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/wallet-security/signing-verification": [
+    "/wallet-security/signing-and-verification/secure-multisig-safe-verification": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/wallet-security/signing-and-verification/secure-multisig-signing-process": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Engineer/Developer"
+    ],
+    "/wallet-security/signing-and-verification/secure-multisig-squads-verification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/wallet-security/signing-and-verification/signing-verification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/wallet-security/signing-and-verification/verifying-7702": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/wallet-security/signing-and-verification/verifying-standard-transactions": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/wallet-security/tools-&-resources": [
-      "Engineer/Developer",
-      "Security Specialist"
-    ],
-    "/wallet-security/verifying-7702": [
-      "Engineer/Developer",
-      "Security Specialist"
-    ],
-    "/wallet-security/verifying-standard-transactions": [
       "Engineer/Developer",
       "Security Specialist"
     ]
@@ -1017,6 +1131,10 @@
     "ENS": "ens",
     "Safe Harbor": "safe-harbor",
     "Encryption": "encryption",
+    "Treasury Operations": "treasury-operations",
+    "Guides": "guides",
+    "SEAL Certifications": "certs",
+    "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"
   }
 }
