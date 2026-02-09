@@ -25,15 +25,9 @@
   "author": "",
   "license": "ISC",
   "pnpm": {
-    "trustedDependencies": [
+    "onlyBuiltDependencies": [
       "esbuild",
       "just-install"
-    ],
-    "ignoredBuiltDependencies": [
-      "just-install"
-    ],
-    "onlyBuiltDependencies": [
-      "esbuild"
     ]
   },
   "packageManager": "pnpm@10.15.0",
