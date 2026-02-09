@@ -1,0 +1,77 @@
+---
+title: "GoDaddy Security | Security Alliance"
+description: "Secure your GoDaddy account and domains with 2FA, delegate access review, and DNSSEC to protect against domain hijacking and DNS attacks."
+tags:
+  - DevOps Accounts
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# GoDaddy Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway for GoDaddy:** Protect your domain registrar account with non-SMS two-factor authentication, regularly review delegate access and active sessions, and enable DNSSEC on all domains to prevent DNS spoofing and domain hijacking attacks.
+
+This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
+
+---
+
+## For Individuals
+
+These settings apply to your personal GoDaddy account. All team members and admins should configure these on their own accounts.
+
+### Individual Account Settings
+
+- Account Settings >
+    - Login & Pin >
+        - [ ]  2-Step Verification > **On** (non-SMS)
+        - [ ]  Active sign-ins > **Review and remove any unused or unrecognized**
+    - [ ]  Delegate Access > **Review and remove any unused or unrecognized**
+
+---
+
+## For Team Members
+
+These guidelines apply to team members who have delegate access to GoDaddy accounts but don't have full administrative control.
+
+Team members should:
+- Ensure their individual account settings are configured according to the checklist above
+- Understand the scope of their delegate access permissions
+- Report any suspicious domain or DNS activity to account administrators
+- Never share login credentials or delegate access with unauthorized parties
+
+---
+
+## For Admins
+
+These settings and practices apply to GoDaddy account administrators who manage domains and DNS settings.
+
+### Domain Security
+
+- [ ]  Domain Settings > DNS > DNSSEC > **On**
+
+### Best Practices
+
+- Regularly audit delegate access and remove any that are no longer needed
+- Monitor domain expiration dates and enable auto-renewal for critical domains
+- Use domain locking features to prevent unauthorized transfers
+- Review DNS records periodically for any unauthorized changes
+
+---
+
+**Related**: For comprehensive DNS security guidance, see [Infrastructure - Domain & DNS Security](/infrastructure/domain-and-dns-security/overview).
+
+---
+
+</TagProvider>
+<ContributeFooter />

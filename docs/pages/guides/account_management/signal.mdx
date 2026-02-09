@@ -1,0 +1,68 @@
+---
+title: "Signal Security | Security Alliance"
+description: "Secure your Signal account with registration lock, privacy settings, and disappearing messages. Protect against SIM swap impersonation and maintain truly private communications."
+tags:
+  - Communication Platforms
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Signal Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway for Signal:** Enable registration lock to prevent SIM swap impersonation, configure privacy settings to hide your phone number, and use disappearing messages. Even if you don't actively use Signal, securing your account prevents attackers from impersonating you to others.
+
+Signal provides the gold standard of end-to-end encryption and privacy features, making it the best platform for truly anonymous and secure communications. Properly configuring your Signal account is essential for maintaining your privacy and security.
+
+---
+
+## For Individuals
+
+These settings apply to your personal Signal account. You must be on the phone app to access all of these settings.
+
+> **Important**: Use Signal! Chats on Signal are secured with the gold standard of end-to-end encryption and privacy features. Signal is the best place to have truly anonymous chats.
+>
+> If you don't use Signal, you should at least create an account with your phone number and lock it so that you cannot be impersonated to others via SIM swap attacks.
+
+### Account Security Checklist
+
+- Account Settings:
+    - [ ]  Settings > Account > Registration Lock > **Enable**
+    - [ ]  Settings > Linked Devices > Review the list
+    - [ ]  Settings > Calls > Always relay calls (*if privacy is desired*)
+    - [ ]  Settings > Privacy > Who can see my number > **Nobody**
+    - [ ]  Settings > Privacy > Who can find me by number > **Nobody**
+    - [ ]  Settings > Privacy > Disappearing Messages > **Enabled**
+        - *The timer is up to you, but 1 week is recommended*
+    - [ ]  Settings > Privacy > Hide Screen in App Switcher > **Enabled**
+    - [ ]  Settings > Privacy > Screen Lock > **Enabled**
+        - *The timeout period is up to you, but 1 minute is recommended*
+    - [ ]  Settings > Privacy > Payments Lock > **Enabled**
+    - [ ]  Settings > Privacy > Advanced > Always Relay Calls > **Enabled** (privacy)
+        - *This leaks your IP address to contacts via calls when disabled*
+
+---
+
+### Best Practices & Additional Tips
+
+- [ ]  **Review Linked Devices Regularly**
+    - Periodically check your linked devices and remove any that you no longer use or don't recognize.
+- [ ]  **Use a Strong Device PIN**
+    - Signal's security relies on your device's security. Ensure you have a strong PIN or biometric lock on your phone.
+- [ ]  **Be Cautious with Safety Numbers**
+    - Verify safety numbers with contacts when they change to ensure you're communicating with the intended person.
+
+---
+
+</TagProvider>
+<ContributeFooter />
