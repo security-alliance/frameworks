@@ -101,10 +101,6 @@ details .vocs_Paragraph {
     color: #1e1e1e;
 }
 
-.vocs_Sidebar_footerContent {
-    margin-bottom: calc(10px + var(--vocs_Banner_bannerHeight, 0px));
-}
-
-.vocs_Outline_item {
-    margin-bottom: 0.3rem;
+.vocs_Outline_nav {
+    padding-bottom: var(--vocs-space_24);
 }
