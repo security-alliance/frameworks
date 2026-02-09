@@ -10,140 +10,176 @@ cert:
   title: Governance & Domain Management
   controls:
   - id: dns-1.1.1
-    description: Is there a clearly designated person accountable for domain security? 
-      At minimum, accountability scope includes policy maintenance, security reviews, 
-      renewal management, access control oversight, and incident escalation.
-    title: Accountability for Domain Security
-  - id: dns-1.2.1
-    description: Do you maintain a comprehensive inventory of all domains, including ownership,
-      purpose, criticality classification (e.g., based on whether external-facing and whether
-      users may transact funds), and expiration dates?
-    title: Domain Inventory and Attributes
-  - id: dns-1.2.2
-    description: Do you document and maintain current configuration baselines for all domains?
-      At minimum, baselines must include DNS record configurations, security settings 
-      (DNSSEC, CAA), and registrar account configurations.
-    title: Current Configuration Baselines for Domains
+    description: Is there a clearly designated person or team accountable for domain
+      security?
+    baselines:
+      - Accountability scope covers policy maintenance, security reviews, renewal
+        management, access control oversight, and incident escalation
+    title: Domain Security Owner
+  - id: dns-1.1.2
+    description: Do you maintain a complete, current record of all your domains and
+      their configurations?
+    baselines:
+      - Registry includes domain name, ownership, purpose, expiration date, registrar,
+        DNS record configurations, security settings (DNSSEC, CAA), and registrar
+        account configurations
+      - Accessible to relevant team members
+    title: Domain Inventory and Documentation
 - id: dns-2
   title: Risk Assessment & Classification
   controls:
   - id: dns-2.1.1
-    description: Do you maintain a formal classification system for domains based on criticality,
-      financial exposure, and operational impact?
-    title: Formal Domain Classification System
+    description: Do you classify your domains by risk level and verify they meet the
+      security requirements for their classification?
+    baselines:
+      - Classification considers criticality, financial exposure, and operational
+        impact
+      - Domains where users may transact funds or that are external-facing classified
+        at the highest tier
+      - Each classification maps to specific security requirements (DNSSEC, locks,
+        monitoring frequency, access controls)
+      - Compliance verified at least annually through configuration review against
+        documented standards
+    title: Domain Classification and Compliance
   - id: dns-2.1.2
-    description: Do you verify that your domains comply with their documented configuration
-      baselines and classification requirements? Do you conduct periodic reviews at least
-      annually to ensure domain configurations match documented standards?
-    title: Domain Configuration Compliance Verification
-  - id: dns-2.2.1
-    description: Do you use a domain registrar that supports enterprise security features?
-      At minimum, the registrar must support registry locks and hardware security key MFA,
-      and should not have a history of social engineering vulnerabilities.
+    description: Do you use a registrar with enterprise-grade security for your
+      critical domains?
+    baselines:
+      - Registrar supports registry locks (server-level EPP locks)
+      - Registrar supports hardware security key MFA (FIDO2/WebAuthn)
+      - Registrar has no history of social engineering vulnerabilities
+      - Due diligence includes checking ICANN compliance notices for the registrar
     title: Enterprise Registrar Security Requirements
 - id: dns-3
   title: Access Control & Authentication
   controls:
   - id: dns-3.1.1
-    description: Do you manage access to domain registrar accounts, with documented procedures?
-      At minimum, procedures must cover who is authorized to access, how access is granted
-      and revoked, and role-based permissions where available.
-    title: Registrar Access Management
+    description: Do you control and secure access to domain registrar and DNS
+      management accounts?
+    baselines:
+      - Documented who is authorized, how access is granted/revoked, and role-based
+        permissions where available
+      - Hardware security key MFA (FIDO2/WebAuthn) required for all registrar and
+        DNS management accounts
+      - Access reviews conducted at least annually
+      - Access revoked promptly when no longer needed
+    title: Registrar Access Control
   - id: dns-3.1.2
-    description: Do you enforce multi-factor authentication requirements for all registrar and
-      DNS management accounts?
-    title: Multi-factor Authentication for Registrar Accounts
-  - id: dns-3.1.3
-    description: Do you use a dedicated security contact email for domain management that is
-      hosted on a different domain than your primary domain? At minimum, the email must not
-      be a personal email address, must be used exclusively for domain security purposes, and
-      must be an alias that notifies multiple people.
+    description: Is your domain security contact email independent of the domains
+      it protects?
+    baselines:
+      - Hosted on a different domain than any domain it's responsible for
+      - Not a personal email address
+      - Used exclusively for domain security purposes
+      - Alias that notifies multiple people
     title: Dedicated Domain Security Contact Email
-  - id: dns-3.1.4
-    description: Do you conduct periodic access reviews for all personnel with domain management
-      privileges? At minimum, access reviews must occur annually.
-    title: Periodic Access Reviews for Domain Privileges
-  - id: dns-3.2.1
-    description: Do you have change management procedures for critical domain operations (transfers,
-      deletions, nameserver changes) and DNS record modifications? At minimum, the relevant
-      team members must be notified before critical changes, and all changes must be logged.
+  - id: dns-3.1.3
+    description: Do you have change management procedures for critical domain
+      operations?
+    baselines:
+      - Covers transfers, deletions, nameserver changes, and DNS record modifications
+      - Relevant team members notified before critical changes
+      - All changes logged
+      - Critical changes verified through out-of-band confirmation with the registrar
     title: Change Management for Domain Operations
 - id: dns-4
   title: Technical Security Controls
   controls:
   - id: dns-4.1.1
-    description: Do you configure DNS security settings (DNSSEC, CAA records, TTL policies),
-      with documented standards?
-    title: DNS Security Configuration Standards
-  - id: dns-4.2.1
-    description: Do you configure email authentication (SPF, DKIM, DMARC, MTA-STS), with
-      documented standards?
-    title: Email Authentication Protocol Standards
-  - id: dns-4.2.2
-    description: Do you have procedures for monitoring and responding to DMARC reports and policy
+    description: Do you enforce DNS security standards across all your domains?
+    baselines:
+      - DNSSEC enabled and validated on all critical domains
+      - CAA records configured to restrict certificate issuance to authorized CAs
+        only
+      - TTL policies documented with rationale
+      - Standards applied consistently based on domain classification
+    title: DNS Security Standards
+  - id: dns-4.1.2
+    description: Do you enforce email authentication standards and monitor for
       violations?
-    title: DMARC Monitoring and Response Procedures
-  - id: dns-4.3.1
-    description: Do you implement domain locks (transfer locks, registry locks, EPP status codes),
-      with documented procedures?
+    baselines:
+      - SPF, DKIM, and DMARC configured for all domains that send email
+      - DMARC policy set to reject for domains actively sending email
+      - DMARC aggregate reports (rua) monitored and reviewed
+      - MTA-STS configured where supported to enforce encrypted email transport
+      - Domains that don't send email have SPF/DMARC records that reject all email
+    title: Email Authentication Standards
+  - id: dns-4.1.3
+    description: Do you use domain locks to prevent unauthorized transfers and
+      changes?
+    baselines:
+      - Registry locks (server-level EPP locks) enabled for all critical domains
+        where supported
+      - Transfer locks enabled on all domains
+      - Lock status verified periodically
     title: Domain Lock Implementation
-  - id: dns-4.3.2
-    description: Do you have procedures for out-of-band verification of domain changes through
-      registrar support channels?
-    title: Out of Band Domain Change Verification
-  - id: dns-4.3.3
-    description: Do you have procedures for TLS certificate lifecycle management, including
-      issuance, renewal, revocation, and using CAA records to restrict certificate issuance?
-    title: TLS Certificate Lifecycle Management Procedures
+  - id: dns-4.1.4
+    description: Do you manage the full lifecycle of your TLS certificates?
+    baselines:
+      - Covers issuance, renewal, and revocation procedures
+      - Certificates tracked with expiration alerts
+      - Automated renewal where possible
+      - Revocation procedures documented for compromised certificates
+    title: TLS Certificate Lifecycle Management
 - id: dns-5
   title: Monitoring & Detection
   controls:
   - id: dns-5.1.1
-    description: Do you monitor for unauthorized DNS record changes across all domains (whether
-      through your registrar, third-party services, or your own tools)? At minimum, monitoring
-      must cover nameserver changes, A/AAAA record changes, MX record changes, CAA record removal,
-      and DNSSEC status changes.
-    title: Continuous Monitoring for DNS Changes
+    description: Do you monitor your domains for unauthorized changes to DNS records,
+      registration status, and security settings?
+    baselines:
+      - DNS record monitoring covers nameserver (NS) changes, A/AAAA changes, MX
+        changes, TXT/SPF/DMARC changes, CAA record removal, DNSSEC status changes,
+        and unexpected TTL drops
+      - Registration monitoring covers lock status, registrar account settings, and
+        nameserver delegation
+      - Alerting and escalation paths documented
+      - Critical alerts (nameserver changes, DNSSEC failure, registrar changes)
+        trigger immediate investigation
+      - Monitoring infrastructure not dependent on the domains being monitored
+    title: Domain and DNS Monitoring
   - id: dns-5.1.2
-    description: Do you monitor for specific indicators of DNS compromise (TTL changes, nameserver
-      modifications, record anomalies), whether through your registrar, third-party services,
-      or your own tools?
-    title: DNS Compromise Indicators Monitoring
+    description: Do you monitor Certificate Transparency logs for unauthorized
+      certificates issued for your domains?
+    baselines:
+      - Subscribed to a CT monitoring service that alerts on new certificate issuance
+      - Alerts reviewed and unauthorized certificates investigated promptly
+      - Wildcard certificates flagged if not expected
+    title: Certificate Transparency Monitoring
   - id: dns-5.1.3
-    description: Do you have automated monitoring for Certificate Transparency logs to detect
-      unauthorized certificate issuance? At minimum, subscribe to a CT monitoring service that
-      sends alerts when certificates are issued for your domains.
-    title: Automated Certificate Transparency Monitoring
-  - id: dns-5.2.1
-    description: Do you monitor your own domain registration status and lock settings for unauthorized
-      changes (whether through your registrar, third-party services, or your own tools)? At minimum,
-      regularly verify that registry locks remain active and registrar account settings are unchanged.
-    title: Domain Registration Status Monitoring
-  - id: dns-5.2.2
-    description: Do you monitor for and prevent domain expiration risks? At minimum, enable
-      auto-renewal, set calendar reminders at 90/60/30/7 days before expiration, and ensure
-      payment methods stay current.
-    title: Domain Expiration Risk Prevention
+    description: Do you actively prevent domain expiration?
+    baselines:
+      - Auto-renewal enabled on all domains
+      - Calendar reminders at 90, 60, 30, and 7 days before expiration
+      - Payment methods verified current
+      - Backup person designated for renewal responsibility
+    title: Domain Expiration Prevention
 - id: dns-6
   title: Incident Response
   controls:
   - id: dns-6.1.1
-    description: Do you have incident response procedures for domain hijacking and DNS compromise?
-      At minimum, procedures must cover key scenarios (registrar account compromise, DNS hijacking,
-      unauthorized transfers), pre-documented emergency contacts for registrar security team
-      and SEAL 911, and communication plan for warning users.
-    title: Domain Hijacking Incident Response
-  - id: dns-6.2.1
-    description: Do you maintain procedures for emergency registry lock activation to prevent
-      unauthorized domain changes?
-    title: Emergency Registry Lock Activation
-  - id: dns-6.2.2
-    description: Do you have documented procedures for regaining control of compromised domains?
-    title: Regaining Control of Compromised Domains
-  - id: dns-6.2.3
-    description: Do you maintain procedures for validating DNS record integrity after incident
-      recovery?
-    title: DNS Record Integrity Validation Procedures
+    description: Do you have alerting and emergency contacts in place for domain
+      security incidents?
+    baselines:
+      - Alerting system in place to notify relevant stakeholders when a potential
+        compromise is detected
+      - Emergency contacts pre-documented including registrar security team, SEAL
+        911, and legal counsel
+      - Communication plan for warning users (status page, social media, in-app
+        warnings)
+    title: Alerting and Emergency Contacts
+  - id: dns-6.1.2
+    description: Do you have an incident response plan for domain hijacking and DNS
+      compromise?
+    baselines:
+      - Covers key scenarios including registrar account compromise, DNS hijacking,
+        and unauthorized transfers
+      - Emergency registry lock activation procedures
+      - Procedures for regaining control of compromised domains
+      - Post-recovery validation including DNS records verified against known-good
+        baseline, all credentials reset, and access logs reviewed
+      - Plan tested at least annually (can be combined with broader IR drills)
+    title: Domain Incident Response Plan
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertList } from '../../../components'
