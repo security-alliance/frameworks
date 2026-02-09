@@ -39,4 +39,7 @@ CLAUDE.md
 # Build folder
 **/dist/
 
+# Generated printable checklists
+docs/public/printable/
+
 .direnv
