@@ -10,19 +10,22 @@ interface ControlCardProps {
 
 const nextState: Record<ControlState, ControlState> = {
     no: "yes",
-    yes: "na",
+    yes: "partial",
+    partial: "na",
     na: "no",
 };
 
 const stateLabels: Record<ControlState, string> = {
     yes: "✓",
+    partial: "½",
     na: "—",
     no: "",
 };
 
 const stateActionLabels: Record<ControlState, string> = {
     no: "Mark as completed",
-    yes: "Mark as not applicable",
+    yes: "Mark as partially implemented",
+    partial: "Mark as not applicable",
     na: "Reset to incomplete",
 };
 
@@ -86,6 +89,16 @@ export const ControlCard = memo(function ControlCard({
                     <div className={`text-md control-description ${completedStyles}`}>
                         {control.description}
                     </div>
+                    {control.baselines && control.baselines.length > 0 && (
+                        <div className={`control-baselines ${completedStyles}`}>
+                            <div className="control-baselines-label">Baseline Requirements</div>
+                            <ul className="control-baselines-list">
+                                {control.baselines.map((baseline, idx) => (
+                                    <li key={idx}>{baseline}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
                 <div className="ml-auto pl-3">
                     <button

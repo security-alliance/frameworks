@@ -2,11 +2,12 @@ export interface Control {
     id: string;
     title: string;
     description: string;
+    baselines?: string[];
     justification?: string;
     evidence?: string;
 }
 
-export type ControlState = "no" | "yes" | "na";
+export type ControlState = "no" | "yes" | "partial" | "na";
 
 export interface ControlData {
     state: ControlState;
