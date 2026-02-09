@@ -40,7 +40,7 @@ const config = {
       items: [
         {
           text: 'Community Management',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/community-management/overview' },
             { text: 'Discord', link: '/community-management/discord' },
@@ -50,7 +50,7 @@ const config = {
         },
         {
           text: 'Awareness',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/awareness/overview' },
             { text: 'Core Awareness Principles', link: '/awareness/core-awareness-principles' },
@@ -62,7 +62,7 @@ const config = {
         },
         {
           text: 'Operational Security',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/opsec/overview' },
             {
@@ -84,7 +84,7 @@ const config = {
             { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
             {
               text: 'While Traveling',
-              collapsed: false,
+              collapsed: true,
               items: [
                 { text: 'Overview', link: '/opsec/travel/overview' },
                 { text: 'Guide', link: '/opsec/travel/guide' },
@@ -96,7 +96,7 @@ const config = {
         },
         {
           text: 'Wallet Security',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/wallet-security/overview' },
             { text: 'Custodial vs Non-Custodial', link: '/wallet-security/custodial-vs-non-custodial' },
@@ -124,7 +124,7 @@ const config = {
         },
         {
           text: 'Multisig for Protocols',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/multisig-for-protocols/overview' },
 
@@ -156,7 +156,7 @@ const config = {
         },
         {
           text: 'External Security Reviews',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/external-security-reviews/overview' },
             {
@@ -175,7 +175,7 @@ const config = {
         },
         {
           text: 'Vulnerability Disclosure',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/vulnerability-disclosure/overview', dev: true },
@@ -185,7 +185,7 @@ const config = {
         },
         {
           text: 'Infrastructure',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/infrastructure/overview', dev: true },
             { text: 'Asset Inventory', link: '/infrastructure/asset-inventory', dev: true },
@@ -210,7 +210,7 @@ const config = {
         },
         {
           text: 'Monitoring',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/monitoring/overview', dev: true },
@@ -220,7 +220,7 @@ const config = {
         },
         {
           text: 'Front-End/Web Application',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/front-end-web-app/overview', dev: true },
@@ -232,7 +232,7 @@ const config = {
         },
         {
           text: 'Incident Management',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/incident-management/overview' },
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
@@ -255,7 +255,7 @@ const config = {
         },
         {
           text: 'Threat Modeling',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/threat-modeling/overview', dev: true },
@@ -265,7 +265,7 @@ const config = {
         },
         {
           text: 'DPRK IT Workers',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/dprk-it-workers/overview' },
             { text: 'General Information', link: '/dprk-it-workers/general-information' },
@@ -277,7 +277,7 @@ const config = {
         },
         {
           text: 'Governance',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/governance/overview', dev: true },
@@ -288,7 +288,7 @@ const config = {
         },
         {
           text: 'DevSecOps',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/devsecops/overview', dev: true },
@@ -301,7 +301,7 @@ const config = {
         },
         {
           text: 'Privacy',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/privacy/overview', dev: true },
@@ -316,7 +316,7 @@ const config = {
         },
         {
           text: 'Supply Chain',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/supply-chain/overview', dev: true },
@@ -326,7 +326,7 @@ const config = {
         },
         {
           text: 'Security Automation',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/security-automation/overview', dev: true },
@@ -337,7 +337,7 @@ const config = {
         },
         {
           text: 'Identity and Access Management IAM',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/iam/overview' },
@@ -348,7 +348,7 @@ const config = {
         },
         {
           text: 'Secure Software Development',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/secure-software-development/overview', dev: true },
@@ -360,7 +360,7 @@ const config = {
         },
         {
           text: 'Security Testing',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/security-testing/overview' },
             { text: 'Unit Testing', link: '/security-testing/unit-testing' },
@@ -373,7 +373,7 @@ const config = {
         },
         {
           text: 'ENS',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/ens/overview' },
             { text: 'Data Integrity & Verification', link: '/ens/data-integrity-verification' },
@@ -385,7 +385,7 @@ const config = {
         },
         {
           text: 'Safe Harbor',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/safe-harbor/overview' },
             { text: 'Safe Harbor Eligibility Checklist', link: '/safe-harbor/self-checklist' },
@@ -397,7 +397,7 @@ const config = {
         },
         {
           text: 'Encryption',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/encryption/overview', dev: true },
@@ -415,7 +415,7 @@ const config = {
         },
         {
           text: 'Treasury Operations',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/treasury-operations/overview', dev: true },
