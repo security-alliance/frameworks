@@ -1,0 +1,73 @@
+---
+title: "Slack Security | Security Alliance"
+description: "Secure your Slack workspace: configure sign-in settings, enforce two-factor authentication, manage member access, and set proper device security policies."
+tags:
+  - Communication Platforms
+contributors:
+  - role: wrote
+    users: [auditware]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Slack Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway for Slack:** Secure your Slack workspace by enforcing two-factor authentication with authenticator
+> apps only, requiring admin approval for invitations, regularly reviewing member access levels, and blocking jailbroken
+> or rooted devices from accessing the workspace.
+
+This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
+
+---
+
+## For Team Members
+
+These guidelines apply to team members who use the Slack workspace.
+
+Team members should:
+- Enable two-factor authentication on their Slack account using an authenticator app
+- Be cautious of phishing attempts through direct messages or shared links
+- Report any suspicious messages or unrecognized workspace members to administrators
+- Avoid accessing the workspace from jailbroken or rooted devices
+- Be mindful of what sensitive information is shared in channels
+
+---
+
+## For Admins
+
+These settings and practices apply to Slack workspace administrators with elevated privileges.
+
+### Workspace Settings
+
+- Workspace Settings (\<your-workspace\>.slack.com/admin/settings)
+    - **Settings >**
+        - [ ]  Joining This Workspace > **Review auto-approve domains** or **disable**
+    - **Permissions >**
+        - [ ]  Invitations > **Require Admin Approval**
+
+### Member Management
+
+- Manage members (\<your-workspace\>.slack.com/admin)
+    - [ ]  Review member list and Account type for each member
+
+### Security Settings
+
+- Security Settings (\<your-workspace\>.slack.com/admin/security)
+    - **Sign in Settings >**
+        - [ ]  Two-factor authentication for email sign‑in > **On**
+            - [ ]  Allowed 2FA methods > **Authenticator apps only**
+    - **Device Settings >**
+        - [ ]  Jailbroken or rooted devices > **Not allowed**
+
+---
+
+</TagProvider>
+<ContributeFooter />
