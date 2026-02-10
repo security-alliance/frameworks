@@ -23,6 +23,9 @@ export const TAG_COLORS: Record<string, string> = {
   'Operations': '#a1fdaa',
   'Risk Management': '#933176',
   'Treasury Ops': '#f00120',
+  'Business Tools': '#3ebbc9',
+  'Communication Platforms': '#bf9504',
+  'DevOps Accounts': '#f43e7c',
 }
 
 /**

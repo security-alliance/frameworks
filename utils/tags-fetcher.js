@@ -300,7 +300,7 @@ function generateColor(tag) {
 }
 
 function updateConstantsWithMissingTags(allTags) {
-  const constantsPath = path.join(workspaceRoot, 'components', 'shared', 'constants.ts');
+  const constantsPath = path.join(workspaceRoot, 'components', 'shared', 'tagColors.ts');
   
   if (!fs.existsSync(constantsPath)) return;
   
