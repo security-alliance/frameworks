@@ -101,8 +101,8 @@ const config = {
             { text: 'Overview', link: '/wallet-security/overview' },
             { text: 'Custodial vs Non-Custodial', link: '/wallet-security/custodial-vs-non-custodial' },
             { text: 'Cold vs Hot Wallet', link: '/wallet-security/cold-vs-hot-wallet' },
-            { text: 'Wallets For Beginners & Small Balances', link: '/wallet-security/for-beginners-&-small-balances' },
-            { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-&-medium-funds' },
+            { text: 'Wallets For Beginners & Small Balances', link: '/wallet-security/for-beginners-and-small-balances' },
+            { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-and-medium-funds' },
             { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
             { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets' },
@@ -119,7 +119,7 @@ const config = {
               ]
             },
             { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
-            { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
+            { text: 'Tools & Resources', link: '/wallet-security/tools-and-resources' },
           ]
         },
         {
