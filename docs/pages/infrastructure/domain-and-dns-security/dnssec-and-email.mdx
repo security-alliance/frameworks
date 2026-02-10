@@ -270,7 +270,7 @@ reset emails and other sensitive communications.
 
 4) **Testing and enforcement**
    - Start with `mode: testing` to monitor without blocking
-   - Collect and review TLS failure reports
+   - Collect and review TLS failure reports using TLS-RPT (See dedicated section below)
    - Once confident, change to `mode: enforce`
    - Update the `id` in DNS TXT record after policy changes
 
@@ -285,6 +285,39 @@ reset emails and other sensitive communications.
 - `max_age` determines how long mail servers cache the policy (86400 = 1 day)
 - All MX servers must support TLS with valid certificates
 - Monitor policy file availability - if unreachable, mail delivery may fail in enforce mode
+
+#### TLS-RPT
+
+TLS-RPT collects delivery reports for messages transmitted using MTA-STS and SMTP DANE.
+
+Most major providers (Google, Microsoft, etc.) send one aggregated report per day per domain summarizing all failures for that day and some also indicate how many transmissions were successful.
+This is crucial for already established projects to ensure current email communication is not broken when enabling these security features.
+
+**Example**
+MTA-STS is deployed in "testing" mode
+TLS-RPT is configured for domain example.com
+An email provider attempts to deliver mail to example.com
+It fetches example.com's MTA-STS policy and attempts delivery using TLS according to the policy
+The failure is logged and reported using TLS-RPT
+Provider finishes mail delivery by falling back to classic SMTP
+
+**Setup**
+Create a new DNS TXT record with the following structure and chosen email address to receive the reports
+_smtp._tls.yourdomain.com. TXT "v=TLSRPTv1; rua=mailto:reports@yourdomain.com"
+
+This will give you visibility into failures during testing.
+
+##### Report receiver in same email domain
+It is perfectly reasonable for the report receivers email address to reside in the same domain that is using MTA-STS or SMTP DANE even after those security features have been fully enabled.
+
+See the following snippet from [RFC8460](https://www.rfc-editor.org/rfc/rfc8460) which defines TLS-RPT
+
+*In the case of "mailto", reports should be submitted to the
+specified email address [RFC6068]. When sending failure reports
+via SMTP, Sending MTAs MUST deliver reports despite any TLS-
+related failures and SHOULD NOT include this SMTP session in the
+next report. This may mean that the reports are delivered
+unencrypted.*
 
 ### DMARC (Domain-based Message Authentication)
 
