@@ -338,19 +338,28 @@ where it fits, for example in block-quotes.
 
 ### Visual representation / drawings
 
-Like GitHub, we also support Mermaid!
+- Like GitHub, we also support Mermaid!
 
-You can use codeblocks using the `mermaid` keyword, and you can create beautiful graphical representations.
-There's a
-[playground](https://www.mermaidchart.com/play#pako:eNqrVkrOT0lVslIqyExVKMksyUlVCM9ILFEIy89JSc3NLypRSMlPLc5TL1HISCxLtY_JU4CBGCW3IE9XP5fgGCUFKwUjVBlHX0-fSLCEMYqEn3-wK1jYxDQmT6kWAEyMIfc)
-where you can jump straight to draw!
+  You can use codeblocks using the `mermaid` keyword, and you can create beautiful graphical representations.
+  There's a
+  [playground](https://www.mermaidchart.com/play#pako:eNqrVkrOT0lVslIqyExVKMksyUlVCM9ILFEIy89JSc3NLypRSMlPLc5TL1HISCxLtY_JU4CBGCW3IE9XP5fgGCUFKwUjVBlHX0-fSLCEMYqEn3-wK1jYxDQmT6kWAEyMIfc)
+  where you can jump straight to draw!
 
-```mermaid
-pie title What Voldemort doesn't have?
-         "FRIENDS" : 2
-         "FAMILY" : 3
-         "NOSE" : 45
-```
+  ```mermaid
+  pie title What Voldemort doesn't have?
+          "FRIENDS" : 2
+          "FAMILY" : 3
+          "NOSE" : 45
+  ```
+- Adding images is welcome and encouraged.
+  Please follow the steps below to include them correctly:
+
+  1. After making your changes and opening a PR, add the images you want to include in the PR's comments (by uploading them directly)
+  2. During the review, a maintainer will upload your images to our S3 bucket and reply with the links you should use.
+  3. Once you receive the new links, update your PR to add the images' links.
+
+> ⚠️ Please do not add images directly to the repository.
+> This helps us avoid bloating the Git history and ensures all images follow our standardized storage and delivery method.
 
 ### Linking resources
 
