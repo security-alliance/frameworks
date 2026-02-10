@@ -2,3 +2,8 @@
 
 # Remove .html extension from all pages (301 permanent redirect)
 /*.html /:splat 301
+
+# Renamed files: & to 'and' for URL compatibility
+/wallet-security/tools-&-resources /wallet-security/tools-and-resources 301
+/wallet-security/for-beginners-&-small-balances /wallet-security/for-beginners-and-small-balances 301
+/wallet-security/intermediates-&-medium-funds /wallet-security/intermediates-and-medium-funds 301
