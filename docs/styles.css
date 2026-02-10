@@ -105,7 +105,6 @@ details .vocs_Paragraph {
     color: #1e1e1e;
 }
 
-<<<<<<< feature/printable-checklists
 .vocs_Sidebar_footerContent {
     margin-bottom: calc(10px + var(--vocs_Banner_bannerHeight, 0px));
 }
