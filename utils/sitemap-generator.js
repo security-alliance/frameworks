@@ -1,5 +1,5 @@
 /*
-  Generates sitemap.xml for the .org site.
+  Generates sitemap.xml for the .org site
   - Main branch (.org): full sitemap with all page URLs
   - Dev branch (.dev): empty sitemap (pages shouldn't be indexed)
   - Only runs on Cloudflare Pages
