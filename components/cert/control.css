@@ -10,6 +10,11 @@
   --color-success-dark: #059669;
   --color-success-text: #ffffff;
 
+  /* Partial/Warning colors */
+  --color-partial: #f59e0b;
+  --color-partial-dark: #d97706;
+  --color-partial-text: #ffffff;
+
   /* Neutral/NA colors */
   --color-neutral: #6b7280;
   --color-neutral-dark: #4b5563;
@@ -53,6 +58,9 @@
   --state-yes-bg: var(--color-success);
   --state-yes-border: var(--color-success-dark);
   --state-yes-text: var(--color-success-text);
+  --state-partial-bg: var(--color-partial);
+  --state-partial-border: var(--color-partial-dark);
+  --state-partial-text: var(--color-partial-text);
   --state-na-bg: var(--color-neutral);
   --state-na-border: var(--color-neutral-dark);
   --state-na-text: var(--color-neutral-text);
@@ -75,6 +83,54 @@
 
 .control-description {
   color: var(--card-muted);
+}
+
+/* Baselines */
+.control-baselines {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--color-primary);
+  background: rgba(67, 57, 219, 0.05);
+  border-radius: 0 6px 6px 0;
+}
+
+:root:not(.dark) .control-baselines {
+  background: rgba(67, 57, 219, 0.04);
+}
+
+.control-baselines-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+.control-baselines-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.control-baselines-list li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  padding: 3px 0 3px 18px;
+  position: relative;
+}
+
+.control-baselines-list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.8;
 }
 
 .control-info-btn {
@@ -142,6 +198,12 @@
   color: var(--state-yes-text);
 }
 
+.control-state-partial {
+  background: var(--state-partial-bg);
+  border-color: var(--state-partial-border);
+  color: var(--state-partial-text);
+}
+
 .control-state-na {
   background: var(--state-na-bg);
   border-color: var(--state-na-border);
@@ -205,6 +267,12 @@
 .section-progress-fill-yes {
   height: 100%;
   background: var(--color-success);
+  transition: width 0.3s ease;
+}
+
+.section-progress-fill-partial {
+  height: 100%;
+  background: var(--color-partial);
   transition: width 0.3s ease;
 }
 
@@ -280,6 +348,24 @@
 }
 
 .cert-import-btn:active {
+  transform: scale(0.98);
+}
+
+.cert-print-btn {
+  background: transparent;
+  border-color: var(--border-card);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cert-print-btn:hover {
+  background: var(--bg-card);
+  border-color: var(--color-text-primary);
+}
+
+.cert-print-btn:active {
   transform: scale(0.98);
 }
 

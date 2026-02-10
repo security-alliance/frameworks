@@ -34,7 +34,13 @@
       "TagProvider",
       "TagFilter",
       "ContributeFooter",
-      "Contributors"
+      "Contributors",
+      "CertifiedProtocols",
+      "CertList",
+      "CertifiedProtocolsWrapper",
+      "MermaidRenderer",
+      "DevOnly",
+      "BadgeLegend"
     ]
   },
   "MD037": false,

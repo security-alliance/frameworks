@@ -1,4 +1,6 @@
 ---
+title: "Multisig Planning & Classification | SEAL"
+description: "Plan multisig setup: assess financial exposure, protocol impact, and reputational risk. Classify by impact level (Low to Critical) and operational type (Routine, Time-Sensitive, Emergency)."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -26,7 +28,8 @@ import {
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Before setting up a new multisig, take time to properly assess its role and requirements. This planning phase will guide all subsequent configuration decisions and help ensure appropriate security measures.
+Before setting up a new multisig, take time to properly assess its role and requirements. This planning phase will guide
+all subsequent configuration decisions and help ensure appropriate security measures.
 
 ## Before You Start
 
@@ -60,7 +63,9 @@ Determine who should be involved:
 
 ## Classification Process
 
-Use this dual classification system to determine appropriate security measures. These classifications are guidance to help you think through risk levels - they inform threshold selection, signer requirements, and operational procedures in later sections.
+Use this dual classification system to determine appropriate security measures. These classifications are guidance to
+help you think through risk levels - they inform threshold selection, signer requirements, and operational procedures in
+later sections.
 
 ### Step 1: Impact Assessment
 
@@ -86,12 +91,12 @@ What happens if this multisig is compromised or fails?
 
 #### Impact Classification
 
-| Level        | Financial Exposure     | Protocol Impact                                       | Reputational Risk             |
+| Level | Financial Exposure | Protocol Impact | Reputational Risk |
 | ------------ | ---------------------- | ----------------------------------------------------- | ----------------------------- |
-| **Low**      | \<$100k direct exposure | Minimal disruption, alternative paths exist           | Limited scope impact          |
-| **Medium**   | $100k - $1M exposure   | Significant operational delays, workarounds available | Moderate reputational concern |
-| **High**     | $1M - $10M exposure    | Major protocol disruption, difficult recovery         | Serious reputational damage   |
-| **Critical** | \>$10M exposure         | Protocol-wide failure, catastrophic impact            | Severe reputational damage    |
+| **Low** | \<$100k direct exposure | Minimal disruption, alternative paths exist | Limited scope impact |
+| **Medium** | $100k - $1M exposure | Significant operational delays, workarounds available | Moderate reputational concern |
+| **High** | $1M - $10M exposure | Major protocol disruption, difficult recovery | Serious reputational damage |
+| **Critical** | \>$10M exposure | Protocol-wide failure, catastrophic impact | Severe reputational damage |
 
 ### Step 2: Operational Assessment
 
@@ -117,24 +122,24 @@ How quickly and under what conditions must this multisig respond?
 
 #### Operational Classification
 
-| Type               | Response Time | Decision Context                             | Verification Level               |
+| Type | Response Time | Decision Context | Verification Level |
 | ------------------ | ------------- | -------------------------------------------- | -------------------------------- |
-| **Routine**        | 24-48 hours   | Standard procedures, predictable operations  | Full verification protocols      |
-| **Time-Sensitive** | 2-12 hours    | Market conditions, protocol needs            | Streamlined but thorough         |
-| **Emergency**      | \<2 hours      | Crisis response, preventing immediate damage | Minimal delays, risk-appropriate |
+| **Routine** | 24-48 hours | Standard procedures, predictable operations | Full verification protocols |
+| **Time-Sensitive** | 2-12 hours | Market conditions, protocol needs | Streamlined but thorough |
+| **Emergency** | \<2 hours | Crisis response, preventing immediate damage | Minimal delays, risk-appropriate |
 
 ### Step 3: Classification Matrix
 
 Combine your impact and operational assessments. Below are some example configurations.
 
-| Use Case            | Impact   | Operational    | Standard Threshold |
+| Use Case | Impact | Operational | Standard Threshold |
 | ------------------- | -------- | -------------- | ------------------ |
-| Emergency Freeze    | Critical | Emergency      | 2/4                |
-| Protocol Parameters | High     | Routine        | 4/7 (higher for upgrades, consider 7/9+) |
-| Capital Allocation  | High     | Time-Sensitive | 3/5                |
-| Treasury - Large    | High     | Routine        | 4/7                |
-| Treasury - Small    | Medium   | Routine        | 3/5                |
-| Constrained DeFi    | Medium   | Time-Sensitive | 2/3                |
+| Emergency Freeze | Critical | Emergency | 2/4 |
+| Protocol Parameters | High | Routine | 4/7 (higher for upgrades, consider 7/9+) |
+| Capital Allocation | High | Time-Sensitive | 3/5 |
+| Treasury - Large | High | Routine | 4/7 |
+| Treasury - Small | Medium | Routine | 3/5 |
+| Constrained DeFi | Medium | Time-Sensitive | 2/3 |
 
 ### Step 4: Document Your Decision
 
@@ -142,9 +147,12 @@ Record your classification decision in the [Registration template](/multisig-for
 
 ## Important Notes
 
-⚠️ **When between classifications**: Always err toward higher security requirements. Classifications can be relaxed with proper justification, but security incidents cannot be undone.
+⚠️ **When between classifications**: Always err toward higher security requirements. Classifications can be relaxed with
+proper justification, but security incidents cannot be undone.
 
-This classification will guide your threshold selection ([Thresholds & Configuration]), signer requirements, and operational procedures throughout the rest of the documentation.
+This classification will guide your threshold selection ([Thresholds &
+Configuration](/wallet-security/secure-multisig-best-practices#thresholds--configuration)), signer requirements, and
+operational procedures throughout the rest of the documentation.
 
 ## Next Steps
 

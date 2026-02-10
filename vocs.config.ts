@@ -1,6 +1,13 @@
 import { defineConfig } from 'vocs'
 
+const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main'
+
 const config = {
+  vite: {
+    define: {
+      __IS_MAIN_BRANCH__: JSON.stringify(isMainBranch)
+    }
+  },
   banner: {
     content: '***This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.***',
     height: '30px',
@@ -9,12 +16,14 @@ const config = {
     dismissable: false
   },
   title: 'Security Frameworks by SEAL',
+  titleTemplate: '%s',
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
   logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
   ogImageUrl: {
-    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.png'
+    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png'
   },
+  checkDeadlinks: "warn" as const,
   sidebar: [
     {
       text: 'Introduction',
@@ -31,18 +40,17 @@ const config = {
       items: [
         {
           text: 'Community Management',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/community-management/overview' },
             { text: 'Discord', link: '/community-management/discord' },
             { text: 'Twitter', link: '/community-management/twitter' },
             { text: 'Telegram', link: '/community-management/telegram' },
-            { text: 'Google', link: '/community-management/google' },
           ]
         },
         {
           text: 'Awareness',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/awareness/overview' },
             { text: 'Core Awareness Principles', link: '/awareness/core-awareness-principles' },
@@ -54,7 +62,7 @@ const config = {
         },
         {
           text: 'Operational Security',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/opsec/overview' },
             {
@@ -66,36 +74,35 @@ const config = {
                 { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
-            { text: 'Threat Modeling Overview', link: '/opsec/threat-modeling-overview' },
-            { text: 'Risk Management Overview', link: '/opsec/risk-management-overview' },
+            { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
+            { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
+            { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
+            { text: 'Password Management', link: '/opsec/passwords/overview', dev: true },
+            { text: 'Google Workspace Security', link: '/opsec/google/overview', dev: true },
+            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
+            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
             {
               text: 'While Traveling',
-              collapsed: false,
+              collapsed: true,
               items: [
                 { text: 'Overview', link: '/opsec/travel/overview' },
                 { text: 'Guide', link: '/opsec/travel/guide' },
                 { text: 'TL;DR', link: '/opsec/travel/tldr', dev: true },
               ]
             },
-            { text: 'Governance & Program Management', link: '/opsec/governance-program-management', dev: true },
-            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
-            { text: 'Lifecycle', link: '/opsec/lifecycle/overview', dev: true },
-            { text: 'Monitoring & Detection', link: '/opsec/monitoring-detection', dev: true },
-            { text: 'Incident Response & Recovery', link: '/opsec/incident-response-recovery', dev: true },
-            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
-            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
             { text: 'Appendices', link: '/opsec/appendices/overview', dev: true }
           ]
         },
         {
           text: 'Wallet Security',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/wallet-security/overview' },
             { text: 'Custodial vs Non-Custodial', link: '/wallet-security/custodial-vs-non-custodial' },
             { text: 'Cold vs Hot Wallet', link: '/wallet-security/cold-vs-hot-wallet' },
-            { text: 'Wallets For Beginners & Small Balances', link: '/wallet-security/for-beginners-&-small-balances' },
-            { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-&-medium-funds' },
+            { text: 'Wallets For Beginners & Small Balances', link: '/wallet-security/for-beginners-and-small-balances' },
+            { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-and-medium-funds' },
             { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
             { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets' },
@@ -103,19 +110,21 @@ const config = {
               text: 'Signing & Verification',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/wallet-security/signing-verification' },
-                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/verifying-standard-transactions' },
-                { text: 'Multisig Signing Process', link: '/wallet-security/secure-multisig-signing-process' },
-                { text: 'Using EIP-7702', link: '/wallet-security/verifying-7702' },
+                { text: 'Overview', link: '/wallet-security/signing-and-verification/signing-verification' },
+                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/signing-and-verification/verifying-standard-transactions' },
+                { text: 'Multisig Signing Process', link: '/wallet-security/signing-and-verification/secure-multisig-signing-process' },
+                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-safe-verification', dev: true },
+                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-squads-verification', dev: true },
+                { text: 'Using EIP-7702', link: '/wallet-security/signing-and-verification/verifying-7702' },
               ]
             },
-            { text: 'Private Key & Seed Phrase Management', link: '/wallet-security/private-key-management' },
-            { text: 'Tools & Resources', link: '/wallet-security/tools-&-resources' },
+            { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
+            { text: 'Tools & Resources', link: '/wallet-security/tools-and-resources' },
           ]
         },
         {
           text: 'Multisig for Protocols',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/multisig-for-protocols/overview' },
 
@@ -134,14 +143,12 @@ const config = {
               text: 'For Signers',
               collapsed: false,
               items: [
-                { text: 'Hardware Wallet Setup', link: '/multisig-for-protocols/hardware-wallet-setup' },
-                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
-
-                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
-                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure' },
-                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
-                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting' },
-                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig', dev: true },
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures', dev: true },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure', dev: true },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec', dev: true },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting', dev: true },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding', dev: true },
               ]
             },
             { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist' },
@@ -149,7 +156,7 @@ const config = {
         },
         {
           text: 'External Security Reviews',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/external-security-reviews/overview' },
             {
@@ -168,7 +175,7 @@ const config = {
         },
         {
           text: 'Vulnerability Disclosure',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/vulnerability-disclosure/overview', dev: true },
@@ -178,7 +185,7 @@ const config = {
         },
         {
           text: 'Infrastructure',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/infrastructure/overview', dev: true },
             { text: 'Asset Inventory', link: '/infrastructure/asset-inventory', dev: true },
@@ -190,7 +197,7 @@ const config = {
               items: [
                 { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
                 { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
-                { text: 'DNSSEC, CAA, and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
+                { text: 'DNSSEC, CAA, SMTP DANE and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
                 { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
                 { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
               ]
@@ -203,7 +210,7 @@ const config = {
         },
         {
           text: 'Monitoring',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/monitoring/overview', dev: true },
@@ -213,7 +220,7 @@ const config = {
         },
         {
           text: 'Front-End/Web Application',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/front-end-web-app/overview', dev: true },
@@ -225,7 +232,7 @@ const config = {
         },
         {
           text: 'Incident Management',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/incident-management/overview' },
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
@@ -248,7 +255,7 @@ const config = {
         },
         {
           text: 'Threat Modeling',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/threat-modeling/overview', dev: true },
@@ -258,7 +265,7 @@ const config = {
         },
         {
           text: 'DPRK IT Workers',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/dprk-it-workers/overview' },
             { text: 'General Information', link: '/dprk-it-workers/general-information' },
@@ -270,7 +277,7 @@ const config = {
         },
         {
           text: 'Governance',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/governance/overview', dev: true },
@@ -281,7 +288,7 @@ const config = {
         },
         {
           text: 'DevSecOps',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/devsecops/overview', dev: true },
@@ -294,7 +301,7 @@ const config = {
         },
         {
           text: 'Privacy',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/privacy/overview', dev: true },
@@ -309,7 +316,7 @@ const config = {
         },
         {
           text: 'Supply Chain',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/supply-chain/overview', dev: true },
@@ -319,7 +326,7 @@ const config = {
         },
         {
           text: 'Security Automation',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/security-automation/overview', dev: true },
@@ -330,7 +337,7 @@ const config = {
         },
         {
           text: 'Identity and Access Management IAM',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/iam/overview' },
@@ -341,7 +348,7 @@ const config = {
         },
         {
           text: 'Secure Software Development',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/secure-software-development/overview', dev: true },
@@ -353,7 +360,7 @@ const config = {
         },
         {
           text: 'Security Testing',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/security-testing/overview' },
             { text: 'Unit Testing', link: '/security-testing/unit-testing' },
@@ -366,7 +373,7 @@ const config = {
         },
         {
           text: 'ENS',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/ens/overview' },
             { text: 'Data Integrity & Verification', link: '/ens/data-integrity-verification' },
@@ -378,7 +385,7 @@ const config = {
         },
         {
           text: 'Safe Harbor',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Overview', link: '/safe-harbor/overview' },
             { text: 'Safe Harbor Eligibility Checklist', link: '/safe-harbor/self-checklist' },
@@ -390,7 +397,7 @@ const config = {
         },
         {
           text: 'Encryption',
-          collapsed: false,
+          collapsed: true,
           dev: true,
           items: [
             { text: 'Overview', link: '/encryption/overview', dev: true },
@@ -406,6 +413,46 @@ const config = {
             { text: 'Volume Encryption', link: '/encryption/volume-encryption', dev: true },
           ]
         },
+        {
+          text: 'Treasury Operations',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/treasury-operations/overview', dev: true },
+            { text: 'Custodial Inventory & Controls', link: '/treasury-operations/classification', dev: true },
+            { text: 'Registration Documents', link: '/treasury-operations/registration-documents', dev: true },
+            { text: 'Enhanced Controls for High-Risk Accounts', link: '/treasury-operations/enhanced-controls', dev: true },
+            { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification', dev: true },
+          ]
+        },
+      ]
+    },
+    {
+      text: 'Guides',
+      collapsed: false,
+      items: [
+        { text: 'Overview', link: '/guides/overview' },
+        {
+          text: 'Account Management',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/guides/account_management/overview' },
+            { text: 'Discord Security', link: '/guides/account_management/discord' },
+            { text: 'GitHub Security', link: '/guides/account_management/github' },
+            { text: 'GoDaddy Security', link: '/guides/account_management/godaddy' },
+            { text: 'Linear Security', link: '/guides/account_management/linear' },
+            { text: 'Mercury Security', link: '/guides/account_management/mercury' },
+            { text: 'Notion Security', link: '/guides/account_management/notion' },
+            { text: 'Render Security', link: '/guides/account_management/render' },
+            { text: 'Sentry Security', link: '/guides/account_management/sentry' },
+            { text: 'Signal Security', link: '/guides/account_management/signal' },
+            { text: 'Slack Security', link: '/guides/account_management/slack' },
+            { text: 'Telegram Security', link: '/guides/account_management/telegram' },
+            { text: 'Trello Security', link: '/guides/account_management/trello' },
+            { text: 'Twitter/X Security', link: '/guides/account_management/twitter' },
+            { text: 'Vercel Security', link: '/guides/account_management/vercel' },
+          ]
+        },
       ]
     },
     {
@@ -414,9 +461,9 @@ const config = {
       items: [
         { text: 'Overview', link: '/certs/overview' },
         { text: 'Certified Partners', link: '/certs/certified-partners' },
-        { text: 'Certified Protocols', link: '/certs/certified-protocols', dev: true },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
+            { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
             { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
             { text: 'Incident Response', link: '/certs/sfc-incident-response' },
             { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
@@ -472,7 +519,7 @@ function filterDevItems(items: any[]): any[] {
     }))
 }
 
-if (process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main') {
+if (isMainBranch) {
   config.sidebar = filterDevItems(config.sidebar)
 }
 

@@ -23,6 +23,11 @@ export const CertSection = memo(function CertSection({
         [section.controls, controlData]
     );
 
+    const partialCount = useMemo(
+        () => section.controls.filter(control => controlData[control.id]?.state === "partial").length,
+        [section.controls, controlData]
+    );
+
     const naCount = useMemo(
         () => section.controls.filter(control => controlData[control.id]?.state === "na").length,
         [section.controls, controlData]
@@ -55,7 +60,7 @@ export const CertSection = memo(function CertSection({
                         <p className="text-sm opacity-80">{section.description}</p>
                     )}
                 </div>
-                <SectionProgress completed={completedCount} na={naCount} total={section.controls.length} />
+                <SectionProgress completed={completedCount} partial={partialCount} na={naCount} total={section.controls.length} />
                 <button
                     type="button"
                     className="w-6 h-6 rounded-full border border-solid bg-transparent cursor-pointer flex items-center justify-center text-sm font-medium cert-section-toggle"

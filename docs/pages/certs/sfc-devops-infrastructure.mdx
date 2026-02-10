@@ -1,0 +1,203 @@
+---
+title: "SFC: DevOps & Infrastructure | Security Alliance"
+description: "SFC DevOps & Infrastructure certification: development environment security, source code management, supply chain security, CI/CD pipeline controls, infrastructure access, and cloud security monitoring."
+tags:
+  - SEAL/Initiative
+  - Certifications
+  - SFC
+cert:
+- id: di-1
+  title: Governance & Development Environment
+  controls:
+  - id: di-1.1.1
+    description: Is there a clearly designated person or team accountable for
+      development and infrastructure security?
+    baselines:
+      - Accountability scope covers policy maintenance, security reviews, access
+        control oversight, pipeline governance, and incident escalation
+    title: DevOps Security Owner
+  - id: di-1.1.2
+    description: Do you maintain documented security policies governing development
+      and infrastructure operations?
+    baselines:
+      - Policy covers environment standards, access controls, deployment procedures,
+        code management, and supply chain security
+      - Accessible to all developers and infrastructure operators
+      - Reviewed at least annually and after significant changes (security incidents,
+        technology shifts, organizational restructuring)
+    title: DevOps Security Policy
+  - id: di-1.1.3
+    description: Do you isolate development environments from production systems?
+    baselines:
+      - Development activities performed in containerized or virtualized environments
+      - Each code repository has its own isolated environment to prevent
+        cross-contamination
+      - Production credentials not accessible from development environments
+      - Separate accounts or profiles for development vs. privileged operations
+        (e.g., wallet signing, cloud admin)
+      - Code execution sandboxed to prevent host system compromise
+    title: Development Environment Isolation
+  - id: di-1.1.4
+    description: Do you evaluate and approve development tools before organizational
+      use?
+    baselines:
+      - Evaluation criteria cover IDEs, extensions, plugins, AI-powered tools, and
+        third-party services
+      - Extensions and plugins obtained only from official repositories
+      - AI tools assessed for data privacy risks (does the tool send code to third
+        parties for training or analytics?)
+      - Approved tool list maintained; unapproved tools restricted
+      - Regular reviews of installed tools to identify unused or unrecognized items
+    title: Development Tools Approval
+- id: di-2
+  title: Source Code & Supply Chain Security
+  controls:
+  - id: di-2.1.1
+    description: Do you enforce security controls on your source code repositories?
+    baselines:
+      - Role-based access control with least-privilege permissions
+      - Branch protection rules enforced on main/production branches
+      - Signed commits required for all code changes
+      - Multi-party code review required for merges to protected branches
+      - MFA required for all repository members
+      - Repository access reviewed periodically
+    title: Repository Security
+  - id: di-2.1.2
+    description: Do you scan source code for accidentally committed secrets?
+    baselines:
+      - Automated scanning for committed secrets (API keys, private keys,
+        credentials) in all repositories
+      - Pre-commit hooks deployed to prevent secrets from being committed in the
+        first place
+      - Remediation procedures for discovered secrets (immediate rotation,
+        revocation)
+      - Scanning integrated into CI/CD pipeline
+    title: Secret Scanning
+  - id: di-2.1.3
+    description: Do you apply enhanced review for code contributions from external
+      collaborators?
+    baselines:
+      - Additional approvers required for all external code contributions
+      - Code contributions tracked; unexpected changes flagged (e.g., commit
+        rewrites, unprompted edits)
+      - External collaborators restricted to minimum necessary repository
+        permissions
+      - CI/CD pipelines do not automatically execute for external contributor PRs
+        without approval
+    title: External Contributor Review
+  - id: di-2.1.4
+    description: Do you verify and manage dependencies to prevent supply chain
+      attacks?
+    baselines:
+      - Packages obtained from official repositories and trusted sources only
+      - Package names verified against typosquatting patterns before installation
+      - Dependencies scanned for known vulnerabilities before deployment
+      - Dependency version pinning enforced to prevent automatic updates to
+        compromised versions
+      - Regular dependency audits for outdated or vulnerable components
+      - Changelog reviewed for dependency updates to verify expected functionality
+    title: Dependency and Supply Chain Security
+- id: di-3
+  title: CI/CD Pipeline Security
+  controls:
+  - id: di-3.1.1
+    description: Do you control who can modify and execute your deployment pipelines?
+    baselines:
+      - Pipeline configuration changes require multi-party approval
+      - Separate service accounts with minimal permissions used for pipeline
+        execution
+      - Manual deployment by humans restricted; deployments automated through
+        controlled pipelines
+      - Pipeline and build configurations version-controlled and reviewed
+      - Builds are deterministic with strict dependency sets
+    title: Pipeline Security Controls
+  - id: di-3.1.2
+    description: Do you securely manage secrets used in pipelines and applications?
+    baselines:
+      - Dedicated secrets management system used (not environment variables in
+        plain text)
+      - Secrets never stored in source code or unencrypted configuration files
+      - Production secrets not directly accessible by humans
+      - Pipeline secrets accessible only by service accounts
+      - Secret rotation schedule defined; rotation triggered immediately after
+        suspected compromise
+    title: Secrets Management
+  - id: di-3.1.3
+    description: Do you integrate security testing into your development and
+      deployment pipelines?
+    baselines:
+      - Static analysis (SAST) tools integrated into CI/CD pipeline
+      - Dependency vulnerability scanning automated in CI/CD
+      - Security scan results reviewed before deployment approval
+      - Testing and validation performed in staging environments before production
+        deployment
+    title: Security Testing Integration
+- id: di-4
+  title: Infrastructure & Cloud Security
+  controls:
+  - id: di-4.1.1
+    description: Do you manage infrastructure through code with version control and
+      review?
+    baselines:
+      - All infrastructure defined and managed through code (e.g., Terraform,
+        CloudFormation)
+      - Infrastructure changes deployed through automated pipelines, no manual
+        steps required
+      - Infrastructure changes require multi-party approval
+      - IaC security scanning performed before deployment
+    title: Infrastructure as Code
+  - id: di-4.1.2
+    description: Do you enforce least-privilege access controls for infrastructure?
+    baselines:
+      - Individual accounts with MFA required; no shared accounts
+      - Privileged access is time-limited and requires multi-party approval (JIT
+        access)
+      - Day-to-day operations use minimum necessary permissions (read-only where
+        possible)
+      - Break-glass accounts established for emergency access with individual
+        accountability
+      - Break-glass usage triggers immediate alerts to the entire team and requires
+        post-incident review
+      - All access activities logged and monitored
+    title: Infrastructure Access Controls
+  - id: di-4.1.3
+    description: Do you maintain backup and disaster recovery procedures with
+      periodic testing?
+    baselines:
+      - Critical systems have automated backup procedures
+      - Disaster recovery plan documented with recovery time and recovery point
+        objectives defined
+      - Backup and recovery procedures tested regularly
+      - Backups stored independently of primary infrastructure
+    title: Backup and Disaster Recovery
+  - id: di-4.1.4
+    description: Do you monitor cloud security configurations and respond to
+      provider security notifications?
+    baselines:
+      - Cloud security configurations continuously monitored for drift and
+        unauthorized changes
+      - Administrative actions trigger alerts
+      - Cloud provider security notifications subscribed to and promptly reviewed
+      - Comprehensive logging enabled (e.g., CloudTrail, Azure Monitor, Google
+        Cloud Logging)
+      - Multi-cloud strategies considered to reduce single-provider dependency
+    title: Cloud Security Monitoring
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertList } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# SFC - DevOps & Infrastructure
+
+The SEAL Framework Checklist (SFC) for DevOps & Infrastructure provides guidelines for securing development
+environments, source code management, CI/CD pipelines, and cloud infrastructure. It covers governance, supply chain
+security, deployment controls, and infrastructure access.
+
+For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
+
+<CertList sections={frontmatter.cert} name="sfc-devops-infrastructure" />
+
+</TagProvider>

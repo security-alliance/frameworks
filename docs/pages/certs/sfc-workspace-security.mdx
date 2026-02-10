@@ -1,5 +1,6 @@
 ---
-title: "Workspace Security"
+title: "SFC: Workspace Security | Security Alliance"
+description: "SFC Workspace Security certification: device management, account security, credential handling, network security, employee training, and insider threat assessment."
 tags:
   - SEAL/Initiative
   - Certifications
@@ -9,200 +10,308 @@ cert:
   title: Governance & Inventory
   controls:
   - id: ws-1.1.1
-    description: Do you maintain documented security policies governing workspace operations
-      (device standards, account management, access control)?
-    title: Documented Workspace Security Policies
+    description: Is there a clearly designated person or team accountable for workspace
+      security?
+    baselines:
+      - Accountability scope covers policy maintenance, device and account standards,
+        access control oversight, periodic reviews, and incident escalation
+    title: Workspace Security Owner
   - id: ws-1.1.2
-    description: Is there a clearly designated person or team accountable for workspace security
-      (policy maintenance, reviews)?
-    title: Accountability for Workspace Security
+    description: Do you maintain a workspace security policy that is accessible and
+      understood by all personnel?
+    baselines:
+      - Policy covers core expectations including device security, account hygiene,
+        credential management, acceptable use, and incident reporting
+      - Written in plain language so all personnel can follow it
+      - Policy reviewed at least annually and after significant changes (security
+        incidents, technology shifts, organizational restructuring)
+    title: Workspace Security Policy
   - id: ws-1.1.3
-    description: Do you operate a documented review and update process for security policies
-      with defined triggers (incidents, technology updates)?
-    title: Policy Review and Update Process
-  - id: ws-1.2.1
-    description: Do you maintain an inventory of organizational devices (laptops, phones, tablets)
-      that tracks ownership and critical security status (encryption, OS version)?
-    title: Device Ownership and Security Status
-  - id: ws-1.2.2
-    description: Do you maintain an inventory of organizational accounts (email, cloud services,
-      social media, DNS, development tools) with defined ownership?
-    title: Accounts Inventory and Ownership
-  - id: ws-1.2.3
-    description: Do you classify information and systems based on sensitivity and criticality
-      to determine appropriate security controls?
-    title: Information Classification by Sensitivity
+    description: Do you maintain an inventory of organizational devices and accounts
+      with defined ownership?
+    baselines:
+      - Scoped to devices and accounts with access to sensitive systems or data
+      - Device inventory tracks make/model, owner, OS version, encryption status,
+        and EDR/MDM enrollment
+      - Account inventory covers organizational accounts (eg. email, cloud, social media)
+        with defined ownership
+      - Updated as devices/accounts are provisioned or decommissioned
+    title: Asset Inventory
+  - id: ws-1.1.4
+    description: Do you classify systems and data by sensitivity to determine
+      appropriate security controls?
+    baselines:
+      - Classification levels defined (e.g., critical, high, standard)
+      - Classification determines which controls apply (access restrictions,
+        monitoring, encryption, backup requirements)
+      - Classification reviewed when systems, data sensitivity, or organizational
+        structure change
+    title: System and Data Classification
 - id: ws-2
-  title: Device Security & Management
+  title: Device Security
   controls:
   - id: ws-2.1.1
-    description: Do you maintain documented security requirements for company issued devices
-      (encryption, authentication, patching, software restrictions)?
-    title: Security Requirements for Company Devices
+    description: Do you define and enforce security standards for organizational
+      devices?
+    baselines:
+      - Full disk encryption enabled on all devices
+      - Automatic OS and application patching enabled or enforced
+      - Strong authentication required (password/biometric, auto-lock timeouts,
+        lock screens)
+      - Administrative privileges separated from daily-use accounts
+      - Devices procured through verified supply chains and verified for integrity
+        upon receipt
+      - Device compliance verified upon provisioning and monitored on an ongoing
+        basis
+      - BYOD policy defining what personal devices can access and the security
+        controls required (e.g., MDM enrollment, separate work profiles)
+    title: Device Security Standards
   - id: ws-2.1.2
-    description: Do you have procedures for provisioning devices according to security requirements
-      and verifying ongoing compliance?
-    title: Device Provisioning and Compliance
-  - id: ws-2.2.1
-    description: Do you enforce authentication requirements for device access (password complexity,
-      timeout settings, lock screens)?
-    title: Device Access Authentication Requirements
-  - id: ws-2.2.2
-    description: Do you maintain procedures for managing administrative privileges on devices
-      (separation from daily use accounts, approval processes)?
-    title: Administrative Privilege Management on Devices
-  - id: ws-2.3.1
-    description: Do you maintain policies distinguishing between corporate and personal device
-      usage with appropriate security controls?
-    title: Corporate vs Personal Device Usage Policies
-  - id: ws-2.3.2
-    description: Do you have procedures for remotely managing organizational devices in case
-      of loss or compromise (remote lock/wipe capabilities)?
-    title: Remote Device Management for Loss/Compromise
-  - id: ws-2.4.1
-    description: Do you maintain procedures for secure device decommissioning including data
-      sanitization?
-    title: Secure Device Decommissioning Procedures
-  - id: ws-2.4.2
-    description: Do you have documented procedures for responding to lost or stolen devices?
-    title: Lost or Stolen Device Procedures
-  - id: ws-2.5.1
-    description: Do you maintain endpoint detection and response (EDR) or mobile device management
-      (MDM) solutions on organizational devices with documented deployment and monitoring procedures?
-    title: EDR/MDM Deployment and Monitoring
-  - id: ws-2.5.1
-    description: Do you have procedures for responding to EDR/MDM alerts and enforcing compliance
-      with security policies through these platforms?
-    title: EDR/MDM Alert Response Procedures
+    description: Do you have procedures for device loss, theft, and secure
+      decommissioning?
+    baselines:
+      - Remote lock and wipe capability for all organizational devices
+      - Documented procedures for responding to lost or stolen devices (notification,
+        remote wipe, credential rotation, incident escalation)
+      - Secure decommissioning procedures including data sanitization and verified
+        destruction for storage media
+    title: Device Lifecycle Management
+  - id: ws-2.1.3
+    description: Do you deploy and monitor endpoint protection on organizational
+      devices?
+    baselines:
+      - EDR or MDM deployed on all organizational devices with documented coverage
+      - Alert triage and response procedures defined with severity-based escalation
+      - Compliance enforcement actions documented (e.g., quarantine non-compliant
+        devices, block access)
+      - Monitoring coverage includes detection of malware, unauthorized software,
+        and policy violations
+    title: Endpoint Protection
+  - id: ws-2.1.4
+    description: Do you maintain physical security requirements for workspaces and
+      travel?
+    baselines:
+      - Physical workspace requirements defined for both on-site and remote work
+        environments
+      - Screen privacy and shoulder-surfing awareness enforced
+      - Travel security procedures documented covering device handling, network
+        usage, and border crossings
+      - High-risk travel procedures defined (loaner devices, enhanced controls,
+        check-in schedules)
+      - USB and charging security addressed (data blockers, no public USB ports)
+      - Devices physically secured when not in active use (cable locks, safes,
+        carry-on luggage for travel)
+    title: Physical and Travel Security
 - id: ws-3
-  title: Account Management & Access Control
+  title: Account, Access & Credential Management
   controls:
   - id: ws-3.1.1
-    description: Do you have procedures for provisioning, modifying, and deprovisioning user
-      accounts with appropriate approvals?
-    title: User Account Provisioning Lifecycle
+    description: Do you have procedures for provisioning, modifying, and revoking
+      user accounts?
+    baselines:
+      - Account creation requires documented approval from the account owner's
+        manager or designated authority
+      - Accounts provisioned with minimum necessary permissions (least privilege)
+      - Modification of account permissions requires documented approval
+      - Account revocation procedures tied to offboarding and role changes
+      - Service accounts and shared credentials inventoried with defined ownership
+    title: Account Lifecycle Management
   - id: ws-3.1.2
-    description: Do you enforce multi-factor authentication for critical accounts with a documented
-      exceptions process?
-    title: MFA Enforcement with Exceptions
-  - id: ws-3.2.1
-    description: Do you maintain security configuration standards for enterprise platforms (Google
-      Workspace, Microsoft 365, collaboration tools)?
-    title: Security Configuration Standards Maintenance
-  - id: ws-3.2.2
-    description: Do you conduct periodic access reviews for corporate systems with documented
-      revocation procedures?
-    title: Periodic Access Reviews and Revocation
-  - id: ws-3.3.1
-    description: Do you maintain procedures for securing organizational social media and external
-      service accounts?
-    title: Organizational Social Media Security
-  - id: ws-3.3.2
-    description: Do you have procedures for verifying ownership and preventing unauthorized
-      use of organizational external accounts?
-    title: Ownership Verification for External Accounts
-  - id: ws-3.4.1
-    description: Do you maintain security procedures for domain registration and DNS management
-      (registrar lock, change controls)?
-    title: Domain Registration and DNS Management
-  - id: ws-3.4.2
-    description: Do you have procedures for validating and approving DNS changes with appropriate
-      documentation?
-    title: DNS Change Validation and Approval
+    description: Do you enforce multi-factor authentication across organizational
+      accounts?
+    baselines:
+      - MFA required for all organizational accounts by default
+      - Hardware security keys required for high-privilege and critical accounts
+        (admin, infrastructure, custody)
+      - Phishing-resistant MFA preferred (FIDO2/WebAuthn, hardware keys) over SMS
+        or TOTP where available
+      - Exceptions documented with justification, compensating controls, and expiry
+        date
+      - Backup MFA methods configured for account recovery
+    title: Multi-Factor Authentication
+  - id: ws-3.1.3
+    description: Do you maintain security standards for all organizational accounts,
+      including enterprise platforms and external services?
+    baselines:
+      - Security configuration standards defined and applied for enterprise platforms
+        (Google Workspace, Microsoft 365, collaboration tools)
+      - Social media and public-facing accounts secured with strong authentication
+        and defined ownership
+      - Ownership verified and documented for all organizational accounts
+      - Recovery methods restricted to organizational channels (no personal recovery
+        emails or phone numbers on organizational accounts)
+      - Account configurations reviewed periodically for drift or unauthorized
+        changes
+    title: Organizational Account Security
+  - id: ws-3.1.4
+    description: Do you enforce credential management standards, including secure
+      storage and individual accountability?
+    baselines:
+      - Password manager required for all personnel; no passwords stored in plain
+        text, documents, or browsers
+      - Unique, strong passwords for every account (minimum length/complexity
+        standards defined)
+      - Individual accounts required for all personnel — no sharing of personal
+        login credentials
+      - When credentials must be provisioned or shared (e.g., service accounts, API
+        keys, onboarding), transmission only through encrypted channels (password
+        manager sharing features, not email or chat)
+      - Credential rotation schedule defined based on risk; rotation triggered
+        immediately after suspected compromise
+      - Enhanced controls for high-privilege credentials (admin accounts, service
+        accounts, API keys) including stricter rotation, separate storage, and
+        logged access
+      - Service account and API key inventory maintained with defined ownership
+    title: Credential Management Standards
+  - id: ws-3.1.5
+    description: Do you conduct periodic access reviews and promptly adjust
+      permissions when roles change?
+    baselines:
+      - Scheduled access reviews at least quarterly for critical systems, annually
+        for others
+      - Access adjusted within defined timelines when employees change roles
+      - Reviews verify each user still requires their current level of access
+      - Unnecessary permissions revoked promptly with documented evidence
+      - Insider threat consideration included — for each role, assess what damage
+        could be done with current access
+    title: Access Reviews
 - id: ws-4
-  title: Password & Credential Management
+  title: Software & Application Security
   controls:
   - id: ws-4.1.1
-    description: Do you maintain documented password requirements with risk-based complexity
-      and rotation standards?
-    title: Password Policy Requirements and Rotation
+    description: Do you evaluate and approve software, extensions, and tools before
+      organizational use?
+    baselines:
+      - Evaluation criteria for all software before adoption (browsers, extensions,
+        IDEs, libraries, AI assistants, SaaS tools)
+      - Data privacy and leakage risks assessed (does the tool send data to third
+        parties for training or analytics?)
+      - Approved software list maintained; unapproved software restricted
+      - Browser extension approval process defined
+      - Dependency management includes version pinning, vulnerability scanning, and
+        update policies
+    title: Software Evaluation and Approval
   - id: ws-4.1.2
-    description: Do you have procedures for secure password storage and transmission (password
-      managers, encrypted channels)?
-    title: Secure Password Storage and Transmission
-  - id: ws-4.2.1
-    description: Do you maintain procedures for credential rotation based on risk, time intervals,
-      or security events?
-    title: Credential Rotation Based on Risk
-  - id: ws-4.2.2
-    description: Do you have enhanced controls for high-privilege credentials (admin accounts,
-      service accounts, API keys)?
-    title: Enhanced Controls for High-Privilege Credentials
+    description: Do you secure source code repositories against unauthorized access
+      and credential exposure?
+    baselines:
+      - Role-based access control with least-privilege permissions
+      - Branch protection rules enforced on critical branches (require reviews,
+        signed commits)
+      - Automated secret scanning enabled to detect credentials, API keys, and
+        private keys in code
+      - Pre-commit hooks or CI checks to prevent secrets from being committed
+      - Repository security audited periodically (access permissions, configuration,
+        open PRs)
+    title: Source Code and Repository Security
 - id: ws-5
-  title: Development Environment Security
+  title: Network & Communication
   controls:
   - id: ws-5.1.1
-    description: Do you maintain criteria for evaluating and approving development tools (IDEs,
-      extensions, libraries, AI assistants)?
-    title: Evaluation Criteria for Development Tools
+    description: Do you enforce secure network access for organizational systems?
+    baselines:
+      - VPN or zero-trust network access required for accessing internal resources
+        remotely
+      - Wi-Fi security standards defined (no auto-connect, avoid public Wi-Fi for
+        sensitive operations)
+      - Network segmentation applied where applicable (separate guest networks,
+        development environments)
+      - Cellular or personal hotspot preferred over public Wi-Fi for sensitive work
+    title: Network Security
   - id: ws-5.1.2
-    description: Do you maintain access control procedures for source code repositories with
-      role-based permissions?
-    title: Access Control for Source Code Repositories
-  - id: ws-5.1.3
-    description: Do you have procedures for preventing exposure of sensitive information in
-      code repositories?
-    title: Sensitive Data Exposure Prevention in Repositories
-  - id: ws-5.1.4
-    description: Do you have procedures for managing development dependencies and supply chain
-      risks?
-    title: Dev Dependencies and Supply Chain Management
+    description: Do you secure organizational communications and verify identity for
+      sensitive interactions?
+    baselines:
+      - End-to-end encrypted channels used for sensitive communications
+      - Identity verification procedures established for sensitive requests (e.g.,
+        access changes, financial approvals, credential sharing)
+      - Anti-impersonation protocols documented (e.g., secondary channel
+        verification, code words, video confirmation)
+      - Email security configured (SPF, DKIM, DMARC) to prevent spoofing
+      - Procedures for channel compromise including switching to backup channels
+    title: Secure Communications
 - id: ws-6
-  title: Network & Communication Security
+  title: People & Training
   controls:
   - id: ws-6.1.1
-    description: Do you maintain procedures for secure network access including remote access
-      methods (primarily for organizations with physical offices - if not select N/A)?
-    title: Secure Network Access Procedures
+    description: Do you verify employee identity and provide security onboarding
+      before granting system access?
+    baselines:
+      - Identity and authorization verified before any access is provisioned
+      - Background checks or identity verification appropriate to role sensitivity
+      - Security onboarding includes device provisioning, account creation, MFA
+        setup, and initial security training
+      - New personnel acknowledge security policies before access is granted
+      - Onboarding checklist documented and consistently applied
+    title: Security Onboarding
   - id: ws-6.1.2
-    description: Do you maintain procedures for securing organizational communication channels
-      (email, messaging, collaboration tools)?
-    title: Secure Organizational Communication Channels
+    description: Do you have comprehensive offboarding procedures for departing
+      personnel?
+    baselines:
+      - All account access revoked within 24 hours of departure
+      - Devices returned and verified for data sanitization
+      - Credentials and secrets rotated for any shared systems the departing person
+        accessed
+      - "Offboarding checklist documented covering: account deprovisioning, device
+        return, credential rotation, access to organizational repositories and
+        tools, recovery of company property"
+      - Involuntary departures trigger immediate access revocation before
+        notification where feasible
+    title: Security Offboarding
   - id: ws-6.1.3
-    description: Do you have procedures for verifying identity in sensitive communications to
-      prevent impersonation?
-    title: Identity Verification for Sensitive Communications
-  - id: ws-6.1.4
-    description: Do you maintain security procedures specific to employee travel (device handling,
-      network usage, data access)?
-    title: Employee Travel Security Procedures
+    description: Do you maintain a security awareness program with regular training
+      and testing?
+    baselines:
+      - "Training covers workspace security topics: phishing, social engineering,
+        device security, credential hygiene, and incident reporting"
+      - Phishing simulations conducted at least quarterly
+      - Follow-up training required for personnel who fail simulations
+      - Training content updated annually and after significant threats or procedure
+        changes
+      - "Covers crypto-specific risks: fake job offers, malicious browser
+        extensions, clipboard hijacking, social engineering via DMs"
+    title: Security Awareness and Training
 - id: ws-7
-  title: Monitoring & Incident Response
+  title: Monitoring & Risk Management
   controls:
   - id: ws-7.1.1
-    description: Do you maintain procedures for detecting and responding to workspace security
-      incidents (account takeovers, data leaks, device compromise)?
-    title: Workspace Security Incident Response
+    description: Do you detect and respond to workspace security incidents?
+    baselines:
+      - "Monitoring in place for common workspace threats: account takeovers,
+        unauthorized access, credential leaks, device compromise, data
+        exfiltration"
+      - "Response procedures documented for key scenarios: compromised account,
+        compromised device, data leak, insider threat event"
+      - Escalation paths defined with severity levels
+      - Credential leak monitoring (dark web, breach databases, paste sites, code
+        repositories)
+      - Incidents documented with timeline, root cause, actions taken, and lessons
+        learned
+    title: Workspace Security Monitoring and Incident Response
   - id: ws-7.1.2
-    description: Do you have documented response procedures for different types of workspace
-      security incidents?
-    title: Workspace Incident Response Procedures
-- id: ws-8
-  title: Employee Lifecycle & Training
-  controls:
-  - id: ws-8.1.1
-    description: Do you maintain security onboarding procedures including device provisioning,
-      account creation, and initial training?
-    title: 'Security Onboarding: Provisioning and Training'
-  - id: ws-8.1.2
-    description: Do you have procedures for verifying employee identity and authorization before
-      granting access?
-    title: Pre-Access Identity and Authorization Verification
-  - id: ws-8.1.3
-    description: Do you maintain a security awareness program covering workspace security topics
-      with regular updates?
-    title: Workspace Security Awareness Program Updates
-  - id: ws-8.1.4
-    description: Do you maintain comprehensive offboarding procedures including access revocation,
-      device return, and credential rotation?
-    title: 'Offboarding Procedures: Access Revocation and Return'
-  - id: ws-8.1.5
-    description: Do you maintain procedures for adjusting access rights when employees change
-      roles?
-    title: Adjusting Access Rights on Role Change
-  - id: ws-8.1.6
-    description: Do you conduct periodic reviews to identify and remove unnecessary access permissions?
-    title: Periodic Review of Access Permissions
+    description: Do you assess insider threat risks and enforce least-privilege
+      access for each role?
+    baselines:
+      - Damage scenarios documented for each role (what could this person do if
+        compromised or malicious?)
+      - Least-privilege access enforced across all systems
+      - Separation of duties applied for critical operations (e.g., no single
+        person can deploy to production, execute large transactions, and manage
+        access controls)
+      - Assessed during periodic access reviews
+    title: Insider Threat Assessment
+  - id: ws-7.1.3
+    description: Do you manage third-party access with time-limited, purpose-specific
+      permissions?
+    baselines:
+      - Third-party access requires documented approval with defined scope and
+        expiry date
+      - Access limited to minimum necessary systems and data
+      - Access revoked automatically upon contract expiry or project completion
+      - Audit trails maintained for all third-party access
+      - Third-party vendor security evaluated before granting access (security
+        certifications, incident history)
+    title: Third-Party Access Management
 
 ---
 
@@ -213,7 +322,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 
 # SFC - Workspace Security
 
-The SEAL Framework Checklist (SFC) for Workspace Security provides guidelines to help secure organizational workspaces covering device management, account security, communications, and training.
+The SEAL Framework Checklist (SFC) for Workspace Security provides guidelines to help secure organizational workspaces
+covering device management, account security, communications, and training.
 
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 

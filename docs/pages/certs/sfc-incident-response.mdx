@@ -1,191 +1,196 @@
 ---
-title: "Incident Response"
+title: "SFC: Incident Response | Security Alliance"
+description: "SFC Incident Response certification: team roles, 24/7 monitoring, paging systems, response playbooks, signer coordination, emergency communications, and regular drills."
 tags:
   - SEAL/Initiative
   - Certifications
   - SFC
 cert:
 - id: ir-1
-  title: Team Structure, Roles & Responsibilities
+  title: Governance & Team Structure
   controls:
   - id: ir-1.1.1
-    description: Do you maintain a documented incident response (IR) policy that defines scope,
-      objectives, and roles?
-    title: Documented Incident Response Policy
+    description: Do you have an incident response team with clearly defined roles
+      and responsibilities?
+    baselines:
+      - Incident commander (with designated backup) who coordinates response,
+        assigns tasks, and makes time-sensitive decisions
+      - Subject matter experts identified for key domains (smart contracts,
+        infrastructure, security) who can analyze attacks and prepare response
+        strategies
+      - Scribe role defined for real-time incident documentation
+      - Communications personnel designated for public information sharing and
+        record-keeping
+      - Legal support available with procedures for reviewing response actions,
+        whitehat engagement, and public communications
+      - Decision makers defined for high-stakes decisions (system shutdown, public
+        disclosure, fund recovery)
+      - Roles, authorities, and escalation measures reviewed at least annually and
+        after protocol changes, team restructuring, or major incidents
+    title: IR Team and Role Assignments
   - id: ir-1.1.2
-    description: Do you have a designated incident commander and incident response team with
-      clearly defined roles, responsibilities, and decision-making authority? Is the incident
-      commander role clearly established to coordinate response activities, make time-sensitive
-      decisions, and ensure clear accountability during incidents?
-    title: Incident Commander and IR Roles
-  - id: ir-1.2.1
-    description: Do you have designated subject matter experts (ex. Core Devs) who understand
-      different parts of protocol internals and can analyze ongoing attacks and prepare response
-      strategies for potential attack vectors?
-    title: Subject Matter Experts for Protocol Internals
-  - id: ir-1.2.2
-    description: Do you have designated signer roles with documented authority and procedures
-      for executing emergency transactions (pausing, freezing, parameter changes)?
-    title: Designated Signer Roles for Emergency Actions
-  - id: ir-1.2.3
-    description: Do you periodically review and update IR team roles, authorities, and escalation
-      measures to reflect protocol changes, new teams, or evolving governance structures?
-    title: Periodic Review of IR Roles
-  - id: ir-1.2.4
-    description: Do you have designated Communications personnel responsible for public information
-      sharing and incident response record-keeping?
-    title: Communications Personnel for Public Info
-  - id: ir-1.2.5
-    description: Do you maintain Legal support with documented procedures for analyzing legal
-      and regulatory implications of response actions, approving whitehat engagement agreements,
-      and reviewing public communications?
-    title: Legal Support for Incident Response
-  - id: ir-1.3.1
-    description: Do you have documented procedures for coordinating between technical teams
-      (Core Devs/Auditors) and operational teams (Security Council/Communications) during incidents?
-    title: Procedures for Cross-Team Incident Coordination
-  - id: ir-1.3.2
-    description: Do you maintain contact methods & communication channels for external companies
-      that run protocols you depend on, or that depend on your protocol?
-    title: External Protocol Stakeholder Contact Methods
+    description: Do you maintain current contacts and coordination procedures for
+      all parties needed during an incident?
+    baselines:
+      - Internal coordination procedures between technical (devs, auditors) and
+        operational teams (security council, communications)
+      - External protocol contacts for protocols you depend on and protocols that
+        depend on you
+      - External expertise contacts including forensics firms, security
+        consultants, SEAL 911, and auditors
+      - Legal counsel and communications/PR contacts
+      - Infrastructure vendor support contacts and escalation procedures
+      - Contact list reviewed at least quarterly and after team changes
+      - Escalation order documented for P1 incidents (e.g., SEAL 911 → decision
+        makers → security partners → legal)
+    title: Stakeholder Coordination and Contacts
 - id: ir-2
-  title: Monitoring & Detection
+  title: Monitoring, Detection & Alerting
   controls:
   - id: ir-2.1.1
-    description: Do you maintain documented monitoring coverage for critical systems, protocols,
-      and infrastructure components with 24/7 capabilities and procedures for after-hours alert
-      handling?
-    title: 24/7 Monitoring and After-Hours Procedures
-  - id: ir-2.2.1
-    description: Do you have automated alerting configured with embedded playbooks for security
-      events, detecting false alarms, and operational issues?
-    title: Automated Alerting with Playbooks
-  - id: ir-2.2.2
-    description: Do you conduct regular alert testing and drills to ensure monitoring systems
-      function correctly under various scenarios?
-    title: Regular Alert Testing and Drills
-  - id: ir-2.2.3
-    description: Do you have documented procedures for alert triage, classification, and escalation
-      to appropriate response teams?
-    title: Procedures for Alert Triage and Escalation
-  - id: ir-2.2.4
-    description: Do you maintain log retention policies with adequate preservation periods for
-      security and infrastructure logs (including cloud provider logs) to support incident investigation
-      and forensic analysis?
-    title: Log Retention Policies for Forensics
+    description: Do you maintain monitoring coverage for your critical systems,
+      protocols, and external attack surfaces?
+    baselines:
+      - Monitoring covers critical smart contracts, infrastructure, and on-chain
+        activity
+      - 24/7 monitoring capabilities with procedures for after-hours alert
+        handling
+      - Credential and secret exposure detection including dark web monitoring,
+        breach database scanning, and secret scanning in code repositories
+      - Organizational account monitoring including social media accounts and
+        websites monitored for unauthorized access or compromise
+      - Monitoring coverage documented — what's covered, what's not, and known
+        gaps
+    title: Monitoring Coverage
+  - id: ir-2.1.2
+    description: Do you have alerting and paging systems that reliably route
+      incidents to available responders?
+    baselines:
+      - Automated alerting configured for security events and operational issues
+      - Alerts include embedded triage guidance for distinguishing true incidents
+        from false positives
+      - Triage and classification procedures documented with escalation paths
+        based on severity
+      - Time-based escalation triggers if initial responder doesn't acknowledge
+        within defined window
+      - Management notification requirements for high-severity incidents
+      - Redundant paging systems with documented failover procedures
+      - On-call schedules maintained with adequate coverage for operational needs
+      - Backup procedures when on-call personnel are unreachable
+    title: Alerting, Paging, and Escalation
+  - id: ir-2.1.3
+    description: Do you maintain tamper-evident logs with adequate retention for
+      incident investigation?
+    baselines:
+      - Log retention periods defined for security, infrastructure, and cloud
+        provider logs
+      - Retention adequate for forensic analysis (consider regulatory requirements
+        and typical investigation timelines)
+      - Tamper-evident logging for security-relevant events including access logs,
+        alerting system logs, and infrastructure logs
+      - Alerts triggered if logs are altered, deleted, or if monitoring/logging is
+        disabled
+      - Log sources documented — what's captured and where it's stored
+    title: Logging Integrity and Retention
 - id: ir-3
-  title: Pager Systems & Escalation
+  title: Response & Emergency Operations
   controls:
   - id: ir-3.1.1
-    description: Do you operate redundant paging systems with documented procedures and regular
-      testing?
-    title: Redundant Paging Systems with Testing
+    description: Do you maintain response playbooks for common incident types?
+    baselines:
+      - Playbooks cover key scenarios including protocol exploits, infrastructure
+        failures, access control breaches, key compromise, supply chain
+        compromises, and frontend/DNS compromise
+      - Each playbook includes initial response actions covering containment,
+        evidence preservation, and stakeholder notification
+      - Role-specific responsibilities defined for each scenario (who does what —
+        technical, comms, legal)
+      - Escalation criteria documented for when to engage leadership, when to shut
+        down systems, when to make public disclosure, and when to engage external
+        assistance
+      - Key compromise playbook includes procedures for rotating keys and
+        replacing compromised signers, with threshold and access reviewed after
+        any signer replacement
+    title: Response Playbooks
   - id: ir-3.1.2
-    description: Do you maintain current on-call schedules with documented coverage requirements
-      and backup procedures?
-    title: Maintain On-Call Coverage Schedules
+    description: Can you reach enough signers to execute emergency on-chain
+      actions at any time, including outside business hours?
+    baselines:
+      - Procedures for coordinating multisig operations during incidents,
+        including cross-timezone signer availability
+      - Signers integrated into on-call/paging systems
+      - Escalation paths documented for when signers are unreachable
+      - Tested quarterly
+    title: Signer Reachability and Coordination
   - id: ir-3.1.3
-    description: Do you have documented escalation procedures with time-based triggers and management
-      notification requirements?
-    title: Documented Time-Based Escalation Procedures
-  - id: ir-3.2.1
-    description: Do you define and track response time targets for different incident severity
-      levels?
-    title: Define and Track Response Time Targets
+    description: Do you have backup signing infrastructure and pre-prepared
+      emergency transactions for critical protocol functions?
+    baselines:
+      - Pre-signed or pre-prepared emergency transactions for critical protocol
+        functions (pause, freeze, parameter changes) where feasible
+      - Backup signing infrastructure available including alternate signing UI,
+        backup RPC providers, and alternate block explorer
+      - Emergency execution procedures documented (what to pause/freeze/modify
+        and the process for doing so)
+    title: Emergency Transaction Readiness
 - id: ir-4
-  title: Response Procedures & Coordination
-  controls:
-  - id: ir-4.1.1
-    description: Do you maintain documented response playbooks for common incident types (protocol
-      exploits, infrastructure failures, access control breaches, data security incidents, and
-      supply chain compromises)?
-    title: Documented Incident Response Playbooks
-  - id: ir-4.1.2
-    description: Do you have step-by-step procedures for initial response actions including
-      containment, evidence preservation, and stakeholder notification?
-    title: Step-by-Step Initial Response Procedures
-  - id: ir-4.1.3
-    description: Do you maintain role-based playbooks that define specific responsibilities
-      for different team members (Core Devs, Auditors, Signers, Communications, Legal) during
-      incidents?
-    title: Role-Based Incident Playbooks by Role
-  - id: ir-4.1.4
-    description: Do you maintain procedures for coordinating multisig operations during incidents
-      including signer availability and cross-timezone challenges?
-    title: Procedures for Coordinating Multisig Operations
-  - id: ir-4.2.1
-    description: Do you have documented criteria for major response decisions (system shutdown,
-      public disclosure, external assistance) and escalation policies for when to engage leadership?
-    title: Documented Criteria for Major Response Decisions
-  - id: ir-4.2.2
-    description: Do you maintain contact information and procedures for engaging external expertise
-      (forensics, legal, specialized consultants)?
-    title: External Expertise Engagement Contacts
-  - id: ir-4.2.3
-    description: Do you maintain emergency cards or quick-reference materials containing key
-      personnel and response steps for each protocol component?
-    title: Emergency Cards with Key Response Steps
-- id: ir-5
-  title: Signer Operations & Emergency Transactions
-  controls:
-  - id: ir-5.1.1
-    description: Do you maintain multiple communication channels (primary and backup) with documented
-      procedures for reaching signers across time zones, including during emergencies?
-    title: Multiple Channels for Global Signer Reach
-  - id: ir-5.2.1
-    description: Do you maintain pre-signed emergency transactions for critical protocol functions
-      (pause, freeze, parameter changes)?
-    title: Pre-Signed Emergency Transactions for Protocol
-  - id: ir-5.2.2
-    description: Do you have documented procedures for rapidly executing emergency transactions
-      with minimal coordination time?
-    title: Procedures for Rapid Emergency Transactions
-  - id: ir-5.2.3
-    description: Do you maintain multiple signing methods and backup procedures for signers
-      transaction execution?
-    title: Multiple Signing Methods and Backups
-  - id: ir-5.2.4
-    description: Do you have a documented procedure for rotating keys and replacing compromised
-      signers?
-    title: Rotating Keys and Replacing Signers
-- id: ir-6
   title: Communication & Coordination
   controls:
-  - id: ir-6.1.1
-    description: Do you maintain dedicated communication channels for incident response with
-      documented access controls, member lists, and procedures for rapidly creating new incident-specific
-      channels when needed?
-    title: Dedicated Incident Communication Channels
-  - id: ir-6.1.2
-    description: Do you have documented procedures for incident status reporting including frequency,
-      format, and distribution lists?
-    title: Incident Status Reporting Procedures
-  - id: ir-6.1.3
-    description: Do you maintain secure communication procedures for sensitive incident information?
-    title: Secure Incident Information Communications
-  - id: ir-6.2.1
-    description: Do you maintain documented procedures for coordinating communications with
-      protocol users during and post-exploit?
-    title: Coordinating Communications with Protocol Users
-  - id: ir-6.2.2
-    description: Do you have pre-approved communication templates and escalation procedures
-      for different incident types and severity levels?
-    title: Approved Templates and Escalation Procedures
-  - id: ir-6.2.3
-    description: Do you maintain procedures for managing public information flow and preventing
-      misinformation during active incidents?
-    title: Public Information Flow and Misinformation Prevention
-- id: ir-7
-  title: Drills & Testing
+  - id: ir-4.1.1
+    description: Do you maintain secure, dedicated communication channels for
+      incident response?
+    baselines:
+      - Dedicated incident communication channels with documented access controls
+        and member lists
+      - Multiple communication channels (primary and backup) on different
+        platforms, with documented failover procedures
+      - Procedures for rapidly creating incident-specific channels (war room)
+        when needed
+      - Secure communication procedures for sensitive incident information
+        including need-to-know access and encrypted channels
+    title: Incident Communication Channels
+  - id: ir-4.1.2
+    description: Do you have procedures for providing regular status updates to
+      stakeholders during incidents?
+    baselines:
+      - Status update cadence defined by severity level
+      - Format and distribution lists for internal stakeholders
+    title: Internal Status Updates
+  - id: ir-4.1.3
+    description: Do you have procedures for public communication and information
+      management during incidents?
+    baselines:
+      - Pre-approved communication templates for different incident types and
+        severity levels
+      - Procedures for coordinating communications with protocol users during and
+        after incidents
+      - Procedures for managing public information flow and correcting
+        misinformation during active incidents
+      - Designated communications approval flow before public statements are
+        released
+    title: Public Communication and Information Management
+- id: ir-5
+  title: Testing & Continuous Improvement
   controls:
-  - id: ir-7.1.1
-    description: Do you conduct regular incident response drills that test pager systems, escalation
-      procedures, team coordination, monitoring systems, containment procedures, and recovery
-      processes? Do you evaluate drill performance, identify gaps, and track improvement actions
-      based on both exercise findings and real incident experience?
-    title: Regular Incident Response Drills and Evaluation
+  - id: ir-5.1.1
+    description: Do you conduct regular incident response drills and evaluate the
+      results?
+    baselines:
+      - Drills conducted at least annually
+      - Drills cover different incident types across exercises (protocol exploit,
+        infrastructure failure, key compromise, etc.)
+      - Tests the full pipeline from monitoring through alerting, paging, triage,
+        escalation, team coordination, containment, and recovery
+      - Production alerting pipeline validated end-to-end from event detection
+        through to responder notification and acknowledgment
+      - Drill documentation includes date, scenario, participants, response
+        times, gaps identified, and corrective actions
+      - Corrective actions tracked to completion with owners and deadlines
+      - Drill findings incorporated into playbook and procedure updates
+    title: IR Drills and Testing
 
 ---
+
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertList } from '../../../components'
 
@@ -194,7 +199,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 
 # SFC - Incident Response
 
-The SEAL Framework Checklist (SFC) for Incident Response provides structured guidelines to help remain prepared for security incidents affecting blockchain protocols. It covers team structure, monitoring, alerting, and response procedures.  
+The SEAL Framework Checklist (SFC) for Incident Response provides structured guidelines to help remain prepared for
+security incidents affecting blockchain protocols. It covers team structure, monitoring, alerting, and response
+procedures.
 
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 

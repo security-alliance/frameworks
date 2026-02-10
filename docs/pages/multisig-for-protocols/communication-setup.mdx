@@ -1,4 +1,6 @@
 ---
+title: "Multisig Communication Setup | SEAL"
+description: "Configure secure multisig communication channels: Signal with end-to-end encryption as primary, backup channels on Telegram or Discord, and paging systems for 24/7 emergency response."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -6,6 +8,7 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+
   - role: reviewed
     users: [pinalikefruit, engn33r]
 ---
@@ -23,6 +26,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ## Primary channel
 
 Set up dedicated communication channel for multisig operations:
+
 - **Platform**: Signal recommended (end-to-end encryption)
 - **Membership**: Multisig signers + authorized management only
 - **Configuration**: Notifications enabled, disappearing messages for sensitive discussions
@@ -31,6 +35,7 @@ Set up dedicated communication channel for multisig operations:
 ## Backup channels
 
 Configure backup communication on different platform:
+
 - **Platform**: Different from primary (if Signal primary, use Telegram/Discord/Slack)
 - **Same membership restrictions** as primary
 - **Document access procedures** for all signers
@@ -38,6 +43,7 @@ Configure backup communication on different platform:
 ## Paging system (Critical/Emergency Multisigs)
 
 For multisigs requiring rapid response:
+
 - Configure alerts that can reach signers 24/7
 - Include essential info in page: multisig name, urgency level, primary action needed
 - Link to emergency runbooks in notification message

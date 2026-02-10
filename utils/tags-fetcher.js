@@ -293,9 +293,53 @@ function fetchTags() {
   return tagsFetched;
 }
 
+function generateColor(tag) {
+  const crypto = require("crypto");
+  const hex = crypto.createHash("sha1").update(tag).digest("hex").slice(0, 6);
+  return `#${hex}`;
+}
+
+function updateConstantsWithMissingTags(allTags) {
+  const constantsPath = path.join(workspaceRoot, 'components', 'shared', 'tagColors.ts');
+  
+  if (!fs.existsSync(constantsPath)) return;
+  
+  const content = fs.readFileSync(constantsPath, 'utf-8');
+  
+  // Extract existing tags
+  const existingTags = new Set();
+  const matches = content.matchAll(/['"]([^'"]+)['"]\s*:\s*['"]#[0-9a-fA-F]{6}['"]/g);
+  for (const match of matches) {
+    existingTags.add(match[1]);
+  }
+  
+  // Find missing tags
+  const missingTags = allTags.filter(tag => !existingTags.has(tag));
+  
+  if (missingTags.length === 0) {
+    console.log('✓ All tags have colors');
+    return;
+  }
+  
+  console.log(`Adding colors for ${missingTags.length} new tags...`);
+  
+  // Generate new entries
+  const newEntries = missingTags.map(tag => `  '${tag}': '${generateColor(tag)}',`).join('\n');
+  
+  // Insert before closing brace of TAG_COLORS
+  const updated = content.replace(
+    /(export const TAG_COLORS: Record<string, string> = \{[\s\S]*?)(\n\})/,
+    `$1\n${newEntries}$2`
+  );
+  
+  fs.writeFileSync(constantsPath, updated, 'utf-8');
+  console.log(`✓ Added: ${missingTags.join(', ')}`);
+}
+
 // Run if called directly
 if (require.main === module) {
-  fetchTags();
+  const result = fetchTags();
+  updateConstantsWithMissingTags(result.allTags);
 }
 
 module.exports = { fetchTags, getAllTagsFromMDX, parseFrontmatter };

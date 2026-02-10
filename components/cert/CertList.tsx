@@ -78,6 +78,14 @@ export function CertList({ sections, name }: CertListProps) {
                 >
                     Import
                 </button>
+                <a
+                    href={`/printable/${name}.html`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cert-action-btn cert-print-btn"
+                >
+                    Print
+                </a>
                 <input
                     ref={fileInputRef}
                     type="file"

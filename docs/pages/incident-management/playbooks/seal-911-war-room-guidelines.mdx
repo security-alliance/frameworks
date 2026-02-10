@@ -1,5 +1,6 @@
 ---
-title: "Seal 911 War Room Guidelines"
+title: "SEAL 911 War Room Guidelines | SEAL"
+description: "SEAL 911 War Room guidelines for smart contract hack response. Create incident channels, assign key roles, gather attack transactions, pause contracts, and coordinate recovery with the Telegram bot."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -102,37 +103,37 @@ Record events to construct an overall timeline of the incident. Events worth rec
 
 Record times in UTC. Use a UTC Time Converter.
 
-| Date-Time (UTC)   | Event Description                   | Notes                            |
-| ----------------- | ----------------------------------- | -------------------------------- |
-| 2024-08-23 12:45  | First notice of the unauthorized transfer | Alert received via monitoring system |
-| 2024-08-23 12:50  | War room created                    | Initial members invited          |
-| 2024-08-23 13:05  | Notified SEAL 911 Bot               | Incident report submitted        |
-| 2024-08-23 13:15  | Attack transaction identified       | Transaction hash: 0x123456789abc |
-| 2024-08-23 13:20  | Contracts paused                    | Prevented further fund transfers |
-| 2024-08-23 13:30  | External communication initiated    | First update sent via Twitter    |
+| Date-Time (UTC) | Event Description | Notes |
+| --- | --- | --- |
+| 2024-08-23 12:45 | First notice of the unauthorized transfer | Alert received via monitoring system |
+| 2024-08-23 12:50 | War room created | Initial members invited |
+| 2024-08-23 13:05 | Notified SEAL 911 Bot | Incident report submitted |
+| 2024-08-23 13:15 | Attack transaction identified | Transaction hash: 0x123456789abc |
+| 2024-08-23 13:20 | Contracts paused | Prevented further fund transfers |
+| 2024-08-23 13:30 | External communication initiated | First update sent via Twitter |
 
 ### Transactions Involved
 
 Record all transactions related to the incident.
 
-| Transaction Link                                                      | Notes                                |
-| --------------------------------------------------------------------- | ------------------------------------ |
-| [0x123456789abcdef...](https://etherscan.io/tx/0x123456789abcdef)     | Initial exploit transaction          |
-| [0xabcdef123456789...](https://etherscan.io/tx/0xabcdef123456789)     | Attacker moving funds to mixer       |
-| [0xfedcba987654321...](https://etherscan.io/tx/0xfedcba987654321)     | Defensive move by the team           |
+| Transaction Link | Notes |
+| --- | --- |
+| [0x123456789abcdef...](https://etherscan.io/tx/0x123456789abcdef) | Initial exploit transaction |
+| [0xabcdef123456789...](https://etherscan.io/tx/0xabcdef123456789) | Attacker moving funds to mixer |
+| [0xfedcba987654321...](https://etherscan.io/tx/0xfedcba987654321) | Defensive move by the team |
 
 ### Affected Addresses
 
 Record affected addresses related to the incident (protocol contracts, bridges, users, etc.).
 
-| Address Link                                                    | Status      | Notes                               |
-| --------------------------------------------------------------- | ----------- | ----------------------------------- |
-| [0x1111222233334444...](https://etherscan.io/address/0x11112222) | At Risk     | User wallet, interacted with exploit |
-| [0x5555666677778888...](https://etherscan.io/address/0x55556666) | Impacted    | Protocol treasury address            |
-| [0x99990000aaaabbbb...](https://etherscan.io/address/0x99990000) | Paused      | Lending protocol contract            |
-| [0xaaaabbbbccccdddd...](https://etherscan.io/address/0xaaaabbbb) | Saved       | Bridge contract, funds secured       |
-| [0xddddeeeeffff0000...](https://etherscan.io/address/0xddddeeee) | Needs Review| User wallet, unusual activity noted  |
-| [0x2222333344445555...](https://etherscan.io/address/0x22223333) | Uncertain   | User wallet, pending analysis        |
+| Address Link | Status | Notes |
+| --- | --- | --- |
+| [0x1111222233334444...](https://etherscan.io/address/0x11112222) | At Risk | User wallet, interacted with exploit |
+| [0x5555666677778888...](https://etherscan.io/address/0x55556666) | Impacted | Protocol treasury address |
+| [0x99990000aaaabbbb...](https://etherscan.io/address/0x99990000) | Paused | Lending protocol contract |
+| [0xaaaabbbbccccdddd...](https://etherscan.io/address/0xaaaabbbb) | Saved | Bridge contract, funds secured |
+| [0xddddeeeeffff0000...](https://etherscan.io/address/0xddddeeee) | Needs Review | User wallet, unusual activity noted |
+| [0x2222333344445555...](https://etherscan.io/address/0x22223333) | Uncertain | User wallet, pending analysis |
 
 ### Funds Movement
 
@@ -146,22 +147,22 @@ Record funds movement to gather the impact of the incident and organize recovery
 
 Use Phalcon Tx Explorer to aid in recording funds movement.
 
-| Origin                                                      | Transaction Link                                             | Amount / Asset | Destination                                        | Recovery Status | Notes                               |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------------- | ------------------------------------------------- | --------------- | ----------------------------------- |
-| [0x5555666677778888...](https://etherscan.io/address/0x5555) | [0xabcdef123456789...](https://etherscan.io/tx/0xabcdef)     | 1000 ETH       | [Mixer address](https://etherscan.io/address/0x12)| Needs Review    | Funds moved to Tornado Cash        |
-| [0x99990000aaaabbbb...](https://etherscan.io/address/0x9999) | [0x9876543210fedcba...](https://etherscan.io/tx/0x987654)    | 500,000 DAI    | [CEX address](https://etherscan.io/address/0x34)  | In Progress     | Funds transferred to centralized exchange |
-| [0xaaaabbbbccccdddd...](https://etherscan.io/address/0xaaaa) | [0x123456789abcdef...](https://etherscan.io/tx/0x123456)     | 200 BTC        | [Contract address](https://etherscan.io/address/0x56) | Recovered       | Funds recovered via multisig       |
-| [0xddddeeeeffff0000...](https://etherscan.io/address/0xdddd) | [0xfedcba987654321...](https://etherscan.io/tx/0xfedcba)     | 50,000 USDC    | [Bridge address](https://etherscan.io/address/0x78)| Uncertain       | Funds possibly moved cross-chain   |
+| Origin | Transaction Link | Amount / Asset | Destination | Recovery Status | Notes |
+| --- | --- | --- | --- | --- | --- |
+| [0x5555666677778888...](https://etherscan.io/address/0x5555) | [0xabcdef123456789...](https://etherscan.io/tx/0xabcdef) | 1000 ETH | [Mixer address](https://etherscan.io/address/0x12) | Needs Review | Funds moved to Tornado Cash |
+| [0x99990000aaaabbbb...](https://etherscan.io/address/0x9999) | [0x9876543210fedcba...](https://etherscan.io/tx/0x987654) | 500,000 DAI | [CEX address](https://etherscan.io/address/0x34) | In Progress | Funds transferred to centralized exchange |
+| [0xaaaabbbbccccdddd...](https://etherscan.io/address/0xaaaa) | [0x123456789abcdef...](https://etherscan.io/tx/0x123456) | 200 BTC | [Contract address](https://etherscan.io/address/0x56) | Recovered | Funds recovered via multisig |
+| [0xddddeeeeffff0000...](https://etherscan.io/address/0xdddd) | [0xfedcba987654321...](https://etherscan.io/tx/0xfedcba) | 50,000 USDC | [Bridge address](https://etherscan.io/address/0x78) | Uncertain | Funds possibly moved cross-chain |
 
 ### Attacker Information
 
 Gather attacker information to aid legal efforts and fund recovery.
 
-| Address Link                                                    | Funded By | Notes                                 |
-| ---------------------------------------------------------------- | --------- | ------------------------------------- |
+| Address Link | Funded By | Notes |
+| --- | --- | --- |
 | [0xabcdefabcdefabcd...](https://etherscan.io/address/0xabcdefab) | Tornado Cash | Initial funding from Tornado Cash mixer |
-| [0x123456789abcdef...](https://etherscan.io/address/0x12345678)  | CEX       | Received funds from centralized exchange |
-| [0xfedcba987654321...](https://etherscan.io/address/0xfedcba98)  | Unknown   | No prior activity, potentially new wallet |
+| [0x123456789abcdef...](https://etherscan.io/address/0x12345678) | CEX | Received funds from centralized exchange |
+| [0xfedcba987654321...](https://etherscan.io/address/0xfedcba98) | Unknown | No prior activity, potentially new wallet |
 
 ## Post Incident Actions
 
@@ -198,19 +199,19 @@ is being shared; be wary.
 
 ### Suggested Tools and Platforms
 
-| Name                  | Type            | Notes |
-| --------------------- | --------------- | ----- |
-| Discord               | Platform        | A familiar platform for web3 collaboration. Spin up a server quickly using our [recommended template](https://discord.new/CkADqy5aWsAH). Tips: New users must be granted the `approved` role before they can view chats. Upon creation, grant yourself the `approved` role and share an invite link with trusted members. |
-| Telegram              | Platform        | A familiar platform for web3 collaboration. Tips: Upon New Group creation, enable chat history as visible to new members. To do this: Info -> Edit -> Chat History For New Members -> Visible |
-| Google Hangouts       | Platform        | |
-| Phalcon Tx Explorer   | Tx Analysis     | |
-| Openchain Trace Explorer | Tx Analysis  | |
-| Tenderly Tx Explorer  | Tx Analysis, Debugging | Some features require login. |
-| Tenderly Alerts       | Monitoring      | Monitor addresses, on-chain actions, etc. Requires login. |
-| MetaSleuth            | Monitoring      | Monitor fund movement. 50 address limit. Requires login (premium feature). |
-| Github / Gist         | Code Sharing    | Create a private repo or secret gists and share the link with War Room participants only. |
-| CodeShare             | Code Sharing    | Sessions expire after 24 hours. |
-| HackMD                | Code Sharing    | Private notes become published after ~48 hours. Be very careful with sensitive information! |
+| Name | Type | Notes |
+| --- | --- | --- |
+| Discord | Platform | A familiar platform for web3 collaboration. Spin up a server quickly using our [recommended template](https://discord.new/CkADqy5aWsAH). Tips: New users must be granted the `approved` role before they can view chats. Upon creation, grant yourself the `approved` role and share an invite link with trusted members. |
+| Telegram | Platform | A familiar platform for web3 collaboration. Tips: Upon New Group creation, enable chat history as visible to new members. To do this: Info -> Edit -> Chat History For New Members -> Visible |
+| Google Hangouts | Platform | |
+| Phalcon Tx Explorer | Tx Analysis | |
+| Openchain Trace Explorer | Tx Analysis | |
+| Tenderly Tx Explorer | Tx Analysis, Debugging | Some features require login. |
+| Tenderly Alerts | Monitoring | Monitor addresses, on-chain actions, etc. Requires login. |
+| MetaSleuth | Monitoring | Monitor fund movement. 50 address limit. Requires login (premium feature). |
+| Github / Gist | Code Sharing | Create a private repo or secret gists and share the link with War Room participants only. |
+| CodeShare | Code Sharing | Sessions expire after 24 hours. |
+| HackMD | Code Sharing | Private notes become published after ~48 hours. Be very careful with sensitive information! |
 
 ### SEAL Message Template
 
