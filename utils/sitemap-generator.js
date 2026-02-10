@@ -20,7 +20,7 @@ function findDistDir() {
     path.join(workspaceRoot, 'docs', 'dist'),
     path.join(workspaceRoot, 'dist'),
   ];
-  return candidates.find((dir) => fs.existsSync(path.join(dir, 'sitemap.xml')));
+  return candidates.find((dir) => fs.existsSync(dir));
 }
 
 function extractSidebarLinks() {
