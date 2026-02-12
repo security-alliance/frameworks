@@ -1,7 +1,7 @@
 name: Sidebar Config Reminder
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize]
     branches:
       - develop
@@ -24,6 +24,7 @@ jobs:
               return str
                 .replace(/[`\[\]()\\<>|_*~#]/g, '\\$&')
                 .replace(/[\n\r]/g, ' ')
+                .replace(/[\u200b-\u200f\u202a-\u202e\u2060\ufeff]/g, '')
                 .slice(0, 255);
             };
 
@@ -75,10 +76,16 @@ jobs:
             // Extract previously seen files from bot past comments
             const previouslySeenFiles = new Set();
             for (const comment of previousComments) {
-              const matches = comment.body.matchAll(/- `([^`]+)`/g);
-              for (const match of matches) {
-                const filename = match[1].split('`')[0].trim();
-                previouslySeenFiles.add(filename);
+              const dataMatch = comment.body.match(/<!-- VOCS_DATA:([\w+/=]+) -->/);
+              if (dataMatch) {
+                try {
+                  const filenames = JSON.parse(Buffer.from(dataMatch[1], 'base64').toString('utf8'));
+                  if (Array.isArray(filenames)) {
+                    filenames.forEach(f => { if (typeof f === 'string') previouslySeenFiles.add(f); });
+                  }
+                } catch (e) {
+                  // Ignore corrupt data blocks
+                }
               }
             }
 
@@ -122,8 +129,12 @@ jobs:
               }
             }
 
+            const rawFilenames = currentDocFiles.map(f => f.filename);
+            const dataBlock = `<!-- VOCS_DATA:${Buffer.from(JSON.stringify(rawFilenames)).toString('base64')} -->`;
+
             const body = `### Sidebar Configuration Reminder
             ${MARKER}
+            ${dataBlock}
 
             ${eventAction === 'opened' ? 'This PR includes added, renamed, or removed documentation files:' : 'Documentation files update:'}
 
@@ -132,7 +143,7 @@ jobs:
             Please ensure that:
             - [ ] The sidebar in \`vocs.config.ts\` has been updated to include these files
             - [ ] New content has the \`dev: true\` parameter so it's marked as under development
-            - [ ] Links in the sidebar match the file paths
+            - [ ] Sidebar links match the file paths - use the preview deployment to verify
 
             See [Contributing Guide – Sidebar & Navigation](https://frameworks.securityalliance.org/contribute/contributing/#3-sidebar--navigation) for more details.
 
