@@ -20,7 +20,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ## Summary
 
-> 🔑 **Key Takeaway for GitHub:** Secure your GitHub account with non-SMS two-factor authentication, enable push protection, and regularly review connected apps and sessions. For organizations, enforce signed commits, branch protection rules, and restrict member privileges to minimize supply chain attack risks.
+> 🔑 **Key Takeaway for GitHub:** Secure your GitHub account with non-SMS two-factor authentication, enable push
+> protection, and regularly review connected apps and sessions. For organizations, enforce signed commits,
+> branch protection rules, and restrict member privileges to minimize supply chain attack risks.
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
 
@@ -28,22 +30,24 @@ This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3
 
 ## For Individuals
 
-These settings apply to your personal GitHub account. All team members and admins should configure these on their own accounts.
+These settings apply to your personal GitHub account. All team members and admins should configure these on their own
+accounts.
 
 ### Individual Account Settings
 
 - Account Settings:
-    - [ ]  Public profile > Contributions & activity > Make profile private and hide activity > **On**
-    - [ ]  Password and authentication > Two-factor authentication > Enable and configure any method other than **SMS/Text message**
-    - [ ]  Sessions > Review and revoke any unrecognized or unnecessary
-    - [ ]  SSH and GPG keys > Review and remove any unnecessary
-    - [ ]  Organizations > Review and leave any unnecessary
-    - [ ]  Code security > User > Push protection for yourself > **Enabled**
-    - [ ]  Applications > Review and remove any unnecessary
-    - [ ]  Developer settings >
-        - [ ]  GitHub Apps > Review and remove any unnecessary
-        - [ ]  OAuth Apps > Review and remove any unnecessary
-        - [ ]  Personal access tokens > Review and remove any unnecessary
+  - [ ]  Public profile > Contributions & activity > Make profile private and hide activity > **On**
+  - [ ]  Password and authentication > Two-factor authentication > Enable and configure any method other than
+  **SMS/Text message**
+  - [ ]  Sessions > Review and revoke any unrecognized or unnecessary
+  - [ ]  SSH and GPG keys > Review and remove any unnecessary
+  - [ ]  Organizations > Review and leave any unnecessary
+  - [ ]  Code security > User > Push protection for yourself > **Enabled**
+  - [ ]  Applications > Review and remove any unnecessary
+  - [ ]  Developer settings >
+    - [ ]  GitHub Apps > Review and remove any unnecessary
+    - [ ]  OAuth Apps > Review and remove any unnecessary
+    - [ ]  Personal access tokens > Review and remove any unnecessary
 
 ---
 
@@ -52,6 +56,7 @@ These settings apply to your personal GitHub account. All team members and admin
 These guidelines apply to team members who contribute to repositories but don't have administrative access.
 
 Team members should:
+
 - Ensure their individual account settings are configured according to the checklist above
 - Enable GPG signing for commits to meet signed commit requirements
 - Be aware of branch protection rules that may require pull request approvals
@@ -70,135 +75,139 @@ These settings and practices apply to GitHub organization administrators with el
 
 - [ ]  General > Danger Zone > Repository visibility > **Private**
 - [ ]  Collaborators and teams > Review access and remove any unnecessary
-    - [ ]  Ensure there are no more than 3 admins
+  - [ ]  Ensure there are no more than 3 admins
 
 #### Branch Protection
 
-- [ ]  Branches > Branch protection rules > For each branch that triggers automated deployments, set the following protections:
-    - Protect matching branches > Require a pull request before merging
-        - Require approvals > **2+** recommended
-    - Rules applied to everyone including administrators > Allow force pushes > **Off**
+- [ ]  Branches > Branch protection rules > For each branch that triggers automated deployments, set the following
+protections:
+  - Protect matching branches > Require a pull request before merging
+    - Require approvals > **2+** recommended
+  - Rules applied to everyone including administrators > Allow force pushes > **Off**
 
 #### Repository Rules
 
 - Rules > Rulesets > New ruleset > New branch ruleset:
-    - [ ]  **Name**: EnforceSignedCommits
-        - **Targets**: All branches
-        - **Rules**:
-            - Require signed commits > **On**
-    - [ ]  **Name**: BlockForcePushes
-        - **Targets**: All branches
-        - **Rules**:
-            - Block force pushes > **On**
+  - [ ]  **Name**: EnforceSignedCommits
+    - **Targets**: All branches
+    - **Rules**:
+      - Require signed commits > **On**
+  - [ ]  **Name**: BlockForcePushes
+    - **Targets**: All branches
+    - **Rules**:
+      - Block force pushes > **On**
 
 #### Actions Security
 
 - Actions >
-    - [ ]  Actions permissions > Set minimum permissions needed
-        - **Disable actions** - if not needed
-        - **Allow organization actions and reusable workflows** - if only internal actions are used
-        - **Allow organization, and select non-organization, actions and reusable workflows** - if external actions are used
-    - [ ]  Fork pull request workflows > Run workflows from fork pull requests > **Off**
-    - [ ]  Workflow permissions > **Read repository contents and packages permissions**
-        - [ ]  Allow Github Actions to create and approve pull requests > **Off**
-    - [ ]  Access > **Not accessible**
+  - [ ]  Actions permissions > Set minimum permissions needed
+    - **Disable actions** - if not needed
+    - **Allow organization actions and reusable workflows** - if only internal actions are used
+    - **Allow organization, and select non-organization, actions and reusable workflows** - if external
+    actions are used
+  - [ ]  Fork pull request workflows > Run workflows from fork pull requests > **Off**
+  - [ ]  Workflow permissions > **Read repository contents and packages permissions**
+    - [ ]  Allow Github Actions to create and approve pull requests > **Off**
+  - [ ]  Access > **Not accessible**
 
 #### Security Features
 
 - [ ]  Webhooks > Review webhooks and delete any unnecessary or overly permissive
 - [ ]  Pages > Branch > **None** (to disable)
 - Code security >
-    - [ ]  Dependency graph > **Enabled**
-    - [ ]  Dependabot alerts > **Enabled**
-    - [ ]  Dependabot security updates > **Disabled**
-    - [ ]  Grouped security updates > **Disabled**
-    - [ ]  Dependabot version updates > **Disabled**
-    - [ ]  Access to alerts > No additional users (only admins)
+  - [ ]  Dependency graph > **Enabled**
+  - [ ]  Dependabot alerts > **Enabled**
+  - [ ]  Dependabot security updates > **Disabled**
+  - [ ]  Grouped security updates > **Disabled**
+  - [ ]  Dependabot version updates > **Disabled**
+  - [ ]  Access to alerts > No additional users (only admins)
 
 #### Access Control
 
 - [ ]  Deploy keys > Remove all [[1]](#1-deploy-keys-warning)
 - [ ]  Secrets and variables > Review secrets and variables and remove any unnecessary
 - [ ]  GitHub Apps > Installed GitHub Apps > Review configurations and uninstall any unnecessary
-    - [ ]  Review permissions are appropriate and that repository access is scoped only to relevant repositories
+  - [ ]  Review permissions are appropriate and that repository access is scoped only to relevant repositories
 
 ### Organization Settings
 
 #### Member Privileges
 
 - Member privileges >
-    - [ ]  Base permissions > Any other than **Admin**
-    - [ ]  Repository creation > Public > **Off**
-    - [ ]  Repository forking > Allow forking of private repositories > **Off**
-    - [ ]  Projects base permissions > Any other than **Admin**
-    - [ ]  Integration access requests > Allow integration requests from outside collaborators > **Off**
-    - Admin repository permissions >
-        - [ ]  Allow members to change repository visibilities for this organization > **Off**
-        - [ ]  Allow members to delete or transfer repositories for this organization > **Off**
-        - [ ]  Allow repository administrators to delete issues for this organization > **Off**
-    - [ ]  Member team permissions > Allow members to create teams > **Off**
+  - [ ]  Base permissions > Any other than **Admin**
+  - [ ]  Repository creation > Public > **Off**
+  - [ ]  Repository forking > Allow forking of private repositories > **Off**
+  - [ ]  Projects base permissions > Any other than **Admin**
+  - [ ]  Integration access requests > Allow integration requests from outside collaborators > **Off**
+  - Admin repository permissions >
+    - [ ]  Allow members to change repository visibilities for this organization > **Off**
+    - [ ]  Allow members to delete or transfer repositories for this organization > **Off**
+    - [ ]  Allow repository administrators to delete issues for this organization > **Off**
+  - [ ]  Member team permissions > Allow members to create teams > **Off**
 
 #### Organization Rules
 
 - Repository > Rulesets > New ruleset > New branch ruleset: [[2]](#2-enterprise-features)
-    - [ ]  **Name**: EnforceSignedCommits
-        - **Targets > Target repositories**: All branches
-        - **Rules > Branch rules**:
-            - Require signed commits > **On**
-    - [ ]  **Name**: BlockForcePushes
-        - **Targets > Target repositories**: All branches
-        - **Rules > Branch rules**:
-            - Block force pushes > **On**
+  - [ ]  **Name**: EnforceSignedCommits
+    - **Targets > Target repositories**: All branches
+    - **Rules > Branch rules**:
+      - Require signed commits > **On**
+  - [ ]  **Name**: BlockForcePushes
+    - **Targets > Target repositories**: All branches
+    - **Rules > Branch rules**:
+      - Block force pushes > **On**
 
 #### Project and Actions Settings
 
 - [ ]  Planning > Projects > Allow members to change project visibilities for this organization > **Off**
 - Actions > General >
-    - Policies > **All repositories**
-        - [ ]  **Allow organization actions and reusable workflows** or **Allow organization, and select non-organization, actions and reusable workflows**
-    - [ ]  Approval for running fork pull request workflows from contributors > **Require approval for all external contributors**
-    - [ ]  Fork pull request workflows in private repositories > Run workflows from fork pull requests > **On**
-    - [ ]  Workflow permissions > **Read repository contents and packages permissions**
-        - [ ]  Allow GitHub Actions to create and approve pull requests > **Off**
+  - Policies > **All repositories**
+    - [ ]  **Allow organization actions and reusable workflows** or **Allow organization, and select non-organization,
+     actions and reusable workflows**
+  - [ ]  Approval for running fork pull request workflows from contributors > **Require approval for all external
+  contributors**
+  - [ ]  Fork pull request workflows in private repositories > Run workflows from fork pull requests > **On**
+  - [ ]  Workflow permissions > **Read repository contents and packages permissions**
+    - [ ]  Allow GitHub Actions to create and approve pull requests > **Off**
 
 #### Security and Access
 
 - [ ]  Webhooks > Review and remove any unnecessary
-    - [ ]  For each webhook, ensure SSL verification is enabled
+  - [ ]  For each webhook, ensure SSL verification is enabled
 - [ ]  Packages > Package creation > Public > **Disabled**
 - Authentication security >
-    - [ ]  Require two-factor authentication for everyone in the organization. > **On**
-        - [ ]  Only allow secure two-factor methods > **On**
+  - [ ]  Require two-factor authentication for everyone in the organization. > **On**
+    - [ ]  Only allow secure two-factor methods > **On**
 - [ ]  Deploy keys > **Disabled**
 
 #### Code Security Configuration
 
 - Code security > Configurations > New configuration:
-    - Dependency graph and Dependabot >
-        - [ ]  Dependency graph > **Enabled**
-        - [ ]  Dependabot alerts > **Enabled**
-    - [ ]  Code scanning > Default setup > **Enabled**
-    - [ ]  Secret scanning >
-        - [ ]  Alerts > **Enabled**
-        - [ ]  Validity checks > **Disabled**
-        - [ ]  Non-provider patterns > **Enabled**
-        - [ ]  Push protection > **Enabled**
-    - [ ]  Policy >
-        - [ ]  Use as default for newly created repositories > **All repositories**
-        - [ ]  Enforce configurations > **Enforce**
-    - [ ]  **Save configuration** and **Apply to > All repositories**
+  - Dependency graph and Dependabot >
+    - [ ]  Dependency graph > **Enabled**
+    - [ ]  Dependabot alerts > **Enabled**
+  - [ ]  Code scanning > Default setup > **Enabled**
+  - [ ]  Secret scanning >
+    - [ ]  Alerts > **Enabled**
+    - [ ]  Validity checks > **Disabled**
+    - [ ]  Non-provider patterns > **Enabled**
+    - [ ]  Push protection > **Enabled**
+  - [ ]  Policy >
+    - [ ]  Use as default for newly created repositories > **All repositories**
+    - [ ]  Enforce configurations > **Enforce**
+  - [ ]  **Save configuration** and **Apply to > All repositories**
 
 #### Access Management
 
 - [ ]  Secrets and variables > Review secrets and variables and remove any unnecessary
 - [ ]  GitHub Apps > Installed GitHub Apps > Review configurations and uninstall any unnecessary
-    - [ ]  Review permissions are appropriate and that repository access is scoped only to relevant repositories
+  - [ ]  Review permissions are appropriate and that repository access is scoped only to relevant repositories
 - [ ]  OAuth app policy > Review policies and edit/deny any unnecessary
 - Personal access tokens >
-    - [ ]  **Restrict access via fine-grained personal access tokens**
-    - [ ]  **Require administrator approval**
-    - [ ]  **Restrict access via personal access tokens (classic)**
-    - [ ]  **Enroll** [[3]](#3-audit-logs)
+  - [ ]  **Restrict access via fine-grained personal access tokens**
+  - [ ]  **Require administrator approval**
+  - [ ]  **Restrict access via personal access tokens (classic)**
+  - [ ]  **Enroll** [[3]](#3-audit-logs)
 
 ---
 
@@ -206,11 +215,13 @@ These settings and practices apply to GitHub organization administrators with el
 
 ### [1] Deploy Keys Warning
 
-Do not use deploy keys, they are possession-based access tokens that are a significant security risk. Use [GitHub Apps](https://docs.github.com/en/apps/overview) instead.
+Do not use deploy keys, they are possession-based access tokens that are a significant security risk. Use
+[GitHub Apps](https://docs.github.com/en/apps/overview) instead.
 
 ### [2] Enterprise Features
 
-This is only available if you have a GitHub Enterprise plan. If you do not, you can set these same rules at the repo level instead.
+This is only available if you have a GitHub Enterprise plan. If you do not, you can set these same rules at the repo
+level instead.
 
 ### [3] Audit Logs
 

@@ -23,7 +23,7 @@
       { "name": "Issue-Opener-5", "assigned": "2024-08-22" },
       { "name": "Issue-Opener-10", "assigned": "2024-08-24" },
       { "name": "Issue-Opener-25", "assigned": "2024-09-25" },
-      { "name": "Active-Last-7d", "lastActive": "2026-01-22" }
+      { "name": "Active-Last-7d", "lastActive": "2026-02-10" }
     ]
   },
   "fredriksvantes": {
@@ -80,8 +80,7 @@
     "badges": [
       { "name": "Framework-Steward", "framework": "Community Management" },
       { "name": "First-Contribution", "assigned": "2025-01-29" },
-      { "name": "First-Review", "assigned": "2025-12-16" },
-      { "name": "Active-Last-30d", "lastActive": "2026-01-13" }
+      { "name": "First-Review", "assigned": "2025-12-16" }
     ]
   },
   "robert": {
@@ -187,9 +186,10 @@
     "role": "steward",
     "description": "Steward of Wallet-Security framework",
     "badges": [
-      { "name": "Framework-Steward", "assigned": "2025-07-10", "framework": "Wallet Security"},
+      { "name": "Framework-Steward", "assigned": "2025-07-10", "framework": "Wallet Security" },
       { "name": "First-Contribution", "assigned": "2025-07-10" },
-      { "name": "First-Review", "assigned": "2025-09-25" }
+      { "name": "First-Review", "assigned": "2025-09-25" },
+      { "name": "Dormant-90d+", "lastActive": "2025-10-27" }
     ]
   },
   "njelich": {
@@ -224,8 +224,9 @@
       { "name": "First-Contribution", "assigned": "2025-08-04" },
       { "name": "Contributor-5", "assigned": "2025-08-18" },
       { "name": "Contributor-10", "assigned": "2025-12-01" },
+      { "name": "Contributor-25", "assigned": "2026-02-09" },
       { "name": "First-Review", "assigned": "2025-08-11" },
-      { "name": "Active-Last-7d", "lastActive": "2026-01-15" }
+      { "name": "Active-Last-7d", "lastActive": "2026-02-09" }
     ]
   },
   "blackbigswan": {
@@ -329,7 +330,10 @@
     "job_title": "Founder & Engineer",
     "role": "contributor",
     "description": "Founder & Engineer",
-    "badges": []
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2025-06-02" },
+      { "name": "Dormant-90d+", "lastActive": "2025-06-02" }
+    ]
   },
   "isaac": {
     "slug": "isaac",
@@ -343,7 +347,9 @@
     "role": "steward",
     "description": "SEAL Certs & SEAL Wargames",
     "badges": [
-      { "name": "Framework-Steward", "assigned": "2025-12-17", "framework": "SEAL Certs" }
+      { "name": "Framework-Steward", "assigned": "2025-12-17", "framework": "SEAL Certs" },
+      { "name": "First-Review", "assigned": "2026-01-26" },
+      { "name": "Active-Last-7d", "lastActive": "2026-02-09" }
     ]
   },
   "geoffrey": {
@@ -434,8 +440,72 @@
       { "name": "Contributor-25", "assigned": "2025-11-15" },
       { "name": "First-Review", "assigned": "2025-08-12" },
       { "name": "Reviewer-10", "assigned": "2025-09-12" },
-      { "name": "Reviewer-25", "assigned": "2025-11-10" },
-      { "name": "Active-Last-7d", "lastActive": "2026-01-23" }
+      { "name": "Active-Last-7d", "lastActive": "2026-02-10" }
+    ]
+  },
+  "gunnim": {
+    "slug": "gunnim",
+    "name": "gunnim",
+    "avatar": "https://avatars.githubusercontent.com/gunnim",
+    "github": "https://github.com/gunnim",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-01-21" },
+      { "name": "Active-Last-30d", "lastActive": "2026-01-22" }
+    ]
+  },
+  "madjin": {
+    "slug": "madjin",
+    "name": "madjin",
+    "avatar": "https://avatars.githubusercontent.com/madjin",
+    "github": "https://github.com/madjin",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2025-12-16" },
+      { "name": "Active-Last-7d", "lastActive": "2026-02-09" }
+    ]
+  },
+  "monperrus": {
+    "slug": "monperrus",
+    "name": "monperrus",
+    "avatar": "https://avatars.githubusercontent.com/monperrus",
+    "github": "https://github.com/monperrus",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-01-21" },
+      { "name": "Active-Last-30d", "lastActive": "2026-01-21" }
+    ]
+  },
+  "smagdali": {
+    "slug": "smagdali",
+    "name": "smagdali",
+    "avatar": "https://avatars.githubusercontent.com/smagdali",
+    "github": "https://github.com/smagdali",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2025-12-03" },
+      { "name": "Issue-Opener-5", "assigned": "2026-02-05" },
+      { "name": "Active-Last-7d", "lastActive": "2026-02-10" }
     ]
   }
 }
