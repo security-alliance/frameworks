@@ -6,8 +6,8 @@
     "Communication Platforms",
     "Community & Marketing",
     "DAO",
-    "DevOps Accounts",
     "DeFi",
+    "DevOps Accounts",
     "Devops",
     "Engineer/Developer",
     "HR",
@@ -967,11 +967,11 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/wallet-security/for-beginners-&-small-balances": [
+    "/wallet-security/for-beginners-and-small-balances": [
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/intermediates-&-medium-funds": [
+    "/wallet-security/intermediates-and-medium-funds": [
       "Engineer/Developer",
       "Security Specialist"
     ],
@@ -1013,7 +1013,7 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/tools-&-resources": [
+    "/wallet-security/tools-and-resources": [
       "Engineer/Developer",
       "Security Specialist"
     ]
