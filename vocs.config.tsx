@@ -82,6 +82,7 @@ const config = {
                 { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
+            { text: 'Secure Operating Systems', link: '/opsec/secure-operating-systems', dev: true },
             { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
             { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
             { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
