@@ -1,0 +1,1225 @@
+[
+  {
+    "controlId": "ir-1.1.1",
+    "controlTitle": "IR Team and Role Assignments",
+    "description": "Do you have an incident response team with clearly defined roles and responsibilities?",
+    "baselineCount": 7,
+    "baselines": [
+      "Incident commander (with designated backup) who coordinates response, assigns tasks, and makes time-sensitive decisions",
+      "Subject matter experts identified for key domains (smart contracts, infrastructure, security) who can analyze attacks and prepare response strategies",
+      "Scribe role defined for real-time incident documentation",
+      "Communications personnel designated for public information sharing and record-keeping",
+      "Legal support available with procedures for reviewing response actions, whitehat engagement, and public communications",
+      "Decision makers defined for high-stakes decisions (system shutdown, public disclosure, fund recovery)",
+      "Roles, authorities, and escalation measures reviewed at least annually and after protocol changes, team restructuring, or major incidents"
+    ],
+    "candidates": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 130,
+        "matchedSections": [
+          "documentation & communication",
+          "ongoing management",
+          "hardware & security setup",
+          "operational readiness",
+          "emergency preparedness",
+          "emergency procedures",
+          "tool proficiency",
+          "role-specific documentation",
+          "regular updates"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 123,
+        "matchedSections": [
+          "security team contact",
+          "internal escalation",
+          "immediate steps",
+          "if telegram/signal/discord gets taken over",
+          "multi-channel notification",
+          "for emergency response multisigs",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 119,
+        "matchedSections": [
+          "rpc backup options",
+          "administrator responsibilities",
+          "block explorer backup options",
+          "evm networks",
+          "squads public client - open source squads v4 interface",
+          "enhanced verification",
+          "regular practice",
+          "emergency drills",
+          "support resources",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 90,
+        "matchedSections": [
+          "2. develop a robust security policy framework",
+          "5. incident response planning",
+          "10. documentation and record-keeping"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 89,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 75,
+        "matchedSections": [
+          "dns security",
+          "basic requirements",
+          "for extra security",
+          "what to bring",
+          "what not to bring",
+          "basic travel security"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 71,
+        "matchedSections": [
+          "thresholds & configuration",
+          "core concept: m-of-n scheme",
+          "communication & documentation"
+        ]
+      },
+      {
+        "page": "/incident-management/incident-detection-and-response",
+        "title": "Incident Detection And Response | SEAL",
+        "score": 69,
+        "matchedSections": [
+          "key components of incident response"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ir-1.1.2",
+    "controlTitle": "Stakeholder Coordination and Contacts",
+    "description": "Do you maintain current contacts and coordination procedures for all parties needed during an incident?",
+    "baselineCount": 7,
+    "baselines": [
+      "Internal coordination procedures between technical (devs, auditors) and operational teams (security council, communications)",
+      "External protocol contacts for protocols you depend on and protocols that depend on you",
+      "External expertise contacts including forensics firms, security consultants, SEAL 911, and auditors",
+      "Legal counsel and communications/PR contacts",
+      "Infrastructure vendor support contacts and escalation procedures",
+      "Contact list reviewed at least quarterly and after team changes",
+      "Escalation order documented for P1 incidents (e.g., SEAL 911 → decision makers → security partners → legal)"
+    ],
+    "candidates": [
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 78,
+        "matchedSections": [
+          "security team contact",
+          "internal escalation"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 72,
+        "matchedSections": []
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 56,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 53,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 51,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/registration-and-documentation",
+        "title": "Multisig Registration & Documentation | SEAL",
+        "score": 48,
+        "matchedSections": []
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 46,
+        "matchedSections": []
+      },
+      {
+        "page": "/wallet-security/seed-phrase-management",
+        "title": "Seed Phrase Management",
+        "score": 42,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ir-2.1.1",
+    "controlTitle": "Monitoring Coverage",
+    "description": "Do you maintain monitoring coverage for your critical systems, protocols, and external attack surfaces?",
+    "baselineCount": 5,
+    "baselines": [
+      "Monitoring covers critical smart contracts, infrastructure, and on-chain activity",
+      "24/7 monitoring capabilities with procedures for after-hours alert handling",
+      "Credential and secret exposure detection including dark web monitoring, breach database scanning, and secret scanning in code repositories",
+      "Organizational account monitoring including social media accounts and websites monitored for unauthorized access or compromise",
+      "Monitoring coverage documented — what's covered, what's not, and known gaps"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 344,
+        "matchedSections": [
+          "recovery",
+          "dns record monitoring",
+          "setting up alerts",
+          "critical alerts (immediate response required)",
+          "high priority alerts (when ns unchanged)",
+          "certificate transparency monitoring",
+          "passive dns monitoring"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 190,
+        "matchedSections": [
+          "perform in parallel by role",
+          "events timeline",
+          "post incident actions",
+          "suggested tools and platforms"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "title": "On-Chain Monitoring Guidelines",
+        "score": 170,
+        "matchedSections": [
+          "implement monitoring tools",
+          "establish alerting mechanisms",
+          "regular reviews and updates",
+          "incident response",
+          "define monitoring objectives"
+        ]
+      },
+      {
+        "page": "/wallet-security/tools-and-resources",
+        "title": "Wallet Security Tools & Resources | SEAL",
+        "score": 155,
+        "matchedSections": [
+          "monitoring & alerting",
+          "multisig monitoring",
+          "network security"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 153,
+        "matchedSections": [
+          "active monitoring",
+          "immutable monitoring channels",
+          "zodiac delay modifier (time-locks)"
+        ]
+      },
+      {
+        "page": "/monitoring/overview",
+        "title": "Monitoring",
+        "score": 150,
+        "matchedSections": []
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 105,
+        "matchedSections": [
+          "thresholds & configuration",
+          "operational best practices"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 96,
+        "matchedSections": [
+          "network monitoring tools"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ir-2.1.2",
+    "controlTitle": "Alerting, Paging, and Escalation",
+    "description": "Do you have alerting and paging systems that reliably route incidents to available responders?",
+    "baselineCount": 8,
+    "baselines": [
+      "Automated alerting configured for security events and operational issues",
+      "Alerts include embedded triage guidance for distinguishing true incidents from false positives",
+      "Triage and classification procedures documented with escalation paths based on severity",
+      "Time-based escalation triggers if initial responder doesn't acknowledge within defined window",
+      "Management notification requirements for high-severity incidents",
+      "Redundant paging systems with documented failover procedures",
+      "On-call schedules maintained with adequate coverage for operational needs",
+      "Backup procedures when on-call personnel are unreachable"
+    ],
+    "candidates": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 99,
+        "matchedSections": [
+          "documentation & communication",
+          "ongoing management",
+          "hardware & security setup",
+          "operational readiness",
+          "emergency preparedness",
+          "emergency procedures",
+          "tool proficiency",
+          "role-specific documentation",
+          "regular updates",
+          "emergency response multisigs"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 83,
+        "matchedSections": [
+          "rpc backup options",
+          "administrator responsibilities",
+          "block explorer backup options",
+          "evm networks",
+          "squads public client - open source squads v4 interface",
+          "enhanced verification",
+          "regular practice",
+          "emergency drills",
+          "support resources",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 83,
+        "matchedSections": [
+          "security team contact",
+          "internal escalation",
+          "immediate steps",
+          "if telegram/signal/discord gets taken over",
+          "multi-channel notification",
+          "for emergency response multisigs",
+          "related documents",
+          "emergency drill procedures"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 50,
+        "matchedSections": [
+          "dns security",
+          "basic requirements",
+          "for extra security",
+          "what to bring",
+          "what not to bring",
+          "basic travel security"
+        ]
+      },
+      {
+        "page": "/wallet-security/seed-phrase-management",
+        "title": "Seed Phrase Management",
+        "score": 49,
+        "matchedSections": [
+          "tamper evident bags:",
+          "seed phrase encryption",
+          "advanced backup options",
+          "multisig social recovery",
+          "ongoing security hygiene",
+          "trusted contacts"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 47,
+        "matchedSections": [
+          "core concept: m-of-n scheme",
+          "thresholds & configuration",
+          "communication & documentation",
+          "operational best practices"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/decentralized-ir",
+        "title": "Decentralized Incident Response | SEAL",
+        "score": 40,
+        "matchedSections": [
+          "4. detection and triage flow",
+          "2. roles and identities"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "title": "On-Chain Monitoring Guidelines",
+        "score": 37,
+        "matchedSections": [
+          "define monitoring objectives",
+          "establish alerting mechanisms",
+          "implement monitoring tools",
+          "incident response"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ir-2.1.3",
+    "controlTitle": "Logging Integrity and Retention",
+    "description": "Do you maintain tamper-evident logs with adequate retention for incident investigation?",
+    "baselineCount": 5,
+    "baselines": [
+      "Log retention periods defined for security, infrastructure, and cloud provider logs",
+      "Retention adequate for forensic analysis (consider regulatory requirements and typical investigation timelines)",
+      "Tamper-evident logging for security-relevant events including access logs, alerting system logs, and infrastructure logs",
+      "Alerts triggered if logs are altered, deleted, or if monitoring/logging is disabled",
+      "Log sources documented — what's captured and where it's stored"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 119,
+        "matchedSections": [
+          "dns record monitoring",
+          "setting up alerts",
+          "critical alerts (immediate response required)",
+          "high priority alerts (when ns unchanged)",
+          "certificate transparency monitoring",
+          "passive dns monitoring"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 61,
+        "matchedSections": [
+          "perform in parallel by role",
+          "post incident actions",
+          "suggested tools and platforms",
+          "events timeline"
+        ]
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 51,
+        "matchedSections": [
+          "6. continuous monitoring and auditing",
+          "8. third-party risk management"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "title": "On-Chain Monitoring Guidelines",
+        "score": 51,
+        "matchedSections": [
+          "define monitoring objectives",
+          "establish alerting mechanisms",
+          "implement monitoring tools",
+          "incident response",
+          "regular reviews and updates"
+        ]
+      },
+      {
+        "page": "/wallet-security/tools-and-resources",
+        "title": "Wallet Security Tools & Resources | SEAL",
+        "score": 48,
+        "matchedSections": [
+          "network security",
+          "monitoring & alerting",
+          "multisig monitoring"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 46,
+        "matchedSections": [
+          "active monitoring",
+          "immutable monitoring channels"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 36,
+        "matchedSections": [
+          "domain expiration protection",
+          "whois vs rdap"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 34,
+        "matchedSections": [
+          "dnssec implementation",
+          "dmarc (domain-based message authentication)"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ir-3.1.1",
+    "controlTitle": "Response Playbooks",
+    "description": "Do you maintain response playbooks for common incident types?",
+    "baselineCount": 5,
+    "baselines": [
+      "Playbooks cover key scenarios including protocol exploits, infrastructure failures, access control breaches, key compromise, supply chain compromises, and frontend/DNS compromise",
+      "Each playbook includes initial response actions covering containment, evidence preservation, and stakeholder notification",
+      "Role-specific responsibilities defined for each scenario (who does what — technical, comms, legal)",
+      "Escalation criteria documented for when to engage leadership, when to shut down systems, when to make public disclosure, and when to engage external assistance",
+      "Key compromise playbook includes procedures for rotating keys and replacing compromised signers, with threshold and access reviewed after any signer replacement"
+    ],
+    "candidates": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 263,
+        "matchedSections": [
+          "setup best practices",
+          "thresholds & configuration",
+          "signer rotation",
+          "core concept: m-of-n scheme",
+          "communication & documentation",
+          "training & drills",
+          "operational best practices",
+          "contract-level security"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 152,
+        "matchedSections": [
+          "security team contact",
+          "internal escalation",
+          "for emergency response multisigs",
+          "emergency drill procedures",
+          "identity verification process",
+          "replacement coordination",
+          "recovery process"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 122,
+        "matchedSections": [
+          "self-hosted multisig ui",
+          "evm networks (ethereum, base, etc.)",
+          "solana",
+          "pre-launch checklist",
+          "nested safes",
+          "delegated proposer",
+          "verify basic functionality",
+          "next steps",
+          "address whitelisting"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/registration-and-documentation",
+        "title": "Multisig Registration & Documentation | SEAL",
+        "score": 98,
+        "matchedSections": [
+          "ongoing maintenance",
+          "signer changes",
+          "initial registration",
+          "signer verification process",
+          "update template",
+          "documentation updates",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/wallet-security/signing-and-verification/secure-multisig-signing-process",
+        "title": "Secure Multisig Signing Process | SEAL",
+        "score": 86,
+        "matchedSections": [
+          "phase 1: signing the off-chain message",
+          "process",
+          "phase 2: executing the on-chain transaction",
+          "operational best practices",
+          "key definitions (evm)"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 79,
+        "matchedSections": [
+          "administrator responsibilities",
+          "enhanced verification",
+          "regular practice",
+          "support resources",
+          "eternal safe - decentralized fork of safe\\{wallet\\}"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 72,
+        "matchedSections": [
+          "additional requirements:",
+          "threshold considerations:",
+          "training & drills:",
+          "operational constraints:",
+          "veto quorum",
+          "hot/cold wallet separation",
+          "external signer requirements",
+          "configuration"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 71,
+        "matchedSections": [
+          "planning & setup",
+          "smart contract control multisigs",
+          "ongoing management",
+          "for signers",
+          "operational readiness"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ir-3.1.2",
+    "controlTitle": "Signer Reachability and Coordination",
+    "description": "Can you reach enough signers to execute emergency on-chain actions at any time, including outside business hours?",
+    "baselineCount": 4,
+    "baselines": [
+      "Procedures for coordinating multisig operations during incidents, including cross-timezone signer availability",
+      "Signers integrated into on-call/paging systems",
+      "Escalation paths documented for when signers are unreachable",
+      "Tested quarterly"
+    ],
+    "candidates": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 510,
+        "matchedSections": [
+          "core concept: m-of-n scheme",
+          "thresholds & configuration",
+          "communication & documentation",
+          "signer rotation",
+          "training & drills",
+          "operational best practices",
+          "contract-level security",
+          "acknowledgements",
+          "setup best practices"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 387,
+        "matchedSections": [
+          "for multisig administrators",
+          "planning & setup",
+          "documentation & communication",
+          "ongoing management",
+          "hardware & security setup",
+          "operational readiness",
+          "emergency preparedness",
+          "personal security",
+          "compliance",
+          "emergency response multisigs",
+          "treasury multisigs",
+          "smart contract control multisigs",
+          "required reading completed",
+          "role-specific documentation",
+          "training completion",
+          "for signers"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 269,
+        "matchedSections": [
+          "solana",
+          "self-hosted multisig ui",
+          "delegated proposer",
+          "allowance module (required for treasury multisigs)",
+          "zodiac delay modifier (time-locks)",
+          "contract-level controls",
+          "pre-launch checklist",
+          "practice on testnet",
+          "nested safes",
+          "next steps",
+          "active monitoring",
+          "verify basic functionality",
+          "evm networks (ethereum, base, etc.)",
+          "address whitelisting"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/overview",
+        "title": "Multisig Security Framework | SEAL",
+        "score": 259,
+        "matchedSections": [
+          "how to use this guide",
+          "core principles",
+          "1. foundation",
+          "2. multisig administration",
+          "3. for signers",
+          "4. reference"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/registration-and-documentation",
+        "title": "Multisig Registration & Documentation | SEAL",
+        "score": 224,
+        "matchedSections": [
+          "protocol documentation",
+          "signer verification process",
+          "initial registration",
+          "regular reviews",
+          "signer changes",
+          "documentation updates",
+          "related documents",
+          "ongoing maintenance",
+          "update template"
+        ]
+      },
+      {
+        "page": "/wallet-security/signing-and-verification/secure-multisig-signing-process",
+        "title": "Secure Multisig Signing Process | SEAL",
+        "score": 213,
+        "matchedSections": [
+          "process",
+          "phase 2: executing the on-chain transaction",
+          "operational best practices",
+          "phase 1: signing the off-chain message"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 204,
+        "matchedSections": [
+          "security team contact",
+          "internal escalation",
+          "recovery process",
+          "for emergency response multisigs",
+          "related documents",
+          "identity verification process",
+          "replacement coordination",
+          "emergency drill procedures"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 198,
+        "matchedSections": [
+          "eternal safe - decentralized fork of safe\\{wallet\\}",
+          "squads public client - open source squads v4 interface",
+          "related documents",
+          "administrator responsibilities",
+          "enhanced verification",
+          "regular practice",
+          "support resources"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ir-3.1.3",
+    "controlTitle": "Emergency Transaction Readiness",
+    "description": "Do you have backup signing infrastructure and pre-prepared emergency transactions for critical protocol functions?",
+    "baselineCount": 3,
+    "baselines": [
+      "Pre-signed or pre-prepared emergency transactions for critical protocol functions (pause, freeze, parameter changes) where feasible",
+      "Backup signing infrastructure available including alternate signing UI, backup RPC providers, and alternate block explorer",
+      "Emergency execution procedures documented (what to pause/freeze/modify and the process for doing so)"
+    ],
+    "candidates": [
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 269,
+        "matchedSections": [
+          "rpc backup options",
+          "administrator responsibilities",
+          "block explorer backup options",
+          "evm networks",
+          "squads public client - open source squads v4 interface",
+          "enhanced verification",
+          "regular practice",
+          "emergency drills",
+          "support resources",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 232,
+        "matchedSections": [
+          "documentation & communication",
+          "ongoing management",
+          "hardware & security setup",
+          "operational readiness",
+          "emergency preparedness",
+          "emergency procedures",
+          "tool proficiency",
+          "role-specific documentation",
+          "regular updates"
+        ]
+      },
+      {
+        "page": "/wallet-security/seed-phrase-management",
+        "title": "Seed Phrase Management",
+        "score": 138,
+        "matchedSections": [
+          "tamper evident bags:",
+          "seed phrase encryption",
+          "advanced backup options",
+          "multisig social recovery",
+          "ongoing security hygiene",
+          "trusted contacts"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 121,
+        "matchedSections": [
+          "basic requirements",
+          "for extra security",
+          "what to bring",
+          "what not to bring",
+          "basic travel security"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 114,
+        "matchedSections": [
+          "immediate steps",
+          "if telegram/signal/discord gets taken over",
+          "multi-channel notification",
+          "for emergency response multisigs",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 84,
+        "matchedSections": [
+          "thresholds & configuration",
+          "communication & documentation"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/overview",
+        "title": "Multisig Security Framework | SEAL",
+        "score": 73,
+        "matchedSections": [
+          "3. for signers"
+        ]
+      },
+      {
+        "page": "/wallet-security/intermediates-and-medium-funds",
+        "title": "Wallets for Intermediates & Medium Funds | SEAL",
+        "score": 67,
+        "matchedSections": [
+          "backup device (for critical operations & multisigs)"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ir-4.1.1",
+    "controlTitle": "Incident Communication Channels",
+    "description": "Do you maintain secure, dedicated communication channels for incident response?",
+    "baselineCount": 4,
+    "baselines": [
+      "Dedicated incident communication channels with documented access controls and member lists",
+      "Multiple communication channels (primary and backup) on different platforms, with documented failover procedures",
+      "Procedures for rapidly creating incident-specific channels (war room) when needed",
+      "Secure communication procedures for sensitive incident information including need-to-know access and encrypted channels"
+    ],
+    "candidates": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 130,
+        "matchedSections": [
+          "documentation & communication",
+          "ongoing management",
+          "hardware & security setup",
+          "operational readiness",
+          "emergency preparedness",
+          "emergency procedures",
+          "tool proficiency",
+          "role-specific documentation",
+          "regular updates"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 119,
+        "matchedSections": [
+          "immediate steps",
+          "if telegram/signal/discord gets taken over",
+          "multi-channel notification",
+          "for emergency response multisigs",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 111,
+        "matchedSections": [
+          "rpc backup options",
+          "administrator responsibilities",
+          "block explorer backup options",
+          "evm networks",
+          "squads public client - open source squads v4 interface",
+          "enhanced verification",
+          "regular practice",
+          "emergency drills",
+          "support resources",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 95,
+        "matchedSections": [
+          "2. develop a robust security policy framework",
+          "5. incident response planning",
+          "10. documentation and record-keeping"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 91,
+        "matchedSections": [
+          "thresholds & configuration",
+          "communication & documentation"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 88,
+        "matchedSections": [
+          "basic requirements",
+          "for extra security",
+          "what to bring",
+          "what not to bring",
+          "basic travel security"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 83,
+        "matchedSections": [
+          "perform immediately",
+          "perform in parallel by role",
+          "information gathering",
+          "events timeline",
+          "advice to keep in mind",
+          "key roles",
+          "suggested tools and platforms"
+        ]
+      },
+      {
+        "page": "/wallet-security/seed-phrase-management",
+        "title": "Seed Phrase Management",
+        "score": 80,
+        "matchedSections": [
+          "seed phrase encryption",
+          "tamper evident bags:",
+          "advanced backup options",
+          "multisig social recovery",
+          "ongoing security hygiene",
+          "trusted contacts"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ir-4.1.2",
+    "controlTitle": "Internal Status Updates",
+    "description": "Do you have procedures for providing regular status updates to stakeholders during incidents?",
+    "baselineCount": 2,
+    "baselines": [
+      "Status update cadence defined by severity level",
+      "Format and distribution lists for internal stakeholders"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 21,
+        "matchedSections": []
+      },
+      {
+        "page": "/incident-management/communication-strategies",
+        "title": "Incident Communication Strategies | SEAL",
+        "score": 14,
+        "matchedSections": [
+          "best practices"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 14,
+        "matchedSections": [
+          "dns security"
+        ]
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 13,
+        "matchedSections": []
+      },
+      {
+        "page": "/monitoring/thresholds",
+        "title": "Monitoring Alert Thresholds",
+        "score": 13,
+        "matchedSections": [
+          "set thresholds for alerts",
+          "multi-layered thresholds"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 13,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 13,
+        "matchedSections": []
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 13,
+        "matchedSections": [
+          "core concept: m-of-n scheme"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ir-4.1.3",
+    "controlTitle": "Public Communication and Information Management",
+    "description": "Do you have procedures for public communication and information management during incidents?",
+    "baselineCount": 4,
+    "baselines": [
+      "Pre-approved communication templates for different incident types and severity levels",
+      "Procedures for coordinating communications with protocol users during and after incidents",
+      "Procedures for managing public information flow and correcting misinformation during active incidents",
+      "Designated communications approval flow before public statements are released"
+    ],
+    "candidates": [
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 40,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 40,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 38,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 33,
+        "matchedSections": []
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 29,
+        "matchedSections": []
+      },
+      {
+        "page": "/incident-management/playbooks/decentralized-ir",
+        "title": "Decentralized Incident Response | SEAL",
+        "score": 28,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ir-5.1.1",
+    "controlTitle": "IR Drills and Testing",
+    "description": "Do you conduct regular incident response drills and evaluate the results?",
+    "baselineCount": 7,
+    "baselines": [
+      "Drills conducted at least annually",
+      "Drills cover different incident types across exercises (protocol exploit, infrastructure failure, key compromise, etc.)",
+      "Tests the full pipeline from monitoring through alerting, paging, triage, escalation, team coordination, containment, and recovery",
+      "Production alerting pipeline validated end-to-end from event detection through to responder notification and acknowledgment",
+      "Drill documentation includes date, scenario, participants, response times, gaps identified, and corrective actions",
+      "Corrective actions tracked to completion with owners and deadlines",
+      "Drill findings incorporated into playbook and procedure updates"
+    ],
+    "candidates": [
+      {
+        "page": "/incident-management/playbooks/decentralized-ir",
+        "title": "Decentralized Incident Response | SEAL",
+        "score": 103,
+        "matchedSections": [
+          "6. eradication and recovery",
+          "10. keep it alive",
+          "1. guiding principles",
+          "3. preparation checklist",
+          "2. roles and identities",
+          "5. containment options",
+          "4. detection and triage flow"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 99,
+        "matchedSections": [
+          "security team contact",
+          "internal escalation",
+          "emergency drill procedures"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 91,
+        "matchedSections": [
+          "critical alerts (immediate response required)",
+          "incident response plan",
+          "dns record monitoring",
+          "certificate transparency monitoring",
+          "passive dns monitoring",
+          "containment"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 89,
+        "matchedSections": [
+          "emergency response multisigs",
+          "regular updates"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 84,
+        "matchedSections": [
+          "operational best practices",
+          "training & drills"
+        ]
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 73,
+        "matchedSections": [
+          "2. develop a robust security policy framework",
+          "5. incident response planning",
+          "10. documentation and record-keeping",
+          "6. continuous monitoring and auditing",
+          "8. third-party risk management"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 67,
+        "matchedSections": [
+          "perform in parallel by role",
+          "events timeline",
+          "post incident actions",
+          "suggested tools and platforms"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 65,
+        "matchedSections": [
+          "evm networks",
+          "emergency drills"
+        ]
+      }
+    ]
+  }
+]

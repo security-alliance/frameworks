@@ -1,0 +1,1955 @@
+[
+  {
+    "controlId": "ws-1.1.1",
+    "controlTitle": "Workspace Security Owner",
+    "description": "Is there a clearly designated person or team accountable for workspace security?",
+    "baselineCount": 1,
+    "baselines": [
+      "Accountability scope covers policy maintenance, device and account standards, access control oversight, periodic reviews, and incident escalation"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 39,
+        "matchedSections": [
+          "practical application",
+          "2. minimal access scopes"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 37,
+        "matchedSections": [
+          "2. principle of least privilege",
+          "implementation"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 34,
+        "matchedSections": [
+          "summary"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/physical-environmental",
+        "title": "Physical & Environmental Security",
+        "score": 33,
+        "matchedSections": [
+          "secure workspace components",
+          "implementation steps for workspace security"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 31,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 30,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 29,
+        "matchedSections": [
+          "case study 1: private key compromise"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-1.1.2",
+    "controlTitle": "Workspace Security Policy",
+    "description": "Do you maintain a workspace security policy that is accessible and understood by all personnel?",
+    "baselineCount": 3,
+    "baselines": [
+      "Policy covers core expectations including device security, account hygiene, credential management, acceptable use, and incident reporting",
+      "Written in plain language so all personnel can follow it",
+      "Policy reviewed at least annually and after significant changes (security incidents, technology shifts, organizational restructuring)"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 64,
+        "matchedSections": [
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "conclusion"
+        ]
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "title": "Understanding Threat Vectors",
+        "score": 44,
+        "matchedSections": [
+          "2.1.1. social engineering & phishing",
+          "2.1.2. malware & technical attacks",
+          "2.3.2. technical indicators"
+        ]
+      },
+      {
+        "page": "/awareness/cultivating-a-security-aware-mindset",
+        "title": "Cultivating A Security Aware Mindset | SEAL",
+        "score": 43,
+        "matchedSections": [
+          "practical tips",
+          "3.4.1. password management"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 43,
+        "matchedSections": [
+          "exercise 3: team member device compromise"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 43,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/continuous-improvement-metrics",
+        "title": "Security Improvement Metrics | SEAL",
+        "score": 40,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 38,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 36,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ws-1.1.3",
+    "controlTitle": "Asset Inventory",
+    "description": "Do you maintain an inventory of organizational devices and accounts with defined ownership?",
+    "baselineCount": 4,
+    "baselines": [
+      "Scoped to devices and accounts with access to sensitive systems or data",
+      "Device inventory tracks make/model, owner, OS version, encryption status, and EDR/MDM enrollment",
+      "Account inventory covers organizational accounts (eg. email, cloud, social media) with defined ownership",
+      "Updated as devices/accounts are provisioned or decommissioned"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 152,
+        "matchedSections": [
+          "**secure devices with encryption & updates**",
+          "**plan emergency and incident responses**",
+          "**network safety – avoid untrusted wi-fi & bluetooth**",
+          "**plan for customs and border checks**",
+          "**enhanced device protections**",
+          "**protect crypto keys with multi-party controls**",
+          "conclusion",
+          "**back up and prepare for loss**",
+          "**lock down phones**",
+          "**post-trip device rebuilding**"
+        ]
+      },
+      {
+        "page": "/encryption/volume-encryption",
+        "title": "Volume Encryption",
+        "score": 114,
+        "matchedSections": [
+          "what is volume encryption?",
+          "importance of volume encryption",
+          "uses of volume encryption",
+          "examples of volume encryption",
+          "known technologies for volume encryption",
+          "best practices for volume encryption"
+        ]
+      },
+      {
+        "page": "/encryption/partition-encryption",
+        "title": "Partition Encryption",
+        "score": 106,
+        "matchedSections": [
+          "what is partition encryption?",
+          "importance of partition encryption",
+          "uses of partition encryption",
+          "examples of partition encryption",
+          "best practices for partition encryption"
+        ]
+      },
+      {
+        "page": "/encryption/overview",
+        "title": "Encryption",
+        "score": 96,
+        "matchedSections": [
+          "contents"
+        ]
+      },
+      {
+        "page": "/encryption/cloud-data-encryption",
+        "title": "Cloud Data Encryption",
+        "score": 94,
+        "matchedSections": [
+          "best practices"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 78,
+        "matchedSections": [
+          "implementation steps",
+          "encrypted storage & backups",
+          "key components"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 76,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 75,
+        "matchedSections": [
+          "summary",
+          "account security checklist",
+          "device-level security",
+          "advanced privacy measures",
+          "best practices for safe use"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-1.1.4",
+    "controlTitle": "System and Data Classification",
+    "description": "Do you classify systems and data by sensitivity to determine appropriate security controls?",
+    "baselineCount": 3,
+    "baselines": [
+      "Classification levels defined (e.g., critical, high, standard)",
+      "Classification determines which controls apply (access restrictions, monitoring, encryption, backup requirements)",
+      "Classification reviewed when systems, data sensitivity, or organizational structure change"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 150,
+        "matchedSections": [
+          "**secure devices with encryption & updates**",
+          "**plan emergency and incident responses**",
+          "**network safety – avoid untrusted wi-fi & bluetooth**",
+          "**plan for customs and border checks**",
+          "**enhanced device protections**",
+          "**protect crypto keys with multi-party controls**",
+          "conclusion",
+          "before traveling",
+          "**back up and prepare for loss**",
+          "**protect accounts with 2fa redundancy**",
+          "**secure your wallets and keys**",
+          "**inspect and clean your devices**",
+          "**post-trip device rebuilding**",
+          "**post-travel review**"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 144,
+        "matchedSections": [
+          "implementation steps",
+          "encrypted storage & backups",
+          "key components",
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 139,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application",
+          "5. continuous visibility"
+        ]
+      },
+      {
+        "page": "/encryption/cloud-data-encryption",
+        "title": "Cloud Data Encryption",
+        "score": 127,
+        "matchedSections": [
+          "best practices"
+        ]
+      },
+      {
+        "page": "/encryption/volume-encryption",
+        "title": "Volume Encryption",
+        "score": 121,
+        "matchedSections": [
+          "what is volume encryption?",
+          "importance of volume encryption",
+          "uses of volume encryption",
+          "examples of volume encryption",
+          "known technologies for volume encryption",
+          "best practices for volume encryption"
+        ]
+      },
+      {
+        "page": "/encryption/partition-encryption",
+        "title": "Partition Encryption",
+        "score": 112,
+        "matchedSections": [
+          "what is partition encryption?",
+          "importance of partition encryption",
+          "uses of partition encryption",
+          "examples of partition encryption",
+          "best practices for partition encryption"
+        ]
+      },
+      {
+        "page": "/encryption/overview",
+        "title": "Encryption",
+        "score": 93,
+        "matchedSections": [
+          "contents"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 79,
+        "matchedSections": [
+          "5. continuous monitoring and improvement",
+          "implementation"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-2.1.1",
+    "controlTitle": "Device Security Standards",
+    "description": "Do you define and enforce security standards for organizational devices?",
+    "baselineCount": 7,
+    "baselines": [
+      "Full disk encryption enabled on all devices",
+      "Automatic OS and application patching enabled or enforced",
+      "Strong authentication required (password/biometric, auto-lock timeouts, lock screens)",
+      "Administrative privileges separated from daily-use accounts",
+      "Devices procured through verified supply chains and verified for integrity upon receipt",
+      "Device compliance verified upon provisioning and monitored on an ongoing basis",
+      "BYOD policy defining what personal devices can access and the security controls required (e.g., MDM enrollment, separate work profiles)"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 222,
+        "matchedSections": [
+          "**secure devices with encryption & updates**",
+          "**protect accounts with 2fa redundancy**",
+          "**lock down phones**",
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "**post-travel review**",
+          "**plan for customs and border checks**",
+          "conclusion",
+          "**plan emergency and incident responses**",
+          "**network safety – avoid untrusted wi-fi & bluetooth**",
+          "**enhanced device protections**",
+          "**protect crypto keys with multi-party controls**",
+          "**back up and prepare for loss**",
+          "**post-trip device rebuilding**"
+        ]
+      },
+      {
+        "page": "/encryption/volume-encryption",
+        "title": "Volume Encryption",
+        "score": 125,
+        "matchedSections": [
+          "what is volume encryption?",
+          "importance of volume encryption",
+          "uses of volume encryption",
+          "examples of volume encryption",
+          "known technologies for volume encryption",
+          "best practices for volume encryption"
+        ]
+      },
+      {
+        "page": "/encryption/partition-encryption",
+        "title": "Partition Encryption",
+        "score": 113,
+        "matchedSections": [
+          "what is partition encryption?",
+          "importance of partition encryption",
+          "uses of partition encryption",
+          "examples of partition encryption",
+          "best practices for partition encryption"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 109,
+        "matchedSections": [
+          "device-level security",
+          "account security checklist",
+          "summary",
+          "advanced privacy measures",
+          "best practices for safe use"
+        ]
+      },
+      {
+        "page": "/encryption/cloud-data-encryption",
+        "title": "Cloud Data Encryption",
+        "score": 96,
+        "matchedSections": [
+          "best practices"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 95,
+        "matchedSections": [
+          "account security checklist",
+          "extended security settings",
+          "admin settings (workspace configuration)"
+        ]
+      },
+      {
+        "page": "/encryption/overview",
+        "title": "Encryption",
+        "score": 94,
+        "matchedSections": [
+          "contents"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 92,
+        "matchedSections": [
+          "key components",
+          "implementation steps",
+          "encrypted storage & backups"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-2.1.2",
+    "controlTitle": "Device Lifecycle Management",
+    "description": "Do you have procedures for device loss, theft, and secure decommissioning?",
+    "baselineCount": 3,
+    "baselines": [
+      "Remote lock and wipe capability for all organizational devices",
+      "Documented procedures for responding to lost or stolen devices (notification, remote wipe, credential rotation, incident escalation)",
+      "Secure decommissioning procedures including data sanitization and verified destruction for storage media"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 88,
+        "matchedSections": [
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "conclusion",
+          "**back up and prepare for loss**"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 42,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/physical-environmental",
+        "title": "Physical & Environmental Security",
+        "score": 36,
+        "matchedSections": []
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "title": "Understanding Threat Vectors",
+        "score": 32,
+        "matchedSections": [
+          "2.1.1. social engineering & phishing",
+          "2.1.2. malware & technical attacks",
+          "2.3.2. technical indicators"
+        ]
+      },
+      {
+        "page": "/opsec/travel/tldr",
+        "title": "Travel Security Quick Reference",
+        "score": 27,
+        "matchedSections": []
+      },
+      {
+        "page": "/awareness/cultivating-a-security-aware-mindset",
+        "title": "Cultivating A Security Aware Mindset | SEAL",
+        "score": 25,
+        "matchedSections": [
+          "practical tips",
+          "3.4.1. password management"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 25,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 24,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ws-2.1.3",
+    "controlTitle": "Endpoint Protection",
+    "description": "Do you deploy and monitor endpoint protection on organizational devices?",
+    "baselineCount": 4,
+    "baselines": [
+      "EDR or MDM deployed on all organizational devices with documented coverage",
+      "Alert triage and response procedures defined with severity-based escalation",
+      "Compliance enforcement actions documented (e.g., quarantine non-compliant devices, block access)",
+      "Monitoring coverage includes detection of malware, unauthorized software, and policy violations"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 138,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application",
+          "5. continuous visibility"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 77,
+        "matchedSections": [
+          "**secure devices with encryption & updates**",
+          "**physical safety and common sense**",
+          "**protect crypto keys with multi-party controls**",
+          "**plan emergency and incident responses**",
+          "**post-travel review**",
+          "**enhanced device protections**",
+          "**back up and prepare for loss**",
+          "**lock down phones**",
+          "**post-trip device rebuilding**"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 74,
+        "matchedSections": [
+          "summary",
+          "server settings checklist",
+          "logging setup",
+          "security bots"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 73,
+        "matchedSections": [
+          "5. continuous monitoring and improvement",
+          "implementation"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 71,
+        "matchedSections": [
+          "key components",
+          "implementation steps",
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 62,
+        "matchedSections": [
+          "case study 1: private key compromise",
+          "exercise 3: team member device compromise",
+          "red team exercise: phishing simulation"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/physical-environmental",
+        "title": "Physical & Environmental Security",
+        "score": 56,
+        "matchedSections": [
+          "secure workspace components",
+          "implementation steps for workspace security",
+          "implementation steps"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/organizational",
+        "title": "Organizational Security Controls",
+        "score": 50,
+        "matchedSections": [
+          "key components",
+          "implementation steps"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-2.1.4",
+    "controlTitle": "Physical and Travel Security",
+    "description": "Do you maintain physical security requirements for workspaces and travel?",
+    "baselineCount": 6,
+    "baselines": [
+      "Physical workspace requirements defined for both on-site and remote work environments",
+      "Screen privacy and shoulder-surfing awareness enforced",
+      "Travel security procedures documented covering device handling, network usage, and border crossings",
+      "High-risk travel procedures defined (loaner devices, enhanced controls, check-in schedules)",
+      "USB and charging security addressed (data blockers, no public USB ports)",
+      "Devices physically secured when not in active use (cable locks, safes, carry-on luggage for travel)"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 150,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/physical-environmental",
+        "title": "Physical & Environmental Security",
+        "score": 84,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 82,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application"
+        ]
+      },
+      {
+        "page": "/opsec/travel/tldr",
+        "title": "Travel Security Quick Reference",
+        "score": 67,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 57,
+        "matchedSections": []
+      },
+      {
+        "page": "/dprk-it-workers/mitigating-dprk-it-workers",
+        "title": "Mitigating DPRK IT Worker Threats | SEAL",
+        "score": 56,
+        "matchedSections": [
+          "hardening your organization"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/overview",
+        "title": "OpSec Control Domains",
+        "score": 55,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/web3-considerations",
+        "title": "Web3 Security Considerations",
+        "score": 54,
+        "matchedSections": [
+          "suggested steps"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-3.1.1",
+    "controlTitle": "Account Lifecycle Management",
+    "description": "Do you have procedures for provisioning, modifying, and revoking user accounts?",
+    "baselineCount": 5,
+    "baselines": [
+      "Account creation requires documented approval from the account owner's manager or designated authority",
+      "Accounts provisioned with minimum necessary permissions (least privilege)",
+      "Modification of account permissions requires documented approval",
+      "Account revocation procedures tied to offboarding and role changes",
+      "Service accounts and shared credentials inventoried with defined ownership"
+    ],
+    "candidates": [
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 72,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 68,
+        "matchedSections": [
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "conclusion"
+        ]
+      },
+      {
+        "page": "/dprk-it-workers/techniques-tactics-and-procedures",
+        "title": "DPRK IT Worker TTPs",
+        "score": 52,
+        "matchedSections": []
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "title": "Understanding Threat Vectors",
+        "score": 48,
+        "matchedSections": [
+          "2.1.1. social engineering & phishing",
+          "2.1.2. malware & technical attacks",
+          "2.3.2. technical indicators"
+        ]
+      },
+      {
+        "page": "/guides/account_management/twitter",
+        "title": "Twitter/X Security",
+        "score": 48,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 48,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 47,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/github",
+        "title": "GitHub Security",
+        "score": 43,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ws-3.1.2",
+    "controlTitle": "Multi-Factor Authentication",
+    "description": "Do you enforce multi-factor authentication across organizational accounts?",
+    "baselineCount": 5,
+    "baselines": [
+      "MFA required for all organizational accounts by default",
+      "Hardware security keys required for high-privilege and critical accounts (admin, infrastructure, custody)",
+      "Phishing-resistant MFA preferred (FIDO2/WebAuthn, hardware keys) over SMS or TOTP where available",
+      "Exceptions documented with justification, compensating controls, and expiry date",
+      "Backup MFA methods configured for account recovery"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 142,
+        "matchedSections": [
+          "**secure devices with encryption & updates**",
+          "**screen privacy and social engineering**",
+          "before traveling",
+          "**back up and prepare for loss**",
+          "**protect accounts with 2fa redundancy**",
+          "**secure your wallets and keys**",
+          "**plan emergency and incident responses**",
+          "**inspect and clean your devices**",
+          "**protect crypto keys with multi-party controls**",
+          "**post-trip device rebuilding**",
+          "conclusion"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 108,
+        "matchedSections": [
+          "key components",
+          "implementation steps",
+          "encrypted storage & backups",
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 83,
+        "matchedSections": [
+          "summary",
+          "account security checklist",
+          "server settings checklist",
+          "additional recommendations",
+          "cold admin accounts",
+          "backup systems"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 71,
+        "matchedSections": [
+          "educate community members on security practices",
+          "account security checklist",
+          "device-level security"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/web3-considerations",
+        "title": "Web3 Security Considerations",
+        "score": 58,
+        "matchedSections": [
+          "self-custody responsibility",
+          "suggested steps"
+        ]
+      },
+      {
+        "page": "/guides/account_management/twitter",
+        "title": "Twitter/X Security",
+        "score": 56,
+        "matchedSections": [
+          "summary",
+          "best practices & additional tips",
+          "for team members",
+          "account security checklist"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 55,
+        "matchedSections": [
+          "case study 2: social engineering attack",
+          "red team exercise: phishing simulation"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 55,
+        "matchedSections": [
+          "account security checklist",
+          "extended security settings"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-3.1.3",
+    "controlTitle": "Organizational Account Security",
+    "description": "Do you maintain security standards for all organizational accounts, including enterprise platforms and external services?",
+    "baselineCount": 5,
+    "baselines": [
+      "Security configuration standards defined and applied for enterprise platforms (Google Workspace, Microsoft 365, collaboration tools)",
+      "Social media and public-facing accounts secured with strong authentication and defined ownership",
+      "Ownership verified and documented for all organizational accounts",
+      "Recovery methods restricted to organizational channels (no personal recovery emails or phone numbers on organizational accounts)",
+      "Account configurations reviewed periodically for drift or unauthorized changes"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 106,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 80,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 75,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 69,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 67,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/organizational",
+        "title": "Organizational Security Controls",
+        "score": 59,
+        "matchedSections": [
+          "key components",
+          "implementation steps"
+        ]
+      },
+      {
+        "page": "/dprk-it-workers/techniques-tactics-and-procedures",
+        "title": "DPRK IT Worker TTPs",
+        "score": 58,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/twitter",
+        "title": "Twitter/X Security",
+        "score": 56,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ws-3.1.4",
+    "controlTitle": "Credential Management Standards",
+    "description": "Do you enforce credential management standards, including secure storage and individual accountability?",
+    "baselineCount": 7,
+    "baselines": [
+      "Password manager required for all personnel; no passwords stored in plain text, documents, or browsers",
+      "Unique, strong passwords for every account (minimum length/complexity standards defined)",
+      "Individual accounts required for all personnel — no sharing of personal login credentials",
+      "When credentials must be provisioned or shared (e.g., service accounts, API keys, onboarding), transmission only through encrypted channels (password manager sharing features, not email or chat)",
+      "Credential rotation schedule defined based on risk; rotation triggered immediately after suspected compromise",
+      "Enhanced controls for high-privilege credentials (admin accounts, service accounts, API keys) including stricter rotation, separate storage, and logged access",
+      "Service account and API key inventory maintained with defined ownership"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 346,
+        "matchedSections": [
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "conclusion",
+          "**secure devices with encryption & updates**",
+          "**protect accounts with 2fa redundancy**",
+          "**lock down phones**",
+          "**post-travel review**",
+          "**plan for customs and border checks**",
+          "**secure your wallets and keys**",
+          "**plan emergency and incident responses**",
+          "**network safety – avoid untrusted wi-fi & bluetooth**"
+        ]
+      },
+      {
+        "page": "/awareness/cultivating-a-security-aware-mindset",
+        "title": "Cultivating A Security Aware Mindset | SEAL",
+        "score": 200,
+        "matchedSections": [
+          "practical tips",
+          "3.4.1. password management",
+          "3.4.2. multi-factor authentication (mfa)"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 164,
+        "matchedSections": [
+          "account security checklist",
+          "device-level security",
+          "advanced privacy measures",
+          "best practices for safe use",
+          "notes"
+        ]
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "title": "Understanding Threat Vectors",
+        "score": 159,
+        "matchedSections": [
+          "2.1.1. social engineering & phishing",
+          "2.1.2. malware & technical attacks",
+          "2.3.2. technical indicators"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 151,
+        "matchedSections": [
+          "account security checklist",
+          "extended security settings",
+          "admin settings (workspace configuration)"
+        ]
+      },
+      {
+        "page": "/community-management/overview",
+        "title": "Community Management",
+        "score": 149,
+        "matchedSections": [
+          "phishing awareness",
+          "strong passwords and two-factor authentication (2fa)"
+        ]
+      },
+      {
+        "page": "/guides/account_management/twitter",
+        "title": "Twitter/X Security",
+        "score": 120,
+        "matchedSections": [
+          "account security checklist",
+          "best practices & additional tips"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 116,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-3.1.5",
+    "controlTitle": "Access Reviews",
+    "description": "Do you conduct periodic access reviews and promptly adjust permissions when roles change?",
+    "baselineCount": 5,
+    "baselines": [
+      "Scheduled access reviews at least quarterly for critical systems, annually for others",
+      "Access adjusted within defined timelines when employees change roles",
+      "Reviews verify each user still requires their current level of access",
+      "Unnecessary permissions revoked promptly with documented evidence",
+      "Insider threat consideration included — for each role, assess what damage could be done with current access"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 97,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 83,
+        "matchedSections": [
+          "server settings checklist"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 73,
+        "matchedSections": []
+      },
+      {
+        "page": "/dprk-it-workers/mitigating-dprk-it-workers",
+        "title": "Mitigating DPRK IT Worker Threats | SEAL",
+        "score": 71,
+        "matchedSections": [
+          "hardening your organization",
+          "i hired a dprk it worker. what now?"
+        ]
+      },
+      {
+        "page": "/dprk-it-workers/techniques-tactics-and-procedures",
+        "title": "DPRK IT Worker TTPs",
+        "score": 63,
+        "matchedSections": [
+          "did i hire a dprk it worker?"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 57,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/people",
+        "title": "Personnel Security Controls",
+        "score": 56,
+        "matchedSections": [
+          "key components",
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/implementation-process",
+        "title": "OpSec Implementation Process | SEAL",
+        "score": 56,
+        "matchedSections": [
+          "relationship to security fundamentals",
+          "implementation actions"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-4.1.1",
+    "controlTitle": "Software Evaluation and Approval",
+    "description": "Do you evaluate and approve software, extensions, and tools before organizational use?",
+    "baselineCount": 5,
+    "baselines": [
+      "Evaluation criteria for all software before adoption (browsers, extensions, IDEs, libraries, AI assistants, SaaS tools)",
+      "Data privacy and leakage risks assessed (does the tool send data to third parties for training or analytics?)",
+      "Approved software list maintained; unapproved software restricted",
+      "Browser extension approval process defined",
+      "Dependency management includes version pinning, vulnerability scanning, and update policies"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 65,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 60,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/implementation-process",
+        "title": "OpSec Implementation Process | SEAL",
+        "score": 47,
+        "matchedSections": [
+          "relationship to security fundamentals",
+          "implementation actions"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/glossary",
+        "title": "Security Glossary",
+        "score": 44,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 39,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/continuous-improvement-metrics",
+        "title": "Security Improvement Metrics | SEAL",
+        "score": 36,
+        "matchedSections": [
+          "implementation steps",
+          "maturity models",
+          "web3-specific maturity considerations",
+          "key components"
+        ]
+      },
+      {
+        "page": "/awareness/resources-and-further-reading",
+        "title": "Security Resources & Further Reading | SEAL",
+        "score": 33,
+        "matchedSections": [
+          "5.5. web3-specific security resources"
+        ]
+      },
+      {
+        "page": "/encryption/cloud-data-encryption",
+        "title": "Cloud Data Encryption",
+        "score": 33,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ws-4.1.2",
+    "controlTitle": "Source Code and Repository Security",
+    "description": "Do you secure source code repositories against unauthorized access and credential exposure?",
+    "baselineCount": 5,
+    "baselines": [
+      "Role-based access control with least-privilege permissions",
+      "Branch protection rules enforced on critical branches (require reviews, signed commits)",
+      "Automated secret scanning enabled to detect credentials, API keys, and private keys in code",
+      "Pre-commit hooks or CI checks to prevent secrets from being committed",
+      "Repository security audited periodically (access permissions, configuration, open PRs)"
+    ],
+    "candidates": [
+      {
+        "page": "/guides/account_management/github",
+        "title": "GitHub Security",
+        "score": 132,
+        "matchedSections": [
+          "repository settings",
+          "summary",
+          "for team members"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 113,
+        "matchedSections": [
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "conclusion"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 92,
+        "matchedSections": [
+          "practical application",
+          "2. minimal access scopes"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 77,
+        "matchedSections": [
+          "summary"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 77,
+        "matchedSections": [
+          "2. principle of least privilege",
+          "implementation"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 75,
+        "matchedSections": []
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "title": "Understanding Threat Vectors",
+        "score": 69,
+        "matchedSections": [
+          "2.1.1. social engineering & phishing",
+          "2.1.2. malware & technical attacks",
+          "2.3.2. technical indicators"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 66,
+        "matchedSections": [
+          "case study 1: private key compromise",
+          "exercise 3: team member device compromise"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-5.1.1",
+    "controlTitle": "Network Security",
+    "description": "Do you enforce secure network access for organizational systems?",
+    "baselineCount": 4,
+    "baselines": [
+      "VPN or zero-trust network access required for accessing internal resources remotely",
+      "Wi-Fi security standards defined (no auto-connect, avoid public Wi-Fi for sensitive operations)",
+      "Network segmentation applied where applicable (separate guest networks, development environments)",
+      "Cellular or personal hotspot preferred over public Wi-Fi for sensitive work"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 114,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 98,
+        "matchedSections": [
+          "1. layered protection",
+          "relationship to implementation process",
+          "practical application"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 63,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 59,
+        "matchedSections": [
+          "1. defense in depth"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/glossary",
+        "title": "Security Glossary",
+        "score": 58,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/web3-considerations",
+        "title": "Web3 Security Considerations",
+        "score": 54,
+        "matchedSections": [
+          "suggested steps"
+        ]
+      },
+      {
+        "page": "/opsec/travel/tldr",
+        "title": "Travel Security Quick Reference",
+        "score": 48,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 43,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ws-5.1.2",
+    "controlTitle": "Secure Communications",
+    "description": "Do you secure organizational communications and verify identity for sensitive interactions?",
+    "baselineCount": 5,
+    "baselines": [
+      "End-to-end encrypted channels used for sensitive communications",
+      "Identity verification procedures established for sensitive requests (e.g., access changes, financial approvals, credential sharing)",
+      "Anti-impersonation protocols documented (e.g., secondary channel verification, code words, video confirmation)",
+      "Email security configured (SPF, DKIM, DMARC) to prevent spoofing",
+      "Procedures for channel compromise including switching to backup channels"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 171,
+        "matchedSections": [
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "conclusion",
+          "**secure your wallets and keys**",
+          "**plan emergency and incident responses**",
+          "**network safety – avoid untrusted wi-fi & bluetooth**",
+          "**plan for customs and border checks**",
+          "before traveling",
+          "**back up and prepare for loss**",
+          "**protect accounts with 2fa redundancy**",
+          "**inspect and clean your devices**",
+          "**protect crypto keys with multi-party controls**",
+          "**post-trip device rebuilding**"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 118,
+        "matchedSections": [
+          "account security checklist",
+          "device-level security",
+          "advanced privacy measures",
+          "best practices for safe use",
+          "notes"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 117,
+        "matchedSections": [
+          "key components",
+          "encrypted storage & backups",
+          "implementation steps",
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 101,
+        "matchedSections": [
+          "additional recommendations",
+          "account security checklist",
+          "cold admin accounts",
+          "backup systems"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/web3-considerations",
+        "title": "Web3 Security Considerations",
+        "score": 94,
+        "matchedSections": [
+          "suggested steps"
+        ]
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "title": "Understanding Threat Vectors",
+        "score": 88,
+        "matchedSections": [
+          "2.1.1. social engineering & phishing",
+          "2.1.2. malware & technical attacks",
+          "2.3.2. technical indicators"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 80,
+        "matchedSections": [
+          "account security checklist",
+          "extended security settings",
+          "admin settings (workspace configuration)"
+        ]
+      },
+      {
+        "page": "/awareness/cultivating-a-security-aware-mindset",
+        "title": "Cultivating A Security Aware Mindset | SEAL",
+        "score": 65,
+        "matchedSections": [
+          "practical tips",
+          "3.4.1. password management"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-6.1.1",
+    "controlTitle": "Security Onboarding",
+    "description": "Do you verify employee identity and provide security onboarding before granting system access?",
+    "baselineCount": 5,
+    "baselines": [
+      "Identity and authorization verified before any access is provisioned",
+      "Background checks or identity verification appropriate to role sensitivity",
+      "Security onboarding includes device provisioning, account creation, MFA setup, and initial security training",
+      "New personnel acknowledge security policies before access is granted",
+      "Onboarding checklist documented and consistently applied"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 79,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/people",
+        "title": "Personnel Security Controls",
+        "score": 74,
+        "matchedSections": [
+          "security training & culture",
+          "implementation steps"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 74,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 71,
+        "matchedSections": []
+      },
+      {
+        "page": "/dprk-it-workers/techniques-tactics-and-procedures",
+        "title": "DPRK IT Worker TTPs",
+        "score": 67,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 64,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/appendices/glossary",
+        "title": "Security Glossary",
+        "score": 62,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 55,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ws-6.1.2",
+    "controlTitle": "Security Offboarding",
+    "description": "Do you have comprehensive offboarding procedures for departing personnel?",
+    "baselineCount": 5,
+    "baselines": [
+      "All account access revoked within 24 hours of departure",
+      "Devices returned and verified for data sanitization",
+      "Credentials and secrets rotated for any shared systems the departing person accessed",
+      "Offboarding checklist documented covering: account deprovisioning, device return, credential rotation, access to organizational repositories and tools, recovery of company property",
+      "Involuntary departures trigger immediate access revocation before notification where feasible"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 99,
+        "matchedSections": [
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "conclusion"
+        ]
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "title": "Understanding Threat Vectors",
+        "score": 69,
+        "matchedSections": [
+          "2.1.1. social engineering & phishing",
+          "2.1.2. malware & technical attacks",
+          "2.3.2. technical indicators"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 47,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 47,
+        "matchedSections": [
+          "exercise 3: team member device compromise"
+        ]
+      },
+      {
+        "page": "/dprk-it-workers/techniques-tactics-and-procedures",
+        "title": "DPRK IT Worker TTPs",
+        "score": 46,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 44,
+        "matchedSections": []
+      },
+      {
+        "page": "/dprk-it-workers/mitigating-dprk-it-workers",
+        "title": "Mitigating DPRK IT Worker Threats | SEAL",
+        "score": 43,
+        "matchedSections": [
+          "overview of risks to your organization"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/glossary",
+        "title": "Security Glossary",
+        "score": 43,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "ws-6.1.3",
+    "controlTitle": "Security Awareness and Training",
+    "description": "Do you maintain a security awareness program with regular training and testing?",
+    "baselineCount": 5,
+    "baselines": [
+      "Training covers workspace security topics: phishing, social engineering, device security, credential hygiene, and incident reporting",
+      "Phishing simulations conducted at least quarterly",
+      "Follow-up training required for personnel who fail simulations",
+      "Training content updated annually and after significant threats or procedure changes",
+      "Covers crypto-specific risks: fake job offers, malicious browser extensions, clipboard hijacking, social engineering via DMs"
+    ],
+    "candidates": [
+      {
+        "page": "/awareness/staying-informed-and-continuous-learning",
+        "title": "Staying Informed And Continuous Learning | SEAL",
+        "score": 148,
+        "matchedSections": [
+          "4.1.1. training approaches",
+          "4.2. essential training topics",
+          "4.1.2. training delivery"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/people",
+        "title": "Personnel Security Controls",
+        "score": 139,
+        "matchedSections": [
+          "key components",
+          "implementation steps",
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 113,
+        "matchedSections": [
+          "case study 2: social engineering attack",
+          "red team exercise: phishing simulation",
+          "exercise 3: team member device compromise"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 106,
+        "matchedSections": [
+          "server settings checklist",
+          "summary",
+          "account security checklist",
+          "additional recommendations"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 102,
+        "matchedSections": [
+          "**screen privacy and social engineering**",
+          "**secure devices with encryption & updates**",
+          "**secure your accounts and passwords**",
+          "conclusion"
+        ]
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "title": "Understanding Threat Vectors",
+        "score": 100,
+        "matchedSections": [
+          "2.1.1. social engineering & phishing",
+          "2.1.2. malware & technical attacks",
+          "2.3.2. technical indicators"
+        ]
+      },
+      {
+        "page": "/awareness/resources-and-further-reading",
+        "title": "Security Resources & Further Reading | SEAL",
+        "score": 94,
+        "matchedSections": [
+          "5.1. additional learning materials",
+          "5.4. security training resources"
+        ]
+      },
+      {
+        "page": "/community-management/overview",
+        "title": "Community Management",
+        "score": 73,
+        "matchedSections": [
+          "phishing awareness"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-7.1.1",
+    "controlTitle": "Workspace Security Monitoring and Incident Response",
+    "description": "Do you detect and respond to workspace security incidents?",
+    "baselineCount": 5,
+    "baselines": [
+      "Monitoring in place for common workspace threats: account takeovers, unauthorized access, credential leaks, device compromise, data exfiltration",
+      "Response procedures documented for key scenarios: compromised account, compromised device, data leak, insider threat event",
+      "Escalation paths defined with severity levels",
+      "Credential leak monitoring (dark web, breach databases, paste sites, code repositories)",
+      "Incidents documented with timeline, root cause, actions taken, and lessons learned"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 154,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application",
+          "5. continuous visibility"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 120,
+        "matchedSections": [
+          "case study 1: private key compromise",
+          "exercise 3: team member device compromise",
+          "red team exercise: phishing simulation"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 116,
+        "matchedSections": [
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "conclusion",
+          "**post-travel review**"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 103,
+        "matchedSections": [
+          "implementation",
+          "5. continuous monitoring and improvement"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 82,
+        "matchedSections": [
+          "server settings checklist",
+          "logging setup",
+          "security bots"
+        ]
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "title": "Understanding Threat Vectors",
+        "score": 78,
+        "matchedSections": [
+          "2.1.1. social engineering & phishing",
+          "2.1.2. malware & technical attacks",
+          "2.3.2. technical indicators"
+        ]
+      },
+      {
+        "page": "/dprk-it-workers/techniques-tactics-and-procedures",
+        "title": "DPRK IT Worker TTPs",
+        "score": 72,
+        "matchedSections": [
+          "did i hire a dprk it worker?"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/people",
+        "title": "Personnel Security Controls",
+        "score": 70,
+        "matchedSections": [
+          "key components",
+          "implementation steps",
+          "web3-specific considerations"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-7.1.2",
+    "controlTitle": "Insider Threat Assessment",
+    "description": "Do you assess insider threat risks and enforce least-privilege access for each role?",
+    "baselineCount": 4,
+    "baselines": [
+      "Damage scenarios documented for each role (what could this person do if compromised or malicious?)",
+      "Least-privilege access enforced across all systems",
+      "Separation of duties applied for critical operations (e.g., no single person can deploy to production, execute large transactions, and manage access controls)",
+      "Assessed during periodic access reviews"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 83,
+        "matchedSections": [
+          "practical application"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 78,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/people",
+        "title": "Personnel Security Controls",
+        "score": 63,
+        "matchedSections": [
+          "key components",
+          "implementation steps",
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 57,
+        "matchedSections": [
+          "implementation"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 55,
+        "matchedSections": [
+          "key components",
+          "implementation steps"
+        ]
+      },
+      {
+        "page": "/dprk-it-workers/overview",
+        "title": "Insider Threats (DPRK)",
+        "score": 53,
+        "matchedSections": [
+          "table of contents"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 53,
+        "matchedSections": [
+          "case study 1: private key compromise"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 52,
+        "matchedSections": [
+          "summary",
+          "server settings checklist"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "ws-7.1.3",
+    "controlTitle": "Third-Party Access Management",
+    "description": "Do you manage third-party access with time-limited, purpose-specific permissions?",
+    "baselineCount": 5,
+    "baselines": [
+      "Third-party access requires documented approval with defined scope and expiry date",
+      "Access limited to minimum necessary systems and data",
+      "Access revoked automatically upon contract expiry or project completion",
+      "Audit trails maintained for all third-party access",
+      "Third-party vendor security evaluated before granting access (security certifications, incident history)"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 84,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/glossary",
+        "title": "Security Glossary",
+        "score": 73,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "title": "Discord Security",
+        "score": 71,
+        "matchedSections": []
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "title": "Telegram Security",
+        "score": 71,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 65,
+        "matchedSections": []
+      },
+      {
+        "page": "/dprk-it-workers/mitigating-dprk-it-workers",
+        "title": "Mitigating DPRK IT Worker Threats | SEAL",
+        "score": 64,
+        "matchedSections": [
+          "hardening your organization"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 64,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 64,
+        "matchedSections": []
+      }
+    ]
+  }
+]

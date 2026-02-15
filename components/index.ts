@@ -16,6 +16,7 @@ export { ContributeFooter } from './footer/ContributeFooter'
 export { Contributors } from './contributors/Contributors'
 export { BenchmarkList } from './benchmark/Benchmark'
 export { CertList } from './cert/CertList'
+export { CertReferences } from './cert/CertReferences'
 export type { Control, Section, CertListProps, ControlState, ControlData } from './cert/types'
 export { default as MermaidRenderer } from './mermaid/MermaidRenderer';
 export * from './shared/tagColors'

@@ -1,0 +1,2219 @@
+[
+  {
+    "controlId": "tro-1.1.1",
+    "controlTitle": "Treasury Operations Owner",
+    "description": "Is there a clearly designated person or team accountable for treasury operations?",
+    "baselineCount": 1,
+    "baselines": [
+      "Accountability scope covers policy upkeep, security reviews, operational hygiene, access control oversight, and incident escalation"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 66,
+        "matchedSections": [
+          "security monitoring & logging",
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also"
+        ]
+      },
+      {
+        "page": "/wallet-security/encumbered-wallets",
+        "title": "TEE-based Encumbered Wallets",
+        "score": 38,
+        "matchedSections": [
+          "key benefits & features"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 37,
+        "matchedSections": [
+          "security team contact",
+          "internal escalation"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 33,
+        "matchedSections": [
+          "issue description",
+          "affected addresses"
+        ]
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 32,
+        "matchedSections": [
+          "2. develop a robust security policy framework",
+          "4. access management and control"
+        ]
+      },
+      {
+        "page": "/treasury-operations/overview",
+        "title": "Treasury Operations Security | SEAL",
+        "score": 27,
+        "matchedSections": [
+          "what is treasury operations security?"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 25,
+        "matchedSections": [
+          "setup best practices"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 24,
+        "matchedSections": [
+          "treasury multisigs"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-1.1.2",
+    "controlTitle": "Treasury Registry and Documentation",
+    "description": "Do you maintain a complete, current record of all treasury wallets, accounts, and their configurations?",
+    "baselineCount": 3,
+    "baselines": [
+      "Registry includes wallet/account address, network/chain, custody provider, custody model, purpose/classification, authorized signers/approvers, controlled contracts or protocols, and last review date",
+      "Updated within 24 hours for security-critical changes (signer changes, new wallets), 3 days for routine changes",
+      "Accessible to authorized treasury personnel"
+    ],
+    "candidates": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 253,
+        "matchedSections": [
+          "core concept: m-of-n scheme",
+          "thresholds & configuration",
+          "communication & documentation",
+          "signer rotation",
+          "training & drills",
+          "setup best practices",
+          "operational best practices",
+          "contract-level security"
+        ]
+      },
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 217,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "security monitoring & logging"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 163,
+        "matchedSections": [
+          "address verification",
+          "key principles summary",
+          "pre-transfer setup (48 hours before)",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "transaction parameter security"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 133,
+        "matchedSections": [
+          "delegated proposer",
+          "verify basic functionality",
+          "pre-launch checklist",
+          "nested safes",
+          "next steps",
+          "evm networks (ethereum, base, etc.)",
+          "solana",
+          "self-hosted multisig ui",
+          "address whitelisting",
+          "allowance module (required for treasury multisigs)"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/registration-and-documentation",
+        "title": "Multisig Registration & Documentation | SEAL",
+        "score": 114,
+        "matchedSections": [
+          "initial registration",
+          "ongoing maintenance",
+          "signer changes",
+          "signer verification process",
+          "update template",
+          "documentation updates",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 105,
+        "matchedSections": [
+          "training & drills:",
+          "additional requirements:",
+          "operational constraints:",
+          "veto quorum",
+          "hot/cold wallet separation",
+          "external signer requirements",
+          "configuration",
+          "treasury multisigs"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 93,
+        "matchedSections": [
+          "identity verification process",
+          "replacement coordination",
+          "for emergency response multisigs",
+          "emergency drill procedures",
+          "recovery process"
+        ]
+      },
+      {
+        "page": "/wallet-security/signing-and-verification/secure-multisig-signing-process",
+        "title": "Secure Multisig Signing Process | SEAL",
+        "score": 90,
+        "matchedSections": [
+          "process",
+          "phase 2: executing the on-chain transaction",
+          "operational best practices",
+          "phase 1: signing the off-chain message"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-1.1.3",
+    "controlTitle": "Custody Architecture Rationale",
+    "description": "Do you have documented rationale for your treasury custody architecture?",
+    "baselineCount": 3,
+    "baselines": [
+      "Custody model documented for each wallet/account (custodial, self-custody, co-managed, MPC, multisig, HSM)",
+      "Technology trade-offs understood by the team (not necessarily a formal document — could be a brief internal memo)",
+      "Custody architecture reviewed when treasury size, operational needs, or risk profile changes significantly"
+    ],
+    "candidates": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 336,
+        "matchedSections": [
+          "for multisig administrators",
+          "planning & setup",
+          "documentation & communication",
+          "ongoing management",
+          "hardware & security setup",
+          "operational readiness",
+          "emergency preparedness",
+          "personal security",
+          "compliance",
+          "emergency response multisigs",
+          "treasury multisigs",
+          "smart contract control multisigs",
+          "required reading completed",
+          "role-specific documentation",
+          "training completion"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 305,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "day of transfer",
+          "multi-signature best practices",
+          "address verification",
+          "key principles summary",
+          "pre-transfer planning (72 hours before)",
+          "transaction parameter security"
+        ]
+      },
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 297,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "security monitoring & logging"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/overview",
+        "title": "Multisig Security Framework | SEAL",
+        "score": 241,
+        "matchedSections": [
+          "how to use this guide",
+          "core principles",
+          "1. foundation",
+          "2. multisig administration",
+          "3. for signers",
+          "4. reference"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 216,
+        "matchedSections": [
+          "core concept: m-of-n scheme",
+          "thresholds & configuration",
+          "communication & documentation",
+          "signer rotation",
+          "training & drills",
+          "operational best practices",
+          "contract-level security",
+          "acknowledgements"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 146,
+        "matchedSections": [
+          "solana",
+          "self-hosted multisig ui",
+          "delegated proposer",
+          "allowance module (required for treasury multisigs)",
+          "zodiac delay modifier (time-locks)",
+          "contract-level controls",
+          "pre-launch checklist",
+          "practice on testnet",
+          "nested safes",
+          "next steps",
+          "active monitoring"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/registration-and-documentation",
+        "title": "Multisig Registration & Documentation | SEAL",
+        "score": 118,
+        "matchedSections": [
+          "protocol documentation",
+          "signer verification process",
+          "initial registration",
+          "regular reviews",
+          "signer changes",
+          "documentation updates",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 113,
+        "matchedSections": [
+          "eternal safe - decentralized fork of safe\\{wallet\\}",
+          "squads public client - open source squads v4 interface",
+          "related documents"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-1.1.4",
+    "controlTitle": "Treasury Infrastructure Change Management",
+    "description": "Do you have change management procedures for treasury infrastructure modifications?",
+    "baselineCount": 5,
+    "baselines": [
+      "Covers wallet setups, custody configurations, signer/approver permission changes, and protocol integrations",
+      "Changes require documented approval before implementation",
+      "All changes logged with justification and approver",
+      "Changes reflected in the treasury registry within defined SLAs",
+      "Rollback procedures documented for critical changes"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 198,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "security monitoring & logging",
+          "transaction verification"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 192,
+        "matchedSections": [
+          "core concept: m-of-n scheme",
+          "thresholds & configuration",
+          "communication & documentation",
+          "signer rotation",
+          "training & drills",
+          "setup best practices",
+          "operational best practices",
+          "contract-level security"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 107,
+        "matchedSections": [
+          "evm networks (ethereum, base, etc.)",
+          "solana",
+          "self-hosted multisig ui",
+          "delegated proposer",
+          "address whitelisting",
+          "verify basic functionality",
+          "pre-launch checklist",
+          "nested safes",
+          "next steps",
+          "allowance module (required for treasury multisigs)"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 93,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "address verification",
+          "key principles summary",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "transaction parameter security"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/registration-and-documentation",
+        "title": "Multisig Registration & Documentation | SEAL",
+        "score": 91,
+        "matchedSections": [
+          "signer verification process",
+          "update template",
+          "initial registration",
+          "ongoing maintenance",
+          "signer changes",
+          "documentation updates",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 72,
+        "matchedSections": [
+          "hot/cold wallet separation",
+          "external signer requirements",
+          "training & drills:",
+          "additional requirements:",
+          "operational constraints:",
+          "configuration",
+          "veto quorum",
+          "treasury multisigs"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 60,
+        "matchedSections": [
+          "recovery process",
+          "identity verification process",
+          "replacement coordination",
+          "for emergency response multisigs",
+          "emergency drill procedures"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 56,
+        "matchedSections": [
+          "planning & setup",
+          "ongoing management",
+          "for signers",
+          "operational readiness",
+          "treasury multisigs"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-2.1.1",
+    "controlTitle": "Treasury Wallet Risk Classification",
+    "description": "Do you classify your treasury wallets and accounts by risk level and assign security controls accordingly?",
+    "baselineCount": 5,
+    "baselines": [
+      "Classification considers financial exposure, operational dependency, and regulatory impact",
+      "Impact levels defined (e.g., Low <1%, Medium 1-10%, High 10-25%, Critical >25% of total assets)",
+      "Operational types defined based on transaction frequency and urgency requirements",
+      "Each classification maps to specific controls including approval thresholds, MFA requirements, whitelist delays, and monitoring levels",
+      "Classification reviewed when asset values, operational patterns, or risk profile change significantly"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 203,
+        "matchedSections": [
+          "mpc for large holdings",
+          "custody/mpc policy thresholds for treasury operations",
+          "custody policy engine rules",
+          "security monitoring & logging",
+          "access security",
+          "device security",
+          "see also",
+          "transaction verification"
+        ]
+      },
+      {
+        "page": "/treasury-operations/classification",
+        "title": "Treasury Security Classification | SEAL",
+        "score": 125,
+        "matchedSections": [
+          "step 4: document your decision",
+          "step 1: impact assessment",
+          "step 2: operational assessment"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 110,
+        "matchedSections": [
+          "thresholds & configuration",
+          "signer rotation",
+          "setup best practices",
+          "core concept: m-of-n scheme",
+          "operational best practices"
+        ]
+      },
+      {
+        "page": "/treasury-operations/overview",
+        "title": "Treasury Operations Security | SEAL",
+        "score": 92,
+        "matchedSections": [
+          "[classification framework](./classification)",
+          "what is treasury operations security?",
+          "[enhanced controls](./enhanced-controls)"
+        ]
+      },
+      {
+        "page": "/monitoring/thresholds",
+        "title": "Monitoring Alert Thresholds",
+        "score": 87,
+        "matchedSections": [
+          "set thresholds for alerts",
+          "adjust thresholds over time",
+          "multi-layered thresholds"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/planning-and-classification",
+        "title": "Multisig Planning & Classification | SEAL",
+        "score": 76,
+        "matchedSections": [
+          "classification process",
+          "define purpose and scope"
+        ]
+      },
+      {
+        "page": "/wallet-security/tools-and-resources",
+        "title": "Wallet Security Tools & Resources | SEAL",
+        "score": 69,
+        "matchedSections": [
+          "network security",
+          "monitoring & alerting",
+          "multisig monitoring"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 68,
+        "matchedSections": [
+          "evm networks (ethereum, base, etc.)",
+          "solana",
+          "pre-launch checklist",
+          "nested safes",
+          "allowance module (required for treasury multisigs)",
+          "active monitoring",
+          "immutable monitoring channels"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-2.1.2",
+    "controlTitle": "Fund Allocation Limits and Rebalancing",
+    "description": "Do you enforce fund allocation limits and rebalancing triggers across your treasury?",
+    "baselineCount": 4,
+    "baselines": [
+      "Maximum allocation defined per wallet, per custody provider, and per chain",
+      "Rebalancing triggers documented (e.g., when a wallet exceeds its allocation ceiling or falls below operational minimums)",
+      "Allocation limits reviewed periodically and after significant treasury changes",
+      "No single wallet or custody account holds more than the organization's defined maximum concentration"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 244,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "security monitoring & logging",
+          "transaction verification"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 121,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "address verification",
+          "transaction parameter security",
+          "key principles summary"
+        ]
+      },
+      {
+        "page": "/treasury-operations/classification",
+        "title": "Treasury Security Classification | SEAL",
+        "score": 58,
+        "matchedSections": [
+          "step 1: impact assessment",
+          "step 4: document your decision",
+          "step 2: operational assessment"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 51,
+        "matchedSections": [
+          "treasury multisigs",
+          "hot/cold wallet separation"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 44,
+        "matchedSections": [
+          "core concept: m-of-n scheme"
+        ]
+      },
+      {
+        "page": "/wallet-security/encumbered-wallets",
+        "title": "TEE-based Encumbered Wallets",
+        "score": 41,
+        "matchedSections": [
+          "security considerations & best practices"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 37,
+        "matchedSections": [
+          "issue description",
+          "affected addresses"
+        ]
+      },
+      {
+        "page": "/treasury-operations/overview",
+        "title": "Treasury Operations Security | SEAL",
+        "score": 37,
+        "matchedSections": [
+          "what is treasury operations security?"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-3.1.1",
+    "controlTitle": "Custody Platform Security Configuration",
+    "description": "Do you configure and maintain security controls on your custody platforms?",
+    "baselineCount": 6,
+    "baselines": [
+      "Transaction policy rules configured: multi-approval workflows, approval thresholds scaled to transaction value, address whitelisting with cooling-off periods, velocity/spending limits",
+      "Hardware security key MFA required for all approvers on High and Critical accounts",
+      "Session timeouts and re-authentication for sensitive operations",
+      "Network restrictions: IP whitelisting, VPN requirements where supported, geographic access restrictions",
+      "Separation of duties enforced: initiators cannot approve their own transactions, admins cannot unilaterally execute withdrawals",
+      "Platform configurations documented and reviewed at least quarterly"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 187,
+        "matchedSections": [
+          "mpc for large holdings",
+          "custody/mpc policy thresholds for treasury operations",
+          "custody policy engine rules",
+          "security monitoring & logging",
+          "access security",
+          "device security",
+          "zero trust architecture alternative"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 111,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "address verification",
+          "transaction parameter security",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "key principles summary"
+        ]
+      },
+      {
+        "page": "/treasury-operations/registration-documents",
+        "title": "Custodial Account Registration | SEAL",
+        "score": 101,
+        "matchedSections": [
+          "security configuration template"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 93,
+        "matchedSections": [
+          "thresholds & configuration",
+          "signer rotation",
+          "setup best practices"
+        ]
+      },
+      {
+        "page": "/wallet-security/encumbered-wallets",
+        "title": "TEE-based Encumbered Wallets",
+        "score": 73,
+        "matchedSections": [
+          "security considerations & best practices"
+        ]
+      },
+      {
+        "page": "/treasury-operations/classification",
+        "title": "Treasury Security Classification | SEAL",
+        "score": 64,
+        "matchedSections": [
+          "step 4: document your decision",
+          "step 1: impact assessment"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 62,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 57,
+        "matchedSections": [
+          "evm networks (ethereum, base, etc.)",
+          "solana",
+          "pre-launch checklist",
+          "nested safes"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-3.1.2",
+    "controlTitle": "Credential and Secret Management",
+    "description": "Do you securely manage all credentials and secrets used in treasury operations?",
+    "baselineCount": 5,
+    "baselines": [
+      "Covers API keys, service accounts, owner/admin credentials, and signing keys",
+      "Credentials stored in dedicated secret management systems, not in code, documents, or shared drives",
+      "Owner and admin credentials isolated from day-to-day operational access",
+      "Credential rotation schedule defined and enforced",
+      "Access to credentials logged and monitored"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 124,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "transaction verification",
+          "security monitoring & logging"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 55,
+        "matchedSections": [
+          "dns security"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 54,
+        "matchedSections": [
+          "core concept: m-of-n scheme",
+          "thresholds & configuration"
+        ]
+      },
+      {
+        "page": "/wallet-security/encumbered-wallets",
+        "title": "TEE-based Encumbered Wallets",
+        "score": 45,
+        "matchedSections": []
+      },
+      {
+        "page": "/incident-management/playbooks/malware",
+        "title": "Malware Infection Response",
+        "score": 44,
+        "matchedSections": [
+          "secure your crypto assets"
+        ]
+      },
+      {
+        "page": "/wallet-security/seed-phrase-management",
+        "title": "Seed Phrase Management",
+        "score": 43,
+        "matchedSections": []
+      },
+      {
+        "page": "/wallet-security/custodial-vs-non-custodial",
+        "title": "Custodial Vs Non-Custodial Wallets | SEAL",
+        "score": 40,
+        "matchedSections": [
+          "characteristics"
+        ]
+      },
+      {
+        "page": "/treasury-operations/classification",
+        "title": "Treasury Security Classification | SEAL",
+        "score": 34,
+        "matchedSections": [
+          "step 1: impact assessment",
+          "step 2: operational assessment"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-3.1.3",
+    "controlTitle": "Access Reviews for Treasury Systems",
+    "description": "Do you periodically review who has access to treasury systems?",
+    "baselineCount": 3,
+    "baselines": [
+      "Access reviews conducted at least quarterly for High/Critical accounts, annually for others",
+      "Reviews verify each user still requires their current access level",
+      "Access promptly revoked when personnel change roles or leave"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 82,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also"
+        ]
+      },
+      {
+        "page": "/treasury-operations/registration-documents",
+        "title": "Custodial Account Registration | SEAL",
+        "score": 50,
+        "matchedSections": []
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 38,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 36,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/treasury-operations/overview",
+        "title": "Treasury Operations Security | SEAL",
+        "score": 31,
+        "matchedSections": [
+          "what is treasury operations security?"
+        ]
+      },
+      {
+        "page": "/wallet-security/encumbered-wallets",
+        "title": "TEE-based Encumbered Wallets",
+        "score": 31,
+        "matchedSections": []
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 30,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "tro-3.1.4",
+    "controlTitle": "Personnel Operational Security",
+    "description": "Do you enforce operational security requirements for treasury personnel?",
+    "baselineCount": 6,
+    "baselines": [
+      "Device security requirements documented: dedicated devices for custody access, full disk encryption, automatic screen lock",
+      "Signing devices (hardware wallets) securely stored when not in use",
+      "Backup materials (seed phrases, recovery keys) stored securely with geographic distribution",
+      "VPN mandatory for all remote treasury platform access",
+      "Travel security procedures for personnel with signing or custody access capabilities",
+      "Mobile devices used as second factors have endpoint security monitoring"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 287,
+        "matchedSections": [
+          "device security",
+          "access security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "security monitoring & logging"
+        ]
+      },
+      {
+        "page": "/wallet-security/seed-phrase-management",
+        "title": "Seed Phrase Management",
+        "score": 163,
+        "matchedSections": [
+          "multisig social recovery",
+          "private key & seed phrase management",
+          "seed phrase encryption",
+          "tamper evident bags:",
+          "advanced backup options",
+          "ongoing security hygiene",
+          "trusted contacts"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 160,
+        "matchedSections": [
+          "what not to bring",
+          "basic requirements",
+          "start with basics",
+          "for extra security",
+          "what to bring",
+          "basic travel security",
+          "network monitoring tools"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 156,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "address verification",
+          "transaction parameter security",
+          "key principles summary"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 126,
+        "matchedSections": [
+          "treasury multisigs",
+          "documentation & communication",
+          "ongoing management",
+          "hardware & security setup",
+          "operational readiness",
+          "emergency preparedness",
+          "emergency procedures",
+          "tool proficiency",
+          "role-specific documentation",
+          "regular updates"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 111,
+        "matchedSections": [
+          "rpc backup options",
+          "administrator responsibilities",
+          "block explorer backup options",
+          "evm networks",
+          "squads public client - open source squads v4 interface",
+          "enhanced verification",
+          "regular practice",
+          "emergency drills",
+          "support resources",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/wallet-security/intermediates-and-medium-funds",
+        "title": "Wallets for Intermediates & Medium Funds | SEAL",
+        "score": 99,
+        "matchedSections": [
+          "recommended setup",
+          "backup device (for critical operations & multisigs)"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 97,
+        "matchedSections": [
+          "thresholds & configuration",
+          "operational best practices",
+          "communication & documentation"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-4.1.1",
+    "controlTitle": "Transaction Verification and Execution",
+    "description": "Do you have a defined process for verifying and executing treasury transactions?",
+    "baselineCount": 8,
+    "baselines": [
+      "Pre-execution verification includes: recipient address validation, amount verification, network confirmation, and transaction simulation",
+      "Test transactions required before sending to new addresses",
+      "Address verified through multiple independent sources; never copied from email, chat, or transaction history",
+      "Multi-party confirmation required: minimum 2 internal personnel for large transfers",
+      "Specific procedures for receiving large incoming transfers (address generation, bidirectional test, sender coordination)",
+      "Specific procedures for OTC transactions where applicable",
+      "High-value transfers (organization-defined threshold) require video call verification with liveness checks",
+      "All transaction parameters read aloud and confirmed before execution"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 210,
+        "matchedSections": [
+          "mpc for large holdings",
+          "custody/mpc policy thresholds for treasury operations",
+          "custody policy engine rules",
+          "security monitoring & logging",
+          "access security",
+          "device security",
+          "see also",
+          "transaction verification"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 210,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "address verification",
+          "transaction parameter security"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 133,
+        "matchedSections": [
+          "thresholds & configuration",
+          "signer rotation",
+          "setup best practices",
+          "core concept: m-of-n scheme"
+        ]
+      },
+      {
+        "page": "/wallet-security/signing-and-verification/secure-multisig-signing-process",
+        "title": "Secure Multisig Signing Process | SEAL",
+        "score": 110,
+        "matchedSections": [
+          "phase 1: signing the off-chain message",
+          "key definitions (evm)",
+          "process",
+          "operational best practices",
+          "simulation notes with timelocks"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 106,
+        "matchedSections": [
+          "additional requirements:",
+          "threshold considerations:",
+          "treasury multisigs",
+          "hot/cold wallet separation",
+          "external transaction monitoring",
+          "training & drills:",
+          "simulation consideration"
+        ]
+      },
+      {
+        "page": "/wallet-security/signing-and-verification/secure-multisig-safe-verification",
+        "title": "Safe Multisig Verification | SEAL",
+        "score": 105,
+        "matchedSections": [
+          "key definitions (evm)",
+          "2) simulation testing"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 103,
+        "matchedSections": [
+          "evm networks (ethereum, base, etc.)",
+          "solana",
+          "pre-launch checklist",
+          "nested safes",
+          "allowance module (required for treasury multisigs)"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 100,
+        "matchedSections": [
+          "planning & setup",
+          "smart contract control multisigs",
+          "treasury multisigs",
+          "emergency response multisigs"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-4.1.2",
+    "controlTitle": "Signer and Approver Knowledge",
+    "description": "Are treasury signers and approvers knowledgeable in the security practices relevant to their role?",
+    "baselineCount": 4,
+    "baselines": [
+      "Knowledge covers: transaction verification procedures, address validation techniques, social engineering awareness, emergency procedures",
+      "Competence demonstrated before authorization (e.g., verifying a test transaction end-to-end)",
+      "Knowledge refreshed annually; updated within 30 days of significant procedure changes",
+      "Covers custody-platform-specific workflows and policy engine rules"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 133,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "security monitoring & logging"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 112,
+        "matchedSections": [
+          "communication & documentation",
+          "operational best practices",
+          "core concept: m-of-n scheme",
+          "thresholds & configuration",
+          "signer rotation",
+          "training & drills",
+          "setup best practices"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 104,
+        "matchedSections": [
+          "communication security",
+          "address verification",
+          "key principles summary",
+          "pre-transfer setup (48 hours before)",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "transaction parameter security"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 60,
+        "matchedSections": [
+          "planning & setup",
+          "ongoing management",
+          "for signers",
+          "treasury multisigs"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 60,
+        "matchedSections": [
+          "delegated proposer",
+          "verify basic functionality",
+          "pre-launch checklist",
+          "nested safes",
+          "next steps",
+          "allowance module (required for treasury multisigs)"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 56,
+        "matchedSections": [
+          "identity verification process",
+          "replacement coordination",
+          "for emergency response multisigs",
+          "emergency drill procedures"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 53,
+        "matchedSections": [
+          "training & drills:",
+          "additional requirements:",
+          "operational constraints:",
+          "veto quorum",
+          "treasury multisigs",
+          "hot/cold wallet separation"
+        ]
+      },
+      {
+        "page": "/wallet-security/signing-and-verification/secure-multisig-signing-process",
+        "title": "Secure Multisig Signing Process | SEAL",
+        "score": 50,
+        "matchedSections": [
+          "process",
+          "phase 2: executing the on-chain transaction",
+          "operational best practices"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-4.1.3",
+    "controlTitle": "Secure Communication Procedures",
+    "description": "Do you have secure communication procedures for treasury operations, including standard identity verification?",
+    "baselineCount": 6,
+    "baselines": [
+      "Dedicated primary and backup channels on different platforms",
+      "End-to-end encryption, MFA required, invitation-based membership",
+      "Identity verified as standard procedure during signing/approval operations (e.g., code phrases, video call, secondary authenticated channel)",
+      "Anti-social-engineering protocols: established verification procedures for address changes or unusual requests",
+      "Documented procedures for channel compromise including switching to backup channels and out-of-band verification",
+      "All treasury personnel trained on these procedures; compromise response tested annually"
+    ],
+    "candidates": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 205,
+        "matchedSections": [
+          "treasury multisigs",
+          "documentation & communication",
+          "ongoing management",
+          "hardware & security setup",
+          "operational readiness",
+          "emergency preparedness",
+          "emergency procedures",
+          "tool proficiency",
+          "role-specific documentation",
+          "regular updates"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 180,
+        "matchedSections": [
+          "rpc backup options",
+          "administrator responsibilities",
+          "block explorer backup options",
+          "evm networks",
+          "squads public client - open source squads v4 interface",
+          "enhanced verification",
+          "regular practice",
+          "emergency drills",
+          "support resources",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 152,
+        "matchedSections": [
+          "immediate steps",
+          "if telegram/signal/discord gets taken over",
+          "multi-channel notification",
+          "for emergency response multisigs",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 146,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 132,
+        "matchedSections": [
+          "basic requirements",
+          "start with basics",
+          "for extra security",
+          "what to bring",
+          "what not to bring",
+          "basic travel security"
+        ]
+      },
+      {
+        "page": "/wallet-security/seed-phrase-management",
+        "title": "Seed Phrase Management",
+        "score": 128,
+        "matchedSections": [
+          "seed phrase encryption",
+          "tamper evident bags:",
+          "advanced backup options",
+          "multisig social recovery",
+          "ongoing security hygiene",
+          "trusted contacts"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 115,
+        "matchedSections": [
+          "thresholds & configuration",
+          "communication & documentation"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 83,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-5.1.1",
+    "controlTitle": "Protocol Evaluation and Exposure Limits",
+    "description": "Do you evaluate external protocols and enforce exposure limits before deploying treasury funds?",
+    "baselineCount": 4,
+    "baselines": [
+      "Due diligence process for all protocols before deployment: smart contract audit status, team reputation, TVL history, insurance coverage",
+      "Exposure limits defined per protocol, per chain, and per deployment category (DeFi, staking, liquid staking, etc.)",
+      "Limits reviewed periodically and after significant market or protocol changes",
+      "Risk re-evaluation triggered by: security incidents, major governance proposals, significant TVL changes, new vulnerabilities disclosed"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 123,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "transaction verification",
+          "security monitoring & logging"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 85,
+        "matchedSections": [
+          "who this is for",
+          "primary goal",
+          "core concept: m-of-n scheme",
+          "thresholds & configuration",
+          "contract-level security"
+        ]
+      },
+      {
+        "page": "/wallet-security/account-abstraction",
+        "title": "Account Abstraction Wallets",
+        "score": 71,
+        "matchedSections": [
+          "primary goal",
+          "core concept: erc-4337",
+          "security considerations & best practices"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 69,
+        "matchedSections": [
+          "address whitelisting",
+          "allowance module (required for treasury multisigs)",
+          "other modules"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 68,
+        "matchedSections": [
+          "operational constraints:",
+          "smart contract control multisigs",
+          "on-chain constraints:",
+          "treasury multisigs",
+          "hot/cold wallet separation",
+          "timelock configuration"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/planning-and-classification",
+        "title": "Multisig Planning & Classification | SEAL",
+        "score": 64,
+        "matchedSections": [
+          "assess constraints and recovery",
+          "define purpose and scope"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 57,
+        "matchedSections": [
+          "crisis handbook - smart contract hack | [google doc](https://docs.google.com/document/d/1daaiugfkmemmiiuvqhepl5adfghj9ya6d04rdaldqc0/edit#heading=h.c4h2beeflqpo)",
+          "issue description",
+          "affected addresses"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 56,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-5.1.2",
+    "controlTitle": "Position Lifecycle Management",
+    "description": "Do you have procedures for managing the lifecycle of your positions in external protocols?",
+    "baselineCount": 4,
+    "baselines": [
+      "Entry procedures: smart contract address verification against multiple independent sources, token approval management (minimal approvals, revocation after use)",
+      "Emergency withdrawal/exit procedures documented for all active positions",
+      "Alternative access methods documented in case primary UIs are unavailable (direct contract interaction, CLI tools, alternative frontends)",
+      "Unbonding/unstaking timelines understood and factored into liquidity planning"
+    ],
+    "candidates": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 82,
+        "matchedSections": [
+          "who this is for",
+          "primary goal",
+          "core concept: m-of-n scheme",
+          "thresholds & configuration",
+          "contract-level security"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 56,
+        "matchedSections": [
+          "smart contract control multisigs"
+        ]
+      },
+      {
+        "page": "/wallet-security/account-abstraction",
+        "title": "Account Abstraction Wallets",
+        "score": 56,
+        "matchedSections": [
+          "primary goal",
+          "core concept: erc-4337",
+          "security considerations & best practices"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 49,
+        "matchedSections": []
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 45,
+        "matchedSections": [
+          "address whitelisting"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 40,
+        "matchedSections": [
+          "operational constraints:",
+          "smart contract control multisigs",
+          "on-chain constraints:"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 40,
+        "matchedSections": []
+      },
+      {
+        "page": "/wallet-security/encumbered-wallets",
+        "title": "TEE-based Encumbered Wallets",
+        "score": 39,
+        "matchedSections": [
+          "primary goal",
+          "key benefits & features",
+          "security considerations & best practices"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-6.1.1",
+    "controlTitle": "Monitoring and Threat Awareness",
+    "description": "Do you monitor your treasury for anomalous activity, external threats, and operational risks?",
+    "baselineCount": 9,
+    "baselines": [
+      "Transaction monitoring: unusual amounts, unexpected destinations, failed transactions, policy violations",
+      "Account state monitoring: balance changes, configuration modifications, new device enrollments, authentication anomalies",
+      "External threat intelligence: protocol vulnerabilities, DeFi/staking risks, relevant security incidents in the ecosystem",
+      "Vendor/platform monitoring: custody platform status, infrastructure alerts, service availability",
+      "Compliance monitoring: transactions and wallet addresses screened for sanctions and compliance risk",
+      "Protocol and position monitoring: deployed protocol health, governance changes, TVL shifts, collateral ratios, reward accrual, liquidation risks",
+      "Alerting with defined severity levels and escalation paths",
+      "Critical alerts (large unexpected transactions, unauthorized access attempts) trigger immediate investigation",
+      "Monitoring system integrity protected — alerts triggered when monitoring configurations are changed, disabled, or degraded"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 325,
+        "matchedSections": [
+          "security monitoring & logging",
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "transaction verification"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 324,
+        "matchedSections": [
+          "issue description",
+          "affected addresses",
+          "perform in parallel by role",
+          "post incident actions",
+          "suggested tools and platforms",
+          "events timeline"
+        ]
+      },
+      {
+        "page": "/wallet-security/tools-and-resources",
+        "title": "Wallet Security Tools & Resources | SEAL",
+        "score": 283,
+        "matchedSections": [
+          "network security",
+          "multisig monitoring",
+          "monitoring & alerting"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 265,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "address verification",
+          "transaction parameter security",
+          "key principles summary"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "title": "On-Chain Monitoring Guidelines",
+        "score": 250,
+        "matchedSections": [
+          "define monitoring objectives",
+          "implement monitoring tools",
+          "establish alerting mechanisms",
+          "incident response",
+          "regular reviews and updates"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 244,
+        "matchedSections": [
+          "allowance module (required for treasury multisigs)",
+          "other modules",
+          "immutable monitoring channels",
+          "active monitoring"
+        ]
+      },
+      {
+        "page": "/monitoring/overview",
+        "title": "Monitoring",
+        "score": 202,
+        "matchedSections": []
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 163,
+        "matchedSections": [
+          "core concept: m-of-n scheme",
+          "operational best practices",
+          "thresholds & configuration"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-6.1.2",
+    "controlTitle": "Incident Response Plan",
+    "description": "Do you have an incident response plan for treasury security events, and do you test it?",
+    "baselineCount": 7,
+    "baselines": [
+      "Severity levels defined with escalation procedures specific to treasury operations",
+      "Containment procedures: fund protection actions (emergency freeze, transfer to secure cold storage, policy lockdown)",
+      "Covers key scenarios: custody platform compromise, unauthorized transaction, signer key compromise, vendor breach",
+      "Emergency contacts pre-documented: custody provider security team, SEAL 911, legal counsel",
+      "Communication plan for stakeholders",
+      "Drills conducted at least annually; after major procedure changes",
+      "Drill documentation includes: date, participants, response times, issues identified, improvements made"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 260,
+        "matchedSections": [
+          "security monitoring & logging",
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "transaction verification"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 213,
+        "matchedSections": [
+          "core concept: m-of-n scheme",
+          "thresholds & configuration",
+          "communication & documentation",
+          "signer rotation",
+          "training & drills",
+          "setup best practices",
+          "operational best practices",
+          "contract-level security"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 154,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "address verification",
+          "key principles summary",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "transaction parameter security"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 150,
+        "matchedSections": [
+          "security team contact",
+          "internal escalation",
+          "recovery process",
+          "identity verification process",
+          "replacement coordination",
+          "for emergency response multisigs",
+          "emergency drill procedures"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 117,
+        "matchedSections": [
+          "planning & setup",
+          "ongoing management",
+          "for signers",
+          "operational readiness",
+          "treasury multisigs",
+          "emergency response multisigs",
+          "regular updates"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 112,
+        "matchedSections": [
+          "evm networks (ethereum, base, etc.)",
+          "solana",
+          "self-hosted multisig ui",
+          "delegated proposer",
+          "address whitelisting",
+          "verify basic functionality",
+          "pre-launch checklist",
+          "nested safes",
+          "next steps",
+          "allowance module (required for treasury multisigs)"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 91,
+        "matchedSections": [
+          "administrator responsibilities",
+          "eternal safe - decentralized fork of safe\\{wallet\\}",
+          "enhanced verification",
+          "regular practice",
+          "support resources",
+          "emergency drills"
+        ]
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 88,
+        "matchedSections": [
+          "2. develop a robust security policy framework",
+          "5. incident response planning",
+          "10. documentation and record-keeping"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-7.1.1",
+    "controlTitle": "Vendor Security Management",
+    "description": "Do you evaluate and monitor the security of third-party services used in treasury operations?",
+    "baselineCount": 4,
+    "baselines": [
+      "Initial due diligence before adoption: security certifications (SOC 2, ISO 27001), audit history, insurance coverage, incident history",
+      "Ongoing monitoring: SOC report currency, security incident notifications, service availability tracking",
+      "Contractual security requirements verified periodically (at least annually)",
+      "Critical vendor changes (ownership, infrastructure, security posture) trigger re-evaluation"
+    ],
+    "candidates": [
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 110,
+        "matchedSections": [
+          "issue description",
+          "affected addresses",
+          "perform in parallel by role",
+          "events timeline",
+          "post incident actions",
+          "suggested tools and platforms"
+        ]
+      },
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 107,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "security monitoring & logging"
+        ]
+      },
+      {
+        "page": "/governance/compliance-regulatory-requirements",
+        "title": "Compliance & Regulatory Requirements | SEAL",
+        "score": 87,
+        "matchedSections": [
+          "6. continuous monitoring and auditing",
+          "8. third-party risk management"
+        ]
+      },
+      {
+        "page": "/wallet-security/tools-and-resources",
+        "title": "Wallet Security Tools & Resources | SEAL",
+        "score": 79,
+        "matchedSections": [
+          "monitoring & alerting",
+          "multisig monitoring",
+          "network security"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 77,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "day of transfer"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 69,
+        "matchedSections": [
+          "allowance module (required for treasury multisigs)",
+          "active monitoring",
+          "immutable monitoring channels"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "title": "Secure Multisig Best Practices | SEAL",
+        "score": 69,
+        "matchedSections": [
+          "thresholds & configuration",
+          "operational best practices"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 61,
+        "matchedSections": [
+          "network monitoring tools"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-7.1.2",
+    "controlTitle": "Backup Infrastructure and Alternate Access",
+    "description": "Do you have backup infrastructure and alternate access methods for treasury operations?",
+    "baselineCount": 4,
+    "baselines": [
+      "Alternate access methods for custody platforms documented and tested (e.g., API access, mobile app, secondary UI)",
+      "Backup RPC providers configured",
+      "Procedures for operating treasury if primary custody platform is unavailable",
+      "Backup infrastructure tested at least annually"
+    ],
+    "candidates": [
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "title": "Backup Signing & Infrastructure | SEAL",
+        "score": 220,
+        "matchedSections": [
+          "rpc backup options",
+          "administrator responsibilities",
+          "block explorer backup options",
+          "evm networks",
+          "squads public client - open source squads v4 interface",
+          "enhanced verification",
+          "regular practice",
+          "emergency drills",
+          "support resources",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 219,
+        "matchedSections": [
+          "treasury multisigs",
+          "documentation & communication",
+          "ongoing management",
+          "hardware & security setup",
+          "operational readiness",
+          "emergency preparedness",
+          "emergency procedures",
+          "tool proficiency",
+          "role-specific documentation",
+          "regular updates"
+        ]
+      },
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 207,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "security monitoring & logging"
+        ]
+      },
+      {
+        "page": "/wallet-security/seed-phrase-management",
+        "title": "Seed Phrase Management",
+        "score": 147,
+        "matchedSections": [
+          "private key & seed phrase management",
+          "tamper evident bags:",
+          "seed phrase encryption",
+          "advanced backup options",
+          "multisig social recovery",
+          "ongoing security hygiene",
+          "trusted contacts"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "title": "Multisig Personal Security (OpSec) | SEAL",
+        "score": 116,
+        "matchedSections": [
+          "basic requirements",
+          "for extra security",
+          "what to bring",
+          "what not to bring",
+          "basic travel security"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 112,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "address verification",
+          "transaction parameter security",
+          "key principles summary"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "title": "Multisig Emergency Procedures | SEAL",
+        "score": 107,
+        "matchedSections": [
+          "immediate steps",
+          "if telegram/signal/discord gets taken over",
+          "multi-channel notification",
+          "for emergency response multisigs",
+          "related documents"
+        ]
+      },
+      {
+        "page": "/wallet-security/intermediates-and-medium-funds",
+        "title": "Wallets for Intermediates & Medium Funds | SEAL",
+        "score": 61,
+        "matchedSections": [
+          "backup device (for critical operations & multisigs)"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-8.1.1",
+    "controlTitle": "Financial Recordkeeping and Reconciliation",
+    "description": "Do you maintain accurate treasury records and conduct periodic reconciliation?",
+    "baselineCount": 5,
+    "baselines": [
+      "All treasury transactions recorded with categorization, documentation, and authorization chain",
+      "Periodic reconciliation between custody platform records, on-chain balances, and accounting records",
+      "Reconciliation frequency scaled to account classification: daily for Active Operations, weekly for Warm Storage, monthly for Cold Vault",
+      "Discrepancies investigated and resolved promptly",
+      "Treasury reporting procedures documented with defined cadence and audience"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 196,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "security monitoring & logging",
+          "transaction verification"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 77,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "address verification",
+          "transaction parameter security",
+          "key principles summary"
+        ]
+      },
+      {
+        "page": "/treasury-operations/classification",
+        "title": "Treasury Security Classification | SEAL",
+        "score": 63,
+        "matchedSections": [
+          "step 1: impact assessment",
+          "step 4: document your decision",
+          "step 2: operational assessment"
+        ]
+      },
+      {
+        "page": "/treasury-operations/overview",
+        "title": "Treasury Operations Security | SEAL",
+        "score": 61,
+        "matchedSections": [
+          "what is treasury operations security?"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 49,
+        "matchedSections": [
+          "treasury multisigs",
+          "hot/cold wallet separation",
+          "operational constraints:",
+          "on-chain constraints:",
+          "timelock configuration"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 44,
+        "matchedSections": [
+          "issue description",
+          "affected addresses",
+          "suggested tools and platforms"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 39,
+        "matchedSections": [
+          "treasury multisigs"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "title": "Multisig Setup & Configuration | SEAL",
+        "score": 35,
+        "matchedSections": [
+          "allowance module (required for treasury multisigs)",
+          "zodiac delay modifier (time-locks)",
+          "active monitoring"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "tro-8.1.2",
+    "controlTitle": "Insurance Coverage",
+    "description": "Do you maintain insurance coverage appropriate for your treasury operations?",
+    "baselineCount": 4,
+    "baselines": [
+      "Coverage scope documented: what's covered (custody theft, hack, insider fraud) and what's excluded",
+      "Coverage amounts appropriate relative to assets held",
+      "Custody provider's insurance evaluated as part of vendor due diligence",
+      "Insurance coverage reviewed at least annually or when treasury size changes significantly"
+    ],
+    "candidates": [
+      {
+        "page": "/treasury-operations/enhanced-controls",
+        "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+        "score": 186,
+        "matchedSections": [
+          "access security",
+          "device security",
+          "custody/mpc policy thresholds for treasury operations",
+          "see also",
+          "mpc for large holdings",
+          "custody policy engine rules",
+          "zero trust architecture alternative",
+          "security monitoring & logging"
+        ]
+      },
+      {
+        "page": "/treasury-operations/transaction-verification",
+        "title": "Treasury Transaction Verification | SEAL",
+        "score": 107,
+        "matchedSections": [
+          "pre-transfer setup (48 hours before)",
+          "day of transfer",
+          "pre-transfer planning (72 hours before)",
+          "address verification",
+          "transaction parameter security",
+          "key principles summary"
+        ]
+      },
+      {
+        "page": "/treasury-operations/classification",
+        "title": "Treasury Security Classification | SEAL",
+        "score": 43,
+        "matchedSections": [
+          "step 1: impact assessment",
+          "step 4: document your decision"
+        ]
+      },
+      {
+        "page": "/treasury-operations/overview",
+        "title": "Treasury Operations Security | SEAL",
+        "score": 41,
+        "matchedSections": [
+          "what is treasury operations security?"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/use-case-specific-requirements",
+        "title": "Multisig Use Case Requirements | SEAL",
+        "score": 29,
+        "matchedSections": [
+          "treasury multisigs",
+          "hot/cold wallet separation"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "title": "SEAL 911 War Room Guidelines | SEAL",
+        "score": 24,
+        "matchedSections": [
+          "issue description",
+          "affected addresses"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "title": "Multisig Implementation Checklist | SEAL",
+        "score": 23,
+        "matchedSections": [
+          "treasury multisigs"
+        ]
+      },
+      {
+        "page": "/wallet-security/custodial-vs-non-custodial",
+        "title": "Custodial Vs Non-Custodial Wallets | SEAL",
+        "score": 20,
+        "matchedSections": [
+          "what are they?",
+          "use cases"
+        ]
+      }
+    ]
+  }
+]

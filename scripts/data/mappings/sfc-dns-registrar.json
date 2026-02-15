@@ -1,0 +1,1366 @@
+[
+  {
+    "controlId": "dns-1.1.1",
+    "controlTitle": "Domain Security Owner",
+    "description": "Is there a clearly designated person or team accountable for domain security?",
+    "baselineCount": 1,
+    "baselines": [
+      "Accountability scope covers policy maintenance, security reviews, renewal management, access control oversight, and incident escalation"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 49,
+        "matchedSections": [
+          "practical application",
+          "2. minimal access scopes"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 45,
+        "matchedSections": [
+          "2. principle of least privilege",
+          "implementation"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 42,
+        "matchedSections": [
+          "access control best practices",
+          "whois vs rdap"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/implementation-process",
+        "title": "OpSec Implementation Process | SEAL",
+        "score": 35,
+        "matchedSections": [
+          "implementation actions"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 34,
+        "matchedSections": [
+          "case study 1: private key compromise"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/physical-environmental",
+        "title": "Physical & Environmental Security",
+        "score": 32,
+        "matchedSections": [
+          "secure workspace components",
+          "implementation steps for workspace security"
+        ]
+      },
+      {
+        "page": "/opsec/integration/overview",
+        "title": "OpSec Integration",
+        "score": 32,
+        "matchedSections": [
+          "key integration points",
+          "implementation steps"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 31,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "dns-1.1.2",
+    "controlTitle": "Domain Inventory and Documentation",
+    "description": "Do you maintain a complete, current record of all your domains and their configurations?",
+    "baselineCount": 2,
+    "baselines": [
+      "Registry includes domain name, ownership, purpose, expiration date, registrar, DNS record configurations, security settings (DNSSEC, CAA), and registrar account configurations",
+      "Accessible to relevant team members"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 277,
+        "matchedSections": [
+          "enterprise-grade registrars (recommended)",
+          "choosing a secure registrar",
+          "consumer registrars to avoid for critical domains",
+          "registry lock (epp lock)",
+          "multi-factor authentication",
+          "dedicated security contact email",
+          "access control best practices",
+          "whois privacy protection",
+          "whois vs rdap",
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 227,
+        "matchedSections": [
+          "dnssec implementation",
+          "smtp dane"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 112,
+        "matchedSections": [
+          "dns record monitoring",
+          "critical alerts (immediate response required)",
+          "immediate response",
+          "recovery"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 46,
+        "matchedSections": [
+          "standards and best practices",
+          "notable domain security incidents",
+          "incident response contacts"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 32,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 28,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 23,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 19,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "dns-2.1.1",
+    "controlTitle": "Domain Classification and Compliance",
+    "description": "Do you classify your domains by risk level and verify they meet the security requirements for their classification?",
+    "baselineCount": 4,
+    "baselines": [
+      "Classification considers criticality, financial exposure, and operational impact",
+      "Domains where users may transact funds or that are external-facing classified at the highest tier",
+      "Each classification maps to specific security requirements (DNSSEC, locks, monitoring frequency, access controls)",
+      "Compliance verified at least annually through configuration review against documented standards"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 162,
+        "matchedSections": [
+          "dnssec implementation",
+          "smtp dane",
+          "dmarc (domain-based message authentication)"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 109,
+        "matchedSections": [
+          "dns record monitoring",
+          "critical alerts (immediate response required)",
+          "certificate transparency monitoring",
+          "passive dns monitoring"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 96,
+        "matchedSections": [
+          "practical application",
+          "relationship to implementation process",
+          "5. continuous visibility"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 69,
+        "matchedSections": [
+          "implementation",
+          "5. continuous monitoring and improvement"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 66,
+        "matchedSections": [
+          "enterprise-grade registrars (recommended)",
+          "whois vs rdap",
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 62,
+        "matchedSections": [
+          "**post-travel review**"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 58,
+        "matchedSections": [
+          "key components",
+          "implementation steps"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/implementation-process",
+        "title": "OpSec Implementation Process | SEAL",
+        "score": 52,
+        "matchedSections": [
+          "implementation actions"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "dns-2.1.2",
+    "controlTitle": "Enterprise Registrar Security Requirements",
+    "description": "Do you use a registrar with enterprise-grade security for your critical domains?",
+    "baselineCount": 4,
+    "baselines": [
+      "Registrar supports registry locks (server-level EPP locks)",
+      "Registrar supports hardware security key MFA (FIDO2/WebAuthn)",
+      "Registrar has no history of social engineering vulnerabilities",
+      "Due diligence includes checking ICANN compliance notices for the registrar"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 673,
+        "matchedSections": [
+          "consumer registrars to avoid for critical domains",
+          "registry lock (epp lock)",
+          "multi-factor authentication",
+          "whois privacy protection",
+          "choosing a secure registrar",
+          "enterprise-grade registrars (recommended)",
+          "dedicated security contact email",
+          "access control best practices",
+          "whois vs rdap",
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 181,
+        "matchedSections": [
+          "dnssec implementation"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 132,
+        "matchedSections": [
+          "critical alerts (immediate response required)",
+          "immediate response",
+          "recovery"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 60,
+        "matchedSections": [
+          "notable domain security incidents",
+          "incident response contacts"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/people",
+        "title": "Personnel Security Controls",
+        "score": 40,
+        "matchedSections": [
+          "key components",
+          "implementation steps",
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 39,
+        "matchedSections": [
+          "**screen privacy and social engineering**"
+        ]
+      },
+      {
+        "page": "/front-end-web-app/common-vulnerabilities",
+        "title": "Common Web Vulnerabilities",
+        "score": 30,
+        "matchedSections": [
+          "general vulnerabilities"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/overview",
+        "title": "OpSec Control Domains",
+        "score": 27,
+        "matchedSections": [
+          "section outline"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "dns-3.1.1",
+    "controlTitle": "Registrar Access Control",
+    "description": "Do you control and secure access to domain registrar and DNS management accounts?",
+    "baselineCount": 4,
+    "baselines": [
+      "Documented who is authorized, how access is granted/revoked, and role-based permissions where available",
+      "Hardware security key MFA (FIDO2/WebAuthn) required for all registrar and DNS management accounts",
+      "Access reviews conducted at least annually",
+      "Access revoked promptly when no longer needed"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 295,
+        "matchedSections": [
+          "access control best practices",
+          "choosing a secure registrar",
+          "enterprise-grade registrars (recommended)",
+          "consumer registrars to avoid for critical domains",
+          "registry lock (epp lock)",
+          "multi-factor authentication",
+          "dedicated security contact email",
+          "whois privacy protection",
+          "whois vs rdap",
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 83,
+        "matchedSections": [
+          "critical alerts (immediate response required)",
+          "immediate response",
+          "recovery"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 81,
+        "matchedSections": [
+          "dnssec implementation"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 72,
+        "matchedSections": [
+          "2. minimal access scopes"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 60,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 59,
+        "matchedSections": [
+          "2. principle of least privilege",
+          "implementation"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 48,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 47,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "dns-3.1.2",
+    "controlTitle": "Dedicated Domain Security Contact Email",
+    "description": "Is your domain security contact email independent of the domains it protects?",
+    "baselineCount": 4,
+    "baselines": [
+      "Hosted on a different domain than any domain it's responsible for",
+      "Not a personal email address",
+      "Used exclusively for domain security purposes",
+      "Alias that notifies multiple people"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 60,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 50,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 43,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 42,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 34,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/overview",
+        "title": "OpSec Control Domains",
+        "score": 29,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/overview",
+        "title": "Infrastructure",
+        "score": 28,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 25,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "dns-3.1.3",
+    "controlTitle": "Change Management for Domain Operations",
+    "description": "Do you have change management procedures for critical domain operations?",
+    "baselineCount": 4,
+    "baselines": [
+      "Covers transfers, deletions, nameserver changes, and DNS record modifications",
+      "Relevant team members notified before critical changes",
+      "All changes logged",
+      "Critical changes verified through out-of-band confirmation with the registrar"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 171,
+        "matchedSections": [
+          "choosing a secure registrar",
+          "enterprise-grade registrars (recommended)",
+          "consumer registrars to avoid for critical domains",
+          "registry lock (epp lock)",
+          "multi-factor authentication",
+          "dedicated security contact email",
+          "access control best practices",
+          "whois privacy protection",
+          "whois vs rdap",
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 80,
+        "matchedSections": [
+          "critical alerts (immediate response required)",
+          "immediate response",
+          "recovery"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 71,
+        "matchedSections": [
+          "dnssec implementation"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 36,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 32,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 30,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/web3-considerations",
+        "title": "Web3 Security Considerations",
+        "score": 29,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 27,
+        "matchedSections": [
+          "notable domain security incidents",
+          "incident response contacts"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "dns-4.1.1",
+    "controlTitle": "DNS Security Standards",
+    "description": "Do you enforce DNS security standards across all your domains?",
+    "baselineCount": 4,
+    "baselines": [
+      "DNSSEC enabled and validated on all critical domains",
+      "CAA records configured to restrict certificate issuance to authorized CAs only",
+      "TTL policies documented with rationale",
+      "Standards applied consistently based on domain classification"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 166,
+        "matchedSections": [
+          "dnssec implementation",
+          "smtp dane"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 68,
+        "matchedSections": [
+          "dns record monitoring",
+          "critical alerts (immediate response required)"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 42,
+        "matchedSections": [
+          "standards and best practices"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 39,
+        "matchedSections": [
+          "enterprise-grade registrars (recommended)"
+        ]
+      },
+      {
+        "page": "/opsec/integration/overview",
+        "title": "OpSec Integration",
+        "score": 29,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 25,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 22,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/overview",
+        "title": "OpSec Control Domains",
+        "score": 21,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "dns-4.1.2",
+    "controlTitle": "Email Authentication Standards",
+    "description": "Do you enforce email authentication standards and monitor for violations?",
+    "baselineCount": 5,
+    "baselines": [
+      "SPF, DKIM, and DMARC configured for all domains that send email",
+      "DMARC policy set to reject for domains actively sending email",
+      "DMARC aggregate reports (rua) monitored and reviewed",
+      "MTA-STS configured where supported to enforce encrypted email transport",
+      "Domains that don't send email have SPF/DMARC records that reject all email"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 247,
+        "matchedSections": [
+          "mta-sts (mail transfer agent strict transport security)",
+          "dnssec implementation",
+          "dmarc (domain-based message authentication)",
+          "spf (sender policy framework)",
+          "dkim (domainkeys identified mail)"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 149,
+        "matchedSections": [
+          "dns record monitoring",
+          "certificate transparency monitoring",
+          "passive dns monitoring",
+          "critical alerts (immediate response required)",
+          "high priority alerts (when ns unchanged)"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 119,
+        "matchedSections": [
+          "best practices & ongoing maintenance",
+          "admin settings (workspace configuration)"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 82,
+        "matchedSections": [
+          "**secure your wallets and keys**",
+          "**plan emergency and incident responses**",
+          "**network safety – avoid untrusted wi-fi & bluetooth**",
+          "**plan for customs and border checks**",
+          "**post-travel review**",
+          "**enhanced device protections**"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 68,
+        "matchedSections": [
+          "practical application",
+          "relationship to implementation process",
+          "5. continuous visibility"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 60,
+        "matchedSections": [
+          "enterprise-grade registrars (recommended)",
+          "multi-factor authentication",
+          "access control best practices",
+          "whois vs rdap",
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 31,
+        "matchedSections": [
+          "standards and best practices"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 31,
+        "matchedSections": [
+          "5. continuous monitoring and improvement",
+          "implementation"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "dns-4.1.3",
+    "controlTitle": "Domain Lock Implementation",
+    "description": "Do you use domain locks to prevent unauthorized transfers and changes?",
+    "baselineCount": 3,
+    "baselines": [
+      "Registry locks (server-level EPP locks) enabled for all critical domains where supported",
+      "Transfer locks enabled on all domains",
+      "Lock status verified periodically"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 73,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 39,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 29,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 26,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 20,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 13,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/overview",
+        "title": "OpSec Control Domains",
+        "score": 12,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/core-concepts/web3-considerations",
+        "title": "Web3 Security Considerations",
+        "score": 12,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "dns-4.1.4",
+    "controlTitle": "TLS Certificate Lifecycle Management",
+    "description": "Do you manage the full lifecycle of your TLS certificates?",
+    "baselineCount": 4,
+    "baselines": [
+      "Covers issuance, renewal, and revocation procedures",
+      "Certificates tracked with expiration alerts",
+      "Automated renewal where possible",
+      "Revocation procedures documented for compromised certificates"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 44,
+        "matchedSections": [
+          "dns record monitoring",
+          "setting up alerts",
+          "critical alerts (immediate response required)",
+          "high priority alerts (when ns unchanged)"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 30,
+        "matchedSections": [
+          "dnssec implementation"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 23,
+        "matchedSections": [
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 20,
+        "matchedSections": [
+          "best practices & ongoing maintenance",
+          "admin settings (workspace configuration)",
+          "notes"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "title": "On-Chain Monitoring Guidelines",
+        "score": 19,
+        "matchedSections": [
+          "implement monitoring tools",
+          "establish alerting mechanisms",
+          "incident response"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 19,
+        "matchedSections": [
+          "**secure devices with encryption & updates**"
+        ]
+      },
+      {
+        "page": "/monitoring/thresholds",
+        "title": "Monitoring Alert Thresholds",
+        "score": 8,
+        "matchedSections": [
+          "set thresholds for alerts",
+          "multi-layered thresholds"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 6,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "dns-5.1.1",
+    "controlTitle": "Domain and DNS Monitoring",
+    "description": "Do you monitor your domains for unauthorized changes to DNS records, registration status, and security settings?",
+    "baselineCount": 5,
+    "baselines": [
+      "DNS record monitoring covers nameserver (NS) changes, A/AAAA changes, MX changes, TXT/SPF/DMARC changes, CAA record removal, DNSSEC status changes, and unexpected TTL drops",
+      "Registration monitoring covers lock status, registrar account settings, and nameserver delegation",
+      "Alerting and escalation paths documented",
+      "Critical alerts (nameserver changes, DNSSEC failure, registrar changes) trigger immediate investigation",
+      "Monitoring infrastructure not dependent on the domains being monitored"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 487,
+        "matchedSections": [
+          "dnssec implementation",
+          "smtp dane",
+          "mta-sts (mail transfer agent strict transport security)",
+          "dmarc (domain-based message authentication)",
+          "spf (sender policy framework)"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 478,
+        "matchedSections": [
+          "dns record monitoring",
+          "critical alerts (immediate response required)",
+          "setting up alerts",
+          "high priority alerts (when ns unchanged)",
+          "certificate transparency monitoring",
+          "passive dns monitoring",
+          "immediate response",
+          "recovery"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 402,
+        "matchedSections": [
+          "enterprise-grade registrars (recommended)",
+          "domain expiration protection",
+          "multi-factor authentication",
+          "access control best practices",
+          "whois vs rdap",
+          "choosing a secure registrar",
+          "consumer registrars to avoid for critical domains",
+          "registry lock (epp lock)",
+          "dedicated security contact email",
+          "whois privacy protection"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 206,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application",
+          "5. continuous visibility"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 136,
+        "matchedSections": [
+          "5. continuous monitoring and improvement",
+          "implementation"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "title": "On-Chain Monitoring Guidelines",
+        "score": 120,
+        "matchedSections": [
+          "establish alerting mechanisms",
+          "implement monitoring tools",
+          "incident response",
+          "define monitoring objectives",
+          "regular reviews and updates"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 97,
+        "matchedSections": [
+          "best practices & ongoing maintenance",
+          "admin settings (workspace configuration)",
+          "notes"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 96,
+        "matchedSections": [
+          "**protect crypto keys with multi-party controls**",
+          "**secure devices with encryption & updates**",
+          "**plan emergency and incident responses**",
+          "**post-travel review**",
+          "**enhanced device protections**"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "dns-5.1.2",
+    "controlTitle": "Certificate Transparency Monitoring",
+    "description": "Do you monitor Certificate Transparency logs for unauthorized certificates issued for your domains?",
+    "baselineCount": 3,
+    "baselines": [
+      "Subscribed to a CT monitoring service that alerts on new certificate issuance",
+      "Alerts reviewed and unauthorized certificates investigated promptly",
+      "Wildcard certificates flagged if not expected"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 231,
+        "matchedSections": [
+          "dns record monitoring",
+          "setting up alerts",
+          "critical alerts (immediate response required)",
+          "high priority alerts (when ns unchanged)",
+          "certificate transparency monitoring",
+          "passive dns monitoring"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 99,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application",
+          "5. continuous visibility"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 79,
+        "matchedSections": [
+          "dnssec implementation",
+          "mta-sts (mail transfer agent strict transport security)",
+          "dmarc (domain-based message authentication)"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "title": "On-Chain Monitoring Guidelines",
+        "score": 77,
+        "matchedSections": [
+          "implement monitoring tools",
+          "establish alerting mechanisms",
+          "incident response",
+          "define monitoring objectives",
+          "regular reviews and updates"
+        ]
+      },
+      {
+        "page": "/opsec/principles/principles",
+        "title": "OpSec Core Principles",
+        "score": 60,
+        "matchedSections": [
+          "5. continuous monitoring and improvement",
+          "implementation"
+        ]
+      },
+      {
+        "page": "/monitoring/overview",
+        "title": "Monitoring",
+        "score": 49,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 44,
+        "matchedSections": [
+          "domain expiration protection",
+          "enterprise-grade registrars (recommended)",
+          "multi-factor authentication",
+          "access control best practices",
+          "whois vs rdap"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 44,
+        "matchedSections": [
+          "best practices & ongoing maintenance",
+          "admin settings (workspace configuration)",
+          "notes"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "dns-5.1.3",
+    "controlTitle": "Domain Expiration Prevention",
+    "description": "Do you actively prevent domain expiration?",
+    "baselineCount": 4,
+    "baselines": [
+      "Auto-renewal enabled on all domains",
+      "Calendar reminders at 90, 60, 30, and 7 days before expiration",
+      "Payment methods verified current",
+      "Backup person designated for renewal responsibility"
+    ],
+    "candidates": [
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 70,
+        "matchedSections": [
+          "before traveling",
+          "**back up and prepare for loss**",
+          "**protect accounts with 2fa redundancy**",
+          "**secure your wallets and keys**",
+          "**plan emergency and incident responses**",
+          "**inspect and clean your devices**",
+          "**protect crypto keys with multi-party controls**",
+          "**post-trip device rebuilding**",
+          "conclusion"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "title": "Technical Security Controls",
+        "score": 53,
+        "matchedSections": [
+          "encrypted storage & backups",
+          "key components",
+          "implementation steps",
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 43,
+        "matchedSections": [
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/opsec/google/overview",
+        "title": "Google Workspace Security",
+        "score": 25,
+        "matchedSections": [
+          "account security checklist",
+          "extended security settings"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/web3-considerations",
+        "title": "Web3 Security Considerations",
+        "score": 16,
+        "matchedSections": [
+          "suggested steps"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/physical-environmental",
+        "title": "Physical & Environmental Security",
+        "score": 14,
+        "matchedSections": [
+          "web3-specific considerations"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/overview",
+        "title": "OpSec Control Domains",
+        "score": 13,
+        "matchedSections": [
+          "section outline"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 10,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "dns-6.1.1",
+    "controlTitle": "Alerting and Emergency Contacts",
+    "description": "Do you have alerting and emergency contacts in place for domain security incidents?",
+    "baselineCount": 3,
+    "baselines": [
+      "Alerting system in place to notify relevant stakeholders when a potential compromise is detected",
+      "Emergency contacts pre-documented including registrar security team, SEAL 911, and legal counsel",
+      "Communication plan for warning users (status page, social media, in-app warnings)"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 152,
+        "matchedSections": [
+          "choosing a secure registrar",
+          "enterprise-grade registrars (recommended)",
+          "consumer registrars to avoid for critical domains",
+          "registry lock (epp lock)",
+          "multi-factor authentication",
+          "dedicated security contact email",
+          "access control best practices",
+          "whois privacy protection",
+          "whois vs rdap",
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 68,
+        "matchedSections": [
+          "**protect crypto keys with multi-party controls**"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 57,
+        "matchedSections": [
+          "critical alerts (immediate response required)",
+          "immediate response",
+          "recovery"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 56,
+        "matchedSections": [
+          "dnssec implementation"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 44,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 38,
+        "matchedSections": [
+          "notable domain security incidents",
+          "incident response contacts"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/opsec/control-domains/people",
+        "title": "Personnel Security Controls",
+        "score": 29,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "dns-6.1.2",
+    "controlTitle": "Domain Incident Response Plan",
+    "description": "Do you have an incident response plan for domain hijacking and DNS compromise?",
+    "baselineCount": 5,
+    "baselines": [
+      "Covers key scenarios including registrar account compromise, DNS hijacking, and unauthorized transfers",
+      "Emergency registry lock activation procedures",
+      "Procedures for regaining control of compromised domains",
+      "Post-recovery validation including DNS records verified against known-good baseline, all credentials reset, and access logs reviewed",
+      "Plan tested at least annually (can be combined with broader IR drills)"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 164,
+        "matchedSections": [
+          "choosing a secure registrar",
+          "enterprise-grade registrars (recommended)",
+          "consumer registrars to avoid for critical domains",
+          "registry lock (epp lock)",
+          "multi-factor authentication",
+          "dedicated security contact email",
+          "access control best practices",
+          "whois privacy protection",
+          "whois vs rdap",
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 99,
+        "matchedSections": [
+          "critical alerts (immediate response required)",
+          "incident response plan",
+          "recovery",
+          "immediate response"
+        ]
+      },
+      {
+        "page": "/opsec/travel/guide",
+        "title": "Travel Security Guide",
+        "score": 63,
+        "matchedSections": [
+          "**plan emergency and incident responses**",
+          "**screen privacy and social engineering**",
+          "**secure your accounts and passwords**",
+          "conclusion"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "title": "OpSec Case Studies",
+        "score": 60,
+        "matchedSections": [
+          "case study 1: private key compromise",
+          "case study 2: social engineering attack",
+          "exercise 1: wallet security incident",
+          "exercise 3: team member device compromise"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 58,
+        "matchedSections": [
+          "dnssec implementation"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 40,
+        "matchedSections": [
+          "incident response contacts",
+          "notable domain security incidents"
+        ]
+      },
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "title": "Security Fundamentals",
+        "score": 34,
+        "matchedSections": [
+          "relationship to implementation process",
+          "practical application"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/glossary",
+        "title": "Security Glossary",
+        "score": 27,
+        "matchedSections": [
+          "i"
+        ]
+      }
+    ]
+  }
+]

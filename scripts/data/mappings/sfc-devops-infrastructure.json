@@ -1,0 +1,1062 @@
+[
+  {
+    "controlId": "di-1.1.1",
+    "controlTitle": "DevOps Security Owner",
+    "description": "Is there a clearly designated person or team accountable for development and infrastructure security?",
+    "baselineCount": 1,
+    "baselines": [
+      "Accountability scope covers policy maintenance, security reviews, access control oversight, pipeline governance, and incident escalation"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 33,
+        "matchedSections": [
+          "access control best practices",
+          "whois vs rdap"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 28,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 28,
+        "matchedSections": [
+          "best practices for secure code repositories"
+        ]
+      },
+      {
+        "page": "/security-testing/unit-testing",
+        "title": "Unit Testing",
+        "score": 25,
+        "matchedSections": [
+          "overview",
+          "security-focused test cases",
+          "2. test all access controls"
+        ]
+      },
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "title": "Infrastructure as Code Security | SEAL",
+        "score": 24,
+        "matchedSections": [
+          "best practices for secure iac"
+        ]
+      },
+      {
+        "page": "/supply-chain/supply-chain-levels-software-artifacts",
+        "title": "Supply Chain Levels Software Artifacts | SEAL",
+        "score": 24,
+        "matchedSections": [
+          "best practices for securing supply chain levels"
+        ]
+      },
+      {
+        "page": "/infrastructure/cloud",
+        "title": "Cloud Infrastructure",
+        "score": 23,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/overview",
+        "title": "Domain & DNS Security | SEAL",
+        "score": 20,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-1.1.2",
+    "controlTitle": "DevOps Security Policy",
+    "description": "Do you maintain documented security policies governing development and infrastructure operations?",
+    "baselineCount": 3,
+    "baselines": [
+      "Policy covers environment standards, access controls, deployment procedures, code management, and supply chain security",
+      "Accessible to all developers and infrastructure operators",
+      "Reviewed at least annually and after significant changes (security incidents, technology shifts, organizational restructuring)"
+    ],
+    "candidates": [
+      {
+        "page": "/supply-chain/supply-chain-levels-software-artifacts",
+        "title": "Supply Chain Levels Software Artifacts | SEAL",
+        "score": 53,
+        "matchedSections": [
+          "best practices for securing supply chain levels",
+          "framework for supply chain levels"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 36,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-testing/unit-testing",
+        "title": "Unit Testing",
+        "score": 36,
+        "matchedSections": [
+          "overview",
+          "2. test all access controls"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "title": "Infrastructure as Code Security | SEAL",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 32,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/cloud",
+        "title": "Cloud Infrastructure",
+        "score": 30,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 29,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-1.1.3",
+    "controlTitle": "Development Environment Isolation",
+    "description": "Do you isolate development environments from production systems?",
+    "baselineCount": 5,
+    "baselines": [
+      "Development activities performed in containerized or virtualized environments",
+      "Each code repository has its own isolated environment to prevent cross-contamination",
+      "Production credentials not accessible from development environments",
+      "Separate accounts or profiles for development vs. privileged operations (e.g., wallet signing, cloud admin)",
+      "Code execution sandboxed to prevent host system compromise"
+    ],
+    "candidates": [
+      {
+        "page": "/devsecops/integrated-development-environments",
+        "title": "Securing Development Environments | SEAL",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 24,
+        "matchedSections": []
+      },
+      {
+        "page": "/devsecops/overview",
+        "title": "DevSecOps",
+        "score": 22,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/code-reviews-peer-audits",
+        "title": "Code Reviews & Peer Audits",
+        "score": 20,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 19,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/overview",
+        "title": "Secure Software Development | SEAL",
+        "score": 18,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-coding-standards-guidelines",
+        "title": "Secure Coding Standards & Guidelines | SEAL",
+        "score": 18,
+        "matchedSections": [
+          "guidelines for secure coding"
+        ]
+      },
+      {
+        "page": "/security-testing/unit-testing",
+        "title": "Unit Testing",
+        "score": 18,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-1.1.4",
+    "controlTitle": "Development Tools Approval",
+    "description": "Do you evaluate and approve development tools before organizational use?",
+    "baselineCount": 5,
+    "baselines": [
+      "Evaluation criteria cover IDEs, extensions, plugins, AI-powered tools, and third-party services",
+      "Extensions and plugins obtained only from official repositories",
+      "AI tools assessed for data privacy risks (does the tool send code to third parties for training or analytics?)",
+      "Approved tool list maintained; unapproved tools restricted",
+      "Regular reviews of installed tools to identify unused or unrecognized items"
+    ],
+    "candidates": [
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "title": "Infrastructure as Code Security | SEAL",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/devsecops/integrated-development-environments",
+        "title": "Securing Development Environments | SEAL",
+        "score": 30,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 30,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/code-reviews-peer-audits",
+        "title": "Code Reviews & Peer Audits",
+        "score": 30,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 28,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 28,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-testing/static-analysis",
+        "title": "Static Analysis",
+        "score": 26,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 25,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-2.1.1",
+    "controlTitle": "Repository Security",
+    "description": "Do you enforce security controls on your source code repositories?",
+    "baselineCount": 6,
+    "baselines": [
+      "Role-based access control with least-privilege permissions",
+      "Branch protection rules enforced on main/production branches",
+      "Signed commits required for all code changes",
+      "Multi-party code review required for merges to protected branches",
+      "MFA required for all repository members",
+      "Repository access reviewed periodically"
+    ],
+    "candidates": [
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 83,
+        "matchedSections": [
+          "best practices for secure code repositories"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 53,
+        "matchedSections": [
+          "access control best practices",
+          "whois vs rdap"
+        ]
+      },
+      {
+        "page": "/secure-software-development/code-reviews-peer-audits",
+        "title": "Code Reviews & Peer Audits",
+        "score": 53,
+        "matchedSections": [
+          "best practices for code reviews",
+          "conducting effective code reviews"
+        ]
+      },
+      {
+        "page": "/devsecops/repository-hardening",
+        "title": "Repository Hardening",
+        "score": 47,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-testing/unit-testing",
+        "title": "Unit Testing",
+        "score": 37,
+        "matchedSections": [
+          "overview",
+          "security-focused test cases",
+          "2. test all access controls"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 35,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-coding-standards-guidelines",
+        "title": "Secure Coding Standards & Guidelines | SEAL",
+        "score": 34,
+        "matchedSections": [
+          "guidelines for secure coding"
+        ]
+      },
+      {
+        "page": "/supply-chain/supply-chain-levels-software-artifacts",
+        "title": "Supply Chain Levels Software Artifacts | SEAL",
+        "score": 32,
+        "matchedSections": [
+          "best practices for securing supply chain levels"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "di-2.1.2",
+    "controlTitle": "Secret Scanning",
+    "description": "Do you scan source code for accidentally committed secrets?",
+    "baselineCount": 4,
+    "baselines": [
+      "Automated scanning for committed secrets (API keys, private keys, credentials) in all repositories",
+      "Pre-commit hooks deployed to prevent secrets from being committed in the first place",
+      "Remediation procedures for discovered secrets (immediate rotation, revocation)",
+      "Scanning integrated into CI/CD pipeline"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 24,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 23,
+        "matchedSections": [
+          "secure version control practices"
+        ]
+      },
+      {
+        "page": "/devsecops/continuous-integration-continuous-deployment",
+        "title": "Securing CI/CD Pipelines | SEAL",
+        "score": 21,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 16,
+        "matchedSections": [
+          "best practices"
+        ]
+      },
+      {
+        "page": "/secure-software-development/secure-coding-standards-guidelines",
+        "title": "Secure Coding Standards & Guidelines | SEAL",
+        "score": 15,
+        "matchedSections": [
+          "guidelines for secure coding"
+        ]
+      },
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "title": "Infrastructure as Code Security | SEAL",
+        "score": 13,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 12,
+        "matchedSections": [
+          "dns record monitoring",
+          "recovery"
+        ]
+      },
+      {
+        "page": "/devsecops/overview",
+        "title": "DevSecOps",
+        "score": 8,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-2.1.3",
+    "controlTitle": "External Contributor Review",
+    "description": "Do you apply enhanced review for code contributions from external collaborators?",
+    "baselineCount": 4,
+    "baselines": [
+      "Additional approvers required for all external code contributions",
+      "Code contributions tracked; unexpected changes flagged (e.g., commit rewrites, unprompted edits)",
+      "External collaborators restricted to minimum necessary repository permissions",
+      "CI/CD pipelines do not automatically execute for external contributor PRs without approval"
+    ],
+    "candidates": [
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 33,
+        "matchedSections": [
+          "secure version control practices"
+        ]
+      },
+      {
+        "page": "/security-testing/unit-testing",
+        "title": "Unit Testing",
+        "score": 32,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 23,
+        "matchedSections": [
+          "dns record monitoring"
+        ]
+      },
+      {
+        "page": "/security-testing/overview",
+        "title": "Security Testing",
+        "score": 21,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/code-reviews-peer-audits",
+        "title": "Code Reviews & Peer Audits",
+        "score": 20,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-testing/mutation-testing",
+        "title": "Mutation Testing",
+        "score": 20,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 19,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-coding-standards-guidelines",
+        "title": "Secure Coding Standards & Guidelines | SEAL",
+        "score": 18,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-2.1.4",
+    "controlTitle": "Dependency and Supply Chain Security",
+    "description": "Do you verify and manage dependencies to prevent supply chain attacks?",
+    "baselineCount": 6,
+    "baselines": [
+      "Packages obtained from official repositories and trusted sources only",
+      "Package names verified against typosquatting patterns before installation",
+      "Dependencies scanned for known vulnerabilities before deployment",
+      "Dependency version pinning enforced to prevent automatic updates to compromised versions",
+      "Regular dependency audits for outdated or vulnerable components",
+      "Changelog reviewed for dependency updates to verify expected functionality"
+    ],
+    "candidates": [
+      {
+        "page": "/supply-chain/dependency-awareness",
+        "title": "Dependency Awareness",
+        "score": 43,
+        "matchedSections": []
+      },
+      {
+        "page": "/supply-chain/supply-chain-levels-software-artifacts",
+        "title": "Supply Chain Levels Software Artifacts | SEAL",
+        "score": 43,
+        "matchedSections": [
+          "framework for supply chain levels",
+          "best practices for securing supply chain levels"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 39,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-testing/unit-testing",
+        "title": "Unit Testing",
+        "score": 28,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 22,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 22,
+        "matchedSections": []
+      },
+      {
+        "page": "/supply-chain/overview",
+        "title": "Supply Chain Security",
+        "score": 19,
+        "matchedSections": []
+      },
+      {
+        "page": "/devsecops/repository-hardening",
+        "title": "Repository Hardening",
+        "score": 16,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-3.1.1",
+    "controlTitle": "Pipeline Security Controls",
+    "description": "Do you control who can modify and execute your deployment pipelines?",
+    "baselineCount": 5,
+    "baselines": [
+      "Pipeline configuration changes require multi-party approval",
+      "Separate service accounts with minimal permissions used for pipeline execution",
+      "Manual deployment by humans restricted; deployments automated through controlled pipelines",
+      "Pipeline and build configurations version-controlled and reviewed",
+      "Builds are deterministic with strict dependency sets"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 28,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "title": "Infrastructure as Code Security | SEAL",
+        "score": 26,
+        "matchedSections": []
+      },
+      {
+        "page": "/devsecops/continuous-integration-continuous-deployment",
+        "title": "Securing CI/CD Pipelines | SEAL",
+        "score": 23,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 19,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 16,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 15,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 12,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-testing/mutation-testing",
+        "title": "Mutation Testing",
+        "score": 12,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-3.1.2",
+    "controlTitle": "Secrets Management",
+    "description": "Do you securely manage secrets used in pipelines and applications?",
+    "baselineCount": 5,
+    "baselines": [
+      "Dedicated secrets management system used (not environment variables in plain text)",
+      "Secrets never stored in source code or unencrypted configuration files",
+      "Production secrets not directly accessible by humans",
+      "Pipeline secrets accessible only by service accounts",
+      "Secret rotation schedule defined; rotation triggered immediately after suspected compromise"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 31,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "title": "Infrastructure as Code Security | SEAL",
+        "score": 20,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 19,
+        "matchedSections": [
+          "tools for automated compliance checks"
+        ]
+      },
+      {
+        "page": "/security-testing/mutation-testing",
+        "title": "Mutation Testing",
+        "score": 15,
+        "matchedSections": []
+      },
+      {
+        "page": "/monitoring/thresholds",
+        "title": "Monitoring Alert Thresholds",
+        "score": 14,
+        "matchedSections": [
+          "set thresholds for alerts",
+          "multi-layered thresholds"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 13,
+        "matchedSections": [
+          "mta-sts (mail transfer agent strict transport security)"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 12,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-coding-standards-guidelines",
+        "title": "Secure Coding Standards & Guidelines | SEAL",
+        "score": 11,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-3.1.3",
+    "controlTitle": "Security Testing Integration",
+    "description": "Do you integrate security testing into your development and deployment pipelines?",
+    "baselineCount": 4,
+    "baselines": [
+      "Static analysis (SAST) tools integrated into CI/CD pipeline",
+      "Dependency vulnerability scanning automated in CI/CD",
+      "Security scan results reviewed before deployment approval",
+      "Testing and validation performed in staging environments before production deployment"
+    ],
+    "candidates": [
+      {
+        "page": "/devsecops/overview",
+        "title": "DevSecOps",
+        "score": 44,
+        "matchedSections": []
+      },
+      {
+        "page": "/devsecops/continuous-integration-continuous-deployment",
+        "title": "Securing CI/CD Pipelines | SEAL",
+        "score": 39,
+        "matchedSections": []
+      },
+      {
+        "page": "/devsecops/security-testing",
+        "title": "Security Testing",
+        "score": 34,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 33,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "title": "Infrastructure as Code Security | SEAL",
+        "score": 32,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 31,
+        "matchedSections": [
+          "best practices"
+        ]
+      },
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 29,
+        "matchedSections": [
+          "secure version control practices"
+        ]
+      },
+      {
+        "page": "/supply-chain/supply-chain-levels-software-artifacts",
+        "title": "Supply Chain Levels Software Artifacts | SEAL",
+        "score": 28,
+        "matchedSections": [
+          "best practices for securing supply chain levels"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "di-4.1.1",
+    "controlTitle": "Infrastructure as Code",
+    "description": "Do you manage infrastructure through code with version control and review?",
+    "baselineCount": 4,
+    "baselines": [
+      "All infrastructure defined and managed through code (e.g., Terraform, CloudFormation)",
+      "Infrastructure changes deployed through automated pipelines, no manual steps required",
+      "Infrastructure changes require multi-party approval",
+      "IaC security scanning performed before deployment"
+    ],
+    "candidates": [
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "title": "Infrastructure as Code Security | SEAL",
+        "score": 52,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 37,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 34,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 32,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 30,
+        "matchedSections": [
+          "tools for automated compliance checks"
+        ]
+      },
+      {
+        "page": "/infrastructure/overview",
+        "title": "Infrastructure",
+        "score": 25,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 24,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/code-reviews-peer-audits",
+        "title": "Code Reviews & Peer Audits",
+        "score": 24,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-4.1.2",
+    "controlTitle": "Infrastructure Access Controls",
+    "description": "Do you enforce least-privilege access controls for infrastructure?",
+    "baselineCount": 6,
+    "baselines": [
+      "Individual accounts with MFA required; no shared accounts",
+      "Privileged access is time-limited and requires multi-party approval (JIT access)",
+      "Day-to-day operations use minimum necessary permissions (read-only where possible)",
+      "Break-glass accounts established for emergency access with individual accountability",
+      "Break-glass usage triggers immediate alerts to the entire team and requires post-incident review",
+      "All access activities logged and monitored"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 61,
+        "matchedSections": [
+          "dns record monitoring",
+          "setting up alerts",
+          "critical alerts (immediate response required)",
+          "high priority alerts (when ns unchanged)"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 53,
+        "matchedSections": [
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 34,
+        "matchedSections": [
+          "best practices for secure code repositories"
+        ]
+      },
+      {
+        "page": "/security-testing/unit-testing",
+        "title": "Unit Testing",
+        "score": 30,
+        "matchedSections": [
+          "overview",
+          "2. test all access controls"
+        ]
+      },
+      {
+        "page": "/infrastructure/zero-trust-principles",
+        "title": "Zero Trust Principles",
+        "score": 28,
+        "matchedSections": []
+      },
+      {
+        "page": "/supply-chain/supply-chain-levels-software-artifacts",
+        "title": "Supply Chain Levels Software Artifacts | SEAL",
+        "score": 28,
+        "matchedSections": [
+          "best practices for securing supply chain levels"
+        ]
+      },
+      {
+        "page": "/infrastructure/cloud",
+        "title": "Cloud Infrastructure",
+        "score": 22,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 22,
+        "matchedSections": [
+          "dnssec implementation"
+        ]
+      }
+    ]
+  },
+  {
+    "controlId": "di-4.1.3",
+    "controlTitle": "Backup and Disaster Recovery",
+    "description": "Do you maintain backup and disaster recovery procedures with periodic testing?",
+    "baselineCount": 4,
+    "baselines": [
+      "Critical systems have automated backup procedures",
+      "Disaster recovery plan documented with recovery time and recovery point objectives defined",
+      "Backup and recovery procedures tested regularly",
+      "Backups stored independently of primary infrastructure"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/cloud",
+        "title": "Cloud Infrastructure",
+        "score": 31,
+        "matchedSections": []
+      },
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "title": "Secure Code Repositories & Version Control | SEAL",
+        "score": 30,
+        "matchedSections": [
+          "secure version control practices"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 21,
+        "matchedSections": [
+          "domain expiration protection"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 16,
+        "matchedSections": []
+      },
+      {
+        "page": "/monitoring/thresholds",
+        "title": "Monitoring Alert Thresholds",
+        "score": 16,
+        "matchedSections": [
+          "set thresholds for alerts",
+          "multi-layered thresholds"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "title": "On-Chain Monitoring Guidelines",
+        "score": 14,
+        "matchedSections": [
+          "define monitoring objectives"
+        ]
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 14,
+        "matchedSections": [
+          "tools for automated compliance checks"
+        ]
+      },
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "title": "Infrastructure as Code Security | SEAL",
+        "score": 12,
+        "matchedSections": []
+      }
+    ]
+  },
+  {
+    "controlId": "di-4.1.4",
+    "controlTitle": "Cloud Security Monitoring",
+    "description": "Do you monitor cloud security configurations and respond to provider security notifications?",
+    "baselineCount": 5,
+    "baselines": [
+      "Cloud security configurations continuously monitored for drift and unauthorized changes",
+      "Administrative actions trigger alerts",
+      "Cloud provider security notifications subscribed to and promptly reviewed",
+      "Comprehensive logging enabled (e.g., CloudTrail, Azure Monitor, Google Cloud Logging)",
+      "Multi-cloud strategies considered to reduce single-provider dependency"
+    ],
+    "candidates": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "title": "DNS Monitoring & Incident Response | SEAL",
+        "score": 218,
+        "matchedSections": [
+          "dns record monitoring",
+          "setting up alerts",
+          "critical alerts (immediate response required)",
+          "high priority alerts (when ns unchanged)",
+          "certificate transparency monitoring",
+          "passive dns monitoring"
+        ]
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+        "score": 113,
+        "matchedSections": [
+          "dnssec implementation",
+          "mta-sts (mail transfer agent strict transport security)",
+          "dmarc (domain-based message authentication)"
+        ]
+      },
+      {
+        "page": "/infrastructure/cloud",
+        "title": "Cloud Infrastructure",
+        "score": 81,
+        "matchedSections": []
+      },
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "title": "Registrar Security & Registry Locks | SEAL",
+        "score": 80,
+        "matchedSections": [
+          "domain expiration protection",
+          "enterprise-grade registrars (recommended)",
+          "multi-factor authentication",
+          "access control best practices",
+          "whois vs rdap"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "title": "On-Chain Monitoring Guidelines",
+        "score": 65,
+        "matchedSections": [
+          "implement monitoring tools",
+          "establish alerting mechanisms",
+          "incident response",
+          "define monitoring objectives",
+          "regular reviews and updates"
+        ]
+      },
+      {
+        "page": "/security-automation/compliance-checks",
+        "title": "Automated Compliance Checks",
+        "score": 56,
+        "matchedSections": [
+          "benefits of automated compliance checks",
+          "tools for automated compliance checks"
+        ]
+      },
+      {
+        "page": "/monitoring/overview",
+        "title": "Monitoring",
+        "score": 52,
+        "matchedSections": []
+      },
+      {
+        "page": "/security-automation/threat-detection-response",
+        "title": "Threat Detection & Response | SEAL",
+        "score": 47,
+        "matchedSections": [
+          "guidelines for threat detection and response"
+        ]
+      }
+    ]
+  }
+]

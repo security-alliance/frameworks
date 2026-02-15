@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import "./control.css";
 import { Control, ControlData, ControlState } from "./types";
+import { controlToFramework } from "./cert-framework-map";
 
 interface ControlCardProps {
     control: Control;
@@ -95,6 +96,24 @@ export const ControlCard = memo(function ControlCard({
                             <ul className="control-baselines-list">
                                 {control.baselines.map((baseline, idx) => (
                                     <li key={idx}>{baseline}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                    {controlToFramework[control.id] && controlToFramework[control.id].length > 0 && (
+                        <div className="control-framework-refs">
+                            <div className="control-framework-refs-label">📖 Related Framework Guidance</div>
+                            <ul className="control-framework-refs-list">
+                                {controlToFramework[control.id].map((ref, idx) => (
+                                    <li key={idx}>
+                                        <a
+                                            href={ref.header ? `${ref.page}#${ref.header.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')}` : ref.page}
+                                            className={`control-framework-ref control-framework-ref-${ref.coverage}`}
+                                        >
+                                            {ref.title || ref.page}
+                                            {ref.header && <span className="control-framework-ref-header"> → {ref.header}</span>}
+                                        </a>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
