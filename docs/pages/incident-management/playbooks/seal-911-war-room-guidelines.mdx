@@ -4,6 +4,9 @@ description: "SEAL 911 War Room guidelines for smart contract hack response. Cre
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [dickson]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -172,6 +175,71 @@ Gather attacker information to aid legal efforts and fund recovery.
 4. Consider creating additional defensive scripts (pause/upgrade) to use for future situations.
 5. Schedule a Post Mortem write-up.
 6. Post the write-up to relevant social media.
+
+## White Hat Frontrunning
+
+When a wallet or deployer EOA is compromised, time is critical. White hat frontrunning allows rescuers to outpace
+attackers by submitting competing transactions with higher gas to move funds to safety before the attacker can drain
+them. This technique has been used successfully in real SEAL 911 rescues.
+
+### The Tool
+
+The open-source [white hat frontrunning script](https://github.com/pcaversaccio/white-hat-frontrunning) by
+[pcaversaccio](https://github.com/pcaversaccio) provides a ready-made rescue framework:
+
+- **Bash script with minimal dependencies** — requires only Linux native tools and Foundry's `cast`.
+- **Flashbots bundles** — transactions are sent through Flashbots to avoid frontrunning by MEV bots.
+- **Standard rescue flow** — send gas to the victim wallet, then immediately rescue tokens in the same atomic bundle.
+- **EIP-7702-based rescue** — no ETH needed on the victim wallet. Uses a paymaster and delegator contract to fund and
+  execute the rescue.
+
+### When to Use It
+
+Use this tool when **all** of the following are true:
+
+- [ ] A wallet's private key has been confirmed compromised.
+- [ ] Funds remain in the compromised wallet.
+- [ ] The attacker has not yet drained all assets.
+- [ ] The rescue team has a safe destination wallet.
+- [ ] Someone on the team is comfortable running Bash scripts with Foundry.
+
+### How It Works
+
+The script supports two rescue flows. Refer to the
+[repository documentation](https://github.com/pcaversaccio/white-hat-frontrunning) for full setup and usage
+instructions.
+
+**Standard flow:**
+
+1. A gas wallet sends ETH to the victim wallet.
+2. The victim wallet immediately sends tokens to a safe wallet.
+3. Both transactions are bundled via Flashbots and execute atomically — the attacker never sees them in the public
+   mempool.
+
+**EIP-7702 flow:**
+
+1. A recovery contract is deployed.
+2. The victim signs a delegation authorization.
+3. A paymaster funds the rescue — no ETH is needed on the victim wallet at all.
+
+The script monitors for bundle inclusion and automatically retries if the bundle is not picked up by a block builder.
+
+### Real-World Usage
+
+- Used by SEAL 911 to rescue funds from a compromised deployer EOA by
+  [batch transferring ownerships](https://x.com/pcaversaccio/status/1966441193941737632).
+- The repository's community examples directory includes customized rescue scripts for various scenarios.
+- Successful rescues have been executed on Base (Degen) and Arbitrum (Zyfai).
+
+### Important Caveats
+
+- **Customize the main loop.** The script's main loop MUST be adapted for each specific rescue scenario — it is not a
+  one-click tool.
+- **Test on a testnet first** if time permits.
+- **Flashbots bundles are Ethereum mainnet only.** Other chains may need different private mempool solutions.
+- **The script requires the compromised wallet's private key.**
+- **Coordinate with the War Room** before executing any rescue transactions.
+- **Debug mode still sends real transactions** — it is NOT a dry run.
 
 ## Appendix
 
