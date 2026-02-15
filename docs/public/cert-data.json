@@ -1,0 +1,1494 @@
+[
+  {
+    "name": "sfc-devops-infrastructure",
+    "label": "DevOps & Infrastructure",
+    "sections": [
+      {
+        "id": "di-1",
+        "title": "Governance & Development Environment",
+        "controls": [
+          {
+            "id": "di-1.1.1",
+            "description": "Is there a clearly designated person or team accountable for development and infrastructure security?",
+            "baselines": [
+              "Accountability scope covers policy maintenance, security reviews, access control oversight, pipeline governance, and incident escalation"
+            ],
+            "title": "DevOps Security Owner"
+          },
+          {
+            "id": "di-1.1.2",
+            "description": "Do you maintain documented security policies governing development and infrastructure operations?",
+            "baselines": [
+              "Policy covers environment standards, access controls, deployment procedures, code management, and supply chain security",
+              "Accessible to all developers and infrastructure operators",
+              "Reviewed at least annually and after significant changes (security incidents, technology shifts, organizational restructuring)"
+            ],
+            "title": "DevOps Security Policy"
+          },
+          {
+            "id": "di-1.1.3",
+            "description": "Do you isolate development environments from production systems?",
+            "baselines": [
+              "Development activities performed in containerized or virtualized environments",
+              "Each code repository has its own isolated environment to prevent cross-contamination",
+              "Production credentials not accessible from development environments",
+              "Separate accounts or profiles for development vs. privileged operations (e.g., wallet signing, cloud admin)",
+              "Code execution sandboxed to prevent host system compromise"
+            ],
+            "title": "Development Environment Isolation"
+          },
+          {
+            "id": "di-1.1.4",
+            "description": "Do you evaluate and approve development tools before organizational use?",
+            "baselines": [
+              "Evaluation criteria cover IDEs, extensions, plugins, AI-powered tools, and third-party services",
+              "Extensions and plugins obtained only from official repositories",
+              "AI tools assessed for data privacy risks (does the tool send code to third parties for training or analytics?)",
+              "Approved tool list maintained; unapproved tools restricted",
+              "Regular reviews of installed tools to identify unused or unrecognized items"
+            ],
+            "title": "Development Tools Approval"
+          }
+        ]
+      },
+      {
+        "id": "di-2",
+        "title": "Source Code & Supply Chain Security",
+        "controls": [
+          {
+            "id": "di-2.1.1",
+            "description": "Do you enforce security controls on your source code repositories?",
+            "baselines": [
+              "Role-based access control with least-privilege permissions",
+              "Branch protection rules enforced on main/production branches",
+              "Signed commits required for all code changes",
+              "Multi-party code review required for merges to protected branches",
+              "MFA required for all repository members",
+              "Repository access reviewed periodically"
+            ],
+            "title": "Repository Security"
+          },
+          {
+            "id": "di-2.1.2",
+            "description": "Do you scan source code for accidentally committed secrets?",
+            "baselines": [
+              "Automated scanning for committed secrets (API keys, private keys, credentials) in all repositories",
+              "Pre-commit hooks deployed to prevent secrets from being committed in the first place",
+              "Remediation procedures for discovered secrets (immediate rotation, revocation)",
+              "Scanning integrated into CI/CD pipeline"
+            ],
+            "title": "Secret Scanning"
+          },
+          {
+            "id": "di-2.1.3",
+            "description": "Do you apply enhanced review for code contributions from external collaborators?",
+            "baselines": [
+              "Additional approvers required for all external code contributions",
+              "Code contributions tracked; unexpected changes flagged (e.g., commit rewrites, unprompted edits)",
+              "External collaborators restricted to minimum necessary repository permissions",
+              "CI/CD pipelines do not automatically execute for external contributor PRs without approval"
+            ],
+            "title": "External Contributor Review"
+          },
+          {
+            "id": "di-2.1.4",
+            "description": "Do you verify and manage dependencies to prevent supply chain attacks?",
+            "baselines": [
+              "Packages obtained from official repositories and trusted sources only",
+              "Package names verified against typosquatting patterns before installation",
+              "Dependencies scanned for known vulnerabilities before deployment",
+              "Dependency version pinning enforced to prevent automatic updates to compromised versions",
+              "Regular dependency audits for outdated or vulnerable components",
+              "Changelog reviewed for dependency updates to verify expected functionality"
+            ],
+            "title": "Dependency and Supply Chain Security"
+          }
+        ]
+      },
+      {
+        "id": "di-3",
+        "title": "CI/CD Pipeline Security",
+        "controls": [
+          {
+            "id": "di-3.1.1",
+            "description": "Do you control who can modify and execute your deployment pipelines?",
+            "baselines": [
+              "Pipeline configuration changes require multi-party approval",
+              "Separate service accounts with minimal permissions used for pipeline execution",
+              "Manual deployment by humans restricted; deployments automated through controlled pipelines",
+              "Pipeline and build configurations version-controlled and reviewed",
+              "Builds are deterministic with strict dependency sets"
+            ],
+            "title": "Pipeline Security Controls"
+          },
+          {
+            "id": "di-3.1.2",
+            "description": "Do you securely manage secrets used in pipelines and applications?",
+            "baselines": [
+              "Dedicated secrets management system used (not environment variables in plain text)",
+              "Secrets never stored in source code or unencrypted configuration files",
+              "Production secrets not directly accessible by humans",
+              "Pipeline secrets accessible only by service accounts",
+              "Secret rotation schedule defined; rotation triggered immediately after suspected compromise"
+            ],
+            "title": "Secrets Management"
+          },
+          {
+            "id": "di-3.1.3",
+            "description": "Do you integrate security testing into your development and deployment pipelines?",
+            "baselines": [
+              "Static analysis (SAST) tools integrated into CI/CD pipeline",
+              "Dependency vulnerability scanning automated in CI/CD",
+              "Security scan results reviewed before deployment approval",
+              "Testing and validation performed in staging environments before production deployment"
+            ],
+            "title": "Security Testing Integration"
+          }
+        ]
+      },
+      {
+        "id": "di-4",
+        "title": "Infrastructure & Cloud Security",
+        "controls": [
+          {
+            "id": "di-4.1.1",
+            "description": "Do you manage infrastructure through code with version control and review?",
+            "baselines": [
+              "All infrastructure defined and managed through code (e.g., Terraform, CloudFormation)",
+              "Infrastructure changes deployed through automated pipelines, no manual steps required",
+              "Infrastructure changes require multi-party approval",
+              "IaC security scanning performed before deployment"
+            ],
+            "title": "Infrastructure as Code"
+          },
+          {
+            "id": "di-4.1.2",
+            "description": "Do you enforce least-privilege access controls for infrastructure?",
+            "baselines": [
+              "Individual accounts with MFA required; no shared accounts",
+              "Privileged access is time-limited and requires multi-party approval (JIT access)",
+              "Day-to-day operations use minimum necessary permissions (read-only where possible)",
+              "Break-glass accounts established for emergency access with individual accountability",
+              "Break-glass usage triggers immediate alerts to the entire team and requires post-incident review",
+              "All access activities logged and monitored"
+            ],
+            "title": "Infrastructure Access Controls"
+          },
+          {
+            "id": "di-4.1.3",
+            "description": "Do you maintain backup and disaster recovery procedures with periodic testing?",
+            "baselines": [
+              "Critical systems have automated backup procedures",
+              "Disaster recovery plan documented with recovery time and recovery point objectives defined",
+              "Backup and recovery procedures tested regularly",
+              "Backups stored independently of primary infrastructure"
+            ],
+            "title": "Backup and Disaster Recovery"
+          },
+          {
+            "id": "di-4.1.4",
+            "description": "Do you monitor cloud security configurations and respond to provider security notifications?",
+            "baselines": [
+              "Cloud security configurations continuously monitored for drift and unauthorized changes",
+              "Administrative actions trigger alerts",
+              "Cloud provider security notifications subscribed to and promptly reviewed",
+              "Comprehensive logging enabled (e.g., CloudTrail, Azure Monitor, Google Cloud Logging)",
+              "Multi-cloud strategies considered to reduce single-provider dependency"
+            ],
+            "title": "Cloud Security Monitoring"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sfc-dns-registrar",
+    "label": "DNS Registrar",
+    "sections": [
+      {
+        "id": "dns-1",
+        "title": "Governance & Domain Management",
+        "controls": [
+          {
+            "id": "dns-1.1.1",
+            "description": "Is there a clearly designated person or team accountable for domain security?",
+            "baselines": [
+              "Accountability scope covers policy maintenance, security reviews, renewal management, access control oversight, and incident escalation"
+            ],
+            "title": "Domain Security Owner"
+          },
+          {
+            "id": "dns-1.1.2",
+            "description": "Do you maintain a complete, current record of all your domains and their configurations?",
+            "baselines": [
+              "Registry includes domain name, ownership, purpose, expiration date, registrar, DNS record configurations, security settings (DNSSEC, CAA), and registrar account configurations",
+              "Accessible to relevant team members"
+            ],
+            "title": "Domain Inventory and Documentation"
+          }
+        ]
+      },
+      {
+        "id": "dns-2",
+        "title": "Risk Assessment & Classification",
+        "controls": [
+          {
+            "id": "dns-2.1.1",
+            "description": "Do you classify your domains by risk level and verify they meet the security requirements for their classification?",
+            "baselines": [
+              "Classification considers criticality, financial exposure, and operational impact",
+              "Domains where users may transact funds or that are external-facing classified at the highest tier",
+              "Each classification maps to specific security requirements (DNSSEC, locks, monitoring frequency, access controls)",
+              "Compliance verified at least annually through configuration review against documented standards"
+            ],
+            "title": "Domain Classification and Compliance"
+          },
+          {
+            "id": "dns-2.1.2",
+            "description": "Do you use a registrar with enterprise-grade security for your critical domains?",
+            "baselines": [
+              "Registrar supports registry locks (server-level EPP locks)",
+              "Registrar supports hardware security key MFA (FIDO2/WebAuthn)",
+              "Registrar has no history of social engineering vulnerabilities",
+              "Due diligence includes checking ICANN compliance notices for the registrar"
+            ],
+            "title": "Enterprise Registrar Security Requirements"
+          }
+        ]
+      },
+      {
+        "id": "dns-3",
+        "title": "Access Control & Authentication",
+        "controls": [
+          {
+            "id": "dns-3.1.1",
+            "description": "Do you control and secure access to domain registrar and DNS management accounts?",
+            "baselines": [
+              "Documented who is authorized, how access is granted/revoked, and role-based permissions where available",
+              "Hardware security key MFA (FIDO2/WebAuthn) required for all registrar and DNS management accounts",
+              "Access reviews conducted at least annually",
+              "Access revoked promptly when no longer needed"
+            ],
+            "title": "Registrar Access Control"
+          },
+          {
+            "id": "dns-3.1.2",
+            "description": "Is your domain security contact email independent of the domains it protects?",
+            "baselines": [
+              "Hosted on a different domain than any domain it's responsible for",
+              "Not a personal email address",
+              "Used exclusively for domain security purposes",
+              "Alias that notifies multiple people"
+            ],
+            "title": "Dedicated Domain Security Contact Email"
+          },
+          {
+            "id": "dns-3.1.3",
+            "description": "Do you have change management procedures for critical domain operations?",
+            "baselines": [
+              "Covers transfers, deletions, nameserver changes, and DNS record modifications",
+              "Relevant team members notified before critical changes",
+              "All changes logged",
+              "Critical changes verified through out-of-band confirmation with the registrar"
+            ],
+            "title": "Change Management for Domain Operations"
+          }
+        ]
+      },
+      {
+        "id": "dns-4",
+        "title": "Technical Security Controls",
+        "controls": [
+          {
+            "id": "dns-4.1.1",
+            "description": "Do you enforce DNS security standards across all your domains?",
+            "baselines": [
+              "DNSSEC enabled and validated on all critical domains",
+              "CAA records configured to restrict certificate issuance to authorized CAs only",
+              "TTL policies documented with rationale",
+              "Standards applied consistently based on domain classification"
+            ],
+            "title": "DNS Security Standards"
+          },
+          {
+            "id": "dns-4.1.2",
+            "description": "Do you enforce email authentication standards and monitor for violations?",
+            "baselines": [
+              "SPF, DKIM, and DMARC configured for all domains that send email",
+              "DMARC policy set to reject for domains actively sending email",
+              "DMARC aggregate reports (rua) monitored and reviewed",
+              "MTA-STS configured where supported to enforce encrypted email transport",
+              "Domains that don't send email have SPF/DMARC records that reject all email"
+            ],
+            "title": "Email Authentication Standards"
+          },
+          {
+            "id": "dns-4.1.3",
+            "description": "Do you use domain locks to prevent unauthorized transfers and changes?",
+            "baselines": [
+              "Registry locks (server-level EPP locks) enabled for all critical domains where supported",
+              "Transfer locks enabled on all domains",
+              "Lock status verified periodically"
+            ],
+            "title": "Domain Lock Implementation"
+          },
+          {
+            "id": "dns-4.1.4",
+            "description": "Do you manage the full lifecycle of your TLS certificates?",
+            "baselines": [
+              "Covers issuance, renewal, and revocation procedures",
+              "Certificates tracked with expiration alerts",
+              "Automated renewal where possible",
+              "Revocation procedures documented for compromised certificates"
+            ],
+            "title": "TLS Certificate Lifecycle Management"
+          }
+        ]
+      },
+      {
+        "id": "dns-5",
+        "title": "Monitoring & Detection",
+        "controls": [
+          {
+            "id": "dns-5.1.1",
+            "description": "Do you monitor your domains for unauthorized changes to DNS records, registration status, and security settings?",
+            "baselines": [
+              "DNS record monitoring covers nameserver (NS) changes, A/AAAA changes, MX changes, TXT/SPF/DMARC changes, CAA record removal, DNSSEC status changes, and unexpected TTL drops",
+              "Registration monitoring covers lock status, registrar account settings, and nameserver delegation",
+              "Alerting and escalation paths documented",
+              "Critical alerts (nameserver changes, DNSSEC failure, registrar changes) trigger immediate investigation",
+              "Monitoring infrastructure not dependent on the domains being monitored"
+            ],
+            "title": "Domain and DNS Monitoring"
+          },
+          {
+            "id": "dns-5.1.2",
+            "description": "Do you monitor Certificate Transparency logs for unauthorized certificates issued for your domains?",
+            "baselines": [
+              "Subscribed to a CT monitoring service that alerts on new certificate issuance",
+              "Alerts reviewed and unauthorized certificates investigated promptly",
+              "Wildcard certificates flagged if not expected"
+            ],
+            "title": "Certificate Transparency Monitoring"
+          },
+          {
+            "id": "dns-5.1.3",
+            "description": "Do you actively prevent domain expiration?",
+            "baselines": [
+              "Auto-renewal enabled on all domains",
+              "Calendar reminders at 90, 60, 30, and 7 days before expiration",
+              "Payment methods verified current",
+              "Backup person designated for renewal responsibility"
+            ],
+            "title": "Domain Expiration Prevention"
+          }
+        ]
+      },
+      {
+        "id": "dns-6",
+        "title": "Incident Response",
+        "controls": [
+          {
+            "id": "dns-6.1.1",
+            "description": "Do you have alerting and emergency contacts in place for domain security incidents?",
+            "baselines": [
+              "Alerting system in place to notify relevant stakeholders when a potential compromise is detected",
+              "Emergency contacts pre-documented including registrar security team, SEAL 911, and legal counsel",
+              "Communication plan for warning users (status page, social media, in-app warnings)"
+            ],
+            "title": "Alerting and Emergency Contacts"
+          },
+          {
+            "id": "dns-6.1.2",
+            "description": "Do you have an incident response plan for domain hijacking and DNS compromise?",
+            "baselines": [
+              "Covers key scenarios including registrar account compromise, DNS hijacking, and unauthorized transfers",
+              "Emergency registry lock activation procedures",
+              "Procedures for regaining control of compromised domains",
+              "Post-recovery validation including DNS records verified against known-good baseline, all credentials reset, and access logs reviewed",
+              "Plan tested at least annually (can be combined with broader IR drills)"
+            ],
+            "title": "Domain Incident Response Plan"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sfc-incident-response",
+    "label": "Incident Response",
+    "sections": [
+      {
+        "id": "ir-1",
+        "title": "Governance & Team Structure",
+        "controls": [
+          {
+            "id": "ir-1.1.1",
+            "description": "Do you have an incident response team with clearly defined roles and responsibilities?",
+            "baselines": [
+              "Incident commander (with designated backup) who coordinates response, assigns tasks, and makes time-sensitive decisions",
+              "Subject matter experts identified for key domains (smart contracts, infrastructure, security) who can analyze attacks and prepare response strategies",
+              "Scribe role defined for real-time incident documentation",
+              "Communications personnel designated for public information sharing and record-keeping",
+              "Legal support available with procedures for reviewing response actions, whitehat engagement, and public communications",
+              "Decision makers defined for high-stakes decisions (system shutdown, public disclosure, fund recovery)",
+              "Roles, authorities, and escalation measures reviewed at least annually and after protocol changes, team restructuring, or major incidents"
+            ],
+            "title": "IR Team and Role Assignments"
+          },
+          {
+            "id": "ir-1.1.2",
+            "description": "Do you maintain current contacts and coordination procedures for all parties needed during an incident?",
+            "baselines": [
+              "Internal coordination procedures between technical (devs, auditors) and operational teams (security council, communications)",
+              "External protocol contacts for protocols you depend on and protocols that depend on you",
+              "External expertise contacts including forensics firms, security consultants, SEAL 911, and auditors",
+              "Legal counsel and communications/PR contacts",
+              "Infrastructure vendor support contacts and escalation procedures",
+              "Contact list reviewed at least quarterly and after team changes",
+              "Escalation order documented for P1 incidents (e.g., SEAL 911 → decision makers → security partners → legal)"
+            ],
+            "title": "Stakeholder Coordination and Contacts"
+          }
+        ]
+      },
+      {
+        "id": "ir-2",
+        "title": "Monitoring, Detection & Alerting",
+        "controls": [
+          {
+            "id": "ir-2.1.1",
+            "description": "Do you maintain monitoring coverage for your critical systems, protocols, and external attack surfaces?",
+            "baselines": [
+              "Monitoring covers critical smart contracts, infrastructure, and on-chain activity",
+              "24/7 monitoring capabilities with procedures for after-hours alert handling",
+              "Credential and secret exposure detection including dark web monitoring, breach database scanning, and secret scanning in code repositories",
+              "Organizational account monitoring including social media accounts and websites monitored for unauthorized access or compromise",
+              "Monitoring coverage documented — what's covered, what's not, and known gaps"
+            ],
+            "title": "Monitoring Coverage"
+          },
+          {
+            "id": "ir-2.1.2",
+            "description": "Do you have alerting and paging systems that reliably route incidents to available responders?",
+            "baselines": [
+              "Automated alerting configured for security events and operational issues",
+              "Alerts include embedded triage guidance for distinguishing true incidents from false positives",
+              "Triage and classification procedures documented with escalation paths based on severity",
+              "Time-based escalation triggers if initial responder doesn't acknowledge within defined window",
+              "Management notification requirements for high-severity incidents",
+              "Redundant paging systems with documented failover procedures",
+              "On-call schedules maintained with adequate coverage for operational needs",
+              "Backup procedures when on-call personnel are unreachable"
+            ],
+            "title": "Alerting, Paging, and Escalation"
+          },
+          {
+            "id": "ir-2.1.3",
+            "description": "Do you maintain tamper-evident logs with adequate retention for incident investigation?",
+            "baselines": [
+              "Log retention periods defined for security, infrastructure, and cloud provider logs",
+              "Retention adequate for forensic analysis (consider regulatory requirements and typical investigation timelines)",
+              "Tamper-evident logging for security-relevant events including access logs, alerting system logs, and infrastructure logs",
+              "Alerts triggered if logs are altered, deleted, or if monitoring/logging is disabled",
+              "Log sources documented — what's captured and where it's stored"
+            ],
+            "title": "Logging Integrity and Retention"
+          }
+        ]
+      },
+      {
+        "id": "ir-3",
+        "title": "Response & Emergency Operations",
+        "controls": [
+          {
+            "id": "ir-3.1.1",
+            "description": "Do you maintain response playbooks for common incident types?",
+            "baselines": [
+              "Playbooks cover key scenarios including protocol exploits, infrastructure failures, access control breaches, key compromise, supply chain compromises, and frontend/DNS compromise",
+              "Each playbook includes initial response actions covering containment, evidence preservation, and stakeholder notification",
+              "Role-specific responsibilities defined for each scenario (who does what — technical, comms, legal)",
+              "Escalation criteria documented for when to engage leadership, when to shut down systems, when to make public disclosure, and when to engage external assistance",
+              "Key compromise playbook includes procedures for rotating keys and replacing compromised signers, with threshold and access reviewed after any signer replacement"
+            ],
+            "title": "Response Playbooks"
+          },
+          {
+            "id": "ir-3.1.2",
+            "description": "Can you reach enough signers to execute emergency on-chain actions at any time, including outside business hours?",
+            "baselines": [
+              "Procedures for coordinating multisig operations during incidents, including cross-timezone signer availability",
+              "Signers integrated into on-call/paging systems",
+              "Escalation paths documented for when signers are unreachable",
+              "Tested quarterly"
+            ],
+            "title": "Signer Reachability and Coordination"
+          },
+          {
+            "id": "ir-3.1.3",
+            "description": "Do you have backup signing infrastructure and pre-prepared emergency transactions for critical protocol functions?",
+            "baselines": [
+              "Pre-signed or pre-prepared emergency transactions for critical protocol functions (pause, freeze, parameter changes) where feasible",
+              "Backup signing infrastructure available including alternate signing UI, backup RPC providers, and alternate block explorer",
+              "Emergency execution procedures documented (what to pause/freeze/modify and the process for doing so)"
+            ],
+            "title": "Emergency Transaction Readiness"
+          }
+        ]
+      },
+      {
+        "id": "ir-4",
+        "title": "Communication & Coordination",
+        "controls": [
+          {
+            "id": "ir-4.1.1",
+            "description": "Do you maintain secure, dedicated communication channels for incident response?",
+            "baselines": [
+              "Dedicated incident communication channels with documented access controls and member lists",
+              "Multiple communication channels (primary and backup) on different platforms, with documented failover procedures",
+              "Procedures for rapidly creating incident-specific channels (war room) when needed",
+              "Secure communication procedures for sensitive incident information including need-to-know access and encrypted channels"
+            ],
+            "title": "Incident Communication Channels"
+          },
+          {
+            "id": "ir-4.1.2",
+            "description": "Do you have procedures for providing regular status updates to stakeholders during incidents?",
+            "baselines": [
+              "Status update cadence defined by severity level",
+              "Format and distribution lists for internal stakeholders"
+            ],
+            "title": "Internal Status Updates"
+          },
+          {
+            "id": "ir-4.1.3",
+            "description": "Do you have procedures for public communication and information management during incidents?",
+            "baselines": [
+              "Pre-approved communication templates for different incident types and severity levels",
+              "Procedures for coordinating communications with protocol users during and after incidents",
+              "Procedures for managing public information flow and correcting misinformation during active incidents",
+              "Designated communications approval flow before public statements are released"
+            ],
+            "title": "Public Communication and Information Management"
+          }
+        ]
+      },
+      {
+        "id": "ir-5",
+        "title": "Testing & Continuous Improvement",
+        "controls": [
+          {
+            "id": "ir-5.1.1",
+            "description": "Do you conduct regular incident response drills and evaluate the results?",
+            "baselines": [
+              "Drills conducted at least annually",
+              "Drills cover different incident types across exercises (protocol exploit, infrastructure failure, key compromise, etc.)",
+              "Tests the full pipeline from monitoring through alerting, paging, triage, escalation, team coordination, containment, and recovery",
+              "Production alerting pipeline validated end-to-end from event detection through to responder notification and acknowledgment",
+              "Drill documentation includes date, scenario, participants, response times, gaps identified, and corrective actions",
+              "Corrective actions tracked to completion with owners and deadlines",
+              "Drill findings incorporated into playbook and procedure updates"
+            ],
+            "title": "IR Drills and Testing"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sfc-multisig-ops",
+    "label": "Multisig Operations",
+    "sections": [
+      {
+        "id": "ms-1",
+        "title": "Governance & Inventory",
+        "controls": [
+          {
+            "id": "ms-1.1.1",
+            "description": "Is there a clearly named person or team accountable for multisig operations?",
+            "baselines": [
+              "Accountability scope covers policy maintenance, signer onboarding/offboarding, documentation accuracy, periodic reviews, and incident escalation"
+            ],
+            "title": "Named Multisig Operations Owner"
+          },
+          {
+            "id": "ms-1.1.2",
+            "description": "Do you maintain a complete, accurate, and accessible record of all your multisigs, their configurations, and their signers?",
+            "baselines": [
+              "Registry includes address, network, threshold, classification, purpose, signer addresses, controlled contracts, on-chain roles, and last review date",
+              "Updated within 24 hours for security-critical changes, 3 days for routine changes",
+              "Accessible to signers and key personnel"
+            ],
+            "title": "Multisig Registry and Documentation"
+          }
+        ]
+      },
+      {
+        "id": "ms-2",
+        "title": "Risk Assessment & Management",
+        "controls": [
+          {
+            "id": "ms-2.1.1",
+            "description": "Do you classify your multisigs by risk level and apply security controls proportional to each classification?",
+            "baselines": [
+              "Classification considers impact factors (financial exposure, protocol criticality, reputational risk) and operational needs (response time, coordination complexity)",
+              "Each classification maps to specific required controls (thresholds, quorum composition, review cadence)",
+              "All multisigs must have at least 3 distinct signers with a signing threshold of 50% or greater; N-of-N configurations should be avoided",
+              "Higher-risk classifications require stronger controls (more signers, higher thresholds)",
+              "Classifications reviewed every 6 months and after significant changes (TVL shifts, new products, protocol upgrades, security incidents)"
+            ],
+            "title": "Multisig Classification and Risk-Based Controls"
+          },
+          {
+            "id": "ms-2.1.2",
+            "description": "Have you evaluated contract-level security controls that could limit the impact of a multisig compromise?",
+            "baselines": [
+              "Evaluation covers timelocks, modules, guards, address whitelisting, invariant enforcement, and parameter bounds",
+              "Controls evaluated for each multisig based on classification",
+              "Security review required before enabling any module or guard",
+              "Decisions documented, including rationale for controls not implemented"
+            ],
+            "title": "Contract-Level Security Controls"
+          },
+          {
+            "id": "ms-2.1.3",
+            "description": "Do you have a process for approving and tracking exceptions to multisig policies?",
+            "baselines": [
+              "Exceptions require documented justification, expiry date, compensating controls, and remediation plan",
+              "Critical-class exceptions require executive or security-lead approval"
+            ],
+            "title": "Exception Approval Process"
+          },
+          {
+            "id": "ms-2.1.4",
+            "description": "Do you distribute assets across multiple wallets to limit the impact of a single compromise?",
+            "baselines": [
+              "Segregation considers value, operational needs, and risk tolerance",
+              "Examples include hot/cold separation and treasury distribution across multiple wallets"
+            ],
+            "title": "Wallet Segregation"
+          }
+        ]
+      },
+      {
+        "id": "ms-3",
+        "title": "Signer Security & Access Control",
+        "controls": [
+          {
+            "id": "ms-3.1.1",
+            "description": "Do you verify that each signer address on your multisigs belongs to the intended person?",
+            "baselines": [
+              "Verification process includes message signing with the signer address, verification via an independent tool, and documented proof of verification"
+            ],
+            "title": "Signer Address Verification"
+          },
+          {
+            "id": "ms-3.1.2",
+            "description": "Do you enforce signer key management standards?",
+            "baselines": [
+              "Hardware wallets required for all multisig operations",
+              "Each signer uses a fresh, dedicated address per multisig, used exclusively for that multisig's operations"
+            ],
+            "title": "Signer Key Management Standards"
+          },
+          {
+            "id": "ms-3.1.3",
+            "description": "Do you securely back up and protect signer seed phrases and recovery materials?",
+            "baselines": [
+              "Seed phrases never stored digitally, in cloud storage, or photographed",
+              "Backups are geographically distributed (disaster resistant)",
+              "No single point of compromise (theft resistant)",
+              "Recoverable if one operator is unavailable (operator-loss resistant)"
+            ],
+            "title": "Seed Phrase Backup and Protection"
+          },
+          {
+            "id": "ms-3.1.4",
+            "description": "Do you have a defined process for adding, removing, and periodically verifying signers?",
+            "baselines": [
+              "Offboarded signers removed within 48-72 hours (Emergency-class), 7 days (Critical-class), 14 days (others)",
+              "Access reviews quarterly, confirming each signer still controls their key"
+            ],
+            "title": "Signer Lifecycle Management"
+          },
+          {
+            "id": "ms-3.1.5",
+            "description": "Are signers trained and assessed on security practices before they are authorized to sign?",
+            "baselines": [
+              "Training covers transaction verification, emergency procedures, phishing and social engineering awareness",
+              "Practical skills assessment included",
+              "Annual refreshers; updates within 30 days of significant procedure changes"
+            ],
+            "title": "Signer Training and Assessment"
+          },
+          {
+            "id": "ms-3.1.6",
+            "description": "Do you define and enforce hardware wallet standards for multisig operations?",
+            "baselines": [
+              "Wallet capability requirements include adequate display, clear signing support, PIN security, and firmware integrity verification",
+              "Procurement through verified supply chains (direct from manufacturer or authorized resellers), with device authenticity verification"
+            ],
+            "title": "Hardware Wallet Standards"
+          },
+          {
+            "id": "ms-3.1.7",
+            "description": "Do signers use a secure environment for signing operations?",
+            "baselines": [
+              "Device security requirements documented and enforced",
+              "Dedicated signing devices or network isolation for high-value operations"
+            ],
+            "title": "Secure Signing Environment"
+          },
+          {
+            "id": "ms-3.1.8",
+            "description": "Are your signers distributed across roles, entities, and geographies to prevent a single event from compromising quorum?",
+            "baselines": [
+              "Diversity requirements scale with multisig classification"
+            ],
+            "title": "Signer Diversity"
+          }
+        ]
+      },
+      {
+        "id": "ms-4",
+        "title": "Operational Procedures",
+        "controls": [
+          {
+            "id": "ms-4.1.1",
+            "description": "Do you have a defined, documented process for how transactions are proposed, verified, and executed?",
+            "baselines": [
+              "Process covers initiation, approval, simulation, execution, and confirmation",
+              "Defines who is authorized to initiate transactions",
+              "Each signer independently verifies transaction details (chain ID, target address, calldata, value, nonce, operation type) before signing",
+              "Transaction hashes compared across at least two independent interfaces (e.g., web UI and CLI, or web and mobile app)",
+              "DELEGATECALL operations to untrusted addresses flagged as high risk",
+              "High-risk transactions (large transfers, emergency actions, protocol changes) require waiting periods where feasible and elevated threshold approval",
+              "High-risk thresholds defined based on classification and reviewed periodically",
+              "Private transaction submission used when appropriate to prevent front-running or MEV extraction"
+            ],
+            "title": "Transaction Handling Process"
+          },
+          {
+            "id": "ms-4.1.2",
+            "description": "Do you keep records of all transaction reviews, approvals, and executions?",
+            "baselines": [
+              "Retained for 3 years",
+              "Records include proposer, approvers, verification evidence, timestamps, and issues encountered"
+            ],
+            "title": "Transaction Audit Trails"
+          },
+          {
+            "id": "ms-4.1.3",
+            "description": "Do you vet the tools and platforms used for multisig operations before adoption?",
+            "baselines": [
+              "Evaluation considers whether tools are open source or audited by 2+ reputable firms, have no known critical unpatched vulnerabilities, and have established ecosystem adoption",
+              "Formal process for adopting new tools"
+            ],
+            "title": "Tool and Platform Evaluation"
+          },
+          {
+            "id": "ms-4.1.4",
+            "description": "Do you have backup infrastructure in case your primary signing tools are unavailable?",
+            "baselines": [
+              "Alternate signing UI",
+              "2-3 backup RPC providers",
+              "Alternate block explorer"
+            ],
+            "title": "Backup Signing Infrastructure"
+          }
+        ]
+      },
+      {
+        "id": "ms-5",
+        "title": "Communication & Coordination",
+        "controls": [
+          {
+            "id": "ms-5.1.1",
+            "description": "Do you have secure communication procedures for multisig operations, including standard identity verification?",
+            "baselines": [
+              "Dedicated primary and backup channels on different platforms",
+              "End-to-end encryption, MFA required, invitation-based membership",
+              "Signer identity verified as standard procedure during signing operations (e.g., code words, video call, secondary authenticated channel)",
+              "Documented procedures for channel compromise including switching to backup channels and out-of-band verification",
+              "All signers trained on these procedures; compromise response tested annually"
+            ],
+            "title": "Secure Communication Procedures"
+          },
+          {
+            "id": "ms-5.1.2",
+            "description": "Do you maintain a current emergency contact list for all multisig stakeholders?",
+            "baselines": [
+              "Includes protocol security team, external security resources, legal/compliance contacts, and backup contacts for signers",
+              "Personal emergency contacts for each signer (e.g., trusted family member, close colleague) for situations where the signer is unreachable through normal channels",
+              "Reviewed every 6 months"
+            ],
+            "title": "Emergency Contact List"
+          }
+        ]
+      },
+      {
+        "id": "ms-6",
+        "title": "Emergency Operations",
+        "controls": [
+          {
+            "id": "ms-6.1.1",
+            "description": "Do you have step-by-step emergency playbooks?",
+            "baselines": [
+              "Scenarios covered include key compromise, lost access, communication channel compromise, and urgent protocol actions",
+              "Each scenario has procedures and escalation paths",
+              "Playbooks accessible through at least one backup method independent of the primary documentation platform"
+            ],
+            "title": "Emergency Playbooks"
+          },
+          {
+            "id": "ms-6.1.2",
+            "description": "Can you reach enough signers to meet quorum at any time, including outside business hours?",
+            "baselines": [
+              "Response times by classification - Emergency less than 2 hours, Time-Sensitive 2-12 hours, Routine 24-48 hours",
+              "Paging covers all signers including external parties",
+              "Tested quarterly",
+              "Escalation paths documented"
+            ],
+            "title": "Signer Reachability and Escalation"
+          },
+          {
+            "id": "ms-6.1.3",
+            "description": "Do you monitor all multisigs for unauthorized or suspicious activity?",
+            "baselines": [
+              "Monitored events include signer/threshold changes, transfers exceeding thresholds, nonce gaps, interactions with unknown addresses, failed transactions, module/guard changes, and low submitter/proposer balances",
+              "Alerting and escalation paths documented",
+              "Monitoring infrastructure protected against tampering"
+            ],
+            "title": "Multisig Monitoring and Alerts"
+          },
+          {
+            "id": "ms-6.1.4",
+            "description": "Do you regularly rehearse your emergency procedures and track improvements?",
+            "baselines": [
+              "Annual minimum",
+              "After major procedure changes",
+              "Documentation includes date, participants, response times, issues identified, and improvements made"
+            ],
+            "title": "Emergency Drills and Improvement"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sfc-treasury-ops",
+    "label": "Treasury Operations",
+    "sections": [
+      {
+        "id": "tro-1",
+        "title": "Governance & Treasury Architecture",
+        "controls": [
+          {
+            "id": "tro-1.1.1",
+            "description": "Is there a clearly designated person or team accountable for treasury operations?",
+            "baselines": [
+              "Accountability scope covers policy upkeep, security reviews, operational hygiene, access control oversight, and incident escalation"
+            ],
+            "title": "Treasury Operations Owner"
+          },
+          {
+            "id": "tro-1.1.2",
+            "description": "Do you maintain a complete, current record of all treasury wallets, accounts, and their configurations?",
+            "baselines": [
+              "Registry includes wallet/account address, network/chain, custody provider, custody model, purpose/classification, authorized signers/approvers, controlled contracts or protocols, and last review date",
+              "Updated within 24 hours for security-critical changes (signer changes, new wallets), 3 days for routine changes",
+              "Accessible to authorized treasury personnel"
+            ],
+            "title": "Treasury Registry and Documentation"
+          },
+          {
+            "id": "tro-1.1.3",
+            "description": "Do you have documented rationale for your treasury custody architecture?",
+            "baselines": [
+              "Custody model documented for each wallet/account (custodial, self-custody, co-managed, MPC, multisig, HSM)",
+              "Technology trade-offs understood by the team (not necessarily a formal document — could be a brief internal memo)",
+              "Custody architecture reviewed when treasury size, operational needs, or risk profile changes significantly"
+            ],
+            "title": "Custody Architecture Rationale"
+          },
+          {
+            "id": "tro-1.1.4",
+            "description": "Do you have change management procedures for treasury infrastructure modifications?",
+            "baselines": [
+              "Covers wallet setups, custody configurations, signer/approver permission changes, and protocol integrations",
+              "Changes require documented approval before implementation",
+              "All changes logged with justification and approver",
+              "Changes reflected in the treasury registry within defined SLAs",
+              "Rollback procedures documented for critical changes"
+            ],
+            "title": "Treasury Infrastructure Change Management"
+          }
+        ]
+      },
+      {
+        "id": "tro-2",
+        "title": "Risk Classification & Fund Allocation",
+        "controls": [
+          {
+            "id": "tro-2.1.1",
+            "description": "Do you classify your treasury wallets and accounts by risk level and assign security controls accordingly?",
+            "baselines": [
+              "Classification considers financial exposure, operational dependency, and regulatory impact",
+              "Impact levels defined (e.g., Low <1%, Medium 1-10%, High 10-25%, Critical >25% of total assets)",
+              "Operational types defined based on transaction frequency and urgency requirements",
+              "Each classification maps to specific controls including approval thresholds, MFA requirements, whitelist delays, and monitoring levels",
+              "Classification reviewed when asset values, operational patterns, or risk profile change significantly"
+            ],
+            "title": "Treasury Wallet Risk Classification"
+          },
+          {
+            "id": "tro-2.1.2",
+            "description": "Do you enforce fund allocation limits and rebalancing triggers across your treasury?",
+            "baselines": [
+              "Maximum allocation defined per wallet, per custody provider, and per chain",
+              "Rebalancing triggers documented (e.g., when a wallet exceeds its allocation ceiling or falls below operational minimums)",
+              "Allocation limits reviewed periodically and after significant treasury changes",
+              "No single wallet or custody account holds more than the organization's defined maximum concentration"
+            ],
+            "title": "Fund Allocation Limits and Rebalancing"
+          }
+        ]
+      },
+      {
+        "id": "tro-3",
+        "title": "Access Control & Platform Security",
+        "controls": [
+          {
+            "id": "tro-3.1.1",
+            "description": "Do you configure and maintain security controls on your custody platforms?",
+            "baselines": [
+              "Transaction policy rules configured: multi-approval workflows, approval thresholds scaled to transaction value, address whitelisting with cooling-off periods, velocity/spending limits",
+              "Hardware security key MFA required for all approvers on High and Critical accounts",
+              "Session timeouts and re-authentication for sensitive operations",
+              "Network restrictions: IP whitelisting, VPN requirements where supported, geographic access restrictions",
+              "Separation of duties enforced: initiators cannot approve their own transactions, admins cannot unilaterally execute withdrawals",
+              "Platform configurations documented and reviewed at least quarterly"
+            ],
+            "title": "Custody Platform Security Configuration"
+          },
+          {
+            "id": "tro-3.1.2",
+            "description": "Do you securely manage all credentials and secrets used in treasury operations?",
+            "baselines": [
+              "Covers API keys, service accounts, owner/admin credentials, and signing keys",
+              "Credentials stored in dedicated secret management systems, not in code, documents, or shared drives",
+              "Owner and admin credentials isolated from day-to-day operational access",
+              "Credential rotation schedule defined and enforced",
+              "Access to credentials logged and monitored"
+            ],
+            "title": "Credential and Secret Management"
+          },
+          {
+            "id": "tro-3.1.3",
+            "description": "Do you periodically review who has access to treasury systems?",
+            "baselines": [
+              "Access reviews conducted at least quarterly for High/Critical accounts, annually for others",
+              "Reviews verify each user still requires their current access level",
+              "Access promptly revoked when personnel change roles or leave"
+            ],
+            "title": "Access Reviews for Treasury Systems"
+          },
+          {
+            "id": "tro-3.1.4",
+            "description": "Do you enforce operational security requirements for treasury personnel?",
+            "baselines": [
+              "Device security requirements documented: dedicated devices for custody access, full disk encryption, automatic screen lock",
+              "Signing devices (hardware wallets) securely stored when not in use",
+              "Backup materials (seed phrases, recovery keys) stored securely with geographic distribution",
+              "VPN mandatory for all remote treasury platform access",
+              "Travel security procedures for personnel with signing or custody access capabilities",
+              "Mobile devices used as second factors have endpoint security monitoring"
+            ],
+            "title": "Personnel Operational Security"
+          }
+        ]
+      },
+      {
+        "id": "tro-4",
+        "title": "Transaction Security",
+        "controls": [
+          {
+            "id": "tro-4.1.1",
+            "description": "Do you have a defined process for verifying and executing treasury transactions?",
+            "baselines": [
+              "Pre-execution verification includes: recipient address validation, amount verification, network confirmation, and transaction simulation",
+              "Test transactions required before sending to new addresses",
+              "Address verified through multiple independent sources; never copied from email, chat, or transaction history",
+              "Multi-party confirmation required: minimum 2 internal personnel for large transfers",
+              "Specific procedures for receiving large incoming transfers (address generation, bidirectional test, sender coordination)",
+              "Specific procedures for OTC transactions where applicable",
+              "High-value transfers (organization-defined threshold) require video call verification with liveness checks",
+              "All transaction parameters read aloud and confirmed before execution"
+            ],
+            "title": "Transaction Verification and Execution"
+          },
+          {
+            "id": "tro-4.1.2",
+            "description": "Are treasury signers and approvers knowledgeable in the security practices relevant to their role?",
+            "baselines": [
+              "Knowledge covers: transaction verification procedures, address validation techniques, social engineering awareness, emergency procedures",
+              "Competence demonstrated before authorization (e.g., verifying a test transaction end-to-end)",
+              "Knowledge refreshed annually; updated within 30 days of significant procedure changes",
+              "Covers custody-platform-specific workflows and policy engine rules"
+            ],
+            "title": "Signer and Approver Knowledge"
+          },
+          {
+            "id": "tro-4.1.3",
+            "description": "Do you have secure communication procedures for treasury operations, including standard identity verification?",
+            "baselines": [
+              "Dedicated primary and backup channels on different platforms",
+              "End-to-end encryption, MFA required, invitation-based membership",
+              "Identity verified as standard procedure during signing/approval operations (e.g., code phrases, video call, secondary authenticated channel)",
+              "Anti-social-engineering protocols: established verification procedures for address changes or unusual requests",
+              "Documented procedures for channel compromise including switching to backup channels and out-of-band verification",
+              "All treasury personnel trained on these procedures; compromise response tested annually"
+            ],
+            "title": "Secure Communication Procedures"
+          }
+        ]
+      },
+      {
+        "id": "tro-5",
+        "title": "Protocol Deployments",
+        "controls": [
+          {
+            "id": "tro-5.1.1",
+            "description": "Do you evaluate external protocols and enforce exposure limits before deploying treasury funds?",
+            "baselines": [
+              "Due diligence process for all protocols before deployment: smart contract audit status, team reputation, TVL history, insurance coverage",
+              "Exposure limits defined per protocol, per chain, and per deployment category (DeFi, staking, liquid staking, etc.)",
+              "Limits reviewed periodically and after significant market or protocol changes",
+              "Risk re-evaluation triggered by: security incidents, major governance proposals, significant TVL changes, new vulnerabilities disclosed"
+            ],
+            "title": "Protocol Evaluation and Exposure Limits"
+          },
+          {
+            "id": "tro-5.1.2",
+            "description": "Do you have procedures for managing the lifecycle of your positions in external protocols?",
+            "baselines": [
+              "Entry procedures: smart contract address verification against multiple independent sources, token approval management (minimal approvals, revocation after use)",
+              "Emergency withdrawal/exit procedures documented for all active positions",
+              "Alternative access methods documented in case primary UIs are unavailable (direct contract interaction, CLI tools, alternative frontends)",
+              "Unbonding/unstaking timelines understood and factored into liquidity planning"
+            ],
+            "title": "Position Lifecycle Management"
+          }
+        ]
+      },
+      {
+        "id": "tro-6",
+        "title": "Monitoring & Incident Response",
+        "controls": [
+          {
+            "id": "tro-6.1.1",
+            "description": "Do you monitor your treasury for anomalous activity, external threats, and operational risks?",
+            "baselines": [
+              "Transaction monitoring: unusual amounts, unexpected destinations, failed transactions, policy violations",
+              "Account state monitoring: balance changes, configuration modifications, new device enrollments, authentication anomalies",
+              "External threat intelligence: protocol vulnerabilities, DeFi/staking risks, relevant security incidents in the ecosystem",
+              "Vendor/platform monitoring: custody platform status, infrastructure alerts, service availability",
+              "Compliance monitoring: transactions and wallet addresses screened for sanctions and compliance risk",
+              "Protocol and position monitoring: deployed protocol health, governance changes, TVL shifts, collateral ratios, reward accrual, liquidation risks",
+              "Alerting with defined severity levels and escalation paths",
+              "Critical alerts (large unexpected transactions, unauthorized access attempts) trigger immediate investigation",
+              "Monitoring system integrity protected — alerts triggered when monitoring configurations are changed, disabled, or degraded"
+            ],
+            "title": "Monitoring and Threat Awareness"
+          },
+          {
+            "id": "tro-6.1.2",
+            "description": "Do you have an incident response plan for treasury security events, and do you test it?",
+            "baselines": [
+              "Severity levels defined with escalation procedures specific to treasury operations",
+              "Containment procedures: fund protection actions (emergency freeze, transfer to secure cold storage, policy lockdown)",
+              "Covers key scenarios: custody platform compromise, unauthorized transaction, signer key compromise, vendor breach",
+              "Emergency contacts pre-documented: custody provider security team, SEAL 911, legal counsel",
+              "Communication plan for stakeholders",
+              "Drills conducted at least annually; after major procedure changes",
+              "Drill documentation includes: date, participants, response times, issues identified, improvements made"
+            ],
+            "title": "Incident Response Plan"
+          }
+        ]
+      },
+      {
+        "id": "tro-7",
+        "title": "Vendor & Infrastructure",
+        "controls": [
+          {
+            "id": "tro-7.1.1",
+            "description": "Do you evaluate and monitor the security of third-party services used in treasury operations?",
+            "baselines": [
+              "Initial due diligence before adoption: security certifications (SOC 2, ISO 27001), audit history, insurance coverage, incident history",
+              "Ongoing monitoring: SOC report currency, security incident notifications, service availability tracking",
+              "Contractual security requirements verified periodically (at least annually)",
+              "Critical vendor changes (ownership, infrastructure, security posture) trigger re-evaluation"
+            ],
+            "title": "Vendor Security Management"
+          },
+          {
+            "id": "tro-7.1.2",
+            "description": "Do you have backup infrastructure and alternate access methods for treasury operations?",
+            "baselines": [
+              "Alternate access methods for custody platforms documented and tested (e.g., API access, mobile app, secondary UI)",
+              "Backup RPC providers configured",
+              "Procedures for operating treasury if primary custody platform is unavailable",
+              "Backup infrastructure tested at least annually"
+            ],
+            "title": "Backup Infrastructure and Alternate Access"
+          }
+        ]
+      },
+      {
+        "id": "tro-8",
+        "title": "Accounting & Reporting",
+        "controls": [
+          {
+            "id": "tro-8.1.1",
+            "description": "Do you maintain accurate treasury records and conduct periodic reconciliation?",
+            "baselines": [
+              "All treasury transactions recorded with categorization, documentation, and authorization chain",
+              "Periodic reconciliation between custody platform records, on-chain balances, and accounting records",
+              "Reconciliation frequency scaled to account classification: daily for Active Operations, weekly for Warm Storage, monthly for Cold Vault",
+              "Discrepancies investigated and resolved promptly",
+              "Treasury reporting procedures documented with defined cadence and audience"
+            ],
+            "title": "Financial Recordkeeping and Reconciliation"
+          },
+          {
+            "id": "tro-8.1.2",
+            "description": "Do you maintain insurance coverage appropriate for your treasury operations?",
+            "baselines": [
+              "Coverage scope documented: what's covered (custody theft, hack, insider fraud) and what's excluded",
+              "Coverage amounts appropriate relative to assets held",
+              "Custody provider's insurance evaluated as part of vendor due diligence",
+              "Insurance coverage reviewed at least annually or when treasury size changes significantly"
+            ],
+            "title": "Insurance Coverage"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sfc-workspace-security",
+    "label": "Workspace Security",
+    "sections": [
+      {
+        "id": "ws-1",
+        "title": "Governance & Inventory",
+        "controls": [
+          {
+            "id": "ws-1.1.1",
+            "description": "Is there a clearly designated person or team accountable for workspace security?",
+            "baselines": [
+              "Accountability scope covers policy maintenance, device and account standards, access control oversight, periodic reviews, and incident escalation"
+            ],
+            "title": "Workspace Security Owner"
+          },
+          {
+            "id": "ws-1.1.2",
+            "description": "Do you maintain a workspace security policy that is accessible and understood by all personnel?",
+            "baselines": [
+              "Policy covers core expectations including device security, account hygiene, credential management, acceptable use, and incident reporting",
+              "Written in plain language so all personnel can follow it",
+              "Policy reviewed at least annually and after significant changes (security incidents, technology shifts, organizational restructuring)"
+            ],
+            "title": "Workspace Security Policy"
+          },
+          {
+            "id": "ws-1.1.3",
+            "description": "Do you maintain an inventory of organizational devices and accounts with defined ownership?",
+            "baselines": [
+              "Scoped to devices and accounts with access to sensitive systems or data",
+              "Device inventory tracks make/model, owner, OS version, encryption status, and EDR/MDM enrollment",
+              "Account inventory covers organizational accounts (eg. email, cloud, social media) with defined ownership",
+              "Updated as devices/accounts are provisioned or decommissioned"
+            ],
+            "title": "Asset Inventory"
+          },
+          {
+            "id": "ws-1.1.4",
+            "description": "Do you classify systems and data by sensitivity to determine appropriate security controls?",
+            "baselines": [
+              "Classification levels defined (e.g., critical, high, standard)",
+              "Classification determines which controls apply (access restrictions, monitoring, encryption, backup requirements)",
+              "Classification reviewed when systems, data sensitivity, or organizational structure change"
+            ],
+            "title": "System and Data Classification"
+          }
+        ]
+      },
+      {
+        "id": "ws-2",
+        "title": "Device Security",
+        "controls": [
+          {
+            "id": "ws-2.1.1",
+            "description": "Do you define and enforce security standards for organizational devices?",
+            "baselines": [
+              "Full disk encryption enabled on all devices",
+              "Automatic OS and application patching enabled or enforced",
+              "Strong authentication required (password/biometric, auto-lock timeouts, lock screens)",
+              "Administrative privileges separated from daily-use accounts",
+              "Devices procured through verified supply chains and verified for integrity upon receipt",
+              "Device compliance verified upon provisioning and monitored on an ongoing basis",
+              "BYOD policy defining what personal devices can access and the security controls required (e.g., MDM enrollment, separate work profiles)"
+            ],
+            "title": "Device Security Standards"
+          },
+          {
+            "id": "ws-2.1.2",
+            "description": "Do you have procedures for device loss, theft, and secure decommissioning?",
+            "baselines": [
+              "Remote lock and wipe capability for all organizational devices",
+              "Documented procedures for responding to lost or stolen devices (notification, remote wipe, credential rotation, incident escalation)",
+              "Secure decommissioning procedures including data sanitization and verified destruction for storage media"
+            ],
+            "title": "Device Lifecycle Management"
+          },
+          {
+            "id": "ws-2.1.3",
+            "description": "Do you deploy and monitor endpoint protection on organizational devices?",
+            "baselines": [
+              "EDR or MDM deployed on all organizational devices with documented coverage",
+              "Alert triage and response procedures defined with severity-based escalation",
+              "Compliance enforcement actions documented (e.g., quarantine non-compliant devices, block access)",
+              "Monitoring coverage includes detection of malware, unauthorized software, and policy violations"
+            ],
+            "title": "Endpoint Protection"
+          },
+          {
+            "id": "ws-2.1.4",
+            "description": "Do you maintain physical security requirements for workspaces and travel?",
+            "baselines": [
+              "Physical workspace requirements defined for both on-site and remote work environments",
+              "Screen privacy and shoulder-surfing awareness enforced",
+              "Travel security procedures documented covering device handling, network usage, and border crossings",
+              "High-risk travel procedures defined (loaner devices, enhanced controls, check-in schedules)",
+              "USB and charging security addressed (data blockers, no public USB ports)",
+              "Devices physically secured when not in active use (cable locks, safes, carry-on luggage for travel)"
+            ],
+            "title": "Physical and Travel Security"
+          }
+        ]
+      },
+      {
+        "id": "ws-3",
+        "title": "Account, Access & Credential Management",
+        "controls": [
+          {
+            "id": "ws-3.1.1",
+            "description": "Do you have procedures for provisioning, modifying, and revoking user accounts?",
+            "baselines": [
+              "Account creation requires documented approval from the account owner's manager or designated authority",
+              "Accounts provisioned with minimum necessary permissions (least privilege)",
+              "Modification of account permissions requires documented approval",
+              "Account revocation procedures tied to offboarding and role changes",
+              "Service accounts and shared credentials inventoried with defined ownership"
+            ],
+            "title": "Account Lifecycle Management"
+          },
+          {
+            "id": "ws-3.1.2",
+            "description": "Do you enforce multi-factor authentication across organizational accounts?",
+            "baselines": [
+              "MFA required for all organizational accounts by default",
+              "Hardware security keys required for high-privilege and critical accounts (admin, infrastructure, custody)",
+              "Phishing-resistant MFA preferred (FIDO2/WebAuthn, hardware keys) over SMS or TOTP where available",
+              "Exceptions documented with justification, compensating controls, and expiry date",
+              "Backup MFA methods configured for account recovery"
+            ],
+            "title": "Multi-Factor Authentication"
+          },
+          {
+            "id": "ws-3.1.3",
+            "description": "Do you maintain security standards for all organizational accounts, including enterprise platforms and external services?",
+            "baselines": [
+              "Security configuration standards defined and applied for enterprise platforms (Google Workspace, Microsoft 365, collaboration tools)",
+              "Social media and public-facing accounts secured with strong authentication and defined ownership",
+              "Ownership verified and documented for all organizational accounts",
+              "Recovery methods restricted to organizational channels (no personal recovery emails or phone numbers on organizational accounts)",
+              "Account configurations reviewed periodically for drift or unauthorized changes"
+            ],
+            "title": "Organizational Account Security"
+          },
+          {
+            "id": "ws-3.1.4",
+            "description": "Do you enforce credential management standards, including secure storage and individual accountability?",
+            "baselines": [
+              "Password manager required for all personnel; no passwords stored in plain text, documents, or browsers",
+              "Unique, strong passwords for every account (minimum length/complexity standards defined)",
+              "Individual accounts required for all personnel — no sharing of personal login credentials",
+              "When credentials must be provisioned or shared (e.g., service accounts, API keys, onboarding), transmission only through encrypted channels (password manager sharing features, not email or chat)",
+              "Credential rotation schedule defined based on risk; rotation triggered immediately after suspected compromise",
+              "Enhanced controls for high-privilege credentials (admin accounts, service accounts, API keys) including stricter rotation, separate storage, and logged access",
+              "Service account and API key inventory maintained with defined ownership"
+            ],
+            "title": "Credential Management Standards"
+          },
+          {
+            "id": "ws-3.1.5",
+            "description": "Do you conduct periodic access reviews and promptly adjust permissions when roles change?",
+            "baselines": [
+              "Scheduled access reviews at least quarterly for critical systems, annually for others",
+              "Access adjusted within defined timelines when employees change roles",
+              "Reviews verify each user still requires their current level of access",
+              "Unnecessary permissions revoked promptly with documented evidence",
+              "Insider threat consideration included — for each role, assess what damage could be done with current access"
+            ],
+            "title": "Access Reviews"
+          }
+        ]
+      },
+      {
+        "id": "ws-4",
+        "title": "Software & Application Security",
+        "controls": [
+          {
+            "id": "ws-4.1.1",
+            "description": "Do you evaluate and approve software, extensions, and tools before organizational use?",
+            "baselines": [
+              "Evaluation criteria for all software before adoption (browsers, extensions, IDEs, libraries, AI assistants, SaaS tools)",
+              "Data privacy and leakage risks assessed (does the tool send data to third parties for training or analytics?)",
+              "Approved software list maintained; unapproved software restricted",
+              "Browser extension approval process defined",
+              "Dependency management includes version pinning, vulnerability scanning, and update policies"
+            ],
+            "title": "Software Evaluation and Approval"
+          },
+          {
+            "id": "ws-4.1.2",
+            "description": "Do you secure source code repositories against unauthorized access and credential exposure?",
+            "baselines": [
+              "Role-based access control with least-privilege permissions",
+              "Branch protection rules enforced on critical branches (require reviews, signed commits)",
+              "Automated secret scanning enabled to detect credentials, API keys, and private keys in code",
+              "Pre-commit hooks or CI checks to prevent secrets from being committed",
+              "Repository security audited periodically (access permissions, configuration, open PRs)"
+            ],
+            "title": "Source Code and Repository Security"
+          }
+        ]
+      },
+      {
+        "id": "ws-5",
+        "title": "Network & Communication",
+        "controls": [
+          {
+            "id": "ws-5.1.1",
+            "description": "Do you enforce secure network access for organizational systems?",
+            "baselines": [
+              "VPN or zero-trust network access required for accessing internal resources remotely",
+              "Wi-Fi security standards defined (no auto-connect, avoid public Wi-Fi for sensitive operations)",
+              "Network segmentation applied where applicable (separate guest networks, development environments)",
+              "Cellular or personal hotspot preferred over public Wi-Fi for sensitive work"
+            ],
+            "title": "Network Security"
+          },
+          {
+            "id": "ws-5.1.2",
+            "description": "Do you secure organizational communications and verify identity for sensitive interactions?",
+            "baselines": [
+              "End-to-end encrypted channels used for sensitive communications",
+              "Identity verification procedures established for sensitive requests (e.g., access changes, financial approvals, credential sharing)",
+              "Anti-impersonation protocols documented (e.g., secondary channel verification, code words, video confirmation)",
+              "Email security configured (SPF, DKIM, DMARC) to prevent spoofing",
+              "Procedures for channel compromise including switching to backup channels"
+            ],
+            "title": "Secure Communications"
+          }
+        ]
+      },
+      {
+        "id": "ws-6",
+        "title": "People & Training",
+        "controls": [
+          {
+            "id": "ws-6.1.1",
+            "description": "Do you verify employee identity and provide security onboarding before granting system access?",
+            "baselines": [
+              "Identity and authorization verified before any access is provisioned",
+              "Background checks or identity verification appropriate to role sensitivity",
+              "Security onboarding includes device provisioning, account creation, MFA setup, and initial security training",
+              "New personnel acknowledge security policies before access is granted",
+              "Onboarding checklist documented and consistently applied"
+            ],
+            "title": "Security Onboarding"
+          },
+          {
+            "id": "ws-6.1.2",
+            "description": "Do you have comprehensive offboarding procedures for departing personnel?",
+            "baselines": [
+              "All account access revoked within 24 hours of departure",
+              "Devices returned and verified for data sanitization",
+              "Credentials and secrets rotated for any shared systems the departing person accessed",
+              "Offboarding checklist documented covering: account deprovisioning, device return, credential rotation, access to organizational repositories and tools, recovery of company property",
+              "Involuntary departures trigger immediate access revocation before notification where feasible"
+            ],
+            "title": "Security Offboarding"
+          },
+          {
+            "id": "ws-6.1.3",
+            "description": "Do you maintain a security awareness program with regular training and testing?",
+            "baselines": [
+              "Training covers workspace security topics: phishing, social engineering, device security, credential hygiene, and incident reporting",
+              "Phishing simulations conducted at least quarterly",
+              "Follow-up training required for personnel who fail simulations",
+              "Training content updated annually and after significant threats or procedure changes",
+              "Covers crypto-specific risks: fake job offers, malicious browser extensions, clipboard hijacking, social engineering via DMs"
+            ],
+            "title": "Security Awareness and Training"
+          }
+        ]
+      },
+      {
+        "id": "ws-7",
+        "title": "Monitoring & Risk Management",
+        "controls": [
+          {
+            "id": "ws-7.1.1",
+            "description": "Do you detect and respond to workspace security incidents?",
+            "baselines": [
+              "Monitoring in place for common workspace threats: account takeovers, unauthorized access, credential leaks, device compromise, data exfiltration",
+              "Response procedures documented for key scenarios: compromised account, compromised device, data leak, insider threat event",
+              "Escalation paths defined with severity levels",
+              "Credential leak monitoring (dark web, breach databases, paste sites, code repositories)",
+              "Incidents documented with timeline, root cause, actions taken, and lessons learned"
+            ],
+            "title": "Workspace Security Monitoring and Incident Response"
+          },
+          {
+            "id": "ws-7.1.2",
+            "description": "Do you assess insider threat risks and enforce least-privilege access for each role?",
+            "baselines": [
+              "Damage scenarios documented for each role (what could this person do if compromised or malicious?)",
+              "Least-privilege access enforced across all systems",
+              "Separation of duties applied for critical operations (e.g., no single person can deploy to production, execute large transactions, and manage access controls)",
+              "Assessed during periodic access reviews"
+            ],
+            "title": "Insider Threat Assessment"
+          },
+          {
+            "id": "ws-7.1.3",
+            "description": "Do you manage third-party access with time-limited, purpose-specific permissions?",
+            "baselines": [
+              "Third-party access requires documented approval with defined scope and expiry date",
+              "Access limited to minimum necessary systems and data",
+              "Access revoked automatically upon contract expiry or project completion",
+              "Audit trails maintained for all third-party access",
+              "Third-party vendor security evaluated before granting access (security certifications, incident history)"
+            ],
+            "title": "Third-Party Access Management"
+          }
+        ]
+      }
+    ]
+  }
+]
