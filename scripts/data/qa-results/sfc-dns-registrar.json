@@ -1,0 +1,114 @@
+[
+  {
+    "controlId": "dns-2.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "All baselines met. Page covers enterprise registrars with registry locks, hardware MFA (FIDO2/WebAuthn), social engineering history (GoDaddy incidents documented), and ICANN compliance checking."
+  },
+  {
+    "controlId": "dns-3.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Correctly identified gaps. Page mentions documenting personnel and quarterly access reviews but lacks actionable guidance on HOW to document authorization procedures or implement prompt revocation."
+  },
+  {
+    "controlId": "dns-3.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Correctly identified missing baseline. Page covers separate domain, non-personal, and security-exclusive use, but does NOT mention that it should be an alias notifying multiple people."
+  },
+  {
+    "controlId": "dns-4.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Correctly identified coverage. DNSSEC and CAA are fully covered. TTL is only mentioned in monitoring context (detecting drops), not as a policy to document. No guidance on consistent application based on domain classification."
+  },
+  {
+    "controlId": "dns-4.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Evaluator overclaimed. SPF, DKIM, DMARC with reject policy, rua monitoring, and MTA-STS are covered. MISSING: No explicit guidance that domains which don't send email should have SPF/DMARC records that reject all email (baseline #5)."
+  },
+  {
+    "controlId": "dns-4.1.3",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "All baselines met. Registry/server-level EPP locks covered, transfer locks (clientTransferProhibited) explained, and periodic verification addressed via EPP status codes and RDAP checking."
+  },
+  {
+    "controlId": "dns-5.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Evaluator marked 'full' but identified missed baseline, creating contradiction. DNS monitoring scope is comprehensive (NS/A/MX/TXT/CAA/DNSSEC/TTL), critical alerts trigger investigation, but MISSING actionable guidance on HOW to document alerting/escalation paths (baseline #3). Monitoring infrastructure independence not explicitly stated."
+  },
+  {
+    "controlId": "dns-5.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "All baselines met. CT monitoring services listed (crt.sh, Cert Spotter), investigation of unauthorized certificates implied, wildcard flagging explicitly mentioned."
+  },
+  {
+    "controlId": "dns-5.1.3",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "All baselines explicitly met. Auto-renewal, calendar reminders at 90/60/30/7 days, payment verification, and backup person designation all directly addressed."
+  },
+  {
+    "controlId": "dns-6.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Evaluator marked 'full' but identified missed baseline. Alerting system and communication plan (status page, social media) are covered. MISSING: Comprehensive guidance on pre-documenting emergency contacts. Registrar security team mentioned, law enforcement mentioned, but SEAL 911 not mentioned and legal counsel only briefly referenced."
+  },
+  {
+    "controlId": "dns-6.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Evaluator marked 'full' but identified missed baseline. IR plan covers key scenarios (registrar compromise, DNS hijacking, transfers), registry lock activation, regaining control procedures, and post-recovery validation (DNS baseline check, credential reset, log review). MISSING: Annual testing requirement (baseline #5) not mentioned."
+  },
+  {
+    "controlId": "dns-1.1.1",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Confirmed no coverage. Pages do not address overall domain security ownership/accountability scope (policy maintenance, security reviews, renewal management, access control oversight, incident escalation). 'Backup person for renewals' is too narrow."
+  },
+  {
+    "controlId": "dns-1.1.2",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Confirmed no coverage. No content about maintaining a domain inventory/registry with the required fields (domain name, ownership, purpose, expiration, registrar, DNS configs, security settings, registrar account configs)."
+  },
+  {
+    "controlId": "dns-2.1.1",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Confirmed no coverage. Pages use term 'critical domains' but provide no classification framework (tiers, financial exposure criteria, operational impact assessment, mapping classifications to requirements). Using the word 'critical' without defining HOW to classify is insufficient."
+  },
+  {
+    "controlId": "dns-3.1.3",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Confirmed no coverage. One bullet point says 'Implement approval workflows for critical changes' but provides no guidance on WHAT changes, HOW to notify teams, or logging procedures. Too minimal to count as partial coverage."
+  },
+  {
+    "controlId": "dns-4.1.4",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Confirmed no coverage. Certificate Transparency monitoring detects unauthorized issuance but doesn't address certificate lifecycle management (issuance procedures, renewal automation, revocation procedures, expiration tracking)."
+  }
+]

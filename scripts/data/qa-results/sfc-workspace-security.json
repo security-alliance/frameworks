@@ -1,0 +1,163 @@
+[
+  {
+    "controlId": "ws-1.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Page discusses establishing ownership for monitoring domains and continuous visibility practices, but does not cover the full scope of workspace security ownership including policy maintenance, device/account standards, access control oversight, periodic reviews, and incident escalation. Partial coverage is accurate."
+  },
+  {
+    "controlId": "ws-1.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Page covers general asset discovery, classification, and assignment of owners. However, it lacks specific device inventory tracking details (make/model, OS version, encryption status, EDR/MDM enrollment), account inventory with ownership, and automated updates during provisioning/decommissioning. Gaps correctly identified."
+  },
+  {
+    "controlId": "ws-1.1.4",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "Both pages provide comprehensive coverage: Security Fundamentals defines clear classification levels (Public/Internal/Confidential/Restricted) with handling procedures for each level; Implementation Process defines classification categories and trigger events for reassessment. All three baselines met."
+  },
+  {
+    "controlId": "ws-2.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Travel guide covers full disk encryption, updates, and strong passwords. Encryption pages cover encryption guidance. However, none address automatic patching enforcement, administrative privilege separation, supply chain verification, compliance monitoring, or BYOD policy. All three refs correctly marked partial with appropriate gaps."
+  },
+  {
+    "controlId": "ws-2.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Travel guide mentions remote wipe capability (Find My, MDM) and basic procedures for lost devices. Physical-Environmental covers secure disposal. However, documented procedures for credential rotation after loss and incident escalation are not covered. Gaps correctly identified."
+  },
+  {
+    "controlId": "ws-2.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Travel guide only covers basic anti-malware scanning and looking for unusual behavior - this is post-travel cleanup, not enterprise-wide EDR/MDM deployment with alert triage, compliance enforcement, and comprehensive monitoring. Correctly marked partial with all major gaps identified."
+  },
+  {
+    "controlId": "ws-2.1.4",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "Travel guide extensively covers screen privacy, travel procedures, high-risk travel procedures, USB security, and physical device security. Physical-Environmental covers workspace requirements and access controls. Together, these pages provide comprehensive coverage of all six baselines."
+  },
+  {
+    "controlId": "ws-3.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Discord guide only covers reviewing existing role permissions and removing unnecessary members - this is maintenance, not lifecycle management. Missing account creation approval, least privilege provisioning, modification approval, offboarding procedures, and service account inventory. Gaps correctly identified."
+  },
+  {
+    "controlId": "ws-3.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Technical controls page covers MFA for all sensitive systems, hardware keys for high-privilege accounts, backup methods, and phishing-resistant MFA. However, it does NOT cover baseline 4: exceptions documented with justification, compensating controls, and expiry date. With 1 of 5 baselines missing, this should be partial, not full. The evaluator was inconsistent - they marked it full but then acknowledged this gap."
+  },
+  {
+    "controlId": "ws-3.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Discord guide covers security configuration standards for Discord specifically and ownership verification through admin reviews. However, it doesn't address enterprise platforms broadly (Google Workspace, Microsoft 365), social media accounts, recovery methods restricted to organizational channels, or periodic review for drift. Correctly marked partial."
+  },
+  {
+    "controlId": "ws-3.1.4",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "All three pages touch on limited aspects: travel guide mentions password managers, awareness page covers strong/unique passwords and password managers, Telegram guide mentions unique passwords. None cover the full scope including: password manager requirement for all personnel, no sharing of credentials, encrypted transmission channels, rotation schedules, enhanced controls for high-privilege, or service account inventory. Extensive gaps correctly identified."
+  },
+  {
+    "controlId": "ws-3.1.5",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Security Fundamentals covers scheduled reviews (quarterly/annually) and verifying current access needs. Discord guide covers periodic permission reviews with tracking. However, missing: access adjustment procedures when roles change, documented evidence of revocations, and insider threat damage scenario assessment during reviews. Gaps correctly identified."
+  },
+  {
+    "controlId": "ws-4.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Travel guide only mentions using privacy-focused tools (Hide My Email, Tuta, ProtonMail) for travel privacy - this is not a software evaluation and approval process. Missing evaluation criteria, data privacy risk assessment, approved software list, browser extension approval, and dependency management. All major gaps correctly identified."
+  },
+  {
+    "controlId": "ws-4.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "GitHub guide comprehensively covers all five baselines: role-based access control (collaborators/teams review), branch protection rules with required approvals, automated secret scanning enabled, push protection for secrets (pre-commit checks), and periodic security audits (sessions, SSH keys, webhooks review). Full coverage is accurate."
+  },
+  {
+    "controlId": "ws-5.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Travel guide covers VPN/cellular preference, Wi-Fi security standards (disable auto-connect, avoid public Wi-Fi), and cellular/hotspot over public Wi-Fi. However, it does NOT cover network segmentation (baseline 3). With 1 of 4 baselines missing, this should be partial, not full. The Technical page does cover network segmentation and should remain full."
+  },
+  {
+    "controlId": "ws-5.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "All three pages provide limited coverage: travel guide mentions safe words and deepfake awareness, Telegram covers secret chats and identity verification, Technical covers encrypted communications. However, none comprehensively address anti-impersonation protocols, email security (SPF/DKIM/DMARC), or procedures for channel compromise. Gaps correctly identified."
+  },
+  {
+    "controlId": "ws-6.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "People controls page covers pre-employment screening, security agreements, and security responsibilities in job descriptions (baselines 1, 2, partial 4). However, it does not cover the detailed security onboarding process including device provisioning, account creation, MFA setup, initial training, policy acknowledgment before access, or a documented onboarding checklist. Gaps correctly identified."
+  },
+  {
+    "controlId": "ws-6.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "None of these pages actually provide comprehensive offboarding procedures. Travel guide covers remote wipe for lost devices (not offboarding), threat vectors covers general insider threat awareness (not procedures), Discord covers removing role members (not a complete offboarding process). All five baselines are largely unmet: 24-hour revocation, device return/sanitization, credential rotation, documented checklist, involuntary departure procedures. Correctly marked partial but these pages provide minimal coverage at best."
+  },
+  {
+    "controlId": "ws-6.1.3",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Staying Informed page covers training topics (phishing, social engineering, device security, credential hygiene, incident reporting), annual updates, and crypto-specific risks (fake job offers, malicious extensions, clipboard hijacking). However, it does NOT cover phishing simulations conducted quarterly or follow-up training for those who fail simulations (baselines 2 and 3). With 2 of 5 baselines missing, this should be partial, not full."
+  },
+  {
+    "controlId": "ws-7.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Security Fundamentals covers general monitoring strategy, incident management process, and post-incident reviews, but not specifically workspace threats (account takeovers, unauthorized access, credential leaks, device compromise, data exfiltration) or credential leak monitoring. Case Studies covers incident response scenarios and tabletop exercises but not ongoing monitoring. Both correctly marked partial with appropriate gaps."
+  },
+  {
+    "controlId": "ws-7.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Minimal Access Scopes page covers least-privilege access enforcement (baseline 2 only). Insider-Threat Mitigation page covers least-privilege and monitoring, but does NOT explicitly cover damage scenarios documented for each role (baseline 1) or separation of duties for critical operations (baseline 3). With only 1 of 4 baselines fully met, this should be partial, not full."
+  },
+  {
+    "controlId": "ws-7.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Both pages only touch on minimum necessary permissions and time-based access. Neither covers documented approval with scope/expiry, automatic revocation upon contract end, audit trails for third-party access, or vendor security evaluation before granting access. All major gaps correctly identified."
+  },
+  {
+    "controlId": "ws-1.1.2",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "FALSE-NEGATIVE CHECK: Reviewed all 15 framework pages. None specifically address creating, maintaining, or reviewing a workspace security policy document. While various pages cover security practices, none address the policy artifact itself covering core expectations, plain language requirements, or annual review procedures. No coverage confirmed."
+  }
+]

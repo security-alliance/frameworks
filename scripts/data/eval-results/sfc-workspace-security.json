@@ -1,0 +1,850 @@
+[
+  {
+    "controlId": "ws-1.1.1",
+    "controlTitle": "Workspace Security Owner",
+    "refs": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "header": "Continuous Visibility",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Accountability touches on establishing clear ownership for monitoring domains"
+        ],
+        "baselinesMissed": [
+          "Does not address comprehensive workspace security ownership scope covering policy maintenance, device/account standards, access control oversight, periodic reviews, and incident escalation"
+        ]
+      }
+    ],
+    "gaps": [
+      "Full accountability scope covering policy maintenance, device and account standards, access control oversight, periodic reviews, and incident escalation - no page provides comprehensive guidance on designating a workspace security owner with this full scope"
+    ]
+  },
+  {
+    "controlId": "ws-1.1.2",
+    "controlTitle": "Workspace Security Policy",
+    "refs": [],
+    "gaps": [
+      "Policy covering core expectations including device security, account hygiene, credential management, acceptable use, and incident reporting",
+      "Written in plain language so all personnel can follow it",
+      "Policy reviewed at least annually and after significant changes"
+    ]
+  },
+  {
+    "controlId": "ws-1.1.3",
+    "controlTitle": "Asset Inventory",
+    "refs": [
+      {
+        "page": "/opsec/core-concepts/implementation-process",
+        "header": "Critical Asset Identification",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Map and document assets",
+          "Asset discovery and classification"
+        ],
+        "baselinesMissed": [
+          "Does not specify device inventory tracking (make/model, owner, OS version, encryption status, EDR/MDM enrollment)",
+          "Does not cover account inventory with ownership",
+          "Does not address updates as devices/accounts are provisioned or decommissioned"
+        ]
+      }
+    ],
+    "gaps": [
+      "Device inventory tracking make/model, owner, OS version, encryption status, and EDR/MDM enrollment",
+      "Account inventory covering organizational accounts with defined ownership",
+      "Updated as devices/accounts are provisioned or decommissioned"
+    ]
+  },
+  {
+    "controlId": "ws-1.1.4",
+    "controlTitle": "System and Data Classification",
+    "refs": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "header": "Information Flow Control",
+        "coverage": "full",
+        "baselinesMet": [
+          "Classification levels defined (Public, Internal, Confidential, Restricted)",
+          "Classification determines which controls apply",
+          "Data handling procedures for each classification level"
+        ],
+        "baselinesMissed": []
+      },
+      {
+        "page": "/opsec/core-concepts/implementation-process",
+        "header": "Critical Asset Identification",
+        "coverage": "full",
+        "baselinesMet": [
+          "Apply practical classification system with clear categories",
+          "Classification reviewed when conditions change"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ws-2.1.1",
+    "controlTitle": "Device Security Standards",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": "Secure devices with encryption & updates",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Full disk encryption enabled",
+          "Install latest OS and app updates",
+          "Strong authentication required (strong password/PIN)"
+        ],
+        "baselinesMissed": [
+          "Automatic OS and application patching",
+          "Administrative privileges separated from daily-use accounts",
+          "Devices procured through verified supply chains",
+          "Device compliance verification and monitoring",
+          "BYOD policy"
+        ]
+      },
+      {
+        "page": "/encryption/volume-encryption",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "Full disk encryption guidance"
+        ],
+        "baselinesMissed": [
+          "OS patching",
+          "Authentication",
+          "Admin privileges separation",
+          "Supply chain",
+          "Compliance monitoring",
+          "BYOD policy"
+        ]
+      },
+      {
+        "page": "/encryption/partition-encryption",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "Encryption for specific partitions"
+        ],
+        "baselinesMissed": [
+          "OS patching",
+          "Authentication",
+          "Admin privileges separation",
+          "Supply chain",
+          "Compliance monitoring",
+          "BYOD policy"
+        ]
+      }
+    ],
+    "gaps": [
+      "Automatic OS and application patching enabled or enforced",
+      "Administrative privileges separated from daily-use accounts",
+      "Devices procured through verified supply chains and verified for integrity upon receipt",
+      "Device compliance verified upon provisioning and monitored on an ongoing basis",
+      "BYOD policy defining what personal devices can access and security controls required"
+    ]
+  },
+  {
+    "controlId": "ws-2.1.2",
+    "controlTitle": "Device Lifecycle Management",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": "Back up and prepare for loss",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Remote wipe capability mentioned (Find My, MDM)",
+          "Procedures for lost devices (remote wipe, filing reports)"
+        ],
+        "baselinesMissed": [
+          "Documented procedures for credential rotation after loss",
+          "Incident escalation procedures",
+          "Secure decommissioning with data sanitization and verified destruction"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/physical-environmental",
+        "header": "Physical Security of Critical Assets",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Secure disposal procedures for equipment and media"
+        ],
+        "baselinesMissed": [
+          "Remote lock and wipe capability",
+          "Response procedures for lost/stolen devices",
+          "Credential rotation"
+        ]
+      }
+    ],
+    "gaps": [
+      "Documented procedures for credential rotation after device loss or theft",
+      "Incident escalation procedures for lost/stolen devices"
+    ]
+  },
+  {
+    "controlId": "ws-2.1.3",
+    "controlTitle": "Endpoint Protection",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": "Inspect and clean your devices",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Run anti-malware scan",
+          "Look for unusual behavior"
+        ],
+        "baselinesMissed": [
+          "EDR/MDM deployed on all devices with documented coverage",
+          "Alert triage and response procedures",
+          "Compliance enforcement actions",
+          "Monitoring for malware, unauthorized software, policy violations"
+        ]
+      }
+    ],
+    "gaps": [
+      "EDR or MDM deployed on all organizational devices with documented coverage",
+      "Alert triage and response procedures defined with severity-based escalation",
+      "Compliance enforcement actions documented",
+      "Monitoring coverage includes detection of malware, unauthorized software, and policy violations"
+    ]
+  },
+  {
+    "controlId": "ws-2.1.4",
+    "controlTitle": "Physical and Travel Security",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": null,
+        "coverage": "full",
+        "baselinesMet": [
+          "Screen privacy and shoulder-surfing awareness (privacy screen filter, shield keypad)",
+          "Travel security procedures (pre-travel assessment, secure travel practices, device security)",
+          "High-risk travel procedures (loaner devices, enhanced controls)",
+          "USB and charging security (avoid juice jacking, USB data blockers, no unknown USB drives)",
+          "Devices physically secured (cable locks, room safes, carry-on luggage)"
+        ],
+        "baselinesMissed": [
+          "Physical workspace requirements for on-site and remote work not comprehensively covered"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/physical-environmental",
+        "header": "Secure Workspace & Travel Security",
+        "coverage": "full",
+        "baselinesMet": [
+          "Physical workspace requirements (physical access controls, clean desk policy)",
+          "Travel security procedures",
+          "Device security during travel",
+          "Secure storage options"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ws-3.1.1",
+    "controlTitle": "Account Lifecycle Management",
+    "refs": [
+      {
+        "page": "/guides/account_management/discord",
+        "header": "Roles",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Review admin role members and permissions",
+          "Remove unnecessary permissions and members"
+        ],
+        "baselinesMissed": [
+          "Account creation approval process",
+          "Accounts provisioned with minimum necessary permissions systematically",
+          "Account modification approval",
+          "Account revocation tied to offboarding",
+          "Service accounts inventoried with ownership"
+        ]
+      }
+    ],
+    "gaps": [
+      "Account creation requires documented approval from manager or designated authority",
+      "Accounts provisioned with minimum necessary permissions (least privilege)",
+      "Modification of account permissions requires documented approval",
+      "Account revocation procedures tied to offboarding and role changes",
+      "Service accounts and shared credentials inventoried with defined ownership"
+    ]
+  },
+  {
+    "controlId": "ws-3.1.2",
+    "controlTitle": "Multi-Factor Authentication",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": "Protect Accounts with 2FA redundancy",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Plan for 2FA redundancy",
+          "Disable SMS for 2FA",
+          "Register backup 2FA methods"
+        ],
+        "baselinesMissed": [
+          "MFA required for all organizational accounts by default",
+          "Hardware security keys required for high-privilege accounts",
+          "Exceptions documented with justification and expiry"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "header": "Two-Factor & Hardware Authentication",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Multi-factor authentication for all access to sensitive systems",
+          "Hardware security keys for high-value accounts",
+          "Backup authentication methods and recovery processes",
+          "Phishing-resistant MFA (hardware keys)"
+        ],
+        "baselinesMissed": [
+          "Exceptions documented with justification, compensating controls, and expiry date not explicitly covered"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "header": "For Individuals - Account Security Checklist",
+        "coverage": "partial",
+        "baselinesMet": [
+          "2FA enabled requirement",
+          "Require 2FA for moderation"
+        ],
+        "baselinesMissed": [
+          "Hardware keys for high-privilege accounts",
+          "Phishing-resistant MFA preferred",
+          "Exceptions documented",
+          "Backup MFA methods"
+        ]
+      }
+    ],
+    "gaps": [
+      "Exceptions documented with justification, compensating controls, and expiry date"
+    ]
+  },
+  {
+    "controlId": "ws-3.1.3",
+    "controlTitle": "Organizational Account Security",
+    "refs": [
+      {
+        "page": "/guides/account_management/discord",
+        "header": "Server Settings Checklist",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Security configuration standards for Discord platform",
+          "Ownership verified through admin reviews"
+        ],
+        "baselinesMissed": [
+          "Security standards for enterprise platforms broadly",
+          "Social media and public-facing accounts",
+          "Recovery methods restricted to organizational channels",
+          "Periodic review for drift"
+        ]
+      }
+    ],
+    "gaps": [
+      "Security configuration standards defined and applied for enterprise platforms (Google Workspace, Microsoft 365, collaboration tools)",
+      "Social media and public-facing accounts secured with strong authentication and defined ownership",
+      "Recovery methods restricted to organizational channels (no personal recovery emails or phone numbers)",
+      "Account configurations reviewed periodically for drift or unauthorized changes"
+    ]
+  },
+  {
+    "controlId": "ws-3.1.4",
+    "controlTitle": "Credential Management Standards",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": "Protect Accounts with 2FA redundancy",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Password manager accessible (1Password Travel Mode)",
+          "Backup codes stored securely"
+        ],
+        "baselinesMissed": [
+          "Password manager required for all personnel",
+          "Unique strong passwords for every account",
+          "Individual accounts required (no sharing)",
+          "Credential transmission only through encrypted channels",
+          "Rotation schedule",
+          "Enhanced controls for high-privilege credentials",
+          "Service account inventory"
+        ]
+      },
+      {
+        "page": "/awareness/cultivating-a-security-aware-mindset",
+        "header": "Password Management",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Strong, unique passwords for each account",
+          "Password managers to securely store and generate passwords"
+        ],
+        "baselinesMissed": [
+          "No passwords in plain text/documents/browsers requirement",
+          "Individual accounts required",
+          "Credential transmission security",
+          "Rotation schedule",
+          "Enhanced controls for high-privilege",
+          "Service account inventory"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "header": "Account Security Checklist",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Strong unique password that doesn't get reused"
+        ],
+        "baselinesMissed": [
+          "Password manager required",
+          "Credential transmission",
+          "Rotation schedule",
+          "Enhanced controls",
+          "Service account inventory"
+        ]
+      }
+    ],
+    "gaps": [
+      "Password manager required for all personnel; no passwords stored in plain text, documents, or browsers",
+      "Individual accounts required for all personnel — no sharing of personal login credentials",
+      "Credential transmission only through encrypted channels (password manager sharing features, not email or chat)",
+      "Credential rotation schedule defined based on risk; rotation triggered immediately after suspected compromise",
+      "Enhanced controls for high-privilege credentials including stricter rotation, separate storage, and logged access",
+      "Service account and API key inventory maintained with defined ownership"
+    ]
+  },
+  {
+    "controlId": "ws-3.1.5",
+    "controlTitle": "Access Reviews",
+    "refs": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "header": "Minimal Access Scopes",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Conduct regular access reviews (quarterly for critical, annually for others)",
+          "Reviews verify each user still requires current access"
+        ],
+        "baselinesMissed": [
+          "Access adjusted within defined timelines when roles change",
+          "Unnecessary permissions revoked with documented evidence",
+          "Insider threat consideration"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "header": "Regular Reviews",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Monthly review of role permissions",
+          "Quarterly assessment of rules",
+          "Track changes and justifications"
+        ],
+        "baselinesMissed": [
+          "Access adjusted when employees change roles",
+          "Insider threat damage scenarios",
+          "Reviews for critical vs standard systems"
+        ]
+      }
+    ],
+    "gaps": [
+      "Access adjusted within defined timelines when employees change roles",
+      "Unnecessary permissions revoked promptly with documented evidence",
+      "Insider threat consideration included — for each role, assess what damage could be done with current access"
+    ]
+  },
+  {
+    "controlId": "ws-4.1.1",
+    "controlTitle": "Software Evaluation and Approval",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": "Minimize digital footprint & social visibility",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Privacy-focused tools mentioned (Hide My Email, Tuta, ProtonMail)"
+        ],
+        "baselinesMissed": [
+          "Evaluation criteria for software before adoption",
+          "Data privacy and leakage risk assessment",
+          "Approved software list",
+          "Browser extension approval",
+          "Dependency management"
+        ]
+      }
+    ],
+    "gaps": [
+      "Evaluation criteria for all software before adoption (browsers, extensions, IDEs, libraries, AI assistants, SaaS tools)",
+      "Data privacy and leakage risks assessed (does the tool send data to third parties?)",
+      "Approved software list maintained; unapproved software restricted",
+      "Browser extension approval process defined",
+      "Dependency management includes version pinning, vulnerability scanning, and update policies"
+    ]
+  },
+  {
+    "controlId": "ws-4.1.2",
+    "controlTitle": "Source Code and Repository Security",
+    "refs": [
+      {
+        "page": "/guides/account_management/github",
+        "header": "Repository Settings",
+        "coverage": "full",
+        "baselinesMet": [
+          "Role-based access control (Collaborators and teams)",
+          "Branch protection rules enforced (require reviews, signed commits)",
+          "Automated secret scanning enabled (Code security settings)",
+          "Pre-commit hooks/CI checks (Push protection for secrets)",
+          "Repository security audited periodically (Sessions, SSH keys, webhooks review)"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ws-5.1.1",
+    "controlTitle": "Network Security",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": "Network safety – avoid untrusted Wi-Fi & Bluetooth",
+        "coverage": "partial",
+        "baselinesMet": [
+          "VPN or cellular connection preferred for sensitive operations",
+          "Wi-Fi security standards (disable auto-connect, avoid public Wi-Fi)",
+          "Cellular or personal hotspot preferred over public Wi-Fi"
+        ],
+        "baselinesMissed": [
+          "Network segmentation not covered"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "header": "Network & Communication Security",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Network segmentation based on security requirements",
+          "Secure remote access solutions (VPN)",
+          "Network monitoring"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ws-5.1.2",
+    "controlTitle": "Secure Communications",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": "Plan emergency and incident responses",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Fallback plan for communication (safe words, beware deepfakes)"
+        ],
+        "baselinesMissed": [
+          "End-to-end encrypted channels used",
+          "Identity verification procedures for sensitive requests",
+          "Anti-impersonation protocols documented",
+          "Email security (SPF, DKIM, DMARC)",
+          "Procedures for channel compromise"
+        ]
+      },
+      {
+        "page": "/guides/account_management/telegram",
+        "header": "Use Secret Chats for Enhanced Privacy",
+        "coverage": "partial",
+        "baselinesMet": [
+          "End-to-end encrypted channels (Secret Chats)",
+          "Identity verification (compare encryption keys)"
+        ],
+        "baselinesMissed": [
+          "Anti-impersonation protocols beyond basic verification",
+          "Email security configuration",
+          "Procedures for channel compromise"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/technical",
+        "header": "Network & Communication Security",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Encrypted communications protecting data in transit"
+        ],
+        "baselinesMissed": [
+          "Identity verification procedures",
+          "Anti-impersonation protocols",
+          "Email security (SPF, DKIM, DMARC)",
+          "Channel compromise procedures"
+        ]
+      }
+    ],
+    "gaps": [
+      "Anti-impersonation protocols documented (e.g., secondary channel verification, code words, video confirmation)",
+      "Email security configured (SPF, DKIM, DMARC) to prevent spoofing",
+      "Procedures for channel compromise including switching to backup channels"
+    ]
+  },
+  {
+    "controlId": "ws-6.1.1",
+    "controlTitle": "Security Onboarding",
+    "refs": [
+      {
+        "page": "/opsec/control-domains/people",
+        "header": "Personnel Security Measures",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Pre-employment screening procedures",
+          "Security agreements for all team members",
+          "Security responsibilities in job descriptions"
+        ],
+        "baselinesMissed": [
+          "Security onboarding includes device provisioning, account creation, MFA setup, and initial training",
+          "New personnel acknowledge policies before access",
+          "Onboarding checklist documented and consistently applied"
+        ]
+      }
+    ],
+    "gaps": [
+      "Security onboarding includes device provisioning, account creation, MFA setup, and initial security training",
+      "New personnel acknowledge security policies before access is granted",
+      "Onboarding checklist documented and consistently applied"
+    ]
+  },
+  {
+    "controlId": "ws-6.1.2",
+    "controlTitle": "Security Offboarding",
+    "refs": [
+      {
+        "page": "/opsec/travel/guide",
+        "header": "Back up and prepare for loss",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Remote wipe capability for devices"
+        ],
+        "baselinesMissed": [
+          "All account access revoked within 24 hours",
+          "Credentials rotated for shared systems",
+          "Offboarding checklist",
+          "Involuntary departures trigger immediate revocation"
+        ]
+      },
+      {
+        "page": "/awareness/understanding-threat-vectors",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "General awareness of insider threats"
+        ],
+        "baselinesMissed": [
+          "Specific offboarding procedures",
+          "Account revocation timeline",
+          "Credential rotation",
+          "Device return and sanitization",
+          "Offboarding checklist"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "header": "Regular Reviews",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Remove unnecessary role members"
+        ],
+        "baselinesMissed": [
+          "24-hour revocation timeline",
+          "Device return",
+          "Credential rotation",
+          "Comprehensive offboarding checklist",
+          "Involuntary departure procedures"
+        ]
+      }
+    ],
+    "gaps": [
+      "All account access revoked within 24 hours of departure",
+      "Devices returned and verified for data sanitization",
+      "Credentials and secrets rotated for any shared systems the departing person accessed",
+      "Offboarding checklist documented covering: account deprovisioning, device return, credential rotation, access to organizational repositories and tools, recovery of company property",
+      "Involuntary departures trigger immediate access revocation before notification where feasible"
+    ]
+  },
+  {
+    "controlId": "ws-6.1.3",
+    "controlTitle": "Security Awareness and Training",
+    "refs": [
+      {
+        "page": "/awareness/staying-informed-and-continuous-learning",
+        "header": "Comprehensive Security Training Framework",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Training covers phishing, social engineering, device security, credential hygiene, incident reporting",
+          "Training content updated annually",
+          "Crypto-specific risks covered (fake job offers, malicious extensions, clipboard hijacking, social engineering via DMs)"
+        ],
+        "baselinesMissed": [
+          "Phishing simulations conducted quarterly",
+          "Follow-up training for those who fail simulations"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/people",
+        "header": "Security Training & Culture",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Comprehensive security awareness program",
+          "Role-specific training",
+          "Continuous learning about emerging threats"
+        ],
+        "baselinesMissed": [
+          "Phishing simulations quarterly",
+          "Follow-up training for failures",
+          "Crypto-specific risks detail"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "Real-world scenarios for training",
+          "Tabletop exercises"
+        ],
+        "baselinesMissed": [
+          "Regular phishing simulations",
+          "Follow-up training process",
+          "Training content update schedule",
+          "Crypto-specific risks coverage"
+        ]
+      }
+    ],
+    "gaps": [
+      "Phishing simulations conducted at least quarterly",
+      "Follow-up training required for personnel who fail simulations"
+    ]
+  },
+  {
+    "controlId": "ws-7.1.1",
+    "controlTitle": "Workspace Security Monitoring and Incident Response",
+    "refs": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "header": "Continuous Visibility",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Multi-layered monitoring strategy",
+          "Regular testing cadence",
+          "Structured incident management process",
+          "Post-incident reviews"
+        ],
+        "baselinesMissed": [
+          "Monitoring for workspace-specific threats (account takeovers, unauthorized access, credential leaks, device compromise, data exfiltration)",
+          "Response procedures for workspace scenarios",
+          "Credential leak monitoring"
+        ]
+      },
+      {
+        "page": "/opsec/appendices/case-studies",
+        "header": "Tabletop Exercises",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Incident response scenarios and procedures",
+          "Tabletop exercises for testing"
+        ],
+        "baselinesMissed": [
+          "Ongoing monitoring in place",
+          "Credential leak monitoring",
+          "Documented procedures for specific workspace scenarios"
+        ]
+      }
+    ],
+    "gaps": [
+      "Monitoring in place for common workspace threats: account takeovers, unauthorized access, credential leaks, device compromise, data exfiltration",
+      "Response procedures documented for key scenarios: compromised account, compromised device, data leak, insider threat event",
+      "Credential leak monitoring (dark web, breach databases, paste sites, code repositories)"
+    ]
+  },
+  {
+    "controlId": "ws-7.1.2",
+    "controlTitle": "Insider Threat Assessment",
+    "refs": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "header": "Minimal Access Scopes",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Least-privilege access enforced"
+        ],
+        "baselinesMissed": [
+          "Damage scenarios documented for each role",
+          "Separation of duties for critical operations",
+          "Assessed during access reviews"
+        ]
+      },
+      {
+        "page": "/opsec/control-domains/people",
+        "header": "Insider-Threat Mitigation",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Least-privilege access enforced across all systems",
+          "Monitoring for critical systems and sensitive data access",
+          "Guidelines for identifying concerning behaviors"
+        ],
+        "baselinesMissed": [
+          "Damage scenarios documented for each role not explicitly covered",
+          "Separation of duties applied for critical operations not detailed"
+        ]
+      }
+    ],
+    "gaps": [
+      "Damage scenarios documented for each role (what could this person do if compromised or malicious?)",
+      "Separation of duties applied for critical operations (no single person can deploy to production, execute large transactions, and manage access controls)"
+    ]
+  },
+  {
+    "controlId": "ws-7.1.3",
+    "controlTitle": "Third-Party Access Management",
+    "refs": [
+      {
+        "page": "/opsec/core-concepts/security-fundamentals",
+        "header": "Minimal Access Scopes",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Just-in-time access for administrative functions",
+          "Time-based restrictions to elevated privileges"
+        ],
+        "baselinesMissed": [
+          "Third-party access requires documented approval with scope and expiry",
+          "Access limited to minimum necessary systems",
+          "Automatic revocation upon contract expiry",
+          "Audit trails for third-party access",
+          "Vendor security evaluation"
+        ]
+      },
+      {
+        "page": "/guides/account_management/discord",
+        "header": "Integrations",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Review bot permissions and remove unnecessary",
+          "Least privilege for integrations"
+        ],
+        "baselinesMissed": [
+          "Documented approval with scope and expiry",
+          "Automatic revocation upon contract end",
+          "Audit trails",
+          "Vendor security evaluation before granting access"
+        ]
+      }
+    ],
+    "gaps": [
+      "Third-party access requires documented approval with defined scope and expiry date",
+      "Access limited to minimum necessary systems and data",
+      "Access revoked automatically upon contract expiry or project completion",
+      "Audit trails maintained for all third-party access",
+      "Third-party vendor security evaluated before granting access (security certifications, incident history)"
+    ]
+  }
+]

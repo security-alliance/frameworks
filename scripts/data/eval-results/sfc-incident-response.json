@@ -1,0 +1,412 @@
+[
+  {
+    "controlId": "ir-1.1.1",
+    "controlTitle": "IR Team and Role Assignments",
+    "refs": [],
+    "gaps": [
+      "Incident commander (with designated backup) who coordinates response, assigns tasks, and makes time-sensitive decisions",
+      "Subject matter experts identified for key domains (smart contracts, infrastructure, security) who can analyze attacks and prepare response strategies",
+      "Scribe role defined for real-time incident documentation",
+      "Communications personnel designated for public information sharing and record-keeping",
+      "Legal support available with procedures for reviewing response actions, whitehat engagement, and public communications",
+      "Decision makers defined for high-stakes decisions (system shutdown, public disclosure, fund recovery)"
+    ]
+  },
+  {
+    "controlId": "ir-1.1.2",
+    "controlTitle": "Stakeholder Coordination and Contacts",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Emergency Contact Information",
+        "coverage": "partial",
+        "baselinesMet": [
+          "External expertise contacts (Security team mentioned)",
+          "Escalation order documented (template includes escalation to Security team)"
+        ],
+        "baselinesMissed": [
+          "Internal coordination procedures between technical and operational teams",
+          "External protocol contacts for dependencies",
+          "Legal counsel and PR contacts",
+          "Infrastructure vendor support contacts",
+          "Contact list reviewed quarterly"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "header": "Key Roles",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Internal coordination procedures (role assignments for Operations, Protocol Lead, Web/Infrastructure Lead, External Communicator)",
+          "External expertise contacts (SEAL 911, security researchers)",
+          "Escalation order (implicit in role structure)"
+        ],
+        "baselinesMissed": [
+          "External protocol contacts for dependencies",
+          "Legal counsel and PR contacts (communications mentioned but not specific contacts)",
+          "Infrastructure vendor support contacts",
+          "Contact list reviewed quarterly"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Communication & Documentation",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Internal coordination (signers must notify multisig participants of incidents)"
+        ],
+        "baselinesMissed": [
+          "External protocol contacts",
+          "External expertise contacts",
+          "Legal counsel and PR contacts",
+          "Infrastructure vendor contacts",
+          "Contact list reviewed quarterly",
+          "Escalation order for P1 incidents"
+        ]
+      }
+    ],
+    "gaps": [
+      "External protocol contacts for protocols you depend on and protocols that depend on you",
+      "Legal counsel and communications/PR contacts with specific documented procedures",
+      "Infrastructure vendor support contacts and escalation procedures",
+      "Contact list reviewed at least quarterly and after team changes"
+    ]
+  },
+  {
+    "controlId": "ir-2.1.1",
+    "controlTitle": "Monitoring Coverage",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "header": "DNS Record Monitoring",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Monitoring coverage for critical systems (DNS/domain infrastructure)",
+          "Credential exposure detection (mentioned in Certificate Transparency monitoring)",
+          "Organizational account monitoring (domain/DNS as critical organizational asset)",
+          "Monitoring coverage documented (what to watch for is documented)"
+        ],
+        "baselinesMissed": [
+          "24/7 monitoring with after-hours procedures",
+          "Credential and secret exposure in code repositories and dark web"
+        ]
+      },
+      {
+        "page": "/monitoring/guidelines",
+        "header": "Best Practices",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Monitoring objectives defined (critical metrics)",
+          "Monitoring coverage documented (define what to monitor)"
+        ],
+        "baselinesMissed": [
+          "24/7 monitoring capabilities with after-hours procedures",
+          "Credential and secret exposure detection",
+          "Organizational account monitoring",
+          "Known gaps documented"
+        ]
+      }
+    ],
+    "gaps": [
+      "24/7 monitoring capabilities with procedures for after-hours alert handling",
+      "Credential and secret exposure detection including dark web monitoring, breach database scanning, and secret scanning in code repositories",
+      "Organizational account monitoring including social media accounts and websites monitored for unauthorized access or compromise"
+    ]
+  },
+  {
+    "controlId": "ir-2.1.2",
+    "controlTitle": "Alerting, Paging, and Escalation",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Immediate Actions",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Triage and classification procedures (assess scope, escalate)",
+          "Management notification for high-severity (contact Security team)",
+          "Escalation paths (Emergency notification template with escalation)"
+        ],
+        "baselinesMissed": [
+          "Automated alerting configured",
+          "Alerts include embedded triage guidance",
+          "Time-based escalation triggers",
+          "Redundant paging systems",
+          "On-call schedules maintained",
+          "Backup procedures when on-call unreachable"
+        ]
+      }
+    ],
+    "gaps": [
+      "Automated alerting configured for security events and operational issues",
+      "Alerts include embedded triage guidance for distinguishing true incidents from false positives",
+      "Time-based escalation triggers if initial responder doesn't acknowledge within defined window",
+      "Redundant paging systems with documented failover procedures",
+      "On-call schedules maintained with adequate coverage for operational needs",
+      "Backup procedures when on-call personnel are unreachable"
+    ]
+  },
+  {
+    "controlId": "ir-2.1.3",
+    "controlTitle": "Logging Integrity and Retention",
+    "refs": [],
+    "gaps": [
+      "Log retention periods defined for security, infrastructure, and cloud provider logs",
+      "Retention adequate for forensic analysis (consider regulatory requirements and typical investigation timelines)",
+      "Tamper-evident logging for security-relevant events including access logs, alerting system logs, and infrastructure logs",
+      "Alerts triggered if logs are altered, deleted, or if monitoring/logging is disabled",
+      "Log sources documented — what's captured and where it's stored"
+    ]
+  },
+  {
+    "controlId": "ir-3.1.1",
+    "controlTitle": "Response Playbooks",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Key Compromise",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Playbooks cover key compromise scenario",
+          "Initial response actions (stop operations, notify, assess, escalate, document)",
+          "Key compromise includes procedures for rotating keys",
+          "Role-specific responsibilities (First Reporter, team coordination)"
+        ],
+        "baselinesMissed": [
+          "Playbooks for protocol exploits, infrastructure failures, access control breaches, supply chain compromises, frontend/DNS compromise",
+          "Escalation criteria for leadership engagement, system shutdown, public disclosure, external assistance"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Signer rotation",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Key compromise procedures (signer rotation when compromised)",
+          "Threshold reviewed after signer replacement"
+        ],
+        "baselinesMissed": [
+          "Playbooks for protocol exploits, infrastructure failures, access control breaches, supply chain, frontend/DNS",
+          "Initial response actions for each scenario",
+          "Role-specific responsibilities",
+          "Escalation criteria documented"
+        ]
+      }
+    ],
+    "gaps": [
+      "Playbooks cover protocol exploits, infrastructure failures, access control breaches, supply chain compromises, and frontend/DNS compromise",
+      "Each playbook includes containment, evidence preservation, and stakeholder notification",
+      "Escalation criteria documented for when to engage leadership, when to shut down systems, when to make public disclosure, and when to engage external assistance"
+    ]
+  },
+  {
+    "controlId": "ir-3.1.2",
+    "controlTitle": "Signer Reachability and Coordination",
+    "refs": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Training & Drills",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Procedures for emergency operations (drills mentioned)",
+          "Tested quarterly (for emergency multisigs)"
+        ],
+        "baselinesMissed": [
+          "Cross-timezone signer availability procedures",
+          "Signers integrated into on-call/paging systems",
+          "Escalation paths when signers unreachable"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [],
+        "baselinesMissed": [
+          "Procedures for coordinating multisig operations during incidents",
+          "Cross-timezone signer availability",
+          "Signers integrated into on-call/paging",
+          "Escalation paths for unreachable signers",
+          "Tested quarterly"
+        ]
+      }
+    ],
+    "gaps": [
+      "Procedures for coordinating multisig operations during incidents, including cross-timezone signer availability",
+      "Signers integrated into on-call/paging systems",
+      "Escalation paths documented for when signers are unreachable"
+    ]
+  },
+  {
+    "controlId": "ir-3.1.3",
+    "controlTitle": "Emergency Transaction Readiness",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "header": "UI Alternatives",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Backup signing infrastructure (Eternal Safe, Squads Public Client)",
+          "Alternate signing UI (multiple UI options documented)",
+          "Backup RPC providers (guidance provided)",
+          "Alternate block explorer (Blockscout, explorer.solana.com, Solscan)",
+          "Emergency execution procedures (documented how to use backup systems)"
+        ],
+        "baselinesMissed": [
+          "Pre-signed or pre-prepared emergency transactions"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "Emergency Preparedness",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Backup signing infrastructure (downloaded backup UIs)",
+          "Emergency execution procedures (understanding how to sign when primary UI is down)"
+        ],
+        "baselinesMissed": [
+          "Pre-signed or pre-prepared emergency transactions"
+        ]
+      }
+    ],
+    "gaps": [
+      "Pre-signed or pre-prepared emergency transactions for critical protocol functions (pause, freeze, parameter changes) where feasible"
+    ]
+  },
+  {
+    "controlId": "ir-4.1.1",
+    "controlTitle": "Incident Communication Channels",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "Documentation & Communication",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Primary and backup communication channels (set up per Communication Setup)",
+          "Multiple channels on different platforms (tested emergency notification)"
+        ],
+        "baselinesMissed": [
+          "Documented access controls and member lists",
+          "Documented failover procedures",
+          "Procedures for rapidly creating incident-specific channels",
+          "Secure communication procedures for sensitive information"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Emergency Communication Protocols",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Multiple communication channels (primary, backup, emergency contacts)",
+          "Secure communication procedures (need-to-know, secure channels)",
+          "Procedures for identity verification during incidents"
+        ],
+        "baselinesMissed": [
+          "Documented access controls and member lists",
+          "Documented failover procedures",
+          "Procedures for rapidly creating war room channels"
+        ]
+      }
+    ],
+    "gaps": [
+      "Dedicated incident communication channels with documented access controls and member lists",
+      "Documented failover procedures between primary and backup channels",
+      "Procedures for rapidly creating incident-specific channels (war room) when needed"
+    ]
+  },
+  {
+    "controlId": "ir-4.1.2",
+    "controlTitle": "Internal Status Updates",
+    "refs": [
+      {
+        "page": "/incident-management/communication-strategies",
+        "header": "Best Practices",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Status update cadence defined (regular updates to stakeholders)",
+          "Format and distribution for internal stakeholders (provide regular updates to employees)"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ir-4.1.3",
+    "controlTitle": "Public Communication and Information Management",
+    "refs": [
+      {
+        "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+        "header": "Communications",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Procedures for coordinating communications during and after incidents",
+          "Procedures for managing public information flow (monitoring social media)",
+          "Designated approval flow (External Communicator role)"
+        ],
+        "baselinesMissed": [
+          "Pre-approved communication templates for different incident types and severity"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Emergency Notification Template",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Pre-approved communication templates (emergency notification template provided)"
+        ],
+        "baselinesMissed": [
+          "Templates for different incident types and severity levels",
+          "Procedures for coordinating with protocol users during/after",
+          "Procedures for managing misinformation",
+          "Designated approval flow before public statements"
+        ]
+      }
+    ],
+    "gaps": [
+      "Pre-approved communication templates for different incident types and severity levels (only one emergency template provided)",
+      "Procedures for managing public information flow and correcting misinformation during active incidents"
+    ]
+  },
+  {
+    "controlId": "ir-5.1.1",
+    "controlTitle": "IR Drills and Testing",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Emergency Drill Procedures",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Drills conducted regularly (quarterly, bi-annually, annually)",
+          "Tests full pipeline (notification, response time, process verification)",
+          "Production alerting validated (notification test, response time measurement)"
+        ],
+        "baselinesMissed": [
+          "Drills cover different incident types across exercises",
+          "Drill documentation with gaps and corrective actions",
+          "Corrective actions tracked to completion",
+          "Findings incorporated into playbook updates"
+        ]
+      },
+      {
+        "page": "/incident-management/playbooks/decentralized-ir",
+        "header": "Keep It Alive",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Drills conducted regularly (quarterly red team drills)",
+          "Findings incorporated into updates (iterate on framework during retrospective)"
+        ],
+        "baselinesMissed": [
+          "Tests full pipeline from monitoring through recovery",
+          "Production alerting validated end-to-end",
+          "Drill documentation with participants, response times, gaps",
+          "Corrective actions tracked to completion"
+        ]
+      }
+    ],
+    "gaps": [
+      "Drills cover different incident types across exercises (protocol exploit, infrastructure failure, key compromise, etc.)",
+      "Drill documentation includes date, scenario, participants, response times, gaps identified, and corrective actions",
+      "Corrective actions tracked to completion with owners and deadlines"
+    ]
+  }
+]

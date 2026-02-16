@@ -1,0 +1,582 @@
+[
+  {
+    "controlId": "ms-1.1.1",
+    "controlTitle": "Named Multisig Operations Owner",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "For Multisig Administrators",
+        "coverage": "partial",
+        "baselinesMet": [],
+        "baselinesMissed": [
+          "Accountability scope covers policy maintenance, signer onboarding/offboarding, documentation accuracy, periodic reviews, and incident escalation"
+        ]
+      }
+    ],
+    "gaps": [
+      "Accountability scope covers policy maintenance, signer onboarding/offboarding, documentation accuracy, periodic reviews, and incident escalation - NO page teaches organizations HOW to establish clear accountability with defined scope covering all these areas"
+    ]
+  },
+  {
+    "controlId": "ms-1.1.2",
+    "controlTitle": "Multisig Registry and Documentation",
+    "refs": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Communication & Documentation",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Registry includes address, network, threshold, classification, purpose, signer addresses, controlled contracts, on-chain roles, and last review date (mentions documentation of purpose, wallet address, signer addresses)"
+        ],
+        "baselinesMissed": [
+          "Updated within 24 hours for security-critical changes, 3 days for routine changes",
+          "Accessible to signers and key personnel"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "Documentation & Communication",
+        "coverage": "partial",
+        "baselinesMet": [],
+        "baselinesMissed": [
+          "Registry includes address, network, threshold, classification, purpose, signer addresses, controlled contracts, on-chain roles, and last review date",
+          "Updated within 24 hours for security-critical changes, 3 days for routine changes",
+          "Accessible to signers and key personnel"
+        ]
+      }
+    ],
+    "gaps": [
+      "Updated within 24 hours for security-critical changes, 3 days for routine changes - NO page provides specific update timeline requirements",
+      "Accessible to signers and key personnel - NO page substantively teaches access control for registry",
+      "Complete registry structure with ALL required fields (network, classification, controlled contracts, on-chain roles, last review date) not fully taught"
+    ]
+  },
+  {
+    "controlId": "ms-2.1.1",
+    "controlTitle": "Multisig Classification and Risk-Based Controls",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/planning-and-classification",
+        "header": "Classification Process",
+        "coverage": "full",
+        "baselinesMet": [
+          "Classification considers impact factors (financial exposure, protocol criticality, reputational risk) and operational needs (response time, coordination complexity)",
+          "Each classification maps to specific required controls (thresholds, quorum composition, review cadence)",
+          "Higher-risk classifications require stronger controls (more signers, higher thresholds)",
+          "Classifications reviewed every 6 months and after significant changes (TVL shifts, new products, protocol upgrades, security incidents)"
+        ],
+        "baselinesMissed": [
+          "All multisigs must have at least 3 distinct signers with a signing threshold of 50% or greater; N-of-N configurations should be avoided"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Thresholds & Configuration",
+        "coverage": "full",
+        "baselinesMet": [
+          "All multisigs must have at least 3 distinct signers with a signing threshold of 50% or greater; N-of-N configurations should be avoided",
+          "Higher-risk classifications require stronger controls (more signers, higher thresholds)"
+        ],
+        "baselinesMissed": [
+          "Classification considers impact factors and operational needs in a formal framework",
+          "Each classification maps to specific required controls",
+          "Classifications reviewed every 6 months and after significant changes"
+        ]
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ms-2.1.2",
+    "controlTitle": "Contract-Level Security Controls",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "header": "Contract-Level Controls",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Evaluation covers timelocks, modules, guards, address whitelisting, invariant enforcement, and parameter bounds",
+          "Security review required before enabling any module or guard"
+        ],
+        "baselinesMissed": [
+          "Controls evaluated for each multisig based on classification",
+          "Decisions documented, including rationale for controls not implemented"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Contract-Level Security",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Evaluation covers timelocks, modules, guards, address whitelisting, invariant enforcement, and parameter bounds"
+        ],
+        "baselinesMissed": [
+          "Controls evaluated for each multisig based on classification",
+          "Security review required before enabling any module or guard",
+          "Decisions documented, including rationale for controls not implemented"
+        ]
+      }
+    ],
+    "gaps": [
+      "Controls evaluated for each multisig based on classification - NO page teaches systematic evaluation process tied to classification levels",
+      "Decisions documented, including rationale for controls not implemented - NO page provides documentation requirements for control selection decisions"
+    ]
+  },
+  {
+    "controlId": "ms-2.1.3",
+    "controlTitle": "Exception Approval Process",
+    "refs": [],
+    "gaps": [
+      "Exceptions require documented justification, expiry date, compensating controls, and remediation plan - NO page teaches exception approval process",
+      "Critical-class exceptions require executive or security-lead approval - NO page defines approval authority by classification"
+    ]
+  },
+  {
+    "controlId": "ms-2.1.4",
+    "controlTitle": "Wallet Segregation",
+    "refs": [],
+    "gaps": [
+      "Segregation considers value, operational needs, and risk tolerance - NO page substantively teaches HOW to determine segregation strategy",
+      "Examples include hot/cold separation and treasury distribution across multiple wallets - mentioned in context of travel security in /opsec/travel/guide but NOT as a multisig operational requirement"
+    ]
+  },
+  {
+    "controlId": "ms-3.1.1",
+    "controlTitle": "Signer Address Verification",
+    "refs": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Communication & Documentation",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Verification process includes message signing with the signer address, verification via an independent tool, and documented proof of verification"
+        ],
+        "baselinesMissed": []
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "header": "Pre-Launch Checklist",
+        "coverage": "partial",
+        "baselinesMet": [],
+        "baselinesMissed": [
+          "Verification process includes message signing with the signer address, verification via an independent tool, and documented proof of verification"
+        ]
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ms-3.1.2",
+    "controlTitle": "Signer Key Management Standards",
+    "refs": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Thresholds & Configuration",
+        "coverage": "full",
+        "baselinesMet": [
+          "Hardware wallets required for all multisig operations",
+          "Each signer uses a fresh, dedicated address per multisig, used exclusively for that multisig's operations"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ms-3.1.3",
+    "controlTitle": "Seed Phrase Backup and Protection",
+    "refs": [
+      {
+        "page": "/wallet-security/seed-phrase-management",
+        "header": "Secure Storage Practices",
+        "coverage": "full",
+        "baselinesMet": [
+          "Seed phrases never stored digitally, in cloud storage, or photographed",
+          "Backups are geographically distributed (disaster resistant)",
+          "No single point of compromise (theft resistant)",
+          "Recoverable if one operator is unavailable (operator-loss resistant)"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ms-3.1.4",
+    "controlTitle": "Signer Lifecycle Management",
+    "refs": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Signer rotation",
+        "coverage": "partial",
+        "baselinesMet": [],
+        "baselinesMissed": [
+          "Offboarded signers removed within 48-72 hours (Emergency-class), 7 days (Critical-class), 14 days (others)",
+          "Access reviews quarterly, confirming each signer still controls their key"
+        ]
+      }
+    ],
+    "gaps": [
+      "Offboarded signers removed within 48-72 hours (Emergency-class), 7 days (Critical-class), 14 days (others) - NO page provides specific timeline requirements by classification",
+      "Access reviews quarterly, confirming each signer still controls their key - NO page teaches quarterly access review process"
+    ]
+  },
+  {
+    "controlId": "ms-3.1.5",
+    "controlTitle": "Signer Training and Assessment",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "For Signers",
+        "coverage": "full",
+        "baselinesMet": [
+          "Training covers transaction verification, emergency procedures, phishing and social engineering awareness",
+          "Practical skills assessment included"
+        ],
+        "baselinesMissed": [
+          "Annual refreshers; updates within 30 days of significant procedure changes"
+        ]
+      }
+    ],
+    "gaps": [
+      "Annual refreshers; updates within 30 days of significant procedure changes - NO page specifies ongoing training cadence requirements"
+    ]
+  },
+  {
+    "controlId": "ms-3.1.6",
+    "controlTitle": "Hardware Wallet Standards",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "Hardware & Security Setup",
+        "coverage": "full",
+        "baselinesMet": [
+          "Wallet capability requirements include adequate display, clear signing support, PIN security, and firmware integrity verification",
+          "Procurement through verified supply chains (direct from manufacturer or authorized resellers), with device authenticity verification"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ms-3.1.7",
+    "controlTitle": "Secure Signing Environment",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/personal-security-opsec",
+        "header": "Network Security",
+        "coverage": "full",
+        "baselinesMet": [
+          "Device security requirements documented and enforced",
+          "Dedicated signing devices or network isolation for high-value operations"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ms-3.1.8",
+    "controlTitle": "Signer Diversity",
+    "refs": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Strategic Signer Distribution",
+        "coverage": "full",
+        "baselinesMet": [
+          "Diversity requirements scale with multisig classification (inferred from role diversity, geographical separation, external parties requirements)"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ms-4.1.1",
+    "controlTitle": "Transaction Handling Process",
+    "refs": [
+      {
+        "page": "/wallet-security/signing-and-verification/secure-multisig-signing-process",
+        "header": "Phase 1: Signing the Off-Chain Message",
+        "coverage": "full",
+        "baselinesMet": [
+          "Process covers initiation, approval, simulation, execution, and confirmation",
+          "Each signer independently verifies transaction details (chain ID, target address, calldata, value, nonce, operation type) before signing",
+          "Transaction hashes compared across at least two independent interfaces",
+          "DELEGATECALL operations to untrusted addresses flagged as high risk"
+        ],
+        "baselinesMissed": [
+          "Defines who is authorized to initiate transactions",
+          "High-risk transactions require waiting periods where feasible and elevated threshold approval",
+          "High-risk thresholds defined based on classification and reviewed periodically",
+          "Private transaction submission used when appropriate to prevent front-running or MEV extraction"
+        ]
+      },
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Operational Best Practices",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Each signer independently verifies transaction details before signing",
+          "Transaction simulation used before signing"
+        ],
+        "baselinesMissed": [
+          "Process covers initiation, approval, simulation, execution, and confirmation",
+          "Defines who is authorized to initiate transactions",
+          "Transaction hashes compared across at least two independent interfaces",
+          "DELEGATECALL operations flagged as high risk",
+          "High-risk transactions require waiting periods and elevated threshold approval",
+          "High-risk thresholds defined based on classification",
+          "Private transaction submission used when appropriate"
+        ]
+      }
+    ],
+    "gaps": [
+      "Defines who is authorized to initiate transactions - NO page teaches authorization framework for transaction initiation",
+      "High-risk transactions require waiting periods where feasible and elevated threshold approval - mentioned timelocks in setup but not as operational requirement",
+      "High-risk thresholds defined based on classification and reviewed periodically - NO page teaches risk threshold definition process",
+      "Private transaction submission used when appropriate to prevent front-running or MEV extraction - NO page teaches when/how to use private RPCs for transaction submission"
+    ]
+  },
+  {
+    "controlId": "ms-4.1.2",
+    "controlTitle": "Transaction Audit Trails",
+    "refs": [],
+    "gaps": [
+      "Retained for 3 years - NO page specifies retention period",
+      "Records include proposer, approvers, verification evidence, timestamps, and issues encountered - NO page teaches comprehensive audit trail documentation requirements"
+    ]
+  },
+  {
+    "controlId": "ms-4.1.3",
+    "controlTitle": "Tool and Platform Evaluation",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "Transaction Verification",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Evaluation considers whether tools are open source or audited by 2+ reputable firms (implied by tool recommendations)"
+        ],
+        "baselinesMissed": [
+          "Formal process for adopting new tools",
+          "Tools have no known critical unpatched vulnerabilities and have established ecosystem adoption"
+        ]
+      }
+    ],
+    "gaps": [
+      "Formal process for adopting new tools - NO page teaches tool adoption approval process",
+      "Tools have no known critical unpatched vulnerabilities and have established ecosystem adoption - mentioned but not taught as evaluation criteria"
+    ]
+  },
+  {
+    "controlId": "ms-4.1.4",
+    "controlTitle": "Backup Signing Infrastructure",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+        "header": "UI Alternatives",
+        "coverage": "full",
+        "baselinesMet": [
+          "Alternate signing UI",
+          "2-3 backup RPC providers",
+          "Alternate block explorer"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ms-5.1.1",
+    "controlTitle": "Secure Communication Procedures",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "Documentation & Communication",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Dedicated primary and backup channels on different platforms",
+          "End-to-end encryption, MFA required, invitation-based membership"
+        ],
+        "baselinesMissed": [
+          "Signer identity verified as standard procedure during signing operations (e.g., code words, video call, secondary authenticated channel)",
+          "Documented procedures for channel compromise including switching to backup channels and out-of-band verification",
+          "All signers trained on these procedures; compromise response tested annually"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Communication Account Compromise",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Documented procedures for channel compromise including switching to backup channels and out-of-band verification"
+        ],
+        "baselinesMissed": [
+          "Dedicated primary and backup channels on different platforms",
+          "End-to-end encryption, MFA required, invitation-based membership",
+          "Signer identity verified as standard procedure during signing operations",
+          "All signers trained on these procedures; compromise response tested annually"
+        ]
+      }
+    ],
+    "gaps": [
+      "Signer identity verified as standard procedure during signing operations (e.g., code words, video call, secondary authenticated channel) - mentioned in emergency procedures but NOT as standard operational procedure for ALL signing operations",
+      "All signers trained on these procedures; compromise response tested annually - NO page specifies annual testing requirement for communication compromise procedures"
+    ]
+  },
+  {
+    "controlId": "ms-5.1.2",
+    "controlTitle": "Emergency Contact List",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "Documentation & Communication",
+        "coverage": "partial",
+        "baselinesMet": [],
+        "baselinesMissed": [
+          "Includes protocol security team, external security resources, legal/compliance contacts, and backup contacts for signers",
+          "Personal emergency contacts for each signer (e.g., trusted family member, close colleague) for situations where the signer is unreachable through normal channels",
+          "Reviewed every 6 months"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Emergency Contact Information",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Includes protocol security team, external security resources, legal/compliance contacts, and backup contacts for signers"
+        ],
+        "baselinesMissed": [
+          "Personal emergency contacts for each signer",
+          "Reviewed every 6 months"
+        ]
+      }
+    ],
+    "gaps": [
+      "Personal emergency contacts for each signer (e.g., trusted family member, close colleague) for situations where the signer is unreachable through normal channels - NO page teaches requirement for personal emergency contacts",
+      "Reviewed every 6 months - NO page specifies review cadence for emergency contact lists"
+    ]
+  },
+  {
+    "controlId": "ms-6.1.1",
+    "controlTitle": "Emergency Playbooks",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Key Compromise",
+        "coverage": "full",
+        "baselinesMet": [
+          "Scenarios covered include key compromise, lost access, communication channel compromise, and urgent protocol actions",
+          "Each scenario has procedures and escalation paths",
+          "Playbooks accessible through at least one backup method independent of the primary documentation platform"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "ms-6.1.2",
+    "controlTitle": "Signer Reachability and Escalation",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/planning-and-classification",
+        "header": "Step 2: Operational Assessment",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Response times by classification - Emergency less than 2 hours, Time-Sensitive 2-12 hours, Routine 24-48 hours"
+        ],
+        "baselinesMissed": [
+          "Paging covers all signers including external parties",
+          "Tested quarterly",
+          "Escalation paths documented"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "For Emergency Response Multisigs",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Escalation paths documented"
+        ],
+        "baselinesMissed": [
+          "Response times by classification",
+          "Paging covers all signers including external parties",
+          "Tested quarterly"
+        ]
+      }
+    ],
+    "gaps": [
+      "Paging covers all signers including external parties - NO page teaches establishment of paging system for all signers",
+      "Tested quarterly - NO page specifies quarterly testing requirement for reachability"
+    ]
+  },
+  {
+    "controlId": "ms-6.1.3",
+    "controlTitle": "Multisig Monitoring and Alerts",
+    "refs": [
+      {
+        "page": "/wallet-security/secure-multisig-best-practices",
+        "header": "Operational Best Practices",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Monitored events include signer/threshold changes, transfers exceeding thresholds, nonce gaps, interactions with unknown addresses, failed transactions, module/guard changes (partial list mentioned)"
+        ],
+        "baselinesMissed": [
+          "Alerting and escalation paths documented",
+          "Monitoring infrastructure protected against tampering"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/setup-and-configuration",
+        "header": "Active Monitoring",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Monitored events include proposed transactions, new signatures, and owner changes (partial list)"
+        ],
+        "baselinesMissed": [
+          "Monitored events include transfers exceeding thresholds, nonce gaps, interactions with unknown addresses, failed transactions, module/guard changes, low submitter/proposer balances",
+          "Alerting and escalation paths documented",
+          "Monitoring infrastructure protected against tampering"
+        ]
+      }
+    ],
+    "gaps": [
+      "Complete list of monitored events (transfers exceeding thresholds, nonce gaps, interactions with unknown addresses, failed transactions, module/guard changes, low submitter/proposer balances) - NO page provides comprehensive monitoring event list",
+      "Alerting and escalation paths documented - NO page teaches documentation of alert escalation",
+      "Monitoring infrastructure protected against tampering - NO page addresses monitoring system security"
+    ]
+  },
+  {
+    "controlId": "ms-6.1.4",
+    "controlTitle": "Emergency Drills and Improvement",
+    "refs": [
+      {
+        "page": "/multisig-for-protocols/implementation-checklist",
+        "header": "Specialized Training by Use Case",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Annual minimum (implied by emergency simulation drills requirement)"
+        ],
+        "baselinesMissed": [
+          "After major procedure changes",
+          "Documentation includes date, participants, response times, issues identified, and improvements made"
+        ]
+      },
+      {
+        "page": "/multisig-for-protocols/emergency-procedures",
+        "header": "Emergency Drill Procedures",
+        "coverage": "full",
+        "baselinesMet": [
+          "Annual minimum (quarterly for some tests)",
+          "After major procedure changes (implied)",
+          "Documentation includes date, participants, response times, issues identified, and improvements made"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "controlId": "di-1.1.4",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Evaluator correctly identified partial coverage. IDE page mentions 'trusted sources' for plugins/extensions (baseline 2), but does not address: evaluation criteria for AI-powered tools, data privacy assessment, approved tool lists, restrictions on unapproved tools, or regular tool reviews."
+  },
+  {
+    "controlId": "di-2.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Evaluator incorrectly marked as 'full' but then listed baseline 6 (periodic access reviews) as missed. The page covers RBAC, branch protection, signed commits, multi-party review, and MFA well (baselines 1-5), but does NOT mention periodic repository access reviews. Should be partial, not full."
+  },
+  {
+    "controlId": "di-2.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Evaluator correctly identified partial coverage. CI/CD page mentions 'check for...leaked credentials' which covers automated scanning in CI/CD (baselines 1,4 partial), but no mention of pre-commit hooks or remediation procedures for discovered secrets."
+  },
+  {
+    "controlId": "di-2.1.4",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Evaluator correctly identified partial coverage. Dependency awareness page clearly covers trusted sources, vulnerability monitoring, and regular audits (baselines 1,3,5). Missing: typosquatting verification, version pinning enforcement, and changelog reviews."
+  },
+  {
+    "controlId": "di-3.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Evaluator correctly identified partial coverage. CI/CD page explicitly mentions deterministic builds with strict dependencies (baseline 5) and access controls limiting who can modify pipelines (partial baseline 1). Missing: explicit multi-party approval requirement, service accounts with minimal permissions, restriction on manual deployments, and version control of pipeline configs."
+  },
+  {
+    "controlId": "di-3.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Evaluator correctly identified partial coverage across two pages. CI/CD page mentions 'detect vulnerabilities in code and dependencies during the CI process' (baselines 1,2) and 'PR testing must pass before merging' (partial baseline 3). Security-testing page explicitly mentions SAST in CI/CD. Missing: explicit statement that security scan results are reviewed before deployment approval, and staging environment validation."
+  },
+  {
+    "controlId": "di-4.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Evaluator correctly identified partial coverage. IaC page clearly states infrastructure is managed through code (baseline 1) and mentions 'Integrate security scanning tools into the IaC pipeline' (baseline 4). Missing: explicit requirement for automated deployment pipelines and multi-party approval for infrastructure changes."
+  },
+  {
+    "controlId": "di-4.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Evaluator correctly identified partial coverage, though this is a weak mapping. The repository page discusses MFA, RBAC, and audit logging (baselines 1,3,6) but in the context of code repositories, not infrastructure access. Missing: JIT access with multi-party approval, break-glass accounts, and break-glass alerting. This mapping is questionable since control is about infrastructure but page is about repositories."
+  },
+  {
+    "controlId": "di-4.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Evaluator correctly identified partial coverage. Repository page mentions 'Regular backups' and 'secure, offsite location' for code repositories, covering baseline 4 (independent storage) and partially baseline 1 (but only for code repos, not critical systems broadly). Missing: DR plan with RTO/RPO definition, and backup/recovery testing procedures."
+  },
+  {
+    "controlId": "di-4.1.4",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Evaluator correctly identified partial coverage. Cloud page mentions 'comprehensive logging, monitoring, and threat detection' (baselines 1,4) and 'respond to security incidents in real-time' (partial baseline 2). Explicitly lists CloudTrail, Azure Monitor, Google Cloud Logging. Missing: subscription to cloud provider security notifications and multi-cloud strategy considerations."
+  },
+  {
+    "controlId": "di-1.1.1",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Correct — no framework page addresses DevOps security ownership, accountability scope, or designated security owner responsibilities."
+  },
+  {
+    "controlId": "di-1.1.2",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Correct — no framework page addresses a comprehensive DevOps security policy document covering environment standards, access controls, deployment procedures, code management, and supply chain security."
+  },
+  {
+    "controlId": "di-1.1.3",
+    "originalCoverage": "none",
+    "qaCoverage": "partial",
+    "verdict": "false-negative",
+    "notes": "Evaluator missed coverage. IDE page states 'Ensure that potential development environments are isolated from production environments' (addresses baseline about production credential isolation). CI/CD page mentions 'Use isolated environments for building and testing to prevent contamination' (relevant to isolation principle). Neither addresses containerization, per-repo environments, or credential restrictions explicitly, but partial coverage exists."
+  },
+  {
+    "controlId": "di-2.1.3",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Correct — repository page mentions general code review requirements but does not specifically address external contributors, additional approval requirements for external code, tracking of external contributions, or restricting external collaborator permissions."
+  },
+  {
+    "controlId": "di-3.1.2",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Correct — CI/CD page mentions checking for 'leaked credentials' (detection), but no framework page addresses dedicated secrets management systems, secrets never in source code, production secrets inaccessible to humans, or automated secret rotation. Detection is not the same as secrets management."
+  }
+]

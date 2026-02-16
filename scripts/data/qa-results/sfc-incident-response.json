@@ -1,0 +1,86 @@
+[
+  {
+    "controlId": "ir-1.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "no-coverage",
+    "verdict": "downgraded",
+    "notes": "Implementation checklist mentions drill reviews and regular updates, not IR team role assignments. Emergency procedures has post-incident analysis but doesn't explicitly cover annual review of IR roles/authorities. Neither page addresses incident commander, SMEs, scribe, communications personnel, legal support, or decision makers."
+  },
+  {
+    "controlId": "ir-1.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Emergency procedures shows Security Team contact and internal escalation structure. SEAL 911 guidelines define key roles (Operations, Scribe, Strategy Lead, etc.) and mention SEAL 911 as external expertise. Secure multisig practices mention incident notification. Coverage is partial as claimed - missing protocol dependency contacts, legal/PR specifics, infrastructure vendors, and quarterly review requirements."
+  },
+  {
+    "controlId": "ir-2.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "DNS monitoring page provides solid coverage of infrastructure monitoring, credential exposure detection via Certificate Transparency, and documented monitoring scope. Missing 24/7 procedures. However, monitoring guidelines page is too generic (just says 'define what to monitor') - this should arguably be excluded, but keeping partial verdict since DNS page alone justifies it."
+  },
+  {
+    "controlId": "ir-2.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Emergency procedures includes triage steps (assess scope, escalate), management notification (Security team), and escalation template. Missing automated alerting config, embedded triage guidance, time-based triggers, redundant paging, on-call schedules, and backup procedures. Correctly assessed as partial."
+  },
+  {
+    "controlId": "ir-3.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Emergency procedures has detailed key compromise playbook with immediate actions, recovery process, and role responsibilities (First Reporter, team coordination). Secure multisig practices covers signer rotation and threshold review. Missing playbooks for protocol exploits, infrastructure failures, access control breaches, supply chain, and frontend/DNS compromise. Also missing escalation criteria for leadership engagement, shutdown, public disclosure."
+  },
+  {
+    "controlId": "ir-3.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Secure multisig best practices mentions emergency drills and quarterly testing for emergency multisigs. Setup-and-configuration page has minimal relevant content. Missing cross-timezone coordination procedures, on-call integration, and escalation paths for unreachable signers. Partial coverage is correct."
+  },
+  {
+    "controlId": "ir-3.1.3",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Both pages provide extensive backup signing infrastructure (Eternal Safe, Squads, alternate UIs, backup RPCs, block explorers) and emergency execution procedures. However, NEITHER page addresses pre-signed or pre-prepared emergency transactions. Without pre-signed transactions for critical functions (pause, freeze, parameter changes), this cannot be 'full' coverage. Downgraded to partial."
+  },
+  {
+    "controlId": "ir-4.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Implementation checklist mentions primary/backup channels and testing. Emergency procedures describes multiple communication channels, secure communication (need-to-know, encrypted), and identity verification. Missing documented access controls/member lists, documented failover procedures, and procedures for rapidly creating war room channels. Correctly partial."
+  },
+  {
+    "controlId": "ir-4.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Communication strategies page mentions 'provide regular updates to stakeholders' and 'fixed schedule' but doesn't specify status update cadence BY SEVERITY LEVEL (e.g., P1 every 30min, P2 every 2hr). Also doesn't provide specific format templates or distribution lists for different stakeholder groups. Generic guidance doesn't meet the baseline requirements fully."
+  },
+  {
+    "controlId": "ir-4.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "SEAL 911 guidelines cover user communication coordination, information flow management (monitoring social media), and approval flow (External Communicator role). Emergency procedures provide one emergency notification template. Missing pre-approved templates for DIFFERENT incident types and severity levels, and specific misinformation management procedures. Correctly partial."
+  },
+  {
+    "controlId": "ir-5.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Emergency procedures describe drill schedule (quarterly, bi-annually, annually), full pipeline testing (notification, response time, process), and production alerting validation. Decentralized IR mentions quarterly red team drills and iterating framework during retrospective. Missing coverage of different incident types across exercises, structured drill documentation (participants, gaps, corrective actions), and corrective action tracking to completion."
+  },
+  {
+    "controlId": "ir-2.1.3",
+    "originalCoverage": "no-coverage",
+    "qaCoverage": "no-coverage",
+    "verdict": "confirmed",
+    "notes": "Reviewed all 10 framework pages - no content addresses log retention periods, retention adequacy for forensics, or tamper-evident logging for security events. Correctly identified as no coverage."
+  }
+]

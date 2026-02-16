@@ -1,0 +1,170 @@
+[
+  {
+    "controlId": "ms-1.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Implementation checklist mentions administrator responsibilities but does NOT teach how to establish a named owner with defined accountability scope covering all five areas (policy maintenance, signer onboarding/offboarding, documentation accuracy, periodic reviews, incident escalation). The 'Ongoing Management' section mentions 'procedures for regular reviews' but lacks comprehensive accountability framework teaching."
+  },
+  {
+    "controlId": "ms-1.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "secure-multisig-best-practices mentions 'purpose, wallet address, list of signer addresses' but missing: network, threshold, classification, controlled contracts, on-chain roles, last review date. No page teaches specific update timelines (24h/3d) or access control requirements. Implementation checklist references templates but doesn't teach requirements inline. Evaluation correctly identified gaps."
+  },
+  {
+    "controlId": "ms-2.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "Combined coverage across planning-and-classification (baselines 1,2,4,5) and secure-multisig-best-practices (baseline 3,4) achieves full coverage. Planning page teaches impact/operational assessment, classification matrix, and review cadence. Best practices page covers 3+ signers, 50%+ threshold, no N-of-N. All baselines met."
+  },
+  {
+    "controlId": "ms-2.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "setup-and-configuration covers timelocks, modules, guards, address whitelisting, invariant enforcement under 'Contract-Level Controls' section and mentions 'Do not install any other modules or guards without explicit governance approval and security review' (partial security review requirement). However, it does NOT teach: (1) systematic evaluation process tied to classification levels, (2) documentation requirements for control selection decisions including rationale for controls NOT implemented. Gaps correctly identified."
+  },
+  {
+    "controlId": "ms-2.1.4",
+    "originalCoverage": "partial",
+    "qaCoverage": "none",
+    "verdict": "downgraded",
+    "notes": "secure-multisig-best-practices 'General Rules' section does NOT substantively teach wallet segregation. The evaluator marked it partial but I cannot find teaching on segregation strategy, hot/cold separation, or treasury distribution. The page focuses on multisig configuration, not wallet segregation principles. Should be 'none' coverage."
+  },
+  {
+    "controlId": "ms-3.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "secure-multisig-best-practices states 'Signers should verify their addresses by signing a message stating their affiliation and the multisig they intend to join' which covers message signing concept. However, it does NOT specify: (1) verification via independent tool, (2) documented proof of verification. The setup-and-configuration 'Pre-Launch Checklist' only has checkbox 'All signer addresses added and verified' without teaching the verification process. Original 'full' assessment was too generous - should be partial."
+  },
+  {
+    "controlId": "ms-3.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "secure-multisig-best-practices 'Thresholds & Configuration' states: 'All signers must use hardware wallets' (baseline 1) and 'Signers on multisigs with critical protocol configuration or security roles are discouraged from using their addresses for other purposes. They should create a brand new wallet for that purpose instead' (baseline 2). Both baselines fully met."
+  },
+  {
+    "controlId": "ms-3.1.3",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "seed-phrase-management 'Secure Storage Practices' comprehensively covers: 'Prohibited Practices' section lists never storing digitally/cloud/photographed (baseline 1); 'split seed into 3 pieces' at different secure locations (baseline 2 - geographically distributed); tamper-evident bags and multiple secure locations (baseline 3 - no single point of compromise); 3-piece split system allows recovery with any 2 pieces (baseline 4 - operator-loss resistant). All baselines fully taught."
+  },
+  {
+    "controlId": "ms-3.1.4",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "secure-multisig-best-practices 'Signer rotation' section teaches signer replacement procedures but does NOT specify: (1) removal timelines by classification (48-72h Emergency, 7d Critical, 14d others), (2) quarterly access reviews confirming signers control their keys. Gaps correctly identified."
+  },
+  {
+    "controlId": "ms-3.1.5",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "implementation-checklist 'For Signers' section covers: transaction verification training (checkbox items), emergency procedures (Emergency Preparedness section), practical skills assessment implied by checklist structure. However, does NOT specify: annual refreshers or updates within 30 days of procedure changes. The evaluator correctly noted this baseline is missing. Gap accurately identified."
+  },
+  {
+    "controlId": "ms-3.1.6",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "implementation-checklist 'Hardware & Security Setup' states: 'I have purchased recommended hardware wallet from authorized source' (baseline 2 - verified supply chains), 'I have set up my hardware wallet with proper firmware and PIN' (baseline 1 - PIN security and firmware integrity). The reference to '/wallet-security/intermediates-&-medium-funds' provides additional hardware wallet capability requirements. Both baselines adequately covered."
+  },
+  {
+    "controlId": "ms-3.1.7",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "personal-security-opsec 'Network Security' section thoroughly covers: 'Multi-sig operations must be performed on devices dedicated only to these transactions' (baseline 2 - dedicated signing devices), 'Device Security' section documents requirements like full disk encryption, endpoint protection (baseline 1 - documented and enforced). Both baselines fully met."
+  },
+  {
+    "controlId": "ms-3.1.8",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "secure-multisig-best-practices 'Strategic Signer Distribution' section teaches: 'Role Diversity: mix of executives, developers, operational roles', 'geographical separation', 'External Parties: at least 1 external to organization'. While not explicitly using the word 'classification', the guidance on role diversity, geographic distribution, and external parties for high-value wallets clearly implies diversity requirements that scale with risk/classification. Baseline met through inference."
+  },
+  {
+    "controlId": "ms-4.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "secure-multisig-signing-process covers: initiation→approval→simulation→execution→confirmation process (baseline 1 partial), independent transaction verification required (baseline 3), 'All signers must verify transaction data on at least two independent devices' and 'at least two separate communication channels' (baseline 4), 'DELEGATECALL warning' flags high risk operations (baseline 5). Missing: transaction initiation authorization framework (baseline 2), high-risk waiting periods/elevated thresholds (baseline 6), risk threshold definition process (baseline 7), private transaction submission guidance (baseline 8). Gaps correctly identified."
+  },
+  {
+    "controlId": "ms-4.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "implementation-checklist 'Transaction Verification' mentions approved tools (Safe CLI Utils, OpenZeppelin SafeUtils) implying open source/audited preference, but does NOT teach: (1) formal tool adoption process, (2) vulnerability checking, (3) ecosystem adoption as evaluation criteria. Evaluator correctly identified these gaps."
+  },
+  {
+    "controlId": "ms-4.1.4",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "backup-signing-and-infrastructure comprehensively covers: 'UI Alternatives' section (Eternal Safe, Squads, mobile) for alternate signing UI (baseline 1), 'RPC Backup Options' recommends '2-3 different RPC services' with provider diversity (baseline 2), 'Block Explorer Backup Options' lists Blockscout, explorer.swiss-knife.xyz, Solscan alternatives (baseline 3). All three baselines fully taught."
+  },
+  {
+    "controlId": "ms-5.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "implementation-checklist teaches: dedicated primary and backup channels, E2E encryption, MFA, invitation-based (baselines 1,2 met). emergency-procedures 'Communication Account Compromise' covers channel compromise procedures and backup channel switching (baseline 4 met). However, does NOT teach: (1) signer identity verification as STANDARD procedure for ALL signing operations (only mentioned for emergencies), (2) annual testing requirement for compromise response. Gaps correctly identified."
+  },
+  {
+    "controlId": "ms-5.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "emergency-procedures 'Emergency Contact Information' section states 'Protocol leadership, Technical team, Legal/compliance contacts' (baseline 1 partially - covers protocol security, external resources, legal, but not explicit backup contacts for signers). Does NOT mention: (1) personal emergency contacts for each signer (family/colleague for unreachable situations), (2) 6-month review cadence. Gaps correctly identified."
+  },
+  {
+    "controlId": "ms-6.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "emergency-procedures provides dedicated sections for: 'Key Compromise', 'Lost Key Access', 'Communication Account Compromise', 'Operational Emergency Procedures' (baseline 1 - all scenarios covered). Each scenario has clear procedures and escalation paths (baseline 2). The page teaches using multiple channels and verification methods, implying backup access independent of primary docs (baseline 3). All baselines met."
+  },
+  {
+    "controlId": "ms-6.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "planning-and-classification 'Operational Classification' table shows: Emergency <2 hours, Time-Sensitive 2-12 hours, Routine 24-48 hours (baseline 1 met). emergency-procedures mentions escalation paths (baseline 4 partially). Does NOT teach: (1) paging system establishment for all signers including external parties, (2) quarterly testing requirement. Gaps correctly identified."
+  },
+  {
+    "controlId": "ms-6.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "secure-multisig-best-practices 'Active Monitoring' mentions 'signer/threshold changes, proposed transactions, new signatures, owner changes'. setup-and-configuration 'Active Monitoring' mentions same events. However, comprehensive list missing: transfers exceeding thresholds, nonce gaps, interactions with unknown addresses, failed transactions, module/guard changes, low submitter balances (baseline 1 incomplete). Does NOT teach: alerting/escalation documentation (baseline 2), monitoring infrastructure protection (baseline 3). Gaps correctly identified."
+  },
+  {
+    "controlId": "ms-6.1.4",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "emergency-procedures 'Emergency Drill Procedures' section teaches: 'Quarterly: Communication system tests, Bi-annually: Emergency paging tests, Annually: Full emergency simulation' (baseline 1 met - annual minimum, baseline 2 implied by drill updates). 'Drill Components' lists: notification test, response time measurement, process verification, documentation review with 'date, participants, response times, issues identified, improvements made' (baseline 3 fully met). All baselines covered."
+  },
+  {
+    "controlId": "ms-2.1.3",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "FALSE-NEGATIVE CHECK: No framework page teaches exception approval process requiring documented justification, expiry date, compensating controls, remediation plan, or executive/security-lead approval for Critical-class exceptions. Correctly marked as no coverage."
+  },
+  {
+    "controlId": "ms-4.1.2",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "FALSE-NEGATIVE CHECK: No framework page teaches transaction audit trail requirements with 3-year retention, records of proposer, approvers, verification evidence, timestamps, and issues encountered. Correctly marked as no coverage."
+  }
+]

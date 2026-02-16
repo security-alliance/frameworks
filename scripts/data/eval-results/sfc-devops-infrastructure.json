@@ -1,0 +1,325 @@
+[
+  {
+    "controlId": "di-1.1.1",
+    "controlTitle": "DevOps Security Owner",
+    "refs": [],
+    "gaps": [
+      "Accountability scope covers policy maintenance, security reviews, access control oversight, pipeline governance, and incident escalation"
+    ]
+  },
+  {
+    "controlId": "di-1.1.2",
+    "controlTitle": "DevOps Security Policy",
+    "refs": [],
+    "gaps": [
+      "Policy covers environment standards, access controls, deployment procedures, code management, and supply chain security",
+      "Accessible to all developers and infrastructure operators",
+      "Reviewed at least annually and after significant changes"
+    ]
+  },
+  {
+    "controlId": "di-1.1.3",
+    "controlTitle": "Development Environment Isolation",
+    "refs": [
+      {
+        "page": "/devsecops/integrated-development-environments",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "See QA notes: Evaluator missed coverage. IDE page states 'Ensure that potential development environments are isolated from production environments' (addresses baseline about production credential isolation). CI/CD "
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": [
+      "Development activities performed in containerized or virtualized environments",
+      "Each code repository has its own isolated environment to prevent cross-contamination",
+      "Production credentials not accessible from development environments",
+      "Separate accounts or profiles for development vs. privileged operations",
+      "Code execution sandboxed to prevent host system compromise"
+    ]
+  },
+  {
+    "controlId": "di-1.1.4",
+    "controlTitle": "Development Tools Approval",
+    "refs": [
+      {
+        "page": "/devsecops/integrated-development-environments",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "Extensions and plugins obtained only from official repositories (mentions 'trusted sources')"
+        ],
+        "baselinesMissed": [
+          "Evaluation criteria cover IDEs, extensions, plugins, AI-powered tools, and third-party services",
+          "AI tools assessed for data privacy risks",
+          "Approved tool list maintained; unapproved tools restricted",
+          "Regular reviews of installed tools"
+        ]
+      }
+    ],
+    "gaps": [
+      "Evaluation criteria cover IDEs, extensions, plugins, AI-powered tools, and third-party services",
+      "AI tools assessed for data privacy risks",
+      "Approved tool list maintained; unapproved tools restricted",
+      "Regular reviews of installed tools to identify unused or unrecognized items"
+    ]
+  },
+  {
+    "controlId": "di-2.1.1",
+    "controlTitle": "Repository Security",
+    "refs": [
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "header": "Best Practices for Secure Code Repositories",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Role-based access control with least-privilege permissions",
+          "Branch protection rules enforced on main/production branches",
+          "Signed commits required for all code changes",
+          "Multi-party code review required for merges",
+          "MFA required for all repository members"
+        ],
+        "baselinesMissed": [
+          "Repository access reviewed periodically (audit logs mentioned but not periodic access reviews)"
+        ]
+      }
+    ],
+    "gaps": [
+      "Repository access reviewed periodically"
+    ]
+  },
+  {
+    "controlId": "di-2.1.2",
+    "controlTitle": "Secret Scanning",
+    "refs": [
+      {
+        "page": "/devsecops/continuous-integration-continuous-deployment",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "CI/CD pipeline checks for leaked credentials (partial: automated scanning)",
+          "Scanning integrated into CI/CD pipeline"
+        ],
+        "baselinesMissed": [
+          "Pre-commit hooks deployed to prevent secrets from being committed",
+          "Remediation procedures for discovered secrets (immediate rotation, revocation)"
+        ]
+      }
+    ],
+    "gaps": [
+      "Pre-commit hooks deployed to prevent secrets from being committed in the first place",
+      "Remediation procedures for discovered secrets (immediate rotation, revocation)"
+    ]
+  },
+  {
+    "controlId": "di-2.1.3",
+    "controlTitle": "External Contributor Review",
+    "refs": [],
+    "gaps": [
+      "Additional approvers required for all external code contributions",
+      "Code contributions tracked; unexpected changes flagged",
+      "External collaborators restricted to minimum necessary repository permissions",
+      "CI/CD pipelines do not automatically execute for external contributor PRs without approval"
+    ]
+  },
+  {
+    "controlId": "di-2.1.4",
+    "controlTitle": "Dependency and Supply Chain Security",
+    "refs": [
+      {
+        "page": "/supply-chain/dependency-awareness",
+        "header": "Best Practices for Dependency Awareness",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Packages obtained from official repositories and trusted sources only",
+          "Dependencies scanned for known vulnerabilities before deployment",
+          "Regular dependency audits for outdated or vulnerable components"
+        ],
+        "baselinesMissed": [
+          "Package names verified against typosquatting patterns before installation",
+          "Dependency version pinning enforced to prevent automatic updates",
+          "Changelog reviewed for dependency updates to verify expected functionality"
+        ]
+      }
+    ],
+    "gaps": [
+      "Package names verified against typosquatting patterns before installation",
+      "Dependency version pinning enforced to prevent automatic updates to compromised versions",
+      "Changelog reviewed for dependency updates to verify expected functionality"
+    ]
+  },
+  {
+    "controlId": "di-3.1.1",
+    "controlTitle": "Pipeline Security Controls",
+    "refs": [
+      {
+        "page": "/devsecops/continuous-integration-continuous-deployment",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "Builds are deterministic with strict dependency sets",
+          "Strict access controls for CI/CD pipelines (partial: limits who can modify)"
+        ],
+        "baselinesMissed": [
+          "Pipeline configuration changes require multi-party approval",
+          "Separate service accounts with minimal permissions used for pipeline execution",
+          "Manual deployment by humans restricted; deployments automated through controlled pipelines",
+          "Pipeline and build configurations version-controlled and reviewed"
+        ]
+      }
+    ],
+    "gaps": [
+      "Pipeline configuration changes require multi-party approval",
+      "Separate service accounts with minimal permissions used for pipeline execution",
+      "Manual deployment by humans restricted; deployments automated through controlled pipelines",
+      "Pipeline and build configurations version-controlled and reviewed"
+    ]
+  },
+  {
+    "controlId": "di-3.1.2",
+    "controlTitle": "Secrets Management",
+    "refs": [],
+    "gaps": [
+      "Dedicated secrets management system used (not environment variables in plain text)",
+      "Secrets never stored in source code or unencrypted configuration files",
+      "Production secrets not directly accessible by humans",
+      "Pipeline secrets accessible only by service accounts",
+      "Secret rotation schedule defined; rotation triggered immediately after suspected compromise"
+    ]
+  },
+  {
+    "controlId": "di-3.1.3",
+    "controlTitle": "Security Testing Integration",
+    "refs": [
+      {
+        "page": "/devsecops/continuous-integration-continuous-deployment",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "Static analysis and dependency scanning integrated into CI/CD",
+          "PR testing must pass before merging (implies review)"
+        ],
+        "baselinesMissed": [
+          "Security scan results reviewed before deployment approval (not explicitly stated)",
+          "Testing and validation performed in staging environments before production deployment"
+        ]
+      },
+      {
+        "page": "/devsecops/security-testing",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "SAST tools integrated into CI/CD pipeline"
+        ],
+        "baselinesMissed": [
+          "Dependency vulnerability scanning automated in CI/CD (DAST mentioned, not dependency scanning)",
+          "Security scan results reviewed before deployment approval",
+          "Testing and validation performed in staging environments before production"
+        ]
+      }
+    ],
+    "gaps": [
+      "Security scan results reviewed before deployment approval",
+      "Testing and validation performed in staging environments before production deployment"
+    ]
+  },
+  {
+    "controlId": "di-4.1.1",
+    "controlTitle": "Infrastructure as Code",
+    "refs": [
+      {
+        "page": "/security-automation/infrastructure-as-code",
+        "header": null,
+        "coverage": "partial",
+        "baselinesMet": [
+          "All infrastructure defined and managed through code",
+          "IaC security scanning performed before deployment"
+        ],
+        "baselinesMissed": [
+          "Infrastructure changes deployed through automated pipelines, no manual steps required",
+          "Infrastructure changes require multi-party approval"
+        ]
+      }
+    ],
+    "gaps": [
+      "Infrastructure changes deployed through automated pipelines, no manual steps required",
+      "Infrastructure changes require multi-party approval"
+    ]
+  },
+  {
+    "controlId": "di-4.1.2",
+    "controlTitle": "Infrastructure Access Controls",
+    "refs": [
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "header": "Best Practices for Secure Code Repositories",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Individual accounts with MFA required (for repositories)",
+          "Role-based access control (minimum necessary permissions)",
+          "All access activities logged and monitored (audit logs)"
+        ],
+        "baselinesMissed": [
+          "Privileged access is time-limited and requires multi-party approval (JIT access)",
+          "Break-glass accounts established for emergency access",
+          "Break-glass usage triggers immediate alerts and requires post-incident review"
+        ]
+      }
+    ],
+    "gaps": [
+      "Privileged access is time-limited and requires multi-party approval (JIT access)",
+      "Break-glass accounts established for emergency access with individual accountability",
+      "Break-glass usage triggers immediate alerts to entire team and requires post-incident review"
+    ]
+  },
+  {
+    "controlId": "di-4.1.3",
+    "controlTitle": "Backup and Disaster Recovery",
+    "refs": [
+      {
+        "page": "/secure-software-development/secure-code-repositories-version-control",
+        "header": "Secure Version Control Practices",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Regular backups of code repository",
+          "Backups stored independently (secure, offsite location)"
+        ],
+        "baselinesMissed": [
+          "Critical systems have automated backup procedures",
+          "Disaster recovery plan documented with RTO and RPO defined",
+          "Backup and recovery procedures tested regularly"
+        ]
+      }
+    ],
+    "gaps": [
+      "Critical systems have automated backup procedures (beyond just code repos)",
+      "Disaster recovery plan documented with recovery time and recovery point objectives defined",
+      "Backup and recovery procedures tested regularly"
+    ]
+  },
+  {
+    "controlId": "di-4.1.4",
+    "controlTitle": "Cloud Security Monitoring",
+    "refs": [
+      {
+        "page": "/infrastructure/cloud",
+        "header": "Cloud Infrastructure",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Cloud security configurations monitored (comprehensive logging, monitoring, threat detection)",
+          "Administrative actions trigger alerts (real-time incident response)",
+          "Comprehensive logging enabled (AWS CloudTrail, Azure Monitor, Google Cloud Logging)"
+        ],
+        "baselinesMissed": [
+          "Cloud provider security notifications subscribed to and promptly reviewed",
+          "Multi-cloud strategies considered to reduce single-provider dependency"
+        ]
+      }
+    ],
+    "gaps": [
+      "Cloud provider security notifications subscribed to and promptly reviewed",
+      "Multi-cloud strategies considered to reduce single-provider dependency"
+    ]
+  }
+]

@@ -1,0 +1,149 @@
+[
+  {
+    "controlId": "tro-1.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Registration Template covers baselines 1 (registry fields) and 3 (accessibility), but baseline 2 (update SLAs: 24h for security-critical, 3d for routine) is not addressed. Cannot claim 'full' coverage when a baseline is missed. Should be 'partial'."
+  },
+  {
+    "controlId": "tro-1.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "MPC for Large Holdings section documents custody models (baseline 1) but lacks explicit discussion of technology trade-offs understood by team (baseline 2) or review triggers when treasury size/needs change (baseline 3). Partial coverage is accurate."
+  },
+  {
+    "controlId": "tro-1.1.4",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Access Change Template correctly covers baselines 2 (documented approval) and 3 (logging with justification/approver). Missing baselines 1 (scope of wallet setups/configurations/protocol integrations), 4 (SLA for registry updates), and 5 (rollback procedures). Partial is correct."
+  },
+  {
+    "controlId": "tro-2.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "Classification page comprehensively covers all 5 baselines: financial/operational/regulatory considerations (1), impact levels with percentage thresholds (2), operational types by frequency/urgency (3), control mapping matrix (4), and review triggers for significant changes (5). Full coverage confirmed."
+  },
+  {
+    "controlId": "tro-3.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Enhanced-controls page covers baselines 1-5 (transaction policies, hardware MFA, session controls, network restrictions, separation of duties) but baseline 6 (quarterly review of configurations) is not mentioned in this section. Cannot be 'full' with a missing baseline. Registration-documents template IS full coverage (all 6 baselines met via Security Config + Quarterly Review templates)."
+  },
+  {
+    "controlId": "tro-3.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Enhanced-controls partially covers storage (2) and isolation (3). Seed-phrase-management addresses secure storage (2) but focuses on seeds, not general credentials. Missing across both pages: comprehensive credential type coverage (1), rotation schedules (4), and access logging/monitoring (5). Partial is accurate."
+  },
+  {
+    "controlId": "tro-3.1.3",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "Quarterly Review Template clearly addresses all 3 baselines: quarterly cadence for High/Critical accounts (1), verification that users still require access (2), and actions for access removal when roles change (3). Full coverage confirmed."
+  },
+  {
+    "controlId": "tro-3.1.4",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Enhanced-controls Device Security covers baselines 1 (device requirements), 4 (VPN mandatory), 6 (mobile endpoint monitoring) but misses 2 (signing device storage), 3 (backup materials geographic distribution), 5 (travel procedures). Personal-security-opsec covers 1, 2, 5 well but doesn't explicitly address 6 (mobile endpoint monitoring). No single page has full coverage. Seed-phrase-management covers baseline 3. Combined partial coverage across pages."
+  },
+  {
+    "controlId": "tro-4.1.1",
+    "originalCoverage": "full",
+    "qaCoverage": "partial",
+    "verdict": "downgraded",
+    "notes": "Transaction-verification page excellently covers baselines 1-5, 7-8 (pre-execution verification, test transactions, multi-source address verification, multi-party confirmation, receiving procedures, video verification with liveness, read-aloud confirmation). However, baseline 6 (specific OTC transaction procedures) is not addressed. Should be partial, not full."
+  },
+  {
+    "controlId": "tro-4.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Implementation-checklist covers knowledge areas (transaction verification, address validation, social engineering, emergency procedures - baseline 1) and competence demonstration via test transactions (baseline 2). Refresher schedule mentions annual review but not explicit '30-day update after significant changes' (baseline 3 partially met). Baseline 4 (custody-platform-specific workflows/policy engine rules) not explicitly addressed. Partial is accurate."
+  },
+  {
+    "controlId": "tro-4.1.3",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Emergency-procedures Communication Account Compromise section covers identity verification during operations (3), anti-social-engineering protocols (4), and channel compromise procedures (5). Missing: dedicated primary/backup channels on different platforms (1), E2E encryption/MFA requirements (2), and training/testing requirements (6). Partial coverage is correct."
+  },
+  {
+    "controlId": "tro-5.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Transaction-verification page addresses baseline 1 (smart contract address verification for ERC-20 tokens, mentions token approvals in DeFi context). Baselines 2-4 (emergency exit procedures, alternative access methods for positions, unbonding timelines) are not covered. Partial is accurate."
+  },
+  {
+    "controlId": "tro-6.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Enhanced-controls Security Monitoring section covers transaction monitoring (1), account state monitoring (2), alerting with severity levels (7), and critical alert response (8). Missing: external threat intelligence (3), vendor/platform monitoring (4), compliance monitoring (5), protocol/position monitoring (6), and monitoring system integrity protection (9). Partial coverage accurate."
+  },
+  {
+    "controlId": "tro-6.1.2",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "upgraded",
+    "notes": "Emergency-procedures page covers severity levels (1), containment procedures (2), key scenarios including custody/transaction/key/vendor compromise (3), emergency contacts (4), AND includes Emergency Drill Procedures section with quarterly/annual drill schedule (6) and drill documentation requirements (7). Evaluator missed baselines 6-7. Only baseline 5 (stakeholder communication plan) is not fully addressed. Should recognize more coverage than originally claimed."
+  },
+  {
+    "controlId": "tro-7.1.2",
+    "originalCoverage": "full",
+    "qaCoverage": "full",
+    "verdict": "confirmed",
+    "notes": "Backup-signing-and-infrastructure page comprehensively covers all 4 baselines: UI alternatives documented (Eternal Safe, Squads, mobile) with setup instructions (1), RPC backup options section (2), entire page focused on operating with backup systems (3), and testing requirements including monthly practice and annual simulation (4). Full coverage confirmed."
+  },
+  {
+    "controlId": "tro-8.1.1",
+    "originalCoverage": "partial",
+    "qaCoverage": "partial",
+    "verdict": "confirmed",
+    "notes": "Registration-documents templates provide some transaction tracking structure (Quarterly Review has transaction volume section), but comprehensive recordkeeping with categorization/documentation/authorization chain (1), reconciliation procedures (2), frequency scaling by classification (3), discrepancy resolution (4), and reporting procedures (5) are not adequately covered. Partial is accurate though even baseline 1 is only weakly met."
+  },
+  {
+    "controlId": "tro-1.1.1",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "No framework page addresses Treasury Operations Owner designation with accountability scope covering policy upkeep, security reviews, operational hygiene, access control oversight, and incident escalation. Correctly marked as no coverage."
+  },
+  {
+    "controlId": "tro-2.1.2",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Classification page discusses account-level controls and transaction limits, but does not address portfolio-level fund allocation limits (max per wallet/provider/chain) or rebalancing triggers. Enhanced-controls discusses transaction limits, not allocation limits. Correctly marked as no coverage."
+  },
+  {
+    "controlId": "tro-5.1.1",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Transaction-verification mentions verifying contract addresses, but does not cover protocol evaluation due diligence (audit status, team reputation, TVL history, insurance) or exposure limits per protocol/chain/category. Correctly marked as no coverage."
+  },
+  {
+    "controlId": "tro-7.1.1",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "Pages discuss custody platforms and security features, but do not address vendor security management processes: initial due diligence (SOC 2, ISO 27001, audit history, insurance), ongoing monitoring (SOC reports, incident notifications, availability tracking), or contractual security requirement verification. Correctly marked as no coverage."
+  },
+  {
+    "controlId": "tro-8.1.2",
+    "originalCoverage": "none",
+    "qaCoverage": "none",
+    "verdict": "confirmed",
+    "notes": "No framework page addresses insurance coverage for treasury assets (scope documentation, coverage amounts relative to assets, custody provider insurance evaluation). Correctly marked as no coverage."
+  }
+]

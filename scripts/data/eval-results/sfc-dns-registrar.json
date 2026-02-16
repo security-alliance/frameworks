@@ -1,0 +1,281 @@
+[
+  {
+    "controlId": "dns-1.1.1",
+    "controlTitle": "Domain Security Owner",
+    "refs": [],
+    "gaps": [
+      "Accountability scope covers policy maintenance, security reviews, renewal management, access control oversight, and incident escalation"
+    ]
+  },
+  {
+    "controlId": "dns-1.1.2",
+    "controlTitle": "Domain Inventory and Documentation",
+    "refs": [],
+    "gaps": [
+      "Registry includes domain name, ownership, purpose, expiration date, registrar, DNS record configurations, security settings (DNSSEC, CAA), and registrar account configurations",
+      "Accessible to relevant team members"
+    ]
+  },
+  {
+    "controlId": "dns-2.1.1",
+    "controlTitle": "Domain Classification and Compliance",
+    "refs": [],
+    "gaps": [
+      "Classification considers criticality, financial exposure, and operational impact",
+      "Domains where users may transact funds or that are external-facing classified at the highest tier",
+      "Each classification maps to specific security requirements (DNSSEC, locks, monitoring frequency, access controls)",
+      "Compliance verified at least annually through configuration review against documented standards"
+    ]
+  },
+  {
+    "controlId": "dns-2.1.2",
+    "controlTitle": "Enterprise Registrar Security Requirements",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "header": "Choosing a Secure Registrar",
+        "coverage": "full",
+        "baselinesMet": [
+          "Registrar supports registry locks (server-level EPP locks)",
+          "Registrar supports hardware security key MFA (FIDO2/WebAuthn)",
+          "Registrar has no history of social engineering vulnerabilities",
+          "Due diligence includes checking ICANN compliance notices"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "dns-3.1.1",
+    "controlTitle": "Registrar Access Control",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "header": "Access Control Best Practices",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Hardware security key MFA (FIDO2/WebAuthn) required for all accounts",
+          "Access reviews conducted at least annually (mentions quarterly)"
+        ],
+        "baselinesMissed": [
+          "Documented who is authorized, how access is granted/revoked, and role-based permissions (mentions but doesn't teach HOW to document)",
+          "Access revoked promptly when no longer needed (not actionably addressed)"
+        ]
+      }
+    ],
+    "gaps": [
+      "Documented procedures for who is authorized, how access is granted/revoked, and role-based permissions implementation",
+      "Prompt access revocation procedures when no longer needed"
+    ]
+  },
+  {
+    "controlId": "dns-3.1.2",
+    "controlTitle": "Dedicated Domain Security Contact Email",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "header": "Dedicated Security Contact Email",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Hosted on a different domain than any domain it's responsible for",
+          "Not a personal email address",
+          "Used exclusively for domain security purposes"
+        ],
+        "baselinesMissed": [
+          "Alias that notifies multiple people (not explicitly stated)"
+        ]
+      }
+    ],
+    "gaps": [
+      "Alias that notifies multiple people"
+    ]
+  },
+  {
+    "controlId": "dns-3.1.3",
+    "controlTitle": "Change Management for Domain Operations",
+    "refs": [],
+    "gaps": [
+      "Covers transfers, deletions, nameserver changes, and DNS record modifications",
+      "Relevant team members notified before critical changes",
+      "All changes logged",
+      "Critical changes verified through out-of-band confirmation with the registrar"
+    ]
+  },
+  {
+    "controlId": "dns-4.1.1",
+    "controlTitle": "DNS Security Standards",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "header": "DNSSEC Implementation",
+        "coverage": "partial",
+        "baselinesMet": [
+          "DNSSEC enabled and validated on all critical domains",
+          "CAA records configured to restrict certificate issuance"
+        ],
+        "baselinesMissed": [
+          "TTL policies documented with rationale",
+          "Standards applied consistently based on domain classification"
+        ]
+      }
+    ],
+    "gaps": [
+      "TTL policies documented with rationale",
+      "Standards applied consistently based on domain classification"
+    ]
+  },
+  {
+    "controlId": "dns-4.1.2",
+    "controlTitle": "Email Authentication Standards",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+        "header": "Email Security Configuration",
+        "coverage": "partial",
+        "baselinesMet": [
+          "SPF, DKIM, and DMARC configured for all domains that send email",
+          "DMARC policy set to reject for domains actively sending email",
+          "DMARC aggregate reports (rua) monitored and reviewed",
+          "MTA-STS configured where supported",
+          "Domains that don't send email have SPF/DMARC records that reject all"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "dns-4.1.3",
+    "controlTitle": "Domain Lock Implementation",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "header": "Registry Lock (EPP Lock)",
+        "coverage": "full",
+        "baselinesMet": [
+          "Registry locks (server-level EPP locks) enabled for critical domains",
+          "Transfer locks enabled on all domains",
+          "Lock status verified periodically (mentions EPP status codes)"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "dns-4.1.4",
+    "controlTitle": "TLS Certificate Lifecycle Management",
+    "refs": [],
+    "gaps": [
+      "Covers issuance, renewal, and revocation procedures",
+      "Certificates tracked with expiration alerts",
+      "Automated renewal where possible",
+      "Revocation procedures documented for compromised certificates"
+    ]
+  },
+  {
+    "controlId": "dns-5.1.1",
+    "controlTitle": "Domain and DNS Monitoring",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "header": "DNS Record Monitoring",
+        "coverage": "partial",
+        "baselinesMet": [
+          "DNS record monitoring covers NS, A/AAAA, MX, TXT/SPF/DMARC, CAA, DNSSEC, TTL changes",
+          "Registration monitoring covers lock status, registrar settings, nameserver delegation",
+          "Critical alerts trigger immediate investigation",
+          "Monitoring infrastructure not dependent on domains being monitored"
+        ],
+        "baselinesMissed": [
+          "Alerting and escalation paths documented (mentioned but not detailed HOW to document)"
+        ]
+      }
+    ],
+    "gaps": [
+      "Detailed guidance on documenting alerting and escalation paths"
+    ]
+  },
+  {
+    "controlId": "dns-5.1.2",
+    "controlTitle": "Certificate Transparency Monitoring",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "header": "Certificate Transparency Monitoring",
+        "coverage": "full",
+        "baselinesMet": [
+          "Subscribed to a CT monitoring service that alerts on new certificate issuance",
+          "Alerts reviewed and unauthorized certificates investigated promptly",
+          "Wildcard certificates flagged if not expected"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "dns-5.1.3",
+    "controlTitle": "Domain Expiration Prevention",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+        "header": "Domain Expiration Protection",
+        "coverage": "full",
+        "baselinesMet": [
+          "Auto-renewal enabled on all domains",
+          "Calendar reminders at 90, 60, 30, and 7 days before expiration",
+          "Payment methods verified current",
+          "Backup person designated for renewal responsibility"
+        ],
+        "baselinesMissed": []
+      }
+    ],
+    "gaps": []
+  },
+  {
+    "controlId": "dns-6.1.1",
+    "controlTitle": "Alerting and Emergency Contacts",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "header": "Setting Up Alerts",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Alerting system in place to notify stakeholders when potential compromise detected",
+          "Communication plan for warning users (status page, social media)"
+        ],
+        "baselinesMissed": [
+          "Emergency contacts pre-documented (registrar security, SEAL 911, legal) - partially in overview but not comprehensive"
+        ]
+      }
+    ],
+    "gaps": [
+      "Comprehensive emergency contact documentation including registrar security team, SEAL 911, and legal counsel"
+    ]
+  },
+  {
+    "controlId": "dns-6.1.2",
+    "controlTitle": "Domain Incident Response Plan",
+    "refs": [
+      {
+        "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+        "header": "Incident Response Plan",
+        "coverage": "partial",
+        "baselinesMet": [
+          "Covers registrar account compromise, DNS hijacking, unauthorized transfers",
+          "Emergency registry lock activation procedures",
+          "Procedures for regaining control of compromised domains",
+          "Post-recovery validation (DNS records verified, credentials reset, logs reviewed)"
+        ],
+        "baselinesMissed": [
+          "Plan tested at least annually"
+        ]
+      }
+    ],
+    "gaps": [
+      "Plan tested at least annually (can be combined with broader IR drills)"
+    ]
+  }
+]
