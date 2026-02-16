@@ -1,0 +1,226 @@
+---
+title: "Data Security & Contract Upgrade Checklist | Security Alliance"
+description: "Comprehensive checklist covering data security best practices and smart contract upgrade governance for Web3 projects. Includes backup strategies, encryption, third-party integration security, and upgrade testing procedures."
+tags:
+  - Engineer/Developer
+  - Operations & Strategy
+  - Smart Contracts
+contributors:
+  - role: wrote
+    users: [quillaudits]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Data Security & Contract Upgrade Checklist
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+This checklist is adapted from a contribution by [QuillAudits](https://www.quillaudits.com), covering essential data security and contract upgrade practices for Web3 projects. Use this guide to ensure your project maintains robust operational security while safely managing smart contract upgrades.
+
+## 1. Data Backup & Disaster Recovery
+
+Protecting critical data through automated, encrypted backups and tested recovery procedures is essential for business continuity in Web3 operations.
+
+- **Automated backups for critical databases, configurations, and off-chain state**
+
+  Configure automated backup schedules for all mission-critical systems including databases (PostgreSQL, MongoDB, etc.), application configurations, environment variables, and off-chain state data (indexer databases, cache layers, API states). In Web3 contexts, this includes subgraph databases, oracle data feeds, and transaction indexer states. Use tools like AWS Backup, Google Cloud Backup, or open-source solutions like Restic or BorgBackup. Schedule daily incremental backups and weekly full backups at minimum.
+
+- **Encrypted backups at rest and in transit**
+
+  All backup data must be encrypted both when stored (at rest) and during transmission (in transit). Use AES-256 encryption for stored backups and TLS 1.3 for transmission. This prevents unauthorized access even if backup storage is compromised. Cloud providers like AWS S3 offer server-side encryption (SSE-S3, SSE-KMS), while self-hosted solutions should use encrypted volumes (LUKS, dm-crypt) or application-level encryption.
+
+- **Geographically separate storage locations**
+
+  Store backup copies in multiple geographic regions to protect against regional disasters, data center failures, or jurisdictional issues. For example, maintain primary backups in US-East and secondary copies in EU-West. This is critical for Web3 projects operating globally. Use different cloud providers or regions (AWS + Google Cloud, or AWS us-east-1 + aws eu-west-1) to avoid single points of failure.
+
+- **Retention and versioning policies**
+
+  Implement clear retention schedules that balance compliance requirements, operational needs, and storage costs. A typical policy: keep daily backups for 30 days, weekly backups for 3 months, monthly backups for 1 year. Enable versioning to protect against ransomware or accidental deletion. For blockchain projects, consider longer retention for deployment artifacts, contract ABIs, and transaction history that may be needed for audits or investigations.
+
+- **Regular restoration testing (quarterly minimum)**
+
+  Backups are only valuable if they can be restored. Conduct full restoration tests at least quarterly to verify backup integrity and team familiarity with recovery procedures. Document restoration time objectives (RTO) and recovery point objectives (RPO). Practice restoring to a test environment, validate data integrity, and measure how long recovery takes. This identifies backup corruption, configuration drift, or gaps in documentation before a real disaster occurs.
+
+- **Role-Based Access Control (RBAC) for backup access**
+
+  Limit backup access to only those who need it using RBAC principles. Separate read-only access (for restoration testing) from write/delete permissions (for backup management). In cloud environments, use IAM policies to restrict S3 bucket access, database backup permissions, and KMS key usage. Require multi-factor authentication for any backup modification or deletion operations. Log all backup access for audit trails.
+
+- **Auditable backup logs and monitoring**
+
+  Enable comprehensive logging for all backup operations: creation, access, restoration, deletion, and failures. Send logs to a centralized SIEM (Security Information and Event Management) system or logging platform like Splunk, DataDog, or ELK stack. Set up alerts for backup failures, unauthorized access attempts, or unusual deletion activities. For compliance, retain backup logs for at least 1 year and ensure they're tamper-proof (write-once storage or blockchain-based audit logs).
+
+## 2. Secure Storage & Encryption
+
+Proper classification and encryption of sensitive data protects user privacy, prevents credential theft, and ensures regulatory compliance.
+
+- **Sensitive data classification (PII, credentials, secrets, API keys)**
+
+  Conduct a data inventory and classify all data by sensitivity: Public (marketing materials), Internal (business data), Confidential (user PII, financial records), and Restricted (credentials, private keys, secrets). In Web3 projects, Restricted data includes wallet private keys, API keys for infrastructure providers (Infura, Alchemy), database credentials, session tokens, and OAuth secrets. Document what data you store, where it's stored, who has access, and its classification level. This drives encryption decisions and access controls.
+
+- **Encryption at rest using AES-256 or equivalent**
+
+  Encrypt all sensitive data at rest using industry-standard AES-256 encryption. For databases, enable Transparent Data Encryption (TDE) in PostgreSQL, MySQL, or MongoDB. For file storage, use encrypted volumes (AWS EBS encryption, Google Cloud persistent disk encryption) or application-level encryption. Web3 projects must encrypt wallet keystores, seed phrases (if temporarily stored during key ceremonies), and smart contract deployment private keys. Never store sensitive data in plaintext.
+
+- **Key Management Systems (KMS) or Hardware Security Modules (HSM)**
+
+  Use dedicated KMS or HSM solutions to generate, store, and manage encryption keys securely. Cloud providers offer managed KMS (AWS KMS, Google Cloud KMS, Azure Key Vault) that provide FIPS 140-2 Level 2/3 validation. For higher security requirements or regulatory compliance, use HSMs (FIPS 140-2 Level 3/4). In Web3, KMS is critical for securing deployment keys, multisig signer keys, and oracle operator keys. Never hardcode encryption keys in code or configuration files.
+
+- **Regular key rotation schedules**
+
+  Rotate encryption keys on a regular schedule to limit the impact of potential key compromise. Industry best practice is quarterly rotation for high-value keys, annually for standard encryption keys. Implement automated key rotation where possible (AWS KMS supports automatic rotation). For Web3 projects, rotate API keys for infrastructure providers every 90 days, database credentials every 180 days, and deployment keys after major releases. Document rotation procedures and maintain key version history.
+
+- **Enforce TLS 1.2+ for all communications**
+
+  Mandate TLS 1.2 or higher (preferably TLS 1.3) for all network communications. Disable older protocols (SSL, TLS 1.0/1.1) that have known vulnerabilities. Configure web servers (Nginx, Apache), load balancers, and APIs to require strong cipher suites (AES-GCM, ChaCha20-Poly1305). In Web3, this applies to RPC endpoints, API servers, admin dashboards, and indexer queries. Use tools like SSL Labs to verify TLS configuration quality and scan for weaknesses.
+
+- **No hardcoded secrets in code or configuration files**
+
+  Never commit secrets, API keys, private keys, passwords, or credentials to version control systems. Use environment variables, secret management systems (HashiCorp Vault, AWS Secrets Manager, Doppler), or encrypted configuration files. Scan repositories with tools like git-secrets, TruffleHog, or GitHub's secret scanning to detect accidentally committed credentials. For Web3 projects, use hardware wallets or MPC systems for deployment keys rather than filesystem-stored private keys. Implement pre-commit hooks to prevent secret commits.
+
+## 3. Third-Party Integrations
+
+Web3 projects rely heavily on external services—from RPC providers to cloud infrastructure. Properly vetting and securing these integrations prevents supply chain attacks and data breaches.
+
+- **Maintain comprehensive inventory of all services and integrations**
+
+  Document every third-party service your project uses: infrastructure (AWS, Google Cloud, Vercel), blockchain services (Infura, Alchemy, QuickNode), analytics (Mixpanel, Amplitude), monitoring (DataDog, Sentry), communication (Slack, Discord bots), and development tools (GitHub, CircleCI). Include: service name, purpose, data access level, authentication method, contract/pricing tier, and responsible team member. Update this inventory monthly and review quarterly. This visibility is essential for incident response and security assessments.
+
+- **Security posture review and compliance verification (SOC 2, ISO 27001)**
+
+  Before integrating a service, verify its security credentials. Require at minimum SOC 2 Type II attestation for critical services handling sensitive data. For highly regulated environments, require ISO 27001, PCI DSS, or HIPAA compliance as applicable. Review audit reports, penetration test summaries, and security whitepapers. For blockchain infrastructure providers, verify their node security practices, key management procedures, and incident response capabilities. Re-evaluate annually or after major security incidents.
+
+- **Principle of least privilege access**
+
+  Grant third-party integrations only the minimum permissions required for their function. For cloud services, use IAM roles with scoped permissions rather than root/admin access. For APIs, use role-based access with limited scopes (read-only where possible). Example: a monitoring service needs read-only metrics access, not write access to databases. For blockchain services, separate RPC endpoints for read operations (public) from write operations (deployment, requiring authentication). Regularly audit and reduce over-privileged integrations.
+
+- **Regular credential rotation for third-party services**
+
+  Rotate API keys, OAuth tokens, and access credentials for all third-party integrations on a regular schedule. Critical services (infrastructure, payment, auth providers) should rotate quarterly. Lower-risk services can rotate annually. Use secret management tools to automate rotation where possible. When team members leave or change roles, immediately rotate any credentials they had access to. For Web3 projects, rotate RPC provider API keys, infrastructure provider access keys, and deployment system credentials regularly.
+
+- **Dependency vulnerability monitoring and patching**
+
+  Continuously monitor all third-party dependencies (npm packages, Python libraries, Docker images) for known vulnerabilities. Use automated tools like Dependabot, Snyk, or npm audit in CI/CD pipelines. For Web3 projects, pay special attention to Web3 libraries (ethers.js, web3.js, viem), cryptographic libraries, and smart contract dependencies (OpenZeppelin Contracts). Establish SLAs for patching: critical vulnerabilities within 24 hours, high within 7 days, medium within 30 days. Test patches in staging before production deployment.
+
+- **Data protection clauses in vendor agreements**
+
+  Ensure all vendor contracts include strong data protection language. Key clauses: data ownership (you own your data), breach notification (vendor must notify within 24-48 hours), data deletion (vendor must delete data upon contract termination), subprocessor restrictions (vendor must disclose and get approval for subcontractors), audit rights (you can audit vendor's security practices), and liability for breaches. For GDPR/CCPA compliance, require Data Processing Agreements (DPAs). Review contracts annually and before renewals.
+
+## 4. Upgrade Governance & Documentation
+
+Smart contract upgrades are high-risk operations that require rigorous governance, testing, and security controls. Poor upgrade practices have led to major exploits including the Wormhole bridge hack ($325M) and Nomad bridge exploit ($190M).
+
+### Pre-Upgrade Planning & Documentation
+
+- **Comprehensive upgrade architecture documentation**
+
+  Document your upgrade mechanism thoroughly: proxy pattern type (UUPS, Transparent Proxy, Diamond/EIP-2535, Beacon Proxy), upgrade authorization model (multisig, timelock, governance), admin key custody, and emergency pause capabilities. Include diagrams showing contract interaction flows before and after upgrades. For UUPS (Universal Upgradeable Proxy Standard), document the `upgradeTo()` function and authorization checks. For Transparent Proxies, document ProxyAdmin ownership. For Diamond patterns, document facet management. Use tools like Slither's `upgradeability` printer to analyze patterns.
+
+- **Clear roles and responsibilities for upgrade execution**
+
+  Define who can propose, review, approve, and execute upgrades. Typical roles: Developer (writes upgrade code), Auditor (security review), Multisig Signers (approval), DevOps (deployment execution), Community (governance vote if applicable). Document each role's responsibilities, required skills, and contact information. For DAO-governed protocols, specify governance proposal requirements, voting thresholds, and timelock durations. Include on-call rotations for emergency upgrades. This prevents confusion during time-critical situations.
+
+- **Formal change management process**
+
+  Establish a structured process for all upgrades: 1) Proposal submission with technical specification and rationale, 2) Security review by internal team, 3) External audit if material changes, 4) Testnet deployment and validation, 5) Governance approval (if applicable), 6) Mainnet deployment during maintenance window, 7) Post-deployment verification, 8) Public disclosure. Use issue tracking (GitHub, Linear) to manage upgrade proposals. Require approval from security team, technical lead, and product owner before proceeding. Document decision rationale for audit trails.
+
+- **Emergency pause and rollback procedures**
+
+  Implement circuit breakers that allow rapid response to exploits: `pause()` functions (using OpenZeppelin's Pausable pattern) to halt operations, and clear rollback procedures. Document trigger conditions for emergency pause (e.g., suspicious transactions, exploit detection, oracle manipulation). Define who can activate pause (multisig threshold, emergency admin), how quickly they can act (timelock delays), and rollback options (proxy reversion, emergency upgrade to safe version). Test pause mechanisms on testnet and mainnet clones. Include contact trees for rapid multisig coordination during incidents.
+
+### Access Control & Storage Safety
+
+- **Strict access controls on upgrade functions**
+
+  Secure upgrade functions with multi-layer authorization. Use OpenZeppelin's `AccessControl` or `Ownable` patterns with multisig ownership (Safe, Gnosis). Require minimum 3-of-5 or 4-of-7 multisig thresholds for production upgrades. For UUPS, protect `upgradeTo()` with `onlyOwner` or `onlyRole(UPGRADER_ROLE)`. Add timelock delays (24-72 hours) to provide community review windows and enable emergency response. Never use single EOA (Externally Owned Account) admin keys for production contracts. Consider on-chain governance with Compound Governor or OpenZeppelin Governor for decentralized protocols.
+
+- **Storage layout compatibility verification**
+
+  Storage collisions are a common source of upgrade bugs. When upgrading, you must maintain storage layout compatibility: never change the order of existing state variables, never change types of existing variables, never insert new variables in the middle (only append at the end), and gap slots properly. Use OpenZeppelin's `@openzeppelin/hardhat-upgrades` or `@openzeppelin/truffle-upgrades` plugins that automatically validate storage layout compatibility. Manually review storage with Slither's `upgradeability` checks. Test storage integrity by reading state before and after upgrade on testnet.
+
+- **Initializer protection against re-initialization**
+
+  Upgradeable contracts use `initialize()` functions instead of constructors. Protect these with OpenZeppelin's `initializer` modifier to prevent re-initialization attacks that could reset admin controls or drain funds. For UUPS contracts, ensure implementation contracts are initialized in the constructor (`_disableInitializers()` pattern) to prevent direct implementation usage. Verify that proxy initialization cannot be front-run during deployment. Check that new upgrade logic doesn't introduce new initializers that could be exploited.
+
+### Testing & Validation
+
+- **Comprehensive testnet deployment (Sepolia, Goerli, Mumbai)**
+
+  Deploy all upgrades to public testnets matching your production chain (Ethereum → Sepolia/Goerli, Polygon → Mumbai/Amoy, Arbitrum → Arbitrum Goerli, Optimism → Optimism Goerli). Use testnet configurations identical to mainnet (same multisig threshold, same timelock delays, same governance parameters). Execute the complete upgrade flow including multisig signing, timelock queuing, and execution. This catches deployment script errors, gas estimation issues, and interaction bugs before mainnet deployment. Document testnet deployment addresses and transaction hashes.
+
+- **State integrity verification pre and post-upgrade**
+
+  Before and after upgrade, verify that critical state is preserved correctly. Write scripts to snapshot state before upgrade (token balances, user permissions, protocol parameters, accumulated rewards, LP positions) and verify it matches after upgrade. Use Hardhat's `mainnet-forking` to test upgrades against production state locally. Check that storage variables maintain their values, mappings are intact, and state doesn't unexpectedly reset. For DeFi protocols, verify total value locked (TVL) is unchanged, user balances match, and reward calculations continue correctly.
+
+- **Comprehensive regression testing suite**
+
+  Run full test suite against upgraded contracts: unit tests for new functionality, integration tests for contract interactions, end-to-end tests for user workflows, and backwards compatibility tests. Verify that all existing functionality still works (no regressions). Test edge cases and error conditions. For DeFi: test deposits, withdrawals, swaps, liquidations, governance votes, reward claiming. Use coverage tools (hardhat-coverage, solidity-coverage) to ensure >90% code coverage. Include tests for upgradability-specific risks (storage collisions, initializer vulnerabilities, proxy delegation).
+
+- **Gas consumption and performance evaluation**
+
+  Compare gas costs before and after upgrade for common operations. Increases of >10-20% warrant investigation and may indicate inefficient code or unintended state bloat. Use Hardhat's gas reporter or Foundry's `forge snapshot` to track gas metrics over time. For high-throughput protocols, benchmark transaction throughput and latency. Optimize critical paths (token transfers, swaps, mints) to minimize user costs. Consider Layer 2 implications if gas costs become prohibitive.
+
+- **Failure scenario and rollback simulation**
+
+  Test disaster scenarios on testnet: what if the upgrade transaction fails mid-execution? What if the new implementation has a critical bug? Practice rolling back to the previous implementation version. For timelock-based systems, practice expedited upgrades through emergency multisig. Test `pause()` functionality and verify it halts operations correctly. Simulate oracle failures, reentrancy attacks, and access control bypasses in the new code. Document lessons learned and update procedures accordingly.
+
+### Security Audits & Code Review
+
+- **Independent audit of upgrade contracts and logic**
+
+  For material upgrades (new features, changes to value transfer logic, access control modifications), obtain independent security audits from reputable firms (Trail of Bits, OpenZeppelin, ConsenSys Diligence, Certora, Spearbit). Share complete codebase including proxy contracts, implementation contracts, deployment scripts, and test suites. Provide clear upgrade specification and threat model. Budget 2-4 weeks for audit depending on complexity. Address all findings (Critical/High immediately, Medium/Low with documented risk acceptance). Publish audit reports publicly for transparency.
+
+- **Thorough review of upgrade and migration scripts**
+
+  Deployment scripts are often overlooked but are critical attack vectors. Review all Hardhat/Truffle scripts, multisig transaction builders, and initialization code. Verify addresses (no hardcoded addresses that could be typos), verify constructor arguments, check that proxy initialization is correct, and ensure multisig configurations match production. Test scripts on local network and testnet before mainnet. Use script version control and require code review. For complex migrations (data transfers, token migrations), write formal specifications and verify script correctness with testing frameworks like Foundry or Hardhat.
+
+### Execution & Monitoring
+
+- **Multi-signature execution with sufficient threshold**
+
+  Execute mainnet upgrades through battle-tested multisig wallets (Gnosis Safe, multisig.limo). Use production-grade thresholds: minimum 3-of-5 for medium security, 4-of-7 or higher for high security (treasury, protocol ownership). Diversify signers geographically and organizationally (internal team, advisors, investors, community members). Use hardware wallets (Ledger, Trezor) for signer keys, never hot wallets. Practice simulation signing on testnet before mainnet. Document the signing process, verify transaction details with tools like Tenderly or Safe Transaction Builder, and coordinate timing for time-sensitive upgrades.
+
+- **Time-lock delays for community review**
+
+  Implement on-chain timelocks (24-72 hours typical) between upgrade approval and execution. This provides transparency, allows community review of upgrade code and transaction parameters, enables emergency response if issues are discovered, and reduces trust in multisig signers. Use battle-tested implementations like OpenZeppelin's TimelockController or Compound's Timelock. For governance-driven protocols, timelocks are essential for decentralization. Publish upgrade intentions publicly (Twitter, Discord, governance forum) during timelock period with links to code changes and audit reports.
+
+- **Scheduled maintenance windows and user communication**
+
+  Announce upgrades in advance through all communication channels: website banner, Twitter, Discord, Telegram, governance forum. Provide 48-72 hours notice for major upgrades, 1 week for breaking changes. Schedule upgrades during low-usage periods (weekends, off-hours) to minimize user impact. Clearly communicate expected downtime (if any), required user actions (e.g., "withdraw liquidity before upgrade"), and expected changes. After upgrade, publish summary with transaction hashes, deployed contract addresses, audit reports, and changelog. This builds trust and allows ecosystem participants (frontends, aggregators, analytics) to prepare.
+
+- **Real-time monitoring during upgrade execution**
+
+  During upgrade execution, maintain active monitoring with multiple team members online. Watch for: transaction confirmation and success, event emission and proper indexing, protocol health metrics (TVL, active users, transaction success rate), gas prices and network congestion, unusual transaction patterns or exploits, social media for user reports or concerns. Use monitoring platforms like Tenderly for transaction traces, Dune Analytics for protocol metrics, and OpenZeppelin Defender for automated monitoring. Have incident response procedures ready. Keep multisig signers on standby for emergency pause if needed. After successful upgrade, monitor intensively for 24-48 hours.
+
+---
+
+## Additional Web3-Specific Considerations
+
+### Common Proxy Patterns
+
+- **UUPS (Universal Upgradeable Proxy Standard - EIP-1822)**: Implementation contract contains upgrade logic, more gas-efficient but riskier (bug in upgrade logic can brick the contract). Use OpenZeppelin's UUPS implementation.
+
+- **Transparent Proxy**: Separates upgrade logic into ProxyAdmin contract, safer but higher gas costs. Admin calls go to ProxyAdmin, user calls go to implementation.
+
+- **Diamond Pattern (EIP-2535)**: Supports multiple implementation contracts (facets), allows unlimited contract size, complex but powerful for large protocols.
+
+- **Beacon Proxy**: Multiple proxies share one implementation reference (beacon), efficient for deploying many identical upgradeable contracts.
+
+### Real-World Upgrade Failures
+
+- **Wormhole Bridge (Feb 2022)**: Signature verification bypass in upgraded guardian logic allowed attacker to mint 120,000 wETH ($325M). Insufficient testing of upgrade logic and access controls.
+
+- **Nomad Bridge (Aug 2022)**: Upgrade introduced bug where zero hash was treated as valid proof, allowing anyone to withdraw funds ($190M loss). Lack of formal verification and insufficient testing.
+
+- **Parity Multisig (Nov 2017)**: Library contract (used by wallet proxies) was accidentally killed via `selfdestruct`, bricking 587 wallets and freezing $150M. Demonstrated risks of shared implementation contracts.
+
+These incidents highlight why rigorous testing, formal verification, audits, and time-locked governance are essential for safe upgrades.
+
+---
+
+</TagProvider>
+<ContributeFooter />
