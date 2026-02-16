@@ -10,7 +10,7 @@ const path = require('path');
 
 const workspaceRoot = process.cwd();
 const pagesDir = path.join(workspaceRoot, 'docs', 'pages');
-const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.ts');
+const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.tsx');
 
 // Simple frontmatter parser
 function parseFrontmatter(filePath) {
@@ -142,7 +142,7 @@ function getAllowedRoutes() {
       
       if (routes.size > 0) allowedRoutes = routes;
     } catch (e) {
-      console.warn('Failed to parse vocs.config.ts:', e.message);
+      console.warn('Failed to parse vocs.config.tsx:', e.message);
     }
   }
 
@@ -202,7 +202,7 @@ function getAllTagsFromMDX(docsDir) {
   return { allTags: Array.from(tags).sort(), pageTagsMap };
 }
 
-// Extract section mappings from vocs.config.ts
+// Extract section mappings from vocs.config.tsx
 function extractSectionMappings() {
   try {
     const vocsConfigContent = fs.readFileSync(vocsConfigPath, 'utf-8');
@@ -267,7 +267,7 @@ function extractSectionMappings() {
     return sectionMappings;
     
   } catch (error) {
-    console.warn('Failed to extract section mappings from vocs.config.ts:', error);
+    console.warn('Failed to extract section mappings from vocs.config.tsx:', error);
     return {};
   }
 }

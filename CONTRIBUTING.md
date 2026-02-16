@@ -271,7 +271,7 @@ For a complete frontmatter example, see the [template file](/docs/pages/config/t
 ### 3. Sidebar / Navigation
 
 Because of how we handle the `.org` and `.dev` domains in different branches, when contributing **new pages** you must
-also **update `vocs.config.ts`** so that the page appears in the site’s sidebar. For content still in review, remember
+also **update `vocs.config.tsx`** so that the page appears in the site’s sidebar. For content still in review, remember
 to set `dev: true`.
 
 Example of a category with multiple pages:

@@ -1,8 +1,15 @@
 import { defineConfig } from 'vocs'
 
+const MAIN_SITE_URL = 'https://frameworks.securityalliance.org'
+
 const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main'
 
 const config = {
+  head({ path }: { path: string }) {
+    const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
+    const canonicalUrl = `${MAIN_SITE_URL}${cleanPath || '/'}`
+    return <link rel="canonical" href={canonicalUrl} />
+  },
   vite: {
     define: {
       __IS_MAIN_BRANCH__: JSON.stringify(isMainBranch)
