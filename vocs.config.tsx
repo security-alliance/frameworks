@@ -292,6 +292,7 @@ const config = {
             { text: 'Compliance with Regulatory Requirements', link: '/governance/compliance-regulatory-requirements', dev: true },
             { text: 'Risk Management', link: '/governance/risk-management', dev: true },
             { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
+            { text: 'Security Council Best Practices', link: '/governance/council-best-practices', dev: true },
           ]
         },
         {
