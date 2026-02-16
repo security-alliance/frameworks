@@ -7,6 +7,7 @@ const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCE
 const config = {
   head({ path }: { path: string }) {
     const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
+    if (!isMainBranch && devOnlyLinks.has(cleanPath)) return <></>
     const canonicalUrl = `${MAIN_SITE_URL}${cleanPath || '/'}`
     return <link rel="canonical" href={canonicalUrl} />
   },
@@ -525,6 +526,20 @@ function filterDevItems(items: any[]): any[] {
       items: item.items ? filterDevItems(item.items) : undefined,
     }))
 }
+
+function collectDevLinks(items: any[], parentIsDev = false): Set<string> {
+  const links = new Set<string>()
+  for (const item of items) {
+    const isDev = item.dev || parentIsDev
+    if (isDev && item.link) links.add(item.link)
+    if (item.items) {
+      for (const link of collectDevLinks(item.items, isDev)) links.add(link)
+    }
+  }
+  return links
+}
+
+const devOnlyLinks = collectDevLinks(config.sidebar)
 
 if (isMainBranch) {
   config.sidebar = filterDevItems(config.sidebar)
