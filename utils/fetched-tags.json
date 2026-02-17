@@ -6,8 +6,8 @@
     "Communication Platforms",
     "Community & Marketing",
     "DAO",
-    "DevOps Accounts",
     "DeFi",
+    "DevOps Accounts",
     "Devops",
     "Engineer/Developer",
     "HR",
@@ -347,51 +347,51 @@
       "Operations & Strategy",
       "Legal & Compliance"
     ],
-    "/guides/account_management/discord": [
+    "/guides/account-management/discord": [
       "Community & Marketing",
       "Security Specialist"
     ],
-    "/guides/account_management/github": [
+    "/guides/account-management/github": [
       "DevOps Accounts"
     ],
-    "/guides/account_management/godaddy": [
+    "/guides/account-management/godaddy": [
       "DevOps Accounts"
     ],
-    "/guides/account_management/linear": [
+    "/guides/account-management/linear": [
       "Business Tools"
     ],
-    "/guides/account_management/mercury": [
+    "/guides/account-management/mercury": [
       "Business Tools"
     ],
-    "/guides/account_management/notion": [
+    "/guides/account-management/notion": [
       "Business Tools"
     ],
-    "/guides/account_management/overview": [
+    "/guides/account-management/overview": [
       "Community & Marketing",
       "Security Specialist"
     ],
-    "/guides/account_management/render": [
+    "/guides/account-management/render": [
       "DevOps Accounts"
     ],
-    "/guides/account_management/sentry": [
+    "/guides/account-management/sentry": [
       "DevOps Accounts"
     ],
-    "/guides/account_management/signal": [
+    "/guides/account-management/signal": [
       "Communication Platforms"
     ],
-    "/guides/account_management/slack": [
+    "/guides/account-management/slack": [
       "Communication Platforms"
     ],
-    "/guides/account_management/telegram": [
+    "/guides/account-management/telegram": [
       "Community & Marketing"
     ],
-    "/guides/account_management/trello": [
+    "/guides/account-management/trello": [
       "Business Tools"
     ],
-    "/guides/account_management/twitter": [
+    "/guides/account-management/twitter": [
       "Community & Marketing"
     ],
-    "/guides/account_management/vercel": [
+    "/guides/account-management/vercel": [
       "DevOps Accounts"
     ],
     "/guides/overview": [
@@ -967,11 +967,11 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/wallet-security/for-beginners-&-small-balances": [
+    "/wallet-security/for-beginners-and-small-balances": [
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/intermediates-&-medium-funds": [
+    "/wallet-security/intermediates-and-medium-funds": [
       "Engineer/Developer",
       "Security Specialist"
     ],
@@ -1013,7 +1013,7 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/tools-&-resources": [
+    "/wallet-security/tools-and-resources": [
       "Engineer/Developer",
       "Security Specialist"
     ]

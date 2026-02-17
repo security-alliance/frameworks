@@ -7,3 +7,7 @@
 /wallet-security/tools-&-resources /wallet-security/tools-and-resources 301
 /wallet-security/for-beginners-&-small-balances /wallet-security/for-beginners-and-small-balances 301
 /wallet-security/intermediates-&-medium-funds /wallet-security/intermediates-and-medium-funds 301
+
+# Renamed folder: account_management to account-management
+/guides/account_management/* /guides/account-management/:splat 301
+/guides/account_management /guides/account-management 301
