@@ -391,6 +391,21 @@
     "description": "Opsek Founder",
     "badges": []
   },
+  "andrew-chang-gu": {
+    "slug": "andrew-chang-gu",
+    "name": "Andrew Chang-Gu",
+    "avatar": "https://ui-avatars.com/api/?name=Andrew+Chang-Gu&background=8b5cf6&color=fff&size=200",
+    "github": null,
+    "twitter": null,
+    "website": "https://blockchang.com",
+    "company": null,
+    "job_title": "Security Strategy Consultant",
+    "role": "contributor",
+    "description": "Web3 workforce security and operational security",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-02-18" }
+    ]
+  },
   "Raiders0786": {
     "slug": "Raiders0786",
     "name": "Raiders",

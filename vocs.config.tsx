@@ -99,6 +99,7 @@ const config = {
                 { text: 'TL;DR', link: '/opsec/travel/tldr', dev: true },
               ]
             },
+            { text: 'Web3 Workforce Security', link: '/opsec/web3-workforce-security' },
             { text: 'Appendices', link: '/opsec/appendices/overview', dev: true }
           ]
         },
