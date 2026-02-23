@@ -8,7 +8,7 @@
   - Builds a MiniSearch index **only** from the files listed in the sidebar (i.e., the ones
     we explicitly want indexed).
   - Respects branch-based filtering: on main branch, excludes pages marked with dev: true
-    (matching the sidebar filtering logic in vocs.config.ts).
+    (matching the sidebar filtering logic in vocs.config.tsx).
   - Parses MDX files as plain text, extracting headings and content.
   - Generates a clean search index that includes all pages — even those with imports.
   - After the build, it overwrites Vocs' generated `search-index-<hash>.json`
@@ -21,7 +21,7 @@
      - .vercel/output/static/.vocs            (Vercel build output)
      - /vercel/path0/docs/dist/.vocs          (Vercel build environment path)
      - docs/dist/.vocs                        (local build output)
-  3) Parse vocs.config.ts sidebar to collect allowed routes (excluding dev: true on main).
+  3) Parse vocs.config.tsx sidebar to collect allowed routes (excluding dev: true on main).
   4) Walk docs/pages and extract sections using markdown headings (#, ##, etc.).
   5) Filter to only allowed routes and build a MiniSearch index (code tags stripped).
   6) Overwrite the found `search-index-<hash>.json` and mirror it across other .vocs dirs.
@@ -40,7 +40,7 @@ const cfPagesStaticDir = path.join(workspaceRoot, 'dist');
 const vercelVocsDir = path.join(workspaceRoot, '.vercel', 'output', 'static', '.vocs');
 const vercelPath0DistVocsDir = '/vercel/path0/docs/dist/.vocs';
 const vercelStaticDir = path.join(workspaceRoot, '.vercel', 'output', 'static');
-const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.ts');
+const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.tsx');
 
 function walkFiles(dir, out = []) {
   // Recursively collect .mdx files
@@ -208,7 +208,7 @@ async function main() {
     });
   }
 
-  // Check if we're on main branch (same logic as vocs.config.ts filterDevItems)
+  // Check if we're on main branch (same logic as vocs.config.tsx filterDevItems)
   // Support both Cloudflare Pages and Vercel environment variables
   const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main';
   console.log(`Branch check: ${isMainBranch ? 'main (filtering dev: true pages)' : 'develop (including all pages)'}`);
@@ -253,12 +253,12 @@ async function main() {
       
       if (routes.size > 0) allowedRoutes = routes;
     } catch (e) {
-      console.warn('Failed to parse vocs.config.ts:', e.message);
+      console.warn('Failed to parse vocs.config.tsx:', e.message);
     }
   }
   if (!allowedRoutes) {
     // Fallback: walk dist/static directory and collect all directories that contain index.html
-    // (This happens when vocs.config.ts parsing fails or yields no routes)
+    // (This happens when vocs.config.tsx parsing fails or yields no routes)
     // Try Vercel static dir first, then Cloudflare Pages
     const staticDir = fs.existsSync(vercelStaticDir) ? vercelStaticDir : 
                       fs.existsSync(cfPagesStaticDir) ? cfPagesStaticDir : null;

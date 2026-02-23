@@ -24,7 +24,7 @@ function findDistDir() {
 }
 
 function extractSidebarLinks() {
-  const configPath = path.join(workspaceRoot, 'vocs.config.ts');
+  const configPath = path.join(workspaceRoot, 'vocs.config.tsx');
   if (!fs.existsSync(configPath)) return [];
 
   const lines = fs.readFileSync(configPath, 'utf8').split('\n');

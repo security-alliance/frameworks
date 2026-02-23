@@ -224,9 +224,9 @@ function resolvePrimaryFilterBranch() {
   return null;
 }
 
-// Loads and evaluates `vocs.config.ts`, tweaking env vars so the sidebar matches the branch.
+// Loads and evaluates `vocs.config.tsx`, tweaking env vars so the sidebar matches the branch.
 function loadSidebarConfig(branchName) {
-  const configPath = path.join(__dirname, '..', 'vocs.config.ts');
+  const configPath = path.join(__dirname, '..', 'vocs.config.tsxx');
   if (!fs.existsSync(configPath)) {
     return null;
   }
@@ -257,7 +257,7 @@ function loadSidebarConfig(branchName) {
   try {
     return loader((cfg) => cfg);
   } catch (error) {
-    console.warn(`Warning: unable to evaluate vocs.config.ts: ${error.message}`);
+    console.warn(`Warning: unable to evaluate vocs.config.tsx: ${error.message}`);
     return null;
   } finally {
     if (previousCF === undefined) {

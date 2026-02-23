@@ -1,8 +1,16 @@
 import { defineConfig } from 'vocs'
 
+const MAIN_SITE_URL = 'https://frameworks.securityalliance.org'
+
 const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main'
 
 const config = {
+  head({ path }: { path: string }) {
+    const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
+    if (!isMainBranch && devOnlyLinks.has(cleanPath)) return <></>
+    const canonicalUrl = `${MAIN_SITE_URL}${cleanPath || '/'}`
+    return <link rel="canonical" href={canonicalUrl} />
+  },
   vite: {
     define: {
       __IS_MAIN_BRANCH__: JSON.stringify(isMainBranch)
@@ -518,6 +526,20 @@ function filterDevItems(items: any[]): any[] {
       items: item.items ? filterDevItems(item.items) : undefined,
     }))
 }
+
+function collectDevLinks(items: any[], parentIsDev = false): Set<string> {
+  const links = new Set<string>()
+  for (const item of items) {
+    const isDev = item.dev || parentIsDev
+    if (isDev && item.link) links.add(item.link)
+    if (item.items) {
+      for (const link of collectDevLinks(item.items, isDev)) links.add(link)
+    }
+  }
+  return links
+}
+
+const devOnlyLinks = collectDevLinks(config.sidebar)
 
 if (isMainBranch) {
   config.sidebar = filterDevItems(config.sidebar)
