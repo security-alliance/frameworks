@@ -130,7 +130,7 @@ jobs:
             ${fileListSection}
 
             Please ensure that:
-            - [ ] The sidebar in \`vocs.config.ts\` has been updated to include these files
+            - [ ] The sidebar in \`vocs.config.tsx\` has been updated to include these files
             - [ ] New content has the \`dev: true\` parameter so it's marked as under development
             - [ ] Links in the sidebar match the file paths
 
