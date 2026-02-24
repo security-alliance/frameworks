@@ -148,9 +148,9 @@ Smart contract upgrades are high-risk operations that require rigorous governanc
 
 ### Testing & Validation
 
-- **Comprehensive testnet deployment (Sepolia, Goerli, Mumbai)**
+- **Comprehensive testnet deployment (Sepolia, Holesky, Amoy)**
 
-  Deploy all upgrades to public testnets matching your production chain (Ethereum → Sepolia/Goerli, Polygon → Mumbai/Amoy, Arbitrum → Arbitrum Goerli, Optimism → Optimism Goerli). Use testnet configurations identical to mainnet (same multisig threshold, same timelock delays, same governance parameters). Execute the complete upgrade flow including multisig signing, timelock queuing, and execution. This catches deployment script errors, gas estimation issues, and interaction bugs before mainnet deployment. Document testnet deployment addresses and transaction hashes.
+  Deploy all upgrades to public testnets matching your production chain (Ethereum → Sepolia/Holesky, Polygon → Amoy, Arbitrum → Arbitrum Sepolia, Optimism → Optimism Sepolia). Use testnet configurations identical to mainnet (same multisig threshold, same timelock delays, same governance parameters). Execute the complete upgrade flow including multisig signing, timelock queuing, and execution. This catches deployment script errors, gas estimation issues, and interaction bugs before mainnet deployment. Document testnet deployment addresses and transaction hashes.
 
 - **State integrity verification pre and post-upgrade**
 
