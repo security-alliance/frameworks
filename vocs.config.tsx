@@ -82,14 +82,7 @@ const config = {
                 { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
-            {
-              text: 'Endpoint Security',
-              collapsed: true,
-              items: [
-                { text: 'Overview', link: '/opsec/endpoint/overview', dev: true },
-                { text: 'Zoom Hardening', link: '/opsec/endpoint/zoom-hardening', dev: true },
-              ]
-            },
+            { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
             { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
             { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
             { text: 'Password Management', link: '/opsec/passwords/overview', dev: true },
@@ -466,6 +459,13 @@ const config = {
             { text: 'Trello Security', link: '/guides/account-management/trello' },
             { text: 'Twitter/X Security', link: '/guides/account-management/twitter' },
             { text: 'Vercel Security', link: '/guides/account-management/vercel' },
+          ]
+        },
+        {
+          text: 'Endpoint Security',
+          collapsed: true,
+          items: [
+            { text: 'Zoom Hardening', link: '/guides/endpoint_security/zoom-hardening' },
           ]
         },
       ]

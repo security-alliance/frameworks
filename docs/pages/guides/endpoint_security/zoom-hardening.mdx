@@ -35,15 +35,15 @@ If already compromised, see the [ELUSIVE COMET incident response playbook](/inci
 
 ## Immediate hardening steps
 
-Apply these settings in the Zoom desktop client and web portal (`zoom.us/profile/setting`):
+Apply these settings in the [Zoom web portal](https://zoom.us/profile/setting). Sign in, click **Settings** in the left sidebar, then navigate to the **Meeting** tab.
 
-- [ ] **Disable remote control**: Settings > Share Screen > Remote Control > **OFF**
-- [ ] **Disable participant screen sharing**: Settings > Share Screen > "Who can share?" > **Host Only**
-- [ ] **Enable waiting rooms**: Settings > Meeting > Waiting Room > **ON**
-- [ ] **Require meeting passcodes**: Settings > Meeting > Require a passcode > **ON**
+- [ ] **Disable remote control**: Settings > Meeting > In Meeting (Basic) > Remote control > **OFF**
+- [ ] **Disable participant screen sharing**: Settings > Meeting > In Meeting (Basic) > Screen sharing > Who can share? > **Host Only**
+- [ ] **Enable waiting rooms**: Settings > Meeting > Security > Waiting Room > **ON**
+- [ ] **Require meeting passcodes**: Settings > Meeting > Security > Require a passcode when scheduling new meetings > **ON**
 - [ ] **Prefer browser-based Zoom**: Join meetings via `zoom.us/join` in your browser instead of installing the desktop client. The browser version has significantly reduced attack surface — no accessibility permissions, no persistent background process, no remote control capability.
 - [ ] **Never grant Zoom accessibility permissions**: If Zoom prompts for accessibility access on macOS, **deny it**. Accessibility permissions allow Zoom (and any attacker who gains remote control) to interact with your entire system.
-- [ ] **Disable automatic recording**: Settings > Recording > Automatic Recording > **OFF** (enable only when explicitly needed)
+- [ ] **Disable automatic recording**: Settings > Meeting > Recording > Automatic recording > **OFF** (enable only when explicitly needed)
 - [ ] **Use SSO/OAuth authentication**: Where your organization supports it, use SSO or OAuth instead of Zoom-native accounts to benefit from centralized credential management and MFA enforcement.
 
 ## macOS-specific mitigations
@@ -129,15 +129,15 @@ If you observe any of these signals:
 
 | Setting | Location | Recommended value |
 | --- | --- | --- |
-| Remote Control | Settings > Share Screen > Remote Control | **OFF** |
-| Who Can Share Screen | Settings > Share Screen | **Host Only** |
-| Waiting Room | Settings > Meeting > Waiting Room | **ON** |
-| Meeting Passcode | Settings > Meeting > Passcode | **ON** |
-| Automatic Recording | Settings > Recording | **OFF** |
-| Join Before Host | Settings > Meeting | **OFF** |
+| Remote Control | Settings > Meeting > In Meeting (Basic) > Remote control | **OFF** |
+| Who Can Share Screen | Settings > Meeting > In Meeting (Basic) > Screen sharing | **Host Only** |
+| Waiting Room | Settings > Meeting > Security > Waiting Room | **ON** |
+| Meeting Passcode | Settings > Meeting > Security > Require a passcode | **ON** |
+| Automatic Recording | Settings > Meeting > Recording > Automatic recording | **OFF** |
+| Join Before Host | Settings > Meeting > Security > Allow participants to join before host | **OFF** |
 | Zoom Accessibility Permissions (macOS) | System Settings > Privacy & Security > Accessibility | **Denied / Not Listed** |
 | Desktop Client | — | **Uninstalled (prefer browser)** |
-| Authentication | Admin > Security | **SSO/OAuth** |
+| Authentication | Admin > Advanced > Security | **SSO/OAuth** |
 
 ## Further reading
 
