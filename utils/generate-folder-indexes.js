@@ -226,7 +226,7 @@ function resolvePrimaryFilterBranch() {
 
 // Loads and evaluates `vocs.config.tsx`, tweaking env vars so the sidebar matches the branch.
 function loadSidebarConfig(branchName) {
-  const configPath = path.join(__dirname, '..', 'vocs.config.tsxx');
+  const configPath = path.join(__dirname, '..', 'vocs.config.tsx');
   if (!fs.existsSync(configPath)) {
     return null;
   }
