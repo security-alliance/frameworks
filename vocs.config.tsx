@@ -465,7 +465,7 @@ const config = {
           text: 'Endpoint Security',
           collapsed: true,
           items: [
-            { text: 'Zoom Hardening', link: '/guides/endpoint_security/zoom-hardening' },
+            { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },
       ]
