@@ -226,7 +226,7 @@ function resolvePrimaryFilterBranch() {
 
 // Loads and evaluates `vocs.config.tsx`, tweaking env vars so the sidebar matches the branch.
 function loadSidebarConfig(branchName) {
-  const configPath = path.join(__dirname, '..', 'vocs.config.tsxx');
+  const configPath = path.join(__dirname, '..', 'vocs.config.tsx');
   if (!fs.existsSync(configPath)) {
     return null;
   }
@@ -235,8 +235,13 @@ function loadSidebarConfig(branchName) {
   const sanitized = raw
     .replace(/^import[^\n]*\n/, '')
     .replace(/export default defineConfig\(config\)\s*;?\s*$/, 'return defineConfig(config);')
-    .replace(/function filterDevItems\(items: any\[\]\): any\[\] \{/, 'function filterDevItems(items) {')
-    .replace(/\bas const\b/g, '');
+    .replace(/\bas const\b/g, '')
+    .replace(/head\(\{[^}]*\}\s*:\s*\{[^}]*\}\)\s*\{[\s\S]*?\n  \},/, '')
+    .replace(/new Set<[^>]+>\(/g, 'new Set(')
+    .replace(/function\s+(\w+)\(([^)]*)\)\s*:\s*[^\s{]+/g, (_, name, params) => {
+      const cleaned = params.replace(/:\s*[^,)]+/g, '');
+      return `function ${name}(${cleaned})`;
+    });
 
   const loader = new Function('defineConfig', sanitized);
   const previousCF = Object.prototype.hasOwnProperty.call(process.env, 'CF_PAGES_BRANCH')
