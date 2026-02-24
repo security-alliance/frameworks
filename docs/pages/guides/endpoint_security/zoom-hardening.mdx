@@ -37,14 +37,25 @@ If already compromised, see the [ELUSIVE COMET incident response playbook](/inci
 
 Apply these settings in the [Zoom web portal](https://zoom.us/profile/setting). Sign in, click **Settings** in the left sidebar, then navigate to the **Meeting** tab.
 
+### Required
+
+These mitigations address the specific attack vectors described in the Trail of Bits ELUSIVE COMET research and should be treated as **non-negotiable** for any organization handling sensitive assets.
+
 - [ ] **Disable remote control**: Settings > Meeting > In Meeting (Basic) > Remote control > **OFF**
-- [ ] **Disable participant screen sharing**: Settings > Meeting > In Meeting (Basic) > Screen sharing > Who can share? > **Host Only**
+- [ ] **Disable participant screen sharing (host only)**: Settings > Meeting > In Meeting (Basic) > Screen sharing > Who can share? > **Host Only**
+- [ ] **Never grant Zoom accessibility permissions**: If Zoom prompts for accessibility access on macOS, **deny it**. Accessibility permissions allow Zoom (and any attacker who gains remote control) to interact with your entire system.
+- [ ] **Prefer browser-based Zoom**: Join meetings via `zoom.us/join` in your browser instead of installing the desktop client. The browser version has significantly reduced attack surface — no accessibility permissions, no persistent background process, no remote control capability.
+- [ ] **Use SSO/OAuth authentication**: Where your organization supports it, use SSO or OAuth instead of Zoom-native accounts to benefit from centralized credential management and MFA enforcement.
+- [ ] **Deploy PPPC profiles / revoke Zoom TCC permissions (macOS)**: Use the PPPC profiles and `tccutil` scripts from the [macOS-specific mitigations](#macos-specific-mitigations) section below to block or revoke Zoom's accessibility permissions.
+- [ ] **Remove Zoom desktop client when possible**: If your workflow allows it, uninstall the desktop client entirely to eliminate the attack surface. See [Complete Zoom uninstallation](#complete-zoom-uninstallation) below.
+
+### Optional
+
+General Zoom security best practices. These do not directly mitigate the ELUSIVE COMET attack but improve overall meeting security hygiene.
+
 - [ ] **Enable waiting rooms**: Settings > Meeting > Security > Waiting Room > **ON**
 - [ ] **Require meeting passcodes**: Settings > Meeting > Security > Require a passcode when scheduling new meetings > **ON**
-- [ ] **Prefer browser-based Zoom**: Join meetings via `zoom.us/join` in your browser instead of installing the desktop client. The browser version has significantly reduced attack surface — no accessibility permissions, no persistent background process, no remote control capability.
-- [ ] **Never grant Zoom accessibility permissions**: If Zoom prompts for accessibility access on macOS, **deny it**. Accessibility permissions allow Zoom (and any attacker who gains remote control) to interact with your entire system.
 - [ ] **Disable automatic recording**: Settings > Meeting > Recording > Automatic recording > **OFF** (enable only when explicitly needed)
-- [ ] **Use SSO/OAuth authentication**: Where your organization supports it, use SSO or OAuth instead of Zoom-native accounts to benefit from centralized credential management and MFA enforcement.
 
 ## macOS-specific mitigations
 
@@ -127,17 +138,25 @@ If you observe any of these signals:
 
 ## Quick reference
 
+### Required settings
+
 | Setting | Location | Recommended value |
 | --- | --- | --- |
 | Remote Control | Settings > Meeting > In Meeting (Basic) > Remote control | **OFF** |
 | Who Can Share Screen | Settings > Meeting > In Meeting (Basic) > Screen sharing | **Host Only** |
+| Zoom Accessibility Permissions (macOS) | System Settings > Privacy & Security > Accessibility | **Denied / Not Listed** |
+| Desktop Client | — | **Uninstalled (prefer browser)** |
+| Authentication | Admin > Advanced > Security | **SSO/OAuth** |
+| PPPC Profile (macOS) | MDM / manual `profiles` install | **Deployed** |
+
+### Optional settings
+
+| Setting | Location | Recommended value |
+| --- | --- | --- |
 | Waiting Room | Settings > Meeting > Security > Waiting Room | **ON** |
 | Meeting Passcode | Settings > Meeting > Security > Require a passcode | **ON** |
 | Automatic Recording | Settings > Meeting > Recording > Automatic recording | **OFF** |
 | Join Before Host | Settings > Meeting > Security > Allow participants to join before host | **OFF** |
-| Zoom Accessibility Permissions (macOS) | System Settings > Privacy & Security > Accessibility | **Denied / Not Listed** |
-| Desktop Client | — | **Uninstalled (prefer browser)** |
-| Authentication | Admin > Advanced > Security | **SSO/OAuth** |
 
 ## Further reading
 
