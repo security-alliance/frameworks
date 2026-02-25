@@ -2,7 +2,7 @@ import { defineConfig } from 'vocs'
 
 const MAIN_SITE_URL = 'https://frameworks.securityalliance.org'
 
-const isMainBranch = process.env.CF_PAGES_BRANCH === 'main' || process.env.VERCEL_GIT_COMMIT_REF === 'main'
+const isMainBranch = process.env.CF_PAGES_BRANCH === 'main'
 
 const config = {
   head({ path }: { path: string }) {

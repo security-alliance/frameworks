@@ -179,7 +179,6 @@ function detectCurrentBranch() {
 function resolveCurrentBranch() {
   const candidates = [
     process.env.CF_PAGES_BRANCH,
-    process.env.VERCEL_GIT_COMMIT_REF,
     process.env.BRANCH,
     process.env.GITHUB_REF_NAME,
   ];
@@ -242,16 +241,11 @@ function loadSidebarConfig(branchName) {
   const previousCF = Object.prototype.hasOwnProperty.call(process.env, 'CF_PAGES_BRANCH')
     ? process.env.CF_PAGES_BRANCH
     : undefined;
-  const previousVercel = Object.prototype.hasOwnProperty.call(process.env, 'VERCEL_GIT_COMMIT_REF')
-    ? process.env.VERCEL_GIT_COMMIT_REF
-    : undefined;
 
   if (branchName) {
     process.env.CF_PAGES_BRANCH = branchName;
-    process.env.VERCEL_GIT_COMMIT_REF = branchName;
   } else {
     delete process.env.CF_PAGES_BRANCH;
-    delete process.env.VERCEL_GIT_COMMIT_REF;
   }
 
   try {
@@ -264,11 +258,6 @@ function loadSidebarConfig(branchName) {
       delete process.env.CF_PAGES_BRANCH;
     } else {
       process.env.CF_PAGES_BRANCH = previousCF;
-    }
-    if (previousVercel === undefined) {
-      delete process.env.VERCEL_GIT_COMMIT_REF;
-    } else {
-      process.env.VERCEL_GIT_COMMIT_REF = previousVercel;
     }
   }
 }
