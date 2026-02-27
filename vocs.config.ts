@@ -330,6 +330,7 @@ const config = {
           dev: true,
           items: [
             { text: 'Overview', link: '/security-automation/overview', dev: true },
+            { text: 'AI Runtime Security and Sandboxing', link: '/security-automation/ai-runtime-security-and-sandboxing', dev: true },
             { text: 'Threat Detection and Response', link: '/security-automation/threat-detection-response', dev: true },
             { text: 'Compliance Checks', link: '/security-automation/compliance-checks', dev: true },
             { text: 'Infrastructure as Code', link: '/security-automation/infrastructure-as-code', dev: true },

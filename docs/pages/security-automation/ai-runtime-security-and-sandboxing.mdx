@@ -1,0 +1,181 @@
+---
+title: "AI Runtime Security and Sandboxing | SEAL"
+description: "AI runtime security framework: defend agents against prompt injection, data exfiltration, unsafe tool calls, and sandbox escapes with runtime controls."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Devops
+  - SRE
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [munamwasi, jubos, masterfung]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# AI Runtime Security and Sandboxing
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: AI security must be enforced at runtime, not only at design time. Treat prompts, retrieved data,
+> browser content, and tool output as untrusted input, then combine execution-path policy checks with sandbox isolation.
+
+AI systems now execute code, call APIs, read documents, and trigger financial or operational actions. This changes the
+security model from "protect software" to "constrain autonomous behavior." Traditional controls still matter, but they
+are not enough on their own for prompt-driven systems.
+
+## Why this matters
+
+When models can interact with wallets, smart contracts, CI/CD pipelines, and internal systems, unsafe behavior can
+cause irreversible outcomes. A practical defense should assume:
+
+- Any input can contain hidden instructions.
+- Any connected tool can become an abuse path.
+- Any output can become a side effect if executed without controls.
+
+This risk profile aligns with guidance across [OWASP Top 10 for LLM
+Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/), [MITRE
+ATLAS](https://atlas.mitre.org/), and modern secure engineering practices.
+
+## Core threat vectors and controls
+
+| Threat vector | Typical failure mode | Primary control | Secondary control |
+| ----------- | ----------- | ----------- | ----------- |
+| Prompt injection | Model follows malicious hidden instructions | Runtime prompt and response inspection | Capability-scoped tool permissions |
+| Indirect injection (RAG/browser/tool output) | Untrusted retrieved content changes agent behavior | Source trust scoring and sanitization | Human approval for sensitive actions |
+| Data exfiltration | Sensitive data appears in model output/tool egress | Output policy enforcement and DLP checks | Egress network allowlists |
+| Unsafe tool execution | Dangerous commands or API calls execute | Pre-execution policy gate | Sandboxed execution with resource limits |
+| Privilege escalation | Agent performs actions beyond intended scope | Least-privilege credentials | Short-lived scoped tokens |
+| Lateral movement | Agent reuses discovered secrets across systems | Secret isolation and vault-backed access | Runtime anomaly detection |
+
+## Runtime defense model
+
+Use a layered control plane across the full AI execution path:
+
+1. **Input control**: classify and sanitize prompts, files, and retrieved context.
+2. **Planning control**: evaluate model intent before tool invocation.
+3. **Execution control**: enforce allow/warn/block decisions per tool call.
+4. **Output control**: prevent leakage of credentials, secrets, or sensitive data.
+5. **Containment control**: execute untrusted workloads inside constrained sandboxes.
+
+This complements existing guidance in [Threat Detection and
+Response](/security-automation/threat-detection-response), [Repository
+Hardening](/devsecops/repository-hardening), and [Monitoring
+Thresholds](/monitoring/thresholds).
+
+## Prompt injection defenses
+
+### Practical controls
+
+1. Treat all external text as untrusted, including web content, retrieval chunks, and plugin responses.
+2. Separate system policy from user content and enforce policy precedence at runtime.
+3. Validate instruction boundaries for multi-turn workflows and agent memory updates.
+4. Add a policy checkpoint before every high-impact action.
+5. Log full prompt-to-action traces for incident response and retro analysis.
+
+### Common anti-patterns
+
+- Relying only on static deny lists.
+- Trusting retrieval content because it came from an internal source.
+- Letting the model call sensitive tools without pre-approval criteria.
+- Checking output only after side effects already happened.
+
+## AI browser and retrieval safety
+
+Browser-enabled and retrieval-enabled agents expand capability but also increase exposure. Use these controls:
+
+- Restrict outbound domains with explicit allowlists.
+- Strip hidden instructions from retrieved pages and documents.
+- Disable automatic execution for actions derived from external content.
+- Require signed or authenticated data sources for high-impact decisions.
+- Apply per-step risk scoring for browsing, extraction, and action transitions.
+
+## Data exfiltration controls
+
+Focus on output-time enforcement, not only input-time filtering:
+
+- Block secrets, private keys, tokens, and internal identifiers before model response release.
+- Redact sensitive values in logs while preserving forensic utility.
+- Prevent arbitrary upload actions from agent contexts handling sensitive assets.
+- Enforce channel-specific output policy (chat, API, webhook, file export).
+
+## Execution-path enforcement
+
+Execution-path enforcement means security policy is evaluated exactly where side effects happen.
+
+For each tool call, evaluate:
+
+- **Who** requested it (user/session/agent identity).
+- **What** will execute (command, function, API route).
+- **Where** it runs (sandbox profile, network context, credential scope).
+- **Why** it is requested (task intent and policy match).
+- **How much** impact it can cause (risk score and blast radius).
+
+If any check fails, default to block or require explicit human approval.
+
+## Sandboxing strategy for AI agents
+
+Sandboxing limits blast radius when upstream controls fail or misclassify behavior.
+
+### Quick reference by technical level
+
+| Audience | Option | Effort | Isolation strength | Best use |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Non-developers | Browser-based AI tools | Low | Strong | General chat and document workflows |
+| Non-developers | Local VM (Parallels/VMware) | Medium | Strong | Running local AI tools safely |
+| Non-developers | Dedicated machine | High | Strong | High-sensitivity operations |
+| Developers | Docker containers | Low | Moderate | Fast local iteration and testing |
+| Developers | Remote VM sandboxes | Low | Strong | Isolated cloud execution |
+| Developers | Local VMs | Medium | Strong | Full OS isolation with local control |
+| Infrastructure teams | Firecracker/gVisor class isolation | High | Strong | Multi-tenant and production-grade workloads |
+
+### Capability-based isolation
+
+Use capability grants instead of broad permissions. Grant only the minimum action set required per agent role.
+
+Examples:
+
+- Read-only ledger analysis agent.
+- Governance drafting agent without signing permissions.
+- Transaction simulation agent without broadcast authority.
+- Incident triage agent with log access but no mutation rights.
+
+## Threat model for AI execution
+
+| Threat | Example | Minimum control |
+| ----------- | ----------- | ----------- |
+| Data exfiltration | Agent leaks keys while summarizing logs | Output DLP + egress restrictions |
+| Destructive actions | Agent runs unsafe deletion command | Command policy gate + sandbox filesystem constraints |
+| Resource exhaustion | Agent enters infinite execution loop | CPU/memory/time quotas |
+| Privilege escalation | Agent accesses unauthorized credentials | Scoped identity and secret vault mediation |
+| Lateral movement | Agent uses discovered token across services | Network segmentation + per-service auth |
+| Supply chain compromise | Malicious plugin modifies behavior | Dependency trust policy + execution isolation |
+
+## Implementation checklist
+
+- [ ] Define high-impact actions that require human approval.
+- [ ] Add pre-execution policy checks to every tool call path.
+- [ ] Isolate credentials by agent role and environment.
+- [ ] Enforce outbound network allowlists and deny by default.
+- [ ] Apply CPU, memory, and runtime limits in all execution environments.
+- [ ] Log prompt, context, decision, and action traces for audits.
+- [ ] Run periodic red-team simulations for injection and exfiltration scenarios.
+- [ ] Add rollback, kill-switch, and containment runbooks before production rollout.
+
+## Further reading
+
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [MITRE ATLAS](https://atlas.mitre.org/)
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
+- [CISA AI Security Resources](https://www.cisa.gov/topics/artificial-intelligence)
+- [Google SAIF (Secure AI Framework)](https://saif.google/)
+
+---
+
+</TagProvider>
+<ContributeFooter />
