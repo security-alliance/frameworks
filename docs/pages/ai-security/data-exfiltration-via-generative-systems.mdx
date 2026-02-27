@@ -1,0 +1,43 @@
+---
+title: "Data Exfiltration via Generative Systems | SEAL"
+description: "Runtime data exfiltration risk and controls for generative AI systems processing sensitive information."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [munamwasi, jubos, masterfung]
+  - role: reviewed
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Data Exfiltration via Generative Systems
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+AI systems that process sensitive inputs such as documents, logs, or enterprise data are vulnerable to exfiltration
+attacks. Without proper runtime controls, models can be coaxed into extracting and exporting confidential information
+through subtle prompt manipulation or through multimodal vectors. Traditional DLP systems focus on pattern matching and
+user intent, but generative agents require real-time behavior constraint mechanisms that block unsafe outputs before
+they are released. Runtime inspection of both input and output modalities is essential to prevent leakage. AI agents
+with access to wallet metadata, private dashboards, or off-chain analytics can be coerced into leaking sensitive
+operational or financial information, even when underlying blockchain data is public.
+
+## Consider using
+
+- Cyberhaven - dynamic data tracing and AI-based lineage for DLP and insider risk
+- Nightfall AI - AI-based detection across SaaS, endpoints, email, browsers, and AI data flows
+- Proofpoint (Acuvity) - runtime inspection and enforcement across AI apps, agents, and MCP servers
+- Reco AI - SaaS AI exposure discovery, permission auditing, and exfiltration pathway detection
+
+---
+
+</TagProvider>
+<ContributeFooter />

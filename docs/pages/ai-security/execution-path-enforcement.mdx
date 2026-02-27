@@ -1,0 +1,45 @@
+---
+title: "Execution-Path Enforcement | SEAL"
+description: "Execution-path security controls for AI systems to gate high-risk actions at runtime."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [munamwasi, jubos, masterfung]
+  - role: reviewed
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Execution-Path Enforcement
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Execution-path enforcement is a security principle where controls are placed at the point where actions are taken, not
+where they are merely observed. In AI systems, this means intercepting and evaluating model inputs and intended outputs
+(including tool calls) immediately before execution. This approach contrasts with legacy detection or monitoring, which
+assumes human review or reactive response. By enforcing allow, warn, or block decisions at runtime, execution-path
+controls prevent unsafe behavior proactively, aligning security outcomes with business and safety requirements. For AI
+agents that construct transactions, manage keys, or interact with smart contracts, execution-path enforcement is
+critical to prevent unintended or irreversible on-chain actions.
+
+## Consider using
+
+- Zenity - granular execution step analysis with intent-aware risk correlation
+- Microsoft Defender for AI - real-time controls at tool invocation
+- Cisco AI Defense - runtime MCP traffic guardrails for agentic threats
+- Operant AI - active trust-boundary enforcement across agent ecosystems
+- AccuKnox - eBPF and LSM-based runtime enforcement in Kubernetes AI workloads
+
+---
+
+</TagProvider>
+<ContributeFooter />

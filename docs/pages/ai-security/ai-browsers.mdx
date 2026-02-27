@@ -1,0 +1,43 @@
+---
+title: "AI Browsers | SEAL"
+description: "Threat model and controls for AI browsers interacting with dynamic external web content and APIs."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [munamwasi, jubos, masterfung]
+  - role: reviewed
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# AI Browsers
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+AI browsers are interfaces that enable models to interact with external content, such as web pages, APIs, and online
+data sources. While they expand the model's context and capability, they also broaden the attack surface by introducing
+unvalidated, dynamic inputs from the open web. Traditional security assumptions about trusted networks and static
+inputs do not hold. Protecting AI browsers requires real-time inspection of both retrieved content and the model's
+outbound actions, with enforcement mechanisms that prevent unsafe behavior regardless of source. AI browsers used to
+read blockchain explorers, governance forums, or DeFi dashboards can be influenced by manipulated metadata or spoofed
+data sources. On-chain visibility does not guarantee safety without runtime validation.
+
+## Consider using
+
+- Operant AI - real-time visibility and controls across MCP servers and agent tool connections
+- Zenity - step-level execution monitoring with inline controls for unsafe browser actions
+- Akamai Firewall for AI - edge runtime inspection for prompts and responses
+- Wiz AI-SPM - posture management visibility into AI app configuration and data exposure
+
+---
+
+</TagProvider>
+<ContributeFooter />
