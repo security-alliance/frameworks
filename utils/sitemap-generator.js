@@ -2,7 +2,7 @@
   Generates sitemap.xml for the .org site
   - Main branch (.org): full sitemap with all page URLs
   - Dev branch (.dev): empty sitemap (pages shouldn't be indexed)
-  - Only runs on Cloudflare Pages
+  - Only runs in deployment environments (Cloudflare Pages or CI)
 */
 
 const fs = require('fs');
@@ -48,8 +48,8 @@ function generateSitemap(urls) {
 }
 
 async function main() {
-  if (!process.env.CF_PAGES) {
-    console.log('Skipping: not on Cloudflare Pages');
+  if (!process.env.CF_PAGES && !process.env.CI) {
+    console.log('Skipping: not running in a deployment environment (Cloudflare Pages or CI)');
     return;
   }
 

@@ -101,7 +101,7 @@ function extractUrlSegment(link) {
 // Extract allowed routes from sidebar config
 function getAllowedRoutes() {
   // Check if we're on main branch
-  const isMainBranch = process.env.VERCEL_GIT_COMMIT_REF === 'main';
+  const isMainBranch = process.env.CF_PAGES_BRANCH === 'main';
   console.log(`Branch check: ${isMainBranch ? 'main (filtering dev: true pages)' : 'develop (including all pages)'}`);
 
   let allowedRoutes = undefined;
