@@ -60,7 +60,7 @@ All contributions should follow this workflow:
   It contains pre-defined components and structure required for consistency in MDX files.
 3. **Make your changes** in MDX (typos, improvements, or new content) on your fork.
 4. **Open a Pull Request (PR) against the `develop` branch** of this repository. Once submitted, you can see the
-deployment through Vercel’s automation and make any final adjustments.
+deployment through the automated preview and make any final adjustments.
 5. **Notify reviewers** by tagging a steward or maintainer, requesting reviews directly in your PR.
 6. Additionally, you can paste your PR and/or potential associated issues to the `framework-contribs` Discord channel.
 7. Once reviewed and approved, your changes will be merged into `develop`.
