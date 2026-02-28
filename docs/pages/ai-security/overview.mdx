@@ -25,32 +25,43 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ## The AI Security Imperative
 
-Artificial intelligence has moved from the lab into the core of modern infrastructure. It now sits inside enterprise
-systems, consumer products, and decentralized networks. AI models help make decisions, execute financial transactions,
-generate code, interact with customers, and coordinate autonomous workflows. As this layer becomes embedded in critical
-systems, the security assumptions many organizations rely on are being quietly overturned.
+Artificial intelligence has moved from the lab into the core of modern
+infrastructure. It now sits inside enterprise systems, consumer products, and
+decentralized networks. AI models help make decisions, execute financial
+transactions, generate code, interact with customers, and coordinate autonomous
+workflows. As this layer becomes embedded in critical systems, the security
+assumptions many organizations rely on are being quietly overturned.
 
-AI systems behave differently from traditional software. Conventional applications rely on structured inputs and
-predictable execution paths. AI models, by contrast, interpret natural language, process images and other multimodal
-data, and produce outputs shaped by probabilistic reasoning. That flexibility creates new openings for abuse. Instead
-of targeting memory corruption or injection flaws, attackers can manipulate instructions, context, and model behavior
-itself. Many established security controls were built around network traffic and code execution. They were not designed
-to monitor or constrain how a model reasons over a prompt.
+AI systems behave differently from traditional software. Conventional
+applications rely on structured inputs and predictable execution paths. AI
+models, by contrast, interpret natural language, process images and other
+multimodal data, and produce outputs shaped by probabilistic reasoning. That
+flexibility creates new openings for abuse. Instead of targeting memory
+corruption or injection flaws, attackers can manipulate instructions, context,
+and model behavior itself. Many established security controls were built around
+network traffic and code execution. They were not designed to monitor or
+constrain how a model reasons over a prompt.
 
-Recent data makes the scale of the issue clear. [Stanford's 2025 AI Index Report](https://hai.stanford.edu/ai-index/2025-ai-index-report)
-recorded a 56.4 percent year over year increase in publicly disclosed AI-related security and privacy incidents.
-[Adversa AI's 2025 incident analysis](https://adversa.ai/top-ai-security-incidents-report-2025-edition/) found that 35
-percent of real-world AI security failures stemmed from straightforward prompt-based attacks, with some incidents
-leading to losses above $100,000 without traditional exploit code.
-[CrowdStrike's 2025 Global Threat Report](https://www.crowdstrike.com/en-us/global-threat-report/) observed AI system
-breakout times as short as 51 seconds, often before security teams were alerted. The same report noted that 79 percent
-of detections were malware-free, with attackers operating through the semantic layer rather than conventional execution
-paths.
+Recent data makes the scale of the issue clear. [Stanford's 2025 AI Index
+Report](https://hai.stanford.edu/ai-index/2025-ai-index-report) recorded a 56.4
+percent year over year increase in publicly disclosed AI-related security and
+privacy incidents. [Adversa AI's 2025 incident
+analysis](https://adversa.ai/top-ai-security-incidents-report-2025-edition/)
+found that 35 percent of real-world AI security failures stemmed from
+straightforward prompt-based attacks, with some incidents leading to losses
+above $100,000 without traditional exploit code. [CrowdStrike's 2025 Global
+Threat Report](https://www.crowdstrike.com/en-us/global-threat-report/) observed
+AI system breakout times as short as 51 seconds, often before security teams
+were alerted. The same report noted that 79 percent of detections were
+malware-free, with attackers operating through the semantic layer rather than
+conventional execution paths.
 
-In Web3 and decentralized ecosystems, the stakes rise even further. AI agents interacting with smart contracts, wallet
-signatures, and governance mechanisms operate in environments where actions are often irreversible.
-[Hacken's Web3 Security Report](https://hacken.io/insights/q1-2025-security-report/) estimated more than $2 billion in
-crypto losses in the first three months of 2025 alone, alongside a sharp increase in AI-related exploits compared to
+In Web3 and decentralized ecosystems, the stakes rise even further. AI agents
+interacting with smart contracts, wallet signatures, and governance mechanisms
+operate in environments where actions are often irreversible. [Hacken's Web3
+Security Report](https://hacken.io/insights/q1-2025-security-report/) estimated
+more than $2 billion in crypto losses in the first three months of 2025 alone,
+alongside a sharp increase in AI-related exploits compared to
 2023. Research on frameworks such as ElizaOS has shown how adversaries can tamper with agent memory and context to
 trigger unauthorized transfers or protocol-level violations. A single manipulated transaction can drain a treasury or
 distort a governance vote. Without runtime controls tailored to AI behavior, these systems carry meaningful systemic
@@ -58,32 +69,42 @@ risk.
 
 ## AI Threat Vectors and Prompt Injection Defenses
 
-The rise of large language models as core infrastructure has created a new category of security risk. Prompt injection
-now sits at the top of OWASP's 2025 Top 10 for LLM Applications and has been identified in more than 73 percent of
-production AI systems reviewed in recent security audits. The technique targets the basic behavior that makes these
-models useful: they follow instructions. In traditional software, the line between code and data can be clearly
-separated and enforced. In language models, instructions and data are expressed in the same format. Any input can
-influence behavior, because that is exactly how the system is designed to work.
+The rise of large language models as core infrastructure has created a new
+category of security risk. Prompt injection now sits at the top of OWASP's 2025
+Top 10 for LLM Applications and has been identified in more than 73 percent of
+production AI systems reviewed in recent security audits. The technique targets
+the basic behavior that makes these models useful: they follow instructions. In
+traditional software, the line between code and data can be clearly separated
+and enforced. In language models, instructions and data are expressed in the
+same format. Any input can influence behavior, because that is exactly how the
+system is designed to work.
 
-This design makes familiar input validation techniques unreliable. Blocklists and simple filtering approaches are easy
-to bypass. Adversarial prompts can be encoded in Base64, disguised with Unicode characters, embedded in ASCII art,
-translated across languages, or introduced gradually over several conversational turns. Studies have reported attack
-success rates approaching 76 percent across major frontier models using obfuscation alone. Indirect prompt injection
-through retrieval augmented generation has reached success rates near 90 percent by inserting only a handful of
-malicious documents into otherwise massive data stores.
+This design makes familiar input validation techniques unreliable. Blocklists
+and simple filtering approaches are easy to bypass. Adversarial prompts can be
+encoded in Base64, disguised with Unicode characters, embedded in ASCII art,
+translated across languages, or introduced gradually over several conversational
+turns. Studies have reported attack success rates approaching 76 percent across
+major frontier models using obfuscation alone. Indirect prompt injection through
+retrieval augmented generation has reached success rates near 90 percent by
+inserting only a handful of malicious documents into otherwise massive data
+stores.
 
-The impact goes far beyond chat responses. As AI systems begin executing code, calling APIs, querying internal
-databases, constructing transactions, and interacting with external services, the stakes increase. A successful
-injection can move from producing misleading text to triggering actions with financial and operational consequences. In
-enterprise environments, that can mean unauthorized data access, exposure of credentials, or manipulation of automated
-workflows. In Web3 ecosystems, where agents connect to wallets, DeFi protocols, and governance systems, a compromised
-prompt can initiate irreversible on-chain activity such as token transfers, altered governance votes, or treasury
-losses.
+The impact goes far beyond chat responses. As AI systems begin executing code,
+calling APIs, querying internal databases, constructing transactions, and
+interacting with external services, the stakes increase. A successful injection
+can move from producing misleading text to triggering actions with financial and
+operational consequences. In enterprise environments, that can mean unauthorized
+data access, exposure of credentials, or manipulation of automated workflows. In
+Web3 ecosystems, where agents connect to wallets, DeFi protocols, and governance
+systems, a compromised prompt can initiate irreversible on-chain activity such
+as token transfers, altered governance votes, or treasury losses.
 
-The sections that follow outline the major threat vectors facing AI-driven systems, including prompt injection,
-browser-based manipulation, data exfiltration, execution path weaknesses, and sandbox escape scenarios. They also
-highlight established security providers whose tools address each category. The objective is to clarify the defensive
-landscape so that security teams, developers, and protocol designers can build layered protections that fit their
+The sections that follow outline the major threat vectors facing AI-driven
+systems, including prompt injection, browser-based manipulation, data
+exfiltration, execution path weaknesses, and sandbox escape scenarios. They also
+highlight established security providers whose tools address each category. The
+objective is to clarify the defensive landscape so that security teams,
+developers, and protocol designers can build layered protections that fit their
 specific deployment models and risk tolerance.
 
 ## Sections in this framework
