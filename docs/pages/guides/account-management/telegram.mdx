@@ -1,6 +1,6 @@
 ---
 title: "Telegram Security | Security Alliance"
-description: "Secure Telegram against SIM swapping and Man-in-the-Group attacks. Configure Two-Step Verification, hide your phone number, use Secret Chats with end-to-end encryption, and manage admin permissions."
+description: "Secure Telegram against SIM swapping and Man-in-the-Group attacks. Configure passkeys, Two-Step Verification, hide your phone number, use Secret Chats with end-to-end encryption, and manage admin permissions."
 tags:
   - Community & Marketing
 contributors:
@@ -22,8 +22,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ## Summary
 
-> 🔑 **Key Takeaway:** Stay vigilant with group chats on Telegram. Implement verification steps and secure communication
-> practices to protect against sophisticated interception attacks.
+> 🔑 **Key Takeaway:** Enable passkeys and Two-Step Verification, hide your phone number, and stay vigilant with group
+> chats. Implement verification steps and secure communication practices to protect against interception attacks.
 
 While **Telegram** is widely used in the crypto community, it's crucial to understand its security limitations. Telegram
 **does not** offer end-to-end encryption (**E2EE**) by default, which means your messages could potentially be accessed
@@ -56,6 +56,18 @@ their own accounts.
         hardware keys.
         - **Backup Password:** If you lose this password, access to your account may be compromised. Write it down
         offline and ensure it is not lost.
+      - [ ]  Passkeys > **Set up at least one passkey**
+        - [Passkeys](https://telegram.org/blog/passkeys-and-gift-offers) allow you to log in using biometric data
+        (Face ID, fingerprint) or a device PIN instead of SMS codes. This is **phishing-resistant** and eliminates
+        SIM-swapping risk entirely for login.
+        - Go to **Settings > Privacy and Security > Passkeys** to create a passkey.
+        - Encrypted keys are stored on your device and can sync via password managers (iCloud Keychain, Google
+        Password Manager, 1Password, etc.).
+        - **Set up passkeys on multiple devices** for redundancy — if one device is lost, you can still log in
+        from another.
+        - **Keep your phone number active.** Even with passkeys, your account is still tied to a phone number.
+        Ensure it remains under your control.
+        - Passkeys work offline and across regions — useful when traveling or when SMS delivery is unreliable.
       - [ ]  Local passcode > **On** (recommended)
         - This feature adds a passcode to access your Telegram app after a period of inactivity. The default setting is
         "away for 1 hour."
