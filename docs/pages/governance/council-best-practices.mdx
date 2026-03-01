@@ -125,9 +125,9 @@ Establish explicit commitments defining:
 
 ### Liveness and Accountability
 
-**Example: Optimism's LivenessModule**
+**Example: Optimism's LivenessGuard**
 
-Optimism's Security Council implements a LivenessModule (a Safe module) that automatically removes inactive members while preserving security thresholds. This mechanism:
+Optimism's Security Council implements a [LivenessGuard](https://specs.optimism.io/protocol/safe-extensions.html#the-liveness-module) (a Safe module) that automatically removes inactive members while preserving security thresholds. This mechanism:
 - Tracks member signing activity over defined periods
 - Prevents governance deadlocks from unavailable signers
 - Maintains operational continuity during emergencies
@@ -266,7 +266,7 @@ Security Councils benefit from coordinated efforts:
 
 **Example: Compound Wargame Simulation**
 
-OpenZeppelin and Compound Labs conducted a simulated oracle attack exercise:
+The SEAL Chaos Team, OpenZeppelin, and Compound Labs conducted a simulated oracle attack exercise (2023). The SEAL Chaos Team simulated a rogue oracle inflating WETH prices by 28%, risking a $650K USDC drain from Compound's Comet pool:
 - Automated detection tools identified price manipulation
 - Coordinated response roles between security teams
 - Communication protocols tested under simulated pressure
