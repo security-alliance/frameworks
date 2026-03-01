@@ -51,51 +51,6 @@ Not every team member needs Qubes OS. Use the right tool for the right threat:
 
 ---
 
-## Device Security Tiers for Organizations
-
-Beyond choosing an operating system, Web3 organizations need a strategy for how devices are provisioned and managed across different roles. The following tiers provide a framework for matching security investment to actual risk.
-
-### Tier 1: Managed Devices (Gold Standard)
-
-Issue organization-managed hardware to your highest-risk roles. This provides full security stack visibility and control.
-
-- **EDR** (CrowdStrike Falcon, SentinelOne) for real-time behavioral monitoring and threat hunting
-- **MDM** (Intune, JAMF) to enforce configuration policy and enable remote wipe
-- **Full disk encryption** (BitLocker, FileVault) so stolen devices reveal nothing
-- **Biometric authentication** (TouchID, Windows Hello) for phishing-resistant local auth
-- **Centralized logging** for threat hunting and incident reconstruction
-
-**Target roles:** Developers with production access, leadership, treasury custodians, key signers, security leads.
-
-### Tier 2: Virtual Desktop Infrastructure (Privacy-First Scale)
-
-For global contractors where issuing hardware is impractical, VDI provides a secure cloud-hosted environment accessible from any device. The employee's personal machine becomes a thin client — all sensitive work happens inside the managed virtual desktop.
-
-- ✅ Complete visibility and control inside the virtual environment
-- ✅ Corporate web proxying and traffic inspection
-- ✅ Protects employee device privacy (organization sees inside VDI, not the host)
-- ⚠️ Susceptible to host-level keyloggers and screen capture
-- ⚠️ Performance and latency overhead
-- ⚠️ Hardware authentication dongle (YubiKey) compatibility issues in virtualized environments
-
-**Target roles:** Global operations, customer support, regional teams, contractors with defined scopes. Providers: AWS WorkSpaces, Azure Virtual Desktop, Google Cloud Workstations.
-
-### Tier 3: Enterprise Browser (Minimum Viable Security)
-
-For general staff and short-term contractors, an enterprise browser provides a managed browsing environment on any machine.
-
-- ✅ **Extension allowlisting** — eliminates malicious extension vectors (e.g., Discord session cookie theft)
-- ✅ **IdP integration** — enforces identity and access policies at the browser layer
-- ✅ **Isolated history and cookies** — work browsing sandboxed from personal browsing
-- ⚠️ Zero protection if the host OS is compromised
-- ⚠️ Cannot block host-level screen capture or USB access
-
-**Target roles:** General staff, community managers, short-term contractors.
-
-> 💡 If you use Google Workspace, you already have **Chrome Enterprise Core** at no additional cost. Enabling extension allowlisting alone eliminates one of the most common attack vectors against Discord and web-based platforms.
-
----
-
 ## Desktop: Qubes OS
 
 [Qubes OS](https://www.qubes-os.org/) is a security-focused operating system that runs each application group in an
