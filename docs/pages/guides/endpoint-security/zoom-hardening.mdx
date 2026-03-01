@@ -129,27 +129,6 @@ Red flags during a Zoom call that suggest an attack in progress:
 
 **Response:** Do not approve any request. Leave the call immediately. If compromised, follow the [ELUSIVE COMET playbook](/incident-management/playbooks/hacked-elusive-comet).
 
-## Quick reference
-
-### Required settings
-
-| Setting | Location | Recommended value |
-| --- | --- | --- |
-| Remote Control | Settings > Meeting > In Meeting (Basic) > Remote control | **OFF** |
-| Who Can Share Screen | Settings > Meeting > In Meeting (Basic) > Screen sharing | **Host Only** |
-| Zoom Accessibility Permissions (macOS) | System Settings > Privacy & Security > Accessibility | **Denied / Not Listed** |
-| Desktop Client | — | **Uninstalled (prefer browser)** |
-| Authentication | Admin > Advanced > Security | **SSO/OAuth** |
-| PPPC Profile (macOS) | MDM / manual `profiles` install | **Deployed** |
-
-### Optional settings
-
-| Setting | Location | Recommended value |
-| --- | --- | --- |
-| Waiting Room | Settings > Meeting > Security > Waiting Room | **ON** |
-| Meeting Passcode | Settings > Meeting > Security > Require a passcode | **ON** |
-| Automatic Recording | Settings > Meeting > Recording > Automatic recording | **OFF** |
-
 ## Further reading
 
 - [Trail of Bits — Zoom mitigations (PPPC profiles, tccutil scripts, uninstall scripts)](https://github.com/trailofbits/it-releases/tree/main/Zoom%20migitations)
