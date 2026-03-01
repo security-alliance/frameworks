@@ -1,0 +1,1028 @@
+export interface FrameworkRef {
+  page: string;
+  title: string;
+  header: string | null;
+  coverage: "full" | "partial";
+}
+
+const EMPTY_FRAMEWORK_REFS: readonly FrameworkRef[] = [];
+
+// Controls with no linked framework guidance are intentionally omitted.
+const frameworkGuidanceByControl: Record<string, readonly FrameworkRef[]> = {
+  "di-1.1.3": [
+    {
+      "page": "/devsecops/integrated-development-environments",
+      "title": "Securing Development Environments | SEAL",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "di-1.1.4": [
+    {
+      "page": "/devsecops/integrated-development-environments",
+      "title": "Securing Development Environments | SEAL",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "di-2.1.1": [
+    {
+      "page": "/secure-software-development/secure-code-repositories-version-control",
+      "title": "Secure Code Repositories & Version Control | SEAL",
+      "header": "Best Practices for Secure Code Repositories",
+      "coverage": "partial"
+    }
+  ],
+  "di-2.1.2": [
+    {
+      "page": "/devsecops/continuous-integration-continuous-deployment",
+      "title": "Securing CI/CD Pipelines | SEAL",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "di-2.1.4": [
+    {
+      "page": "/supply-chain/dependency-awareness",
+      "title": "Dependency Awareness",
+      "header": "Best Practices for Dependency Awareness",
+      "coverage": "partial"
+    }
+  ],
+  "di-3.1.1": [
+    {
+      "page": "/devsecops/continuous-integration-continuous-deployment",
+      "title": "Securing CI/CD Pipelines | SEAL",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "di-3.1.3": [
+    {
+      "page": "/devsecops/continuous-integration-continuous-deployment",
+      "title": "Securing CI/CD Pipelines | SEAL",
+      "header": null,
+      "coverage": "partial"
+    },
+    {
+      "page": "/devsecops/security-testing",
+      "title": "Security Testing",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "di-4.1.1": [
+    {
+      "page": "/security-automation/infrastructure-as-code",
+      "title": "Infrastructure as Code Security | SEAL",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "di-4.1.2": [
+    {
+      "page": "/secure-software-development/secure-code-repositories-version-control",
+      "title": "Secure Code Repositories & Version Control | SEAL",
+      "header": "Best Practices for Secure Code Repositories",
+      "coverage": "partial"
+    }
+  ],
+  "di-4.1.3": [
+    {
+      "page": "/secure-software-development/secure-code-repositories-version-control",
+      "title": "Secure Code Repositories & Version Control | SEAL",
+      "header": "Secure Version Control Practices",
+      "coverage": "partial"
+    }
+  ],
+  "di-4.1.4": [
+    {
+      "page": "/infrastructure/cloud",
+      "title": "Cloud Infrastructure",
+      "header": "Cloud Infrastructure",
+      "coverage": "partial"
+    }
+  ],
+  "dns-2.1.2": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+      "title": "Registrar Security & Registry Locks | SEAL",
+      "header": "Choosing a Secure Registrar",
+      "coverage": "full"
+    }
+  ],
+  "dns-3.1.1": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+      "title": "Registrar Security & Registry Locks | SEAL",
+      "header": "Access Control Best Practices",
+      "coverage": "partial"
+    }
+  ],
+  "dns-3.1.2": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+      "title": "Registrar Security & Registry Locks | SEAL",
+      "header": "Dedicated Security Contact Email",
+      "coverage": "partial"
+    }
+  ],
+  "dns-4.1.1": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+      "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+      "header": "DNSSEC Implementation",
+      "coverage": "partial"
+    }
+  ],
+  "dns-4.1.2": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/dnssec-and-email",
+      "title": "DNSSEC, CAA, SMTP DANE and Email Security | SEAL",
+      "header": "Email Security Configuration",
+      "coverage": "partial"
+    }
+  ],
+  "dns-4.1.3": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+      "title": "Registrar Security & Registry Locks | SEAL",
+      "header": "Registry Lock (EPP Lock)",
+      "coverage": "full"
+    }
+  ],
+  "dns-5.1.1": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+      "title": "DNS Monitoring & Incident Response | SEAL",
+      "header": "DNS Record Monitoring",
+      "coverage": "partial"
+    }
+  ],
+  "dns-5.1.2": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+      "title": "DNS Monitoring & Incident Response | SEAL",
+      "header": "Certificate Transparency Monitoring",
+      "coverage": "full"
+    }
+  ],
+  "dns-5.1.3": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/registrar-and-locks",
+      "title": "Registrar Security & Registry Locks | SEAL",
+      "header": "Domain Expiration Protection",
+      "coverage": "full"
+    }
+  ],
+  "dns-6.1.1": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+      "title": "DNS Monitoring & Incident Response | SEAL",
+      "header": "Setting Up Alerts",
+      "coverage": "partial"
+    }
+  ],
+  "dns-6.1.2": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+      "title": "DNS Monitoring & Incident Response | SEAL",
+      "header": "Incident Response Plan",
+      "coverage": "partial"
+    }
+  ],
+  "ir-1.1.2": [
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Emergency Contact Information",
+      "coverage": "partial"
+    },
+    {
+      "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+      "title": "SEAL 911 War Room Guidelines | SEAL",
+      "header": "Key Roles",
+      "coverage": "partial"
+    },
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Communication & Documentation",
+      "coverage": "partial"
+    }
+  ],
+  "ir-2.1.1": [
+    {
+      "page": "/infrastructure/domain-and-dns-security/monitoring-and-alerting",
+      "title": "DNS Monitoring & Incident Response | SEAL",
+      "header": "DNS Record Monitoring",
+      "coverage": "partial"
+    },
+    {
+      "page": "/monitoring/guidelines",
+      "title": "On-Chain Monitoring Guidelines",
+      "header": "Best Practices",
+      "coverage": "partial"
+    }
+  ],
+  "ir-2.1.2": [
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Immediate Actions",
+      "coverage": "partial"
+    }
+  ],
+  "ir-3.1.1": [
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Key Compromise",
+      "coverage": "partial"
+    },
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Signer rotation",
+      "coverage": "partial"
+    }
+  ],
+  "ir-3.1.2": [
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Training & Drills",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/setup-and-configuration",
+      "title": "Multisig Setup & Configuration | SEAL",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "ir-3.1.3": [
+    {
+      "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+      "title": "Backup Signing & Infrastructure | SEAL",
+      "header": "UI Alternatives",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "Emergency Preparedness",
+      "coverage": "partial"
+    }
+  ],
+  "ir-4.1.1": [
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "Documentation & Communication",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Emergency Communication Protocols",
+      "coverage": "partial"
+    }
+  ],
+  "ir-4.1.2": [
+    {
+      "page": "/incident-management/communication-strategies",
+      "title": "Incident Communication Strategies | SEAL",
+      "header": "Best Practices",
+      "coverage": "partial"
+    }
+  ],
+  "ir-4.1.3": [
+    {
+      "page": "/incident-management/playbooks/seal-911-war-room-guidelines",
+      "title": "SEAL 911 War Room Guidelines | SEAL",
+      "header": "Communications",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Emergency Notification Template",
+      "coverage": "partial"
+    }
+  ],
+  "ir-5.1.1": [
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Emergency Drill Procedures",
+      "coverage": "partial"
+    },
+    {
+      "page": "/incident-management/playbooks/decentralized-ir",
+      "title": "Decentralized Incident Response | SEAL",
+      "header": "Keep It Alive",
+      "coverage": "partial"
+    }
+  ],
+  "ms-1.1.1": [
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "For Multisig Administrators",
+      "coverage": "partial"
+    }
+  ],
+  "ms-1.1.2": [
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Communication & Documentation",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "Documentation & Communication",
+      "coverage": "partial"
+    }
+  ],
+  "ms-2.1.1": [
+    {
+      "page": "/multisig-for-protocols/planning-and-classification",
+      "title": "Multisig Planning & Classification | SEAL",
+      "header": "Classification Process",
+      "coverage": "full"
+    },
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Thresholds & Configuration",
+      "coverage": "full"
+    }
+  ],
+  "ms-2.1.2": [
+    {
+      "page": "/multisig-for-protocols/setup-and-configuration",
+      "title": "Multisig Setup & Configuration | SEAL",
+      "header": "Contract-Level Controls",
+      "coverage": "partial"
+    },
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Contract-Level Security",
+      "coverage": "partial"
+    }
+  ],
+  "ms-3.1.1": [
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Communication & Documentation",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/setup-and-configuration",
+      "title": "Multisig Setup & Configuration | SEAL",
+      "header": "Pre-Launch Checklist",
+      "coverage": "partial"
+    }
+  ],
+  "ms-3.1.2": [
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Thresholds & Configuration",
+      "coverage": "full"
+    }
+  ],
+  "ms-3.1.3": [
+    {
+      "page": "/wallet-security/seed-phrase-management",
+      "title": "Seed Phrase Management",
+      "header": "Secure Storage Practices",
+      "coverage": "full"
+    }
+  ],
+  "ms-3.1.4": [
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Signer rotation",
+      "coverage": "partial"
+    }
+  ],
+  "ms-3.1.5": [
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "For Signers",
+      "coverage": "full"
+    }
+  ],
+  "ms-3.1.6": [
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "Hardware & Security Setup",
+      "coverage": "full"
+    }
+  ],
+  "ms-3.1.7": [
+    {
+      "page": "/multisig-for-protocols/personal-security-opsec",
+      "title": "Multisig Personal Security (OpSec) | SEAL",
+      "header": "Network Security",
+      "coverage": "full"
+    }
+  ],
+  "ms-3.1.8": [
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Strategic Signer Distribution",
+      "coverage": "full"
+    }
+  ],
+  "ms-4.1.1": [
+    {
+      "page": "/wallet-security/signing-and-verification/secure-multisig-signing-process",
+      "title": "Secure Multisig Signing Process | SEAL",
+      "header": "Phase 1: Signing the Off-Chain Message",
+      "coverage": "full"
+    },
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Operational Best Practices",
+      "coverage": "partial"
+    }
+  ],
+  "ms-4.1.3": [
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "Transaction Verification",
+      "coverage": "partial"
+    }
+  ],
+  "ms-4.1.4": [
+    {
+      "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+      "title": "Backup Signing & Infrastructure | SEAL",
+      "header": "UI Alternatives",
+      "coverage": "full"
+    }
+  ],
+  "ms-5.1.1": [
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "Documentation & Communication",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Communication Account Compromise",
+      "coverage": "partial"
+    }
+  ],
+  "ms-5.1.2": [
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "Documentation & Communication",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Emergency Contact Information",
+      "coverage": "partial"
+    }
+  ],
+  "ms-6.1.1": [
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Key Compromise",
+      "coverage": "full"
+    }
+  ],
+  "ms-6.1.2": [
+    {
+      "page": "/multisig-for-protocols/planning-and-classification",
+      "title": "Multisig Planning & Classification | SEAL",
+      "header": "Step 2: Operational Assessment",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "For Emergency Response Multisigs",
+      "coverage": "partial"
+    }
+  ],
+  "ms-6.1.3": [
+    {
+      "page": "/wallet-security/secure-multisig-best-practices",
+      "title": "Secure Multisig Best Practices | SEAL",
+      "header": "Operational Best Practices",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/setup-and-configuration",
+      "title": "Multisig Setup & Configuration | SEAL",
+      "header": "Active Monitoring",
+      "coverage": "partial"
+    }
+  ],
+  "ms-6.1.4": [
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "Specialized Training by Use Case",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Emergency Drill Procedures",
+      "coverage": "full"
+    }
+  ],
+  "tro-1.1.2": [
+    {
+      "page": "/treasury-operations/registration-documents",
+      "title": "Custodial Account Registration | SEAL",
+      "header": "Registration Template",
+      "coverage": "partial"
+    }
+  ],
+  "tro-1.1.3": [
+    {
+      "page": "/treasury-operations/enhanced-controls",
+      "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+      "header": "MPC for Large Holdings",
+      "coverage": "partial"
+    }
+  ],
+  "tro-1.1.4": [
+    {
+      "page": "/treasury-operations/registration-documents",
+      "title": "Custodial Account Registration | SEAL",
+      "header": "Access Change Template",
+      "coverage": "partial"
+    }
+  ],
+  "tro-2.1.1": [
+    {
+      "page": "/treasury-operations/classification",
+      "title": "Treasury Security Classification | SEAL",
+      "header": null,
+      "coverage": "full"
+    }
+  ],
+  "tro-3.1.1": [
+    {
+      "page": "/treasury-operations/enhanced-controls",
+      "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+      "header": "Access Security",
+      "coverage": "partial"
+    },
+    {
+      "page": "/treasury-operations/registration-documents",
+      "title": "Custodial Account Registration | SEAL",
+      "header": "Security Configuration Template",
+      "coverage": "partial"
+    }
+  ],
+  "tro-3.1.2": [
+    {
+      "page": "/treasury-operations/enhanced-controls",
+      "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+      "header": "Access Security",
+      "coverage": "partial"
+    },
+    {
+      "page": "/wallet-security/seed-phrase-management",
+      "title": "Seed Phrase Management",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "tro-3.1.3": [
+    {
+      "page": "/treasury-operations/registration-documents",
+      "title": "Custodial Account Registration | SEAL",
+      "header": "Quarterly Review Template",
+      "coverage": "full"
+    }
+  ],
+  "tro-3.1.4": [
+    {
+      "page": "/treasury-operations/enhanced-controls",
+      "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+      "header": "Device Security",
+      "coverage": "partial"
+    },
+    {
+      "page": "/wallet-security/seed-phrase-management",
+      "title": "Seed Phrase Management",
+      "header": "Secure Storage Practices",
+      "coverage": "partial"
+    },
+    {
+      "page": "/multisig-for-protocols/personal-security-opsec",
+      "title": "Multisig Personal Security (OpSec) | SEAL",
+      "header": "Device Security",
+      "coverage": "partial"
+    }
+  ],
+  "tro-4.1.1": [
+    {
+      "page": "/treasury-operations/transaction-verification",
+      "title": "Treasury Transaction Verification | SEAL",
+      "header": "Execution Protocol",
+      "coverage": "partial"
+    }
+  ],
+  "tro-4.1.2": [
+    {
+      "page": "/multisig-for-protocols/implementation-checklist",
+      "title": "Multisig Implementation Checklist | SEAL",
+      "header": "Transaction Verification",
+      "coverage": "partial"
+    }
+  ],
+  "tro-4.1.3": [
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Communication Account Compromise",
+      "coverage": "partial"
+    }
+  ],
+  "tro-5.1.2": [
+    {
+      "page": "/treasury-operations/transaction-verification",
+      "title": "Treasury Transaction Verification | SEAL",
+      "header": "Transaction Parameter Security",
+      "coverage": "partial"
+    }
+  ],
+  "tro-6.1.1": [
+    {
+      "page": "/treasury-operations/enhanced-controls",
+      "title": "Enhanced Controls for High-Risk Accounts | SEAL",
+      "header": "Security Monitoring & Logging",
+      "coverage": "partial"
+    }
+  ],
+  "tro-6.1.2": [
+    {
+      "page": "/multisig-for-protocols/emergency-procedures",
+      "title": "Multisig Emergency Procedures | SEAL",
+      "header": "Emergency Notification Template",
+      "coverage": "full"
+    }
+  ],
+  "tro-7.1.2": [
+    {
+      "page": "/multisig-for-protocols/backup-signing-and-infrastructure",
+      "title": "Backup Signing & Infrastructure | SEAL",
+      "header": "UI Alternatives",
+      "coverage": "full"
+    }
+  ],
+  "tro-8.1.1": [
+    {
+      "page": "/treasury-operations/registration-documents",
+      "title": "Custodial Account Registration | SEAL",
+      "header": "Security Configuration Template",
+      "coverage": "partial"
+    }
+  ],
+  "ws-1.1.1": [
+    {
+      "page": "/opsec/core-concepts/security-fundamentals",
+      "title": "Security Fundamentals",
+      "header": "Continuous Visibility",
+      "coverage": "partial"
+    }
+  ],
+  "ws-1.1.3": [
+    {
+      "page": "/opsec/core-concepts/implementation-process",
+      "title": "OpSec Implementation Process | SEAL",
+      "header": "Critical Asset Identification",
+      "coverage": "partial"
+    }
+  ],
+  "ws-1.1.4": [
+    {
+      "page": "/opsec/core-concepts/security-fundamentals",
+      "title": "Security Fundamentals",
+      "header": "Information Flow Control",
+      "coverage": "full"
+    },
+    {
+      "page": "/opsec/core-concepts/implementation-process",
+      "title": "OpSec Implementation Process | SEAL",
+      "header": "Critical Asset Identification",
+      "coverage": "full"
+    }
+  ],
+  "ws-2.1.1": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": "Secure devices with encryption & updates",
+      "coverage": "partial"
+    },
+    {
+      "page": "/encryption/volume-encryption",
+      "title": "Volume Encryption",
+      "header": null,
+      "coverage": "partial"
+    },
+    {
+      "page": "/encryption/partition-encryption",
+      "title": "Partition Encryption",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "ws-2.1.2": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": "Back up and prepare for loss",
+      "coverage": "partial"
+    },
+    {
+      "page": "/opsec/control-domains/physical-environmental",
+      "title": "Physical & Environmental Security",
+      "header": "Physical Security of Critical Assets",
+      "coverage": "partial"
+    }
+  ],
+  "ws-2.1.3": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": "Inspect and clean your devices",
+      "coverage": "partial"
+    }
+  ],
+  "ws-2.1.4": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": null,
+      "coverage": "full"
+    },
+    {
+      "page": "/opsec/control-domains/physical-environmental",
+      "title": "Physical & Environmental Security",
+      "header": "Secure Workspace & Travel Security",
+      "coverage": "full"
+    }
+  ],
+  "ws-3.1.1": [
+    {
+      "page": "/guides/account_management/discord",
+      "title": "Discord Security",
+      "header": "Roles",
+      "coverage": "partial"
+    }
+  ],
+  "ws-3.1.2": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": "Protect Accounts with 2FA redundancy",
+      "coverage": "partial"
+    },
+    {
+      "page": "/opsec/control-domains/technical",
+      "title": "Technical Security Controls",
+      "header": "Two-Factor & Hardware Authentication",
+      "coverage": "partial"
+    },
+    {
+      "page": "/guides/account_management/discord",
+      "title": "Discord Security",
+      "header": "For Individuals - Account Security Checklist",
+      "coverage": "partial"
+    }
+  ],
+  "ws-3.1.3": [
+    {
+      "page": "/guides/account_management/discord",
+      "title": "Discord Security",
+      "header": "Server Settings Checklist",
+      "coverage": "partial"
+    }
+  ],
+  "ws-3.1.4": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": "Protect Accounts with 2FA redundancy",
+      "coverage": "partial"
+    },
+    {
+      "page": "/awareness/cultivating-a-security-aware-mindset",
+      "title": "Cultivating A Security Aware Mindset | SEAL",
+      "header": "Password Management",
+      "coverage": "partial"
+    },
+    {
+      "page": "/guides/account_management/telegram",
+      "title": "Telegram Security",
+      "header": "Account Security Checklist",
+      "coverage": "partial"
+    }
+  ],
+  "ws-3.1.5": [
+    {
+      "page": "/opsec/core-concepts/security-fundamentals",
+      "title": "Security Fundamentals",
+      "header": "Minimal Access Scopes",
+      "coverage": "partial"
+    },
+    {
+      "page": "/guides/account_management/discord",
+      "title": "Discord Security",
+      "header": "Regular Reviews",
+      "coverage": "partial"
+    }
+  ],
+  "ws-4.1.1": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": "Minimize digital footprint & social visibility",
+      "coverage": "partial"
+    }
+  ],
+  "ws-4.1.2": [
+    {
+      "page": "/guides/account_management/github",
+      "title": "GitHub Security",
+      "header": "Repository Settings",
+      "coverage": "full"
+    }
+  ],
+  "ws-5.1.1": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": "Network safety – avoid untrusted Wi-Fi & Bluetooth",
+      "coverage": "partial"
+    },
+    {
+      "page": "/opsec/control-domains/technical",
+      "title": "Technical Security Controls",
+      "header": "Network & Communication Security",
+      "coverage": "partial"
+    }
+  ],
+  "ws-5.1.2": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": "Plan emergency and incident responses",
+      "coverage": "partial"
+    },
+    {
+      "page": "/guides/account_management/telegram",
+      "title": "Telegram Security",
+      "header": "Use Secret Chats for Enhanced Privacy",
+      "coverage": "partial"
+    },
+    {
+      "page": "/opsec/control-domains/technical",
+      "title": "Technical Security Controls",
+      "header": "Network & Communication Security",
+      "coverage": "partial"
+    }
+  ],
+  "ws-6.1.1": [
+    {
+      "page": "/opsec/control-domains/people",
+      "title": "Personnel Security Controls",
+      "header": "Personnel Security Measures",
+      "coverage": "partial"
+    }
+  ],
+  "ws-6.1.2": [
+    {
+      "page": "/opsec/travel/guide",
+      "title": "Travel Security Guide",
+      "header": "Back up and prepare for loss",
+      "coverage": "partial"
+    },
+    {
+      "page": "/awareness/understanding-threat-vectors",
+      "title": "Understanding Threat Vectors",
+      "header": null,
+      "coverage": "partial"
+    },
+    {
+      "page": "/guides/account_management/discord",
+      "title": "Discord Security",
+      "header": "Regular Reviews",
+      "coverage": "partial"
+    }
+  ],
+  "ws-6.1.3": [
+    {
+      "page": "/awareness/staying-informed-and-continuous-learning",
+      "title": "Staying Informed And Continuous Learning | SEAL",
+      "header": "Comprehensive Security Training Framework",
+      "coverage": "partial"
+    },
+    {
+      "page": "/opsec/control-domains/people",
+      "title": "Personnel Security Controls",
+      "header": "Security Training & Culture",
+      "coverage": "partial"
+    },
+    {
+      "page": "/opsec/appendices/case-studies",
+      "title": "OpSec Case Studies",
+      "header": null,
+      "coverage": "partial"
+    }
+  ],
+  "ws-7.1.1": [
+    {
+      "page": "/opsec/core-concepts/security-fundamentals",
+      "title": "Security Fundamentals",
+      "header": "Continuous Visibility",
+      "coverage": "partial"
+    },
+    {
+      "page": "/opsec/appendices/case-studies",
+      "title": "OpSec Case Studies",
+      "header": "Tabletop Exercises",
+      "coverage": "partial"
+    }
+  ],
+  "ws-7.1.2": [
+    {
+      "page": "/opsec/core-concepts/security-fundamentals",
+      "title": "Security Fundamentals",
+      "header": "Minimal Access Scopes",
+      "coverage": "partial"
+    },
+    {
+      "page": "/opsec/control-domains/people",
+      "title": "Personnel Security Controls",
+      "header": "Insider-Threat Mitigation",
+      "coverage": "partial"
+    }
+  ],
+  "ws-7.1.3": [
+    {
+      "page": "/opsec/core-concepts/security-fundamentals",
+      "title": "Security Fundamentals",
+      "header": "Minimal Access Scopes",
+      "coverage": "partial"
+    },
+    {
+      "page": "/guides/account_management/discord",
+      "title": "Discord Security",
+      "header": "Integrations",
+      "coverage": "partial"
+    }
+  ]
+};
+
+export function getFrameworkGuidance(controlId: string): readonly FrameworkRef[] {
+  return frameworkGuidanceByControl[controlId] ?? EMPTY_FRAMEWORK_REFS;
+}
+
+function toHeadingAnchor(heading: string): string {
+  return heading
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+function normalizeLegacyPath(path: string): string {
+  return path.replace("/guides/account_management/", "/guides/account-management/");
+}
+
+export function getFrameworkGuidanceHref(ref: FrameworkRef): string {
+  const page = normalizeLegacyPath(ref.page);
+  return ref.header ? `${page}#${toHeadingAnchor(ref.header)}` : page;
+}
+
+// Backward-compatible export for existing imports.
+export const controlToFramework: Record<string, readonly FrameworkRef[]> = frameworkGuidanceByControl;
