@@ -126,6 +126,7 @@ const config = {
                 { text: 'Using EIP-7702', link: '/wallet-security/signing-and-verification/verifying-7702' },
               ]
             },
+            { text: 'Smart Contract Interaction Security', link: '/wallet-security/smart-contract-interaction-security', dev: true },
             { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-and-resources' },
           ]
