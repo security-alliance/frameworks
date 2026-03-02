@@ -1,0 +1,49 @@
+---
+title: "AI Workflows: Developers vs Non-Developers | SEAL"
+description: "How AI security strategy should differ between developer and non-developer AI usage workflows."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - Community & Marketing
+contributors:
+  - role: wrote
+    users: [munamwasi, jubos, masterfung]
+  - role: reviewed
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# AI Workflows: Developers vs Non-Developers
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+AI workflows differ significantly based on user intent and technical context. Developer workflows involve code, APIs,
+model orchestration, and embedded systems where execution paths are explicit and controllable. Non-developer workflows,
+such as marketing, sales, legal, and business process automation, leverage AI through tools and UIs without deep
+visibility into model behavior.
+
+## Runtime Enforcement over Post-Hoc Auditing
+
+Security must adapt accordingly: developer tools can integrate enforcement primitives
+programmatically, while non-developer tools require automated, transparent guardrails that protect users without
+requiring specialized expertise. Both contexts benefit from runtime enforcement rather than post-hoc auditing.
+Non-developer AI tools used in Web3 communities, such as DAO communications or treasury reporting, often operate on
+public blockchain data but still require safeguards against misinterpretation or malicious input shaping.
+
+## Consider using
+
+- Palo Alto Prisma AIRS - runtime security with policy enforcement and automated red-teaming
+- CalypsoAI - cognitive-layer analysis of agent reasoning and plan execution
+- Obsidian Security - browser-level enforcement for AI data policies and prompt inspection
+- Nightfall AI - AI-native DLP across SaaS, endpoints, browsers, and AI applications
+
+---
+
+</TagProvider>
+<ContributeFooter />

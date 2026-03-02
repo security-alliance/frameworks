@@ -380,6 +380,25 @@ const config = {
           ]
         },
         {
+          text: 'AI Security',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/ai-security/overview', dev: true },
+            { text: 'Prompt Injection Defenses', link: '/ai-security/prompt-injection-defenses', dev: true },
+            { text: 'AI Browsers', link: '/ai-security/ai-browsers', dev: true },
+            { text: 'AI Workflows: Developers vs Non-Developers', link: '/ai-security/ai-workflows-developers-vs-non-developers', dev: true },
+            { text: 'Data Exfiltration via Generative Systems', link: '/ai-security/data-exfiltration-via-generative-systems', dev: true },
+            { text: 'Execution-Path Enforcement', link: '/ai-security/execution-path-enforcement', dev: true },
+            { text: 'AI Execution Sandboxing', link: '/ai-security/ai-execution-sandboxing', dev: true },
+            { text: 'Capability-Based Isolation for AI Agents', link: '/ai-security/capability-based-isolation-for-ai-agents', dev: true },
+            { text: 'Sandboxing for Tool and Execution Calls', link: '/ai-security/sandboxing-for-tool-and-execution-calls', dev: true },
+            { text: 'Network and Resource Isolation in AI Sandboxes', link: '/ai-security/network-and-resource-isolation-in-ai-sandboxes', dev: true },
+            { text: 'Sandboxing as a Complement to Execution-Path Enforcement', link: '/ai-security/sandboxing-as-a-complement-to-execution-path-enforcement', dev: true },
+            { text: 'AI Execution Sandboxing: A Practical Guide', link: '/ai-security/ai-execution-sandboxing-practical-guide', dev: true },
+          ]
+        },
+        {
           text: 'ENS',
           collapsed: true,
           items: [
