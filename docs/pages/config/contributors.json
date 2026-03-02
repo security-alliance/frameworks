@@ -491,6 +491,45 @@
       { "name": "Active-Last-30d", "lastActive": "2026-01-21" }
     ]
   },
+  "munamwasi": {
+    "slug": "munamwasi",
+    "name": "munamwasi",
+    "avatar": "https://avatars.githubusercontent.com/MunamWasi",
+    "github": "https://github.com/MunamWasi",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-02-20" }
+    ]
+  },
+  "jubos": {
+    "slug": "jubos",
+    "name": "jubos",
+    "avatar": "https://avatars.githubusercontent.com/jubos",
+    "github": "https://github.com/jubos",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor"
+  },
+  "masterfung": {
+    "slug": "masterfung",
+    "name": "masterfung",
+    "avatar": "https://avatars.githubusercontent.com/masterfung",
+    "github": "https://github.com/masterfung",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor"
+  },
   "smagdali": {
     "slug": "smagdali",
     "name": "smagdali",
