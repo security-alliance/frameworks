@@ -32,11 +32,15 @@ Security tools such as firewalls, antivirus software, and endpoint monitoring we
 suspicious users. They are not equipped to tell the difference between a legitimate user action and an AI agent acting
 on a manipulated prompt.
 
+## Clear Boundaries Around Access, Execution, and Data Exposure
+
 Sandboxing fills this gap by limiting what an AI system can see and do from the outset. Instead of relying only on
 detection after something goes wrong, sandboxing creates clear boundaries around access, execution, and data exposure.
 It reduces the potential blast radius, enforces privilege constraints, and contains unintended side effects whether the
 issue stems from a malicious prompt, a design flaw, or a simple model error. For organizations deploying AI agents that
 interact with real systems, isolation is a core requirement rather than an optional safeguard.
+
+## Technical Capability and Risk Tolerance
 
 There is a wide range of sandboxing approaches, depending on technical capability and risk tolerance. For many
 non-technical users, browser-based AI tools already offer a layer of separation, since applications running in a tab
@@ -46,6 +50,8 @@ rely on microVM technologies such as Firecracker or gVisor, or hardened operatin
 approach depends on what the agent can access, what authority it holds, and how severe the consequences of misuse might
 be. This calculation becomes especially important in Web3 contexts, where agents may control wallets, interact with
 immutable smart contracts, or execute transactions that cannot be undone.
+
+---
 
 The guidance that follows offers practical recommendations for implementing sandboxing across different levels of
 expertise and deployment models. It builds on established security principles such as least privilege and layered

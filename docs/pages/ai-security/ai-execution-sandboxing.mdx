@@ -26,7 +26,11 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 AI execution sandboxing is the practice of isolating model execution and agent actions within tightly constrained
 environments that limit blast radius, privilege, and side effects. As AI systems gain the ability to read files, call
 tools, execute code, and interact with external systems, sandboxing becomes a primary security control rather than an
-optional safeguard. Effective sandboxing ensures that even if a model is manipulated through prompt injection or
+optional safeguard.
+
+## Predefined Boundaries and Runtime Enforcement
+
+Effective sandboxing ensures that even if a model is manipulated through prompt injection or
 adversarial input, the resulting behavior cannot escape predefined boundaries. In production, sandboxes must be
 enforced at runtime and applied consistently across text, document, image, and tool execution paths. For Web3 agents,
 sandboxing is especially critical when interacting with wallets, signing flows, or smart contract interfaces, where

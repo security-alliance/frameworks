@@ -26,8 +26,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 AI systems increasingly rely on tools to perform real-world actions, including database queries, API calls, and system
 commands. Tool execution represents the highest-risk surface in agentic systems because it bridges model output and
 external side effects. Sandboxing for tool execution requires intercepting tool calls before execution and evaluating
-them within a controlled environment that enforces policy and resource limits. This includes restricting network access,
-limiting execution time, controlling input and output size, and preventing chained or recursive tool invocation.
+them within a controlled environment that enforces policy and resource limits.
+
+## Restricting Escalation Vectors
+
+Effective sandboxing restricts network access,
+limits execution time, controls input and output size, and prevents chained or recursive tool invocation.
 Production-grade sandboxing ensures that tools cannot be abused as escalation vectors even when invoked by a
 compromised or misaligned model. For AI agents managing infrastructure, financial operations, or blockchain
 interactions, sandboxed tool execution is essential to prevent cascading failures.
