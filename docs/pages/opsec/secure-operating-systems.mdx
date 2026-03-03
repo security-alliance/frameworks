@@ -7,7 +7,7 @@ tags:
   - Engineer/Developer
 contributors:
   - role: wrote
-    users: [artemisclaw82]
+    users: [dickson]
   - role: reviewed
     users: []
   - role: fact-checked
@@ -35,7 +35,6 @@ everything.
 Secure operating systems address this through **isolation**: sensitive operations run in separate compartments that
 cannot see each other, so a compromised browser cannot reach your wallet or signing keys.
 
----
 
 ## When to Use a Secure OS
 
@@ -49,7 +48,6 @@ Not every team member needs Qubes OS. Use the right tool for the right threat:
 | General team members | Hardened macOS/Linux + endpoint security | Sufficient with good hygiene |
 | Travel / high-risk contexts | Tails on USB or dedicated travel device | Leaves no trace on borrowed hardware |
 
----
 
 ## Desktop: Qubes OS
 
@@ -90,7 +88,6 @@ isolated virtual machine (called a "qube"). If one qube is compromised, others r
 - **Performance**: Running multiple VMs uses more resources than a standard OS.
 - **No macOS/Windows apps**: Qubes runs Linux and Windows VMs, but macOS applications are not available.
 
----
 
 ## Mobile: GrapheneOS
 
@@ -123,7 +120,6 @@ and exploit mitigations while maintaining Android app compatibility.
 - **No Google Play Services by default**: Sandboxed Google Play is available as an option, but some apps may not work
   without it.
 
----
 
 ## Ephemeral Sessions: Tails
 
@@ -150,7 +146,6 @@ leaves no trace on the host machine.
 - **Limited hardware support**: Some Wi-Fi adapters and GPUs may not work.
 - **Not a substitute for Qubes**: Tails provides ephemeral isolation, not persistent compartmentalization.
 
----
 
 ## Decision Matrix
 
@@ -163,7 +158,6 @@ leaves no trace on the host machine.
 | **Best for** | Key holders, developers | Mobile wallet users | IR, travel, emergency |
 | **Hardware cost** | $800-1500 (compatible laptop) | $400-900 (Pixel device) | Any USB drive |
 
----
 
 ## Hardening Standard Operating Systems
 
@@ -188,7 +182,6 @@ If a dedicated secure OS is not feasible, harden your existing setup:
 - [ ] Disable SSH password authentication — use key-based only
 - [ ] Consider [Kicksecure](https://www.kicksecure.com/) as a hardened Debian derivative
 
----
 
 ## Further Reading
 
