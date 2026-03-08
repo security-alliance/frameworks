@@ -199,15 +199,25 @@ MTA-STS enforces encrypted connections between mail servers, preventing man-in-t
 TLS-RPT collects delivery reports for messages transmitted using MTA-STS and SMTP DANE.
 
 Most major providers (Google, Microsoft, etc.) send one aggregated report per day per domain summarizing all failures for that day and some also indicate how many transmissions were successful.
-This is crucial for already established projects to ensure current email communication is not broken when enabling these security features.
+This is crucial for already established projects to ensure current email communication is not broken when enabling the security features above.
 
-**Example**
-MTA-STS is deployed in "testing" mode
+**Example during testing of MTA-STS**
+MTA-STS is deployed with low max_age value to allow for more rapid iteration 
 TLS-RPT is configured for domain example.com
+
 An email provider attempts to deliver mail to example.com
 It fetches example.com's MTA-STS policy and attempts delivery using TLS according to the policy
-The failure is logged and reported using TLS-RPT
+If an issue arises a failure is logged and reported using TLS-RPT
 Provider finishes mail delivery by falling back to classic SMTP
+
+**Example of MTA-STS in production**
+MTA-STS policy file mode set to 'enforcing' and max_age eventually raised as confidence in the deployment is gained 
+MTA-STS TXT DNS record id value updated
+
+An email provider attempts to deliver mail to example.com
+If not already cached, the SMTP server fetches example.com's MTA-STS policy and attempts delivery using TLS according to the policy
+If an issue arises a failure is logged and reported using TLS-RPT
+Mail delivery hard fails at this point
 
 **Setup**
 Create a new DNS TXT record with the following structure and chosen email address to receive the reports
