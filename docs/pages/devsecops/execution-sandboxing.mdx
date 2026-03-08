@@ -1,0 +1,67 @@
+---
+title: "Execution Sandboxing | SEAL"
+description: "How to sandbox and isolate execution (tools, code, builds) to reduce blast radius in DevSecOps workflows."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [munamwasi, jubos, masterfung]
+  - role: reviewed
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Execution Sandboxing
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Execution sandboxing is the practice of running code, tools, and automation inside tightly constrained environments that limit blast radius, privilege, and side effects.
+
+In DevSecOps, this applies to:
+
+- CI jobs and build steps (especially untrusted PRs and third-party actions)
+- developer tooling and local scripts
+- plugins/extensions and “tool calling” systems (including AI agents) that can trigger real side effects
+
+Sandboxing should be treated as a primary security control rather than an optional safeguard.
+
+## Predefined Boundaries and Runtime Enforcement
+
+Effective sandboxing ensures that even if an execution flow is manipulated (malicious input, compromised dependency, vulnerable plugin, or prompt injection in agentic systems), the resulting behavior cannot escape predefined boundaries.
+
+In production, sandboxes must be enforced at runtime and applied consistently across:
+
+- job runners / containers / microVMs
+- filesystem and secret access
+- network egress
+- CPU/memory/time limits
+
+For Web3 operations, sandboxing is especially critical around wallet tooling, signing flows, and smart contract interfaces, where unintended actions can be irreversible.
+
+## Consider using
+
+- Modal - cloud-based sandboxed execution environments for AI agent workloads
+- Firecracker (AWS) - lightweight microVMs for untrusted workload isolation
+- Docker sandbox patterns for fast development-stage containment
+- Parallels, VMware, VirtualBox, UTM, or Qemu for VM-level isolation
+- E2B - cloud sandboxes purpose-built for AI agents and code execution
+
+## References
+
+- Firecracker: https://firecracker-microvm.github.io/
+- gVisor: https://gvisor.dev/docs/
+- Kata Containers: https://katacontainers.io/
+- Docker security: https://docs.docker.com/engine/security/
+
+---
+
+</TagProvider>
+<ContributeFooter />
