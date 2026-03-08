@@ -1,0 +1,49 @@
+---
+title: "Capability-Based Isolation for AI Agents | SEAL"
+description: "Capability-scoped isolation patterns for AI agents operating across tools, APIs, and external systems."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [munamwasi, jubos, masterfung]
+  - role: reviewed
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Capability-Based Isolation for AI Agents
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Traditional sandboxing approaches often rely on coarse-grained isolation, such as container boundaries or virtual
+machines, which are insufficient for agentic AI systems that operate across multiple tools and services.
+Capability-based isolation refines sandboxing by explicitly defining which actions an agent is permitted to perform and
+under what conditions. Rather than granting broad access to file systems, networks, or APIs, agents are issued narrowly
+scoped capabilities that are evaluated at execution time. This model aligns security controls with actual behavior
+rather than assumed intent. In practice, capability-based isolation allows organizations to safely deploy agents that
+can read data without writing, query systems without mutating state, or simulate actions without executing them. In
+decentralized systems, this approach maps naturally to permissioned contract calls and limited signing authority.
+
+## Consider using
+
+- Zenity - secure-by-design policy checks on agent permissions and tool access
+- Palo Alto Prisma AIRS - runtime model inspection and granular capability controls
+- Operant AI - MCP gateway authentication and capability boundary enforcement
+- Cisco AI Defense - capability-scoped guardrails integrated in AI development flow
+
+## References
+
+- Principle of least privilege (NIST): https://csrc.nist.gov/glossary/term/least_privilege
+- Capability-based security (background): https://en.wikipedia.org/wiki/Capability-based_security
+
+---
+
+</TagProvider>
+<ContributeFooter />
