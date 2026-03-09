@@ -1,0 +1,164 @@
+---
+title: "Incident Log Template | Security Alliance"
+description: "Use this template during active incidents. The Scribe owns this document."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Incident Log Template
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Use this template during active incidents. The [Scribe](../incident-response-policy#scribe) owns this document.
+
+## How to Use
+
+1. Copy this template to [Incident-Logs](../incident-logs/overview) folder
+2. Name it: `YYYY-MM-DD-brief-description` (e.g., `2024-03-15-api-outage`)
+3. Update in real-time as things happen
+4. Use UTC timestamps, 24-hour format
+5. More detail is better. You can summarize later
+
+---
+
+# Incident: [TITLE]
+
+## Summary
+
+| Field | Value |
+|-------|-------|
+| **Status** | Active / Mitigated / Resolved |
+| **Severity** | P1 / P2 / P3 / P4 / P5 |
+| **Start Time** | YYYY-MM-DD HH:MM UTC |
+| **Resolution Time** | |
+| **Affected Services** | |
+
+## Roles
+
+| Role | Person |
+|------|--------|
+| Detector | |
+| Incident Leader | |
+| Scribe | |
+| Communication Manager | |
+| Responders | |
+
+## Communication Channels
+
+- **Call:** [link]
+- **Chat:** [channel]
+
+---
+
+## Timeline
+
+```
+HH:MM UTC - Incident detected by [who/what]
+HH:MM UTC - [Person] assigned as Incident Leader
+HH:MM UTC - [Person] assigned as Scribe
+HH:MM UTC - Initial assessment: [description]
+HH:MM UTC - ...
+```
+
+---
+
+## Investigation
+
+### What We Know
+
+-
+-
+-
+
+### Affected Services
+
+| Service | Impact | Status |
+|---------|--------|--------|
+| | | |
+
+### Root Cause (initial assessment)
+
+
+
+---
+
+## Actions
+
+### Immediate
+
+- [ ] [Action] @[Owner]
+- [ ] [Action] @[Owner]
+
+### Resolution
+
+- [ ] [Action] @[Owner]
+- [ ] [Action] @[Owner]
+
+---
+
+## Resolution Summary
+
+### Mitigation Applied
+
+
+
+### Verification
+
+- [ ] [Check 1]
+- [ ] [Check 2]
+
+---
+
+## Communications Sent
+
+| Time | Channel | Summary |
+|------|---------|---------|
+| | | |
+
+---
+
+## Post-Incident
+
+- [ ] Post-mortem scheduled for: [date]
+- [ ] [Post-mortem document](./post-mortem-template) created (save to [Post-Mortems](../post-mortems/overview) folder)
+- [ ] Action items assigned
+
+---
+
+## Links & Evidence
+
+- [Relevant dashboard]
+- [Relevant PR/commit]
+- [Screenshots]
+
+---
+
+## Severity Reference
+
+| Level | Description |
+|-------|-------------|
+| P1 | Critical - funds at risk, active exploit |
+| P2 | High - major impact, immediate response |
+| P3 | Moderate - medium impact |
+| P4 | Low - minor issues |
+| P5 | Info - no action needed |
+
+See [Incident-Response-Policy](../incident-response-policy#severity-levels) for full definitions.
+
+
+---
+
+</TagProvider>
+<ContributeFooter />

@@ -1,0 +1,199 @@
+---
+title: "Runbook: Third-Party Outage | Security Alliance"
+description: "This is an example runbook. Review and customize for your protocol before use. Fill in your specific vendors, dependencies, and failover procedures."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Runbook: Third-Party Outage
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **This is an example runbook.** Review and customize for your protocol before use. Fill in your specific vendors, dependencies, and failover procedures.
+
+## Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | P2-P3 |
+| **Primary Responder** | Infrastructure SME |
+| **Last Updated** | [Date] |
+| **Owner** | [Name] |
+
+---
+
+## Identification
+
+### Symptoms
+
+- [ ] Specific functionality broken
+- [ ] Errors referencing external service
+- [ ] Status page shows provider outage
+- [ ] Timeouts to external endpoints
+
+### Common Dependencies
+
+| Service Type | Provider(s) | Criticality | Fallback? |
+|--------------|-------------|-------------|-----------|
+| RPC | | Critical / High / Med | Yes / No |
+| Hosting | | | |
+| CDN | | | |
+| DNS | | | |
+| Monitoring | | | |
+| Auth | | | |
+| Oracle | | | |
+
+---
+
+## Immediate Actions
+
+### Step 1: Confirm Third-Party Issue
+
+**Why:** Verify it's not your own infrastructure
+
+- [ ] Check provider status page
+- [ ] Test provider directly
+- [ ] Check if other users reporting (Twitter, Discord)
+
+### Step 2: Assess Your Impact
+
+- [ ] Which of your services affected?
+- [ ] What functionality is degraded/broken?
+- [ ] User-facing impact?
+
+### Step 3: Enable Fallback (if available)
+
+- [ ] Switch to backup provider
+- [ ] Enable cached/degraded mode
+- [ ] Disable affected features gracefully
+
+---
+
+## By Service Type
+
+### RPC Provider Outage
+
+**Fallback options:**
+1. Switch to secondary RPC
+2. Use public endpoints temporarily
+3. Run own node if available
+
+```
+[Document your RPC failover procedure]
+```
+
+### Hosting/CDN Outage
+
+**Fallback options:**
+1. Failover to secondary hosting
+2. Enable maintenance page
+3. Redirect to status page
+
+### Oracle Outage
+
+**Impact:** Price feeds may be stale or unavailable
+
+**Options:**
+1. Pause affected operations
+
+> Customize this section for your specific oracle dependencies and what operations depend on them.
+
+---
+
+## Communication
+
+### Internal
+
+- Update team on status
+- ETA if known
+- What's affected
+
+### External
+
+If significant user impact:
+> We're experiencing issues with [affected feature] due to a third-party service outage. We're monitoring and will restore service when the provider recovers.
+
+Include:
+- What's affected
+- What still works
+- Where to check for updates
+
+---
+
+## Monitoring the Outage
+
+- [ ] Subscribe to provider status updates
+- [ ] Set reminder to check every 15-30 min
+- [ ] Monitor your own metrics for recovery
+
+---
+
+## Recovery
+
+### When Provider Recovers
+
+1. Verify your services are working
+2. Check for any data inconsistencies
+3. Monitor for stability
+4. Switch back from fallback if used
+
+### Post-Outage
+
+- [ ] Document timeline
+- [ ] Review if fallback worked
+- [ ] Assess if additional redundancy needed
+- [ ] Consider SLA review with provider
+
+---
+
+## Escalation
+
+- [ ] [Infrastructure Vendors](../contacts#infrastructure-vendors) - contact provider support
+- [ ] [Decision Makers](../contacts#decision-makers) - if extended outage or no ETA
+
+---
+
+## Prevention
+
+Reduce third-party dependency risk:
+
+- [ ] Multiple RPC providers
+- [ ] Multi-region hosting
+- [ ] CDN with failover
+- [ ] Graceful degradation
+- [ ] Cached fallbacks where appropriate
+- [ ] Regular dependency review
+
+---
+
+## Provider Contacts
+
+| Provider | Status Page | Support Contact |
+|----------|-------------|-----------------|
+| | | |
+| | | |
+
+---
+
+## Related
+
+- [DDoS-Attack](./ddos-attack)
+- [Incident-Response-Policy](../incident-response-policy)
+
+
+---
+
+</TagProvider>
+<ContributeFooter />

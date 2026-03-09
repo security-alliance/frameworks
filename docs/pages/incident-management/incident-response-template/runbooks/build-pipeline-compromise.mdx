@@ -1,0 +1,93 @@
+---
+title: "Runbook: Build Pipeline Compromise | Security Alliance"
+description: "Stub runbook. Customize with your CI/CD platform and procedures."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Runbook: Build Pipeline Compromise
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **Stub runbook.** Customize with your CI/CD platform and procedures.
+
+## Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | P1 |
+| **Primary Responder** | DevOps / Infrastructure SME |
+| **Last Updated** | [Date] |
+| **Owner** | [Name] |
+
+---
+
+## Identification
+
+### Symptoms
+
+- [ ] Unexpected code in deployed artifacts
+- [ ] CI/CD configuration changed without approval
+- [ ] Secrets accessed or exfiltrated
+- [ ] Unauthorized workflow runs
+
+### Confirm Compromise
+
+- Review CI/CD audit logs
+- Compare build artifacts to source
+- Check for config changes in CI/CD platform
+
+---
+
+## Immediate Actions
+
+1. [ ] Disable compromised pipelines
+2. [ ] Rotate all secrets and tokens
+3. [ ] Take down potentially compromised deployments
+4. [ ] Audit recent builds and deployments
+
+---
+
+## Mitigation
+
+1. [ ] Audit CI/CD configuration for unauthorized changes
+2. [ ] Rebuild from trusted commit using clean pipeline
+3. [ ] Implement additional approval requirements
+4. [ ] Review and restrict pipeline permissions
+
+---
+
+## Prevention
+
+- [ ] Require approval for CI/CD config changes
+- [ ] Use short-lived credentials
+- [ ] Implement branch protection
+- [ ] Audit pipeline access regularly
+- [ ] Use signed commits
+- [ ] Separate build and deploy permissions
+
+---
+
+## Related
+
+- [Frontend-Compromise](./frontend-compromise)
+- [Dependency-Attack](./dependency-attack)
+- [Incident-Response-Policy](../incident-response-policy)
+
+
+---
+
+</TagProvider>
+<ContributeFooter />

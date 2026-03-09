@@ -1,0 +1,203 @@
+---
+title: "Runbook: Frontend Compromise | Security Alliance"
+description: "This is an example runbook. Review and customize for your protocol before use. Add your specific DNS provider, hosting platform, and deployment procedures."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Runbook: Frontend Compromise
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **This is an example runbook.** Review and customize for your protocol before use. Add your specific DNS provider, hosting platform, and deployment procedures.
+
+## Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | P1 |
+| **Primary Responder** | Frontend SME |
+| **Last Updated** | [Date] |
+| **Owner** | [Name] |
+
+---
+
+## Identification
+
+### Symptoms
+
+- [ ] Users report unexpected transaction requests
+- [ ] UI behaving differently than expected
+- [ ] Wallet drainer detected
+- [ ] Injected scripts in page source
+- [ ] DNS/domain issues
+- [ ] Community reports of phishing via official domain
+
+### Attack Vectors
+
+| Vector | Signs |
+|--------|-------|
+| DNS hijack | Domain pointing to wrong IP |
+| CDN compromise | Malicious files served |
+| Dependency attack | npm/yarn package compromised |
+| Build pipeline | CI/CD compromise |
+| Hosting compromise | Files modified on server |
+
+---
+
+## Immediate Actions
+
+### Step 1: Take Down or Redirect
+
+**Why:** Stop users from interacting with compromised site
+
+Options:
+- [ ] Point DNS to maintenance page
+- [ ] Disable CDN distribution
+- [ ] Remove site from hosting
+- [ ] Add banner/warning if partial control
+
+### Step 2: Warn Users
+
+**Why:** Prevent further damage
+
+- [ ] Post on Twitter/X
+- [ ] Post in Discord/Telegram
+- [ ] Update status page
+
+Message template:
+> Our website may be compromised. Do NOT interact with [domain] or approve any transactions until further notice. Your funds in the protocol are safe if you don't sign new transactions.
+
+### Step 3: Assess Scope
+
+- [ ] What was changed?
+- [ ] How long was it compromised?
+- [ ] How many users potentially affected?
+- [ ] Were any transactions signed?
+
+---
+
+## Investigation
+
+### Priority: Identify Attack Vector
+
+The first priority is understanding how the attacker gained access so you can close that vector:
+
+- [ ] **How did attacker gain access?** (DNS, CDN, dependencies, CI/CD, hosting)
+
+Once identified, go to the specific runbook:
+- DNS hijack → [DNS-Hijack](./dns-hijack)
+- CDN/hosting compromise → [CDN-Hosting-Compromise](./cdn-hosting-compromise)
+- Dependency attack → [Dependency-Attack](./dependency-attack)
+- Build pipeline compromise → [Build-Pipeline-Compromise](./build-pipeline-compromise)
+
+### Post-Mitigation Investigation
+
+After the threat is contained, investigate impact:
+
+- [ ] What was injected/changed?
+- [ ] Which users interacted during compromise window?
+- [ ] What were users tricked into signing?
+
+### Check These
+
+| Component | How to Check |
+|-----------|--------------|
+| DNS records | `dig` or DNS provider console |
+| CDN files | Compare to known good |
+| Build artifacts | Check CI/CD logs |
+| Dependencies | `npm audit`, lockfile changes |
+| Hosting files | Compare to repo |
+
+---
+
+## Mitigation
+
+See the specific runbook for detailed mitigation steps:
+
+- [DNS-Hijack](./dns-hijack)
+- [CDN-Hosting-Compromise](./cdn-hosting-compromise)
+- [Dependency-Attack](./dependency-attack)
+- [Build-Pipeline-Compromise](./build-pipeline-compromise)
+
+---
+
+## Recovery
+
+### Before Restoring Service
+
+- [ ] Root cause identified
+- [ ] Vulnerability fixed
+- [ ] Fresh deployment from verified source
+- [ ] All credentials rotated
+- [ ] Additional security measures in place
+
+### Restoring Service
+
+1. Deploy verified build
+2. Verify deployment matches expected
+3. Test critical user flows
+4. Monitor for anomalies
+5. Announce service restored
+
+---
+
+## Affected User Support
+
+If users signed malicious transactions:
+
+- [ ] Compile list of affected addresses (from chain data)
+- [ ] Provide guidance on revoking approvals
+- [ ] Consider compensation if protocol at fault
+- [ ] Document for post-mortem
+
+---
+
+## Escalation
+
+- [ ] [Decision Makers](../contacts#decision-makers) - immediately
+- [ ] [Infrastructure Vendors](../contacts#infrastructure-vendors) - if hosting/CDN involved
+- [ ] [Legal & Communications](../contacts#legal--communications) - for user communication
+
+---
+
+## Prevention Checklist
+
+After resolving, review:
+
+- [ ] DNS provider security (2FA, lock)
+- [ ] Hosting access controls
+- [ ] CI/CD security
+- [ ] Dependency management
+- [ ] Subresource integrity
+- [ ] Content Security Policy
+
+---
+
+## Related
+
+- [DNS-Hijack](./dns-hijack)
+- [CDN-Hosting-Compromise](./cdn-hosting-compromise)
+- [Dependency-Attack](./dependency-attack)
+- [Build-Pipeline-Compromise](./build-pipeline-compromise)
+- [DDoS-Attack](./ddos-attack)
+- [Third-Party-Outage](./third-party-outage)
+- [Incident-Response-Policy](../incident-response-policy)
+
+
+---
+
+</TagProvider>
+<ContributeFooter />

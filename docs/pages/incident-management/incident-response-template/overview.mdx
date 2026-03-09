@@ -1,0 +1,166 @@
+---
+title: "Incident Response Template for Web3 Protocols | SEAL"
+description: "A practical template for building incident response capabilities at cryptocurrency protocols and DAOs."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Incident Response Template for Web3 Protocols
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+A practical template for building incident response capabilities at cryptocurrency protocols and DAOs.
+
+> **This is a template, not a turnkey solution.** Every document, runbook, and checklist must be reviewed and customized for your specific protocol, team, and infrastructure. The example runbooks contain generic guidance. 
+> Do not rely on them without filling in your actual commands, contacts, and procedures. Test your IR capability through tabletop exercises before you need it for real.
+
+## Why Incident Response Matters
+
+Web3 protocols face unique challenges:
+- **Immutability**: On-chain actions often can't be reversed
+- **24/7 Operations**: Blockchain networks never sleep
+- **High Stakes**: Incidents can mean immediate, irrecoverable fund loss
+- **Adversarial Environment**: Active attackers constantly probing
+
+Without a plan, you'll waste critical time figuring out *who does what* while an exploit drains funds. You can't prevent all incidents. Focus on detecting quickly, responding effectively, and learning continuously.
+
+## How to Build Your IR Capability
+
+### Start Simple
+
+Don't over-engineer. A basic IR capability needs:
+
+1. **Severity levels** - How bad is this? (P1-P5 scale)
+2. **Roles** - Who does what during an incident?
+3. **Communication channels** - Where do we coordinate?
+4. **Documentation** - How do we capture what happened?
+
+That's it to start. Add complexity only as you need it.
+
+### Scale With Your Team
+
+**Small teams (2-5 people):**
+- Everyone wears multiple hats
+- Define who leads incidents vs. who executes fixes
+- Establish a single communication channel
+- Keep one person documenting
+
+**Medium teams (5-15 people):**
+- Designate subject matter experts by domain
+- Consider a simple on-call rotation
+- Separate the "fix it" people from "communicate about it" people
+
+**Larger teams (15+ people):**
+- Formal First Responder program with training
+- Parallel on-call schedules (infra vs. smart contracts)
+- Dedicated communication/PR coordination
+- Regular tabletop exercises
+
+### Practice Before You Need It
+
+- Read through your policy when there's no emergency
+- Run a tabletop exercise quarterly (even 30 minutes helps)
+- Review past incidents (yours or others via [Rekt News](https://rekt.news/))
+- Update docs when you find gaps
+
+## Using This Template
+
+This is an [Obsidian](https://obsidian.md/) vault you can clone and customize.
+
+### What's Included
+
+| Document                                                | Purpose                                                         |
+| ------------------------------------------------------- | --------------------------------------------------------------- |
+| [Incident-Response-Policy](./incident-response-policy) | Core policy defining roles, severity levels, and response steps |
+| [Roles-and-Staffing](./roles-and-staffing)             | Options for structuring your response team                      |
+| [Communications](./communications)                     | Guidance and examples for public announcements                  |
+| [Contacts](./contacts)                                 | Critical partner and vendor contact sheet                       |
+| [Templates](./templates/overview)                        | Incident log and post-mortem templates                          |
+| [Incident Logs](./incident-logs/overview)                | Store active and past incident logs                             |
+| [Post-Mortems](./post-mortems/overview)                  | Store completed post-mortems                                    |
+| [Runbooks](./runbooks/overview)                          | Step-by-step guides for specific incident types                 |
+
+### Customization Checklist
+
+Before using this template, customize these sections:
+
+- [ ] **Incident-Response-Policy**
+  - [ ] Update severity level examples for your protocol
+  - [ ] Add your communication tools (Slack/Discord/Telegram)
+  - [ ] Add your alerting tools (PagerDuty/etc.)
+  - [ ] Define your Decision Makers
+- [ ] **Contacts**
+  - [ ] Fill in your team contacts
+  - [ ] Add security partners (auditors, IR firms)
+  - [ ] Add infrastructure vendors
+  - [ ] Add legal/PR contacts
+- [ ] **Roles-and-Staffing**
+  - [ ] Choose the model that fits your team size
+  - [ ] Assign initial role holders
+- [ ] **Runbooks**
+  - [ ] Customize for your specific infrastructure
+  - [ ] Add protocol-specific scenarios
+  - [ ] Fill in actual commands and dashboards
+
+### Quick Start
+
+1. Clone this repo
+2. Open in Obsidian (or your preferred markdown editor)
+3. Work through the customization checklist above
+4. Share with your team and walk through together
+5. Run a tabletop exercise to test it
+
+## Related Documentation
+
+These documents support effective incident response but typically live elsewhere in your protocol's documentation:
+
+| Document | Why It Helps |
+|----------|--------------|
+| **Access Control Inventory** | List of privileged roles, multisigs, admin keys, and what each controls. Critical for understanding blast radius during key compromise. |
+| **Protocol Architecture** | Diagrams and descriptions of how components interact. Helps responders understand impact and dependencies. |
+| **Threat Model** | Documented risks, attack vectors, and mitigations. Speeds up investigation when you can reference known threats. |
+| **Audit Reports** | Findings from security audits. Known issues and accepted risks inform incident triage. |
+| **Tabletop Exercise Reports** | Learnings from practice incidents. Reveals gaps before real incidents expose them. |
+| **Dependency Inventory** | Third-party services, oracles, bridges your protocol relies on. Useful for third-party outage response. |
+| **Deployment Procedures** | How to deploy, pause, or upgrade contracts. Essential for resolution steps in runbooks. |
+| **Monitoring Documentation** | What's being monitored, alerting thresholds, and infrastructure used. Alerts in your paging system should link directly to relevant runbooks. |
+
+You don't need all of these to start. Build them over time as your protocol matures.
+
+## Key Principles
+
+**When in doubt, escalate.** Treating a P2 as P1 creates some noise. Treating a P1 as P2 can cost millions.
+
+**Document as you go.** You won't remember details later. The Scribe role exists for a reason.
+
+**Blameless post-mortems.** Focus on systems, not individuals. "Why did the system allow this?" not "Who screwed up?"
+
+**Keep it current.** Stale contacts and outdated procedures create false confidence.
+
+## Resources
+
+- [PagerDuty Incident Response Guide](https://response.pagerduty.com/)
+- [Google Cloud Incident Response](https://cloud.google.com/docs/security/incident-response)
+- [Rekt News](https://rekt.news/) - Learn from others' incidents
+- [SEAL 911](https://securityalliance.org/seal-911) - Emergency response coordination
+
+---
+
+*This template is open source. Adapt it to your needs.*
+
+
+---
+
+</TagProvider>
+<ContributeFooter />

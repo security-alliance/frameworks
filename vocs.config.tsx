@@ -259,6 +259,60 @@ const config = {
                 { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir' },
               ]
             },
+            {
+              text: 'Incident Response Template',
+              collapsed: false,
+              dev: true,
+              items: [
+                { text: 'Overview', link: '/incident-management/incident-response-template/overview', dev: true },
+                { text: 'Incident Response Policy', link: '/incident-management/incident-response-template/incident-response-policy', dev: true },
+                { text: 'Roles and Staffing', link: '/incident-management/incident-response-template/roles-and-staffing', dev: true },
+                { text: 'Communications', link: '/incident-management/incident-response-template/communications', dev: true },
+                { text: 'Contacts', link: '/incident-management/incident-response-template/contacts', dev: true },
+                {
+                  text: 'Templates',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/incident-management/incident-response-template/templates/overview', dev: true },
+                    { text: 'Incident Log Template', link: '/incident-management/incident-response-template/templates/incident-log-template', dev: true },
+                    { text: 'Post-Mortem Template', link: '/incident-management/incident-response-template/templates/post-mortem-template', dev: true },
+                  ]
+                },
+                {
+                  text: 'Incident Logs',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/incident-management/incident-response-template/incident-logs/overview', dev: true },
+                    { text: 'API Outage Example', link: '/incident-management/incident-response-template/incident-logs/2024-01-15-example-api-outage', dev: true },
+                  ]
+                },
+                {
+                  text: 'Post-Mortems',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/incident-management/incident-response-template/post-mortems/overview', dev: true },
+                    { text: 'API Outage Example', link: '/incident-management/incident-response-template/post-mortems/2024-01-15-example-api-outage', dev: true },
+                  ]
+                },
+                {
+                  text: 'Runbooks',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/incident-management/incident-response-template/runbooks/overview', dev: true },
+                    { text: 'Smart Contract Exploit', link: '/incident-management/incident-response-template/runbooks/smart-contract-exploit', dev: true },
+                    { text: 'Key Compromise', link: '/incident-management/incident-response-template/runbooks/key-compromise', dev: true },
+                    { text: 'Frontend Compromise', link: '/incident-management/incident-response-template/runbooks/frontend-compromise', dev: true },
+                    { text: 'DNS Hijack', link: '/incident-management/incident-response-template/runbooks/dns-hijack', dev: true },
+                    { text: 'CDN/Hosting Compromise', link: '/incident-management/incident-response-template/runbooks/cdn-hosting-compromise', dev: true },
+                    { text: 'Dependency Attack', link: '/incident-management/incident-response-template/runbooks/dependency-attack', dev: true },
+                    { text: 'Build Pipeline Compromise', link: '/incident-management/incident-response-template/runbooks/build-pipeline-compromise', dev: true },
+                    { text: 'DDoS Attack', link: '/incident-management/incident-response-template/runbooks/ddos-attack', dev: true },
+                    { text: 'Third-Party Outage', link: '/incident-management/incident-response-template/runbooks/third-party-outage', dev: true },
+                    { text: 'Runbook Template', link: '/incident-management/incident-response-template/runbooks/runbook-template', dev: true },
+                  ]
+                },
+              ]
+            },
           ]
         },
         {

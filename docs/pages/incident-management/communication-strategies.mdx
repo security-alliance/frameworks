@@ -4,6 +4,10 @@ description: "Establish secure communication channels for incident response. App
 tags:
   - Security Specialist
   - Operations & Strategy
+
+contributors:
+  - role: wrote
+    users: [dickson]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -17,25 +21,78 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <AttributionList contributors={frontmatter.contributors} />
 
 Communication during an incident can be very hard, as people are often scrambling to fix the issue at hand. Nonetheless,
-from aa team member, outsider or observer's point of view, communication is very important to be able to understand
-what's happening, and it also provide some time to reflect and think about what is going on. With that said, providing
-information before confirming that it's accurate, can often be very negative and cause uncertainty. It is recommended to
-have a person designated for communication during an incident, and that updates are sent out on a fixed schedule, and
-it can often be that the update is that there is currently no new information available.
+from a team member, outsider, or observer's point of view, communication is critical to understanding what is happening
+and what actions are expected. Poor communication creates confusion, rumor, and unnecessary risk. At the same time,
+communicating before facts are verified can make the situation worse. A designated communication owner and a regular
+update cadence materially improve incident handling.
 
 ## Best Practices
 
-1. Define and establish secure communication channels for incident response teams.
-Use [encrypted messaging apps](/encryption/communication-encryption)
-2. Appoint primary and backup spokespersons to handle internal and external communications during an incident.
-3. Develop pre-approved templates for incident notifications, updates, and press releases to ensure consistency and
-speed.
-4. Provide regular updates to all stakeholders, including employees, customers, partners, and regulatory authorities, to
-keep them informed of the situation and response efforts.
-5. Maintain clear communication within the incident response team to ensure that everyone is aware of their roles and
-responsibilities.
-6. Be transparent with external stakeholders about the incident, the impact, and the steps being taken to address it.
-Avoid speculation and provide factual information.
+1. Define secure internal coordination channels for the response team. Use [encrypted messaging apps](/encryption/communication-encryption) where appropriate.
+2. Appoint primary and backup communication leads before an incident happens.
+3. Establish separate internal and external communication streams so technical coordination does not get mixed with user-facing updates.
+4. Use pre-approved templates for acknowledgments, warnings, status updates, and resolution notices.
+5. Publish updates on a predictable cadence, even if the update is only that the investigation is ongoing.
+6. Be transparent about confirmed facts, but avoid speculation about root cause, attacker intent, or impact until verified.
+
+## Before publishing an external update
+
+Before sending a public message, confirm:
+
+- The message has been approved by the incident lead or decision maker
+- Facts are accurate and up to date
+- The wording does not speculate beyond what is known
+- User instructions are clear if action is required
+- The next update window is stated explicitly
+
+This approval step should be lightweight, but it should exist.
+
+## What external updates should include
+
+Most incident updates are stronger when they answer a few basic questions directly:
+
+- **What happened** at a high level
+- **What is affected** and what is still operating normally
+- **What users should do**, if anything
+- **What users should not do**, if there is a safety concern
+- **Whether funds, accounts, or data are believed to be affected**, if that is known
+- **When the next update will be provided**
+
+If a key fact is not yet confirmed, say that it is still being assessed rather than filling the gap with guesses.
+
+## Internal communication discipline
+
+During an active incident:
+
+- Keep a single source of truth for status and decisions
+- Record important timestamps in UTC
+- Note who approved major decisions and public messages
+- Use dedicated threads or channels for side investigations where needed
+- Make handoffs explicit when roles change
+
+Teams should assume that messages written in haste may be referred to later in post-mortems, legal review, or public
+disclosure.
+
+## Message design tips
+
+- **Be direct and factual**
+- **Avoid jargon** if the message is for users or external stakeholders
+- **Do not blame individuals, users, or third parties** during the active response
+- **State uncertainty honestly**
+- **Repeat critical safety instructions** if users are at risk of taking harmful actions
+
+## Update cadence
+
+Silence is often interpreted as lack of control. If the incident is visible to users or partners, set an update rhythm
+that matches the severity of the event. A short message that says there is no confirmed new information is better than
+long gaps that invite rumor.
+
+## Channel considerations
+
+- **Short-form social posts** are useful for first acknowledgment and directing people to a status page or primary thread
+- **Community channels** work well for ongoing updates, but message volume should be controlled during active incidents
+- **Status pages** are useful when a team expects multiple updates over time
+- **Direct partner communication** may be required when exchanges, bridges, vendors, or dependent protocols could be affected
 
 ---
 

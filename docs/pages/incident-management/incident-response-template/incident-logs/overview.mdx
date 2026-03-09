@@ -1,0 +1,48 @@
+---
+title: "Incident Logs | Security Alliance"
+description: "Store incident logs here. Create a new file for each incident."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Incident Logs
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Store incident logs here. Create a new file for each incident.
+
+## Creating a New Log
+
+1. Copy [Incident Log Template](../templates/incident-log-template)
+2. Name it: `YYYY-MM-DD-brief-description.md`
+3. Fill in details as the incident progresses
+
+## Example
+
+See [2024-01-15-example-api-outage](./2024-01-15-example-api-outage) for a sample filled-out incident log.
+
+## Past Incidents
+
+<!-- Add links to your incident logs as they're created -->
+
+---
+
+*See [Incident-Response-Policy](../incident-response-policy) for the full response process.*
+
+
+---
+
+</TagProvider>
+<ContributeFooter />

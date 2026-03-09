@@ -6,6 +6,10 @@ tags:
   - Operations & Strategy
   - Devops
   - SRE
+
+contributors:
+  - role: wrote
+    users: [dickson]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -22,6 +26,18 @@ Conducting a post-incident review and identifying lessons learned will improve y
 capabilities. By analyzing what went well and what could be improved, you can enhance your readiness for future
 incidents.
 
+## Principles
+
+The purpose of post-incident review is improvement, not blame. The review should focus on:
+
+- What happened
+- Why the incident was possible
+- Why the response unfolded the way it did
+- What changes will materially reduce the chance or impact of recurrence
+
+The best reviews distinguish between the **primary cause**, **contributing factors**, and **response quality** instead
+of collapsing everything into one narrative.
+
 ## Best Practices
 
 1. Review the incident together with everybody involved in handling it shortly after the incident is resolved.
@@ -32,6 +48,57 @@ improvement.
 implementing improvements.
 5. Share the lessons learned with the ecosystem to promote awareness and improve overall security practices.
 6. Revise incident response policies and procedures based on the lessons learned to ensure continuous improvement.
+
+## What a useful post-incident review captures
+
+At minimum, the review should cover:
+
+- **Summary**: what happened, when it started, how long it lasted, and how it was resolved
+- **Impact**: services, users, funds, partners, or operations affected
+- **Timeline**: a UTC sequence of events and decisions
+- **Root cause**: the underlying failure that made the incident possible
+- **Contributing factors**: process, tooling, staffing, monitoring, or design issues that worsened the event
+- **What went well**: capabilities worth preserving
+- **What went poorly**: failures in readiness or execution
+- **Where the team got lucky**: conditions that helped this time but should not be relied upon
+
+## Action item quality
+
+Corrective actions should be concrete enough to track. Good action items:
+
+- have a clear owner
+- have a deadline
+- describe a specific change
+- are tied to a real weakness observed during the incident
+
+Bad action items are vague or purely aspirational, such as "communicate better" or "be more careful."
+
+## Questions worth asking
+
+- Was the incident detected as quickly as it should have been?
+- Did the severity level reflect actual impact?
+- Were the right people involved early enough?
+- Did the team have an appropriate runbook or was too much invented during the response?
+- Was the external communication cadence appropriate?
+- Did logs, dashboards, and evidence collection support investigation effectively?
+- What should change in monitoring, alerting, staffing, or access controls?
+
+## When to hold the review
+
+Run the review soon enough that details are still fresh, but after the situation is actually stable. For significant
+incidents, many teams find it useful to hold the review within about a week of resolution.
+
+## Outputs beyond the write-up
+
+A good retrospective often drives updates to:
+
+- playbooks and runbooks
+- alert thresholds and monitoring coverage
+- access control or break-glass procedures
+- communication templates
+- training and tabletop exercises
+
+The review should end with tangible changes, not just a document.
 
 ---
 

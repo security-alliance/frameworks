@@ -4,6 +4,10 @@ description: "Detect security incidents early with continuous on-chain monitorin
 tags:
   - Security Specialist
   - Operations & Strategy
+
+contributors:
+  - role: wrote
+    users: [dickson]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -19,12 +23,43 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 You don't want to be that project which has funds stolen, and then don't notice it for multiple days. Early detection
 and effective response to security incidents will help minimize damage.
 
+## Preparation before an incident
+
+The quality of an incident response is largely determined before the incident starts. Teams should have:
+
+- **Severity levels** that responders can apply quickly and consistently
+- **A designated incident lead** responsible for coordination and escalation
+- **A scribe** who maintains the timeline, decisions, and rationale in real time
+- **Communication owners** for internal and external updates
+- **Scenario-specific playbooks** for the most likely or highest-impact failures
+
+If a team has not documented who leads, who documents, and who communicates, those questions will have to be answered
+under pressure.
+
 ## Key Components of Incident Detection
 
 - **Monitoring and Logging**: Implement continuous monitoring and logging of on-chain activity for your project to
 understand when something is behaving out of the ordinary. Also implement monitoring of system events, and user behavior
 to detect anomalies and potential security incidents in non-on-chain systems such as web applications or cloud
 environments.
+- **Detection Sources**: Prepare to receive incident signals from several paths, not just internal alerts. Monitoring,
+bug bounty reports, user reports, partner notifications, audits, and community observations can all be the first signal
+of a real incident.
+- **Escalation Paths**: Detection is only useful if it reaches the right people quickly. Alerts should map to a
+response path, not just a dashboard.
+
+## Severity classification
+
+Teams benefit from a simple severity model that helps decide who should be involved and how quickly to act. One common
+pattern is:
+
+- **Critical**: active exploit, funds at risk, or critical systems down
+- **High**: major production impact or credible potential for fund loss
+- **Moderate**: meaningful degradation without likely fund loss
+- **Low / Informational**: minor issues, maintenance concerns, or non-urgent anomalies
+
+The exact labels matter less than using them consistently. When uncertainty is high, it is safer to escalate early and
+de-escalate later than to miss a critical event.
 
 ## Key Components of Incident Response
 
@@ -36,6 +71,72 @@ to, and recovering from security incidents.
 incidents.
 - **Post-Incident Review**: Conduct a thorough review of the incident to identify lessons learned and improve future
 response efforts.
+
+## Core roles during response
+
+Even when one person holds multiple responsibilities, teams should distinguish these roles:
+
+- **Detector**: identifies the issue and triggers escalation
+- **Incident Lead**: coordinates people, priorities, and decisions
+- **Scribe**: records the timeline, hypotheses, decisions, and ownership
+- **Communication Lead**: handles internal and external updates
+- **Subject Matter Experts**: investigate and execute technical response work
+- **Decision Makers**: approve high-impact actions such as pausing systems, rotating keys, or making public statements
+
+Separating coordination from execution reduces confusion and helps prevent important details from being lost.
+
+## Recommended response flow
+
+### 1. Detection
+
+- Confirm the initial signal and gather the first known facts
+- Assign an initial severity
+- Escalate to the incident lead or on-call owner
+
+### 2. Coordination
+
+- Start a dedicated communication channel or war room
+- Assign the incident lead, scribe, and communication lead
+- Record timestamps in UTC and keep a running incident log
+- Pull in only the people needed for the current stage
+
+### 3. Investigation
+
+- Identify affected services, assets, accounts, or contracts
+- Check what changed recently
+- Determine whether the incident is ongoing
+- Evaluate containment options before attempting a full fix
+
+### 4. Containment and resolution
+
+- Prefer the fastest action that safely reduces harm
+- Pause, revoke, rotate, disable, rollback, or isolate as needed
+- Verify the mitigation actually worked before declaring stability
+
+### 5. Monitoring after mitigation
+
+- Watch for recurrence, bypasses, or secondary effects
+- Review whether new alerts, detection rules, or tests are needed
+- Continue logging until the team is confident the incident is contained
+
+## Documentation expectations
+
+The incident record should be built during the response, not reconstructed later. At minimum, capture:
+
+- When the issue started or was first detected
+- Who was involved and in what role
+- What was known at each stage
+- Which decisions were made and why
+- What mitigation was applied
+- How the team verified recovery
+
+Real-time documentation materially improves handoffs, later review, and external reporting.
+
+## Practice and maintenance
+
+An incident plan that has never been rehearsed is incomplete. Teams should run tabletop exercises or drills for their
+highest-risk scenarios and update their detection and response material after incidents and after meaningful changes to
+infrastructure or personnel.
 
 ---
 

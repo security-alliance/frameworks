@@ -1,0 +1,177 @@
+---
+title: "Runbook: Key Compromise | Security Alliance"
+description: "This is an example runbook. Review and customize for your protocol before use. Fill in your key types, what each controls, and your specific rotation procedu..."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Runbook: Key Compromise
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **This is an example runbook.** Review and customize for your protocol before use. Fill in your key types, what each controls, and your specific rotation procedures.
+
+## Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | P1 |
+| **Primary Responder** | Security SME |
+| **Last Updated** | [Date] |
+| **Owner** | [Name] |
+
+---
+
+## Identification
+
+### Symptoms
+
+- [ ] Unauthorized transactions from controlled addresses
+- [ ] Unexpected multisig proposals
+- [ ] Key holder reports compromise
+- [ ] Suspicious signing activity
+- [ ] Social engineering attempt succeeded
+
+### Key Types
+
+| Key Type | Risk Level | Controlled Assets |
+|----------|------------|-------------------|
+| Deployer | [High/Med] | [What it controls] |
+| Admin/Owner | [High/Med] | [What it controls] |
+| Multisig signer | [High/Med] | [What it controls] |
+| Hot wallet | [High/Med] | [What it controls] |
+
+---
+
+## Immediate Actions
+
+### Step 1: Confirm Compromise
+
+**Why:** Avoid false positives, but err on side of caution
+
+- [ ] Verify with key holder directly (not via potentially compromised channels)
+- [ ] Check for unauthorized transactions
+- [ ] Review recent signing activity
+
+### Step 2: Assess Blast Radius
+
+**Why:** Understand what the attacker can do
+
+- [ ] What can this key sign?
+- [ ] Are there timelocks?
+- [ ] What other systems use this key?
+
+### Step 3: Revoke/Rotate
+
+**Why:** Remove attacker access
+
+For multisig signers:
+- [ ] Remove compromised signer
+- [ ] Add replacement signer
+
+For admin keys:
+- [ ] Transfer ownership to new address
+- [ ] Or revoke permissions if possible
+
+For hot wallets:
+- [ ] Move remaining funds to secure address
+
+### Step 4: Check for Damage
+
+**Why:** Understand if attacker acted
+
+- [ ] Review all transactions from compromised key
+- [ ] Check pending proposals/timelocks
+- [ ] Audit any systems key had access to
+
+---
+
+## Investigation
+
+### Key Questions
+
+- [ ] How was the key compromised? (phishing, malware, insider, leaked)
+- [ ] When was it compromised?
+- [ ] What did the attacker do (if anything)?
+- [ ] Are other keys at risk?
+
+### Evidence to Collect
+
+| Data | Source |
+|------|--------|
+| Transaction history | Block explorer |
+| Login/access logs | Infrastructure providers |
+| Signing requests | Multisig interface |
+| Communications | If social engineering |
+
+---
+
+## Mitigation by Key Type
+
+### Multisig Signer
+
+1. Propose removal of compromised signer
+2. Collect required signatures
+3. Execute removal
+4. Add new signer
+5. Verify new threshold is appropriate
+
+### Contract Admin Key
+
+1. Prepare ownership transfer transaction
+2. Execute transfer to secure address
+3. Verify new owner
+4. Update documentation
+
+### Hot Wallet
+
+1. Prepare transaction to move all funds
+2. Move to cold storage or new hot wallet
+3. Update any systems using old address
+4. Retire compromised address
+
+---
+
+## Escalation
+
+- [ ] [Decision Makers](../contacts#decision-makers) - immediately for any confirmed compromise
+- [ ] [Security Partners](../contacts#security-partners) - for investigation support
+- [ ] [Legal](../contacts#legal--communications) - if funds were stolen
+
+---
+
+## Prevention Checklist
+
+After resolving, review:
+
+- [ ] Key storage practices
+- [ ] Phishing awareness training
+- [ ] Hardware wallet usage
+- [ ] Multisig thresholds
+- [ ] Access logging
+- [ ] Key rotation schedule
+
+---
+
+## Related
+
+- [Smart-Contract-Exploit](./smart-contract-exploit)
+- [Incident-Response-Policy](../incident-response-policy)
+
+
+---
+
+</TagProvider>
+<ContributeFooter />

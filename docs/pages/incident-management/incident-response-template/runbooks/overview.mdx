@@ -1,0 +1,73 @@
+---
+title: "Runbooks | Security Alliance"
+description: "Step-by-step guides for specific incident types. Use these during active incidents to reduce cognitive load and ensure consistent response."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Runbooks
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Step-by-step guides for specific incident types. Use these during active incidents to reduce cognitive load and ensure consistent response.
+
+> **These runbooks are examples and starting points.** They contain generic guidance that must be adapted to your specific protocol, infrastructure, and team. Review each runbook carefully and customize the commands, contacts, and procedures before relying on them during an actual incident. Untested runbooks can be worse than no runbook at all.
+
+## Available Runbooks
+
+### Critical (P1)
+
+- [Smart-Contract-Exploit](./smart-contract-exploit) - Active exploit or critical vulnerability
+- [Key-Compromise](./key-compromise) - Private key or signer compromise
+- [Frontend-Compromise](./frontend-compromise) - Website/UI compromise (routes to specific runbooks below)
+  - [DNS-Hijack](./dns-hijack) - Domain/DNS compromise
+  - [CDN-Hosting-Compromise](./cdn-hosting-compromise) - CDN or hosting provider compromise
+  - [Dependency-Attack](./dependency-attack) - npm/package supply chain attack
+  - [Build-Pipeline-Compromise](./build-pipeline-compromise) - CI/CD compromise
+
+### High/Moderate (P2-P3)
+
+- [DDoS-Attack](./ddos-attack) - Denial of service attacks
+- [Third-Party-Outage](./third-party-outage) - External provider issues
+
+## Creating New Runbooks
+
+Use [_Runbook-Template](./runbook-template) as your starting point.
+
+Good runbooks:
+- Are concise. Responders need quick answers
+- Include actual commands and links
+- Get tested in tabletop exercises
+- Get updated after real incidents
+
+## Suggested Runbooks to Add
+
+Consider creating runbooks for:
+
+- [ ] Oracle manipulation
+- [ ] Governance attack
+- [ ] SSL certificate issues
+- [ ] Deployment failure/rollback
+- [ ] Data inconsistency
+
+---
+
+*See [Incident-Response-Policy](../incident-response-policy) for the overall response process.*
+
+
+---
+
+</TagProvider>
+<ContributeFooter />
