@@ -885,12 +885,26 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/supply-chain/incident-response-supply-chain": [
+      "Security Specialist",
+      "SRE",
+      "Engineer/Developer"
+    ],
     "/supply-chain/overview": [
       "Engineer/Developer",
       "Security Specialist",
       "Devops"
     ],
     "/supply-chain/supply-chain-levels-software-artifacts": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/supply-chain/vendor-risk-management": [
+      "Operations & Strategy",
+      "Security Specialist",
+      "Engineer/Developer"
+    ],
+    "/supply-chain/web3-supply-chain-threats": [
       "Engineer/Developer",
       "Security Specialist"
     ],

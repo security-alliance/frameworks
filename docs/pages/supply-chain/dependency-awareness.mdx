@@ -1,9 +1,12 @@
 ---
 title: "Dependency Awareness | Security Alliance"
-description: "Manage external dependencies to prevent vulnerabilities. Use Snyk, Dependabot, MythX, and npm audit to track, update, and monitor libraries for security risks and compliance."
+description: "Manage external dependencies to prevent vulnerabilities. Use version pinning, lockfile verification, vulnerability scanning, and behavioral analysis to secure your project's supply chain."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [scode2277]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -16,46 +19,116 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Dependency awareness is the practice of understanding and managing all the external libraries, frameworks, and
-components that a software project relies on. Dependencies can introduce vulnerabilities and risks, which means it's
-important to keep track of them and ensure they are secure.
+> 🔑 **Key Takeaway:** Every dependency is code you did not write but are fully responsible for. Know exactly what is
+> in your tree, pin versions for anything security-critical, enforce your lockfile in CI, and treat every update as a
+> change that requires review.
 
-## Importance of Dependency Awareness
+A modern Web3 project easily accumulates hundreds of direct and transitive dependencies. Most are never reviewed, many
+are maintained by a single developer, and some are actively targeted by attackers. A compromised package propagates to
+every project that depends on it, without any action required from the project owners. For details on specific attacks
+and how they exploited weak dependency practices, see [Supply Chain Threats](/supply-chain/web3-supply-chain-threats).
 
-1. **Security Risks**
-   - Dependencies can contain vulnerabilities that may be exploited by threat actors.
+## Lockfile Integrity
 
-2. **Compliance**
-   - Ensuring that dependencies comply with licensing and regulatory requirements is essential to avoid legal issues.
+The lockfile (`pnpm-lock.yaml`, `yarn.lock`, or `package-lock.json`) is what actually determines which versions get
+installed. Without it, the same `package.json` can produce different dependency trees on different machines and at
+different times. An attacker could publish a malicious patch version, and any install without a lockfile would silently
+pick it up.
 
-3. **Maintainability**
-   - Understanding dependencies and their impact on the project will help understand if it's possible to update a
-   dependency used by your application.
+1. **Always commit your lockfile** to version control.
+2. **Use `--frozen-lockfile` in CI.** This ensures CI installs exactly what is in the lockfile, failing if there is
+   any discrepancy:
+   ```bash
+   pnpm install --frozen-lockfile
+   ```
+3. **Review lockfile changes in PRs.** Treat lockfile modifications with the same scrutiny as source code changes.
+4. **Watch for lockfile-only PRs.** A PR that modifies only the lockfile without a corresponding change to
+   `package.json` is a meaningful signal worth investigating.
 
-## Best Practices for Dependency Awareness
+## Version Pinning
 
-1. **Use Dependency Management Tools**
-   - Leverage tools that can automatically track and manage dependencies. Examples include:
-     - **Web2:**
-       - **Snyk:** Monitors and fixes vulnerabilities in dependencies.
-       - **Dependabot:** Automatically updates dependencies in GitHub projects.
-     - **Solidity:**
-       - **Ethlint:** Analyzes and lints Solidity code, including dependencies.
-       - **MythX:** Scans for vulnerabilities in smart contract dependencies.
+How you declare a dependency version determines how much control you have over what gets installed.
 
-2. **Regularly Update Dependencies**
-   - Regularly update dependencies to the latest secure versions after verifying them.
+| Strategy | Example | Risk Level | When to Use |
+|----------|---------|-----------|------------|
+| **Exact version** | `"1.2.3"` | Lowest | Security-critical packages, wallet libraries, production dependencies |
+| **Patch range** | `"~1.2.3"` | Low | General dependencies where you trust patch releases |
+| **Minor range** | `"^1.2.3"` | Medium | Development dependencies, internal tools |
+| **Any version** | `"*"` or `"latest"` | Highest | Never use this in production |
 
-3. **Monitor for Vulnerabilities**
-   - Continuously monitor dependencies for known vulnerabilities using tools like Snyk, npm audit, and GitHub Security
-   Alerts.
+For any package that runs in a user's browser, interacts with a wallet, or handles signing, use exact versions and
+review every update as a deliberate decision. For development dependencies that do not reach production, patch or minor
+ranges are a reasonable tradeoff between security and maintenance overhead. `"*"` and `"latest"` have no place in a
+production dependency manifest.
 
-4. **Audit Dependencies**
-   - Perform regular audits of dependencies to ensure they are necessary and secure. Remove unused or outdated
-   dependencies.
+### GitHub Actions SHA Pinning
 
-5. **Use Trusted Sources**
-   - Only use dependencies from trusted and reputable sources. Avoid using unverified or poorly maintained libraries.
+GitHub Actions are themselves a supply chain dependency. When you reference an action by tag
+(`uses: actions/checkout@v4`), the tag owner can move it to point at different code at any time. Pinning to a full
+commit SHA ensures that the action you run today is the same one you reviewed:
+
+```yaml
+# Instead of this (mutable tag):
+- uses: actions/checkout@v4
+
+# Use this (immutable commit SHA):
+- uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+```
+
+## Typosquatting
+
+Typosquatting attacks publish malicious packages with names deliberately close to popular ones, targeting developers
+who mistype a package name during installation.
+
+1. **Double-check package names** before installing. Verify the exact spelling, publisher, and scope (`@org/package`).
+2. **Check download counts and publish history.** Use `npm info <package>` to inspect locally or look it up on [npmjs.com](https://www.npmjs.com/). Red flags to look for are: very low download counts (for a supposedly popular package), a recent first publish date, no verified publisher, or a name that is one character off from a well-known package.
+3. **Use scoped packages** when available.
+4. **Enable lockfile verification** in CI to prevent unexpected package name changes.
+
+## Vulnerability Scanning
+
+- Run `pnpm audit` (or `npm audit`) in CI and fail builds on high or critical findings.
+
+- [ Dependabot](https://github.com/dependabot) is a github built-in tool. It monitors your dependencies for known
+vulnerabilities, opens security alerts on your repository, and when a fix is available, creates a PR to bump the
+affected dependency. It can also open PRs for general version updates on a schedule you configure.
+
+- For deeper coverage, tools like [Snyk](https://snyk.io/) and [Grype](https://github.com/anchore/grype) go beyond the
+npm advisory database, covering transitive dependencies and scanning against multiple vulnerability sources that
+`npm audit` can miss.
+
+> **Important:** Neither of these methods or tools make you more secure by themself. They make you *aware* of vulnerabilities and updates.
+> The security value comes from reviewing those updates in depth, especially security patches.
+
+### Smart Contract Dependencies
+
+Smart contract dependencies carry unique risk because deployed code is immutable. Static analysis, testing strategies,
+and secure coding practices for Solidity are covered in depth in the [Security Testing](/security-testing/overview)
+and [Secure Software Development](/secure-software-development/overview) frameworks. For guidance on auditing
+contracts and their imported libraries, see
+[External Security Reviews for Smart Contracts](/external-security-reviews/smart-contracts/overview).
+
+## Common Pitfalls
+
+1. **Blindly merging dependency update PRs.** Always review what changed, especially across major versions. Check the
+   changelog and release notes before merging.
+2. **Using `*` or `latest` version ranges.** This hands control of your dependency tree to whoever publishes the next
+   version.
+3. **Ignoring transitive dependencies.** Your direct dependencies carry their own dependency trees, and a vulnerability
+   three levels deep still affects your application. Vulnerability scanning tools surface these; running them in CI
+   ensures the full tree is checked on every build.
+4. **Installing from GitHub URLs instead of registries.** `"my-package": "github:user/repo"` bypasses registry
+   integrity checks, removes version pinning, and pulls whatever is at the HEAD of a mutable branch at install time.
+   Use published, versioned registry packages instead.
+5. **Not reviewing changelogs before updating.** Major version bumps can introduce breaking changes or new
+   dependencies. Review before updating.
+
+## Further Reading
+
+- [npm Security Best Practices](https://docs.npmjs.com/packages-and-modules/securing-your-code): Official npm
+  security documentation
+- [Dependabot Documentation](https://docs.github.com/en/code-security/dependabot): GitHub's dependency update tooling
+- [Snyk Vulnerability Database](https://security.snyk.io/): Searchable database of known vulnerabilities
 
 ---
 

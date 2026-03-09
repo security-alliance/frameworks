@@ -1,9 +1,12 @@
 ---
-title: "Supply Chain Levels Software Artifacts | SEAL"
-description: "Prioritize security efforts with software artifact risk levels. Classify components as critical, high, moderate, or low risk and apply appropriate security controls to each level."
+title: "Supply Chain Levels for Software Artifacts | SEAL"
+description: "Classify software components by risk level and apply proportional security controls to your dependency tree."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [scode2277]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -16,49 +19,65 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Supply chain levels for software artifacts provide a framework for categorizing and securing software components based
-on their risk levels. This approach helps projects prioritize their security efforts towards software components with
-the highest risk levels.
+> 🔑 **Key Takeaway:** Not every dependency carries the same risk. Apply your strictest controls to components that
+> touch user funds or signing operations, and scale down from there. Applying the same scrutiny to everything means
+> applying it effectively to nothing.
 
-## Framework for Supply Chain Levels
+Applying uniform security controls across an entire dependency tree is not practical and does not reflect how risk
+actually distributes. A smart contract library that handles value transfers carries fundamentally different risk than
+a test framework or a documentation generator. Classification frameworks exist to make this explicit: identify which
+components carry the most risk, then concentrate your strongest controls there and apply proportionally lighter
+measures to lower-risk artifacts.
 
-1. **Level 1: Critical Artifacts**
-   - These artifacts are essential to the core functionality of the software and pose a high risk if compromised.
-   - Examples: Core libraries.
+## Risk Classification Framework
 
-2. **Level 2: High-Risk Artifacts**
-   - Artifacts that are important but not critical. Their compromise could lead to significant security issues.
-   - Examples: Middleware, database connectors, oracles, authentication modules.
+### Level 1: Critical Artifacts
 
-3. **Level 3: Moderate-Risk Artifacts**
-   - Artifacts that are used frequently but have a lower risk profile. Their compromise could cause inconvenience but
-   not catastrophic failure.
-   - Examples: User interface libraries, utility functions, data processing modules.
+Components that directly handle value, signing operations, or core protocol logic. Smart contract libraries (OpenZeppelin Contracts),
+wallet interaction libraries (ethers.js, viem, web3.js), signing and cryptographic modules, and anything that constructs or
+validates transactions.
 
-4. **Level 4: Low-Risk Artifacts**
-   - Artifacts that have minimal impact on security if compromised.
-   - Examples: Logging libraries, test utilities.
+Compromise of these components can directly drain funds or allow unauthorized transactions. These warrant the
+highest scrutiny.
 
-## Best Practices for Securing Supply Chain Levels
+For specific practices, see
+[Dependency Awareness](/supply-chain/dependency-awareness),
+[Security Testing Framework](/security-testing/overview), and
+[External Security Reviews Framework](/external-security-reviews/smart-contracts/overview).
 
-1. **Critical Artifacts**
-   - Implement strict access controls and require code reviews for all changes.
-   - Use robust security testing, including static and dynamic analysis.
-   - Monitor continuously for vulnerabilities and apply patches promptly.
+### Level 2: High-Risk Artifacts
 
-2. **High-Risk Artifacts**
-   - Enforce strong access controls and conduct regular security assessments.
-   - Perform regular updates and vulnerability scans.
-   - Implement automated security testing in CI/CD pipelines.
+Components that are important to application function but do not directly handle funds. Authentication and
+authorization modules, API gateway and middleware components, database connectors, and oracle integration code fall
+in this category.
 
-3. **Moderate-Risk Artifacts**
-   - Apply standard security practices, including access controls and regular updates.
-   - Use automated tools to scan for vulnerabilities periodically.
-   - Ensure that dependencies are from trusted sources.
+Their compromise could enable data exposure, service disruption, or indirect fund loss, but would typically require
+additional exploitation steps. These benefit from regular vulnerability scanning and automated security testing
+in CI.
 
-4. **Low-Risk Artifacts**
-   - Follow basic security hygiene, such as using trusted sources and applying updates.
-   - Perform occasional security reviews and audits.
+For dependency management practices, see [Dependency Awareness](/supply-chain/dependency-awareness).
+
+For CI/CD pipeline security, see [DevSecOps](/devsecops/overview).
+
+### Level 3: Moderate-Risk Artifacts
+
+High-usage components with limited blast radius. UI frameworks (React, Vue), general utility libraries (lodash,
+date-fns), data processing modules, and analytics libraries sit in this tier.
+
+Compromise could cause service degradation or facilitate phishing, but not direct fund loss. Standard update
+practices and periodic vulnerability scanning are sufficient.
+
+### Level 4: Low-Risk Artifacts
+
+Components that do not run in production or have no access to sensitive data. Test frameworks (Jest, Mocha), linting
+and formatting tools, documentation generators, and local development utilities belong here.
+
+Basic security hygiene (trusted sources, occasional updates) is sufficient here.
+
+## Further Reading
+
+- [Dependency Awareness](/supply-chain/dependency-awareness): Practical guidance on managing dependencies
+- [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats): Real-world attacks across the supply chain
 
 ---
 
