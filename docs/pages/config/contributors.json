@@ -546,5 +546,18 @@
       { "name": "Issue-Opener-5", "assigned": "2026-02-05" },
       { "name": "Active-Last-7d", "lastActive": "2026-02-10" }
     ]
+  },
+  "quillaudits": {
+    "slug": "quillaudits",
+    "name": "QuillAudits",
+    "avatar": "https://avatars.githubusercontent.com/quillaudits",
+    "github": "https://github.com/Quillhash",
+    "twitter": "https://twitter.com/QuillAudits",
+    "website": "https://www.quillaudits.com",
+    "company": "QuillAudits",
+    "job_title": "Smart Contract Audit Firm",
+    "role": "contributor",
+    "description": "",
+    "badges": []
   }
 }
