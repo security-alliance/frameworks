@@ -24,7 +24,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "CC-BY-SA-4.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
