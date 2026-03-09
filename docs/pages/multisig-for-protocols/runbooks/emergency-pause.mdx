@@ -1,0 +1,171 @@
+---
+title: "Emergency Pause Runbook | SEAL"
+description: "Runbook for emergency multisig pause transactions, including alerting, streamlined verification, backup interfaces, and post-pause actions."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Emergency Pause Runbook
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+This is an example runbook. Review and customize it for your protocol before use. Add your specific contract
+addresses, pause functions, emergency contacts, and communication channels.
+
+### Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Severity** | EMERGENCY |
+| **Response Time** | \<2 hours |
+| **Required Threshold** | Per multisig config (often lower for emergencies) |
+| **Owner** | Security Team |
+| **Last Updated** | _Date_ |
+
+### When to Use
+
+- Active exploit detected
+- Suspicious activity on protocol contracts
+- Key compromise affecting protocol
+- Vulnerability disclosure requiring immediate action
+
+### Immediate Actions (First 30 Minutes)
+
+#### 1. Alert Team
+
+- [ ] Send alert to emergency Signal group
+- [ ] Page signers via configured paging system
+- [ ] Notify the security contact
+
+**Alert template**:
+
+```text
+URGENT: [Brief description]
+Multisig: [Name]
+Action needed: [Pause/Freeze/etc.]
+Respond ASAP - <2hr SLA
+```
+
+#### 2. Assess Situation
+
+- [ ] Confirm threat is real (not false alarm)
+- [ ] Identify affected contracts or assets
+- [ ] Determine which pause function(s) to call
+- [ ] Estimate urgency
+
+#### 3. Prepare Transaction
+
+**Proposer** (can be any signer or delegated proposer):
+
+1. Go to Safe or Squads UI
+2. Use Transaction Builder for contract interaction
+3. Select target contract
+4. Select `pause()` or appropriate emergency function
+5. Create transaction
+
+### Signing Process (Streamlined)
+
+Emergency signing follows abbreviated verification.
+
+#### Minimum Verification
+
+```text
+[ ] Correct multisig address
+[ ] Correct network
+[ ] Target contract is correct (verify address)
+[ ] Function is pause() or expected emergency function
+[ ] No unexpected additional calls
+[ ] Hash matches hardware wallet
+```
+
+#### Sign and Communicate
+
+- [ ] Sign immediately after verification
+- [ ] Message: "Signed - [X/Y] - [your name]"
+- [ ] Stay available until executed
+
+#### Execute
+
+- [ ] Execute as soon as threshold is reached
+- [ ] Verify pause took effect (check contract state)
+- [ ] Communicate: "EXECUTED - pause confirmed"
+
+### Contract Reference
+
+| Contract | Address | Pause Function | Expected Behavior |
+|----------|---------|---------------|-------------------|
+| Example contract 1 | `0x...` | `pause()` | Stops all operations |
+| Example contract 2 | `0x...` | `emergencyStop()` | Stops withdrawals |
+| Add your contracts here |  |  |  |
+
+### After Pause
+
+#### Immediate (Within 1 hour)
+
+- [ ] Confirm pause is effective
+- [ ] Document incident using [Incident Reporting](/multisig-for-protocols/incident-reporting)
+- [ ] Notify stakeholders
+
+#### Short-term (Within 24 hours)
+
+- [ ] Root cause analysis
+- [ ] Plan for resolution
+- [ ] Draft public communication if needed
+
+#### Resolution
+
+- [ ] Fix underlying issue
+- [ ] Test fix thoroughly
+- [ ] Plan unpause procedure
+- [ ] Execute unpause with full verification (not emergency process)
+
+### If Primary UI is Down
+
+Use backup infrastructure:
+
+**EVM**:
+
+1. [Eternal Safe](https://eternalsafe.eth.limo)
+2. Configure with backup RPC
+3. Load Safe address
+4. Create custom transaction with pause calldata
+
+**Solana**:
+
+1. [Squads Backup](https://backup.app.squads.so)
+2. Configure RPC
+3. Load multisig
+
+See [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure) for detailed instructions.
+
+### Escalation
+
+If threshold cannot be reached within SLA:
+
+1. Contact backup signers
+2. Escalate to decision makers
+3. Consider alternative mitigations
+4. Document why threshold was not met
+
+**Emergency contacts**: See your configured emergency contact list.
+
+## Related Documents
+
+- [Emergency Procedures](/multisig-for-protocols/emergency-procedures)
+- [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure)
+- [Incident Reporting](/multisig-for-protocols/incident-reporting)
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+
+</TagProvider>
+<ContributeFooter />

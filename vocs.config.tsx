@@ -145,6 +145,17 @@ const config = {
                 { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation' },
                 { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup' },
                 { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements' },
+                {
+                  text: 'Operational Runbooks',
+                  collapsed: false,
+                  items: [
+                    { text: 'Overview', link: '/multisig-for-protocols/runbooks/overview', dev: true },
+                    { text: 'Token Transfer', link: '/multisig-for-protocols/runbooks/token-transfer', dev: true },
+                    { text: 'Signer Rotation', link: '/multisig-for-protocols/runbooks/signer-rotation', dev: true },
+                    { text: 'Threshold Change', link: '/multisig-for-protocols/runbooks/threshold-change', dev: true },
+                    { text: 'Emergency Pause', link: '/multisig-for-protocols/runbooks/emergency-pause', dev: true },
+                  ]
+                },
               ]
             },
             {

@@ -1,0 +1,169 @@
+---
+title: "Threshold Change Runbook | SEAL"
+description: "Runbook for changing multisig thresholds on Safe and Squads, including policy checks, signer coordination, and post-change verification."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Threshold Change Runbook
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+This is an example runbook. Review and customize it for your protocol before use. Adjust threshold requirements to match
+your organization's policies.
+
+### Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | Routine |
+| **Required Threshold** | Current threshold |
+| **Owner** | Multisig Admin |
+| **Last Updated** | _Date_ |
+
+### When to Use
+
+- Increasing threshold for higher security
+- Decreasing threshold for operational efficiency
+- Adjusting after signer count changes
+
+### Prerequisites
+
+- [ ] Justification documented
+- [ ] New threshold meets policy requirements:
+  - Minimum 50% of signers
+  - Avoid `N of N` configurations
+- [ ] If decreasing: approval from security contact
+- [ ] All signers notified of change
+
+### Policy Requirements
+
+| Multisig Type | Minimum Threshold |
+|--------------|-------------------|
+| Standard | 50%+ |
+| Treasury ($1M+) | 50%+ with 7+ signers |
+| Emergency | Can be lower (2/4 typical) |
+| Smart Contract Upgrades | Consider 7/9+ |
+
+### EVM (Safe) Procedure
+
+#### 1. Create Transaction
+
+**Proposer**:
+
+1. Go to [Safe](https://app.safe.global)
+2. Settings > Setup > Owners
+3. Click "Change threshold"
+4. Select new threshold from dropdown
+5. Create transaction
+
+#### 2. Verify Transaction
+
+**Each signer must**:
+
+```text
+[ ] Transaction is ONLY changing threshold (no other changes)
+[ ] New threshold value is correct
+[ ] New threshold meets policy requirements
+[ ] No signers being added or removed in same transaction
+[ ] Message hash matches hardware wallet
+```
+
+**Simulation check**:
+
+- Should show `changeThreshold` call to Safe
+- New threshold value matches intended
+
+#### 3. Sign and Execute
+
+- [ ] Verify hash on hardware wallet
+- [ ] Sign immediately after verification
+- [ ] Message: "Signed - [X/Y] - [your name]"
+- [ ] Stay available until executed
+- [ ] Last signer executes once threshold is reached
+
+#### 4. Verify
+
+- [ ] Check Safe settings show new threshold
+- [ ] Test that the next transaction requires new threshold
+
+### Solana (Squads) Procedure
+
+#### 1. Create Proposal
+
+1. Go to [Squads Multisig](https://squads.xyz/squads-multisig)
+2. Configuration > Change Threshold
+3. Select new threshold
+4. Create proposal
+
+#### 2. Verify Proposal
+
+```text
+[ ] Proposal is ONLY changing threshold (no other changes)
+[ ] New threshold value is correct
+[ ] New threshold meets policy requirements
+[ ] No members being added or removed in the same proposal
+[ ] Hardware wallet display matches expected threshold change
+```
+
+#### 3. Sign and Execute
+
+- [ ] Verify proposal details on hardware wallet
+- [ ] Sign immediately after verification
+- [ ] Message: "Signed - [X/Y] - [your name]"
+- [ ] Stay available until executed
+- [ ] Last signer executes once threshold is reached
+
+#### 4. Verify
+
+- [ ] Check Squads settings show new threshold
+- [ ] Test that the next transaction requires new threshold
+
+### Post-Change
+
+- [ ] Update registration or internal documentation with new threshold
+- [ ] Notify all signers of new threshold
+- [ ] Update any documentation referencing old threshold
+
+### Common Scenarios
+
+#### Adding Signer + Adjusting Threshold
+
+When adding a signer, it is often appropriate to increase threshold.
+
+**Option 1**: Two transactions
+
+1. Add signer (threshold stays same)
+2. Increase threshold
+
+**Option 2**: Single batch transaction (EVM)
+
+1. Use Transaction Builder
+2. Batch `addOwnerWithThreshold` (sets new threshold automatically)
+
+#### Removing Signer + Adjusting Threshold
+
+When removing a signer, plan final signer count and threshold together:
+
+1. If needed, reduce threshold first or in the same change window
+2. Ensure the final configuration still meets policy requirements and avoids `N of N`
+
+## Related Documents
+
+- [Planning & Classification](/multisig-for-protocols/planning-and-classification)
+- [Registration & Documentation](/multisig-for-protocols/registration-and-documentation)
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+
+</TagProvider>
+<ContributeFooter />

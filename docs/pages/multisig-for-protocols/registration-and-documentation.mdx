@@ -76,6 +76,73 @@ Detailed steps for collecting this information are provided in [Joining a Multis
 
 **Note**: Entity affiliations are acceptable - the goal is accountability, not doxing.
 
+## Roles & Accountability
+
+### Accountability Structure
+
+| Role | Responsibilities |
+|------|------------------|
+| **Multisig Operations Lead** | Policy maintenance, signer coordination, documentation, periodic reviews, incident escalation |
+| **Security Contact** | Security incident response, signer verification, emergency coordination |
+
+### Multisig-Specific Roles
+
+For each multisig, assign:
+
+| Role | Responsibility |
+|------|----------------|
+| **Admin** | Setup, configuration, signer management, documentation |
+| **Transaction Proposer** | Prepares and proposes transactions (may be delegated non-signer) |
+| **Signers** | Review, verify, and sign transactions |
+
+### Signer Responsibilities
+
+Every signer must:
+
+- Use a hardware wallet for all multisig operations
+- Maintain a backup hardware wallet with the same seed
+- Store the seed phrase securely
+- Verify every transaction before signing
+- Respond within SLA based on multisig classification
+- Report incidents immediately
+- Complete training and participate in drills
+
+#### Response Time SLAs
+
+Use the response time requirements from [Planning & Classification](/multisig-for-protocols/planning-and-classification#operational-classification):
+
+- **Emergency**: \<2 hours
+- **Time-Sensitive**: 2-12 hours
+- **Routine**: 24-48 hours
+
+### Admin Responsibilities
+
+Multisig admins must:
+
+- Ensure the multisig is properly documented
+- Maintain an up-to-date signer list with verified addresses
+- Set up primary and backup communication channels
+- Coordinate signer onboarding and offboarding
+- Schedule and conduct periodic reviews (quarterly minimum)
+- Ensure backup infrastructure is configured and tested
+
+### Operational Lead Responsibilities
+
+- Maintain the playbook and keep documentation current
+- Coordinate across all multisigs
+- Conduct periodic audits of multisig configurations
+- Escalate security concerns to the security contact
+- Report on operational status
+
+### Review Schedule
+
+| Review Type | Frequency | Owner |
+|------------|-----------|-------|
+| Signer access review | Quarterly | Multisig Admin |
+| Classification review | Quarterly or after major changes | Ops Lead |
+| Emergency contact verification | Every 6 months | Ops Lead |
+| Full policy review | Annually | Ops Lead + Security |
+
 ## Update Template
 
 Use this template when making changes to signer composition:
@@ -124,6 +191,99 @@ Transaction: [Link to executed transaction]
 - Update classification if operational patterns change
 - Maintain current contact information
 
+### Transaction Review Records
+
+Maintain audit trails for:
+
+- Transaction reviews and approvals
+- Execution and post-execution confirmation
+- Verification evidence
+- Issues encountered
+
+**Retention**: 3 years minimum
+
+Transaction records should capture:
+
+#### Header
+
+- Transaction: [Brief Description]
+- Date: [YYYY-MM-DD]
+- Multisig: [Name]
+- Status: Proposed / Signing / Executed / Rejected
+
+#### Transaction Details
+
+- Network
+- Safe or Squad address
+- Nonce
+- Transaction type
+
+#### What This Transaction Does
+
+- Plain language description of what the transaction accomplishes
+
+#### Initiation
+
+- Proposed by
+- Proposed date
+- Reason or justification
+- Runbook followed
+
+#### Verification & Signing
+
+- Signer
+- Verified
+- Signed
+- Date
+- Notes
+
+#### Verification Checklist
+
+- Correct multisig address
+- Correct network
+- Expected nonce
+- Target address verified
+- Calldata or amount verified
+- Simulation performed
+- Hash matched hardware wallet
+
+#### Simulation Results
+
+- Tool used
+- Result
+- Expected behavior confirmed
+- Link
+
+#### Execution
+
+- Executed by
+- Execution date
+- Transaction hash
+- Block explorer link
+- Gas used
+
+#### Post-Execution Verification
+
+- Transaction confirmed on-chain
+- Expected state change verified
+- Registration updated if applicable
+- Team notified
+
+#### Issues Encountered
+
+- Document any issues, delays, or anomalies
+
+#### Attachments
+
+- Screenshot of simulation
+- Screenshot of hardware wallet confirmation
+- Communication thread link
+
+#### Sign-Off
+
+- Proposer
+- Final executor
+
 ## Ongoing Management
 
 ### Regular reviews
@@ -146,7 +306,7 @@ Follow these procedures for adding, removing, or replacing signers:
 
 #### Replacing signers
 
-Follow steps in [Signer Rotation](/wallet-security/secure-multisig-best-practices#signer-rotation)
+Follow steps in the [Signer Rotation Runbook](/multisig-for-protocols/runbooks/signer-rotation)
 
 ### Documentation updates
 
@@ -164,6 +324,7 @@ Use the template in [Registration & Documentation → Update Template](/multisig
 
 - [Planning & Classification](/multisig-for-protocols/planning-and-classification) - How to classify your multisig
 - [Joining a Multisig](/multisig-for-protocols/joining-a-multisig) - Signer verification process
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview) - Example procedures for common operations
 
 </TagProvider>
 <ContributeFooter />
