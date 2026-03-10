@@ -40,11 +40,12 @@ the user's browser.
 
 **Notable incidents:**
 
-- **npm registry attack (2025).** The largest npm supply chain attack to date. Attackers phished maintainer credentials
-  via spoofed emails from `support@npmjs.help` and injected a multi-chain crypto drainer into 18 packages including
-  `chalk`, `debug`, and `ansi-styles` (2.6 billion combined weekly downloads). The payload hooked `window.ethereum` to
-  intercept wallet calls and overrode `fetch`/`XMLHttpRequest` to scan for blockchain addresses. Detected within
-  roughly two hours due to a poorly chosen obfuscator that crashed CI pipelines, limiting actual theft to around $500.
+- **npm registry attack (2025).** The largest npm supply chain attack to date. Attackers phished a
+  maintainer's credentials via a fake 2FA reset email from `support@npmjs.help` and published malicious versions of
+  18 packages including `chalk`, `debug`, and `ansi-styles` (2.6 billion combined weekly downloads). The payload
+  hooked `window.ethereum` to intercept wallet calls and overwrote `fetch`/`XMLHttpRequest` to reroute cryptocurrency
+  transactions to attacker-controlled addresses. The compromise was detected
+  and the malicious versions were removed within approximately two hours.
 - **Solana web3.js (2024).** Malicious versions (1.95.6 and 1.95.7) were published to npm containing code that
   exfiltrated private keys from any developer or user who installed those versions.
 - **ua-parser-js (2021).** A package with over eight million weekly downloads was briefly hijacked to inject a
@@ -116,9 +117,41 @@ is itself a supply chain risk. Without it, a build-time compromise leaves no det
 cannot be compared against the reviewed source, and neither users nor auditors have a way to confirm what is actually
 running on-chain.
 
+Even with source verification, the guarantee only holds if the build is reproducible. If two developers compiling the
+same source with the same compiler version produce different bytecode (due to differing compiler settings, optimizer
+runs, or metadata hashes), there is no reliable way to confirm that the verified source matches the deployed contract.
+Deterministic, reproducible builds are a prerequisite for meaningful source verification. Tools like
+[Sourcify's full match](https://docs.sourcify.dev/docs/full-vs-partial-match/) (which requires identical bytecode
+including metadata) and pinned compiler versions in build configs (`solc` version in `foundry.toml` or
+`hardhat.config.js`) help close this gap.
+
 For practices to mitigate these risks, see [DevSecOps](/devsecops/overview),
 [Security Testing](/security-testing/overview), and
 [Dependency Awareness](/supply-chain/dependency-awareness).
+
+## Governance Attacks
+
+Upgradeable smart contracts introduce a supply chain vector that exists entirely on-chain: governance. If a protocol
+uses a proxy pattern where the implementation contract can be swapped through a governance vote or a multisig
+transaction, then compromising the governance process is equivalent to compromising the code itself. The attacker does
+not need to find a bug or tamper with a dependency. They just need enough votes or enough signers.
+
+### Malicious Governance Proposals
+
+An attacker who acquires sufficient voting power (through token purchases, flash loan voting, or social engineering
+of delegates) can submit a proposal that upgrades a proxy to a malicious implementation. If the proposal passes, the
+new implementation runs with the same address and the same state, but with entirely different logic. Users interacting
+with the protocol may not notice anything changed until funds are drained.
+
+**Notable incidents:**
+
+- **Tornado Cash governance takeover (May 2023).** An attacker submitted a proposal that appeared to be a routine
+  update but contained hidden code granting the attacker 1.2 million fake TORN votes. With majority voting power, the
+  attacker gained full control of governance and used it to drain locked TORN tokens from the governance contract.
+- **Beanstalk (April 2022).** An attacker used a flash loan to acquire enough STALK governance tokens to pass a
+  malicious governance proposal in a single transaction. The proposal transferred all protocol assets to the
+  attacker's address, draining approximately $182 million. The attack exploited the fact that governance voting and
+  execution could happen in the same block with no time delay.
 
 ## Infrastructure Dependency Risks
 
@@ -165,6 +198,21 @@ Block explorer APIs (Etherscan, Basescan, and their equivalents) are often used 
 or display transaction history. These are third-party services with their own availability and integrity risks. An
 application that depends on a block explorer API for security-critical data (e.g. confirming transaction finality)
 is introducing a single point of failure into its trust model.
+
+Beyond availability, the source verification systems that block explorers provide are themselves an imperfect trust
+layer. In 2021, samczsun [demonstrated](https://samczsun.com/hiding-in-plain-sight/) that Etherscan's handling of
+bytecode metadata could be exploited to make verified source code not match the contract's actual behavior. The
+verification page would show clean, reviewed code while the deployed contract did something different. This was not
+a one-off bug. A 2024 academic study (["Abusing the Ethereum Smart Contract Verification Services for Fun and
+Profit"](https://www.ndss-symposium.org/ndss-paper/abusing-the-ethereum-smart-contract-verification-services-for-fun-and-profit/),
+NDSS 2024) systematically tested Etherscan, Sourcify, and Blockscout and found 19 vulnerabilities across the three
+services. 15 were confirmed by the vendors, 10 were fixed, and some remain open. The attacks ranged from metadata
+manipulation to compiler version mismatches that allowed verified source to diverge from deployed bytecode.
+
+The takeaway: a green checkmark on a block explorer means the submitted source compiled to matching bytecode under
+the conditions the verifier tested. It does not guarantee that the source faithfully represents what the contract
+does. Treat verified source as a useful signal, not a security guarantee, and cross-reference against independent
+verification services when the stakes are high.
 
 For a structured approach to evaluating and managing third-party providers, see
 [Vendor Risk Management](/supply-chain/vendor-risk-management). For infrastructure hardening, see the
