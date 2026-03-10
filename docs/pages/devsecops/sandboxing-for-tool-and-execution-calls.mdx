@@ -1,54 +1,8 @@
 ---
-title: "Sandboxing for Tool and Execution Calls | SEAL"
-description: "High-risk tool invocation controls for AI agents with sandboxed execution and runtime policy checks."
-tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Operations & Strategy
-  - Devops
-contributors:
-  - role: wrote
-    users: [munamwasi, jubos, masterfung]
-  - role: reviewed
-    users: [mattaereal]
+title: "Sandboxing for Tool Execution (moved) | SEAL"
+description: "This page moved to a more general DevSecOps slug."
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+# This page moved
 
-<TagProvider>
-<TagFilter />
-
-# Sandboxing for Tool and Execution Calls
-
-<TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
-
-AI systems increasingly rely on tools to perform real-world actions, including database queries, API calls, and system
-commands. Tool execution represents the highest-risk surface in agentic systems because it bridges model output and
-external side effects. Sandboxing for tool execution requires intercepting tool calls before execution and evaluating
-them within a controlled environment that enforces policy and resource limits.
-
-## Restricting Escalation Vectors
-
-Effective sandboxing restricts network access,
-limits execution time, controls input and output size, and prevents chained or recursive tool invocation.
-Production-grade sandboxing ensures that tools cannot be abused as escalation vectors even when invoked by a
-compromised or misaligned model. For AI agents managing infrastructure, financial operations, or blockchain
-interactions, sandboxed tool execution is essential to prevent cascading failures.
-
-## Consider using
-
-- E2B - dedicated cloud sandboxes for AI code execution with isolated filesystems and network controls
-- Firecracker (AWS) - microVM isolation for ephemeral, resource-constrained tool execution
-- Prompt Security - runtime policy enforcement before tool and MCP side effects
-- Microsoft Defender for AI - policy evaluation of tool calls before execution
-
-## References
-
-- Firecracker: https://firecracker-microvm.github.io/
-- seccomp (Linux): https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html
-
----
-
-</TagProvider>
-<ContributeFooter />
+- Canonical page: [/devsecops/sandboxing-for-tool-execution](/devsecops/sandboxing-for-tool-execution)

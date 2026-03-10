@@ -1,50 +1,8 @@
 ---
-title: "Network and Resource Isolation in AI Sandboxes | SEAL"
-description: "Deny-by-default network and compute isolation strategy for sandboxed AI workloads."
-tags:
-  - Engineer/Developer
-  - Security Specialist
-  - Operations & Strategy
-  - Devops
-  - SRE
-contributors:
-  - role: wrote
-    users: [munamwasi, jubos, masterfung]
-  - role: reviewed
-    users: [mattaereal]
+title: "Network & Resource Isolation (moved) | SEAL"
+description: "This page moved to a more general DevSecOps slug."
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+# This page moved
 
-<TagProvider>
-<TagFilter />
-
-# Network and Resource Isolation in AI Sandboxes
-
-<TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
-
-Network access is one of the most powerful and dangerous capabilities granted to AI systems. Without isolation, models
-can be manipulated into exfiltrating data, scanning internal services, or interacting with untrusted external
-endpoints. AI sandboxes must enforce strict network policies that default to denial and explicitly allow only required
-destinations and protocols. Resource isolation, including CPU, memory, and storage limits, is equally important to
-prevent denial-of-service conditions or runaway execution. These controls should be applied dynamically based on agent
-role and context rather than statically configured per deployment. In environments where AI agents interact with
-decentralized networks, resource and network isolation help prevent unintended propagation across nodes or chains.
-
-## Consider using
-
-- Cloudflare - edge DLP and network policy controls for AI traffic
-- AccuKnox - zero trust eBPF runtime enforcement for containerized AI workloads
-- gVisor (Google) - user-space kernel for granular syscall and network mediation
-- Operant AI - API discovery and runtime network access controls for agent ecosystems
-
-## References
-
-- Kubernetes Network Policies (concepts): https://kubernetes.io/docs/concepts/services-networking/network-policies/
-- gVisor: https://gvisor.dev/docs/
-
----
-
-</TagProvider>
-<ContributeFooter />
+- Canonical page: [/devsecops/network-and-resource-isolation](/devsecops/network-and-resource-isolation)
