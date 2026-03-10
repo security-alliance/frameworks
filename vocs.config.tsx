@@ -300,13 +300,19 @@ const config = {
           dev: true,
           items: [
             { text: 'Overview', link: '/devsecops/overview', dev: true },
-            { text: 'Sandboxing & Isolation', link: '/devsecops/sandboxing-and-isolation', dev: true },
-            { text: 'Execution Sandboxing', link: '/devsecops/execution-sandboxing', dev: true },
-            { text: 'Capability-Based Isolation', link: '/devsecops/capability-based-isolation', dev: true },
-            { text: 'Sandboxing for Tool Execution', link: '/devsecops/sandboxing-for-tool-execution', dev: true },
-            { text: 'Network & Resource Isolation', link: '/devsecops/network-and-resource-isolation', dev: true },
-            { text: 'Sandboxing & Policy Enforcement', link: '/devsecops/sandboxing-and-policy-enforcement', dev: true },
-            { text: 'Execution Sandboxing: A Practical Guide', link: '/devsecops/execution-sandboxing-practical-guide', dev: true },
+            {
+              text: 'Isolation & Sandboxing',
+              collapsed: false,
+              items: [
+                { text: 'Sandboxing & Isolation', link: '/devsecops/sandboxing-and-isolation', dev: true },
+                { text: 'Execution Sandboxing', link: '/devsecops/execution-sandboxing', dev: true },
+                { text: 'Capability-Based Isolation', link: '/devsecops/capability-based-isolation', dev: true },
+                { text: 'Sandboxing for Tool Execution', link: '/devsecops/sandboxing-for-tool-execution', dev: true },
+                { text: 'Network & Resource Isolation', link: '/devsecops/network-and-resource-isolation', dev: true },
+                { text: 'Sandboxing & Policy Enforcement', link: '/devsecops/sandboxing-and-policy-enforcement', dev: true },
+                { text: 'Execution Sandboxing: A Practical Guide', link: '/devsecops/execution-sandboxing-practical-guide', dev: true },
+              ]
+            },
             { text: 'Code Signing', link: '/devsecops/code-signing', dev: true },
             { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment', dev: true },
             { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments', dev: true },

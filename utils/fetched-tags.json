@@ -159,20 +159,7 @@
     "/community-management/twitter": [
       "Community & Marketing"
     ],
-    "/devsecops/ai-execution-sandboxing-practical-guide": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/devsecops/ai-execution-sandboxing": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops"
-    ],
-    "/devsecops/capability-based-isolation-for-ai-agents": [
+    "/devsecops/capability-based-isolation": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
@@ -188,12 +175,25 @@
       "Devops",
       "SRE"
     ],
+    "/devsecops/execution-sandboxing-practical-guide": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/devsecops/execution-sandboxing": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
     "/devsecops/integrated-development-environments": [
       "Engineer/Developer",
       "Security Specialist",
       "Devops"
     ],
-    "/devsecops/network-and-resource-isolation-in-ai-sandboxes": [
+    "/devsecops/network-and-resource-isolation": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
@@ -217,13 +217,13 @@
       "Operations & Strategy",
       "Devops"
     ],
-    "/devsecops/sandboxing-as-a-complement-to-execution-path-enforcement": [
+    "/devsecops/sandboxing-and-policy-enforcement": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
       "Devops"
     ],
-    "/devsecops/sandboxing-for-tool-and-execution-calls": [
+    "/devsecops/sandboxing-for-tool-execution": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
@@ -1118,6 +1118,7 @@
     "DPRK IT Workers": "dprk-it-workers",
     "Governance": "governance",
     "DevSecOps": "devsecops",
+    "Isolation & Sandboxing": "devsecops",
     "Privacy": "privacy",
     "Supply Chain": "supply-chain",
     "Security Automation": "security-automation",
