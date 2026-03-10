@@ -23,6 +23,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**
+>
+> - Run jobs and automation in ephemeral, least-privilege environments by default.
+> - Isolate process, filesystem, identity, and network together, not as separate optional controls.
+> - Use stronger boundaries for untrusted or high-impact workflows.
+
 Execution sandboxing means running workloads inside controlled boundaries so that compromise of a job, script, or tool does **not** become compromise of your platform.
 
 In DevSecOps, this applies to:

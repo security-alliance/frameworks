@@ -24,6 +24,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**
+>
+> - Deny outbound network access by default and allowlist only required destinations.
+> - Segment trust zones to block lateral movement from compromised workloads.
+> - Enforce hard CPU, memory, process, timeout, and concurrency limits to contain abuse.
+
 Network and compute controls are critical containment layers for sandboxed execution.
 
 Without them, a compromised build or tool can:
