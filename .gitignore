@@ -43,3 +43,6 @@ CLAUDE.md
 docs/public/printable/
 
 .direnv
+
+# Avoid submitting certs data to repo
+cert-data.json
