@@ -21,11 +21,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**
->
-> - Assume untrusted execution and design containment by default.
-> - Layer controls across identity, runtime, filesystem, network, and resources.
-> - Increase isolation depth with risk (hardened container → sandboxed container → microVM/VM).
+> 🔑 **Key Takeaway**: Assume execution can be untrusted and apply layered containment across identity, runtime, filesystem, network, and resources, increasing isolation strength with workload risk.
 
 This section is the DevSecOps guide for **running untrusted or semi-trusted execution safely**: CI jobs, pull request validation, build scripts, plugins, package hooks, internal automation, and AI agents (as one automation category among many).
 

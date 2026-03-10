@@ -24,11 +24,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**
->
-> - Deny outbound network access by default and allowlist only required destinations.
-> - Segment trust zones to block lateral movement from compromised workloads.
-> - Enforce hard limits for CPU, memory, processes, timeouts, and concurrency.
+> 🔑 **Key Takeaway**: Treat network and compute as hard containment boundaries: deny egress by default, segment trust zones to prevent lateral movement, and enforce strict resource limits to block abuse and runaway jobs.
 
 Network and compute controls are critical containment layers for sandboxed execution.
 

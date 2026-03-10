@@ -23,11 +23,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**
->
-> - Treat tool invocations as untrusted until policy checks approve them.
-> - Add stronger gates and isolation for high-impact actions such as deploy, merge, and publish.
-> - Require auditable identity and execution logs for every side effect.
+> 🔑 **Key Takeaway**: Every tool invocation should pass policy, run in a constrained sandbox, and leave auditable evidence, with stronger gates for high-impact actions like deploy, merge, and publish.
 
 Tool execution is where automation becomes real-world side effects: file changes, API mutations, infrastructure updates, deployments, or financial transactions.
 

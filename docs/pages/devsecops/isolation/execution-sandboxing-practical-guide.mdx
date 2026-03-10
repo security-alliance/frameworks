@@ -24,11 +24,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**
->
-> - Define trust zones first, then map controls to each zone.
-> - Keep untrusted validation separate from release and deploy paths.
-> - Prioritize ephemeral runners, short-lived credentials, and deny-by-default egress.
+> 🔑 **Key Takeaway**: Start by defining trust zones, then apply matching controls that keep untrusted validation isolated from release paths while enforcing ephemeral runners, short-lived credentials, and deny-by-default egress.
 
 This guide translates sandboxing principles into concrete controls for real CI/CD environments.
 

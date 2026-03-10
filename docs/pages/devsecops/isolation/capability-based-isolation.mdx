@@ -22,11 +22,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**
->
-> - Replace broad ambient permissions with explicit, task-scoped capabilities.
-> - Map CI/CD stages to separate identities instead of reusing powerful tokens.
-> - Enforce policy conditions and short-lived credentials for sensitive actions.
+> 🔑 **Key Takeaway**: Capability-based isolation replaces broad ambient permissions with short-lived, task-scoped grants tied to context, so compromised workflows cannot exceed narrowly defined actions.
 
 Capability-based isolation limits what automation can do by granting **specific actions under explicit conditions**, instead of broad ambient privileges.
 

@@ -23,11 +23,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**
->
-> - Policy determines what is allowed; sandboxing limits damage when allowed actions go wrong.
-> - Enforce controls before execution, during runtime, and before promotion or deploy.
-> - Use both layers together to close gaps either control leaves on its own.
+> 🔑 **Key Takeaway**: Policy decides what may run and sandboxing limits damage if it fails, so both must be enforced before, during, and after execution to close control gaps.
 
 Sandboxing and policy enforcement solve different problems and must be used together:
 

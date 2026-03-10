@@ -23,11 +23,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**
->
-> - Run jobs and automation in ephemeral, least-privilege environments by default.
-> - Isolate process, filesystem, identity, and network together.
-> - Use stronger boundaries for untrusted or high-impact workflows.
+> 🔑 **Key Takeaway**: Execution sandboxing reduces blast radius by running automation in ephemeral least-privilege environments and enforcing isolation across process, filesystem, identity, and network, with stronger boundaries for higher-risk workflows.
 
 Execution sandboxing means running workloads inside controlled boundaries so that compromise of a job, script, or tool does **not** become compromise of your platform.
 
