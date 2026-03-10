@@ -480,6 +480,13 @@ const config = {
             { text: 'Vercel Security', link: '/guides/account-management/vercel' },
           ]
         },
+        {
+          text: 'Endpoint Security',
+          collapsed: true,
+          items: [
+            { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
+          ]
+        },
       ]
     },
     {
