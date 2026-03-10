@@ -4,6 +4,9 @@ description: "SEAL 911 War Room guidelines for smart contract hack response. Cre
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [SEAL]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -172,6 +175,45 @@ Gather attacker information to aid legal efforts and fund recovery.
 4. Consider creating additional defensive scripts (pause/upgrade) to use for future situations.
 5. Schedule a Post Mortem write-up.
 6. Post the write-up to relevant social media.
+
+## White Hat Frontrunning
+
+When a wallet's private key is compromised, white hat frontrunning can outpace attackers by submitting rescue
+transactions via Flashbots before the attacker drains the wallet.
+
+### The Tool
+
+The open-source [white hat frontrunning script](https://github.com/pcaversaccio/white-hat-frontrunning) by
+[pcaversaccio](https://github.com/pcaversaccio) is a Bash script requiring only Linux native tools and Foundry's
+[`cast`](https://github.com/foundry-rs/foundry/tree/master/crates/cast). It supports two rescue flows:
+
+**Standard flow (`go.sh`):** A gas wallet sends ETH to the victim wallet, then the victim wallet sends tokens to a safe
+wallet — both bundled atomically via Flashbots so the attacker never sees them in the public mempool.
+
+**EIP-7702 flow (`go_eip7702.sh`):** No ETH needed on the victim wallet. A paymaster deploys a Vyper delegator
+contract ([`recoverooor.vy`](https://github.com/pcaversaccio/white-hat-frontrunning/blob/main/recoverooor.vy)) and
+executes the rescue via EIP-7702 delegation. The script also resets the authorization afterwards.
+
+### When to Use It
+
+- [ ] A wallet's private key is confirmed compromised and funds remain.
+- [ ] The rescue team has a safe destination wallet and the victim's private key.
+- [ ] Someone on the team can run Bash scripts with Foundry's `cast` installed.
+
+### Important Caveats
+
+- **Customize the main loop** for each rescue — it is not a one-click tool.
+- **Flashbots bundles are Ethereum mainnet only.** Other chains need different private mempool solutions.
+- **Debug mode (`DEBUG=true`) still sends real transactions** — it only adds verbose output, it is NOT a dry run.
+- **Coordinate with the War Room** before executing any rescue transactions.
+
+### Real-World Rescues
+
+The repository documents successful rescues on
+[Base (Degen)](https://basescan.org/tx/0x344237ab211385caa2db08a9bb20a012bf0c0c0c4c6919005dd28fb18d08625a) and
+[Arbitrum (Zyfai)](https://arbiscan.io/tx/0x966ccc006e135e481b3aa4bb9645f0e05cc19dfa33baf3643d4fcb3b7c2f20b9).
+The [`community-examples/`](https://github.com/pcaversaccio/white-hat-frontrunning/tree/main/community-examples)
+directory contains customized scripts for various rescue scenarios.
 
 ## Appendix
 
