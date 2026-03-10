@@ -530,6 +530,19 @@
     "role": "contributor",
     "description": "Frameworks Contributor"
   },
+  "quillaudits": {
+    "slug": "quillaudits",
+    "name": "QuillAudits",
+    "avatar": "https://avatars.githubusercontent.com/quillaudits",
+    "github": "https://github.com/Quillhash",
+    "twitter": "https://twitter.com/QuillAudits",
+    "website": "https://www.quillaudits.com",
+    "company": "QuillAudits",
+    "job_title": "Smart Contract Audit Firm",
+    "role": "contributor",
+    "description": "Leading smart contract audit firm specializing in Web3 security solutions, DeFi auditing, and DApp penetration testing.",
+    "badges": []
+  },
   "smagdali": {
     "slug": "smagdali",
     "name": "smagdali",
