@@ -403,7 +403,7 @@ const config = {
             { text: 'AI Workflows: Developers vs Non-Developers', link: '/ai-security/ai-workflows-developers-vs-non-developers', dev: true },
             { text: 'Data Exfiltration via Generative Systems', link: '/ai-security/data-exfiltration-via-generative-systems', dev: true },
             { text: 'Execution-Path Enforcement', link: '/ai-security/execution-path-enforcement', dev: true },
-            { text: 'Sandboxing & Isolation (DevSecOps)', link: '/devsecops/isolation/sandboxing-and-isolation', dev: true },
+            { text: 'DevSecOps Isolation & Sandboxing (Brief Reference)', link: '/ai-security/devsecops-isolation-sandboxing-reference', dev: true },
           ]
         },
         {
