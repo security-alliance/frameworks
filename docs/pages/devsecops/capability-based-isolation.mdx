@@ -1,6 +1,6 @@
 ---
 title: "Capability-Based Isolation | SEAL"
-description: "Capability-scoped isolation patterns for automation operating across tools, APIs, and external systems."
+description: "Capability-scoped isolation patterns that replace broad runtime privileges with explicit, auditable permissions."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -22,29 +22,85 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Traditional sandboxing approaches often rely on coarse-grained isolation (e.g., “it’s in a container”), which is often insufficient for real-world DevSecOps workflows that span multiple tools and services.
+Capability-based isolation limits what automation can do by granting **specific actions under explicit conditions**, instead of broad ambient privileges.
 
-Capability-based isolation refines sandboxing by explicitly defining which actions a workload is permitted to perform and under what conditions. Rather than granting broad access to filesystems, networks, or APIs, automation is issued narrowly scoped **capabilities** that are evaluated at execution time.
+In practice: do not give a job “admin” rights when it only needs “read dependency metadata” or “upload artifact to one path”.
 
-This model aligns security controls with actual behavior rather than assumed intent. In practice, capability-based isolation lets you safely run automation that can:
+## Why this matters in DevSecOps
 
-- read data without writing
-- query systems without mutating state
-- simulate actions without executing them
+Many incidents are privilege-shape failures, not code execution failures: compromised workflows succeed because credentials are too broad.
 
-This is useful for CI workflows, internal bots, and AI agents alike. In decentralized systems, it also maps naturally to permissioned contract calls and limited signing authority.
+Capability scoping reduces blast radius by ensuring that even successful compromise has constrained impact.
 
-## Consider using
+## Capability model template
 
-- Zenity - secure-by-design policy checks on agent permissions and tool access
-- Palo Alto Prisma AIRS - runtime model inspection and granular capability controls
-- Operant AI - MCP gateway authentication and capability boundary enforcement
-- Cisco AI Defense - capability-scoped guardrails integrated in AI development flow
+Define capabilities as structured policy units:
+
+| Field | Example |
+| --- | --- |
+| Subject | `ci/workflow/build` |
+| Action | `artifact.upload` |
+| Resource | `registry.example.com/team/app/*` |
+| Conditions | branch is protected, artifact has provenance, session < 15 min |
+| Effect | allow / deny |
+
+## CI/CD capability tiers
+
+### Tier 1: Validate
+
+- read repository
+- execute tests
+- no deploy/publish
+- no production secrets
+
+### Tier 2: Build
+
+- pull dependencies from approved registries
+- upload intermediate artifacts
+- no release signing keys
+
+### Tier 3: Release
+
+- publish signed artifact
+- write release metadata
+- deploy only to approved environment targets
+
+Map these tiers to separate identities/roles rather than toggling permissions in a single long-lived token.
+
+## Implementation patterns
+
+- Use workload identity federation (OIDC) for short-lived credentials.
+- Create role-per-purpose identities (validate/build/release/deploy).
+- Bind capabilities to both identity and runtime context (repo, branch, environment, workflow name).
+- Deny by default; add narrow allow rules.
+
+## Audit and revocation requirements
+
+For each capability grant, log:
+
+- who/what requested it
+- when it was issued and expired
+- what resource/action it enabled
+- whether execution succeeded or was denied
+
+Capability revocation should be immediate and automated for suspicious activity.
+
+## Common anti-patterns
+
+- “One token to rule them all” for all pipeline stages.
+- Reusing static cloud credentials across repositories.
+- Capability definitions without contextual conditions.
+- Missing visibility into denied actions (blind spots hide attacks).
 
 ## References
 
-- Principle of least privilege (NIST): https://csrc.nist.gov/glossary/term/least_privilege
-- Capability-based security (background): https://en.wikipedia.org/wiki/Capability-based_security
+- NIST SP 800-53 Rev. 5 (least privilege and access control): https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
+- NIST SSDF (SP 800-218): https://csrc.nist.gov/pubs/sp/800/218/final
+- NIST glossary, *Least Privilege*: https://csrc.nist.gov/glossary/term/least_privilege
+- CISA, *Defending Continuous Integration/Continuous Delivery (CI/CD) Environments*: https://www.cisa.gov/resources-tools/resources/defending-continuous-integrationcontinuous-delivery-cicd-environments
+- Kubernetes, *Role Based Access Control*: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+- Kubernetes, *Pod Security Standards*: https://kubernetes.io/docs/concepts/security/pod-security-standards/
+- SLSA specification: https://slsa.dev/spec/v1.0/overview
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Execution Sandboxing: A Practical Guide | SEAL"
-description: "Practical sandboxing guide with isolation options and deployment-depth recommendations for DevSecOps workflows."
+description: "Implementation-focused sandboxing guide for CI/CD, runners, untrusted PR workflows, secrets handling, and network egress control."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -24,192 +24,210 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Modern automation has reached a turning point: it’s no longer limited to passive “advice” or read-only reporting. CI jobs, developer tools, bots, and agents can execute code, browse the web, call APIs, manage local files, and connect directly to production systems.
+This guide translates sandboxing principles into concrete controls for real CI/CD environments.
 
-If an automated workflow has shell access, it inherits the same permissions as the runner/user. It can read files, run commands, and authenticate to connected services. Many traditional security controls were built to detect malicious software or suspicious humans; they often struggle to distinguish legitimate automation from compromised automation.
+Use it when you need to answer: **“What should we deploy this quarter to materially reduce risk from untrusted execution?”**
 
-## Clear Boundaries Around Access, Execution, and Data Exposure
+## Scope and assumptions
 
-Sandboxing fills this gap by limiting what an automated workload can see and do from the outset. Instead of relying only on detection after something goes wrong, sandboxing creates clear boundaries around access, execution, and data exposure.
+This playbook focuses on execution risks from:
 
-It reduces blast radius, enforces privilege constraints, and contains unintended side effects whether the issue stems from malicious input, a supply-chain compromise, a configuration mistake, or a tool/agent error.
+- untrusted pull requests and dependencies
+- shared/self-hosted runners
+- build and release tooling with write privileges
+- secret exposure and token misuse
+- unrestricted network egress
 
-For teams deploying automation that
-interact with real systems, isolation is a core requirement rather than an optional safeguard.
+It is applicable regardless of whether automation is triggered by scripts, bots, or AI-enabled systems.
 
-## Technical Capability and Risk Tolerance
+## 0) Define trust zones first
 
-There is a wide range of sandboxing approaches, depending on technical capability and risk tolerance. For many
-non-technical users, browser-based AI tools already offer a layer of separation, since applications running in a tab
-cannot freely access the local filesystem or installed software. Developers often turn to Docker containers or remote
-virtual machines to create controlled execution environments. At higher levels of assurance, infrastructure teams may
-rely on microVM technologies such as Firecracker or gVisor, or hardened operating systems like Qubes OS. The right
-approach depends on what the agent can access, what authority it holds, and how severe the consequences of misuse might
-be. This calculation becomes especially important in Web3 contexts, where agents may control wallets, interact with
-immutable smart contracts, or execute transactions that cannot be undone.
+Before implementing controls, classify workflows into trust zones:
 
----
-
-The guidance that follows offers practical recommendations for implementing sandboxing across different levels of
-expertise and deployment models. It builds on established security principles such as least privilege and layered
-isolation, while addressing the distinct behavior of AI-driven systems. Whether you are experimenting locally or
-deploying agents in production, the goal is to move from general awareness to concrete safeguards that reduce risk in
-meaningful ways.
-
-## Quick Reference: Sandboxing Recommendations by Technical Level
-
-### For Non-Developers
-
-Most users interacting with AI tools through web interfaces already benefit from browser-level sandboxing. The following
-options provide escalating levels of isolation for those who require additional protection:
-
-| Option | Effort | Isolation | Best For |
-| --- | --- | --- | --- |
-| Browser-based AI | None | Strong | ChatGPT, Claude web interfaces. Already sandboxed by the browser with no configuration required. |
-| Local VM (Parallels, VMware) | Medium | Strong | Running AI tools in a fully isolated virtual machine on your local hardware. |
-| Dedicated Machine | High | Strong | Using a separate physical device exclusively for AI tools, providing complete hardware-level isolation. |
-
-Recommendation: Start with browser-based AI tools, as they are already sandboxed by default. If you need to install AI
-software locally, run it inside a virtual machine using Parallels or VMware for strong isolation without requiring deep
-technical expertise.
-
-### For Developers
-
-Developer workflows demand flexible sandboxing that accommodates rapid iteration while maintaining meaningful isolation
-boundaries. The following options balance security strength against operational overhead:
-
-| Option | Effort | Isolation | Best For |
-| --- | --- | --- | --- |
-| Docker Containers | Low | Moderate | Quick containerized isolation for CLI tools and agents. Shares the host kernel, providing a thinner isolation boundary. |
-| Remote VMs (Modal, Sprites) | Low | Strong | Cloud-based sandboxes with pay-per-use pricing. Isolation is managed by the service provider. |
-| Local VMs (Parallels, VMware, VirtualBox) | Medium | Strong | Full OS-level isolation on your own hardware with complete control over the environment. |
-| Specialized Sandboxes (gVisor, Firecracker) | High | Strong | Production-grade isolation designed for multi-tenant workloads at scale. Purpose-built for running untrusted code. |
-
-Recommendation: For local experimentation with AI agents, use Docker or a remote VM service like Modal. For maximum
-isolation on your own machine, run a full VM with Parallels or VMware. Specialized tools like gVisor and Firecracker
-are designed for production infrastructure deployments rather than local development.
-
-## Why Sandboxing Matters Now
-
-AI systems have crossed a critical threshold: they can now take actions in the real world through code execution, web
-browsing, and API interactions. This transforms mistakes or malicious inputs into tangible side effects including
-deleted files, exfiltrated credentials, unauthorized purchases, and irreversible on-chain transactions. Native
-applications like Claude Cowork and OpenAI Codex change the threat surface further by operating closer to the host
-machine and generating new code that can produce unexpected behavior once executed or integrated into existing systems.
-
-## The Threat Model
-
-A practical threat model for AI sandboxing answers three fundamental questions: what assets are at risk (files,
-credentials, accounts, billing limits, reputation), what entry points exist (prompts, uploaded files, web pages, tool
-outputs, plugin responses), and what permissions the system holds (filesystem access, network egress, API scopes,
-command execution). The following table catalogs the primary threat categories that sandboxing must address:
-
-| Threat | Description | Example |
+| Zone | Typical sources | Allowed outcomes |
 | --- | --- | --- |
-| Data Exfiltration | AI sends sensitive data to external servers | Agent uploads SSH keys while performing routine backup operations |
-| Destructive Actions | AI deletes or corrupts files and data | Agent executes recursive file deletion while cleaning temporary directories |
-| Resource Exhaustion | AI consumes excessive compute, memory, or network bandwidth | Agent spawns infinite subprocess loops or initiates multi-gigabyte downloads |
-| Privilege Escalation | AI gains access beyond its intended scope | Agent modifies system configuration files or installs persistent access tools |
-| Lateral Movement | AI accesses adjacent systems via discovered credentials | Agent uses cloud provider keys to provision unauthorized compute resources |
-| Prompt Injection | External content hijacks agent behavior | Malicious webpage embeds hidden instructions that the agent follows |
-| Supply Chain Compromise | AI is compromised through third-party dependencies | Malicious model weights or plugin code introduces persistent backdoors |
+| Untrusted validation | fork PRs, external contributions, unknown dependencies | lint/test/build checks only |
+| Internal trusted CI | protected branches, approved maintainers | artifact build + internal publish |
+| Release/deploy | signed tags, release managers, protected environments | production deploy and signing |
 
-## Why Traditional Security Is Insufficient
+**Rule:** never run untrusted-zone jobs on release/deploy infrastructure.
 
-Conventional security tools were designed to distinguish between trusted users and untrusted code. AI agents
-fundamentally blur this distinction as they run with user-level permissions, making requests that are indistinguishable
-from intentional human actions. A firewall can block connections to known malicious endpoints, but it cannot determine
-whether an HTTP POST to a legitimate API represents the user pushing code or an agent exfiltrating private
-repositories. The attack surface of an AI agent with shell access is functionally equivalent to the user's entire
-environment: every readable file, every executable command, every authenticated service. Sandboxing addresses these
-gaps by constraining what the AI can access in the first place, providing defense in depth for an era where the agent
-is the user.
+## 1) Runner isolation baseline
 
-## A Brief History of Sandboxing
+### Required baseline
 
-The concept of sandboxing has deep roots in computer science, evolving over decades as systems grew more complex and
-security threats more sophisticated. Understanding this evolution provides essential context for modern AI sandboxing
-approaches.
+- Ephemeral runner per job (destroy after completion).
+- No privileged containers unless explicitly justified and isolated.
+- No host docker socket mount for untrusted jobs.
+- Read-only root filesystem where possible.
+- Separate runner pools per trust zone.
 
-- **Multi-User Systems (1960s-1990s):** The need for isolation originated with mainframe computing. IBM's System/360
-  introduced memory protection to prevent one user's program from accessing another's memory space. As computing
-  transitioned to desktop and server architectures, multi-user operating systems like Unix carried this principle
-  forward through per-user home directories, file permissions, and process isolation.
-- **The Virtualization Era (1970s-2000s):** IBM's VM/370 (1972) enabled multiple operating systems to run on a single
-  machine in complete isolation. This technology was commercialized for x86 systems by VMware in 1999, making full
-  OS-level isolation accessible to mainstream computing. Virtual machines remain one of the strongest isolation options
-  available today.
-- **The Container Revolution (2008-2013):** Linux Containers (LXC) emerged in 2008, leveraging kernel features like
-  cgroups and namespaces to create lightweight containerized environments. Docker (2013) made containerization
-  accessible to mainstream developers. Containers provide faster startup and lower resource overhead than VMs but share
-  the host kernel, resulting in a thinner isolation boundary.
-- **Browser Sandboxing (2008-Present):** Google Chrome's multi-process architecture (2008) introduced per-tab
-  sandboxing that became the industry standard. Modern browsers employ multiple isolation layers including site
-  isolation and WebAssembly sandboxing, which is why web-based AI tools benefit from meaningful isolation by default.
-- **Microkernels and Lightweight VMs (2010s-Present):** Projects like gVisor (Google, 2018) and Firecracker (AWS,
-  2018) represent the current state of the art: user-space kernels and lightweight virtual machines designed
-  specifically for running untrusted workloads with minimal overhead. These technologies power the isolation behind
-  services like AWS Lambda and Google Cloud Run, and are increasingly relevant for production AI workloads.
+### Good defaults for containerized runners
 
-## What Is an AI Sandbox?
+- Drop Linux capabilities by default (`cap-drop=ALL`).
+- Use seccomp profile and AppArmor/SELinux policy.
+- Set CPU/memory/pids limits.
+- Set job timeout and process count limits.
 
-An AI sandbox is a controlled, containerized, and sometimes isolated environment designed to contain and monitor AI
-system behavior. It creates boundaries that limit what an AI can access and modify, ensuring that even if a model is
-compromised or produces unexpected behavior, the impact remains contained within the sandbox boundaries. Effective AI
-sandboxes share four key characteristics: isolation (complete separation from production systems and sensitive data),
-monitoring (comprehensive logging and observation of all AI actions), resource limits (controlled access to compute,
-memory, and network resources), and reversibility (the ability to reset the environment to a known good state).
+## 2) Safe handling for untrusted PRs
 
-## Types of AI Sandboxes
+Untrusted PR execution is the most common CI breach path.
 
-- **Browser Sandboxes:** Web browsers already execute code in sandboxed environments. When using ChatGPT, Claude, or
-  other web-based AI tools, the browser isolates them from the rest of the system as they cannot access local files,
-  install software, or make changes outside the browser tab. File access operates on a whitelist model: users
-  explicitly upload documents they want the AI to process, which is the inverse of local AI agents that often have
-  default access to the entire filesystem. For most users, browser-based sandboxing provides sufficient isolation
-  without any additional configuration.
-- **Container-Based Sandboxes:** Technologies like Docker and DevContainers partition AI systems at the operating
-  system level. Containers share the host kernel but maintain their own filesystem, process space, and network stack.
-  This provides meaningful isolation with faster startup and lower resource consumption than full virtualization,
-  making containers well-suited for development workflows and CI/CD pipeline integration.
-- **Virtual Machine Sandboxes:** Full virtualization provides the strongest isolation available for local deployment.
-  Each VM runs its own complete operating system, ensuring that a compromised AI agent inside a VM has no direct path
-  to the host machine. The tradeoff is higher resource consumption and slower startup times, along with the operational
-  overhead of maintaining a separate operating system installation.
+### Controls
 
-## Selecting the Appropriate Sandbox Depth
+1. Trigger untrusted jobs with minimal token permissions.
+2. Do not expose deployment credentials, signing keys, or production secrets.
+3. Prevent write operations to protected branches/tags.
+4. Restrict artifact publication from untrusted workflows.
+5. Apply strict outbound network allowlist.
 
-The appropriate depth of sandboxing should match your risk tolerance, technical capability, and the sensitivity of
-systems the AI agent can access. The spectrum ranges from browser-based isolation requiring zero configuration to
-production-grade microVM infrastructure designed for multi-tenant untrusted workloads. The key principle is that
-isolation depth should scale with the consequences of a potential breach: AI tools that can only read uploaded
-documents require less isolation than agents with shell access, which in turn require less isolation than agents that
-can sign blockchain transactions or execute financial operations.
+### GitHub Actions example (least privilege token)
 
-- **Surface Level - Minimal Setup:** Browser sandboxes (web-based AI tools) and dedicated user accounts or machines.
-  These require minimal technical expertise and provide strong baseline isolation for casual AI usage.
-- **Mid-Depth - Developer-Oriented:** Docker containers, DevContainers, local VMs (Parallels, VMware, VirtualBox,
-  UTM), and remote VMs (Modal, Sprites). These provide meaningful isolation for development workflows and agent
-  experimentation with moderate configuration overhead.
-- **Deep Isolation - Production-Grade:** Firecracker, gVisor, Qubes OS, nsjail, and bubblewrap. These represent the
-  highest levels of isolation available and are appropriate for production infrastructure, multi-tenant deployments,
-  and environments where AI agents interact with high-value assets or irreversible operations.
+```yaml
+permissions:
+  contents: read
+  pull-requests: read
+```
 
-## Conclusion
+Only grant elevated scopes per job when required.
 
-AI sandboxes represent a critical component in the responsible deployment of artificial intelligence systems. By
-providing controlled environments that contain and constrain AI behavior, they bridge the gap between the expanding
-capabilities of AI agents and the security requirements of production systems. As AI systems continue to gain autonomy
-by executing code, managing infrastructure, and interacting with financial protocols, the necessary investment in
-robust sandboxing infrastructure is not merely a best practice but a prerequisite for building AI systems that
-organizations and users can trust.
+### Important workflow safety note
+
+Avoid using `pull_request_target` to run untrusted code with privileged context unless you fully understand and constrain checkout, permissions, and secret access behavior.
+
+## 3) Secrets and identity controls
+
+### Prefer short-lived credentials
+
+- Use OIDC federation to cloud providers instead of static cloud keys in CI secrets.
+- Scope roles per workflow purpose (build-only, publish-only, deploy-only).
+- Apply time-bound sessions and audience restrictions.
+
+### Secret exposure minimization
+
+- Inject secrets only into jobs that require them.
+- Mask and redact logs.
+- Mount secrets read-only and avoid writing them to workspace.
+- Rotate credentials and invalidate on suspected leakage.
+
+### Segregate high-impact secrets
+
+Signing keys, registry publish credentials, and production deploy tokens should be available only in protected environments with approval gates.
+
+## 4) Network egress control
+
+Start from **deny all egress**, then open only required destinations.
+
+### Minimum egress policy structure
+
+- allow source control host (fetch)
+- allow package mirrors/registries needed for build
+- allow artifact store
+- deny direct access to internal admin/control planes
+- deny metadata endpoints unless explicitly required
+
+### Kubernetes example pattern
+
+- namespace-per-trust-zone
+- default deny egress NetworkPolicy
+- explicit allowlist policies per pipeline stage
+
+## 5) Resource and abuse controls
+
+Prevent runaway or abusive workloads:
+
+- CPU/memory/pids quotas per job
+- max execution time per stage
+- bounded log size and artifact size
+- concurrency controls for expensive workflows
+- filesystem quota for temporary storage
+
+These controls reduce denial-of-service risk and limit cost impact from malicious or broken tasks.
+
+## 6) Build integrity and provenance
+
+Sandboxing reduces runtime blast radius; integrity controls reduce supply-chain risk.
+
+Recommended:
+
+- Generate provenance attestations for build artifacts.
+- Sign release artifacts.
+- Enforce verification before deployment.
+- Use reproducible/deterministic build settings where feasible.
+
+Use SLSA-aligned controls to define maturity targets over time.
+
+## 7) Policy gates (before and after execution)
+
+Implement policy-as-code checks at multiple points:
+
+- **Pre-execution:** validate workflow configuration (forbidden privileged flags, forbidden secret contexts).
+- **Runtime:** enforce admission and sandbox policy (seccomp, allowed images, namespace constraints).
+- **Post-execution:** verify provenance/signatures and deployment policy.
+
+## 8) Logging and incident readiness
+
+At minimum capture:
+
+- workflow identity (repo, ref, actor, workflow, runner)
+- command/process telemetry (high-risk operations)
+- network destinations contacted
+- secret access events
+- artifact hashes and provenance metadata
+
+Have a playbook for:
+
+1. revoke active tokens
+2. quarantine runner pool
+3. rotate secrets
+4. invalidate suspicious artifacts
+5. re-run trusted build from clean source
+
+## 30/60/90 day implementation plan
+
+### First 30 days
+
+- Split trusted vs untrusted runner pools.
+- Enforce least-privilege CI token defaults.
+- Disable secrets in untrusted PR workflows.
+- Add job timeouts and resource limits.
+
+### By day 60
+
+- Introduce default-deny egress with allowlists.
+- Deploy seccomp/AppArmor (or equivalent) profiles.
+- Migrate static cloud credentials to OIDC short-lived roles.
+
+### By day 90
+
+- Add artifact signing and provenance checks.
+- Enforce policy-as-code gates for workflow and runtime configuration.
+- Run a tabletop exercise for CI compromise response.
+
+## Operational checklist
+
+- [ ] Untrusted PRs isolated from privileged runners
+- [ ] Ephemeral runners enabled
+- [ ] CI token defaults set to read-only
+- [ ] No long-lived cloud keys in CI
+- [ ] Egress deny-by-default + destination allowlists
+- [ ] Seccomp/profile enforcement active
+- [ ] Resource quotas and timeouts configured
+- [ ] Artifact signing/provenance verified at release
+- [ ] Incident response runbook tested
 
 ## References
 
-- Firecracker: https://firecracker-microvm.github.io/
-- gVisor: https://gvisor.dev/docs/
-- nsjail: https://github.com/google/nsjail
-- bubblewrap: https://github.com/containers/bubblewrap
+- NIST SP 800-190, *Application Container Security Guide*: https://csrc.nist.gov/pubs/sp/800/190/final
+- NIST SP 800-204A, *Building Secure Microservices-based Applications Using Service-Mesh Architecture*: https://csrc.nist.gov/pubs/sp/800/204/a/final
+- NIST SSDF (SP 800-218): https://csrc.nist.gov/pubs/sp/800/218/final
+- CISA, *Defending Continuous Integration/Continuous Delivery (CI/CD) Environments*: https://www.cisa.gov/resources-tools/resources/defending-continuous-integrationcontinuous-delivery-cicd-environments
+- GitHub Actions security hardening: https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions
+- Docker, *Docker Engine Security*: https://docs.docker.com/engine/security/
+- Kubernetes, *Network Policies*: https://kubernetes.io/docs/concepts/services-networking/network-policies/
+- Kubernetes, *Pod Security Standards*: https://kubernetes.io/docs/concepts/security/pod-security-standards/
+- Linux kernel documentation, *Seccomp BPF*: https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html
+- SLSA specification: https://slsa.dev/spec/v1.0/overview
 
 ---
 

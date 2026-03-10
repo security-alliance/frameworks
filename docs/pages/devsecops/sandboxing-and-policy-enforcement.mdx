@@ -1,6 +1,6 @@
 ---
 title: "Sandboxing & Policy Enforcement | SEAL"
-description: "Defense-in-depth model combining execution-path policy controls with sandbox isolation boundaries."
+description: "Defense-in-depth model that combines runtime isolation with policy-as-code across CI/CD and automation workflows."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -23,22 +23,82 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Sandboxing alone does not solve security, but it is a necessary complement to **policy enforcement**. While policy controls determine whether an action should occur, sandboxing constrains what happens if an action is allowed.
+Sandboxing and policy enforcement solve different problems and must be used together:
 
-Together, these mechanisms provide defense-in-depth by limiting the impact of mistakes, adversarial behavior, or unforeseen interactions between tools.
+- **Policy** decides what should be allowed.
+- **Sandboxing** limits damage when allowed actions fail, are abused, or are bypassed.
 
-In production, sandboxing should be treated as an always-on control rather than a development-time feature, with continuous validation that isolation boundaries remain intact as systems evolve.
+Using only one layer leaves material gaps.
 
-## Consider using
+## Three policy checkpoints
 
-- Palo Alto Prisma AIRS + Firecracker - posture management plus runtime microVM guardrails
-- Zenity + gVisor - agent-level execution monitoring plus kernel-level isolation
-- Cisco AI Defense + E2B - MCP inspection plus isolated code execution sandboxes
-- Operant AI + AccuKnox - application-level agent controls plus eBPF infrastructure enforcement
+| Checkpoint | Purpose | Typical examples |
+| --- | --- | --- |
+| Pre-execution | block unsafe configuration before run starts | deny privileged runner flags, deny forbidden workflow triggers |
+| Runtime | enforce constraints during execution | seccomp/AppArmor, pod security admission, network policy |
+| Post-execution | verify integrity before promotion/deploy | signature verification, provenance checks, policy attestations |
+
+## CI/CD control stack
+
+A practical stack for pipelines:
+
+1. **Workflow policy**
+   - lint and validate pipeline definitions
+   - require least-privilege token settings
+2. **Runner/runtime policy**
+   - enforce non-privileged execution
+   - require sandbox profile and resource limits
+3. **Artifact/release policy**
+   - enforce signed artifacts and provenance before publish/deploy
+4. **Environment policy**
+   - require approvals for production mutation paths
+
+## Threat-to-control mapping
+
+| Threat | Policy control | Sandbox control |
+| --- | --- | --- |
+| Secret exfiltration | deny secret injection into untrusted workflows | filesystem isolation + egress allowlist |
+| Runner compromise | deny privileged execution configs | syscall filtering + ephemeral runner |
+| Supply-chain tampering | require trusted source and attestation | isolated build runtime + immutable logs |
+| Unauthorized deploy | branch/environment approvals | isolated deploy runner with scoped identity |
+
+## Maturity model
+
+### Level 1 (baseline)
+
+- static policy checks for CI configuration
+- isolated runners for untrusted PRs
+- least-privilege CI tokens
+
+### Level 2 (intermediate)
+
+- runtime admission/enforcement policies
+- default-deny network egress
+- short-lived credentials via federation
+
+### Level 3 (advanced)
+
+- signed provenance verification on promotion
+- policy decision logging with centralized audit
+- periodic control validation exercises (breakout tests/tabletops)
+
+## Common anti-patterns
+
+- Writing policy that is never enforced at runtime.
+- Treating sandbox exceptions as permanent defaults.
+- Failing open when policy engine is unavailable.
+- Skipping auditability for policy decisions.
 
 ## References
 
-- Defense in depth (CISA): https://www.cisa.gov/resources-tools/resources/defense-depth
+- NIST SP 800-53 Rev. 5 (policy, audit, and access controls): https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
+- NIST SP 800-190, *Application Container Security Guide*: https://csrc.nist.gov/pubs/sp/800/190/final
+- NIST SSDF (SP 800-218): https://csrc.nist.gov/pubs/sp/800/218/final
+- CISA, *Defending Continuous Integration/Continuous Delivery (CI/CD) Environments*: https://www.cisa.gov/resources-tools/resources/defending-continuous-integrationcontinuous-delivery-cicd-environments
+- CISA, *Defense in Depth*: https://www.cisa.gov/resources-tools/resources/defense-depth
+- Kubernetes, *Pod Security Standards*: https://kubernetes.io/docs/concepts/security/pod-security-standards/
+- Kubernetes, *Admission Controllers*: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
+- SLSA specification: https://slsa.dev/spec/v1.0/overview
 
 ---
 
