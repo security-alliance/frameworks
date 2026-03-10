@@ -159,11 +159,6 @@
     "/community-management/twitter": [
       "Community & Marketing"
     ],
-    "/devsecops/capability-based-isolation": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
     "/devsecops/code-signing": [
       "Engineer/Developer",
       "Security Specialist",
@@ -175,30 +170,53 @@
       "Devops",
       "SRE"
     ],
-    "/devsecops/execution-sandboxing-practical-guide": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/devsecops/execution-sandboxing": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops"
-    ],
     "/devsecops/integrated-development-environments": [
       "Engineer/Developer",
       "Security Specialist",
       "Devops"
     ],
-    "/devsecops/network-and-resource-isolation": [
+    "/devsecops/isolation/capability-based-isolation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/devsecops/isolation/execution-sandboxing-practical-guide": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
       "Devops",
       "SRE"
+    ],
+    "/devsecops/isolation/execution-sandboxing": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/devsecops/isolation/network-and-resource-isolation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/devsecops/isolation/sandboxing-and-isolation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/devsecops/isolation/sandboxing-and-policy-enforcement": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/devsecops/isolation/sandboxing-for-tool-execution": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
     ],
     "/devsecops/overview": [
       "Engineer/Developer",
@@ -209,24 +227,6 @@
     "/devsecops/repository-hardening": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
-    ],
-    "/devsecops/sandboxing-and-isolation": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops"
-    ],
-    "/devsecops/sandboxing-and-policy-enforcement": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops"
-    ],
-    "/devsecops/sandboxing-for-tool-execution": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy",
       "Devops"
     ],
     "/devsecops/security-testing": [

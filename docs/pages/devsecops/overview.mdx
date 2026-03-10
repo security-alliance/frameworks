@@ -35,18 +35,18 @@ Some of the key areas to consider are:
 2. Implement automated security testing and monitoring.
 3. Development, Operations and Security teams should be aligned and work closely together.
 4. Use **sandboxing & isolation** to reduce blast radius when running tooling, builds, plugins, and other potentially risky execution.
-   - See: [Sandboxing & Isolation](/devsecops/sandboxing-and-isolation) (canonical section)
+   - See: [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation) (canonical section)
 
 ## What’s inside DevSecOps
 
 - **Isolation & Sandboxing**
-  - [Sandboxing & Isolation](/devsecops/sandboxing-and-isolation): Canonical guidance for containment patterns across CI/CD and automation workflows.
-  - [Execution Sandboxing](/devsecops/execution-sandboxing): Core runtime isolation controls to limit blast radius and privilege abuse.
-  - [Execution Sandboxing: A Practical Guide](/devsecops/execution-sandboxing-practical-guide): Implementation playbook for runners, untrusted PRs, secrets, and egress.
-  - [Capability-Based Isolation](/devsecops/capability-based-isolation): Replace broad privileges with explicit, auditable capability grants.
-  - [Network & Resource Isolation](/devsecops/network-and-resource-isolation): Enforce deny-by-default networking and strict CPU/memory/resource boundaries.
-  - [Sandboxing for Tool Execution](/devsecops/sandboxing-for-tool-execution): Secure high-risk tool invocation with constrained runtime and auditable effects.
-  - [Sandboxing & Policy Enforcement](/devsecops/sandboxing-and-policy-enforcement): Combine sandbox boundaries with policy-as-code for defense in depth.
+  - [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation): Canonical guidance for containment patterns across CI/CD and automation workflows.
+  - [Execution Sandboxing](/devsecops/isolation/execution-sandboxing): Core runtime isolation controls to limit blast radius and privilege abuse.
+  - [Execution Sandboxing: A Practical Guide](/devsecops/isolation/execution-sandboxing-practical-guide): Implementation playbook for runners, untrusted PRs, secrets, and egress.
+  - [Capability-Based Isolation](/devsecops/isolation/capability-based-isolation): Replace broad privileges with explicit, auditable capability grants.
+  - [Network & Resource Isolation](/devsecops/isolation/network-and-resource-isolation): Enforce deny-by-default networking and strict CPU/memory/resource boundaries.
+  - [Sandboxing for Tool Execution](/devsecops/isolation/sandboxing-for-tool-execution): Secure high-risk tool invocation with constrained runtime and auditable effects.
+  - [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement): Combine sandbox boundaries with policy-as-code for defense in depth.
 - [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment): Build safer pipelines with testing, scanning, deterministic builds, and access controls.
 - [Repository Hardening](/devsecops/repository-hardening): Protect repos with branch policies, signed commits, and hardened automation settings.
 - [Security Testing](/devsecops/security-testing): Shift-left with SAST, DAST, IAST, and fuzzing to catch issues early.
