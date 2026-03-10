@@ -1,0 +1,44 @@
+---
+title: "Sandboxing & Isolation | SEAL"
+description: "Canonical DevSecOps guidance for sandboxing, isolation, and containment across builds, tooling, and execution environments."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Sandboxing & Isolation
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+This section is the **canonical home** for guidance on sandboxing, isolation, and containment as part of DevSecOps.
+
+Sandboxing and isolation are *implementation controls* used to reduce blast radius when running untrusted or semi-trusted code and workflows (CI steps, build tooling, plugins, scripts, AI tool calls, etc.).
+
+## Pages in this section
+
+- [AI Execution Sandboxing](/devsecops/ai-execution-sandboxing)
+- [Capability-Based Isolation for AI Agents](/devsecops/capability-based-isolation-for-ai-agents)
+- [Sandboxing for Tool and Execution Calls](/devsecops/sandboxing-for-tool-and-execution-calls)
+- [Network and Resource Isolation in AI Sandboxes](/devsecops/network-and-resource-isolation-in-ai-sandboxes)
+- [Sandboxing as a Complement to Execution-Path Enforcement](/devsecops/sandboxing-as-a-complement-to-execution-path-enforcement)
+- [AI Execution Sandboxing: A Practical Guide](/devsecops/ai-execution-sandboxing-practical-guide)
+
+## Notes
+
+AI Security pages that previously hosted this material now link here so that isolation guidance stays centralized and consistent.
+
+---
+
+</TagProvider>
+<ContributeFooter />

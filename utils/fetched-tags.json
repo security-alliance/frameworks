@@ -25,6 +25,39 @@
     "Whitehat"
   ],
   "pageTagsMap": {
+    "/ai-security/ai-browsers": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/ai-security/ai-workflows-developers-vs-non-developers": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Community & Marketing"
+    ],
+    "/ai-security/data-exfiltration-via-generative-systems": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/ai-security/execution-path-enforcement": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/ai-security/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/ai-security/prompt-injection-defenses": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/awareness/core-awareness-principles": [
       "Security Specialist",
       "Operations & Strategy",
@@ -126,6 +159,24 @@
     "/community-management/twitter": [
       "Community & Marketing"
     ],
+    "/devsecops/ai-execution-sandboxing-practical-guide": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/devsecops/ai-execution-sandboxing": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/devsecops/capability-based-isolation-for-ai-agents": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/devsecops/code-signing": [
       "Engineer/Developer",
       "Security Specialist",
@@ -142,6 +193,13 @@
       "Security Specialist",
       "Devops"
     ],
+    "/devsecops/network-and-resource-isolation-in-ai-sandboxes": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
     "/devsecops/overview": [
       "Engineer/Developer",
       "Security Specialist",
@@ -151,6 +209,24 @@
     "/devsecops/repository-hardening": [
       "Engineer/Developer",
       "Security Specialist",
+      "Devops"
+    ],
+    "/devsecops/sandboxing-and-isolation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/devsecops/sandboxing-as-a-complement-to-execution-path-enforcement": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/devsecops/sandboxing-for-tool-and-execution-calls": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
       "Devops"
     ],
     "/devsecops/security-testing": [
@@ -1048,6 +1124,7 @@
     "Identity and Access Management IAM": "iam",
     "Secure Software Development": "secure-software-development",
     "Security Testing": "security-testing",
+    "AI Security": "ai-security",
     "ENS": "ens",
     "Safe Harbor": "safe-harbor",
     "Encryption": "encryption",
