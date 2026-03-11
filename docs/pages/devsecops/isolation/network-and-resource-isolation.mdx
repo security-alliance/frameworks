@@ -24,7 +24,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Treat network and compute as hard containment boundaries: deny egress by default, segment trust zones to prevent lateral movement, and enforce strict resource limits to block abuse and runaway jobs.
+> 🔑 **Key Takeaway**: Treat network and compute as hard containment boundaries: deny egress by default,
+> segment trust zones to prevent lateral movement, and enforce strict resource limits to block abuse
+> and runaway jobs.
 
 Network and compute controls are critical containment layers for sandboxed execution.
 
@@ -39,7 +41,8 @@ Without them, a compromised build or tool can:
 
 ### 1) Default deny egress
 
-Start with no outbound access. Add explicit allow rules only for required destinations (SCM host, package registries, artifact storage, approved APIs).
+Start with no outbound access. Add explicit allow rules only for required destinations
+(SCM host, package registries, artifact storage, approved APIs).
 
 ### 2) Separate trust zones
 
@@ -99,14 +102,14 @@ These controls are both security and reliability controls.
 
 ## References
 
-- NIST SP 800-190, *Application Container Security Guide*: https://csrc.nist.gov/pubs/sp/800/190/final
-- NIST SP 800-53 Rev. 5 (network and resource control families): https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
+- [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
+- [NIST SP 800-53 Rev. 5 (network and resource control families)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
 
-- Kubernetes, *Network Policies*: https://kubernetes.io/docs/concepts/services-networking/network-policies/
-- Kubernetes, *Resource Management for Pods and Containers*: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-- Docker, *Docker Engine Security*: https://docs.docker.com/engine/security/
-- gVisor documentation: https://gvisor.dev/docs/
-- Firecracker documentation: https://github.com/firecracker-microvm/firecracker/tree/main/docs
+- [Kubernetes, *Network Policies*](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+- [Kubernetes, *Resource Management for Pods and Containers*](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
+- [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
+- [gVisor documentation](https://gvisor.dev/docs/)
+- [Firecracker documentation](https://github.com/firecracker-microvm/firecracker/tree/main/docs)
 
 ---
 

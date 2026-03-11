@@ -476,6 +476,10 @@
     "/guides/account-management/vercel": [
       "DevOps Accounts"
     ],
+    "/guides/endpoint-security/zoom-hardening": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/guides/overview": [
       "Security Specialist"
     ],
@@ -1095,6 +1099,10 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/wallet-security/smart-contract-interaction-security": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/wallet-security/tools-and-resources": [
       "Engineer/Developer",
       "Security Specialist"
@@ -1138,6 +1146,7 @@
     "Treasury Operations": "treasury-operations",
     "Guides": "guides",
     "Account Management": "guides",
+    "Endpoint Security": "guides",
     "SEAL Certifications": "certs",
     "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"
