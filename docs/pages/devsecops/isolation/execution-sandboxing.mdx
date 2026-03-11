@@ -1,0 +1,114 @@
+---
+title: "Execution Sandboxing | SEAL"
+description: "How to sandbox execution across CI/CD, build tooling, and automation to reduce blast radius and prevent privilege abuse."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [munamwasi, jubos, masterfung]
+  - role: reviewed
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Execution Sandboxing
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Execution sandboxing reduces blast radius by running automation in ephemeral least-privilege environments and enforcing isolation across process, filesystem, identity, and network, with stronger boundaries for higher-risk workflows.
+
+Execution sandboxing means running workloads inside controlled boundaries so that compromise of a job, script, or tool does **not** become compromise of your platform.
+
+In DevSecOps, this applies to:
+
+- CI jobs and build/test pipelines
+- package manager hooks and third-party actions
+- deployment automation and release tooling
+- developer scripts and internal bots
+- AI-enabled automation (one category of tool execution)
+
+## Core security properties
+
+A production-grade sandbox should provide:
+
+1. **Isolation**: workload cannot freely access host resources or adjacent tenants.
+2. **Least privilege**: runtime identity and tokens are scoped to minimum required actions.
+3. **Constrained side effects**: filesystem, network, and API access are explicitly bounded.
+4. **Ephemerality**: runtime is short-lived and reset between jobs.
+5. **Auditability**: execution is logged with enough detail for incident response.
+
+## Boundary design: what to isolate
+
+Treat these as separate enforcement planes:
+
+| Plane | Typical risks | Required controls |
+| --- | --- | --- |
+| Process/syscall | container escape, host tampering | seccomp, no `--privileged`, capability drops, AppArmor/SELinux |
+| Filesystem | credential theft, workspace poisoning | read-only rootfs, isolated workspace, explicit writable mounts |
+| Identity | token abuse, cloud account takeover | short-lived credentials, OIDC federation, scoped IAM |
+| Network | data exfiltration, lateral movement | default-deny egress, destination allowlist, proxy/inspection |
+| Resources | denial of service, budget burn | CPU/memory/pids/time limits, quotas, max concurrency |
+
+## Choosing the runtime isolation level
+
+| Runtime option | Isolation strength | Operational overhead | Typical fit |
+| --- | --- | --- | --- |
+| Standard containers | Moderate | Low | Low-risk build/test steps with strict hardening |
+| Hardened containers (rootless + seccomp/AppArmor) | Moderate-strong | Medium | Most CI validation workflows |
+| Sandboxed containers (gVisor/Kata) | Strong | Medium-high | Untrusted code in shared infrastructure |
+| MicroVMs (Firecracker) | Strong | High | High-risk multi-tenant runners and privileged pipelines |
+| Full VMs | Strongest boundary | High | Regulated workloads or high-impact deployment/signing paths |
+
+## CI/CD-specific patterns
+
+### 1) Split trust zones
+
+- **Zone A: Untrusted PR validation** (forks, external code)
+  - no long-lived secrets
+  - restricted CI token permissions
+  - no deploy/publish capability
+- **Zone B: Trusted branch/release**
+  - controlled secret access
+  - protected environments and approvals
+  - provenance + signing requirements
+
+### 2) Use ephemeral runners
+
+Each job should run on fresh infrastructure and be destroyed after completion. Avoid shared mutable state and persistent credentials between jobs.
+
+### 3) Restrict privileged paths
+
+Build, sign, publish, and deploy should be distinct stages with explicit policy gates and auditable approvals.
+
+## Common failure modes
+
+- Treating “containerized” as automatically secure.
+- Running untrusted PR code on persistent or privileged runners.
+- Reusing static secrets in CI variables.
+- Allowing unrestricted egress from build jobs.
+- Granting broad default CI token permissions.
+
+## References
+
+- NIST SP 800-190, *Application Container Security Guide*: https://csrc.nist.gov/pubs/sp/800/190/final
+- NIST SP 800-53 Rev. 5, *Security and Privacy Controls*: https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
+
+- Docker, *Docker Engine Security*: https://docs.docker.com/engine/security/
+- Kubernetes, *Pod Security Standards*: https://kubernetes.io/docs/concepts/security/pod-security-standards/
+- Linux kernel documentation, *Seccomp BPF*: https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html
+- gVisor documentation: https://gvisor.dev/docs/
+- Kata Containers documentation: https://github.com/kata-containers/documentation
+- Firecracker documentation: https://github.com/firecracker-microvm/firecracker/tree/main/docs
+
+---
+
+</TagProvider>
+<ContributeFooter />
