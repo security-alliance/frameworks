@@ -8,7 +8,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,7 +16,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Runbook: Frontend Compromise
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 > **This is an example runbook.** Review and customize for your protocol before use. Add your specific DNS provider, hosting platform, and deployment procedures.
 
@@ -193,8 +192,6 @@ After resolving, review:
 - [Third-Party Outage](./third-party-outage)
 - [Incident Response Policy](../incident-response-policy)
 
-
----
 
 </TagProvider>
 <ContributeFooter />

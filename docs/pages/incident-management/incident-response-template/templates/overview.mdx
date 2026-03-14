@@ -8,7 +8,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,7 +16,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Templates
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 Templates for incident response documentation. Copy these when needed.
 
@@ -39,8 +38,6 @@ See [Runbooks](../runbooks/overview) for the runbook template and existing runbo
 
 *See [Incident Response Policy](../incident-response-policy) for the full response process.*
 
-
----
 
 </TagProvider>
 <ContributeFooter />

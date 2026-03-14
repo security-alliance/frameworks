@@ -8,7 +8,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,7 +16,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Runbook Template
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 Copy this template to create runbooks for specific incident types.
 
@@ -147,8 +146,6 @@ Escalate to [Contacts](../contacts) if:
 - Related runbook for this scenario
 - [Incident Response Policy](../incident-response-policy)
 
-
----
 
 </TagProvider>
 <ContributeFooter />

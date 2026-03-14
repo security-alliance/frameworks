@@ -8,7 +8,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,7 +16,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Runbook: DDoS Attack
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 > **This is an example runbook.** Review and customize for your protocol before use. Add your specific CDN/WAF provider commands and escalation contacts.
 
@@ -188,8 +187,6 @@ After resolving, consider:
 - [Frontend Compromise](./frontend-compromise)
 - [Incident Response Policy](../incident-response-policy)
 
-
----
 
 </TagProvider>
 <ContributeFooter />

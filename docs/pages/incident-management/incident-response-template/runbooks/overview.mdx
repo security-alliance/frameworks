@@ -8,7 +8,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,7 +16,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Runbooks
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 Step-by-step guides for specific incident types. Use these during active incidents to reduce cognitive load and ensure consistent response.
 
@@ -63,8 +62,6 @@ Consider creating runbooks for:
 
 *See [Incident Response Policy](../incident-response-policy) for the overall response process.*
 
-
----
 
 </TagProvider>
 <ContributeFooter />

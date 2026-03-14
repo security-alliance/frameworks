@@ -7,7 +7,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -15,7 +15,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Critical Contacts
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 Keep this updated. Stale contacts during an incident waste critical time.
 
@@ -156,8 +155,6 @@ For P1 (critical) incidents, contact in this order:
 
 *See [Incident Response Policy](./incident-response-policy) and [Roles and Staffing](./roles-and-staffing) for how these contacts fit into the response process.*
 
-
----
 
 </TagProvider>
 <ContributeFooter />

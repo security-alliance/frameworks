@@ -8,7 +8,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,7 +16,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Incident Log Template
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 Use this template during active incidents. The [Scribe](../incident-response-policy#scribe) owns this document.
 
@@ -154,8 +153,6 @@ HH:MM UTC - ...
 
 See [Incident Response Policy](../incident-response-policy#severity-levels) for full definitions.
 
-
----
 
 </TagProvider>
 <ContributeFooter />

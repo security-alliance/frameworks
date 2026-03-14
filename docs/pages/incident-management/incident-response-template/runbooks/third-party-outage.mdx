@@ -8,7 +8,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,7 +16,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Runbook: Third-Party Outage
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 > **This is an example runbook.** Review and customize for your protocol before use. Fill in your specific vendors, dependencies, and failover procedures.
 
@@ -189,8 +188,6 @@ Reduce third-party dependency risk:
 - [DDoS Attack](./ddos-attack)
 - [Incident Response Policy](../incident-response-policy)
 
-
----
 
 </TagProvider>
 <ContributeFooter />

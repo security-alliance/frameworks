@@ -8,7 +8,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,7 +16,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Post-Mortems
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 Store post-mortem documents here. Create one after every significant incident (P1-P3).
 
@@ -38,8 +37,6 @@ See [2024-01-15 Example API Outage](./2024-01-15-example-api-outage) for a sampl
 
 *See [Incident Response Policy](../incident-response-policy) for post-mortem guidance.*
 
-
----
 
 </TagProvider>
 <ContributeFooter />

@@ -7,7 +7,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -15,7 +15,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Communication Templates
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 Templates and building blocks for incident communications. Adapt these to your situation and tone.
 
@@ -205,8 +204,6 @@ Use these as modular pieces. Combine as needed for your situation.
 
 *See [Incident Response Policy](./incident-response-policy) for the overall response process.*
 
-
----
 
 </TagProvider>
 <ContributeFooter />

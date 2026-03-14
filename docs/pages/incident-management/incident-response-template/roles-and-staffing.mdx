@@ -8,7 +8,7 @@ tags:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,7 +16,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Roles and Staffing
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 How you staff incident response depends on your team size and structure. This document covers options from small teams to larger organizations.
 
@@ -212,8 +211,6 @@ Ensure your on-call personnel have access to:
 
 *See [Incident Response Policy](./incident-response-policy) for how these roles work during an actual incident.*
 
-
----
 
 </TagProvider>
 <ContributeFooter />
