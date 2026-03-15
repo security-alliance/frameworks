@@ -5,7 +5,7 @@ tags:
   - Security Specialist
 contributors:
   - role: wrote
-    users: [Raiders0786]
+    users: [Raiders0786, GunniM]
   - role: reviewed
     users: [dickson, mattaereal]
 ---
@@ -181,13 +181,13 @@ MTA-STS enforces encrypted connections between mail servers, preventing man-in-t
 4) **Testing and enforcement**
    - Start with `mode: testing` to monitor without blocking
    - Collect and review TLS failure reports using TLS-RPT (See dedicated section below)
-   - Verify policy is accessible using recent protocols
+   - Verify policy is accessible using recent protocols:
    ```
-  curl --silent --show-error --fail --location \
-  --proto '=https' --tlsv1.2 --tls-max 1.3 \
-  --connect-timeout 10 --max-time 30 \
-  https://mta-sts.example.com/.well-known/mta-sts.txt -o /dev/null
-  ```
+   curl --silent --show-error --fail --location \
+   --proto '=https' --tlsv1.2 --tls-max 1.3 \
+   --connect-timeout 10 --max-time 30 \
+   https://mta-sts.example.com/.well-known/mta-sts.txt -o /dev/null
+   ```
    - Once confident, change to `mode: enforce`
    - Update the `id` in DNS TXT record after policy changes
 
@@ -201,44 +201,45 @@ MTA-STS enforces encrypted connections between mail servers, preventing man-in-t
 - All MX servers must support TLS with valid certificates
 - Monitor policy file availability - if unreachable, mail delivery may fail in enforce mode
 
-#### TLS-RPT
+### TLS-RPT (TLS Reporting)
 
 TLS-RPT collects delivery reports for messages transmitted using MTA-STS and SMTP DANE.
 
 Most major providers (Google, Microsoft, etc.) send one aggregated report per day per domain summarizing all failures for that day and some also indicate how many transmissions were successful.
 This is crucial for already established projects to ensure current email communication is not broken when enabling the security features above.
 
-**Example during testing of MTA-STS**
-MTA-STS is deployed with low max_age value to allow for more rapid iteration 
-TLS-RPT is configured for domain example.com
+**Setup**:
 
-An email provider attempts to deliver mail to example.com
-It fetches example.com's MTA-STS policy and attempts delivery using TLS according to the policy
-If an issue arises a failure is logged and reported using TLS-RPT
-Provider finishes mail delivery by falling back to classic SMTP
+Create a new DNS TXT record with the following structure and update example.com as well as the "mailto" email address.
+```
+_smtp._tls.example.com. TXT "v=TLSRPTv1; rua=mailto:reports@example.com"
+```
 
-**Example of MTA-STS in production**
-MTA-STS policy file mode set to 'enforcing' and max_age eventually raised as confidence in the deployment is gained 
-MTA-STS TXT DNS record id value updated
+**Example scenario - MTA-STS test phase**:
+- MTA-STS is deployed with low max_age value to allow for more rapid iteration 
+- TLS-RPT DNS record is created
+- An email provider attempts to deliver mail to our domain
+- The email provider fetches the domains MTA-STS policy and attempts delivery using TLS according to the policy
+- If an issue arises a failure is logged and reported using TLS-RPT
+- Provider finishes mail delivery by falling back to classic SMTP
 
-An email provider attempts to deliver mail to example.com
-If not already cached, the SMTP server fetches example.com's MTA-STS policy and attempts delivery using TLS according to the policy
-If an issue arises a failure is logged and reported using TLS-RPT
-Mail delivery hard fails at this point
+**Example scenario - MTA-STS in production**:
+- MTA-STS policy file mode set to 'enforcing' and max_age eventually raised as confidence in the deployment is gained 
+- MTA-STS TXT DNS record id value updated
+- An email provider attempts to deliver mail to our domain
+- If not already cached, the SMTP server fetches the domains MTA-STS policy and attempts delivery using TLS according to the policy
+- If an issue arises a failure is logged and reported using TLS-RPT
+- Mail delivery hard fails at this point
 
-**Setup**
-Create a new DNS TXT record with the following structure and chosen email address to receive the reports
-_smtp._tls.yourdomain.com. TXT "v=TLSRPTv1; rua=mailto:reports@yourdomain.com"
 
-This will give you visibility into failures during testing.
+##### Report receiver in the same email domain ?
+It is perfectly reasonable for a domains TLS-RPT report receiver to reside in that same domain. \
+This remains true even after MTA-STS and/or SMTP DANE have been fully enabled.
 
-##### Report receiver in same email domain
-It is perfectly reasonable for the report receivers email address to reside in the same domain that is using MTA-STS or SMTP DANE even after those security features have been fully enabled.
-
-See the following snippet from [RFC8460](https://www.rfc-editor.org/rfc/rfc8460) which defines TLS-RPT
+See the following snippet from [RFC8460](https://www.rfc-editor.org/rfc/rfc8460) which defines TLS-RPT:
 
 *In the case of "mailto", reports should be submitted to the
-specified email address [RFC6068]. When sending failure reports
+specified email address. When sending failure reports
 via SMTP, Sending MTAs MUST deliver reports despite any TLS-
 related failures and SHOULD NOT include this SMTP session in the
 next report. This may mean that the reports are delivered

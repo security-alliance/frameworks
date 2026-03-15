@@ -286,5 +286,17 @@
     "company": "Web3Sec.News & Digibastion.com",
     "job_title": "Creator",
     "description": "Steward of DNS and Domain Registration Security"
+  },
+  "GunniM": {
+    "slug": "GunniM",
+    "name": "Gunnar Óttarsson",
+    "role": "contributor",
+    "avatar": "https://avatars.githubusercontent.com/gunnim",
+    "github": "https://github.com/gunnim",
+    "twitter": "https://x.com/gunni_m",
+    "website": "https://SolAz.cloud",
+    "company": "SolAz",
+    "job_title": "Founder",
+    "description": "Cloud architecture enthusiast with a passion for IT Security"
   }
 }
