@@ -59,13 +59,13 @@ jobs:
             const body = `
             Hi @${author},
 
-            Following typos were found in the pull request:
+            The following typos were found in the pull request:
             
             ${typos}
 
             ## ℹ️ Here's how to fix them:
             - **Fix typos:** Open the relevant files and fix any identified typos.
-            - **Update wordlist:** If a flagged word is actually a project-specific term add it to \`wordlist.txt\` in the project root.
+            - **Update wordlist:** If a flagged word is actually a project-specific term, add it to \`wordlist.txt\` in the project root.
               Each word should be listed on a separate line.
             - **🚧 Remember:**
               - When adding new words it MUST NOT have any spaces or special characters within or around it.

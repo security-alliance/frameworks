@@ -1,4 +1,4 @@
-name: Non Content Request
+name: Non-Content Request
 description: Strategy, tech, or other non-content related issues and ideas.
 body:
   - type: markdown
@@ -6,7 +6,7 @@ body:
       value: |
         Thank you for taking the time to share your feedback or idea for Frameworks.
         
-        _Please be as detailed as possible so we understand the issue or opportunity — and so we and other contributors 
+        _Please be as detailed as possible so we understand the issue or opportunity — and so that we and other contributors
         can provide feedback._
 
   - type: checkboxes
@@ -34,7 +34,7 @@ body:
     id: why_needed
     attributes:
       label: "Why do you think it is important?"
-      description: "If it is not self-explanatory, or relatively clear, add a few sentences explaining how it matters to Frameworks."
+      description: "If it is not self-explanatory or relatively clear, add a few sentences explaining how it matters to Frameworks."
       placeholder: "Add reasoning or context here."
     validations:
       required: false

@@ -1,4 +1,4 @@
-# Base debian build with VSCode devcontainer base
+# Base Debian build with the VSCode devcontainer image
 FROM mcr.microsoft.com/vscode/devcontainers/base:debian
 
 # Update packages and install only essential dependencies
