@@ -8,7 +8,7 @@ export const TAG_COLORS: Record<string, string> = {
   'Community & Marketing': '#5B2371', 
   'HR': '#285AD2',                  
   'Engineer/Developer': '#B2439F',  
-  'DevOps': '#5C234A',
+  'DevOps': '#5C234A',                 
   'SRE': '#2E51BA',                    
   'SEAL/Initiative': '#4339db',
   'Cloud': '#0873B5',

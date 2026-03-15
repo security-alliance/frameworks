@@ -6,7 +6,7 @@ body:
       value: |
         Thank you for taking the time to share your feedback or idea for Frameworks.
         
-        _Please be as detailed as possible so we understand the issue or opportunity — and so we and other contributors
+        _Please be as detailed as possible so we understand the issue or opportunity — and so we and other contributors 
         can provide feedback._
 
   - type: checkboxes
