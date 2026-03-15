@@ -39,4 +39,10 @@ CLAUDE.md
 # Build folder
 **/dist/
 
+# Generated printable checklists
+docs/public/printable/
+
 .direnv
+
+# Avoid submitting certs data to repo
+cert-data.json

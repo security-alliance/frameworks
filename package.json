@@ -14,26 +14,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && vocs dev --host 0.0.0.0 --port 5173",
-    "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && vocs build",
-    "postdocs:build": "node utils/searchbar-indexing.js",
+    "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && pnpm run generate-printables && pnpm run generate-cert-data && vocs build",
+    "postdocs:build": "node utils/searchbar-indexing.js && node utils/sitemap-generator.js",
     "docs:preview": "vocs preview",
     "generate-tags": "node utils/tags-fetcher.js",
     "mermaid-wrapper": "node utils/mermaid-block-wrapper.js",
-    "generate-indexes": "node utils/generate-folder-indexes.js"
+    "generate-indexes": "node utils/generate-folder-indexes.js",
+    "generate-printables": "node utils/generate-printable-checklists.js",
+    "generate-cert-data": "node utils/generate-cert-data.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "pnpm": {
-    "trustedDependencies": [
+    "onlyBuiltDependencies": [
       "esbuild",
       "just-install"
-    ],
-    "ignoredBuiltDependencies": [
-      "just-install"
-    ],
-    "onlyBuiltDependencies": [
-      "esbuild"
     ]
   },
   "packageManager": "pnpm@10.15.0",
@@ -46,6 +42,6 @@
     "playwright": "^1.57.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "react-router-dom": "^7.10.0"
+    "react-router-dom": "^7.12.0"
   }
 }

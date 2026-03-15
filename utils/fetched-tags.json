@@ -1,17 +1,19 @@
 {
   "allTags": [
-    "Blockchain",
+    "Business Tools",
     "Certifications",
     "Cloud",
+    "Communication Platforms",
     "Community & Marketing",
     "DAO",
     "DeFi",
+    "DevOps Accounts",
     "Devops",
     "Engineer/Developer",
     "HR",
     "Legal & Compliance",
-    "Operations",
     "Multisig Security",
+    "Operations",
     "Operations & Strategy",
     "Protocol",
     "Risk Management",
@@ -19,12 +21,49 @@
     "SFC",
     "SRE",
     "Security Specialist",
-    "Travel",
     "Treasury Ops",
-    "Web3",
     "Whitehat"
   ],
   "pageTagsMap": {
+    "/ai-security/ai-browsers": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/ai-security/ai-workflows-developers-vs-non-developers": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Community & Marketing"
+    ],
+    "/ai-security/data-exfiltration-via-generative-systems": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/ai-security/devsecops-isolation-sandboxing-reference": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/ai-security/execution-path-enforcement": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/ai-security/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/ai-security/prompt-injection-defenses": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/awareness/core-awareness-principles": [
       "Security Specialist",
       "Operations & Strategy",
@@ -75,10 +114,6 @@
       "SEAL/Initiative",
       "Certifications"
     ],
-    "/certs/certified-protocols": [
-      "SEAL/Initiative",
-      "Certifications"
-    ],
     "/certs/contributions": [
       "SEAL/Initiative",
       "Certifications"
@@ -86,6 +121,11 @@
     "/certs/overview": [
       "SEAL/Initiative",
       "Certifications"
+    ],
+    "/certs/sfc-devops-infrastructure": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
     ],
     "/certs/sfc-dns-registrar": [
       "SEAL/Initiative",
@@ -116,10 +156,6 @@
       "Community & Marketing",
       "Security Specialist"
     ],
-    "/community-management/google": [
-      "Community & Marketing",
-      "Security Specialist"
-    ],
     "/community-management/overview": [
       "Community & Marketing"
     ],
@@ -143,6 +179,49 @@
     "/devsecops/integrated-development-environments": [
       "Engineer/Developer",
       "Security Specialist",
+      "Devops"
+    ],
+    "/devsecops/isolation/capability-based-isolation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/devsecops/isolation/execution-sandboxing-practical-guide": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/devsecops/isolation/execution-sandboxing": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/devsecops/isolation/network-and-resource-isolation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops",
+      "SRE"
+    ],
+    "/devsecops/isolation/sandboxing-and-isolation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/devsecops/isolation/sandboxing-and-policy-enforcement": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Devops"
+    ],
+    "/devsecops/isolation/sandboxing-for-tool-execution": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
       "Devops"
     ],
     "/devsecops/overview": [
@@ -349,6 +428,56 @@
     "/governance/security-metrics-kpis": [
       "Operations & Strategy",
       "Legal & Compliance"
+    ],
+    "/guides/account-management/discord": [
+      "Community & Marketing",
+      "Security Specialist"
+    ],
+    "/guides/account-management/github": [
+      "DevOps Accounts"
+    ],
+    "/guides/account-management/godaddy": [
+      "DevOps Accounts"
+    ],
+    "/guides/account-management/linear": [
+      "Business Tools"
+    ],
+    "/guides/account-management/mercury": [
+      "Business Tools"
+    ],
+    "/guides/account-management/notion": [
+      "Business Tools"
+    ],
+    "/guides/account-management/overview": [
+      "Community & Marketing",
+      "Security Specialist"
+    ],
+    "/guides/account-management/render": [
+      "DevOps Accounts"
+    ],
+    "/guides/account-management/sentry": [
+      "DevOps Accounts"
+    ],
+    "/guides/account-management/signal": [
+      "Communication Platforms"
+    ],
+    "/guides/account-management/slack": [
+      "Communication Platforms"
+    ],
+    "/guides/account-management/telegram": [
+      "Community & Marketing"
+    ],
+    "/guides/account-management/trello": [
+      "Business Tools"
+    ],
+    "/guides/account-management/twitter": [
+      "Community & Marketing"
+    ],
+    "/guides/account-management/vercel": [
+      "DevOps Accounts"
+    ],
+    "/guides/overview": [
+      "Security Specialist"
     ],
     "/iam/access-management": [
       "Engineer/Developer",
@@ -591,6 +720,10 @@
       "Devops",
       "SRE"
     ],
+    "/opsec/browser/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/opsec/continuous-improvement-metrics": [
       "Security Specialist",
       "Operations & Strategy",
@@ -615,17 +748,14 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/opsec/governance-program-management": [
+    "/opsec/endpoint/overview": [
       "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Operations & Strategy"
     ],
-    "/opsec/incident-response-recovery": [
-      "Security Specialist",
+    "/opsec/google/overview": [
+      "Community & Marketing",
       "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Security Specialist"
     ],
     "/opsec/integration/overview": [
       "Security Specialist",
@@ -633,17 +763,9 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/lifecycle/overview": [
+    "/opsec/mfa/overview": [
       "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/monitoring-detection": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
+      "Operations & Strategy"
     ],
     "/opsec/overview": [
       "Security Specialist",
@@ -651,13 +773,7 @@
       "Devops",
       "SRE"
     ],
-    "/opsec/risk-management-overview": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Devops",
-      "SRE"
-    ],
-    "/opsec/threat-modeling-overview": [
+    "/opsec/passwords/overview": [
       "Security Specialist",
       "Operations & Strategy"
     ],
@@ -933,11 +1049,11 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/wallet-security/for-beginners-&-small-balances": [
+    "/wallet-security/for-beginners-and-small-balances": [
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/intermediates-&-medium-funds": [
+    "/wallet-security/intermediates-and-medium-funds": [
       "Engineer/Developer",
       "Security Specialist"
     ],
@@ -946,40 +1062,40 @@
       "Operations & Strategy",
       "Engineer/Developer"
     ],
-    "/wallet-security/secure-multisig-safe-verification": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
-    "/wallet-security/secure-multisig-signing-process": [
-      "Security Specialist",
-      "Operations & Strategy",
-      "Engineer/Developer"
-    ],
-    "/wallet-security/secure-multisig-squads-verification": [
-      "Engineer/Developer",
-      "Security Specialist",
-      "Operations & Strategy"
-    ],
     "/wallet-security/seed-phrase-management": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/wallet-security/signing-verification": [
+    "/wallet-security/signing-and-verification/secure-multisig-safe-verification": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
     ],
-    "/wallet-security/tools-&-resources": [
+    "/wallet-security/signing-and-verification/secure-multisig-signing-process": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Engineer/Developer"
+    ],
+    "/wallet-security/signing-and-verification/secure-multisig-squads-verification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/wallet-security/signing-and-verification/signing-verification": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/wallet-security/signing-and-verification/verifying-7702": [
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/verifying-7702": [
+    "/wallet-security/signing-and-verification/verifying-standard-transactions": [
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/wallet-security/verifying-standard-transactions": [
+    "/wallet-security/tools-and-resources": [
       "Engineer/Developer",
       "Security Specialist"
     ]
@@ -1008,15 +1124,22 @@
     "DPRK IT Workers": "dprk-it-workers",
     "Governance": "governance",
     "DevSecOps": "devsecops",
+    "Isolation & Sandboxing": "devsecops",
     "Privacy": "privacy",
     "Supply Chain": "supply-chain",
     "Security Automation": "security-automation",
     "Identity and Access Management IAM": "iam",
     "Secure Software Development": "secure-software-development",
     "Security Testing": "security-testing",
+    "AI Security": "ai-security",
     "ENS": "ens",
     "Safe Harbor": "safe-harbor",
     "Encryption": "encryption",
+    "Treasury Operations": "treasury-operations",
+    "Guides": "guides",
+    "Account Management": "guides",
+    "SEAL Certifications": "certs",
+    "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"
   }
 }

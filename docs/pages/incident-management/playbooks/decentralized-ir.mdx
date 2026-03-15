@@ -1,5 +1,6 @@
 ---
-title: "Decentralized Ir"
+title: "Decentralized Incident Response | SEAL"
+description: "Decentralized Incident Response Framework (DeIRF) for security teams without a single authority. Zero-trust by default, shared responsibility, and open tooling for faster containment."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -25,7 +26,7 @@ Use it as a menu, not a mandate.
 ## 1. Guiding Principles
 
 | Principle | What it means in practice |
-|-----------|---------------------------|
+| ----------- | --------------------------- |
 | **Zero-trust by default** | Assume every identity, device, and network path is potentially hostile. |
 | **Shared responsibility** | Any responder can start an action if quorum rules are met. |
 | **Minimum viable process** | Fewer steps, fewer blockers, faster containment. |
@@ -39,7 +40,7 @@ Use it as a menu, not a mandate.
 ## 2. Roles and Identities
 
 | Role | Key duties | Identity options (at least two) |
-|------|-----------|----------------------------------|
+| ------ | ----------- | ---------------------------------- |
 | **First Reporter** | Sounds the alarm and starts evidence capture. | GPG key, DID, or multisig wallet signature |
 | **Triage Lead** | Confirms severity, forms a swarm, assigns tasks. | FIDO2 passkey, GPG, signed Matrix handle |
 | **Comms Lead** | Handles community and regulator updates. | Company issued OIDC, Lens profile |
@@ -53,7 +54,7 @@ Use it as a menu, not a mandate.
 ## 3. Preparation Checklist
 
 | Item | Why it matters | Suggested tools |
-|------|----------------|-----------------|
+| ------ | ---------------- | ----------------- |
 | Asset inventory (code, infra, keys) | You cannot protect what you do not know. | ConfigDB + IaC scans, Sheet/CSV |
 | Log pipeline with reliable clock | Forensic accuracy and ordering. | Vector + Loki or OpenSearch, Elasticsearch, RunReveal |
 | Secure comms channels | Quick swarm with strong auth. | Matrix + E2EE, Signal groups, Wire |
@@ -73,7 +74,7 @@ issue).
 5. Assign Leads and set T-minus deadlines.
 
 | Pros | Cons |
-|------|------|
+| ------ | ------ |
 | Fast and clear ownership | Relies on people in multiple time zones being awake |
 | Public log builds trust | Attackers also watch public data if over-shared |
 
@@ -82,7 +83,7 @@ issue).
 ## 5. Containment Options
 
 | Method | When to use | Pros | Cons |
-|--------|-------------|------|------|
+| -------- | ------------- | ------ | ------ |
 | **Smart contract pause / circuit breaker** | Critical on-chain bug | Stops further damage instantly | Requires a pre-coded pause function and multisig |
 | **Multisig treasury freeze** | Key compromise or theft | No central keyholder | Coordination overhead |
 | **Host or pod quarantine** | Off-chain infra breach | Isolates without full shutdown | Needs orchestration rights |
@@ -101,7 +102,7 @@ Keep a one-liner command ready for each action and store it in the runbook.
 5. Verify by monitoring metrics and logs for stability.
 
 | Automation hint | Keep it simple |
-|-----------------|----------------|
+| ----------------- | ---------------- |
 | GitHub Actions, ArgoCD, and Defender Autotasks are popular. | Always include a manual approval gate in case of false positives. |
 
 ---
@@ -109,7 +110,7 @@ Keep a one-liner command ready for each action and store it in the runbook.
 ## 7. Post-Incident Actions
 
 | Step | Purpose | Tool Example |
-|------|---------|-------------|
+| ------ | --------- | ------------- |
 | **Retrospective within 72 h** | Capture lessons before they fade. | Miro board, Markdown doc in repo |
 | **Update runbooks and detection rules** | Prevent repeat events. | Docs-as-code PR |
 | **Reward community reporters** | Encourage transparency. | Bug bounty payouts, incentive model |
@@ -120,7 +121,7 @@ Keep a one-liner command ready for each action and store it in the runbook.
 ## 8. Quick-Start Templates
 
 | Need | Template location |
-|------|-------------------|
+| ------ | ------------------- |
 | Incident channel message | /templates/incident-kickoff.md |
 | Retrospective form | /templates/retro-form.md |
 
@@ -129,7 +130,7 @@ Keep a one-liner command ready for each action and store it in the runbook.
 ## 9. Pros and Cons of Decentralized IR
 
 | Aspect | Pros | Cons |
-|--------|------|------|
+| -------- | ------ | ------ |
 | **No single point of failure** | Resilience if one keyholder is offline. | Slower consensus for urgent actions. |
 | **Community trust** | Transparent logs and multisig votes. | Public scrutiny can amplify panic. |
 | **Open tools** | Low cost, auditable, extensible. | Less vendor support, more DIY. |

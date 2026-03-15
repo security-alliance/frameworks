@@ -10,7 +10,7 @@ const path = require('path');
 
 const workspaceRoot = process.cwd();
 const pagesDir = path.join(workspaceRoot, 'docs', 'pages');
-const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.ts');
+const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.tsx');
 
 // Simple frontmatter parser
 function parseFrontmatter(filePath) {
@@ -101,7 +101,7 @@ function extractUrlSegment(link) {
 // Extract allowed routes from sidebar config
 function getAllowedRoutes() {
   // Check if we're on main branch
-  const isMainBranch = process.env.VERCEL_GIT_COMMIT_REF === 'main';
+  const isMainBranch = process.env.CF_PAGES_BRANCH === 'main';
   console.log(`Branch check: ${isMainBranch ? 'main (filtering dev: true pages)' : 'develop (including all pages)'}`);
 
   let allowedRoutes = undefined;
@@ -142,7 +142,7 @@ function getAllowedRoutes() {
       
       if (routes.size > 0) allowedRoutes = routes;
     } catch (e) {
-      console.warn('Failed to parse vocs.config.ts:', e.message);
+      console.warn('Failed to parse vocs.config.tsx:', e.message);
     }
   }
 
@@ -202,7 +202,7 @@ function getAllTagsFromMDX(docsDir) {
   return { allTags: Array.from(tags).sort(), pageTagsMap };
 }
 
-// Extract section mappings from vocs.config.ts
+// Extract section mappings from vocs.config.tsx
 function extractSectionMappings() {
   try {
     const vocsConfigContent = fs.readFileSync(vocsConfigPath, 'utf-8');
@@ -267,7 +267,7 @@ function extractSectionMappings() {
     return sectionMappings;
     
   } catch (error) {
-    console.warn('Failed to extract section mappings from vocs.config.ts:', error);
+    console.warn('Failed to extract section mappings from vocs.config.tsx:', error);
     return {};
   }
 }
@@ -293,9 +293,53 @@ function fetchTags() {
   return tagsFetched;
 }
 
+function generateColor(tag) {
+  const crypto = require("crypto");
+  const hex = crypto.createHash("sha1").update(tag).digest("hex").slice(0, 6);
+  return `#${hex}`;
+}
+
+function updateConstantsWithMissingTags(allTags) {
+  const constantsPath = path.join(workspaceRoot, 'components', 'shared', 'tagColors.ts');
+  
+  if (!fs.existsSync(constantsPath)) return;
+  
+  const content = fs.readFileSync(constantsPath, 'utf-8');
+  
+  // Extract existing tags
+  const existingTags = new Set();
+  const matches = content.matchAll(/['"]([^'"]+)['"]\s*:\s*['"]#[0-9a-fA-F]{6}['"]/g);
+  for (const match of matches) {
+    existingTags.add(match[1]);
+  }
+  
+  // Find missing tags
+  const missingTags = allTags.filter(tag => !existingTags.has(tag));
+  
+  if (missingTags.length === 0) {
+    console.log('✓ All tags have colors');
+    return;
+  }
+  
+  console.log(`Adding colors for ${missingTags.length} new tags...`);
+  
+  // Generate new entries
+  const newEntries = missingTags.map(tag => `  '${tag}': '${generateColor(tag)}',`).join('\n');
+  
+  // Insert before closing brace of TAG_COLORS
+  const updated = content.replace(
+    /(export const TAG_COLORS: Record<string, string> = \{[\s\S]*?)(\n\})/,
+    `$1\n${newEntries}$2`
+  );
+  
+  fs.writeFileSync(constantsPath, updated, 'utf-8');
+  console.log(`✓ Added: ${missingTags.join(', ')}`);
+}
+
 // Run if called directly
 if (require.main === module) {
-  fetchTags();
+  const result = fetchTags();
+  updateConstantsWithMissingTags(result.allTags);
 }
 
 module.exports = { fetchTags, getAllTagsFromMDX, parseFrontmatter };

@@ -1,5 +1,6 @@
 ---
-title: "Treasury Operations"
+title: "SFC: Treasury Operations | Security Alliance"
+description: "SFC Treasury Operations certification: governance, custody architecture, risk classification, access control, transaction security, protocol deployments, monitoring, incident response, vendor management, and accounting."
 tags:
   - SEAL/Initiative
   - Certifications
@@ -9,190 +10,295 @@ cert:
   title: Governance & Treasury Architecture
   controls:
   - id: tro-1.1.1
-    description: Do you maintain documented security policies that define how treasury operations
-      are conducted (e.g., access control principles, transaction verification requirements,
-      incident response procedures)?
-    title: Documented Treasury Security Policies
+    description: Is there a clearly designated person or team accountable for treasury
+      operations?
+    baselines:
+      - Accountability scope covers policy upkeep, security reviews, operational
+        hygiene, access control oversight, and incident escalation
+    title: Treasury Operations Owner
   - id: tro-1.1.2
-    description: Is there an individual or team accountable for treasury operations (e.g., policy
-      upkeep, reviews, operational hygiene)?
-    title: Accountability for Treasury Operations
+    description: Do you maintain a complete, current record of all treasury wallets,
+      accounts, and their configurations?
+    baselines:
+      - Registry includes wallet/account address, network/chain, custody provider,
+        custody model, purpose/classification, authorized signers/approvers,
+        controlled contracts or protocols, and last review date
+      - Updated within 24 hours for security-critical changes (signer changes, new
+        wallets), 3 days for routine changes
+      - Accessible to authorized treasury personnel
+    title: Treasury Registry and Documentation
   - id: tro-1.1.3
-    description: Do you maintain formal change management procedures for treasury infrastructure
-      modifications (e.g., wallet setups, custody configurations, signer permissions, protocol
-      integrations)?
-    title: Treasury Infrastructure Change Management
+    description: Do you have documented rationale for your treasury custody
+      architecture?
+    baselines:
+      - Custody model documented for each wallet/account (custodial, self-custody,
+        co-managed, MPC, multisig, HSM)
+      - Technology trade-offs understood by the team (not necessarily a formal
+        document — could be a brief internal memo)
+      - Custody architecture reviewed when treasury size, operational needs, or risk
+        profile changes significantly
+    title: Custody Architecture Rationale
   - id: tro-1.1.4
-    description: Do you have a documented process to classify treasury wallets (e.g. multisigs)
-      and accounts based on risk level and assign appropriate security controls?
-    title: Treasury Wallet Risk Classification
-  - id: tro-1.1.5
-    description: Do you have documented rationale for choosing between custodial and non-custodial
-      treasury solutions and technology choice like MPC, HSM?
-    title: Custodial vs Non-Custodial Rationale
-  - id: tro-1.1.6
-    description: Do you have documented policies for maximum fund allocations per wallet type
-      and rebalancing triggers?
-    title: Fund Allocation Limits and Triggers
+    description: Do you have change management procedures for treasury infrastructure
+      modifications?
+    baselines:
+      - Covers wallet setups, custody configurations, signer/approver permission
+        changes, and protocol integrations
+      - Changes require documented approval before implementation
+      - All changes logged with justification and approver
+      - Changes reflected in the treasury registry within defined SLAs
+      - Rollback procedures documented for critical changes
+    title: Treasury Infrastructure Change Management
 - id: tro-2
-  title: Access Control & Authentication
+  title: Risk Classification & Fund Allocation
   controls:
   - id: tro-2.1.1
-    description: 'Do you maintain documented security configurations for custody platforms,
-      including: Transaction policy rules, Multi-approval workflows and thresholds, Address
-      whitelisting configurations, Velocity Limits)?'
-    title: Custody Platform Security Configurations
+    description: Do you classify your treasury wallets and accounts by risk level
+      and assign security controls accordingly?
+    baselines:
+      - Classification considers financial exposure, operational dependency, and
+        regulatory impact
+      - Impact levels defined (e.g., Low <1%, Medium 1-10%, High 10-25%, Critical
+        >25% of total assets)
+      - Operational types defined based on transaction frequency and urgency
+        requirements
+      - Each classification maps to specific controls including approval thresholds,
+        MFA requirements, whitelist delays, and monitoring levels
+      - Classification reviewed when asset values, operational patterns, or risk
+        profile change significantly
+    title: Treasury Wallet Risk Classification
   - id: tro-2.1.2
-    description: Do you maintain documented authentication requirements for treasury platforms
-      (e.g., multi-factor authentication standards, session management)?
-    title: Treasury Platform Authentication Requirements
-  - id: tro-2.1.3
-    description: Do you have procedures for managing credentials and secrets used in treasury
-      operations (e.g., API keys, service accounts)?
-    title: Credential and Secret Management Procedures
-  - id: tro-2.1.4
-    description: Do you conduct periodic reviews of who has access to treasury systems to ensure
-      only authorized personnel retain access?
-    title: Access Review for Treasury Systems
-  - id: tro-2.1.5
-    description: Do you implement network security controls for treasury access (IP whitelisting,
-      VPN requirements, Geographic access restrictions)?
-    title: Treasury Network Security Controls
-  - id: tro-2.1.6
-    description: Do you implement controls to isolate owner account credentials?
-    title: Isolate Owner Account Credentials
+    description: Do you enforce fund allocation limits and rebalancing triggers
+      across your treasury?
+    baselines:
+      - Maximum allocation defined per wallet, per custody provider, and per chain
+      - Rebalancing triggers documented (e.g., when a wallet exceeds its allocation
+        ceiling or falls below operational minimums)
+      - Allocation limits reviewed periodically and after significant treasury
+        changes
+      - No single wallet or custody account holds more than the organization's
+        defined maximum concentration
+    title: Fund Allocation Limits and Rebalancing
 - id: tro-3
-  title: Transaction Security & Verification
+  title: Access Control & Platform Security
   controls:
   - id: tro-3.1.1
-    description: Do you maintain documented procedures for transaction security and verification?
-    title: Transaction Security and Verification Procedures
+    description: Do you configure and maintain security controls on your custody
+      platforms?
+    baselines:
+      - "Transaction policy rules configured: multi-approval workflows, approval
+        thresholds scaled to transaction value, address whitelisting with cooling-off
+        periods, velocity/spending limits"
+      - Hardware security key MFA required for all approvers on High and Critical
+        accounts
+      - Session timeouts and re-authentication for sensitive operations
+      - "Network restrictions: IP whitelisting, VPN requirements where supported,
+        geographic access restrictions"
+      - "Separation of duties enforced: initiators cannot approve their own
+        transactions, admins cannot unilaterally execute withdrawals"
+      - Platform configurations documented and reviewed at least quarterly
+    title: Custody Platform Security Configuration
   - id: tro-3.1.2
-    description: Do you conduct traning programs with all signers?
-    title: Training for All Signers
+    description: Do you securely manage all credentials and secrets used in treasury
+      operations?
+    baselines:
+      - Covers API keys, service accounts, owner/admin credentials, and signing keys
+      - Credentials stored in dedicated secret management systems, not in code,
+        documents, or shared drives
+      - Owner and admin credentials isolated from day-to-day operational access
+      - Credential rotation schedule defined and enforced
+      - Access to credentials logged and monitored
+    title: Credential and Secret Management
   - id: tro-3.1.3
-    description: Do you have procedures for verifying transaction details before execution (e.g.,
-      recipient address validation, amount verification, network confirmation, test transactions,
-      simulation requirements)?
-    title: Pre-Execution Transaction Verification Procedures
+    description: Do you periodically review who has access to treasury systems?
+    baselines:
+      - Access reviews conducted at least quarterly for High/Critical accounts,
+        annually for others
+      - Reviews verify each user still requires their current access level
+      - Access promptly revoked when personnel change roles or leave
+    title: Access Reviews for Treasury Systems
   - id: tro-3.1.4
-    description: Do you maintain secure communication procedures for coordinating treasury operations
-      and verifying requests?
-    title: Secure Communication Procedures for Treasury
-  - id: tro-3.1.5
-    description: Do you have documented procedures for receiving funds?
-    title: Documented Funds Receiving Procedures
-  - id: tro-3.1.6
-    description: Do you maintain procedures for conducting OTC (over-the-counter) transactions?
-    title: Procedures for OTC Transactions
+    description: Do you enforce operational security requirements for treasury
+      personnel?
+    baselines:
+      - "Device security requirements documented: dedicated devices for custody
+        access, full disk encryption, automatic screen lock"
+      - Signing devices (hardware wallets) securely stored when not in use
+      - Backup materials (seed phrases, recovery keys) stored securely with
+        geographic distribution
+      - VPN mandatory for all remote treasury platform access
+      - Travel security procedures for personnel with signing or custody access
+        capabilities
+      - Mobile devices used as second factors have endpoint security monitoring
+    title: Personnel Operational Security
 - id: tro-4
-  title: DeFi Risk Assessment
+  title: Transaction Security
   controls:
   - id: tro-4.1.1
-    description: Do you maintain documented procedures for evaluating and monitoring DeFi protocols
-      where treasury funds are deployed?
-    title: DeFi Protocol Evaluation and Monitoring
+    description: Do you have a defined process for verifying and executing treasury
+      transactions?
+    baselines:
+      - "Pre-execution verification includes: recipient address validation, amount
+        verification, network confirmation, and transaction simulation"
+      - Test transactions required before sending to new addresses
+      - Address verified through multiple independent sources; never copied from
+        email, chat, or transaction history
+      - "Multi-party confirmation required: minimum 2 internal personnel for large
+        transfers"
+      - Specific procedures for receiving large incoming transfers (address
+        generation, bidirectional test, sender coordination)
+      - Specific procedures for OTC transactions where applicable
+      - High-value transfers (organization-defined threshold) require video call
+        verification with liveness checks
+      - All transaction parameters read aloud and confirmed before execution
+    title: Transaction Verification and Execution
   - id: tro-4.1.2
-    description: Do you have documented procedures for managing DeFi positions (e.g., emergency
-      withdrawal procedures, alternative access methods if UIs are unavailable)?
-    title: Documented Procedures for DeFi Positions
+    description: Are treasury signers and approvers knowledgeable in the security
+      practices relevant to their role?
+    baselines:
+      - "Knowledge covers: transaction verification procedures, address validation
+        techniques, social engineering awareness, emergency procedures"
+      - Competence demonstrated before authorization (e.g., verifying a test
+        transaction end-to-end)
+      - Knowledge refreshed annually; updated within 30 days of significant
+        procedure changes
+      - Covers custody-platform-specific workflows and policy engine rules
+    title: Signer and Approver Knowledge
   - id: tro-4.1.3
-    description: Do you define and enforce exposure limits for protocol deployments (e.g., per
-      protocol, chain, category)?
-    title: Exposure Limits for Protocol Deployments
-  - id: tro-4.1.4
-    description: Do you have procedures for verifying smart contract addresses and managing
-      token approvals?
-    title: Verifying Contract Addresses and Approvals
+    description: Do you have secure communication procedures for treasury operations,
+      including standard identity verification?
+    baselines:
+      - Dedicated primary and backup channels on different platforms
+      - End-to-end encryption, MFA required, invitation-based membership
+      - Identity verified as standard procedure during signing/approval operations
+        (e.g., code phrases, video call, secondary authenticated channel)
+      - "Anti-social-engineering protocols: established verification procedures for
+        address changes or unusual requests"
+      - Documented procedures for channel compromise including switching to backup
+        channels and out-of-band verification
+      - All treasury personnel trained on these procedures; compromise response
+        tested annually
+    title: Secure Communication Procedures
 - id: tro-5
-  title: Staking Risk Assessment
-  controls:
-  - id: tro-4.1.1
-    description: Do you maintain documented procedures for evaluating and monitoring staking
-      solutions where treasury funds are deployed?
-    title: Evaluating and Monitoring Staking Solutions
-  - id: tro-4.1.2
-    description: Do you have documented procedures for managing staking positions (e.g., unstaking
-      procedures, emergency exit methods, alternative access if primary UIs are unavailable)?
-    title: Staking Position Management Procedures
-  - id: tro-4.1.3
-    description: Do you define and enforce exposure limits for staking deployments (e.g. per
-      staking provider, per liquid staking protocol, etc)?
-    title: Exposure Limits for Staking Deployments
-  - id: tro-4.1.4
-    description: Do you have procedures for verifying smart contract addresses?
-    title: Verifying Smart Contract Addresses
-- id: tro-6
-  title: Operational Security
+  title: Protocol Deployments
   controls:
   - id: tro-5.1.1
-    description: Do you maintain documented operational security requirements for treasury personnel
-      (signing device setup, device security requirements, etc)?
-    title: Operational Security Requirements for Treasury Personnel
+    description: Do you evaluate external protocols and enforce exposure limits
+      before deploying treasury funds?
+    baselines:
+      - "Due diligence process for all protocols before deployment: smart contract
+        audit status, team reputation, TVL history, insurance coverage"
+      - Exposure limits defined per protocol, per chain, and per deployment category
+        (DeFi, staking, liquid staking, etc.)
+      - Limits reviewed periodically and after significant market or protocol changes
+      - "Risk re-evaluation triggered by: security incidents, major governance
+        proposals, significant TVL changes, new vulnerabilities disclosed"
+    title: Protocol Evaluation and Exposure Limits
   - id: tro-5.1.2
-    description: Do you have policies for secure storage and handling of sensitive treasury
-      information (e.g., credentials, hardware wallets, backup materials)?
-    title: Treasury Sensitive Information Security Policy
-  - id: tro-5.1.3
-    description: Do you have travel security procedures for treasury personnel with signing/access
-      capabilities?
-    title: Travel Security Procedures for Treasury Personnel
-- id: tro-7
+    description: Do you have procedures for managing the lifecycle of your positions
+      in external protocols?
+    baselines:
+      - "Entry procedures: smart contract address verification against multiple
+        independent sources, token approval management (minimal approvals,
+        revocation after use)"
+      - Emergency withdrawal/exit procedures documented for all active positions
+      - Alternative access methods documented in case primary UIs are unavailable
+        (direct contract interaction, CLI tools, alternative frontends)
+      - Unbonding/unstaking timelines understood and factored into liquidity planning
+    title: Position Lifecycle Management
+- id: tro-6
   title: Monitoring & Incident Response
   controls:
   - id: tro-6.1.1
-    description: Do you monitor treasury transactions and account states for anomalous activity?
-    title: Monitoring Treasury Transactions for Anomalies
+    description: Do you monitor your treasury for anomalous activity, external
+      threats, and operational risks?
+    baselines:
+      - "Transaction monitoring: unusual amounts, unexpected destinations, failed
+        transactions, policy violations"
+      - "Account state monitoring: balance changes, configuration modifications, new
+        device enrollments, authentication anomalies"
+      - "External threat intelligence: protocol vulnerabilities, DeFi/staking risks,
+        relevant security incidents in the ecosystem"
+      - "Vendor/platform monitoring: custody platform status, infrastructure alerts,
+        service availability"
+      - "Compliance monitoring: transactions and wallet addresses screened for
+        sanctions and compliance risk"
+      - "Protocol and position monitoring: deployed protocol health, governance
+        changes, TVL shifts, collateral ratios, reward accrual, liquidation risks"
+      - Alerting with defined severity levels and escalation paths
+      - Critical alerts (large unexpected transactions, unauthorized access attempts)
+        trigger immediate investigation
+      - Monitoring system integrity protected — alerts triggered when monitoring
+        configurations are changed, disabled, or degraded
+    title: Monitoring and Threat Awareness
   - id: tro-6.1.2
-    description: Do you maintain security incident response procedures specific to treasury
-      operations (e.g., severity levels, escalation, containment, fund protection)?
-    title: Treasury Security Incident Response Procedures
-  - id: tro-6.1.3
-    description: Do you track external threat intelligence relevant to your treasury holdings
-      and infrastructure (e.g., protocol vulnerabilities, DeFi risks)?
-    title: External Threat Intelligence for Treasury
-  - id: tro-6.1.4
-    description: Do you conduct regular security drills and exercises to test incident response
-      capabilities?
-    title: Regular Security Drills and Exercises
-  - id: tro-6.1.5
-    description: Do you monitor for vendor availability and service notifications (e.g., custody
-      platform status, infrastructure provider alerts)?
-    title: Vendor Availability and Service Notifications Monitoring
-  - id: tro-6.1.6
-    description: Do you monitor transactions and wallet addresses for compliance risk?
-    title: Transactions and Wallet Addresses Monitoring
-- id: tro-8
-  title: Vendor & Infrastructure Security
+    description: Do you have an incident response plan for treasury security events,
+      and do you test it?
+    baselines:
+      - Severity levels defined with escalation procedures specific to treasury
+        operations
+      - "Containment procedures: fund protection actions (emergency freeze, transfer
+        to secure cold storage, policy lockdown)"
+      - "Covers key scenarios: custody platform compromise, unauthorized transaction,
+        signer key compromise, vendor breach"
+      - "Emergency contacts pre-documented: custody provider security team, SEAL 911,
+        legal counsel"
+      - Communication plan for stakeholders
+      - Drills conducted at least annually; after major procedure changes
+      - "Drill documentation includes: date, participants, response times, issues
+        identified, improvements made"
+    title: Incident Response Plan
+- id: tro-7
+  title: Vendor & Infrastructure
   controls:
   - id: tro-7.1.1
-    description: Do you maintain security evaluation criteria for third-party services critical
-      to treasury operations, including initial due diligence and ongoing monitoring?
-    title: Third-Party Services Security Evaluation
+    description: Do you evaluate and monitor the security of third-party services
+      used in treasury operations?
+    baselines:
+      - "Initial due diligence before adoption: security certifications (SOC 2, ISO
+        27001), audit history, insurance coverage, incident history"
+      - "Ongoing monitoring: SOC report currency, security incident notifications,
+        service availability tracking"
+      - Contractual security requirements verified periodically (at least annually)
+      - Critical vendor changes (ownership, infrastructure, security posture)
+        trigger re-evaluation
+    title: Vendor Security Management
   - id: tro-7.1.2
-    description: Do you have procedures to verify vendors are implementing the security controls
-      they contractually committed to?
-    title: Vendor Security Control
-  - id: tro-7.1.3
-    description: Do you have backup infrastructure and alternate access methods for treasury
-      continuity?
-    title: Backup and Alternate Access
-- id: tro-9
-  title: Accounting & Financial Reporting
+    description: Do you have backup infrastructure and alternate access methods for
+      treasury operations?
+    baselines:
+      - Alternate access methods for custody platforms documented and tested (e.g.,
+        API access, mobile app, secondary UI)
+      - Backup RPC providers configured
+      - Procedures for operating treasury if primary custody platform is unavailable
+      - Backup infrastructure tested at least annually
+    title: Backup Infrastructure and Alternate Access
+- id: tro-8
+  title: Accounting & Reporting
   controls:
   - id: tro-8.1.1
-    description: Do you maintain procedures for recording all treasury transactions in your
-      accounting system with appropriate categorization and documentation?
-    title: Transaction Recording Procedures
+    description: Do you maintain accurate treasury records and conduct periodic
+      reconciliation?
+    baselines:
+      - All treasury transactions recorded with categorization, documentation, and
+        authorization chain
+      - Periodic reconciliation between custody platform records, on-chain balances,
+        and accounting records
+      - "Reconciliation frequency scaled to account classification: daily for Active
+        Operations, weekly for Warm Storage, monthly for Cold Vault"
+      - Discrepancies investigated and resolved promptly
+      - Treasury reporting procedures documented with defined cadence and audience
+    title: Financial Recordkeeping and Reconciliation
   - id: tro-8.1.2
-    description: Do you conduct periodic reconciliation between Custody platform records, Blockchain
-      balances, Accounting records, etc?
-    title: 'Periodic Reconciliation'
-  - id: tro-8.1.3
-    description: Do you have documented procedures for treasury-related financial reporting?
-    title: Documented Procedures
-  - id: tro-8.1.4
-    description: Do you maintain insurance coverage appropriate for your treasury operations?
+    description: Do you maintain insurance coverage appropriate for your treasury
+      operations?
+    baselines:
+      - "Coverage scope documented: what's covered (custody theft, hack, insider
+        fraud) and what's excluded"
+      - Coverage amounts appropriate relative to assets held
+      - Custody provider's insurance evaluated as part of vendor due diligence
+      - Insurance coverage reviewed at least annually or when treasury size changes
+        significantly
     title: Insurance Coverage
 
 ---
@@ -204,11 +310,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 
 # SFC - Treasury Operations
 
-The SEAL Framework Checklist (SFC) for Treasury Operations provides structured guidelines for securely managing and operating an organization's treasury covering governance, access control, transaction security, monitoring, and vendor management.
+The SEAL Framework Checklist (SFC) for Treasury Operations provides structured guidelines for securely managing and
+operating an organization's treasury covering governance, access control, transaction security, monitoring, and vendor
+management.
 
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 
 <CertList sections={frontmatter.cert} name="sfc-treasury-ops" />
 
 </TagProvider>
-

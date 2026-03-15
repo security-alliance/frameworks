@@ -61,6 +61,15 @@ function parseFrontmatter(raw) {
   return data;
 }
 
+// Strips SEO suffixes like "| Security Alliance" or "| SEAL" from titles.
+function cleanTitle(title) {
+  if (!title) return '';
+  return title
+    .replace(/\s*\|\s*Security Alliance\s*$/i, '')
+    .replace(/\s*\|\s*SEAL\s*$/i, '')
+    .trim();
+}
+
 // Attempts to read the frontmatter title from a file, ignoring errors.
 function readFrontmatterTitle(filePath) {
   try {
@@ -69,7 +78,7 @@ function readFrontmatterTitle(filePath) {
     const title = parsed && typeof parsed.title === 'string'
       ? parsed.title.trim()
       : '';
-    return title || '';
+    return cleanTitle(title);
   } catch (error) {
     console.warn(`Warning: unable to read frontmatter from ${filePath}: ${error.message}`);
     return '';
@@ -131,7 +140,8 @@ function addRouteWithAncestors(route, routeSet) {
 }
 
 // Recursively extracts every route in the sidebar configuration.
-function collectRoutesFromSidebar(items, routeSet) {
+// Also builds an order map if provided (key: route, value: position index).
+function collectRoutesFromSidebar(items, routeSet, orderMap = null, counter = { value: 0 }) {
   if (!Array.isArray(items) || items.length === 0) {
     return;
   }
@@ -142,9 +152,12 @@ function collectRoutesFromSidebar(items, routeSet) {
     if (typeof item.link === 'string') {
       const route = normalizeRouteFromLink(item.link);
       addRouteWithAncestors(route, routeSet);
+      if (orderMap && !orderMap.has(route)) {
+        orderMap.set(route, counter.value++);
+      }
     }
     if (Array.isArray(item.items)) {
-      collectRoutesFromSidebar(item.items, routeSet);
+      collectRoutesFromSidebar(item.items, routeSet, orderMap, counter);
     }
   });
 }
@@ -166,7 +179,6 @@ function detectCurrentBranch() {
 function resolveCurrentBranch() {
   const candidates = [
     process.env.CF_PAGES_BRANCH,
-    process.env.VERCEL_GIT_COMMIT_REF,
     process.env.BRANCH,
     process.env.GITHUB_REF_NAME,
   ];
@@ -211,9 +223,9 @@ function resolvePrimaryFilterBranch() {
   return null;
 }
 
-// Loads and evaluates `vocs.config.ts`, tweaking env vars so the sidebar matches the branch.
+// Loads and evaluates `vocs.config.tsx`, tweaking env vars so the sidebar matches the branch.
 function loadSidebarConfig(branchName) {
-  const configPath = path.join(__dirname, '..', 'vocs.config.ts');
+  const configPath = path.join(__dirname, '..', 'vocs.config.tsx');
   if (!fs.existsSync(configPath)) {
     return null;
   }
@@ -222,29 +234,29 @@ function loadSidebarConfig(branchName) {
   const sanitized = raw
     .replace(/^import[^\n]*\n/, '')
     .replace(/export default defineConfig\(config\)\s*;?\s*$/, 'return defineConfig(config);')
-    .replace(/function filterDevItems\(items: any\[\]\): any\[\] \{/, 'function filterDevItems(items) {')
-    .replace(/\bas const\b/g, '');
+    .replace(/\bas const\b/g, '')
+    .replace(/head\(\{[^}]*\}\s*:\s*\{[^}]*\}\)\s*\{[\s\S]*?\n  \},/, '')
+    .replace(/new Set<[^>]+>\(/g, 'new Set(')
+    .replace(/function\s+(\w+)\(([^)]*)\)\s*:\s*[^\s{]+/g, (_, name, params) => {
+      const cleaned = params.replace(/:\s*[^,)]+/g, '');
+      return `function ${name}(${cleaned})`;
+    });
 
   const loader = new Function('defineConfig', sanitized);
   const previousCF = Object.prototype.hasOwnProperty.call(process.env, 'CF_PAGES_BRANCH')
     ? process.env.CF_PAGES_BRANCH
     : undefined;
-  const previousVercel = Object.prototype.hasOwnProperty.call(process.env, 'VERCEL_GIT_COMMIT_REF')
-    ? process.env.VERCEL_GIT_COMMIT_REF
-    : undefined;
 
   if (branchName) {
     process.env.CF_PAGES_BRANCH = branchName;
-    process.env.VERCEL_GIT_COMMIT_REF = branchName;
   } else {
     delete process.env.CF_PAGES_BRANCH;
-    delete process.env.VERCEL_GIT_COMMIT_REF;
   }
 
   try {
     return loader((cfg) => cfg);
   } catch (error) {
-    console.warn(`Warning: unable to evaluate vocs.config.ts: ${error.message}`);
+    console.warn(`Warning: unable to evaluate vocs.config.tsx: ${error.message}`);
     return null;
   } finally {
     if (previousCF === undefined) {
@@ -252,28 +264,25 @@ function loadSidebarConfig(branchName) {
     } else {
       process.env.CF_PAGES_BRANCH = previousCF;
     }
-    if (previousVercel === undefined) {
-      delete process.env.VERCEL_GIT_COMMIT_REF;
-    } else {
-      process.env.VERCEL_GIT_COMMIT_REF = previousVercel;
-    }
   }
 }
 
 // Builds the set of routes that are permitted on production (main) deployments.
+// Also returns the order map for sidebar ordering.
 function buildAllowedRouteSet(branchName) {
-  if (branchName !== 'main') {
-    return null;
-  }
-
   const config = loadSidebarConfig(branchName);
   if (!config || !Array.isArray(config.sidebar)) {
-    return null;
+    return { allowedRoutes: null, orderMap: null };
   }
 
   const routes = new Set();
-  collectRoutesFromSidebar(config.sidebar, routes);
-  return routes;
+  const orderMap = new Map();
+  collectRoutesFromSidebar(config.sidebar, routes, orderMap);
+
+  // Only filter routes on main branch
+  const allowedRoutes = branchName === 'main' ? routes : null;
+
+  return { allowedRoutes, orderMap };
 }
 
 // Tests if a route is allowed to appear based on the current branch rules.
@@ -336,7 +345,8 @@ function readFolderTitle(dirPath) {
 }
 
 // Deduplicates entries by route and prefers directories when both file and folder exist.
-function finalizeEntries(entries) {
+// Sorts by sidebar order if orderMap is provided, otherwise falls back to alphabetical.
+function finalizeEntries(entries, orderMap = null) {
   const byRoute = new Map();
   entries.forEach((entry) => {
     const existing = byRoute.get(entry.route);
@@ -346,12 +356,22 @@ function finalizeEntries(entries) {
   });
 
   return Array.from(byRoute.values())
-    .sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base' }))
+    .sort((a, b) => {
+      if (orderMap && orderMap.size > 0) {
+        const orderA = orderMap.has(a.route) ? orderMap.get(a.route) : Infinity;
+        const orderB = orderMap.has(b.route) ? orderMap.get(b.route) : Infinity;
+        if (orderA !== orderB) {
+          return orderA - orderB;
+        }
+      }
+      // Fallback to alphabetical for items not in sidebar
+      return a.title.localeCompare(b.title, undefined, { sensitivity: 'base' });
+    })
     .map(({ sourceType, ...rest }) => rest);
 }
 
 // Assembles the list of child pages/folders for the current directory.
-function buildPageEntries(dirPath, files, subdirs, allowedRoutes) {
+function buildPageEntries(dirPath, files, subdirs, allowedRoutes, orderMap = null) {
   const entries = [];
 
   files.forEach((file) => {
@@ -387,7 +407,7 @@ function buildPageEntries(dirPath, files, subdirs, allowedRoutes) {
     });
   });
 
-  return finalizeEntries(entries);
+  return finalizeEntries(entries, orderMap);
 }
 
 // Tells whether an index file was previously generated by this script.
@@ -476,11 +496,11 @@ function shouldIgnoreDirectory(name) {
 }
 
 // Recursively traverses the docs tree, generating indexes bottom-up.
-function generateAll(dirPath, depth = 0, allowedRoutes = null) {
+function generateAll(dirPath, depth = 0, allowedRoutes = null, orderMap = null) {
   const entries = fs.readdirSync(dirPath, { withFileTypes: true });
 
   const subdirs = entries.filter((entry) => entry.isDirectory() && !shouldIgnoreDirectory(entry.name));
-  subdirs.forEach((dirent) => generateAll(path.join(dirPath, dirent.name), depth + 1, allowedRoutes));
+  subdirs.forEach((dirent) => generateAll(path.join(dirPath, dirent.name), depth + 1, allowedRoutes, orderMap));
 
   if (depth === 0) {
     return;
@@ -490,7 +510,7 @@ function generateAll(dirPath, depth = 0, allowedRoutes = null) {
     && entry.name.toLowerCase().endsWith('.mdx')
     && entry.name.toLowerCase() !== 'index.mdx');
 
-  const pageEntries = buildPageEntries(dirPath, mdxFiles, subdirs, allowedRoutes);
+  const pageEntries = buildPageEntries(dirPath, mdxFiles, subdirs, allowedRoutes, orderMap);
   if (pageEntries.length > 0) {
     writeIndex(dirPath, pageEntries);
     return;
@@ -507,11 +527,9 @@ function main() {
   }
 
   const filterBranch = resolvePrimaryFilterBranch();
-  const allowedRoutes = filterBranch
-    ? buildAllowedRouteSet(filterBranch)
-    : null;
+  const { allowedRoutes, orderMap } = buildAllowedRouteSet(filterBranch);
 
-  generateAll(DOCS_ROOT, 0, allowedRoutes);
+  generateAll(DOCS_ROOT, 0, allowedRoutes, orderMap);
 }
 
 if (require.main === module) {
