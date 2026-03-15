@@ -276,22 +276,8 @@ const config = {
                     { text: 'Overview', link: '/incident-management/incident-response-template/templates/overview', dev: true },
                     { text: 'Incident Log Template', link: '/incident-management/incident-response-template/templates/incident-log-template', dev: true },
                     { text: 'Post-Mortem Template', link: '/incident-management/incident-response-template/templates/post-mortem-template', dev: true },
-                  ]
-                },
-                {
-                  text: 'Incident Logs',
-                  collapsed: true,
-                  items: [
-                    { text: 'Overview', link: '/incident-management/incident-response-template/incident-logs/overview', dev: true },
-                    { text: 'API Outage Example', link: '/incident-management/incident-response-template/incident-logs/2024-01-15-example-api-outage', dev: true },
-                  ]
-                },
-                {
-                  text: 'Post-Mortems',
-                  collapsed: true,
-                  items: [
-                    { text: 'Overview', link: '/incident-management/incident-response-template/post-mortems/overview', dev: true },
-                    { text: 'API Outage Example', link: '/incident-management/incident-response-template/post-mortems/2024-01-15-example-api-outage', dev: true },
+                    { text: 'Example Incident Log', link: '/incident-management/incident-response-template/templates/example-incident-log', dev: true },
+                    { text: 'Example Post-Mortem', link: '/incident-management/incident-response-template/templates/example-post-mortem', dev: true },
                   ]
                 },
                 {
