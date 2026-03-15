@@ -181,6 +181,13 @@ MTA-STS enforces encrypted connections between mail servers, preventing man-in-t
 4) **Testing and enforcement**
    - Start with `mode: testing` to monitor without blocking
    - Collect and review TLS failure reports using TLS-RPT (See dedicated section below)
+   - Verify policy is accessible using recent protocols
+   ```
+  curl --silent --show-error --fail --location \
+  --proto '=https' --tlsv1.2 --tls-max 1.3 \
+  --connect-timeout 10 --max-time 30 \
+  https://mta-sts.example.com/.well-known/mta-sts.txt -o /dev/null
+  ```
    - Once confident, change to `mode: enforce`
    - Update the `id` in DNS TXT record after policy changes
 
