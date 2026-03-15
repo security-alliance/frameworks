@@ -276,6 +276,7 @@ const config = {
                     { text: 'Overview', link: '/incident-management/incident-response-template/templates/overview', dev: true },
                     { text: 'Incident Log Template', link: '/incident-management/incident-response-template/templates/incident-log-template', dev: true },
                     { text: 'Post-Mortem Template', link: '/incident-management/incident-response-template/templates/post-mortem-template', dev: true },
+                    { text: 'Runbook Template', link: '/incident-management/incident-response-template/templates/runbook-template', dev: true },
                     { text: 'Example Incident Log', link: '/incident-management/incident-response-template/templates/example-incident-log', dev: true },
                     { text: 'Example Post-Mortem', link: '/incident-management/incident-response-template/templates/example-post-mortem', dev: true },
                   ]
@@ -294,7 +295,6 @@ const config = {
                     { text: 'Build Pipeline Compromise', link: '/incident-management/incident-response-template/runbooks/build-pipeline-compromise', dev: true },
                     { text: 'DDoS Attack', link: '/incident-management/incident-response-template/runbooks/ddos-attack', dev: true },
                     { text: 'Third-Party Outage', link: '/incident-management/incident-response-template/runbooks/third-party-outage', dev: true },
-                    { text: 'Runbook Template', link: '/incident-management/incident-response-template/runbooks/runbook-template', dev: true },
                   ]
                 },
               ]

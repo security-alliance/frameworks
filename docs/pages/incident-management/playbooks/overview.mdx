@@ -4,13 +4,9 @@ description: "Create step-by-step incident response playbooks for stolen funds, 
 tags:
   - Security Specialist
   - Operations & Strategy
-
-contributors:
-  - role: wrote
-    users: [dickson]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -18,23 +14,10 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Playbooks
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 Generally speaking, incident response playbooks aim to provide detailed, step-by-step procedures for handling specific
 types of security incidents. Obviously, it's not possible to have thought about every possible scenario ahead of time,
 but one could create documentation for the most likely or devastating scenarios.
-
-## What good playbooks do
-
-Good playbooks reduce cognitive load during high-pressure events. They should help responders:
-
-- recognize the incident pattern quickly
-- identify the first containment actions
-- gather the right evidence
-- escalate to the right people
-- recover safely without skipping verification
-
-A playbook should not be a long essay. It should be easy to follow while an incident is active.
 
 ## Best Practices
 
@@ -46,45 +29,8 @@ to use.
 5. Outline procedures for restoring everything affected to normal operation.
 6. Detail the steps for conducting a lessons learned review.
 
-## Recommended structure
-
-Many teams find a simple structure works best:
-
-- **Quick reference**: severity, owner, and primary responder
-- **Identification**: symptoms, indicators, and how to distinguish similar incidents
-- **Immediate actions**: first steps to stop further damage
-- **Investigation**: scope, evidence sources, and key questions
-- **Mitigation**: preferred and fallback containment options
-- **Recovery**: what must be verified before normal operations resume
-- **Escalation**: when to involve decision makers, vendors, legal, or external responders
-- **Post-incident follow-up**: monitoring, documentation, and review
-
-## Scenario coverage
-
-Start with the scenarios that are both plausible and high impact for the project. Examples often include:
-
-- smart contract exploit or critical vulnerability
-- key compromise
-- frontend compromise
-- dependency or build pipeline compromise
-- third-party outage
-- DDoS or service availability attack
-
-Not every team needs every playbook on day one, but every team should know which incidents would be hardest to improvise.
-
-## Playbook maintenance
-
-Playbooks should be updated:
-
-- after real incidents
-- after drills or tabletop exercises
-- when infrastructure, vendors, or ownership changes
-- when the team discovers that instructions are too vague to execute quickly
-
-Untested runbooks can create false confidence, so teams should practice the highest-risk ones periodically.
-
-For example incident runbooks and a reusable runbook template, see
-[Incident Response Template: Runbooks](/incident-management/incident-response-template/runbooks/overview).
+For example incident runbooks and templates, see
+[Incident Response Template: Templates](/incident-management/incident-response-template/templates/overview).
 
 ---
 
