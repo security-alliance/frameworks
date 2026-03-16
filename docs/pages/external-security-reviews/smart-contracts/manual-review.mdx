@@ -41,7 +41,7 @@ under review.
     - Specification defines the exact requirements, constraints, and behaviors the system must meet, including
     invariants that must always hold true.
         - Invariants are the properties of the system that should always hold. Invariants can be useful for checking the
-        expected behavior of the system when the certain actions or a transaction flow is executed. Invariants are
+        expected behavior of the system when certain actions or a transaction flow are executed. Invariants are
         useful in many testing approaches, including manual reviews, where a reviewer checks whether a specific
         property can be violated for a function under any sequence of function calls.
         - Get simplified math formulas if the protocol has any custom/fancy formulas implemented.
@@ -54,7 +54,7 @@ following types of tests can be useful for understanding and verifying the code:
     - [Integration Tests](/security-testing/integration-testing): Integration tests verify that your smart contracts
     work correctly with real external systems.
 
-## Smart contract higher overview
+## Smart contract high-level overview
 
 1. **Documentation and whitepaper walkthrough:**
 Go through the whitepaper and documentation to gain a better understanding of the project and to see how the proposed
@@ -69,7 +69,7 @@ protocol.
 
 4. **Create a diagram:**
 Based on the structural and functional understanding the high level diagram can be created if required.
-    - The diagram can be modified over a time as you get more understanding.
+    - The diagram can be modified over time as you get more understanding.
     - The diagram can grow more complex and detailed depending on the time.
     - There are many tools that can be used like Excalidraw, Miro, Lucidchart, Mermaid etc.
     - High level structural example of staking diagram:
@@ -113,14 +113,14 @@ tests. Test cases are important. They give you an understanding of how the setup
 place for users to start using the system’s entry points. They also give you time to test more offensive or edge-case
 scenarios (after verifying unit tests) instead of spending most of your time testing general scenarios.
 
-    - When math formulas or complex interconnected calls are involved, debugging the values of variables helps sometime
+    - When math formulas or complex interconnected calls are involved, debugging the values of variables helps sometimes
     to see how the state changes are happening e.g. what is the value of variable `x/totalStakedEth` before the specific
     internal/external call. or what it becomes after that call.
-    - Debugging can be done in many ways, depending on which framework you are using. Some examples are.
+    - Debugging can be done in many ways, depending on which framework you are using. Some examples include:
         - Foundry - native debugger, console logs in the contracts, Tenderly debugger, simbolik.
         - Hardhat - console logs in the contracts, debuggers like Hardhat-tracer, Tenderly debugger.
 
-2. **Choose least dependent contract to review one by one:**
+2. **Choose the least dependent contract to review first:**
 This can be done by looking into a diagram and current understanding of the smart contract functionality. For example
 in this case it's a Token contract that is least dependent (in fact the functionality from that contract is getting used
 in other contracts so other smart contracts are dependent on it).
@@ -135,7 +135,7 @@ in other contracts so other smart contracts are dependent on it).
         Standard](https://github.com/ComposableSecurity/SCSVS?tab=readme-ov-file#table-of-contents)
 
 4. **Maintain a list of invariants:**
-Maintain a list of invariants for every functions (Can be useful later for other tests/fuzzing/format verification).
+Maintain a list of invariants for every function (Can be useful later for other tests/fuzzing/format verification).
 
 5. **Offensively analyze the code:**
 Offensively analyze the code to identify logical issues, edge cases, and any conditions that could break invariants.
@@ -177,10 +177,10 @@ coverage reports for tests.
     }
     ```
 
-    In next example, because every value (`_amount`, `minRequired`) can go increase or decrease, the results can vary.
+    In next example, because every value (`_amount`, `minRequired`) can increase or decrease, the results can vary.
     If the result is used for some operations like decreasing the `drivingScore` in `burnFuelAndReduce()` for example.
 
-    E.g. depending on the amounts are same (as they were while filling the fuel) or increased or decreased, the value of
+    E.g. depending on whether the amounts are the same (as they were while filling the fuel) or increased or decreased, the value of
     `fuelReduction` will change and while subtracting it from the `drivingScore[msg.sender]` it needs to be handled
     accordingly. which also creates different paths.
 
@@ -280,7 +280,7 @@ like [Slither](https://github.com/crytic/slither), [Wake](https://github.com/Ack
 [Aderyn](https://github.com/Cyfrin/aderyn) etc.
 
 > There are other types of automated testing approaches, such as [Fuzz Testing](/security-testing/fuzz-testing) and
-> [formal verification](/security-testing/formal-verification), can also be helpful at different stages of the audit
+> [formal verification](/security-testing/formal-verification) can also be helpful at different stages of the audit
 > life-cycle, though they are less directly related to manual review.
 
 ## Report writing
@@ -327,7 +327,7 @@ it yields the expected output.
 For the updated functionality (depending on what has been changed), review the checklists to ensure that no
 vulnerabilities remain or have been introduced.
 
-6. **Check things/notes that needs to be revisited:**
+6. **Check things/notes that need to be revisited:**
 Check items or notes that need to be revisited from the manual review. Sometimes you may have observations noted, e.g.,
 Adding this fix to the code can create this problem.
 

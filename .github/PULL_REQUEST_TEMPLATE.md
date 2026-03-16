@@ -7,7 +7,7 @@ Thank you for contributing to the Security Frameworks! Before you open a PR, mak
 - [ ] If there is a steward for that framework, ask the steward to review it
 - [ ] If you're modifying the general outline, make sure to update it in the `vocs.config.ts` adding the `dev: true` parameter
 - [ ] If you need feedback for your content from the wider community, share the PR in our Discord
-- [ ] Review changes to ensure there are no typos, see instructions below
+- [ ] Review changes to ensure there are no typos; see instructions below.
 
 <!--
 ℹ️ Checking for typos locally

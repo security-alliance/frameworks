@@ -1,5 +1,5 @@
 name: Non Content Request
-description: Strategy, tech, or other non-content related issues and ideas.
+description: Strategy, tech, or other non-content-related issues and ideas.
 body:
   - type: markdown
     attributes:
