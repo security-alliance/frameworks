@@ -293,6 +293,38 @@ reset emails and other sensitive communications.
 - All MX servers must support TLS with valid certificates
 - Monitor policy file availability - if unreachable, mail delivery may fail in enforce mode
 
+### DMARC (Domain-based Message Authentication)
+
+DMARC builds on SPF and DKIM to provide policy enforcement for email authentication. It tells receiving mail servers
+what to do with emails that fail authentication checks.
+
+**How it protects you**: DMARC prevents email spoofing by instructing receiving servers to reject or quarantine emails
+that fail authentication, protecting your users from phishing attacks.
+Without it, emails breaking SPF/DKIM may still be delivered by some providers (like Gmail, Outlook), often to the
+inbox or spam folder, sometimes with a warning banner (e.g., "This message may not be from…")
+DMARC also enables aggregate (rua) and forensic (ruf) reporting, giving domain owners visibility into who is sending
+email on their behalf - legitimate or otherwise.
+
+**Setup**: Add a DMARC record to your DNS zone:
+
+**Baseline example (aggregate reports only)**:
+
+```
+_dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com"
+```
+
+**Report types**:
+
+- **`rua=`** (Aggregate reports): Daily summaries of authentication results. This is the baseline and widely supported.
+- **`ruf=`** (Failure reports): Real-time forensic reports for individual failures. Not recommended as they are:
+  - Not widely supported by mail providers
+  - Raise privacy concerns (contain message content/headers)
+  - May not deliver reliably
+  - Often unnecessary for monitoring purposes
+
+**Recommendation**: Start with aggregate reports only (`rua=`). They provide sufficient visibility into authentication
+issues without the privacy and reliability concerns of failure reports.
+
 ### TLS-RPT (TLS Reporting)
 
 TLS-RPT collects delivery reports for messages transmitted using MTA-STS and SMTP DANE.
@@ -336,38 +368,6 @@ via SMTP, Sending MTAs MUST deliver reports despite any TLS-
 related failures and SHOULD NOT include this SMTP session in the
 next report. This may mean that the reports are delivered
 unencrypted.*
-
-### DMARC (Domain-based Message Authentication)
-
-DMARC builds on SPF and DKIM to provide policy enforcement for email authentication. It tells receiving mail servers
-what to do with emails that fail authentication checks.
-
-**How it protects you**: DMARC prevents email spoofing by instructing receiving servers to reject or quarantine emails
-that fail authentication, protecting your users from phishing attacks.
-Without it, emails breaking SPF/DKIM may still be delivered by some providers (like Gmail, Outlook), often to the
-inbox or spam folder, sometimes with a warning banner (e.g., "This message may not be from…")
-DMARC also enables aggregate (rua) and forensic (ruf) reporting, giving domain owners visibility into who is sending
-email on their behalf - legitimate or otherwise.
-
-**Setup**: Add a DMARC record to your DNS zone:
-
-**Baseline example (aggregate reports only)**:
-
-```
-_dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com"
-```
-
-**Report types**:
-
-- **`rua=`** (Aggregate reports): Daily summaries of authentication results. This is the baseline and widely supported.
-- **`ruf=`** (Failure reports): Real-time forensic reports for individual failures. Not recommended as they are:
-  - Not widely supported by mail providers
-  - Raise privacy concerns (contain message content/headers)
-  - May not deliver reliably
-  - Often unnecessary for monitoring purposes
-
-**Recommendation**: Start with aggregate reports only (`rua=`). They provide sufficient visibility into authentication
-issues without the privacy and reliability concerns of failure reports.
 
 ---
 </TagProvider>
