@@ -4,10 +4,13 @@ description: "Keep this updated. Stale contacts during an incident waste critica
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [hexnickk4997]
 
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -15,6 +18,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../c
 # Critical Contacts
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 Keep this updated. Stale contacts during an incident waste critical time.
 

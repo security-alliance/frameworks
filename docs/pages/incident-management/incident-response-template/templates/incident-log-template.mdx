@@ -5,10 +5,13 @@ tags:
   - Security Specialist
   - Operations & Strategy
   - Devops
+contributors:
+  - role: wrote
+    users: [hexnickk4997]
 
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,6 +19,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../.
 # Incident Log Template
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 Use this template during active incidents. The [Scribe](../incident-response-policy#scribe) owns this document.
 

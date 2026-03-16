@@ -5,10 +5,13 @@ tags:
   - Security Specialist
   - Operations & Strategy
   - Devops
+contributors:
+  - role: wrote
+    users: [hexnickk4997]
 
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,6 +19,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../c
 # Roles and Staffing
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 How you staff incident response depends on your team size and structure. This document covers options from small teams to larger organizations.
 

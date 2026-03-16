@@ -4,10 +4,13 @@ description: "A practical template for building incident response capabilities a
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [hexnickk4997]
 
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -15,6 +18,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../c
 # Incident Response Template for Web3 Protocols
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 A practical template for building incident response capabilities at cryptocurrency protocols and DAOs.
 

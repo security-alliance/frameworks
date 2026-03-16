@@ -5,10 +5,13 @@ tags:
   - Security Specialist
   - Operations & Strategy
   - Devops
+contributors:
+  - role: wrote
+    users: [hexnickk4997]
 
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,6 +19,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../.
 # Runbooks
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 Step-by-step guides for specific incident types. Use these during active incidents to reduce cognitive load and ensure consistent response.
 

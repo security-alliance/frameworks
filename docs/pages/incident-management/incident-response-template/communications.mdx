@@ -4,10 +4,13 @@ description: "Templates and building blocks for incident communications. Adapt t
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [hexnickk4997]
 
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -15,6 +18,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../c
 # Communication Templates
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 Templates and building blocks for incident communications. Adapt these to your situation and tone.
 

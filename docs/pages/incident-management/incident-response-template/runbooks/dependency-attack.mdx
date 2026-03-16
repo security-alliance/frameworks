@@ -5,10 +5,13 @@ tags:
   - Security Specialist
   - Operations & Strategy
   - Devops
+contributors:
+  - role: wrote
+    users: [hexnickk4997]
 
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,6 +19,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../.
 # Runbook: Dependency Attack
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 > **Stub runbook.** Customize with your package management and build procedures.
 
