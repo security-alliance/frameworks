@@ -1,0 +1,206 @@
+---
+title: "Web Browser Hardening for Web3 | Security Alliance"
+description: "Harden browsers for Web3 work with dedicated wallet profiles, minimal extensions, stricter permissions, limited sync, and safer signing habits."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Web Browser Hardening for Web3
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway for Web Browser Hardening:** Treat the browser as part of your signing environment. Use a
+> dedicated wallet profile for Web3 activity, keep it almost extension-free, leave phishing protections and updates
+> enabled, keep sync limited or off for privileged work, and verify every connect, sign, and approval prompt before
+> accepting it.
+
+For most Web3 teams, browser hardening is less about obscure settings and more about reducing accidental exposure. The
+practical baseline is to separate wallet activity from normal browsing, minimize extension risk, keep site permissions
+tight, and make origin-checking part of the operating procedure before you connect a wallet or approve a request.
+
+This page focuses on desktop browser use for Web3 work. It complements endpoint hardening, account security, and wallet
+security, but it does not replace them.
+
+---
+
+## For Individuals
+
+These steps apply to anyone using a browser to access dapps, exchanges, admin consoles, registrars, dashboards, or
+wallet extensions.
+
+### Setup Checklist
+
+- [ ] Create a dedicated **Wallet / Signing** browser profile for Web3 work
+- [ ] For admins, deployers, finance, and treasury roles, use a separate browser in addition to a separate profile if
+      that is operationally realistic
+- [ ] Install only the extensions you actually need in the wallet profile, ideally one wallet extension plus a required
+      password manager
+- [ ] Keep browser phishing and deceptive-site protections enabled
+- [ ] Keep secure-connection defaults enabled and avoid downgrading to insecure sites
+- [ ] Block notifications, pop-ups, redirects, camera, microphone, and location access by default in the wallet
+      profile
+- [ ] Disable or avoid WebUSB and WebHID access in non-signing profiles unless there is a specific operational need
+- [ ] Turn on prompts for download location and avoid automatic file opening
+- [ ] Keep the wallet profile unsynced by default unless you have a clear reason to sync it
+- [ ] Use stricter cookie and tracking settings so low-trust sites keep less persistent state in your browser
+- [ ] Use a password manager, passkeys, or hardware-backed authentication for browser-based accounts
+- [ ] Bookmark trusted dapps and admin portals instead of following wallet-related links from chat, email, or ads
+- [ ] Review connected sites and token approvals regularly
+- [ ] Never store seed phrases, recovery phrases, or private keys in browser password managers or cloud notes
+
+### Recommended Browser Operating Model
+
+Use at least two separate contexts:
+
+- **General profile:** email, chat, docs, research, social media, and routine browsing
+- **Wallet / Signing profile:** wallet connections, signing flows, sensitive dashboards, registrars, exchanges, and
+  admin actions
+
+This separation reduces session reuse, extension overlap, and the chance that a random page can interact with the same
+browser context you use for wallet operations. It is useful workflow separation, not a hard security boundary. Anyone
+with access to your unlocked device can still access your browser profiles.
+
+For higher-risk roles, using a separate browser on top of a separate profile is reasonable defense in depth. Treat that
+as an operational safeguard, not as proof of strong isolation.
+
+### Extension Discipline
+
+Extensions should be treated as privileged code.
+
+- Keep the wallet profile to the minimum extension set
+- Prefer one primary wallet extension per profile to reduce provider confusion and connection issues
+- If the browser or another extension offers a built-in wallet/provider you do not use, disable it in the wallet
+  profile
+- Restrict extension site access where the browser supports it
+- Install extensions only from official stores or the wallet vendor's documented source
+- Remove unused extensions promptly instead of leaving them installed "just in case"
+- Audit extension permissions on a regular cadence instead of assuming an old extension is still safe
+
+If a site asks you to install a new helper extension, disable browser protections, or re-enter wallet recovery
+material, stop and verify the workflow out of band.
+
+### Daily Web3 Rules
+
+Make these checks part of your normal process:
+
+- Navigate to important dapps, exchanges, and admin portals through saved bookmarks or a trusted internal directory
+- Before you connect a wallet, confirm the exact domain, requested account, and requested network
+- Treat every signature and approval as a high-risk action, even if it is presented as a login or verification step
+- Reject prompts you do not understand, especially blind signing requests, unexpected approvals, or urgent "fix your
+  wallet" messages
+- Disconnect sites you no longer use and review token allowances on a regular cadence
+- Keep wallet actions out of the general browsing profile, even for "quick" checks
+
+### Browser Settings That Matter
+
+Focus on the settings that meaningfully reduce attack surface:
+
+- **Anti-phishing and reputation protections:** leave them on and treat warnings as blocking signals
+- **Downloads:** prompt for save location and do not auto-open files
+- **Hardware wallet transports:** keep WebUSB and WebHID access tightly scoped and do not leave broad hardware access
+  enabled in profiles that are not used for signing
+- **Notifications and pop-ups:** block by default, then add narrow exceptions only for sites you trust
+- **Clipboard permissions:** avoid granting clipboard access broadly; treat it as sensitive
+- **Cookies and tracking:** use stricter defaults so suspicious sites keep less persistent browser state
+- **Updates:** let the browser auto-update and restart promptly when updates are pending
+- **Sync:** keep privileged profiles unsynced unless your risk model explicitly allows it
+- **Authentication:** use passkeys or hardware security keys for email, SSO, source control, cloud, and other accounts
+  that can be used to pivot into Web3 operations
+
+---
+
+## For Team Members
+
+These guidelines apply to staff working in a shared organizational environment.
+
+Team members should:
+
+- Follow the approved browser and profile model for wallet work instead of improvising per person
+- Keep personal browsing, work browsing, and wallet operations separate
+- Report unexpected wallet prompts, extension changes, browser warnings, or redirected login flows
+- Avoid syncing privileged profiles to unmanaged devices without explicit approval
+- Keep browser protections enabled and do not bypass warnings just to complete a task faster
+- Escalate suspicious domains, signing prompts, or new dapps before using them with a work wallet
+
+---
+
+## For Admins
+
+These settings and practices apply to administrators managing browsers for engineers, operators, finance, treasury, or
+other privileged users.
+
+### Managed Browser Baseline
+
+- [ ] Standardize a supported browser baseline for wallet-related work and keep users on stable channels
+- [ ] Require a dedicated wallet profile for privileged workflows
+- [ ] For the highest-risk roles, consider a separate dedicated browser in addition to the dedicated profile
+- [ ] Default-deny browser extensions and allowlist only approved wallet and password manager extensions
+- [ ] Keep browser auto-updates enabled and avoid freezing users on old versions
+- [ ] Enforce phishing and deceptive-site protections and decide whether users may bypass warnings
+- [ ] Restrict or disable browser sync for privileged profiles, especially on unmanaged devices
+- [ ] Set conservative defaults for site permissions, downloads, notifications, pop-ups, redirects, WebUSB, and
+      WebHID
+- [ ] Publish an approved list of high-value dapps, exchanges, admin portals, and registrars for bookmark-based access
+- [ ] Require phishing-resistant MFA for the accounts that guard Web3 operations, including email, SSO, code hosting,
+      cloud, and registrar access
+- [ ] Review connected sites, extension inventory, and exceptions during periodic access reviews
+
+### Admin Notes
+
+- A dedicated browser is helpful, but it is not a substitute for device hardening, endpoint management, or hardware
+  wallets
+- Document which roles are allowed to sync browser data and under what conditions
+- Keep exception handling narrow and explicit; do not let a "temporary" site permission or extension become permanent
+- If a team depends on a small set of critical dapps, internal guidance should define the approved domains and expected
+  connect/sign flow for each one
+
+---
+
+## Web3-Specific Operational Rules
+
+Browser hardening matters in Web3 because the browser is often the access path to a wallet, not just a place to read
+web pages.
+
+Use these operating rules consistently:
+
+1. Connect wallets only from the dedicated wallet profile.
+2. Verify the origin before connect, sign, approve, or switch networks.
+3. Prefer one primary wallet extension per profile.
+4. Do not keep stale connected-site sessions around indefinitely.
+5. Review token approvals and revoke ones you no longer need.
+6. Do not store seed phrases or private keys in browser-based secret storage.
+7. Treat "urgent" dapp prompts, fake support chats, and recovery requests as likely phishing attempts.
+8. If a prompt is confusing, stop and verify with another team member before signing.
+
+---
+
+## Related Guides
+
+- [GitHub Security](/guides/account-management/github)
+- [Understanding Threat Vectors](/awareness/understanding-threat-vectors)
+- [Signing and Verification](/wallet-security/signing-and-verification/signing-verification)
+- [Verifying Standard Transactions](/wallet-security/signing-and-verification/verifying-standard-transactions)
+
+## Further Reading
+
+- [NIST SP 800-63B: Digital Identity Guidelines](https://pages.nist.gov/800-63-4/sp800-63b.html)
+- [W3C WebAuthn Level 3](https://www.w3.org/TR/webauthn-3/)
+- [NCSC: Managing Web Browser Security](https://www.ncsc.gov.uk/collection/device-security-guidance/policies-and-settings/managing-web-browser-security)
+- [MetaMask: What Is a Secret Recovery Phrase, and How to Secure Your Wallet](https://support.metamask.io/start/what-is-a-secret-recovery-phrase-and-how-to-keep-your-crypto-wallet-secure/)
+
+---
+
+</TagProvider>
+<ContributeFooter />
