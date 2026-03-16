@@ -533,6 +533,7 @@ const config = {
           text: 'Endpoint Security',
           collapsed: true,
           items: [
+            { text: 'Web Browser Hardening for Web3', link: '/guides/endpoint-security/web-browser-hardening' },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },
