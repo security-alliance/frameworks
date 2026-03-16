@@ -1,9 +1,16 @@
 ---
 title: "Monitoring | Security Alliance"
-description: "Monitoring Framework: Maintain blockchain security with on-chain monitoring. Detect anomalies and potential breaches in real-time with guidelines for alerts, thresholds, and tools."
+description: "Blockchain security monitoring framework: detect anomalies and breaches in real-time with guidelines for alerts, thresholds, and monitoring tools."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [JosepBove]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -20,6 +27,30 @@ Monitoring is a crucial aspect of maintaining the security and integrity of a bl
 allows you to detect anomalies and potential security breaches in real-time, enabling prompt response and mitigation.
 This section focuses on monitoring the on-chain security of a project, including guidelines for setting up monitoring
 systems, defining thresholds for alerts, and utilizing existing on-chain monitoring tools.
+
+## First Principles
+
+Before deploying any monitoring tool, establish the fundamentals that make monitoring effective.
+
+### Know what you're monitoring and why
+
+Define which on-chain events are meaningful to your project and what response each alert should trigger. A monitoring
+setup without defined responses is noise: it consumes attention without producing safety. For every alert you
+configure, answer: *who receives this, and what do they do when it fires?*
+
+### Act on your alerts
+
+Organizations fail at monitoring in two ways: not logging at all, or logging without acting. Both leave you blind.
+Every alert must map to a concrete, documented response. For smart contract protocols, this typically means having a
+pause mechanism or circuit breaker that an authorized party (or an automated system) can trigger when a critical
+alert fires. Without this, monitoring only tells you what happened, not what you could have prevented.
+
+### Monitor with redundancy *(higher maturity)*
+
+No monitoring provider has perfect uptime or perfect detection. For critical systems, run two independent providers
+monitoring the same invariants in parallel (one self-hosted, one managed). If one has downtime or misses an event,
+the other still provides coverage. See the [Tools](/monitoring/tools) page for guidance on combining self-hosted and
+managed options.
 
 ---
 
