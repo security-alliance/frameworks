@@ -531,6 +531,7 @@ const config = {
           collapsed: true,
           items: [
             { text: 'Overview', link: '/guides/account-management/overview' },
+            { text: 'YubiKeys and Hardware Security Keys', link: '/guides/account-management/hardware-security-keys' },
             { text: 'Discord Security', link: '/guides/account-management/discord' },
             { text: 'GitHub Security', link: '/guides/account-management/github' },
             { text: 'GoDaddy Security', link: '/guides/account-management/godaddy' },
