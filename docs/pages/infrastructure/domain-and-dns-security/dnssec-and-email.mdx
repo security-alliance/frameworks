@@ -6,7 +6,7 @@ tags:
   - Security Specialist
 contributors:
   - role: wrote
-    users: [Raiders0786, GunniM]
+    users: [Raiders0786, gunnim]
   - role: reviewed
     users: [dickson, mattaereal]
 ---
@@ -359,7 +359,7 @@ _smtp._tls.example.com. TXT "v=TLSRPTv1; rua=mailto:reports@example.com"
 - https://github.com/domainaware/parsedmarc : best open-source option (Python). Handles both DMARC aggregate reports and TLS-RPT.
 - Many DMARC report analyzers like easyDMARC / dmarcian / Valimail also offer TLS-RPT parsing. Simply route the reports to your providers report receiver address for visual summaries.
 
-##### Report receiver in the same email domain ?
+#### Report receiver in the same email domain ?
 It is perfectly reasonable for a domains TLS-RPT report receiver to reside in that same domain. \
 This remains true even after MTA-STS and/or SMTP DANE have been fully enabled.
 
