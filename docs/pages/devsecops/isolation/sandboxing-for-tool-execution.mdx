@@ -23,9 +23,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Every tool invocation should pass policy, run in a constrained sandbox, and leave auditable evidence, with stronger gates for high-impact actions like deploy, merge, and publish.
+> 🔑 **Key Takeaway**: Every tool invocation should pass policy, run in a
+> constrained sandbox, and leave auditable evidence, with stronger gates
+> for high-impact actions like deploy, merge, and publish.
 
-Tool execution is where automation becomes real-world side effects: file changes, API mutations, infrastructure updates, deployments, or financial transactions.
+Tool execution is where automation becomes real-world side effects: file changes,
+API mutations, infrastructure updates, deployments, or financial transactions.
 
 This is often the highest-risk path in DevSecOps workflows.
 
@@ -92,14 +95,14 @@ A secure flow is:
 
 ## References
 
-- NIST SP 800-53 Rev. 5 (least privilege, audit, execution controls): https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
-- NIST SP 800-190, *Application Container Security Guide*: https://csrc.nist.gov/pubs/sp/800/190/final
+- [NIST SP 800-53 Rev. 5 (least privilege, audit, execution controls)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
+- [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
 
-- Linux kernel documentation, *Seccomp BPF*: https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html
-- Docker, *Docker Engine Security*: https://docs.docker.com/engine/security/
-- Kubernetes, *Pod Security Standards*: https://kubernetes.io/docs/concepts/security/pod-security-standards/
-- Firecracker documentation: https://github.com/firecracker-microvm/firecracker/tree/main/docs
-- gVisor documentation: https://gvisor.dev/docs/
+- [Linux kernel documentation, *Seccomp BPF*](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html)
+- [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
+- [Kubernetes, *Pod Security Standards*](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
+- [Firecracker documentation](https://github.com/firecracker-microvm/firecracker/tree/main/docs)
+- [gVisor documentation](https://gvisor.dev/docs/)
 
 ---
 

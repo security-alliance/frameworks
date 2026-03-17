@@ -23,9 +23,14 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Execution sandboxing reduces blast radius by running automation in ephemeral least-privilege environments and enforcing isolation across process, filesystem, identity, and network, with stronger boundaries for higher-risk workflows.
+> 🔑 **Key Takeaway**: Execution sandboxing reduces blast radius by running
+> automation in ephemeral least-privilege environments and enforcing isolation
+> across process, filesystem, identity, and network, with stronger boundaries
+> for higher-risk workflows.
 
-Execution sandboxing means running workloads inside controlled boundaries so that compromise of a job, script, or tool does **not** become compromise of your platform.
+Execution sandboxing means running workloads inside controlled boundaries
+so that compromise of a job, script, or tool does **not** become compromise
+of your platform.
 
 In DevSecOps, this applies to:
 
@@ -82,7 +87,9 @@ Treat these as separate enforcement planes:
 
 ### 2) Use ephemeral runners
 
-Each job should run on fresh infrastructure and be destroyed after completion. Avoid shared mutable state and persistent credentials between jobs.
+Each job should run on fresh infrastructure and be destroyed after
+completion. Avoid shared mutable state and persistent credentials
+between jobs.
 
 ### 3) Restrict privileged paths
 
@@ -98,15 +105,15 @@ Build, sign, publish, and deploy should be distinct stages with explicit policy 
 
 ## References
 
-- NIST SP 800-190, *Application Container Security Guide*: https://csrc.nist.gov/pubs/sp/800/190/final
-- NIST SP 800-53 Rev. 5, *Security and Privacy Controls*: https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
+- [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
+- [NIST SP 800-53 Rev. 5, *Security and Privacy Controls*](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
 
-- Docker, *Docker Engine Security*: https://docs.docker.com/engine/security/
-- Kubernetes, *Pod Security Standards*: https://kubernetes.io/docs/concepts/security/pod-security-standards/
-- Linux kernel documentation, *Seccomp BPF*: https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html
-- gVisor documentation: https://gvisor.dev/docs/
-- Kata Containers documentation: https://github.com/kata-containers/documentation
-- Firecracker documentation: https://github.com/firecracker-microvm/firecracker/tree/main/docs
+- [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
+- [Kubernetes, *Pod Security Standards*](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
+- [Linux kernel documentation, *Seccomp BPF*](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html)
+- [gVisor documentation](https://gvisor.dev/docs/)
+- [Kata Containers documentation](https://github.com/kata-containers/documentation)
+- [Firecracker documentation](https://github.com/firecracker-microvm/firecracker/tree/main/docs)
 
 ---
 
