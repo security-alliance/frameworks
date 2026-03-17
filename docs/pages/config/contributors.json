@@ -7,10 +7,11 @@
     "twitter": "https://twitter.com/JosepBove",
     "website": null,
     "company": "OP Labs",
-    "role": "contributor",
+    "role": "steward",
     "job_title": null,
-    "description": "Frameworks Contributor",
+    "description": "Steward of Monitoring framework",
     "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-03-17", "framework": "Monitoring" },
       { "name": "First-Contribution", "assigned": "2026-03-16" }
     ]
   },
