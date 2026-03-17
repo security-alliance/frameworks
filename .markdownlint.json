@@ -40,7 +40,8 @@
       "CertifiedProtocolsWrapper",
       "MermaidRenderer",
       "DevOnly",
-      "BadgeLegend"
+      "BadgeLegend",
+      "ExportAllCerts"
     ]
   },
   "MD037": false,

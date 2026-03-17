@@ -18,7 +18,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: DevSecOps works when security is embedded from planning through delivery, automated checks stop unsafe changes before production, and sandboxed execution contains risk when untrusted code or tooling runs.
+> 🔑 **Key Takeaway**: DevSecOps works when security is embedded from planning through
+> delivery, automated checks stop unsafe changes before production, and sandboxed
+> execution contains risk when untrusted code or tooling runs.
 
 Traditionally, rapid development and deployment is often prioritized at the expense of security considerations. This is
 generally speaking no different in web3, but it is important to take integrity, confidentiality, and availability into
@@ -32,28 +34,40 @@ operations and security teams.
 Some of the key areas to consider are:
 
 1. Integrate security measures early in the development process, such as by utilizing security tools such as fuzzing,
-  static and dynamic analysis tools in your CI/CD process, to identify and mitigate vulnerabilities before they turn into
-  critical issues.
+  static and dynamic analysis tools in your CI/CD process, to identify and mitigate vulnerabilities before they turn
+  into critical issues.
 2. Implement automated security testing and monitoring.
 3. Development, Operations and Security teams should be aligned and work closely together.
-4. Use **sandboxing & isolation** to reduce blast radius when running tooling, builds, plugins, and other potentially risky execution.
+4. Use **sandboxing & isolation** to reduce blast radius when running tooling, builds,
+   plugins, and other potentially risky execution.
    - See: [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation)
 
 ## What’s inside DevSecOps
 
 - **Isolation & Sandboxing**
-  - [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation): Core guidance for containment patterns across CI/CD and automation workflows.
-  - [Execution Sandboxing](/devsecops/isolation/execution-sandboxing): Core runtime isolation controls to limit blast radius and privilege abuse.
-  - [Execution Sandboxing: A Practical Guide](/devsecops/isolation/execution-sandboxing-practical-guide): Implementation playbook for runners, untrusted PRs, secrets, and egress.
-  - [Capability-Based Isolation](/devsecops/isolation/capability-based-isolation): Replace broad privileges with explicit, auditable capability grants.
-  - [Network & Resource Isolation](/devsecops/isolation/network-and-resource-isolation): Enforce deny-by-default networking and strict CPU/memory/resource boundaries.
-  - [Sandboxing for Tool Execution](/devsecops/isolation/sandboxing-for-tool-execution): Secure high-risk tool invocation with constrained runtime and auditable effects.
-  - [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement): Combine sandbox boundaries with policy-as-code for defense in depth.
-- [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment): Build safer pipelines with testing, scanning, deterministic builds, and access controls.
-- [Repository Hardening](/devsecops/repository-hardening): Protect repos with branch policies, signed commits, and hardened automation settings.
+  - [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation): Core guidance for containment patterns
+  across CI/CD and automation workflows.
+  - [Execution Sandboxing](/devsecops/isolation/execution-sandboxing): Core runtime isolation controls to limit blast
+  radius and privilege abuse.
+  - [Execution Sandboxing: A Practical Guide](/devsecops/isolation/execution-sandboxing-practical-guide):
+  Implementation playbook for runners, untrusted PRs, secrets, and egress.
+  - [Capability-Based Isolation](/devsecops/isolation/capability-based-isolation): Replace broad privileges with
+  explicit, auditable capability grants.
+  - [Network & Resource Isolation](/devsecops/isolation/network-and-resource-isolation): Enforce deny-by-default
+  networking and strict CPU/memory/resource boundaries.
+  - [Sandboxing for Tool Execution](/devsecops/isolation/sandboxing-for-tool-execution): Secure high-risk tool
+  invocation with constrained runtime and auditable effects.
+  - [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement): Combine sandbox
+  boundaries with policy-as-code for defense in depth.
+- [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment): Build safer pipelines with
+testing, scanning, deterministic builds, and access controls.
+- [Repository Hardening](/devsecops/repository-hardening): Protect repos with branch policies, signed commits, and
+hardened automation settings.
 - [Security Testing](/devsecops/security-testing): Shift-left with SAST, DAST, IAST, and fuzzing to catch issues early.
-- [Implementing Code Signing](/devsecops/code-signing): Strengthen integrity with signed commits/PRs and disciplined key management.
-- [Securing Development Environments](/devsecops/integrated-development-environments): Reduce IDE and local environment risk with trusted tooling and isolation.
+- [Implementing Code Signing](/devsecops/code-signing): Strengthen integrity with signed commits/PRs and disciplined
+key management.
+- [Securing Development Environments](/devsecops/integrated-development-environments): Reduce IDE and local environment
+risk with trusted tooling and isolation.
 
 ---
 

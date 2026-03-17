@@ -21,9 +21,14 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Assume execution can be untrusted and apply layered containment across identity, runtime, filesystem, network, and resources, increasing isolation strength with workload risk.
+> 🔑 **Key Takeaway**: Assume execution can be untrusted and apply layered
+> containment across identity, runtime, filesystem, network, and resources,
+> increasing isolation strength with workload risk.
 
-This section is the DevSecOps guide for **running untrusted or semi-trusted execution safely**: CI jobs, pull request validation, build scripts, plugins, package hooks, internal automation, and AI agents (as one automation category among many).
+This section is the DevSecOps guide for **running untrusted or semi-trusted
+execution safely**: CI jobs, pull request validation, build scripts, plugins,
+package hooks, internal automation, and AI agents (as one automation category
+among many).
 
 The core objective is simple: **assume compromise can happen, then contain blast radius by design**.
 
@@ -38,7 +43,8 @@ Treat sandboxing decisions as a threat-modeling exercise across four dimensions:
 | Privileges | What authority does runtime hold? (filesystem write, network egress, cloud IAM, package publish, deployment rights) |
 | Impact | What is worst-case outcome? (secret exfiltration, artifact tampering, lateral movement, production change, financial loss) |
 
-**Default assumption:** code from external contributors, third-party actions, and newly introduced dependencies are untrusted until verified.
+**Default assumption:** code from external contributors, third-party actions,
+and newly introduced dependencies are untrusted until verified.
 
 ## Decision tree: choose isolation depth
 
@@ -87,20 +93,25 @@ At minimum, enforce the following:
 ## Start here (section map)
 
 - [Execution Sandboxing](/devsecops/isolation/execution-sandboxing) — principles and runtime design choices.
-- [Execution Sandboxing: A Practical Guide](/devsecops/isolation/execution-sandboxing-practical-guide) — implementation blueprint for teams and platforms.
-- [Network & Resource Isolation](/devsecops/isolation/network-and-resource-isolation) — egress controls, quotas, and anti-exfiltration patterns.
-- [Sandboxing for Tool Execution](/devsecops/isolation/sandboxing-for-tool-execution) — controlling high-risk tool calls and side effects.
-- [Capability-Based Isolation](/devsecops/isolation/capability-based-isolation) — breaking broad permissions into constrained capabilities.
-- [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement) — integrating policy-as-code with runtime isolation.
+- [Execution Sandboxing: A Practical Guide](/devsecops/isolation/execution-sandboxing-practical-guide) — implementation
+blueprint for teams and platforms.
+- [Network & Resource Isolation](/devsecops/isolation/network-and-resource-isolation) — egress controls, quotas, and
+anti-exfiltration patterns.
+- [Sandboxing for Tool Execution](/devsecops/isolation/sandboxing-for-tool-execution) — controlling high-risk tool
+calls and side effects.
+- [Capability-Based Isolation](/devsecops/isolation/capability-based-isolation) — breaking broad permissions into
+constrained capabilities.
+- [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement) — integrating
+policy-as-code with runtime isolation.
 
 ## References
 
-- NIST SP 800-190, *Application Container Security Guide*: https://csrc.nist.gov/pubs/sp/800/190/final
-- NIST SP 800-53 Rev. 5, *Security and Privacy Controls*: https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
-- Linux kernel documentation, *Seccomp BPF*: https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html
-- Docker, *Docker Engine Security*: https://docs.docker.com/engine/security/
-- Kubernetes, *Pod Security Standards*: https://kubernetes.io/docs/concepts/security/pod-security-standards/
-- SLSA specification: https://slsa.dev/spec/v1.0/
+- [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
+- [NIST SP 800-53 Rev. 5, *Security and Privacy Controls*](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
+- [Linux kernel documentation, *Seccomp BPF*](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html)
+- [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
+- [Kubernetes, *Pod Security Standards*](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
+- [SLSA specification](https://slsa.dev/spec/v1.0/)
 
 ---
 
