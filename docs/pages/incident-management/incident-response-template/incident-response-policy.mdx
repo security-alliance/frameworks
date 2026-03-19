@@ -1,0 +1,205 @@
+---
+title: "Incident Response Policy | Security Alliance"
+description: "This policy defines how we respond to security and operational incidents. It covers roles, severity classification, and the steps from detection through post-incident review."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [hexnickk4997]
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Incident Response Policy
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Overview
+
+This policy defines how we respond to security and operational incidents. It covers roles, severity classification, and the steps from detection through post-incident review.
+
+For role structures and on-call options, see [Roles and Staffing](./roles-and-staffing).
+
+
+## Roles
+
+> One person can hold multiple roles. Roles can be reassigned during an incident as needed.
+
+### Detector
+The person who identifies the incident. Their job is to notify responders and hand off. They don't need to fix it.
+
+### Incident Leader
+Coordinates the response. Assigns tasks, makes decisions, ensures the process is followed. Escalates to Decision Makers when needed.
+
+### Scribe
+Documents everything in the [Incident Log](./templates/incident-log-template). Maintains timestamps (UTC), captures decisions and rationale. This is a focused role. Don't also assign the Scribe to fix things.
+
+### Communication Manager
+Handles internal and external communications. Drafts updates, coordinates with PR if needed, manages community channels.
+
+### Subject Matter Experts (SMEs)
+Technical specialists called in based on incident type (smart contracts, infrastructure, security, etc.).
+
+### Decision Makers
+Senior leadership for high-stakes decisions. Define who these are for your protocol (founders, security lead, legal, etc.).
+
+
+## Severity Levels
+
+> **When in doubt, choose the higher severity.** A false P1 creates noise. A missed P1 costs funds.
+
+### P1 - Critical
+
+| Aspect | Details |
+|--------|---------|
+| **Impact** | Loss of funds, critical systems down, active exploit |
+| **Response** | Immediate. Core team. Scale as needed. Decision Makers involved. |
+| **Examples** | Active exploit, private key compromise, critical smart contract vulnerability, production down |
+
+### P2 - High
+
+| Aspect | Details |
+|--------|---------|
+| **Impact** | High impact to production, potential fund loss under specific conditions |
+| **Response** | Immediate |
+| **Examples** | Major vulnerability (not actively exploited), significant outage, DDoS on core services |
+
+### P3 - Moderate
+
+| Aspect | Details |
+|--------|---------|
+| **Impact** | Medium impact, no fund loss likely |
+| **Response** | Within hours |
+| **Examples** | Minor vulnerability, degraded performance, non-critical service down |
+
+### P4 - Low
+
+| Aspect | Details |
+|--------|---------|
+| **Impact** | Low impact, no fund loss |
+| **Response** | Can be scheduled |
+| **Examples** | Minor bugs, display issues, non-urgent fixes |
+
+### P5 - Info
+
+| Aspect | Details |
+|--------|---------|
+| **Impact** | Informational, often from automated systems |
+| **Response** | No immediate action |
+| **Examples** | Expiring certificates, resource spikes, maintenance notices |
+
+
+## Response Process
+
+### Step 1: Detection
+
+Incidents can be detected via:
+- **Monitoring alerts** (Grafana, DataDog, on-chain monitors, etc.)
+- **Community reports** (Discord, Twitter, Telegram)
+- **Team members** noticing something wrong
+- **Bug bounty reports**
+- **Security audits**
+- **Partner notifications**
+
+The Detector's job: get the right people involved, fast.
+
+> **Don't know who to call?** Contact your incident response on-call team (e.g., DevOps or SecOps) via on-call system or team-wide email (e.g., `team-security@company.com`). These serve as fallbacks when the detector is unfamiliar with escalation paths.
+
+### Step 2: Coordination
+
+**Detector responsibilities:**
+1. Start a call (Zoom/Meet/Huddle)
+2. Create a private channel (`#incident-[brief-description]`)
+3. Alert responders via your alerting system or direct contact
+4. Provide all known information
+5. Hand off to an Incident Leader (get explicit acknowledgment)
+
+**For P1 incidents:** Keep the group minimal initially. Alert Decision Makers immediately.
+
+**Incident Leader responsibilities:**
+1. Pull in relevant SMEs
+2. Assign a Scribe → they create an [Incident Log](./templates/incident-log-template)
+3. Assign Communication Manager(s)
+
+### Step 3: Investigation
+
+**Goal:** Understand what's happening and assess impact.
+
+- Collect logs, error messages, reproduction steps
+- Identify affected services and scope of impact
+- Confirm or adjust severity level
+- Determine mitigation options
+
+**The Incident Leader assigns specific tasks to individuals.** One task per person at a time keeps things focused.
+
+### Step 4: Resolution
+
+**Goal:** Stop the bleeding first, permanent fix later.
+
+If a temporary fix (rollback, pause, disable feature) is faster than a full fix and reduces damage, do that first.
+
+**Checklist:**
+- [ ] Apply temporary mitigation
+- [ ] Verify it's working
+- [ ] Notify stakeholders
+- [ ] Plan permanent fix with owner and timeline
+
+See [Runbooks](./runbooks/overview) for step-by-step guides for specific incident types.
+
+### Step 5: Monitoring
+
+**Goal:** Confirm the fix actually worked.
+
+- Verify immediately after deployment
+- Monitor for at least a week
+- Consider adding new alerts or test cases
+- Document what monitoring is now in place
+
+### Step 6: Post-Incident Review
+
+**Goal:** Learn and prevent recurrence.
+
+1. Incident Leader schedules post-mortem (within a week of resolution)
+2. Scribe prepares [Post-Mortem](./templates/post-mortem-template) draft
+3. Team reviews timeline, identifies root causes, captures lessons
+4. Define action items with owners and deadlines
+5. Share with team (and community if appropriate)
+
+> All action items must have owners and deadlines. Track them to completion.
+
+
+## Communication Guidelines
+
+- **Internal:** Regular updates in the incident channel. Frequency depends on severity.
+- **External:** Communication Manager drafts, gets approval before posting. See [Communications](./communications) for examples.
+- **Transparency:** Default to sharing post-mortems publicly (redacting sensitive details).
+
+
+## Related Documents
+
+- [Roles and Staffing](./roles-and-staffing) - Team structure options
+- [Communications](./communications) - Public announcement guidance
+- [Incident Log Template](./templates/incident-log-template) - Fill out during incidents
+- [Post-Mortem Template](./templates/post-mortem-template) - Complete after incidents
+- [Contacts](./contacts) - Critical contacts
+- [Runbooks](./runbooks/overview) - Step-by-step incident guides
+
+
+## Document Control
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.0 | [DATE] | [AUTHOR] | Initial release |
+
+*Customize this policy for your protocol's tools, team structure, and communication channels.*
+
+
+</TagProvider>
+<ContributeFooter />

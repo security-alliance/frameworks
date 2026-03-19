@@ -1,0 +1,53 @@
+---
+title: "Templates | Security Alliance"
+description: "Templates for incident response documentation. Copy these when needed."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [hexnickk4997]
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Templates
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Templates for incident response documentation. Copy these when needed.
+
+> **Review these templates before your first incident.** Familiarize yourself with the structure so you're not learning the format during an emergency. Consider running a tabletop exercise to practice filling them out.
+
+## Available Templates
+
+| Template | When to Use |
+|----------|-------------|
+| [Incident Log Template](./incident-log-template) | Copy when declaring an incident |
+| [Post-Mortem Template](./post-mortem-template) | Copy after resolving a significant incident (P1-P3) |
+| [Runbook Template](./runbook-template) | Copy when creating a new scenario-specific runbook |
+
+## Examples
+
+| Example | Purpose |
+|---------|---------|
+| [Example Incident Log](./example-incident-log) | Shows a filled-out incident log for reference |
+| [Example Post-Mortem](./example-post-mortem) | Shows a filled-out post-mortem for reference |
+
+For communication guidance and examples, see [Communications](../communications).
+
+## Runbook Template
+
+See [Runbooks](../runbooks/overview) for the runbook template and existing runbooks.
+
+*See [Incident Response Policy](../incident-response-policy) for the full response process.*
+
+
+</TagProvider>
+<ContributeFooter />
