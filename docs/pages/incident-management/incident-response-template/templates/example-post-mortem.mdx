@@ -33,7 +33,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 | **Status** | Final |
 | **Incident Log** | [2024-01-15 Example API Outage](./example-incident-log) |
 
----
 
 ## Summary
 
@@ -43,7 +42,6 @@ The root cause was a typo in a rate limiter configuration change deployed at 14:
 
 The incident was detected via automated monitoring and resolved by rolling back the configuration change. No funds were at risk, but approximately 3,000 users experienced failed transactions during the outage window.
 
----
 
 ## Impact
 
@@ -62,7 +60,6 @@ The incident was detected via automated monitoring and resolved by rolling back 
 - Media coverage: None
 - Community response: Minor frustration, resolved quickly
 
----
 
 ## Timeline
 
@@ -79,7 +76,6 @@ The incident was detected via automated monitoring and resolved by rolling back 
 
 See [Incident Log](./example-incident-log) for detailed timeline.
 
----
 
 ## Root Cause
 
@@ -104,7 +100,6 @@ Human error during configuration change. The rate limit threshold was typed as `
 | Why is there no review process? | Config changes considered "low risk" |
 | Why are they considered low risk? | Never had an incident before (survivorship bias) |
 
----
 
 ## What Went Well
 
@@ -127,7 +122,6 @@ Human error during configuration change. The rate limit threshold was typed as `
 2. The fix (rollback) was simple. If the old config was also broken, recovery would have been harder
 3. No financial impact because this was the API layer, not smart contracts
 
----
 
 ## Action Items
 
@@ -139,14 +133,12 @@ Human error during configuration change. The rate limit threshold was typed as `
 | Add staging environment testing for config changes | Dave | 2024-02-15 | In Progress |
 | Document config change process | Alice | 2024-01-31 | Not Started |
 
----
 
 ## Lessons for Runbooks
 
 - [x] Existing runbook sufficient: [Third-Party Outage](../runbooks/third-party-outage) (config rollback section applicable)
 - [ ] No new runbook needed
 
----
 
 ## Detection
 
@@ -156,7 +148,6 @@ Human error during configuration change. The rate limit threshold was typed as `
 | Time to detection | 17 minutes |
 | Could we detect faster? | Yes - lower alert threshold to 1% |
 
----
 
 ## Links
 
@@ -165,7 +156,6 @@ Human error during configuration change. The rate limit threshold was typed as `
 - Rollback PR: [link]
 - Monitoring dashboard: [link]
 
----
 
 ## Meeting Notes
 
