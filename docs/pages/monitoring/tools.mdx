@@ -27,16 +27,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 > chain support before selecting a tool. For critical systems, consider running monitors from two independent providers
 > simultaneously. See the [Reliability Considerations](#reliability-considerations) section below.
 
-## Free / Open-Source
-
-### Forta Firewall
-
-Real-time transaction screening middleware. Uses simulation-based detection to identify threats before transactions
-are confirmed on-chain. Governed by FORT token holders, with open-source detection agents.
-
-- **Chains:** EVM-compatible networks
-- **GitHub:** [forta-network/forta-core-go](https://github.com/forta-network/forta-core-go)
-- **Website:** [forta.org](https://forta.org)
+## Open Source / Self-Hosted
 
 ### BlockScout
 
@@ -50,6 +41,15 @@ or Explorer as a Service (EaaS, enterprise pricing). A PRO API is also available
 - **GitHub:** [blockscout/blockscout](https://github.com/blockscout/blockscout)
 - **Website:** [blockscout.com](https://www.blockscout.com)
 
+### Forta Firewall
+
+Real-time transaction screening middleware. Uses simulation-based detection to identify threats before transactions
+are confirmed on-chain. Governed by FORT token holders, with open-source detection agents.
+
+- **Chains:** EVM-compatible networks
+- **GitHub:** [forta-network/forta-core-go](https://github.com/forta-network/forta-core-go)
+- **Website:** [forta.org](https://forta.org)
+
 ### Prometheus + Grafana
 
 Infrastructure-level metrics collection (Prometheus) and visualization/alerting (Grafana). Useful for monitoring
@@ -61,17 +61,17 @@ via a scraper.
 
 ## Commercial / Hosted
 
-### Tenderly
+### Etherscan
 
-Real-time smart contract monitoring platform with a free tier. Supports 12 alert trigger types (function calls,
-event emissions, balance changes, state variable changes, and transaction value thresholds) with delivery to
-8 destinations: Slack, Discord, Telegram, email, webhooks, PagerDuty, Sentry, and Web3 Actions (TypeScript
-serverless functions that run on Tenderly's infrastructure). The CLI and SDKs are open-source (GPL-3.0).
+Address monitoring via Watch List, free for registered users. Monitor up to 50 Ethereum addresses and receive
+email notifications on inbound and outbound transactions. Configurable per address via the account dashboard.
+The API supports polling-based monitoring (3 req/s, 100K calls/day on the free tier) but has no push or streaming
+endpoints; custom polling layers are required for automated alerting.
 
-- **Free plan:** Available; exact monitoring quotas visible on the pricing page
-- **Chains:** 100+ networks
-- **Website:** [tenderly.co](https://tenderly.co)
-- **GitHub:** [Tenderly](https://github.com/Tenderly) (CLI, SDKs, framework plugins)
+- **Free plan:** Watch List available with a free account; API free tier for personal use
+- **Chains:** Ethereum (and Etherscan-family explorers for other EVM chains)
+- **Website:** [etherscan.io](https://etherscan.io)
+- **Documentation:** [docs.etherscan.io](https://docs.etherscan.io)
 
 ### Guardrail
 
@@ -102,17 +102,17 @@ patterns by modeling protocol behavior rather than relying solely on known signa
 - **Chains:** 70+ blockchains
 - **Website:** [hypernative.io](https://hypernative.io)
 
-### Etherscan
+### Tenderly
 
-Address monitoring via Watch List, free for registered users. Monitor up to 50 Ethereum addresses and receive
-email notifications on inbound and outbound transactions. Configurable per address via the account dashboard.
-The API supports polling-based monitoring (3 req/s, 100K calls/day on the free tier) but has no push or streaming
-endpoints; custom polling layers are required for automated alerting.
+Real-time smart contract monitoring platform with a free tier. Supports 12 alert trigger types (function calls,
+event emissions, balance changes, state variable changes, and transaction value thresholds) with delivery to
+8 destinations: Slack, Discord, Telegram, email, webhooks, PagerDuty, Sentry, and Web3 Actions (TypeScript
+serverless functions that run on Tenderly's infrastructure). The CLI and SDKs are open-source (GPL-3.0).
 
-- **Free plan:** Watch List available with a free account; API free tier for personal use
-- **Chains:** Ethereum (and Etherscan-family explorers for other EVM chains)
-- **Website:** [etherscan.io](https://etherscan.io)
-- **Documentation:** [docs.etherscan.io](https://docs.etherscan.io)
+- **Free plan:** Available; exact monitoring quotas visible on the pricing page
+- **Chains:** 100+ networks
+- **Website:** [tenderly.co](https://tenderly.co)
+- **GitHub:** [Tenderly](https://github.com/Tenderly) (CLI, SDKs, framework plugins)
 
 ## Reliability Considerations
 
