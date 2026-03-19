@@ -98,6 +98,9 @@ Structure monitoring coverage across these tracks:
 2. Regularly update thresholds and alert configurations to reflect your current needs.
 3. **Test your alerts periodically**: verify that alert delivery actually works end-to-end, not just that the
    detection rule is configured. A misconfigured webhook or expired token can silently break your alerting.
+4. **Alert on alert tampering**: configure alerts for the disabling or modification of existing alerts. This
+   protects against both accidental misconfiguration and adversarial tampering that could silently disable your
+   detection coverage.
 
 ### Incident Response
 
