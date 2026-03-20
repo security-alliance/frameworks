@@ -4,12 +4,9 @@ description: "Establish secure communication channels for incident response. App
 tags:
   - Security Specialist
   - Operations & Strategy
-contributors:
-  - role: wrote
-    users: [dickson]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -17,7 +14,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 # Communication Strategies
 
 <TagList tags={frontmatter.tags} />
-<AttributionList contributors={frontmatter.contributors} />
 
 Communication during an incident can be very hard, as people are often scrambling to fix the issue at hand. Nonetheless,
 from a team member, outsider or observer's point of view, communication is very important to be able to understand
