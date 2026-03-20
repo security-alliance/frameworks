@@ -6,7 +6,7 @@ tags:
   - Operations & Strategy
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -14,6 +14,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../comp
 # Communication Strategies
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 Communication during an incident can be very hard, as people are often scrambling to fix the issue at hand. Nonetheless,
 from a team member, outsider or observer's point of view, communication is very important to be able to understand

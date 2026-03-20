@@ -8,7 +8,7 @@ tags:
   - SRE
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -16,6 +16,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../comp
 # Lessons Learned
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 Conducting a post-incident review and identifying lessons learned will improve your project's incident response
 capabilities. By analyzing what went well and what could be improved, you can enhance your readiness for future

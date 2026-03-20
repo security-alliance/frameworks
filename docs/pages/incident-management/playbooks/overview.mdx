@@ -6,7 +6,7 @@ tags:
   - Operations & Strategy
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -14,6 +14,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../../c
 # Playbooks
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 Generally speaking, incident response playbooks aim to provide detailed, step-by-step procedures for handling specific
 types of security incidents. Obviously, it's not possible to have thought about every possible scenario ahead of time,

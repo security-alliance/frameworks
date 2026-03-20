@@ -6,7 +6,7 @@ tags:
   - Operations & Strategy
 ---
 
-import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -14,6 +14,7 @@ import { TagList, TagProvider, TagFilter, ContributeFooter } from '../../../comp
 # Incident Detection and Response
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
 You don't want to be that project which has funds stolen, and then don't notice it for multiple days. Early detection
 and effective response to security incidents will help minimize damage.
