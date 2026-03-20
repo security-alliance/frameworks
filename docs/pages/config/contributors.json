@@ -563,6 +563,18 @@
     "role": "contributor",
     "description": "Frameworks Contributor"
   },
+  "n0guest": {
+    "slug": "n0guest",
+    "name": "EK",
+    "avatar": "https://avatars.githubusercontent.com/n0guest",
+    "github": "https://github.com/n0guest",
+    "twitter": null,
+    "website": "https://lido.fi",
+    "company": "Lido",
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor"
+  },
   "smagdali": {
     "slug": "smagdali",
     "name": "smagdali",
