@@ -5,6 +5,8 @@ export interface FrameworkRef {
   coverage: "full" | "partial";
 }
 
+declare const __IS_MAIN_BRANCH__: boolean
+
 const EMPTY_FRAMEWORK_REFS: readonly FrameworkRef[] = [];
 
 // Controls with no linked framework guidance are intentionally omitted.
@@ -1003,8 +1005,53 @@ const frameworkGuidanceByControl: Record<string, readonly FrameworkRef[]> = {
   ]
 };
 
+const DEV_ONLY_FRAMEWORK_PAGES = new Set([
+  "/devsecops/continuous-integration-continuous-deployment",
+  "/devsecops/integrated-development-environments",
+  "/devsecops/security-testing",
+  "/encryption/partition-encryption",
+  "/encryption/volume-encryption",
+  "/infrastructure/cloud",
+  "/monitoring/guidelines",
+  "/multisig-for-protocols/backup-signing-and-infrastructure",
+  "/multisig-for-protocols/emergency-procedures",
+  "/multisig-for-protocols/personal-security-opsec",
+  "/secure-software-development/secure-code-repositories-version-control",
+  "/security-automation/infrastructure-as-code",
+  "/supply-chain/dependency-awareness",
+  "/treasury-operations/classification",
+  "/treasury-operations/enhanced-controls",
+  "/treasury-operations/registration-documents",
+  "/treasury-operations/transaction-verification",
+]);
+
+const HEADER_ALIASES: Record<string, string> = {
+  "/awareness/cultivating-a-security-aware-mindset#Password Management": "3.4.1. Password Management",
+  "/awareness/staying-informed-and-continuous-learning#Comprehensive Security Training Framework": "4.1. Comprehensive Security Training Framework",
+  "/guides/account-management/discord#For Individuals - Account Security Checklist": "Account Security Checklist",
+  "/incident-management/playbooks/decentralized-ir#Keep It Alive": "10. Keep It Alive",
+  "/incident-management/playbooks/seal-911-war-room-guidelines#Communications": "SEAL Message Template",
+  "/opsec/core-concepts/implementation-process#Critical Asset Identification": "1. Critical Asset Identification",
+  "/opsec/core-concepts/security-fundamentals#Continuous Visibility": "5. Continuous Visibility",
+  "/opsec/core-concepts/security-fundamentals#Information Flow Control": "3. Information Flow Control",
+  "/opsec/core-concepts/security-fundamentals#Minimal Access Scopes": "2. Minimal Access Scopes",
+};
+
 export function getFrameworkGuidance(controlId: string): readonly FrameworkRef[] {
-  return frameworkGuidanceByControl[controlId] ?? EMPTY_FRAMEWORK_REFS;
+  const refs = frameworkGuidanceByControl[controlId];
+  if (!refs || refs.length === 0) {
+    return EMPTY_FRAMEWORK_REFS;
+  }
+
+  const normalizedRefs = refs
+    .map((ref) => {
+      const page = normalizeLegacyPath(ref.page);
+      const header = ref.header ? HEADER_ALIASES[`${page}#${ref.header}`] ?? ref.header : null;
+      return { ...ref, page, header };
+    })
+    .filter((ref) => !(__IS_MAIN_BRANCH__ && DEV_ONLY_FRAMEWORK_PAGES.has(ref.page)));
+
+  return normalizedRefs.length > 0 ? normalizedRefs : EMPTY_FRAMEWORK_REFS;
 }
 
 function toHeadingAnchor(heading: string): string {
