@@ -1,6 +1,6 @@
 ---
-title: "YubiKeys and Hardware Security Keys | Security Alliance"
-description: "Protect critical accounts with YubiKeys and other FIDO2/WebAuthn security keys: enroll backup keys, disable SMS fallback, store recovery codes safely, and plan account recovery."
+title: "Hardware Security Keys | Security Alliance"
+description: "Protect critical accounts with FIDO2/WebAuthn security keys: enroll backup keys, disable SMS fallback, store recovery codes safely, and plan account recovery."
 tags:
   - Security Specialist
 contributors:
@@ -13,35 +13,19 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagProvider>
 <TagFilter />
 
-# YubiKeys and Hardware Security Keys
+# Hardware Security Keys
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
 ## Summary
 
-> 🔑 **Key Takeaway for YubiKeys and Hardware Security Keys:** Use FIDO2/WebAuthn security keys such as
-> YubiKeys on high-value accounts, register at least two keys per critical account, disable SMS fallback where
-> possible, and test recovery before you need it.
+> 🔑 **Key Takeaway for Hardware Security Keys:** Use FIDO2/WebAuthn security keys on high-value accounts, register
+> at least two keys per critical account, disable SMS fallback where possible, and test recovery before you need it.
 
 Hardware security keys are one of the strongest practical defenses against phishing, credential stuffing, and
 SIM-swap-based account takeovers. They are especially valuable for email, source control, registrars, cloud platforms,
 social accounts, and any admin or financial account that could be used to pivot into the rest of your organization.
-
-This page is intentionally narrow: it focuses on using physical security keys to protect accounts, not on broader
-identity architecture or device management.
-
-### YubiKey-Specific Notes
-
-YubiKeys are a common choice because they support several different modes. For most readers, the default priority
-should be:
-
-1. **FIDO2 / WebAuthn security keys or passkeys stored on the key**
-2. **OATH TOTP on the key** only when the service does not support phishing-resistant options
-
-If you are buying new keys, choose models that match your devices. USB-C is the simplest default for modern laptops,
-while NFC is useful if you expect to authenticate on phones. Buy directly from a reputable seller and verify the setup
-prompt carefully so you do not accidentally register a weaker fallback method instead of the hardware key itself.
 
 ## For Individuals
 
@@ -82,51 +66,11 @@ hardware key.
 ### Recovery Discipline
 
 - Do not wait until you lose a key to learn how account recovery works
+- If you lose your only key and do not have a second enrolled key or a usable recovery path, you can lock yourself out
+  of critical accounts at the moment you most need them
 - Verify that your recovery path does not depend on a phone number if you are trying to reduce SIM-swap risk
 - If an account only supports app-based MFA or SMS, record that exception clearly and prioritize moving the account to
   a stronger provider or stronger configuration when possible
-
-## For Team Members
-
-These guidelines apply to staff using security keys on shared work accounts or privileged individual accounts.
-
-Team members should:
-
-- Register hardware keys on their own high-risk work accounts
-- Never share a physical key between multiple people
-- Keep backup keys physically separate from daily-use devices
-- Re-enroll a replacement key immediately if one is lost, stolen, or damaged
-- Report any forced downgrade to SMS or weaker MFA to the relevant administrator
-
-## For Admins
-
-These settings and practices apply to administrators responsible for protecting important organization accounts.
-
-### Program Checklist
-
-- [ ] Require phishing-resistant MFA for high-privilege accounts wherever the platform supports it
-- [ ] Require at least **two** registered security keys for every admin account
-- [ ] Standardize on a small set of supported key types so setup and recovery stay simple
-- [ ] Document which accounts require hardware keys and review that list regularly
-- [ ] Document a recovery process that does not rely on SMS for privileged accounts
-- [ ] Remove old or unrecognized security keys during periodic access reviews
-- [ ] Revoke lost keys promptly and confirm a replacement key is enrolled
-
-### Operational Notes
-
-- Hardware keys reduce phishing risk, but they do not replace strong passwords, session review, or app permission
-  reviews
-- For especially sensitive accounts, store backup keys with separate physical controls so one theft or travel
-  incident does not remove both factors at once
-- When a platform supports passkeys, confirm whether the passkey is being stored on a hardware key or synced software
-  ecosystem before treating it as equivalent
-
-## Related Guides
-
-- [GitHub Security](/guides/account-management/github)
-- [Linear Security](/guides/account-management/linear)
-- [Twitter/X Security](/guides/account-management/twitter)
-- [GoDaddy Security](/guides/account-management/godaddy)
 
 ## Further Reading
 
