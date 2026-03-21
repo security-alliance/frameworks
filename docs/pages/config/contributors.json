@@ -449,15 +449,15 @@
   },
   "gunnim": {
     "slug": "gunnim",
-    "name": "gunnim",
+    "name": "Gunnar Óttarsson",
+    "role": "contributor",
     "avatar": "https://avatars.githubusercontent.com/gunnim",
     "github": "https://github.com/gunnim",
-    "twitter": null,
-    "website": null,
-    "company": null,
-    "job_title": null,
-    "role": "contributor",
-    "description": "Frameworks Contributor",
+    "twitter": "https://x.com/gunni_m",
+    "website": "https://SolAz.cloud",
+    "company": "SolAz",
+    "job_title": "Founder",
+    "description": "Cloud architecture enthusiast with a passion for IT Security",
     "badges": [
       { "name": "First-Contribution", "assigned": "2026-01-21" }
     ]
