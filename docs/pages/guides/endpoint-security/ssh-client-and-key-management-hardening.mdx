@@ -27,7 +27,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 > for lost devices or role changes.
 
 SSH is often the path from a developer laptop into code hosting, CI/CD, bastions, and production infrastructure. Treat
-SSH keys as privileged access, not just as a convenience feature.
+SSH keys as privileged access.
 
 ## For Individuals
 
@@ -48,12 +48,6 @@ These steps apply to developers, operators, admins, and contributors who use SSH
 - [ ] Keep `UpdateHostKeys yes` enabled where you manage planned key rotation
 - [ ] Keep `~/.ssh` and private key files accessible only to you
 - [ ] Review and remove stale keys after device loss, role changes, or offboarding
-
-### Key Choice and Generation
-
-- Use **Ed25519** for new software keys by default
-- Use hardware-backed credentials such as `ed25519-sk` for higher-risk access when your environment supports them
-- If a legacy service still requires RSA, treat it as compatibility-only and prefer modern SHA-2 signatures
 
 ### Passphrases and Local Protection
 
@@ -94,9 +88,9 @@ Do not normalize `StrictHostKeyChecking no` or "just click through" behavior for
 
 ### File Permissions and Device Hygiene
 
-- Keep `~/.ssh` owner-only
-- Keep private keys readable only by the account owner
-- Keep `~/.ssh/config` not writable by other users
+- On Unix-like systems, use `chmod 700 ~/.ssh`
+- Use `chmod 600` for private keys and for `~/.ssh/config`
+- On Windows, keep private keys readable only by your user account and administrators
 
 If a laptop is lost, stolen, or suspected compromised, assume the SSH material on it may also need to be revoked and
 reissued.
