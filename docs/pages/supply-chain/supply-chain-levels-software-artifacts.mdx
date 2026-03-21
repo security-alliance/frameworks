@@ -64,6 +64,9 @@ For CI/CD pipeline security, see [DevSecOps](/devsecops/overview).
 High-usage components with limited blast radius. UI frameworks (React, Vue), general utility libraries (lodash,
 date-fns), data processing modules, and analytics libraries sit in this tier.
 
+User-facing frontend dependencies that influence wallet connection, transaction construction, signing flows, or
+security-critical UI should be treated as high-risk or critical, even if they are "just frontend libraries".
+
 Compromise could cause service degradation or facilitate phishing, but not direct fund loss. Standard update
 practices and periodic vulnerability scanning are sufficient.
 
