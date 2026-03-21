@@ -157,8 +157,9 @@ import or use it. This is the primary execution mechanism behind most npm supply
 1. **Audit install scripts before adding new dependencies.** Before installing a package, download it without
    executing anything (`npm pack <package>`, `pnpm pack <package>`, or `yarn pack <package>`) and inspect its
    `package.json` for `preinstall`, `postinstall`, or `prepare` entries.
-2. **Disable scripts by default.** All three package managers support disabling lifecycle scripts. Set this in
-   your `.npmrc` (read by both npm and pnpm) or `.yarnrc.yml` (yarn Berry):
+2. **In high-assurance environments** or hardened CI pipelines, disable lifecycle scripts by default and
+    explicitly allow only reviewed packages that require them. All three package managers support disabling
+    lifecycle scripts. Set this in your `.npmrc` (read by both npm and pnpm) or `.yarnrc.yml` (yarn Berry):
 
    ```bash
    # .npmrc (npm and pnpm)
