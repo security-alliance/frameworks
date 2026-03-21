@@ -33,6 +33,7 @@ as a privileged access control rather than a convenience feature.
 
 This page focuses on **client-side SSH hardening** for local human use first, with a short section on automation and
 team operations. It does not attempt to cover full `sshd` server hardening.
+
 ## For Individuals
 
 These steps apply to developers, operators, admins, and contributors who use SSH from a local workstation.
@@ -184,6 +185,7 @@ Team members should:
 - Report unexpected host key changes, access prompts, or pressure to enable agent forwarding
 - Reissue keys promptly after laptop replacement, loss, compromise, or major role change
 - Keep Git hosting keys separate from production admin keys
+
 ## For Admins
 
 These practices apply to administrators responsible for issuing, reviewing, rotating, and revoking SSH access across a
@@ -233,6 +235,7 @@ Larger teams may want a more centralized lifecycle than manually distributing ra
 OpenSSH user certificates can improve issuance and revocation by letting systems trust a central SSH certificate
 authority instead of many individual static keys. This is most useful for larger fleets or short-lived privileged
 access, but it adds operational overhead and should only be adopted if the team is prepared to run the lifecycle well.
+
 ## Web3-Specific Operational Rules
 
 Use these rules consistently:
@@ -243,6 +246,7 @@ Use these rules consistently:
 4. Investigate host key changes before reconnecting to important systems.
 5. Revoke and replace SSH keys immediately after device loss or admin-role changes.
 6. Keep automation credentials separate from human workstation credentials.
+
 ## Related Guides
 
 - [GitHub Security](/guides/account-management/github)
@@ -261,5 +265,6 @@ Use these rules consistently:
 - [GitLab: SSH Keys](https://docs.gitlab.com/user/ssh/)
 - [GitLab: Using SSH Keys with GitLab CI/CD](https://docs.gitlab.com/ci/jobs/ssh_keys/)
 - [Microsoft Learn: OpenSSH Key Management on Windows](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement)
+
 </TagProvider>
 <ContributeFooter />
