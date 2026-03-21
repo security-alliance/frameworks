@@ -1,6 +1,6 @@
 ---
 title: "SSH Client and Key Management Hardening | Security Alliance"
-description: "Harden SSH usage with modern key choices, passphrases, careful agent use, strict host verification, and clear revocation and rotation practices for Web3 teams."
+description: "Harden SSH client usage with better key handling, agent discipline, host verification, and rotation."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -26,10 +26,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 > protect keys with passphrases, keep agent forwarding off by default, and maintain a simple revoke-and-reissue plan
 > for lost devices or role changes.
 
-SSH is often the path from a developer laptop into source control, CI/CD, bastions, deploy hosts, and production
-infrastructure. In Web3 teams, the same workstation may be used to reach code hosting, cloud infrastructure, deploy
-systems, incident-response paths, validators, or other sensitive environments, so SSH key handling should be treated
-as a privileged access control rather than a convenience feature.
+SSH is often the path from a developer laptop into code hosting, CI/CD, bastions, and production infrastructure. Treat
+SSH keys as privileged access, not just as a convenience feature.
 
 ## For Individuals
 
@@ -53,30 +51,11 @@ These steps apply to developers, operators, admins, and contributors who use SSH
 
 ### Key Choice and Generation
 
-For new software keys, the practical default is **Ed25519**. It is the current modern baseline for general SSH use and
-is widely supported by Git hosting providers and modern OpenSSH clients.
-
-If you need stronger protection for privileged access, use a hardware-backed security-key credential such as
-`ed25519-sk` when your environment supports it. That keeps the private key material inside the authenticator and adds
-user presence checks such as a touch. Treat this as a strong recommendation for production bastions, deploy access,
-incident-response access, and other high-impact administrative paths.
-
-If a legacy service still requires RSA, use it only for compatibility and prefer modern SHA-2 signatures rather than
-legacy RSA/SHA-1 behavior.
-
-Examples:
-
-```bash
-# Default software key for normal human SSH use
-ssh-keygen -t ed25519 -a 64 -C "name@org"
-
-# Hardware-backed key for higher-risk access when supported
-ssh-keygen -t ed25519-sk -O verify-required -C "name@org prod"
-```
+- Use **Ed25519** for new software keys by default
+- Use hardware-backed credentials such as `ed25519-sk` for higher-risk access when your environment supports them
+- If a legacy service still requires RSA, treat it as compatibility-only and prefer modern SHA-2 signatures
 
 ### Passphrases and Local Protection
-
-A local private key should be treated as a password-equivalent credential.
 
 - Use a passphrase on every human-held software key
 - Avoid leaving sensitive keys loaded into an agent indefinitely
@@ -84,40 +63,13 @@ A local private key should be treated as a password-equivalent credential.
 - Do not store private keys in cloud notes, chat, or shared drives
 - Avoid copying the same private key between multiple laptops or admin workstations
 
-If you use `ssh-agent`, tighter defaults are better than "load once and forget about it." Example:
-
-```bash
-ssh-add -c -t 8h ~/.ssh/id_ed25519
-```
-
-That pattern is safer than leaving a privileged key loaded without confirmation for an unlimited period.
-
 ### `~/.ssh/config` Hygiene
 
 Keep `~/.ssh/config` explicit and purpose-specific so your SSH client offers only the intended key to each service.
 
-```text
-Host github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_ed25519_github
-  IdentitiesOnly yes
-  ForwardAgent no
-  StrictHostKeyChecking accept-new
-  UpdateHostKeys yes
-
-Host bastion-prod
-  HostName bastion.prod.example.org
-  User alice
-  IdentityFile ~/.ssh/id_ed25519_prod
-  IdentitiesOnly yes
-  ForwardAgent no
-  StrictHostKeyChecking yes
-  UpdateHostKeys yes
-```
-
-This approach reduces key sprawl, avoids offering the wrong identity to the wrong host, and makes it easier to reason
-about which key is used for which environment.
+- Use per-host entries with `IdentityFile` and `IdentitiesOnly yes`
+- Keep `ForwardAgent no` unless there is a reviewed exception
+- Use stricter host verification for bastions and production hosts than for low-risk systems
 
 ### Agent Forwarding and Remote Risk
 
@@ -127,8 +79,8 @@ Treat agent forwarding as an exception, not a default workflow.
 - Never use `Host *` with `ForwardAgent yes`
 - Prefer `ProxyJump`, a bastion pattern, or a purpose-specific key on the intermediary host instead
 
-Agent forwarding can let a remote system use your loaded identities for as long as the session is live. That means it
-is a poor default for attacker-controlled or weakly trusted systems.
+Agent forwarding lets a remote system use your loaded identities for as long as the session is live, so it is a poor
+default for weakly trusted systems.
 
 ### Host Verification and `known_hosts`
 
@@ -136,34 +88,15 @@ Do not normalize `StrictHostKeyChecking no` or "just click through" behavior for
 
 - Verify important host fingerprints from official documentation when available
 - Use `accept-new` only where trust-on-first-use is acceptable for the environment
-- Use `yes` for bastions, production systems, and other high-sensitivity hosts where key verification should be pinned
+- Use `yes` for bastions, production systems, and other high-sensitivity hosts
 - Preseed `known_hosts` for CI and automation from a trusted source instead of discovering keys live in the job
 - Investigate unexpected host key changes instead of bypassing the warning
 
-Useful commands:
-
-```bash
-# Find an existing host entry
-ssh-keygen -F github.com
-
-# Remove an outdated host key entry
-ssh-keygen -R github.com
-
-# Hash known_hosts entries for some additional privacy
-ssh-keygen -H -f ~/.ssh/known_hosts
-```
-
 ### File Permissions and Device Hygiene
-
-On Unix-like systems:
 
 - Keep `~/.ssh` owner-only
 - Keep private keys readable only by the account owner
 - Keep `~/.ssh/config` not writable by other users
-
-On Windows, the operating system enforces protection through the Windows security model and ACLs rather than Unix
-`chmod` conventions, but the principle is the same: private keys are sensitive credentials and should not be broadly
-accessible.
 
 If a laptop is lost, stolen, or suspected compromised, assume the SSH material on it may also need to be revoked and
 reissued.
@@ -187,36 +120,10 @@ team.
 
 ### Git Hosting, CI/CD, and Automation
 
-Git hosting access should not be treated the same way as production administration.
-
 - Human users should have account-level SSH keys with clear labels
 - CI/CD and deployment systems should use dedicated automation credentials, not a developer's personal laptop key
-- Review deploy keys carefully because they are often long-lived and narrowly scoped but easy to forget
-- Where the platform supports it, evaluate stronger centralized patterns such as GitHub Apps instead of relying on
-  long-lived deploy keys for Git-only automation
-
-For Web3 teams, this matters because SSH credentials often become a control point into deployment pipelines, validator
-operations, RPC infrastructure, or incident-response systems.
-
-### Team Lifecycle and Revocation
-
-Make revocation and reissue routine, not just theoretical.
-
-When a device is lost, stolen, or potentially compromised:
-
-1. Revoke the affected Git hosting SSH keys.
-2. Remove or disable server-side access for the affected key.
-3. Replace any deploy or automation key that may have been exposed.
-4. Reissue fresh credentials from a clean device.
-5. Review bastion, repository, and infrastructure access logs for suspicious use.
-
-### Optional Advanced Model: SSH Certificates
-
-Larger teams may want a more centralized lifecycle than manually distributing raw public keys to each host.
-
-OpenSSH user certificates can improve issuance and revocation by letting systems trust a central SSH certificate
-authority instead of many individual static keys. This is most useful for larger fleets or short-lived privileged
-access, but it adds operational overhead and should only be adopted if the team is prepared to run the lifecycle well.
+- Review deploy keys carefully because they are often long-lived and easy to forget
+- Revoke and reissue keys promptly after device loss, offboarding, or suspected compromise
 
 ## Web3-Specific Operational Rules
 
