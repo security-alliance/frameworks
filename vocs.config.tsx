@@ -531,7 +531,6 @@ const config = {
           collapsed: true,
           items: [
             { text: 'Overview', link: '/guides/account-management/overview' },
-            { text: 'YubiKeys and Hardware Security Keys', link: '/guides/account-management/hardware-security-keys' },
             { text: 'Discord Security', link: '/guides/account-management/discord' },
             { text: 'GitHub Security', link: '/guides/account-management/github' },
             { text: 'GoDaddy Security', link: '/guides/account-management/godaddy' },
@@ -552,6 +551,7 @@ const config = {
           text: 'Endpoint Security',
           collapsed: true,
           items: [
+            { text: 'Hardware Security Keys', link: '/guides/endpoint-security/hardware-security-keys' },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },
