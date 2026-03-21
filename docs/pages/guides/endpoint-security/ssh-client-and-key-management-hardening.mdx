@@ -31,9 +31,6 @@ infrastructure. In Web3 teams, the same workstation may be used to reach code ho
 systems, incident-response paths, validators, or other sensitive environments, so SSH key handling should be treated
 as a privileged access control rather than a convenience feature.
 
-This page focuses on **client-side SSH hardening** for local human use first, with a short section on automation and
-team operations. It does not attempt to cover full `sshd` server hardening.
-
 ## For Individuals
 
 These steps apply to developers, operators, admins, and contributors who use SSH from a local workstation.
@@ -171,21 +168,6 @@ accessible.
 If a laptop is lost, stolen, or suspected compromised, assume the SSH material on it may also need to be revoked and
 reissued.
 
----
-
-## For Team Members
-
-These guidelines apply to people using SSH for work-owned repositories, infrastructure, and production systems.
-
-Team members should:
-
-- Use separate keys for code hosting and infrastructure access instead of reusing one key everywhere
-- Label keys clearly so review and revocation are straightforward
-- Avoid using personal unmanaged devices for privileged SSH access unless there is explicit approval
-- Report unexpected host key changes, access prompts, or pressure to enable agent forwarding
-- Reissue keys promptly after laptop replacement, loss, compromise, or major role change
-- Keep Git hosting keys separate from production admin keys
-
 ## For Admins
 
 These practices apply to administrators responsible for issuing, reviewing, rotating, and revoking SSH access across a
@@ -246,12 +228,6 @@ Use these rules consistently:
 4. Investigate host key changes before reconnecting to important systems.
 5. Revoke and replace SSH keys immediately after device loss or admin-role changes.
 6. Keep automation credentials separate from human workstation credentials.
-
-## Related Guides
-
-- [GitHub Security](/guides/account-management/github)
-- [Lessons Learned](/incident-management/lessons-learned)
-- [Understanding Threat Vectors](/awareness/understanding-threat-vectors)
 
 ## Further Reading
 
