@@ -52,8 +52,8 @@ importers:
         specifier: 4.0.7
         version: 4.0.7
       vocs:
-        specifier: ^1.2.1
-        version: 1.2.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-router-dom@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(rollup@4.59.0)(typescript@5.9.3)
+        specifier: 1.2.2
+        version: 1.2.2(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-router-dom@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(rollup@4.59.0)(typescript@5.9.3)
 
 packages:
 
@@ -4090,8 +4090,8 @@ packages:
       yaml:
         optional: true
 
-  vocs@1.2.1:
-    resolution: {integrity: sha512-rQ5aoD68+UJQeJ9G/nPcqcwhbBpMFZnHJ9ZkIsRHaeqBdiA4S86ufplJRKxmX56XZLEpY+wlU+TGz8Qsxtb8Sw==}
+  vocs@1.2.2:
+    resolution: {integrity: sha512-i5NSKOJQZUkKagQuzGy/g5Sr28bnn5JnwDAN637aPJ/KOwCFepq7d3rUV3YBAxwA4SVh22SwD57IrmgtD3yvDw==}
     engines: {node: '>=22'}
     hasBin: true
     peerDependencies:
@@ -8830,7 +8830,7 @@ snapshots:
       lightningcss: 1.30.2
       yaml: 2.8.2
 
-  vocs@1.2.1(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-router-dom@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(rollup@4.59.0)(typescript@5.9.3):
+  vocs@1.2.2(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-router-dom@7.12.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(rollup@4.59.0)(typescript@5.9.3):
     dependencies:
       '@floating-ui/react': 0.27.16(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@hono/node-server': 1.19.6(hono@4.12.3)
