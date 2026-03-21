@@ -37,7 +37,7 @@ protocols and features such as SMTP DANE, SSHFP, and CAA.
 
 - Domain is using the provider's nameservers
 - Registrar supports DS records
-- If registrar supports CDS/CDNSKEY auto-publish, enable that if offered
+- If the registrar supports CDS/CDNSKEY auto-publish, enable that if offered
 
 **Practical setup**:
 
@@ -101,7 +101,7 @@ SSL certificates for your domain.
 **How it protects you**: Without CAA records, any Certificate Authority can issue SSL certificates for your domain.
 Attackers could potentially obtain fake certificates and use them in sophisticated phishing attacks that appear to have
 valid SSL encryption.
-A well behaved CA not explicitly permitted via CAA records will deny certificate requests for that domain. \
+A well-behaved CA not explicitly permitted via CAA records will deny certificate requests for that domain. \
 While CA compromises are rare, history shows they do happen — and in such cases, attackers could potentially bypass
 or ignore CAA entirely. \
 Notable incidents include:
@@ -120,8 +120,8 @@ Before setting CAA records, identify which CA issued your current certificate:
 
 **Setup process**: Add CAA records to your DNS zone. Most DNS providers allow you to add these through their web interface:
 
-With the issuers full name in hand we now need to map it to the "Issuer Domain Name".
-There is no centralized repository mapping public CA's to their issuer domain names but they are generally easily found with
+With the issuer's full name in hand, we now need to map it to the "Issuer Domain Name".
+There is no centralized repository mapping public CA's to their issuer domain names, but they are generally easily found with
 a simple search for f.x. "Let's Encrypt CAA". \
 The Common CA Database also provides a
 [comprehensive collection to reference](https://ccadb.org/resources).
@@ -255,7 +255,7 @@ issues without the privacy and reliability concerns of failure reports.
 
 MTA-STS enforces encrypted connections between mail servers, preventing man-in-the-middle attacks on email transmission.
 
-**How it protects you**: Without MTA-STS, emails can be intercepted in transit. This is especially critical for password
+**How it protects you**: Without MTA-STS, emails can be intercepted in transit. This is especially critical for passwords
 reset emails and other sensitive communications.
 
 **Deployment steps**:
@@ -340,34 +340,34 @@ _smtp._tls.example.com. TXT "v=TLSRPTv1; rua=mailto:reports@example.com"
 ```
 
 **Example scenario - MTA-STS test phase**:
-- MTA-STS is deployed with low max_age value to allow for more rapid iteration 
+- MTA-STS is deployed with a low max_age value to allow for more rapid iteration 
 - TLS-RPT DNS record is created
 - An email provider attempts to deliver mail to our domain
-- The email provider fetches the domains MTA-STS policy and attempts delivery using TLS according to the policy
-- If an issue arises a failure is logged and reported using TLS-RPT
-- Provider finishes mail delivery by falling back to classic SMTP
+- The email provider fetches the domain's MTA-STS policy and attempts delivery using TLS according to the policy
+- If an issue arises, a failure is logged and reported using TLS-RPT
+- The sender may still deliver without enforcing the MTA-STS policy
 
 **Example scenario - MTA-STS in production**:
-- MTA-STS policy file mode set to 'enforcing' and max_age eventually raised as confidence in the deployment is gained 
-- MTA-STS TXT DNS record id value updated
+- MTA-STS policy file mode set to 'enforce' mode, and max_age eventually raised as confidence in the deployment is gained 
+- MTA-STS TXT DNS record ID value updated
 - An email provider attempts to deliver mail to our domain
-- If not already cached, the SMTP server fetches the domains MTA-STS policy and attempts delivery using TLS according to the policy
-- If an issue arises a failure is logged and reported using TLS-RPT
+- If not already cached, the SMTP server fetches the domain's MTA-STS policy and attempts delivery using TLS according to the policy
+- If an issue arises, a failure is logged and reported using TLS-RPT
 - Mail delivery hard fails at this point
 
 **Consuming TLS reports**:
-- https://github.com/domainaware/parsedmarc : best open-source option (Python). Handles both DMARC aggregate reports and TLS-RPT.
-- Many DMARC report analyzers like easyDMARC / dmarcian / Valimail also offer TLS-RPT parsing. Simply route the reports to your providers report receiver address for visual summaries.
+- https://github.com/domainaware/parsedmarc: best open-source option (Python). Handles both DMARC aggregate reports and TLS-RPT.
+- Many DMARC report analyzers like easyDMARC / dmarcian / Valimail also offer TLS-RPT parsing. Simply route the reports to your provider's report receiver address for visual summaries.
 
-#### Report receiver in the same email domain ?
-It is perfectly reasonable for a domains TLS-RPT report receiver to reside in that same domain. \
+#### Report receiver in the same email domain?
+It is perfectly reasonable for a domain's TLS-RPT report receiver to reside in that same domain. \
 This remains true even after MTA-STS and/or SMTP DANE have been fully enabled.
 
 See the following snippet from [RFC8460](https://www.rfc-editor.org/rfc/rfc8460) which defines TLS-RPT:
 
 *In the case of "mailto", reports should be submitted to the
 specified email address. When sending failure reports
-via SMTP, Sending MTAs MUST deliver reports despite any TLS-
+via SMTP, sending MTAs MUST deliver reports despite any TLS-
 related failures and SHOULD NOT include this SMTP session in the
 next report. This may mean that the reports are delivered
 unencrypted.*
