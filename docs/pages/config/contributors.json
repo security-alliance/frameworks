@@ -611,5 +611,18 @@
       { "name": "First-Contribution", "assigned": "2025-09-18" },
       { "name": "Dormant-90d+", "lastActive": "2025-09-18" }
     ]
+  },
+  "quillaudits": {
+    "slug": "quillaudits",
+    "name": "QuillAudits",
+    "avatar": "https://avatars.githubusercontent.com/quillaudits",
+    "github": "https://github.com/Quillhash",
+    "twitter": "https://twitter.com/QuillAudits",
+    "website": "https://www.quillaudits.com",
+    "company": "QuillAudits",
+    "job_title": "Smart Contract Audit Firm",
+    "role": "contributor",
+    "description": "",
+    "badges": []
   }
 }

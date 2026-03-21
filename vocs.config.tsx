@@ -356,6 +356,7 @@ const config = {
             },
             { text: 'Code Signing', link: '/devsecops/code-signing', dev: true },
             { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment', dev: true },
+            { text: 'Data Security & Upgrade Checklist', link: '/devsecops/data-security-upgrade-checklist', dev: true },
             { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments', dev: true },
             { text: 'Repository Hardening', link: '/devsecops/repository-hardening', dev: true },
             { text: 'Security Testing', link: '/devsecops/security-testing', dev: true },
