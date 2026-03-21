@@ -383,8 +383,11 @@ const config = {
           dev: true,
           items: [
             { text: 'Overview', link: '/supply-chain/overview', dev: true },
-            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness', dev: true },
             { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts', dev: true },
+            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness', dev: true },
+            { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats', dev: true },
+            { text: 'Vendor Risk Management', link: '/supply-chain/vendor-risk-management', dev: true },
+            { text: 'Incident Response', link: '/supply-chain/incident-response-supply-chain', dev: true },
           ]
         },
         {
