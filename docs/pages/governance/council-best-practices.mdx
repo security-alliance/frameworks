@@ -4,6 +4,11 @@ description: "Establish effective Security Councils for rollup governance with b
 tags:
   - Operations & Strategy
   - Legal & Compliance
+contributors:
+  - role: wrote
+    users: [michael, bram]
+  - role: reviewed
+    users: [mattaereal]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -17,7 +22,11 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 > **Attribution**: This section is based on [From Stage 0 to Stage 1: Security Council Best Practices in Rollup Governance](https://www.openzeppelin.com/news/security-council-best-practices-guide) by [OpenZeppelin](https://www.openzeppelin.com), authored by Bram Hoogenkamp and Michael Lewellen.
 
-Security Councils serve as specialized governance bodies that act as the final line of defense against exploits, governance attacks, and systemic failures in decentralized protocols. This guide outlines best practices for establishing and operating effective Security Councils, particularly for rollup governance frameworks.
+Security Councils serve as specialized governance bodies that act as the final line of defense against
+exploits, governance attacks, and systemic failures in decentralized protocols. This guide focuses
+primarily on rollups and other upgradeable protocols with emergency powers, where a Security Council may
+need narrowly scoped authority to pause systems, approve emergency actions, or coordinate urgent
+mitigation.
 
 ## Understanding Security Councils
 
@@ -73,9 +82,10 @@ Effective Security Councils balance diverse expertise:
 ### Selection and Governance
 
 **Transparent Selection Process:**
-- Community-driven nominations and voting
+- A documented nomination, appointment, or election process appropriate to the protocol's governance
+model
 - Public disclosure of selection criteria
-- Documented qualifications and conflict-of-interest policies
+- Documented qualifications, conflicts of interest, and removal conditions
 
 **Term Limits and Rotation:**
 - Fixed term lengths (typically 6-12 months)
@@ -84,11 +94,14 @@ Effective Security Councils balance diverse expertise:
 
 ### Service Level Agreements (SLAs)
 
-Establish explicit commitments defining:
-- Emergency response times (e.g., acknowledge critical threats within 1 hour)
-- Upgrade review periods (e.g., evaluate proposed changes within 48 hours)
+**Establish explicit operational expectations defining:**
+- Response expectations for credible critical threats (e.g., acknowledge critical threats within 1 hour)
+- Review timelines for emergency and non-emergency changes (e.g., evaluate proposed changes within 48 hours)
 - Communication requirements during incidents
 - Availability expectations for Council members
+
+These expectations should be calibrated to protocol risk, signer geography, and operational reality
+rather than copied as universal defaults.
 
 ## Multi-Sig Setup and Custody
 
@@ -119,9 +132,9 @@ Establish explicit commitments defining:
 - Document threshold justifications and review periodically
 
 **Key Rotation:**
-- Rotate signing keys 3-4 times annually minimum
-- Establish rotation procedures during member transitions
-- Test rotation processes before emergency situations
+- Rotate signing keys after member changes, suspected compromise, custody changes, or on a defined schedule
+- Document rotation procedures in advance  
+- Test rotation in non-emergency conditions before incidents
 
 ### Liveness and Accountability
 
@@ -195,7 +208,8 @@ Define emergency categories before crises occur using a decision matrix:
 - Slower response times
 - Potential for delayed response during off-hours
 
-Optimal approaches combine automated detection with manual authorization for critical actions.
+In practice, the safest approach is usually narrowly scoped, well-tested automation for detection or 
+limited containment, combined with manual and accountable authorization for broader emergency actions.
 
 ### Communication During Incidents
 
@@ -241,11 +255,14 @@ Is immediate action required to prevent loss of funds?
 ### Power Boundaries
 
 Establish explicit limits on Council authority:
-- Maximum funds accessible without DAO approval
-- Types of contract modifications permitted
-- Duration of emergency measures before review
-- Geographic or jurisdictional restrictions
+- Exact emergency actions permitted without DAO approval  
+- Maximum funds, systems, or contracts reachable under emergency authority  
+- Types of contract modifications permitted  
+- Duration of emergency measures before expiration, ratification, or formal review  
+- Required post-incident disclosure and governance review  
+- Geographic or jurisdictional restrictions where relevant  
 
+Emergency authority should be narrow, time-bounded, and designed to contain incidents, not to bypass normal governance for convenience.
 Regular parameter reviews ensure powers remain proportional to evolving risks.
 
 ### Cross-Protocol Collaboration
@@ -352,7 +369,8 @@ Security Councils can leverage existing SEAL infrastructure:
 
 1. **Establish clear prerequisites** before forming Security Councils to avoid premature overhead
 2. **Balance diverse expertise** across technical security, crisis management, and compliance domains
-3. **Implement robust key management** with hardware wallets, rotation schedules, and liveness mechanisms
+3. **Implement robust key management** with hardware wallets, tested rotation procedures, and liveness        
+ mechanisms
 4. **Define emergencies explicitly** using severity matrices before crises occur
 5. **Maintain transparent communication** with predefined channels and disclosure protocols
 6. **Integrate with DAO governance** through clear escalation paths and power boundaries
