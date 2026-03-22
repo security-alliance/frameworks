@@ -9,9 +9,9 @@ contributors:
   - role: wrote
     users: [dickson]
   - role: reviewed
-    users: []
+    users: [mattaereal]
   - role: fact-checked
-    users: []
+    users: [mattaereal]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -28,9 +28,10 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 > Qubes OS for desktop, GrapheneOS for mobile, Tails for ephemeral sessions.
 
 Infostealer malware is among the most common initial access vectors in Web3 compromises. A single infected machine can exfiltrate
-browser sessions, wallet keys, SSH credentials, and authentication tokens in seconds. Standard operating systems
-(Windows, macOS, mainstream Linux) run all applications in the same trust domain — one compromised app can access
-everything.
+browser sessions, wallet keys, SSH credentials, and authentication tokens in seconds. Standard operating systems such as Windows,
+macOS, and mainstream Linux distributions provide meaningful security controls, but they usually offer less compartmentalization
+by default than systems designed around strong isolation. In practice, a compromised app or user session can still expose a wide
+range of credentials, tokens, and sensitive workflows if those activities share the same device and user environment.   
 
 Secure operating systems address this through **isolation**: sensitive operations run in separate compartments that
 cannot see each other, so a compromised browser cannot reach your wallet or signing keys.
@@ -38,15 +39,19 @@ cannot see each other, so a compromised browser cannot reach your wallet or sign
 
 ## When to Use a Secure OS
 
-Not every team member needs Qubes OS. Use the right tool for the right threat:
+ No single operating system is correct for every role. Match the setup to the user’s exposure: signing,  
+ development, incident response, mobile approval, travel, or general staff work.
 
-| Role | Recommended Setup | Why |
-|------|-------------------|-----|
-| Key holders / signers | Qubes OS or dedicated air-gapped machine | Isolation of signing from browsing |
-| Mobile wallet users | GrapheneOS on a Pixel device | Hardened Android with per-app isolation |
-| Incident responders | Tails for forensic/ephemeral sessions | No persistent state, Tor-routed |
-| General team members | Hardened macOS/Linux + endpoint security | Sufficient with good hygiene |
-| Travel / high-risk contexts | Tails on USB or dedicated travel device | Leaves no trace on borrowed hardware |
+| Role | Recommended setup | Why |
+|------|------------------|-----|
+| Treasury signers / high-value key holders | **Dedicated signing machine** (preferred), or **Qubes OS** with a dedicated signing qube and strict workflow separation | These users need the strongest isolation from browsing, chat, email, and development activity. Their setup should minimize exposure, reduce key-material crossover, and make compromise of one activity less likely to endanger signing operations. |
+| Developers with production or deployment access | **Qubes OS**, or a **hardened, managed macOS/Linux workstation** with strong browser/app separation | These users routinely touch untrusted code, dependencies, links, and developer tooling. Their risk is less about storing seed phrases and more about preventing a compromised dev workflow from reaching credentials, sessions, deploy keys, or privileged infrastructure. |
+| Security engineers / incident responders | **Clean managed workstation** or **Qubes OS** for primary response; **Tails** as a supplemental clean environment for emergency access, threat research, or communications | Incident response needs evidence preservation, reliable tooling, and clean operator workflows. Tails can help for ephemeral access and clean communications, but it is not a substitute for a controlled forensic or response workstation. |
+| Mobile wallet users / executives who approve from phones | **GrapheneOS on a dedicated Pixel device** for sensitive mobile operations | Mobile users face high phishing and app-abuse risk. GrapheneOS improves isolation, hardening, and exploit resistance, especially when the device is separated from day-to-day personal use. |
+| General team members | **Hardened, managed macOS/Linux/Windows device** with endpoint protection, least privilege, and browser hygiene | Most staff do not need exotic operating systems, but they do need a baseline that resists common infostealers, malicious browser extensions, session theft, and credential abuse. |
+| Contractors / short-term contributors | **Managed workspace or VDI** when possible; otherwise a **restricted, hardened standard OS setup** with scoped access | The main control here is limiting blast radius. Short-term contributors usually benefit more from strong access boundaries and managed work environments than from being told to adopt a specialized OS. |
+| Travel / high-risk travel contexts | **Dedicated travel device**; optionally **Tails on hardware you control and trust** for clean, low-persistence sessions | Travel risk is as much about physical access, coercion, and device seizure as malware. A reduced-trust travel setup is useful, but Tails does not make borrowed or potentially tampered hardware safe. |
+| Anonymous research / sensitive browsing | **Tails** or another dedicated low-persistence environment on trusted hardware | This is where Tails fits best: short-lived sessions, low persistence, and network privacy — not as a universal replacement for a primary secure workstation. |
 
 
 ## Desktop: Qubes OS
@@ -128,10 +133,16 @@ leaves no trace on the host machine.
 
 ### When to Use Tails
 
-- **Incident response**: Investigating a compromise from a clean, ephemeral environment
-- **Travel**: Booting on hotel or conference hardware without trusting the host machine
-- **Anonymous research**: Investigating threats or active incidents without revealing your identity
-- **Emergency access**: Accessing recovery tools or communications when your primary device is compromised
+Tails is useful when you need a clean, ephemeral software environment on hardware you already control   
+or reasonably trust. It does not make untrusted or potentially tampered hardware safe.
+
+- **Clean emergency access**: Accessing communications or recovery resources from a known-clean         
+ ephemeral environment
+- **Travel**: Reducing persistence and local data exposure on a device you control for high-risk travel 
+- **Anonymous research**: Investigating threats or active incidents without tying activity to your      
+ normal identity
+- **Compromise recovery support**: Performing limited triage or coordination from a fresh environment   
+ while a primary workstation is treated as untrusted
 
 ### Key Properties
 
@@ -149,14 +160,20 @@ leaves no trace on the host machine.
 
 ## Decision Matrix
 
-| Factor | Qubes OS | GrapheneOS | Tails |
-|--------|----------|------------|-------|
-| **Platform** | Desktop/laptop | Mobile (Pixel) | Any PC (USB boot) |
-| **Isolation model** | VM-based compartments | App sandboxing + profiles | Ephemeral session |
-| **Persistence** | Yes (per-qube) | Yes | No (by design) |
-| **Daily driver?** | Yes (with learning curve) | Yes | No |
-| **Best for** | Key holders, developers | Mobile wallet users | IR, travel, emergency |
-| **Hardware cost** | $800-1500 (compatible laptop) | $400-900 (Pixel device) | Any USB drive |
+| Factor | Qubes OS | GrapheneOS | Tails | Hardened standard OS |
+|--------|----------|------------|-------|----------------------|
+| **Platform** | Desktop / laptop | Mobile (Pixel only) | USB-booted live desktop session | macOS, Linux, or Windows |
+| **Primary security model** | Strong compartmentalization through isolated qubes / VMs | Hardened mobile OS with strong app sandboxing and exploit mitigations | Ephemeral, low-persistence session with Tor-by-default | General-purpose OS with hardening, least privilege, and endpoint controls |
+| **Persistence** | Yes | Yes | No by default | Yes |
+| **Best fit** | High-risk desktop users: signers, sensitive developers, security-heavy roles | Dedicated mobile wallet / approval device | Clean emergency access, anonymous research, limited recovery workflows | Most staff, day-to-day work, lower-friction secure baseline |
+| **Main strength** | Strong separation between browsing, communications, development, and sensitive workflows | Best practical hardened mobile option with strong isolation | Leaves little local trace and starts from a clean software state each session | Most usable and operationally realistic for teams at scale |
+| **Main weakness** | Hardware compatibility, learning curve, and operational overhead | Pixel-only, mobile-only, not a desktop replacement | Does not make untrusted hardware safe; poor fit for persistent work | Weaker isolation by default; compromise of one user environment can expose more of the workflow |
+| **Use as a daily driver?** | Yes, for users willing to accept the learning curve | Yes, on a dedicated or carefully separated device | No | Yes |
+| **Good for key management?** | Good, especially with dedicated signing qubes and strict workflow separation | Limited; better for mobile approvals than primary key custody | Only for narrow recovery / emergency use, not primary key operations | Only with strong procedural separation; not ideal for highest-risk signing roles |
+| **Good for incident response?** | Good as a controlled response workstation | Limited | Useful as a supplemental clean environment for comms / triage / emergency access | Good if centrally managed and kept clean, but less isolated |
+| **Hardware / ecosystem constraints** | Requires compatible hardware and enough RAM | Requires supported Pixel device | Requires USB boot and hardware you control or trust | Works with standard enterprise/device fleets |
+| **Operational burden** | High | Medium | Medium for occasional use, high if overused | Low to medium |
+| **Recommended users** | Treasury custodians, signers, high-risk developers, security leads | Executives or operators approving actions from mobile, dedicated mobile wallet users | Incident support, high-risk travel, sensitive research | General team members, contractors with scoped access, most business roles |
 
 
 ## Hardening Standard Operating Systems
@@ -182,6 +199,14 @@ If a dedicated secure OS is not feasible, harden your existing setup:
 - [ ] Disable SSH password authentication — use key-based only
 - [ ] Consider [Kicksecure](https://www.kicksecure.com/) as a hardened Debian derivative
 
+### Windows                                                                                                                                            
+   
+- [ ] Enable BitLocker full-disk encryption                                                             
+- [ ] Keep Windows and drivers fully updated                                                            
+- [ ] Use Microsoft Defender with tamper protection enabled                                             
+- [ ] Use a standard user account for daily work                                                        
+- [ ] Disable or restrict unnecessary remote access services                                            
+- [ ] Review browser extensions and installed applications regularly   
 
 ## Further Reading
 
