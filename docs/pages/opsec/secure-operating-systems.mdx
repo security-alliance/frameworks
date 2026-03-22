@@ -55,9 +55,15 @@ cannot see each other, so a compromised browser cannot reach your wallet or sign
 
 
 ## Desktop: Qubes OS
+                                                                            
+[Qubes OS](https://www.qubes-os.org/) is a security-focused operating system built around strong
+compartmentalization. It runs different activities in isolated virtual machines ("qubes"), allowing teams
+to separate browsing, communications, development, and sensitive operations on the same device.
 
-[Qubes OS](https://www.qubes-os.org/) is a security-focused operating system that runs each application group in an
-isolated virtual machine (called a "qube"). If one qube is compromised, others remain unaffected.
+Qubes is best suited for high-risk desktop users who benefit from strong workflow separation, such as
+treasury signers, developers with privileged access, and security-sensitive operators. Its main advantage
+is not just "being more secure" in the abstract, but reducing the chance that a compromise in one 
+activity can immediately spread into another. 
 
 ### Why It Matters for Web3
 
@@ -127,9 +133,14 @@ and exploit mitigations while maintaining Android app compatibility.
 
 
 ## Ephemeral Sessions: Tails
-
-[Tails](https://tails.net/) is a live operating system that boots from a USB drive, routes all traffic through Tor, and
-leaves no trace on the host machine.
+                                                                                                           
+[Tails](https://tails.net/) is a live operating system that boots from a USB drive, routes traffic      
+through Tor, and minimizes local persistence by default. Its main value is providing a clean,             
+low-persistence software environment for short-lived sessions.
+                                                                                                           
+Tails is best used for clean emergency access, anonymous research, high-risk travel on hardware you     
+control, or limited recovery workflows where reducing persistence matters. It is not a substitute for a   
+primary secure workstation, and it does not make untrusted or potentially tampered hardware safe.  
 
 ### When to Use Tails
 
@@ -178,7 +189,18 @@ or reasonably trust. It does not make untrusted or potentially tampered hardware
 
 ## Hardening Standard Operating Systems
 
-If a dedicated secure OS is not feasible, harden your existing setup:
+For most teams, the right baseline is not a specialized operating system but a well-managed standard    
+one. A hardened macOS, Linux, or Windows device with full-disk encryption, timely patching, least         
+privilege, endpoint protection, and strong browser hygiene is a practical and effective default for       
+day-to-day work.
+
+This setup does not provide the same compartmentalization as Qubes OS or the same low-persistence       
+properties as Tails, but it is usually the most scalable and supportable option for general staff,
+lower-risk roles, and organizations that need consistent fleet management.
+
+The options below solve different problems: Qubes focuses on desktop compartmentalization, GrapheneOS
+on hardened mobile usage, Tails on clean low-persistence sessions, and hardened standard operating
+systems on practical day-to-day security at team scale.
 
 ### macOS
 
