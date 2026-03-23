@@ -40,10 +40,9 @@ configure, answer: *who receives this, and what do they do when it fires?*
 
 ### Act on your alerts
 
-Organizations fail at monitoring in two ways: not logging at all, or logging without acting. Both leave you blind.
-Every alert must map to a concrete, documented response. For smart contract protocols, this typically means having a
-pause mechanism or circuit breaker that an authorized party (or an automated system) can trigger when a critical
-alert fires. Without this, monitoring only tells you what happened, not what you could have prevented.
+Organizations fail to monitor in two ways: not logging at all or logging without acting. Both leave you blind.
+
+Every alert must map to a concrete, documented response. For smart contract protocols, this typically means having a pause mechanism or circuit breaker and, in higher-maturity setups, possibly a carefully designed automated system that can trigger when a critical alert fires, but only where the trigger conditions and failure modes have been explicitly reviewed. Without this, monitoring only tells you what happened, not what you could have prevented.
 
 ### Monitor with redundancy *(higher maturity)*
 
