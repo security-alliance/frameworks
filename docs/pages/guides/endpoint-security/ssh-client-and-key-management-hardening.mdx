@@ -119,6 +119,22 @@ team.
 - Review deploy keys carefully because they are often long-lived and easy to forget
 - Revoke and reissue keys promptly after device loss, offboarding, or suspected compromise
 
+### Higher-Maturity Option: SSH Certificates
+
+For larger teams or higher-sensitivity environments, consider using SSH certificates instead of managing long-lived 
+authorized keys on each target system.
+
+With SSH certificates, a trusted internal certificate authority (CA) signs user or host keys for a limited period 
+of time. This can make access management easier by allowing teams to:
+
+- Issue short-lived SSH access without distributing permanent keys to every host
+- Centralize approval, expiration, and revocation workflows
+- Reduce the operational burden of updating `authorized_keys` across many systems
+- Tie SSH access more closely to role, device, or incident-response requirements
+
+SSH certificates introduce their own operational complexity and should be implemented carefully, but they are worth 
+evaluating for organizations that need stronger central control over SSH access.
+
 ## Web3-Specific Operational Rules
 
 Use these rules consistently:
