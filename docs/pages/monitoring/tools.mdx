@@ -137,7 +137,7 @@ Your monitoring is only as good as the delivery mechanism for its alerts.
 
 - **Prefer:** PagerDuty or OpsGenie (escalation policies, on-call rotations, delivery receipts)
 - **Use with care:** Slack, Discord, Telegram (useful for visibility, but easy to miss; no delivery guarantees)
-- **Avoid for critical alerts:** Email (high latency, often filtered to spam)
+- **Don’t rely on email as the sole channel for critical alerts**: Email may be appropriate as a secondary or audit channel, not primary paging (high latency, often filtered to spam)
 
 For high-severity alerts, use a dedicated paging tool with escalation so that if the primary on-call misses the
 alert, it automatically escalates to a secondary.
