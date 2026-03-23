@@ -4,6 +4,13 @@ description: "On-chain monitoring: track large fund transfers, token minting, an
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [JosepBove]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -19,33 +26,88 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 Effective on-chain monitoring is complex and involves setting up systems and processes to continuously observe
 blockchain activities and detect any anomalies.
 
+## Key Principles
+
+- **Transparency:** Prefer open-source or auditable tools so your monitoring infrastructure can itself be reviewed.
+- **Real-time detection:** Minimize the time between an on-chain event and the alert reaching a responder.
+- **Automation:** Automate repetitive detection tasks to reduce human error and ensure consistent coverage.
+- **Scalability:** Design your monitoring setup to scale as protocol activity and the number of monitored contracts grows.
+
 ## Best Practices
 
 ### Define Monitoring Objectives
 
-1. Determine the critical metrics to monitor, such as large fund transfers, token minting events, and changes in
-contract ownership.
+1. Determine the critical metrics to monitor. Common categories include:
+   - Large fund transfers from protocol or treasury wallets
+   - Token minting and burning events
+   - Changes in contract ownership or admin roles
+   - Contract upgrades and proxy implementation changes
+   - Access control modifications (role grants, revocations)
+   - Unusual gas usage patterns that may indicate griefing or exploitation attempts
 
 ### Implement Monitoring Tools
 
 1. Use automated monitoring tools that can continuously track blockchain activities and generate alerts for anomalies.
+   See the [Tools](/monitoring/tools) page for a catalog of available options.
 2. Supplement automated tools with periodic manual reviews.
 
 ### Establish Alerting Mechanisms
 
 1. Set up real-time alerts to notify relevant project members of any suspicious activities or threshold breaches.
-2. Use multiple channels for alerts, such as email, SMS, and messaging apps where available, to ensure timely response.
+2. Use multiple channels for alerts (Discord webhooks, Telegram bots, PagerDuty, Slack) to ensure timely delivery.
+3. Every alert must have a designated owner and a documented response. An alert with no one responsible is
+   indistinguishable from no alert at all.
+
+### Monitoring Strategies
+
+Structure monitoring coverage across these tracks:
+
+#### Transaction monitoring
+
+- Large fund transfers above defined thresholds
+- Unusual transaction frequency from key addresses
+- Flash loan interactions with protocol contracts
+
+#### Contract event monitoring
+
+- Token minting and burning
+- Approval and transfer events outside normal patterns
+- Contract upgrades and ownership transfers
+- Admin role grants and revocations
+
+#### Bridge monitoring
+
+- Unusual inflow or outflow volumes through bridge contracts
+- Bridge contract state changes or ownership modifications
+
+#### Oracle and governance monitoring
+
+- Price feed deviations beyond expected bounds
+- Unexpected governance proposals or accelerated vote execution
+
+#### Node and network monitoring
+
+- Block propagation times and node health
+- Network latency affecting transaction confirmation
+- RPC endpoint availability
 
 ### Regular Reviews and Updates
 
 1. Conduct regular reviews of your monitoring systems to ensure they are functioning correctly and covering all
-necessary metrics.
+   necessary metrics.
 2. Regularly update thresholds and alert configurations to reflect your current needs.
+3. **Test your alerts periodically**: verify that alert delivery actually works end-to-end, not just that the
+   detection rule is configured. A misconfigured webhook or expired token can silently break your alerting.
+4. **Alert on alert tampering**: configure alerts for the disabling or modification of existing alerts. This
+   protects against both accidental misconfiguration and adversarial tampering that could silently disable your
+   detection coverage.
 
 ### Incident Response
 
 1. Develop and maintain an [incident response plan](/incident-management/overview) to handle alerts and anomalies as
-soon as possible.
+   soon as possible.
+2. Document who gets paged for each alert category and what the first response steps are. This should be decided
+   before an incident, not during one.
 
 ---
 

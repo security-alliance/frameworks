@@ -307,6 +307,7 @@ reauthentication
 CAIP
 unbonding
 unbond
+Cronos
 Zenity
 Cowork
 nsjail

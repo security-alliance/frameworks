@@ -1,0 +1,148 @@
+---
+title: "On-Chain Monitoring Tools | Security Alliance"
+description: "On-chain monitoring tools catalog: open-source and commercial options for transaction monitoring, anomaly detection, alerting, and reliability assessment."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [JosepBove]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# On-Chain Monitoring Tools
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> The tools below are primarily focused on EVM-compatible chains. For non-EVM chains (Solana, Cosmos, etc.), verify
+> chain support before selecting a tool. For critical systems, consider running monitors from two independent providers
+> simultaneously. See the [Reliability Considerations](#reliability-considerations) section below.
+
+## Open Source / Self-Hosted
+
+### BlockScout
+
+Open-source blockchain explorer with monitoring capabilities. Track transactions, contract events, and token transfers
+with custom alerts for your contracts and addresses. Can be self-hosted for free (MIT license) or deployed via
+BlockScout's managed options: Autoscout (self-service managed hosting, $250-950/month depending on transaction volume)
+or Explorer as a Service (EaaS, enterprise pricing). A PRO API is also available with a free tier (100K credits/day,
+5 req/s) and paid plans from $49/month.
+
+- **Chains:** Multiple EVM networks
+- **GitHub:** [blockscout/blockscout](https://github.com/blockscout/blockscout)
+- **Website:** [blockscout.com](https://www.blockscout.com)
+
+### Prometheus + Grafana
+
+Infrastructure-level metrics collection (Prometheus) and visualization/alerting (Grafana). Useful for monitoring
+blockchain node health, block propagation times, RPC endpoint availability, and custom on-chain metrics exported
+via a scraper.
+
+- **Chains:** Chain-agnostic (infrastructure layer)
+- **GitHub:** [prometheus/prometheus](https://github.com/prometheus/prometheus) | [grafana/grafana](https://github.com/grafana/grafana)
+
+## Commercial / Hosted
+
+### Etherscan
+
+Address monitoring via Watch List, free for registered users. Monitor up to 50 Ethereum addresses and receive
+email notifications on inbound and outbound transactions. Configurable per address via the account dashboard.
+The API supports polling-based monitoring (3 req/s, 100K calls/day on the free tier) but has no push or streaming
+endpoints; custom polling layers are required for automated alerting.
+
+- **Free plan:** Watch List available with a free account; API free tier for personal use
+- **Chains:** Ethereum (and Etherscan-family explorers for other EVM chains)
+- **Website:** [etherscan.io](https://etherscan.io)
+- **Documentation:** [docs.etherscan.io](https://docs.etherscan.io)
+
+### Guardrail
+
+Real-time DeFi security monitoring and automated threat response. Deploys customizable Guards (rule sets that
+inspect every on-chain transaction per block, per function, or per event) and can trigger automated protective
+responses such as contract pauses, wallet flagging, and on-call escalation. Covers DeFi protocols, DApps, oracle
+networks, DAO governance, and multisig operations.
+
+- **Chains:** 30+ (Ethereum, Arbitrum, Optimism, Base, Polygon, zkSync, Scroll, and others)
+- **Website:** [guardrail.ai](https://www.guardrail.ai)
+
+### Hexagate
+
+Chainalysis's real-time on-chain threat detection and automated prevention platform. Uses ML-driven anomaly
+detection and GateSigner (pre-signing transaction simulation) to catch exploits before they land on-chain.
+Supports custom detection rules via Gatelang. Free access available for protocols building on partner chains
+(Base, Avalanche, Polygon, Cronos, Immutable, and others) through chain-specific application programs.
+
+- **Free plan:** Available for protocols on partner chains; check with your chain's foundation
+- **Chains:** 75+ blockchains
+- **Website:** [chainalysis.com/product/hexagate](https://www.chainalysis.com/product/hexagate/)
+
+### Hypernative
+
+Machine learning-based anomaly detection and pre-crime threat detection for DeFi protocols. Detects novel attack
+patterns by modeling protocol behavior rather than relying solely on known signatures.
+
+- **Chains:** 70+ blockchains
+- **Website:** [hypernative.io](https://hypernative.io)
+
+### Tenderly
+
+Real-time smart contract monitoring platform with a free tier. Supports 12 alert trigger types (function calls,
+event emissions, balance changes, state variable changes, and transaction value thresholds) with delivery to
+8 destinations: Slack, Discord, Telegram, email, webhooks, PagerDuty, Sentry, and Web3 Actions (TypeScript
+serverless functions that run on Tenderly's infrastructure). The CLI and SDKs are open-source (GPL-3.0).
+
+- **Free plan:** Available; exact monitoring quotas visible on the pricing page
+- **Chains:** 100+ networks
+- **Website:** [tenderly.co](https://tenderly.co)
+- **GitHub:** [Tenderly](https://github.com/Tenderly) (CLI, SDKs, framework plugins)
+
+## Reliability Considerations
+
+Your monitoring system is only effective if it is itself reliable. Before committing to a tooling setup, evaluate
+these factors:
+
+### Self-hosted vs. managed
+
+| | Self-Hosted | Managed Platform |
+| --- | --- | --- |
+| **Control** | Full control over configuration and data | Vendor controls infrastructure |
+| **Operational burden** | You own uptime, upgrades, and maintenance | Vendor handles ops |
+| **Vendor risk** | None | Platform downtime or shutdown affects you |
+| **Cost** | Infrastructure cost + engineering time | Subscription fee |
+
+### Key reliability metrics to evaluate
+
+- **Uptime SLA:** What guaranteed availability does the provider offer? Is there a status page?
+- **Time-to-alert:** How quickly after an on-chain event does a notification reach you? Minutes matter during an exploit.
+- **Alert delivery guarantees:** Does the platform guarantee at-least-once delivery, or is it best-effort?
+
+### Redundancy recommendation
+
+For any protocol holding significant value, do not rely on a single monitoring provider. Run at least two independent
+monitoring setups (ideally one self-hosted and one managed) covering the same critical invariants. If the managed
+platform has downtime or misses an anomaly, the self-hosted layer still provides coverage, and vice versa.
+
+### Alert channel reliability
+
+Your monitoring is only as good as the delivery mechanism for its alerts.
+
+- **Prefer:** PagerDuty or OpsGenie (escalation policies, on-call rotations, delivery receipts)
+- **Use with care:** Slack, Discord, Telegram (useful for visibility, but easy to miss; no delivery guarantees)
+- **Don’t rely on email as the sole channel for critical alerts**: Email may be appropriate as a secondary or audit channel, not primary paging (high latency, often filtered to spam)
+
+For high-severity alerts, use a dedicated paging tool with escalation so that if the primary on-call misses the
+alert, it automatically escalates to a secondary.
+
+---
+
+</TagProvider>
+<ContributeFooter />

@@ -654,6 +654,10 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/monitoring/tools": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/multisig-for-protocols/backup-signing-and-infrastructure": [
       "Engineer/Developer",
       "Security Specialist",

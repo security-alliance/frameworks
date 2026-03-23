@@ -1,4 +1,20 @@
 {
+  "JosepBove": {
+    "slug": "JosepBove",
+    "name": "Josep Bove",
+    "avatar": "https://avatars.githubusercontent.com/JosepBove",
+    "github": "https://github.com/JosepBove",
+    "twitter": "https://twitter.com/JosepBove",
+    "website": null,
+    "company": "OP Labs",
+    "role": "steward",
+    "job_title": null,
+    "description": "Steward of Monitoring framework",
+    "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-03-17", "framework": "Monitoring" },
+      { "name": "First-Contribution", "assigned": "2026-03-16" }
+    ]
+  },
   "mattaereal": {
     "slug": "mattaereal",
     "name": "matta",

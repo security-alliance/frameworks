@@ -236,6 +236,7 @@ const config = {
           items: [
             { text: 'Overview', link: '/monitoring/overview', dev: true },
             { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
+            { text: 'Tools', link: '/monitoring/tools', dev: true },
             { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
           ]
         },
