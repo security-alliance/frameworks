@@ -58,7 +58,7 @@ DeIRF
 Dependabot
 Deseat
 dev
-Devops
+DevOps
 DevSecOps
 discoverable
 DIY
@@ -334,3 +334,6 @@ SLSA
 pids
 Kata
 rootfs
+GitHub
+GitLab
+GoDaddy

@@ -1,0 +1,150 @@
+---
+title: "Incident: API Outage - Rate Limiter Misconfiguration | Security Alliance"
+description: "This is an example incident log. Delete this file or use it as reference when creating real incident logs."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [hexnickk4997, n0guest]
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Incident: API Outage - Rate Limiter Misconfiguration
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **This is an example incident log.** Delete this file or use it as reference when creating real incident logs.
+
+## Summary
+
+| Field | Value |
+|-------|-------|
+| **Status** | Resolved |
+| **Severity** | P2 |
+| **Start Time** | 2024-01-15 14:32 UTC |
+| **Resolution Time** | 2024-01-15 16:45 UTC |
+| **Affected Services** | API, Frontend (degraded) |
+
+## Roles
+
+| Role | Person |
+|------|--------|
+| Detector | Monitoring (DataDog alert) |
+| Incident Leader | Alice |
+| Scribe | Bob |
+| Communication Manager | Carol |
+| Responders | Alice, Bob, Dave (infra SME) |
+
+## Communication Channels
+
+- **Call:** https://meet.google.com/xxx-xxxx-xxx
+- **Chat:** #incident-2024-01-15-api
+
+
+## Timeline
+
+```
+14:32 UTC - DataDog alert fired: API error rate >5%
+14:35 UTC - Bob acknowledged alert, started investigating
+14:38 UTC - Bob escalated to #incident channel, started call
+14:42 UTC - Alice joined, assigned as Incident Leader
+14:45 UTC - Bob assigned as Scribe
+14:48 UTC - Dave (infra SME) joined
+14:52 UTC - Identified: rate limiter rejecting legitimate requests
+14:55 UTC - Carol joined as Communication Manager
+15:05 UTC - Root cause identified: bad config deployed at 14:15 UTC
+15:12 UTC - Decision: rollback config
+15:18 UTC - Rollback initiated
+15:25 UTC - Rollback complete, monitoring
+15:40 UTC - Error rates back to normal
+15:45 UTC - Carol posted update to Discord
+16:00 UTC - Continued monitoring, no issues
+16:45 UTC - Incident declared resolved
+```
+
+
+## Investigation
+
+### What We Know
+
+- API started returning 429 errors at 14:32 UTC
+- Rate limiter was updated at 14:15 UTC as part of routine config change
+- New config had threshold set to 10 req/min instead of 1000 req/min (typo)
+- Affected all API endpoints
+
+### Affected Services
+
+| Service | Impact | Status |
+|---------|--------|--------|
+| API | 429 errors for most requests | Resolved |
+| Frontend | Degraded (API calls failing) | Resolved |
+| Smart Contracts | No impact | N/A |
+
+### Root Cause (initial assessment)
+
+Typo in rate limiter configuration: `10` instead of `1000` for requests per minute threshold.
+
+
+## Actions
+
+### Immediate
+
+- [x] Identify source of errors @Dave
+- [x] Find recent changes @Dave
+- [x] Prepare rollback @Dave
+
+### Resolution
+
+- [x] Rollback config change @Dave
+- [x] Verify API functioning @Bob
+- [x] Post community update @Carol
+
+
+## Resolution Summary
+
+### Mitigation Applied
+
+Rolled back rate limiter configuration to previous known-good version.
+
+### Verification
+
+- [x] API error rate back to baseline (&lt;0.1%)
+- [x] Sample API calls succeeding
+- [x] No user reports of issues post-fix
+
+
+## Communications Sent
+
+| Time | Channel | Summary |
+|------|---------|---------|
+| 15:00 UTC | Discord #announcements | "Investigating API issues" |
+| 15:45 UTC | Discord #announcements | "API issues resolved" |
+| 16:00 UTC | Twitter | Brief update (optional) |
+
+
+## Post-Incident
+
+- [x] Post-mortem scheduled for: 2024-01-17 15:00 UTC
+- [x] [Post-mortem document](./example-post-mortem) created
+- [ ] Action items assigned (pending post-mortem)
+
+
+## Links & Evidence
+
+- DataDog dashboard: [link]
+- Config PR that caused issue: [link]
+- Rollback PR: [link]
+
+*See [Incident Response Policy](../incident-response-policy) for severity definitions and process.*
+
+
+</TagProvider>
+<ContributeFooter />

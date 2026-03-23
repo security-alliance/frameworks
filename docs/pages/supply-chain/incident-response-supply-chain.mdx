@@ -1,0 +1,163 @@
+---
+title: "Supply Chain Incident Response | SEAL"
+description: "Respond to supply chain compromises in Web3 projects. Detect compromised dependencies, assess blast radius, lock affected versions, and coordinate recovery across frontend and smart contracts."
+tags:
+  - Security Specialist
+  - SRE
+  - Engineer/Developer
+contributors:
+  - role: wrote
+    users: [scode2277]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Supply Chain Incident Response
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway:** Supply chain incidents move faster than direct compromises. You do not control the affected
+> code, the fix depends on an external maintainer, and the same attack may be hitting hundreds of other projects
+> simultaneously. Speed and a practiced response plan are what determine your outcome.
+
+When a dependency is compromised, the clock starts before you are aware of it. The Ledger Connect Kit attack in
+2023 ran for several hours before widespread detection, long enough for significant user losses to occur. By the time
+most teams learned about it, the question was no longer whether they were affected but how many of their users had
+already interacted with the malicious version. Supply chain incidents have this character: they originate externally,
+propagate at ecosystem scale, and the window between compromise and discovery is often controlled by the attacker.
+
+For general incident response procedures, see the [Incident Management](/incident-management/overview) framework.
+This page focuses on the aspects unique to supply chain compromises.
+
+## How Supply Chain Incidents Differ
+
+| Aspect | Direct Compromise | Supply Chain Compromise |
+|--------|------------------|------------------------|
+| **Control** | You own the affected code | You depend on an external maintainer |
+| **Detection** | Internal monitoring catches it | Typically discovered externally: community, security researchers, registry alerts |
+| **Fix timeline** | You can patch immediately | You wait for the upstream fix or pin to a safe version |
+| **Blast radius** | Scoped to your systems | May affect every project in the ecosystem using that dependency |
+| **Attribution** | Attacker targeted you specifically | You are collateral in an ecosystem-wide attack |
+
+## Detection Signals
+
+Watch for these indicators that a supply chain compromise may have occurred:
+
+- **Community alerts.** Security advisories, posts from researchers, messages in developer Discord servers are often
+  the first signal.
+- **Unexpected dependency updates.** A package version appears in your lockfile that no one on the team updated.
+- **Behavioral anomalies.** Unexpected network requests from your application, unusual transaction prompts reported
+  by users, or build output that changes between runs without corresponding source changes.
+- **Integrity check failures.** SRI hash mismatches or checksum discrepancies between expected and actual artifacts.
+- **Registry advisories.** npm sends security advisories when a package is flagged, though this can lag behind public
+  disclosure.
+
+## Response Scenarios
+
+### Frontend Dependency Compromise
+
+This is the most common scenario: a compromised npm package serves malicious JavaScript to users through
+your frontend.
+
+- **Deploy a clean frontend immediately.** Revert to the last known good build or rebuild without the compromised
+  dependency.
+- **Invalidate CDN caches.** A cached compromised version will continue to reach users even after you redeploy from
+  clean source.
+- **Warn users.** Post on your official channels that users should not interact with the application until the clean version
+  is confirmed live.
+- **Check for wallet drainer activity.** If the compromise targeted wallet signing flows, check on-chain for
+  unauthorized transactions originating from your application's users during the exposure window.
+
+### Smart Contract Dependency Compromise
+
+If a Solidity library used in your contracts is found to be vulnerable or malicious:
+
+- **Determine if the affected code is deployed.** Check whether the compromised library version was included in any
+  deployed contracts. Library vulnerabilities that were not present in the version you used may not affect you.
+- **Consider pausing.** If your contracts have a pause mechanism and the vulnerability is actively exploitable, pause
+  them while you assess.
+- **Plan migration if needed.** Evaluate whether the vulnerability is actively exploitable
+  with your current configuration and plan a new deployment.
+
+### CI/CD Pipeline Compromise
+
+If the compromised dependency ran during your build process:
+
+- **Assume build secrets are compromised.** Rotate all secrets accessible to the CI environment (API keys, deployment
+  keys, npm tokens).
+- **Audit recent deployments.** Check if any build produced by the compromised CI was deployed to production.
+  Binaries or contracts produced during the compromise window should be considered untrusted.
+- **Review CI logs.** Look for unexpected network calls or file system access during the build.
+- **Rebuild with clean dependencies.** Use `--frozen-lockfile` with a verified lockfile.
+
+## Immediate Response Steps
+
+When a compromise is confirmed or credibly suspected:
+
+### Assess Exposure
+
+- **Check your lockfile.** Is the compromised version present in `pnpm-lock.yaml`, `yarn.lock`, or
+  `package-lock.json`?
+- **Check deployed artifacts.** Was the compromised version included in any build that reached production?
+- **Check CI history.** Did any CI run install the compromised version? If so, CI secrets may have been exposed.
+- **Identify the attack window.** When was the malicious version published, and when did you last install or build?
+
+### Contain the Damage
+
+- **Lock dependencies** to the last known good version. Delete `node_modules` and rebuild from a verified lockfile
+  using `--frozen-lockfile`.
+- **Do not deploy anything** built during the exposure window until the build is clean.
+- **Rotate exposed secrets.** If the compromised package ran during CI, assume that CI environment's secrets (API
+  keys, deployment keys, npm tokens) are exposed and rotate them immediately.
+- **Take down compromised deployments.** If a compromised frontend was served to users, take it offline or deploy a
+  clean version as fast as possible. A few minutes of unavailability is recoverable, continued exposure is not.
+
+### Communicate
+
+- **Notify your team.** Ensure everyone knows not to install or deploy until the situation is resolved.
+- **Notify affected users.** If wallet-interacting code was affected, warn users on your official channels promptly
+  and specifically: tell them what happened, what the risk is, and what action they should take.
+- **Coordinate with the maintainer.** Report the compromise to the package maintainer and to the registry (npm,
+  crates, PyPI).
+
+## Post-Incident Actions
+
+Once the immediate threat is contained:
+
+- **Document the timeline.** When the compromise occurred, when it was detected, how long it was in production, and
+  what the impact was. This serves the retrospective and any user communication that follows.
+- **Strengthen monitoring.** Add the detection signals you missed to your monitoring setup.
+- **Review dependency practices.** Were versions pinned? Were lockfiles committed and verified in
+  CI? Address any gaps the incident exposed.
+- **Update your response playbook.** Incorporate lessons learned so the next response is faster.
+
+## Quick-Reference Checklist
+
+When a supply chain compromise is reported:
+
+- [ ] Is the compromised version in your lockfile?
+- [ ] Was it included in any build that reached production?
+- [ ] Did it run during CI? If so, rotate all CI secrets.
+- [ ] Lock to the last known good version and rebuild from clean state.
+- [ ] Delete `node_modules` / build cache and use `--frozen-lockfile`.
+- [ ] If user-facing: deploy clean version, invalidate CDN caches, notify users.
+- [ ] If wallet-interacting: check for unauthorized on-chain activity during the exposure window.
+- [ ] Rotate any secrets the package could have accessed.
+- [ ] Report to the registry and coordinate with the package maintainer.
+- [ ] Document the incident timeline and run a retrospective.
+
+## Further Reading
+
+- [Incident Management](/incident-management/overview): General incident response procedures and team coordination
+- [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats): Real-world incidents that illustrate the attack patterns described here
+- [Dependency Awareness](/supply-chain/dependency-awareness): Preventive practices like version pinning and lockfile integrity that reduce exposure
+- [DevSecOps](/devsecops/overview): Integrating dependency scanning and build security into CI/CD pipelines
+
+---
+
+</TagProvider>
+<ContributeFooter />

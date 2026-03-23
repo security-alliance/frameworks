@@ -71,7 +71,7 @@ Both versions are continuously updated, but only `main` reflects finalized, comm
 
 ## Contributing
 
-The Security Framework is an open and collaborative initiative. Whether you are part of the Security Alliance or not,
+The Security Frameworks are an open and collaborative initiative. Whether you are part of the Security Alliance or not,
 we welcome your contributions! Help us build the documentation and improve security in the ecosystem. If you'd like
 to join our effort, feel free to fix typos, contribute new sections, or propose enhancements.
 

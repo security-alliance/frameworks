@@ -1,10 +1,13 @@
 ---
 title: "Supply Chain Security | Security Alliance"
-description: "Supply Chain Security Framework: Secure all components, dependencies, and processes in software development and deployment. Protect web application stacks and smart contract external libraries."
+description: "Supply Chain Security Framework: Secure dependencies, frontend delivery, infrastructure providers, and build artifacts in Web3 projects. Prevent supply chain attacks before they reach users."
 tags:
   - Engineer/Developer
   - Security Specialist
   - Devops
+contributors:
+  - role: wrote
+    users: [scode2277]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -17,9 +20,56 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Supply chain security involves managing and securing all the components, dependencies, and processes involved in the
-development, deployment, and maintenance of software. In the context of blockchain and web3 projects, supply chain
-security could for example be parts of the web application stack, or external libraries used by the smart contract.
+> 🔑 **Key Takeaway:** Your software is only as secure as its weakest dependency. Supply chain security means knowing
+> what you depend on, verifying its integrity, and having a plan for when something in your chain is compromised.
+
+Supply chain security covers everything between your source code and your users. In traditional software, that mostly
+means npm packages and third-party libraries. In Web3, the chain is longer and the consequences are more severe:
+frontend code interacts directly with wallets, smart contracts hold real value, and infrastructure providers make
+decisions your contracts rely on. Attackers who understand this do not need to compromise your code directly. They
+target the libraries you import, the CDNs that serve your frontend, the RPC endpoints your app trusts, and the
+contractors your team onboards.
+
+These are not theoretical risks. Attacks targeting npm packages, wallet connector libraries, and compiler toolchains
+have resulted in hundreds of millions of dollars in losses across the Web3 ecosystem.
+
+## What Makes Up a Web3 Supply Chain?
+
+A Web3 project's supply chain includes every external component between your source code and your users:
+
+- **Code dependencies:** npm packages, Solidity libraries, Rust crates, and their transitive dependencies
+- **Frontend delivery:** CDNs, hosting providers, wallet connector libraries, and the scripts served to users' browsers
+- **Build tooling:** Compilers (solc), development frameworks (Hardhat, Foundry), CI/CD pipelines
+- **Infrastructure providers:** RPC nodes, indexers, oracle networks, bridge relayers
+- **Hardware:** Signing devices, hardware wallets, HSMs
+- **Human supply chain:** Contractors, freelancers, open-source contributors
+
+A compromise at any point in this chain can affect your users.
+
+## What This Framework Covers
+
+This framework provides practical guidance for securing each layer of your supply chain:
+
+1. [Dependency Awareness](/supply-chain/dependency-awareness): Manage external packages securely, including version pinning,
+   lockfile integrity, vulnerability scanning, and protection against typosquatting.
+2. [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats): The specific threat vectors that affect Web3
+   projects, from frontend library hijacking to infrastructure compromise and hardware tampering.
+3. [Supply Chain Levels for Software Artifacts](/supply-chain/supply-chain-levels-software-artifacts): Classify your
+   components by risk level and apply proportional controls.
+4. [Vendor Risk Management](/supply-chain/vendor-risk-management): Evaluate and monitor third-party providers including RPC
+   services, oracle networks, security auditors, and contractors.
+5. [Supply Chain Incident Response](/supply-chain/incident-response-supply-chain): What to do when a dependency or
+   provider is compromised, including Web3-specific response scenarios.
+
+## Related Frameworks
+
+Supply chain security intersects with several other areas covered in this project:
+
+- [DevSecOps](/devsecops/overview): Integrating dependency scanning and build security into CI/CD pipelines
+- [DPRK IT Workers](/dprk-it-workers/overview): Mitigating insider threats from the human supply chain
+- [Wallet Security](/wallet-security/overview): Hardware wallet supply chain integrity and key management
+- [External Security Reviews](/external-security-reviews/overview): Selecting and working with security auditors
+- [Incident Management](/incident-management/overview): General incident response procedures
 
 ---
 
