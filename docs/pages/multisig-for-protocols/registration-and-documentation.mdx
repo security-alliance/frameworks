@@ -99,17 +99,27 @@ For each multisig, assign:
 
 Every signer must:
 
-- Use a hardware wallet for all multisig operations
-- Maintain a backup hardware wallet with the same seed
-- Store the seed phrase securely
+- Use a hardware wallet for multisig operations
+- Maintain a documented recovery and continuity plan
+- Store seed material and recovery credentials securely
 - Verify every transaction before signing
-- Respond within SLA based on multisig classification
-- Report incidents immediately
-- Complete training and participate in drills
+- Understand multisig response time expectations
+- Report incidents promptly
+- Complete required onboarding, training, and drills
+
+Recovery procedures vary by team. Some teams use backup devices or replicated seed material, while others avoid
+that model because it changes the threat surface. Document the tradeoffs and controls for whichever recovery approach 
+you use. 
 
 #### Response Time SLAs
 
-Use the response time requirements from [Planning & Classification](/multisig-for-protocols/planning-and-classification#operational-classification):
+Define expected response windows based on the multisig's classification, the assets or permissions it controls, and 
+the team's operational model. See [Planning & Classification](/multisig-for-protocols/planning-and-classification#operational-classification).
+
+For example, teams often set much shorter expectations for emergency actions than for routine operational
+transactions. Record those expectations in your internal policy and make sure all signers understand them.
+
+Example:
 
 - **Emergency**: \<2 hours
 - **Time-Sensitive**: 2-12 hours
@@ -117,24 +127,28 @@ Use the response time requirements from [Planning & Classification](/multisig-fo
 
 ### Admin Responsibilities
 
-Multisig admins must:
+Multisig admins typically:
 
 - Ensure the multisig is properly documented
 - Maintain an up-to-date signer list with verified addresses
 - Set up primary and backup communication channels
 - Coordinate signer onboarding and offboarding
-- Schedule and conduct periodic reviews (quarterly minimum)
+- Schedule and conduct periodic reviews at a cadence appropriate to the multisig's risk and activity level (e.g. quarterly minimum)
 - Ensure backup infrastructure is configured and tested
 
 ### Operational Lead Responsibilities
 
 - Maintain the playbook and keep documentation current
 - Coordinate across all multisigs
-- Conduct periodic audits of multisig configurations
+- Periodically review multisig configurations and supporting documentation
 - Escalate security concerns to the security contact
 - Report on operational status
 
 ### Review Schedule
+
+The right review cadence depends on the multisig's scope, activity level, and risk profile.
+
+Example review areas to assign and track:
 
 | Review Type | Frequency | Owner |
 |------------|-----------|-------|
@@ -193,12 +207,17 @@ Transaction: [Link to executed transaction]
 
 ### Transaction Review Records
 
-Maintain audit trails for:
+Maintain transaction records appropriate to your team's operational, legal, and compliance needs.
 
-- Transaction reviews and approvals
-- Execution and post-execution confirmation
-- Verification evidence
-- Issues encountered
+At a minimum, teams often record:                         
+
+- What the transaction was for
+- Who proposed it
+- Who reviewed or approved it
+- Whether it was executed successfully
+- Any issues or anomalies encountered
+
+Retention periods and evidence requirements should be defined by your organization's own policy.       
 
 **Retention**: 3 years minimum
 
@@ -278,6 +297,37 @@ Transaction records should capture:
 - Screenshot of simulation
 - Screenshot of hardware wallet confirmation
 - Communication thread link
+
+### Alternative simple transaction record
+
+A simple transaction record might capture:
+
+#### Core Record
+
+- Transaction: [Brief Description]
+- Date: [YYYY-MM-DD]
+- Multisig: [Name]
+- Status: Proposed / Signing / Executed / Rejected
+- Proposed by
+- Reason or justification
+- Network
+- Multisig address
+- Transaction type
+- Transaction hash or proposal link
+- Who reviewed or signed
+- Outcome
+- Notes on any issues encountered
+
+#### Optional Additional Evidence
+
+Higher-maturity teams may also choose to retain:
+
+- Expected nonce
+- Simulation results
+- Verification notes
+- Links to communication threads
+- Post-execution verification notes
+- Screenshots or supporting artifacts where appropriate
 
 #### Sign-Off
 
