@@ -32,7 +32,7 @@ body:
     id: suggested_content
     attributes:
       label: "What content are you suggesting for?"
-      description: "Be as specific as possible (e.g., new framework about X, new page on Y framework, update section Z in [framework] to include, etc.)"
+      description: "Be as specific as possible (e.g., new framework about X, a new page in framework Y, or an update to section Z in [framework])."
       placeholder: "Describe what new or updated content you are requesting."
     validations:
       required: true
@@ -40,7 +40,7 @@ body:
   - type: textarea
     id: why_needed
     attributes:
-      label: "Why do you think this update or modification is needed"
+      label: "Why do you think this update or modification is needed?"
       description: "If it is not self-explanatory, or relatively clear, add a few sentences explaining why it is needed."
       placeholder: "Add reasoning or context here."
     validations:
