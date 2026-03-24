@@ -6,7 +6,7 @@ tags:
   - Security Specialist
 contributors:
   - role: wrote
-    users: [Raiders0786]
+    users: [Raiders0786, gunnim]
   - role: reviewed
     users: [dickson, mattaereal]
 ---
@@ -37,7 +37,7 @@ protocols and features such as SMTP DANE, SSHFP, and CAA.
 
 - Domain is using the provider's nameservers
 - Registrar supports DS records
-- If registrar supports CDS/CDNSKEY auto-publish, enable that if offered
+- If the registrar supports CDS/CDNSKEY auto-publish, enable that if offered
 
 **Practical setup**:
 
@@ -101,7 +101,7 @@ SSL certificates for your domain.
 **How it protects you**: Without CAA records, any Certificate Authority can issue SSL certificates for your domain.
 Attackers could potentially obtain fake certificates and use them in sophisticated phishing attacks that appear to have
 valid SSL encryption.
-A well behaved CA not explicitly permitted via CAA records will deny certificate requests for that domain. \
+A well-behaved CA not explicitly permitted via CAA records will deny certificate requests for that domain. \
 While CA compromises are rare, history shows they do happen — and in such cases, attackers could potentially bypass
 or ignore CAA entirely. \
 Notable incidents include:
@@ -120,8 +120,8 @@ Before setting CAA records, identify which CA issued your current certificate:
 
 **Setup process**: Add CAA records to your DNS zone. Most DNS providers allow you to add these through their web interface:
 
-With the issuers full name in hand we now need to map it to the "Issuer Domain Name".
-There is no centralized repository mapping public CA's to their issuer domain names but they are generally easily found with
+With the issuer's full name in hand, we now need to map it to the "Issuer Domain Name".
+There is no centralized repository mapping public CA's to their issuer domain names, but they are generally easily found with
 a simple search for f.x. "Let's Encrypt CAA". \
 The Common CA Database also provides a
 [comprehensive collection to reference](https://ccadb.org/resources).
@@ -219,11 +219,43 @@ successfully spoof your domain in phishing campaigns.
 **Setup**: Configure with your email provider and publish public keys in DNS (your email provider will provide the
 specific records).
 
+### DMARC (Domain-based Message Authentication)
+
+DMARC builds on SPF and DKIM to provide policy enforcement for email authentication. It tells receiving mail servers
+what to do with emails that fail authentication checks.
+
+**How it protects you**: DMARC prevents email spoofing by instructing receiving servers to reject or quarantine emails
+that fail authentication, protecting your users from phishing attacks.
+Without it, emails breaking SPF/DKIM may still be delivered by some providers (like Gmail, Outlook), often to the
+inbox or spam folder, sometimes with a warning banner (e.g., "This message may not be from…")
+DMARC also enables aggregate (rua) and forensic (ruf) reporting, giving domain owners visibility into who is sending
+email on their behalf - legitimate or otherwise.
+
+**Setup**: Add a DMARC record to your DNS zone:
+
+**Baseline example (aggregate reports only)**:
+
+```
+_dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com"
+```
+
+**Report types**:
+
+- **`rua=`** (Aggregate reports): Daily summaries of authentication results. This is the baseline and widely supported.
+- **`ruf=`** (Failure reports): Real-time forensic reports for individual failures. Not recommended as they are:
+  - Not widely supported by mail providers
+  - Raise privacy concerns (contain message content/headers)
+  - May not deliver reliably
+  - Often unnecessary for monitoring purposes
+
+**Recommendation**: Start with aggregate reports only (`rua=`). They provide sufficient visibility into authentication
+issues without the privacy and reliability concerns of failure reports.
+
 ### MTA-STS (Mail Transfer Agent Strict Transport Security)
 
 MTA-STS enforces encrypted connections between mail servers, preventing man-in-the-middle attacks on email transmission.
 
-**How it protects you**: Without MTA-STS, emails can be intercepted in transit. This is especially critical for password
+**How it protects you**: Without MTA-STS, emails can be intercepted in transit. This is especially critical for passwords
 reset emails and other sensitive communications.
 
 **Deployment steps**:
@@ -270,7 +302,14 @@ reset emails and other sensitive communications.
 
 4) **Testing and enforcement**
    - Start with `mode: testing` to monitor without blocking
-   - Collect and review TLS failure reports
+   - Collect and review TLS failure reports using TLS-RPT (See dedicated section below)
+   - Verify policy is accessible using recent protocols:
+   ```
+   curl --silent --show-error --fail --location \
+   --proto '=https' --tlsv1.2 --tls-max 1.3 \
+   --connect-timeout 10 --max-time 30 \
+   https://mta-sts.example.com/.well-known/mta-sts.txt -o /dev/null
+   ```
    - Once confident, change to `mode: enforce`
    - Update the `id` in DNS TXT record after policy changes
 
@@ -286,37 +325,52 @@ reset emails and other sensitive communications.
 - All MX servers must support TLS with valid certificates
 - Monitor policy file availability - if unreachable, mail delivery may fail in enforce mode
 
-### DMARC (Domain-based Message Authentication)
+### TLS-RPT (TLS Reporting)
 
-DMARC builds on SPF and DKIM to provide policy enforcement for email authentication. It tells receiving mail servers
-what to do with emails that fail authentication checks.
+TLS-RPT collects delivery reports for messages transmitted using MTA-STS and SMTP DANE.
 
-**How it protects you**: DMARC prevents email spoofing by instructing receiving servers to reject or quarantine emails
-that fail authentication, protecting your users from phishing attacks.
-Without it, emails breaking SPF/DKIM may still be delivered by some providers (like Gmail, Outlook), often to the
-inbox or spam folder, sometimes with a warning banner (e.g., "This message may not be from…")
-DMARC also enables aggregate (rua) and forensic (ruf) reporting, giving domain owners visibility into who is sending
-email on their behalf - legitimate or otherwise.
+Most major providers (Google, Microsoft, etc.) send one aggregated report per day per domain summarizing all failures for that day and some also indicate how many transmissions were successful.
+This is crucial for already established projects to ensure current email communication is not broken when enabling the security features above.
 
-**Setup**: Add a DMARC record to your DNS zone:
+**Setup**:
 
-**Baseline example (aggregate reports only)**:
-
+Create a new DNS TXT record with the following structure and update example.com as well as the "mailto" email address.
 ```
-_dmarc.example.com. TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com"
+_smtp._tls.example.com. TXT "v=TLSRPTv1; rua=mailto:reports@example.com"
 ```
 
-**Report types**:
+**Example scenario - MTA-STS test phase**:
+- MTA-STS is deployed with a low max_age value to allow for more rapid iteration 
+- TLS-RPT DNS record is created
+- An email provider attempts to deliver mail to our domain
+- The email provider fetches the domain's MTA-STS policy and attempts delivery using TLS according to the policy
+- If an issue arises, a failure is logged and reported using TLS-RPT
+- The sender may still deliver without enforcing the MTA-STS policy
 
-- **`rua=`** (Aggregate reports): Daily summaries of authentication results. This is the baseline and widely supported.
-- **`ruf=`** (Failure reports): Real-time forensic reports for individual failures. Not recommended as they are:
-  - Not widely supported by mail providers
-  - Raise privacy concerns (contain message content/headers)
-  - May not deliver reliably
-  - Often unnecessary for monitoring purposes
+**Example scenario - MTA-STS in production**:
+- MTA-STS policy file mode set to 'enforce' mode, and max_age eventually raised as confidence in the deployment is gained 
+- MTA-STS TXT DNS record ID value updated
+- An email provider attempts to deliver mail to our domain
+- If not already cached, the SMTP server fetches the domain's MTA-STS policy and attempts delivery using TLS according to the policy
+- If an issue arises, a failure is logged and reported using TLS-RPT
+- Mail delivery hard fails at this point
 
-**Recommendation**: Start with aggregate reports only (`rua=`). They provide sufficient visibility into authentication
-issues without the privacy and reliability concerns of failure reports.
+**Consuming TLS reports**:
+- https://github.com/domainaware/parsedmarc: best open-source option (Python). Handles both DMARC aggregate reports and TLS-RPT.
+- Many DMARC report analyzers like easyDMARC / dmarcian / Valimail also offer TLS-RPT parsing. Simply route the reports to your provider's report receiver address for visual summaries.
+
+#### Report receiver in the same email domain?
+It is perfectly reasonable for a domain's TLS-RPT report receiver to reside in that same domain. \
+This remains true even after MTA-STS and/or SMTP DANE have been fully enabled.
+
+See the following snippet from [RFC8460](https://www.rfc-editor.org/rfc/rfc8460) which defines TLS-RPT:
+
+*In the case of "mailto", reports should be submitted to the
+specified email address. When sending failure reports
+via SMTP, sending MTAs MUST deliver reports despite any TLS-
+related failures and SHOULD NOT include this SMTP session in the
+next report. This may mean that the reports are delivered
+unencrypted.*
 
 ---
 </TagProvider>

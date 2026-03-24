@@ -7,6 +7,7 @@
     "Community & Marketing",
     "DAO",
     "DeFi",
+    "DevOps",
     "DevOps Accounts",
     "Devops",
     "Engineer/Developer",
@@ -168,18 +169,18 @@
     "/devsecops/code-signing": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/devsecops/continuous-integration-continuous-deployment": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/devsecops/integrated-development-environments": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/devsecops/isolation/capability-based-isolation": [
       "Engineer/Developer",
@@ -227,18 +228,18 @@
     "/devsecops/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/devsecops/repository-hardening": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/devsecops/security-testing": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/dprk-it-workers/case-studies": [
@@ -286,7 +287,7 @@
     "/encryption/cloud-data-encryption": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "Cloud"
     ],
     "/encryption/communication-encryption": [
@@ -320,7 +321,7 @@
     "/encryption/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "Cloud"
     ],
     "/encryption/partition-encryption": [
@@ -358,7 +359,7 @@
     "/external-security-reviews/overview": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/external-security-reviews/security-policies-procedures": [
       "Security Specialist",
@@ -378,12 +379,12 @@
     "/external-security-reviews/smart-contracts/overview": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/external-security-reviews/smart-contracts/preparation": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/external-security-reviews/smart-contracts/vendor-selection": [
       "Security Specialist",
@@ -392,7 +393,7 @@
     "/front-end-web-app/common-vulnerabilities": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/front-end-web-app/mobile-application-security": [
       "Engineer/Developer",
@@ -401,7 +402,7 @@
     "/front-end-web-app/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/front-end-web-app/security-tools-resources": [
       "Engineer/Developer",
@@ -414,7 +415,7 @@
     "/governance/compliance-regulatory-requirements": [
       "Operations & Strategy",
       "Legal & Compliance",
-      "Devops",
+      "DevOps",
       "HR"
     ],
     "/governance/overview": [
@@ -476,6 +477,10 @@
     "/guides/account-management/vercel": [
       "DevOps Accounts"
     ],
+    "/guides/endpoint-security/zoom-hardening": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/guides/overview": [
       "Security Specialist"
     ],
@@ -483,7 +488,7 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "HR"
     ],
     "/iam/overview": [
@@ -495,14 +500,14 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "HR"
     ],
     "/iam/secure-authentication": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "HR"
     ],
     "/incident-management/communication-strategies": [
@@ -516,19 +521,19 @@
     "/incident-management/lessons-learned": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/incident-management/overview": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/incident-management/playbooks/decentralized-ir": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/incident-management/playbooks/hacked-dprk": [
@@ -558,14 +563,14 @@
     "/infrastructure/asset-inventory": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/infrastructure/cloud": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "Cloud",
       "SRE"
     ],
@@ -573,7 +578,7 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "Cloud",
       "SRE"
     ],
@@ -607,7 +612,7 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "Cloud",
       "SRE"
     ],
@@ -615,13 +620,13 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/infrastructure/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "Cloud",
       "SRE"
     ],
@@ -646,6 +651,10 @@
       "Security Specialist"
     ],
     "/monitoring/thresholds": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/monitoring/tools": [
       "Engineer/Developer",
       "Security Specialist"
     ],
@@ -717,7 +726,7 @@
     "/opsec/appendices/overview": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/opsec/browser/overview": [
@@ -727,13 +736,13 @@
     "/opsec/continuous-improvement-metrics": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/opsec/control-domains/overview": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/opsec/core-concepts/implementation-process": [
@@ -760,7 +769,7 @@
     "/opsec/integration/overview": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/opsec/mfa/overview": [
@@ -770,7 +779,7 @@
     "/opsec/overview": [
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/opsec/passwords/overview": [
@@ -781,21 +790,21 @@
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/opsec/travel/overview": [
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/opsec/travel/tldr": [
       "Security Specialist",
       "Operations & Strategy",
       "Engineer/Developer",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/privacy/data-removal-services": [
@@ -817,7 +826,7 @@
     "/privacy/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/privacy/privacy-focused-operating-systems-tools": [
       "Engineer/Developer",
@@ -872,12 +881,12 @@
     "/secure-software-development/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/secure-software-development/secure-code-repositories-version-control": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/secure-software-development/secure-coding-standards-guidelines": [
       "Engineer/Developer",
@@ -890,89 +899,103 @@
     "/security-automation/compliance-checks": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "Cloud",
       "SRE"
     ],
     "/security-automation/infrastructure-as-code": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "Cloud",
       "SRE"
     ],
     "/security-automation/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "Cloud",
       "SRE"
     ],
     "/security-automation/threat-detection-response": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/security-testing/formal-verification": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/security-testing/fuzz-testing": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/security-testing/integration-testing": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/security-testing/mutation-testing": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/security-testing/overview": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/security-testing/static-analysis": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/security-testing/unit-testing": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/supply-chain/dependency-awareness": [
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/supply-chain/incident-response-supply-chain": [
+      "Security Specialist",
+      "SRE",
+      "Engineer/Developer"
+    ],
     "/supply-chain/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/supply-chain/supply-chain-levels-software-artifacts": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/supply-chain/vendor-risk-management": [
+      "Operations & Strategy",
+      "Security Specialist",
+      "Engineer/Developer"
+    ],
+    "/supply-chain/web3-supply-chain-threats": [
       "Engineer/Developer",
       "Security Specialist"
     ],
@@ -983,7 +1006,7 @@
     "/threat-modeling/identity-mitigate-threats": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/threat-modeling/overview": [
       "Engineer/Developer",
@@ -1023,7 +1046,7 @@
     "/vulnerability-disclosure/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Devops"
+      "DevOps"
     ],
     "/vulnerability-disclosure/security-contact": [
       "Engineer/Developer",
@@ -1095,6 +1118,10 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/wallet-security/smart-contract-interaction-security": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/wallet-security/tools-and-resources": [
       "Engineer/Developer",
       "Security Specialist"
@@ -1138,6 +1165,7 @@
     "Treasury Operations": "treasury-operations",
     "Guides": "guides",
     "Account Management": "guides",
+    "Endpoint Security": "guides",
     "SEAL Certifications": "certs",
     "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"

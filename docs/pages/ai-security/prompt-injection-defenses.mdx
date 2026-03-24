@@ -26,12 +26,13 @@ As LLMs execute based on statistical patterns rather than explicit checks, malic
 cause the model to ignore safety instructions, reveal sensitive data, or perform unintended actions. Effective
 mitigation requires intercepting and sanitizing inputs at the execution layer rather than relying solely on upstream
 policies or prompt templates. Security controls should classify and constrain inputs before they are interpreted by a
-model. 
+model.
 
 ## On-Chain Data as Untrusted Input
 
 In smart contract tooling, DAO governance assistants, and wallet agents, prompt injection can lead to incorrect
-transaction construction or misleading governance actions. Inputs originating from on-chain data or community proposals should be treated as untrusted by default.
+transaction construction or misleading governance actions. Inputs originating from on-chain data or community
+proposals should be treated as untrusted by default.
 
 ## Consider using
 

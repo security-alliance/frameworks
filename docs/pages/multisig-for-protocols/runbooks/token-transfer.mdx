@@ -1,0 +1,178 @@
+---
+title: "Token Transfer Runbook | SEAL"
+description: "Runbook for multisig token transfers on Safe and Squads, including verification, simulation, signing, and execution checks."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Token Transfer Runbook
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+This is an example runbook. Review and customize it for your protocol before use. Add your specific multisig addresses,
+token details, and verification procedures.
+
+## Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | Routine / Time-Sensitive |
+| **Required Threshold** | Standard |
+| **Owner** | Treasury Admin |
+| **Last Updated** | _Date_ |
+
+## When to Use
+
+Sending tokens (ETH, ERC20, SOL, SPL tokens) from a multisig to another address.
+
+## Prerequisites
+
+- [ ] Recipient address verified via independent source (not just chat message)
+- [ ] Amount confirmed
+- [ ] Reason for transfer documented or approved
+
+## EVM (Safe) Procedure
+
+### 1. Create Transaction
+
+**Proposer**:
+
+1. Go to [Safe](https://app.safe.global)
+2. Select correct Safe and network
+3. Click "New Transaction" > "Send tokens"
+4. Enter recipient address (use checksummed format)
+5. Select token and enter amount
+6. Review and create transaction
+
+### 2. Verify Transaction
+
+**Each signer must**:
+
+```text
+[ ] Correct Safe address
+[ ] Correct network (Ethereum/Base/etc.)
+[ ] Expected nonce
+[ ] Recipient address matches independent source
+[ ] Token is correct
+[ ] Amount is correct
+[ ] Simulation shows expected transfer
+[ ] Message hash matches hardware wallet
+```
+
+**Hash verification**:
+
+```bash
+./safe_hashes.sh --network mainnet --address [SAFE_ADDRESS] --nonce [NONCE]
+```
+
+Or use [OpenZeppelin Safe Utils](https://safe-utils.openzeppelin.com).
+
+**Simulation check**:
+
+- Click "Simulate" in Safe UI
+- Verify token transfer event shows correct recipient and amount
+- No unexpected transfers or approvals
+
+### 3. Sign
+
+- [ ] Review transaction on hardware wallet
+- [ ] Verify message hash matches tool output
+- [ ] Sign
+- [ ] Communicate: "Verified and signed, X more needed"
+
+### 4. Execute
+
+- [ ] Last signer clicks "Execute" (or designated executor)
+- [ ] Confirm transaction on-chain via block explorer
+- [ ] Communicate: "Executed - [tx hash]"
+
+## Solana (Squads) Procedure
+
+### 1. Create Transaction
+
+**Proposer**:
+
+1. Go to [Squads Multisig](https://squads.xyz/squads-multisig)
+2. Select correct Squad
+3. Click "Send" > Select token
+4. Enter recipient address and amount
+5. Create proposal
+
+### 2. Verify Transaction
+
+**Each signer must**:
+
+```text
+[ ] Correct Squad address
+[ ] Recipient address matches independent source
+[ ] Token is correct
+[ ] Amount is correct
+[ ] Simulation shows expected transfer
+```
+
+**Simulation check**:
+
+- Click "Simulate" after first signature
+- For SOL: Find "System Program Instruction", verify destination and amount
+- For tokens: Find "Token Program Instruction", verify destination, mint, and amount
+
+### 3. Sign
+
+- [ ] Click "Approve"
+- [ ] Verify hash in Squads UI matches Ledger display
+- [ ] Sign on Ledger
+- [ ] Communicate: "Verified and signed, X more needed"
+
+### 4. Execute
+
+- [ ] Last signer executes
+- [ ] Verify on Solana Explorer
+- [ ] Communicate: "Executed - [tx signature]"
+
+## Verification Details
+
+### Recipient Address
+
+Always verify recipient via independent source:
+
+- Direct communication with recipient (video call or verified channel)
+- Published address in official documentation
+- On-chain verification (existing relationship)
+
+Never trust an address shared only via chat message.
+
+### Amount Verification
+
+For ERC20 or SPL tokens, verify decimals:
+
+- USDC or USDS: 6 decimals (1,000,000 = 1 token)
+- Most ERC20: 18 decimals
+
+## Common Issues
+
+| Issue | Solution |
+|-------|----------|
+| Simulation fails | Check token balance, gas estimation |
+| Wrong network | Reject and recreate on correct network |
+| Nonce mismatch | Clear pending transactions first |
+| Recipient can't receive | Verify address is correct type (EOA vs contract) |
+
+## Related Documents
+
+- [Safe Multisig: Step-by-Step Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification)
+- [Squads Multisig: Step-by-Step Verification](/wallet-security/signing-and-verification/secure-multisig-squads-verification)
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+
+</TagProvider>
+<ContributeFooter />

@@ -24,7 +24,10 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Start by defining trust zones, then apply matching controls that keep untrusted validation isolated from release paths while enforcing ephemeral runners, short-lived credentials, and deny-by-default egress.
+> 🔑 **Key Takeaway**: Start by defining trust zones, then apply matching
+> controls that keep untrusted validation isolated from release paths
+> while enforcing ephemeral runners, short-lived credentials,
+> and deny-by-default egress.
 
 This guide translates sandboxing principles into concrete controls for real CI/CD environments.
 
@@ -95,7 +98,9 @@ Only grant elevated scopes per job when required.
 
 ### Important workflow safety note
 
-Avoid using `pull_request_target` to run untrusted code with privileged context unless you fully understand and constrain checkout, permissions, and secret access behavior.
+Avoid using `pull_request_target` to run untrusted code with privileged context
+unless you fully understand and constrain checkout, permissions,
+and secret access behavior.
 
 ## 3) Secrets and identity controls
 
@@ -114,7 +119,8 @@ Avoid using `pull_request_target` to run untrusted code with privileged context 
 
 ### Segregate high-impact secrets
 
-Signing keys, registry publish credentials, and production deploy tokens should be available only in protected environments with approval gates.
+Signing keys, registry publish credentials, and production deploy tokens
+should be available only in protected environments with approval gates.
 
 ## 4) Network egress control
 
@@ -220,16 +226,16 @@ Have a playbook for:
 
 ## References
 
-- NIST SP 800-190, *Application Container Security Guide*: https://csrc.nist.gov/pubs/sp/800/190/final
-- NIST SP 800-204A, *Building Secure Microservices-based Applications Using Service-Mesh Architecture*: https://csrc.nist.gov/pubs/sp/800/204/a/final
-- NIST SSDF (SP 800-218): https://csrc.nist.gov/pubs/sp/800/218/final
+- [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
+- [NIST SP 800-204A, *Building Secure Microservices-based Applications Using Service-Mesh Architecture*](https://csrc.nist.gov/pubs/sp/800/204/a/final)
+- [NIST SSDF (SP 800-218)](https://csrc.nist.gov/pubs/sp/800/218/final)
 
-- GitHub Actions security hardening: https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions
-- Docker, *Docker Engine Security*: https://docs.docker.com/engine/security/
-- Kubernetes, *Network Policies*: https://kubernetes.io/docs/concepts/services-networking/network-policies/
-- Kubernetes, *Pod Security Standards*: https://kubernetes.io/docs/concepts/security/pod-security-standards/
-- Linux kernel documentation, *Seccomp BPF*: https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html
-- SLSA specification: https://slsa.dev/spec/v1.0/
+- [GitHub Actions security hardening](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions)
+- [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
+- [Kubernetes, *Network Policies*](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+- [Kubernetes, *Pod Security Standards*](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
+- [Linux kernel documentation, *Seccomp BPF*](https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html)
+- [SLSA specification](https://slsa.dev/spec/v1.0/)
 
 ---
 

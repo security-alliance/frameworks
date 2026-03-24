@@ -45,7 +45,7 @@ recommended procedures.
 ## Access Security
 
 - Hardware security keys (FIDO2/WebAuthn) mandatory for all approvers
-  - Secure fallback: Each approver must register minimum 2 hardware keys stored in separate secure locations
+  - Secure fallback: Each approver must register a minimum of 2 hardware keys stored in separate secure locations
   - Key loss procedure: Temporary access via backup key + additional approver verification via multiple channels +
     mandatory key replacement within 48 hours
 - IP whitelisting with 24-hour change approval delay - if treasury software supports application-level IP whitelisting,
@@ -69,7 +69,7 @@ recommended procedures.
 
 ## MPC for Large Holdings
 
-For organizations managing >10% of total assets or >$10M equivalent in a single custodial account consider using MPC:
+For organizations managing >10% of total assets or >$10M equivalent in a single custodial account, consider using MPC:
 
 - Evaluate MPC (Multi-Party Computation) custody solutions that distribute key material across multiple parties
 - Consider threshold signature schemes (e.g., 3-of-5 or 5-of-9) where no single party controls sufficient key shares

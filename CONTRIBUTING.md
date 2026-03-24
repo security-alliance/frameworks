@@ -42,8 +42,8 @@ approved, they will be merged into the **main branch** for publication on the st
 
 ## Ways to contribute
 
-There are several ways to contribute, depending on your preference and the scope of your changes. First, check existing
-PRs or branches to make sure your work has not been previously ****submitted**.**
+There are several ways to contribute, depending on your preference and the scope of your changes.
+First, check existing PRs or branches to make sure your work has not been previously submitted.
 
 ### 1. Quick edits
 
@@ -69,8 +69,8 @@ in MDX files.
 5. **Notify reviewers** by tagging a steward or maintainer, requesting reviews directly in your PR.
 6. Additionally, you can paste your PR and/or potential associated issues to the `framework-reviewers` Discord channel.
 7. Once reviewed and approved, your changes will be merged into `develop`.
-8. Don't forget to add yourself to the YAML header of the file you're modifying, given that is the way we provide
-attribution. You should also create your profile inside the contributors list, at `docs/config/contributors.json`.
+8. Don't forget to add yourself to the YAML header of the file you're modifying, since that is how we provide
+   attribution. You should also create your profile inside the contributors list, at `docs/config/contributors.json`.
 9. Periodically, reviewed content from `develop` is merged into `main` for the stable site.
 
 If you’re interested in a framework that doesn’t currently have an active steward, you can **become one yourself**. See
@@ -96,7 +96,7 @@ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.
 ### Option B: DevContainer CLI Only (No VSCode Required)
 
 Since you won't require extensions for the initiative to work, you can just create a devcontainer using the CLI and
-access it through whatever mean you think suits you best.
+access it through whatever means you think suits you best.
 
 **Using DevContainer CLI (Recommended):**
 
@@ -273,7 +273,7 @@ This helps track contributions and ensures proper attribution.
 
 For a complete frontmatter example, see the [template file](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx?plain=1).
 
-### 3. Sidebar / Navigation
+### 2. Sidebar / Navigation
 
 Because of how we handle the `.org` and `.dev` domains in different branches, when contributing **new pages** you must
 also **update `vocs.config.tsx`** so that the page appears in the site’s sidebar. For content still in review, remember
@@ -378,8 +378,8 @@ Pages with minimal content which need more work to cover the topic need to inclu
 
 ## Anything else?
 
-This page is also open for contributions! Suggest improvements to our style and guidelines in the github repo.
+This page is also open for contributions! Suggest improvements to our style and guidelines in the GitHub repo.
 
 ## About this page
 
-Originally inspired by the [Ethereum Protocol Fellows](https://github.com/eth-protocol-fellows/protocol-studies)
+Originally inspired by the [Ethereum Protocol Fellows](https://github.com/eth-protocol-fellows/protocol-studies).

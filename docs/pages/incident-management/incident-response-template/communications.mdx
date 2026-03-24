@@ -1,0 +1,202 @@
+---
+title: "Communication Templates | Security Alliance"
+description: "Templates and building blocks for incident communications. Adapt these to your situation and tone."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [hexnickk4997, n0guest]
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Communication Templates
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Templates and building blocks for incident communications. Adapt these to your situation and tone.
+
+## Before You Post
+
+### Checklist
+
+- [ ] Get approval from Incident Leader or Decision Maker
+- [ ] Verify facts are accurate
+- [ ] Avoid speculation about root cause (until confirmed)
+- [ ] Include what users should do (or not do)
+- [ ] State when you'll provide the next update
+
+### What to Include
+
+| Element | When to Include |
+|---------|-----------------|
+| What happened (high level) | Always |
+| User funds are safe | If true |
+| What users should do | If action needed |
+| What users should NOT do | If relevant (e.g., don't interact with X) |
+| What still works | If partial outage |
+| When you'll update next | Always |
+| Link to status page or thread | If available |
+
+
+## Building Blocks
+
+Use these as modular pieces. Combine as needed for your situation.
+
+### Acknowledgment
+> We're aware of an issue affecting [service/feature] and are actively investigating.
+
+### Funds Safe
+> User funds are safe and have not been affected.
+
+### Funds at Risk (be careful)
+> We are investigating a potential security issue. Out of caution, we recommend users [specific action].
+
+### Action Required
+> If you [specific condition], please [specific action].
+
+### Do Not Interact
+> Do not interact with [specific thing] until further notice.
+
+### Service Paused
+> We have temporarily paused [service/feature] while we investigate.
+
+### Partial Outage
+> [Feature X] is currently unavailable. [Feature Y] and [Feature Z] continue to work normally.
+
+### Timeline Unknown
+> We don't have an ETA for resolution yet. We'll provide updates as we learn more.
+
+### Next Update
+> We'll provide an update within [timeframe] or sooner if the situation changes.
+
+### Resolution
+> The issue has been resolved. [Brief description of what happened and fix].
+
+### Post-Mortem Coming
+> We'll publish a detailed post-mortem within [timeframe].
+
+
+## Example Templates
+
+### Protocol Paused
+
+**For: Twitter/X, Discord announcement**
+
+> We have temporarily paused [protocol/feature] while we investigate a potential issue.
+>
+> User funds are safe. [OR: We are still assessing the situation.]
+>
+> Do not interact with [specific contracts/UI] until we confirm the issue is resolved.
+>
+> We'll provide an update within [1 hour / as soon as we know more].
+
+
+### Website/Frontend Down
+
+**For: Twitter/X, Discord announcement**
+
+> Our website is currently unavailable. We've taken it offline while we investigate [a potential security issue / technical problems].
+>
+> Your funds in the protocol are not affected. Do not approve any transactions from sites claiming to be [protocol name] until we confirm service is restored.
+>
+> Follow this thread for updates.
+
+
+### Social Account Compromised
+
+**For: Alternate channel (Discord if Twitter compromised, etc.)**
+
+> The [Twitter/Discord/Telegram] account of [person/official account] has been compromised.
+>
+> Do NOT click any links or interact with messages from that account.
+>
+> We are working to recover the account. Any legitimate announcements will come from [list alternate verified channels].
+>
+> If you interacted with any links, revoke token approvals immediately at [revoke.cash or similar].
+
+
+### Active Exploit (P1)
+
+**For: Initial announcement, keep brief**
+
+> We are aware of a security incident affecting [protocol/feature].
+>
+> We are actively responding and will share more information as soon as possible.
+>
+> [If applicable: We have paused affected contracts.]
+>
+> Do not interact with [specific thing] until further notice.
+
+**For: Follow-up once stabilized**
+
+> Update on the security incident:
+>
+> [What happened - high level]
+> [Current status]
+> [What users should do]
+> [Funds status - be precise about what was/wasn't affected]
+>
+> We'll publish a full post-mortem within [timeframe].
+
+
+### Third-Party Outage
+
+**For: When the issue is not your fault**
+
+> [Feature] is currently unavailable due to an outage at [provider/third-party].
+>
+> Your funds are safe. This is affecting [what's broken] but [what still works] continues to function normally.
+>
+> We're monitoring the situation and will restore service when [provider] resolves the issue.
+
+
+### Issue Resolved
+
+**For: Closing out an incident**
+
+> The issue affecting [service/feature] has been resolved.
+>
+> [One sentence on what happened]
+> [One sentence on the fix]
+>
+> Thank you for your patience. We'll share a post-mortem with more details within [timeframe].
+
+
+## Channel-Specific Notes
+
+### Twitter/X
+- Keep initial post short
+- Use thread for updates
+- Pin important updates
+
+### Discord
+- Use @everyone or @here sparingly (P1 only)
+- Create dedicated thread for ongoing updates
+- Lock thread after resolution to preserve record
+
+### Telegram
+- Pin critical messages
+- Consider disabling chat during active incident to reduce noise
+
+
+## Tone Guidelines
+
+- Be direct and factual
+- Avoid jargon users won't understand
+- Don't speculate on root cause until confirmed
+- Don't blame (individuals, third parties, users)
+- Acknowledge impact on users
+- Avoid excessive apologies (one is enough)
+
+*See [Incident Response Policy](./incident-response-policy) for the overall response process.*
+
+
+</TagProvider>
+<ContributeFooter />

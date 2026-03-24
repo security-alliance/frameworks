@@ -1,0 +1,182 @@
+---
+title: "Signer Rotation Runbook | SEAL"
+description: "Runbook for adding, removing, and replacing multisig signers on Safe and Squads, including verification, batch changes, and offboarding checks."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Signer Rotation Runbook
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+This is an example runbook. Review and customize it for your protocol before use. Add your specific multisig
+addresses, signer requirements, and communication channels.
+
+### Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | Routine |
+| **Required Threshold** | Standard |
+| **Owner** | Multisig Admin |
+| **Last Updated** | _Date_ |
+
+### When to Use
+
+- Adding a new signer
+- Removing a departing signer
+- Replacing a signer (key rotation, lost access)
+
+### Prerequisites
+
+- [ ] Reason for change documented
+- [ ] New signer has completed [Joining a Multisig](/multisig-for-protocols/joining-a-multisig) (if new)
+- [ ] New signer's address verified via signed message
+- [ ] Change maintains minimum signer count and threshold requirements
+- [ ] If reducing signers or threshold: justification documented and approved
+
+## Adding a Signer
+
+### EVM (Safe)
+
+**Proposer**:
+
+1. Go to [Safe](https://app.safe.global)
+2. Settings > Setup > Owners
+3. Click "Add new owner"
+4. Enter new signer's address (checksummed)
+5. Set threshold (typically maintain same ratio)
+6. Create transaction
+
+**Verification checklist**:
+
+```text
+[ ] New signer address is correct (verified via signed message)
+[ ] Threshold is appropriate after addition
+[ ] Not accidentally removing anyone
+[ ] Message hash matches hardware wallet
+```
+
+### Solana (Squads)
+
+**Proposer**:
+
+1. Go to [Squads Multisig](https://squads.xyz/squads-multisig)
+2. Configuration > Add Member
+3. Enter new signer's address
+4. Set permissions
+5. Create proposal
+
+## Removing a Signer
+
+### EVM (Safe)
+
+**Proposer**:
+
+1. Settings > Setup > Owners
+2. Click remove (trash icon) next to signer
+3. Adjust threshold if needed (cannot exceed new signer count)
+4. Create transaction
+
+**Verification checklist**:
+
+```text
+[ ] Correct signer being removed
+[ ] Threshold still appropriate (>=50%)
+[ ] Maintains minimum signer count (3+)
+[ ] Message hash matches hardware wallet
+```
+
+### Solana (Squads)
+
+**Proposer**:
+
+1. Configuration > Remove Member
+2. Select member to remove
+3. Adjust threshold if needed
+4. Create proposal
+
+## Replacing a Signer (Swap)
+
+When a signer needs to change their address.
+
+### If Original Key is Accessible
+
+1. New signer proves ownership by signing message with **existing** address:
+
+   ```text
+   [Handle] is rotating to new address [0xNEW...] for [Multisig Name]
+   ```
+
+2. New signer completes [Joining a Multisig](/multisig-for-protocols/joining-a-multisig) with the new address
+3. Create transaction to add new address
+4. After execution, create transaction to remove old address
+
+### If Original Key is Lost
+
+1. Signer verifies identity through alternative methods:
+   - Video call with other signers
+   - Authentication via verified social media
+   - Other pre-established verification
+2. Document verification in transaction notes
+3. New signer completes onboarding
+4. Create transaction to add new and remove old (can be batch)
+
+## Batch Add + Remove
+
+Can combine add and remove in a single transaction:
+
+**EVM (Safe)**:
+
+1. Use Transaction Builder or batch transaction
+2. Add `addOwnerWithThreshold` call
+3. Add `removeOwner` call
+4. Execute as a single transaction
+
+**Benefits**: Atomic operation, no intermediate state with wrong threshold.
+
+## Post-Transaction
+
+After execution:
+
+- [ ] Update registration or internal documentation with the new signer list
+- [ ] Update communication channel membership
+- [ ] Removed signer leaves communication channels
+- [ ] Test that the new signer can successfully sign a test transaction
+
+## Offboarding Checklist
+
+When removing a signer:
+
+- [ ] Signer removed from multisig on-chain
+- [ ] Signer removed from communication channels
+- [ ] Documentation updated
+- [ ] Signer deleted local sensitive information
+- [ ] Any shared credentials rotated (if applicable)
+
+**Timeline requirements**:
+
+- Emergency-class multisigs: 48-72 hours
+- Critical-class: 7 days
+- Others: 14 days
+
+## Related Documents
+
+- [Joining a Multisig](/multisig-for-protocols/joining-a-multisig)
+- [Threshold Change Runbook](/multisig-for-protocols/runbooks/threshold-change)
+- [Offboarding](/multisig-for-protocols/offboarding)
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+
+</TagProvider>
+<ContributeFooter />
