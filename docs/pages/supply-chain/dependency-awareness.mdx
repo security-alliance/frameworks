@@ -1,9 +1,12 @@
 ---
 title: "Dependency Awareness | Security Alliance"
-description: "Manage external dependencies to prevent vulnerabilities. Use Snyk, Dependabot, MythX, and npm audit to track, update, and monitor libraries for security risks and compliance."
+description: "Manage external dependencies to prevent vulnerabilities. Use version pinning, lockfile verification, vulnerability scanning, and behavioral analysis to secure your project's supply chain."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [scode2277]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -16,46 +19,366 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Dependency awareness is the practice of understanding and managing all the external libraries, frameworks, and
-components that a software project relies on. Dependencies can introduce vulnerabilities and risks, which means it's
-important to keep track of them and ensure they are secure.
+> 🔑 **Key Takeaway:** Every dependency is code you did not write but are fully responsible for. Know exactly what is
+> in your tree, pin versions for anything security-critical, enforce your lockfile in CI, and treat every update as a
+> change that requires review.
 
-## Importance of Dependency Awareness
+## Fundamentals
 
-1. **Security Risks**
-   - Dependencies can contain vulnerabilities that may be exploited by threat actors.
+### What Is a Dependency?
 
-2. **Compliance**
-   - Ensuring that dependencies comply with licensing and regulatory requirements is essential to avoid legal issues.
+A dependency is any external code your project relies on to build or run. When you add a library to your project, you
+are making a trust decision: you are choosing to run someone else's code as if it were your own, with all the access
+and privileges that implies.
 
-3. **Maintainability**
-   - Understanding dependencies and their impact on the project will help understand if it's possible to update a
-   dependency used by your application.
+A modern Web3 project easily accumulates hundreds of dependencies. Most are never reviewed, many are maintained by a
+single developer, and some are actively targeted by attackers. A compromised package propagates to every project that
+depends on it, without any action required from the project owners. For details on specific attacks and how they
+exploited weak dependency practices, see [Supply Chain Threats](/supply-chain/web3-supply-chain-threats).
 
-## Best Practices for Dependency Awareness
+### Direct and Transitive Dependencies
 
-1. **Use Dependency Management Tools**
-   - Leverage tools that can automatically track and manage dependencies. Examples include:
-     - **Web2:**
-       - **Snyk:** Monitors and fixes vulnerabilities in dependencies.
-       - **Dependabot:** Automatically updates dependencies in GitHub projects.
-     - **Solidity:**
-       - **Ethlint:** Analyzes and lints Solidity code, including dependencies.
-       - **MythX:** Scans for vulnerabilities in smart contract dependencies.
+- **Direct dependencies** are the packages you explicitly add to your project (listed in your `package.json`,
+  `Cargo.toml`, `go.mod`, `requirements.txt`, etc.).
+- **Transitive dependencies** are the dependencies of your dependencies, packages you never chose that get
+  pulled in automatically.
 
-2. **Regularly Update Dependencies**
-   - Regularly update dependencies to the latest secure versions after verifying them.
+In most projects, transitive dependencies vastly outnumber direct ones. A single install command can bring in hundreds of packages you have
+never seen. This matters because:
 
-3. **Monitor for Vulnerabilities**
-   - Continuously monitor dependencies for known vulnerabilities using tools like Snyk, npm audit, and GitHub Security
-   Alerts.
+1. **Vulnerabilities propagate silently.** A vulnerability buried deep in your dependency chain still affects your
+   application.
+2. **Attackers target transitive dependencies** precisely because they receive less scrutiny. Compromising a small,
+   deeply nested utility package can affect thousands of downstream projects.
+3. **You are responsible for all of them.** Your users do not care whether a vulnerability was in code you wrote or in
+   a package five levels down your dependency tree.
 
-4. **Audit Dependencies**
-   - Perform regular audits of dependencies to ensure they are necessary and secure. Remove unused or outdated
-   dependencies.
+### How Ecosystems Handle Dependency Locking
 
-5. **Use Trusted Sources**
-   - Only use dependencies from trusted and reputable sources. Avoid using unverified or poorly maintained libraries.
+When you declare a dependency like `"my-library": "^1.2.0"`, you are expressing a *range* of acceptable versions, not
+a single one. Without any locking mechanism, every time you or your CI pipeline runs an install command, the package manager
+resolves that range against whatever is currently published and may pick a different version. This means the same
+project can produce different builds on different machines or at different times and if an attacker publishes a
+malicious version within your accepted range, it gets pulled in silently.
+
+**Dependency locking** solves this by recording the exact versions (and often cryptographic checksums) that were
+resolved at a specific point in time. Once locked, every subsequent install reproduces that exact set of dependencies
+rather than re-resolving from scratch. This gives you:
+
+- **Reproducibility:** Every developer and every CI run gets the same dependency tree.
+- **Auditability:** Changes to dependencies show up as diffs in version control, making them reviewable.
+- **Protection against silent substitution:** A newly published malicious version cannot enter your project until
+  someone explicitly updates the lock and that change is reviewed.
+
+Not every language or package manager implements locking the same way. Some use lockfiles, some use checksums or
+vendoring, and some barely address the problem at all. Understanding how your ecosystem works is the first step to
+securing it.
+
+| Ecosystem | Lockfile / Mechanism | What to Know |
+|-----------|---------------------|--------------|
+| **Node.js (npm/pnpm/yarn)** | Three package managers, each with its own lockfile: `package-lock.json` (npm), `pnpm-lock.yaml` (pnpm), `yarn.lock` (yarn v1 and Berry). They are not interchangeable. | Switching package managers means regenerating the lockfile. Pick one and enforce it across the team. See [Lockfile Integrity](#lockfile-integrity) section below for how each one works. |
+| **Rust (Cargo)** | `Cargo.lock` records exact versions and checksums for every dependency. Cargo verifies these checksums automatically against `crates.io` on every build. | For libraries, `Cargo.lock` is often `.gitignore`d because downstream consumers resolve their own versions. For binaries and applications, always commit it. |
+| **Go** | No traditional lockfile. `go.sum` stores cryptographic checksums for every dependency, and the public checksum database (`sum.golang.org`) lets you verify that everyone gets the same code for a given version. The module proxy caches modules so they remain available even if the original source disappears. | Go's approach is verification-first rather than lock-first. `go.mod` declares minimum versions, `go.sum` verifies integrity, and `go mod tidy` is the primary way updates enter the dependency tree. |
+| **Python (pip/Poetry/PDM)** | pip has no built-in lockfile. You either generate a pinned `requirements.txt` with tools like `pip-compile`, or use Poetry (`poetry.lock`) or PDM (`pdm.lock`), which manage their own lockfile formats. | There is no single standard. Multiple competing tools solve this problem differently, and none of them are part of pip itself. Pick one approach for your project and enforce it across the team. |
+| **Java (Maven/Gradle)** | Maven has no lockfile at all and re-resolves versions on every build. Gradle supports lockfiles (`gradle.lockfile`) but requires you to opt in explicitly. Both rely on artifact checksums from the repository for integrity. | The lack of a default lockfile in Maven means two builds of the same project can pull different versions. If you use Maven, consider the [`maven-enforcer-plugin`](https://maven.apache.org/enforcer/maven-enforcer-plugin/) to enforce reproducibility. |
+| **Ruby (Bundler)** | `Gemfile.lock` records exact versions for every gem in the dependency tree. One of the earliest and most mature lockfile implementations across any ecosystem. | Commit it, and use `bundle install --frozen` in CI. |
+| **PHP (Composer)** | `composer.lock` records exact versions for every package. Works the same way as Bundler. | Commit the lockfile, use `composer install --no-update` in CI. |
+| **Solidity (Foundry/Hardhat)** | Foundry pins dependencies to specific git commits via submodules. Each submodule points at an exact SHA, so the version is locked by git itself.<br/>Hardhat uses npm and produces a standard `package-lock.json`. | Mixing both in the same project means managing two entirely different dependency systems. Review submodule updates with the same care as lockfile changes. |
+
+The core principle is the same regardless of ecosystem: **you need a reproducible, verifiable record of exactly what
+code gets pulled into your project**. If your ecosystem provides a lockfile, commit it and enforce it. If it does not,
+look for checksum verification, vendoring, or commit-pinning as alternatives.
+
+## Lockfile Integrity
+
+### Node.js (npm / pnpm / yarn)
+
+The Node.js ecosystem is the most common in Web3 development: frontends, tooling (Hardhat, Foundry's companion
+scripts), and most Web3 libraries (ethers.js, viem, wagmi) all live here. It is also one of the most targeted
+ecosystems for supply chain attacks due to its massive registry, deep dependency trees, and install-time script
+execution.
+
+Each package manager handles installation differently:
+
+- **npm** installs into a flat `node_modules` where all packages can see each other, regardless of which package
+  declared them as a dependency.
+- **pnpm** uses a content-addressable store with symlinks, so packages can only access their declared dependencies.
+  This stricter isolation catches undeclared dependency usage that would silently work under npm.
+- **yarn v1** uses a flat layout like npm. **yarn Berry (v2+)** removes `node_modules` entirely in favor of
+  Plug'n'Play, which maps dependencies directly without a `node_modules` folder.
+
+The lockfile (`pnpm-lock.yaml`, `yarn.lock`, or `package-lock.json`) is what actually determines which versions get
+installed. Without it, the same `package.json` can produce different dependency trees on different machines and at
+different times. An attacker could publish a malicious patch version, and any install without a lockfile would silently
+pick it up.
+
+1. **Always commit your lockfile** to version control.
+2. **Use frozen installs in CI.** This ensures CI installs exactly what is in the lockfile, failing if there is any
+   discrepancy:
+
+   ```bash
+   pnpm install                     # pnpm uses --frozen-lockfile by default in CI
+   npm ci                           # npm equivalent of frozen installs
+   yarn install --frozen-lockfile   # yarn v1
+   yarn install --immutable         # yarn Berry (v2+)
+   ```
+
+   > **Note:** pnpm automatically sets `--frozen-lockfile` to `true` when it detects a CI environment, so you do not
+   > need to pass the flag explicitly. npm and yarn require the explicit flag or command. yarn Berry replaced
+   > `--frozen-lockfile` with `--immutable`.
+3. **Review lockfile changes in PRs.** Treat lockfile modifications with the same scrutiny as source code changes.
+4. **Watch for lockfile-only PRs.** A PR that modifies only the lockfile without a corresponding change to
+   `package.json` is a meaningful signal worth investigating.
+
+### Cross-Ecosystem Reference
+
+The same principles apply beyond Node.js, though the specific commands and mechanisms differ:
+
+- **Rust:** Commit `Cargo.lock` for all binary and application projects. Cargo verifies checksums automatically, but
+  review `Cargo.lock` diffs in PRs the same way you would a Node.js lockfile.
+- **Go:** Commit `go.sum` and run `go mod verify` in CI to confirm that downloaded modules match their recorded
+  checksums. Go's checksum database adds a layer of tamper detection that most ecosystems lack.
+- **Python:** If using Poetry or PDM, commit the lockfile and use `poetry install --no-update` or `pdm install
+  --frozen-lockfile` in CI. If using pip, generate a fully pinned `requirements.txt` (via `pip-compile` or
+  `pip freeze`) and install with `pip install --require-hashes -r requirements.txt` for checksum verification.
+- **Solidity (Foundry):** Since Foundry uses git submodules, pin dependencies to specific commit SHAs rather than
+  branch names. Review submodule updates as carefully as you would lockfile changes. A submodule pointing at `main`
+  is the equivalent of using `"latest"` in npm.
+
+### Install Scripts
+
+npm packages can define lifecycle scripts (`preinstall`, `postinstall`, `prepare`) that run automatically during
+installation. These scripts execute with the same permissions as the user running the install, which means a
+malicious package can run arbitrary code on your machine or CI server the moment you install it, before you ever
+import or use it. This is the primary execution mechanism behind most npm supply chain attacks, including
+[event-stream](https://blog.npmjs.org/post/180565383195/details-about-the-event-stream-incident) and
+[ua-parser-js](/supply-chain/web3-supply-chain-threats#npm-package-compromise).
+
+1. **Audit install scripts before adding new dependencies.** Before installing a package, download it without
+   executing anything (`npm pack <package>`, `pnpm pack <package>`, or `yarn pack <package>`) and inspect its
+   `package.json` for `preinstall`, `postinstall`, or `prepare` entries.
+2. **In high-assurance environments** or hardened CI pipelines, disable lifecycle scripts by default and
+    explicitly allow only reviewed packages that require them. All three package managers support disabling
+    lifecycle scripts. Set this in your `.npmrc` (read by both npm and pnpm) or `.yarnrc.yml` (yarn Berry):
+
+   ```bash
+   # .npmrc (npm and pnpm)
+   ignore-scripts=true
+   ```
+
+   ```yaml
+   # .yarnrc.yml (yarn Berry)
+   enableScripts: false
+   ```
+
+3. **Allowlist packages that need scripts.** Some legitimate packages (native modules like `bcrypt`, build tools
+   like `esbuild`) require install scripts to work. Rather than leaving all scripts enabled, keep them disabled
+   globally and explicitly permit only the packages you have reviewed. pnpm supports this through
+   `onlyBuiltDependencies` in `package.json`:
+
+   ```json
+   {
+     "pnpm": {
+       "onlyBuiltDependencies": ["bcrypt", "esbuild"]
+     }
+   }
+   ```
+4. **Never run the install command with elevated privileges.** If a script requires `sudo`, that is a red flag.
+
+## Version Pinning
+
+How you declare a dependency version determines how much control you have over what gets installed. The syntax varies
+by ecosystem, but the concept is universal: the more flexibility you allow, the more trust you place in upstream
+maintainers.
+
+### Node.js (npm / pnpm / yarn)
+
+| Strategy | Example | Risk Level | When to Use |
+|----------|---------|-----------|------------|
+| **Exact version** | `"1.2.3"` | Lowest | Security-critical packages, wallet libraries, production dependencies |
+| **Patch range** | `"~1.2.3"` | Low | General dependencies where you trust patch releases |
+| **Minor range** | `"^1.2.3"` | Medium | Development dependencies, internal tools |
+| **Any version** | `"*"` or `"latest"` | Highest | Never use this in production |
+
+For any package that runs in a user's browser, interacts with a wallet, or handles signing, use exact versions and
+review every update as a deliberate decision. For development dependencies that do not reach production, patch or minor
+ranges are a reasonable tradeoff between security and maintenance overhead. `"*"` and `"latest"` have no place in a
+production dependency manifest.
+
+> **Important:** Even with exact versions in your direct dependencies, transitive dependencies still resolve through
+> semver ranges declared by the packages you depend on. This is why lockfile integrity matters: the lockfile is what
+> actually pins the full tree.
+
+### Cross-Ecosystem Reference
+
+Each ecosystem has its own version range syntax and defaults. The principles are the same: pin tightly for anything
+security-critical, allow ranges only where the tradeoff is justified.
+
+| Ecosystem | How to Pin Exactly | How Flexible Ranges Work |
+|-----------|-------------------|--------------------------|
+| **Rust (Cargo)** | `=1.2.3` | By default, `1.2.3` allows compatible updates within the same major version. Use `=` for strict pinning. |
+| **Python (pip)** | `==1.2.3` | `~=1.2.3` allows patch updates only. Omitting a version specifier accepts anything, so always specify one. |
+| **Go** | Pinned via `go.sum` checksums | Go uses Minimum Version Selection (MVS): it always picks the *oldest* version that satisfies all requirements, not the newest. This is conservative by design but can delay security patches. |
+| **Java (Maven)** | `1.2.3` (exact by default) | Range syntax like `[1.2,1.3)` is available but rarely used. Avoid `LATEST` and `RELEASE` in production. |
+| **Ruby (Bundler)** | `= 1.2.3` | `~> 1.2` is the "pessimistic" operator. It allows patch updates within `1.2.x` but not `1.3.0`. |
+
+### GitHub Actions SHA Pinning
+
+GitHub Actions are themselves a supply chain dependency. When you reference an action by tag
+(`uses: actions/checkout@v4`), the tag owner can move it to point at different code at any time. Pinning to a full
+commit SHA ensures that the action you run today is the same one you reviewed:
+
+```yaml
+# Instead of this (mutable tag):
+- uses: actions/checkout@v4
+
+# Use this (immutable commit SHA):
+- uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+```
+
+## Trust and Verification
+
+Lockfiles and version pinning ensure you get the code you expect, but they do not help you decide whether to trust a
+package in the first place. Trust and verification are about evaluating packages *before* they enter your dependency
+tree, and ensuring that the packages you receive were published by who you think they were.
+
+### Package Trust Signals
+
+Before adding a new dependency, evaluate it. No single signal is definitive, but taken together they form a reasonable
+picture of risk:
+
+- **Maintainer activity:** Is the package actively maintained? Are issues addressed? A package with no commits in two
+  years and a pile of open issues may be abandoned, or it may be stable and complete. Context matters.
+- **Maintainer count:** A package maintained by a single developer is a single point of failure. If their account is
+  compromised, so is every project depending on their packages.
+- **Download trends and community adoption:** Very low download counts for a supposedly popular package are a red flag.
+  Compare against known-good alternatives.
+- **Scope and permissions:** Does the package do what it claims and nothing more? A date-formatting library that
+  requests network access should raise questions.
+- **Dependencies of the dependency:** A minimal utility that itself pulls in 50 transitive dependencies introduces risk
+  disproportionate to its value.
+- **Security posture:** Does the project have a security policy (`SECURITY.md`)? Do they use signed releases or
+  provenance attestations? Do they assess known vulnerabilities quickly?
+
+### OIDC and Trusted Publishers
+
+Traditional package publishing relies on long-lived API tokens stored in CI environments. If those tokens are leaked
+or the CI environment is compromised, an attacker can publish malicious versions of your package. OIDC-based Trusted
+Publishers eliminate this risk.
+
+**How it works:** Instead of storing a static npm (or PyPI) access token in your CI secrets, you configure the
+registry to trust your specific CI workflow. When the workflow runs, the CI provider (GitHub Actions, GitLab CI) and
+the registry negotiate a short-lived, cryptographically signed token that is scoped to that specific workflow,
+repository, and environment. The token cannot be extracted or reused.
+
+This approach was pioneered by [PyPI](https://docs.pypi.org/trusted-publishers/) and adopted by npm. If you maintain
+packages, this is one of the most impactful steps you can take:
+
+1. **Configure Trusted Publishers** for your registry to eliminate long-lived tokens from CI.
+2. **Use isolated CI workflows for publishing.** Separate build, verify, and publish into distinct jobs. Only the
+   publish job should hold credentials, and those credentials should be short-lived OIDC tokens.
+3. **Enable provenance attestation.** npm's `--provenance` flag generates a signed record of how and where a package
+   was built and published, allowing consumers to verify the package's origin.
+4. **Require 2FA for all publish actions.** Prefer WebAuthn/passkeys over TOTP where supported. Enable it for the
+   entire scope or organization, not just individual accounts.
+
+> **For consumers:** When evaluating a package, check whether it publishes with provenance. On npmjs.com, packages with
+> provenance display a green checkmark linking to the specific CI workflow that built them. This is a strong trust
+> signal: it means the package was built from a known source repository through a verifiable pipeline.
+
+For an in-depth walkthrough of npm Trusted Publishers and secure publishing workflows, see
+[How to npm and Avoid Getting Rekt](https://blog.theredguild.org/how-to-npm-and-avoid-getting-rekt/) by [The Red Guild](https://theredguild.org/).
+
+### Typosquatting
+
+Typosquatting attacks publish malicious packages with names deliberately close to popular ones, targeting developers
+who mistype a package name during installation.
+
+1. **Double-check package names** before installing. Verify the exact spelling, publisher, and scope (`@org/package`).
+2. **Check download counts and publish history.** Use `npm info <package>` to inspect locally or look it up on
+   [npmjs.com](https://www.npmjs.com/). Red flags to look for are: very low download counts (for a supposedly popular
+   package), a recent first publish date, no verified publisher, or a name that is one character off from a well-known
+   package.
+3. **Use scoped packages** when available. Scoped names (`@org/package`) are harder to typosquat than unscoped ones.
+4. **Enable lockfile verification** in CI to prevent unexpected package name changes.
+5. **Consider `minimumReleaseAge`** (pnpm) or equivalent policies. Delaying installations of newly published versions
+   by a configurable period gives the community time to detect malicious releases before they reach your project.
+
+## Vulnerability Scanning
+
+Most ecosystems provide built-in or community-standard tools for checking dependencies against known vulnerability
+databases. Run these in CI and fail builds on high or critical findings.
+
+| Ecosystem | Built-in / Standard Tool | Command |
+|-----------|------------------------|---------|
+| **Node.js** | `npm audit` / `pnpm audit` | `pnpm audit --audit-level=high` |
+| **Rust** | `cargo-audit` | `cargo audit` |
+| **Python** | `pip-audit` | `pip-audit -r requirements.txt` |
+| **Go** | `govulncheck` | `govulncheck ./...` |
+| **Ruby** | `bundler-audit` | `bundle audit check --update` |
+| **Java** | OWASP Dependency-Check | Gradle/Maven plugin |
+
+### Cross-Ecosystem Tools
+
+- [Dependabot](https://github.com/dependabot) is a GitHub built-in tool that supports npm, pip, Cargo, Go modules,
+  Maven, Bundler, Composer, and more. It monitors your dependencies for known vulnerabilities, opens security alerts on
+  your repository, and when a fix is available, creates a PR to bump the affected dependency. It can also open PRs for
+  general version updates on a schedule you configure.
+
+- [Snyk](https://snyk.io/) and [Grype](https://github.com/anchore/grype) go beyond single-ecosystem advisory
+  databases, covering transitive dependencies and scanning against multiple vulnerability sources across many languages
+  and package managers.
+
+- [OSV-Scanner](https://google.github.io/osv-scanner/) by Google queries the OSV (Open Source Vulnerabilities)
+  database, which aggregates advisories from multiple ecosystems into a single, consistent format.
+
+> **Important:** None of these methods or tools make you more secure by themselves. They make you *aware* of vulnerabilities and
+> updates. The security value comes from reviewing those updates in depth, especially security patches.
+
+## Ecosystem-Specific Considerations
+
+### Smart Contract Dependencies
+
+Smart contract dependencies carry unique risk because deployed code is immutable. Static analysis, testing strategies,
+and secure coding practices for Solidity are covered in depth in the [Security Testing](/security-testing/overview)
+and [Secure Software Development](/secure-software-development/overview) frameworks. For guidance on auditing
+contracts and their imported libraries, see
+[External Security Reviews for Smart Contracts](/external-security-reviews/smart-contracts/overview).
+
+## Common Pitfalls
+
+1. **Blindly merging dependency update PRs.** Always review what changed, especially across major versions. Check the
+   changelog and release notes before merging.
+2. **Using `*` or `latest` version ranges.** This hands control of your dependency tree to whoever publishes the next
+   version.
+3. **Ignoring transitive dependencies.** Your direct dependencies carry their own dependency trees, and a vulnerability
+   three levels deep still affects your application. Vulnerability scanning tools surface these; running them in CI
+   ensures the full tree is checked on every build.
+4. **Installing from GitHub URLs instead of registries.** `"my-package": "github:user/repo"` bypasses registry
+   integrity checks, removes version pinning, and pulls whatever is at the HEAD of a mutable branch at install time.
+   Use published, versioned registry packages instead.
+5. **Not reviewing changelogs before updating.** Major version bumps can introduce breaking changes or new
+   dependencies. Review before updating.
+6. **Publishing with long-lived tokens.** If you maintain packages, use OIDC Trusted Publishers when possible instead
+   of static tokens stored in CI secrets. Where OIDC is not available, rotate tokens regularly and scope them to the
+   minimum permissions needed. A leaked token means anyone can publish as you.
+7. **Trusting packages without verification.** Download counts and GitHub stars are not security guarantees. Check
+   provenance, maintainer history, and dependency footprint before adding a new package.
+
+## Further Reading
+
+- [npm Security Best Practices](https://docs.npmjs.com/packages-and-modules/securing-your-code): Official npm
+  security documentation
+- [How to npm and Avoid Getting Rekt](https://blog.theredguild.org/how-to-npm-and-avoid-getting-rekt/) by
+  [The Red Guild](https://theredguild.org/): Covers npm Trusted Publishers, provenance, and secure publishing workflows
+- [PyPI Trusted Publishers](https://docs.pypi.org/trusted-publishers/): OIDC-based publishing for PyPI (the model npm
+  adopted)
+- [Dependabot Documentation](https://docs.github.com/en/code-security/dependabot): GitHub's cross-ecosystem
+  dependency update tooling
+- [OSV (Open Source Vulnerabilities)](https://osv.dev/): Aggregated vulnerability database spanning multiple ecosystems
+- [Snyk Vulnerability Database](https://security.snyk.io/): Searchable database of known vulnerabilities
+- [Cargo Security Advisories](https://rustsec.org/): Rust security advisory database and `cargo-audit`
+- [Go Vulnerability Database](https://vuln.go.dev/): Official Go vulnerability tracking and `govulncheck`
 
 ---
 
