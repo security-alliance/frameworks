@@ -551,6 +551,7 @@ const config = {
           text: 'Endpoint Security',
           collapsed: true,
           items: [
+            { text: 'SSH Client and Key Management Hardening', link: '/guides/endpoint-security/ssh-client-and-key-management-hardening' },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },
