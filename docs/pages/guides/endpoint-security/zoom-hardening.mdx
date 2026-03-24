@@ -23,43 +23,64 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Zoom's remote control and accessibility features are active attack vectors. Disable remote control, use browser-based Zoom when possible, deploy PPPC profiles on macOS, and train users to reject unexpected permission requests.
+> 🔑 **Key Takeaway**: Zoom's remote control and accessibility features are active attack vectors.
+> Disable remote control, use browser-based Zoom when possible, deploy PPPC profiles on macOS,
+> and train users to reject unexpected permission requests.
 
 ## Why Zoom is a target
 
-Zoom's **remote control** feature allows a participant to request full control of another user's computer once screen sharing is active. Threat actors social-engineer victims into sharing their entire screen, then request remote control to install malware and exfiltrate credentials, private keys, and session tokens.
+Zoom's **remote control** feature allows a participant to request full control of another user's
+computer once screen sharing is active. Threat actors social-engineer victims into sharing their
+entire screen, then request remote control to install malware and exfiltrate credentials, private
+keys, and session tokens.
 
-The most prominent example is **ELUSIVE COMET** — a threat actor impersonating investors, journalists, and podcast hosts to lure crypto holders onto Zoom calls, pressure them into full-screen sharing (claiming audio/video issues), then take over their machine via remote control.
+The most prominent example is **ELUSIVE COMET** — a threat actor impersonating investors,
+journalists, and podcast hosts to lure crypto holders onto Zoom calls, pressure them into
+full-screen sharing (claiming audio/video issues), then take over their machine via remote control.
 
-If already compromised, see the [ELUSIVE COMET incident response playbook](/incident-management/playbooks/hacked-elusive-comet).
+If already compromised, see the
+[ELUSIVE COMET incident response playbook](/incident-management/playbooks/hacked-elusive-comet).
 
 ## Immediate hardening steps
 
-Apply these settings in the [Zoom web portal](https://zoom.us/profile/setting). Sign in, click **Settings** in the left sidebar, then navigate to the **Meeting** tab.
+Apply these settings in the [Zoom web portal](https://zoom.us/profile/setting). Sign in,
+click **Settings** in the left sidebar, then navigate to the **Meeting** tab.
 
 ### Required
 
-These mitigations address the specific attack vectors described in the Trail of Bits ELUSIVE COMET research and should be treated as **non-negotiable** for any organization handling sensitive assets.
+These mitigations address the specific attack vectors described in the Trail of Bits ELUSIVE
+COMET research and should be treated as **non-negotiable** for any organization handling
+sensitive assets.
 
 - [ ] **Disable remote control**: Settings > Meeting > In Meeting (Basic) > Remote control > **OFF**
-- [ ] **Disable participant screen sharing (host only)**: Settings > Meeting > In Meeting (Basic) > Screen sharing > Who can share? > **Host Only**
-- [ ] **Never grant Zoom accessibility permissions (macOS)**: If Zoom prompts for accessibility access, **deny it**. These permissions let remote control interact with your entire system.
-- [ ] **Prefer browser-based Zoom**: Join via `zoom.us/join` instead of the desktop client. No remote control capability, no accessibility permissions.
-- [ ] **Use SSO/OAuth authentication**: Use SSO or OAuth instead of Zoom-native accounts for centralized credential management and MFA.
-- [ ] **Deploy PPPC profiles / revoke TCC permissions (macOS)**: See [macOS mitigations](#macos-specific-mitigations) below.
-- [ ] **Remove Zoom desktop client when possible**: Uninstall entirely to eliminate the attack surface.
+- [ ] **Disable participant screen sharing (host only)**: Settings > Meeting > In Meeting (Basic) >
+  Screen sharing > Who can share? > **Host Only**
+- [ ] **Never grant Zoom accessibility permissions (macOS)**: If Zoom prompts for accessibility
+  access, **deny it**. These permissions let remote control interact with your entire system.
+- [ ] **Prefer browser-based Zoom**: Join via `zoom.us/join` instead of the desktop client.
+  No remote control capability, no accessibility permissions.
+- [ ] **Use SSO/OAuth authentication**: Use SSO or OAuth instead of Zoom-native accounts for
+  centralized credential management and MFA.
+- [ ] **Deploy PPPC profiles / revoke TCC permissions (macOS)**: See
+  [macOS mitigations](#macos-specific-mitigations) below.
+- [ ] **Remove Zoom desktop client when possible**: Uninstall entirely to eliminate the
+  attack surface.
 
 ### Optional
 
-General Zoom security best practices. These do not directly mitigate the ELUSIVE COMET attack but improve overall meeting security hygiene.
+General Zoom security best practices. These do not directly mitigate the ELUSIVE COMET attack
+but improve overall meeting security hygiene.
 
 - [ ] **Enable waiting rooms**: Settings > Meeting > Security > Waiting Room > **ON**
-- [ ] **Require meeting passcodes**: Settings > Meeting > Security > Require a passcode when scheduling new meetings > **ON**
-- [ ] **Disable automatic recording**: Settings > Meeting > Recording > Automatic recording > **OFF** (enable only when explicitly needed)
+- [ ] **Require meeting passcodes**: Settings > Meeting > Security >
+  Require a passcode when scheduling new meetings > **ON**
+- [ ] **Disable automatic recording**: Settings > Meeting > Recording >
+  Automatic recording > **OFF** (enable only when explicitly needed)
 
 ## macOS-specific mitigations
 
-macOS TCC governs per-app accessibility permissions. Trail of Bits published scripts to lock this down:
+macOS TCC governs per-app accessibility permissions. Trail of Bits published scripts to lock
+this down:
 
 ### Revoke existing Zoom accessibility permissions
 
@@ -70,11 +91,13 @@ If Zoom already has accessibility access, revoke it immediately:
 tccutil reset Accessibility us.zoom.xos
 ```
 
-Verify removal in **System Settings > Privacy & Security > Accessibility** — Zoom should no longer appear or should be toggled off.
+Verify removal in **System Settings > Privacy & Security > Accessibility** — Zoom should no
+longer appear or should be toggled off.
 
 ### Deploy PPPC profiles to block accessibility requests
 
-PPPC profiles block Zoom from receiving accessibility permissions even if a user clicks "Allow." Deploy fleet-wide via MDM/Jamf or manually via `profiles`/Apple Configurator.
+PPPC profiles block Zoom from receiving accessibility permissions even if a user clicks
+"Allow." Deploy fleet-wide via MDM/Jamf or manually via `profiles`/Apple Configurator.
 
 ### Complete Zoom uninstallation
 
@@ -87,11 +110,14 @@ For teams, DAOs, and organizations handling sensitive assets:
 
 ### Prefer alternative meeting platforms for sensitive discussions
 
-Use **Google Meet**, **Jitsi**, or other browser-native platforms for calls involving treasury operations, key ceremonies, or sensitive governance decisions. These platforms do not have a remote control feature.
+Use **Google Meet**, **Jitsi**, or other browser-native platforms for calls involving treasury
+operations, key ceremonies, or sensitive governance decisions. These platforms do not have a
+remote control feature.
 
 ### Enforce browser-based Zoom when Zoom is required
 
-If a counterparty insists on Zoom, join through the browser (`zoom.us/join`). The web client lacks the remote control feature entirely and cannot request accessibility permissions.
+If a counterparty insists on Zoom, join through the browser (`zoom.us/join`). The web client
+lacks the remote control feature entirely and cannot request accessibility permissions.
 
 ### Regularly purge the Zoom desktop client
 
@@ -106,13 +132,15 @@ Train all team members on the remote control attack pattern:
 3. Attacker (or a bot named "Zoom") requests remote control access.
 4. Victim approves the request, and the attacker installs malware.
 
-> **If a meeting participant asks you to share your screen and then requests remote control, END THE CALL IMMEDIATELY.** This is the single most effective defense.
+> **If a meeting participant asks you to share your screen and then requests remote control,
+> END THE CALL IMMEDIATELY.** This is the single most effective defense.
 
 ### Meeting hygiene policies
 
 - Only the host should share their screen by default.
 - Never share your entire screen — share a specific window if you must.
-- Do not join meetings from unknown or unsolicited links without verifying the organizer's identity through a separate channel.
+- Do not join meetings from unknown or unsolicited links without verifying the organizer's
+  identity through a separate channel.
 
 ## Detection signals
 
@@ -127,13 +155,16 @@ Red flags during a Zoom call that suggest an attack in progress:
 | Request from unknown **"investors"** or **"journalists"** for a Zoom call | Common ELUSIVE COMET pretext — verify identity through independent channels before joining |
 | Zoom suddenly requests **accessibility permissions** on macOS | Indicates an attempt to enable remote control capabilities |
 
-**Response:** Do not approve any request. Leave the call immediately. If compromised, follow the [ELUSIVE COMET playbook](/incident-management/playbooks/hacked-elusive-comet).
+**Response:** Do not approve any request. Leave the call immediately. If compromised, follow
+the [ELUSIVE COMET playbook](/incident-management/playbooks/hacked-elusive-comet).
 
 ## Further reading
 
 - [Trail of Bits — Zoom mitigations (PPPC profiles, tccutil scripts, uninstall scripts)](https://github.com/trailofbits/it-releases/tree/main/Zoom%20migitations)
-- [ELUSIVE COMET incident response playbook](/incident-management/playbooks/hacked-elusive-comet) — what to do if you've already been compromised
-- [SEAL Advisories](https://securityalliance.org) — ongoing threat intelligence for the crypto ecosystem
+- [ELUSIVE COMET incident response playbook](/incident-management/playbooks/hacked-elusive-comet)
+  — what to do if you've already been compromised
+- [SEAL Advisories](https://securityalliance.org) — ongoing threat intelligence for the
+  crypto ecosystem
 - [Zoom Security Settings documentation](https://support.zoom.us/hc/en-us/articles/360043150271-Zoom-security-settings)
 
 ---

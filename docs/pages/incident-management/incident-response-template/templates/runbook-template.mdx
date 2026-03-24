@@ -1,0 +1,146 @@
+---
+title: "Runbook Template | Security Alliance"
+description: "Copy this template to create runbooks for specific incident types."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [hexnickk4997, n0guest]
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Runbook Template
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Copy this template to create runbooks for specific incident types.
+
+
+# Runbook: [INCIDENT TYPE]
+
+## Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | P1 / P2 / P3 |
+| **Primary Responder** | [Team/Role] |
+| **Last Updated** | [Date] |
+| **Owner** | [Name] |
+
+
+## Identification
+
+### Symptoms
+
+- [ ] Symptom 1
+- [ ] Symptom 2
+- [ ] Symptom 3
+
+### Alerts
+
+- Alert: [name] in [system]
+- Dashboard: [link]
+
+### Differentiation
+
+If you see [X] but not [Y], it might be [different issue] instead.
+
+
+## Immediate Actions
+
+### Step 1: [Name]
+
+**Why:** [Purpose]
+
+```
+[Commands or steps]
+```
+
+**Expected:** [Result]
+
+### Step 2: [Name]
+
+**Why:** [Purpose]
+
+```
+[Commands or steps]
+```
+
+
+## Investigation
+
+### Key Questions
+
+- [ ] What is the scope?
+- [ ] When did it start?
+- [ ] What changed recently?
+
+### Information to Gather
+
+| Data | How to Get It |
+|------|---------------|
+| | |
+
+
+## Mitigation
+
+### Option A: [Name] - Preferred
+
+**When:** [Conditions]
+**Impact:** [Side effects]
+
+1. Step 1
+2. Step 2
+
+**Verify:**
+```
+[Command to verify]
+```
+
+### Option B: [Name] - Fallback
+
+**When:** [Conditions]
+
+1. Step 1
+2. Step 2
+
+
+## Escalation
+
+Escalate to [Contacts](../contacts) if:
+- [ ] Mitigation doesn't work within [time]
+- [ ] Impact expands
+- [ ] [Condition]
+
+
+## Resolution Checklist
+
+- [ ] Mitigation verified
+- [ ] Stakeholders notified
+- [ ] Timeline documented in [Incident Log](../templates/incident-log-template)
+- [ ] Post-mortem scheduled if warranted
+
+
+## Common Root Causes
+
+| Cause | Signs | Fix |
+|-------|-------|-----|
+| | | |
+
+
+## Related
+
+- Related runbook for this scenario
+- [Incident Response Policy](../incident-response-policy)
+
+
+</TagProvider>
+<ContributeFooter />

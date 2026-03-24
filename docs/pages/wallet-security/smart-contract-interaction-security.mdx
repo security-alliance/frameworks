@@ -23,29 +23,47 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Before interacting with any smart contract, verify the contract address, simulate the transaction, review all approvals, and understand what you are signing. Most fund losses come from user-side interaction mistakes, not wallet compromises.
+> 🔑 **Key Takeaway**: Before interacting with any smart contract, verify the contract address,
+> simulate the transaction, review all approvals, and understand what you are signing. Most fund
+> losses come from user-side interaction mistakes, not wallet compromises.
 
-This page assumes you already have a properly secured wallet (see [Wallet Security overview](/wallet-security/overview)). For verifying contract addresses, transaction data, and signatures before signing, see [Signing & Verification](/wallet-security/signing-and-verification/signing-verification) and [Verifying Standard Transactions](/wallet-security/signing-and-verification/verifying-standard-transactions). For simulation and verification tools, see [Tools & Resources](/wallet-security/tools-and-resources).
+This page assumes you already have a properly secured wallet (see
+[Wallet Security overview](/wallet-security/overview)). For verifying contract addresses,
+transaction data, and signatures before signing, see
+[Signing & Verification](/wallet-security/signing-and-verification/signing-verification) and
+[Verifying Standard Transactions](/wallet-security/signing-and-verification/verifying-standard-transactions).
+For simulation and verification tools, see
+[Tools & Resources](/wallet-security/tools-and-resources).
 
-This page focuses on **approval management, permit risks, MEV protection, and common attack patterns**.
+This page focuses on **approval management, permit risks, MEV protection, and common attack
+patterns**.
 
 ## Token Approval Hygiene
 
-Every `approve()` call grants a spender address permission to move your tokens. Most dApps request unlimited approval by default.
+Every `approve()` call grants a spender address permission to move your tokens. Most dApps
+request unlimited approval by default.
 
-- **Set exact amounts.** Approve only what the current transaction needs, not `type(uint256).max`. This limits exposure if the spender contract is later exploited.
-- **Revoke unused approvals.** Use [Revoke.cash](https://revoke.cash/) or the [Etherscan Token Approval Checker](https://etherscan.io/tokenapprovalchecker) to audit and revoke outstanding approvals.
+- **Set exact amounts.** Approve only what the current transaction needs, not
+  `type(uint256).max`. This limits exposure if the spender contract is later exploited.
+- **Revoke unused approvals.** Use [Revoke.cash](https://revoke.cash/) or the
+  [Etherscan Token Approval Checker](https://etherscan.io/tokenapprovalchecker) to audit
+  and revoke outstanding approvals.
 - **Audit approvals regularly.** Schedule periodic reviews, especially after heavy dApp usage.
 
 ### The `permit()` and EIP-2612 Risk
 
-EIP-2612 `permit()` allows approvals via off-chain signatures instead of on-chain transactions. This is more dangerous: no on-chain transaction is visible until the permit is submitted by a third party, and users can unknowingly authorize token transfers on phishing sites.
+EIP-2612 `permit()` allows approvals via off-chain signatures instead of on-chain transactions.
+This is more dangerous: no on-chain transaction is visible until the permit is submitted by a
+third party, and users can unknowingly authorize token transfers on phishing sites.
 
-A common pattern is a fake "login" prompt that is actually a permit signature request. **If a signature contains fields like `spender`, `value`, `nonce`, and `deadline`, you are signing a permit — not a login message.**
+A common pattern is a fake "login" prompt that is actually a permit signature request. **If a
+signature contains fields like `spender`, `value`, `nonce`, and `deadline`, you are signing a
+permit — not a login message.**
 
 ## Slippage and MEV Protection
 
-When trading on DEXes, your transactions are visible in the public mempool before execution, creating MEV (Maximal Extractable Value) attack opportunities.
+When trading on DEXes, your transactions are visible in the public mempool before execution,
+creating MEV (Maximal Extractable Value) attack opportunities.
 
 ### Slippage Tolerance
 
@@ -55,34 +73,56 @@ When trading on DEXes, your transactions are visible in the public mempool befor
 
 ### MEV Protection
 
-- **Use private mempools.** [Flashbots Protect](https://protect.flashbots.net/) and [MEV Blocker](https://mevblocker.io/) route transactions through private channels invisible to MEV searchers.
+- **Use private mempools.** [Flashbots Protect](https://protect.flashbots.net/) and
+  [MEV Blocker](https://mevblocker.io/) route transactions through private channels invisible
+  to MEV searchers.
 - **Set transaction deadlines.** Prevent stale transactions from executing at unfavorable prices.
-- **Inspect multi-hop routes.** Aggregators can route through intermediary tokens/pools you did not intend to touch. Verify the full path before signing, especially for illiquid or newly listed assets.
+- **Inspect multi-hop routes.** Aggregators can route through intermediary tokens/pools you did
+  not intend to touch. Verify the full path before signing, especially for illiquid or newly
+  listed assets.
 
 ## Common Attack Patterns
 
 ### Address Poisoning
 
-An attacker sends tiny (often 0-value) transactions from an address resembling yours or a known recipient, polluting your transaction history. They may also airdrop scam tokens/NFTs that surface in explorers, Safe interfaces, or wallet UIs to bait bad copy-paste behavior. **Always verify the full address**, not just the first and last characters, and do not copy recipients from "recent activity" alone.
+An attacker sends tiny (often 0-value) transactions from an address resembling yours or a known
+recipient, polluting your transaction history. They may also airdrop scam tokens/NFTs that
+surface in explorers, Safe interfaces, or wallet UIs to bait bad copy-paste behavior. **Always
+verify the full address**, not just the first and last characters, and do not copy recipients
+from "recent activity" alone.
 
 ### Clipboard Malware
 
-Malware monitors your clipboard and replaces copied addresses with attacker-controlled ones. **Verify the pasted address character-by-character** in your wallet's confirmation screen. If you suspect clipboard hijacking, stop transacting immediately and move funds from a known-clean device after rotating credentials.
+Malware monitors your clipboard and replaces copied addresses with attacker-controlled ones.
+**Verify the pasted address character-by-character** in your wallet's confirmation screen. If
+you suspect clipboard hijacking, stop transacting immediately and move funds from a known-clean
+device after rotating credentials.
 
 ### Fake Airdrops and Approval Traps
 
-Unknown tokens appear in your wallet. Interacting with them (swapping or "claiming") triggers a malicious `approve()` or `setApprovalForAll()` granting the attacker control over your legitimate tokens. **Ignore unknown tokens.**
+Unknown tokens appear in your wallet. Interacting with them (swapping or "claiming") triggers a
+malicious `approve()` or `setApprovalForAll()` granting the attacker control over your
+legitimate tokens. **Ignore unknown tokens.**
 
 ### Ice Phishing
 
-The victim signs an `approve()` setting the attacker as spender. Unlike credential phishing, this grants direct on-chain token access through a legitimate mechanism. The deception is in the social engineering, not the transaction itself. This pattern is commonly referred to as ["ice phishing"](https://www.microsoft.com/en-us/security/blog/2022/02/16/ice-phishing-on-the-blockchain/) in Microsoft threat research.
+The victim signs an `approve()` setting the attacker as spender. Unlike credential phishing,
+this grants direct on-chain token access through a legitimate mechanism. The deception is in the
+social engineering, not the transaction itself. This pattern is commonly referred to as
+["ice phishing"](https://www.microsoft.com/en-us/security/blog/2022/02/16/ice-phishing-on-the-blockchain/)
+in Microsoft threat research.
 
 ## Quick Reference Checklist
 
-- [ ] **Verify the contract address** — Cross-reference against official docs and block explorer labels (see [Verifying Standard Transactions](/wallet-security/signing-and-verification/verifying-standard-transactions))
-- [ ] **Simulate the transaction** — Preview balance changes before signing (see [Tools & Resources](/wallet-security/tools-and-resources))
-- [ ] **Check approval amounts** — Set exact amounts, not unlimited. Revoke approvals you no longer need.
-- [ ] **Read what you are signing** — Inspect EIP-712 domains, types, and values. If you don't understand it, don't sign it.
+- [ ] **Verify the contract address** — Cross-reference against official docs and block explorer
+  labels (see
+  [Verifying Standard Transactions](/wallet-security/signing-and-verification/verifying-standard-transactions))
+- [ ] **Simulate the transaction** — Preview balance changes before signing (see
+  [Tools & Resources](/wallet-security/tools-and-resources))
+- [ ] **Check approval amounts** — Set exact amounts, not unlimited. Revoke approvals you no
+  longer need.
+- [ ] **Read what you are signing** — Inspect EIP-712 domains, types, and values. If you don't
+  understand it, don't sign it.
 - [ ] **Use MEV protection for DEX trades** — Route through Flashbots Protect or MEV Blocker.
 
 ---

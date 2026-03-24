@@ -279,10 +279,7 @@ function buildAllowedRouteSet(branchName) {
   const orderMap = new Map();
   collectRoutesFromSidebar(config.sidebar, routes, orderMap);
 
-  // Only filter routes on main branch
-  const allowedRoutes = branchName === 'main' ? routes : null;
-
-  return { allowedRoutes, orderMap };
+  return { allowedRoutes: routes, orderMap };
 }
 
 // Tests if a route is allowed to appear based on the current branch rules.
@@ -492,7 +489,7 @@ function writeIndex(dirPath, pageEntries) {
 
 // Filter system/hidden directories that should not appear in the docs.
 function shouldIgnoreDirectory(name) {
-  return name.startsWith('.') || name === 'node_modules';
+  return name.startsWith('.') || name === 'node_modules' || name === 'config';
 }
 
 // Recursively traverses the docs tree, generating indexes bottom-up.

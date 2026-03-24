@@ -1,0 +1,81 @@
+---
+title: "Runbook: DNS Hijack | Security Alliance"
+description: "Stub runbook. Customize with your DNS provider details and procedures."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [isaac]
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Runbook: DNS Hijack
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **Stub runbook.** Customize with your DNS provider details and procedures.
+
+## Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | P1 |
+| **Primary Responder** | Infrastructure SME |
+| **Last Updated** | [Date] |
+| **Owner** | [Name] |
+
+
+## Identification
+
+### Symptoms
+
+- [ ] Domain pointing to wrong IP
+- [ ] Users redirected to malicious site
+- [ ] SSL certificate errors (attacker using different cert)
+
+### Confirm DNS Hijack
+
+```
+dig yourdomain.com
+# Compare output to expected IP
+```
+
+
+## Immediate Actions
+
+1. [ ] Regain access to DNS provider account
+2. [ ] Enable 2FA if not already enabled
+3. [ ] Point DNS to known good infrastructure or maintenance page
+4. [ ] Enable DNS lock / registrar lock
+
+
+## Mitigation
+
+[Document your specific DNS provider procedures here]
+
+
+## Prevention
+
+- [ ] Enable registrar lock
+- [ ] Use DNSSEC
+- [ ] Enable 2FA on DNS provider
+- [ ] Limit DNS admin access
+- [ ] Monitor DNS records for changes
+
+
+## Related
+
+- [Frontend Compromise](./frontend-compromise)
+- [Incident Response Policy](../incident-response-policy)
+
+
+</TagProvider>
+<ContributeFooter />

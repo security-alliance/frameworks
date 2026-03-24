@@ -1,0 +1,174 @@
+---
+title: "Post-Mortem Template | Security Alliance"
+description: "Complete this after significant incidents (P1-P3). Focus on learning, not blame."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [hexnickk4997, n0guest]
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Post-Mortem Template
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Complete this after significant incidents (P1-P3). Focus on learning, not blame.
+
+## How to Use
+
+1. Copy this template to your post-mortems folder
+2. Scribe creates draft before the post-mortem meeting
+3. Hold meeting within a week of resolution
+4. All responders contribute
+5. Every post-mortem produces action items with owners and deadlines
+6. Share with team (and publicly if appropriate)
+
+
+# Post-Mortem: [INCIDENT TITLE]
+
+## Metadata
+
+| Field | Value |
+|-------|-------|
+| **Incident Date** | YYYY-MM-DD |
+| **Severity** | P1 / P2 / P3 |
+| **Authors** | |
+| **Status** | Draft / Final |
+| **Incident Log** | [Link to incident log] |
+
+
+## Summary
+
+[2-4 paragraphs. What happened, when, how long, how it was resolved. Someone unfamiliar should understand the incident after reading this.]
+
+
+## Impact
+
+### Users
+- Users affected:
+- Duration:
+- Services unavailable:
+
+### Financial
+- Funds at risk:
+- Actual losses:
+
+### Reputation
+- Public visibility:
+- Media coverage:
+
+
+## Timeline
+
+| Time (UTC) | Event |
+|------------|-------|
+| | Incident began |
+| | Detected |
+| | Response started |
+| | Root cause identified |
+| | Mitigation applied |
+| | Resolved |
+
+See linked Incident Log for detailed timeline.
+
+
+## Root Cause
+
+### Primary Cause
+
+[What was the fundamental reason this happened?]
+
+### Contributing Factors
+
+1.
+2.
+3.
+
+### 5 Whys
+
+| Question | Answer |
+|----------|--------|
+| Why did [incident] happen? | |
+| Why? | |
+| Why? | |
+| Why? | |
+| Why? | |
+
+
+## What Went Well
+
+1.
+2.
+3.
+
+## What Went Wrong
+
+1.
+2.
+3.
+
+## Where We Got Lucky
+
+[What fortunate circumstances helped that we shouldn't rely on next time?]
+
+1.
+2.
+
+
+## Action Items
+
+> Every action item needs an owner and deadline.
+
+| Action | Owner | Deadline | Status |
+|--------|-------|----------|--------|
+| | | | |
+| | | | |
+| | | | |
+
+
+## Lessons for Runbooks
+
+Should we create or update a [runbook](../runbooks/overview) based on this incident?
+
+- [ ] New runbook needed: [type]
+- [ ] Existing runbook to update: [which one]
+- [ ] No runbook changes needed
+
+
+## Detection
+
+| Aspect | Details |
+|--------|---------|
+| How detected | Monitoring / User report / Team member / Other |
+| Time to detection | |
+| Could we detect faster? | |
+
+
+## Links
+
+- Incident Log: [Link to incident log]
+- Relevant PRs:
+- Dashboards:
+- External references:
+
+
+## Meeting Notes
+
+**Attendees:**
+
+**Discussion points:**
+
+*Template based on [Incident Response Policy](../incident-response-policy#step-6-post-incident-review)*
+
+
+</TagProvider>
+<ContributeFooter />

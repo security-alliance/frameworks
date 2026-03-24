@@ -1,0 +1,90 @@
+---
+title: "Runbook: Dependency Attack | Security Alliance"
+description: "Stub runbook. Customize with your package management and build procedures."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - Devops
+contributors:
+  - role: wrote
+    users: [isaac]
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Runbook: Dependency Attack
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **Stub runbook.** Customize with your package management and build procedures.
+
+## Quick Reference
+
+| Field | Value |
+|-------|-------|
+| **Typical Severity** | P1 |
+| **Primary Responder** | Frontend SME |
+| **Last Updated** | [Date] |
+| **Owner** | [Name] |
+
+
+## Identification
+
+### Symptoms
+
+- [ ] Unexpected behavior after dependency update
+- [ ] Security advisory for a package you use
+- [ ] Malicious code found in node_modules or similar
+- [ ] Lockfile changes you didn't make
+
+### Confirm Dependency Attack
+
+```
+npm audit
+# or
+yarn audit
+```
+
+Check for recent lockfile changes in git history.
+
+
+## Immediate Actions
+
+1. [ ] Take down site to stop serving malicious code
+2. [ ] Identify the malicious package
+3. [ ] Pin dependencies to last known good version
+4. [ ] Rebuild from clean environment
+
+
+## Mitigation
+
+1. [ ] Remove or replace malicious package
+2. [ ] Update lockfile with known good versions
+3. [ ] Rebuild using `npm ci` or `yarn --frozen-lockfile`
+4. [ ] Redeploy verified build
+
+
+## Prevention
+
+- [ ] Use lockfiles and commit them
+- [ ] Use `npm ci` / `yarn --frozen-lockfile` in CI
+- [ ] Regularly audit dependencies
+- [ ] Consider using a private registry
+- [ ] Pin exact versions for critical packages
+- [ ] Review dependency changes in PRs
+
+
+## Related
+
+- [Frontend Compromise](./frontend-compromise)
+- [Build Pipeline Compromise](./build-pipeline-compromise)
+- [Incident Response Policy](../incident-response-policy)
+
+
+</TagProvider>
+<ContributeFooter />

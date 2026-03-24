@@ -1,0 +1,45 @@
+---
+title: "Multisig Operational Runbooks | SEAL"
+description: "Operational runbooks for common multisig actions, including token transfers, threshold changes, and emergency pause transactions."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac, geoffrey, louis, pablo, dickson]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Operational Runbooks
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+These are example runbooks for common multisig operations. Review and customize them for your protocol before use.
+
+## Available Runbooks
+
+- [Token Transfer Runbook](/multisig-for-protocols/runbooks/token-transfer) - Send tokens from a multisig to another
+  address using standard verification and execution steps.
+- [Signer Rotation Runbook](/multisig-for-protocols/runbooks/signer-rotation) - Add, remove, or replace signers while
+  preserving signer-count and threshold requirements.
+- [Threshold Change Runbook](/multisig-for-protocols/runbooks/threshold-change) - Update a multisig threshold while
+  checking policy requirements and post-change verification.
+- [Emergency Pause Runbook](/multisig-for-protocols/runbooks/emergency-pause) - Execute urgent pause transactions with
+  streamlined verification and backup infrastructure.
+
+## Related Documents
+
+- [Registration & Documentation](/multisig-for-protocols/registration-and-documentation) - Record changes and maintain
+  audit trails
+- [Emergency Procedures](/multisig-for-protocols/emergency-procedures) - Coordinate incidents and recovery actions
+- [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure) - Use backup interfaces
+  when primary systems are unavailable
+
+</TagProvider>
+<ContributeFooter />
