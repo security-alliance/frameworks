@@ -337,4 +337,3 @@ rootfs
 GitHub
 GitLab
 GoDaddy
-godaddy
