@@ -338,5 +338,3 @@ GitHub
 GitLab
 GoDaddy
 godaddy
-NCSC
-Opsek
