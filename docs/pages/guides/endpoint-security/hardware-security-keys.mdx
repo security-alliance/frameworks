@@ -26,6 +26,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 Hardware security keys are one of the strongest practical defenses against phishing, credential stuffing, and
 SIM-swap-based account takeovers. They are especially valuable for email, source control, registrars, cloud platforms,
 social accounts, and any admin or financial account that could be used to pivot into the rest of your organization.
+This guide focuses on YubiKeys and similar FIDO2/WebAuthn hardware keys.
 
 ## For Individuals
 
@@ -54,6 +55,15 @@ hardware key.
 - [ ] Save provider-issued backup or recovery codes offline
 - [ ] Test both the primary and backup key after enrollment
 
+### YubiKey Setup Notes
+
+- Register both your primary and spare YubiKeys during the same setup session whenever the service allows it
+- If your YubiKey supports NFC and it is new, activate NFC before you rely on it for mobile logins
+- Prefer the service's **Security key** or **Passkey** option on a YubiKey over app-based OTP when phishing-resistant
+  login is available
+- If a service only supports authenticator-app codes, Yubico Authenticator can keep those codes tied to the YubiKey,
+  but treat that as a fallback rather than equivalent protection to WebAuthn security-key login
+
 ### Practical Use
 
 - Keep the **Primary** key with you for normal logins
@@ -75,6 +85,7 @@ hardware key.
 ## Further Reading
 
 - [Opsek YubiKeys Cheatsheet](https://github.com/Opsek/Yubikeys-cheatsheet)
+- [Yubico Setup Guide](https://www.yubico.com/setup/)
 - [Yubico: YubiKey Authenticator](https://www.yubico.com/products/yubico-authenticator/)
 
 </TagProvider>
