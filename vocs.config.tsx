@@ -551,7 +551,7 @@ const config = {
           text: 'Endpoint Security',
           collapsed: true,
           items: [
-            { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening' },
+            { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening', dev: true },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },
