@@ -1,0 +1,393 @@
+---
+title: "Security Council Best Practices | Security Alliance"
+description: "Establish effective Security Councils for rollup governance with best practices covering formation, incident response, multi-sig setup, governance integration, and readiness drills."
+tags:
+  - Operations & Strategy
+  - Legal & Compliance
+contributors:
+  - role: wrote
+    users: [michael, bram]
+  - role: reviewed
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Security Council Best Practices in Rollup Governance
+
+<TagList tags={frontmatter.tags} />
+
+> **Attribution**: This section is based on [From Stage 0 to Stage 1: Security Council Best Practices in Rollup Governance](https://www.openzeppelin.com/news/security-council-best-practices-guide) by [OpenZeppelin](https://www.openzeppelin.com), authored by Bram Hoogenkamp and Michael Lewellen.
+
+Security Councils serve as specialized governance bodies that act as the final line of defense against
+exploits, governance attacks, and systemic failures in decentralized protocols. This guide focuses
+primarily on rollups and other upgradeable protocols with emergency powers, where a Security Council may
+need narrowly scoped authority to pause systems, approve emergency actions, or coordinate urgent
+mitigation.
+
+## Understanding Security Councils
+
+Security Councils are designated groups with elevated permissions to respond to emergencies and protect protocol integrity. Their core responsibilities include:
+
+- **Threat Identification**: Monitoring for emerging security vulnerabilities and attack vectors
+- **Emergency Response**: Coordinating rapid actions such as pausing operations or deploying emergency patches
+- **Protocol Stewardship**: Conducting routine security reviews and maintaining long-term protocol health
+- **Risk Mitigation**: Implementing preventive measures before threats materialize
+
+Unlike traditional governance bodies focused on feature development and parameter adjustments, Security Councils specialize in crisis management and defensive operations.
+
+## Formation and Timing
+
+### When to Establish a Security Council
+
+Security Councils should be formed once protocols achieve sufficient maturity:
+
+**Prerequisites:**
+- Clear governance structures with defined decision-making processes
+- Documented operational standards and security procedures
+- Active community participation and stakeholder engagement
+- Identified security risks requiring specialized oversight
+
+**Timing Considerations:**
+- **Too early**: Creates unnecessary overhead when protocols lack complexity requiring Council intervention
+- **Too late**: Leaves protocols vulnerable during crisis situations without established response frameworks
+- **Optimal window**: When transitioning from Stage 0 to Stage 1 in rollup maturity, or when governance attack surface increases significantly
+
+Regular reviews ensure the Council's structure remains aligned with evolving protocol risks and governance requirements.
+
+## Key Roles and Responsibilities
+
+### Member Composition
+
+Effective Security Councils balance diverse expertise:
+
+**Technical Security Expertise:**
+- Smart contract security and auditing experience
+- Cryptography and protocol design knowledge
+- Infrastructure and operational security backgrounds
+
+**Crisis Management Experience:**
+- Proven incident response capabilities
+- Decision-making under pressure
+- Communication during emergencies
+
+**Legal and Compliance Knowledge:**
+- Understanding of regulatory requirements
+- Risk assessment frameworks
+- Documentation and transparency standards
+
+### Selection and Governance
+
+**Transparent Selection Process:**
+- A documented nomination, appointment, or election process appropriate to the protocol's governance
+model
+- Public disclosure of selection criteria
+- Documented qualifications, conflicts of interest, and removal conditions
+
+**Term Limits and Rotation:**
+- Fixed term lengths (typically 6-12 months)
+- Staggered rotations to maintain institutional knowledge
+- Clear succession planning
+
+### Service Level Agreements (SLAs)
+
+**Establish explicit operational expectations defining:**
+- Response expectations for credible critical threats (e.g., acknowledge critical threats within 1 hour)
+- Review timelines for emergency and non-emergency changes (e.g., evaluate proposed changes within 48 hours)
+- Communication requirements during incidents
+- Availability expectations for Council members
+
+These expectations should be calibrated to protocol risk, signer geography, and operational reality
+rather than copied as universal defaults.
+
+## Multi-Sig Setup and Custody
+
+### Configuration Models
+
+**Individual EOA Signers:**
+- Simple setup with each member controlling a single externally owned account
+- Suitable for smaller Councils with high trust requirements
+- Vulnerable to individual key compromise
+
+**Safe-of-Safes Architecture:**
+- Member organizations maintain their own multi-signature wallets
+- Council multi-sig requires signatures from multiple member Safes
+- Reduces single-key compromise risk
+- Increases operational complexity
+
+### Security Best Practices
+
+**Key Management:**
+- Use hardware wallets exclusively for Council signing operations
+- Maintain dedicated accounts solely for Security Council actions
+- Avoid casual backup copies that increase compromise surface area
+- Store hardware wallets in secure physical locations (safes, safety deposit boxes)
+
+**Threshold Configuration:**
+- Balance accessibility with security (common: 4-of-6, 5-of-7)
+- Consider time-sensitivity requirements for emergency responses
+- Document threshold justifications and review periodically
+
+**Key Rotation:**
+- Rotate signing keys after member changes, suspected compromise, custody changes, or on a defined schedule
+- Document rotation procedures in advance  
+- Test rotation in non-emergency conditions before incidents
+
+### Liveness and Accountability
+
+**Example: Optimism's LivenessGuard**
+
+Optimism's Security Council implements a [LivenessGuard](https://specs.optimism.io/protocol/safe-extensions.html#the-liveness-module) (a Safe module) that automatically removes inactive members while preserving security thresholds. This mechanism:
+- Tracks member signing activity over defined periods
+- Prevents governance deadlocks from unavailable signers
+- Maintains operational continuity during emergencies
+- Creates accountability through transparent activity metrics
+
+## Incident Response
+
+### Response Framework
+
+Effective incident response follows structured phases:
+
+**1. Detection**
+- Automated monitoring systems for on-chain anomalies
+- Community reporting channels
+- Threat intelligence feeds
+- Internal security audits
+
+**2. Assessment**
+- Severity classification using predefined criteria
+- Impact analysis across protocol components
+- Likelihood evaluation based on threat intelligence
+- Scope definition to prevent mission creep
+
+**3. Action**
+- Automated pausing mechanisms for critical vulnerabilities
+- Manual intervention for complex situations
+- Emergency upgrade procedures with defined approval thresholds
+- Coordination with broader DAO governance when appropriate
+
+**4. Communication**
+- Rapid notification to stakeholders via established channels
+- Single source of truth during incidents (avoid conflicting information)
+- Transparent disclosure of publicly-safe information
+- Reserved communication of sensitive details requiring investigation
+
+**5. Resolution and Postmortem**
+- Public incident reports documenting response timeline
+- Corrective actions and prevention measures
+- Council performance evaluation
+- Lessons learned integration into procedures
+
+### Emergency Classification
+
+Define emergency categories before crises occur using a decision matrix:
+
+| Severity | Likelihood | Examples | Response |
+|----------|-----------|----------|----------|
+| Critical | High | Active exploit draining funds | Immediate pause, emergency upgrade |
+| Critical | Low | Theoretical attack requiring coordination | Accelerated review, preventive measures |
+| Medium | High | Governance manipulation attempt | Enhanced monitoring, parameter adjustments |
+| Medium | Low | Potential future vulnerability | Standard review process |
+| Low | Any | Minor UI bugs, documentation issues | Normal operations, no Council action |
+
+### Automated vs. Manual Pausing
+
+**Automated Mechanisms:**
+- Trigger-based responses to predefined conditions
+- Faster response times for known attack patterns
+- Reduced human error during high-stress situations
+- Risk of false positives disrupting operations
+
+**Manual Intervention:**
+- Required for complex situations requiring judgment
+- Allows contextual assessment before action
+- Slower response times
+- Potential for delayed response during off-hours
+
+In practice, the safest approach is usually narrowly scoped, well-tested automation for detection or 
+limited containment, combined with manual and accountable authorization for broader emergency actions.
+
+### Communication During Incidents
+
+**Immediate Disclosure:**
+- Confirm incident detection and Council activation
+- Provide high-level impact assessment
+- Share mitigation actions taken
+- Set expectations for updates
+
+**Reserved Information:**
+- Exploit technical details while vulnerability remains
+- Ongoing investigation findings
+- Internal deliberation processes
+- Attribution to specific actors (until confirmed)
+
+**Post-Incident Transparency:**
+- Full timeline documentation
+- Technical root cause analysis
+- Effectiveness of response measures
+- Preventive measures for future incidents
+
+## Governance Integration
+
+Security Councils must operate within broader DAO governance frameworks:
+
+### Escalation Paths
+
+Define clear conditions requiring DAO approval:
+- Non-emergency protocol upgrades
+- Changes to Council powers or composition
+- Parameter modifications outside emergency scope
+- Major architectural changes
+
+**Example Decision Tree:**
+```
+Is immediate action required to prevent loss of funds?
+├─ Yes → Security Council emergency authority
+└─ No → Does change affect core protocol economics?
+    ├─ Yes → Full DAO governance process
+    └─ No → Council review with timelock
+```
+
+### Power Boundaries
+
+Establish explicit limits on Council authority:
+- Exact emergency actions permitted without DAO approval  
+- Maximum funds, systems, or contracts reachable under emergency authority  
+- Types of contract modifications permitted  
+- Duration of emergency measures before expiration, ratification, or formal review  
+- Required post-incident disclosure and governance review  
+- Geographic or jurisdictional restrictions where relevant  
+
+Emergency authority should be narrow, time-bounded, and designed to contain incidents, not to bypass normal governance for convenience.
+Regular parameter reviews ensure powers remain proportional to evolving risks.
+
+### Cross-Protocol Collaboration
+
+Security Councils benefit from coordinated efforts:
+
+**Shared Monitoring Infrastructure:**
+- Joint threat intelligence networks
+- Collaborative vulnerability disclosure
+- Cross-protocol security audits
+- Coordinated response to ecosystem-wide threats
+
+**Industry Partnerships:**
+- SEAL 911 emergency war room access for crisis coordination
+- SEAL Drill Templates for standardized readiness testing
+- Shared postmortem analysis across protocols
+- Collective security research initiatives
+
+**Example: Compound Wargame Simulation**
+
+The SEAL Chaos Team, OpenZeppelin, and Compound Labs conducted a simulated oracle attack exercise (2023). The SEAL Chaos Team simulated a rogue oracle inflating WETH prices by 28%, risking a $650K USDC drain from Compound's Comet pool:
+- Automated detection tools identified price manipulation
+- Coordinated response roles between security teams
+- Communication protocols tested under simulated pressure
+- Lessons learned documented for industry benefit
+
+## Readiness Drills and Maintenance
+
+### Operational Preparedness
+
+**Scheduled Drills:**
+- Quarterly incident response simulations
+- Annual key rotation exercises
+- Semi-annual communication tests
+- Scenario-based tabletop exercises
+
+**Unannounced Liveness Tests:**
+- Random signing requirement notifications
+- Response time monitoring
+- Member availability verification
+- Backup communication channel validation
+
+**Travel and Availability Policies:**
+- Physical security protocols during travel
+- Backup signer designation during planned absence
+- Geographic distribution requirements
+- Redundant access to signing infrastructure
+
+### Documentation Standards
+
+**Public Transparency:**
+- Member identities and qualifications
+- Selection criteria and processes
+- Term lengths and rotation schedules
+- Voting thresholds and quorum requirements
+- Response-time SLAs
+- High-level incident response framework
+- Upgrade procedures
+
+**Private Records:**
+- Detailed drill results and performance metrics
+- Internal decision logs for continuous improvement
+- Sensitive security assessments
+- Confidential communications during incidents
+
+**Living Documentation:**
+- Regular updates reflecting lessons learned
+- Version control for procedural changes
+- Accessibility for new members
+- Community feedback integration
+
+### Continuous Improvement
+
+Security Councils should evolve through:
+- Post-drill retrospectives identifying gaps
+- Regular security landscape assessments
+- Member feedback on operational challenges
+- Community input on Council effectiveness
+- Benchmark comparisons with other protocols
+
+## Integration with SEAL Resources
+
+Security Councils can leverage existing SEAL infrastructure:
+
+**SEAL 911 War Rooms:**
+- Emergency coordination channels for active incidents
+- Expert assistance during crises
+- Cross-protocol collaboration facilities
+- See [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines)
+
+**SEAL Drill Templates:**
+- Standardized scenario testing frameworks
+- Documented best practices from industry incidents
+- Tabletop exercise materials
+- Performance metrics for readiness assessment
+
+**Incident Management Playbooks:**
+- Response procedures for common attack vectors
+- Communication templates
+- Escalation frameworks
+- See [Incident Management](/incident-management/overview)
+
+## Best Practices Summary
+
+1. **Establish clear prerequisites** before forming Security Councils to avoid premature overhead
+2. **Balance diverse expertise** across technical security, crisis management, and compliance domains
+3. **Implement robust key management** with hardware wallets, tested rotation procedures, and liveness        
+ mechanisms
+4. **Define emergencies explicitly** using severity matrices before crises occur
+5. **Maintain transparent communication** with predefined channels and disclosure protocols
+6. **Integrate with DAO governance** through clear escalation paths and power boundaries
+7. **Conduct regular drills** combining scheduled exercises and unannounced tests
+8. **Document thoroughly** with public transparency and private operational records
+9. **Collaborate across protocols** through shared monitoring and threat intelligence
+10. **Continuously improve** based on drills, incidents, and community feedback
+
+## Additional Resources
+
+- [OpenZeppelin Security Council Best Practices Guide](https://www.openzeppelin.com/news/security-council-best-practices-guide)
+- [Incident Management Framework](/incident-management/overview)
+- [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines)
+- [Multisig for Protocols](/multisig-for-protocols/overview)
+- [Risk Management](/governance/risk-management)
+
+---
+
+</TagProvider>
+<ContributeFooter />

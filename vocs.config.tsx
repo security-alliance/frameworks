@@ -82,6 +82,7 @@ const config = {
                 { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
+            { text: 'Secure Operating Systems', link: '/opsec/secure-operating-systems', dev: true },
             { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
             { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
             { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
@@ -146,6 +147,17 @@ const config = {
                 { text: 'Registration & Documentation', link: '/multisig-for-protocols/registration-and-documentation' },
                 { text: 'Communication Setup', link: '/multisig-for-protocols/communication-setup' },
                 { text: 'Use-Case Specific Requirements', link: '/multisig-for-protocols/use-case-specific-requirements' },
+                {
+                  text: 'Operational Runbooks',
+                  collapsed: false,
+                  items: [
+                    { text: 'Overview', link: '/multisig-for-protocols/runbooks/overview', dev: true },
+                    { text: 'Token Transfer', link: '/multisig-for-protocols/runbooks/token-transfer', dev: true },
+                    { text: 'Signer Rotation', link: '/multisig-for-protocols/runbooks/signer-rotation', dev: true },
+                    { text: 'Threshold Change', link: '/multisig-for-protocols/runbooks/threshold-change', dev: true },
+                    { text: 'Emergency Pause', link: '/multisig-for-protocols/runbooks/emergency-pause', dev: true },
+                  ]
+                },
               ]
             },
             {
@@ -224,6 +236,7 @@ const config = {
           items: [
             { text: 'Overview', link: '/monitoring/overview', dev: true },
             { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
+            { text: 'Tools', link: '/monitoring/tools', dev: true },
             { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
           ]
         },
@@ -333,6 +346,7 @@ const config = {
             { text: 'Compliance with Regulatory Requirements', link: '/governance/compliance-regulatory-requirements', dev: true },
             { text: 'Risk Management', link: '/governance/risk-management', dev: true },
             { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
+            { text: 'Security Council Best Practices', link: '/governance/council-best-practices', dev: true },
           ]
         },
         {
@@ -356,6 +370,7 @@ const config = {
             },
             { text: 'Code Signing', link: '/devsecops/code-signing', dev: true },
             { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment', dev: true },
+            { text: 'Data Security & Upgrade Checklist', link: '/devsecops/data-security-upgrade-checklist', dev: true },
             { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments', dev: true },
             { text: 'Repository Hardening', link: '/devsecops/repository-hardening', dev: true },
             { text: 'Security Testing', link: '/devsecops/security-testing', dev: true },
@@ -382,8 +397,11 @@ const config = {
           dev: true,
           items: [
             { text: 'Overview', link: '/supply-chain/overview', dev: true },
-            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness', dev: true },
             { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts', dev: true },
+            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness', dev: true },
+            { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats', dev: true },
+            { text: 'Vendor Risk Management', link: '/supply-chain/vendor-risk-management', dev: true },
+            { text: 'Incident Response', link: '/supply-chain/incident-response-supply-chain', dev: true },
           ]
         },
         {

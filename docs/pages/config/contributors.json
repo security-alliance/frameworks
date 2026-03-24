@@ -1,4 +1,20 @@
 {
+  "JosepBove": {
+    "slug": "JosepBove",
+    "name": "Josep Bove",
+    "avatar": "https://avatars.githubusercontent.com/JosepBove",
+    "github": "https://github.com/JosepBove",
+    "twitter": "https://twitter.com/JosepBove",
+    "website": null,
+    "company": "OP Labs",
+    "role": "steward",
+    "job_title": null,
+    "description": "Steward of Monitoring framework",
+    "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-03-17", "framework": "Monitoring" },
+      { "name": "First-Contribution", "assigned": "2026-03-16" }
+    ]
+  },
   "mattaereal": {
     "slug": "mattaereal",
     "name": "matta",
@@ -427,7 +443,7 @@
   },
   "scode2277": {
     "slug": "scode2277",
-    "name": "scode2277",
+    "name": "Sara Russo",
     "avatar": "https://avatars.githubusercontent.com/scode2277",
     "github": "https://github.com/scode2277",
     "twitter": "https://x.com/emit_sara",
@@ -449,15 +465,15 @@
   },
   "gunnim": {
     "slug": "gunnim",
-    "name": "gunnim",
+    "name": "Gunnar Óttarsson",
+    "role": "contributor",
     "avatar": "https://avatars.githubusercontent.com/gunnim",
     "github": "https://github.com/gunnim",
-    "twitter": null,
-    "website": null,
-    "company": null,
-    "job_title": null,
-    "role": "contributor",
-    "description": "Frameworks Contributor",
+    "twitter": "https://x.com/gunni_m",
+    "website": "https://SolAz.cloud",
+    "company": "SolAz",
+    "job_title": "Founder",
+    "description": "Cloud architecture enthusiast with a passion for IT Security",
     "badges": [
       { "name": "First-Contribution", "assigned": "2026-01-21" }
     ]
@@ -563,6 +579,18 @@
     "role": "contributor",
     "description": "Frameworks Contributor"
   },
+  "n0guest": {
+    "slug": "n0guest",
+    "name": "EK",
+    "avatar": "https://avatars.githubusercontent.com/n0guest",
+    "github": "https://github.com/n0guest",
+    "twitter": null,
+    "website": "https://lido.fi",
+    "company": "Lido",
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor"
+  },
   "smagdali": {
     "slug": "smagdali",
     "name": "smagdali",
@@ -611,5 +639,18 @@
       { "name": "First-Contribution", "assigned": "2025-09-18" },
       { "name": "Dormant-90d+", "lastActive": "2025-09-18" }
     ]
+  },
+  "quillaudits": {
+    "slug": "quillaudits",
+    "name": "QuillAudits",
+    "avatar": "https://avatars.githubusercontent.com/quillaudits",
+    "github": "https://github.com/Quillhash",
+    "twitter": "https://twitter.com/QuillAudits",
+    "website": "https://www.quillaudits.com",
+    "company": "QuillAudits",
+    "job_title": "Smart Contract Audit Firm",
+    "role": "contributor",
+    "description": "",
+    "badges": []
   }
 }

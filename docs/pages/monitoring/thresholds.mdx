@@ -1,9 +1,16 @@
 ---
 title: "Monitoring Alert Thresholds | Security Alliance"
-description: "Define on-chain monitoring thresholds without excessive false positives. Establish baseline metrics, set multi-layered alert thresholds, and implement anomaly detection for unusual token activity."
+description: "On-chain threshold configuration: set baseline metrics, multi-layered alerts, and anomaly detection rules to catch unusual blockchain activity."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [JosepBove]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -18,7 +25,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 Setting appropriate thresholds for on-chain monitoring is hard when taking into account you want to detect unusual
 activities, without generating excessive false positives. Here are some guidelines for defining and configuring
-thresholds.
+thresholds. For guidance on what to monitor and how to set up alerting, see the
+[Guidelines](/monitoring/guidelines) page.
 
 ## Generic Guidelines
 
@@ -47,11 +55,14 @@ percentages.
 
 ### Anomaly Detection
 
-It is hard, if not impossible, to predict every type of alert one should setup for their project. As such, implementing
+It is hard, if not impossible, to predict every type of alert one should set up for their project. As such, implementing
 an anomaly detection system can be of great value as it will monitor the project and its transactions in real time, and
 compare it to its previous behavior. If for example it is common that 4% of tokens change owner each day and there's a
-day with 20% of tokens changing owner in the past 10 minutes, then that could be detected as an anomaly cause for
-investigation.
+day with 20% of tokens changing owner in the past 10 minutes, then that could be detected as an anomaly and a cause
+for investigation.
+
+Several of the tools in the [Tools](/monitoring/tools) catalog offer built-in anomaly detection. Hypernative uses
+ML-based behavioral modeling, and Tenderly supports custom alert rules that can approximate anomaly thresholds.
 
 ---
 

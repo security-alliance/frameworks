@@ -58,7 +58,7 @@ DeIRF
 Dependabot
 Deseat
 dev
-Devops
+DevOps
 DevSecOps
 discoverable
 DIY
@@ -307,6 +307,7 @@ reauthentication
 CAIP
 unbonding
 unbond
+Cronos
 Zenity
 Cowork
 nsjail
@@ -333,4 +334,7 @@ SLSA
 pids
 Kata
 rootfs
+GitHub
+GitLab
+GoDaddy
 NCSC
