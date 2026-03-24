@@ -43,9 +43,10 @@ These steps apply to developers, operators, admins, and contributors who use SSH
 - [ ] Keep `ForwardAgent no` unless there is a specific and reviewed operational need
 - [ ] Use explicit per-host entries in `~/.ssh/config` with `IdentityFile` and `IdentitiesOnly yes`
 - [ ] Keep `StrictHostKeyChecking` enabled:
-      `accept-new` for normal low-risk hosts, `yes` for bastions and production systems where host verification
-      should be explicit
-- [ ] Keep `UpdateHostKeys yes` enabled where you manage planned key rotation
+      use `accept-new` only for lower-risk hosts where trust-on-first-use is acceptable, and use `yes` for bastions
+      and production systems where host verification should be explicit
+- [ ] Use `UpdateHostKeys yes` only for hosts you already trust and manage, especially where you expect planned key
+      rotation
 - [ ] Keep `~/.ssh` and private key files accessible only to you
 - [ ] Review and remove stale keys after device loss, role changes, or offboarding
 
@@ -83,6 +84,7 @@ Do not normalize `StrictHostKeyChecking no` or "just click through" behavior for
 - Verify important host fingerprints from official documentation when available
 - Use `accept-new` only where trust-on-first-use is acceptable for the environment
 - Use `yes` for bastions, production systems, and other high-sensitivity hosts
+- Do not rely on `accept-new` for first contact with high-sensitivity systems
 - Preseed `known_hosts` for CI and automation from a trusted source instead of discovering keys live in the job
 - Investigate unexpected host key changes instead of bypassing the warning
 
