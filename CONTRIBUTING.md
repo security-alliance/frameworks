@@ -24,7 +24,7 @@ interactions remain respectful, inclusive, and constructive.
 Contributing Guide](/certs/contributions.mdx) for details on the certification framework and project specifics.
 
 Join our [Discord](https://discord.gg/securityalliance) server, let others know what you are working on in the
-‘frameworks-reviewers’ group channel, and collaborate with other contributors writing about related topics.
+`framework-reviewers` group channel, and collaborate with other contributors writing about related topics.
 
 ## Live versions
 
@@ -70,7 +70,7 @@ in MDX files.
 6. Additionally, you can paste your PR and/or potential associated issues to the `framework-reviewers` Discord channel.
 7. Once reviewed and approved, your changes will be merged into `develop`.
 8. Don't forget to add yourself to the YAML header of the file you're modifying, since that is how we provide
-   attribution. You should also create your profile inside the contributors list, at `docs/config/contributors.json`.
+   attribution. You should also create your profile inside the contributors list, at `docs/pages/config/contributors.json`.
 9. Periodically, reviewed content from `develop` is merged into `main` for the stable site.
 
 If you’re interested in a framework that doesn’t currently have an active steward, you can **become one yourself**. See
