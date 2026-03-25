@@ -180,7 +180,8 @@ coverage reports for tests.
     In next example, because every value (`_amount`, `minRequired`) can increase or decrease, the results can vary.
     If the result is used for some operations like decreasing the `drivingScore` in `burnFuelAndReduce()` for example.
 
-    E.g. depending on whether the amounts are the same (as they were while filling the fuel) or increased or decreased, the value of
+    E.g. depending on whether the amounts are the same (as they were while filling the fuel) or increased or decreased,
+    the value of
     `fuelReduction` will change and while subtracting it from the `drivingScore[msg.sender]` it needs to be handled
     accordingly. which also creates different paths.
 

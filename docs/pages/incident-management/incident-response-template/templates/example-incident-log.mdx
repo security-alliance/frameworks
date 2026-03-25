@@ -4,7 +4,7 @@ description: "This is an example incident log. Delete this file or use it as ref
 tags:
   - Security Specialist
   - Operations & Strategy
-  - Devops
+  - DevOps
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
@@ -26,7 +26,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ## Summary
 
 | Field | Value |
-|-------|-------|
+| ----- | ----- |
 | **Status** | Resolved |
 | **Severity** | P2 |
 | **Start Time** | 2024-01-15 14:32 UTC |
@@ -36,7 +36,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ## Roles
 
 | Role | Person |
-|------|--------|
+| ---- | ------ |
 | Detector | Monitoring (DataDog alert) |
 | Incident Leader | Alice |
 | Scribe | Bob |
@@ -45,9 +45,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ## Communication Channels
 
-- **Call:** https://meet.google.com/xxx-xxxx-xxx
+- **Call:** [https://meet.google.com/xxx-xxxx-xxx](https://meet.google.com/xxx-xxxx-xxx)
 - **Chat:** #incident-2024-01-15-api
-
 
 ## Timeline
 
@@ -70,7 +69,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 16:45 UTC - Incident declared resolved
 ```
 
-
 ## Investigation
 
 ### What We Know
@@ -83,7 +81,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### Affected Services
 
 | Service | Impact | Status |
-|---------|--------|--------|
+| ------- | ------ | ------ |
 | API | 429 errors for most requests | Resolved |
 | Frontend | Degraded (API calls failing) | Resolved |
 | Smart Contracts | No impact | N/A |
@@ -91,7 +89,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### Root Cause (initial assessment)
 
 Typo in rate limiter configuration: `10` instead of `1000` for requests per minute threshold.
-
 
 ## Actions
 
@@ -107,7 +104,6 @@ Typo in rate limiter configuration: `10` instead of `1000` for requests per minu
 - [x] Verify API functioning @Bob
 - [x] Post community update @Carol
 
-
 ## Resolution Summary
 
 ### Mitigation Applied
@@ -120,22 +116,19 @@ Rolled back rate limiter configuration to previous known-good version.
 - [x] Sample API calls succeeding
 - [x] No user reports of issues post-fix
 
-
 ## Communications Sent
 
 | Time | Channel | Summary |
-|------|---------|---------|
+| ---- | ------- | ------- |
 | 15:00 UTC | Discord #announcements | "Investigating API issues" |
 | 15:45 UTC | Discord #announcements | "API issues resolved" |
 | 16:00 UTC | Twitter | Brief update (optional) |
-
 
 ## Post-Incident
 
 - [x] Post-mortem scheduled for: 2024-01-17 15:00 UTC
 - [x] [Post-mortem document](./example-post-mortem) created
 - [ ] Action items assigned (pending post-mortem)
-
 
 ## Links & Evidence
 
@@ -144,7 +137,6 @@ Rolled back rate limiter configuration to previous known-good version.
 - Rollback PR: [link]
 
 *See [Incident Response Policy](../incident-response-policy) for severity definitions and process.*
-
 
 </TagProvider>
 <ContributeFooter />

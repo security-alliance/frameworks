@@ -4,7 +4,7 @@ description: "This is an example post-mortem. Delete this file or use it as refe
 tags:
   - Security Specialist
   - Operations & Strategy
-  - Devops
+  - DevOps
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
@@ -26,45 +26,48 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ## Metadata
 
 | Field | Value |
-|-------|-------|
+| ----- | ----- |
 | **Incident Date** | 2024-01-15 |
 | **Severity** | P2 |
 | **Authors** | Alice, Bob |
 | **Status** | Final |
 | **Incident Log** | [2024-01-15 Example API Outage](./example-incident-log) |
 
-
 ## Summary
 
-On January 15, 2024, at 14:32 UTC, our API began rejecting most requests with 429 (rate limited) errors. The incident lasted approximately 2 hours and 13 minutes.
+On January 15, 2024, at 14:32 UTC, our API began rejecting most requests with 429 (rate limited) errors. The incident
+lasted approximately 2 hours and 13 minutes.
 
-The root cause was a typo in a rate limiter configuration change deployed at 14:15 UTC. The threshold was set to 10 requests per minute instead of the intended 1000. This caused legitimate user requests to be rejected.
+The root cause was a typo in a rate limiter configuration change deployed at 14:15 UTC. The threshold was set to 10
+requests per minute instead of the intended 1000. This caused legitimate user requests to be rejected.
 
-The incident was detected via automated monitoring and resolved by rolling back the configuration change. No funds were at risk, but approximately 3,000 users experienced failed transactions during the outage window.
-
+The incident was detected via automated monitoring and resolved by rolling back the configuration change. No funds were
+at risk, but approximately 3,000 users experienced failed transactions during the outage window.
 
 ## Impact
 
 ### Users
+
 - Users affected: ~3,000
 - Duration: 2h 13m
 - Services unavailable: API (full), Frontend (degraded)
 
 ### Financial
+
 - Funds at risk: None
 - Actual losses: None
 - Estimated costs: ~2 engineering hours for response
 
 ### Reputation
+
 - Public visibility: Low (brief Discord posts)
 - Media coverage: None
 - Community response: Minor frustration, resolved quickly
 
-
 ## Timeline
 
 | Time (UTC) | Event |
-|------------|-------|
+| ---------- | ----- |
 | 14:15 | Config change deployed |
 | 14:32 | Incident began (errors started) |
 | 14:32 | Detected via DataDog alert |
@@ -75,7 +78,6 @@ The incident was detected via automated monitoring and resolved by rolling back 
 | 16:45 | Incident resolved |
 
 See [Incident Log](./example-incident-log) for detailed timeline.
-
 
 ## Root Cause
 
@@ -93,13 +95,12 @@ Human error during configuration change. The rate limit threshold was typed as `
 ### 5 Whys
 
 | Question | Answer |
-|----------|--------|
+| -------- | ------ |
 | Why did the API reject requests? | Rate limiter threshold was too low |
 | Why was the threshold wrong? | Typo in configuration file |
 | Why wasn't the typo caught? | No review process for config changes |
 | Why is there no review process? | Config changes considered "low risk" |
 | Why are they considered low risk? | Never had an incident before (survivorship bias) |
-
 
 ## What Went Well
 
@@ -122,32 +123,28 @@ Human error during configuration change. The rate limit threshold was typed as `
 2. The fix (rollback) was simple. If the old config was also broken, recovery would have been harder
 3. No financial impact because this was the API layer, not smart contracts
 
-
 ## Action Items
 
 | Action | Owner | Deadline | Status |
-|--------|-------|----------|--------|
+| ------ | ----- | -------- | ------ |
 | Add peer review requirement for config changes | Dave | 2024-01-22 | Done |
 | Add config validation for rate limit thresholds | Dave | 2024-01-29 | Done |
 | Lower alert threshold to 1% error rate | Bob | 2024-01-19 | Done |
 | Add staging environment testing for config changes | Dave | 2024-02-15 | In Progress |
 | Document config change process | Alice | 2024-01-31 | Not Started |
 
-
 ## Lessons for Runbooks
 
 - [x] Existing runbook sufficient: [Third-Party Outage](../runbooks/third-party-outage) (config rollback section applicable)
 - [ ] No new runbook needed
 
-
 ## Detection
 
 | Aspect | Details |
-|--------|---------|
+| ------ | ------- |
 | How detected | Monitoring alert (DataDog) |
 | Time to detection | 17 minutes |
 | Could we detect faster? | Yes - lower alert threshold to 1% |
-
 
 ## Links
 
@@ -156,18 +153,17 @@ Human error during configuration change. The rate limit threshold was typed as `
 - Rollback PR: [link]
 - Monitoring dashboard: [link]
 
-
 ## Meeting Notes
 
 **Attendees:** Alice, Bob, Carol, Dave
 
 **Discussion points:**
+
 - Agreed config changes need same rigor as code changes
 - Discussed whether to require staging for all changes (decided yes)
 - Dave to implement validation this week
 
 *See [Incident Response Policy](../incident-response-policy#step-6-post-incident-review) for post-mortem process.*
-
 
 </TagProvider>
 <ContributeFooter />
