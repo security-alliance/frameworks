@@ -58,6 +58,8 @@ hardware key.
 ### YubiKey Setup Notes
 
 - Register both your primary and spare YubiKeys during the same setup session whenever the service allows it
+- Set a PIN on the YubiKey or FIDO2 credential where the workflow supports it, and store that PIN separately from the
+  key itself
 - If your YubiKey supports NFC and it is new, activate NFC before you rely on it for mobile logins
 - Prefer the service's **Security key** or **Passkey** option on a YubiKey over app-based OTP when phishing-resistant
   login is available
@@ -69,6 +71,8 @@ hardware key.
 - Keep the **Primary** key with you for normal logins
 - Store the **Backup** key in a separate secure location, not in the same bag or drawer
 - Maintain a short note in your password manager listing which critical accounts have which keys enrolled
+- For high-value accounts, avoid storing passkeys in a password manager; keep them on the hardware key or another
+  dedicated phishing-resistant authenticator instead
 - If a service allows multiple authentication methods, avoid leaving weaker fallback paths enabled unless they are
   operationally necessary
 - Replace lost or damaged keys immediately and re-test the remaining enrolled key
