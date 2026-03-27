@@ -551,6 +551,7 @@ const config = {
           text: 'Endpoint Security',
           collapsed: true,
           items: [
+            { text: 'Hardware Security Keys', link: '/guides/endpoint-security/hardware-security-keys' },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },
