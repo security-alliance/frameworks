@@ -37,7 +37,7 @@ const config = {
       text: 'Introduction',
       collapsed: false,
       items: [
-        { text: 'Attack Surface Overview', link: '/attack-surface' },
+        { text: 'Attack Surface Overview', link: '/attack-surface', dev: true },
         { text: 'Introduction to Frameworks', link: '/intro/introduction' },
         { text: 'How to Navigate the Website', link: '/intro/how-to-navigate-the-website' },
         { text: 'Overview of each Framework', link: '/intro/overview-of-each-framework' },
