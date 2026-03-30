@@ -191,13 +191,6 @@ export function AttackSurfaceDashboard() {
                 onClick={() => handleSelect(v.id)}
                 style={{ cursor: "pointer" }}
               >
-                {/* Selection ring */}
-                <circle
-                  cx={pos.x}
-                  cy={pos.y}
-                  r={NODE_R + 5}
-                  className="as-node-ring"
-                />
                 {/* Main node */}
                 <circle
                   cx={pos.x}

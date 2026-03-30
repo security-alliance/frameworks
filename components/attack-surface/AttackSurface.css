@@ -78,26 +78,34 @@
 /* Nodes */
 .as-node-group {
   cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 .as-node {
   cursor: pointer;
-  transition: fill 0.3s ease, stroke 0.3s ease, filter 0.3s ease;
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
 .as-node-group:hover .as-node {
   filter: brightness(1.15);
 }
 
-.as-node-ring {
-  fill: none;
-  stroke: transparent;
-  stroke-width: 3;
-  transition: stroke 0.2s ease;
+.as-node-group.selected {
+  transform: scale(1.1);
 }
 
-.as-node-group.selected .as-node-ring {
-  stroke: var(--color-text-strong);
+.as-node-group.selected.state-no {
+  filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.6));
+}
+
+.as-node-group.selected.state-yes {
+  filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.6));
+}
+
+.as-node-group.selected.state-partial {
+  filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.6));
 }
 
 .as-node-check {
