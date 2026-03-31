@@ -36,7 +36,7 @@ interactions remain respectful, inclusive, and constructive.
 Contributing Guide](/certs/contributions.mdx) for details on the certification framework and project specifics.
 
 Join our [Discord](https://discord.gg/securityalliance) server, let others know what you are working on in the
-‘frameworks-reviewers’ group channel, and collaborate with other contributors writing about related topics.
+`frameworks-contribs` group channel, and collaborate with other contributors writing about related topics.
 
 ## Live versions
 
@@ -62,6 +62,9 @@ PRs or branches to make sure your work has not been previously submitted.
 - Use the **“Contribute today!”** button at the bottom of any page
 - Make fixes, formatting, and clarifications, favoring major modifications over just a few grammar mistakes
 - Changes go through GitHub’s web interface without requiring local setup
+- If someone already has an open PR, you can review the Cloudflare Pages preview linked from that PR and leave
+  proofreading or feedback on the PR itself without opening your own PR. This is a rendered preview for review, not a
+  separate commenting feature on the live site.
 
 ### 2. Add a new section or expand an existing one
 
@@ -72,13 +75,14 @@ All contributions should follow this workflow:
 page** when creating or expanding content. It contains pre-defined components and structure required for consistency
 in MDX files.
 3. **Make your changes** in MDX (typos, improvements, or new content) on your fork.
-4. **Open a Pull Request (PR) against the `develop` branch** of this repository. Once submitted, you can see the
-deployment through the automated preview and make any final adjustments.
+4. **Open a Pull Request (PR) against the `develop` branch** of this repository. Once submitted, use the Cloudflare
+   Pages preview linked from the PR to verify the rendered site and make any final adjustments before review. All
+   feedback and discussion should stay on the PR itself.
 5. **Notify reviewers** by tagging a steward or maintainer, requesting reviews directly in your PR.
-6. Additionally, you can paste your PR and/or potential associated issues to the `framework-reviewers` Discord channel.
+6. Additionally, you can paste your PR and/or potential associated issues to the `frameworks-contribs` Discord channel.
 7. Once reviewed and approved, your changes will be merged into `develop`.
 8. Don't forget to add yourself to the YAML header of the file you're modifying, given that is the way we provide
-attribution. You should also create your profile inside the contributors list, at `docs/config/contributors.json`.
+   attribution. You should also create your profile inside the contributors list, at `docs/pages/config/contributors.json`.
 9. Periodically, reviewed content from `develop` is merged into `main` for the stable site.
 
 If you’re interested in a framework that doesn’t currently have an active steward, you can **become one yourself**. See
@@ -335,8 +339,7 @@ lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get started.
 - Use visualizations (mermaid, diagrams, tables) to clarify concepts.
 - Add recommended reading or dependencies at the top of a page if relevant.
 - Focus on delivering credible, formal, technical content without unnecessary high-level introductions; use examples,
-comparisons, or anecdotes to clarify complex topics.
-
+  comparisons, or anecdotes to clarify complex topics.
 - You can use mermaid diagrams for visualizations
 
 ### Content standardization
