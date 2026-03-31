@@ -232,12 +232,11 @@ const config = {
         {
           text: 'Monitoring',
           collapsed: true,
-          dev: true,
           items: [
-            { text: 'Overview', link: '/monitoring/overview', dev: true },
-            { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
-            { text: 'Tools', link: '/monitoring/tools', dev: true },
-            { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
+            { text: 'Overview', link: '/monitoring/overview' },
+            { text: 'Guidelines', link: '/monitoring/guidelines' },
+            { text: 'Tools', link: '/monitoring/tools' },
+            { text: 'Thresholds', link: '/monitoring/thresholds' },
           ]
         },
         {
@@ -276,39 +275,38 @@ const config = {
             {
               text: 'Incident Response Template',
               collapsed: false,
-              dev: true,
               items: [
-                { text: 'Overview', link: '/incident-management/incident-response-template/overview', dev: true },
-                { text: 'Incident Response Policy', link: '/incident-management/incident-response-template/incident-response-policy', dev: true },
-                { text: 'Roles and Staffing', link: '/incident-management/incident-response-template/roles-and-staffing', dev: true },
-                { text: 'Communications', link: '/incident-management/incident-response-template/communications', dev: true },
-                { text: 'Contacts', link: '/incident-management/incident-response-template/contacts', dev: true },
+                { text: 'Overview', link: '/incident-management/incident-response-template/overview' },
+                { text: 'Incident Response Policy', link: '/incident-management/incident-response-template/incident-response-policy' },
+                { text: 'Roles and Staffing', link: '/incident-management/incident-response-template/roles-and-staffing' },
+                { text: 'Communications', link: '/incident-management/incident-response-template/communications' },
+                { text: 'Contacts', link: '/incident-management/incident-response-template/contacts' },
                 {
                   text: 'Templates',
                   collapsed: true,
                   items: [
-                    { text: 'Overview', link: '/incident-management/incident-response-template/templates/overview', dev: true },
-                    { text: 'Incident Log Template', link: '/incident-management/incident-response-template/templates/incident-log-template', dev: true },
-                    { text: 'Post-Mortem Template', link: '/incident-management/incident-response-template/templates/post-mortem-template', dev: true },
-                    { text: 'Runbook Template', link: '/incident-management/incident-response-template/templates/runbook-template', dev: true },
-                    { text: 'Example Incident Log', link: '/incident-management/incident-response-template/templates/example-incident-log', dev: true },
-                    { text: 'Example Post-Mortem', link: '/incident-management/incident-response-template/templates/example-post-mortem', dev: true },
+                    { text: 'Overview', link: '/incident-management/incident-response-template/templates/overview' },
+                    { text: 'Incident Log Template', link: '/incident-management/incident-response-template/templates/incident-log-template' },
+                    { text: 'Post-Mortem Template', link: '/incident-management/incident-response-template/templates/post-mortem-template' },
+                    { text: 'Runbook Template', link: '/incident-management/incident-response-template/templates/runbook-template' },
+                    { text: 'Example Incident Log', link: '/incident-management/incident-response-template/templates/example-incident-log' },
+                    { text: 'Example Post-Mortem', link: '/incident-management/incident-response-template/templates/example-post-mortem' },
                   ]
                 },
                 {
                   text: 'Runbooks',
                   collapsed: true,
                   items: [
-                    { text: 'Overview', link: '/incident-management/incident-response-template/runbooks/overview', dev: true },
-                    { text: 'Smart Contract Exploit', link: '/incident-management/incident-response-template/runbooks/smart-contract-exploit', dev: true },
-                    { text: 'Key Compromise', link: '/incident-management/incident-response-template/runbooks/key-compromise', dev: true },
-                    { text: 'Frontend Compromise', link: '/incident-management/incident-response-template/runbooks/frontend-compromise', dev: true },
-                    { text: 'DNS Hijack', link: '/incident-management/incident-response-template/runbooks/dns-hijack', dev: true },
-                    { text: 'CDN/Hosting Compromise', link: '/incident-management/incident-response-template/runbooks/cdn-hosting-compromise', dev: true },
-                    { text: 'Dependency Attack', link: '/incident-management/incident-response-template/runbooks/dependency-attack', dev: true },
-                    { text: 'Build Pipeline Compromise', link: '/incident-management/incident-response-template/runbooks/build-pipeline-compromise', dev: true },
-                    { text: 'DDoS Attack', link: '/incident-management/incident-response-template/runbooks/ddos-attack', dev: true },
-                    { text: 'Third-Party Outage', link: '/incident-management/incident-response-template/runbooks/third-party-outage', dev: true },
+                    { text: 'Overview', link: '/incident-management/incident-response-template/runbooks/overview' },
+                    { text: 'Smart Contract Exploit', link: '/incident-management/incident-response-template/runbooks/smart-contract-exploit' },
+                    { text: 'Key Compromise', link: '/incident-management/incident-response-template/runbooks/key-compromise' },
+                    { text: 'Frontend Compromise', link: '/incident-management/incident-response-template/runbooks/frontend-compromise' },
+                    { text: 'DNS Hijack', link: '/incident-management/incident-response-template/runbooks/dns-hijack' },
+                    { text: 'CDN/Hosting Compromise', link: '/incident-management/incident-response-template/runbooks/cdn-hosting-compromise' },
+                    { text: 'Dependency Attack', link: '/incident-management/incident-response-template/runbooks/dependency-attack' },
+                    { text: 'Build Pipeline Compromise', link: '/incident-management/incident-response-template/runbooks/build-pipeline-compromise' },
+                    { text: 'DDoS Attack', link: '/incident-management/incident-response-template/runbooks/ddos-attack' },
+                    { text: 'Third-Party Outage', link: '/incident-management/incident-response-template/runbooks/third-party-outage' },
                   ]
                 },
               ]
@@ -352,28 +350,27 @@ const config = {
         {
           text: 'DevSecOps',
           collapsed: true,
-          dev: true,
           items: [
-            { text: 'Overview', link: '/devsecops/overview', dev: true },
+            { text: 'Overview', link: '/devsecops/overview' },
             {
               text: 'Isolation & Sandboxing',
               collapsed: false,
               items: [
-                { text: 'Sandboxing & Isolation', link: '/devsecops/isolation/sandboxing-and-isolation', dev: true },
-                { text: 'Execution Sandboxing', link: '/devsecops/isolation/execution-sandboxing', dev: true },
-                { text: 'Capability-Based Isolation', link: '/devsecops/isolation/capability-based-isolation', dev: true },
-                { text: 'Sandboxing for Tool Execution', link: '/devsecops/isolation/sandboxing-for-tool-execution', dev: true },
-                { text: 'Network & Resource Isolation', link: '/devsecops/isolation/network-and-resource-isolation', dev: true },
-                { text: 'Sandboxing & Policy Enforcement', link: '/devsecops/isolation/sandboxing-and-policy-enforcement', dev: true },
-                { text: 'Execution Sandboxing: A Practical Guide', link: '/devsecops/isolation/execution-sandboxing-practical-guide', dev: true },
+                { text: 'Sandboxing & Isolation', link: '/devsecops/isolation/sandboxing-and-isolation' },
+                { text: 'Execution Sandboxing', link: '/devsecops/isolation/execution-sandboxing' },
+                { text: 'Capability-Based Isolation', link: '/devsecops/isolation/capability-based-isolation' },
+                { text: 'Sandboxing for Tool Execution', link: '/devsecops/isolation/sandboxing-for-tool-execution' },
+                { text: 'Network & Resource Isolation', link: '/devsecops/isolation/network-and-resource-isolation' },
+                { text: 'Sandboxing & Policy Enforcement', link: '/devsecops/isolation/sandboxing-and-policy-enforcement' },
+                { text: 'Execution Sandboxing: A Practical Guide', link: '/devsecops/isolation/execution-sandboxing-practical-guide' },
               ]
             },
-            { text: 'Code Signing', link: '/devsecops/code-signing', dev: true },
-            { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment', dev: true },
-            { text: 'Data Security & Upgrade Checklist', link: '/devsecops/data-security-upgrade-checklist', dev: true },
-            { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments', dev: true },
-            { text: 'Repository Hardening', link: '/devsecops/repository-hardening', dev: true },
-            { text: 'Security Testing', link: '/devsecops/security-testing', dev: true },
+            { text: 'Code Signing', link: '/devsecops/code-signing' },
+            { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment' },
+            { text: 'Data Security & Upgrade Checklist', link: '/devsecops/data-security-upgrade-checklist' },
+            { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments' },
+            { text: 'Repository Hardening', link: '/devsecops/repository-hardening' },
+            { text: 'Security Testing', link: '/devsecops/security-testing' },
           ]
         },
         {
@@ -394,14 +391,13 @@ const config = {
         {
           text: 'Supply Chain',
           collapsed: true,
-          dev: true,
           items: [
-            { text: 'Overview', link: '/supply-chain/overview', dev: true },
-            { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts', dev: true },
-            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness', dev: true },
-            { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats', dev: true },
-            { text: 'Vendor Risk Management', link: '/supply-chain/vendor-risk-management', dev: true },
-            { text: 'Incident Response', link: '/supply-chain/incident-response-supply-chain', dev: true },
+            { text: 'Overview', link: '/supply-chain/overview' },
+            { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts' },
+            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness' },
+            { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats' },
+            { text: 'Vendor Risk Management', link: '/supply-chain/vendor-risk-management' },
+            { text: 'Incident Response', link: '/supply-chain/incident-response-supply-chain' },
           ]
         },
         {
@@ -454,15 +450,14 @@ const config = {
         {
           text: 'AI Security',
           collapsed: true,
-          dev: true,
           items: [
-            { text: 'Overview', link: '/ai-security/overview', dev: true },
-            { text: 'Prompt Injection Defenses', link: '/ai-security/prompt-injection-defenses', dev: true },
-            { text: 'AI Browsers', link: '/ai-security/ai-browsers', dev: true },
-            { text: 'AI Workflows: Developers vs Non-Developers', link: '/ai-security/ai-workflows-developers-vs-non-developers', dev: true },
-            { text: 'Data Exfiltration via Generative Systems', link: '/ai-security/data-exfiltration-via-generative-systems', dev: true },
-            { text: 'Execution-Path Enforcement', link: '/ai-security/execution-path-enforcement', dev: true },
-            { text: 'DevSecOps Isolation & Sandboxing (Brief Reference)', link: '/ai-security/devsecops-isolation-sandboxing-reference', dev: true },
+            { text: 'Overview', link: '/ai-security/overview' },
+            { text: 'Prompt Injection Defenses', link: '/ai-security/prompt-injection-defenses' },
+            { text: 'AI Browsers', link: '/ai-security/ai-browsers' },
+            { text: 'AI Workflows: Developers vs Non-Developers', link: '/ai-security/ai-workflows-developers-vs-non-developers' },
+            { text: 'Data Exfiltration via Generative Systems', link: '/ai-security/data-exfiltration-via-generative-systems' },
+            { text: 'Execution-Path Enforcement', link: '/ai-security/execution-path-enforcement' },
+            { text: 'DevSecOps Isolation & Sandboxing (Brief Reference)', link: '/ai-security/devsecops-isolation-sandboxing-reference' },
           ]
         },
         {
