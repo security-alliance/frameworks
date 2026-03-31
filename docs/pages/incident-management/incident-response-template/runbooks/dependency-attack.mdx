@@ -4,7 +4,7 @@ description: "Stub runbook. Customize with your package management and build pro
 tags:
   - Security Specialist
   - Operations & Strategy
-  - Devops
+  - DevOps
 contributors:
   - role: wrote
     users: [isaac]
@@ -26,12 +26,11 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ## Quick Reference
 
 | Field | Value |
-|-------|-------|
+| ------- | ------- |
 | **Typical Severity** | P1 |
 | **Primary Responder** | Frontend SME |
 | **Last Updated** | [Date] |
 | **Owner** | [Name] |
-
 
 ## Identification
 
@@ -52,7 +51,6 @@ yarn audit
 
 Check for recent lockfile changes in git history.
 
-
 ## Immediate Actions
 
 1. [ ] Take down site to stop serving malicious code
@@ -60,14 +58,12 @@ Check for recent lockfile changes in git history.
 3. [ ] Pin dependencies to last known good version
 4. [ ] Rebuild from clean environment
 
-
 ## Mitigation
 
 1. [ ] Remove or replace malicious package
 2. [ ] Update lockfile with known good versions
 3. [ ] Rebuild using `npm ci` or `yarn --frozen-lockfile`
 4. [ ] Redeploy verified build
-
 
 ## Prevention
 
@@ -78,13 +74,11 @@ Check for recent lockfile changes in git history.
 - [ ] Pin exact versions for critical packages
 - [ ] Review dependency changes in PRs
 
-
 ## Related
 
 - [Frontend Compromise](./frontend-compromise)
 - [Build Pipeline Compromise](./build-pipeline-compromise)
 - [Incident Response Policy](../incident-response-policy)
-
 
 </TagProvider>
 <ContributeFooter />

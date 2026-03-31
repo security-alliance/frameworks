@@ -4,7 +4,7 @@ description: "This is an example runbook. Review and customize for your protocol
 tags:
   - Security Specialist
   - Operations & Strategy
-  - Devops
+  - DevOps
 contributors:
   - role: wrote
     users: [isaac]
@@ -21,17 +21,17 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example runbook.** Review and customize for your protocol before use. Add your specific DNS provider, hosting platform, and deployment procedures.
+> **This is an example runbook.** Review and customize for your protocol before use. Add your specific DNS
+> provider, hosting platform, and deployment procedures.
 
 ## Quick Reference
 
 | Field | Value |
-|-------|-------|
+| ------- | ------- |
 | **Typical Severity** | P1 |
 | **Primary Responder** | Frontend SME |
 | **Last Updated** | [Date] |
 | **Owner** | [Name] |
-
 
 ## Identification
 
@@ -47,13 +47,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### Attack Vectors
 
 | Vector | Signs |
-|--------|-------|
+| -------- | ------- |
 | DNS hijack | Domain pointing to wrong IP |
 | CDN compromise | Malicious files served |
 | Dependency attack | npm/yarn package compromised |
 | Build pipeline | CI/CD compromise |
 | Hosting compromise | Files modified on server |
-
 
 ## Immediate Actions
 
@@ -62,6 +61,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 **Why:** Stop users from interacting with compromised site
 
 Options:
+
 - [ ] Point DNS to maintenance page
 - [ ] Disable CDN distribution
 - [ ] Remove site from hosting
@@ -76,7 +76,8 @@ Options:
 - [ ] Update status page
 
 Message template:
-> Our website may be compromised. Do NOT interact with [domain] or approve any transactions until further notice. Your funds in the protocol are safe if you don't sign new transactions.
+> Our website may be compromised. Do NOT interact with [domain] or approve any transactions until further notice.
+> Your funds in the protocol are safe if you don't sign new transactions.
 
 ### Step 3: Assess Scope
 
@@ -84,7 +85,6 @@ Message template:
 - [ ] How long was it compromised?
 - [ ] How many users potentially affected?
 - [ ] Were any transactions signed?
-
 
 ## Investigation
 
@@ -95,6 +95,7 @@ The first priority is understanding how the attacker gained access so you can cl
 - [ ] **How did attacker gain access?** (DNS, CDN, dependencies, CI/CD, hosting)
 
 Once identified, go to the specific runbook:
+
 - DNS hijack → [DNS Hijack](./dns-hijack)
 - CDN/hosting compromise → [CDN/Hosting Compromise](./cdn-hosting-compromise)
 - Dependency attack → [Dependency Attack](./dependency-attack)
@@ -111,13 +112,12 @@ After the threat is contained, investigate impact:
 ### Check These
 
 | Component | How to Check |
-|-----------|--------------|
+| ----------- | -------------- |
 | DNS records | `dig` or DNS provider console |
 | CDN files | Compare to known good |
 | Build artifacts | Check CI/CD logs |
 | Dependencies | `npm audit`, lockfile changes |
 | Hosting files | Compare to repo |
-
 
 ## Mitigation
 
@@ -127,7 +127,6 @@ See the specific runbook for detailed mitigation steps:
 - [CDN/Hosting Compromise](./cdn-hosting-compromise)
 - [Dependency Attack](./dependency-attack)
 - [Build Pipeline Compromise](./build-pipeline-compromise)
-
 
 ## Recovery
 
@@ -147,7 +146,6 @@ See the specific runbook for detailed mitigation steps:
 4. Monitor for anomalies
 5. Announce service restored
 
-
 ## Affected User Support
 
 If users signed malicious transactions:
@@ -157,13 +155,11 @@ If users signed malicious transactions:
 - [ ] Consider compensation if protocol at fault
 - [ ] Document for post-mortem
 
-
 ## Escalation
 
 - [ ] [Decision Makers](../contacts#decision-makers) - immediately
 - [ ] [Infrastructure Vendors](../contacts#infrastructure-vendors) - if hosting/CDN involved
 - [ ] [Legal & Communications](../contacts#legal--communications) - for user communication
-
 
 ## Prevention Checklist
 
@@ -176,7 +172,6 @@ After resolving, review:
 - [ ] Subresource integrity
 - [ ] Content Security Policy
 
-
 ## Related
 
 - [DNS Hijack](./dns-hijack)
@@ -186,7 +181,6 @@ After resolving, review:
 - [DDoS Attack](./ddos-attack)
 - [Third-Party Outage](./third-party-outage)
 - [Incident Response Policy](../incident-response-policy)
-
 
 </TagProvider>
 <ContributeFooter />

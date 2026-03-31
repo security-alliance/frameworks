@@ -4,7 +4,7 @@ description: "This is an example runbook. Review and customize for your protocol
 tags:
   - Security Specialist
   - Operations & Strategy
-  - Devops
+  - DevOps
 contributors:
   - role: wrote
     users: [isaac]
@@ -21,16 +21,18 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example runbook.** Review and customize for your protocol before use. Add your specific CDN/WAF provider commands and escalation contacts.
+> **This is an example runbook.** Review and customize for your protocol before use. Add your specific CDN/WAF
+> provider commands and escalation contacts.
 
 ## Quick Reference
 
 | Field | Value |
-|-------|-------|
+| ----- | ----- |
 | **Typical Severity** | P2-P3 |
 | **Primary Responder** | Infrastructure SME |
 | **Last Updated** | [Date] |
 | **Owner** | [Name] |
+
 ## Identification
 
 ### Symptoms
@@ -44,12 +46,13 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### Differentiation
 
 | Symptom | Likely Cause |
-|---------|--------------|
+| ------- | ------------ |
 | Traffic spike + slow response | DDoS |
 | Traffic normal + slow response | Application issue |
 | Single endpoint affected | Targeted attack or bug |
 | All traffic from few IPs | Simple attack, easy to block |
 | Distributed traffic | Sophisticated DDoS |
+
 ## Immediate Actions
 
 ### Step 1: Confirm DDoS
@@ -65,11 +68,13 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 **Why:** Use provider-level mitigation
 
 For Cloudflare:
+
 ```
 [Document your Cloudflare mitigation steps]
 ```
 
 For AWS:
+
 ```
 [Document your AWS Shield steps]
 ```
@@ -79,7 +84,6 @@ For AWS:
 - [ ] Which services affected?
 - [ ] Are critical functions available?
 - [ ] User impact level?
-
 
 ## Investigation
 
@@ -93,12 +97,11 @@ For AWS:
 ### Data to Collect
 
 | Data | Source |
-|------|--------|
+| ---- | ------ |
 | Traffic volume | CDN/hosting dashboard |
 | Request patterns | Access logs |
 | Source IPs | WAF/firewall logs |
 | Targeted paths | Application logs |
-
 
 ## Mitigation
 
@@ -123,12 +126,10 @@ For AWS:
 2. Consider geo-blocking if attack is regional
 3. Failover to backup if available
 
-
 ## Escalation
 
 - [ ] [CDN/hosting provider](../contacts#infrastructure-vendors) - for attack mitigation support
 - [ ] [Decision Makers](../contacts#decision-makers) - if extended outage
-
 
 ## Recovery
 
@@ -146,7 +147,6 @@ For AWS:
 - [ ] Document attack patterns
 - [ ] Consider permanent mitigations
 
-
 ## Communication
 
 ### Internal
@@ -160,7 +160,6 @@ For AWS:
 
 Usually not needed for brief DDoS attacks. Avoid drawing attention.
 
-
 ## Prevention
 
 After resolving, consider:
@@ -171,13 +170,11 @@ After resolving, consider:
 - [ ] Improved caching
 - [ ] Backup/failover infrastructure
 
-
 ## Related
 
 - [Third-Party Outage](./third-party-outage)
 - [Frontend Compromise](./frontend-compromise)
 - [Incident Response Policy](../incident-response-policy)
-
 
 </TagProvider>
 <ContributeFooter />

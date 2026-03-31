@@ -43,8 +43,8 @@ exploited weak dependency practices, see [Supply Chain Threats](/supply-chain/we
 - **Transitive dependencies** are the dependencies of your dependencies, packages you never chose that get
   pulled in automatically.
 
-In most projects, transitive dependencies vastly outnumber direct ones. A single install command can bring in hundreds of packages you have
-never seen. This matters because:
+In most projects, transitive dependencies vastly outnumber direct ones. A single install command can bring in hundreds
+of packages you have never seen. This matters because:
 
 1. **Vulnerabilities propagate silently.** A vulnerability buried deep in your dependency chain still affects your
    application.
@@ -75,7 +75,7 @@ vendoring, and some barely address the problem at all. Understanding how your ec
 securing it.
 
 | Ecosystem | Lockfile / Mechanism | What to Know |
-|-----------|---------------------|--------------|
+| --------- | ------------------- | ------------ |
 | **Node.js (npm/pnpm/yarn)** | Three package managers, each with its own lockfile: `package-lock.json` (npm), `pnpm-lock.yaml` (pnpm), `yarn.lock` (yarn v1 and Berry). They are not interchangeable. | Switching package managers means regenerating the lockfile. Pick one and enforce it across the team. See [Lockfile Integrity](#lockfile-integrity) section below for how each one works. |
 | **Rust (Cargo)** | `Cargo.lock` records exact versions and checksums for every dependency. Cargo verifies these checksums automatically against `crates.io` on every build. | For libraries, `Cargo.lock` is often `.gitignore`d because downstream consumers resolve their own versions. For binaries and applications, always commit it. |
 | **Go** | No traditional lockfile. `go.sum` stores cryptographic checksums for every dependency, and the public checksum database (`sum.golang.org`) lets you verify that everyone gets the same code for a given version. The module proxy caches modules so they remain available even if the original source disappears. | Go's approach is verification-first rather than lock-first. `go.mod` declares minimum versions, `go.sum` verifies integrity, and `go mod tidy` is the primary way updates enter the dependency tree. |
@@ -183,6 +183,7 @@ import or use it. This is the primary execution mechanism behind most npm supply
      }
    }
    ```
+
 4. **Never run the install command with elevated privileges.** If a script requires `sudo`, that is a red flag.
 
 ## Version Pinning
@@ -194,7 +195,7 @@ maintainers.
 ### Node.js (npm / pnpm / yarn)
 
 | Strategy | Example | Risk Level | When to Use |
-|----------|---------|-----------|------------|
+| -------- | ------- | --------- | ---------- |
 | **Exact version** | `"1.2.3"` | Lowest | Security-critical packages, wallet libraries, production dependencies |
 | **Patch range** | `"~1.2.3"` | Low | General dependencies where you trust patch releases |
 | **Minor range** | `"^1.2.3"` | Medium | Development dependencies, internal tools |
@@ -215,7 +216,7 @@ Each ecosystem has its own version range syntax and defaults. The principles are
 security-critical, allow ranges only where the tradeoff is justified.
 
 | Ecosystem | How to Pin Exactly | How Flexible Ranges Work |
-|-----------|-------------------|--------------------------|
+| --------- | ----------------- | ------------------------ |
 | **Rust (Cargo)** | `=1.2.3` | By default, `1.2.3` allows compatible updates within the same major version. Use `=` for strict pinning. |
 | **Python (pip)** | `==1.2.3` | `~=1.2.3` allows patch updates only. Omitting a version specifier accepts anything, so always specify one. |
 | **Go** | Pinned via `go.sum` checksums | Go uses Minimum Version Selection (MVS): it always picks the *oldest* version that satisfies all requirements, not the newest. This is conservative by design but can delay security patches. |
@@ -310,7 +311,7 @@ Most ecosystems provide built-in or community-standard tools for checking depend
 databases. Run these in CI and fail builds on high or critical findings.
 
 | Ecosystem | Built-in / Standard Tool | Command |
-|-----------|------------------------|---------|
+| --------- | ---------------------- | ------- |
 | **Node.js** | `npm audit` / `pnpm audit` | `pnpm audit --audit-level=high` |
 | **Rust** | `cargo-audit` | `cargo audit` |
 | **Python** | `pip-audit` | `pip-audit -r requirements.txt` |
@@ -332,8 +333,9 @@ databases. Run these in CI and fail builds on high or critical findings.
 - [OSV-Scanner](https://google.github.io/osv-scanner/) by Google queries the OSV (Open Source Vulnerabilities)
   database, which aggregates advisories from multiple ecosystems into a single, consistent format.
 
-> **Important:** None of these methods or tools make you more secure by themselves. They make you *aware* of vulnerabilities and
-> updates. The security value comes from reviewing those updates in depth, especially security patches.
+> **Important:** None of these methods or tools make you more secure by themselves. They make you *aware* of
+> vulnerabilities and updates. The security value comes from reviewing those updates in depth, especially security
+> patches.
 
 ## Ecosystem-Specific Considerations
 
