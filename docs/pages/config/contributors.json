@@ -503,25 +503,27 @@
     "website": null,
     "company": null,
     "job_title": null,
-    "role": "contributor",
-    "description": "Frameworks Contributor",
+    "role": "steward",
+    "description": "Frameworks Steward",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-02-27" }
+      { "name": "First-Contribution", "assigned": "2026-02-27" },
+      { "name": "Framework-Steward", "assigned": "2026-02-27", "framework": "AI Security" }
     ]
   },
-  "jubos": {
-    "slug": "jubos",
-    "name": "jubos",
-    "avatar": "https://avatars.githubusercontent.com/jubos",
-    "github": "https://github.com/jubos",
+  "curtis0x": {
+    "slug": "curtis0x",
+    "name": "curtis0x",
+    "avatar": "https://avatars.githubusercontent.com/curtis0x",
+    "github": "https://github.com/curtis0x",
     "twitter": null,
     "website": null,
     "company": null,
     "job_title": null,
-    "role": "contributor",
-    "description": "Frameworks Contributor",
+    "role": "steward",
+    "description": "Frameworks Steward",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-02-27" }
+      { "name": "First-Contribution", "assigned": "2026-02-27" },
+      { "name": "Framework-Steward", "assigned": "2026-02-27", "framework": "AI Security" }
     ]
   },
   "masterfung": {
@@ -533,10 +535,11 @@
     "website": null,
     "company": null,
     "job_title": null,
-    "role": "contributor",
-    "description": "Frameworks Contributor",
+    "role": "steward",
+    "description": "Frameworks Steward",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-02-27" }
+      { "name": "First-Contribution", "assigned": "2026-02-27" },
+      { "name": "Framework-Steward", "assigned": "2026-02-27", "framework": "AI Security" }
     ]
   },
   "quillaudits": {
@@ -561,8 +564,12 @@
     "website": "https://lido.fi/",
     "company": "Lido",
     "job_title": null,
-    "role": "contributor",
-    "description": "Frameworks Contributor"
+    "role": "steward",
+    "description": "Frameworks Steward",
+    "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-03-26", "framework": "Incident Management" },
+      { "name": "First-Contribution", "assigned": "2026-03-26" }
+    ]
   },
   "n0guest": {
     "slug": "n0guest",
@@ -573,8 +580,12 @@
     "website": "https://lido.fi",
     "company": "Lido",
     "job_title": null,
-    "role": "contributor",
-    "description": "Frameworks Contributor"
+    "role": "steward",
+    "description": "Frameworks Steward",
+    "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-03-26", "framework": "Incident Management" },
+      { "name": "First-Contribution", "assigned": "2026-03-26" }
+    ]
   },
   "smagdali": {
     "slug": "smagdali",
