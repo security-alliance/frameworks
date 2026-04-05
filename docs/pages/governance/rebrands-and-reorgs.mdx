@@ -30,68 +30,119 @@ can create genuine safety risks for community members during the transition and 
 months afterwards. Having a clear plan and consistent communication strategy can keep
 community members safe.
 
-Key Takeaway prompt: Without removing or modifying anything in the document, just after the heading, describe in a
-succinct way (no more than 40 words), all the key points or tl;dr so that anyone can get a good grasp of the contents
-just by reading it. Don't add unnecessary sentences that sound like conclusions, like "By ensuring this..." "Doing all
-these...", "Having these security practices...". Use the following format:
-
-> 🔑 **Key Takeaway**:
-
-[Context / Problem statement. In this first part, we introduce the topic, in no more than a few paragraphs. For example
-for Threat Modeling inside Operational Security Framework: "Effective security requires understanding **what you're
-protecting and who you're protecting it from**. Without a structured threat model, security efforts become unfocused and
-inefficient. Different entities face different threats based on their assets, visibility, and technological footprint."
-It can be this short, or it can have more context]
-
 ## Practical guidance
 
-1. **Step-by-Step Actions** – numbered list users can follow.
-2. **Best-Practice Checklist** – bullet list they can literally tick.
-3. **Role-Based Tips** – highlight differences for Ops, HR, Dev, etc.
-(This mirrors OWASP Cheat Sheet brevity.)
+### Communication & Transparency
 
-## Why is it important
+- Announce transitions early and through every official channel simultaneously. 
+- Establish a single, canonical source of truth (e.g., an official blog post or governance proposal) 
+and link to it everywhere.
+- Transition posts should be authored by a reputable voice in the organization so that users know
+it is an official decision.
+- Use language consistent with your previous posts so community members can verify messaging isn't 
+coming from a new author.
+- During rebrands especially, clearly state which old domains, social accounts, and contracts are 
+being deprecated and which new ones are canonical.
+- Prepare your community by warning them that scammers will spin up fake migration sites, fake token 
+swaps, and impersonation accounts
 
-Explain consequences of ignoring this guidance and link to real incidents or CISA/NIST advisories supporting each risk.
+### Keep Old Accounts
 
-## Implementation details
+- **Domains**: Renew them, even if the project is over. It’s cheap, and it blocks attackers.
+- **Social Media Handles**: Keep them. Add a link to the new account in the bio. Or contact support 
+to request a username change while transferring the old handle to a new account you control.
 
-| Sub-Topic | Related Page |
-| ----------- | -------------- |
-| Device Hardening | `../endpoint-security/...` |
-| Network Segmentation | `../network-security/...` |
+### Notify Partners, Aggregators, and Security Providers
 
-Cross-linking reduces duplication, following docs-as-code best practice.
+- Tell platforms like DefiLlama to mark the project as deprecated or link to the new brand.
+- Notify SEAL that the dapps are intentionally going offline so that future blocks
+on the domains can be performed swiftly.
 
-## 5  Common pitfalls & examples
+### Archive Important Knowledge
+
+- Publish important content to IPFS or Internet Archive to make sure that knowledge is not lost
+when you stop paying hosting and server bills.
+- Audit external links and point users to mirrors and alternatives.
+
+### Post-Transition Monitoring
+
+- After any transition, actively monitor for scam domains, fake social accounts, and phishing campaigns 
+that exploit the change. 
+- Report and take down impersonators quickly. 
+- Keep a dedicated support channel open for confused users for at least several months after the transition completes.
+
+## Why is it Important
+
+When decentralized projects announce rebrands, acquisitions, or shut down, it creates an opportunity for attackers
+to weaponize established brands and their infrastructure for scams. 
+
+### Inherited Reputation
+
+While sites go offline and domains expire, the reputation that is linked to these assets online remains for quite some time.
+
+### DNS
+
+DNS is used for more than just pointing to a web server:
+
+- MX records point to email servers and ability to send email messages to community
+- TXT records are used to verify ownership of a domain and social accounts
+
+### Confusion Is the Primary Weapon
+
+During normal operations, community members have mental models for what's legitimate. They know the domain, the 
+Twitter handle, the contract addresses. A rebrand or acquisition shatters all of that at once. When everything is 
+"supposed to" look different, people lose their ability to distinguish real changes from fake ones.
+
+### Urgency Is Built In
+
+Transitions naturally create time pressure. "Migrate your tokens before the deadline." "Claim your airdrop for the new token." 
+"Update your wallet connection to the new protocol." Attackers don't even need to manufacture urgency, the legitimate project 
+is already doing it for them. They just mirror the real messaging with a malicious link swapped in.
+
+### Bull vs. Bear Market
+
+Shutdowns and acquisitions often coincide with market trends. During the bear market, when most users are not paying attention
+is exactly when projects announce their shut downs and transitions. By the time markets swing back in the other direction and 
+"retail users" regain their interest in the projects that they engaged with before, many users have forgotten which assets they own 
+and who the authoritative sources of information are. This makes it easy for attackers to exploit and impersonate authoritative figures.
+
+### Authority Structures Are Disrupted
+
+During acquisitions, community members may not know who's in charge anymore. New team members appear, old ones leave, 
+communication channels shift. This makes impersonation trivially easy since nobody knows what the "new" team sounds like yet, 
+so a fake account claiming to be the new community lead is hard to distinguish from a real one.
+
+### The User Base Is Pre-Qualified
+
+Wind-downs and migrations tell attackers exactly who holds assets and is motivated to act. A phishing campaign targeting 
+"all holders of token X who need to migrate" is far more effective than a generic scam, because the targets are real, 
+financially exposed, and expecting to take action.
+
+### Emotional Vulnerability
+
+Wind-downs especially create frustration, fear, and desperation. People who are worried about losing their money or are 
+frustrated with the projects new direction are more likely to act impulsively, click suspicious links, and skip verification steps. 
+
+### Information Asymmetry
+
+During these transitions, insiders know details that the community doesn't yet. Attackers exploit this gap by "leaking" fake insider 
+information — fake migration addresses, fake acquisition terms, fake deadlines — and people believe it because they know real 
+information is being withheld or rolled out gradually.
+
+## Common pitfalls & examples
 
 Real-world breach snippets or failure stories that illustrate mistakes to avoid.
 {/* :contentReference[oaicite:6]{index=6} */}
 
-## 6  Quick-reference / Cheat sheet
+## Best Practices
 
-A compact table or numbered list for on-the-job use, inspired by OWASP cheat sheets.
-{/* :contentReference[oaicite:7]{index=7} */}
+1. 
 
-## 7  Further Reading & Tools
+## Additional Resources
 
-Automatically generated from the `references:` field or add authoritative links here.
-
-{/*
-CITATION SOURCES
-turn0search0  Jekyll front-matter basics – validates YAML metadata structure.
-turn0search2  NIST practice guides use an executive-summary section.
-turn0search3  CISA report templates also open with Executive Summary.
-turn0search4  OWASP Cheat Sheet series shows concise prescriptive guidance.
-turn0search5  Kubernetes style guide recommends short sections & headings.
-turn0search6  Google developer style guide echoes those principles.
-turn0search7  Version-history tables are a best practice for change control.
-turn0search8  Jekyll step-by-step docs reinforce YAML front-matter placement.
-turn0search11 CISA advisories supply risk context references.
-turn0search12 OWASP Cheat Sheet project cited for quick-reference idea.
-turn0search13 Kubernetes “page content types” shows cross-linking strategy.
-turn0search10 NIST CSF overview underpins risk-management rationale.
-*/}
+- https://www.coinspect.com/blog/zombie-dapps/
+- https://x.com/0xngmi/status/2022300978427396233?s=20
+- https://x.com/Defi_Scribbler/status/2040051531223814163?s=20
 
 ---
 
