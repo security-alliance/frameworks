@@ -13,8 +13,10 @@ export function ContributeFooter({
   const [currentPath, setCurrentPath] = useState<string>("");
 
   useEffect(() => {
-    const pathname = window.location.pathname;
-    const filePath = `${pathname.slice(1)}.mdx`;
+    const sanitizedPath = window.location.pathname
+      .replace(/\/+$/, "")
+      .replace(/^\/+/, "");
+    const filePath = sanitizedPath ? `${sanitizedPath}.mdx` : "";
     
     setCurrentPath(filePath);
   }, []);
@@ -44,4 +46,3 @@ export function ContributeFooter({
     </div>
   );
 }
-
