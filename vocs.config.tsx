@@ -546,6 +546,7 @@ const config = {
           text: 'Endpoint Security',
           collapsed: true,
           items: [
+            { text: 'Hardware Security Keys', link: '/guides/endpoint-security/hardware-security-keys' },
             { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening', dev: true },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
