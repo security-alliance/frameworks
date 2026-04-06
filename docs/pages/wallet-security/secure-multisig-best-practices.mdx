@@ -36,6 +36,32 @@ managing protocol treasuries, smart contract ownership, or significant personal/
 The primary objective is to eliminate single points of failure and establish robust, distributed control over high-value
 assets and critical smart contract functions.
 
+## Design Principles
+
+### Build in Slowness by Design
+
+Actions that affect user funds or protocol security should be made deliberately slow through
+[timelocks](/multisig-for-protocols/use-case-specific-requirements#timelock-configuration) and review windows.
+Speed is a risk. Forced urgency is one of the primary tools attackers use in social engineering and key compromise
+scenarios. Legitimate operations can accommodate delays, and the slower the path, the more opportunities exist for
+detection and intervention.
+
+### Constrain Emergency Powers
+
+If emergency bypass mechanisms exist (such as bypassing a timelock), they should be highly constrained to the minimum
+necessary action. For example, an emergency path should only be able to pause the protocol, not upgrade contracts or
+move funds. This way, even if emergency signatures are obtained maliciously, the damage is limited to a temporary pause
+rather than a full protocol takeover. The more powerful an action, the more restrictions and delays it should require.
+
+### Separate Responsibilities Across Multisigs
+
+Protocols should not consolidate all admin privileges into a single multisig. Different functional areas (protocol
+upgrades, operational parameter changes, emergency response, treasury management) should be controlled by separate
+multisigs with potentially different signer sets and thresholds. This limits the blast radius of any single compromise
+and allows security measures to be tailored to each function's risk profile. See
+[Separating Multisigs by Function](/multisig-for-protocols/use-case-specific-requirements#separating-multisigs-by-function)
+for detailed guidance.
+
 ## Core Concept: M-of-N Scheme
 
 A multisignature (multisig) wallet is a smart contract that requires a predefined minimum number of approvals `M` from a
@@ -57,8 +83,6 @@ authorize the movement of funds or execute a privileged action.
   for more information on threshold selection.
 - All signers must use hardware wallets
 - Multisigs managing assets on behalf of a DAO should set unlimited allowance with primary DAO agent
-- Signers on multisigs with critical protocol configuration or security roles are discouraged from using their
-addresses for other purposes. They should create a brand new wallet for that purpose instead.
 - All signing wallets should be monitored for any activity that is not directly related to multi-sig operations.
 - No multisigs should use modules/guards except those mentioned in
 [Setup & Configuration → Modules & Guards](/multisig-for-protocols/setup-and-configuration#modules--guards)
@@ -70,6 +94,20 @@ replace the multisig.
 #### Threshold Selection
 
 Avoid `N-of-N` schemes, as the loss of a single key would result in a permanent loss of access to all funds.
+
+#### Dedicated Keys Per Multisig
+
+Signers should use a dedicated address for each multisig they participate in:
+
+- **Wallet clarity**: When a signer uses the same key across multiple multisigs, signing requests become ambiguous.
+  A dedicated key per multisig makes it immediately obvious which multisig a transaction belongs to, reducing the
+  chance of signing the wrong transaction.
+- **Blast radius containment**: If an attacker compromises a signer's key that is shared across multiple multisigs,
+  the attacker gains a valid signature on every multisig that key belongs to. With dedicated keys, compromising one
+  key only affects one multisig.
+
+In practice, use a different address index on your hardware wallet for each multisig — same derivation path, just
+switch between addresses and label each clearly in your wallet interface.
 
 #### Strategic Signer Distribution
 
@@ -185,6 +223,40 @@ related to the multisig, including proposed transactions, new signatures, and ow
 - **General Signing Guidelines:** Use hardware wallets, dedicated signing profiles, and re-verify before execution.
   Require a "how to check" guide and communicate status after signing (e.g., "checked, signed, X more required"). Last
   signer executes when applicable.
+
+### Address Book Discipline
+
+The single most common cause of misdirected funds is using an incorrect address. Protocols must enforce strict address
+hygiene:
+
+- **Never** copy addresses from block explorer transaction history, Etherscan address pages, or chat/email messages.
+  These are all vectors for address poisoning attacks where attackers create transactions from addresses that resemble
+  legitimate ones.
+- **Always** copy addresses from a verified, maintained address book or directly from the multisig/custody platform
+  interface.
+- **First-time recipients**: Before sending any meaningful value to a new address, perform a bidirectional test
+  transaction. Send a small amount, have the recipient confirm receipt and send a small amount back. This proves
+  both parties control the addresses they claim.
+- **High-value transfers**: For transfers above a protocol-defined threshold, verify the recipient address
+  character-by-character on a video call with all approvers.
+- **Address changes**: If a counterparty requests a change to a previously verified address, treat it as a full
+  re-verification event. Do not simply update the address book based on a message.
+
+### Address Poisoning and Permissionless Safe Additions
+
+Anyone can create a Safe and add your address as an owner without your consent. This Safe will appear in your Safe app
+dashboard alongside your legitimate Safes. Attackers exploit this by creating Safes with addresses that share the same
+first 4 and last 4 hex characters as your real Safes, making them visually similar in truncated address displays.
+
+If you are not careful about which Safe you select in the UI, you may interact with or send funds to the attacker's
+Safe.
+
+**Mitigations**:
+
+- Always verify the **full** Safe address before interacting, not just the first and last few characters
+- Bookmark your legitimate Safe addresses and navigate to them directly rather than selecting from a dashboard list
+- If a new Safe appears in your dashboard that you did not create or expect, **do not interact with it**
+- Use your verified address book to confirm any Safe address before transacting
 
 ## Contract-Level Security
 

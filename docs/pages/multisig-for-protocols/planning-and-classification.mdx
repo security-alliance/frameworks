@@ -43,6 +43,27 @@ Document the multisig's intended use:
 - **Decision timeline** - How quickly must it respond?
 - **Integration points** - What systems will it interact with?
 
+### Maintain an Access Control Inventory
+
+Before classifying multisigs, protocols should first build a comprehensive inventory of all privileged roles in their
+system. You cannot classify risk or design multisig separation if you do not know what powers exist and where they live.
+
+For each privileged role, document:
+
+- **Role name**: The on-chain role or permission (e.g., `UPGRADER_ROLE`, `owner`, `pauser`, `fee-setter`)
+- **Held by**: Which address or multisig currently holds this role
+- **Contract**: Which contract(s) this role controls
+- **Capabilities**: What this role can do (specific functions and their effects)
+- **Constraints**: What limits exist on this role (timelocks, parameter bounds, governance controls)
+- **Blast radius**: The maximum potential impact if this role is compromised
+
+This inventory is the foundation for all multisig planning — it directly informs how many multisigs you need, how to
+separate responsibilities, and what threshold and timelock configurations to use. Maintain it as a living document,
+updated whenever new contracts are deployed or roles change.
+
+See the [Registration Template](/multisig-for-protocols/registration-and-documentation#registration-template) for how
+to document this per multisig.
+
 ### Assess Constraints and Recovery
 
 Consider limiting factors that affect risk:

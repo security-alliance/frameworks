@@ -1,0 +1,115 @@
+---
+title: "Multisig Key Takeaways | SEAL"
+description: "The most important multisig security principles on one page. Timelocks, multisig separation, address discipline, monitoring, and calldata verification."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - Multisig Security
+contributors:
+  - role: wrote
+    users: [isaac]
+  - role: reviewed
+    users: []
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Key Takeaways
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+If you read one page from the Multisig Security Framework, make it this one. These are the principles that matter most.
+
+## 1. Use Timelocks on All Admin Changes
+
+Any multisig controlling protocol parameters or upgrades should route through a
+[timelock contract](/multisig-for-protocols/use-case-specific-requirements#timelock-configuration). Without a timelock,
+once threshold signatures are collected, changes take effect immediately with no chance to detect or stop a malicious
+proposal. Use
+[tiered durations](/multisig-for-protocols/use-case-specific-requirements#tiered-timelock-durations): longer delays for
+major changes (upgrades, token changes), shorter delays for routine parameter tuning.
+
+## 2. Separate Multisigs by Function
+
+Do not put all admin privileges in one multisig. If that single multisig is compromised, everything is lost. Use
+[separate multisigs](/multisig-for-protocols/use-case-specific-requirements#separating-multisigs-by-function) for
+different functional areas (protocol upgrades, operational parameters, emergency pause, treasury) with tailored
+thresholds and signer sets for each.
+
+## 3. Use Dedicated Keys Per Multisig
+
+Each signer should use a
+[different address](/wallet-security/secure-multisig-best-practices#dedicated-keys-per-multisig) for each multisig.
+This makes it easy to distinguish which multisig a transaction belongs to in your wallet, and prevents a compromised key
+from being usable across multiple multisigs. Same derivation path on your hardware wallet, just different address
+indexes.
+
+## 4. Maintain an Access Control Inventory
+
+Keep a living document of every privileged role in your protocol: what it can do, which multisig holds it, what
+constraints exist, and what the blast radius is if compromised. You cannot design proper multisig separation or classify
+risk without this foundation. See
+[Access Control Inventory](/multisig-for-protocols/planning-and-classification#maintain-an-access-control-inventory).
+
+## 5. Constrain Emergency Powers
+
+If emergency bypass mechanisms exist (e.g., bypassing a timelock), they should be limited to the minimum necessary
+action like pausing. An emergency path should never be able to upgrade contracts or move funds. This way, even
+maliciously obtained emergency signatures cause minimal damage. See
+[Design Principles](/wallet-security/secure-multisig-best-practices#constrain-emergency-powers).
+
+## 6. Monitor Timelock Queues Actively
+
+A timelock without monitoring provides no protection. Implement
+[automated alerting](/multisig-for-protocols/use-case-specific-requirements#timelock-monitoring) that watches for queued
+transactions and immediately notifies the team with decoded transaction details. At least one monitoring channel should
+be operated by an external party so internal compromise cannot suppress alerts.
+
+## 7. Never Copy Addresses from Explorer History
+
+Always use a verified
+[address book](/wallet-security/secure-multisig-best-practices#address-book-discipline). Never copy addresses from block
+explorer transaction history, Etherscan, or chat messages. For first-time recipients, perform a bidirectional test
+transaction. For high-value transfers, verify addresses character-by-character on a video call.
+
+## 8. Watch for Permissionless Safe Additions
+
+Anyone can create a Safe and add you as an owner without your consent, making it appear in your Safe app. Attackers
+create Safes with addresses matching the first 4 and last 4 characters of your real Safes. Always verify the full
+address and navigate from bookmarks, not the dashboard. See
+[Address Poisoning](/wallet-security/secure-multisig-best-practices#address-poisoning-and-permissionless-safe-additions).
+
+## 9. Verify Calldata, Not Just Hashes
+
+Hash verification confirms you are signing the intended transaction, but it does not tell you what the transaction does.
+Always [decode the calldata](/wallet-security/signing-and-verification/secure-multisig-safe-verification#5-calldata-review)
+and verify the function, target, and parameters match what was described. Watch for red flags like unexpected
+`DELEGATECALL`, `approve` calls, or hidden batch operations.
+
+## 10. Use Delegated Proposers and Non-Signer Execution
+
+Set up a [delegated proposer](/multisig-for-protocols/setup-and-configuration#delegated-proposer) for Safe multisigs.
+Hash verification tools rely on the Safe API, which only has data after a transaction is proposed. Without a delegated
+proposer, the first signer faces additional challenges to verify what they are signing. For a related reason, avoid "sign and execute" for the final signature, as verification tools do not provide the
+expected hashes for this combined action. Instead, have all signers sign only, then have a non-signer execute the
+fully-signed transaction.
+
+## 11. Hardware Wallets, Backup Infrastructure, and Drills
+
+All signers must use hardware wallets. Maintain
+[backup signing infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure) (Eternal Safe, Squads Public
+Client) in case primary UIs go down. Run regular emergency drills to verify that signers can respond under pressure and
+that communication channels work. See the
+[Implementation Checklist](/multisig-for-protocols/implementation-checklist).
+
+---
+
+For the full framework, see the [Multisig Security Framework Overview](/multisig-for-protocols/overview).
+
+</TagProvider>
+<ContributeFooter />

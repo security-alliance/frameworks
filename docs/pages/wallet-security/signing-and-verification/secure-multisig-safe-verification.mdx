@@ -46,6 +46,15 @@ flow. The goal is to ensure that what you see in the UI matches what your hardwa
   execute, communicate with other signers
 - **Re-verify before execution**: If executing an already signed transaction, check it as if you were signing it
 
+## Verify You Are on the Correct Safe
+
+Before interacting with any Safe, verify you are on the correct Safe address. Anyone can create a Safe and add you
+as an owner without your consent, and attackers create Safes with addresses designed to look similar to your
+legitimate Safes (matching first and last 4 characters). Always navigate to your Safe from a bookmarked or verified
+address, not from the Safe app dashboard list. See
+[Address Poisoning](/wallet-security/secure-multisig-best-practices#address-poisoning-and-permissionless-safe-additions)
+for details.
+
 ## Key Definitions (EVM)
 
 - Domain Hash (EIP-712 domain separator)
@@ -122,12 +131,44 @@ Important: Both tools require checksummed addresses:
 
 ## 5) Calldata Review
 
-- Decode calldata (e.g., SwissKnife)
-- Verify functions, recipients, amounts; watch for risky operations
+Hash verification confirms you are signing the right transaction (the one that was proposed), but the hash alone does
+not tell you what the transaction actually does. You need to decode the calldata to understand the on-chain action.
+Never sign a transaction you do not understand.
 
-### Tool diversity recommendation
+### How Calldata Works
 
-Signers should not all use identical tools. Cross-verify results between multiple tools (CLI and web) for critical operations.
+EVM calldata consists of:
+
+- **Function selector** (first 4 bytes): Identifies which function is being called. For example, `0xa9059cbb` is the
+  selector for `transfer(address,uint256)`.
+- **ABI-encoded parameters** (remaining bytes): The function arguments encoded according to the Solidity ABI
+  specification.
+
+For batch transactions using MultiSend, the calldata contains multiple packed transactions. Each must be individually
+decoded and reviewed.
+
+### Decoding Steps
+
+1. Copy the calldata from the Safe UI or from the hash verification tool
+2. Paste into a decoder (e.g., SwissKnife Calldata Decoder, Foundry `cast decode-calldata`)
+3. Verify the function name, target address, and parameters match the expected values
+4. For protocol-specific functions, consider building internal decoding tooling tailored to your contracts for
+   human-readable output
+
+### Common Red Flags
+
+- **`DELEGATECALL` (operation type 1)**: Gives the target contract full control over the Safe's storage. Should only
+  appear when the target is a known, audited module.
+- **Unexpected `approve` or `setApprovalForAll` calls**: Could grant unlimited token spending to an attacker's address.
+- **`MultiSend` when a single action was expected**: Extra calls could be hidden in a batch.
+- **Unfamiliar function selectors**: If you cannot identify the function being called, do not sign until you verify it.
+- **Parameters that do not match the briefing**: Wrong recipient, wrong amount, wrong contract address.
+- **Mismatched target contract**: The function call is going to a different contract than described.
+
+### Tool Diversity Recommendation
+
+Signers should not all use identical tools. Cross-verify results between multiple tools (CLI and web) for critical
+operations.
 
 ## Special Cases: Nested Safes
 
