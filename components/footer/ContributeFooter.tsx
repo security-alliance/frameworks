@@ -13,9 +13,7 @@ export function ContributeFooter({
   const [currentPath, setCurrentPath] = useState<string>("");
 
   useEffect(() => {
-    const sanitizedPath = window.location.pathname
-      .replace(/\/+$/, "")
-      .replace(/^\/+/, "");
+    const sanitizedPath = window.location.pathname.replace(/^\/+|\/+$/g, "");
     const filePath = sanitizedPath ? `${sanitizedPath}.mdx` : "";
     
     setCurrentPath(filePath);
