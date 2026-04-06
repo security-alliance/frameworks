@@ -4,7 +4,7 @@ description: "This is an example runbook. Review and customize for your protocol
 tags:
   - Security Specialist
   - Operations & Strategy
-  - Devops
+  - DevOps
 contributors:
   - role: wrote
     users: [isaac]
@@ -21,17 +21,17 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example runbook.** Review and customize for your protocol before use. Fill in your specific vendors, dependencies, and failover procedures.
+> **This is an example runbook.** Review and customize for your protocol before use. Fill in your specific vendors,
+> dependencies, and failover procedures.
 
 ## Quick Reference
 
 | Field | Value |
-|-------|-------|
+| ----- | ----- |
 | **Typical Severity** | P2-P3 |
 | **Primary Responder** | Infrastructure SME |
 | **Last Updated** | [Date] |
 | **Owner** | [Name] |
-
 
 ## Identification
 
@@ -45,7 +45,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### Common Dependencies
 
 | Service Type | Provider(s) | Criticality | Fallback? |
-|--------------|-------------|-------------|-----------|
+| --- | --- | --- | --- |
 | RPC | | Critical / High / Med | Yes / No |
 | Hosting | | | |
 | CDN | | | |
@@ -53,7 +53,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 | Monitoring | | | |
 | Auth | | | |
 | Oracle | | | |
-
 
 ## Immediate Actions
 
@@ -77,12 +76,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 - [ ] Enable cached/degraded mode
 - [ ] Disable affected features gracefully
 
-
 ## By Service Type
 
 ### RPC Provider Outage
 
 **Fallback options:**
+
 1. Switch to secondary RPC
 2. Use public endpoints temporarily
 3. Run own node if available
@@ -94,6 +93,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### Hosting/CDN Outage
 
 **Fallback options:**
+
 1. Failover to secondary hosting
 2. Enable maintenance page
 3. Redirect to status page
@@ -103,10 +103,10 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 **Impact:** Price feeds may be stale or unavailable
 
 **Options:**
+
 1. Pause affected operations
 
 > Customize this section for your specific oracle dependencies and what operations depend on them.
-
 
 ## Communication
 
@@ -119,20 +119,21 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### External
 
 If significant user impact:
-> We're experiencing issues with [affected feature] due to a third-party service outage. We're monitoring and will restore service when the provider recovers.
+
+> We're experiencing issues with [affected feature] due to a third-party service outage. We're monitoring and will
+> restore service when the provider recovers.
 
 Include:
+
 - What's affected
 - What still works
 - Where to check for updates
-
 
 ## Monitoring the Outage
 
 - [ ] Subscribe to provider status updates
 - [ ] Set reminder to check every 15-30 min
 - [ ] Monitor your own metrics for recovery
-
 
 ## Recovery
 
@@ -150,12 +151,10 @@ Include:
 - [ ] Assess if additional redundancy needed
 - [ ] Consider SLA review with provider
 
-
 ## Escalation
 
 - [ ] [Infrastructure Vendors](../contacts#infrastructure-vendors) - contact provider support
 - [ ] [Decision Makers](../contacts#decision-makers) - if extended outage or no ETA
-
 
 ## Prevention
 
@@ -168,20 +167,17 @@ Reduce third-party dependency risk:
 - [ ] Cached fallbacks where appropriate
 - [ ] Regular dependency review
 
-
 ## Provider Contacts
 
 | Provider | Status Page | Support Contact |
-|----------|-------------|-----------------|
+| --- | --- | --- |
 | | | |
 | | | |
-
 
 ## Related
 
 - [DDoS Attack](./ddos-attack)
 - [Incident Response Policy](../incident-response-policy)
-
 
 </TagProvider>
 <ContributeFooter />

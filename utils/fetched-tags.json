@@ -9,7 +9,6 @@
     "DeFi",
     "DevOps",
     "DevOps Accounts",
-    "Devops",
     "Engineer/Developer",
     "HR",
     "Legal & Compliance",
@@ -22,6 +21,7 @@
     "SFC",
     "SRE",
     "Security Specialist",
+    "Smart Contracts",
     "Treasury Ops",
     "Whitehat"
   ],
@@ -46,19 +46,19 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/ai-security/execution-path-enforcement": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/ai-security/overview": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/ai-security/prompt-injection-defenses": [
       "Engineer/Developer",
@@ -177,6 +177,11 @@
       "DevOps",
       "SRE"
     ],
+    "/devsecops/data-security-upgrade-checklist": [
+      "Engineer/Developer",
+      "Operations & Strategy",
+      "Smart Contracts"
+    ],
     "/devsecops/integrated-development-environments": [
       "Engineer/Developer",
       "Security Specialist",
@@ -191,39 +196,39 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/devsecops/isolation/execution-sandboxing": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/devsecops/isolation/network-and-resource-isolation": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops",
+      "DevOps",
       "SRE"
     ],
     "/devsecops/isolation/sandboxing-and-isolation": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/devsecops/isolation/sandboxing-and-policy-enforcement": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/devsecops/isolation/sandboxing-for-tool-execution": [
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy",
-      "Devops"
+      "DevOps"
     ],
     "/devsecops/overview": [
       "Engineer/Developer",
@@ -418,6 +423,10 @@
       "DevOps",
       "HR"
     ],
+    "/governance/council-best-practices": [
+      "Operations & Strategy",
+      "Legal & Compliance"
+    ],
     "/governance/overview": [
       "Operations & Strategy",
       "Legal & Compliance"
@@ -517,6 +526,108 @@
     "/incident-management/incident-detection-and-response": [
       "Security Specialist",
       "Operations & Strategy"
+    ],
+    "/incident-management/incident-response-template/communications": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/incident-management/incident-response-template/contacts": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/incident-management/incident-response-template/incident-response-policy": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/incident-management/incident-response-template/roles-and-staffing": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/build-pipeline-compromise": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/cdn-hosting-compromise": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/ddos-attack": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/dependency-attack": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/dns-hijack": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/frontend-compromise": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/key-compromise": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/overview": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/smart-contract-exploit": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/runbooks/third-party-outage": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/templates/example-incident-log": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/templates/example-post-mortem": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/templates/incident-log-template": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/templates/overview": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/templates/post-mortem-template": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/incident-management/incident-response-template/templates/runbook-template": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
     ],
     "/incident-management/lessons-learned": [
       "Security Specialist",
@@ -713,6 +824,31 @@
       "Security Specialist",
       "Multisig Security"
     ],
+    "/multisig-for-protocols/runbooks/emergency-pause": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/runbooks/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/runbooks/signer-rotation": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/runbooks/threshold-change": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
+    "/multisig-for-protocols/runbooks/token-transfer": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Multisig Security"
+    ],
     "/multisig-for-protocols/setup-and-configuration": [
       "Engineer/Developer",
       "Security Specialist",
@@ -785,6 +921,11 @@
     "/opsec/passwords/overview": [
       "Security Specialist",
       "Operations & Strategy"
+    ],
+    "/opsec/secure-operating-systems": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Engineer/Developer"
     ],
     "/opsec/travel/guide": [
       "Security Specialist",
@@ -1137,6 +1278,7 @@
     "Signing & Verification": "wallet-security",
     "Multisig for Protocols": "multisig-for-protocols",
     "Multisig Administration": "multisig-for-protocols",
+    "Operational Runbooks": "multisig-for-protocols",
     "For Signers": "multisig-for-protocols",
     "External Security Reviews": "external-security-reviews",
     "Smart Contract Audits": "external-security-reviews",
@@ -1147,6 +1289,9 @@
     "Front-End/Web Application": "front-end-web-app",
     "Incident Management": "incident-management",
     "Playbooks": "incident-management",
+    "Incident Response Template": "incident-management",
+    "Templates": "incident-management",
+    "Runbooks": "incident-management",
     "Threat Modeling": "threat-modeling",
     "DPRK IT Workers": "dprk-it-workers",
     "Governance": "governance",

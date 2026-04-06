@@ -1,20 +1,4 @@
 {
-  "JosepBove": {
-    "slug": "JosepBove",
-    "name": "Josep Bove",
-    "avatar": "https://avatars.githubusercontent.com/JosepBove",
-    "github": "https://github.com/JosepBove",
-    "twitter": "https://twitter.com/JosepBove",
-    "website": null,
-    "company": "OP Labs",
-    "role": "steward",
-    "job_title": null,
-    "description": "Steward of Monitoring framework",
-    "badges": [
-      { "name": "Framework-Steward", "assigned": "2026-03-17", "framework": "Monitoring" },
-      { "name": "First-Contribution", "assigned": "2026-03-16" }
-    ]
-  },
   "mattaereal": {
     "slug": "mattaereal",
     "name": "matta",
@@ -39,7 +23,7 @@
       { "name": "Issue-Opener-5", "assigned": "2024-08-22" },
       { "name": "Issue-Opener-10", "assigned": "2024-08-24" },
       { "name": "Issue-Opener-25", "assigned": "2024-09-25" },
-      { "name": "Active-Last-7d", "lastActive": "2026-03-10" }
+      { "name": "Active-Last-7d", "lastActive": "2026-03-24" }
     ]
   },
   "fredriksvantes": {
@@ -79,7 +63,8 @@
       { "name": "Core-Contributor", "assigned": "2024-10-02" },
       { "name": "Early-Contributor", "assigned": "2024-10-02" },
       { "name": "First-Contribution", "assigned": "2024-10-02" },
-      { "name": "First-Review", "assigned": "2024-10-15" }
+      { "name": "First-Review", "assigned": "2024-10-15" },
+      { "name": "Dormant-90d+", "lastActive": "2025-12-17" }
     ]
   },
   "nftdreww": {
@@ -246,7 +231,7 @@
       { "name": "First-Review", "assigned": "2025-08-11" },
       { "name": "Reviewer-10", "assigned": "2026-02-24" },
       { "name": "Reviewer-25", "assigned": "2024-03-01" },
-      { "name": "Active-Last-30d", "lastActive": "2026-03-02" }
+      { "name": "Active-Last-7d", "lastActive": "2026-03-23" }
     ]
   },
   "blackbigswan": {
@@ -368,8 +353,7 @@
     "description": "SEAL Certs & SEAL Wargames",
     "badges": [
       { "name": "Framework-Steward", "assigned": "2025-12-17", "framework": "SEAL Certs" },
-      { "name": "First-Review", "assigned": "2026-01-26" },
-      { "name": "Active-Last-30d", "lastActive": "2026-02-09" }
+      { "name": "First-Review", "assigned": "2026-01-26" }
     ]
   },
   "geoffrey": {
@@ -460,7 +444,8 @@
       { "name": "Contributor-25", "assigned": "2025-11-15" },
       { "name": "First-Review", "assigned": "2025-08-12" },
       { "name": "Reviewer-10", "assigned": "2025-09-12" },
-      { "name": "Active-Last-7d", "lastActive": "2026-03-11" }
+      { "name": "Reviewer-25", "assigned": "2026-03-20" },
+      { "name": "Active-Last-7d", "lastActive": "2026-03-25" }
     ]
   },
   "gunnim": {
@@ -475,7 +460,8 @@
     "job_title": "Founder",
     "description": "Cloud architecture enthusiast with a passion for IT Security",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-01-21" }
+      { "name": "First-Contribution", "assigned": "2026-01-21" },
+      { "name": "Active-Last-7d", "lastActive": "2026-03-21" }
     ]
   },
   "madjin": {
@@ -490,8 +476,7 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2025-12-16" },
-      { "name": "Active-Last-30d", "lastActive": "2026-02-09" }
+      { "name": "First-Contribution", "assigned": "2025-12-16" }
     ]
   },
   "monperrus": {
@@ -604,8 +589,7 @@
     "description": "Frameworks Contributor",
     "badges": [
       { "name": "First-Contribution", "assigned": "2025-12-03" },
-      { "name": "Issue-Opener-5", "assigned": "2026-02-05" },
-      { "name": "Active-Last-30d", "lastActive": "2026-02-10" }
+      { "name": "Issue-Opener-5", "assigned": "2026-02-05" }
     ]
   },
   "davidthegardens": {
@@ -639,31 +623,23 @@
       { "name": "First-Contribution", "assigned": "2025-09-18" },
       { "name": "Dormant-90d+", "lastActive": "2025-09-18" }
     ]
-  },
-  "quillaudits": {
-    "slug": "quillaudits",
-    "name": "QuillAudits",
-    "avatar": "https://avatars.githubusercontent.com/quillaudits",
-    "github": "https://github.com/Quillhash",
-    "twitter": "https://twitter.com/QuillAudits",
-    "website": "https://www.quillaudits.com",
-    "company": "QuillAudits",
-    "job_title": "Smart Contract Audit Firm",
-    "role": "contributor",
-    "description": "",
-    "badges": []
-  },
-  "andrew-chang-gu": {
-    "slug": "andrew-chang-gu",
-    "name": "Andrew Chang-Gu",
-    "avatar": "",
-    "github": "",
-    "twitter": "",
-    "website": "https://www.linkedin.com/in/achanggu",
-    "company": "Google Cloud Security",
-    "job_title": "Google Cloud Security",
-    "role": "contributor",
-    "description": "Google Cloud Security",
-    "badges": []
+},
+"JosepBove": {
+    "slug": "JosepBove",
+    "name": "Josep Bove",
+    "avatar": "https://avatars.githubusercontent.com/JosepBove",
+    "github": "https://github.com/JosepBove",
+    "twitter": "https://twitter.com/JosepBove",
+    "website": null,
+    "company": "OP Labs",
+    "role": "steward",
+    "job_title": null,
+    "description": "Steward of Monitoring framework",
+    "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-03-17", "framework": "Monitoring" },
+      { "name": "First-Contribution", "assigned": "2026-03-16" },
+      { "name": "New-Joiner", "lastActive": "2026-03-17" },
+      { "name": "Active-Last-7d", "lastActive": "2026-03-23" }
+    ]
   }
 }
