@@ -546,6 +546,7 @@ const config = {
           text: 'Endpoint Security',
           collapsed: true,
           items: [
+            { text: 'SSH Client and Key Management Hardening', link: '/guides/endpoint-security/ssh-client-and-key-management-hardening' },
             { text: 'Hardware Security Keys', link: '/guides/endpoint-security/hardware-security-keys' },
             { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening', dev: true },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
