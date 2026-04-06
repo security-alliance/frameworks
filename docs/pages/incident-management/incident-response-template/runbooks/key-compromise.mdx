@@ -4,7 +4,7 @@ description: "This is an example runbook. Review and customize for your protocol
 tags:
   - Security Specialist
   - Operations & Strategy
-  - Devops
+  - DevOps
 contributors:
   - role: wrote
     users: [isaac]
@@ -21,17 +21,17 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example runbook.** Review and customize for your protocol before use. Fill in your key types, what each controls, and your specific rotation procedures.
+> **This is an example runbook.** Review and customize for your protocol before use. Fill in your key types, what
+> each controls, and your specific rotation procedures.
 
 ## Quick Reference
 
 | Field | Value |
-|-------|-------|
+| ------- | ------- |
 | **Typical Severity** | P1 |
 | **Primary Responder** | Security SME |
 | **Last Updated** | [Date] |
 | **Owner** | [Name] |
-
 
 ## Identification
 
@@ -46,12 +46,11 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### Key Types
 
 | Key Type | Risk Level | Controlled Assets |
-|----------|------------|-------------------|
+| ---------- | ------------ | ------------------- |
 | Deployer | [High/Med] | [What it controls] |
 | Admin/Owner | [High/Med] | [What it controls] |
 | Multisig signer | [High/Med] | [What it controls] |
 | Hot wallet | [High/Med] | [What it controls] |
-
 
 ## Immediate Actions
 
@@ -76,14 +75,17 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 **Why:** Remove attacker access
 
 For multisig signers:
+
 - [ ] Remove compromised signer
 - [ ] Add replacement signer
 
 For admin keys:
+
 - [ ] Transfer ownership to new address
 - [ ] Or revoke permissions if possible
 
 For hot wallets:
+
 - [ ] Move remaining funds to secure address
 
 ### Step 4: Check for Damage
@@ -93,7 +95,6 @@ For hot wallets:
 - [ ] Review all transactions from compromised key
 - [ ] Check pending proposals/timelocks
 - [ ] Audit any systems key had access to
-
 
 ## Investigation
 
@@ -107,12 +108,11 @@ For hot wallets:
 ### Evidence to Collect
 
 | Data | Source |
-|------|--------|
+| ------ | -------- |
 | Transaction history | Block explorer |
 | Login/access logs | Infrastructure providers |
 | Signing requests | Multisig interface |
 | Communications | If social engineering |
-
 
 ## Mitigation by Key Type
 
@@ -138,13 +138,11 @@ For hot wallets:
 3. Update any systems using old address
 4. Retire compromised address
 
-
 ## Escalation
 
 - [ ] [Decision Makers](../contacts#decision-makers) - immediately for any confirmed compromise
 - [ ] [Security Partners](../contacts#security-partners) - for investigation support
 - [ ] [Legal](../contacts#legal--communications) - if funds were stolen
-
 
 ## Prevention Checklist
 
@@ -157,12 +155,10 @@ After resolving, review:
 - [ ] Access logging
 - [ ] Key rotation schedule
 
-
 ## Related
 
 - [Smart Contract Exploit](./smart-contract-exploit)
 - [Incident Response Policy](../incident-response-policy)
-
 
 </TagProvider>
 <ContributeFooter />
