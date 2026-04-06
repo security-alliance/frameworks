@@ -4,7 +4,7 @@ description: "How you staff incident response depends on your team size and stru
 tags:
   - Security Specialist
   - Operations & Strategy
-  - Devops
+  - DevOps
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
@@ -21,29 +21,34 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-How you staff incident response depends on your team size and structure. This document covers options from small teams to larger organizations.
+How you staff incident response depends on your team size and structure. This document covers options from small teams
+to larger organizations.
 
 See [Incident Response Policy](./incident-response-policy#roles) for role definitions.
+
 ## Core Roles (All Team Sizes)
 
 Every incident needs these roles filled, even if one person wears multiple hats:
 
 | Role | Responsibility |
-|------|----------------|
+| ------- | ----------------- |
 | **Incident Leader** | Coordinates response, assigns tasks, makes decisions |
 | **Scribe** | Documents everything in [Incident Log](./templates/incident-log-template) |
 | **Responders** | Execute fixes, investigate, implement mitigations |
 
 For larger incidents, add:
+
 - **Communication Manager** - Handles internal/external comms
 - **Subject Matter Experts** - Specialists for specific domains
+
 ## Small Teams (2-5 people)
 
 ### Approach
 
 Everyone knows everything. Just make sure someone is always reachable.
 
-> Whether you need formal on-call depends more on your commitments (SLAs, assets held, user expectations) than team size alone. Small teams with high-value assets may still need structured coverage.
+> Whether you need formal on-call depends more on your commitments (SLAs, assets held, user expectations) than team
+> size alone. Small teams with high-value assets may still need structured coverage.
 
 ### Structure
 
@@ -64,7 +69,6 @@ Everyone knows everything. Just make sure someone is always reachable.
 - Separate First Responder program
 - Multiple communication managers
 
-
 ## Medium Teams (5-15 people)
 
 ### Approach
@@ -73,22 +77,24 @@ Define subject matter experts. Consider a simple on-call rotation.
 
 ### Structure
 
-**Subject Matter Experts (SMEs)**
+#### Subject Matter Experts (SMEs)
 
 | Domain | Primary | Backup |
-|--------|---------|--------|
+| --------- | --------- | --------- |
 | Smart Contracts | | |
 | Infrastructure | | |
 | Frontend | | |
 | Security | | |
 
-**On-Call Options**
+#### On-Call Options
 
-*Option A: Informal*
+#### Option A: Informal
+
 - No formal schedule, but SMEs are expected to be reachable during their working hours
 - Clear escalation for after-hours: who to call first
 
-*Option B: Simple Rotation*
+#### Option B: Simple Rotation
+
 - Weekly rotation among willing team members
 - One person on-call, responsible for initial triage
 - They pull in SMEs as needed
@@ -99,7 +105,6 @@ Define subject matter experts. Consider a simple on-call rotation.
 - On-call person handles initial assessment and escalation
 - Separate Scribe and Incident Leader for P1/P2 incidents
 
-
 ## Larger Teams (15+ people)
 
 ### Approach
@@ -109,6 +114,7 @@ Formal First Responder program with trained personnel and scheduled on-call.
 ### First Responder Program
 
 **What First Responders Do:**
+
 - Initial triage when an incident is detected
 - Assess severity
 - Kick off the incident response process
@@ -116,10 +122,12 @@ Formal First Responder program with trained personnel and scheduled on-call.
 - Hand off to Incident Leader
 
 **What First Responders Don't Do:**
+
 - Fix the issue themselves (unless they're also the SME)
 - Make major decisions without escalation
 
 **Why This Model:**
+
 - Distributes knowledge across the organization
 - Reduces burden on any single team
 - Ensures someone is always ready to start the process
@@ -130,7 +138,7 @@ Formal First Responder program with trained personnel and scheduled on-call.
 Consider parallel schedules for different domains:
 
 | Schedule | Coverage | Rotation |
-|----------|----------|----------|
+| ----------- | ----------- | ----------- |
 | Infrastructure | 24/7 | Weekly among 6-8 people |
 | Smart Contracts | 24/7 | Weekly among 6-8 people |
 
@@ -139,6 +147,7 @@ ex. With 8 people per rotation, each person is on-call one week every two months
 ### First Responder Training
 
 Before going on-call, complete:
+
 - [ ] Review [Incident Response Policy](./incident-response-policy)
 - [ ] Review [Incident Log](./templates/incident-log-template) and [Post-Mortem](./templates/post-mortem-template) templates
 - [ ] Read 2-3 past post-mortems
@@ -149,31 +158,34 @@ Before going on-call, complete:
 ### On-Call Expectations
 
 **During your shift:**
+
 - Keep alerting device accessible
 - Respond to pages within 15 minutes
 - Triage and escalate appropriately
 - You don't need to fix everything. Get the right people involved
 
 **Off-shift:**
+
 - Stay current on documentation
 - Review new post-mortems
 - Participate in tabletop exercises
+
 ## Decision Makers
 
 Regardless of team size, define who can make high-stakes decisions during P1 incidents:
 
 | Role | Name | Contact |
-|------|------|---------|
+| ------- | ------- | ---------- |
 | | | |
 | | | |
 | | | |
 
 These people should be reachable 24/7 for critical incidents. Consider:
+
 - Founders / C-level
 - Security Lead
 - Engineering Lead
 - Legal (for incidents with legal implications)
-
 
 ## Tools Checklist
 
@@ -186,20 +198,19 @@ Ensure your on-call personnel have access to:
 - [ ] On-call schedule
 - [ ] [Contacts](./contacts) list
 
-
 ## Choosing Your Model
 
 | Team Size | Recommended Approach |
-|-----------|---------------------|
+| ----------- | ---------------------- |
 | 2-5 | Informal coverage, designated leaders |
 | 5-10 | SME structure, optional simple rotation |
 | 10-15 | Simple rotation with SMEs |
 | 15+ | First Responder program with parallel schedules |
 
-**Start simple and add structure as you grow.** A lightweight process that people follow beats a heavyweight process that gets ignored.
+**Start simple and add structure as you grow.** A lightweight process that people follow beats a heavyweight process
+that gets ignored.
 
 *See [Incident Response Policy](./incident-response-policy) for how these roles work during an actual incident.*
-
 
 </TagProvider>
 <ContributeFooter />

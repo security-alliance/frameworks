@@ -47,13 +47,16 @@ const config = {
       collapsed: false,
       items: [
         {
-          text: 'Community Management',
+          text: 'AI Security',
           collapsed: true,
           items: [
-            { text: 'Overview', link: '/community-management/overview' },
-            { text: 'Discord', link: '/community-management/discord' },
-            { text: 'Twitter', link: '/community-management/twitter' },
-            { text: 'Telegram', link: '/community-management/telegram' },
+            { text: 'Overview', link: '/ai-security/overview' },
+            { text: 'Prompt Injection Defenses', link: '/ai-security/prompt-injection-defenses' },
+            { text: 'AI Browsers', link: '/ai-security/ai-browsers' },
+            { text: 'AI Workflows: Developers vs Non-Developers', link: '/ai-security/ai-workflows-developers-vs-non-developers' },
+            { text: 'Data Exfiltration via Generative Systems', link: '/ai-security/data-exfiltration-via-generative-systems' },
+            { text: 'Execution-Path Enforcement', link: '/ai-security/execution-path-enforcement' },
+            { text: 'DevSecOps Isolation & Sandboxing (Brief Reference)', link: '/ai-security/devsecops-isolation-sandboxing-reference' },
           ]
         },
         {
@@ -69,67 +72,232 @@ const config = {
           ]
         },
         {
-          text: 'Operational Security',
+          text: 'Community Management',
           collapsed: true,
           items: [
-            { text: 'Overview', link: '/opsec/overview' },
-            {
-              text: 'OpSec Core Concepts',
-              collapsed: false,
-              items: [
-                { text: 'Security Fundamentals', link: '/opsec/core-concepts/security-fundamentals' },
-                { text: 'Implementation Process', link: '/opsec/core-concepts/implementation-process' },
-                { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
-              ]
-            },
-            { text: 'Secure Operating Systems', link: '/opsec/secure-operating-systems', dev: true },
-            { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
-            { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
-            { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
-            { text: 'Password Management', link: '/opsec/passwords/overview', dev: true },
-            { text: 'Google Workspace Security', link: '/opsec/google/overview', dev: true },
-            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
-            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
-            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
-            {
-              text: 'While Traveling',
-              collapsed: true,
-              items: [
-                { text: 'Overview', link: '/opsec/travel/overview' },
-                { text: 'Guide', link: '/opsec/travel/guide' },
-                { text: 'TL;DR', link: '/opsec/travel/tldr', dev: true },
-              ]
-            },
-            { text: 'Appendices', link: '/opsec/appendices/overview', dev: true }
+            { text: 'Overview', link: '/community-management/overview' },
+            { text: 'Discord', link: '/community-management/discord' },
+            { text: 'Twitter', link: '/community-management/twitter' },
+            { text: 'Telegram', link: '/community-management/telegram' },
           ]
         },
         {
-          text: 'Wallet Security',
+          text: 'DevSecOps',
           collapsed: true,
           items: [
-            { text: 'Overview', link: '/wallet-security/overview' },
-            { text: 'Custodial vs Non-Custodial', link: '/wallet-security/custodial-vs-non-custodial' },
-            { text: 'Cold vs Hot Wallet', link: '/wallet-security/cold-vs-hot-wallet' },
-            { text: 'Wallets For Beginners & Small Balances', link: '/wallet-security/for-beginners-and-small-balances' },
-            { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-and-medium-funds' },
-            { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
-            { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
-            { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets' },
+            { text: 'Overview', link: '/devsecops/overview' },
             {
-              text: 'Signing & Verification',
+              text: 'Isolation & Sandboxing',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/wallet-security/signing-and-verification/signing-verification' },
-                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/signing-and-verification/verifying-standard-transactions' },
-                { text: 'Multisig Signing Process', link: '/wallet-security/signing-and-verification/secure-multisig-signing-process' },
-                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-safe-verification', dev: true },
-                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-squads-verification', dev: true },
-                { text: 'Using EIP-7702', link: '/wallet-security/signing-and-verification/verifying-7702' },
+                { text: 'Sandboxing & Isolation', link: '/devsecops/isolation/sandboxing-and-isolation' },
+                { text: 'Execution Sandboxing', link: '/devsecops/isolation/execution-sandboxing' },
+                { text: 'Capability-Based Isolation', link: '/devsecops/isolation/capability-based-isolation' },
+                { text: 'Sandboxing for Tool Execution', link: '/devsecops/isolation/sandboxing-for-tool-execution' },
+                { text: 'Network & Resource Isolation', link: '/devsecops/isolation/network-and-resource-isolation' },
+                { text: 'Sandboxing & Policy Enforcement', link: '/devsecops/isolation/sandboxing-and-policy-enforcement' },
+                { text: 'Execution Sandboxing: A Practical Guide', link: '/devsecops/isolation/execution-sandboxing-practical-guide' },
               ]
             },
-            { text: 'Smart Contract Interaction Security', link: '/wallet-security/smart-contract-interaction-security', dev: true },
-            { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
-            { text: 'Tools & Resources', link: '/wallet-security/tools-and-resources' },
+            { text: 'Code Signing', link: '/devsecops/code-signing' },
+            { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment' },
+            { text: 'Data Security & Upgrade Checklist', link: '/devsecops/data-security-upgrade-checklist' },
+            { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments' },
+            { text: 'Repository Hardening', link: '/devsecops/repository-hardening' },
+            { text: 'Security Testing', link: '/devsecops/security-testing' },
+          ]
+        },
+        {
+          text: 'DPRK IT Workers',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/dprk-it-workers/overview' },
+            { text: 'General Information', link: '/dprk-it-workers/general-information' },
+            { text: 'Techniques, Tactics and Procedures', link: '/dprk-it-workers/techniques-tactics-and-procedures' },
+            { text: 'Mitigating DPRK IT Workers', link: '/dprk-it-workers/mitigating-dprk-it-workers' },
+            { text: 'Case Studies', link: '/dprk-it-workers/case-studies' },
+            { text: 'Summary', link: '/dprk-it-workers/summary' },
+          ]
+        },
+        {
+          text: 'Encryption',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/encryption/overview', dev: true },
+            { text: 'Cloud Data Encryption', link: '/encryption/cloud-data-encryption', dev: true },
+            { text: 'Communication Encryption', link: '/encryption/communication-encryption', dev: true },
+            { text: 'Database Encryption', link: '/encryption/database-encryption', dev: true },
+            { text: 'Email Encryption', link: '/encryption/email-encryption', dev: true },
+            { text: 'Encryption in Transit', link: '/encryption/encryption-in-transit', dev: true },
+            { text: 'File Encryption', link: '/encryption/file-encryption', dev: true },
+            { text: 'Full Disk Encryption', link: '/encryption/full-disk-encryption', dev: true },
+            { text: 'Hardware Encryption', link: '/encryption/hardware-encryption', dev: true },
+            { text: 'Partition Encryption', link: '/encryption/partition-encryption', dev: true },
+            { text: 'Volume Encryption', link: '/encryption/volume-encryption', dev: true },
+          ]
+        },
+        {
+          text: 'ENS',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/ens/overview' },
+            { text: 'Data Integrity & Verification', link: '/ens/data-integrity-verification' },
+            { text: 'Cross-Chain Compatibility', link: '/ens/cross-chain-compatibility' },
+            { text: 'Smart Contract Integration', link: '/ens/smart-contract-integration' },
+            { text: 'Interface Compliance', link: '/ens/interface-compliance' },
+            { text: 'Name Handling & Normalization', link: '/ens/name-handling-normalization' },
+          ]
+        },
+        {
+          text: 'External Security Reviews',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/external-security-reviews/overview' },
+            {
+              text: 'Smart Contract Audits',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/external-security-reviews/smart-contracts/overview' },
+                { text: 'Manual Review', link: '/external-security-reviews/smart-contracts/manual-review' },
+                { text: 'Expectations', link: '/external-security-reviews/smart-contracts/expectation' },
+                { text: 'Preparation Guide', link: '/external-security-reviews/smart-contracts/preparation' },
+                { text: 'Vendor Selection', link: '/external-security-reviews/smart-contracts/vendor-selection' },
+              ]
+            },
+            { text: 'Security Policies and Procedures', link: '/external-security-reviews/security-policies-procedures' },
+          ]
+        },
+        {
+          text: 'Front-End/Web Application',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/front-end-web-app/overview', dev: true },
+            { text: 'Web Application Security', link: '/front-end-web-app/web-application-security', dev: true },
+            { text: 'Mobile Application Security', link: '/front-end-web-app/mobile-application-security', dev: true },
+            { text: 'Common Vulnerabilities', link: '/front-end-web-app/common-vulnerabilities', dev: true },
+            { text: 'Security Tools and Resources', link: '/front-end-web-app/security-tools-resources', dev: true },
+          ]
+        },
+        {
+          text: 'Governance',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/governance/overview', dev: true },
+            { text: 'Compliance with Regulatory Requirements', link: '/governance/compliance-regulatory-requirements', dev: true },
+            { text: 'Risk Management', link: '/governance/risk-management', dev: true },
+            { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
+            { text: 'Security Council Best Practices', link: '/governance/council-best-practices', dev: true },
+          ]
+        },
+        {
+          text: 'Identity and Access Management IAM',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/iam/overview' },
+            { text: 'Role-Based Access Control', link: '/iam/role-based-access-control', dev: true },
+            { text: 'Secure Authentication', link: '/iam/secure-authentication', dev: true },
+            { text: 'Access Management Best Practices', link: '/iam/access-management', dev: true },
+          ]
+        },
+        {
+          text: 'Incident Management',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/incident-management/overview' },
+            { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
+            { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
+            { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
+            {
+              text: 'Playbooks',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/incident-management/playbooks/overview' },
+                { text: 'Malware Infection', link: '/incident-management/playbooks/malware' },
+                { text: 'North Korea (DPRK) Attack', link: '/incident-management/playbooks/hacked-dprk' },
+                { text: 'Wallet Drainer Attack', link: '/incident-management/playbooks/hacked-drainer' },
+                { text: 'ELUSIVE COMET Attack', link: '/incident-management/playbooks/hacked-elusive-comet' },
+                { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines' },
+                { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir' },
+              ]
+            },
+            {
+              text: 'Incident Response Template',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/incident-management/incident-response-template/overview' },
+                { text: 'Incident Response Policy', link: '/incident-management/incident-response-template/incident-response-policy' },
+                { text: 'Roles and Staffing', link: '/incident-management/incident-response-template/roles-and-staffing' },
+                { text: 'Communications', link: '/incident-management/incident-response-template/communications' },
+                { text: 'Contacts', link: '/incident-management/incident-response-template/contacts' },
+                {
+                  text: 'Templates',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/incident-management/incident-response-template/templates/overview' },
+                    { text: 'Incident Log Template', link: '/incident-management/incident-response-template/templates/incident-log-template' },
+                    { text: 'Post-Mortem Template', link: '/incident-management/incident-response-template/templates/post-mortem-template' },
+                    { text: 'Runbook Template', link: '/incident-management/incident-response-template/templates/runbook-template' },
+                    { text: 'Example Incident Log', link: '/incident-management/incident-response-template/templates/example-incident-log' },
+                    { text: 'Example Post-Mortem', link: '/incident-management/incident-response-template/templates/example-post-mortem' },
+                  ]
+                },
+                {
+                  text: 'Runbooks',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/incident-management/incident-response-template/runbooks/overview' },
+                    { text: 'Smart Contract Exploit', link: '/incident-management/incident-response-template/runbooks/smart-contract-exploit' },
+                    { text: 'Key Compromise', link: '/incident-management/incident-response-template/runbooks/key-compromise' },
+                    { text: 'Frontend Compromise', link: '/incident-management/incident-response-template/runbooks/frontend-compromise' },
+                    { text: 'DNS Hijack', link: '/incident-management/incident-response-template/runbooks/dns-hijack' },
+                    { text: 'CDN/Hosting Compromise', link: '/incident-management/incident-response-template/runbooks/cdn-hosting-compromise' },
+                    { text: 'Dependency Attack', link: '/incident-management/incident-response-template/runbooks/dependency-attack' },
+                    { text: 'Build Pipeline Compromise', link: '/incident-management/incident-response-template/runbooks/build-pipeline-compromise' },
+                    { text: 'DDoS Attack', link: '/incident-management/incident-response-template/runbooks/ddos-attack' },
+                    { text: 'Third-Party Outage', link: '/incident-management/incident-response-template/runbooks/third-party-outage' },
+                  ]
+                },
+              ]
+            },
+          ]
+        },
+        {
+          text: 'Infrastructure',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/infrastructure/overview', dev: true },
+            { text: 'Asset Inventory', link: '/infrastructure/asset-inventory', dev: true },
+            { text: 'Cloud Infrastructure', link: '/infrastructure/cloud', dev: true },
+            { text: 'DDoS Protection', link: '/infrastructure/ddos-protection', dev: true },
+            {
+              text: 'Domain & DNS Security',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
+                { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
+                { text: 'DNSSEC, CAA, SMTP DANE and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
+                { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
+                { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
+              ]
+            },
+            { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management', dev: true },
+            { text: 'Network Security', link: '/infrastructure/network-security', dev: true },
+            { text: 'Operating System Security', link: '/infrastructure/operating-system-security', dev: true },
+            { text: 'Zero-Trust Principles', link: '/infrastructure/zero-trust-principles', dev: true },
+          ]
+        },
+        {
+          text: 'Monitoring',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/monitoring/overview' },
+            { text: 'Guidelines', link: '/monitoring/guidelines' },
+            { text: 'Tools', link: '/monitoring/tools' },
+            { text: 'Thresholds', link: '/monitoring/thresholds' },
           ]
         },
         {
@@ -176,204 +344,38 @@ const config = {
           ]
         },
         {
-          text: 'External Security Reviews',
+          text: 'Operational Security',
           collapsed: true,
           items: [
-            { text: 'Overview', link: '/external-security-reviews/overview' },
+            { text: 'Overview', link: '/opsec/overview' },
             {
-              text: 'Smart Contract Audits',
+              text: 'OpSec Core Concepts',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/external-security-reviews/smart-contracts/overview' },
-                { text: 'Manual Review', link: '/external-security-reviews/smart-contracts/manual-review' },
-                { text: 'Expectations', link: '/external-security-reviews/smart-contracts/expectation' },
-                { text: 'Preparation Guide', link: '/external-security-reviews/smart-contracts/preparation' },
-                { text: 'Vendor Selection', link: '/external-security-reviews/smart-contracts/vendor-selection' },
+                { text: 'Security Fundamentals', link: '/opsec/core-concepts/security-fundamentals' },
+                { text: 'Implementation Process', link: '/opsec/core-concepts/implementation-process' },
+                { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
-            { text: 'Security Policies and Procedures', link: '/external-security-reviews/security-policies-procedures' },
-          ]
-        },
-        {
-          text: 'Vulnerability Disclosure',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/vulnerability-disclosure/overview', dev: true },
-            { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact', dev: true },
-            { text: 'Bug Bounties', link: '/vulnerability-disclosure/bug-bounties', dev: true },
-          ]
-        },
-        {
-          text: 'Infrastructure',
-          collapsed: true,
-          items: [
-            { text: 'Overview', link: '/infrastructure/overview', dev: true },
-            { text: 'Asset Inventory', link: '/infrastructure/asset-inventory', dev: true },
-            { text: 'Cloud Infrastructure', link: '/infrastructure/cloud', dev: true },
-            { text: 'DDoS Protection', link: '/infrastructure/ddos-protection', dev: true },
+            { text: 'Secure Operating Systems', link: '/opsec/secure-operating-systems', dev: true },
+            { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
+            { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
+            { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
+            { text: 'Password Management', link: '/opsec/passwords/overview', dev: true },
+            { text: 'Google Workspace Security', link: '/opsec/google/overview', dev: true },
+            { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
+            { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
             {
-              text: 'Domain & DNS Security',
-              collapsed: false,
+              text: 'While Traveling',
+              collapsed: true,
               items: [
-                { text: 'Overview', link: '/infrastructure/domain-and-dns-security/overview' },
-                { text: 'DNS Basics & Common Attacks', link: '/infrastructure/domain-and-dns-security/dns-basics-and-attacks' },
-                { text: 'DNSSEC, CAA, SMTP DANE and Email Security', link: '/infrastructure/domain-and-dns-security/dnssec-and-email' },
-                { text: 'Registrar Security & Registry Locks', link: '/infrastructure/domain-and-dns-security/registrar-and-locks' },
-                { text: 'Monitoring, Alerts, and GitOps', link: '/infrastructure/domain-and-dns-security/monitoring-and-alerting' },
+                { text: 'Overview', link: '/opsec/travel/overview' },
+                { text: 'Guide', link: '/opsec/travel/guide' },
+                { text: 'TL;DR', link: '/opsec/travel/tldr', dev: true },
               ]
             },
-            { text: 'Identity and Access Management', link: '/infrastructure/identity-and-access-management', dev: true },
-            { text: 'Network Security', link: '/infrastructure/network-security', dev: true },
-            { text: 'Operating System Security', link: '/infrastructure/operating-system-security', dev: true },
-            { text: 'Zero-Trust Principles', link: '/infrastructure/zero-trust-principles', dev: true },
-          ]
-        },
-        {
-          text: 'Monitoring',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/monitoring/overview', dev: true },
-            { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
-            { text: 'Tools', link: '/monitoring/tools', dev: true },
-            { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
-          ]
-        },
-        {
-          text: 'Front-End/Web Application',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/front-end-web-app/overview', dev: true },
-            { text: 'Web Application Security', link: '/front-end-web-app/web-application-security', dev: true },
-            { text: 'Mobile Application Security', link: '/front-end-web-app/mobile-application-security', dev: true },
-            { text: 'Common Vulnerabilities', link: '/front-end-web-app/common-vulnerabilities', dev: true },
-            { text: 'Security Tools and Resources', link: '/front-end-web-app/security-tools-resources', dev: true },
-          ]
-        },
-        {
-          text: 'Incident Management',
-          collapsed: true,
-          items: [
-            { text: 'Overview', link: '/incident-management/overview' },
-            { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
-            { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
-            { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
-            {
-              text: 'Playbooks',
-              collapsed: false,
-              items: [
-                { text: 'Overview', link: '/incident-management/playbooks/overview' },
-                { text: 'Malware Infection', link: '/incident-management/playbooks/malware' },
-                { text: 'North Korea (DPRK) Attack', link: '/incident-management/playbooks/hacked-dprk' },
-                { text: 'Wallet Drainer Attack', link: '/incident-management/playbooks/hacked-drainer' },
-                { text: 'ELUSIVE COMET Attack', link: '/incident-management/playbooks/hacked-elusive-comet' },
-                { text: 'SEAL 911 War Room Guidelines', link: '/incident-management/playbooks/seal-911-war-room-guidelines' },
-                { text: 'Decentralized Incident Response Framework (DeIRF)', link: '/incident-management/playbooks/decentralized-ir' },
-              ]
-            },
-            {
-              text: 'Incident Response Template',
-              collapsed: false,
-              dev: true,
-              items: [
-                { text: 'Overview', link: '/incident-management/incident-response-template/overview', dev: true },
-                { text: 'Incident Response Policy', link: '/incident-management/incident-response-template/incident-response-policy', dev: true },
-                { text: 'Roles and Staffing', link: '/incident-management/incident-response-template/roles-and-staffing', dev: true },
-                { text: 'Communications', link: '/incident-management/incident-response-template/communications', dev: true },
-                { text: 'Contacts', link: '/incident-management/incident-response-template/contacts', dev: true },
-                {
-                  text: 'Templates',
-                  collapsed: true,
-                  items: [
-                    { text: 'Overview', link: '/incident-management/incident-response-template/templates/overview', dev: true },
-                    { text: 'Incident Log Template', link: '/incident-management/incident-response-template/templates/incident-log-template', dev: true },
-                    { text: 'Post-Mortem Template', link: '/incident-management/incident-response-template/templates/post-mortem-template', dev: true },
-                    { text: 'Runbook Template', link: '/incident-management/incident-response-template/templates/runbook-template', dev: true },
-                    { text: 'Example Incident Log', link: '/incident-management/incident-response-template/templates/example-incident-log', dev: true },
-                    { text: 'Example Post-Mortem', link: '/incident-management/incident-response-template/templates/example-post-mortem', dev: true },
-                  ]
-                },
-                {
-                  text: 'Runbooks',
-                  collapsed: true,
-                  items: [
-                    { text: 'Overview', link: '/incident-management/incident-response-template/runbooks/overview', dev: true },
-                    { text: 'Smart Contract Exploit', link: '/incident-management/incident-response-template/runbooks/smart-contract-exploit', dev: true },
-                    { text: 'Key Compromise', link: '/incident-management/incident-response-template/runbooks/key-compromise', dev: true },
-                    { text: 'Frontend Compromise', link: '/incident-management/incident-response-template/runbooks/frontend-compromise', dev: true },
-                    { text: 'DNS Hijack', link: '/incident-management/incident-response-template/runbooks/dns-hijack', dev: true },
-                    { text: 'CDN/Hosting Compromise', link: '/incident-management/incident-response-template/runbooks/cdn-hosting-compromise', dev: true },
-                    { text: 'Dependency Attack', link: '/incident-management/incident-response-template/runbooks/dependency-attack', dev: true },
-                    { text: 'Build Pipeline Compromise', link: '/incident-management/incident-response-template/runbooks/build-pipeline-compromise', dev: true },
-                    { text: 'DDoS Attack', link: '/incident-management/incident-response-template/runbooks/ddos-attack', dev: true },
-                    { text: 'Third-Party Outage', link: '/incident-management/incident-response-template/runbooks/third-party-outage', dev: true },
-                  ]
-                },
-              ]
-            },
-          ]
-        },
-        {
-          text: 'Threat Modeling',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/threat-modeling/overview', dev: true },
-            { text: 'Create and Maintain Threat Models', link: '/threat-modeling/create-maintain-threat-models', dev: true },
-            { text: 'Identity Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats', dev: true },
-          ]
-        },
-        {
-          text: 'DPRK IT Workers',
-          collapsed: true,
-          items: [
-            { text: 'Overview', link: '/dprk-it-workers/overview' },
-            { text: 'General Information', link: '/dprk-it-workers/general-information' },
-            { text: 'Techniques, Tactics and Procedures', link: '/dprk-it-workers/techniques-tactics-and-procedures' },
-            { text: 'Mitigating DPRK IT Workers', link: '/dprk-it-workers/mitigating-dprk-it-workers' },
-            { text: 'Case Studies', link: '/dprk-it-workers/case-studies' },
-            { text: 'Summary', link: '/dprk-it-workers/summary' },
-          ]
-        },
-        {
-          text: 'Governance',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/governance/overview', dev: true },
-            { text: 'Compliance with Regulatory Requirements', link: '/governance/compliance-regulatory-requirements', dev: true },
-            { text: 'Risk Management', link: '/governance/risk-management', dev: true },
-            { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
-            { text: 'Security Council Best Practices', link: '/governance/council-best-practices', dev: true },
-          ]
-        },
-        {
-          text: 'DevSecOps',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/devsecops/overview', dev: true },
-            {
-              text: 'Isolation & Sandboxing',
-              collapsed: false,
-              items: [
-                { text: 'Sandboxing & Isolation', link: '/devsecops/isolation/sandboxing-and-isolation', dev: true },
-                { text: 'Execution Sandboxing', link: '/devsecops/isolation/execution-sandboxing', dev: true },
-                { text: 'Capability-Based Isolation', link: '/devsecops/isolation/capability-based-isolation', dev: true },
-                { text: 'Sandboxing for Tool Execution', link: '/devsecops/isolation/sandboxing-for-tool-execution', dev: true },
-                { text: 'Network & Resource Isolation', link: '/devsecops/isolation/network-and-resource-isolation', dev: true },
-                { text: 'Sandboxing & Policy Enforcement', link: '/devsecops/isolation/sandboxing-and-policy-enforcement', dev: true },
-                { text: 'Execution Sandboxing: A Practical Guide', link: '/devsecops/isolation/execution-sandboxing-practical-guide', dev: true },
-              ]
-            },
-            { text: 'Code Signing', link: '/devsecops/code-signing', dev: true },
-            { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment', dev: true },
-            { text: 'Data Security & Upgrade Checklist', link: '/devsecops/data-security-upgrade-checklist', dev: true },
-            { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments', dev: true },
-            { text: 'Repository Hardening', link: '/devsecops/repository-hardening', dev: true },
-            { text: 'Security Testing', link: '/devsecops/security-testing', dev: true },
+            { text: 'Appendices', link: '/opsec/appendices/overview', dev: true }
           ]
         },
         {
@@ -392,38 +394,15 @@ const config = {
           ]
         },
         {
-          text: 'Supply Chain',
+          text: 'Safe Harbor',
           collapsed: true,
-          dev: true,
           items: [
-            { text: 'Overview', link: '/supply-chain/overview', dev: true },
-            { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts', dev: true },
-            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness', dev: true },
-            { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats', dev: true },
-            { text: 'Vendor Risk Management', link: '/supply-chain/vendor-risk-management', dev: true },
-            { text: 'Incident Response', link: '/supply-chain/incident-response-supply-chain', dev: true },
-          ]
-        },
-        {
-          text: 'Security Automation',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/security-automation/overview', dev: true },
-            { text: 'Threat Detection and Response', link: '/security-automation/threat-detection-response', dev: true },
-            { text: 'Compliance Checks', link: '/security-automation/compliance-checks', dev: true },
-            { text: 'Infrastructure as Code', link: '/security-automation/infrastructure-as-code', dev: true },
-          ]
-        },
-        {
-          text: 'Identity and Access Management IAM',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/iam/overview' },
-            { text: 'Role-Based Access Control', link: '/iam/role-based-access-control', dev: true },
-            { text: 'Secure Authentication', link: '/iam/secure-authentication', dev: true },
-            { text: 'Access Management Best Practices', link: '/iam/access-management', dev: true },
+            { text: 'Overview', link: '/safe-harbor/overview' },
+            { text: 'Safe Harbor Eligibility Checklist', link: '/safe-harbor/self-checklist' },
+            { text: 'Self-Adoption Guide', link: '/safe-harbor/self-adoption-guide' },
+            { text: 'Safe Harbor Scope Terms', link: '/safe-harbor/scope-terms' },
+            { text: 'On-Chain Adoption Guide', link: '/safe-harbor/on-chain-adoption-guide' },
+            { text: 'Whitehat', link: '/safe-harbor/whitehat' },
           ]
         },
         {
@@ -436,6 +415,17 @@ const config = {
             { text: 'Code Reviews and Peer Audits', link: '/secure-software-development/code-reviews-peer-audits', dev: true },
             { text: 'Secure Code Repositories and Version Control', link: '/secure-software-development/secure-code-repositories-version-control', dev: true },
             { text: 'Threat Modeling and Secure Design Principles', link: '/secure-software-development/threat-modeling-secure-design-principles', dev: true },
+          ]
+        },
+        {
+          text: 'Security Automation',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/security-automation/overview', dev: true },
+            { text: 'Threat Detection and Response', link: '/security-automation/threat-detection-response', dev: true },
+            { text: 'Compliance Checks', link: '/security-automation/compliance-checks', dev: true },
+            { text: 'Infrastructure as Code', link: '/security-automation/infrastructure-as-code', dev: true },
           ]
         },
         {
@@ -452,59 +442,25 @@ const config = {
           ]
         },
         {
-          text: 'AI Security',
+          text: 'Supply Chain',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/supply-chain/overview' },
+            { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts' },
+            { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness' },
+            { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats' },
+            { text: 'Vendor Risk Management', link: '/supply-chain/vendor-risk-management' },
+            { text: 'Incident Response', link: '/supply-chain/incident-response-supply-chain' },
+          ]
+        },
+        {
+          text: 'Threat Modeling',
           collapsed: true,
           dev: true,
           items: [
-            { text: 'Overview', link: '/ai-security/overview', dev: true },
-            { text: 'Prompt Injection Defenses', link: '/ai-security/prompt-injection-defenses', dev: true },
-            { text: 'AI Browsers', link: '/ai-security/ai-browsers', dev: true },
-            { text: 'AI Workflows: Developers vs Non-Developers', link: '/ai-security/ai-workflows-developers-vs-non-developers', dev: true },
-            { text: 'Data Exfiltration via Generative Systems', link: '/ai-security/data-exfiltration-via-generative-systems', dev: true },
-            { text: 'Execution-Path Enforcement', link: '/ai-security/execution-path-enforcement', dev: true },
-            { text: 'DevSecOps Isolation & Sandboxing (Brief Reference)', link: '/ai-security/devsecops-isolation-sandboxing-reference', dev: true },
-          ]
-        },
-        {
-          text: 'ENS',
-          collapsed: true,
-          items: [
-            { text: 'Overview', link: '/ens/overview' },
-            { text: 'Data Integrity & Verification', link: '/ens/data-integrity-verification' },
-            { text: 'Cross-Chain Compatibility', link: '/ens/cross-chain-compatibility' },
-            { text: 'Smart Contract Integration', link: '/ens/smart-contract-integration' },
-            { text: 'Interface Compliance', link: '/ens/interface-compliance' },
-            { text: 'Name Handling & Normalization', link: '/ens/name-handling-normalization' },
-          ]
-        },
-        {
-          text: 'Safe Harbor',
-          collapsed: true,
-          items: [
-            { text: 'Overview', link: '/safe-harbor/overview' },
-            { text: 'Safe Harbor Eligibility Checklist', link: '/safe-harbor/self-checklist' },
-            { text: 'Self-Adoption Guide', link: '/safe-harbor/self-adoption-guide' },
-            { text: 'Safe Harbor Scope Terms', link: '/safe-harbor/scope-terms' },
-            { text: 'On-Chain Adoption Guide', link: '/safe-harbor/on-chain-adoption-guide' },
-            { text: 'Whitehat', link: '/safe-harbor/whitehat' },
-          ]
-        },
-        {
-          text: 'Encryption',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/encryption/overview', dev: true },
-            { text: 'Cloud Data Encryption', link: '/encryption/cloud-data-encryption', dev: true },
-            { text: 'Communication Encryption', link: '/encryption/communication-encryption', dev: true },
-            { text: 'Database Encryption', link: '/encryption/database-encryption', dev: true },
-            { text: 'Email Encryption', link: '/encryption/email-encryption', dev: true },
-            { text: 'Encryption in Transit', link: '/encryption/encryption-in-transit', dev: true },
-            { text: 'File Encryption', link: '/encryption/file-encryption', dev: true },
-            { text: 'Full Disk Encryption', link: '/encryption/full-disk-encryption', dev: true },
-            { text: 'Hardware Encryption', link: '/encryption/hardware-encryption', dev: true },
-            { text: 'Partition Encryption', link: '/encryption/partition-encryption', dev: true },
-            { text: 'Volume Encryption', link: '/encryption/volume-encryption', dev: true },
+            { text: 'Overview', link: '/threat-modeling/overview', dev: true },
+            { text: 'Create and Maintain Threat Models', link: '/threat-modeling/create-maintain-threat-models', dev: true },
+            { text: 'Identity Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats', dev: true },
           ]
         },
         {
@@ -517,6 +473,45 @@ const config = {
             { text: 'Registration Documents', link: '/treasury-operations/registration-documents', dev: true },
             { text: 'Enhanced Controls for High-Risk Accounts', link: '/treasury-operations/enhanced-controls', dev: true },
             { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification', dev: true },
+          ]
+        },
+        {
+          text: 'Vulnerability Disclosure',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/vulnerability-disclosure/overview', dev: true },
+            { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact', dev: true },
+            { text: 'Bug Bounties', link: '/vulnerability-disclosure/bug-bounties', dev: true },
+          ]
+        },
+        {
+          text: 'Wallet Security',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: '/wallet-security/overview' },
+            { text: 'Custodial vs Non-Custodial', link: '/wallet-security/custodial-vs-non-custodial' },
+            { text: 'Cold vs Hot Wallet', link: '/wallet-security/cold-vs-hot-wallet' },
+            { text: 'Wallets For Beginners & Small Balances', link: '/wallet-security/for-beginners-and-small-balances' },
+            { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-and-medium-funds' },
+            { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
+            { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
+            { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets' },
+            {
+              text: 'Signing & Verification',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/wallet-security/signing-and-verification/signing-verification' },
+                { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/signing-and-verification/verifying-standard-transactions' },
+                { text: 'Multisig Signing Process', link: '/wallet-security/signing-and-verification/secure-multisig-signing-process' },
+                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-safe-verification', dev: true },
+                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-squads-verification', dev: true },
+                { text: 'Using EIP-7702', link: '/wallet-security/signing-and-verification/verifying-7702' },
+              ]
+            },
+            { text: 'Smart Contract Interaction Security', link: '/wallet-security/smart-contract-interaction-security', dev: true },
+            { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
+            { text: 'Tools & Resources', link: '/wallet-security/tools-and-resources' },
           ]
         },
       ]
@@ -552,6 +547,8 @@ const config = {
           collapsed: true,
           items: [
             { text: 'SSH Client and Key Management Hardening', link: '/guides/endpoint-security/ssh-client-and-key-management-hardening' },
+            { text: 'Hardware Security Keys', link: '/guides/endpoint-security/hardware-security-keys' },
+            { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening', dev: true },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },

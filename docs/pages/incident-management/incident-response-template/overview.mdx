@@ -22,18 +22,22 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 A practical template for building incident response capabilities at cryptocurrency protocols and DAOs.
 
-> **This is a template, not a turnkey solution.** Every document, runbook, and checklist must be reviewed and customized for your specific protocol, team, and infrastructure. The example runbooks contain generic guidance. 
-> Do not rely on them without filling in your actual commands, contacts, and procedures. Test your IR capability through tabletop exercises before you need it for real.
+> **This is a template, not a turnkey solution.** Every document, runbook, and checklist must be reviewed and customized
+> for your specific protocol, team, and infrastructure. The example runbooks contain generic guidance. Do not rely on
+> them without filling in your actual commands, contacts, and procedures. Test your IR capability through tabletop
+> exercises before you need it for real.
 
 ## Why Incident Response Matters
 
 Web3 protocols face unique challenges:
+
 - **Immutability**: On-chain actions often can't be reversed
 - **24/7 Operations**: Blockchain networks never sleep
 - **High Stakes**: Incidents can mean immediate, irrecoverable fund loss
 - **Adversarial Environment**: Active attackers constantly probing
 
-Without a plan, you'll waste critical time figuring out *who does what* while an exploit drains funds. You can't prevent all incidents. Focus on detecting quickly, responding effectively, and learning continuously.
+Without a plan, you'll waste critical time figuring out *who does what* while an exploit drains funds. You can't
+prevent all incidents. Focus on detecting quickly, responding effectively, and learning continuously.
 
 ## How to Build Your IR Capability
 
@@ -51,17 +55,20 @@ That's it to start. Add complexity only as you need it.
 ### Scale With Your Team
 
 **Small teams (2-5 people):**
+
 - Everyone wears multiple hats
 - Define who leads incidents vs. who executes fixes
 - Establish a single communication channel
 - Keep one person documenting
 
 **Medium teams (5-15 people):**
+
 - Designate subject matter experts by domain
 - Consider a simple on-call rotation
 - Separate the "fix it" people from "communicate about it" people
 
 **Larger teams (15+ people):**
+
 - Formal First Responder program with training
 - Parallel on-call schedules (infra vs. smart contracts)
 - Dedicated communication/PR coordination
@@ -80,16 +87,16 @@ Review and adapt these pages for your own internal incident response documentati
 
 ### What's Included
 
-| Document                                                | Purpose                                                         |
-| ------------------------------------------------------- | --------------------------------------------------------------- |
+| Document | Purpose |
+| --- | --- |
 | [Incident Response Policy](./incident-response-policy) | Core policy defining roles, severity levels, and response steps |
-| [Roles and Staffing](./roles-and-staffing)             | Options for structuring your response team                      |
-| [Communications](./communications)                     | Guidance and examples for public announcements                  |
-| [Contacts](./contacts)                                 | Critical partner and vendor contact sheet                       |
-| [Templates](./templates/overview)                        | Incident log and post-mortem templates                          |
-| [Example Incident Log](./templates/example-incident-log) | Sample filled-out incident log                                  |
-| [Example Post-Mortem](./templates/example-post-mortem)   | Sample filled-out post-mortem                                   |
-| [Runbooks](./runbooks/overview)                          | Step-by-step guides for specific incident types                 |
+| [Roles and Staffing](./roles-and-staffing) | Options for structuring your response team |
+| [Communications](./communications) | Guidance and examples for public announcements |
+| [Contacts](./contacts) | Critical partner and vendor contact sheet |
+| [Templates](./templates/overview) | Incident log and post-mortem templates |
+| [Example Incident Log](./templates/example-incident-log) | Sample filled-out incident log |
+| [Example Post-Mortem](./templates/example-post-mortem) | Sample filled-out post-mortem |
+| [Runbooks](./runbooks/overview) | Step-by-step guides for specific incident types |
 
 ### Customization Checklist
 
@@ -126,7 +133,7 @@ Before using this template, customize these sections:
 These documents support effective incident response but typically live elsewhere in your protocol's documentation:
 
 | Document | Why It Helps |
-|----------|--------------|
+| --- | --- |
 | **Access Control Inventory** | List of privileged roles, multisigs, admin keys, and what each controls. Critical for understanding blast radius during key compromise. |
 | **Protocol Architecture** | Diagrams and descriptions of how components interact. Helps responders understand impact and dependencies. |
 | **Threat Model** | Documented risks, attack vectors, and mitigations. Speeds up investigation when you can reference known threats. |
@@ -156,7 +163,6 @@ You don't need all of these to start. Build them over time as your protocol matu
 - [SEAL 911](https://securityalliance.org/seal-911) - Emergency response coordination
 
 *This template is open source. Adapt it to your needs.*
-
 
 </TagProvider>
 <ContributeFooter />

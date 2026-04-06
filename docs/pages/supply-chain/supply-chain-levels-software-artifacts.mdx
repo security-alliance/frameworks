@@ -33,8 +33,9 @@ measures to lower-risk artifacts.
 
 ### Level 1: Critical Artifacts
 
-Components that directly handle value, signing operations, or core protocol logic. Smart contract libraries (OpenZeppelin Contracts),
-wallet interaction libraries (ethers.js, viem, web3.js), signing and cryptographic modules, and anything that constructs or
+Components that directly handle value, signing operations, or core protocol logic. Smart contract libraries
+(OpenZeppelin Contracts), wallet interaction libraries (ethers.js, viem, web3.js), signing and cryptographic modules,
+and anything that constructs or
 validates transactions.
 
 Compromise of these components can directly drain funds or allow unauthorized transactions. These warrant the
