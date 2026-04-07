@@ -224,7 +224,7 @@ jobs:
       - name: Install dependencies
         run: |
           # Install dependencies using pnpm
-          pnpm install --frozen-lockfile
+          pnpm install --frozen-lockfile --ignore-scripts
 
       # Step 9: Write URLs to a temp file for the processing script
       - name: Write URLs to file
