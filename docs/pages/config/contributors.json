@@ -667,3 +667,19 @@
     ]
   }
 }
+"shallem": {
+    "slug": "shallem",
+    "name": "Seth Hallem",
+    "avatar": "",
+    "github": "https://github.com/shallem", 
+    "twitter": "https://x.com/seth_certora",
+    "website": "https://www.certora.com/",
+    "company": "Certora",
+    "role": "steward",
+    "job_title": null,
+    "description": "Steward of Opsec framework",
+    "badges": [
+    ]
+  }
+}
+}

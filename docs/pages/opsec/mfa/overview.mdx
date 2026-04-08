@@ -3,6 +3,9 @@ title: "Multi-Factor Authentication | Security Alliance"
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [shallem]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -15,7 +18,32 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Placeholder for Multi-Factor Authentication content
+As noted above, MFA is necessary but not sufficient as an OpSec strategy. That said, if you have not yet
+implemented MFA you are making a grave mistake. Changing course had better be the first thing on your agenda
+as soon as you stop reading this article.
+
+Not all MFA is created equally. I recommend the following:
+
+1. **Stay away from text and email as MFA methods.** There are innumerable reasons why neither of these methods
+   is a good idea. Suffice it to say, best practices have long since outlawed these MFA methods.
+
+2. **TOTP (e.g., Google Authenticator) is good but not great.** Why? It is easy enough to trick users into
+   entering TOTP codes into a phishing site. The methods cited below are more difficult to exploit.
+
+3. **Push-based MFA is better.** Why? Because initiating a push notification on iOS/Android requires that the
+   device itself be enrolled with the identity provider. Phishing sites cannot initiate a push notification to
+   the Gmail app, for example, without a major compromise of Google's infrastructure.
+
+4. **Passkeys are the best.** Biometrics are hard to fake, and in a world where attackers are looking for low
+   hanging fruit, passkeys protected by biometric factors are typically too hard for them to reach.
+
+5. **Key admins (e.g., your G Suite admin) should be using Yubikeys.** They are inexpensive and easy. There is
+   no excuse here for not protecting the keys to the castle with the industry gold standard for MFA.
+
+Once you have MFA in place, you are ready to move on to the next step. However, before you declare your MFA
+journey a success, make sure you haven't forgotten any of your communication tools along the way. In this
+industry we often use a combination of X, Signal, and Telegram, and each of them can and should be protected
+with an additional authentication factor.
 
 </TagProvider>
 <ContributeFooter />
