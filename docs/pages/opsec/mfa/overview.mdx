@@ -18,9 +18,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-As noted above, MFA is necessary but not sufficient as an OpSec strategy. That said, if you have not yet
+As noted in the Overview, MFA is necessary but not sufficient as an OpSec strategy. That said, if you have not yet
 implemented MFA you are making a grave mistake. Changing course had better be the first thing on your agenda
-as soon as you stop reading this article.
+as soon as you stop reading this page.
 
 Not all MFA is created equally. I recommend the following:
 
@@ -28,7 +28,7 @@ Not all MFA is created equally. I recommend the following:
    is a good idea. Suffice it to say, best practices have long since outlawed these MFA methods.
 
 2. **TOTP (e.g., Google Authenticator) is good but not great.** Why? It is easy enough to trick users into
-   entering TOTP codes into a phishing site. The methods cited below are more difficult to exploit.
+   entering TOTP codes into a phishing site. The methods cited below are more difficult to exploit. Also, any manual typing is susceptible to keyloggers.
 
 3. **Push-based MFA is better.** Why? Because initiating a push notification on iOS/Android requires that the
    device itself be enrolled with the identity provider. Phishing sites cannot initiate a push notification to
@@ -40,10 +40,10 @@ Not all MFA is created equally. I recommend the following:
 5. **Key admins (e.g., your G Suite admin) should be using Yubikeys.** They are inexpensive and easy. There is
    no excuse here for not protecting the keys to the castle with the industry gold standard for MFA.
 
-Once you have MFA in place, you are ready to move on to the next step. However, before you declare your MFA
+Once you have MFA in place, you are ready to move on to the next step in your Opsec framework. However, before you declare your MFA
 journey a success, make sure you haven't forgotten any of your communication tools along the way. In this
 industry we often use a combination of X, Signal, and Telegram, and each of them can and should be protected
-with an additional authentication factor.
+with an additional authentication factor. Also note that the more you allow one-off sign-ins to each tool that you use, the more you have to be concerned with the MFA features of every individual tool. Implementing single sign-on as much as possible is the best way to enforce MFA across every tool that you use.
 
 </TagProvider>
 <ContributeFooter />
