@@ -18,11 +18,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-As noted in the Overview, MFA is necessary but not sufficient as an OpSec strategy. That said, if you have not yet
-implemented MFA you are making a grave mistake. Changing course had better be the first thing on your agenda
-as soon as you stop reading this page.
+MFA is necessary but not sufficient as an OpSec strategy. If you have not yet implemented MFA, we suggest making it your first priority as soon as you finish reading this page.
 
-Not all MFA is created equally. I recommend the following:
+Not all MFAs are created equally. A few recommendations:
 
 1. **Stay away from text and email as MFA methods.** There are innumerable reasons why neither of these methods
    is a good idea. Suffice it to say, best practices have long since outlawed these MFA methods.
@@ -40,10 +38,9 @@ Not all MFA is created equally. I recommend the following:
 5. **Key admins (e.g., your G Suite admin) should be using Yubikeys.** They are inexpensive and easy. There is
    no excuse here for not protecting the keys to the castle with the industry gold standard for MFA.
 
-Once you have MFA in place, you are ready to move on to the next step in your Opsec framework. However, before you declare your MFA
-journey a success, make sure you haven't forgotten any of your communication tools along the way. In this
-industry we often use a combination of X, Signal, and Telegram, and each of them can and should be protected
-with an additional authentication factor. Also note that the more you allow one-off sign-ins to each tool that you use, the more you have to be concerned with the MFA features of every individual tool. Implementing single sign-on as much as possible is the best way to enforce MFA across every tool that you use.
+Once you have MFA in place, you are ready to move on to the next step in your Opsec framework. However, before you declare your MFA journey a success, make sure you haven't forgotten any of your communication tools along the way. In this industry, we often use a combination of X, Signal, and Telegram, and each of them can and should be protected with an additional authentication factor. Also, note that the more you allow one-off sign-ins for each tool you use, the more you have to be concerned about the MFA features of each tool. Implementing single sign-on wherever possible is the best way to enforce MFA across all the tools you use.
+
+Take into consideration that, while using passkeys seems the most appropriate course of action, using them irresponsibly could lower your security posture. Passkeys only improve security when they remain tied to a strong device and recovery model; used carelessly, they can weaken it by shifting trust from a hard-to-phish login flow to softer cloud sync and account recovery paths. A common failure case is storing high-value passkeys in consumer sync ecosystems protected by weak recovery, reused credentials, SMS reset, or unmanaged devices, so an attacker who compromises the sync account can restore those passkeys on their own device and log in cleanly with what appears to be strong authentication. In that setup, the passkey itself is not broken, but the overall security posture is worse because the real attack surface becomes account recovery, device enrollment, and endpoint compromise rather than direct credential theft.
 
 </TagProvider>
 <ContributeFooter />
