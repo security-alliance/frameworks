@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useMemo } from "react";
+import { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import { threatVectors, severityMeta, type PostureState, type ThreatVector } from "./threatData";
 import "./AttackSurface.css";
 
@@ -282,9 +282,19 @@ function DetailCard({
   onClose: () => void;
 }) {
   const sev = severityMeta[vector.severity];
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!cardRef.current) return;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    cardRef.current.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "nearest",
+    });
+  }, [vector.id]);
 
   return (
-    <div className="as-detail">
+    <div className="as-detail" ref={cardRef}>
       <div className="as-detail-top">
         <div className="as-detail-left">
           <h3 className="as-detail-title">{vector.title}</h3>
