@@ -705,7 +705,7 @@
 "shallem": {
     "slug": "shallem",
     "name": "Seth Hallem",
-    "avatar": "",
+    "avatar": null,
     "github": "https://github.com/shallem",
     "twitter": "https://x.com/seth_certora",
     "website": "https://www.certora.com/",
@@ -714,6 +714,9 @@
     "job_title": null,
     "description": "Steward of Opsec framework",
     "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-04-09", "framework": "Operational Security" },
+      { "name": "First-Contribution", "assigned": "2025-09-10" },
+      { "name": "Active-Last-7d", "lastActive": "2026-04-09" }
     ]
   }
 }
