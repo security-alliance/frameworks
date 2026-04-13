@@ -40,7 +40,7 @@ const config = {
         { text: 'Introduction to Frameworks', link: '/intro/introduction' },
         { text: 'How to Navigate the Website', link: '/intro/how-to-navigate-the-website' },
         { text: 'Overview of each Framework', link: '/intro/overview-of-each-framework' },
-        { text: 'Attack Surface Overview', link: '/attack-surface', dev: true },
+        { text: 'Attack Surface Overview', link: '/intro/attack-surface', dev: true },
       ]
     },
     {
