@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useMemo, useRef } from "react";
+import { Link } from "react-router-dom";
 import { threatVectors, severityMeta, type PostureState, type ThreatVector } from "./threatData";
 import "./AttackSurface.css";
 
@@ -330,12 +331,12 @@ function DetailCard({
             <span key={tag} className="as-attack-tag">{tag}</span>
           ))}
         </div>
-        <a
-          href={vector.primaryLink}
+        <Link
+          to={vector.primaryLink}
           className="as-detail-cta"
         >
           {vector.primaryLinkLabel} &rarr;
-        </a>
+        </Link>
       </div>
     </div>
   );
