@@ -79,3 +79,7 @@ Every contribution helps strengthen the resource and improve security practices 
 
 See our [Contributing Guide](https://github.com/security-alliance/frameworks/blob/develop/CONTRIBUTING.md) for details
 on how to get started.
+
+## License
+
+Security Frameworks © 2023 by Security Alliance, licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
