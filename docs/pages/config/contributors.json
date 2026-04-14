@@ -701,8 +701,8 @@
       { "name": "New-Joiner", "assigned": "2026-04-07" },
       { "name": "Active-Last-7d", "lastActive": "2026-04-07" }
     ]
-},
-"shallem": {
+  },
+  "shallem": {
     "slug": "shallem",
     "name": "Seth Hallem",
     "avatar": null,
