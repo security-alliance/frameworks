@@ -38,59 +38,77 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ### Symptoms
 
 - [ ] Users report unexpected transaction requests
-- [ ] UI behaving differently than expected
-- [ ] Wallet drainer detected
-- [ ] Injected scripts in page source
-- [ ] DNS/domain issues
-- [ ] Community reports of phishing via official domain
+- [ ] UI behaves differently than expected
+- [ ] Wallet drainer behavior detected
+- [ ] Injected scripts or unexpected external resources appear in page source
+- [ ] Official domain or subdomain resolves unexpectedly
+- [ ] Community reports phishing or malicious prompts on the official frontend
 
 ### Attack Vectors
 
 | Vector | Signs |
-| -------- | ------- |
-| DNS hijack | Domain pointing to wrong IP |
-| CDN compromise | Malicious files served |
-| Dependency attack | npm/yarn package compromised |
-| Build pipeline | CI/CD compromise |
-| Hosting compromise | Files modified on server |
+|--------|-------|
+| DNS hijack | Domain pointing to wrong IP or nameserver changes |
+| CDN compromise | Malicious files served from trusted edge path |
+| Dependency attack | Malicious npm/package dependency in built frontend |
+| Build pipeline compromise | CI/CD workflow or build output tampered with |
+| Hosting compromise | Files modified directly on origin or hosting platform |
+
+### Immediate Scope Questions
+
+- Is the compromise limited to the frontend, or does it indicate deeper CI/CD or hosting compromise?
+- Are users being asked to sign malicious transactions, approvals, or messages?
+- Which domains, subdomains, and static assets are affected?
+- How long may the compromised content have been served?
 
 ## Immediate Actions
 
-### Step 1: Take Down or Redirect
+### Step 1: Stop serving the compromised frontend
 
-**Why:** Stop users from interacting with compromised site
+**Why:** The first priority is preventing new user interactions with a malicious interface.
 
 Options:
 
-- [ ] Point DNS to maintenance page
+- [ ] Point DNS to a controlled maintenance page
 - [ ] Disable CDN distribution
-- [ ] Remove site from hosting
-- [ ] Add banner/warning if partial control
+- [ ] Remove or disable the affected site on hosting
+- [ ] Block or disable the specific route/app if compromise is scoped and partial control is retained
 
-### Step 2: Warn Users
+### Step 2: Warn users quickly and clearly
 
-**Why:** Prevent further damage
+**Why:** A compromised frontend often becomes a user-signing incident within minutes.
 
 - [ ] Post on Twitter/X
 - [ ] Post in Discord/Telegram
-- [ ] Update status page
+- [ ] Update status page or incident page
+- [ ] Pin the warning in primary community channels
 
 Message template:
-> Our website may be compromised. Do NOT interact with [domain] or approve any transactions until further notice.
-> Your funds in the protocol are safe if you don't sign new transactions.
 
-### Step 3: Assess Scope
+> Our website may be compromised. Do NOT interact with [domain] or approve any transactions until further notice. If you have not signed new transactions, your funds in the protocol remain unaffected.
 
-- [ ] What was changed?
-- [ ] How long was it compromised?
-- [ ] How many users potentially affected?
-- [ ] Were any transactions signed?
+### Step 3: Preserve evidence before cleanup
+
+**Why:** The malicious content, served assets, and resolver state may change quickly.
+
+- [ ] Save page source and served JavaScript bundles
+- [ ] Record affected URLs, file hashes, and timestamps
+- [ ] Capture DNS state, CDN config, and hosting/deploy history
+- [ ] Preserve CI/CD and deployment logs if relevant
+
+### Step 4: Determine the trust boundary failure
+
+**Why:** You need to know whether to treat this as DNS, hosting, dependency, or pipeline compromise.
+
+- [ ] Identify how the malicious content was introduced
+- [ ] Identify what credentials or systems may also be exposed
+- [ ] Identify whether backend, admin, or deployment systems should also be treated as untrusted
 
 ## Investigation
 
 ### Priority: Identify Attack Vector
 
-The first priority is understanding how the attacker gained access so you can close that vector:
+The first priority is understanding how the attacker gained access so you can close that vector.
 
 - [ ] **How did attacker gain access?** (DNS, CDN, dependencies, CI/CD, hosting)
 
@@ -101,23 +119,22 @@ Once identified, go to the specific runbook:
 - Dependency attack → [Dependency Attack](./dependency-attack)
 - Build pipeline compromise → [Build Pipeline Compromise](./build-pipeline-compromise)
 
-### Post-Mitigation Investigation
+### Impact Questions After Containment
 
-After the threat is contained, investigate impact:
-
-- [ ] What was injected/changed?
-- [ ] Which users interacted during compromise window?
-- [ ] What were users tricked into signing?
+- [ ] What exactly was changed or injected?
+- [ ] What user actions were being induced? (approval, signature, transfer, login, seed phrase theft)
+- [ ] Which users interacted during the compromise window?
+- [ ] Did the incident affect only the frontend, or also the underlying protocol or admin systems?
 
 ### Check These
 
 | Component | How to Check |
-| ----------- | -------------- |
-| DNS records | `dig` or DNS provider console |
-| CDN files | Compare to known good |
-| Build artifacts | Check CI/CD logs |
-| Dependencies | `npm audit`, lockfile changes |
-| Hosting files | Compare to repo |
+|-----------|--------------|
+| DNS records | `dig`, registrar, DNS provider console |
+| CDN files and config | compare to known-good state |
+| Build artifacts | CI/CD logs, artifact store |
+| Dependencies | lockfile, registry metadata, package diffs |
+| Hosting files | compare deployed content to repo / known-good release |
 
 ## Mitigation
 
@@ -132,28 +149,29 @@ See the specific runbook for detailed mitigation steps:
 
 ### Before Restoring Service
 
-- [ ] Root cause identified
-- [ ] Vulnerability fixed
-- [ ] Fresh deployment from verified source
-- [ ] All credentials rotated
-- [ ] Additional security measures in place
+- [ ] Root cause identified well enough to prevent immediate recurrence
+- [ ] Access path closed
+- [ ] Fresh deployment produced from verified source and trusted build path
+- [ ] Relevant credentials rotated
+- [ ] Critical user flows manually checked before reopening
 
 ### Restoring Service
 
 1. Deploy verified build
-2. Verify deployment matches expected
-3. Test critical user flows
-4. Monitor for anomalies
+2. Verify served assets match expected release
+3. Test critical wallet and transaction flows
+4. Monitor for unexpected asset changes, approvals, or user reports
 5. Announce service restored
 
 ## Affected User Support
 
-If users signed malicious transactions:
+If users may have signed malicious transactions or approvals:
 
-- [ ] Compile list of affected addresses (from chain data)
-- [ ] Provide guidance on revoking approvals
-- [ ] Consider compensation if protocol at fault
-- [ ] Document for post-mortem
+- [ ] Compile likely affected addresses from chain and telemetry data where possible
+- [ ] Provide approval revocation guidance
+- [ ] Provide transaction/contract indicators users should review
+- [ ] Preserve evidence for later root-cause and impact analysis
+- [ ] Consider remediation or compensation separately from immediate containment
 
 ## Escalation
 
@@ -165,12 +183,12 @@ If users signed malicious transactions:
 
 After resolving, review:
 
-- [ ] DNS provider security (2FA, lock)
-- [ ] Hosting access controls
+- [ ] DNS provider security and registrar controls
+- [ ] Hosting/CDN access controls
 - [ ] CI/CD security
-- [ ] Dependency management
-- [ ] Subresource integrity
-- [ ] Content Security Policy
+- [ ] Dependency management discipline
+- [ ] Frontend integrity controls (where applicable)
+- [ ] User-facing monitoring for unexpected asset changes
 
 ## Related
 

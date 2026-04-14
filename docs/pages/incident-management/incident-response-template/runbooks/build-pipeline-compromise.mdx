@@ -1,6 +1,6 @@
 ---
 title: "Runbook: Build Pipeline Compromise | Security Alliance"
-description: "Stub runbook. Customize with your CI/CD platform and procedures."
+description: "Example runbook for CI/CD compromise. Review and customize for your platform, release process, and trust boundaries before use."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -21,7 +21,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Stub runbook.** Customize with your CI/CD platform and procedures.
+> **This is an example runbook.** Review and customize for your CI/CD platform, artifact flow, deployment model, and approval process before use.
 
 ## Quick Reference
 
@@ -36,39 +36,149 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ### Symptoms
 
-- [ ] Unexpected code in deployed artifacts
-- [ ] CI/CD configuration changed without approval
-- [ ] Secrets accessed or exfiltrated
-- [ ] Unauthorized workflow runs
+- [ ] Unexpected workflow runs or releases
+- [ ] CI/CD configuration changed without expected approval
+- [ ] Secrets accessed, exported, or rotated unexpectedly
+- [ ] Build artifacts differ from expected source or prior reproducible output
+- [ ] Deployments reference an unexpected commit, artifact, or builder identity
 
-### Confirm Compromise
+### Likely Scope Questions
 
-- Review CI/CD audit logs
-- Compare build artifacts to source
-- Check for config changes in CI/CD platform
+- Is this limited to CI configuration, or were artifacts actually produced from a compromised pipeline?
+- Did the pipeline have deploy permissions, signing authority, or production credentials?
+- Were any releases, containers, frontend bundles, or packages published during the exposure window?
+
+### Differentiation
+
+- Unauthorized code merged without pipeline abuse may be a repository compromise first
+- Malicious package updates without CI tampering may be a dependency incident first
+- A bad deployment from a legitimate commit may be an operational failure rather than compromise
+
 
 ## Immediate Actions
 
-1. [ ] Disable compromised pipelines
-2. [ ] Rotate all secrets and tokens
-3. [ ] Take down potentially compromised deployments
-4. [ ] Audit recent builds and deployments
+### Step 1: Freeze the pipeline
 
-## Mitigation
+**Why:** Stop additional malicious builds, releases, or secret access.
 
-1. [ ] Audit CI/CD configuration for unauthorized changes
-2. [ ] Rebuild from trusted commit using clean pipeline
-3. [ ] Implement additional approval requirements
-4. [ ] Review and restrict pipeline permissions
+- [ ] Disable affected workflows/pipelines
+- [ ] Revoke or pause auto-deploy jobs
+- [ ] Block manual approvals until scope is understood
 
-## Prevention
+### Step 2: Preserve evidence
 
-- [ ] Require approval for CI/CD config changes
-- [ ] Use short-lived credentials
-- [ ] Implement branch protection
-- [ ] Audit pipeline access regularly
-- [ ] Use signed commits
-- [ ] Separate build and deploy permissions
+**Why:** CI audit logs, workflow definitions, artifact metadata, and deployment history are easy to overwrite.
+
+- [ ] Export CI audit logs
+- [ ] Save workflow/job history for the exposure window
+- [ ] Record affected commits, workflow files, artifact digests, release IDs, and deployment targets
+- [ ] Preserve runner details if self-hosted runners were involved
+
+### Step 3: Rotate credentials by blast radius
+
+**Why:** Pipeline compromise often becomes credential compromise.
+
+Prioritize rotation of:
+- [ ] CI platform tokens
+- [ ] cloud deploy credentials
+- [ ] package registry tokens
+- [ ] artifact signing keys or release credentials
+- [ ] secrets available to self-hosted runners
+
+### Step 4: Stop trust in recent outputs
+
+**Why:** Do not assume recent artifacts or deployments are clean.
+
+- [ ] Identify all artifacts built during the exposure window
+- [ ] Identify all deployments and releases from those artifacts
+- [ ] Quarantine or withdraw suspicious outputs where possible
+
+
+## Investigation
+
+### Key Questions
+
+- [ ] What was the initial access path: CI platform, repository permissions, runner compromise, or stolen token?
+- [ ] What permissions did the compromised pipeline actually have?
+- [ ] Were secrets exposed only to logs/runtime, or used to publish or deploy?
+- [ ] Which environments were reachable: build only, staging, production?
+- [ ] Which outputs must now be treated as untrusted?
+
+### Information to Gather
+
+| Data | Source |
+|------|--------|
+| CI audit logs | CI/CD platform |
+| workflow/config diffs | repository history |
+| release/deployment history | CI/CD platform, cloud provider, registry |
+| artifact digests / provenance | registry, signing system, artifact store |
+| runner access and execution logs | runner host / CI platform |
+
+
+## Containment and Recovery
+
+### Option A: Rebuild from a known-good commit using a clean pipeline
+
+**When:** You can identify a trusted commit and re-establish a trusted build path.
+**Impact:** Release cadence slows, but trust is restored more safely.
+
+1. Stand up a clean pipeline or isolated builder
+2. Re-verify repository state and workflow definitions
+3. Rebuild from a known-good commit
+4. Compare output metadata against expected source and release intent
+5. Redeploy only from the rebuilt trusted output
+
+### Option B: Roll back to last known-good release
+
+**When:** A trusted prior release exists and rollback is operationally safe.
+**Impact:** Feature loss or temporary service degradation may occur.
+
+1. Identify the last trusted artifact and deployment
+2. Roll back affected services
+3. Verify rollback success in production
+4. Continue investigation before resuming normal release flow
+
+### Option C: Keep service paused until trust is re-established
+
+**When:** You cannot distinguish clean from compromised outputs.
+**Impact:** Operational disruption, but lower risk of serving malicious artifacts.
+
+1. Pause releases/deployments
+2. Communicate impact internally and externally as needed
+3. Rebuild trust in source, pipeline, credentials, and artifacts before resuming
+
+
+## Verification Before Resuming
+
+Do not resume normal delivery until you can answer these clearly:
+
+- [ ] The initial access path is understood well enough to prevent immediate recurrence
+- [ ] Compromised credentials have been rotated or invalidated
+- [ ] Untrusted artifacts and releases have been identified and handled
+- [ ] Build and deploy permissions are re-scoped appropriately
+- [ ] A known-good artifact has been rebuilt or a known-good release has been restored
+
+
+## Hardening After the Incident
+
+- [ ] Separate build permissions from deploy permissions
+- [ ] Require stronger approval controls for workflow and release changes
+- [ ] Use short-lived credentials where possible
+- [ ] Reduce secret exposure to only the jobs that need them
+- [ ] Restrict or harden self-hosted runners if used
+- [ ] Improve artifact provenance, signing, and release verification
+
+
+## Escalation
+
+Escalate immediately if:
+- [ ] production deployments may have been modified
+- [ ] signing keys or release credentials may be exposed
+- [ ] user-facing artifacts may have been maliciously published
+- [ ] the pipeline had access to broader cloud or infrastructure credentials
+
+See [Contacts](../contacts) and [Incident Response Policy](../incident-response-policy).
+
 
 ## Related
 

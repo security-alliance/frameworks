@@ -1,6 +1,6 @@
 ---
 title: "Runbook: Dependency Attack | Security Alliance"
-description: "Stub runbook. Customize with your package management and build procedures."
+description: "Example runbook for dependency compromise. Review and customize for your package manager, build flow, and release process before use."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -21,7 +21,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Stub runbook.** Customize with your package management and build procedures.
+> **This is an example runbook.** Review and customize for your package manager, dependency policy, and build procedures before use.
 
 ## Quick Reference
 
@@ -38,41 +38,128 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 - [ ] Unexpected behavior after dependency update
 - [ ] Security advisory for a package you use
-- [ ] Malicious code found in node_modules or similar
-- [ ] Lockfile changes you didn't make
+- [ ] Malicious code found in installed dependencies or build output
+- [ ] Lockfile changes you did not expect
+- [ ] Frontend bundle or released artifact changed more than the source diff would explain
 
-### Confirm Dependency Attack
+### Scope Questions
 
-```
-npm audit
-# or
-yarn audit
-```
+- Did the malicious dependency reach production, or is this still limited to source/build environments?
+- Was the dependency executed only during build time, or also in user-facing runtime code?
+- Did the dependency have access to CI secrets, registry tokens, or signing material?
+- Were any artifacts published or deployed during the exposure window?
 
-Check for recent lockfile changes in git history.
+### Differentiation
+
+- If the compromised package was only introduced through your CI/build path, also review [Build Pipeline Compromise](./build-pipeline-compromise)
+- If the issue is malicious code being served to users, also review [Frontend Compromise](./frontend-compromise)
+- If this is only an advisory on an unused code path, severity may differ from an actively weaponized package
 
 ## Immediate Actions
 
-1. [ ] Take down site to stop serving malicious code
-2. [ ] Identify the malicious package
-3. [ ] Pin dependencies to last known good version
-4. [ ] Rebuild from clean environment
+### Step 1: Freeze releases that rely on the affected dependency
 
-## Mitigation
+**Why:** Prevent additional malicious artifacts from being built or published.
 
-1. [ ] Remove or replace malicious package
-2. [ ] Update lockfile with known good versions
-3. [ ] Rebuild using `npm ci` or `yarn --frozen-lockfile`
-4. [ ] Redeploy verified build
+- [ ] Pause affected builds and deployments
+- [ ] Stop package publishing if your pipeline republishes downstream artifacts
+- [ ] Block dependency auto-update jobs until scope is understood
+
+### Step 2: Identify the exact bad package/version path
+
+**Why:** You need a precise package, version, and introduction path before you can cleanly contain it.
+
+- [ ] Record package name and version
+- [ ] Identify whether it is direct or transitive
+- [ ] Identify which commits or lockfile changes introduced it
+- [ ] Determine whether multiple repos or services consume it
+
+### Step 3: Stop trusting recent outputs
+
+**Why:** If malicious code ran during build or packaging, recent artifacts may be untrusted even if source looks clean.
+
+- [ ] Identify builds created during the exposure window
+- [ ] Identify deployed versions and published packages that include the dependency
+- [ ] Quarantine or withdraw suspicious outputs where possible
+
+### Step 4: Preserve evidence
+
+**Why:** Registry state, lockfiles, and CI evidence can change quickly.
+
+- [ ] Save lockfile and manifest versions from affected builds
+- [ ] Save CI logs and artifact metadata
+- [ ] Record package tarball hashes, integrity values, and registry metadata where available
+
+## Investigation
+
+### Key Questions
+
+- [ ] Was the package actually malicious, or just vulnerable?
+- [ ] Was the malicious code executed in your environment?
+- [ ] Did it affect build-time systems, runtime users, or both?
+- [ ] Were secrets, signing credentials, or deploy tokens exposed?
+- [ ] Which artifacts or releases must now be treated as untrusted?
+
+### Information to Gather
+
+| Data | Source |
+|------|--------|
+| package/version metadata | registry, lockfile, manifest |
+| introduction point | git history, dependency bot PRs |
+| build logs | CI/CD platform |
+| deployed artifacts using bad dependency | release history, artifact store |
+| advisories / upstream incident details | package registry, maintainer advisories |
+
+
+## Containment and Recovery
+
+### Option A: Revert to the last known-good dependency state
+
+**When:** A trusted prior lockfile/package set exists.
+**Impact:** Fastest path in many cases.
+
+1. Revert the dependency or lockfile to a known-good state
+2. Rebuild from a clean environment
+3. Verify the bad package is no longer present in the output
+4. Redeploy only after validating the resulting artifact
+
+### Option B: Replace or remove the affected package
+
+**When:** A clean replacement exists, or the package is non-essential.
+**Impact:** May require code changes or degraded functionality.
+
+1. Remove or replace the affected package
+2. Regenerate lockfile carefully
+3. Rebuild from a clean environment
+4. Validate both functionality and resulting dependency tree
+
+### Option C: Keep service paused until trust is re-established
+
+**When:** You cannot clearly determine which artifacts are clean.
+**Impact:** Operational disruption, but lower chance of serving malicious code.
+
+1. Pause affected deployments
+2. Reconstruct a trusted dependency set
+3. Rebuild from a clean environment
+4. Resume only after verifying outputs and rotation of any exposed credentials
+
+
+## Verification Before Resuming
+
+- [ ] The malicious or suspect dependency is removed from the build
+- [ ] A clean rebuild has been produced from a trusted environment
+- [ ] Any exposed credentials have been rotated
+- [ ] Suspicious builds, releases, or packages have been identified and handled
+- [ ] The resulting artifact has been checked against expected changes
 
 ## Prevention
 
 - [ ] Use lockfiles and commit them
-- [ ] Use `npm ci` / `yarn --frozen-lockfile` in CI
-- [ ] Regularly audit dependencies
-- [ ] Consider using a private registry
-- [ ] Pin exact versions for critical packages
-- [ ] Review dependency changes in PRs
+- [ ] Use deterministic install commands in CI (`npm ci`, `pnpm install`, `yarn install --immutable`, etc.)
+- [ ] Review dependency and lockfile changes in PRs
+- [ ] Restrict who can approve dependency update automation
+- [ ] Audit critical dependencies and minimize unnecessary package surface area
+- [ ] Treat build-time dependencies as part of the production attack surface
 
 ## Related
 
