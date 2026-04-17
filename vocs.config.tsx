@@ -568,6 +568,7 @@ const config = {
           ]
         },
         { text: 'Certification Guidelines', link: '/certs/certification-guidelines' },
+        { text: 'Changelog', link: '/certs/changelog' },
         { text: 'Contributions', link: '/certs/contributions' },
       ]
     },
