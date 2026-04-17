@@ -102,9 +102,8 @@ Signers should use a dedicated address for each multisig they participate in:
 - **Wallet clarity**: When a signer uses the same key across multiple multisigs, signing requests become ambiguous.
   A dedicated key per multisig makes it immediately obvious which multisig a transaction belongs to, reducing the
   chance of signing the wrong transaction.
-- **Blast radius containment**: If an attacker compromises a signer's key that is shared across multiple multisigs,
-  the attacker gains a valid signature on every multisig that key belongs to. With dedicated keys, compromising one
-  key only affects one multisig.
+- **Operational separation**: Keeping distinct addresses per multisig makes it easier to track activity and avoid
+  mistakes. Note that if addresses share the same seed phrase, seed compromise still affects all of them.
 
 In practice, use a different address index on your hardware wallet for each multisig — same derivation path, just
 switch between addresses and label each clearly in your wallet interface.

@@ -117,6 +117,12 @@ to provide adequate time to respond in the event of an anomaly
 - [**Timelock contracts**](#timelock-configuration) for major changes (upgrades, significant parameter changes)
 - Parameter limits enforced by smart contracts where feasible
 
+### Post-execution verification
+
+Build internal testing and simulation tooling that verifies governance transactions match their intended effect after
+they land on-chain. Misconfigurations can cause a payload to behave differently on-chain than it appeared locally.
+Automated integration tests that check protocol invariants after execution catch these mismatches.
+
 ### Threshold considerations:
 
 - Higher thresholds for contract upgrades (consider 7/9+)
@@ -214,7 +220,7 @@ proposal will simply execute after the delay period. The monitoring window IS th
 
 ### Community Visibility
 
-Consider making timelock queues publicly visible through a dashboard or notification feed. This allows the broader
+Make timelock queues publicly visible through a dashboard or notification feed. This allows the broader
 community to observe pending changes, which adds an additional layer of scrutiny beyond the core team.
 
 </TagProvider>

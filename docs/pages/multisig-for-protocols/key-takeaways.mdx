@@ -25,14 +25,16 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 If you read one page from the Multisig Security Framework, make it this one. These are the principles that matter most.
 
-## 1. Use Timelocks on All Admin Changes
+## 1. Use Timelocks and On-Chain Guards
 
 Any multisig controlling protocol parameters or upgrades should route through a
 [timelock contract](/multisig-for-protocols/use-case-specific-requirements#timelock-configuration). Without a timelock,
 once threshold signatures are collected, changes take effect immediately with no chance to detect or stop a malicious
 proposal. Use
 [tiered durations](/multisig-for-protocols/use-case-specific-requirements#tiered-timelock-durations): longer delays for
-major changes (upgrades, token changes), shorter delays for routine parameter tuning.
+major changes (upgrades, token changes), shorter delays for routine parameter tuning. Where possible, also enforce
+[contract-level constraints](/wallet-security/secure-multisig-best-practices#contract-level-security) like address
+whitelists, parameter bounds, and invariant checks to limit what a multisig can do even if compromised.
 
 ## 2. Separate Multisigs by Function
 
@@ -45,9 +47,9 @@ thresholds and signer sets for each.
 
 Each signer should use a
 [different address](/wallet-security/secure-multisig-best-practices#dedicated-keys-per-multisig) for each multisig.
-This makes it easy to distinguish which multisig a transaction belongs to in your wallet, and prevents a compromised key
-from being usable across multiple multisigs. Same derivation path on your hardware wallet, just different address
-indexes.
+This makes it easy to distinguish which multisig a transaction belongs to in your wallet and avoid operational mistakes.
+Note that if addresses share the same seed phrase, seed compromise still affects all of them. Same derivation path on
+your hardware wallet, just different address indexes.
 
 ## 4. Maintain an Access Control Inventory
 
