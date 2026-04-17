@@ -81,6 +81,19 @@
   color: var(--card-strong);
 }
 
+.control-id {
+  color: var(--card-muted);
+  font-weight: 500;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875em;
+}
+
+.control-id-sep {
+  color: var(--card-muted);
+  font-weight: 400;
+  margin: 0 2px;
+}
+
 .control-description {
   color: var(--card-muted);
 }
