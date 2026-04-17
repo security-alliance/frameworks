@@ -1,0 +1,141 @@
+---
+title: "SFC: Identity & Accounts | Security Alliance"
+description: "SFC Identity & Accounts certification: organizational account inventory, phishing-resistant MFA, password management, recovery methods, account lifecycle, and takeover monitoring for social media, email, SSO, registrar, custody, and SaaS accounts."
+tags:
+  - SEAL/Initiative
+  - Certifications
+  - SFC
+cert:
+- id: ida-1
+  title: Governance & Inventory
+  controls:
+  - id: ida-1.1.1
+    description: Is there a clearly designated person or team accountable for
+      organizational account security?
+    baselines:
+      - Accountability scope covers account inventory, authentication and credential
+        standards, access reviews, monitoring, and incident escalation
+    title: Organizational Account Security Owner
+  - id: ida-1.1.2
+    description: Do you maintain an inventory of organizational accounts with
+      defined ownership?
+    baselines:
+      - Inventory covers social media and public-facing accounts, email domains and
+        admin accounts, SSO/identity provider, domain registrar, custody platforms,
+        code repository admin accounts, cloud console root/admin, and critical SaaS
+        services
+      - Each account has a documented owner (individual or role)
+      - Updated within 24 hours for security-critical changes (new accounts,
+        ownership transfers), 7 days for routine changes
+      - Reviewed at least annually for completeness
+    title: Organizational Account Inventory
+- id: ida-2
+  title: Authentication & Credentials
+  controls:
+  - id: ida-2.1.1
+    description: Do you enforce phishing-resistant multi-factor authentication on
+      organizational accounts?
+    baselines:
+      - "Hardware security keys (FIDO2/WebAuthn) required for high-privilege
+        accounts: social media admin, domain registrar, custody platforms, cloud
+        console root, SSO/IdP, repository admin, email admin"
+      - MFA required on all organizational accounts at minimum
+      - SMS and voice-call MFA not used as the primary factor for high-privilege
+        accounts (subject to SIM-swap and interception)
+      - Backup MFA methods configured using independent factors
+    title: Phishing-Resistant Multi-Factor Authentication
+  - id: ida-2.1.2
+    description: Do you enforce credential management standards with individual
+      accountability?
+    baselines:
+      - Password manager required for all personnel; no passwords stored in plain
+        text, documents, or browsers
+      - Unique, strong passwords per account
+      - Individual accounts required; no shared logins for organizational accounts.
+        Where shared access is technically unavoidable, it is mediated through the
+        password manager with per-person audit trails
+      - Credentials transmitted only through encrypted channels (password manager
+        sharing, not email or chat)
+    title: Credential Management and Individual Accountability
+  - id: ida-2.1.3
+    description: Do you restrict account recovery methods to organizational
+      channels?
+    baselines:
+      - Recovery email addresses use organizational domains, not personal email
+      - Recovery phone numbers use organizational numbers where supported, not
+        personal numbers
+      - Backup and recovery codes stored in the password manager or comparable
+        secure storage (not in personal email, notes, or cloud docs)
+      - Recovery options reviewed when personnel change and at least annually
+    title: Recovery Methods Restricted to Organizational Channels
+- id: ida-3
+  title: Access & Lifecycle
+  controls:
+  - id: ida-3.1.1
+    description: Do you manage the full lifecycle of organizational accounts,
+      including provisioning, changes, offboarding, and periodic access review?
+    baselines:
+      - Account creation requires documented approval and is provisioned with
+        least privilege
+      - Role changes trigger prompt permission adjustments
+      - Offboarding revokes access across all organizational accounts within 24
+        hours of departure, including social media, SaaS, SSO, and shared tools
+      - Credentials for shared systems the departing person accessed are rotated
+      - Access reviews conducted at least annually; quarterly for high-privilege
+        accounts
+      - Service account and bot account ownership reviewed alongside human accounts
+    title: Account Lifecycle Management
+- id: ida-4
+  title: Monitoring & Third-Party
+  controls:
+  - id: ida-4.1.1
+    description: Do you monitor organizational accounts for takeover, unauthorized
+      activity, and credential exposure?
+    baselines:
+      - Authentication-event monitoring for privileged accounts (unusual logins,
+        new device enrollments, session anomalies, repeated auth failures)
+      - Public-facing account monitoring for unauthorized posts or configuration
+        changes (social media, status pages, external websites)
+      - Credential exposure detection including dark web, breach databases, and
+        secret scanning in code (coordinated with SFC - Incident Response
+        monitoring)
+      - Alerting and escalation paths documented; critical alerts trigger immediate
+        investigation
+      - Response coordinated with the Incident Response plan
+    title: Organizational Account Takeover Monitoring
+  - id: ida-4.1.2
+    description: Do you manage third-party access to organizational accounts with
+      time-limited, purpose-specific permissions?
+    baselines:
+      - Third-party access documented with scope, purpose, and expiry
+      - Access limited to minimum necessary systems and time window
+      - Audit trail maintained for third-party access
+      - Access revoked at expiry or project completion
+      - Third-party identity verified before access is granted
+    title: Third-Party Access Management
+
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertList } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# SFC - Identity & Accounts
+
+The SEAL Framework Checklist (SFC) for Identity & Accounts provides guidelines for managing organizational accounts (social media, email, SSO, registrar, SaaS, privileged platforms) such that account compromise cannot redirect users, funds, or trust.
+
+**Scope**: This is a horizontal cert covering the cross-cutting account-management pattern that applies to multiple surfaces (domains, code, custody, social media). Other certs reference it for account-control concerns while retaining their domain-specific substance (e.g., [SFC - DNS Registrar](/certs/sfc-dns-registrar) handles DNSSEC and registry locks; this cert handles registrar account hygiene).
+
+**Related certs**:
+
+- [SFC - DNS Registrar](/certs/sfc-dns-registrar) — DNS and registrar technical controls
+- [SFC - DevOps & Infrastructure](/certs/sfc-devops-infrastructure) — repository, CI/CD, and cloud infrastructure
+- [SFC - Treasury Operations](/certs/sfc-treasury-ops) — custody platform and transaction security
+- [SFC - Incident Response](/certs/sfc-incident-response) — incident handling flow
+
+For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
+
+<CertList sections={frontmatter.cert} name="sfc-identity-accounts" />
+
+</TagProvider>
