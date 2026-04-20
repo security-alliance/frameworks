@@ -53,16 +53,14 @@ Revision history across all SFC certifications. Each cert carries a `version` in
 
 ### SFC - DevOps & Infrastructure (v1.0 → v1.1)
 
-- `di-1.1.2` supply-chain mention softened to cross-reference Section 2.
-- `di-1.1.4` narrowed to the *evaluation process*.
-- `di-1.1.5` (NEW): approved tools list, reviewed at least annually.
+- `di-1.1.2` supply-chain mention dropped from the baseline (supply chain is already covered substantively in Section 2).
+- `di-1.1.4` rewritten to cover both the tool approval process and the maintained approved-tools list in a single control; list review cadence made explicit.
 - `di-2.1.1` repo access review cadence tightened; account controls now reference SFC - Identity & Accounts.
 - `di-2.1.4` dependencies consolidated from 6 bullets to 3.
 - `di-3.1.1` pipeline runner hardening bullet added; consolidated to 5 bullets.
 - `di-4.1.1` network architecture bullet added (segmentation, minimal public exposure, firewall/security group rules).
 - `di-4.1.2` account controls now reference SFC - Identity & Accounts; break-glass bullets consolidated.
-- References section added at the bottom of the cert with links to Cloud Security Alliance CCM and cloudsecdocs.com.
-- Control count: 16 → 17.
+- Control count unchanged: 16.
 
 ### SFC - DNS Registrar (v1.0 → v1.1)
 
@@ -73,7 +71,7 @@ Revision history across all SFC certifications. Each cert carries a `version` in
 - Header pointer to SFC - Identity & Accounts added for org account takeover coordination.
 - `ir-1.1.1` IR team roles consolidated from 7 bullets to 3.
 - `ir-1.1.2` IR contacts consolidated from 7 bullets to 4.
-- `ir-2.1.1` **(NEW)**: threat model for protocol operations, including external dependencies. Placed before monitoring coverage so monitoring is anchored to a known threat picture. Existing Section 2 controls shifted: previous `ir-2.1.1` → `ir-2.1.2`, `ir-2.1.2` → `ir-2.1.3`, `ir-2.1.3` → `ir-2.1.4`.
+- `ir-2.1.1` **(NEW)**: threat model for protocol operations, including external dependencies and single points of failure (cross-chain messaging providers, oracle providers, critical infrastructure). Placed before monitoring coverage so monitoring is anchored to a known threat picture. Existing Section 2 controls shifted: previous `ir-2.1.1` → `ir-2.1.2`, `ir-2.1.2` → `ir-2.1.3`, `ir-2.1.3` → `ir-2.1.4`.
 - `ir-2.1.3` alerting and paging (previously `ir-2.1.2`) consolidated from 8 bullets to 4.
 - `ir-5.1.1` IR drills consolidated from 7 bullets to 4.
 
@@ -84,7 +82,7 @@ Revision history across all SFC certifications. Each cert carries a `version` in
 
 ### Workbook compatibility
 
-- Control IDs are stable across this revision. No renames. New controls (`tro-2.1.3`, `tro-3.1.5`, `di-1.1.5`, all `ida-*`) will simply be unpopulated when importing old workbooks, which is expected.
+- Control IDs are stable across this revision. No renames. New controls (`tro-2.1.3`, `tro-3.1.5`, `ir-2.1.1`, all `ida-*`) will simply be unpopulated when importing old workbooks, which is expected. Shifted IR Section 2 IDs mean old `ir-2.1.1`/`ir-2.1.2`/`ir-2.1.3` data in workbooks will not align to the new IDs without manual re-mapping.
 - Users with saved state for Workspace Security will lose that state (that cert is removed). Other certs retain their localStorage state across the revision.
 
 </TagProvider>

@@ -47,6 +47,9 @@ cert:
     baselines:
       - Threat model identifies adversaries, attack surfaces, and likely incident
         scenarios for protocol operations
+      - Identifies single points of failure and highly centralized components
+        across onchain and offchain layers (e.g., cross-chain messaging providers,
+        oracle providers, critical infrastructure dependencies)
       - Covers external dependencies (infrastructure providers, oracles, bridges,
         integrations, custody partners) and how their compromise would propagate
       - Anchors what the monitoring program detects and what incident playbooks

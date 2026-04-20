@@ -23,7 +23,7 @@ cert:
       and infrastructure operations?
     baselines:
       - Policy covers environment standards, access controls, deployment procedures,
-        and code management (supply chain security covered in detail in Section 2)
+        and code management
       - Accessible to all developers and infrastructure operators
       - Reviewed at least annually and after significant changes (security incidents,
         technology shifts, organizational restructuring)
@@ -40,23 +40,18 @@ cert:
       - Code execution sandboxed to prevent host system compromise
     title: Development Environment Isolation
   - id: di-1.1.4
-    description: Do you have a documented process for evaluating and approving new
-      development tools?
+    description: Do you evaluate and approve development tools before organizational
+      use, and maintain an approved tools list?
     baselines:
       - Evaluation criteria cover IDEs, extensions, plugins, AI-powered tools, and
         third-party services
       - Extensions and plugins obtained only from official repositories
       - AI tools assessed for data privacy risks (does the tool send code to third
         parties for training or analytics?)
-      - Process applied before adopting a new tool organizationally
-    title: Development Tools Approval Process
-  - id: di-1.1.5
-    description: Do you maintain an approved tools list and review it periodically?
-    baselines:
       - Approved tool list maintained; unapproved tools restricted
       - List reviewed at least annually, including checks for unused or unrecognized
         installed tools
-    title: Approved Tools List
+    title: Development Tools Approval and Approved List
 - id: di-2
   title: Source Code & Supply Chain Security
   controls:
@@ -210,12 +205,5 @@ security, deployment controls, and infrastructure access.
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 
 <CertList sections={frontmatter.cert} name="sfc-devops-infrastructure" />
-
-## References
-
-External standards and further reading for organizations wanting depth beyond this baseline. These are informational, not required.
-
-- [Cloud Security Alliance — Cloud Controls Matrix](https://cloudsecurityalliance.org/research/cloud-controls-matrix) — comprehensive cloud control framework; audit-oriented; covers the full cloud posture.
-- [Cloud Security Docs — Controls](https://roadmap.cloudsecdocs.com/controls/) — general cloud security controls; engineering-flavored.
 
 </TagProvider>
