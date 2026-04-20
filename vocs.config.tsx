@@ -210,6 +210,7 @@ const config = {
             { text: 'Overview', link: '/incident-management/overview' },
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
             { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
+            { text: 'Forensic Readiness', link: '/incident-management/forensic-readiness', dev: true },
             { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
             {
               text: 'Playbooks',
