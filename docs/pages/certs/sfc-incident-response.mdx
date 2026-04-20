@@ -42,6 +42,21 @@ cert:
   title: Monitoring, Detection & Alerting
   controls:
   - id: ir-2.1.1
+    description: Do you maintain a threat model for protocol operations, including
+      external dependencies?
+    baselines:
+      - Threat model identifies adversaries, attack surfaces, and likely incident
+        scenarios for protocol operations
+      - Covers external dependencies (infrastructure providers, oracles, bridges,
+        integrations, custody partners) and how their compromise would propagate
+      - Anchors what the monitoring program detects and what incident playbooks
+        cover
+      - Reviewed at least annually and after significant changes (new integrations,
+        architecture shifts, threat landscape changes)
+      - Shared with the IR team so detection and response are anchored to the same
+        threat picture
+    title: Threat Model for Protocol Operations
+  - id: ir-2.1.2
     description: Do you maintain monitoring coverage for your critical systems,
       protocols, and external attack surfaces?
     baselines:
@@ -56,7 +71,7 @@ cert:
       - Monitoring coverage documented — what's covered, what's not, and known
         gaps
     title: Monitoring Coverage
-  - id: ir-2.1.2
+  - id: ir-2.1.3
     description: Do you have alerting and paging systems that reliably route
       incidents to available responders?
     baselines:
@@ -69,7 +84,7 @@ cert:
       - On-call schedules with adequate coverage and documented backup procedures
         when on-call personnel are unreachable
     title: Alerting, Paging, and Escalation
-  - id: ir-2.1.3
+  - id: ir-2.1.4
     description: Do you maintain tamper-evident logs with adequate retention for
       incident investigation?
     baselines:
