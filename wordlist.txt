@@ -360,3 +360,5 @@ Upbit
 Valimail
 viem
 wagmi
+NCSC
+Intune
