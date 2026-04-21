@@ -122,8 +122,8 @@
 /* Grid Layout */
 .contributors-page-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
   padding: 0 0.5rem;
   max-width: 1400px;
 }
@@ -133,7 +133,7 @@
   background: var(--sidebar-bg);
   border: 1px solid var(--theme-popup-border);
   border-radius: 6px;
-  padding: 1rem;
+  padding: 0.75rem 0.625rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease, z-index 0s 0.2s;
   display: flex;
@@ -142,8 +142,8 @@
   text-align: center;
   font-size: 0.875rem;
   position: relative;
-  min-height: 280px;
-  min-width: 250px;
+  min-height: 0;
+  min-width: 0;
   isolation: isolate;
 }
 
@@ -170,11 +170,11 @@
 }
 
 .contributors-page-avatar {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--theme-popup-border);
+  border: 2px solid var(--theme-popup-border);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: var(--sidebar-bg);
   transition: all 0.3s ease;
@@ -184,15 +184,15 @@
 .avatar-badge {
   position: absolute;
   bottom: -4px;
-  right: calc(50% - 44px - 8px);
-  width: 32px;
-  height: 32px;
+  right: calc(50% - 34px - 6px);
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  border: 3px solid var(--sidebar-bg);
+  border: 2px solid var(--sidebar-bg);
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
   z-index: 3;
@@ -207,9 +207,9 @@
 .role-badge-overlay {
   position: absolute;
   bottom: -4px;
-  right: calc(50% - 48px);
-  width: 32px;
-  height: 32px;
+  right: calc(50% - 38px);
+  width: 26px;
+  height: 26px;
   z-index: 3;
   cursor: pointer;
 }
@@ -293,14 +293,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 .contributors-page-name {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.875rem;
   word-break: break-word;
   color: var(--fg);
   line-height: 1.3;
@@ -410,9 +410,9 @@
 
 .contributors-page-social {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.5rem;
   justify-content: center;
-  margin: 0.8rem 0 0.3rem;
+  margin: 0.5rem 0 0.2rem;
 }
 
 .contributor-link {
@@ -472,10 +472,28 @@
   justify-content: center;
 }
 
-/* Elevate card when badge tooltip is shown */
-.contributors-page-card:has(.badge-wrapper:hover) {
+/* Elevate card when any tooltip/popup is active */
+.contributors-page-card:has(.badge-wrapper:hover),
+.contributors-page-card:has(.badge-overflow-chip:hover),
+.contributors-page-card:has(.role-badge-overlay:hover),
+.contributors-page-card:has(.avatar-wrapper:hover),
+.contributors-page-card:has(.contributor-hover-card:hover) {
   z-index: 99999;
   transition-delay: 0s;
+  isolation: auto;
+}
+
+
+/* Push role overlay behind tooltips when badges or overflow chip are hovered */
+.contributors-page-card:has(.badge-wrapper:hover) .role-badge-overlay,
+.contributors-page-card:has(.badge-overflow-chip:hover) .role-badge-overlay {
+  z-index: 0;
+}
+
+/* Ensure badges section sits above the avatar section within the card */
+.contributors-page-badges {
+  position: relative;
+  z-index: 2;
 }
 
 
@@ -520,6 +538,120 @@
   border-right: 1px solid #ffffff17;
   border-bottom: 1px solid #ffffff17;
 }
+
+/* Contributor hover card (shown when hovering avatar) */
+.contributor-hover-card {
+  position: absolute;
+  /* sit right next to the avatar: 50% of avatar-wrapper (card center) + half-avatar (30px) */
+  left: calc(50% + 50px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 230px;
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 0.875rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  z-index: 999999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, visibility 0.18s ease;
+}
+
+
+/* Show when avatar is hovered — but suppress if the role badge is specifically hovered */
+.avatar-wrapper:hover:not(:has(.role-badge-overlay:hover)) .contributor-hover-card,
+.contributor-hover-card:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.hover-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+
+.hover-card-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+.hover-card-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.hover-card-name {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #f9fafb;
+  line-height: 1.2;
+}
+
+.hover-card-job-title {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  font-style: italic;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hover-card-company {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #d1d5db;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hover-card-steward {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #60a5fa;
+  margin-bottom: 0.5rem;
+}
+
+.hover-card-description {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  line-height: 1.5;
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 0.5rem;
+}
+
+:root:not(.dark) .contributor-hover-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+:root:not(.dark) .hover-card-name    { color: #111827; }
+:root:not(.dark) .hover-card-job-title { color: #6b7280; }
+:root:not(.dark) .hover-card-company {
+  color: #374151;
+  background: rgba(15, 23, 42, 0.05);
+  border-color: rgba(15, 23, 42, 0.1);
+}
+:root:not(.dark) .hover-card-steward  { color: #2563eb; }
+:root:not(.dark) .hover-card-description { color: #4b5563; border-top-color: rgba(15, 23, 42, 0.08); }
+:root:not(.dark) .hover-card-avatar   { border-color: rgba(15, 23, 42, 0.15); }
 
 /* Corner Accent for elite contributors */
 .corner-accent {
@@ -574,25 +706,25 @@
   }
 
   .contributors-page-list {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
     padding: 0;
   }
 
   .contributors-page-card {
-    padding: 1.5rem;
+    padding: 0.625rem 0.5rem;
   }
 
   .contributors-page-avatar {
-    width: 72px;
-    height: 72px;
+    width: 52px;
+    height: 52px;
   }
 
   .avatar-badge {
-    right: calc(50% - 36px - 8px);
-    width: 28px;
-    height: 28px;
-    font-size: 1rem;
+    right: calc(50% - 30px - 6px);
+    width: 22px;
+    height: 22px;
+    font-size: 0.75rem;
   }
 
   .contributors-page-badges {
@@ -603,8 +735,8 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .contributors-page-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.875rem;
   }
 
   .stat-number {

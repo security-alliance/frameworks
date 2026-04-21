@@ -40,6 +40,7 @@ const config = {
         { text: 'Introduction to Frameworks', link: '/intro/introduction' },
         { text: 'How to Navigate the Website', link: '/intro/how-to-navigate-the-website' },
         { text: 'Overview of each Framework', link: '/intro/overview-of-each-framework' },
+        { text: 'Attack Surface Overview', link: '/intro/attack-surface', dev: true },
       ]
     },
     {
@@ -564,13 +565,14 @@ const config = {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
             { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
             { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
+            { text: 'Identity & Accounts', link: '/certs/sfc-identity-accounts' },
             { text: 'Incident Response', link: '/certs/sfc-incident-response' },
             { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
             { text: 'Treasury Operations', link: '/certs/sfc-treasury-ops' },
-            { text: 'Workspace Security', link: '/certs/sfc-workspace-security' },
           ]
         },
         { text: 'Certification Guidelines', link: '/certs/certification-guidelines' },
+        { text: 'Changelog', link: '/certs/changelog' },
         { text: 'Contributions', link: '/certs/contributions' },
       ]
     },

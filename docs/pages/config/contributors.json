@@ -665,5 +665,19 @@
       { "name": "New-Joiner", "lastActive": "2026-03-17" },
       { "name": "Active-Last-7d", "lastActive": "2026-03-23" }
     ]
+},
+"shallem": {
+    "slug": "shallem",
+    "name": "Seth Hallem",
+    "avatar": "",
+    "github": "https://github.com/shallem",
+    "twitter": "https://x.com/seth_certora",
+    "website": "https://www.certora.com/",
+    "company": "Certora",
+    "role": "steward",
+    "job_title": null,
+    "description": "Steward of Opsec framework",
+    "badges": [
+    ]
   }
 }
