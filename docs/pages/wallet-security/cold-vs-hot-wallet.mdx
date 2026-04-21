@@ -38,9 +38,9 @@ are stored on device with minimal connectivity.
 
 > ❓ Did you know?
 >
-> Most cold wallets come with some way to connect to the internet, such as via a USB connection. This technically makes
-> them "hot" when connected. However, the key distinction is that they are not continuously online and are designed to
-> minimize exposure to online threats.
+> Most cold wallets still need a way to exchange transaction data with a connected device, such as via USB, Bluetooth,
+> QR codes, or SD cards. This does not make them hot by itself. The key distinction is whether the private key remains
+> isolated from the internet-connected system during signing.
 
 ### Types of Cold Wallets
 
@@ -50,8 +50,9 @@ exposing the keys to a connected internet device.
 - **Software Wallets on Air-Gapped Devices**: Standard wallet software installed on a device that is permanently
 disconnected from the internet, used for offline transaction signing.
 - **Brain Wallets**: Private keys that are memorized.
-- **Account Abstraction Wallets**: Using smart contracts to manage keys and transactions without exposing private keys.
-- **Multisig Wallets**: Require multiple signatures to authorize a transaction, enhancing security.
+
+Account abstraction wallets and multisig wallets are separate account and authorization models, not types of cold
+wallets. Either approach can use hot signers, cold signers, or a mix of both.
 
 ### Use Cases
 
