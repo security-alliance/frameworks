@@ -8,9 +8,9 @@ tags:
   - SRE
 contributors:
   - role: wrote
-    users: [frameworks-volunteer]
+    users: [mattaereal]
   - role: reviewed
-    users: []
+    users: [scode2277]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -161,6 +161,8 @@ rules:
     severity: ERROR
     languages: [javascript, python, solidity]
 
+  # NOTE: This is a simplified example. In production, use a more specific
+  # pattern that matches actual sensitive variables, not any spread argument.
   - id: sensitive-data-logging
     pattern: console.log(...$SENSITIVE)
     message: Do not log sensitive data in production.
@@ -188,7 +190,7 @@ ignore alerts, real findings get missed.
 # nosemgrep: hardcoded-private-key
 # Reason: Test fixtures only — not real keys.
 # Ticket: SEC-1234, suppress until test fixture refactored.
-# Expiry: 2025-06-01
+# Expiry: 2027-06-01
 ```
 
 Every suppression should include: the finding ID, why it is a false positive,
