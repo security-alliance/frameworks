@@ -1,10 +1,15 @@
 ---
 title: "Repository Hardening | Security Alliance"
-description: "Harden your GitHub repository with MFA, protected branches, signed commits, and security hardening for GitHub Actions. Prevent token stealing and unauthorized access to critical branches."
+description: "Harden your GitHub repository with MFA, protected branches, signed commits, CODEOWNERS, and security hardening for GitHub Actions. Prevent token theft, unauthorized access, and supply chain attacks on critical branches."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
+contributors:
+  - role: wrote
+    users: [frameworks-volunteer]
+  - role: reviewed
+    users: []
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -17,19 +22,234 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-If a threat actor obtains access to your repository, it could have very severe consequences. In order to help avoid
-this, you could consider implementing the following best practices:
+> 🔑 **Key Takeaway**: A hardened repository enforces MFA, signed commits,
+> protected branches, and least-privilege access by default; monitors for
+> leaked secrets and suspicious activity; and makes every change traceable
+> to a verified human through code review and signature verification.
 
-1. Require Multi-Factor Authentication (MFA) for all repository members.
-2. Enable protected branches to prevent unauthorized changes to critical branches. [Learn more about protected
-  branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
-3. Follow the [Security hardening for GitHub
-  Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions) to avoid token
-  stealing and other vulnerabilities.
-4. Implement strict access controls to limit who can push to critical branches and repositories.
-5. Conduct regular security audits of the repository to identify and mitigate potential vulnerabilities.
-6. Require all commits to be signed to verify the identity of contributors and ensure the integrity of the code.
-7. Regularly update dependencies and use tools to check for and manage vulnerabilities in dependencies.
+If a threat actor obtains access to your repository, the consequences can be
+catastrophic: injected backdoors, stolen secrets, compromised releases, and
+eroded trust. Repository hardening is the first line of defense, ensuring that
+even if individual credentials are compromised, layered controls limit the
+damage.
+
+## Practical guidance
+
+### 1. Require MFA for all repository members
+
+Multi-Factor Authentication is the single most effective control against
+credential theft.
+
+- Enable "Require two-factor authentication" at the **organization level** in
+  GitHub. This forces all members, including outside collaborators, to enable
+  MFA before they can access any org repository.
+- Encourage hardware MFA (Yubikey, Titan) over SMS or TOTP. FIDO2/WebAuthn
+  keys resist phishing and credential replay.
+- Audit MFA enrollment periodically: review org member settings and remove
+  members who have not enabled MFA.
+
+### 2. Enable protected branches
+
+Protected branches prevent unauthorized or unreviewed changes to critical
+branches.
+
+- Protect `main`, `develop`, and any release branches.
+- Enable these rules at minimum:
+  - **Require a pull request before merging** — at least 1 approving review,
+    dismiss stale reviews on push.
+  - **Require signed commits** — reject unsigned pushes.
+  - **Require status checks to pass before merging** — link to CI checks.
+  - **Require linear history** — prevent merge commits that obscure the
+  commit graph.
+  - **Do not allow force pushes** — prevent history rewriting.
+  - **Do not allow deletion** — prevent branch removal.
+- For high-sensitivity branches, require **2+ approving reviews** and
+  restrict who can push to specific teams.
+
+[Learn more about protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
+
+### 3. Harden GitHub Actions
+
+GitHub Actions workflows have access to repository secrets and can execute
+arbitrary code, making them a high-value target.
+
+- Follow [Security hardening for GitHub Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions).
+- Pin third-party actions by **commit SHA**, not by tag. Tags are mutable and
+  can be retagged to point to malicious code.
+- Restrict `GITHUB_TOKEN` permissions: set `permissions: {}` at the workflow
+  level and grant only what each job needs.
+- Never use `pull_request_target` with an untrusted checkout. This gives fork
+  PRs access to repository secrets.
+- Use **CODEOWNERS** to require review from the security or DevOps team for any
+  change to `.github/workflows/`.
+
+### 4. Enforce strict access controls
+
+Limit who can push to critical branches and repositories.
+
+- Use the **principle of least privilege**: grant Admin access only to
+  maintainers who need it. Most contributors need Write access at most, and
+  many need only Read or Triage.
+- Use **teams** to manage access: assign repository permissions to teams, not
+  individuals. This makes onboarding/offboarding easier and provides a clear
+  audit trail.
+- For organization repositories, set the **default permission** to Read and
+  explicitly grant Write/Admin to teams that need it.
+- Review repository collaborator lists quarterly. Remove stale accounts and
+  reduce over-privileged access.
+
+### 5. Require signed commits
+
+Signed commits verify the identity of contributors and the integrity of the
+code.
+
+- Enable "Require signed commits" in branch protection rules.
+- Configure `git config commit.gpgsign true` to sign by default.
+- Verify signatures in CI: `git log --verify-signatures`.
+- For automated commits (Dependabot, bots), use a dedicated bot account with
+  its own signing key, or accept unsigned bot commits via a separate,
+  lower-privilege branch.
+- See [Implementing Code Signing](/devsecops/code-signing) for full guidance.
+
+### 6. Conduct regular security audits
+
+Audit the repository for configuration drift, abandoned access, and new
+vulnerabilities.
+
+**Quarterly access review:** list all collaborators and teams, verify each
+still needs access, reduce permissions where possible.
+
+**Workflow audit:** review all GitHub Actions workflows for security issues
+(over-permissioned tokens, unpinned actions, exposed secrets).
+
+**Dependency audit:** run `npm audit`, `pip audit`, or equivalent. Enable
+Dependabot security updates.
+
+**Secret scan:** run TruffleHog or git-secrets on the repository history to
+find accidentally committed credentials.
+
+Use tools like **Scorecard** (OpenSSF) to automate security posture
+assessment of your repository.
+
+### 6b. Use CODEOWNERS to enforce security reviews
+
+CODEOWNERS files define who must review changes to specific paths. Use them
+to require security or ops team sign-off on sensitive directories:
+
+```bash
+# .github/CODEOWNERS
+
+# Security-sensitive paths — require security team review
+/.github/workflows/    @myorg/security-team
+/contracts/           @myorg/security-team @myorg/lead-dev
+/deploy/              @myorg/security-team @myorg/devops
+/secrets.env.example   @myorg/security-team
+
+# Dependencies — require security review for any dependency changes
+package.json          @myorg/security-team
+package-lock.json     @myorg/security-team
+Gemfile               @myorg/security-team
+requirements.txt      @myorg/security-team
+
+# Default — all other changes need at least 1 approval from anyone
+*                     @myorg/dev-team
+```
+
+CODEOWNERS alone does not block merges — pair it with branch protection
+rules requiring reviews from the specified teams.
+
+### 6c. Enable GitHub Advanced Security features
+
+GitHub provides additional security features under "Code security and analysis":
+
+**Code scanning (CodeQL):** Automated SAST integrated directly into GitHub.
+
+```yaml
+# .github/workflows/codeql.yml
+name: CodeQL
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  codeql:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+    steps:
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, python, solidity
+      - uses: github/codeql-action/analyze@v3
+```
+
+**Secret scanning:** Detects committed secrets across all branches. Enable
+push protection to block secrets before they enter history:
+
+Settings → Code security and analysis → Secret scanning → ✅ Scanning +
+✅ Push protection.
+
+**Dependency review:** Shows the security impact of dependency changes in
+PRs before they merge. Requires GitHub Advanced Security:
+
+Settings → Code security and analysis → Dependency review → ✅ Enable.
+
+**Unified security dashboard:** At the organization level, get a unified
+view of security alerts across all repos.
+
+### 6d. Publish a security policy
+
+A `SECURITY.md` file in the repository root tells security researchers how
+to report vulnerabilities:
+
+```markdown
+# Security Policy
+
+## Supported Versions
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 1.x     | :white_check_mark: |
+| 0.x     | :x:                |
+
+## Reporting a Vulnerability
+
+Please report vulnerabilities by:
+1. **Do not** open a public GitHub issue.
+2. Email security@example.com with details.
+3. Include a proof of concept if possible.
+
+We aim to respond within 48 hours and will keep you informed
+throughout the disclosure process.
+
+## Bug Bounty
+
+We participate in the Immunefi bug bounty program. Rewards up to
+$50,000 for critical vulnerabilities. See: https://immunefi.com/bounty
+```
+
+Link `SECURITY.md` in:
+- The repository's sidebar (via vocs config)
+- The PR template
+- Any public communication about the project
+
+### 7. Manage dependencies and vulnerabilities
+
+Dependencies are a major attack surface for supply chain compromises.
+
+- Enable **Dependabot** for version updates and security updates.
+- Review Dependabot PRs promptly; security updates are time-sensitive.
+- Pin dependencies by hash or exact version in production. Avoid floating
+  ranges (`^1.0.0`) in deployed artifacts.
+- Use lockfiles (`package-lock.json`, `poetry.lock`) and commit them to the
+  repository.
+- For Web3: audit Solidity dependencies (OpenZeppelin, forge-std) for known
+  vulnerabilities. Use `npm audit` or `pip audit` for off-chain dependencies.
+- Consider using a private registry (Artifactory, npm enterprise) to proxy
+  and cache dependencies, preventing dependency confusion attacks.
 
 ## Configuration Checklists
 
@@ -37,6 +257,73 @@ For detailed GitHub configuration checklists adapted from [Auditware's W3OSC](ht
 
 - [Individual GitHub Account Settings](/guides/account-management/github#for-individuals)
 - [Organization GitHub Repository & Org Settings](/guides/account-management/github#for-admins)
+
+## Why is it important
+
+Repository compromises have led to significant incidents:
+
+- **PHP/Composer supply chain attack (2021)**: Attacker obtained maintainer
+  credentials and pushed malicious commits to the PHP repository, injecting a
+  backdoor that would have allowed remote code execution. Signed commits and
+  review would have caught this.
+- **ua-parser-js, event-stream incidents**: Maintainer accounts were
+  compromised to publish malicious npm packages. These could have been
+  prevented by MFA, signed commits, and dependency pinning.
+- **Action-scrubber attack pattern**: Malicious GitHub Actions can exfiltrate
+  `GITHUB_TOKEN` and repository secrets if workflows are not properly
+  sandboxed and permissioned.
+
+NIST SP 800-53 Rev. 5 controls **AC-3 (Access Enforcement)**, **AU-10
+(Non-Repudiation)**, and **SC-28 (Protection of Information at Rest)** all
+apply to repository hardening.
+
+## Implementation details
+
+| Sub-topic | Related page |
+| --- | --- |
+| Code signing and key management | [Implementing Code Signing](/devsecops/code-signing) |
+| CI/CD pipeline security | [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment) |
+| Security testing tools | [Security Testing](/devsecops/security-testing) |
+| Sandbox isolation for CI | [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation) |
+
+## Common pitfalls
+
+- **Admin access granted too broadly**: Many repositories grant Admin to all
+  core contributors. Admins can change branch protection rules, remove
+  reviewers, and modify secrets. Grant Admin only to maintainers who
+  explicitly need it.
+- **Stale collaborator accounts**: Former team members or contractors who
+  still have access are a common attack vector. Remove access immediately
+  when someone leaves the team.
+- **Unpinned GitHub Actions**: `uses: action@v3` can be retagged. Always pin
+  by SHA: `uses: action@abc123def456...`.
+- **Ignoring Dependabot PRs**: Security update PRs are time-sensitive.
+  Establish an SLA for reviewing them (e.g., Critical within 24 hours).
+- **Disabling branch protection for convenience**: Temporary exceptions
+  become permanent. If a workflow requires an exception, automate it through
+  a documented process, not by disabling the rule.
+
+## Quick-reference cheat sheet
+
+| Hardening measure | How to enable |
+| --- | --- |
+| Org-wide MFA | GitHub Org Settings > Authentication > Require 2FA |
+| Protected branches | Repo Settings > Branches > Add rule > Enable all checks |
+| Require signed commits | Branch protection > Require signed commits |
+| CODEOWNERS review | Create `.github/CODEOWNERS` with path-to-team mappings |
+| Pin actions by SHA | `uses: action@<40-char-sha>` |
+| Restrict GITHUB_TOKEN | `permissions: {}` at workflow level |
+| Dependabot security updates | Repo Settings > Code security > Enable Dependabot |
+| Secret scanning + push protection | Org Settings > Code security > Enable both |
+| Scorecard audit | `npx @ossf/scorecard --repo=<owner>/<repo>` |
+
+## References
+
+- [GitHub Docs: About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
+- [GitHub Docs: Security hardening for GitHub Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions)
+- [OpenSSF Scorecard](https://github.com/ossf/scorecard)
+- [NIST SP 800-53 Rev. 5, AC-3 Access Enforcement](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
+- [Auditware W3OSC](https://github.com/AuditWare-io/W3OSC)
 
 ---
 

@@ -1,11 +1,16 @@
 ---
-title: "Securing CI/CD Pipelines | SEAL"
-description: "Build secure CI/CD pipelines with GitHub Actions: unit tests, integration tests, vulnerability scanning, deterministic builds, and strict access controls for pipeline configurations."
+title: "Securing CI/CD Pipelines | Security Alliance"
+description: "Build secure CI/CD pipelines with GitHub Actions: unit tests, integration tests, vulnerability scanning, deterministic builds, secret management, and strict access controls for pipeline configurations."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: [frameworks-volunteer]
+  - role: reviewed
+    users: []
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -18,17 +23,321 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Continuous Integration and Continuous Deployment are there to ensure good code quality and create rapid and secure
-deployments. Some best practices are:
+> 🔑 **Key Takeaway**: Treat CI/CD as a production system: every pipeline
+> must run tests, scans, and signature checks before allowing a merge; secrets
+> must never reach untrusted jobs; and build environments must be ephemeral and
+> deterministic so that no single compromise can tamper with what ships.
 
-1. Ensure every PR undergoes CI testing (e.g., GitHub Actions) that must pass before merging. CI tests should at least
-  include unit tests, integration tests, and checks for known vulnerabilities in dependencies.
-2. The CI/CD pipeline should check for misconfigurations and leaked credentials.
-3. Produce deterministic builds with a strict set of dependencies and/or a build container that can reliably produce the
-  same results on different machines.
-4. Integrate security scanning tools to detect vulnerabilities in code and dependencies during the CI process.
-5. Use isolated environments for building and testing to prevent contamination between different stages of the pipeline.
-6. Implement strict access controls for CI/CD pipelines to limit who can modify the pipeline configurations.
+CI/CD pipelines are the backbone of modern software delivery, but they are also
+high-value targets. An attacker who controls a pipeline can inject backdoors
+into every artifact it produces, steal secrets, or deploy malicious code to
+production. In Web3, where CI often has access to deployment keys and signing
+wallets, a compromised pipeline can directly lead to on-chain exploits.
+
+## Practical guidance
+
+### 1. Require CI checks before merging
+
+Every PR must pass CI before it can be merged. At minimum, the pipeline should
+include:
+
+- **Unit tests** — fast, isolated tests covering core logic.
+- **Integration tests** — end-to-end flows (e.g., deploy to testnet, verify
+  contract state, run fork tests).
+- **Dependency vulnerability scan** — detect known CVEs in packages using
+  Dependabot, Snyk, or npm audit.
+- **Static analysis** — lint code and detect common bugs (Slither for Solidity,
+  Ruff/Pylint for Python, ESLint for JS/TS).
+- **Secret detection** — scan for accidentally committed keys and tokens
+  (git-secrets, TruffleHog, GitHub secret scanning).
+
+Configure branch protection to require all status checks to pass before merging.
+
+### 2. Scan for misconfigurations and leaked credentials
+
+Pipelines themselves can introduce vulnerabilities if misconfigured.
+
+- Use tools like **tfsec** (Terraform), **Checkov**, or **Falco** to detect IaC
+  misconfigurations.
+- Enable **GitHub secret scanning** and **push protection** at the organization
+  level to prevent credentials from entering the repository.
+- Run **zizmor** or **actionlint** to lint GitHub Actions workflows for common
+  security anti-patterns (e.g., `pull_request_target` with untrusted checkout,
+  unchecked `GITHUB_TOKEN` permissions).
+
+### 3. Produce deterministic, reproducible builds
+
+A build that varies between runs makes it impossible to verify that the deployed
+artifact matches the reviewed source code.
+
+- Pin all dependency versions: use lockfiles (`package-lock.json`,
+  `poetry.lock`, `Pipfile.lock`) and pin Docker base images by digest
+  (`image@sha256:...`), not by tag.
+- Use a fixed build container or Nix derivation so that the same source always
+  produces the same output.
+- For Web3: produce deterministic bytecode by pinning the compiler version
+  (`solc`), optimizer settings, and build environment. Use
+  `--standard-json` input and verify the resulting bytecode matches across
+  independent builds.
+- Adopt SLSA (Supply-chain Levels for Software Artifacts) levels to track build
+  provenance: generate and sign provenance attestations, verify them before
+  deployment.
+
+### 4. Integrate security scanning into CI
+
+Security scanning must be automated and run on every PR, not just periodically.
+
+| Scan type | Tools | When to run |
+| --- | --- | --- |
+| SAST (static analysis) | Slither, Semgrep, CodeQL, Aderyn | Every PR |
+| SCA (dependency scan) | Dependabot, Snyk, npm audit | Every PR + daily cron |
+| Secret scanning | TruffleHog, git-secrets, GitHub push protection | Pre-commit + every PR |
+| DAST (dynamic analysis) | OWASP ZAP, Nikto | Nightly + pre-release |
+| IaC scanning | tfsec, Checkov, KICS | Every PR touching infra code |
+| Container scanning | Trivy, Grype, Snyk Container | Every image build |
+
+- Fail the pipeline on Critical and High severity findings.
+- Track Medium/Low findings as issues for triage.
+- Configure tools to suppress false positives carefully and document the
+  reason.
+
+### 5. Isolate build and test environments
+
+Pipeline stages must not share state, secrets, or filesystem access.
+
+- Use **ephemeral runners**: a fresh environment per job, no persistent state.
+  GitHub-hosted runners are ephemeral by default; self-hosted runners must be
+  re-provisioned per job.
+- Separate **untrusted PR runners** from **trusted build/deploy runners**.
+  Fork PRs should never have access to deployment secrets.
+- Deny outbound network by default for build jobs; allow only required hosts
+  (package registries, API endpoints) via allowlist.
+- Use **rootless containers** and **seccomp profiles** for build jobs. Never
+  run CI with `--privileged` or `sudo`.
+- See [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation)
+  for deeper containment patterns.
+
+### 6. Restrict access to pipeline configurations
+
+Who can modify CI workflows determines who can alter what runs in the pipeline.
+
+- Limit write access to `.github/workflows/` and equivalent CI config
+  directories to a small, trusted group.
+- Require PR reviews for any change to CI workflow files. Use CODEOWNERS to
+  enforce this: `/.github/workflows/ @security-team @devops-lead`.
+- Pin third-party GitHub Actions by commit SHA, not by tag. Tags are mutable:
+  `v1` can be retagged to point to malicious code.
+  ```yaml
+  # Unsafe: tag can be changed
+  - uses: actions/checkout@v4
+  # Safe: pinned by SHA
+  - uses: actions/checkout@b4ffde65f46336ab88eb53be80866792576f8620
+  ```
+- Restrict `GITHUB_TOKEN` permissions to least privilege: set
+  `permissions: {}` at the workflow level and grant only what each job needs.
+
+### 7. Manage secrets securely
+
+CI secrets (API keys, deployment keys, signing keys) are the highest-value
+targets in any pipeline.
+
+- Store secrets in a dedicated vault (GitHub Secrets, HashiCorp Vault, AWS
+  Secrets Manager), not in environment files or code.
+- Never pass secrets to untrusted jobs. In GitHub Actions, fork PRs cannot
+  access repository secrets by default; do not override this with
+  `pull_request_target` unless you fully understand the risk.
+- Rotate secrets regularly and after any suspected exposure.
+- Use OIDC federation where possible (GitHub Actions to AWS/GCP/Azure) to
+  eliminate long-lived credentials entirely.
+- Audit secret access: enable GitHub secret access logs and alert on
+  unexpected reads.
+
+### 8. Sign and verify artifacts
+
+Every artifact produced by CI must be signed and verifiable.
+
+- Sign Docker images with Cosign or Notary.
+- Sign smart contract deployment artifacts and verify their hash matches
+  audit-reviewed source.
+- Generate SLSA provenance attestations during the build.
+- Verify signatures and provenance in the deployment stage before releasing.
+
+### 8b. Enforce SLSA provenance
+
+SLSA (Supply-chain Levels for Software Artifacts) provides a graded framework
+for build integrity. GitHub Actions can generate provenance using the
+`slsa-framework/slsa-github-generator` action:
+
+```yaml
+# In your release workflow
+- name: Generate SLSA provenance
+  uses: slsa-framework/slsa-github-generator@v2.0.0
+  with:
+    image-tag: ${{ github.sha }}
+    attestation-name: attestation.intoto.jsonl
+    # Requires OIDC identity federation setup
+```
+
+Provenance attestation links the artifact to the exact source commit, builder
+identity, and build process. Verify provenance before deployment:
+
+```bash
+# Verify with Cosign (if using Cosign for image signing)
+cosign verify-attestation \
+  --certificate-identity=https://github.com/<org>/<repo>.github/workflows/<workflow>@refs/tags/<tag> \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  <image> \
+  --type=slsaprovenance \
+  < /dev/stdin < attestation.intoto.jsonl
+```
+
+Adopt SLSA levels progressively:
+
+| Level | Requirement | Realistic target |
+| --- | --- | --- |
+| L1 | Build process documented, provenance generated | Most teams start here |
+| L2 | Hosted build service, provenance signed | GitHub Actions with OIDC |
+| L3 | Hardened build service, no human influence on Provenance | High-security deployments |
+| L4 | Two-party review, hermetic builds | Critical Web3 infrastructure |
+
+### 8c. Generate and verify SBOMs
+
+A Software Bill of Materials (SBOM) enumerates all dependencies and their versions,
+enabling rapid vulnerability response when a CVE is disclosed.
+
+```yaml
+# Generate SBOM with Syft in CI
+- name: Generate SBOM
+  uses: anchore/sbom-action@v0
+  with:
+    image: ${{ env.IMAGE_TAG }}
+    format: spdx-json
+    output-file: sbom.spdx.json
+
+# Upload as artifact
+- name: Upload SBOM
+  uses: actions/upload-artifact@v4
+  with:
+    name: sbom
+    path: sbom.spdx.json
+    retention-days: 90
+```
+
+When a vulnerability affects a dependency, the SBOM lets you determine exactly
+which artifacts are affected and whether a rebuild is needed. Store SBOMs alongside
+artifacts and retain them for the artifact's lifetime.
+
+### 8d. Set up OIDC federation for cloud access
+
+Long-lived cloud credentials in CI are a high-value target. OpenID Connect (OIDC)
+eliminates them entirely by granting short-lived, scoped tokens on demand.
+
+**GitHub Actions → AWS:**
+```yaml
+# In your workflow
+- name: Configure AWS credentials
+  uses: aws-actions/configure-aws-credentials@v4
+  with:
+    role-to-assume: arn:aws:iam::123456789:role/GitHubActionsRole
+    aws-region: us-east-1
+    # No long-lived secrets needed — GitHub's OIDC token is exchanged
+    # for temporary AWS credentials
+```
+
+**AWS side (trust policy for the IAM role):**
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Principal": {
+      "Federated": "arn:aws:iam::123456789:oidc-provider/token.actions.githubusercontent.com"
+    },
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Condition": {
+      "StringEquals": {
+        "token.actions.githubusercontent.com:sub": "repo:<org>/<repo>:ref:refs/heads/main"
+      },
+      "StringLike": {
+        "token.actions.githubusercontent.com:aud": "https://github.com"
+      }
+    }
+  }]
+}
+```
+
+The role grants access only for pushes to `main`, only for your specific repo,
+and the token expires within minutes. If the CI system is breached, the attacker
+gets a short-lived token — not a permanent credential.
+
+## Why is it important
+
+CI/CD compromises have led to real-world breaches:
+
+- **SolarWinds (2020)**: Attackers compromised the build system and injected a
+  backdoor into Orion software updates, affecting 18,000+ organizations. This
+  demonstrated that a build-system compromise can bypass all downstream code
+  review.
+- **Codecov (2021)**: Attackers modified a CI script to exfiltrate secrets and
+  environment variables, affecting thousands of customers.
+- **3Commas (2022)**: Leaked API keys from a compromised CI environment were
+  used to drain user funds from trading bots.
+
+NIST SP 800-218 (Secure Software Development Framework) and the SLSA framework
+both define requirements for build integrity and provenance that directly apply
+to CI/CD pipeline security.
+
+## Implementation details
+
+| Sub-topic | Related page |
+| --- | --- |
+| Isolation for untrusted CI jobs | [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation) |
+| Network and resource controls | [Network & Resource Isolation](/devsecops/isolation/network-and-resource-isolation) |
+| Code signing and verification | [Implementing Code Signing](/devsecops/code-signing) |
+| Repository branch protection | [Repository Hardening](/devsecops/repository-hardening) |
+| Security testing tools | [Security Testing](/devsecops/security-testing) |
+
+## Common pitfalls
+
+- **Using `pull_request_target` with untrusted checkout**: This event gives
+  fork PRs access to repository secrets. If the workflow checks out the PR
+  code with those secrets available, an attacker can exfiltrate them. Use
+  `pull_request` for untrusted code, or use `pull_request_target` only with a
+  trusted checkout (e.g., the base branch).
+- **Pinning actions by tag instead of SHA**: Tags are mutable. `v2` can be
+  retagged at any time. Always pin by commit SHA and verify with a tool like
+  `zizmor` or `frizbee`.
+- **Over-permissioned `GITHUB_TOKEN`**: The default token has write access to
+  the repository. Restrict it: set `permissions: read-all` or `permissions: {}`
+  at the workflow level, then add only the permissions each job needs.
+- **Self-hosted runners without cleanup**: Self-hosted runners persist state
+  between jobs. Secrets, environment variables, and build artifacts from one
+  job may be readable by the next. Use ephemeral runners or implement strict
+  cleanup scripts.
+- **Skipping CI for "small changes"**: Any bypass of CI checks creates a gap.
+  Even documentation changes can introduce malicious JavaScript in MDX files.
+  Require CI for all branches.
+
+## Quick-reference cheat sheet
+
+| Check | How |
+| --- | --- |
+| Require CI on all branches | Branch protection > Require status checks |
+| Pin actions by SHA | `uses: action@<full-sha>` |
+| Restrict GITHUB_TOKEN | `permissions: {}` + per-job grants |
+| Isolate fork PR secrets | Use `pull_request`, not `pull_request_target` |
+| Scan for secrets | Enable GitHub push protection + TruffleHog in CI |
+| Deterministic builds | Pin deps by hash, pin solc version, lock Docker digests |
+| Sign artifacts | Cosign for containers, GPG for tags, SLSA provenance |
+| Audit workflow changes | CODEOWNERS on `.github/workflows/` |
+
+## References
+
+- [SLSA Specification v1.0](https://slsa.dev/spec/v1.0/)
+- [NIST SP 800-218, Secure Software Development Framework](https://csrc.nist.gov/pubs/sp/800/218/final)
+- [GitHub Docs: Security hardening for GitHub Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions)
+- [CISA: Securing the Software Supply Chain for Developers](https://www.cisa.gov/sbom)
+- [OWASP CI/CD Security Guide](https://owasp.org/www-project-devsecops-guideline/latest/03-CI-CD/)
 
 ---
 
