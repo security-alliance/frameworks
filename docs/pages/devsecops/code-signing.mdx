@@ -7,9 +7,9 @@ tags:
   - DevOps
 contributors:
   - role: wrote
-    users: [frameworks-volunteer]
+    users: [mattaereal]
   - role: reviewed
-    users: []
+    users: [scode2277]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -193,7 +193,7 @@ A signature is meaningless if the verifying party cannot obtain the correct
 public key.
 
 - Upload your public key to GitHub (Settings > SSH and GPG keys) and to a
-  public keyserver (keys.openpgp.org, keys.mailvelope.com).
+  public keyserver (keys.openpgp.org, keyserver.ubuntu.com).
 - Use the same key across all platforms so that the identity is consistent.
 - In CI, pin trusted public key fingerprints in the pipeline configuration.
   Reject signatures from unknown keys.
