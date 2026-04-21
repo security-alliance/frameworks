@@ -590,6 +590,7 @@ const config = {
 
           ]
         },
+        { text: 'LLMs', link: '/intro/llms' },
       ]
     }
   ],

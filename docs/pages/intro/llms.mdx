@@ -1,0 +1,35 @@
+---
+title: LLMs | Security Alliance Frameworks
+description: LLM-friendly documentation for the Security Alliance Frameworks, following the llms.txt standard.
+---
+
+# LLMs
+
+The Security Alliance Frameworks documentation is available in LLM-friendly format following the [llms.txt](https://llmstxt.org/) standard. These files are generated at build time and designed to be fetched by AI assistants and coding tools to provide accurate, up-to-date framework content as context.
+
+## How to use
+
+AI assistants should start with [`/llms.txt`](https://frameworks.securityalliance.org/llms.txt), the routing index. It lists every available framework file with descriptions and a full table of contents, so the AI can identify the single best match and fetch only that file. Each framework file is self-contained.
+
+## File structure
+
+There is one file per framework, generated automatically from the framework's source pages in sidebar order:
+
+```
+/llms.txt                        routing index - lists all framework files
+/llms-{framework-name}.txt       full content of that framework
+```
+
+The `{framework-name}` maps directly to the framework's folder name in the repository. For example, the Wallet Security framework lives at `docs/pages/wallet-security/` and its llms file is at `/llms-wallet-security.txt`.
+
+## What each file contains
+
+Each framework file is structured as follows:
+
+1. **Header** - framework title, description, and link to its documentation
+2. **AI instructions** - how the AI should cite and use the content
+3. **Pages** - every sidebar-listed page in the framework, in sidebar order, with:
+   - Page title and source URL
+   - Full markdown content
+
+New frameworks are picked up automatically on the next build. The routing index is always up to date.
