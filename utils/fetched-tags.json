@@ -115,6 +115,11 @@
       "SEAL/Initiative",
       "Certifications"
     ],
+    "/certs/changelog": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
     "/certs/contributions": [
       "SEAL/Initiative",
       "Certifications"
@@ -133,6 +138,11 @@
       "Certifications",
       "SFC"
     ],
+    "/certs/sfc-identity-accounts": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
     "/certs/sfc-incident-response": [
       "SEAL/Initiative",
       "Certifications",
@@ -144,11 +154,6 @@
       "SFC"
     ],
     "/certs/sfc-treasury-ops": [
-      "SEAL/Initiative",
-      "Certifications",
-      "SFC"
-    ],
-    "/certs/sfc-workspace-security": [
       "SEAL/Initiative",
       "Certifications",
       "SFC"

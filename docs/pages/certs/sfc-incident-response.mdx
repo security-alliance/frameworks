@@ -1,6 +1,8 @@
 ---
 title: "SFC: Incident Response | Security Alliance"
 description: "SFC Incident Response certification: team roles, 24/7 monitoring, paging systems, response playbooks, signer coordination, emergency communications, and regular drills."
+version: "1.1"
+revised: "2026-04-17"
 tags:
   - SEAL/Initiative
   - Certifications
@@ -13,33 +15,25 @@ cert:
     description: Do you have an incident response team with clearly defined roles
       and responsibilities?
     baselines:
-      - Incident commander (with designated backup) who coordinates response,
-        assigns tasks, and makes time-sensitive decisions
-      - Subject matter experts identified for key domains (smart contracts,
-        infrastructure, security) who can analyze attacks and prepare response
-        strategies
-      - Scribe role defined for real-time incident documentation
-      - Communications personnel designated for public information sharing and
-        record-keeping
-      - Legal support available with procedures for reviewing response actions,
-        whitehat engagement, and public communications
-      - Decision makers defined for high-stakes decisions (system shutdown, public
-        disclosure, fund recovery)
-      - Roles, authorities, and escalation measures reviewed at least annually and
-        after protocol changes, team restructuring, or major incidents
+      - "Response leadership defined with named backups: incident commander
+        (coordination, task assignment, time-sensitive decisions) and decision makers
+        for high-stakes choices (system shutdown, public disclosure, fund recovery)"
+      - "Supporting roles defined: subject matter experts for key domains (smart
+        contracts, infrastructure, security), scribe for real-time documentation,
+        communications lead, and legal support covering response review, whitehat
+        engagement, and disclosure"
+      - Roles, authorities, and escalation paths reviewed at least annually and
+        after major protocol changes, team restructuring, or incidents
     title: IR Team and Role Assignments
   - id: ir-1.1.2
     description: Do you maintain current contacts and coordination procedures for
       all parties needed during an incident?
     baselines:
-      - Internal coordination procedures between technical (devs, auditors) and
-        operational teams (security council, communications)
-      - External protocol contacts for protocols you depend on and protocols that
-        depend on you
-      - External expertise contacts including forensics firms, security
-        consultants, SEAL 911, and auditors
-      - Legal counsel and communications/PR contacts
-      - Infrastructure vendor support contacts and escalation procedures
+      - Internal coordination procedures between technical teams (devs, auditors)
+        and operational teams (security council, communications)
+      - External contacts maintained for protocol dependencies (both directions),
+        external expertise (forensics, consultants, SEAL 911, auditors), legal and
+        PR, and infrastructure vendor support
       - Contact list reviewed at least quarterly and after team changes
       - Escalation order documented for P1 incidents (e.g., SEAL 911 → decision
         makers → security partners → legal)
@@ -48,6 +42,24 @@ cert:
   title: Monitoring, Detection & Alerting
   controls:
   - id: ir-2.1.1
+    description: Do you maintain a threat model for protocol operations, including
+      external dependencies?
+    baselines:
+      - Threat model identifies adversaries, attack surfaces, and likely incident
+        scenarios for protocol operations
+      - Identifies single points of failure and highly centralized components
+        across onchain and offchain layers (e.g., cross-chain messaging providers,
+        oracle providers, critical infrastructure dependencies)
+      - Covers external dependencies (infrastructure providers, oracles, bridges,
+        integrations, custody partners) and how their compromise would propagate
+      - Anchors what the monitoring program detects and what incident playbooks
+        cover
+      - Reviewed at least annually and after significant changes (new integrations,
+        architecture shifts, threat landscape changes)
+      - Shared with the IR team so detection and response are anchored to the same
+        threat picture
+    title: Threat Model for Protocol Operations
+  - id: ir-2.1.2
     description: Do you maintain monitoring coverage for your critical systems,
       protocols, and external attack surfaces?
     baselines:
@@ -62,23 +74,20 @@ cert:
       - Monitoring coverage documented — what's covered, what's not, and known
         gaps
     title: Monitoring Coverage
-  - id: ir-2.1.2
+  - id: ir-2.1.3
     description: Do you have alerting and paging systems that reliably route
       incidents to available responders?
     baselines:
-      - Automated alerting configured for security events and operational issues
-      - Alerts include embedded triage guidance for distinguishing true incidents
-        from false positives
-      - Triage and classification procedures documented with escalation paths
-        based on severity
-      - Time-based escalation triggers if initial responder doesn't acknowledge
-        within defined window
-      - Management notification requirements for high-severity incidents
+      - Automated alerting with embedded triage guidance to distinguish true
+        incidents from false positives
+      - Triage and classification procedures with severity-based escalation,
+        including time-based escalation when unacknowledged and management
+        notification for high-severity incidents
       - Redundant paging systems with documented failover procedures
-      - On-call schedules maintained with adequate coverage for operational needs
-      - Backup procedures when on-call personnel are unreachable
+      - On-call schedules with adequate coverage and documented backup procedures
+        when on-call personnel are unreachable
     title: Alerting, Paging, and Escalation
-  - id: ir-2.1.3
+  - id: ir-2.1.4
     description: Do you maintain tamper-evident logs with adequate retention for
       incident investigation?
     baselines:
@@ -176,17 +185,14 @@ cert:
     description: Do you conduct regular incident response drills and evaluate the
       results?
     baselines:
-      - Drills conducted at least annually
-      - Drills cover different incident types across exercises (protocol exploit,
-        infrastructure failure, key compromise, etc.)
-      - Tests the full pipeline from monitoring through alerting, paging, triage,
-        escalation, team coordination, containment, and recovery
-      - Production alerting pipeline validated end-to-end from event detection
-        through to responder notification and acknowledgment
-      - Drill documentation includes date, scenario, participants, response
-        times, gaps identified, and corrective actions
-      - Corrective actions tracked to completion with owners and deadlines
-      - Drill findings incorporated into playbook and procedure updates
+      - Drills conducted at least annually, covering different incident types
+        across exercises (protocol exploit, infrastructure failure, key compromise)
+      - "Tests the full response pipeline end-to-end: monitoring, alerting, paging,
+        triage, escalation, team coordination, containment, and recovery"
+      - Drill documentation includes date, scenario, participants, response times,
+        gaps identified, and corrective actions
+      - Corrective actions tracked with owners and deadlines; findings incorporated
+        into playbook and procedure updates
     title: IR Drills and Testing
 
 ---
@@ -199,9 +205,13 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 
 # SFC - Incident Response
 
+*Revision {frontmatter.version} · Updated {frontmatter.revised} · [Changelog](/certs/changelog)*
+
 The SEAL Framework Checklist (SFC) for Incident Response provides structured guidelines to help teams remain prepared for
 security incidents affecting blockchain protocols. It covers team structure, monitoring, alerting, and response
 procedures.
+
+**Related**: Organizational account takeover monitoring and response coordinates with [SFC - Identity & Accounts](/certs/sfc-identity-accounts) (ida-4.1.1). IR handles incident response flow; I&A handles account-control baselines.
 
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 

@@ -564,13 +564,14 @@ const config = {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
             { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
             { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
+            { text: 'Identity & Accounts', link: '/certs/sfc-identity-accounts' },
             { text: 'Incident Response', link: '/certs/sfc-incident-response' },
             { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
             { text: 'Treasury Operations', link: '/certs/sfc-treasury-ops' },
-            { text: 'Workspace Security', link: '/certs/sfc-workspace-security' },
           ]
         },
         { text: 'Certification Guidelines', link: '/certs/certification-guidelines' },
+        { text: 'Changelog', link: '/certs/changelog' },
         { text: 'Contributions', link: '/certs/contributions' },
       ]
     },
