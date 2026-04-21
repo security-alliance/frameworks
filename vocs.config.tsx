@@ -176,6 +176,7 @@ const config = {
           items: [
             { text: 'Overview', link: '/front-end-web-app/overview', dev: true },
             { text: 'Web Application Security', link: '/front-end-web-app/web-application-security', dev: true },
+            { text: 'Third-Party Script Security', link: '/front-end-web-app/third-party-script-security', dev: true },
             { text: 'Mobile Application Security', link: '/front-end-web-app/mobile-application-security', dev: true },
             { text: 'Common Vulnerabilities', link: '/front-end-web-app/common-vulnerabilities', dev: true },
             { text: 'Security Tools and Resources', link: '/front-end-web-app/security-tools-resources', dev: true },
