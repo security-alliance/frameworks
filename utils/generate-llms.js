@@ -10,7 +10,10 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-const BASE_URL = 'https://frameworks.securityalliance.org';
+const PROD_URL = 'https://frameworks.securityalliance.org';
+const BASE_URL = process.env.CF_PAGES_BRANCH === 'main'
+  ? PROD_URL
+  : (process.env.CF_PAGES_URL || PROD_URL);
 const workspaceRoot = process.cwd();
 const PAGES_DIR = path.join(workspaceRoot, 'docs', 'pages');
 const isMainBranch = process.env.CF_PAGES_BRANCH === 'main';
@@ -99,6 +102,7 @@ function extractHeadings(raw) {
 function stripMdxSyntax(raw) {
   return raw
     .replace(/^---[\s\S]*?---\n?/, '')          // YAML frontmatter
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, '')        // JSX comment blocks: {/* ... */}
     .replace(/^(import|export)\s+.*$/gm, '')     // import/export lines
     .replace(/<[A-Z][^/\s>][^>]*\/>/g, '')       // self-closing JSX: <TagFilter />, <MermaidRenderer ... />
     .replace(/<\/?[A-Z][^\s>]*[^>]*>/g, '')      // JSX open/close: <TagProvider>, </TagProvider>
@@ -112,6 +116,14 @@ function stripMdxSyntax(raw) {
 const FOLDERS_FIRST = ['intro'];
 const FOLDERS_LAST = ['certs'];
 const FOLDERS_EXCLUDE = ['config'];
+
+// Override descriptions for specific folders or pages where the frontmatter doesn't capture the right context.
+const FOLDER_DESCRIPTION_OVERRIDES = {
+  contribute: 'How to contribute to the Security Frameworks - either through direct contributions (fixes, new content, enhancements) or by becoming a Framework Steward.',
+};
+const PAGE_DESCRIPTION_OVERRIDES = {
+  '/contribute/spotlight-zone': 'The Spotlight Zone is where all contributor activity across the Security Frameworks is tracked and recognized.',
+};
 
 function getFrameworkFolders() {
   const folders = fs
@@ -129,18 +141,20 @@ function generateFrameworkFile(folderName) {
   const folderPath = path.join(PAGES_DIR, folderName);
   const title = toTitleCase(folderName);
 
-  // Try to get description from overview.mdx, introduction.mdx, or index.mdx
-  let frameworkDescription = '';
-  for (const candidate of ['overview.mdx', 'introduction.mdx', 'index.mdx']) {
-    const candidatePath = path.join(folderPath, candidate);
-    if (fs.existsSync(candidatePath)) {
-      try {
-        const { data } = matter(fs.readFileSync(candidatePath, 'utf-8'));
-        if (data.description) {
-          frameworkDescription = data.description;
-          break;
-        }
-      } catch (_) {}
+  // Try to get description from override map first, then frontmatter
+  let frameworkDescription = FOLDER_DESCRIPTION_OVERRIDES[folderName] || '';
+  if (!frameworkDescription) {
+    for (const candidate of ['overview.mdx', 'introduction.mdx', 'index.mdx']) {
+      const candidatePath = path.join(folderPath, candidate);
+      if (fs.existsSync(candidatePath)) {
+        try {
+          const { data } = matter(fs.readFileSync(candidatePath, 'utf-8'));
+          if (data.description) {
+            frameworkDescription = data.description;
+            break;
+          }
+        } catch (_) {}
+      }
     }
   }
 
@@ -205,6 +219,7 @@ function generateFrameworkFile(folderName) {
 
       const urlPath = getPageUrl(file);
       const pageTitle = stripSiteSuffix(data.title) || path.basename(file, '.mdx');
+      const pageDescriptionOverride = PAGE_DESCRIPTION_OVERRIDES[urlPath] || '';
       const content = stripMdxSyntax(raw);
       const headings = extractHeadings(raw).filter((h) => h.level === 2);
 
@@ -217,6 +232,7 @@ function generateFrameworkFile(folderName) {
       lines.push('');
       lines.push(`Source: ${BASE_URL}${urlPath}`);
       lines.push('');
+      if (pageDescriptionOverride) lines.push(pageDescriptionOverride + '\n');
       lines.push(content);
       lines.push('');
       lines.push('---');
