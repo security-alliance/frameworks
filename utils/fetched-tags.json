@@ -544,6 +544,12 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/incident-management/forensic-readiness": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps",
+      "SRE"
+    ],
     "/incident-management/incident-detection-and-response": [
       "Security Specialist",
       "Operations & Strategy"
@@ -764,6 +770,10 @@
     ],
     "/infrastructure/zero-trust-principles": [
       "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/intro/attack-surface": [
       "Security Specialist",
       "Operations & Strategy"
     ],

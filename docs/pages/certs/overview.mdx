@@ -16,9 +16,15 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Exp
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-SEAL Certifications is an open-source operational security certification program for crypto protocols. Smart contract vulnerabilities were once the dominant cause of crypto exploits; operational failures now dominate. Compromised signers, poorly managed multisigs, DNS takeovers, leaked credentials, unmonitored infrastructure, and missing incident response playbooks account for the majority of major incidents. Code audits don't catch these, because the code isn't the issue.
+SEAL Certifications is an open-source operational security certification program for crypto protocols.
+Smart contract vulnerabilities were once the dominant cause of crypto exploits; operational failures now
+dominate. Compromised signers, poorly managed multisigs, DNS takeovers, leaked credentials, unmonitored
+infrastructure, and missing incident response playbooks account for the majority of major incidents. Code
+audits don't catch these, because the code isn't the issue.
 
-SEAL Certifications target exactly this gap. The framework evaluates the operational practices that determine whether a protocol can actually defend itself, detect an incident, and respond when things go wrong.
+SEAL Certifications target exactly this gap. The framework evaluates the operational practices that
+determine whether a protocol can actually defend itself, detect an incident, and respond when things go
+wrong.
 
 ## Certification Modules
 
@@ -26,82 +32,114 @@ The framework covers six modules, each independently scopeable:
 
 <ExportAllCerts />
 
-- **[Multisig Ops](/certs/sfc-multisig-ops)** — Governance, signer security, transaction verification, emergency procedures
-- **[Treasury Ops](/certs/sfc-treasury-ops)** — Treasury architecture, transaction security, custody, DeFi risk management
-- **[Incident Response](/certs/sfc-incident-response)** — Threat modeling, monitoring, response playbooks, drills
-- **[DevOps & Infrastructure](/certs/sfc-devops-infrastructure)** — Development environment, source code, CI/CD, cloud infrastructure, supply chain
-- **[DNS & Registrar](/certs/sfc-dns-registrar)** — Domain management, DNS controls, registrar security, email authentication
-- **[Identity & Accounts](/certs/sfc-identity-accounts)** — Organizational account inventory, phishing-resistant MFA, credential management, takeover monitoring
+- **[Multisig Ops](/certs/sfc-multisig-ops)** — Governance, signer security, transaction verification,
+  emergency procedures
+- **[Treasury Ops](/certs/sfc-treasury-ops)** — Treasury architecture, transaction security, custody,
+  DeFi risk management
+- **[Incident Response](/certs/sfc-incident-response)** — Threat modeling, monitoring, response
+  playbooks, drills
+- **[DevOps & Infrastructure](/certs/sfc-devops-infrastructure)** — Development environment, source
+  code, CI/CD, cloud infrastructure, supply chain
+- **[DNS & Registrar](/certs/sfc-dns-registrar)** — Domain management, DNS controls, registrar security,
+  email authentication
+- **[Identity & Accounts](/certs/sfc-identity-accounts)** — Organizational account inventory,
+  phishing-resistant MFA, credential management, takeover monitoring
 
 See the [changelog](/certs/changelog) for revision history across modules.
 
 ## How Certification Works
 
-SEAL maintains the framework and accredits auditing firms. Accredited firms perform the assessments; SEAL issues the on-chain certification.
+SEAL maintains the framework and accredits auditing firms. Accredited firms perform the assessments;
+SEAL issues the on-chain certification.
 
 An engagement runs through five steps:
 
 1. **Scoping.** Align on which controls apply and what infrastructure is in scope.
-2. **Evidence collection.** The protocol team gathers documentation and evidence that their practices meet the framework controls.
+2. **Evidence collection.** The protocol team gathers documentation and evidence that their practices
+   meet the framework controls.
 3. **Assessment.** The firm reviews evidence against the open-source framework criteria.
-4. **Remediation** (if needed). The firm provides recommendations to close any gaps. The protocol team implements fixes.
-5. **Certification.** Protocols that meet the standard receive a formal on-chain attestation via the Ethereum Attestation Service (EAS), publicly and cryptographically verifiable.
+4. **Remediation** (if needed). The firm provides recommendations to close any gaps. The protocol team
+   implements fixes.
+5. **Certification.** Protocols that meet the standard receive a formal on-chain attestation via the
+   Ethereum Attestation Service (EAS), publicly and cryptographically verifiable.
 
-A typical engagement runs a few weeks. Protocols can also use the framework independently for self-assessment at any time.
+A typical engagement runs a few weeks. Protocols can also use the framework independently for
+self-assessment at any time.
 
-See [Certification Guidelines](/certs/certification-guidelines) for the full process and [Certified Auditors](/certs/certified-partners) for accredited firms.
+See [Certification Guidelines](/certs/certification-guidelines) for the full process and
+[Certified Auditors](/certs/certified-partners) for accredited firms.
 
 ## Program Status
 
-The framework has been validated through pilot analyses with protocols across DeFi, staking, treasury management, and infrastructure, plus feedback sessions with auditing firms and independent security researchers. Controls have been refined through that process and are now published.
+The framework has been validated through pilot analyses with protocols across DeFi, staking, treasury
+management, and infrastructure, plus feedback sessions with auditing firms and independent security
+researchers. Controls have been refined through that process and are now published.
 
-The program is moving from pilot validation into active certification, starting with supervised first engagements through accredited firms.
+The program is moving from pilot validation into active certification, starting with supervised first
+engagements through accredited firms.
 
 ## Get Involved
 
-- **Protocols** interested in a certification engagement or a consultation with the SEAL team on the framework: [sign up here](https://securityalliance.typeform.com/CertsWaitlist).
-- **Auditing firms and independent security researchers** interested in becoming an accredited third-party certification issuer: [apply here](https://securityalliance.typeform.com/CertsAuditor).
+- **Protocols** interested in a certification engagement or a consultation with the SEAL team on the
+  framework: [sign up here](https://securityalliance.typeform.com/CertsWaitlist).
+- **Auditing firms and independent security researchers** interested in becoming an accredited
+  third-party certification issuer: [apply here](https://securityalliance.typeform.com/CertsAuditor).
 
 ## FAQ
 
 <details>
 <summary>What's the difference between self-assessments and certified audits?</summary>
 
-Self-assessments are completed by the protocol team using the SEAL Certifications framework as a guide. They help protocols internally evaluate their own security posture and identify gaps. Self-assessments are not verified by a third party.
+Self-assessments are completed by the protocol team using the SEAL Certifications framework as a guide.
+They help protocols internally evaluate their own security posture and identify gaps. Self-assessments
+are not verified by a third party.
 
-Certified audits are completed by a third-party accredited firm through SEAL's [partner program](/certs/certified-partners). The firm independently evaluates the protocol's security controls against the framework. Upon successful completion, protocols receive a formal attestation on-chain.
+Certified audits are completed by a third-party accredited firm through SEAL's
+[partner program](/certs/certified-partners). The firm independently evaluates the protocol's security
+controls against the framework. Upon successful completion, protocols receive a formal attestation
+on-chain.
 
 </details>
 <details>
 <summary>What is an attestation?</summary>
 
-Attestations are certificates issued on-chain through the [Ethereum Attestation Service (EAS)](https://ethereum.org/en/developers/docs/standards/tokens/eas/) by SEAL to protocols that successfully complete a certified audit. Attestations serve as verifiable proof that a protocol has met the requirements of a given SEAL certification.
+Attestations are certificates issued on-chain through the
+[Ethereum Attestation Service (EAS)](https://ethereum.org/en/developers/docs/standards/tokens/eas/)
+by SEAL to protocols that successfully complete a certified audit. Attestations serve as verifiable
+proof that a protocol has met the requirements of a given SEAL certification.
 
-Attestations do not indicate a protocol is free from security issues. Blockchain security evolves continuously and novel vulnerabilities arise regularly. Attestations demonstrate that a protocol has implemented a set of standardized operational practices to manage and mitigate risk.
+Attestations do not indicate a protocol is free from security issues. Blockchain security evolves
+continuously and novel vulnerabilities arise regularly. Attestations demonstrate that a protocol has
+implemented a set of standardized operational practices to manage and mitigate risk.
 
 </details>
 <details>
 <summary>What if a protocol doesn't meet all the certification requirements?</summary>
 
-Protocols that don't meet all requirements receive a report from the auditor detailing the gaps. If the protocol addresses the gaps, they can work with the auditor to complete a re-assessment.
+Protocols that don't meet all requirements receive a report from the auditor detailing the gaps. If the
+protocol addresses the gaps, they can work with the auditor to complete a re-assessment.
 
 </details>
 <details>
 <summary>What kind of evidence is required?</summary>
 
-Evidence varies by certification and control. Protocols generally provide documentation, screenshots, or other artifacts demonstrating implementation of each control: a signer registry for multisig, incident response playbooks, DNS configuration records, and so on.
+Evidence varies by certification and control. Protocols generally provide documentation, screenshots, or
+other artifacts demonstrating implementation of each control: a signer registry for multisig, incident
+response playbooks, DNS configuration records, and so on.
 
 </details>
 <details>
 <summary>Who can see our attestation?</summary>
 
-Attestations are publicly accessible on-chain through EAS. Detailed audit reports and evidence shared during the assessment process are confidential between the protocol and the auditor.
+Attestations are publicly accessible on-chain through EAS. Detailed audit reports and evidence shared
+during the assessment process are confidential between the protocol and the auditor.
 
 </details>
 <details>
 <summary>Can we use the SEAL badge?</summary>
 
-Protocols that successfully complete a certified audit receive a badge from SEAL to display on their website or documentation.
+Protocols that successfully complete a certified audit receive a badge from SEAL to display on their
+website or documentation.
 
 </details>
 <details>
@@ -113,13 +151,15 @@ SEAL will maintain a public list of certified protocols as the program launches.
 <details>
 <summary>How can auditors become accredited?</summary>
 
-SEAL accredits third-party auditing firms through a supervised first engagement. See [Certified Auditors](/certs/certified-partners) for the process.
+SEAL accredits third-party auditing firms through a supervised first engagement. See
+[Certified Auditors](/certs/certified-partners) for the process.
 
 </details>
 <details>
 <summary>Can a protocol lose its certification?</summary>
 
-Yes. Certifications can be revoked if a protocol is found to be non-compliant for an extended period. Certifications are also time-limited and require periodic re-assessment.
+Yes. Certifications can be revoked if a protocol is found to be non-compliant for an extended period.
+Certifications are also time-limited and require periodic re-assessment.
 
 </details>
 
