@@ -340,6 +340,9 @@ for (const folderName of frameworkFolders) {
     }
   }
 
+  // On main, skip frameworks with no publishable pages (all pages were dev-only)
+  if (isMainBranch && pages.length === 0) continue;
+
   // Write per-page files under llms/{folderName}/ — skip the first page (already embedded in the framework index)
   const frameworkLlmsDir = path.join(llmsDir, folderName);
   if (!fs.existsSync(frameworkLlmsDir)) fs.mkdirSync(frameworkLlmsDir);
