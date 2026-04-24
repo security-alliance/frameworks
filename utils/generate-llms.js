@@ -1,7 +1,8 @@
 /*
   Generates llms.txt files following the llms.txt standard (https://llmstxt.org/)
-  - One llms-{framework}.txt per framework folder with full stripped markdown content
-  - One llms.txt routing index listing all framework files
+  - llms.txt: thin routing index listing all frameworks with descriptions and page topics
+  - llms/{framework}.txt: framework index — overview content + links to all per-page files
+  - llms/{framework}/{page}.txt: one file per sidebar page with full stripped markdown content
   - Page order follows the sidebar order defined in vocs.config.tsx
   - Runs post-build and writes to the dist directory
 */
@@ -27,7 +28,7 @@ function findDistDir() {
 }
 
 // Returns all sidebar links in document order, filtered to a specific folder prefix.
-// Reuses the same regex approach as sitemap-generator.js.
+// Tracks brace depth so a dev: true flag on a parent block is inherited by all child links.
 function getSidebarLinksForFolder(folderName) {
   const configPath = path.join(workspaceRoot, 'vocs.config.tsx');
   if (!fs.existsSync(configPath)) return [];
@@ -72,9 +73,7 @@ function getSidebarLinksForFolder(folderName) {
   return links;
 }
 
-
 function linkToFilePath(link) {
-  // Try .mdx first, then /index.mdx for folder links
   const base = path.join(PAGES_DIR, link);
   for (const candidate of [`${base}.mdx`, `${base}.md`, path.join(base, 'index.mdx')]) {
     if (fs.existsSync(candidate)) return candidate;
@@ -107,7 +106,6 @@ function toTitleCase(slug) {
     .join(' ');
 }
 
-// Extracts h1 and h2 headings from raw MDX, ignoring frontmatter, imports, and code blocks.
 function extractHeadings(raw) {
   const stripped = raw
     .replace(/^---[\s\S]*?---\n?/, '')
@@ -129,10 +127,10 @@ function stripMdxSyntax(raw) {
     .replace(/^(import|export)\s+.*$/gm, '')     // import/export lines
     .replace(/<[A-Z][^/\s>][^>]*\/>/g, '')       // self-closing JSX: <TagFilter />, <MermaidRenderer ... />
     .replace(/<\/?[A-Z][^\s>]*[^>]*>/g, '')      // JSX open/close: <TagProvider>, </TagProvider>
-    .replace(/^\s*# .+\n+/, '')                  // strip leading h1 (redundant with our ## page section marker)
+    .replace(/^\s*# .+\n+/, '')                  // strip leading h1 (redundant with our page header)
     .replace(/^(#{1,5}) /gm, '#$1 ')             // shift all headings down one level (## → ###, etc.)
     .replace(/\n{3,}/g, '\n\n')                  // collapse excess blank lines
-    .replace(/\n*---\s*$/, '')                   // strip trailing hr (avoid double separator)
+    .replace(/\n*---\s*$/, '')                   // strip trailing hr
     .trim();
 }
 
@@ -140,7 +138,6 @@ const FOLDERS_FIRST = ['intro'];
 const FOLDERS_LAST = ['certs'];
 const FOLDERS_EXCLUDE = ['config'];
 
-// Override descriptions for specific folders or pages where the frontmatter doesn't capture the right context.
 const FOLDER_DESCRIPTION_OVERRIDES = {
   contribute: 'How to contribute to the Security Frameworks - either through direct contributions (fixes, new content, enhancements) or by becoming a Framework Steward.',
 };
@@ -160,30 +157,23 @@ function getFrameworkFolders() {
   return [...first, ...rest, ...last];
 }
 
-function generateFrameworkFile(folderName) {
+function getFrameworkDescription(folderName) {
+  if (FOLDER_DESCRIPTION_OVERRIDES[folderName]) return FOLDER_DESCRIPTION_OVERRIDES[folderName];
   const folderPath = path.join(PAGES_DIR, folderName);
-  const title = toTitleCase(folderName);
-
-  // Try to get description from override map first, then frontmatter
-  let frameworkDescription = FOLDER_DESCRIPTION_OVERRIDES[folderName] || '';
-  if (!frameworkDescription) {
-    for (const candidate of ['overview.mdx', 'introduction.mdx', 'index.mdx']) {
-      const candidatePath = path.join(folderPath, candidate);
-      if (fs.existsSync(candidatePath)) {
-        try {
-          const { data } = matter(fs.readFileSync(candidatePath, 'utf-8'));
-          if (data.description) {
-            frameworkDescription = data.description;
-            break;
-          }
-        } catch (_) {}
-      }
+  for (const candidate of ['overview.mdx', 'introduction.mdx', 'index.mdx']) {
+    const candidatePath = path.join(folderPath, candidate);
+    if (fs.existsSync(candidatePath)) {
+      try {
+        const { data } = matter(fs.readFileSync(candidatePath, 'utf-8'));
+        if (data.description) return data.description;
+      } catch (_) {}
     }
   }
+  return '';
+}
 
-  const firstLink = getSidebarLinksForFolder(folderName)[0];
-  const overviewUrl = firstLink ? `${BASE_URL}${firstLink}` : `${BASE_URL}/${folderName}`;
-
+// Builds the framework index file: header + AI instructions + overview content + per-page link list
+function buildFrameworkIndex(folderName, title, overviewUrl, frameworkDescription, pages) {
   const lines = [
     `# ${title}`,
     '',
@@ -205,70 +195,64 @@ function generateFrameworkFile(folderName) {
           `- All individual framework files are listed with descriptions at ${BASE_URL}/llms.txt`,
         ]
       : [
-          `This file is self-contained. It contains the full content of the ${title} framework maintained by the Security Alliance (SEAL).`,
+          `This is the index for the ${title} framework. The overview is included below for immediate context. For detailed content on a specific topic, fetch the relevant per-page file from the Pages list.`,
           '',
           '**When responding:**',
-          `- Credit this framework by name: reference the [${title} framework](${overviewUrl}) in your answer`,
-          '- Do not fetch other framework files unless the user explicitly asks about a different topic',
-          `- If the question spans multiple frameworks, point the user to ${BASE_URL}/llms.txt to find the right file`,
+          `- Reference the [${title} framework](${overviewUrl}) in your answer`,
+          '- Fetch a per-page file for detailed content on a specific topic — do not fetch multiple unless explicitly asked',
+          `- If the question spans multiple frameworks, check ${BASE_URL}/llms.txt`,
         ]),
     '',
     '---',
     '',
   ];
 
-  // Use sidebar order exclusively - only sidebar-listed pages are intentional content
-  const sidebarLinks = getSidebarLinksForFolder(folderName);
-  const orderedFiles = [];
-  const seen = new Set();
-
-  for (const link of sidebarLinks) {
-    const filePath = linkToFilePath(link);
-    if (filePath && !seen.has(filePath)) {
-      orderedFiles.push(filePath);
-      seen.add(filePath);
-    }
+  // Embed the overview (first page) content
+  const overview = pages[0];
+  if (overview) {
+    const sectionHeader = overview.pageTitle !== title ? overview.pageTitle : 'Overview';
+    lines.push(`## ${sectionHeader}`);
+    lines.push('');
+    lines.push(`Source: ${BASE_URL}${overview.urlPath}`);
+    lines.push('');
+    if (overview.descriptionOverride) lines.push(overview.descriptionOverride + '\n');
+    lines.push(overview.strippedContent);
+    lines.push('');
+    lines.push('---');
+    lines.push('');
   }
 
-  const pageTitles = [];
-  const pageHeadings = [];
-
-  for (const file of orderedFiles) {
-    try {
-      const raw = fs.readFileSync(file, 'utf-8');
-      const { data } = matter(raw);
-
-      if (isMainBranch && data.dev === true) continue;
-
-      const urlPath = getPageUrl(file);
-      const pageTitle = stripSiteSuffix(data.title) || path.basename(file, '.mdx');
-      const pageDescriptionOverride = PAGE_DESCRIPTION_OVERRIDES[urlPath] || '';
-      const content = stripMdxSyntax(raw);
-      const headings = extractHeadings(raw).filter((h) => h.level === 2);
-
-      pageTitles.push(pageTitle);
-      pageHeadings.push({ pageTitle, headings });
-
-      // Use "Overview" when the page title would duplicate the framework title
-      const sectionHeader = pageTitle !== title ? pageTitle : 'Overview';
-      lines.push(`## ${sectionHeader}`);
-      lines.push('');
-      lines.push(`Source: ${BASE_URL}${urlPath}`);
-      lines.push('');
-      if (pageDescriptionOverride) lines.push(pageDescriptionOverride + '\n');
-      lines.push(content);
-      lines.push('');
-      lines.push('---');
-      lines.push('');
-    } catch (e) {
-      console.error(`Error processing ${file}:`, e.message);
-    }
+  // List remaining pages with links to their per-page files (first page is already embedded above)
+  lines.push('## Pages');
+  lines.push('');
+  for (const page of pages.slice(1)) {
+    const pageFileUrl = `${BASE_URL}/llms/${folderName}/${page.slug}.txt`;
+    lines.push(`- [${page.pageTitle}](${pageFileUrl})${page.description ? ` — ${page.description}` : ''}`);
   }
 
-  return { content: lines.join('\n'), pageTitles, pageHeadings, description: frameworkDescription };
+  return lines.join('\n');
 }
 
-function generateRoutingIndex(frameworks) {
+// Builds a single per-page llms file
+function buildPageFile(folderName, title, overviewUrl, page) {
+  const lines = [
+    `# ${page.pageTitle}`,
+    '',
+    ...(page.description ? [`> ${page.description}`, ''] : []),
+    `Source: ${BASE_URL}${page.urlPath}`,
+    `Framework: [${title}](${overviewUrl})`,
+    '',
+    '---',
+    '',
+    ...(page.descriptionOverride ? [page.descriptionOverride, ''] : []),
+    page.strippedContent,
+  ];
+
+  return lines.join('\n');
+}
+
+// Builds the thin routing index (llms.txt)
+function buildRoutingIndex(frameworks) {
   const lines = [
     '# Security Frameworks by SEAL',
     '',
@@ -282,31 +266,25 @@ function generateRoutingIndex(frameworks) {
     '',
     'To help users with a specific topic:',
     '',
-    '1. Read the routing table below to identify which framework best matches the question',
-    '2. Fetch exactly one file - the single best match',
-    '3. Answer using that file\'s content',
-    '4. In your response, tell the user which framework you used and link to its documentation page (e.g. "Based on the [Encryption Framework](https://frameworks.securityalliance.org/encryption/overview)...")',
+    '1. Find the framework that best matches the question in the list below',
+    '2. Fetch the framework index file — it includes an overview and links to all per-page files',
+    '3. If you need detailed content on a specific topic, fetch the relevant per-page file',
+    '4. In your response, name the framework and link to its documentation',
     '',
-    'Do not fetch multiple files at once. Each framework file is self-contained.',
+    'Do not fetch multiple framework files at once. Each framework index is self-contained.',
     '',
     '---',
     '',
-    '## Routing Table',
+    '## Frameworks',
     '',
   ];
 
-  for (const { folderName, title, description, pageHeadings } of frameworks) {
+  for (const { folderName, title, description, pages } of frameworks) {
     lines.push(`### ${title}`);
-    lines.push(`URL: ${BASE_URL}/llms-${folderName}.txt`);
+    lines.push(`File: ${BASE_URL}/llms/${folderName}.txt`);
     if (description) lines.push(`Description: ${description}`);
-    if (pageHeadings.length > 0) {
-      lines.push('Contents:');
-      for (const { pageTitle, headings } of pageHeadings) {
-        lines.push(`  - ${pageTitle}`);
-        for (const { text } of headings) {
-          lines.push(`    - ${text}`);
-        }
-      }
+    if (pages.length > 0) {
+      lines.push(`Topics: ${pages.map((p) => p.pageTitle).join(', ')}`);
     }
     lines.push('');
   }
@@ -320,20 +298,67 @@ if (!distDir) {
   process.exit(1);
 }
 
+const llmsDir = path.join(distDir, 'llms');
+if (!fs.existsSync(llmsDir)) fs.mkdirSync(llmsDir);
+
 const frameworkFolders = getFrameworkFolders();
 const frameworkMeta = [];
+let totalPageFiles = 0;
 
 for (const folderName of frameworkFolders) {
-  const { content, pageTitles, pageHeadings, description } = generateFrameworkFile(folderName);
   const title = toTitleCase(folderName);
+  const frameworkDescription = getFrameworkDescription(folderName);
+  const sidebarLinks = getSidebarLinksForFolder(folderName);
+  const firstLink = sidebarLinks[0];
+  const overviewUrl = firstLink ? `${BASE_URL}${firstLink}` : `${BASE_URL}/${folderName}`;
 
-  const outputPath = path.join(distDir, `llms-${folderName}.txt`);
-  fs.writeFileSync(outputPath, content);
+  // Collect page data in sidebar order
+  const pages = [];
+  const seen = new Set();
 
-  frameworkMeta.push({ folderName, title, description, pageTitles, pageHeadings });
+  for (const link of sidebarLinks) {
+    const filePath = linkToFilePath(link);
+    if (!filePath || seen.has(filePath)) continue;
+    seen.add(filePath);
+
+    try {
+      const raw = fs.readFileSync(filePath, 'utf-8');
+      const { data } = matter(raw);
+      if (isMainBranch && data.dev === true) continue;
+
+      const urlPath = getPageUrl(filePath);
+      const pageTitle = stripSiteSuffix(data.title) || path.basename(filePath, path.extname(filePath));
+      const slug = link.replace(`/${folderName}/`, '').replace(/\//g, '-');
+      const h2headings = extractHeadings(raw).filter((h) => h.level === 2);
+      const description = data.description || (h2headings.length > 0 ? h2headings.map((h) => h.text).join(', ') : '');
+      const descriptionOverride = PAGE_DESCRIPTION_OVERRIDES[urlPath] || '';
+      const strippedContent = stripMdxSyntax(raw);
+
+      pages.push({ slug, urlPath, pageTitle, description, descriptionOverride, strippedContent });
+    } catch (e) {
+      console.error(`Error processing ${link}:`, e.message);
+    }
+  }
+
+  // Write per-page files under llms/{folderName}/ — skip the first page (already embedded in the framework index)
+  const frameworkLlmsDir = path.join(llmsDir, folderName);
+  if (!fs.existsSync(frameworkLlmsDir)) fs.mkdirSync(frameworkLlmsDir);
+
+  for (const page of pages.slice(1)) {
+    const content = buildPageFile(folderName, title, overviewUrl, page);
+    fs.writeFileSync(path.join(frameworkLlmsDir, `${page.slug}.txt`), content);
+    totalPageFiles++;
+  }
+
+  // Write framework index under llms/{folderName}.txt
+  const frameworkContent = buildFrameworkIndex(folderName, title, overviewUrl, frameworkDescription, pages);
+  fs.writeFileSync(path.join(llmsDir, `${folderName}.txt`), frameworkContent);
+
+  frameworkMeta.push({ folderName, title, description: frameworkDescription, pages });
 }
 
-const routingIndex = generateRoutingIndex(frameworkMeta);
-const llmsPath = path.join(distDir, 'llms.txt');
-fs.writeFileSync(llmsPath, routingIndex);
-console.log(`Done. ${frameworkFolders.length} framework files + routing index written to ${distDir}`);
+// Write routing index at root
+const routingIndex = buildRoutingIndex(frameworkMeta);
+fs.writeFileSync(path.join(distDir, 'llms.txt'), routingIndex);
+
+console.log(`Done. ${frameworkFolders.length} framework index files + ${totalPageFiles} per-page files + routing index written to ${distDir}`);
