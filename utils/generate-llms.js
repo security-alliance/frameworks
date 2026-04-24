@@ -34,13 +34,36 @@ function getSidebarLinksForFolder(folderName) {
 
   const lines = fs.readFileSync(configPath, 'utf8').split('\n');
   const links = [];
+  let depth = 0;
+  const devDepths = new Set(); // brace depths at which a parent block carries dev: true
 
   for (const line of lines) {
+    if (isMainBranch) {
+      const opens = (line.match(/\{/g) || []).length;
+      const closes = (line.match(/\}/g) || []).length;
+      const newDepth = depth + opens - closes;
+
+      // Pop dev markers for blocks we're closing
+      if (newDepth < depth) {
+        for (const d of devDepths) {
+          if (d > newDepth) devDepths.delete(d);
+        }
+      }
+      depth = newDepth;
+
+      // If this line carries dev: true but is not a link item, it's a container flag - inherit downward
+      if (line.includes('dev:') && line.includes('true') && !line.match(/link:/)) {
+        devDepths.add(depth);
+      }
+    }
+
     const match = line.match(/link:\s*(['"])(\/[^'"]+)\1/);
     if (!match) continue;
     const link = match[2];
-    // On main branch, skip dev-only pages (same logic as the rest of the codebase)
-    if (isMainBranch && line.includes('dev:') && line.includes('true')) continue;
+
+    // Skip if the item itself has dev: true, or if any ancestor block does
+    if (isMainBranch && ((line.includes('dev:') && line.includes('true')) || devDepths.size > 0)) continue;
+
     if (link.startsWith(`/${folderName}/`)) {
       links.push(link);
     }

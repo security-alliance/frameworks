@@ -197,7 +197,7 @@ const config = {
           collapsed: true,
           dev: true,
           items: [
-            { text: 'Overview', link: '/iam/overview' },
+            { text: 'Overview', link: '/iam/overview', dev: true },
             { text: 'Role-Based Access Control', link: '/iam/role-based-access-control', dev: true },
             { text: 'Secure Authentication', link: '/iam/secure-authentication', dev: true },
             { text: 'Access Management Best Practices', link: '/iam/access-management', dev: true },
