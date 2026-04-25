@@ -1,0 +1,95 @@
+---
+title: "Single Sign-on | Security Alliance"
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [shallem]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Single Sign-on (SSO)
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+
+Single Sign-on refers to the ability to sign in to all of the tools that 
+you use to work with a single identity provider. The identity provider is
+the official keeper of your login identity and password, and it communicates
+with all other tools via identity federation - in other words, the IdP
+(e.g., Google Workspace) handles your sign-in, then it lets the service provider
+(e.g., Cloudflare) know that you have successfully signed-in using your Google Workspace
+identity.
+
+The SSO mechanism works because each service provider is configured to trust
+identity federation with your chosen IdP. Once this trust is configured
+by installing a signed certificate from the IdP, the IdP can share 
+cryptographically signed messages with the service provider that include
+the user's identity and other metadata about the user's session.
+
+## Benefits of SSO
+
+The main benefits of SSO are two-fold:
+
+1. A single password for accessing all tools allows that single password
+to be complex but memorable. The more passwords that a user has to remember,
+the more likely the user is to either reuse passwords or to select simple
+passwords.
+
+2. Identity providers implement the best practices in password protection and
+multi-factor authentication. By selecting a single provider that aggregates
+all of the security features required for secure access control, administrators
+can focus on hardening that one IdP rather than attempting to harden each
+individual service while running into the limitations of each service's authentication
+controls.
+
+## Isn't a Single Password Reuse?
+
+Using SSO is very different than password reuse. Password reuse means that 
+the same password is used to login to many 3rd party services. If any
+of those services implement poor practices for password protection, allowing
+anything from outright theft of poorly stored passwords to brute forcing of
+passwords due to insufficient sign-in controls - then an attacker has now
+unlocked the single password that they need to access multiple services that
+you use for work. In essence, you have limited your security to the strength
+of the authentication security of the weakest service that you use.
+
+SSO federates sign-in. Users only sign-in with the identity provider, and
+the identity provider shares a cryptographically signed message indicating
+the authenticity of the user's identity. Passwords are only handled by one
+service, not many.
+
+## Advantages of Centralized Sign-in
+
+Identity providers are a single point of failure, and it is reasonable to
+ask if this type of centralization is not a step back in security rather than
+a step forward. However, the valid counter argument is that the cost of 
+implementing best-in-class sign-in security is high given the level of 
+sophistication of the attacker. Since it is costly to follow best 
+practices, it is natural for centralization and economies of scale to follow.
+
+Features like passkey login that are the best practice in sign-in security are not
+implemented uniformly across all 3rd party services. Rather than accept the limitations
+of each individual service, federated identity ensures that all services follow a uniform
+best pratice.
+
+In addition, a centralized identity provider allows for a consolidated view
+of all of the devices where a user is signed in; a single place to rotate
+passwords if you are concerned that a user may have revealed his password to a
+phishing site; a single place to implement best practices in session management;
+etc. 
+
+Identity providers allow for centralized administration of sign-in best 
+practices, centralized monitoring for suspicious sign-ins, centralized
+control for permitted devices, and centralized session management. Given
+all of the security considerations, choosing SSO with a reputable identity
+provider is the most secure option.
+
+</TagProvider>
+<ContributeFooter />

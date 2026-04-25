@@ -1,0 +1,64 @@
+---
+title: "Root Account Passwords | Security Alliance"
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [shallem]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Root Account Passwords
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+
+Root accounts refer to the accounts that are used to configure new services. For example,
+when you first register for Amazon AWS, you create a root account that is a super privileged
+account. When logged in with this account, the user has access to all AWS services and can
+make changes to any service.
+
+Root accounts are particularly dangerous because for many applications the root account has
+permission to connect to 3rd party services via OAuth. Google Workspace admins, for example
+can grant broad permissions to access Google Workspace data and functionality to other
+applications that may not implement best practices in security. Attackers often leverage
+this vector to gain control of critical services by coercing administrators to connect a 
+critical application to a compromised 3rd party application.
+
+There are a few best practices to follow with all root accounts:
+
+1. **Keep root accounts cold** - cold accounts are not used to execute daily tasks. Active 
+sessions are opened when a key administrative function must be performed, the closed immediately
+via an explicit logout. All day to day work is delegated to less privileged accounts. Following
+this guideline is particularly important for social media accounts that are a common target
+of sophisticated phishing campaigns. For example, DO NOT login to an X account regularly with the root
+account for a corporate X account. Use delegated accounts that have lesser privileges. Only login
+to the root X account when you have the explicit intention to either connect 3rd party applications
+or delegate authority.
+
+2. **Protect root account passwords** - root account passwords often must be shared. The root account has privileges 
+that no other account has, and hence keeping that credential with a single
+individual in your organization is a threat to operational resilience. The only proper
+way to handle such passwords is by using an enterprise password manager to share a root account
+password with a limited group of key individuals in your organization. As an additional measure,
+each user should protect access to that password with a master password reprompt. 
+The reprompt ensures
+that users who have access to the root account password do not use it accidentally to access the
+service in question. It also adds another layer of encryption in the event of an endpoint
+compromise.
+
+3. **Rotate root account passwords** - while it is not the best practice to rotate passwords
+for individuals who must remember their sign-in credentials, root account passwords are stored
+in a password manager and are not remembered by any individual. In the event of a key individual
+with access to the root account password exiting your organization, it is essential that 
+the password is rotated. Periodic rotation also helps protect against any brute force attempts
+to compromise a root account.
+
+</TagProvider>
+<ContributeFooter />

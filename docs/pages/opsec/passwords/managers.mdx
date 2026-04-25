@@ -1,0 +1,98 @@
+---
+title: "Enterprise Password Managers | Security Alliance"
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [shallem]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Enterprise Password Managers
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## What are they?
+
+Enterprise password managers are software that is used to store secrets, including passwords. They generally offer both browser plugins 
+and mobile apps to access stored passwords and to auto-fill stored passwords in websites or mobile apps that
+require them. A good enterprise password manager includes a few essential features:
+
+1. **Client-side encryption** - enterprise password managers are 0-trust systems - meaning that there is no 
+remote server that can unlock your passwords. The only way to unlock passwords is to enter a "master" password
+on an endpoint device (browser plugin, desktop app, or mobile app), which allows the local software to decrypt
+the stored passwords. Further details of the encryption mechanism are discussed below.
+
+2. **Secure password generation** - enterprise password managers will generate secure, random passwords that
+follow a centralized policy for length and composition. These secure, random passwords are used for any sites
+that do not support single sign-on (or where the cost of an SSO license is prohibitive).
+
+3. **Varied credential storage** - passwords are not the only type of secure credentials that should be stored
+in an encrypted container. SSH private keys, GPG secret keys, and API keys are just a few other types of 
+credentials that should be protected. Good password management solutions support these additional credential
+types natively.
+
+4. **Storage for additional types of secrets** - credentials and keys are also not the only type of secret that should be
+stored securely. Allowing the storage of text notes and files is particularly helpful in the age of AI, when the only
+way to truly prevent AI tools from accessing sensitive data is via encryption.
+
+5. **Secure sharing** - password managers allow users to share secrets. While credential sharing is by no means a 
+best practice or even a good idea, in certain situations it is a necessity. Most notably, many SaaS products require
+that new accounts are created using a "root" account. This root account has super admin permissions, can connect your 
+app to other 3rd party apps, and is used to administer users and SSO settings. Such credentials may be shared amongst
+a select group of trusted admins or executives at a company. More details on root account handling are described
+[here](/opsec/passwords/rootaccounts). Secrets sharing is also incredibly useful for all other types of sensitive data - secure notes, files, etc.
+
+6. **Secure recovery** - one of the main issues with browser-native password managers like Google Password Manager
+is that recovering your Google account on a new device unlocks all stored passwords. Secure recovery is not the 
+default for a personal Google account, but it is the default for a password manager. Configuring new devices relies
+on access to an existing, provisioned device or to a separate secret key (depending on the chosen product). If the
+master password is lost, most solutions allow an admin-initiated password recovery using a shared encryption model -
+meaning that even though an admin can recover your account, the solution for doing so DOES NOT rely on any centralized
+storage of either unencrypted data or your master password. Implementation details vary by solution, but the principles
+that matter remain the same - no central capability to decrypt your data under any circumstances.
+
+7. **Additional protection for unauthorized access** - good password managers allow you to set a variety of policies
+to protect both the unlock of the password manager (app/plugin) itself and particular data items. The most useful such
+features are biometric locking for client side apps and plugins (when biometrics are available) and a master password
+reprompt feature that requires re-entering your master password to access particularly sensitive passwords or stored
+secrets (see [root accounts](/opsec/passwords/rootaccounts) as an example).
+
+8. **Protection against theft of the Master Password** - the most dangerous vector of attack for a password manager is 
+keyloggers that steal your master password, then recover your account for the password manager on another machine. Doing
+so successfully would allow an attacker to steal all of your passwords in a single shot. However, the best password 
+managers offer protection against this vector - first, introducing MFA on access to the password manager is a minimal
+requirement - a passkey stored on your mobile device is an ideal choice of MFA. Second, password managers like 1password
+add a secret key as a second component used to generate the unique encryption key that protects your passwords. This
+additional key is only used once, each time you setup a new device adding an extra layer
+of challenge for an attacker - theft of the secret key (which should be stored in a secure, ideally offline location), 
+theft of your master password, and bypassing MFA.
+
+## What is wrong with Google's password manager?
+
+Google password manager is easy to adopt as it is built-in to Chrome. However, it has several flaws in its
+security model, many of which are clear by comparison to the list above (see 3-8 above). In addition, consider the
+following:
+
+1. **Passwords are not encrypted end-to-end** - that is why you don’t need a master password to access Google Password Manager. The idea of bitwarden and other password managers is that the system is 0-trust - passwords are encrypted locally with a key derived from your master password. Nobody can decrypt your passwords (not even Bitwarden) without the master password. That is not the case for Google Password Manager.
+2. **Biometric authentication is not supported** - Google Password Manager does not support biometric authentication to protect your local password vault. Google password manager's convenience comes at the cost of security - if someone compromises your Google account or has access to a browser where you have logged into your Google account, all of your passwords are instantly compromised.
+3. **Password sharing is not supported** - Google Password Manager does not support password sharing or any of the extra protection features of an enterprise password manager (e.g., master password re-auth). Enterprise password manager's not only allow 1-to-1 sharing, but also group sharing. Both are common use cases, and the lack of these features often leads to even more insecure choices (e.g., emailing a credential or storing it in a shared file in Google Drive).
+4. **Secure notes are not supported** - Google Password Manager does not support secure notes, or storing any other types of credentials aside from password.
+
+
+## Getting Started
+
+Getting started with an enterprise password manager is simple - choose amongst the options based on your particular use case. Bitwarden is the only product that offers self-hosting, if that is a primary concern, while products from 1password, Nordpass, Bitwarden, and others each have their own unique capabilities amongst those listed above.
+
+Once you have selected a password manager, keep in mind that there is often no migration path between a personal account and a team account. If your intent is to experiment with the password manager for team usage, start by contacting the provider to sign up for a team account.
+
+Finally, almost all password managers offer an import pathway for passwords stored currently in Google Password Manager or other browser-based password managers. Carefully select a secure master password, read the documentation to understand how to securely administer master password recovery (if desired), then import your passwords into the enterprise password manager. Ensure that your master password is either something that you will remember, or it is backed up offline in a secure location.
+
+</TagProvider>
+<ContributeFooter />
