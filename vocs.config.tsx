@@ -362,7 +362,7 @@ const config = {
             { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
             { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
             { text: 'Password Management', 
-              collpased: false,
+              collapsed: false,
               items: [
                 { text: 'Password Basics', link: '/opsec/passwords/basics', dev: true },
                 { text: 'Password Managers', link: '/opsec/passwords/managers', dev: true },
