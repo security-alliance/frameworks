@@ -6,8 +6,12 @@ default:
 install:
     pnpm install
 
+# Sync CONTRIBUTING.md from contributing.mdx
+sync:
+    node utils/sync-contributing.js
+
 # Serve the Vocs site locally with hot reload
-serve: 
+serve:
     pnpm run docs:dev
 
 # Build the static Vocs site
