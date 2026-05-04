@@ -12,10 +12,19 @@
 - New/expanded pages: Copy `docs/pages/config/template.mdx`
 - Frontmatter required:
   ```
-  title: \"Page Title | Security Alliance\"
-  description: \"140-160 chars, keywords/action verbs\"
-  tags: [Engineer/Developer, ...]
-  contributors: [{role: wrote, users: [username]}]
+  title: "Page Title | Security Alliance"
+  description: "140-160 chars, keywords/action verbs"
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [username]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
   ```
 - Sidebar: Update `vocs.config.tsx` items; `dev: true` for WIP (hides on main site)
 - **Never edit**: `index.mdx` files (auto-generated via utils)
@@ -24,7 +33,7 @@
 
 ## Conventions Agents Miss
 - Explain: Non-technical first → technical depth
-- Language: Direct/technical, no 1st person (\"implement X\" not \"I suggest\")
+- Language: Direct/technical, no 1st person ("implement X" not "I suggest")
 - Playbooks/templates: Top `> 🔑 **Key Takeaway**:` (<40 words summary)
 - Sections: Practical guidance (steps/checklist), Why important (incidents), Pitfalls/examples, Cheat sheet, Further reading
 - Tech details: Balanced (detailed for AWS/Cloudflare/etc., generic timeless principles)
