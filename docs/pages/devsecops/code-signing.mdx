@@ -1,10 +1,15 @@
 ---
 title: "Implementing Code Signing | Security Alliance"
-description: "Verify code integrity with GPG-signed Pull Requests. Best practices for Multi-Factor Authentication (MFA) with Yubikeys, mandatory code reviews, and regular GPG key rotation."
+description: "Verify code integrity with GPG-signed commits and pull requests. Best practices for key management, MFA with Yubikeys, mandatory code reviews, key rotation, and establishing a chain of trust from commit to deployment."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -17,16 +22,263 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Code signing ensures that the code has not been tampered with, and verifies the identity of the developer. Here are some
-best practices to follow:
+> 🔑 **Key Takeaway**: Sign every commit and tag with GPG (or SSH/SMIME),
+> enforce signature verification in CI and branch protection, rotate keys
+> regularly, and bind developer identity to hardware-backed MFA so that
+> every change in the repository is traceable to a verified human.
 
-1. Ensure all Pull Requests (PRs) are signed with the user’s GPG key.
-2. Every PR must be reviewed by another core team member before being merged into the stable/main/master branch, with
-  github settings set to reflect this.
-3. Require Multi-Factor Authentication (MFA) for all users where applicable and available. Encourage the use of hardware
-  MFA such as Yubikeys.
-4. Rotate GPG keys regularly to mitigate the risk of key compromise.
-5. Maintain clear documentation on the code signing procedures for your team members.
+Code signing guarantees **integrity** (the code has not been tampered with) and
+**authenticity** (the change came from the claimed author). Without signing, an
+attacker who obtains push access can inject malicious code that is
+indistinguishable from legitimate commits. In Web3 projects, where a single
+unverified commit could introduce a backdoor into smart contract deployment
+tooling or steal signing keys, the stakes are especially high.
+
+## Practical guidance
+
+### 1. Require signed commits on protected branches
+
+Enable GitHub's **Require signed commits** branch protection rule on `main`,
+`develop`, and any release branches. This rejects any push that does not carry
+a verifiable GPG, SSH, or S/MIME signature.
+
+- In GitHub: Settings > Branches > Branch protection rules > Require signed
+  commits.
+- Verify in CI: add `git log --verify-signatures` or `git merge --verify-signatures`
+  as a pipeline check so that unsigned merge commits also fail.
+
+### 2. Require signed pull requests
+
+Every PR must be reviewed by another core team member before merging. Configure
+GitHub to require at least one approving review and enforce that the PR
+author's commits are signed.
+
+- Branch protection: require "Signed commits" and "Pull request reviews" (at
+  least 1 approving review, dismiss stale reviews on push).
+- Consider requiring reviews from specific teams (CODEOWNERS file) for sensitive
+  paths such as deployment scripts, contract artifacts, or CI workflow files.
+
+### 3. Enforce MFA for all repository members
+
+Require Multi-Factor Authentication for every contributor with push access.
+
+- Organization-level: enable "Require two-factor authentication for members" in
+  the GitHub organization settings.
+- Encourage hardware MFA (Yubikey, Titan) over SMS or TOTP. Hardware keys resist
+  phishing via FIDO2/WebAuthn.
+- For Yubikey GPG signing: generate the GPG subkey directly on the Yubikey's
+  OpenPGP applet so the private key never leaves the device.
+
+### 4. Generate and manage GPG keys properly
+
+Good key management is the foundation of code signing. A poorly managed key undermines the entire trust chain.
+
+#### Generating a strong GPG key
+
+Use RSA 4096 or Ed25519 (the latter is modern, fast, and secure):
+
+```bash
+# Ed25519 (recommended for modern setups)
+gpg --full-generate-key
+# Choose Ed25519 when prompted, or: gpg --quick-gen-key your@email.com ed25519 sign,auth cert never
+
+# RSA 4096 (legacy compatibility)
+gpg --full-generate-key
+# Choose RSA 4096
+```
+
+#### Using subkeys for separation of duties
+
+Create separate subkeys for signing and encryption. This lets you keep the master
+key completely offline while using subkeys daily:
+
+```bash
+# Add a signing subkey
+gpg --edit-key YOUR_KEYID
+gpg> addkey
+# Choose: RSA 4096, Sign only, expiry 1-2 years
+
+# Add an encryption subkey (separate from any encryption subkey you already have)
+gpg> addkey
+# Choose: RSA 4096, Encrypt only, expiry 1-2 years
+
+gpg> save
+```
+
+Your master key stays on an encrypted USB or paper backup. The subkeys go on your
+regular machine. If a subkey is compromised, you revoke only the subkey — the
+identity stays intact.
+
+#### YubiKey: move subkeys to hardware
+
+Generate GPG keys directly on the YubiKey so the private key material never
+touches the host system:
+
+```bash
+# Initialize the YubiKey OpenPGP applet
+gpg --card-edit
+gpg> admin
+gpg> generate
+# Choose a touch policy (require touch for signing operations)
+
+# Or move existing subkeys to the YubiKey:
+gpg --edit-key YOUR_KEYID
+gpg> key 1        # Select the signing subkey
+gpg> keytocard    # Move it to YubiKey
+gpg> key          # Deselect
+gpg> key 2        # Select the encryption subkey
+gpg> keytocard
+gpg> save
+```
+
+The YubiKey now holds your private keys. The host machine can use them only when
+the YubiKey is physically present and unlocked.
+
+#### Passphrase management
+
+Protect GPG keys with a strong passphrase (20+ characters, random). Use `gpg-agent`
+caching to avoid re-entering it constantly:
+
+```bash
+# In ~/.gnupg/gpg-agent.conf:
+pinentry-program /usr/bin/pinentry-tty
+default-cache-ttl 86400      # Cache for 24 hours
+max-cache-ttl 604800         # Expire after 1 week
+```
+
+### 5. Rotate GPG keys regularly
+
+Key rotation limits the damage window if a key is compromised.
+
+- Define a rotation schedule: every 12 months for standard keys, every 6 months
+  for high-privilege accounts (release managers, deployers).
+- When rotating: create a new key pair, publish the new public key to GitHub and
+  your keyserver, add a signing subkey, update keyserver records, then revoke the
+  old key with a reason of "superseded."
+- Maintain a key rotation log: key ID, creation date, expiry date, revocation
+  date, reason.
+- Protect GPG private keys with a strong passphrase and store the revocation
+  certificate in a secure, offline location (encrypted USB, password manager).
+
+### 5b. Backup and recover keys safely
+
+Without proper backup, a lost key means lost identity. Without secure storage,
+a stolen key means forged commits.
+
+**Backup the master key:**
+```bash
+# Export to an encrypted file
+gpg --export-secret-keys --armor YOUR_KEYID | \
+  gpg --symmetric --cipher-algo AES256 \
+  --output master-key-backup.gpg
+
+# Store on: encrypted USB (LUKS), paper (print the ASCII armor and seal in a safe),
+# or a password manager as an encrypted attachment
+```
+
+**Generate and store revocation certificates immediately:**
+```bash
+gpg --gen-revoke YOUR_KEYID > revocation-certificate.asc
+# Store this certificate alongside the backup. If you lose access to the key,
+# publishing the revocation certificate invalidates the compromised key.
+```
+
+**Recovery test:** Periodically verify you can decrypt using your backup
+without the original key. Store the backup passphrase separately from the backup
+medium.
+
+### 6. Publish and verify public keys
+
+A signature is meaningless if the verifying party cannot obtain the correct
+public key.
+
+- Upload your public key to GitHub (Settings > SSH and GPG keys) and to a
+  public keyserver (keys.openpgp.org, keyserver.ubuntu.com).
+- Use the same key across all platforms so that the identity is consistent.
+- In CI, pin trusted public key fingerprints in the pipeline configuration.
+  Reject signatures from unknown keys.
+
+### 6b. Document code signing procedures
+
+Maintain clear, accessible documentation so that every team member can set up and
+maintain signing correctly.
+
+- Onboarding guide: how to generate a GPG key, configure git to sign commits,
+  upload to GitHub, and set up a Yubikey for signing.
+- Troubleshooting: common issues (expired keys, wrong key selected, gpg-agent
+  not running) with solutions.
+- Policy: rotation schedule, revocation procedures, acceptable signing methods
+  (GPG, SSH, S/MIME), and enforcement mechanism.
+
+## Why is it important
+
+Unsigned commits allow impersonation. If an attacker obtains credentials or an
+active session, they can push commits that appear to come from any author.
+Without signature verification, there is no cryptographic proof of authorship.
+
+Real-world implications:
+
+- The Linux kernel community experienced a breach where an attacker attempted to
+  inject a backdoor via a seemingly legitimate commit. Signed commits and review
+  processes are a primary defense against this class of attack.
+- NIST SP 800-53 Rev. 5 control **AU-10 (Non-Repudiation)** requires that the
+  identity of individuals who perform specific actions be determined and
+  verified.
+- CISA's Secure Software Development Self-Attestation form requires attestors to
+  confirm that they verify the integrity of software releases, which includes
+  code signing.
+
+## Implementation details
+
+| Sub-topic | Related page |
+| --- | --- |
+| Branch protection & signed commits | [Repository Hardening](/devsecops/repository-hardening) |
+| CI pipeline enforcement of signatures | [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment) |
+| Artifact signing and provenance | [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation) |
+
+## Common pitfalls
+
+- **Lost or expired GPG key**: If you lose your private key or it expires and
+  you cannot revoke it, GitHub cannot verify your past or future commits. Always
+  set an expiry date, generate a revocation certificate immediately, and store
+  it securely offline.
+- **gpg-agent caching causes signing with the wrong key**: When you have
+  multiple keys, git may sign with the wrong one. Explicitly set
+  `user.signingkey` per repository: `git config user.signingkey
+  <FINGERPRINT>`.
+- **Signing tags but not commits**: Annotated tags are signed, but if the
+  commits they point to are unsigned, an attacker could rebase onto unsigned
+  history. Sign both commits and tags.
+- **Using SSH signing without understanding trust model**: GitHub supports SSH
+  signing keys, but verification depends on the SSH `allowed_signers` file. If
+  this file is not maintained, signatures verify against any key in the file.
+  Keep `allowed_signers` pinned to current team members.
+- **CI merges bypassing signature checks**: Some CI workflows auto-merge PRs
+  (e.g., Dependabot). Ensure that bot accounts also sign commits or that the
+  merge commit itself is verified by the CI system.
+
+## Quick-reference cheat sheet
+
+| Action | Command |
+| --- | --- |
+| Generate GPG key | `gpg --full-generate-key` (choose RSA 4096 or ed25519) |
+| List secret keys | `gpg --list-secret-keys --keyid-format long` |
+| Set git signing key | `git config user.signingkey <FINGERPRINT>` |
+| Sign a commit | `git commit -S -m "message"` |
+| Sign a tag | `git tag -s v1.0.0 -m "release 1.0.0"` |
+| Verify a commit | `git log --verify-signatures -1` |
+| Verify a tag | `git tag -v v1.0.0` |
+| Export public key | `gpg --armor --export <FINGERPRINT> > pubkey.asc` |
+| Generate revocation cert | `gpg --gen-revoke <FINGERPRINT> > revoke.asc` |
+| Upload to keyserver | `gpg --keyserver keys.openpgp.org --send-keys <FINGERPRINT>` |
+
+## References
+
+- [GitHub Docs: Managing commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification)
+- [GitHub Docs: About signature verification for commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)
+- [NIST SP 800-53 Rev. 5, AU-10 Non-Repudiation](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
+- [Yubico PGP guide: Generate GPG keys on YubiKey](https://developers.yubico.com/PGP/Card_edit.html)
+- [GnuPG documentation](https://gnupg.org/documentation/)
 
 ---
 

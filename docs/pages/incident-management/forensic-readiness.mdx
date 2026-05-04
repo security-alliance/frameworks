@@ -1,0 +1,149 @@
+---
+title: "Forensic Readiness | Security Alliance"
+description: "Forensic readiness: prepare your organization to preserve, collect, and present trustworthy evidence before an incident occurs. Design evidence collection into architecture, maintain chain of custody, and meet regulatory disclosure requirements."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - DevOps
+  - SRE
+contributors:
+  - role: wrote
+    users: [frameworks-volunteer]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Forensic Readiness
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Forensic readiness means designing your systems and processes so that trustworthy evidence survives an incident -- attributable, time-coherent, tamper-resistant, and preservable. It is not the same as incident response or monitoring; it is the capability layer that lets you reconstruct, prove, and defend what happened.
+
+Many organizations can detect that something suspicious happened, yet still struggle to reconstruct the event in a way that is operationally reliable, legally defensible, and regulator-ready. Forensic readiness closes that gap. It is an organization's ability to preserve, collect, correlate, and present trustworthy evidence when an incident occurs. In practice, it sits between security operations, governance, legal exposure, and resilience.
+
+The question is no longer only whether you can identify malicious activity. The question is whether you can rapidly produce a defensible account of what happened, what was affected, what evidence supports that conclusion, and how much confidence decision-makers should have in that account.
+
+## Why forensic readiness is becoming strategic
+
+Three converging pressures are pushing forensic readiness from a niche DFIR specialty to a strategic concern.
+
+### 1. Institutional framing has changed
+
+NIST CSF 2.0 broadened the conversation beyond narrow control checklists and emphasized governance and organizational preparedness. The updated NIST incident response guidance puts preparation back at the center, rather than treating incident handling as something that begins only after detection. NIST's cloud forensics work makes clear that evidence handling in modern distributed environments requires deliberate design, not improvised collection after the fact.
+
+### 2. Infrastructure changed faster than evidence practices
+
+Traditional forensic assumptions came from environments where systems were relatively stable, hosts were long-lived, and data locations were predictable. That model does not map cleanly to cloud-native and distributed systems, including blockchain infrastructure. Containers are ephemeral. Workloads shift quickly. Application logic is fragmented across services. Critical context may exist briefly in memory, transient queues, reverse proxies, or short-retention telemetry layers. In these environments, evidence must be intentionally captured, preserved, normalized, and linked before it disappears.
+
+### 3. The cost of ambiguity increased
+
+Regulatory and disclosure regimes are compressing response timelines. Organizations increasingly have to make externally visible statements under time pressure, sometimes before internal certainty is complete. If an organization has weak evidence hygiene -- fragmented logs, inconsistent timestamps, poor chain-of-custody discipline, or no reliable way to reconstruct incident scope -- the risk is not only technical. It becomes legal, financial, and reputational. CIRCIA, SEC disclosure expectations, and related regulatory pressure increase the premium on being able to substantiate what happened, quickly and credibly.
+
+## Forensic readiness vs. monitoring vs. incident response
+
+These are related but distinct capabilities.
+
+| Property | Monitoring | Incident Response | Forensic Readiness |
+|----------|-----------|-------------------|-------------------|
+| Primary goal | Detect anomalies in real time | Contain and recover from incidents | Preserve and present defensible evidence |
+| Timing | During the event | After detection | Designed before, used after |
+| Evidence standard | Sufficient for alerting | Sufficient for operational decisions | Attributable, time-coherent, tamper-resistant, legally defensible |
+| Chain of custody | Not required | Helpful | Required |
+| Typical output | Alerts and dashboards | Incident timeline, containment actions | Forensic report, evidence package, scope analysis |
+
+Having SIEM, EDR, cloud logs, and retention policies is useful. None of it automatically creates forensic readiness. Forensic readiness requires properties that ordinary monitoring programs do not consistently provide: evidence must be attributable, time-coherent, preservable, and resistant to accidental or intentional tampering. Cross-source relationships have to survive collection boundaries. Critical context has to remain understandable after the incident, not only during real-time alert review. In some cases, the organization also needs proof that an artifact was collected in a controlled way, preserved without silent mutation, and associated with a defensible chain of custody. That is a different standard than "the log existed in the platform at some point."
+
+## Practical guidance
+
+### Step-by-step actions
+
+1. **Inventory your evidence sources** -- Identify all systems, services, and infrastructure components that could generate relevant evidence during an incident (on-chain events, off-chain logs, API request/response traces, access logs, deployment pipelines, communication channels).
+2. **Assess evidence volatility** -- Classify each source by how long data persists before it is overwritten or lost. Ephemeral containers, in-memory caches, and short-retention telemetry are high-volatility. Persistent databases and on-chain data are low-volatility.
+3. **Define retention and preservation requirements** -- For each evidence source, determine how long data must be retained and in what format. Regulatory requirements, contractual obligations, and realistic investigation timelines all factor in.
+4. **Implement evidence collection pipelines** -- Build automated collection that captures high-volatility evidence before it disappears. This may include sidecar log shippers, memory dump triggers, or event stream archivers.
+5. **Establish chain-of-custody procedures** -- Document who collected each artifact, when, how, and from where. Use hash verification to prove integrity. Store artifacts in write-once or append-only storage where feasible.
+6. **Normalize and correlate evidence** -- Ensure timestamps are synchronized (NTP/PTP) across all sources. Use consistent formats and identifiers so that evidence from different systems can be correlated reliably.
+7. **Test forensic readiness regularly** -- Run tabletop exercises and simulated incidents to verify that evidence collection works end-to-end, artifacts are retrievable, and chain-of-custody documentation holds up.
+8. **Integrate with incident response** -- Ensure the [incident response plan](/incident-management/incident-detection-and-response) references forensic readiness procedures. First responders must know what to preserve and how, not just how to contain.
+
+### Best-practice checklist
+
+- [ ] All critical evidence sources are inventoried and classified by volatility
+- [ ] Retention periods are defined for each evidence source and meet or exceed regulatory requirements
+- [ ] High-volatility evidence (ephemeral containers, in-memory data) has automated capture before loss
+- [ ] Time synchronization (NTP) is configured on all systems generating evidence
+- [ ] Evidence artifacts are stored in tamper-evident or append-only storage
+- [ ] Hash verification (SHA-256 or stronger) is performed on collected artifacts
+- [ ] Chain-of-custody documentation is defined and tested
+- [ ] Forensic readiness procedures are referenced in the incident response plan
+- [ ] Tabletop exercises include forensic readiness validation at least annually
+- [ ] Access to forensic artifacts is logged and restricted to authorized personnel
+
+### Role-based tips
+
+- **Operations/SRE**: Focus on evidence volatility -- ensure ephemeral workloads, container logs, and short-retention telemetry are captured before they disappear. Automate preservation workflows.
+- **Security specialists**: Focus on evidence integrity and chain of custody. Ensure artifacts are hash-verified, stored securely, and accessible only to authorized investigators.
+- **Legal/compliance**: Focus on retention requirements, disclosure timelines, and whether your evidence practices meet the standard for regulatory submissions. Work with security to understand what can be substantiated under pressure.
+- **Engineers/developers**: Focus on application-layer evidence. Ensure your services emit structured, traceable runtime context (request IDs, transaction hashes, decision logs) that survives collection boundaries.
+
+## Application-layer forensic readiness
+
+Much of the security industry reasons from the network, endpoint, or identity perimeter inward. But many high-value incidents involve application behavior, API misuse, privilege boundary confusion, or complex multi-step sequences only partially visible to conventional telemetry. The missing evidence is often not another generic alert -- it is structured, trustworthy runtime context tied to what the application actually received, processed, rejected, transformed, or emitted.
+
+For Web3 projects, this is especially relevant. On-chain transactions are immutable and publicly verifiable, which is an advantage for forensic readiness. However, the off-chain infrastructure surrounding those transactions -- RPC endpoints, indexers, relayers, frontends, API gateways, key management systems -- generates ephemeral evidence that must be deliberately preserved.
+
+### Application-layer evidence to capture
+
+- API request and response traces with correlation IDs
+- Authentication and authorization decision logs
+- Transaction submission and signing events
+- Smart contract interaction sequences (including reverted transactions)
+- Admin and privileged operation audit trails
+- Configuration change histories
+- Deployment pipeline artifacts and approvals
+
+## Common pitfalls
+
+- **Assuming existing monitoring is sufficient**: Monitoring alerts tell you something happened. Forensic readiness ensures you can prove what happened, to whom, and with what evidence. These are different standards.
+- **Ignoring high-volatility evidence**: Ephemeral containers, in-memory queues, and short-retention logs are often the most valuable evidence sources and the first to disappear. If you do not capture them before an incident, they are gone.
+- **No chain-of-custody discipline**: Without documentation of who collected what, when, and how, even authentic evidence becomes hard to defend. Courts, regulators, and insurers may question whether evidence was tampered with.
+- **Inconsistent timestamps**: If systems are not time-synchronized, correlating evidence across sources becomes unreliable. A few seconds of clock drift can make timelines inconsistent.
+- **Forensic readiness as an afterthought**: By the time an organization decides it "now needs forensic evidence," the highest-value evidence may already be degraded, overwritten, scattered, or contextless. Readiness must be designed into the system before the incident.
+
+## Quick-reference
+
+| Category | Action | Priority |
+|----------|--------|----------|
+| Evidence inventory | Catalog all evidence sources and classify by volatility | High |
+| Preservation | Automate capture of high-volatility sources | High |
+| Retention | Define and enforce minimum retention per source | High |
+| Time sync | Deploy NTP across all evidence-generating systems | High |
+| Integrity | Hash-verify artifacts on collection (SHA-256+) | Medium |
+| Chain of custody | Document collection, transfer, and access for every artifact | Medium |
+| Correlation | Normalize formats and identifiers across sources | Medium |
+| Testing | Run annual tabletop exercises that validate forensic procedures | Medium |
+| Access control | Restrict and log access to forensic artifacts | Medium |
+| Application layer | Emit structured trace context from services (request IDs, decision logs) | Low-Medium |
+
+## Further reading
+
+- [NIST CSF 2.0](https://www.nist.gov/cyberframework) -- Governance and organizational preparedness framework
+- [NIST SP 800-86](https://csrc.nist.gov/publications/detail/sp/800-86/rev-1/final) -- Guide to integrating forensic techniques into incident response
+- [NIST Cloud Forensics Reference Architecture](https://csrc.nist.gov/projects/cloud-forensics) -- Evidence handling in distributed cloud environments
+- [Tracehound: Forensic Readiness Is Becoming a Strategic Security Discipline](https://tracehoundlabs.com/blog/forensic-readiness-is-becoming-a-strategic-security-discipline) -- Analysis of why forensic readiness is shifting from niche practice to strategic discipline
+- [Incident Detection and Response](/incident-management/incident-detection-and-response) -- Detection and response procedures
+- [Monitoring Guidelines](/monitoring/guidelines) -- On-chain monitoring best practices
+- [Lessons Learned](/incident-management/lessons-learned) -- Post-incident review and improvement
+
+---
+
+</TagProvider>
+<ContributeFooter />

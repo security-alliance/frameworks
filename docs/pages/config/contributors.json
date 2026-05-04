@@ -23,7 +23,7 @@
       { "name": "Issue-Opener-5", "assigned": "2024-08-22" },
       { "name": "Issue-Opener-10", "assigned": "2024-08-24" },
       { "name": "Issue-Opener-25", "assigned": "2024-09-25" },
-      { "name": "Active-Last-7d", "lastActive": "2026-03-24" }
+      { "name": "Active-Last-7d", "lastActive": "2026-04-08" }
     ]
   },
   "fredriksvantes": {
@@ -191,7 +191,7 @@
       { "name": "Framework-Steward", "assigned": "2025-07-10", "framework": "Wallet Security" },
       { "name": "First-Contribution", "assigned": "2025-07-10" },
       { "name": "First-Review", "assigned": "2025-09-25" },
-      { "name": "Dormant-90d+", "lastActive": "2025-10-27" }
+      { "name": "Active-Last-7d", "lastActive": "2026-04-07" }
     ]
   },
   "njelich": {
@@ -231,7 +231,7 @@
       { "name": "First-Review", "assigned": "2025-08-11" },
       { "name": "Reviewer-10", "assigned": "2026-02-24" },
       { "name": "Reviewer-25", "assigned": "2024-03-01" },
-      { "name": "Active-Last-7d", "lastActive": "2026-03-23" }
+      { "name": "Active-Last-7d", "lastActive": "2026-04-06" }
     ]
   },
   "blackbigswan": {
@@ -445,7 +445,7 @@
       { "name": "First-Review", "assigned": "2025-08-12" },
       { "name": "Reviewer-10", "assigned": "2025-09-12" },
       { "name": "Reviewer-25", "assigned": "2026-03-20" },
-      { "name": "Active-Last-7d", "lastActive": "2026-03-25" }
+      { "name": "Active-Last-7d", "lastActive": "2026-04-09" }
     ]
   },
   "gunnim": {
@@ -461,7 +461,7 @@
     "description": "Cloud architecture enthusiast with a passion for IT Security",
     "badges": [
       { "name": "First-Contribution", "assigned": "2026-01-21" },
-      { "name": "Active-Last-7d", "lastActive": "2026-03-21" }
+      { "name": "Active-Last-30d", "lastActive": "2026-03-21" }
     ]
   },
   "madjin": {
@@ -552,8 +552,11 @@
     "company": "QuillAudits",
     "job_title": "Smart Contract Audit Firm",
     "role": "contributor",
-    "description": "Leading smart contract audit firm specializing in Web3 security solutions, DeFi auditing, and DApp penetration testing.",
-    "badges": []
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2025-12-30" },
+      { "name": "Dormant-90d+", "lastActive": "2025-12-30" }
+    ]
   },
   "hexnickk4997": {
     "slug": "hexnickk4997",
@@ -634,21 +637,21 @@
       { "name": "First-Contribution", "assigned": "2025-09-18" },
       { "name": "Dormant-90d+", "lastActive": "2025-09-18" }
     ]
-},
-"andrew-chang-gu": {
-  "slug": "andrew-chang-gu",
-  "name": "Andrew Chang-Gu",
-  "avatar": "",
-  "github": "",
-  "twitter": "",
-  "website": "https://www.linkedin.com/in/achanggu",
-  "company": "Google Cloud Security",
-  "job_title": "Google Cloud Security",
-  "role": "contributor",
-  "description": "Google Cloud Security",
-  "badges": []
-},
-"JosepBove": {
+  },
+  "andrew-chang-gu": {
+    "slug": "andrew-chang-gu",
+    "name": "Andrew Chang-Gu",
+    "avatar": null,
+    "github": null,
+    "twitter": null,
+    "website": "https://www.linkedin.com/in/achanggu",
+    "company": "Google Cloud Security",
+    "job_title": "Google Cloud Security",
+    "role": "contributor",
+    "description": "Google Cloud Security",
+    "badges": []
+  },
+  "JosepBove": {
     "slug": "JosepBove",
     "name": "Josep Bove",
     "avatar": "https://avatars.githubusercontent.com/JosepBove",
@@ -662,8 +665,58 @@
     "badges": [
       { "name": "Framework-Steward", "assigned": "2026-03-17", "framework": "Monitoring" },
       { "name": "First-Contribution", "assigned": "2026-03-16" },
-      { "name": "New-Joiner", "lastActive": "2026-03-17" },
-      { "name": "Active-Last-7d", "lastActive": "2026-03-23" }
+      { "name": "Active-Last-30d", "lastActive": "2026-03-23" }
+    ]
+  },
+  "tim-sha256": {
+    "slug": "tim-sha256",
+    "name": "tim-sha256",
+    "avatar": "https://avatars.githubusercontent.com/tim-sha256",
+    "github": "https://github.com/tim-sha256",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-04-05" },
+      { "name": "New-Joiner", "assigned": "2026-04-05" },
+      { "name": "Active-Last-7d", "lastActive": "2026-04-05" }
+    ]
+  },
+  "fvelazquez-x": {
+    "slug": "fvelazquez-x",
+    "name": "fvelazquez-x",
+    "avatar": "https://avatars.githubusercontent.com/fvelazquez-x",
+    "github": "https://github.com/fvelazquez-x",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-04-07" },
+      { "name": "New-Joiner", "assigned": "2026-04-07" },
+      { "name": "Active-Last-7d", "lastActive": "2026-04-07" }
+    ]
+  },
+  "shallem": {
+    "slug": "shallem",
+    "name": "Seth Hallem",
+    "avatar": null,
+    "github": "https://github.com/shallem",
+    "twitter": "https://x.com/seth_certora",
+    "website": "https://www.certora.com/",
+    "company": "Certora",
+    "role": "steward",
+    "job_title": null,
+    "description": "Steward of Opsec framework",
+    "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-04-09", "framework": "Operational Security" },
+      { "name": "First-Contribution", "assigned": "2025-09-10" },
+      { "name": "Active-Last-7d", "lastActive": "2026-04-09" }
     ]
   }
 }

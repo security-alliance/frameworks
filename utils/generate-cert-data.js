@@ -17,10 +17,10 @@ const OUTPUT_PATH = path.join(__dirname, '../docs/public/cert-data.json');
 const CERT_ORDER = [
   { file: 'sfc-devops-infrastructure.mdx', label: 'DevOps & Infrastructure' },
   { file: 'sfc-dns-registrar.mdx', label: 'DNS Registrar' },
+  { file: 'sfc-identity-accounts.mdx', label: 'Identity & Accounts' },
   { file: 'sfc-incident-response.mdx', label: 'Incident Response' },
   { file: 'sfc-multisig-ops.mdx', label: 'Multisig Operations' },
   { file: 'sfc-treasury-ops.mdx', label: 'Treasury Operations' },
-  { file: 'sfc-workspace-security.mdx', label: 'Workspace Security' },
 ];
 
 function main() {
