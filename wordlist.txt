@@ -362,3 +362,6 @@ viem
 wagmi
 NCSC
 Intune
+AADAPT
+SCWE
+EthTrust
