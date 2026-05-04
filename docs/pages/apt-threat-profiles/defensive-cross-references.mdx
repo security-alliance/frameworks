@@ -1,0 +1,122 @@
+---
+title: "Defensive Cross-References | Security Alliance"
+description: "Mapping of on-chain attack techniques to existing SEAL framework guidance and actionable mitigations for protocol teams."
+tags:
+  - Security Specialist
+  - Engineer/Developer
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Defensive Cross-References
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Every attack technique in this taxonomy maps to existing SEAL framework guidance. The gap is not a lack of defensive recommendations — it is understanding which defenses matter most against specific APT techniques.
+
+This section maps each attack technique from the [On-Chain Attack Taxonomy](/apt-threat-profiles/on-chain-attack-taxonomy) to existing SEAL framework guidance and provides targeted mitigation actions. Use this as a prioritization tool: focus your defensive investments on the techniques most commonly chained by the threat actors documented in the [Threat Actor Profiles](/apt-threat-profiles/threat-actor-profiles).
+
+---
+
+## Reconnaissance mitigations
+
+| Technique | Mitigation | Related SEAL framework |
+|---|---|---|
+| REC-01: Protocol architecture analysis | Reduce public exposure of governance internals; document what is on-chain vs. off-chain; conduct adversary simulation to test what an attacker could learn | [Threat Modeling](/threat-modeling/overview) |
+| REC-02: Signer identification and profiling | Limit public association between key holders and their roles; use role-based rather than identity-based signer disclosure; train signers on social engineering recognition | [OpSec](/opsec/principles), [DPRK IT Workers](/dprk-it-workers/overview) |
+
+---
+
+## Resource Development mitigations
+
+| Technique | Mitigation | Related SEAL framework |
+|---|---|---|
+| RES-01: Mixer-funded operational wallets | Monitor known mixer withdrawals for addresses that subsequently interact with your protocol; flag fresh wallets with mixer-funded gas for enhanced due diligence | [Monitoring](/monitoring/overview) |
+| RES-02: Fake token manufacturing | Require minimum trading age and volume for collateral listing; verify token ownership distribution; detect admin functions in token contracts before listing; flag single-LP pools | [Monitoring](/monitoring/overview) |
+| RES-03: Compromised tooling and supply chain | Use reproducible builds; verify software signatures; maintain pinned dependency versions; implement software bill of materials (SBOM) | [Supply Chain](/supply-chain/overview), [Secure Software Development](/secure-software-development/overview) |
+
+---
+
+## Initial Access mitigations
+
+| Technique | Mitigation | Related SEAL framework |
+|---|---|---|
+| ACC-01: Multisig signer social engineering | Require multi-channel verification for signing requests; implement transaction simulation and human-readable descriptions before signing; never sign under time pressure; train signers on DPRK social engineering tactics | [Multisig for Protocols](/multisig-for-protocols/overview), [DPRK IT Workers](/dprk-it-workers/overview) |
+| ACC-02: Validator key compromise | Use hardware security modules (HSMs) for validator keys; implement geographic and IP-based access controls; require multi-party authorization for key usage; rotate keys on a defined schedule | [Infrastructure](/infrastructure/overview), [Wallet Security](/wallet-security/overview) |
+| ACC-03: Smart contract upgrade manipulation | Enforce mandatory timelocks on all upgrades (minimum 48 hours); require independent code review of upgrade transactions before signing; use multi-step upgrade processes with separate propose/execute phases | [Multisig for Protocols](/multisig-for-protocols/overview), [Governance](/governance/overview) |
+
+---
+
+## Persistence & Staging mitigations
+
+| Technique | Mitigation | Related SEAL framework |
+|---|---|---|
+| PER-01: Durable nonce pre-signing | Treat any durable nonce signing request as high-risk; require explicit justification for durable nonce transactions; implement transaction content verification that decodes and displays the full instruction set; audit all durable nonce authorizations regularly | [Multisig for Protocols](/multisig-for-protocols/overview) |
+| PER-02: Governance threshold manipulation | Require maximum timelocks for any governance parameter changes; implement automatic alerts for threshold reduction proposals; require unanimous consent for threshold changes; enforce minimum timelock durations that cannot be reduced without a separate governance vote | [Governance](/governance/overview), [Multisig for Protocols](/multisig-for-protocols/overview) |
+| PER-03: Malicious oracle integration | Implement oracle circuit breakers that detect suspicious price movements; require minimum trading history and liquidity depth for oracle sources; use multiple independent oracle sources with median aggregation; flag tokens with admin functions for enhanced review before oracle inclusion | [Monitoring](/monitoring/overview) |
+
+---
+
+## Execution mitigations
+
+| Technique | Mitigation | Related SEAL framework |
+|---|---|---|
+| EXE-01: Pre-signed transaction cascade | Implement transaction velocity limits; require cooling-off periods between governance changes and their effects; monitor for rapid sequential transactions that change parameters and extract value | [Monitoring](/monitoring/overview), [Governance](/governance/overview) |
+| EXE-02: Flash loan-enabled exploitation | Implement flash loan-resistant price oracles (time-weighted average prices); add reentrancy guards and single-transaction limits; use delayed price updates | [Monitoring](/monitoring/overview) |
+| EXE-03: Collateral manipulation and drainage | Require minimum listing age before collateral eligibility; implement collateral caps for newly-listed assets; monitor for large borrows against recently-listed collateral; flag borrowing patterns that match drainage signatures | [Monitoring](/monitoring/overview) |
+
+---
+
+## Exfiltration & Laundering mitigations
+
+| Technique | Mitigation | Related SEAL framework |
+|---|---|---|
+| EXF-01: Cross-chain bridging | Implement withdrawal delays for large amounts; monitor bridge transactions for unusual patterns; maintain list of flagged addresses and integrate with bridge operators | [Incident Management](/incident-management/overview), [Monitoring](/monitoring/overview) |
+| EXF-02: Mixer obfuscation | Maintain real-time list of flagged addresses; integrate with chain analysis providers; implement transaction screening for deposits from flagged sources | [Incident Management](/incident-management/overview) |
+| EXF-03: P2P and OTC conversion | Work with compliant OTC desks and exchanges; share threat intelligence about flagged addresses; coordinate with law enforcement for asset recovery | [Incident Management](/incident-management/overview) |
+
+---
+
+## Priority mitigations
+
+Based on the attack chains documented in the [Threat Actor Profiles](/apt-threat-profiles/threat-actor-profiles), the following mitigations have the highest impact for preventing DPRK-linked attacks:
+
+1. **Enforce mandatory timelocks** (minimum 48 hours) on all governance parameter changes and smart contract upgrades. The Drift attack succeeded because the Security Council was migrated with zero timelock.
+
+2. **Implement signer verification workflows** for all multisig signing requests, with transaction simulation and human-readable decoded content. The Bybit attack succeeded because signers could not see what they were actually signing.
+
+3. **Flag and audit durable nonce transactions** as high-risk. The Drift attack relied on signers pre-authorizing transactions they did not fully understand.
+
+4. **Monitor for governance parameter reduction proposals** (threshold lowering, timelock shortening). These are strong indicators of active compromise.
+
+5. **Implement oracle circuit breakers** with multiple independent sources and minimum asset age requirements. Fake token attacks rely on oracle acceptance of unvetted assets.
+
+6. **Monitor Tornado Cash and known mixer withdrawals** for addresses that subsequently interact with your protocol. This is the earliest observable indicator of attack staging.
+
+---
+
+## Post-incident response
+
+If an attack is detected or suspected, follow the [Incident Management](/incident-management/overview) framework. Specific actions for APT-attributed attacks:
+
+1. **Immediate**: Halt all governance actions and upgrade execution
+2. **Within 1 hour**: Contact bridge operators to flag stolen fund addresses
+3. **Within 4 hours**: Coordinate with chain analysis firms (Chainalysis, TRM Labs, Elliptic) for fund tracking
+4. **Within 24 hours**: File law enforcement reports and OFAC notification if DPRK-attributed
+5. **Within 48 hours**: Publish post-mortem with attack chain analysis to benefit the broader community
+6. **Ongoing**: Monitor laundering patterns and coordinate with exchanges for asset freezing
+
+---
+
+</TagProvider>
+<ContributeFooter />

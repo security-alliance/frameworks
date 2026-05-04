@@ -1,0 +1,63 @@
+---
+title: "APT Threat Profiles & On-Chain Attack Taxonomy | Security Alliance"
+description: "Catalog of state-sponsored and advanced threat actors targeting blockchain protocols, with a structured taxonomy of on-chain attack techniques mapped to real incidents and defensive frameworks."
+tags:
+  - Security Specialist
+  - Engineer/Developer
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# APT Threat Profiles & On-Chain Attack Taxonomy
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: State-sponsored threat groups conduct sophisticated external attacks against blockchain protocols — distinct from insider infiltration. Understanding who they are, how they chain on-chain techniques, and where to detect them enables targeted defense.
+
+This framework catalogs **advanced persistent threat (APT) groups** conducting offensive operations against blockchain infrastructure, along with a structured **on-chain attack technique taxonomy** adapted for Web3-specific surfaces. It complements the existing [DPRK IT Workers](/dprk-it-workers/overview) framework, which covers the **insider placement** vector (fraudulent employment, identity deception, access escalation). This section covers the **external offensive operations** those hacking units — and other APT groups — carry out at the protocol level.
+
+To make the distinction concrete:
+
+| | DPRK IT Workers (existing) | APT Protocol Attacks (this framework) |
+|---|---|---|
+| **Vector** | Fraudulent employment | External protocol exploitation |
+| **Kill chain** | Resume → Interview → Hire → Access escalation → Data leak | Recon → Infrastructure staging → Signer social engineering → Governance manipulation → Asset drainage → Laundering |
+| **Targets** | HR / hiring pipeline | Multisig configurations, oracle systems, governance timelocks, bridge infrastructure |
+| **Techniques** | Fake identities, deepfakes, laptop farms | Fake token creation, durable nonce pre-signing, zero timelock exploitation, CLOB manipulation, Tornado Cash obfuscation |
+| **Defenses** | Hiring process hardening, liveness verification | Timelock enforcement, oracle circuit breakers, multisig signing verification, on-chain anomaly monitoring |
+| **Example incidents** | Numerous undisclosed infiltrations | Drift ($285M), Bybit ($1.5B), Ronin ($625M), Horizon ($100M), Atomic Wallet ($100M) |
+
+The IT Workers TTPs page acknowledges this gap: *"We have observed DPRK IT Workers passing access or sensitive information to DPRK Hacking teams."* This framework documents what those hacking teams do, how their campaigns unfold, and how to defend against them at the protocol level.
+
+## Framework structure
+
+1. **[Threat Actor Profiles](/apt-threat-profiles/threat-actor-profiles)** — Structured profiles of groups conducting offensive operations against blockchain infrastructure, starting with DPRK/Lazarus Group.
+2. **[On-Chain Attack Taxonomy](/apt-threat-profiles/on-chain-attack-taxonomy)** — A structured catalog of techniques organized by kill chain phase, referencing real incidents and mapped to MITRE AADAPT.
+3. **[Defensive Cross-References](/apt-threat-profiles/defensive-cross-references)** — Mapping of each attack technique to existing SEAL framework guidance and actionable mitigations.
+
+## Relationship to MITRE AADAPT
+
+MITRE has published [AADAPT (Adversarial Actions in Digital Asset Payment Technologies)](https://www.mitre.org/news-insights/fact-sheet/aadapt-cyber-threat-framework-digital-assets), a 12-tactic, 50+ technique matrix designed as a blockchain-specific complement to ATT&CK. AADAPT covers technique categories like Oracle Manipulation, Flash Loan exploits, Chain Reorganization, Cross-Chain Swaps, Generate Counterfeit Tokens, and Siphon Funds.
+
+This framework does **not** duplicate AADAPT. Instead, it layers **threat actor attribution and real campaign mapping** on top of AADAPT's taxonomy. AADAPT tells you *what* techniques exist; this section tells you *who* uses them, *how* they chain them in real operations, and *what behavioral indicators* to look for on-chain. AADAPT's taxonomy serves as the shared vocabulary for technique identification within the profiles.
+
+## Why this matters
+
+The five largest DPRK-linked blockchain exploits (Drift $285M, Bybit $1.5B, Ronin $625M, Horizon $100M, Atomic Wallet $100M) were all external offensive operations, not IT worker infiltrations. None of these attack chains map to anything currently covered in the frameworks.
+
+The existing frameworks tell teams *what* to do (use timelocks, configure multisigs, monitor on-chain), but without understanding *how* attackers exploit these in practice, teams cannot prioritize or validate their defenses.
+
+---
+
+</TagProvider>
+<ContributeFooter />

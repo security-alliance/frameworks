@@ -1,0 +1,285 @@
+---
+title: "On-Chain Attack Taxonomy | Security Alliance"
+description: "Structured catalog of on-chain attack techniques used by APT groups against blockchain protocols, organized by kill chain phase and mapped to real incidents and MITRE AADAPT."
+tags:
+  - Security Specialist
+  - Engineer/Developer
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# On-Chain Attack Taxonomy
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: APT groups chain 5-6 distinct on-chain techniques into multi-phase campaigns. Understanding each phase — from recon through laundering — and the indicators at each step enables detection before drainage occurs.
+
+This taxonomy catalogs attack techniques observed in real protocol attacks, organized by kill chain phase. Each technique references the real incident(s) where it was observed and maps to MITRE AADAPT where applicable. The taxonomy is designed to be used alongside the [Threat Actor Profiles](/apt-threat-profiles/threat-actor-profiles) to understand *who* uses *what* and *how*.
+
+---
+
+## Kill chain phases
+
+The following phases reflect the observed operational flow of APT campaigns against blockchain protocols:
+
+1. **Reconnaissance** — Target identification and vulnerability assessment
+2. **Resource Development** — Infrastructure acquisition and tooling
+3. **Initial Access** — Gaining entry to target systems or accounts
+4. **Persistence & Staging** — Establishing durable access and positioning assets
+5. **Execution** — Exploiting the target to extract value
+6. **Exfiltration & Laundering** — Moving and obscuring stolen assets
+
+---
+
+## Phase 1: Reconnaissance
+
+Techniques for identifying targets and assessing attack surfaces before committing operational resources.
+
+### REC-01: Protocol architecture analysis
+
+**AADAPT mapping**: Reconnaissance → Active Scanning
+
+Identifying governance structures, multisig configurations, timelock durations, oracle dependencies, and upgrade mechanisms through on-chain data and public documentation.
+
+**Observed in**: Drift Protocol (identification of Security Council structure, durable nonce usage, timelock configuration), Ronin Bridge (validator set analysis)
+
+**Indicators**: No direct on-chain indicator; monitor for unusual public documentation requests or social engineering probing about governance configurations.
+
+### REC-02: Signer identification and profiling
+
+**AADAPT mapping**: Reconnaissance → Social Information Gathering
+
+Mapping multisig signers and key holders through on-chain data, social media, and professional networks. Identifying high-value targets for social engineering.
+
+**Observed in**: Drift Protocol (profiling Security Council signers for social engineering approach), Bybit (identifying SAFE signers and their operational patterns)
+
+**Indicators**: No direct on-chain indicator; monitor for unusual contact attempts to key personnel or social engineering patterns.
+
+---
+
+## Phase 2: Resource Development
+
+Techniques for acquiring infrastructure, creating operational assets, and staging attack resources.
+
+### RES-01: Mixer-funded operational wallets
+
+**AADAPT mapping**: Resource Development → Obtain Infrastructure
+
+Withdrawing small amounts of ETH or native tokens from mixers (Tornado Cash, Sinbad) to fund attack infrastructure wallets. Typically 5-50 ETH per withdrawal, occurring weeks before execution.
+
+**Observed in**: Drift Protocol (10 ETH from Tornado Cash, 3 weeks before attack), Bybit, most DPRK-linked operations
+
+**Indicators**: Monitor Tornado Cash and known mixer withdrawals for wallets that subsequently interact with your protocol's governance or signer addresses.
+
+### RES-02: Fake token manufacturing
+
+**AADAPT mapping**: Resource Development → Generate Counterfeit Tokens
+
+Creating counterfeit tokens with configurable admin functions, seeded liquidity on DEXs, and wash-traded volume to simulate legitimacy. The token appears functional but contains hidden backdoors (admin mint, freeze, or authorization functions).
+
+**Observed in**: Drift Protocol (CarbonVote/CVT token created with seeded liquidity on Raydium, wash-traded to simulate volume)
+
+**Indicators**: Monitor for new token listings with: admin-controlled functions, single-liquidity-provider pools, short trading history, and sudden governance integration proposals.
+
+### RES-03: Compromised tooling and supply chain preparation
+
+**AADAPT mapping**: Resource Development → Compromise Software Supply Chain
+
+Preparing trojanized tools, fake trading applications, or compromised software updates to gain initial access to target environments.
+
+**Observed in**: Atomic Wallet (malicious update distributed to users), AppleJeus campaigns (fake cryptocurrency trading applications)
+
+**Indicators**: Verify software signatures, monitor for unexpected binary updates, use reproducible builds where possible.
+
+---
+
+## Phase 3: Initial Access
+
+Techniques for gaining the first foothold in target systems or accounts.
+
+### ACC-01: Multisig signer social engineering
+
+**AADAPT mapping**: Initial Access → Social Engineering
+
+Direct social engineering of multisig signers to sign malicious transactions. This can include impersonating trusted team members, fabricating urgency, or presenting deceptive transaction descriptions. In the Bybit attack, the SAFE UI was manipulated to display a legitimate-looking transaction while signing a different one.
+
+**Observed in**: Bybit (SAFE UI manipulation showing fake transaction details), Drift Protocol (social engineering signers into pre-signing durable nonce transactions)
+
+**Indicators**: Unexpected signing requests, pressure to sign quickly, requests for durable nonce transactions, signing requests from unusual communication channels.
+
+### ACC-02: Validator key compromise
+
+**AADAPT mapping**: Initial Access → Compromise Accounts
+
+Compromising validator or node operator keys through social engineering, malware, or exploiting key management weaknesses. Once keys are obtained, the attacker can authorize fraudulent transactions or consensus actions.
+
+**Observed in**: Ronin Bridge (5 of 9 validator keys compromised), CoinEx (compromised private keys)
+
+**Indicators**: Unexpected validator behavior, unauthorized key usage from new IP addresses or geographic locations, failed health checks from compromised nodes.
+
+### ACC-03: Smart contract upgrade manipulation
+
+**AADAPT mapping**: Initial Access → Exploit Public-Facing Application
+
+Using compromised signer access or governance control to upgrade smart contracts to malicious implementations. The new contract maintains the same interface but contains backdoors.
+
+**Observed in**: Bybit (smart contract upgrade replacing legitimate implementation with malicious one via manipulated SAFE UI)
+
+**Indicators**: Unexpected contract upgrade proposals, upgrades proposed by unusual addresses, upgrades with rushed timelocks.
+
+---
+
+## Phase 4: Persistence & Staging
+
+Techniques for establishing durable access and positioning attack assets for execution.
+
+### PER-01: Durable nonce pre-signing
+
+**AADAPT mapping**: Execution → Pre-Stage Transactions
+
+Exploiting Solana's durable nonce feature to pre-sign transactions that can be executed later. Signers are social-engineered into signing seemingly innocent transactions that actually contain hidden admin authorizations or parameter changes. These pre-signed transactions sit dormant until the attacker executes them.
+
+**Observed in**: Drift Protocol (signers pre-signed durable nonce transactions containing hidden Security Council migration and admin authorizations)
+
+**Indicators**: Any request to sign durable nonce transactions should be treated as high risk. Monitor for durable nonce instructions in proposed transactions, especially those involving authority changes.
+
+### PER-02: Governance threshold manipulation
+
+**AADAPT mapping**: Persistence → Manipulate Governance
+
+Changing multisig thresholds or governance parameters to reduce the number of required confirmations for critical actions. This is often combined with zero or minimal timelocks to eliminate detection windows.
+
+**Observed in**: Drift Protocol (Security Council migrated from original configuration to 2/5 threshold with zero timelock)
+
+**Indicators**: Any proposal to reduce multisig threshold, shorten timelocks, or modify governance parameters should trigger heightened scrutiny. These are rarely needed and frequently indicate compromise.
+
+### PER-03: Malicious oracle integration
+
+**AADAPT mapping**: Persistence → Manipulate Price Oracle
+
+Positioning fake tokens or manipulated price feeds to be accepted by protocol oracles, enabling later price manipulation during execution.
+
+**Observed in**: Drift Protocol (CVT token listed as valid collateral through pre-signed governance actions)
+
+**Indicators**: New tokens proposed for collateral listing, especially those with short trading history, single liquidity providers, or admin-controlled functions.
+
+---
+
+## Phase 5: Execution
+
+Techniques for extracting value from the compromised protocol.
+
+### EXE-01: Pre-signed transaction cascade
+
+**AADAPT mapping**: Execution → Execute Transactions
+
+Executing a sequence of pre-signed transactions in rapid succession to perform the full attack chain atomically. In the Drift attack, 31 transactions were executed in 12 minutes: listing fake token as collateral, raising withdrawal limits, and draining funds.
+
+**Observed in**: Drift Protocol (31 transactions in 12 minutes)
+
+**Indicators**: Rapid sequential governance transactions, especially those changing parameters and then immediately extracting value. Monitor for transaction velocity anomalies.
+
+### EXE-02: Flash loan-enabled exploitation
+
+**AADAPT mapping**: Execution → Flash Loan Attack
+
+Using flash loans to amplify attack impact — borrowing large amounts to manipulate prices, exploit arbitrage, or drain liquidity in a single transaction block.
+
+**Observed in**: Multiple DeFi exploits (not exclusively APT-attributed but used as a technique within APT campaigns)
+
+**Indicators**: Large single-block borrow-and-repay patterns, unusual price movements within single transactions.
+
+### EXE-03: Collateral manipulation and drainage
+
+**AADAPT mapping**: Execution → Siphon Funds
+
+Listing attacker-controlled tokens as collateral, inflating their value through oracle manipulation or wash trading, then borrowing against the inflated value to drain protocol liquidity.
+
+**Observed in**: Drift Protocol (CVT listed as collateral, withdrawal limits raised, funds drained against inflated collateral)
+
+**Indicators**: New collateral listings with suspicious trading patterns, sudden changes to withdrawal or borrowing limits, large borrows against recently-listed assets.
+
+---
+
+## Phase 6: Exfiltration & Laundering
+
+Techniques for moving stolen assets off the target chain and obscuring their origin.
+
+### EXF-01: Cross-chain bridging
+
+**AADAPT mapping**: Exfiltration → Cross-Chain Swap
+
+Rapidly bridging stolen assets to other blockchains to complicate tracing and take advantage of different protocol enforcement levels. ETH and stablecoins are common destination assets.
+
+**Observed in**: Nearly all DPRK-linked operations; Drift Protocol (funds bridged to Ethereum within hours), Bybit (systematic bridging across multiple chains)
+
+**Indicators**: Large, unusual bridge transactions from protocol-associated addresses, especially to chains not normally used by the protocol.
+
+### EXF-02: Mixer obfuscation
+
+**AADAPT mapping**: Exfiltration → Obfuscate Transaction History
+
+Processing stolen funds through mixers (Tornado Cash, Sinbad, YoMix) to break the on-chain link between stolen and exit addresses. Funds are typically split into standardized amounts before mixing.
+
+**Observed in**: All DPRK-linked operations since 2022; Bybit (systematic splitting and mixing of $1.5B)
+
+**Indicators**: Large deposits to known mixer contracts from addresses associated with exploit transactions. Monitor mixer deposit patterns that correlate with recent exploits.
+
+### EXF-03: P2P and OTC conversion
+
+**AADAPT mapping**: Exfiltration → Convert to Fiat
+
+Converting stolen cryptocurrency to fiat through peer-to-peer exchanges and over-the-counter desks, particularly in jurisdictions with weak KYC/AML enforcement.
+
+**Observed in**: DPRK operations consistently use this as the final conversion step; documented in Chainalysis and TRM Labs reports
+
+**Indicators**: Large OTC trades from flagged addresses, interaction with high-risk P2P platforms, conversion to stablecoins and subsequent off-ramping through non-compliant services.
+
+---
+
+## Technique chaining examples
+
+Understanding how techniques chain together in real operations is critical for detection. Below are two documented campaign chains.
+
+### Drift Protocol attack chain (April 2026)
+
+```
+RES-01 (Mixer funding)
+  → RES-02 (Manufacture CVT token)
+  → REC-01 (Analyze governance structure)
+  → REC-02 (Profile Security Council signers)
+  → ACC-01 (Social engineer signers)
+  → PER-01 (Pre-sign durable nonce transactions)
+  → PER-02 (Migrate Security Council to 2/5, zero timelock)
+  → PER-03 (List CVT as collateral via pre-signed actions)
+  → EXE-01 (Execute 31 transactions in 12 minutes)
+  → EXE-03 (Drain $285M against inflated CVT collateral)
+  → EXF-01 (Bridge to Ethereum)
+  → EXF-02 (Mixer obfuscation)
+```
+
+### Bybit attack chain (February 2025)
+
+```
+REC-02 (Identify SAFE signers)
+  → ACC-01 (Manipulate SAFE UI to deceive signers)
+  → ACC-03 (Upgrade smart contract to malicious implementation)
+  → EXE-01 (Execute drainage transactions)
+  → EXF-01 (Cross-chain bridging)
+  → EXF-02 (Systematic mixer processing)
+  → EXF-03 (OTC conversion)
+```
+
+---
+
+</TagProvider>
+<ContributeFooter />

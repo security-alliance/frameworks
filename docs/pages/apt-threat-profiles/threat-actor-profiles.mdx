@@ -1,0 +1,121 @@
+---
+title: "Threat Actor Profiles | Security Alliance"
+description: "Structured profiles of APT groups conducting offensive operations against blockchain infrastructure: attribution context, known aliases, historical campaigns, and on-chain behavioral indicators."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Threat Actor Profiles
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: DPRK's Lazarus Group is the most prolific state-sponsored threat targeting blockchain protocols, responsible for over $3B in stolen assets. Understanding their operational patterns — from infrastructure staging to laundering — enables targeted detection.
+
+This section provides structured profiles of threat groups conducting offensive operations against blockchain infrastructure. Each profile includes attribution context, known aliases, historical campaigns, and on-chain behavioral indicators. Additional APT groups will be added as intelligence becomes available.
+
+---
+
+## Lazarus Group (DPRK)
+
+### Attribution context
+
+The Lazarus Group is a North Korean state-sponsored cyber threat group attributed to the Reconnaissance General Bureau (RGB), North Korea's primary intelligence apparatus. The group has been active since at least 2009 and is designated under multiple sanctions frameworks:
+
+- **OFAC SDN designations**: Multiple entries targeting DPRK cyber actors
+- **FBI Most Wanted**: Park Jin Hyok (linked to Lazarus operations)
+- **UN Panel of Experts reports**: DPRK cyber operations documented as funding weapons programs
+
+### Known aliases and sub-groups
+
+The security research community tracks DPRK cyber operations under multiple identifiers reflecting different operational clusters:
+
+| Alias | Source | Focus |
+|---|---|---|
+| APT38 | Mandiant | Financial institution targeting, SWIFT attacks |
+| UNC4736 | Mandiant | Social engineering and supply chain compromise |
+| TraderTraitor | CISA / FBI | Cryptocurrency exchange and DeFi targeting |
+| AppleJeus | CISA | Fake cryptocurrency applications and exchanges |
+| BlueNoroff | Kaspersky | Spear-phishing and financial cyber operations |
+| Stardust Chorale | Microsoft | Cryptocurrency theft operations |
+
+These aliases may represent overlapping operational units, specialized teams within a larger apparatus, or different observation periods of the same actors.
+
+### Historical campaigns targeting blockchain
+
+| Incident | Date | Loss | Primary technique | Reference |
+|---|---|---|---|---|
+| Ronin Bridge | Mar 2022 | $625M | Compromised validator keys (5 of 9) | [Chainalysis](https://www.chainalysis.com/blog/) |
+| Horizon Bridge | Jun 2022 | $100M | Compromised private keys | [Harmony post-mortem](https://rekt.news/harmony/) |
+| Atomic Wallet | Jun 2023 | $100M | Supply chain compromise (malicious update) | [Elliptic analysis](https://www.elliptic.co/) |
+| CoinEx | Sep 2023 | $55M | Compromised private keys | [Chainalysis](https://www.chainalysis.com/blog/) |
+| Bybit | Feb 2025 | $1.5B | Smart contract upgrade social engineering (SAFE UI manipulation) | [TRM Labs](https://www.trmlabs.com/resources/blog/bybit-hack-update-north-korea-moves-to-next-stage-of-laundering) |
+| Phemex | Jan 2025 | $69M | Compromised private keys | [Chainalysis](https://www.chainalysis.com/blog/) |
+| Drift Protocol | Apr 2026 | $285M | Fake token + durable nonce + zero timelock | [TRM Labs](https://www.trmlabs.com/resources/blog/north-korean-hackers-attack-drift-protocol-in-285-million-heist) |
+
+### On-chain behavioral indicators
+
+DPRK-linked operations exhibit consistent on-chain patterns observable during and after attacks:
+
+**Pre-attack staging**
+- Small ETH withdrawals from Tornado Cash weeks before execution (typically 5-50 ETH for gas funding)
+- Fresh wallet creation with no prior transaction history
+- Interaction with known mixer contracts for operational funding
+
+**Execution patterns**
+- Rapid sequential transactions (e.g., Drift: 31 transactions in 12 minutes)
+- Use of durable nonce pre-signed transactions to execute atomic sequences
+- Governance parameter changes at zero or minimal timelock
+
+**Post-exploitation laundering**
+- Bridging stolen assets across chains within hours (typically Solana → Ethereum)
+- Systematic conversion through DEX pools to ETH or stablecoins
+- Use of Tornado Cash, Sinbad, and subsequent mixers for obfuscation
+- Splitting large amounts into standard-sized chunks (often ~100 ETH or ~$500K)
+- Eventual consolidation into known DPRK-controlled wallets
+- Conversion through P2P exchanges and OTC desks in jurisdictions with weak KYC
+
+**Wallet clustering indicators**
+- Temporal correlation between mixer withdrawals and attack execution
+- Shared gas-funding sources across multiple attack wallets
+- Consistent bridging routes and DeFi interaction patterns
+- Identification of "feeder" wallets that fund operational infrastructure
+
+### Relationship to DPRK IT Workers
+
+The DPRK IT Workers framework documents the **insider placement** vector — fraudulent employment, identity deception, and access escalation from infiltrated employees. The IT Workers TTPs page notes: *"We have observed DPRK IT Workers passing access or sensitive information to DPRK Hacking teams."*
+
+This profile documents the **receiving end** of that handoff — the external hacking units that exploit stolen access or conduct entirely independent operations. The two threat vectors can intersect when:
+1. An IT worker provides private keys, credentials, or internal system access to hacking teams
+2. An IT worker provides architectural knowledge that enables external attack planning
+3. An IT worker manipulates internal controls (e.g., reducing timelock durations) to enable external exploitation
+
+Defenders should monitor for these intersection points: an employee who suddenly advocates for reduced security parameters (shorter timelocks, lower multisig thresholds) may be enabling external attack vectors.
+
+---
+
+## Future profiles
+
+Additional APT group profiles will be added as community intelligence and attribution confidence grows. Candidates for future documentation include:
+
+- **Russian state-affiliated groups** (e.g., Sandworm, APT28) — targeting cryptocurrency exchanges and DeFi infrastructure
+- **Chinese state-affiliated groups** (e.g., APT41) — supply chain compromises affecting crypto-adjacent infrastructure
+- **Financially motivated cybercrime groups** with sustained blockchain targeting campaigns
+
+Each profile will follow the same structure: attribution context, known aliases, historical campaigns, and on-chain behavioral indicators.
+
+---
+
+</TagProvider>
+<ContributeFooter />

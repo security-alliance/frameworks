@@ -362,3 +362,17 @@ viem
 wagmi
 NCSC
 Intune
+AADAPT
+AADAPT's
+AppleJeus
+BlueNoroff
+CLOB
+Hyok
+Kaspersky
+Mandiant
+Phemex
+Raydium
+Stardust
+TraderTraitor
+unvetted
+YoMix
