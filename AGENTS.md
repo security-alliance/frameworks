@@ -4,7 +4,7 @@
 - PRs target `develop` branch.
 - Setup: `pnpm install`
 - Dev server: `pnpm exec just serve` (generators + Vocs on :5173)
-- Build/verify: `pnpm run docs:build` then `pnpm run docs:preview`
+- Build/verify: `pnpm run docs:build` then `pnpm run docs:preview` (preview available on :4173)
 - Lint: `just lint` (cspell + markdownlint on `docs/pages/**/*.mdx`)
 - Devcontainer: `.devcontainer/devcontainer.json` (pre-installs pnpm/Node/tools)
 
