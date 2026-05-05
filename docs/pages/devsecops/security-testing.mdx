@@ -1,11 +1,16 @@
 ---
 title: "Security Testing | Security Alliance"
-description: "Identify vulnerabilities early with SAST, DAST, and IAST tools in your CI/CD pipeline. Implement fuzz testing to discover security issues before they reach production."
+description: "Identify vulnerabilities early with SAST, DAST, IAST, and fuzz testing in your CI/CD pipeline. Shift-left security testing, integrate automated scanning, and implement comprehensive testing strategies for Web3 projects."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -18,13 +23,269 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Security testing is a crucial part of the DevSecOps process, as it helps identify vulnerabilities early on so that they
-can be taken care of before they become an issue in production.
+> 🔑 **Key Takeaway**: Shift security testing left by running SAST, DAST,
+> IAST, and fuzzing in CI on every PR; treat findings as actionable pipeline
+> gates (not just reports); and complement automation with periodic manual
+> penetration testing for high-value targets.
 
-1. Integrate SAST tools into the CI/CD pipeline to analyze source code for vulnerabilities.
-2. Use DAST tools to test running applications for security issues.
-3. Combine SAST and DAST approaches with IAST tools for comprehensive security testing.
-4. Implement fuzz testing to discover security vulnerabilities by inputting random data.
+Security testing identifies vulnerabilities before they reach production. The
+"shift-left" principle means integrating these tests as early as possible in the
+development lifecycle: in the IDE, in pre-commit hooks, and in CI. The later a
+vulnerability is found, the more expensive it is to fix. In Web3, where
+deployed smart contracts are often immutable, finding bugs before deployment is
+critical.
+
+## Practical guidance
+
+### 1. Static Application Security Testing (SAST)
+
+SAST analyzes source code without executing it. It catches common
+vulnerabilities early and cheaply.
+
+- Integrate SAST into the CI pipeline so that every PR is scanned before
+  merge.
+- For Solidity: use **Slither** (Trail of Bits), **Aderyn** (Cyfrin), and
+  **Solhint**. These detect reentrancy, access control issues, and unsafe
+  arithmetic patterns.
+- For JavaScript/TypeScript: use **Semgrep**, **CodeQL**, or **SonarQube**.
+- For Python: use **Semgrep**, **Bandit**, or **Ruff** with security rules.
+- Configure SAST tools to fail CI on Critical and High findings. Track
+  Medium/Low as issues for triage.
+- Suppress false positives carefully: document the reason and set an expiry
+  date for re-evaluation.
+- Run SAST locally in pre-commit hooks or IDE plugins so developers get
+  immediate feedback before pushing.
+
+### 2. Dynamic Application Security Testing (DAST)
+
+DAST tests running applications by sending crafted inputs and observing
+responses. It catches issues that SAST misses: misconfigured servers,
+authentication bypasses, and runtime-specific vulnerabilities.
+
+- Run DAST against deployed test environments (not production).
+- Tools: **OWASP ZAP** (free, extensible), **Burp Suite** (commercial,
+  professional-grade), **Nuclei** (template-based, fast scanning).
+- For Web3 APIs: test RPC endpoints, REST APIs, and WebSocket interfaces for
+  injection, authentication bypass, and rate limiting issues.
+- Schedule DAST scans nightly and before every release.
+- Test authentication flows: login, session management, privilege escalation,
+  and API key validation.
+
+### 3. Interactive Application Security Testing (IAST)
+
+IAST combines SAST and DAST by instrumenting the application at runtime and
+observing data flow during functional testing.
+
+- IAST agents run inside the application process and monitor method calls, data
+  flow, and control flow in real time.
+- Tools: **Contrast Security**, **Seeker** (Synopsys), **Hdiv Security**.
+- IAST excels at finding injection vulnerabilities (SQL, command, LDAP, XSS)
+  that SAST may miss due to complex data flow and DAST may miss because it
+  does not cover all code paths.
+- Integrate IAST into your automated test suite: functional tests drive the
+  IAST agent, which reports vulnerabilities in real time.
+- Limitations: IAST requires language-specific agents and may impact
+  application performance. Use it in staging environments, not production.
+
+### 4. Fuzz testing
+
+Fuzz testing feeds random or semi-random data to application interfaces to
+discover crashes, assertion failures, and security vulnerabilities.
+
+- For Solidity smart contracts: use **Echidna** (Trail of Bits) for property-
+  based testing, **Medusa** (Cryptic Labs) and **Halmos** for symbolic fuzzing.
+  Define invariants (e.g., "total supply equals sum of balances") and let the
+  fuzzer try to break them.
+- For general software: use **AFL++**, **libFuzzer**, or **Jazzer** (Java).
+  Write fuzz harnesses that target parsing logic, input validation, and
+  protocol handling.
+- For APIs: use **Hypothesis** (Python) or **fast-check** (JS/TS) for
+  property-based testing in unit tests.
+- Run fuzzing campaigns as part of CI: fast fuzz tests in PR pipelines (short
+  duration, focused invariants), extended fuzzing overnight (longer duration,
+  broader coverage).
+- Monitor for new coverage: a good fuzzer should continuously discover new
+  code paths. If coverage plateaus, add new seeds or adjust mutation
+  strategies.
+
+### 5. Software Composition Analysis (SCA)
+
+SCA scans dependencies for known vulnerabilities.
+
+- Enable **Dependabot** alerts and security updates in GitHub.
+- Use **Snyk**, **npm audit**, or **pip audit** in CI to scan on every PR.
+- For Web3: audit Solidity dependencies (OpenZeppelin, Solmate, Forge-std) and
+  off-chain dependencies (ethers.js, viem, web3.js).
+- Track dependency risk: flag packages with no recent updates, single
+  maintainers, or known vulnerabilities.
+- Consider using a private package registry (Artifactory, Verdaccio) to proxy
+  and cache dependencies, reducing supply chain risk.
+
+### 6. Manual penetration testing
+
+Automated tools cannot replace human creativity in finding complex logic flaws.
+
+- Schedule external penetration tests for high-value targets (smart contracts,
+  bridges, oracles, authentication systems) before major releases.
+- Use bug bounty platforms (Immunefi, HackerOne, Code4rena) for continuous
+  community-driven testing.
+- After internal testing and automated scans, engage an independent security
+  firm (Trail of Bits, OpenZeppelin, Spearbit) for a formal audit.
+- Publish audit reports for transparency. Track and remediate all findings.
+
+### 6b. Set realistic severity thresholds
+
+Context matters. A "High" finding in a low-impact context might not warrant
+blocking a merge. Establish explicit triage criteria:
+
+| Severity | Definition | Action |
+| --- | --- | --- |
+| Critical | Remote code execution, full wallet drain, signature forgery | Block PR immediately |
+| High | Data exfiltration, unauthorized state change, privilege escalation | Block PR, fix within 24h |
+| Medium | Denial of service, partial bypass, information disclosure | Block PR, fix within 1 week |
+| Low | Code quality, best practice violations, minor misconfigurations | Track as issue, fix within 1 sprint |
+
+Document severity triage decisions. A finding dismissed as "Low" should have
+a written rationale and an expiry date for re-evaluation.
+
+### 6c. Integrate Semgrep for custom security rules
+
+Semgrep supports custom rules that encode your project's security policies:
+
+```yaml
+# .semgrep/security-high.yaml
+rules:
+  - id: hardcoded-private-key
+    pattern: $KEY = /0x[a-fA-F0-9]{64}/
+    message: Hardcoded private key detected. Use environment variables.
+    severity: ERROR
+    languages: [javascript, python, solidity]
+
+  # NOTE: This is a simplified example. In production, use a more specific
+  # pattern that matches actual sensitive variables, not any spread argument.
+  - id: sensitive-data-logging
+    pattern: console.log(...$SENSITIVE)
+    message: Do not log sensitive data in production.
+    severity: WARNING
+    languages: [javascript, typescript]
+
+  - id: prevent-eval
+    pattern: eval($INPUT)
+    message: eval() with user input is a code injection risk.
+    severity: ERROR
+    languages: [javascript, python]
+```
+
+Semgrep Rule Registry contains thousands of pre-built rules. Use
+`semgrep --config=auto` to run all applicable rules, then supplement with
+project-specific rules.
+
+### 6d. Manage false positives systematically
+
+False positives erode trust in the scanning pipeline. If developers learn to
+ignore alerts, real findings get missed.
+
+**Suppress with documentation, not silence:**
+
+```yaml
+# nosemgrep: hardcoded-private-key
+# Reason: Test fixtures only — not real keys.
+# Ticket: SEC-1234, suppress until test fixture refactored.
+# Expiry: 2027-06-01
+```
+
+Every suppression should include: the finding ID, why it is a false positive,
+a linked ticket, and an expiry date for re-evaluation.
+
+### 6e. Track coverage and mutation testing
+
+Code coverage metrics alone do not measure security, but they indicate
+whether critical paths are tested:
+
+```bash
+# Solidity with Foundry
+forge coverage --report lcov
+# Target: >90% line coverage for contract code
+
+# Python with pytest-cov
+pytest --cov=src --cov-report=html
+# Target: >85% line coverage
+
+# JavaScript with c8
+npx c8 --reporter=lcov mocha
+# Target: >80% line coverage
+```
+
+For smart contracts, supplement coverage with **mutation testing** using
+Foundry's `forge snapshot` or Echidna invariants. Mutation testing modifies
+code slightly (changes `>` to `>=`) and verifies that tests catch the change.
+If tests don't catch mutated code, they aren't testing the right thing.
+
+## Why is it important
+
+Undetected vulnerabilities in production lead to exploits. In Web3, the
+consequences are often irreversible due to smart contract immutability.
+
+- **Ronin Bridge ($625M, 2022)**: The bridge's validator set was compromised
+  because monitoring and access controls were insufficient. Penetration testing
+  and security monitoring could have identified the weak access control earlier.
+- **Wormhole ($325M, 2022)**: A signature verification bug in upgraded guardian
+  logic went undetected. Formal verification and fuzz testing of invariants
+  would have caught this.
+- **Parity Wallet ($150M, 2017)**: An unprotected `initWallet` function allowed
+  anyone to take ownership. SAST and manual review would have identified the
+  missing access control.
+
+NIST SP 800-53 Rev. 5 control **RA-5 (Vulnerability Scanning)** and **SI-2
+(Flaw Remediation)** mandate regular vulnerability scanning and timely
+remediation.
+
+## Implementation details
+
+| Sub-topic | Related page |
+| --- | --- |
+| CI/CD pipeline integration of scans | [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment) |
+| Isolated test environments | [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation) |
+| Code signing to verify test provenance | [Implementing Code Signing](/devsecops/code-signing) |
+
+## Common pitfalls
+
+- **Running SAST but ignoring results**: Scanning is only valuable if findings
+  are triaged and remediated. Establish an SLA: Critical findings block the PR,
+  High within 48 hours, Medium tracked as issues.
+- **DAST only on production**: Running DAST against production can cause
+  disruptions and misses the opportunity to catch issues before deploy. Run DAST
+  against staging or dedicated test environments.
+- **Fuzzing without invariants**: A fuzzer without clear properties to test
+  will find crashes but miss logic errors. Define meaningful invariants (e.g.,
+  "no user can withdraw more than their balance") that capture business logic.
+- **Skipping IAST due to performance overhead**: IAST has a performance cost,
+  but running it in staging during automated functional tests catches injection
+  vulnerabilities that SAST and DAST miss. The trade-off is worthwhile for
+  high-value applications.
+- **Treating security testing as a one-time event**: Security is continuous.
+  New code, new dependencies, and new attack techniques require ongoing testing.
+  Integrate scans into CI, not just pre-release checklists.
+
+## Quick-reference cheat sheet
+
+| Test type | When to run | Tools (Web3/Solidity) | Tools (General) |
+| --- | --- | --- | --- |
+| SAST | Every PR | Slither, Aderyn, Solhint | Semgrep, CodeQL, SonarQube |
+| DAST | Nightly + pre-release | Custom RPC fuzzers | OWASP ZAP, Nuclei, Burp Suite |
+| IAST | Staging functional tests | — | Contrast Security, Seeker |
+| Fuzzing | PR (short) + nightly (long) | Echidna, Medusa, Halmos | AFL++, libFuzzer, Hypothesis |
+| SCA | Every PR + daily cron | npm audit, pip audit | Dependabot, Snyk |
+| Pen test | Pre-release + ongoing | Immunefi, Code4rena | HackerOne, Bugcrowd |
+
+## References
+
+- [OWASP Testing Guide v4](https://owasp.org/www-project-web-security-testing-guide/)
+- [NIST SP 800-53 Rev. 5, RA-5 Vulnerability Scanning](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
+- [Slither: Static Analyzer for Solidity](https://github.com/crytic/slither)
+- [Echidna: Fuzzer for Ethereum Smart Contracts](https://github.com/crytic/echidna)
+- [OWASP Fuzzing Guide](https://owasp.org/www-community/Fuzzing)
+- [Immunefi Bug Bounty Platform](https://immunefi.com/)
 
 ---
 

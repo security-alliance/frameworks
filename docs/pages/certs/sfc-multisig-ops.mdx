@@ -1,6 +1,8 @@
 ---
 title: "SFC: Multisig Operations | Security Alliance"
 description: "SFC Multisig Operations certification: governance, signer security, transaction verification, emergency playbooks, communication protocols, and 24/7 paging for critical multisigs."
+version: "1.1"
+revised: "2026-04-17"
 tags:
   - SEAL/Initiative
   - Certifications
@@ -46,12 +48,12 @@ cert:
         shifts, new products, protocol upgrades, security incidents)
     title: Multisig Classification and Risk-Based Controls
   - id: ms-2.1.2
-    description: Have you evaluated contract-level security controls that could limit
-      the impact of a multisig compromise?
+    description: Do you implement contract-level security controls that limit the
+      impact of a multisig compromise?
     baselines:
-      - Evaluation covers timelocks, modules, guards, address whitelisting, invariant
-        enforcement, and parameter bounds
-      - Controls evaluated for each multisig based on classification
+      - Controls implemented where applicable include timelocks, modules, guards,
+        address whitelisting, invariant enforcement, and parameter bounds
+      - Controls selected for each multisig based on classification
       - Security review required before enabling any module or guard
       - Decisions documented, including rationale for controls not implemented
     title: Contract-Level Security Controls
@@ -142,16 +144,15 @@ cert:
     description: Do you have a defined, documented process for how transactions are
       proposed, verified, and executed?
     baselines:
-      - Process covers initiation, approval, simulation, execution, and confirmation
-      - Defines who is authorized to initiate transactions
-      - Each signer independently verifies transaction details (chain ID, target
-        address, calldata, value, nonce, operation type) before signing
-      - Transaction hashes compared across at least two independent interfaces (e.g.,
-        web UI and CLI, or web and mobile app)
+      - Process covers initiation (with authorized roles defined), approval,
+        simulation, execution, and confirmation
+      - Each signer independently verifies transaction details (chain ID, target,
+        calldata, value, nonce, operation type) before signing, with hashes
+        cross-checked across at least two independent interfaces
       - DELEGATECALL operations to untrusted addresses flagged as high risk
       - High-risk transactions (large transfers, emergency actions, protocol changes)
-        require waiting periods where feasible and elevated threshold approval
-      - High-risk thresholds defined based on classification and reviewed periodically
+        require waiting periods where feasible and elevated approval; thresholds
+        defined by classification and reviewed periodically
       - Private transaction submission used when appropriate to prevent front-running
         or MEV extraction
     title: Transaction Handling Process
@@ -256,6 +257,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 <TagFilter />
 
 # SFC - Multisig Operations
+
+*Revision {frontmatter.version} · Updated {frontmatter.revised} · [Changelog](/certs/changelog)*
 
 The SEAL Framework Checklist (SFC) for Multisig Operations provides best practices for managing multisig wallets
 securely.  It covers governance, risk management, signer security, operational procedures, and emergency operations.

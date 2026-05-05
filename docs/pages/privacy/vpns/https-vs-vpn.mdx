@@ -1,0 +1,73 @@
+---
+title: "HTTPS vs VPN | Security Alliance"
+description: "Why HTTPS does not make VPNs unnecessary. How SNI leakage, DNS query exposure, traffic analysis, and IP-as-identity create a metadata gap that only a VPN can address."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+outline: deep
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# HTTPS vs VPN
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+A common misconception is that HTTPS makes VPNs unnecessary. They solve different problems:
+
+- **HTTPS** encrypts the content of a single connection between your browser (or app) and a specific server. It operates
+  at the application layer — each connection is independently wrapped.
+- **VPN** wraps all your device's traffic at the network layer into a single encrypted tunnel to a gateway you trust.
+  Every app, every protocol, every DNS query goes through it.
+
+They overlap on encryption but diverge on almost everything else:
+
+| Aspect | HTTPS | VPN |
+|--------|-------|-----|
+| What is encrypted | Content of a single connection | All traffic from the device |
+| Who sees the destination | Your ISP, local network, anyone on path (via SNI) | Only the VPN provider |
+| Who sees your IP | Every server you connect to | Only the VPN provider |
+| DNS queries | Typically unprotected unless DoH/DoT is configured | Tunneled through the VPN (if properly configured) |
+| Metadata (timing, volume, patterns) | Fully visible to the local network | Hidden from the local network, visible to the VPN provider |
+
+## The Metadata Gap
+
+Even with HTTPS everywhere, significant metadata leaks by default:
+
+### SNI Leakage
+
+The domain name is sent in plaintext during the TLS handshake. Anyone on your local network can see that you are
+connecting to a specific domain, even if they cannot see the page content. Encrypted Client Hello (ECH) aims to fix
+this but is not yet widely deployed.
+
+### DNS Query Exposure
+
+Unless you have explicitly configured DNS over HTTPS (DoH) or DNS over TLS (DoT), every domain you resolve is
+broadcast as a plain UDP packet on port 53. Your local network and ISP see every lookup.
+
+### Traffic Analysis
+
+Packet sizes, timing, and burst patterns are often enough to infer what you are doing. Loading a video, sending a
+message, or browsing a specific site all have recognizable signatures.
+
+### IP as Identity
+
+Every server you connect to over HTTPS sees your real public IP, which is tied to your ISP account, approximate
+location, and in many jurisdictions, your legal identity.
+
+---
+
+If you only care about someone reading your messages, HTTPS is enough. If you care about someone knowing what you are
+doing — where you go, when, and how often — that is where a VPN earns its place.
+
+</TagProvider>
+<ContributeFooter />

@@ -42,39 +42,16 @@ Some of the key areas to consider are:
    plugins, and other potentially risky execution.
    - See: [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation)
 
-## What’s inside DevSecOps
-
-- **Isolation & Sandboxing**
-  - [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation): Core guidance for containment patterns
-  across CI/CD and automation workflows.
-  - [Execution Sandboxing](/devsecops/isolation/execution-sandboxing): Core runtime isolation controls to limit blast
-  radius and privilege abuse.
-  - [Execution Sandboxing: A Practical Guide](/devsecops/isolation/execution-sandboxing-practical-guide):
-  Implementation playbook for runners, untrusted PRs, secrets, and egress.
-  - [Capability-Based Isolation](/devsecops/isolation/capability-based-isolation): Replace broad privileges with
-  explicit, auditable capability grants.
-  - [Network & Resource Isolation](/devsecops/isolation/network-and-resource-isolation): Enforce deny-by-default
-  networking and strict CPU/memory/resource boundaries.
-  - [Sandboxing for Tool Execution](/devsecops/isolation/sandboxing-for-tool-execution): Secure high-risk tool
-  invocation with constrained runtime and auditable effects.
-  - [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement): Combine sandbox
-  boundaries with policy-as-code for defense in depth.
-- [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment): Build safer pipelines with
-testing, scanning, deterministic builds, and access controls.
-- [Repository Hardening](/devsecops/repository-hardening): Protect repos with branch policies, signed commits, and
-hardened automation settings.
-- [Security Testing](/devsecops/security-testing): Shift-left with SAST, DAST, IAST, and fuzzing to catch issues early.
-- [Implementing Code Signing](/devsecops/code-signing): Strengthen integrity with signed commits/PRs and disciplined
-key management.
-- [Securing Development Environments](/devsecops/integrated-development-environments): Reduce IDE and local environment
-risk with trusted tooling and isolation.
-
 ## Contents
 
 - [Code Signing](/devsecops/code-signing) - Verify code integrity with GPG-signed commits and pull requests
 - [Continuous Integration and Deployment](/devsecops/continuous-integration-continuous-deployment) - Secure your CI/CD pipelines
-- [Data Security & Upgrade Checklist](/devsecops/data-security-upgrade-checklist) - Comprehensive checklist for data security and smart contract upgrades
+- [Data Security Checklist](/devsecops/data-security-upgrade-checklist) - Comprehensive checklist for data security
+  best practices
+- [Governance Proposal Security Across the SDLC](/devsecops/governance-proposal-security) - Threat-model guide to
+  smart contract upgrade governance across the proposal lifecycle
 - [Integrated Development Environments](/devsecops/integrated-development-environments) - Secure your development environment
+- [Isolation & Sandboxing](/devsecops/isolation) - Containment patterns for CI/CD, tool execution, and build pipelines
 - [Repository Hardening](/devsecops/repository-hardening) - Protect your code repositories
 - [Security Testing](/devsecops/security-testing) - Integrate security testing into your development workflow
 

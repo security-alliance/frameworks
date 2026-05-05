@@ -248,3 +248,12 @@ details .vocs_Paragraph {
   }
 }
 
+.footer {
+  align-items: center;
+  color: var(--vocs-color_text3);
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 1.5em;
+  width: 100%;
+}

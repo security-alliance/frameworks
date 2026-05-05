@@ -28,8 +28,8 @@ const CERT_META = {
   'sfc-incident-response': {
     subtitle: 'Detection, response procedures, communication, containment, recovery, and post-incident review.'
   },
-  'sfc-workspace-security': {
-    subtitle: 'Access management, device security, network controls, and data protection.'
+  'sfc-identity-accounts': {
+    subtitle: 'Organizational account inventory, phishing-resistant MFA, credential management, account lifecycle, and takeover monitoring.'
   },
   'sfc-devops-infrastructure': {
     subtitle: 'CI/CD security, infrastructure hardening, secrets management, and deployment controls.'

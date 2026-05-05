@@ -1,6 +1,6 @@
 ---
 title: "SEAL Certification Framework | Security Alliance"
-description: "SEAL Certification Framework: Modular security certifications for DeFi protocols with standardized evaluation criteria and on-chain attestations."
+description: "SEAL Certification Framework: modular operational security certifications for crypto protocols with standardized evaluation criteria and on-chain attestations."
 tags:
   - SEAL/Initiative
   - Certifications
@@ -16,143 +16,150 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Exp
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-SEAL Certifications is a certification framework developed by SEAL to provide standardized guidelines and evaluation
-criteria for assessing the security of DeFi protocols. SEAL Certifications provides targeted modular certifications
-(e.g., [Incident Response](/certs/sfc-incident-response), [Treasury Ops](/certs/sfc-treasury-ops)) that can
-independently validate specific aspects of a protocol's security posture.
+SEAL Certifications is an open-source operational security certification program for crypto protocols.
+Smart contract vulnerabilities were once the dominant cause of crypto exploits; operational failures now
+dominate. Compromised signers, poorly managed multisigs, DNS takeovers, leaked credentials, unmonitored
+infrastructure, and missing incident response playbooks account for the majority of major incidents. Code
+audits don't catch these, because the code isn't the issue.
 
-Using SEAL Certifications will help ensure that protocols follow best practices for their security operations, and
-provide a standard set of criteria for comparing the security of different protocols.
+SEAL Certifications target exactly this gap. The framework evaluates the operational practices that
+determine whether a protocol can actually defend itself, detect an incident, and respond when things go
+wrong.
 
-SEAL Certifications is fully open-source and freely available for any protocol to use.
+## Certification Modules
 
-## How it Works
-
-Unlike broad certifications like SOC 2 or ISO 27001, SEAL Certifications focus on the highest-impact needs of
-protocols, based on what SEAL has observed throughout the industry and in interviews with pilot
-protocols. Each certification focuses on a specific area of security and includes controls relevant to that area.
-Protocols can use certifications independently to evaluate their security posture through self-assessment, or they can
-pursue formal certification through a third-party audit by a SEAL-partnered auditor. After completing a certification
-with a third-party auditor, protocols can publicly display their certification status and are issued an on-chain badge
-to demonstrate their completion of the certification.
-
-## Current Status: RFC Phase
-
-We are currently in a Request for Comment (RFC) Phase until December 31st, 2025. During this period:
-
-- Protocols can begin working through the 5 modular proposed certifications to bring their security standards up to best
-  practices
-- Protocols can sign up for the waitlist for a free 1-hour consultation with the SEAL team to walk through the
-  certification criteria, identify security gaps, and provide valuable feedback [on this
-  form](https://securityalliance.typeform.com/CertsAuditor)
-- Auditors interested in becoming accredited third-party certification issuers can apply [on this form](https://securityalliance.typeform.com/CertsAuditor)
-
-We welcome feedback on the current certifications, suggestions for new modular certifications, and general input on the framework.
-
-## Certifications Being Developed
+The framework covers six modules, each independently scopeable:
 
 <ExportAllCerts />
 
-- **[DevOps & Infrastructure](/certs/sfc-devops-infrastructure.mdx)** - Development environments, CI/CD pipelines,
-  infrastructure security, supply chain
-- **[DNS Security](/certs/sfc-dns-registrar.mdx)** - Domain management, DNS configurations, registrar protection
-- **[Incident Response](/certs/sfc-incident-response.mdx)** - Detection, response procedures, team coordination,
-  emergency operations
-- **[Multisig Ops](/certs/sfc-multisig-ops.mdx)** - Governance, signer security, transaction verification
-- **[Treasury Ops](/certs/sfc-treasury-ops.mdx)** - Treasury architecture, transaction security, DeFi risk management
-- **[Workspace Security](/certs/sfc-workspace-security.mdx)** - Device security, account management, credential
-  handling, insider threats
+- **[Multisig Ops](/certs/sfc-multisig-ops)** — Governance, signer security, transaction verification,
+  emergency procedures
+- **[Treasury Ops](/certs/sfc-treasury-ops)** — Treasury architecture, transaction security, custody,
+  DeFi risk management
+- **[Incident Response](/certs/sfc-incident-response)** — Threat modeling, monitoring, response
+  playbooks, drills
+- **[DevOps & Infrastructure](/certs/sfc-devops-infrastructure)** — Development environment, source
+  code, CI/CD, cloud infrastructure, supply chain
+- **[DNS & Registrar](/certs/sfc-dns-registrar)** — Domain management, DNS controls, registrar security,
+  email authentication
+- **[Identity & Accounts](/certs/sfc-identity-accounts)** — Organizational account inventory,
+  phishing-resistant MFA, credential management, takeover monitoring
+
+See the [changelog](/certs/changelog) for revision history across modules.
+
+## How Certification Works
+
+SEAL maintains the framework and accredits auditing firms. Accredited firms perform the assessments;
+SEAL issues the on-chain certification.
+
+An engagement runs through five steps:
+
+1. **Scoping.** Align on which controls apply and what infrastructure is in scope.
+2. **Evidence collection.** The protocol team gathers documentation and evidence that their practices
+   meet the framework controls.
+3. **Assessment.** The firm reviews evidence against the open-source framework criteria.
+4. **Remediation** (if needed). The firm provides recommendations to close any gaps. The protocol team
+   implements fixes.
+5. **Certification.** Protocols that meet the standard receive a formal on-chain attestation via the
+   Ethereum Attestation Service (EAS), publicly and cryptographically verifiable.
+
+A typical engagement runs a few weeks. Protocols can also use the framework independently for
+self-assessment at any time.
+
+See [Certification Guidelines](/certs/certification-guidelines) for the full process and
+[Certified Auditors](/certs/certified-partners) for accredited firms.
+
+## Program Status
+
+The framework has been validated through pilot analyses with protocols across DeFi, staking, treasury
+management, and infrastructure, plus feedback sessions with auditing firms and independent security
+researchers. Controls have been refined through that process and are now published.
+
+The program is moving from pilot validation into active certification, starting with supervised first
+engagements through accredited firms.
+
+## Get Involved
+
+- **Protocols** interested in a certification engagement or a consultation with the SEAL team on the
+  framework: [sign up here](https://securityalliance.typeform.com/CertsWaitlist).
+- **Auditing firms and independent security researchers** interested in becoming an accredited
+  third-party certification issuer: [apply here](https://securityalliance.typeform.com/CertsAuditor).
 
 ## FAQ
 
 <details>
-<summary>When will Certifications start being issued?</summary>
-
-SEAL is currently working with several auditors and protocols to finalize the certification process. We expect to begin
-issuing certifications in Q1 2026.
-
-In the meantime, protocols are welcome to begin using the SEAL Certifications framework for self-assessments and
-internal evaluations.
-
-</details>
-<details>
 <summary>What's the difference between self-assessments and certified audits?</summary>
 
-Self-assessments are completed by the protocol team themselves, using the SEAL Certifications framework as a guide. They
-are useful for protocols to internally evaluate their own security posture and identify areas for improvement.
-Self-assessments are not verified by a third party and do not result in a formal certification or an endorsed badge.
+Self-assessments are completed by the protocol team using the SEAL Certifications framework as a guide.
+They help protocols internally evaluate their own security posture and identify gaps. Self-assessments
+are not verified by a third party.
 
-Certified audits are completed by a third-party vendor through SEAL's [partner program](/certs/certified-partners.mdx).
-They involve a thorough and independent evaluation of the protocol's security controls against the SEAL Certifications
-framework. Upon successful completion of a certified audit, protocols receive a formal attestation on-chain.
+Certified audits are completed by a third-party accredited firm through SEAL's
+[partner program](/certs/certified-partners). The firm independently evaluates the protocol's security
+controls against the framework. Upon successful completion, protocols receive a formal attestation
+on-chain.
 
 </details>
 <details>
 <summary>What is an attestation?</summary>
 
-Attestations are certificates issued on-chain through the [Ethereum Attestation Service
-(EAS)](https://ethereum.org/en/developers/docs/standards/tokens/eas/) by SEAL to protocols that successfully complete a
-certified audit. Attestations serve as verifiable proof that a protocol has met the requirements of a given SEAL
-certification.
+Attestations are certificates issued on-chain through the
+[Ethereum Attestation Service (EAS)](https://ethereum.org/en/developers/docs/standards/tokens/eas/)
+by SEAL to protocols that successfully complete a certified audit. Attestations serve as verifiable
+proof that a protocol has met the requirements of a given SEAL certification.
 
-Attestations do not indicate that a protocol is completely secure or free from issues. Blockchain security is always
-evolving and novel vulnerabilities arise regularly. Instead, attestations demonstrate that a protocol has implemented a
-set of standardized best-practices to manage and mitigate security risks.
+Attestations do not indicate a protocol is free from security issues. Blockchain security evolves
+continuously and novel vulnerabilities arise regularly. Attestations demonstrate that a protocol has
+implemented a set of standardized operational practices to manage and mitigate risk.
 
 </details>
 <details>
 <summary>What if a protocol doesn't meet all the certification requirements?</summary>
 
-Protocols going through a certified audit that don't meet all the certification requirements will receive a report from
-the auditor detailing the gaps in their security posture. If the protocol decides to address the gaps, they can work
-with the auditor to complete a re-assessment of the controls.
+Protocols that don't meet all requirements receive a report from the auditor detailing the gaps. If the
+protocol addresses the gaps, they can work with the auditor to complete a re-assessment.
 
 </details>
-
 <details>
 <summary>What kind of evidence is required?</summary>
 
-Evidence requirements vary by certification and control. Generally, protocols need to provide documentation,
-screenshots, or other artifacts demonstrating the implementation of each control. This might mean a list of signer
-addresses for a multisig, incident response playbooks, or screenshots of DNS configurations.
+Evidence varies by certification and control. Protocols generally provide documentation, screenshots, or
+other artifacts demonstrating implementation of each control: a signer registry for multisig, incident
+response playbooks, DNS configuration records, and so on.
 
 </details>
 <details>
 <summary>Who can see our attestation?</summary>
 
-Attestations are publicly accessible on-chain through the EAS. The detailed audit reports and evidence provided during
-the audit process are confidential between the protocol and the auditor.
+Attestations are publicly accessible on-chain through EAS. Detailed audit reports and evidence shared
+during the assessment process are confidential between the protocol and the auditor.
 
 </details>
 <details>
-<summary>Can we use the SEAL logo / badge?</summary>
+<summary>Can we use the SEAL badge?</summary>
 
-Protocols that successfully complete a certified audit will receive a badge from SEAL. Protocols are welcome to display
-this badge on their website or documentation to demonstrate their certification.
+Protocols that successfully complete a certified audit receive a badge from SEAL to display on their
+website or documentation.
 
 </details>
 <details>
 <summary>Is there a list of certified protocols?</summary>
 
-SEAL will maintain a list of protocols that have successfully completed certified audits after the certification program
-is fully launched.
-
-{/* SEAL maintains a list of protocols that have completed certified audits. You can find the list
-here: [Certified Protocols](/certs/certified-protocols.mdx). */}
+SEAL will maintain a public list of certified protocols as the program launches.
 
 </details>
 <details>
-<summary>How can auditors become certified?</summary>
+<summary>How can auditors become accredited?</summary>
 
-SEAL works with a group of third-party auditing firms to provide certification audits. For more information on the
-process or how to become certified, see our [Certified Auditors](/certs/certified-partners) page.
+SEAL accredits third-party auditing firms through a supervised first engagement. See
+[Certified Auditors](/certs/certified-partners) for the process.
 
 </details>
 <details>
-<summary>Can a project lose their certification?</summary>
+<summary>Can a protocol lose its certification?</summary>
 
-Yes, certifications can be revoked if a protocol is found to be non-compliant with the certification requirements for an
-extended period of time. Certifications are also time-limited and require periodic re-assessment to maintain.
+Yes. Certifications can be revoked if a protocol is found to be non-compliant for an extended period.
+Certifications are also time-limited and require periodic re-assessment.
 
 </details>
 

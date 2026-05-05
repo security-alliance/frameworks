@@ -105,6 +105,18 @@ serverless functions that run on Tenderly's infrastructure). The CLI and SDKs ar
 - **Website:** [tenderly.co](https://tenderly.co)
 - **GitHub:** [Tenderly](https://github.com/Tenderly) (CLI, SDKs, framework plugins)
 
+### TxScope
+
+Pre-signing transaction threat scanner for Solana multisigs. Monitors Squads Protocol vaults for pending proposals,
+simulates each transaction against mainnet via Helius RPC, and generates plain-language threat reports before any
+signer approves. Detection modules cover durable nonces, authority and admin transfers, withdrawal guard
+manipulation, known attack pattern matching, instruction-level trace and decode, proposer history and anomaly
+detection, and risk scoring (0–100). Free for on-demand scans; paid tiers for continuous monitoring with Telegram
+and Slack alerts.
+
+- **Chains:** Solana
+- **Website:** [txscope.com](https://txscope.com)
+
 ## Reliability Considerations
 
 Your monitoring system is only effective if it is itself reliable. Before committing to a tooling setup, evaluate
@@ -137,7 +149,8 @@ Your monitoring is only as good as the delivery mechanism for its alerts.
 
 - **Prefer:** PagerDuty or OpsGenie (escalation policies, on-call rotations, delivery receipts)
 - **Use with care:** Slack, Discord, Telegram (useful for visibility, but easy to miss; no delivery guarantees)
-- **Don’t rely on email as the sole channel for critical alerts**: Email may be appropriate as a secondary or audit channel, not primary paging (high latency, often filtered to spam)
+- **Don’t rely on email as the sole channel for critical alerts**: Email may be appropriate as a secondary or audit
+channel, not primary paging (high latency, often filtered to spam)
 
 For high-severity alerts, use a dedicated paging tool with escalation so that if the primary on-call misses the
 alert, it automatically escalates to a secondary.

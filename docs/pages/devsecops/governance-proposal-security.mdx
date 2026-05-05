@@ -1,0 +1,655 @@
+---
+title: "Governance Proposal Security Across the SDLC | Security Alliance"
+description: "Threat-model guide to smart contract upgrade governance across the proposal lifecycle: supply chain, invariants, reproducible calldata, execution, and monitoring."
+tags:
+  - Engineer/Developer
+  - Operations & Strategy
+  - Smart Contracts
+contributors:
+  - role: wrote
+    users: [quillaudits, dickson, ElliotFriedman]
+  - role: fact-checked
+    users: [mattaereal]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, GovernanceSDLCPipeline, ChecklistItem } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Governance Proposal Security Across the SDLC
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: A governance proposal controls the entire protocol.
+> Treat it as a software artifact with its own SDLC — plan with explicit
+> authority, build with invariants that run against live state, review the
+> full payload (not just the .sol diff), and make the onchain calldata
+> reproducible so signers and voters can independently verify what they
+> are approving.
+
+Smart contract upgrade proposals concentrate more risk in a single transaction
+than almost any other operation a protocol performs: they can rewrite logic,
+move treasury funds, change admin keys, and alter every user position. A
+mistake, a hostile developer machine, a compromised CI runner, or a signer who
+blind-signs the payload can each cause the same outcome — a proposal that
+differs from what was reviewed, executed with full authority.
+
+This page maps adversaries onto a four-stage lifecycle and gives a checklist
+per stage. Two areas get extra attention because they consistently fail in
+practice and rarely appear in upgrade checklists: **invariant suites that run
+against live mainnet state** (Stage 2) and **reproducible onchain calldata
+verified by CI** (Stage 4).
+
+<GovernanceSDLCPipeline />
+
+## How to read this page
+
+The graphic is the navigation: each stage node is a phase in the proposal
+lifecycle, and each coloured dot above a stage is one threat that lands there.
+Dot colours follow the same category palette used on the
+[Attack Surface Overview](/intro/attack-surface) so the picture is consistent
+across pages. Click a stage to open its detail panel, click a dot to jump to
+the specific threat, and use the "Jump to section" link to scroll down to the
+matching checklist below.
+
+Stage 4 is intentionally the densest. Once a proposal is posted onchain the
+calldata is immutable, which is exactly why supply-chain integrity, signer
+verification, and post-execution monitoring all have to converge there.
+
+## Stage 1: Plan
+
+**Purpose.** Decide what is changing and who is authorized to change it before
+a single line of code is written. Governance failures at this stage lock in
+risk that no later audit can fully remove.
+
+### Threats at this stage
+
+- **Undefined upgrade authority** — no explicit owner for `upgradeTo()` /
+  ProxyAdmin, unclear multisig role, or a single EOA holding upgrade rights.
+- **Rogue or compromised proposer** — an insider submits a proposal that looks
+  routine but embeds a parameter change or delegatecall target that hands over
+  control.
+- **Missing emergency pause / rollback** — no pause switch, no forward-fix
+  plan, no tested rollback, so when execution goes wrong there is no safe stop.
+- **Unmapped downstream effects** — developers haven't thought through and
+  enumerated every downstream flow-on effect of the proposal in the system
+  being modified, so second-order consequences only surface after execution.
+  The more complex the system, the more this matters.
+
+### Defenses
+
+- Documented upgrade architecture (proxy pattern, admin, timelock).
+- Explicit roles: proposer, reviewer, approver, executor.
+- Formal change-management process with a written proposal spec.
+- Tested emergency pause and rollback / forward-fix plan.
+
+### Checklist
+
+<ChecklistItem title="Comprehensive upgrade architecture documentation">
+
+Document your upgrade mechanism thoroughly: proxy pattern type (UUPS, Transparent Proxy, Diamond/EIP-2535, Beacon
+Proxy), upgrade authorization model (multisig, timelock, governance), admin key custody, and emergency pause
+capabilities. Include diagrams showing contract interaction flows before and after upgrades. For UUPS (Universal
+Upgradeable Proxy Standard), document the `upgradeTo()` function and authorization checks. For Transparent
+Proxies, document ProxyAdmin ownership. For Diamond patterns, document facet management. Use tools like Slither's
+`upgradeability` printer to analyze patterns.
+
+</ChecklistItem>
+
+<ChecklistItem title="Clear roles and responsibilities for upgrade execution">
+
+Define who can propose, review, approve, and execute upgrades. Typical roles: Developer (writes upgrade code),
+Auditor (security review), Multisig Signers (approval), DevOps (deployment execution), Community (governance vote
+if applicable). Document each role's responsibilities, required skills, and contact information. For DAO-governed
+protocols, specify governance proposal requirements, voting thresholds, and timelock durations. Include on-call
+rotations for emergency upgrades. This prevents confusion during time-critical situations.
+
+</ChecklistItem>
+
+<ChecklistItem title="Formal change management process">
+
+Establish a structured process for all upgrades: 1) Proposal submission with technical specification and
+rationale, 2) Security review by internal team, 3) External audit if material changes, 4) Testnet deployment and
+validation, 5) Governance approval (if applicable), 6) Mainnet deployment during maintenance window, 7)
+Post-deployment verification, 8) Public disclosure. Use issue tracking (GitHub, Linear) to manage upgrade
+proposals. Require approval from the security team, the technical lead, and the product owner before proceeding.
+Document decision rationale for audit trails.
+
+</ChecklistItem>
+
+<ChecklistItem title="Emergency pause and rollback procedures">
+
+Implement circuit breakers that allow rapid response to exploits: `pause()` functions (using OpenZeppelin's
+Pausable pattern) to halt operations, and clear rollback procedures. Document trigger conditions for emergency
+pause (e.g., suspicious transactions, exploit detection, oracle manipulation). Define who can activate pause
+(multisig threshold, emergency admin), how quickly they can act (timelock delays), and rollback options (proxy
+reversion, emergency upgrade to safe version). Test pause mechanisms on testnet and mainnet clones. Include
+contact trees for rapid multisig coordination during incidents.
+
+</ChecklistItem>
+
+Rollback to a previous implementation is not always safe or possible, especially after storage migrations, one-way
+state changes, or downstream integrations have already reacted. In many cases, the safer path is to pause, contain
+impact, and deploy a forward fix or a controlled migration.
+
+## Stage 2: Build and Test
+
+**Purpose.** Write the implementation, protect its state, and prove with tests
+— against live mainnet state — that the proposal does what the spec says and
+nothing more.
+
+### Threats at this stage
+
+- **Storage layout collision** — reordered, retyped, or mid-inserted state
+  variables corrupt user balances and admin slots after the proxy points at
+  the new implementation.
+- **Re-initialization attack** — unprotected `initialize()` on the new
+  implementation lets an attacker reset owner, role admin, or critical
+  parameters after the upgrade lands.
+- **No proposal-level invariant suite** — without invariants asserting user
+  positions are preserved, a proposal that silently widens an access-control
+  ring or zeroes a reserve can pass unit tests.
+- **Tests do not fork live state** — tests run against a clean deployment
+  instead of real mainnet state, so interactions with existing user positions,
+  oracles, and integrators are untested.
+- **Tests don't run against the deployment script** — integration and
+  invariant tests exercise a hand-wired test setup rather than the actual
+  deploy script, so the system state under test is not the system state that
+  ships. A passing suite gives false confidence and has caused real upgrade
+  incidents.
+- **Fork-test of the unmodified protocol** — forking mainnet at HEAD and
+  running tests without first executing the proposal's calldata tests the
+  status quo, not the post-proposal world. A proposal that breaks an
+  invariant slips through because the fork never saw the change.
+
+### Defenses
+
+- Storage layout compatibility checks (OpenZeppelin upgrades, Slither).
+- Initializer protection and `_disableInitializers()` on implementations.
+- Least-privilege access control on upgrade functions.
+- Invariant suite asserting no user position is materially harmed.
+- Fork mainnet at the HEAD block, execute the proposal's calldata on that
+  fork, then run the integration and invariant suite against the
+  post-execution state — never the unmodified protocol.
+- Integration and invariant tests execute the actual deployment script, so
+  the system under test is bit-identical to what will ship.
+
+### Checklist
+
+<ChecklistItem title="Strict access controls on upgrade functions">
+
+Secure upgrade functions with multi-layer authorization. Use OpenZeppelin's `AccessControl` or `Ownable` patterns
+with multisig ownership (Safe, Gnosis). Require minimum 3-of-5 or 4-of-7 multisig thresholds for production
+upgrades. For UUPS, protect `upgradeTo()` with `onlyOwner` or `onlyRole(UPGRADER_ROLE)`. Add timelock delays
+(24-72 hours) to provide community review windows and enable emergency response. Never use single EOA (Externally
+Owned Account) admin keys for production contracts. Consider on-chain governance with Compound Governor or
+OpenZeppelin Governor for decentralized protocols.
+
+</ChecklistItem>
+
+<ChecklistItem title="Storage layout compatibility verification">
+
+Storage collisions are a common source of upgrade bugs. When upgrading, you must maintain storage layout
+compatibility: never change the order of existing state variables, never change types of existing variables, never
+insert new variables in the middle (only append at the end), and gap slots properly. Use OpenZeppelin's
+`@openzeppelin/hardhat-upgrades` or `@openzeppelin/truffle-upgrades` plugins that automatically validate storage
+layout compatibility. Manually review storage with Slither's `upgradeability` checks. Test storage integrity by
+reading state before and after upgrade on testnet.
+
+</ChecklistItem>
+
+<ChecklistItem title="Initializer protection against re-initialization">
+
+Upgradeable contracts use `initialize()` functions instead of constructors. Protect these with OpenZeppelin's
+`initializer` modifier to prevent re-initialization attacks that could reset admin controls or drain funds. For
+UUPS contracts, ensure implementation contracts are initialized in the constructor (`_disableInitializers()`
+pattern) to prevent direct implementation usage. Verify that proxy initialization cannot be front-run during
+deployment. Check that new upgrade logic doesn't introduce new initializers that could be exploited.
+
+</ChecklistItem>
+
+<ChecklistItem title="Comprehensive testnet deployment (Sepolia, Holesky, Amoy)">
+
+Deploy all upgrades to public testnets matching your production chain (Ethereum → Sepolia/Holesky, Polygon →
+Amoy, Arbitrum → Arbitrum Sepolia, Optimism → Optimism Sepolia). Use testnet configurations identical to mainnet
+(same multisig threshold, same timelock delays, same governance parameters). Execute the complete upgrade flow,
+including multisig signing, timelock queuing, and execution. This catches deployment script errors, gas estimation
+issues, and interaction bugs before mainnet deployment. Document testnet deployment addresses and transaction
+hashes.
+
+</ChecklistItem>
+
+<ChecklistItem title="State integrity verification pre and post-upgrade">
+
+Before and after upgrade, verify that critical state is preserved correctly. Write scripts to snapshot state
+before upgrade (token balances, user permissions, protocol parameters, accumulated rewards, LP positions) and
+verify it matches after upgrade. Use Hardhat's `mainnet-forking` to test upgrades against production state
+locally. Check that storage variables maintain their values, mappings are intact, and state doesn't unexpectedly
+reset. For DeFi protocols, verify total value locked (TVL) is unchanged, user balances match, and reward
+calculations continue correctly.
+
+</ChecklistItem>
+
+<ChecklistItem title="Comprehensive regression testing suite">
+
+Run full test suite against upgraded contracts: unit tests for new functionality, integration tests for contract
+interactions, end-to-end tests for user workflows, and backwards compatibility tests. Verify that all existing
+functionality still works (no regressions). Test edge cases and error conditions. For DeFi: test deposits,
+withdrawals, swaps, liquidations, governance votes, reward claiming. Use coverage tools (hardhat-coverage,
+solidity-coverage) to ensure >90% code coverage. Include tests for upgradability-specific risks (storage
+collisions, initializer vulnerabilities, proxy delegation).
+
+</ChecklistItem>
+
+<ChecklistItem title="Gas consumption and performance evaluation">
+
+Compare gas costs before and after upgrade for common operations. Increases of >10-20% warrant investigation and
+may indicate inefficient code or unintended state bloat. Use Hardhat's gas reporter or Foundry's `forge snapshot`
+to track gas metrics over time. For high-throughput protocols, benchmark transaction throughput and latency.
+Optimize critical paths (token transfers, swaps, mints) to minimize user costs. Consider Layer 2 implications if
+gas costs become prohibitive.
+
+</ChecklistItem>
+
+<ChecklistItem title="Failure scenario and rollback simulation">
+
+Test disaster scenarios on testnet: what if the upgrade transaction fails mid-execution? What if the new
+implementation has a critical bug? Practice rolling back to the previous implementation version. For
+timelock-based systems, practice expedited upgrades through emergency multisig. Test `pause()` functionality and
+verify it halts operations correctly. Simulate oracle failures, reentrancy attacks, and access control bypasses
+in the new code. Document lessons learned and update procedures accordingly.
+
+</ChecklistItem>
+
+### Invariant suites against the proposal
+
+A regression suite tells you that the functions you thought of still work. An
+**invariant suite** tells you that the properties the protocol promises to
+users are still true — whether the upgrade was supposed to touch them or not.
+For an upgrade, this is the single most useful class of test, because a
+malicious or careless proposal usually does not break a named unit test; it
+quietly changes a state that the tests never asserted on.
+
+**What to encode.** Write invariants that answer the question: "given that any
+code the proposal touches can now behave differently, can a user end up
+worse off than before?" Common examples:
+
+- Total supply of any debt or share token is unchanged by the upgrade (no
+  hidden mint).
+- Sum of user collateral ≥ sum of user debt × liquidation threshold for every
+  lending position.
+- For every open vault, `redeem(balanceOf(user))` returns at least as much as
+  before the upgrade.
+- Role membership (`hasRole(ADMIN_ROLE, x)`) is unchanged except for a
+  pre-declared, reviewed diff.
+- Oracle reads used by liquidation logic still fall in the same historical
+  range.
+
+**Worked example — lending market.** For a proposal that touches the interest-rate
+model, the invariant suite should assert:
+
+1. Before applying the proposal: snapshot every borrower's collateral ratio.
+2. Apply the proposal calldata on a mainnet fork at the head block.
+3. For every borrower, the new collateral ratio is ≥ the previous value minus a
+   tightly bounded rounding delta.
+4. No position that was solvent before is insolvent after.
+
+If step 3 fails for a single borrower, the proposal is not safe to ship even
+if every unit test passes.
+
+**Fork-test the exact calldata.** Do not test an idealized version of the
+proposal. Encode the raw calldata that will be posted onchain, execute it on
+a mainnet fork at the head block, and run the invariant suite after. This is
+what signers and voters will actually approve.
+
+**Publish the suite.** Commit the invariants, the fork test, and the proposal
+calldata to the repo before the onchain proposal is posted. That lets any
+signer, voter, or watchdog re-run the same checks from a clean checkout and
+form an independent opinion — which is the whole point.
+
+See also [Fuzz Testing](/security-testing/fuzz-testing),
+[Formal Verification](/security-testing/formal-verification), and
+[Integration Testing](/security-testing/integration-testing).
+
+## Stage 3: Review and Audit
+
+**Purpose.** Get independent eyes on the full change — not just the .sol diff
+but the deployment scripts, proposal payload, and operational runbooks that
+actually reach mainnet.
+
+### Threats at this stage
+
+- **Audit scoped to .sol only** — the audit covers the Solidity diff but
+  excludes deploy scripts, multisig transaction builders, and initialization
+  code, where many real upgrade bugs hide.
+- **Deployment-script bug** — a typo in a constructor argument, a wrong
+  address literal, an incorrect parameter, or an incorrect proxy initializer
+  silently ships a broken or hostile deployment.
+- **Undocumented risk acceptance** — medium/low audit findings are closed
+  without public rationale, so signers and voters do not know what risks were
+  accepted on their behalf.
+- **Tests diverge from the deployment script** — integration tests set up the
+  system a different way than the deployment script actually will, so the
+  behavior that was tested is not the behavior that ships. A passing suite
+  gives false confidence and has caused real upgrade incidents.
+
+### Defenses
+
+- Audit scope includes contracts, deploy scripts, and proposal payloads.
+- Line-by-line review of upgrade and migration scripts.
+- Internal code review of the governance proposal by a reviewer who is not
+  the author.
+- All findings resolved or explicitly, publicly accepted with rationale.
+- Integration tests execute the actual deployment script, so the system
+  state under test is bit-identical to what will ship.
+
+### Checklist
+
+<ChecklistItem title="Independent audit of upgrade contracts and logic">
+
+For material upgrades (new features, changes to value transfer logic, access control modifications), obtain
+independent security audits from reputable firms (Trail of Bits, OpenZeppelin, ConsenSys Diligence, Certora,
+Spearbit). Share the complete codebase, including proxy contracts, implementation contracts, deployment scripts,
+and test suites. Provide a clear upgrade specification and threat model. Budget 2-4 weeks for audit, depending on
+complexity. Address all findings (Critical/High immediately, Medium/Low with documented risk acceptance). Publish
+audit reports publicly for transparency.
+
+</ChecklistItem>
+
+<ChecklistItem title="Thorough review of upgrade and migration scripts">
+
+Deployment scripts are often overlooked but are critical attack vectors. Review all Hardhat/Foundry scripts,
+multisig transaction builders, and initialization code. Verify addresses (no hardcoded addresses that could be
+typos), verify constructor arguments, check that proxy initialization is correct, and ensure multisig
+configurations match production. Test scripts on the local network and testnet before the mainnet. Use script
+version control and require code review. For complex migrations (data transfers, token migrations), write formal
+specifications and verify script correctness with testing frameworks like Foundry or Hardhat.
+
+</ChecklistItem>
+
+<ChecklistItem title="Audit scope explicitly covers the full proposal payload">
+
+The security firm's scope statement should list, by file and address: proxy contracts, implementation contracts,
+deploy scripts, proposal-generation scripts, the exact calldata that will be posted onchain, and any governance
+module involved (Governor, Timelock). Upgrades that audit only the `.sol` diff while leaving the script that
+composes the calldata unreviewed are a recurring source of incidents. Require the audit report to state the
+proposal payload hash it reviewed.
+
+</ChecklistItem>
+
+<ChecklistItem title="Public disclosure of accepted risk">
+
+For every finding that is resolved by "risk accepted" rather than "fixed", publish a short rationale before
+execution — ideally in the same repo commit that freezes the proposal calldata. Signers and voters should be
+able to see the list of accepted risks next to the upgrade. This makes it impossible for a reviewer to wave
+through a finding without anyone else noticing.
+
+</ChecklistItem>
+
+<ChecklistItem title="Integration tests run against the real deployment script">
+
+Integration tests MUST exercise the exact deployment script that will run on mainnet — not a hand-written
+setup that looks equivalent. If `script/Deploy.s.sol` (or your equivalent) produces a different system state
+than your test harness parameterizes, then the suite that passed is testing a different system than the one
+that ships. That divergence is a well-documented source of false confidence and real security incidents where user funds have been stolen.
+Have the integration tests execute the deployment script itself, then run invariants and behavioral tests
+against the resulting state. The more complex the system, the more surface area exists for the script and
+the test to drift apart, so the more strictly this needs to be enforced.
+
+</ChecklistItem>
+
+See also [External Security Reviews](/external-security-reviews/overview) and
+[Audit Preparation Guide](/external-security-reviews/smart-contracts/preparation).
+
+## Stage 4: Propose, Verify Onchain Calldata, and Monitor
+
+**Purpose.** Everything converges here. The proposal is posted onchain,
+calldata becomes immutable, multisig signers and voters must verify what they
+are approving, and the protocol must stay observable long after execution.
+
+### Threats at this stage
+
+- **Calldata does not match audited code** — the bytes posted onchain differ
+  from the reviewed source because of a last-minute edit, a different
+  compiler, or a hostile build machine, and no one can tell by eye.
+- **Governance supply-chain compromise** — a compromised dependency, CI
+  runner, IDE extension, or developer machine rewrites calldata between
+  review and proposal. Pure code audits miss this.
+- **Blind multisig signing** — signers approve the proposal payload without
+  independently decoding calldata, simulating the transaction, or
+  cross-checking against published reproduction scripts.
+- **Governance attack on vote** — flash-loaned voting power, bribed delegates,
+  or low quorum push through a malicious proposal inside the voting window.
+- **No post-execution monitoring** — once the upgrade lands, no one watches
+  the invariants, so a slow-draining exploit enabled by the upgrade can run
+  for days before it is noticed.
+
+### Defenses
+
+- Reproducible proposal calldata built from a clean checkout.
+- CI-verified calldata verified against what is onchain as a third-party witness, matched exactly, byte-for-byte.
+- Signer runbook: decode calldata, simulate tx, compare hashes.
+- Timelock delay with upgrade intent visible onchain.
+- High-threshold multisig, hardware wallets, scheduled windows.
+- Continuous onchain invariants, alerting, and on-call rotation.
+
+### Reproducible calldata
+
+Once a proposal is posted onchain, the calldata is what executes —
+everything upstream (the code, the audit, the reviewer's opinion) is only
+relevant if those bytes match it. The problem is that **neither the
+developer's machine nor the proposer's machine is trustworthy**. Both can be
+compromised. A malicious IDE extension, a compromised `node_modules`, a
+tampered Foundry binary, or a live attacker mid-call can rewrite the calldata
+between the reviewed commit and the posted transaction.
+
+The answer is to make the calldata **reproducible from the reviewed source**,
+and to rebuild it in a trusted CI environment as an independent witness.
+
+**Reproduction protocol.**
+
+1. **Freeze the source.** Tag the commit that will produce the proposal
+   calldata. Require all downstream artifacts to reference it.
+2. **Pin the toolchain.** Commit exact Solidity version, Foundry/Hardhat
+   version, and library versions. Use a lockfile.
+3. **Build locally on a clean checkout.** From a fresh clone of the tagged
+   commit, run the proposal-generation script and record the output calldata
+   (or its keccak hash).
+4. **Rebuild in CI.** A GitHub Actions (or equivalent) workflow, running on a
+   pristine ephemeral runner, clones the same commit and runs the same script.
+   The job **fails** if the calldata hash it produces does not match the
+   committed reference hash.
+5. **Match against the onchain proposal.** After the proposal is posted,
+   either a signer script or a CI job reads the proposal calldata back from
+   chain and asserts byte-for-byte equality with the CI-verified value.
+6. **Publish the reproduction script and its output.** Put the script, the
+   expected calldata hash, and the CI workflow in the repo so that anyone —
+   a signer, a delegate, a security researcher — can re-run the whole thing.
+
+The CI run is the third witness. The developer's machine and the proposer's
+machine are the first two. If any of the three disagree, stop.
+
+**Worked example.** A Governor proposal calls
+`Timelock.schedule(target, value, data, predecessor, salt, delay)`. The
+reproducible pipeline emits `data` (typically ABI-encoded function calls to
+the protocol) and the full `schedule(...)` calldata. The published artifact
+is: `(commitHash, solcVersion, scheduleCalldataHash)`. The CI workflow
+rebuilds `scheduleCalldataHash` from `commitHash + solcVersion` and fails if
+it drifts. Signers run a short script that fetches the onchain proposal,
+decodes it, and asserts the same hash.
+
+This closes the gap where every link upstream — code, tests, audit — was
+fine, but a hostile dev machine quietly changed `target` or `data` before
+the transaction was broadcast.
+
+See also
+[CI/CD Security](/devsecops/continuous-integration-continuous-deployment),
+[Repository Hardening](/devsecops/repository-hardening), and
+[IDE Security](/devsecops/integrated-development-environments).
+
+### Execution hygiene
+
+<ChecklistItem title="Multi-signature execution with sufficient threshold">
+
+Execute mainnet upgrades through battle-tested multisig setups. Use production-grade thresholds chosen for your
+asset value, signer reliability, geographic distribution, and emergency-response needs. Higher thresholds can
+improve security, but they also reduce liveness during incidents. As a reference, you could consider a minimum of
+3-of-5 for medium security and 4-of-7 or higher for high security (treasury, protocol ownership). Diversify
+signers geographically and organizationally (internal team, advisors, investors, community members). Use hardware
+wallets (Ledger, Trezor) for signer keys, never hot wallets. Practice simulation signing on testnet before
+mainnet. Document the signing process, verify transaction details with tools like Tenderly or Safe Transaction
+Builder, and coordinate timing for time-sensitive upgrades.
+
+</ChecklistItem>
+
+<ChecklistItem title="Time-lock delays for community review">
+
+Implement on-chain timelocks (24-72 hours typical) between upgrade approval and execution. This provides
+transparency, allows community review of upgrade code and transaction parameters, enables emergency response if
+issues are discovered, and reduces trust in multisig signers. Use battle-tested implementations like
+OpenZeppelin's TimelockController or Compound's Timelock. For governance-driven protocols, timelocks are essential
+for decentralization. For routine upgrades, publish upgrade intentions publicly during the timelock period with
+links to code changes and audit reports. For emergency or security-sensitive fixes, disclosure timing should be
+carefully coordinated so that the mitigation is live before unnecessary details are broadcast.
+
+</ChecklistItem>
+
+<ChecklistItem title="Scheduled maintenance windows and user communication">
+
+Announce upgrades in advance through all communication channels: website banner, Twitter, Discord, Telegram,
+governance forum. Provide 48-72 hours' notice for major upgrades, 1 week for breaking changes. Schedule upgrades
+for periods when the required engineering, security, governance, and incident response personnel are available and
+monitoring coverage is strongest. Lower-traffic windows can help, but strong response coverage matters more than
+simply choosing weekends or off-hours. Clearly communicate expected downtime (if any), required user actions (if
+any), such as frontend refreshes, re-signing approvals, or migration steps, and expected changes. After the
+upgrade, publish the summary with transaction hashes, deployed contract addresses, audit reports, and changelog.
+This builds trust and allows ecosystem participants (frontends, aggregators, analytics) to prepare.
+
+</ChecklistItem>
+
+<ChecklistItem title="Signer verification runbook">
+
+Before signing, every signer follows the same short checklist: (1) fetch the onchain proposal and decode its
+calldata with an independent tool (Tenderly, Safe Transaction Builder, a local `cast decode`); (2) compare the
+decoded calls and target addresses against the published proposal spec; (3) check the calldata hash against the
+CI-verified reference; (4) simulate the transaction on a mainnet fork and confirm the invariant suite passes.
+A signer who cannot complete this checklist should not sign. See
+[Multisig Runbooks](/multisig-for-protocols/runbooks/overview) and
+[Security Council Best Practices](/governance/council-best-practices).
+
+</ChecklistItem>
+
+### Post-execution monitoring
+
+<ChecklistItem title="Real-time monitoring during upgrade execution">
+
+During upgrade execution, maintain active monitoring with multiple team members online. Watch for: transaction
+confirmation and success, event emission and proper indexing, protocol health metrics (TVL, active users,
+transaction success rate), gas prices and network congestion, unusual transaction patterns or exploits, social
+media for user reports or concerns. Use monitoring platforms like Tenderly for transaction traces, Dune Analytics
+for protocol metrics, and OpenZeppelin Defender for automated monitoring. Have incident response procedures ready.
+Keep multisig signers on standby for emergency pause if needed. After successful upgrade, monitor intensively for
+24-48 hours.
+
+</ChecklistItem>
+
+<ChecklistItem title="Continuous invariant monitoring after the upgrade">
+
+The invariant suite from Stage 2 is not just for pre-flight testing. Run the same invariants against live state
+on a schedule (every block for high-value protocols, every few minutes otherwise). Alert on any breach — total
+supply drift, collateral-ratio degradation, unexpected role changes, oracle values outside expected range. A slow
+exploit enabled by an upgrade will often violate exactly the invariants that were supposed to hold, so continuous
+checking converts a multi-day incident into a minutes-long one. See [Monitoring Overview](/monitoring/overview).
+
+</ChecklistItem>
+
+<ChecklistItem title="On-call rotation with emergency pause authority">
+
+Maintain an on-call schedule, and practice tabletop exercises to prepare for governance proposal security
+incidents.
+
+</ChecklistItem>
+
+---
+
+## Additional Web3-Specific Considerations
+
+### Common Proxy Patterns
+
+<ChecklistItem title="UUPS (Universal Upgradeable Proxy Standard - EIP-1822)">
+
+Implementation contract contains upgrade logic, more gas-efficient but riskier (bug in upgrade logic can brick
+the contract). Use OpenZeppelin's UUPS implementation.
+
+</ChecklistItem>
+
+<ChecklistItem title="Transparent Proxy">
+
+Separates upgrade logic into ProxyAdmin contract, safer but higher gas costs. Admin calls go to ProxyAdmin, user
+calls go to implementation.
+
+</ChecklistItem>
+
+<ChecklistItem title="Diamond Pattern (EIP-2535)">
+
+Supports multiple implementation contracts (facets), allows unlimited contract size, complex but powerful for
+large protocols.
+
+</ChecklistItem>
+
+<ChecklistItem title="Beacon Proxy">
+
+Multiple proxies share one implementation reference (beacon), efficient for deploying many identical upgradeable
+contracts.
+
+</ChecklistItem>
+
+### Real-World Proposal Failures
+
+<ChecklistItem title="Wormhole Bridge (Feb 2022)">
+
+Signature verification bypass in upgraded guardian logic allowed attacker to mint 120,000 wETH ($325M).
+Insufficient testing of upgrade logic and access controls.
+
+</ChecklistItem>
+
+<ChecklistItem title="Nomad Bridge (Aug 2022)">
+
+Upgrade introduced bug where zero hash was treated as valid proof, allowing anyone to withdraw funds ($190M
+loss). Lack of proposal audits, reviews, integration and invariant testing locally and in CI were all root
+causes of this unsafe proposal landing.
+
+</ChecklistItem>
+
+<ChecklistItem title="Compound cETH — Proposal 117 (Aug 2022)">
+
+[Proposal 117](https://compound.finance/governance/proposals/117) upgraded the cETH market's price-feed
+integration, but the new implementation was incompatible with the Chainlink oracle interface the market
+consumed, so cETH oracle reads returned invalid values and the market was effectively frozen for borrows and
+liquidations. The root cause was the absence of integration tests exercising the downstream oracle consumers
+against the upgraded contracts — the proposal passed review, but no test fork executed it against the live
+oracle integration. Remediation required a follow-up governance proposal through the timelock, extending
+market disruption across several days.
+
+</ChecklistItem>
+
+<ChecklistItem title="Yearn Finance yUSDT (Apr 2023)">
+
+The yUSDT vault was deployed in 2020 with the wrong fulcrum address — it pointed at `iUSDC` instead of `iUSDT`.
+The misconfiguration sat in production for roughly 1,000 days before an attacker exploited it in April 2023 to
+mint over a quadrillion yUSDT and drain roughly $11.5M. Root cause: a parameter error in the deployment script
+that was never caught by integration tests or a deployment-script review — exactly the failure mode Stage 2 and
+Stage 3 of this page's checklists are designed to prevent.
+[Victim contract on Etherscan](https://etherscan.io/address/0x83f798e925BcD4017Eb265844FDDAbb448f1707D).
+
+</ChecklistItem>
+
+These incidents highlight why rigorous testing, specifically applied to governance proposals and their associated
+deployment scripts, is essential for safe upgrades.
+
+---
+
+</TagProvider>
+<ContributeFooter />

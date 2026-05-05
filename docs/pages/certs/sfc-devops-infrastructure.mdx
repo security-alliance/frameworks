@@ -1,6 +1,8 @@
 ---
 title: "SFC: DevOps & Infrastructure | Security Alliance"
 description: "SFC DevOps & Infrastructure certification: development environment security, source code management, supply chain security, CI/CD pipeline controls, infrastructure access, and cloud security monitoring."
+version: "1.1"
+revised: "2026-04-17"
 tags:
   - SEAL/Initiative
   - Certifications
@@ -21,7 +23,7 @@ cert:
       and infrastructure operations?
     baselines:
       - Policy covers environment standards, access controls, deployment procedures,
-        code management, and supply chain security
+        and code management
       - Accessible to all developers and infrastructure operators
       - Reviewed at least annually and after significant changes (security incidents,
         technology shifts, organizational restructuring)
@@ -39,7 +41,7 @@ cert:
     title: Development Environment Isolation
   - id: di-1.1.4
     description: Do you evaluate and approve development tools before organizational
-      use?
+      use, and maintain an approved tools list?
     baselines:
       - Evaluation criteria cover IDEs, extensions, plugins, AI-powered tools, and
         third-party services
@@ -47,8 +49,9 @@ cert:
       - AI tools assessed for data privacy risks (does the tool send code to third
         parties for training or analytics?)
       - Approved tool list maintained; unapproved tools restricted
-      - Regular reviews of installed tools to identify unused or unrecognized items
-    title: Development Tools Approval
+      - List reviewed at least annually, including checks for unused or unrecognized
+        installed tools
+    title: Development Tools Approval and Approved List
 - id: di-2
   title: Source Code & Supply Chain Security
   controls:
@@ -59,8 +62,9 @@ cert:
       - Branch protection rules enforced on main/production branches
       - Signed commits required for all code changes
       - Multi-party code review required for merges to protected branches
-      - MFA required for all repository members
-      - Repository access reviewed periodically
+      - Account controls (phishing-resistant MFA, credential management, access
+        reviews, lifecycle) follow [SFC - Identity &
+        Accounts](/certs/sfc-identity-accounts)
     title: Repository Security
   - id: di-2.1.2
     description: Do you scan source code for accidentally committed secrets?
@@ -89,13 +93,11 @@ cert:
     description: Do you verify and manage dependencies to prevent supply chain
       attacks?
     baselines:
-      - Packages obtained from official repositories and trusted sources only
-      - Package names verified against typosquatting patterns before installation
-      - Dependencies scanned for known vulnerabilities before deployment
-      - Dependency version pinning enforced to prevent automatic updates to
-        compromised versions
-      - Regular dependency audits for outdated or vulnerable components
-      - Changelog reviewed for dependency updates to verify expected functionality
+      - Packages sourced from official repositories, verified against typosquatting
+        patterns, and pinned to prevent silent updates
+      - Dependencies scanned for known vulnerabilities before deployment; regular
+        audits for outdated or vulnerable components
+      - Changelogs reviewed for dependency updates to verify expected functionality
     title: Dependency and Supply Chain Security
 - id: di-3
   title: CI/CD Pipeline Security
@@ -104,12 +106,12 @@ cert:
     description: Do you control who can modify and execute your deployment pipelines?
     baselines:
       - Pipeline configuration changes require multi-party approval
-      - Separate service accounts with minimal permissions used for pipeline
-        execution
-      - Manual deployment by humans restricted; deployments automated through
-        controlled pipelines
+      - Deployments automated through controlled pipelines using separate service
+        accounts with minimal permissions; manual human deployment restricted
       - Pipeline and build configurations version-controlled and reviewed
       - Builds are deterministic with strict dependency sets
+      - Pipeline runners use pinned, versioned images with minimal scope (ephemeral
+        where feasible, limited network egress for build steps)
     title: Pipeline Security Controls
   - id: di-3.1.2
     description: Do you securely manage secrets used in pipelines and applications?
@@ -145,19 +147,21 @@ cert:
         steps required
       - Infrastructure changes require multi-party approval
       - IaC security scanning performed before deployment
+      - "Network architecture defined in code: segmentation (VPCs/subnets), minimal
+        public exposure, firewall/security group rules"
     title: Infrastructure as Code
   - id: di-4.1.2
     description: Do you enforce least-privilege access controls for infrastructure?
     baselines:
-      - Individual accounts with MFA required; no shared accounts
+      - Account controls (individual accounts with phishing-resistant MFA, no
+        shared logins, credential management, access lifecycle) follow
+        [SFC - Identity & Accounts](/certs/sfc-identity-accounts)
       - Privileged access is time-limited and requires multi-party approval (JIT
         access)
       - Day-to-day operations use minimum necessary permissions (read-only where
         possible)
       - Break-glass accounts established for emergency access with individual
-        accountability
-      - Break-glass usage triggers immediate alerts to the entire team and requires
-        post-incident review
+        accountability; usage triggers immediate alerts and post-incident review
       - All access activities logged and monitored
     title: Infrastructure Access Controls
   - id: di-4.1.3
@@ -191,6 +195,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 <TagFilter />
 
 # SFC - DevOps & Infrastructure
+
+*Revision {frontmatter.version} · Updated {frontmatter.revised} · [Changelog](/certs/changelog)*
 
 The SEAL Framework Checklist (SFC) for DevOps & Infrastructure provides guidelines for securing development
 environments, source code management, CI/CD pipelines, and cloud infrastructure. It covers governance, supply chain

@@ -23,13 +23,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Dev
 This document provides an overview of the various frameworks covered in the Security Frameworks by SEAL. Each framework
 addresses a specific aspect of Web3 security, providing best practices and guidelines to help secure your projects.
 
-## Community Management
+## AI Security
 
-This framework explores best practices for securing and managing online communities associated with Web3 projects,
-covering platforms like Discord, Twitter, Telegram, and Google. It focuses on establishing secure communication channels
-and community guidelines.
+This framework covers emerging AI-native security risks and controls, including prompt injection defenses, runtime
+execution-path enforcement, and sandboxing strategies for agentic systems.
 
-[Go to the Community Management framework →](/community-management/overview)
+[Explore the AI Security framework →](/ai-security/overview)
 
 ## Awareness
 
@@ -38,27 +37,46 @@ understanding threat vectors, cultivating a security-aware mindset, and staying 
 
 [Read more about the Awareness framework →](/awareness/overview)
 
-## Operational Security (OpSec)
+## Community Management
 
-This comprehensive framework addresses day-to-day security practices for Web3 teams, covering fundamentals, governance,
-risk management, control domains, lifecycle management, monitoring, incident response, and continuous improvement.
+This framework explores best practices for securing and managing online communities associated with Web3 projects,
+covering platforms like Discord, Twitter, Telegram, and Google. It focuses on establishing secure communication channels
+and community guidelines.
 
-[Explore the OpSec framework →](/opsec/overview)
+[Go to the Community Management framework →](/community-management/overview)
 
-## Wallet Security
+## DevSecOps
 
-This section delves into the crucial aspect of managing cryptographic keys in Web3 projects, discussing various wallet
-types (cold vs hot, custodial vs non-custodial), hardware wallets, signing schemes, and software wallets.
+This framework focuses on integrating security practices into the development and operations processes, covering code
+signing, CI/CD, IDE security, repository hardening, and security testing.
 
-[Go to the Wallet Security framework →](/wallet-security/overview)
+[Explore the DevSecOps framework →](/devsecops/overview)
 
-## Multisig for Protocols
+## Insider Threats (DPRK IT Workers)
 
-This comprehensive framework provides security guidelines for managing multisig wallets in protocols, covering
-planning and classification, setup and configuration, signer onboarding, hardware wallet setup, transaction
-verification, emergency procedures, and incident reporting.
+This framework addresses the organizational and personal risks related to insider threats, most commonly associated with
+North Korean hacker-freelancers. It covers identifying, recognizing, and mitigating risks from insider threat actors,
+including hardening hiring processes and organizational defenses.
 
-[Read more about the Multisig for Protocols framework →](/multisig-for-protocols/overview)
+[Go to the DPRK IT Workers framework →](/dprk-it-workers/overview)
+
+<DevOnly>
+
+## Encryption
+
+This comprehensive section covers various encryption methods and their applications in protecting data, including cloud
+data encryption, communication encryption, database encryption, and various types of storage encryption.
+
+[Explore the Encryption framework →](/encryption/overview)
+
+</DevOnly>
+
+## ENS
+
+This section covers Ethereum Name Service security considerations, including data integrity, cross-chain compatibility,
+smart contract integration, interface compliance, and name handling.
+
+[Go to the ENS framework →](/ens/overview)
 
 ## External Security Reviews
 
@@ -66,35 +84,6 @@ This framework provides guidance on conducting and preparing for external securi
 expectations, preparation, security policies, and vendor selection.
 
 [Explore the External Security Reviews framework →](/external-security-reviews/overview)
-
-<DevOnly>
-
-## Vulnerability Disclosure
-
-This section discusses best practices for handling and disclosing vulnerabilities in Web3 projects, including
-establishing security contacts and managing bug bounty programs.
-
-[Go to the Vulnerability Disclosure framework →](/vulnerability-disclosure/overview)
-
-</DevOnly>
-
-## Infrastructure
-
-This section covers the fundamental aspects of securing the underlying infrastructure of Web3 projects, including asset
-inventory, cloud infrastructure, DDoS protection, DNS security, IAM, network security, and zero-trust principles.
-
-[Read more about the Infrastructure framework →](/infrastructure/overview)
-
-<DevOnly>
-
-## Monitoring
-
-This framework discusses the importance of continuous monitoring in Web3 projects, focusing on setting up effective
-monitoring systems and defining appropriate thresholds for alerts.
-
-[Explore the Monitoring framework →](/monitoring/overview)
-
-</DevOnly>
 
 <DevOnly>
 
@@ -106,32 +95,6 @@ web and mobile application security, common vulnerabilities, and security tools.
 [Go to the Front-End/Web Application framework →](/front-end-web-app/overview)
 
 </DevOnly>
-
-## Incident Management
-
-This section outlines protocols for handling security incidents, including communication strategies, detection and
-response procedures, lessons learned, and playbooks, including specific guidelines for SEAL 911 War Room.
-
-[Read more about the Incident Management framework →](/incident-management/overview)
-
-<DevOnly>
-
-## Threat Modeling
-
-This framework provides guidance on creating and maintaining threat models, as well as identifying and mitigating
-potential threats to Web3 projects.
-
-[Explore the Threat Modeling framework →](/threat-modeling/overview)
-
-</DevOnly>
-
-## Insider Threats (DPRK IT Workers)
-
-This framework addresses the organizational and personal risks related to insider threats, most commonly associated with
-North Korean hacker-freelancers. It covers identifying, recognizing, and mitigating risks from insider threat actors,
-including hardening hiring processes and organizational defenses.
-
-[Go to the DPRK IT Workers framework →](/dprk-it-workers/overview)
 
 <DevOnly>
 
@@ -146,14 +109,50 @@ establishing accountability, compliance with regulatory requirements, risk manag
 
 <DevOnly>
 
-## DevSecOps
+## Identity and Access Management (IAM)
 
-This framework focuses on integrating security practices into the development and operations processes, covering code
-signing, CI/CD, IDE security, repository hardening, and security testing.
+This framework covers best practices for managing user identities and access control in Web3 projects, including
+role-based access control and secure authentication.
 
-[Explore the DevSecOps framework →](/devsecops/overview)
+[Go to the IAM framework →](/iam/overview)
 
 </DevOnly>
+
+## Incident Management
+
+This section outlines protocols for handling security incidents, including communication strategies, detection and
+response procedures, lessons learned, and playbooks, including specific guidelines for SEAL 911 War Room.
+
+[Read more about the Incident Management framework →](/incident-management/overview)
+
+## Infrastructure
+
+This section covers the fundamental aspects of securing the underlying infrastructure of Web3 projects, including asset
+inventory, cloud infrastructure, DDoS protection, DNS security, IAM, network security, and zero-trust principles.
+
+[Read more about the Infrastructure framework →](/infrastructure/overview)
+
+## Monitoring
+
+This framework discusses the importance of continuous monitoring in Web3 projects, focusing on setting up effective
+monitoring systems and defining appropriate thresholds for alerts.
+
+[Explore the Monitoring framework →](/monitoring/overview)
+
+## Multisig for Protocols
+
+This comprehensive framework provides security guidelines for managing multisig wallets in protocols, covering
+planning and classification, setup and configuration, signer onboarding, hardware wallet setup, transaction
+verification, emergency procedures, and incident reporting.
+
+[Read more about the Multisig for Protocols framework →](/multisig-for-protocols/overview)
+
+## Operational Security (OpSec)
+
+This comprehensive framework addresses day-to-day security practices for Web3 teams, covering fundamentals, governance,
+risk management, control domains, lifecycle management, monitoring, incident response, and continuous improvement.
+
+[Explore the OpSec framework →](/opsec/overview)
 
 <DevOnly>
 
@@ -166,14 +165,21 @@ removal, digital footprint management, encrypted communication, and privacy-focu
 
 </DevOnly>
 
+## Safe Harbor
+
+This framework provides guidance on establishing safe harbor protocols for security researchers, including key terms,
+protocols, technical outlines, and whitehat guidelines.
+
+[Read more about the Safe Harbor framework →](/safe-harbor/overview)
+
 <DevOnly>
 
-## Supply Chain
+## Secure Software Development
 
-This framework addresses the security implications of dependencies and third-party components in Web3 projects,
-including dependency awareness and supply chain levels for software artifacts.
+This section focuses on integrating security practices throughout the software development lifecycle, including secure
+coding standards, code reviews, and secure design principles.
 
-[Read more about the Supply Chain framework →](/supply-chain/overview)
+[Read more about the Secure Software Development framework →](/secure-software-development/overview)
 
 </DevOnly>
 
@@ -189,28 +195,6 @@ error.
 
 </DevOnly>
 
-<DevOnly>
-
-## Identity and Access Management (IAM)
-
-This framework covers best practices for managing user identities and access control in Web3 projects, including
-role-based access control and secure authentication.
-
-[Go to the IAM framework →](/iam/overview)
-
-</DevOnly>
-
-<DevOnly>
-
-## Secure Software Development
-
-This section focuses on integrating security practices throughout the software development lifecycle, including secure
-coding standards, code reviews, and secure design principles.
-
-[Read more about the Secure Software Development framework →](/secure-software-development/overview)
-
-</DevOnly>
-
 ## Security Testing
 
 This framework explores various methods of testing Web3 projects for security vulnerabilities, including dynamic and
@@ -218,39 +202,21 @@ static application security testing, fuzz testing, and security regression testi
 
 [Explore the Security Testing framework →](/security-testing/overview)
 
-<DevOnly>
+## Supply Chain
 
-## AI Security
+This framework addresses the security implications of dependencies and third-party components in Web3 projects,
+including dependency awareness and supply chain levels for software artifacts.
 
-This framework covers emerging AI-native security risks and controls, including prompt injection defenses, runtime
-execution-path enforcement, and sandboxing strategies for agentic systems.
-
-[Explore the AI Security framework →](/ai-security/overview)
-
-</DevOnly>
-
-## ENS
-
-This section covers Ethereum Name Service security considerations, including data integrity, cross-chain compatibility,
-smart contract integration, interface compliance, and name handling.
-
-[Go to the ENS framework →](/ens/overview)
-
-## Safe Harbor
-
-This framework provides guidance on establishing safe harbor protocols for security researchers, including key terms,
-protocols, technical outlines, and whitehat guidelines.
-
-[Read more about the Safe Harbor framework →](/safe-harbor/overview)
+[Read more about the Supply Chain framework →](/supply-chain/overview)
 
 <DevOnly>
 
-## Encryption
+## Threat Modeling
 
-This comprehensive section covers various encryption methods and their applications in protecting data, including cloud
-data encryption, communication encryption, database encryption, and various types of storage encryption.
+This framework provides guidance on creating and maintaining threat models, as well as identifying and mitigating
+potential threats to Web3 projects.
 
-[Explore the Encryption framework →](/encryption/overview)
+[Explore the Threat Modeling framework →](/threat-modeling/overview)
 
 </DevOnly>
 
@@ -266,11 +232,29 @@ transaction verification protocols.
 
 </DevOnly>
 
+<DevOnly>
+
+## Vulnerability Disclosure
+
+This section discusses best practices for handling and disclosing vulnerabilities in Web3 projects, including
+establishing security contacts and managing bug bounty programs.
+
+[Go to the Vulnerability Disclosure framework →](/vulnerability-disclosure/overview)
+
+</DevOnly>
+
+## Wallet Security
+
+This section delves into the crucial aspect of managing cryptographic keys in Web3 projects, discussing various wallet
+types (cold vs hot, custodial vs non-custodial), hardware wallets, signing schemes, and software wallets.
+
+[Go to the Wallet Security framework →](/wallet-security/overview)
+
 ## SEAL Certifications
 
 This framework provides a certification system developed by SEAL with standardized guidelines and evaluation criteria
 for assessing the security of DeFi protocols. It includes modular certifications for specific areas such as DevOps &
-Infrastructure, DNS Security, Incident Response, Multisig Ops, Treasury Ops, and Workspace Security.
+Infrastructure, DNS Security, Identity & Accounts, Incident Response, Multisig Ops, and Treasury Ops.
 
 [Read more about SEAL Certifications →](/certs/overview)
 

@@ -1,6 +1,8 @@
 ---
 title: "SFC: Treasury Operations | Security Alliance"
 description: "SFC Treasury Operations certification: governance, custody architecture, risk classification, access control, transaction security, protocol deployments, monitoring, incident response, vendor management, and accounting."
+version: "1.1"
+revised: "2026-04-17"
 tags:
   - SEAL/Initiative
   - Certifications
@@ -46,7 +48,7 @@ cert:
         changes, and protocol integrations
       - Changes require documented approval before implementation
       - All changes logged with justification and approver
-      - Changes reflected in the treasury registry within defined SLAs
+      - Changes reflected in the treasury registry within defined timeframes
       - Rollback procedures documented for critical changes
     title: Treasury Infrastructure Change Management
 - id: tro-2
@@ -58,27 +60,36 @@ cert:
     baselines:
       - Classification considers financial exposure, operational dependency, and
         regulatory impact
-      - Impact levels defined (e.g., Low <1%, Medium 1-10%, High 10-25%, Critical
-        >25% of total assets)
+      - "Example impact scheme: Low <1%, Medium 1-10%, High 10-25%, Critical >25%
+        of total assets (organizations may define their own buckets)"
       - Operational types defined based on transaction frequency and urgency
         requirements
       - Each classification maps to specific controls including approval thresholds,
         MFA requirements, whitelist delays, and monitoring levels
-      - Classification reviewed when asset values, operational patterns, or risk
-        profile change significantly
+      - Classification reviewed on a defined cadence and when treasury conditions
+        change materially
     title: Treasury Wallet Risk Classification
   - id: tro-2.1.2
-    description: Do you enforce fund allocation limits and rebalancing triggers
-      across your treasury?
+    description: Do you enforce portfolio concentration limits and rebalancing
+      triggers across your treasury?
     baselines:
-      - Maximum allocation defined per wallet, per custody provider, and per chain
+      - Organization-defined concentration limits per wallet, per custody provider,
+        and per chain
       - Rebalancing triggers documented (e.g., when a wallet exceeds its allocation
         ceiling or falls below operational minimums)
       - Allocation limits reviewed periodically and after significant treasury
         changes
-      - No single wallet or custody account holds more than the organization's
-        defined maximum concentration
-    title: Fund Allocation Limits and Rebalancing
+    title: Portfolio Concentration Limits and Rebalancing
+  - id: tro-2.1.3
+    description: Do you enforce per-actor and per-path exposure limits for treasury
+      movements?
+    baselines:
+      - Maximum value movable by a single person defined and enforced
+      - Maximum value movable by any automated path (API key, bot, integration)
+        defined and enforced
+      - Limits scale with wallet/account classification
+      - Exceeding limits requires elevated approval or quorum
+    title: Per-Actor and Per-Path Exposure Limits
 - id: tro-3
   title: Access Control & Platform Security
   controls:
@@ -91,9 +102,9 @@ cert:
         periods, velocity/spending limits"
       - Hardware security key MFA required for all approvers on High and Critical
         accounts
-      - Session timeouts and re-authentication for sensitive operations
-      - "Network restrictions: IP whitelisting, VPN requirements where supported,
-        geographic access restrictions"
+      - Session timeouts reviewed and configured appropriately for sensitive
+        operations
+      - "Network restrictions where supported: IP allowlisting, VPN for admin access"
       - "Separation of duties enforced: initiators cannot approve their own
         transactions, admins cannot unilaterally execute withdrawals"
       - Platform configurations documented and reviewed at least quarterly
@@ -102,10 +113,11 @@ cert:
     description: Do you securely manage all credentials and secrets used in treasury
       operations?
     baselines:
-      - Covers API keys, service accounts, owner/admin credentials, and signing keys
+      - Covers API keys, service accounts, and signing keys
       - Credentials stored in dedicated secret management systems, not in code,
         documents, or shared drives
-      - Owner and admin credentials isolated from day-to-day operational access
+      - Hardware security key MFA required for accessing or authorizing privileged
+        credentials
       - Credential rotation schedule defined and enforced
       - Access to credentials logged and monitored
     title: Credential and Secret Management
@@ -131,6 +143,18 @@ cert:
         capabilities
       - Mobile devices used as second factors have endpoint security monitoring
     title: Personnel Operational Security
+  - id: tro-3.1.5
+    description: Do you minimize and control privileged access to custody and
+      treasury platforms?
+    baselines:
+      - No single root user holds all control; where a root account exists, its use
+        is minimized and audited
+      - Privileged actions (root account use, owner/admin operations) require quorum
+        approval where the platform supports it
+      - Owner and admin credentials isolated from day-to-day operational access
+      - Hardware security key MFA required for all privileged access
+      - Privileged-access events logged, alerted on, and reviewed
+    title: Privileged Access and Root Account Management
 - id: tro-4
   title: Transaction Security
   controls:
@@ -138,31 +162,29 @@ cert:
     description: Do you have a defined process for verifying and executing treasury
       transactions?
     baselines:
-      - "Pre-execution verification includes: recipient address validation, amount
-        verification, network confirmation, and transaction simulation"
+      - "Pre-execution verification covers recipient address (validated through
+        multiple independent sources, never copied from email/chat/history), amount,
+        network, and simulation"
+      - Calldata decoded and simulated via a trusted tool; for high-value operations,
+        results verified against an independent decoder or simulator
       - Test transactions required before sending to new addresses
-      - Address verified through multiple independent sources; never copied from
-        email, chat, or transaction history
-      - "Multi-party confirmation required: minimum 2 internal personnel for large
-        transfers"
-      - Specific procedures for receiving large incoming transfers (address
-        generation, bidirectional test, sender coordination)
-      - Specific procedures for OTC transactions where applicable
-      - High-value transfers (organization-defined threshold) require video call
-        verification with liveness checks
-      - All transaction parameters read aloud and confirmed before execution
+      - Multi-party confirmation required for high-value transfers, including video
+        call verification with liveness checks at organization-defined thresholds and
+        read-aloud parameter confirmation
+      - Specific procedures for large incoming transfers and OTC transactions where
+        applicable
     title: Transaction Verification and Execution
   - id: tro-4.1.2
     description: Are treasury signers and approvers knowledgeable in the security
       practices relevant to their role?
     baselines:
-      - "Knowledge covers: transaction verification procedures, address validation
-        techniques, social engineering awareness, emergency procedures"
+      - Knowledge covers transaction verification, address validation, social
+        engineering awareness, emergency procedures, and custody-platform-specific
+        workflows
       - Competence demonstrated before authorization (e.g., verifying a test
         transaction end-to-end)
-      - Knowledge refreshed annually; updated within 30 days of significant
-        procedure changes
-      - Covers custody-platform-specific workflows and policy engine rules
+      - Knowledge refreshed annually and within 30 days of significant procedure
+        changes
     title: Signer and Approver Knowledge
   - id: tro-4.1.3
     description: Do you have secure communication procedures for treasury operations,
@@ -186,13 +208,12 @@ cert:
     description: Do you evaluate external protocols and enforce exposure limits
       before deploying treasury funds?
     baselines:
-      - "Due diligence process for all protocols before deployment: smart contract
-        audit status, team reputation, TVL history, insurance coverage"
-      - Exposure limits defined per protocol, per chain, and per deployment category
-        (DeFi, staking, liquid staking, etc.)
-      - Limits reviewed periodically and after significant market or protocol changes
-      - "Risk re-evaluation triggered by: security incidents, major governance
-        proposals, significant TVL changes, new vulnerabilities disclosed"
+      - "Due diligence process for protocols before deployment (e.g., audit status,
+        team reputation, operational history)"
+      - Exposure limits defined at organization-chosen granularity (protocol, chain,
+        category) and reviewed periodically
+      - Risk re-evaluation triggered by security incidents, major governance
+        proposals, or newly disclosed vulnerabilities
     title: Protocol Evaluation and Exposure Limits
   - id: tro-5.1.2
     description: Do you have procedures for managing the lifecycle of your positions
@@ -213,40 +234,28 @@ cert:
     description: Do you monitor your treasury for anomalous activity, external
       threats, and operational risks?
     baselines:
-      - "Transaction monitoring: unusual amounts, unexpected destinations, failed
-        transactions, policy violations"
-      - "Account state monitoring: balance changes, configuration modifications, new
-        device enrollments, authentication anomalies"
-      - "External threat intelligence: protocol vulnerabilities, DeFi/staking risks,
-        relevant security incidents in the ecosystem"
-      - "Vendor/platform monitoring: custody platform status, infrastructure alerts,
-        service availability"
-      - "Compliance monitoring: transactions and wallet addresses screened for
-        sanctions and compliance risk"
-      - "Protocol and position monitoring: deployed protocol health, governance
-        changes, TVL shifts, collateral ratios, reward accrual, liquidation risks"
-      - Alerting with defined severity levels and escalation paths
-      - Critical alerts (large unexpected transactions, unauthorized access attempts)
-        trigger immediate investigation
-      - Monitoring system integrity protected — alerts triggered when monitoring
-        configurations are changed, disabled, or degraded
+      - Monitoring scope covers transaction activity, account state, custody
+        platform and vendor health, and (where applicable) deployed protocol
+        positions and compliance screening
+      - External threat intelligence ingested for relevant ecosystem incidents and
+        vendor advisories
+      - "Alerting with defined severity levels and escalation paths; critical alerts
+        trigger immediate investigation"
+      - Monitoring system integrity protected — alerts triggered when monitoring is
+        altered, disabled, or degraded
     title: Monitoring and Threat Awareness
   - id: tro-6.1.2
     description: Do you have an incident response plan for treasury security events,
       and do you test it?
     baselines:
-      - Severity levels defined with escalation procedures specific to treasury
-        operations
-      - "Containment procedures: fund protection actions (emergency freeze, transfer
-        to secure cold storage, policy lockdown)"
-      - "Covers key scenarios: custody platform compromise, unauthorized transaction,
-        signer key compromise, vendor breach"
-      - "Emergency contacts pre-documented: custody provider security team, SEAL 911,
-        legal counsel"
-      - Communication plan for stakeholders
-      - Drills conducted at least annually; after major procedure changes
-      - "Drill documentation includes: date, participants, response times, issues
-        identified, improvements made"
+      - Severity levels defined with escalation paths specific to treasury operations
+      - "Containment playbook covering fund protection actions (emergency freeze,
+        transfer to cold storage, policy lockdown) and key scenarios (platform
+        compromise, unauthorized transaction, signer key compromise, vendor breach)"
+      - Emergency contacts pre-documented (custody provider security, SEAL 911,
+        legal counsel) and stakeholder communication plan
+      - "Drills annually and after major procedure changes; documented with date,
+        participants, response times, issues, and improvements"
     title: Incident Response Plan
 - id: tro-7
   title: Vendor & Infrastructure
@@ -310,9 +319,20 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 
 # SFC - Treasury Operations
 
+*Revision {frontmatter.version} · Updated {frontmatter.revised} · [Changelog](/certs/changelog)*
+
 The SEAL Framework Checklist (SFC) for Treasury Operations provides structured guidelines for securely managing and
 operating an organization's treasury covering governance, access control, transaction security, monitoring, and vendor
 management.
+
+**Scope note**: These baselines target internal treasury operations (DAO treasuries, protocol
+treasuries, operational wallets). Professional treasury operations such as OTC desks, market-making,
+or custody-as-a-service may warrant additional or differentiated baselines beyond this scope.
+
+**Related**: Custody platform account management (phishing-resistant MFA, credential management,
+recovery methods, account lifecycle) is governed by
+[SFC - Identity & Accounts](/certs/sfc-identity-accounts). Treasury-specific controls below focus on
+transaction security and platform configuration.
 
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 
