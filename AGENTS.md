@@ -1,6 +1,7 @@
 # AGENTS.md
 
 ## Workflow
+- Before contributing, see `CODE_OF_CONDUCT.md`. For SEAL Certifications, also see `docs/pages/certs/contributions.mdx`. To take ownership of a framework, see `docs/pages/contribute/stewards`.
 - PRs target `develop` branch.
 - Setup: `pnpm install`
 - Dev server: `pnpm exec just serve` (generators + Vocs on :5173)
