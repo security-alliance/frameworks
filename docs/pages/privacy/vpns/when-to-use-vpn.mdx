@@ -1,0 +1,63 @@
+---
+title: "When to Use a VPN | Security Alliance"
+description: "A threat-model-based decision framework for deciding when a VPN is necessary, plus criteria for choosing a VPN service that fits your needs."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+outline: deep
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# When to Use a VPN
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Use this mental model to decide:
+
+1. **Public Wi-Fi, low risk** — HTTPS and modern browsers already block most real attacks. A VPN is optional.
+2. **Public Wi-Fi, privacy matters** — HTTPS plus encrypted DNS (DoH or DoT) is the baseline most people overlook. Add
+  a VPN if you want to hide metadata from the local network.
+3. **Hiding metadata from your network** — Add a VPN you trust, with a kill switch and no leaks. This hides
+  destinations, DNS queries, and traffic patterns from your ISP and local network.
+4. **You are a real target** — HTTPS and commercial VPNs are table stakes, not solutions. Focus on endpoint security,
+  compartmentalization, and protocol-level privacy.
+
+The mistake is not "not using a VPN." The mistake is not knowing what you are defending against or adopting
+technologies without understanding why, assuming one tool solves everything. If you do not define the threat, every tool
+looks like protection.
+
+## Choosing a VPN Service
+
+When selecting a VPN service, consider the following factors:
+
+1. **No-logs policy** — Ensure the VPN provider does not store information about your online activities. Look for
+   providers that have undergone independent audits to verify this claim.
+
+2. **Encryption standards** — Look for VPNs that use strong encryption (AES-256-GCM or ChaCha20-Poly1305) with modern
+   protocols like WireGuard, which typically outperforms OpenVPN.
+
+3. **Kill switch** — A kill switch ensures your internet connection is cut off if the VPN connection drops, preventing
+   your data from being exposed.
+
+4. **DNS and IP leak protection** — Verify the VPN tunnels DNS queries and prevents IPv6 or WebRTC leaks.
+
+5. **Server locations** — A wide range of server locations allows you to access content from different regions and
+   improves connection speeds.
+
+6. **Provider trust model** — A VPN shifts trust from your ISP to the VPN provider. Evaluate the jurisdiction, ownership
+   structure, and track record of the provider.
+
+---
+
+</TagProvider>
+<ContributeFooter />

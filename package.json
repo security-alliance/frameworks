@@ -14,7 +14,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && vocs dev --host 0.0.0.0 --port 5173",
     "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && pnpm run generate-printables && pnpm run generate-cert-data && vocs build",
-    "postdocs:build": "node utils/searchbar-indexing.js && node utils/sitemap-generator.js",
+    "postdocs:build": "node utils/searchbar-indexing.js && node utils/sitemap-generator.js && node utils/generate-llms.js",
     "docs:preview": "vocs preview",
     "generate-tags": "node utils/tags-fetcher.js",
     "mermaid-wrapper": "node utils/mermaid-block-wrapper.js",
@@ -35,7 +35,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "3.1024.0",
     "@aws-sdk/lib-storage": "3.1024.0",
-    "axios": "1.14.0",
+    "axios": "1.15.0",
     "exceljs": "^4.4.0",
     "gray-matter": "^4.0.3",
     "just-install": "^2.0.2",
