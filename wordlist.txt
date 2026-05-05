@@ -72,6 +72,8 @@ Deseat
 dev
 DevOps
 DevSecOps
+DFIR
+DFIRS
 discoverable
 DIY
 DLP
@@ -124,10 +126,13 @@ GOkart
 Golangci
 gosec
 govulncheck
+gpgsign
 Hackathon
 hacken
 Hackenproof
 halmos
+Hdiv
+Helius
 Hetrix
 hevm
 HIDS
@@ -163,6 +168,8 @@ kdig
 keccak
 KeePassXC
 Kelkar
+keyid
+KICS
 KMS
 Kpis
 kyc
@@ -202,6 +209,7 @@ NDSS
 nformation
 nftdreww
 nicinfo
+nonced
 noout
 Nord
 Notar
@@ -213,6 +221,7 @@ ofac
 OpenSCAP
 OPSEC
 Opsek
+ossf
 pagetoc
 Palo
 pcaversaccio
@@ -242,6 +251,7 @@ Provenanced
 prover
 pseudonymity
 pseudonymization
+Pylint
 qube
 Qubes
 Qwertycards
@@ -262,6 +272,7 @@ requestor
 resolvability
 Resolvers
 responder
+retagged
 Retainable
 Revolut
 ronin
@@ -281,6 +292,7 @@ sig
 simbolik
 SLSA
 SLYFONE
+SMIME
 SMS
 smt
 smtpdane
@@ -317,6 +329,7 @@ trojanized
 Tuta
 TVL
 TWAP
+txscope
 TXT
 unaudited
 unbond
@@ -325,6 +338,7 @@ uncollateralized
 uncompromised
 unproxied
 Unrekt
+unreviewed
 unstake
 unstaking
 unvalidated
@@ -362,7 +376,9 @@ Zcash
 zedt
 Zenity
 Zerouali
+zizmor
 ZK
 Zksync
 ZWJ
+Zyfa
 Zyfai
