@@ -200,7 +200,7 @@ const config = {
           collapsed: true,
           dev: true,
           items: [
-            { text: 'Overview', link: '/iam/overview' },
+            { text: 'Overview', link: '/iam/overview', dev: true },
             { text: 'Role-Based Access Control', link: '/iam/role-based-access-control', dev: true },
             { text: 'Secure Authentication', link: '/iam/secure-authentication', dev: true },
             { text: 'Access Management Best Practices', link: '/iam/access-management', dev: true },
@@ -394,7 +394,18 @@ const config = {
             { text: 'Encrypted Communication Tools', link: '/privacy/encrypted-communication-tools', dev: true },
             { text: 'Financial Privacy Services', link: '/privacy/financial-privacy-services', dev: true },
             { text: 'Privacy-Focused Operating Systems and Tools', link: '/privacy/privacy-focused-operating-systems-tools', dev: true },
-            { text: 'VPN Services', link: '/privacy/vpn-services', dev: true },
+            {
+              text: 'VPN Services',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/privacy/vpns/overview', dev: true },
+                { text: 'HTTPS vs VPN', link: '/privacy/vpns/https-vs-vpn', dev: true },
+                { text: 'Attack Surfaces on Public Networks', link: '/privacy/vpns/attack-surfaces-public-networks', dev: true },
+                { text: 'When to Use a VPN', link: '/privacy/vpns/when-to-use-vpn', dev: true },
+                { text: 'VPN Limitations', link: '/privacy/vpns/vpn-limitations', dev: true },
+                { text: 'VPN Providers and Tools', link: '/privacy/vpns/vpn-providers-and-tools', dev: true },
+              ],
+            },
           ]
         },
         {
@@ -595,6 +606,7 @@ const config = {
 
           ]
         },
+        { text: 'LLMs', link: '/intro/llms' },
       ]
     }
   ],
