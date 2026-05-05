@@ -224,6 +224,7 @@ Opsek
 ossf
 pagetoc
 Palo
+parameterizes
 pcaversaccio
 PCI
 Pectra
@@ -266,6 +267,7 @@ recoverooor
 redactions
 reentrancy
 reimage
+reinit
 Rekt
 renderer
 requestor
@@ -291,6 +293,7 @@ SIEM
 sig
 simbolik
 SLSA
+slugified
 SLYFONE
 SMIME
 SMS
