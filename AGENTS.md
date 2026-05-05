@@ -39,7 +39,24 @@ contributors:
 - Sections: Practical guidance (steps/checklist), Why important (incidents), Pitfalls/examples, Cheat sheet, Further reading
 - Tech details: Balanced (detailed for AWS/Cloudflare/etc., generic timeless principles)
 - Links: Descriptive; Resources section; relative internal paths
-- Frontmatter precision: title: "Page | Security Alliance" (&lt;60 chars or "| SEAL"), description: 140-160 chars (action verbs/keywords like tool names/attacks/standards), add self to contributors (roles: wrote/reviewed/fact-checked) + update docs/pages/config/contributors.json
+- Frontmatter precision: title: "Page | Security Alliance" (&lt;60 chars or "| SEAL"), description: 140-160 chars (action verbs/keywords like tool names/attacks/standards), contributors: add github username under the appropriate role (wrote|reviewed|fact-checked). First-time contributors must also register a profile in `docs/pages/config/contributors.json` (see "Contributors database" below).
+- Contributors database: first-time contributors must register a profile in `docs/pages/config/contributors.json` keyed by GitHub username. Structure: 
+```
+"<github-username>": {
+  "slug": "<github-username>",
+  "name": "<Full Name>",
+  "avatar": "https://avatars.githubusercontent.com/<github-username>",
+  "github": "https://github.com/<github-username>",
+  "twitter": null,
+  "website": null,
+  "company": null,
+  "role": "contributor",
+  "job_title": null,
+  "description": null,
+  "badges": []
+}
+```
+Leave `badges: []` and `role: "contributor"` when self-registering as badges and specific roles are assigned by maintainers.
 - Style: American English; objective/explanatory tone (no simplifications); introduce acronyms; future-proof; no full-AI content (grammar ok); mermaid; images via PR comments → S3 (/img-bot)
 - New pages: MUST update vocs.config.tsx sidebar items (dev: true for WIP)
 - WIP pages: Add stub notice &gt; ⚠️ Stub/in progress, help contribute/expand
