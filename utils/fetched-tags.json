@@ -187,6 +187,12 @@
       "Operations & Strategy",
       "Smart Contracts"
     ],
+    "/devsecops/governance-proposal-security": [
+      "Engineer/Developer",
+      "Operations & Strategy",
+      "Smart Contracts",
+      "DevOps"
+    ],
     "/devsecops/integrated-development-environments": [
       "Engineer/Developer",
       "Security Specialist",
@@ -196,6 +202,11 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
+    ],
+    "/devsecops/isolation/developer-machine-sandboxing": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps"
     ],
     "/devsecops/isolation/execution-sandboxing-practical-guide": [
       "Engineer/Developer",
@@ -1009,7 +1020,27 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/privacy/vpn-services": [
+    "/privacy/vpns/attack-surfaces-public-networks": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/https-vs-vpn": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/overview": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/vpn-limitations": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/vpn-providers-and-tools": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/when-to-use-vpn": [
       "Engineer/Developer",
       "Security Specialist"
     ],
@@ -1330,6 +1361,7 @@
     "OpSec Core Concepts": "opsec",
     "While Traveling": "opsec",
     "Privacy": "privacy",
+    "VPN Services": "privacy",
     "Safe Harbor": "safe-harbor",
     "Secure Software Development": "secure-software-development",
     "Security Automation": "security-automation",
