@@ -393,7 +393,8 @@ through a finding without anyone else noticing.
 Integration tests MUST exercise the exact deployment script that will run on mainnet — not a hand-written
 setup that looks equivalent. If `script/Deploy.s.sol` (or your equivalent) produces a different system state
 than your test harness parameterizes, then the suite that passed is testing a different system than the one
-that ships. That divergence is a well-documented source of false confidence and real security incidents where user funds have been stolen.
+that ships. That divergence is a well-documented source of false confidence and real security incidents
+where user funds have been stolen.
 Have the integration tests execute the deployment script itself, then run invariants and behavioral tests
 against the resulting state. The more complex the system, the more surface area exists for the script and
 the test to drift apart, so the more strictly this needs to be enforced.

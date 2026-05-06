@@ -5,11 +5,16 @@ description: LLM-friendly documentation for the Security Alliance Frameworks, fo
 
 # LLMs
 
-The Security Alliance Frameworks documentation is available in LLM-friendly format following the [llms.txt](https://llmstxt.org/) standard. These files are generated at build time and designed to be fetched by AI assistants and coding tools to provide accurate, up-to-date framework content as context.
+The Security Alliance Frameworks documentation is available in LLM-friendly format following the
+[llms.txt](https://llmstxt.org/) standard. These files are generated at build time and designed to be
+fetched by AI assistants and coding tools to provide accurate, up-to-date framework content as context.
 
 ## How to use
 
-AI assistants should start with [`/llms.txt`](https://frameworks.securityalliance.org/llms.txt), the routing index. It lists every framework with a description and topic summary, so the AI can identify the best match and fetch the framework index file. From there, per-page files can be fetched for detailed content on a specific topic.
+AI assistants should start with [`/llms.txt`](https://frameworks.securityalliance.org/llms.txt), the routing
+index. It lists every framework with a description and topic summary, so the AI can identify the best match
+and fetch the framework index file. From there, per-page files can be fetched for detailed content on a
+specific topic.
 
 ## File structure
 
@@ -21,19 +26,24 @@ Three file types are available:
 /llms/{framework-name}/{page}.txt               per-page file —> full content of a single page
 ```
 
-The `{framework-name}` maps to the framework's folder name in the repository and `{page}` to the page's slug. For example, the Wallet Security seed phrase page lives at `docs/pages/wallet-security/seed-phrase-management.mdx` and its per-page file is at `/llms/wallet-security/seed-phrase-management.txt`.
+The `{framework-name}` maps to the framework's folder name in the repository and `{page}` to the page's slug.
+For example, the Wallet Security seed phrase page lives at `docs/pages/wallet-security/seed-phrase-management.mdx`
+and its per-page file is at `/llms/wallet-security/seed-phrase-management.txt`.
 
 ## What each file contains
 
 **`/llms.txt`** - routing index:
+
 - One entry per framework with its index file URL, description, and topic list
 
 **`/llms/{framework-name}.txt`** - framework index:
+
 - Header, description, and AI instructions
 - Full content of the overview page for immediate context
 - Links to all per-page files with one-line descriptions
 
 **`/llms/{framework-name}/{page}.txt`** - per-page file:
+
 - Full markdown content of that page
 - Source URL and framework attribution
 
