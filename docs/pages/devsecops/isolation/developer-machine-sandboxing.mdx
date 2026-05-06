@@ -7,7 +7,7 @@ tags:
   - DevOps
 contributors:
   - role: wrote
-    users: [elliot]
+    users: [ElliotFriedman]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -20,7 +20,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Sandboxing on your developer machine limits the blast radius when a tool goes wrong, whether that's prompt injection, a malicious dependency, or an LLM mistake. Imperfect containment is much better than no containment, and spending 5 minutes configuring containers can prevent company ending mistakes.
+> 🔑 **Key Takeaway**: Sandboxing on your developer machine limits the blast radius when a tool goes wrong, whether that's prompt injection, a malicious dependency, or an LLM mistake. Imperfect containment is much better than no containment, and spending 5 minutes configuring containers can prevent company-ending mistakes.
 
 AI coding agents run shell commands directly on your machine. A prompt injection or a malicious package could read `~/.ssh`, modify `.bashrc`, or silently steal secrets. Unlike CI runners, developer machines aren't ephemeral: they carry years of credentials, tokens, and config. The goal of sandboxing is making sure the blast radius of mistakes stays contained.
 
@@ -61,7 +61,7 @@ Start with auto-allow. You can tighten it per-project via settings.
     "failIfUnavailable": true,
     "allowUnsandboxedCommands": false,
     "filesystem": {
-      "denyRead": ["~/"],
+      "denyRead": ["~/.ssh", "~/.aws"],
       "allowRead": ["."],
       "allowWrite": ["/tmp/build"]
     },
@@ -74,18 +74,18 @@ Start with auto-allow. You can tighten it per-project via settings.
     }
   },
   "permissions": {
-    "deny": ["Read(.env)"]
+    "deny": ["Read(.env)", "Bash(cat .env)"]
   }
 }
 ```
 
 - `failIfUnavailable: true`: hard-fails if the sandbox can't start, rather than silently running without isolation
 - `allowUnsandboxedCommands: false`: closes the built-in escape hatch that lets Claude retry a failing command outside the sandbox
-- `denyRead: ["~/"]`: blocks reads from your home directory; SSH keys and shell history are invisible to the agent
+- `denyRead: ["~/.ssh", "~/.aws"]`: blocks reads from sensitive paths outside the project root, such as SSH keys and AWS credentials
 - `allowRead: ["."]`: restores read access to the current project root (inside the denied region)
 - `allowWrite: ["/tmp/build"]`: if a build tool needs to write outside the working directory, grant it here specifically
 - `allowedDomains`: explicit egress allowlist; omit anything you don't actively need
-- `permissions.deny`: blocks Claude's file tools from reading specific sensitive paths. Note that `allowRead` takes precedence over `denyRead` within the sandbox, so project-root secrets like `.env` need to be excluded here instead
+- `permissions.deny`: protects against two different attack vectors. `Read(.env)` blocks Claude's built-in file tools (which use the permission system directly, bypassing the sandbox). `Bash(cat .env)` blocks bash subprocesses from accessing `.env` (these go through the sandbox layer). Note that `allowRead` takes precedence over `denyRead` within the sandbox, so `denyRead` only effectively blocks paths outside the project root, while `permissions.deny` is needed for in-tree secrets. Both rules are fragile: renaming the file or using alternate commands can bypass them, as noted in the limitations section below
 
 ### Known limitations
 
