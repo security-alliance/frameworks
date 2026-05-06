@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import "./control.css";
 import { Control, ControlData, ControlState } from "./types";
+import { getFrameworkGuidance, getFrameworkGuidanceHref } from "./cert-framework-map";
 
 interface ControlCardProps {
     control: Control;
@@ -35,6 +36,7 @@ export const ControlCard = memo(function ControlCard({
     onControlChange
 }: ControlCardProps) {
     const [expanded, setExpanded] = useState(false);
+    const frameworkRefs = getFrameworkGuidance(control.id);
 
     const handleCycleState = () => {
         const newState = nextState[data.state];
@@ -97,6 +99,24 @@ export const ControlCard = memo(function ControlCard({
                             <ul className="control-baselines-list">
                                 {control.baselines.map((baseline, idx) => (
                                     <li key={idx}>{baseline}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                    {frameworkRefs.length > 0 && (
+                        <div className="control-framework-refs">
+                            <div className="control-framework-refs-label">📖 Related Framework Guidance</div>
+                            <ul className="control-framework-refs-list">
+                                {frameworkRefs.map((ref, idx) => (
+                                    <li key={`${control.id}-${ref.page}-${ref.header ?? idx}`}>
+                                        <a
+                                            href={getFrameworkGuidanceHref(ref)}
+                                            className={`control-framework-ref control-framework-ref-${ref.coverage}`}
+                                        >
+                                            {ref.title || ref.page}
+                                            {ref.header && <span className="control-framework-ref-header"> → {ref.header}</span>}
+                                        </a>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
