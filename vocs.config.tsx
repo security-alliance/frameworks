@@ -98,6 +98,7 @@ const config = {
                 { text: 'Network & Resource Isolation', link: '/devsecops/isolation/network-and-resource-isolation' },
                 { text: 'Sandboxing & Policy Enforcement', link: '/devsecops/isolation/sandboxing-and-policy-enforcement' },
                 { text: 'Execution Sandboxing: A Practical Guide', link: '/devsecops/isolation/execution-sandboxing-practical-guide' },
+                { text: 'Developer Machine Sandboxing', link: '/devsecops/isolation/developer-machine-sandboxing' },
               ]
             },
             { text: 'Code Signing', link: '/devsecops/code-signing' },
