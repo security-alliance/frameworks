@@ -22,7 +22,18 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-It is recommended to always create a fresh address on a hardware wallet for each new multisig.
+## Use a Dedicated Key for Each Multisig
+
+Always create a fresh address on a hardware wallet for each new multisig you join. Use a different address index on
+your hardware wallet (same derivation path, just switch between addresses) and label each clearly.
+
+This matters for two reasons:
+
+- **Signing clarity**: With a dedicated key, your wallet interface only shows transactions from one multisig. This
+  eliminates confusion about which multisig a signing request belongs to and reduces the risk of signing the wrong
+  transaction.
+- **Key isolation**: If your key for one multisig is compromised, it cannot be used to attack any other multisig you
+  participate in. Each multisig has an independent security boundary.
 
 ## Verifying address ownership
 

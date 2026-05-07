@@ -22,6 +22,40 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+## Separating Multisigs by Function
+
+Protocols should not consolidate all admin privileges into a single multisig. If one multisig controls everything
+(treasury, protocol upgrades, operational parameters, emergency pause), then compromising that multisig means total
+protocol compromise.
+
+### Why Separation Matters
+
+- **Blast radius**: Separate multisigs limit the damage from any single compromise to one functional area
+- **Right-sized security**: Different functions have different risk profiles. Routine parameter changes need different
+  thresholds and response times than contract upgrades. Separate multisigs allow tailored security per function.
+- **Signer expertise**: Protocol upgrade signers need deep technical expertise. Treasury signers need financial
+  operations expertise. Separation puts the right people on each function.
+
+### Common Separation Patterns
+
+| Function | Typical Threshold | Timelock | Notes |
+| -------- | ----------------- | -------- | ----- |
+| Protocol upgrades | High (e.g., 7/9+) | Long (7-14+ days) | Highest security, infrequent use |
+| Operational parameters | Moderate (e.g., 3/5) | Medium (48-72 hours) | Routine tuning within bounds |
+| Emergency pause | Lower (e.g., 2/4) | None | Constrained to pause-only actions |
+| Treasury | High (e.g., 4/7) | Varies | Separate signer set from protocol admin |
+| Specialized subsystem | Moderate | Medium | Domain-expert signers (e.g., oracle config, bridge params) |
+
+### Implementation Guidance
+
+- Document which multisig controls which contracts and roles in the
+  [Registration Template](/multisig-for-protocols/registration-and-documentation#registration-template)
+- Use separate on-chain roles (e.g., OpenZeppelin AccessControl) mapped to separate multisigs
+- No single multisig should have both "pause" and "upgrade" capabilities unless the upgrade path is gated by a timelock
+- Use [dedicated signing keys](/wallet-security/secure-multisig-best-practices#dedicated-keys-per-multisig) per multisig
+  so signers can easily distinguish which multisig a transaction belongs to, and so attackers cannot reuse compromised
+  keys across multisigs
+
 ## Treasury Multisigs
 
 ### Key requirements:
@@ -91,11 +125,42 @@ to provide adequate time to respond in the event of an anomaly
 
 ## Timelock Configuration
 
-For sensitive protocol operations like configuration changes or upgrades it is recommended to use a timelock contract
-(eg. [OpenZeppelin Timelock Controller](https://docs.openzeppelin.com/contracts/5.x/api/governance#TimelockController))
-to stage transactions on-chain for final verification before execution. It is not necessary to have a long delay. Some
-timelock contracts are even configured with 0 delay. The key is to have the full transaction payload fully on chain
-after signature with a final opportunity to review it and cancel it.
+Timelocks are essential for any multisig controlling protocol parameters, upgrades, or user-facing configuration. A
+multisig without a timelock means that once threshold signatures are collected, changes take effect immediately with
+no opportunity for detection or intervention.
+
+Use a timelock contract (e.g.,
+[OpenZeppelin Timelock Controller](https://docs.openzeppelin.com/contracts/5.x/api/governance#TimelockController))
+to stage transactions on-chain for final verification before execution.
+
+### Why Timelocks Are Critical
+
+Without a timelock, the only defense is that the threshold number of signers are all honest and careful at all times.
+This is a fragile assumption. Timelocks create a public review window: once a transaction is queued, anyone monitoring
+the chain can see what is about to happen. This enables detection of malicious or incorrect proposals before they
+execute.
+
+Timelocks are only effective if someone is actively watching. See
+[Timelock Monitoring](#timelock-monitoring) below.
+
+### Tiered Timelock Durations
+
+Not all changes carry the same risk. Protocols should use different timelock durations based on the severity of the
+change:
+
+- **Long (7-14+ days)**: Major changes that affect user funds or fundamental protocol behavior such as contract
+  upgrades, token contract changes, or reward distribution changes. Users need time to react (e.g., withdraw funds
+  or unbond stake).
+- **Medium (48-72 hours)**: Significant operational changes such as fee parameter updates, validator set
+  configuration, or oracle changes. The team and external monitors need time to review.
+- **Short (hours to 1 day)**: Routine parameter adjustments within predefined bounds. Still provides a verification
+  window without impeding normal operations.
+- **No timelock (direct execution)**: Reserved only for emergency actions that are highly constrained in scope
+  (e.g., pause-only capability). See
+  [Design Principles](/wallet-security/secure-multisig-best-practices#constrain-emergency-powers).
+
+The appropriate duration depends on how much time users need to react, the potential impact if the change is malicious,
+and the operational cadence of the change.
 
 ### Configuration
 
@@ -115,7 +180,9 @@ go through the timelock stage.
 
 ### Recommended Time-Lock Delays
 
-Time-locks should delay transactions a minimum of 3 days.
+As a default, time-locks should delay transactions a minimum of 3 days. Use the tiered approach above to adjust based
+on the type of change. Even a short delay (e.g., 1 hour) with active monitoring is significantly better than no delay
+at all.
 
 ### Simulation Consideration
 
@@ -124,6 +191,31 @@ instead the addition of the pending transaction to the timelock. The pending tra
 shown in [Simulation testing](/wallet-security/signing-and-verification/secure-multisig-safe-verification).
 
 ![Timelock configuration diagram](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/timelock-configuration-diagram.png)
+
+## Timelock Monitoring
+
+A timelock without active monitoring provides no protection. If no one watches for queued transactions, a malicious
+proposal will simply execute after the delay period. The monitoring window IS the security mechanism.
+
+### Requirements
+
+- **Automated alerting**: Implement monitoring that watches for all timelock events (`CallScheduled`, `CallExecuted`,
+  `Cancelled`, or equivalent) and immediately alerts the multisig signer team and external monitors
+- **Decoded transaction details**: Alerts should include the full decoded transaction details (target contract,
+  function, parameters), not just a notification that something was queued. This allows reviewers to quickly assess
+  whether the transaction is expected and correct.
+- **Response procedures**: Document what to do when a timelock alert fires: who reviews it, how it is verified as
+  legitimate, and how to cancel if it is malicious or incorrect
+- **External monitoring**: At least one monitoring channel should be operated by a party external to the core team,
+  so that an internal compromise cannot suppress alerts. See
+  [External Transaction Monitoring](#external-transaction-monitoring) for treasury-specific requirements.
+- **Redundant channels**: Use multiple independent alert channels (e.g., email, Slack, Telegram) so that a single
+  channel failure does not cause a missed alert
+
+### Community Visibility
+
+Consider making timelock queues publicly visible through a dashboard or notification feed. This allows the broader
+community to observe pending changes, which adds an additional layer of scrutiny beyond the core team.
 
 </TagProvider>
 <ContributeFooter />

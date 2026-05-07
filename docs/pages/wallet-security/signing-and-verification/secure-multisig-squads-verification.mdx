@@ -24,6 +24,22 @@ Limited tooling is available for Solana verification compared to EVM. Exercise e
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+## Solana vs. EVM: Key Differences for Multisig Security
+
+Solana multisigs operate differently from EVM-based Safes in several important ways:
+
+- **Transaction model**: Solana transactions contain a list of instructions rather than a single ABI-encoded calldata
+  payload. Verification requires inspecting each instruction individually.
+- **Limited tooling**: Solana verification tooling is significantly less mature than EVM. There are no widely adopted
+  equivalents to Safe CLI hash verification utilities or calldata decoders. Signers must rely more heavily on manual
+  inspection and cross-verification with team members.
+- **UI-dependent verification**: Instead of hash-based verification against the hardware wallet display, Squads
+  verification relies on inspecting transaction data through the Solana explorer and simulation tools. This makes the
+  verification process more dependent on the UI and explorer being accurate.
+- **Program-based architecture**: Solana uses programs with instruction data rather than function selectors and
+  ABI-encoded calldata. Understanding the raw instruction bytes requires knowledge of the specific program's
+  instruction format.
+
 ## Workflow
 
 1) Initial Proposal (SOL transfer, token transfer, signer/threshold change)
@@ -117,6 +133,7 @@ Simulation does NOT seem to work for configuration changes, but we have another 
 - Sign (do not execute) and confirm expected hash on hardware wallet
 - Execute after collecting all signatures
 - Once all signatures are collected, execute the transaction.
+
 
 </TagProvider>
 <ContributeFooter />

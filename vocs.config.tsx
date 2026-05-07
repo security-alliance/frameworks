@@ -309,6 +309,7 @@ const config = {
           collapsed: true,
           items: [
             { text: 'Overview', link: '/multisig-for-protocols/overview' },
+            { text: 'Key Takeaways', link: '/multisig-for-protocols/key-takeaways' },
 
             {
               text: 'Multisig Administration',
