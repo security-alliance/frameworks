@@ -1,14 +1,43 @@
 ---
-title: "Template"
-# SEO meta description: 140-160 chars. Start with the framework/topic name, include
-# searchable terms (tool names, attack types, standards), use action verbs.
-description: "Replace this with a concise summary of the page content. Include searchable keywords relevant to security researchers and whitehats."
+title: "Page Title | Security Alliance"
+# Keep titles under 60 characters total (including "| Security Alliance").
+# For long titles, use "| SEAL" instead: "A Longer Page Title | SEAL"
+
+description: "Replace this with a concise summary of the page content."
+# 140-160 characters. Start with the topic name, include searchable terms
+# (tool names, attack types, standards), and use action verbs.
+# Good:  "Smart contract audits: scoping, static analysis, manual review, and formal verification."
+# Avoid: "This page covers security topics." Too vague, no searchable terms.
+
 tags:
+# Existing tags (use any that apply):
   - Security Specialist
   - Operations & Strategy
   - Community & Marketing
   - HR
   - Engineer/Developer
+  - DevOps
+  - SRE
+  - SEAL/Initiative
+  - Cloud
+  - DAO
+  - Legal & Compliance
+  - Protocol
+  - Whitehat
+  - Certifications
+  - Multisig Security
+  - SFC
+  - DeFi
+  - Operations
+  - Risk Management
+  - Treasury Ops
+  - Business Tools
+  - Communication Platforms
+  - DevOps Accounts
+  - Smart Contracts
+# Need a tag that doesn't exist yet? Just add it. The build will auto-generate
+# a unique color for it and register it in components/shared/tagColors.ts automatically.
+
 contributors:
   - role: wrote
     users: [mattaereal]
@@ -18,6 +47,74 @@ contributors:
     users: []
 ---
 
+{/*
+  This file is the template for new framework pages. Copy it as your starting
+  point, replace the placeholder content, and remove any instructional comments
+  before opening a PR.
+
+  The structure below is a proposed layout, not a strict mold. Some sections
+  are marked (required), every page needs these. The rest are optional building
+  blocks; pick the ones that fit your content. Pages on this site mix conceptual,
+  procedural, and reference material, often within the same page, and the
+  template is meant to support that.
+
+  Do NOT remove the imports and the components below (e.g. <TagProvider> or <ContributeFooter>).
+  They are required for every page to render correctly.
+
+  For the full contribution workflow (environment setup, signed commits,
+  sidebar updates, build commands), see docs/pages/contribute/contributing.
+
+  Heading hierarchy: # for the page title, ## for sections, ### for subsections.
+  Never skip levels (e.g., jumping from ## directly to ####), as it breaks the
+  table of contents and screen-reader navigation.
+*/}
+
+{/* ============================================================================
+    ADDING A WHOLE NEW FRAMEWORK? READ THIS. OTHERWISE SKIP TO THE IMPORT BELOW.
+    ============================================================================
+
+    If you are contributing a single page or rewriting an existing one, this
+    block does not apply to you. Skip ahead.
+
+    If you are unsure whether your topic is a new framework, a section in an
+    existing one, or a single page, open an issue first so we can align on
+    scope before you start writing.
+
+    If you are creating a new framework (a new folder under docs/pages/ with
+    multiple pages), the workflow is:
+
+    1. Create a new folder: docs/pages/<your-framework-name>/. Use kebab-case.
+       Do not use underscores or any other separator. Only normal dashes are
+       allowed.
+
+    2. Write an overview.mdx in that folder using this template. The overview
+       page introduces the framework as a whole and ends with a "Pages" section
+       listing every sub-page with a one-line description (see the OVERVIEW
+       PAGES note further down in this file).
+
+    3. Write the rest of the framework's pages, each one using this template.
+
+    4. Register the new framework in the sidebar with the `dev: true` flag, so
+       it appears on the dev site but stays off production until reviewed.
+
+    5. Run the build command. This generates the auto-generated index file and
+       handles the other site-side artifacts your new framework needs to
+       display correctly.
+
+    6. Reference implementation: see docs/pages/supply-chain/ as a working
+       example of a complete framework.
+
+    For full details on the workflow above (sidebar syntax, build command,
+    signed commits, PR conventions), see docs/pages/contribute/contributing.
+============================================================================ */}
+
+{/*
+  IMPORT PATH: the '../../../components' path below works for pages placed at
+  docs/pages/<framework-folder>/<your-page>.mdx (one level deep inside a
+  framework folder). If your page sits one level deeper, for example
+  docs/pages/<framework-folder>/<subfolder>/<your-page>.mdx, add one more '../'
+  so the import becomes '../../../../components'.
+*/}
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
@@ -28,68 +125,102 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Key Takeaway prompt: Without removing or modifying anything in the document, just after the heading, describe in a
-succinct way (no more than 40 words), all the key points or tl;dr so that anyone can get a good grasp of the contents
-just by reading it. Don't add unnecessary sentences that sound like conclusions, like "By ensuring this..." "Doing all
-these...", "Having these security practices...". Use the following format:
+> 🔑 **Key Takeaway**: [Required. One or two sentences a reader can walk away
+> with if they read nothing else. Not a summary of the page; the *point* of the
+> page. Avoid filler conclusions like "By doing this..." or "Having these
+> practices...". Prefer concrete claims over abstract ones.]
 
-> 🔑 **Key Takeaway**:
+[Required. This block sits directly under the Key Takeaway with no heading of
+its own, so the page opens as continuous reading. Write two or three short
+paragraphs in plain language that introduce the topic and establish the stakes.
+The Frameworks are read by people at every level of expertise, from seasoned
+security engineers to community managers learning the basics, so do not assume
+the reader already knows what you are talking about. Explain what the topic is,
+who it affects, and why it matters in the Web3 context specifically.]
 
-[Context / Problem statement. In this first part, we introduce the topic, in no more than a few paragraphs. For example
-for Threat Modeling inside Operational Security Framework: "Effective security requires understanding **what you're
-protecting and who you're protecting it from**. Without a structured threat model, security efforts become unfocused and
-inefficient. Different entities face different threats based on their assets, visibility, and technological footprint."
-It can be this short, or it can have more context]
+## The basics
 
-## Practical guidance
+[Required. The foundational, definitional layer. Use this section to lay out
+the core concepts, components, or vocabulary the rest of the page builds on.
+For a topic like supply chain security, this is where you would explain what
+makes up a supply chain in the Web3 context. For a topic like threat modeling,
+this is where you would explain what a threat model is and what it contains.
 
-1. **Step-by-Step Actions** – numbered list users can follow.
-2. **Best-Practice Checklist** – bullet list they can literally tick.
-3. **Role-Based Tips** – highlight differences for Ops, HR, Dev, etc.
-(This mirrors OWASP Cheat Sheet brevity.)
+Rename this section to something specific to your topic if a better name
+exists ("What Makes Up a Web3 Supply Chain", "Anatomy of a Phishing Attack",
+"Components of a Threat Model"), but do not skip the layer itself. A reader
+who is new to the topic should be oriented before any deeper content begins.]
 
-## Why is it important
+## [Your section title]
 
-Explain consequences of ignoring this guidance and link to real incidents or CISA/NIST advisories supporting each risk.
+[Required. This is where the substance of your page lives. You are an expert
+on this topic; break it into the sections that make sense for what you have
+to teach, name them after their actual content, and write each one in the
+format that fits best.
 
-## Implementation details
+Use ### subsections within each one as needed.
 
-| Sub-Topic | Related Page |
-| ----------- | -------------- |
-| Device Hardening | `../endpoint-security/...` |
-| Network Segmentation | `../network-security/...` |
+Common formats to mix and match within a section:
 
-Cross-linking reduces duplication, following docs-as-code best practice.
+- **Walkthrough**: numbered steps, top to bottom. Use when order matters.
+- **Checklist**: bullet points the reader can tick. Use when order does not matter.
+- **Decision tree or matrix**: table or branching guide. Use when the right
+  answer depends on the reader's situation.
+- **Plain explanation**: paragraphs. Use when the content is conceptual or
+  when format would get in the way.
 
-## 5  Common pitfalls & examples
+When discussing failure modes or common mistakes, anchor them to a specific
+recommendation rather than collecting them in a separate "pitfalls" section.
+For example: "Rotate signing keys quarterly. Teams often skip this because no
+incident forces it, which is exactly when key compromise causes the most
+damage." This keeps the warning where it is useful instead of in a generic list.]
 
-Real-world breach snippets or failure stories that illustrate mistakes to avoid.
-{/* :contentReference[oaicite:6]{index=6} */}
+## Real-world examples
 
-## 6  Quick-reference / Cheat sheet
+[Optional. Include only if you can point to a specific incident, breach,
+post-mortem, or named scenario. Skip the section entirely if you do not have one.
 
-A compact table or numbered list for on-the-job use, inspired by OWASP cheat sheets.
-{/* :contentReference[oaicite:7]{index=7} */}
+When you do include an example, link to the source: an incident write-up, a
+CISA advisory, a CVE, a post-mortem, or a credible reporting source.]
 
-## 7  Further Reading & Tools
+{/* ============================================================================
+    OVERVIEW PAGES ONLY: include the "Pages" section below.
 
-Automatically generated from the `references:` field or add authoritative links here.
+    If this is the overview.mdx for a framework, include a Pages section that
+    lists every sub-page in the framework with a one-line description, like this:
 
-{/*
-CITATION SOURCES
-turn0search0  Jekyll front-matter basics – validates YAML metadata structure.
-turn0search2  NIST practice guides use an executive-summary section.
-turn0search3  CISA report templates also open with Executive Summary.
-turn0search4  OWASP Cheat Sheet series shows concise prescriptive guidance.
-turn0search5  Kubernetes style guide recommends short sections & headings.
-turn0search6  Google developer style guide echoes those principles.
-turn0search7  Version-history tables are a best practice for change control.
-turn0search8  Jekyll step-by-step docs reinforce YAML front-matter placement.
-turn0search11 CISA advisories supply risk context references.
-turn0search12 OWASP Cheat Sheet project cited for quick-reference idea.
-turn0search13 Kubernetes “page content types” shows cross-linking strategy.
-turn0search10 NIST CSF overview underpins risk-management rationale.
-*/}
+    ## Pages
+
+    1. [Dependency Awareness](/supply-chain/dependency-awareness):
+       managing external packages, version pinning, lockfile integrity, and
+       protection against typosquatting.
+    2. [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats):
+       threat vectors specific to Web3, from frontend library hijacking to
+       infrastructure compromise.
+
+    Keep this list in sync with the sidebar config when pages are added,
+    renamed, or removed.
+
+    If this is a regular sub-page (not an overview), delete this comment and
+    skip straight to "Further Reading & Tools" below.
+============================================================================ */}
+
+## Further Reading & Tools
+
+[Required. Two types of links belong here:
+
+1. Related pages within the frameworks or entire frameworks. Use paths relative
+   to your page, with a short description of why the reader would follow the link:
+   - [Wallet Security](/wallet-security/overview): specific wallet security practices
+   - [DevSecOps](/devsecops/overview): integrating dependency scanning into CI/CD
+
+2. External articles, standards, or tools cited in the content. Use full URLs:
+   - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
+   - [CISA Known Exploited Vulnerabilities Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+
+Every external claim made in the page body should be traceable to a link here
+or to an inline citation. Use descriptive link text. No bare URLs, no "click
+here", no "this article".]
 
 ---
 
