@@ -1,0 +1,70 @@
+/* ChecklistItem — interactive checkbox + bold title with plain-paragraph
+ * description below. No nested list marker on the description.
+ */
+
+.gov-checklist-item {
+  margin: 12px 0 16px;
+}
+
+.gov-checklist-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.gov-checklist-checkbox {
+  /* Large, obvious tap/click target. */
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+  /* Pull up so the box visually aligns with the title baseline. */
+  transform: translateY(3px);
+  cursor: pointer;
+  accent-color: var(--color-primary, #4339db);
+}
+
+.gov-checklist-title {
+  font-weight: 700;
+  color: var(--color-text-strong);
+  line-height: 1.45;
+}
+
+.gov-checklist-item.is-checked .gov-checklist-title {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.gov-checklist-desc {
+  /* Indent to align with the title text (checkbox width + row gap). */
+  margin: 4px 0 0 28px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* Flatten any stray nested markers: MDX may occasionally wrap prose in a
+ * single <p>, <ul>, or similar. Guarantee no bullet shows up inside the
+ * description.
+ */
+.gov-checklist-desc ul,
+.gov-checklist-desc ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5em 0;
+}
+
+.gov-checklist-desc p {
+  margin: 0 0 0.6em;
+}
+
+.gov-checklist-desc p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .gov-checklist-desc {
+    margin-left: 24px;
+  }
+}

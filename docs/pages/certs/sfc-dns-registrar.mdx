@@ -1,6 +1,8 @@
 ---
 title: "SFC: DNS Registrar | Security Alliance"
 description: "SFC DNS Registrar certification: domain management, registrar access controls, DNSSEC configurations, email authentication (SPF/DKIM/DMARC), monitoring, and incident response."
+version: "1.1"
+revised: "2026-04-17"
 tags:
   - SEAL/Initiative
   - Certifications
@@ -57,12 +59,12 @@ cert:
     description: Do you control and secure access to domain registrar and DNS
       management accounts?
     baselines:
-      - Documented who is authorized, how access is granted/revoked, and role-based
-        permissions where available
-      - Hardware security key MFA (FIDO2/WebAuthn) required for all registrar and
-        DNS management accounts
-      - Access reviews conducted at least annually
-      - Access revoked promptly when no longer needed
+      - "Registrar and DNS management accounts classified as high-privilege and
+        managed per [SFC - Identity & Accounts](/certs/sfc-identity-accounts)
+        (phishing-resistant MFA via hardware keys, credential management, recovery
+        methods, account lifecycle, periodic access reviews)"
+      - Registrar account ownership and role-based permissions documented where
+        the registrar supports them
     title: Registrar Access Control
   - id: dns-3.1.2
     description: Is your domain security contact email independent of the domains
@@ -189,7 +191,10 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Cer
 
 # SFC - DNS Registrar
 
-The SEAL Framework Checklist (SFC) for DNS Registrar provides best practices for securely managing domain names and DNS configurations.
+*Revision {frontmatter.version} · Updated {frontmatter.revised} · [Changelog](/certs/changelog)*
+
+The SEAL Framework Checklist (SFC) for DNS Registrar provides best practices for securely managing
+domain names and DNS configurations.
 
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 

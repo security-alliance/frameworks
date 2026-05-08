@@ -115,6 +115,11 @@
       "SEAL/Initiative",
       "Certifications"
     ],
+    "/certs/changelog": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
     "/certs/contributions": [
       "SEAL/Initiative",
       "Certifications"
@@ -133,6 +138,11 @@
       "Certifications",
       "SFC"
     ],
+    "/certs/sfc-identity-accounts": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
     "/certs/sfc-incident-response": [
       "SEAL/Initiative",
       "Certifications",
@@ -144,11 +154,6 @@
       "SFC"
     ],
     "/certs/sfc-treasury-ops": [
-      "SEAL/Initiative",
-      "Certifications",
-      "SFC"
-    ],
-    "/certs/sfc-workspace-security": [
       "SEAL/Initiative",
       "Certifications",
       "SFC"
@@ -178,6 +183,11 @@
       "SRE"
     ],
     "/devsecops/data-security-upgrade-checklist": [
+      "Engineer/Developer",
+      "Operations & Strategy",
+      "Smart Contracts"
+    ],
+    "/devsecops/governance-proposal-security": [
       "Engineer/Developer",
       "Operations & Strategy",
       "Smart Contracts"
@@ -413,6 +423,10 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/front-end-web-app/third-party-script-security": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/front-end-web-app/web-application-security": [
       "Engineer/Developer",
       "Security Specialist"
@@ -486,6 +500,18 @@
     "/guides/account-management/vercel": [
       "DevOps Accounts"
     ],
+    "/guides/endpoint-security/hardware-security-keys": [
+      "Security Specialist"
+    ],
+    "/guides/endpoint-security/password-manager-endpoint-hardening": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Engineer/Developer"
+    ],
+    "/guides/endpoint-security/ssh-client-and-key-management-hardening": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/guides/endpoint-security/zoom-hardening": [
       "Security Specialist",
       "Operations & Strategy"
@@ -522,6 +548,12 @@
     "/incident-management/communication-strategies": [
       "Security Specialist",
       "Operations & Strategy"
+    ],
+    "/incident-management/forensic-readiness": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps",
+      "SRE"
     ],
     "/incident-management/incident-detection-and-response": [
       "Security Specialist",
@@ -746,6 +778,10 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/intro/attack-surface": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/intro/introduction": [
       "SEAL/Initiative"
     ],
@@ -895,7 +931,8 @@
     ],
     "/opsec/endpoint/overview": [
       "Security Specialist",
-      "Operations & Strategy"
+      "Operations & Strategy",
+      "HR"
     ],
     "/opsec/google/overview": [
       "Community & Marketing",
@@ -977,7 +1014,27 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/privacy/vpn-services": [
+    "/privacy/vpns/attack-surfaces-public-networks": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/https-vs-vpn": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/overview": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/vpn-limitations": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/vpn-providers-and-tools": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/when-to-use-vpn": [
       "Engineer/Developer",
       "Security Specialist"
     ],
@@ -1269,45 +1326,46 @@
     ]
   },
   "sectionMappings": {
-    "Community Management": "community-management",
+    "AI Security": "ai-security",
     "Awareness": "awareness",
-    "Operational Security": "opsec",
-    "OpSec Core Concepts": "opsec",
-    "While Traveling": "opsec",
-    "Wallet Security": "wallet-security",
-    "Signing & Verification": "wallet-security",
-    "Multisig for Protocols": "multisig-for-protocols",
-    "Multisig Administration": "multisig-for-protocols",
-    "Operational Runbooks": "multisig-for-protocols",
-    "For Signers": "multisig-for-protocols",
+    "Community Management": "community-management",
+    "DevSecOps": "devsecops",
+    "Isolation & Sandboxing": "devsecops",
+    "DPRK IT Workers": "dprk-it-workers",
+    "Encryption": "encryption",
+    "ENS": "ens",
     "External Security Reviews": "external-security-reviews",
     "Smart Contract Audits": "external-security-reviews",
-    "Vulnerability Disclosure": "vulnerability-disclosure",
-    "Infrastructure": "infrastructure",
-    "Domain & DNS Security": "infrastructure",
-    "Monitoring": "monitoring",
     "Front-End/Web Application": "front-end-web-app",
+    "Governance": "governance",
+    "Identity and Access Management IAM": "iam",
     "Incident Management": "incident-management",
     "Playbooks": "incident-management",
     "Incident Response Template": "incident-management",
     "Templates": "incident-management",
     "Runbooks": "incident-management",
-    "Threat Modeling": "threat-modeling",
-    "DPRK IT Workers": "dprk-it-workers",
-    "Governance": "governance",
-    "DevSecOps": "devsecops",
-    "Isolation & Sandboxing": "devsecops",
+    "Infrastructure": "infrastructure",
+    "Domain & DNS Security": "infrastructure",
+    "Monitoring": "monitoring",
+    "Multisig for Protocols": "multisig-for-protocols",
+    "Multisig Administration": "multisig-for-protocols",
+    "Operational Runbooks": "multisig-for-protocols",
+    "For Signers": "multisig-for-protocols",
+    "Operational Security": "opsec",
+    "OpSec Core Concepts": "opsec",
+    "While Traveling": "opsec",
     "Privacy": "privacy",
-    "Supply Chain": "supply-chain",
-    "Security Automation": "security-automation",
-    "Identity and Access Management IAM": "iam",
-    "Secure Software Development": "secure-software-development",
-    "Security Testing": "security-testing",
-    "AI Security": "ai-security",
-    "ENS": "ens",
+    "VPN Services": "privacy",
     "Safe Harbor": "safe-harbor",
-    "Encryption": "encryption",
+    "Secure Software Development": "secure-software-development",
+    "Security Automation": "security-automation",
+    "Security Testing": "security-testing",
+    "Supply Chain": "supply-chain",
+    "Threat Modeling": "threat-modeling",
     "Treasury Operations": "treasury-operations",
+    "Vulnerability Disclosure": "vulnerability-disclosure",
+    "Wallet Security": "wallet-security",
+    "Signing & Verification": "wallet-security",
     "Guides": "guides",
     "Account Management": "guides",
     "Endpoint Security": "guides",

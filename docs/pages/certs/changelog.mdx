@@ -1,0 +1,110 @@
+---
+title: "SEAL Certifications Changelog | Security Alliance"
+description: "Revision history for SEAL certification frameworks. Tracks additions, removals, and control changes across all SFC certs."
+tags:
+  - SEAL/Initiative
+  - Certifications
+  - SFC
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# SEAL Certifications Changelog
+
+Revision history across all SFC certifications. Each cert carries a `version` in its page header; this page
+aggregates what changed, when, and why so protocols re-certifying after a revision can scope the delta quickly.
+
+---
+
+## 2026-04-17 — Feedback integration round 1
+
+### New
+
+- **[SFC - Identity & Accounts](/certs/sfc-identity-accounts)** (v1.0): new horizontal cert covering
+  organizational account management — inventory (social media, email, SSO, registrar, custody, repo
+  admin, cloud root, SaaS), phishing-resistant MFA, password manager with individual accountability,
+  recovery methods restricted to org channels, account lifecycle, takeover monitoring, third-party
+  access. Addresses a gap where org-account takeover (Twitter, status page, registrar) was not covered
+  despite being a top-tier attack vector for crypto protocols.
+
+### Retired
+
+- **SFC - Workspace Security**: retired. Its crypto-relevant content (accounts, credentials, MFA,
+  takeover monitoring) moved to the new Identity & Accounts cert. Content on device management,
+  EDR/MDM, BYOD, physical/travel security, formal training programs with phishing sims, insider threat
+  assessment as standalone, and data classification was intentionally dropped as out of SEAL SME and
+  better covered by ISO 27001 / SOC 2 / CIS.
+
+### SFC - Multisig Operations (v1.0 → v1.1)
+
+- `ms-2.1.2` strengthened from "evaluate" to "implement" contract-level security controls.
+- `ms-4.1.1` transaction process consolidated from 8 bullets to 5.
+
+### SFC - Treasury Operations (v1.0 → v1.1)
+
+- Scope note added distinguishing internal vs professional treasury operations (OTC desks, market-making, custody-as-a-service).
+- `tro-1.1.4` "SLAs" replaced with "timeframes".
+- `tro-2.1.1` impact thresholds reframed as an example scheme; review trigger broadened.
+- `tro-2.1.2` renamed from "fund allocation limits" to "portfolio concentration limits"; wording softened.
+- `tro-2.1.3` (NEW): per-actor and per-path exposure limits.
+- `tro-3.1.1` session timeout bullet made actionable; geographic restrictions clause dropped.
+- `tro-3.1.2` hardware-key MFA added for privileged credential access; owner/admin isolation line moved to `tro-3.1.5`.
+- `tro-3.1.5` (NEW): privileged access and root account management.
+- `tro-4.1.1` trusted-parser bullet added; consolidated 8 bullets to 5.
+- `tro-4.1.2` consolidated 4 bullets to 3.
+- `tro-5.1.1` "TVL history" and "insurance coverage" dropped from baseline; exposure limits softened.
+- `tro-6.1.1` consolidated 9 bullets to 4.
+- `tro-6.1.2` consolidated 7 bullets to 4.
+- Header pointer to SFC - Identity & Accounts added for custody platform account management.
+- Control count: 20 → 22.
+
+### SFC - DevOps & Infrastructure (v1.0 → v1.1)
+
+- `di-1.1.2` supply-chain mention dropped from the baseline (supply chain is already covered substantively in Section 2).
+- `di-1.1.4` rewritten to cover both the tool approval process and the maintained approved-tools list
+  in a single control; list review cadence made explicit.
+- `di-2.1.1` repo access review cadence tightened; account controls now reference SFC - Identity & Accounts.
+- `di-2.1.4` dependencies consolidated from 6 bullets to 3.
+- `di-3.1.1` pipeline runner hardening bullet added; consolidated to 5 bullets.
+- `di-4.1.1` network architecture bullet added (segmentation, minimal public exposure, firewall/security group rules).
+- `di-4.1.2` account controls now reference SFC - Identity & Accounts; break-glass bullets consolidated.
+- Control count unchanged: 16.
+
+### SFC - DNS Registrar (v1.0 → v1.1)
+
+- `dns-3.1.1` slimmed to reference SFC - Identity & Accounts for account management;
+  DNS-specific registrar RBAC bullet retained.
+
+### SFC - Incident Response (v1.0 → v1.1)
+
+- Header pointer to SFC - Identity & Accounts added for org account takeover coordination.
+- `ir-1.1.1` IR team roles consolidated from 7 bullets to 3.
+- `ir-1.1.2` IR contacts consolidated from 7 bullets to 4.
+- `ir-2.1.1` **(NEW)**: threat model for protocol operations, including external dependencies and
+  single points of failure (cross-chain messaging providers, oracle providers, critical infrastructure).
+  Placed before monitoring coverage so monitoring is anchored to a known threat picture. Existing
+  Section 2 controls shifted: previous `ir-2.1.1` → `ir-2.1.2`, `ir-2.1.2` → `ir-2.1.3`,
+  `ir-2.1.3` → `ir-2.1.4`.
+- `ir-2.1.3` alerting and paging (previously `ir-2.1.2`) consolidated from 8 bullets to 4.
+- `ir-5.1.1` IR drills consolidated from 7 bullets to 4.
+
+### Cross-cutting
+
+- Control IDs now rendered next to the title in each control card (UI improvement).
+- Account-control pattern (MFA, credential management, access reviews, lifecycle) de-duplicated out of
+  vertical certs; Identity & Accounts is the authoritative source. DNS and DevOps reference it
+  directly; Treasury and Incident Response carry a header pointer and retain domain-specific bullets.
+
+### Workbook compatibility
+
+- Control IDs are stable across this revision. No renames. New controls (`tro-2.1.3`, `tro-3.1.5`,
+  `ir-2.1.1`, all `ida-*`) will simply be unpopulated when importing old workbooks, which is expected.
+  Shifted IR Section 2 IDs mean old `ir-2.1.1`/`ir-2.1.2`/`ir-2.1.3` data in workbooks will not
+  align to the new IDs without manual re-mapping.
+- Users with saved state for Workspace Security will lose that state (that cert is removed). Other
+  certs retain their localStorage state across the revision.
+
+</TagProvider>

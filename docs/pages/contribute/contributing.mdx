@@ -285,7 +285,7 @@ This helps track contributions and ensures proper attribution.
 
 For a complete frontmatter example, see the [template file](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx?plain=1).
 
-### 3. Sidebar / Navigation
+### 2. Sidebar / Navigation
 
 Because of how we handle the `.org` and `.dev` domains in different branches, when contributing **new pages** you must
 also **update `vocs.config.tsx`** so that the page appears in the site’s sidebar. For content still in review, remember
@@ -310,7 +310,7 @@ Example of a category with multiple pages:
 This ensures that new content appears correctly in the site’s navigation for readers on the `.dev` site while staying
 hidden from the stable `.org` site until ready.
 
-### 4. Error Checking
+### 3. Error Checking
 
 Before pushing changes, always make sure your build works without errors:
 
@@ -355,19 +355,30 @@ fits, for example in block-quotes.
 
 ### Visual representation / drawings
 
-Like GitHub, we also support Mermaid!
+- Like GitHub, we also support Mermaid!
 
-You can use codeblocks using the `mermaid` keyword, and you can create beautiful graphical representations.
-There's a
-[playground](https://www.mermaidchart.com/play#pako:eNqrVkrOT0lVslIqyExVKMksyUlVCM9ILFEIy89JSc3NLypRSMlPLc5TL1HISCxLtY_JU4CBGCW3IE9XP5fgGCUFKwUjVBlHX0-fSLCEMYqEn3-wK1jYxDQmT6kWAEyMIfc)
-where you can jump straight to draw!
+  You can use codeblocks using the `mermaid` keyword, and you can create beautiful graphical representations.
+  There's a
+  [playground](https://www.mermaidchart.com/play#pako:eNqrVkrOT0lVslIqyExVKMksyUlVCM9ILFEIy89JSc3NLypRSMlPLc5TL1HISCxLtY_JU4CBGCW3IE9XP5fgGCUFKwUjVBlHX0-fSLCEMYqEn3-wK1jYxDQmT6kWAEyMIfc)
+  where you can jump straight to draw!
 
-<MermaidRenderer
-id="manual-diagram"
-code={`pie title What Voldemort doesn't have?
-         "FRIENDS" : 2
-         "FAMILY" : 3
-         "NOSE" : 45`} />
+  <MermaidRenderer
+  id="manual-diagram"
+  code={`pie title What Voldemort doesn't have?
+          "FRIENDS" : 2
+          "FAMILY" : 3
+          "NOSE" : 45`} />
+
+- Adding images is welcome and encouraged.
+  Please follow the steps below to include them correctly:
+
+  1. After making your changes and opening a PR, add the images you want to include
+     in the PR's comments (by uploading them directly)
+  2. During the review, a maintainer will upload your images to our S3 bucket and reply with the links you should use.
+  3. Once you receive the new links, update your PR to add the images' links.
+
+> ⚠️ Please do not add images directly to the repository.
+> This helps us avoid bloating the Git history and ensures all images follow our standardized storage and delivery method.
 
 ### Linking resources
 
@@ -394,7 +405,7 @@ This page is also open for contributions! Suggest improvements to our style and 
 
 ## About this page
 
-Originally inspired by the [Ethereum Protocol Fellows](https://github.com/eth-protocol-fellows/protocol-studies)
+Originally inspired by the [Ethereum Protocol Fellows](https://github.com/eth-protocol-fellows/protocol-studies).
 
 ---
 

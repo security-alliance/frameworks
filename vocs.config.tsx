@@ -40,6 +40,7 @@ const config = {
         { text: 'Introduction to Frameworks', link: '/intro/introduction' },
         { text: 'How to Navigate the Website', link: '/intro/how-to-navigate-the-website' },
         { text: 'Overview of each Framework', link: '/intro/overview-of-each-framework' },
+        { text: 'Attack Surface Overview', link: '/intro/attack-surface', dev: true },
       ]
     },
     {
@@ -101,7 +102,8 @@ const config = {
             },
             { text: 'Code Signing', link: '/devsecops/code-signing' },
             { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment' },
-            { text: 'Data Security & Upgrade Checklist', link: '/devsecops/data-security-upgrade-checklist' },
+            { text: 'Data Security Checklist', link: '/devsecops/data-security-upgrade-checklist' },
+            { text: 'Governance Proposal Security Across the SDLC', link: '/devsecops/governance-proposal-security' },
             { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments' },
             { text: 'Repository Hardening', link: '/devsecops/repository-hardening' },
             { text: 'Security Testing', link: '/devsecops/security-testing' },
@@ -175,6 +177,7 @@ const config = {
           items: [
             { text: 'Overview', link: '/front-end-web-app/overview', dev: true },
             { text: 'Web Application Security', link: '/front-end-web-app/web-application-security', dev: true },
+            { text: 'Third-Party Script Security', link: '/front-end-web-app/third-party-script-security', dev: true },
             { text: 'Mobile Application Security', link: '/front-end-web-app/mobile-application-security', dev: true },
             { text: 'Common Vulnerabilities', link: '/front-end-web-app/common-vulnerabilities', dev: true },
             { text: 'Security Tools and Resources', link: '/front-end-web-app/security-tools-resources', dev: true },
@@ -197,7 +200,7 @@ const config = {
           collapsed: true,
           dev: true,
           items: [
-            { text: 'Overview', link: '/iam/overview' },
+            { text: 'Overview', link: '/iam/overview', dev: true },
             { text: 'Role-Based Access Control', link: '/iam/role-based-access-control', dev: true },
             { text: 'Secure Authentication', link: '/iam/secure-authentication', dev: true },
             { text: 'Access Management Best Practices', link: '/iam/access-management', dev: true },
@@ -210,6 +213,7 @@ const config = {
             { text: 'Overview', link: '/incident-management/overview' },
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
             { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
+            { text: 'Forensic Readiness', link: '/incident-management/forensic-readiness', dev: true },
             { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
             {
               text: 'Playbooks',
@@ -390,7 +394,18 @@ const config = {
             { text: 'Encrypted Communication Tools', link: '/privacy/encrypted-communication-tools', dev: true },
             { text: 'Financial Privacy Services', link: '/privacy/financial-privacy-services', dev: true },
             { text: 'Privacy-Focused Operating Systems and Tools', link: '/privacy/privacy-focused-operating-systems-tools', dev: true },
-            { text: 'VPN Services', link: '/privacy/vpn-services', dev: true },
+            {
+              text: 'VPN Services',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/privacy/vpns/overview', dev: true },
+                { text: 'HTTPS vs VPN', link: '/privacy/vpns/https-vs-vpn', dev: true },
+                { text: 'Attack Surfaces on Public Networks', link: '/privacy/vpns/attack-surfaces-public-networks', dev: true },
+                { text: 'When to Use a VPN', link: '/privacy/vpns/when-to-use-vpn', dev: true },
+                { text: 'VPN Limitations', link: '/privacy/vpns/vpn-limitations', dev: true },
+                { text: 'VPN Providers and Tools', link: '/privacy/vpns/vpn-providers-and-tools', dev: true },
+              ],
+            },
           ]
         },
         {
@@ -546,6 +561,9 @@ const config = {
           text: 'Endpoint Security',
           collapsed: true,
           items: [
+            { text: 'SSH Client and Key Management Hardening', link: '/guides/endpoint-security/ssh-client-and-key-management-hardening' },
+            { text: 'Hardware Security Keys', link: '/guides/endpoint-security/hardware-security-keys' },
+            { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening', dev: true },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },
@@ -561,13 +579,14 @@ const config = {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
             { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
             { text: 'DNS Registrar', link: '/certs/sfc-dns-registrar' },
+            { text: 'Identity & Accounts', link: '/certs/sfc-identity-accounts' },
             { text: 'Incident Response', link: '/certs/sfc-incident-response' },
             { text: 'Multisig Operations', link: '/certs/sfc-multisig-ops' },
             { text: 'Treasury Operations', link: '/certs/sfc-treasury-ops' },
-            { text: 'Workspace Security', link: '/certs/sfc-workspace-security' },
           ]
         },
         { text: 'Certification Guidelines', link: '/certs/certification-guidelines' },
+        { text: 'Changelog', link: '/certs/changelog' },
         { text: 'Contributions', link: '/certs/contributions' },
       ]
     },
@@ -587,6 +606,7 @@ const config = {
 
           ]
         },
+        { text: 'LLMs', link: '/intro/llms' },
       ]
     }
   ],

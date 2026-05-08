@@ -1,0 +1,54 @@
+---
+title: "VPN Limitations | Security Alliance"
+description: "What a VPN cannot protect you from: provider trust issues, DNS and IP leaks, TunnelVision attacks, browser fingerprinting, free VPN risks, and endpoint compromise."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+outline: deep
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# VPN Limitations
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+A VPN is not infallible. Consider these factors in your threat model:
+
+- **Provider can log or get raided** — If police serve a warrant or the company folds under subpoena, your traffic
+  metadata can leak.
+- **DNS and IP leaks still happen** — Misconfigured clients, IPv6 routes, or split-tunnel mistakes send lookups to your
+  ISP in the clear.
+- **TunnelVision and rogue-route attacks** — Can force traffic outside the tunnel if the local gateway manipulates DHCP
+  or routes.
+- **Browser fingerprinting survives** — Device fonts, canvas/WebGL, and TLS quirks still identify you even with a new
+  IP.
+- **Malicious or free VPN apps** — Many no-cost Android VPNs bundle adware or spyware.
+- **Streaming and firewalls detect and block exits** — Popular services blacklist known VPN ranges.
+- **Kill-switch failure reveals your real IP** — If the tunnel drops and no kill switch is active, traffic falls back to
+  the raw internet.
+- **Protocol metadata** — WireGuard stores client IPs on the server for handshakes, a privacy trade-off.
+- **Government blocking and legality** — Some countries throttle, detect, or criminalize unapproved VPNs.
+- **Endpoint still vulnerable** — Malware on your laptop records keystrokes before encryption. A VPN cannot fix a
+  compromised device.
+
+## DNS Leaks
+
+HTTPS encrypts what you are saying, but not who you are talking to, when, how often, or how much data you are
+exchanging. A DNS leak occurs when your DNS queries bypass the VPN tunnel and go directly to your ISP's resolver,
+revealing the domains you visit. You can test for DNS leaks using tools like
+[dnsleaktest.com](https://dnsleaktest.com/).
+
+---
+
+</TagProvider>
+<ContributeFooter />

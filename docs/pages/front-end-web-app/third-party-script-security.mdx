@@ -1,0 +1,397 @@
+---
+title: "Third-Party Script Security | SEAL"
+description: "Safely load third-party scripts in Web3 frontends using Content Security Policy (CSP) and Subresource Integrity (SRI). Prevent supply chain attacks on Web3 users."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [scode2277]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Third-Party Script Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway:** Every third-party script running on your frontend shares your page's origin, meaning it
+> can access cookies, localStorage, session tokens, and call `window.ethereum` methods directly. Use Content
+> Security Policy, Subresource Integrity, and Trusted Types to control what code executes, verify it has not
+> been tampered with, and lock down dangerous DOM APIs.
+
+Web3 frontends are high-value targets because they sit between users and their wallets. Every script that runs
+on your page executes with the same permissions as your own code. When a user visits your application and signs
+a transaction, any script on the page can observe, modify, or replace that interaction. If an attacker
+compromises a third-party script your frontend loads (a CDN-hosted library, an analytics snippet, a wallet
+connector), they can silently redirect transactions, drain wallets, or harvest credentials without touching your
+own code.
+
+This is not a theoretical concern. Multiple attacks have exploited third-party scripts to compromise
+Web3 frontends at scale (see [Past Incidents](#past-incidents) below). Three browser-native
+mechanisms, **Content Security Policy (CSP)**, **Subresource Integrity (SRI)**, and **Trusted Types**, provide
+strong defenses against these attacks. Neither requires external tooling or dependencies because they are built
+into every modern browser.
+
+## Content Security Policy (CSP)
+
+A Content Security Policy is an HTTP response header that tells the browser which sources of content are
+permitted to load on your page. If a script, style, image, or connection does not match your policy, the browser
+blocks it. This means that even if an attacker injects a `<script>` tag or modifies an existing one to point to
+a malicious source, the browser will refuse to execute it.
+
+Think of CSP as an allowlist for your page. By default, a browser will happily load and execute any resource from
+anywhere. CSP reverses that assumption: nothing loads unless you have explicitly said it should. You express these
+rules through a set of **directives**, each controlling a specific category of resource your page can load (scripts,
+stylesheets, network connections, images, and so on). The browser reads these directives from the CSP header and
+enforces them on every request the page makes.
+
+### Key Directives
+
+| Directive | Purpose |
+| --------- | ------- |
+| `script-src` | Controls which scripts can execute. Start restrictive and expand only as needed. |
+| `connect-src` | Restricts where `fetch`, `XMLHttpRequest`, and WebSocket connections can go. Critical for preventing data exfiltration to attacker-controlled servers. |
+| `frame-ancestors` | Prevents your application from being embedded in malicious iframes (clickjacking). |
+| `default-src` | Fallback for any directive not explicitly set. Set to `'self'` as a baseline. |
+| `style-src` | Controls stylesheet sources. Avoid `'unsafe-inline'` where possible. |
+| `img-src` | Controls image sources. Relevant for token icons and NFT metadata loaded from external origins. |
+| `object-src` | Controls `<object>` and `<embed>` elements. Set to `'none'`. These elements can load and execute arbitrary content and bypass `script-src` restrictions entirely, so leaving this unset undermines the rest of your policy. |
+| `base-uri` | Restricts what values can appear in a `<base>` tag. Set to `'self'` to prevent base tag injection, where an attacker inserts `<base href="https://evil.com">` to silently redirect all relative URLs on your page. |
+| `require-trusted-types-for` | Prevents DOM XSS by requiring Trusted Types for dangerous sink APIs (see [Trusted Types](#trusted-types) below). |
+
+### Nonce-Based CSP in Practice
+
+Most Web3 frontends generate inline scripts at build time, which means a simple origin allowlist is not enough:
+you need those inline scripts to run while still blocking injected ones. The solution is **nonce-based CSP**.
+Your server generates a cryptographically random token for each page load, includes it in the CSP header, and
+stamps it on every legitimate `<script>` tag. The browser runs scripts whose nonce matches the header and blocks
+everything else, including injected scripts, which have no way to know the token. Avoid `'unsafe-inline'` and
+`'unsafe-eval'` in `script-src` as these directives disable this protection entirely and reduce CSP to an origin
+allowlist with all its weaknesses.
+
+A complete baseline header looks like this:
+
+```
+Content-Security-Policy:
+  default-src 'self';
+  script-src 'nonce-{random}' 'strict-dynamic';
+  connect-src 'self' https://your-rpc-provider.com;
+  frame-ancestors 'none';
+  object-src 'none';
+  base-uri 'self';
+  require-trusted-types-for 'script'
+```
+
+For how to wire nonce generation into your specific framework, see
+[Framework-Specific Notes](#framework-specific-notes) below.
+
+### The `strict-dynamic` Directive
+
+Dynamic script loading introduces a problem: you cannot predict every origin a runtime-loaded script might come
+from. Without `strict-dynamic`, you end up maintaining a growing allowlist of domains. Allowlists tend to
+accumulate entries and drift broader than intended, and a single compromised domain on the list defeats the
+entire policy. They are not just harder to maintain; they are actively weaker.
+
+`strict-dynamic` solves this by establishing a chain of trust: any script that has a valid nonce (or hash) is
+trusted, and any script *that trusted script loads* is also trusted. The browser ignores origin-based allowlists
+like `'self'` or specific URLs in the presence of `strict-dynamic`, relying entirely on the nonce chain instead.
+
+```
+script-src 'nonce-abc123' 'strict-dynamic';
+```
+
+This means:
+
+- Scripts with `nonce="abc123"` will execute.
+- Scripts those nonced scripts load via `document.createElement('script')` will also execute.
+- A random `<script src="https://evil.com/drain.js">` injected into the DOM without going through a nonced
+  script will be blocked.
+
+**This is the recommended CSP model for applications that load scripts dynamically** (React, Next.js, Vite, and similar).
+
+### Framework-Specific Notes
+
+- **Next.js** supports nonce-based CSP via the `nonce` prop on `<Script>` components and `headers()` in
+  `next.config.js`. It also has experimental hash-based CSP with SRI, letting you keep static generation and
+  CDN caching without per-request nonce injection. See the
+  [Next.js CSP documentation](https://nextjs.org/docs/app/guides/content-security-policy) for both approaches.
+- **Vite** does not inject nonces natively. Use a server middleware or `vite-plugin-csp` to add nonces to
+  the HTML template at request time.
+- **Webpack** supports nonce injection via `__webpack_nonce__`. Set this variable before any webpack bundle
+  executes and webpack will apply the nonce to all dynamically loaded chunks.
+
+### CSP Limitations
+
+CSP does not verify the content of allowed scripts. It only checks whether the source is permitted. A
+compromised CDN that serves tampered files from an allowed origin will pass CSP checks. This is where
+Subresource Integrity fills the gap.
+
+## Subresource Integrity (SRI)
+
+Where CSP controls *where* your scripts come from, Subresource Integrity controls *what* those scripts contain.
+SRI lets you attach a cryptographic fingerprint to any externally loaded script or stylesheet. Before executing
+the file, the browser computes its own hash of the fetched content and compares it to the hash you declared. If
+someone has modified even a single byte of the file (whether through a compromised CDN, a man-in-the-middle
+attack, or a malicious package update), the hashes will not match and the browser will refuse to run it.
+
+```html
+<script
+  src="https://cdn.example.com/library.js"
+  integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"
+  crossorigin="anonymous"
+></script>
+```
+
+### How It Works
+
+1. You generate a SHA-256, SHA-384, or SHA-512 hash of the exact file you expect to load.
+2. You include this hash in the `integrity` attribute of the `<script>` or `<link>` tag.
+3. The browser fetches the file, computes its hash, and compares.
+4. If the hashes match, the file executes. If not, the browser blocks it and reports a network error.
+
+### Why `crossorigin="anonymous"` Is Required
+
+To verify a file, the browser needs to read its bytes and compute a hash. For resources loaded from another
+domain, the browser restricts access to the response body by default. Setting
+`crossorigin="anonymous"` tells the browser to make a credentialless CORS request, which allows the
+CDN to respond with the appropriate `Access-Control-Allow-Origin` header and lets the hash verification
+proceed.
+
+Without it, the browser cannot read the response, SRI silently skips verification, and the script may still
+load unchecked. If you are troubleshooting an SRI mismatch, never remove this attribute as a fix. If the CDN
+does not support CORS, that is a CDN problem, not an integrity check problem.
+
+### Integrating SRI With Modern Bundlers
+
+Bundlers generate all script references automatically, so SRI integration happens at the plugin level rather
+than by hand. Here is how to add it to the most common toolchains:
+
+**Webpack:** Use the [webpack-subresource-integrity](https://github.com/waysact/webpack-subresource-integrity)
+plugin. It computes hashes for all emitted assets and injects `integrity` and `crossorigin` attributes into
+the generated HTML.
+
+```js
+// webpack.config.js
+const { SubresourceIntegrityPlugin } = require('webpack-subresource-integrity');
+
+module.exports = {
+  output: {
+    crossOriginLoading: 'anonymous', // Required for SRI
+  },
+  plugins: [
+    new SubresourceIntegrityPlugin({
+      hashFuncNames: ['sha384'],
+    }),
+  ],
+};
+```
+
+**Vite and Rollup:** Both reference plugins ([vite-plugin-sri](https://github.com/small-tech/vite-plugin-sri),
+[rollup-plugin-sri](https://github.com/JonasKruckenberg/rollup-plugin-sri)) are archived. Use a post-build
+script to compute hashes from emitted files and inject `integrity` attributes into the generated HTML.
+
+For any bundler, verify that the plugin is computing hashes from the final output files (after minification and
+any transforms), not from source files. A hash mismatch between what you computed and what the browser receives
+is the most common SRI debugging issue. Also regenerate hashes whenever
+you update a dependency: the hash must match the exact file version being served, so never copy hashes from
+changelogs or untrusted sources.
+
+### SRI Limitations
+
+SRI only covers statically referenced `<script>` and `<link>` tags. It cannot protect dynamically imported
+modules: there is no way to attach an integrity attribute to a `document.createElement('script')` call or a
+dynamic `import()` before the browser fetches it. In practice this means SRI covers your entry points and any
+explicitly loaded external libraries, but not the dynamically loaded chunks that make up most of a modern
+application. Use [Import Maps](#import-maps-for-module-level-control) as a partial mitigation for controlling
+where dynamic imports resolve from.
+
+Two other boundaries are worth knowing:
+
+- **Per-request variable content.** If a CDN serves different content based on headers, cookies, or geography,
+  the hash will not match. This is another reason to prefer self-hosting critical dependencies.
+- **Availability.** SRI protects against tampering, not outages. If a CDN goes down, integrity checks will not
+  help your application fall back to another source.
+
+Protecting the entry points is still valuable. Treat SRI as one layer in a defense that also includes strict
+CSP, self-hosting, and import maps.
+
+## Import Maps for Module-Level Control
+
+Modern Web3 frontends increasingly use ES modules loaded via dynamic `import()`. Since SRI cannot protect dynamically
+imported modules, you need another mechanism to control where those modules resolve from. **Import maps** provide
+this by letting you declare a centralized mapping of module specifiers (the bare names you write in
+`import('ethers')` or `import('@walletconnect/core')`) to the actual URLs the browser should fetch.
+
+```html
+<script type="importmap">
+{
+  "imports": {
+    "ethers": "/vendor/ethers@6.11.0/ethers.min.js",
+    "@walletconnect/": "/vendor/walletconnect/",
+    "lodash": "/vendor/lodash@4.17.21/lodash.min.js"
+  }
+}
+</script>
+```
+
+With this import map in place, any code that runs `import('ethers')` will resolve to your self-hosted copy, not
+to an external CDN. Combined with a CSP that restricts `script-src` to your own origin (or uses
+`strict-dynamic`), this gives you centralized control over module resolution even for dynamic imports.
+
+Import maps do not replace SRI. They address a different part of the problem: SRI verifies file integrity;
+import maps control where files are loaded from. Use them together: import maps to pin resolution to known
+locations, and SRI on any statically loaded scripts from those locations.
+
+## Trusted Types
+
+Trusted Types is a browser API (enforced via CSP) that prevents DOM-based cross-site scripting by locking down
+dangerous sink APIs. Functions like `innerHTML`, `outerHTML`, `document.write`, `eval`, and `setTimeout(string)`
+are the most common vectors for DOM XSS. Trusted Types makes it impossible to pass raw strings to these sinks.
+You must instead pass a "trusted" value created through a policy you define.
+
+For Web3 frontends, this is directly relevant. Wallet connection flows, transaction confirmation UIs, and token
+approval dialogs often manipulate the DOM. If an attacker can inject markup through a compromised dependency
+that uses `innerHTML`, they can render a fake approval dialog or redirect a transaction. Trusted Types block
+this class of attack at the API level.
+
+### Enabling Trusted Types
+
+Add `require-trusted-types-for 'script'` to your CSP header:
+
+```
+Content-Security-Policy:
+  require-trusted-types-for 'script';
+  trusted-types myapp-policy;
+```
+
+Then define a named policy in your application code. At minimum the policy should sanitize HTML input before
+it reaches the DOM (using a library like DOMPurify), block dynamic script creation, and restrict script URLs
+to your own origin. The
+[MDN Trusted Types documentation](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API)
+and the [Google adoption guide](https://web.dev/articles/trusted-types) cover policy implementation
+in detail.
+
+### Adoption Strategy
+
+Trusted Types can be disruptive to adopt because many libraries (including some wallet connectors) use
+`innerHTML` internally. Roll it out gradually:
+
+1. **Start in report-only mode** using `Content-Security-Policy-Report-Only` with
+   `require-trusted-types-for 'script'`. This logs violations without breaking anything.
+2. **Identify violating code** from the reports. Common culprits are UI libraries, rich text rendering, and
+   third-party widgets.
+3. **Create a `default` policy** as a transitional measure. The browser calls it for any assignment that does
+   not already use a trusted type, letting you handle violations centrally before enforcing per-policy.
+4. **Enforce** once violations are resolved.
+
+Trusted Types are supported across all modern browsers as of early 2026. The CSP directive degrades gracefully
+on older browsers: it is simply ignored, so it will not break your application.
+
+## Self-Hosting Critical Dependencies
+
+The strongest defense against third-party script compromise is to eliminate the third party entirely by
+bundling dependencies into your own build output. CSP and SRI reduce the risk of loading external scripts;
+self-hosting removes it. For guidance on vendoring, version pinning, and managing the operational trade-offs,
+see [Dependency Awareness](/supply-chain/dependency-awareness).
+
+## Past Incidents
+
+These attacks demonstrate why third-party script controls are not optional for Web3 frontends:
+
+- **npm registry attack (September 2025).** A maintainer's credentials were phished and malicious versions of
+  18 widely-used packages, including `chalk`, `debug`, and `ansi-styles`, were published. The payload hooked
+  `window.ethereum` to intercept wallet calls and rewrote `fetch`/`XMLHttpRequest` to reroute transactions to
+  attacker-controlled addresses. SRI would have blocked the tampered scripts; a strict `connect-src` policy
+  would have prevented exfiltration.
+- **Lottie Player (October 2024).** Malicious versions of `@lottiefiles/lottie-player` were published,
+  injecting a crypto drainer into any site displaying Lottie animations. The payload prompted users to connect
+  their wallets and drained funds. Applications loading the library via CDN without SRI were immediately
+  vulnerable.
+- **Polyfill.io (June 2024).** After a change in ownership, the `polyfill.io` CDN began injecting malicious
+  redirects into a script served to over 100,000 websites, targeting mobile users. Sites using SRI would have
+  blocked the modified script entirely.
+- **Ledger Connect Kit (December 2023).** A former employee's npm credentials were used to publish a malicious
+  version of `@ledgerhq/connect-kit`. The injected code rendered a fake wallet connection modal that redirected
+  funds. Every application loading the library without integrity checks was affected simultaneously.
+
+For a broader catalog of supply chain attack vectors, see [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats).
+
+## Runtime Monitoring
+
+Build-time defenses (CSP, SRI, self-hosting) establish the baseline, but you also need visibility into what
+happens at runtime in production. Attacks do not always come through the vectors you anticipated, and
+misconfigurations can silently weaken your defenses.
+
+### CSP Violation Reporting
+
+Start every new policy in report-only mode using `Content-Security-Policy-Report-Only`. This logs what would
+be blocked without breaking anything. Review the reports, adjust the policy, and only switch to the enforcing
+`Content-Security-Policy` header once you are confident it will not break legitimate functionality. After
+switching to enforcement, keep `report-to` configured so any new violations surface immediately.
+
+Set `report-to` in your CSP header and pair it with a `Report-To` header that points to a collection endpoint
+you control. Every blocked resource generates a report containing the violated directive, the blocked URI, and
+the page where it happened. Aggregate these to detect injection attempts, misconfigurations after deployments,
+and third-party scripts loading unexpected resources.
+
+### DOM Mutation Monitoring
+
+CSP cannot detect all forms of script injection, particularly when a trusted script's behavior changes (for
+example, a compromised dependency that starts injecting iframes or modifying wallet-related DOM elements).
+MutationObservers let you watch for suspicious changes at runtime: flag any script node added without a nonce,
+and remove unexpected iframes that were not part of your known page structure.
+
+This is not a replacement for CSP. It is a detection layer. Use it to catch things that slip through policy
+gaps or to monitor for unexpected behavior from trusted scripts.
+
+### External Script Change Detection
+
+For any script you load from a third-party origin (even with SRI), run a periodic job that fetches the resource
+and compares its hash to the expected value. A hash mismatch on a resource that should not have changed is an
+early indicator of a supply chain compromise. Integrate this into your CI pipeline and your production monitoring
+separately: CI catches changes at build time, production monitoring catches changes at serve time.
+
+## Additional Defenses
+
+Beyond the core mechanisms above, consider these complementary measures:
+
+- **Iframe sandboxing for third-party widgets.** If you must embed third-party content, load it in sandboxed
+  iframes with restrictive `sandbox` attributes. This isolates it from your main page context and prevents it
+  from interacting with wallet-related DOM or JavaScript.
+- **Permissions Policy.** The `Permissions-Policy` HTTP header restricts which browser features third-party
+  scripts and frames can access: payment APIs, clipboard, camera, and others. Even if a compromised script
+  runs, it cannot invoke features your application never needed.
+
+## Further Reading
+
+- [MDN: Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
+  -> API reference and browser compatibility
+- [MDN: Securing CDN resources with SRI](https://developer.mozilla.org/en-US/blog/securing-cdn-using-sri-why-how/)
+  -> walkthrough on applying SRI to CDN-hosted assets
+- [MDN: Import Maps](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap)
+  -> specification and usage guide
+- [MDN: Trusted Types](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API)
+  -> API reference and browser compatibility
+- [Google: Trusted Types Adoption Guide](https://web.dev/articles/trusted-types) -> step-by-step policy implementation guide
+
+## Related Frameworks
+
+- [Supply Chain Security](/supply-chain/overview): Dependency management, vendor risk, and incident response
+  for compromised components
+- [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats): Catalog of frontend, smart contract,
+  and infrastructure attack vectors
+- [Dependency Awareness](/supply-chain/dependency-awareness): Version pinning, lockfile integrity, and
+  vulnerability scanning for the packages your frontend loads
+- [DevSecOps](/devsecops/overview): Integrating security checks into your build and deployment pipelines
+- [Domain & DNS Security](/infrastructure/domain-and-dns-security/overview): Preventing DNS hijacking and CDN
+  cache poisoning
+
+---
+
+</TagProvider>
+<ContributeFooter />
