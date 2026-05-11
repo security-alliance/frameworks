@@ -61,7 +61,7 @@ Divide your network into zones so a compromise in one zone does not grant access
 Use VPNs to provide secure remote access to internal services. This is an infrastructure concern (who can reach the management plane), distinct from the privacy use of VPNs by individuals.
 
 - **Infrastructure VPN**: WireGuard, OpenVPN, or cloud-native VPN gateways for team access to internal dashboards, SSH, and databases.
-- **Privacy VPN**: for individual privacy (hiding metadata from local networks, public Wi-Fi protection), see [VPN Services](/privacy/vpn-services).
+- **Privacy VPN**: for individual privacy (hiding metadata from local networks, public Wi-Fi protection), see [VPN Services](/privacy/vpns/overview).
 - Enforce VPN-only access for management interfaces. Disable direct internet access to admin panels and SSH.
 
 ### 5. Encrypt data in transit
@@ -88,6 +88,7 @@ Network-level failures have caused real Web3 incidents:
 
 - **Curve Finance (2022, 2025)**: DNS hijacking redirected users to a malicious frontend, draining wallets. Proper DNS monitoring and registrar locks could have prevented this. See [Domain & DNS Security](/infrastructure/domain-and-dns-security/overview).
 - **Galxe (2023)**: DNS hijack drained over 1,100 wallets for $270k. The attack exploited a lack of DNS change monitoring.
+- **eth.limo (2026)**: EasyDNS suffered a [DNS hijack](https://crypto.news/easydns-admits-to-security-failure-following-eth-limo-domain-hijack/). A failure within its own systems allowed a social engineering attacker to briefly seize control of eth.limo, a primary gateway for the Ethereum Name Service.
 - **General DDoS**: Web3 frontends are high-value targets for extortion DDoS. Without protection, a single volumetric attack can take your dApp offline for hours. See [DDoS Protection](/infrastructure/ddos-protection).
 
 The common thread: these incidents exploited network-layer weaknesses (DNS, DDoS, open management ports), not smart contract bugs.
@@ -100,7 +101,7 @@ The common thread: these incidents exploited network-layer weaknesses (DNS, DDoS
 | DNS and Domain Security | [Domain & DNS Security](/infrastructure/domain-and-dns-security/overview) |
 | Cloud Network Hardening | [Cloud Infrastructure](/infrastructure/cloud) |
 | Zero-Trust and Micro-Segmentation | [Zero-Trust Principles](/infrastructure/zero-trust-principles) |
-| VPNs for Individual Privacy | [VPN Services](/privacy/vpn-services) |
+| VPNs for Individual Privacy | [VPN Services](/privacy/vpns/overview) |
 | Asset Inventory (know what's on your network) | [Asset Inventory](/infrastructure/asset-inventory) |
 
 ## Common pitfalls & examples
