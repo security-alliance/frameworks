@@ -1,7 +1,8 @@
 {
   "packages": {
-    ".": {
-      "release-type": "node"
+    "docs/pages": {
+      "release-type": "simple",
+      "component": "Security Frameworks"
     }
   }
 }
