@@ -2,7 +2,7 @@ name: Release Please
 
 on:
   push:
-    branches: [develop]
+    branches: [main]
 
 permissions:
   contents: write
@@ -15,6 +15,6 @@ jobs:
       - name: Create or update release PR
         uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         with:
-          target-branch: develop
+          target-branch: main
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
