@@ -1,6 +1,6 @@
 ---
 title: "Network Security | Security Alliance"
-description: "Implement network security: deny all incoming traffic by default, segment networks, configure firewalls, use IDPS and VPNs, encrypt data in transit, and conduct regular security audits."
+description: "Network security primer for Web3: default-deny firewalls, segmentation, IDS/IPS, VPNs for remote access, encrypted transit, ACLs, and audit cadence. Cross-references DDoS, DNS, and privacy VPN guidance."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -8,6 +8,11 @@ tags:
   - DevOps
   - Cloud
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -20,23 +25,118 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Network security is a very wide subject, and the steps you take are significantly dependent on if you're managing your
-own network, if you're utilizing a cloud provider, or if you're using a service provider. With that said, there are some
-general best practices to consider:
+> 🔑 **Key Takeaway**: Default-deny ingress, segment everything, encrypt in transit, log and audit continuously. Network security is not a single tool but a layered posture — each layer assumes the one below it may fail.
 
-## Best Practices
+Network security spans every boundary where your infrastructure touches the internet or other untrusted networks. In Web3, the stakes are higher than typical SaaS: a compromised frontend or RPC endpoint can drain user wallets in minutes, and blockchain transactions cannot be reversed. Your network is the first perimeter after your code.
 
-1. Infrastructure should deny all incoming traffic by default. When opening ports, consideration should be made as to
-which ports and incoming IPs are needed. SSH, RDP, and Database ports should not be open to the entire Internet.
-2. Divide your network into segments to limit the impact of a potential breach.
-3. Implement firewalls to control and monitor incoming and outgoing network traffic based on predetermined security
-rules.
-4. Use IDPS to detect and prevent potential security breaches.
-5. Use VPNs to provide secure remote access to your network.
-6. Encrypt sensitive data in transit using secure protocols.
-7. Use ACLs to define and control which systems or users can access network resources.
-8. Conduct regular network security audits to identify and address vulnerabilities.
-9. Keep any potential network devices and software updated with the latest security patches.
+The steps you take depend on whether you manage your own network, use a cloud provider, or rely on a managed service. The guidance below applies to all three, with cloud-specific notes where relevant.
+
+## Practical guidance
+
+### 1. Default-deny ingress
+
+Block all incoming traffic by default. Open only the ports and source IPs you need, and document why each rule exists.
+
+- SSH, RDP, and database ports must never be open to `0.0.0.0/0`. Use bastion hosts or VPN-only access.
+- Cloud environments: use security groups (AWS), NSGs (Azure), or VPC firewall rules (GCP) with explicit allow-lists. Remove default "allow all" rules.
+- Review firewall rules quarterly. Stale rules accumulate and widen your attack surface silently.
+
+### 2. Segment your network
+
+Divide your network into zones so a compromise in one zone does not grant access to everything.
+
+- At minimum, separate: public-facing (frontends, APIs), internal services (RPC nodes, indexers), and management (SSH, CI/CD, monitoring).
+- Use VLANs or VPC subnets with strict routing between them. Traffic crossing zone boundaries must go through a firewall or proxy.
+- Cloud: place each tier in its own subnet. Use VPC peering or PrivateLink for cross-subnet communication — never route through the public internet.
+- See also: [Zero-Trust Principles](/infrastructure/zero-trust-principles) for micro-segmentation within zones.
+
+### 3. Firewalls and IDS/IPS
+
+- **Firewalls**: enforce the default-deny and segmentation rules above. Use both network-layer (packet filtering) and application-layer (WAF) firewalls.
+- **IDS/IPS**: deploy intrusion detection and prevention systems to identify and block suspicious traffic patterns. Cloud providers offer managed IDS (AWS GuardDuty, Azure Sentinel, GCP Security Command Center).
+- For Web3 frontends, a WAF is essential — it filters malicious requests before they reach your application. See [DDoS Protection](/infrastructure/ddos-protection) for WAF-as-DDoS-mitigation patterns.
+
+### 4. VPNs for remote access
+
+Use VPNs to provide secure remote access to internal services. This is an infrastructure concern (who can reach the management plane), distinct from the privacy use of VPNs by individuals.
+
+- **Infrastructure VPN**: WireGuard, OpenVPN, or cloud-native VPN gateways for team access to internal dashboards, SSH, and databases.
+- **Privacy VPN**: for individual privacy (hiding metadata from local networks, public Wi-Fi protection), see [VPN Services](/privacy/vpns/overview).
+- Enforce VPN-only access for management interfaces. Disable direct internet access to admin panels and SSH.
+
+### 5. Encrypt data in transit
+
+- Enforce TLS 1.2+ on all external endpoints. Use HSTS headers to prevent downgrade attacks.
+- Internal services: use mTLS (mutual TLS) between microservices, or IPsec/WireGuard for network-level encryption between data centers.
+- DNS queries leak browsing metadata. Configure DNS-over-HTTPS (DoH) or DNS-over-TLS (DoT) for outbound resolution. See [DNS and Domain Registration](/infrastructure/domain-and-dns-security/overview) for DNS security guidance.
+
+### 6. Access control lists (ACLs)
+
+- Define which systems and users can reach which network resources. Apply the principle of least privilege at the network layer.
+- Cloud: use IAM policies tied to security groups, not just broad network rules.
+- Document ACLs and review them alongside firewall rules. Undocumented ACLs are a common source of silent outages and security gaps.
+
+### 7. Audits and monitoring
+
+- Conduct network security audits at least quarterly. Automated tools (Prowler, CloudSploit) can run continuously — see [Cloud Infrastructure](/infrastructure/cloud) for tool references.
+- Centralize flow logs (VPC Flow Logs, NetFlow) and alert on anomalies: unusual outbound traffic volumes, connections to unexpected regions, or port scans.
+- Keep network devices and software patched. Subscribe to vendor security advisories for firmware updates.
+
+## Why is it important
+
+Network-level failures have caused real Web3 incidents:
+
+- **Curve Finance (2022, 2025)**: DNS hijacking redirected users to a malicious frontend, draining wallets. Proper DNS monitoring and registrar locks could have prevented this. See [Domain & DNS Security](/infrastructure/domain-and-dns-security/overview).
+- **Galxe (2023)**: DNS hijack drained over 1,100 wallets for $270k. The attack exploited a lack of DNS change monitoring.
+- **eth.limo (2026)**: EasyDNS suffered a [DNS hijack](https://crypto.news/easydns-admits-to-security-failure-following-eth-limo-domain-hijack/). A failure within its own systems allowed a social engineering attacker to briefly seize control of eth.limo, a primary gateway for the Ethereum Name Service.
+- **General DDoS**: Web3 frontends are high-value targets for extortion DDoS. Without protection, a single volumetric attack can take your dApp offline for hours. See [DDoS Protection](/infrastructure/ddos-protection).
+
+The common thread: these incidents exploited network-layer weaknesses (DNS, DDoS, open management ports), not smart contract bugs.
+
+## Implementation details
+
+| Sub-Topic | Related Page |
+|-----------|--------------|
+| DDoS Protection | [DDoS Protection](/infrastructure/ddos-protection) |
+| DNS and Domain Security | [Domain & DNS Security](/infrastructure/domain-and-dns-security/overview) |
+| Cloud Network Hardening | [Cloud Infrastructure](/infrastructure/cloud) |
+| Zero-Trust and Micro-Segmentation | [Zero-Trust Principles](/infrastructure/zero-trust-principles) |
+| VPNs for Individual Privacy | [VPN Services](/privacy/vpns/overview) |
+| Asset Inventory (know what's on your network) | [Asset Inventory](/infrastructure/asset-inventory) |
+
+## Common pitfalls & examples
+
+1. **Over-trusting cloud defaults** — AWS security groups default to "no inbound rules," but many teams add `0.0.0.0/0` on port 22 or 443 out of convenience and never tighten them. Audit with `aws ec2 describe-security-groups --filters Name=ip-permission.cidr,Values='0.0.0.0/0'`.
+
+2. **Flat networks** — Putting frontend, API, database, and SSH in the same subnet means a single vulnerability gives lateral access to everything. Segment first, connect second.
+
+3. **Ignoring DNS** — DNS hijacking is the most common Web3 frontend attack vector, yet many teams treat DNS as an afterthought. Enable DNSSEC, registry locks, and change monitoring. See [Domain & DNS Security](/infrastructure/domain-and-dns-security/overview).
+
+4. **No VPN for management** — Exposing admin panels or SSH to the internet, even on non-standard ports, is discovered by scanners within minutes. Require VPN or bastion host access.
+
+5. **Stale firewall rules** — A rule opened "temporarily" six months ago is still there, and nobody remembers why. Tag rules with tickets and expiration dates. Review quarterly.
+
+## Quick-reference / Cheat sheet
+
+| Action | Minimum | Recommended |
+|--------|---------|-------------|
+| Inbound default | Deny all | Deny all + explicit allow-list with tickets |
+| SSH/RDP access | Non-standard port | VPN or bastion only, key-based auth |
+| Network segmentation | Public / internal | Public / internal / management + mTLS between services |
+| IDS/IPS | Cloud-native (GuardDuty, etc.) | Cloud-native + custom rules for Web3 patterns |
+| DNS | DNSSEC + registrar lock | DNSSEC + registry lock + change monitoring + DoH/DoT |
+| TLS | 1.2 on external endpoints | 1.3 + HSTS + mTLS internally |
+| Flow logging | Enabled | Centralized + alerts on anomalies |
+| Audit cadence | Quarterly | Continuous automated + quarterly manual review |
+
+## Further Reading & Tools
+
+- [NIST SP 800-41 Rev. 1](https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final) — Guidelines for Firewalls and Firewall Policy
+- [CIS Controls v8](https://www.cisecurity.org/controls) — Control 12 (Network Infrastructure Management)
+- [Prowler](https://github.com/prowler-cloud/prowler) — AWS/Azure/GCP security posture tool
+- [CloudSploit](https://github.com/aquasecurity/cloudsploit) — Cloud security configuration scanner
+- [WireGuard](https://www.wireguard.com/) — Modern, minimal VPN for infrastructure access
+- [The Red Guild: Are VPNs Really Necessary?](https://blog.theredguild.org/are-vpns-really-necessary-is-https-enough/) — Privacy-focused VPN guidance
 
 ---
 
