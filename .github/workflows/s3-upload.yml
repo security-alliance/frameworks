@@ -37,7 +37,7 @@ jobs:
       # Step 0: Verify user permissions
       - name: Verify user permissions
         id: check-permissions
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const allowed = ['admin', 'maintain', 'triage'];
@@ -61,7 +61,7 @@ jobs:
 
       # Step 1: Acknowledge the command by adding a reaction
       - name: React to command
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             // Add an "eyes" emoji reaction to the comment to show we're processing
@@ -75,7 +75,7 @@ jobs:
       # Step 2: Extract GitHub image URLs from the comment
       - name: Extract GitHub image URLs
         id: extract-urls
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const comment = context.payload.comment.body;
@@ -193,24 +193,24 @@ jobs:
 
       # Step 4: Checkout repository
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       # Step 5: Setup Node.js and pnpm
       - name: Setup Node.js
-        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: "20"
 
       # Step 6: Install pnpm
       - name: Setup pnpm
-        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
+        uses: pnpm/action-setup@8912a9102ac27614460f54aedde9e1e7f9aec20d # v6.0.5
         with:
           version: 10.15.0
           run_install: false
 
       # Step 7: Cache pnpm dependencies
       - name: Cache pnpm dependencies
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         id: pnpm-cache
         with:
           path: |
@@ -228,7 +228,7 @@ jobs:
 
       # Step 9: Write URLs to a temp file for the processing script
       - name: Write URLs to file
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const fs = require('fs');
@@ -248,7 +248,7 @@ jobs:
 
       # Step 9b: Configure AWS credentials using OIDC (just-in-time before upload)
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722 # v4.1.0
+        uses: aws-actions/configure-aws-credentials@d979d5b3a71173a29b74b5b88418bfda9437d885 # v6.1.1
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
@@ -296,7 +296,7 @@ jobs:
 
       # Step 11: Comment results back to PR and check for failures
       - name: Comment results and check failures
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
           RESULTS_FILE_PATH: ${{ env.RESULTS_FILE_PATH }}
         with:
