@@ -48,3 +48,10 @@ and its per-page file is at `/llms/wallet-security/seed-phrase-management.txt`.
 - Source URL and framework attribution
 
 New frameworks and pages are picked up automatically on the next build.
+
+## For agents using a retrieval policy
+
+Agents that load skill or policy files can find a retrieval policy at
+[SKILL.md](https://github.com/security-alliance/frameworks/blob/develop/SKILL.md) in the repository root.
+It defines branch policy (`main` vs `develop`), behavior with retrieved content, and what to do when retrieval
+returns nothing relevant. It complements the inline instructions inside `/llms.txt`.
