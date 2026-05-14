@@ -4,11 +4,11 @@
   "description": "Official repository to the Security Frameworks by SEAL. This repository contains the entire structure and contents of the frameworks. Feel free to suggest from new categories to grammar corrections. Collaboration is open to everyone. **This is a work in progress.**",
   "main": "index.js",
   "devDependencies": {
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "cspell": "9.8.0",
-    "tailwindcss": "4.0.7",
-    "vocs": "1.2.2"
+    "tailwindcss": "4.3.0",
+    "vocs": "1.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -39,18 +39,18 @@
   },
   "packageManager": "pnpm@10.15.0",
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1024.0",
-    "@aws-sdk/lib-storage": "3.1024.0",
-    "axios": "1.15.2",
+    "@aws-sdk/client-s3": "3.1045.0",
+    "@aws-sdk/lib-storage": "3.1045.0",
+    "axios": "1.16.0",
     "exceljs": "^4.4.0",
     "gray-matter": "^4.0.3",
     "just-install": "^2.0.2",
-    "mermaid": "^11.12.2",
+    "mermaid": "^11.15.0",
     "minisearch": "^6.3.0",
-    "playwright": "^1.57.0",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "react-router-dom": "^7.12.0",
+    "playwright": "^1.59.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.15.0",
     "sharp": "^0.34.5",
     "uuid": "^14.0.0"
   }
