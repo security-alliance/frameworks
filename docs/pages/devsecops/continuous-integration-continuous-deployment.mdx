@@ -127,12 +127,14 @@ Who can modify CI workflows determines who can alter what runs in the pipeline.
   enforce this: `/.github/workflows/ @security-team @devops-lead`.
 - Pin third-party GitHub Actions by commit SHA, not by tag. Tags are mutable:
   `v1` can be retagged to point to malicious code.
+
   ```yaml
   # Unsafe: tag can be changed
   - uses: actions/checkout@v4
   # Safe: pinned by SHA
   - uses: actions/checkout@b4ffde65f46336ab88eb53be80866792576f8620
   ```
+
 - Restrict `GITHUB_TOKEN` permissions to least privilege: set
   `permissions: {}` at the workflow level and grant only what each job needs.
 
@@ -233,6 +235,7 @@ Long-lived cloud credentials in CI are a high-value target. OpenID Connect (OIDC
 eliminates them entirely by granting short-lived, scoped tokens on demand.
 
 **GitHub Actions → AWS:**
+
 ```yaml
 # In your workflow
 - name: Configure AWS credentials
@@ -245,6 +248,7 @@ eliminates them entirely by granting short-lived, scoped tokens on demand.
 ```
 
 **AWS side (trust policy for the IAM role):**
+
 ```json
 {
   "Version": "2012-10-17",

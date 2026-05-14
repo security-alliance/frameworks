@@ -14,7 +14,8 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 # SEAL Certifications Changelog
 
-Revision history across all SFC certifications. Each cert carries a `version` in its page header; this page aggregates what changed, when, and why so protocols re-certifying after a revision can scope the delta quickly.
+Revision history across all SFC certifications. Each cert carries a `version` in its page header; this page
+aggregates what changed, when, and why so protocols re-certifying after a revision can scope the delta quickly.
 
 ---
 
@@ -22,11 +23,20 @@ Revision history across all SFC certifications. Each cert carries a `version` in
 
 ### New
 
-- **[SFC - Identity & Accounts](/certs/sfc-identity-accounts)** (v1.0): new horizontal cert covering organizational account management — inventory (social media, email, SSO, registrar, custody, repo admin, cloud root, SaaS), phishing-resistant MFA, password manager with individual accountability, recovery methods restricted to org channels, account lifecycle, takeover monitoring, third-party access. Addresses a gap where org-account takeover (Twitter, status page, registrar) was not covered despite being a top-tier attack vector for crypto protocols.
+- **[SFC - Identity & Accounts](/certs/sfc-identity-accounts)** (v1.0): new horizontal cert covering
+  organizational account management — inventory (social media, email, SSO, registrar, custody, repo
+  admin, cloud root, SaaS), phishing-resistant MFA, password manager with individual accountability,
+  recovery methods restricted to org channels, account lifecycle, takeover monitoring, third-party
+  access. Addresses a gap where org-account takeover (Twitter, status page, registrar) was not covered
+  despite being a top-tier attack vector for crypto protocols.
 
 ### Retired
 
-- **SFC - Workspace Security**: retired. Its crypto-relevant content (accounts, credentials, MFA, takeover monitoring) moved to the new Identity & Accounts cert. Content on device management, EDR/MDM, BYOD, physical/travel security, formal training programs with phishing sims, insider threat assessment as standalone, and data classification was intentionally dropped as out of SEAL SME and better covered by ISO 27001 / SOC 2 / CIS.
+- **SFC - Workspace Security**: retired. Its crypto-relevant content (accounts, credentials, MFA,
+  takeover monitoring) moved to the new Identity & Accounts cert. Content on device management,
+  EDR/MDM, BYOD, physical/travel security, formal training programs with phishing sims, insider threat
+  assessment as standalone, and data classification was intentionally dropped as out of SEAL SME and
+  better covered by ISO 27001 / SOC 2 / CIS.
 
 ### SFC - Multisig Operations (v1.0 → v1.1)
 
@@ -54,7 +64,8 @@ Revision history across all SFC certifications. Each cert carries a `version` in
 ### SFC - DevOps & Infrastructure (v1.0 → v1.1)
 
 - `di-1.1.2` supply-chain mention dropped from the baseline (supply chain is already covered substantively in Section 2).
-- `di-1.1.4` rewritten to cover both the tool approval process and the maintained approved-tools list in a single control; list review cadence made explicit.
+- `di-1.1.4` rewritten to cover both the tool approval process and the maintained approved-tools list
+  in a single control; list review cadence made explicit.
 - `di-2.1.1` repo access review cadence tightened; account controls now reference SFC - Identity & Accounts.
 - `di-2.1.4` dependencies consolidated from 6 bullets to 3.
 - `di-3.1.1` pipeline runner hardening bullet added; consolidated to 5 bullets.
@@ -64,25 +75,36 @@ Revision history across all SFC certifications. Each cert carries a `version` in
 
 ### SFC - DNS Registrar (v1.0 → v1.1)
 
-- `dns-3.1.1` slimmed to reference SFC - Identity & Accounts for account management; DNS-specific registrar RBAC bullet retained.
+- `dns-3.1.1` slimmed to reference SFC - Identity & Accounts for account management;
+  DNS-specific registrar RBAC bullet retained.
 
 ### SFC - Incident Response (v1.0 → v1.1)
 
 - Header pointer to SFC - Identity & Accounts added for org account takeover coordination.
 - `ir-1.1.1` IR team roles consolidated from 7 bullets to 3.
 - `ir-1.1.2` IR contacts consolidated from 7 bullets to 4.
-- `ir-2.1.1` **(NEW)**: threat model for protocol operations, including external dependencies and single points of failure (cross-chain messaging providers, oracle providers, critical infrastructure). Placed before monitoring coverage so monitoring is anchored to a known threat picture. Existing Section 2 controls shifted: previous `ir-2.1.1` → `ir-2.1.2`, `ir-2.1.2` → `ir-2.1.3`, `ir-2.1.3` → `ir-2.1.4`.
+- `ir-2.1.1` **(NEW)**: threat model for protocol operations, including external dependencies and
+  single points of failure (cross-chain messaging providers, oracle providers, critical infrastructure).
+  Placed before monitoring coverage so monitoring is anchored to a known threat picture. Existing
+  Section 2 controls shifted: previous `ir-2.1.1` → `ir-2.1.2`, `ir-2.1.2` → `ir-2.1.3`,
+  `ir-2.1.3` → `ir-2.1.4`.
 - `ir-2.1.3` alerting and paging (previously `ir-2.1.2`) consolidated from 8 bullets to 4.
 - `ir-5.1.1` IR drills consolidated from 7 bullets to 4.
 
 ### Cross-cutting
 
 - Control IDs now rendered next to the title in each control card (UI improvement).
-- Account-control pattern (MFA, credential management, access reviews, lifecycle) de-duplicated out of vertical certs; Identity & Accounts is the authoritative source. DNS and DevOps reference it directly; Treasury and Incident Response carry a header pointer and retain domain-specific bullets.
+- Account-control pattern (MFA, credential management, access reviews, lifecycle) de-duplicated out of
+  vertical certs; Identity & Accounts is the authoritative source. DNS and DevOps reference it
+  directly; Treasury and Incident Response carry a header pointer and retain domain-specific bullets.
 
 ### Workbook compatibility
 
-- Control IDs are stable across this revision. No renames. New controls (`tro-2.1.3`, `tro-3.1.5`, `ir-2.1.1`, all `ida-*`) will simply be unpopulated when importing old workbooks, which is expected. Shifted IR Section 2 IDs mean old `ir-2.1.1`/`ir-2.1.2`/`ir-2.1.3` data in workbooks will not align to the new IDs without manual re-mapping.
-- Users with saved state for Workspace Security will lose that state (that cert is removed). Other certs retain their localStorage state across the revision.
+- Control IDs are stable across this revision. No renames. New controls (`tro-2.1.3`, `tro-3.1.5`,
+  `ir-2.1.1`, all `ida-*`) will simply be unpopulated when importing old workbooks, which is expected.
+  Shifted IR Section 2 IDs mean old `ir-2.1.1`/`ir-2.1.2`/`ir-2.1.3` data in workbooks will not
+  align to the new IDs without manual re-mapping.
+- Users with saved state for Workspace Security will lose that state (that cert is removed). Other
+  certs retain their localStorage state across the revision.
 
 </TagProvider>

@@ -166,6 +166,7 @@ Without proper backup, a lost key means lost identity. Without secure storage,
 a stolen key means forged commits.
 
 **Backup the master key:**
+
 ```bash
 # Export to an encrypted file
 gpg --export-secret-keys --armor YOUR_KEYID | \
@@ -177,6 +178,7 @@ gpg --export-secret-keys --armor YOUR_KEYID | \
 ```
 
 **Generate and store revocation certificates immediately:**
+
 ```bash
 gpg --gen-revoke YOUR_KEYID > revocation-certificate.asc
 # Store this certificate alongside the backup. If you lose access to the key,

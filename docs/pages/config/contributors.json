@@ -7,8 +7,8 @@
     "twitter": "https://twitter.com/mattaereal",
     "website": "https://theredguild.org",
     "company": "The Red Guild | SEAL",
-    "role": "lead",
     "job_title": "Security Knowmad",
+    "role": "lead",
     "description": "Initiative lead and maintainer",
     "badges": [
       { "name": "Lead", "assigned": "2024-06-06" },
@@ -23,7 +23,7 @@
       { "name": "Issue-Opener-5", "assigned": "2024-08-22" },
       { "name": "Issue-Opener-10", "assigned": "2024-08-24" },
       { "name": "Issue-Opener-25", "assigned": "2024-09-25" },
-      { "name": "Active-Last-7d", "lastActive": "2026-04-08" }
+      { "name": "Active-Last-7d", "lastActive": "2026-05-05" }
     ]
   },
   "fredriksvantes": {
@@ -76,12 +76,13 @@
     "website": null,
     "company": "PocketUniverseZ",
     "job_title": "Security Researcher",
-    "description": "Steward of Community Management framework",
     "role": "steward",
+    "description": "Steward of Community Management framework",
     "badges": [
       { "name": "Framework-Steward", "framework": "Community Management" },
       { "name": "First-Contribution", "assigned": "2025-01-29" },
-      { "name": "First-Review", "assigned": "2025-12-16" }
+      { "name": "First-Review", "assigned": "2025-12-16" },
+      { "name": "Active-Last-30d", "lastActive": "2026-04-07" }
     ]
   },
   "robert": {
@@ -93,8 +94,8 @@
     "website": "https://robertmacwha.ca/",
     "company": "Skylock | SEAL",
     "job_title": "Full-stack developer and security enthusiast",
-    "description": "Web dev & fact checking",
     "role": "core",
+    "description": "Web dev & fact checking",
     "badges": [
       { "name": "Core-Contributor", "assigned": "2025-03-20" },
       { "name": "Early-Contributor", "assigned": "2024-10-07" },
@@ -155,7 +156,7 @@
       { "name": "Framework-Steward", "assigned": "2025-03-29", "framework": "ENS" },
       { "name": "First-Contribution", "assigned": "2025-05-29" },
       { "name": "First-Review", "assigned": "2025-08-09" },
-      { "name": "Dormant-90d+", "lastActive": "2025-08-11" }
+      { "name": "Active-Last-30d", "lastActive": "2026-04-23" }
     ]
   },
   "patrickalphac": {
@@ -184,14 +185,14 @@
     "twitter": "https://x.com/pinalikefruit",
     "website": null,
     "company": null,
-    "job_title": null,
+    "job_title": "Steward of the Wallet-Security framework",
     "role": "steward",
     "description": "Steward of Wallet-Security framework",
     "badges": [
       { "name": "Framework-Steward", "assigned": "2025-07-10", "framework": "Wallet Security" },
       { "name": "First-Contribution", "assigned": "2025-07-10" },
       { "name": "First-Review", "assigned": "2025-09-25" },
-      { "name": "Active-Last-7d", "lastActive": "2026-04-07" }
+      { "name": "Active-Last-30d", "lastActive": "2026-04-07" }
     ]
   },
   "njelich": {
@@ -231,7 +232,7 @@
       { "name": "First-Review", "assigned": "2025-08-11" },
       { "name": "Reviewer-10", "assigned": "2026-02-24" },
       { "name": "Reviewer-25", "assigned": "2024-03-01" },
-      { "name": "Active-Last-7d", "lastActive": "2026-04-06" }
+      { "name": "Active-Last-30d", "lastActive": "2026-04-20" }
     ]
   },
   "blackbigswan": {
@@ -337,7 +338,7 @@
     "description": "Founder & Engineer",
     "badges": [
       { "name": "First-Contribution", "assigned": "2025-06-02" },
-      { "name": "Dormant-90d+", "lastActive": "2025-06-02" }
+      { "name": "Active-Last-7d", "lastActive": "2026-05-05" }
     ]
   },
   "isaac": {
@@ -353,7 +354,9 @@
     "description": "SEAL Certs & SEAL Wargames",
     "badges": [
       { "name": "Framework-Steward", "assigned": "2025-12-17", "framework": "SEAL Certs" },
-      { "name": "First-Review", "assigned": "2026-01-26" }
+      { "name": "First-Contribution", "assigned": "2026-04-21" },
+      { "name": "First-Review", "assigned": "2026-01-26" },
+      { "name": "Active-Last-30d", "lastActive": "2026-04-21" }
     ]
   },
   "geoffrey": {
@@ -416,14 +419,15 @@
   "auditware": {
     "slug": "auditware",
     "name": "Auditware",
-    "role": "contributor",
     "avatar": "https://avatars.githubusercontent.com/auditware",
     "github": "https://github.com/Auditware",
     "twitter": "https://x.com/audit_wizard",
     "website": "https://www.auditware.io/",
     "company": "Auditware",
     "job_title": null,
-    "description": "Industry leading OpSec audits, security tools, and code reviews performed by true security wizards"
+    "role": "contributor",
+    "description": "Industry leading OpSec audits, security tools, and code reviews performed by true security wizards",
+    "badges": []
   },
   "scode2277": {
     "slug": "scode2277",
@@ -431,8 +435,8 @@
     "avatar": "https://avatars.githubusercontent.com/scode2277",
     "github": "https://github.com/scode2277",
     "twitter": "https://x.com/emit_sara",
-    "company": "SEAL",
     "website": "https://securityalliance.org",
+    "company": "SEAL",
     "job_title": "Security Researcher",
     "role": "core",
     "description": "Security Researcher & SEAL Frameworks Core Team",
@@ -445,23 +449,22 @@
       { "name": "First-Review", "assigned": "2025-08-12" },
       { "name": "Reviewer-10", "assigned": "2025-09-12" },
       { "name": "Reviewer-25", "assigned": "2026-03-20" },
-      { "name": "Active-Last-7d", "lastActive": "2026-04-09" }
+      { "name": "Active-Last-7d", "lastActive": "2026-05-06" }
     ]
   },
   "gunnim": {
     "slug": "gunnim",
     "name": "Gunnar Óttarsson",
-    "role": "contributor",
     "avatar": "https://avatars.githubusercontent.com/gunnim",
     "github": "https://github.com/gunnim",
     "twitter": "https://x.com/gunni_m",
     "website": "https://SolAz.cloud",
     "company": "SolAz",
     "job_title": "Founder",
+    "role": "contributor",
     "description": "Cloud architecture enthusiast with a passion for IT Security",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-01-21" },
-      { "name": "Active-Last-30d", "lastActive": "2026-03-21" }
+      { "name": "First-Contribution", "assigned": "2026-01-21" }
     ]
   },
   "madjin": {
@@ -491,7 +494,8 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-01-21" }
+      { "name": "First-Contribution", "assigned": "2026-01-21" },
+      { "name": "Dormant-90d+", "lastActive": "2026-01-21" }
     ]
   },
   "munamwasi": {
@@ -659,13 +663,12 @@
     "twitter": "https://twitter.com/JosepBove",
     "website": null,
     "company": "OP Labs",
-    "role": "steward",
     "job_title": null,
+    "role": "steward",
     "description": "Steward of Monitoring framework",
     "badges": [
       { "name": "Framework-Steward", "assigned": "2026-03-17", "framework": "Monitoring" },
-      { "name": "First-Contribution", "assigned": "2026-03-16" },
-      { "name": "Active-Last-30d", "lastActive": "2026-03-23" }
+      { "name": "First-Contribution", "assigned": "2026-03-16" }
     ]
   },
   "tim-sha256": {
@@ -681,8 +684,7 @@
     "description": "Frameworks Contributor",
     "badges": [
       { "name": "First-Contribution", "assigned": "2026-04-05" },
-      { "name": "New-Joiner", "assigned": "2026-04-05" },
-      { "name": "Active-Last-7d", "lastActive": "2026-04-05" }
+      { "name": "Active-Last-30d", "lastActive": "2026-04-21" }
     ]
   },
   "fvelazquez-x": {
@@ -698,8 +700,7 @@
     "description": "Frameworks Contributor",
     "badges": [
       { "name": "First-Contribution", "assigned": "2026-04-07" },
-      { "name": "New-Joiner", "assigned": "2026-04-07" },
-      { "name": "Active-Last-7d", "lastActive": "2026-04-07" }
+      { "name": "Active-Last-30d", "lastActive": "2026-04-07" }
     ]
   },
   "shallem": {
@@ -710,13 +711,60 @@
     "twitter": "https://x.com/seth_certora",
     "website": "https://www.certora.com/",
     "company": "Certora",
-    "role": "steward",
     "job_title": null,
+    "role": "steward",
     "description": "Steward of Opsec framework",
     "badges": [
       { "name": "Framework-Steward", "assigned": "2026-04-09", "framework": "Operational Security" },
       { "name": "First-Contribution", "assigned": "2025-09-10" },
-      { "name": "Active-Last-7d", "lastActive": "2026-04-09" }
+      { "name": "Active-Last-30d", "lastActive": "2026-04-09" }
+    ]
+  },
+  "txscope-sol": {
+    "slug": "txscope-sol",
+    "name": "txscope-sol",
+    "avatar": "https://avatars.githubusercontent.com/txscope-sol",
+    "github": "https://github.com/txscope-sol",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-04-21" },
+      { "name": "Active-Last-30d", "lastActive": "2026-04-21" }
+    ]
+  },
+  "welttowelt": {
+    "slug": "welttowelt",
+    "name": "welttowelt",
+    "avatar": "https://avatars.githubusercontent.com/welttowelt",
+    "github": "https://github.com/welttowelt",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-04-21" },
+      { "name": "Active-Last-30d", "lastActive": "2026-04-21" }
+    ]
+  },
+  "iam0ti": {
+    "slug": "iam0ti",
+    "name": "iam0ti",
+    "avatar": "https://avatars.githubusercontent.com/iam0ti",
+    "github": "https://github.com/iam0ti",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-03-10" }
     ]
   }
 }

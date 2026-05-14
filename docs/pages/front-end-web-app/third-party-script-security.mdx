@@ -53,7 +53,7 @@ enforces them on every request the page makes.
 ### Key Directives
 
 | Directive | Purpose |
-|-----------|---------|
+| --------- | ------- |
 | `script-src` | Controls which scripts can execute. Start restrictive and expand only as needed. |
 | `connect-src` | Restricts where `fetch`, `XMLHttpRequest`, and WebSocket connections can go. Critical for preventing data exfiltration to attacker-controlled servers. |
 | `frame-ancestors` | Prevents your application from being embedded in malicious iframes (clickjacking). |
@@ -87,7 +87,8 @@ Content-Security-Policy:
   require-trusted-types-for 'script'
 ```
 
-For how to wire nonce generation into your specific framework, see [Framework-Specific Notes](#framework-specific-notes) below.
+For how to wire nonce generation into your specific framework, see
+[Framework-Specific Notes](#framework-specific-notes) below.
 
 ### The `strict-dynamic` Directive
 
@@ -105,6 +106,7 @@ script-src 'nonce-abc123' 'strict-dynamic';
 ```
 
 This means:
+
 - Scripts with `nonce="abc123"` will execute.
 - Scripts those nonced scripts load via `document.createElement('script')` will also execute.
 - A random `<script src="https://evil.com/drain.js">` injected into the DOM without going through a nonced
@@ -155,9 +157,10 @@ attack, or a malicious package update), the hashes will not match and the browse
 ### Why `crossorigin="anonymous"` Is Required
 
 To verify a file, the browser needs to read its bytes and compute a hash. For resources loaded from another
-domain, the browser restricts access to the response body by default. Setting `crossorigin="anonymous"` tells the browser to
-make a credentialless CORS request, which allows the CDN to respond with the appropriate
-`Access-Control-Allow-Origin` header and lets the hash verification proceed.
+domain, the browser restricts access to the response body by default. Setting
+`crossorigin="anonymous"` tells the browser to make a credentialless CORS request, which allows the
+CDN to respond with the appropriate `Access-Control-Allow-Origin` header and lets the hash verification
+proceed.
 
 Without it, the browser cannot read the response, SRI silently skips verification, and the script may still
 load unchecked. If you are troubleshooting an SRI mismatch, never remove this attribute as a fix. If the CDN
@@ -268,8 +271,10 @@ Content-Security-Policy:
 
 Then define a named policy in your application code. At minimum the policy should sanitize HTML input before
 it reaches the DOM (using a library like DOMPurify), block dynamic script creation, and restrict script URLs
-to your own origin. The [MDN Trusted Types documentation](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API) and
-the [Google adoption guide](https://web.dev/articles/trusted-types) cover policy implementation in detail.
+to your own origin. The
+[MDN Trusted Types documentation](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API)
+and the [Google adoption guide](https://web.dev/articles/trusted-types) cover policy implementation
+in detail.
 
 ### Adoption Strategy
 
@@ -364,10 +369,14 @@ Beyond the core mechanisms above, consider these complementary measures:
 
 ## Further Reading
 
-- [MDN: Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) -> API reference and browser compatibility
-- [MDN: Securing CDN resources with SRI](https://developer.mozilla.org/en-US/blog/securing-cdn-using-sri-why-how/) -> walkthrough on applying SRI to CDN-hosted assets
-- [MDN: Import Maps](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) -> specification and usage guide
-- [MDN: Trusted Types](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API) -> API reference and browser compatibility
+- [MDN: Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
+  -> API reference and browser compatibility
+- [MDN: Securing CDN resources with SRI](https://developer.mozilla.org/en-US/blog/securing-cdn-using-sri-why-how/)
+  -> walkthrough on applying SRI to CDN-hosted assets
+- [MDN: Import Maps](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap)
+  -> specification and usage guide
+- [MDN: Trusted Types](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API)
+  -> API reference and browser compatibility
 - [Google: Trusted Types Adoption Guide](https://web.dev/articles/trusted-types) -> step-by-step policy implementation guide
 
 ## Related Frameworks

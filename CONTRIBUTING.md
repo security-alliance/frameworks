@@ -11,10 +11,11 @@ while this copy is needed to make it highlighted in the repository dashboard.
 # **Contributing guidelines**
 
 The Security Frameworks is an open and collaborative initiative. Whether you are part of the Security Alliance or not,
-we welcome your contributions! Help us build the documentation and improve security in the blockchain ecosystem.
+we welcome your contributions. Help us build the documentation and improve security in the blockchain ecosystem.
 
 This handbook is designed for easy collaboration and automatic deployment through continuous integration. If you'd like
-to join our effort, feel free to fix typos, contribute new sections, or propose enhancements.
+to join our effort, feel free to fix typos, contribute new sections, or propose enhancements. If you want to take on
+a more active role for a specific domain, see [Framework Stewardship](/docs/pages/contribute/stewards.mdx).
 
 **Before contributing, please read our [Code of
 Conduct](https://github.com/security-alliance/frameworks/blob/develop/CODE_OF_CONDUCT.md)** to ensure that all
@@ -38,46 +39,90 @@ finalized content.
 contains ongoing updates, new sections, and draft content.
 
 When contributing, **please submit your Pull Requests to the development branch**. Once changes are reviewed and
-approved, they will be merged into the **main branch** for publication on the stable site.
+approved, they will periodically be merged into the **main branch** for publication on the stable site.
 
 ## Ways to contribute
 
-There are several ways to contribute, depending on your preference and the scope of your changes.
-First, check existing PRs or branches to make sure your work has not been previously submitted.
+There are several ways to contribute, depending on your preference and the scope of your changes. First, check existing
+PRs or branches to make sure your work has not been previously submitted.
+
+If you are unsure whether your idea is a new page, a section under an existing page, or a whole new framework, open
+an issue or reach out on [Discord](https://discord.gg/securityalliance) before you start writing. We are happy to help
+you scope it.
 
 ### 1. Quick edits
 
-- Use the **“Contribute today!”** button at the bottom of any page
-- Make fixes, formatting, and clarifications, favoring major modifications over just a few grammar mistakes
-- Changes go through GitHub’s web interface without requiring local setup
-- If someone already has an open PR, you can review the Cloudflare Pages preview linked from that PR and leave
-  proofreading or feedback on the PR itself without opening your own PR. This is a rendered preview for review, not a
-  separate commenting feature on the live site.
+- Use the **"Contribute today!"** button at the bottom of any page.
+- Make fixes, formatting, and clarifications, favoring major modifications over just a few grammar mistakes.
+- Changes go through GitHub's web interface without requiring local setup.
 
-### 2. Add a new section or expand an existing one
+### 2. Add a new page or expand an existing one
 
-All contributions should follow this workflow:
+This covers writing a new page, adding a section to an existing page, or rewriting existing content.
 
-1. **Fork the repository** to your own GitHub account.
-2. **Follow the [`template.mdx`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx)
-page** when creating or expanding content. It contains pre-defined components and structure required for consistency
-in MDX files.
-3. **Make your changes** in MDX (typos, improvements, or new content) on your fork.
-4. **Open a Pull Request (PR) against the `develop` branch** of this repository. Once submitted, use the Cloudflare
-   Pages preview linked from the PR to verify the rendered site and make any final adjustments before review. All
-   feedback and discussion should stay on the PR itself.
-5. **Notify reviewers** by tagging a steward or maintainer, requesting reviews directly in your PR.
-6. Additionally, you can paste your PR and/or potential associated issues to the `frameworks-contribs` Discord channel.
-7. Once reviewed and approved, your changes will be merged into `develop`.
-8. Don't forget to add yourself to the YAML header of the file you're modifying, given that is the way we provide
-   attribution. You should also create your profile inside the contributors list, at `docs/pages/config/contributors.json`.
-9. Periodically, reviewed content from `develop` is merged into `main` for the stable site.
+The [`template.mdx`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx) is
+the starting point for any new page. It lays out the required sections (key takeaway, intro, the basics, your content,
+further reading), the optional ones, the frontmatter rules, and the import paths. The structure is the same one used
+across every page on the site, which is what makes the Frameworks readable as a whole rather than as a pile of
+individual contributions. Open it before you start writing, even if you are only adding a section to an existing page,
+since the same structural rules apply.
 
-If you’re interested in a framework that doesn’t currently have an active steward, you can **become one yourself**. See
-the [Stewards guide](/docs/pages/contribute/stewards.mdx) for details on responsibilities and how to get started.
+The workflow:
 
-**⚠️ Please sign and verify all commits.** (If you have unsigned commits, follow the “Fixing Unsigned Commits” section
-below to update them)
+1. **Fork the repository** to your own GitHub account. For how to set up the project locally, see
+   [Development environment setup](#development-environment-setup) below.
+2. **For a new page**, copy `template.mdx` into the relevant framework folder under `docs/pages/`, replace the
+   placeholder content, and follow the instructions inside it. **For changes to an existing page**, edit the file
+   directly; the same structural and frontmatter rules apply.
+3. **Make your changes** in MDX on your fork. Add yourself to the file's `contributors` field in the frontmatter, and
+   create your profile in [`docs/pages/config/contributors.json`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/contributors.json)
+   if you do not already have one. This is how attribution works on the site.
+4. **Update the sidebar** (`vocs.config.tsx`) so your new page appears in site navigation. New content should always
+   be added with the `dev: true` flag, which keeps it on the development site only. Reviewed content gets promoted to
+   the stable site periodically when we merge `develop` into `main`. See [Sidebar / Navigation](#sidebar--navigation)
+   below.
+5. **Run the build locally** to make sure everything renders without errors. See [Error checking](#error-checking).
+6. **Open a Pull Request against the `develop` branch.** Use the Cloudflare Pages preview linked from the PR to verify
+   the rendered site and make any final adjustments before review. All feedback and discussion should stay on the PR
+   itself.
+7. **Notify reviewers** by tagging the relevant steward (you can find stewards on the
+   [Spotlight Zone](/docs/pages/contribute/spotlight-zone.mdx) page, listed alongside the framework they own) or a maintainer, and
+   request reviews directly in your PR. You can also paste your PR in the `frameworks-contribs` Discord channel for
+   additional visibility.
+8. Once reviewed and approved, your changes will be merged into `develop`. Periodically, reviewed content from
+   `develop` is merged into `main` for the stable site.
+
+**⚠️ Please sign and verify all commits.** If you have unsigned commits, follow the [Fixing unsigned
+commits](#fixing-unsigned-commits) section below to update them.
+
+### 3. Add a new framework
+
+A framework is a domain of security knowledge with enough depth and structure to warrant its own dedicated space on
+the site, an introduction, a set of pages covering different angles of the topic, and a steward who maintains it over
+time. Adding one is a bigger commitment than a single page, but it is also how the Frameworks grow.
+
+The workflow is the same as [adding a new page](#2-add-a-new-page-or-expand-an-existing-one) above, with these extra
+steps at the start:
+
+1. **Create a new folder** at `docs/pages/<your-framework-name>/`. Use kebab-case (only normal dashes, no underscores
+   or other separators).
+2. **Write `overview.mdx`** in that folder using the [page template](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx).
+   The overview introduces the framework as a whole and lists every sub-page in the framework with a brief
+   description. The template's "Overview pages only" comment shows the format.
+3. **Write the framework's other pages**, each one using the same template.
+4. **Run the build command.** Beyond the usual error checking, this also generates the auto-generated index file your
+   new framework needs to display correctly.
+
+Look at the existing frameworks under `docs/pages/` for examples of how pages are organized within a framework, how
+the overview ties them together, and how internal cross-links are structured.
+
+From there, follow the rest of the page-contribution workflow above (sidebar registration, attribution, PR, review).
+
+### Want to take on more?
+
+If you are interested in a framework that does not currently have an active steward, you can become one yourself.
+See the [Stewards guide](/docs/pages/contribute/stewards.mdx) for details on responsibilities, the open frameworks looking for
+stewards, and how to get started.
 
 ## Development environment setup
 
@@ -151,9 +196,84 @@ If you prefer to install dependencies locally on your machine:
 authenticate by running `gh auth login` in the terminal, making it easy to interact with GitHub directly from your
 development environment.
 
+## Page requirements
+
+The [page template](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx) is
+the source of truth for what every page should contain: required and optional sections, frontmatter rules, import
+paths, and writing guidance. Open it before you start writing.
+
+The sections below cover the parts of contributing that live outside the page itself: how the sidebar works, how to
+make sure the build passes, and the writing style we expect across all pages.
+
+### Frontmatter
+
+Every page needs a `title`, a `description`, `tags`, and `contributors`. The shape looks like this:
+
+```yaml
+---
+title: "Your Page Title | Security Alliance"
+description: "Your description here, 140-160 characters."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [your-github-username]
+  - role: reviewed
+    users: []
+---
+```
+
+Two things worth knowing up front:
+
+- **Titles** stay under 60 characters including the `| Security Alliance` suffix; use `| SEAL` for longer titles.
+  Avoid generic names like "Overview" or "Guide" alone.
+- **Contributors are managed centrally.** Your `users:` entries reference profiles in
+  [`docs/pages/config/contributors.json`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/contributors.json).
+  Add yourself there if you do not already have an entry.
+
+The full rules (description length, searchable terms, role list for tags, the auto-generation behavior for new tags,
+and worked examples) live in the [page template](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx?plain=1).
+
+### Sidebar / Navigation
+
+Because of how we handle the `.org` and `.dev` domains in different branches, when contributing **new pages** you must
+also **update `vocs.config.tsx`** so that the page appears in the site's sidebar. New content should always be added
+with `dev: true`. Reviewed content gets promoted to the stable site periodically when we merge `develop` into `main`.
+
+Example of a category with multiple pages:
+
+```tsx
+{
+  text: 'Monitoring', // Category name visible in the sidebar
+  collapsed: true,
+  dev: true, // Indicates this category is in development
+  items: [
+    { text: 'Overview', link: '/monitoring/README', dev: true }, // Indicates this page is in development
+    { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
+    { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
+  ]
+},
+```
+
+A new page added to an existing, already-promoted category should still be set with `dev: true`, even if the parent
+category does not have the flag. The `dev: true` belongs at the page level until that page is reviewed.
+
+This ensures that new content appears correctly in the site's navigation for readers on the `.dev` site while staying
+hidden from the stable `.org` site until ready.
+
+### Error checking
+
+Before pushing changes, always make sure your build works without errors:
+
+- Run `pnpm exec just build` or `pnpm run docs:build`
+- Preview the updated content locally at port `4173` with: `pnpm exec just preview` or `pnpm run docs:preview`
+
+This helps catch build or formatting issues early so reviewers see clean contributions.
+
 ## Fixing unsigned commits
 
-If you accidentally made unsigned commits in your fork, you’ll need to rewrite them so they show as **Verified** before
+If you accidentally made unsigned commits in your fork, you'll need to rewrite them so they show as **Verified** before
 opening a PR.
 
 ### 1. Rebase your recent commits
@@ -174,7 +294,7 @@ In the editor that opens:
 
 ### 3. Re-sign each commit
 
-For each commit you’re editing:
+For each commit you're editing:
 
 ```bash
 git commit --amend -S --no-edit
@@ -199,136 +319,29 @@ Check locally:
 git log --show-signature
 ```
 
-Or look at your branch on GitHub — commits should show a green **Verified** badge.
-
-## Contributor tasks beyond content changes
-
-When contributing to the Security Frameworks, there are several additional responsibilities to ensure your updates
-integrate smoothly into the site and maintain proper structure:
-
-### 1. Frontmatter
-
-Every page requires frontmatter at the top of the file. Here are the key fields:
-
-#### Title and Description
-
-Add a title and description to every page you add:
-
-```yaml
----
-title: "Your Page Title | Security Alliance"
-# SEO meta description: 140-160 chars. Start with the framework/topic name, include
-# searchable terms (tool names, attack types, standards), use action verbs.
-description: "Your description here, 140-160 characters."
----
-```
-
-**Titles** should be concise and descriptive—avoid generic names like "Overview" or "Guide" alone.
-Use "Preparing for a Smart Contract Audit" instead of "Preparation". Keep titles under 60 characters
-(including the `| Security Alliance` suffix) so they display fully in search results. If your title
-is too long, use `| SEAL` instead.
-
-**Meta descriptions** appear in search results and determine whether researchers click through.
-Aim for 140-160 characters, include searchable terms whitehats use (tool names, attack types,
-standards), and use action verbs. See
-[Google's guide](https://developers.google.com/search/docs/appearance/snippet) for more details.
-
-- ✅ `"Smart contract audits: scoping, static analysis, manual review, and formal verification."`
-- ❌ `"This page covers security topics."` (too vague, no searchable terms)
-
-#### Tags
-
-Assign tags to categorize content by role, topic, or skill level:
-
-```yaml
----
-tags:
-  - Engineer/Developer
-  - Security Specialist
----
-```
-
-Proper tagging makes your contribution discoverable and filterable on the site.
-
-#### Contributors
-
-Add yourself and other relevant contributors:
-
-```yaml
----
-contributors:
-  - role: wrote
-    users: [your-github-username]
-  - role: reviewed
-    users: [reviewer1, reviewer2]
----
-```
-
-Contributors are **managed centrally**:
-
-- **Contributor database:** `docs/pages/config/contributors.json`
-- **Usage guide:** `docs/pages/config/using-contributors.mdx`
-
-This helps track contributions and ensures proper attribution.
-
-For a complete frontmatter example, see the [template file](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx?plain=1).
-
-### 2. Sidebar / Navigation
-
-Because of how we handle the `.org` and `.dev` domains in different branches, when contributing **new pages** you must
-also **update `vocs.config.tsx`** so that the page appears in the site’s sidebar. For content still in review, remember
-to set `dev: true`.
-
-Example of a category with multiple pages:
-
-```tsx
-{
-  text: 'Monitoring', // Category name visible in the sidebar
-  collapsed: false,
-  dev: true, // Indicates this category is in development
-  items: [
-    { text: 'Overview', link: '/monitoring/README', dev: true }, // Indicates this page is in development
-    { text: 'Guidelines', link: '/monitoring/guidelines', dev: true },
-    { text: 'Thresholds', link: '/monitoring/thresholds', dev: true },
-  ]
-},
-
-```
-
-This ensures that new content appears correctly in the site’s navigation for readers on the `.dev` site while staying
-hidden from the stable `.org` site until ready.
-
-### 3. Error Checking
-
-Before pushing changes, always make sure your build works without errors:
-
-- Run `pnpm exec just build` or `pnpm run docs:build`
-- Preview the updated content locally at port `4173` with: `pnpm exec just preview` or `pnpm run docs:preview`
-
-This helps catch build or formatting issues early so reviewers see clean contributions.
+Or look at your branch on GitHub, commits should show a green **Verified** badge.
 
 ## Style guide
 
-Wiki pages follow standard MDX.
+Wiki pages follow standard MDX.
 
 The audience of this wiki is technical, and the content should reflect that. There are many guides on technical and
-documentation writing you can learn from; for example, you can check [this
-lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get started.
+documentation writing you can learn from; for example, you can check [this
+lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get started.
 
 ### Writing guidelines
 
 - Write in an objective, explanatory tone; avoid unnecessary simplifications.
 - Use concise sentences and break down complex ideas with bullet points, tables, images, or block-quotes.
-- Always link your resources and verify them
+- Always link your resources and verify them.
 - Introduce acronyms and technical jargon before using them.
 - Web3 changes fast; write the content to be as future-proof as possible.
-- Do **not** submit content entirely generated by AI; however, we recommend using it to fix grammar or phrasing
+- Do **not** submit content entirely generated by AI; however, we recommend using it to fix grammar or phrasing.
 - Consider tutorials or hands-on guides for practical steps.
 - Use visualizations (mermaid, diagrams, tables) to clarify concepts.
 - Add recommended reading or dependencies at the top of a page if relevant.
 - Focus on delivering credible, formal, technical content without unnecessary high-level introductions; use examples,
   comparisons, or anecdotes to clarify complex topics.
-- You can use mermaid diagrams for visualizations
 
 ### Content standardization
 
@@ -338,7 +351,7 @@ guide](https://ethereum.org/contributing/style-guide/content-standardization)).
 - Usage of images and visualizations is encouraged. If you are using an image created by a third party, make sure its
 license allows it and provide a link to the original. For creating your own visualizations, we suggest
 [excalidraw.com](https://github.com/excalidraw/excalidraw).
-- Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it
+- Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it
 fits, for example in block-quotes.
 
 ### Visual representation / drawings
@@ -355,13 +368,13 @@ pie title What Voldemort doesn't have?
           "FRIENDS" : 2
           "FAMILY" : 3
           "NOSE" : 45
-```
+  ```
 
 - Adding images is welcome and encouraged.
   Please follow the steps below to include them correctly:
 
-  1. After making your changes and opening a PR, add the images you want to include in the PR's comments
-  (by uploading them directly)
+  1. After making your changes and opening a PR, add the images you want to include
+     in the PR's comments (by uploading them directly)
   2. During the review, a maintainer will upload your images to our S3 bucket and reply with the links you should use.
   3. Once you receive the new links, update your PR to add the images' links.
 
@@ -370,7 +383,7 @@ pie title What Voldemort doesn't have?
 
 ### Linking resources
 
-- Prefer descriptive names for external links (e.g., `inevitableeth.com` instead of “this wiki”).
+- Prefer descriptive names for external links (e.g., `inevitableeth.com` instead of "this wiki").
 - Avoid overwhelming readers with too many inline links; consider a **Resources** section at the bottom.
 - Use relative paths for internal links and heading IDs for specific sections.
 - Provide archived mirrors or snapshots for important external references.
@@ -389,7 +402,7 @@ Pages with minimal content which need more work to cover the topic need to inclu
 
 ## Anything else?
 
-This page is also open for contributions! Suggest improvements to our style and guidelines in the GitHub repo.
+This page is also open for contributions. Suggest improvements to our style and guidelines in the GitHub repo.
 
 ## About this page
 

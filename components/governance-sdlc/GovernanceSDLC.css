@@ -1,0 +1,493 @@
+/* Governance SDLC Pipeline — vertical, 4 stacked full-width stage cards */
+
+.sdlc-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.sdlc-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.sdlc-caption-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: center;
+}
+
+.sdlc-caption-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.sdlc-caption-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Vertical pipeline container ------------------------------------------------
+ * The left gutter (width: sdlc-loop-gutter) hosts the dotted loop-back arrow
+ * + label. The stages sit in the main column.
+ */
+.sdlc-pipeline-vertical {
+  --sdlc-loop-gutter: 42px;
+  position: relative;
+  display: flex;
+  padding-left: var(--sdlc-loop-gutter);
+}
+
+/* Loop-back (dotted) arrow in the left gutter ------------------------------- */
+.sdlc-loop {
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 0;
+  width: var(--sdlc-loop-gutter);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.sdlc-loop-line {
+  position: absolute;
+  top: 0;
+  bottom: 12px;
+  left: 14px;
+  width: 0;
+  border-left: 1.2px dashed currentColor;
+  opacity: 0.55;
+}
+
+.sdlc-loop-arrow-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 7px;
+  width: 14px;
+  height: 10px;
+  color: inherit;
+}
+
+.sdlc-loop-label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: var(--color-text-muted);
+  background: var(--vocs-color_background, #fff);
+  padding: 2px 6px;
+  opacity: 0.9;
+}
+
+/* Stage list ---------------------------------------------------------------- */
+.sdlc-stage-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sdlc-stage-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.sdlc-stage-card-wrap {
+  width: 100%;
+}
+
+/* Stage card ---------------------------------------------------------------- */
+.sdlc-stage-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 18px 22px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-card);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.sdlc-stage-card:hover,
+.sdlc-stage-card:focus-visible {
+  border-color: var(--color-primary);
+}
+
+.sdlc-stage-card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(67, 57, 219, 0.25);
+}
+
+.sdlc-stage-card.selected {
+  border-color: var(--color-primary);
+  border-width: 2px;
+  padding: 17px 21px; /* compensate so card height stays stable */
+}
+
+.sdlc-stage-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sdlc-stage-index {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+.sdlc-stage-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-text-strong);
+}
+
+.sdlc-stage-subtitle {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+/* Threat constellation on the right of each card ---------------------------- */
+.sdlc-stage-constellation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 2px 4px 12px;
+  border-left: 1px solid var(--border-card);
+  align-self: stretch;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sdlc-dot {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 1.5px solid var(--bg-card);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.sdlc-dot:hover,
+.sdlc-dot:focus-visible {
+  transform: scale(1.3);
+}
+
+.sdlc-dot:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.sdlc-dot.selected {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 2px var(--color-text-strong);
+}
+
+/* Connector between stages (down arrow) ------------------------------------- */
+.sdlc-stage-connector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  color: var(--color-text-muted);
+}
+
+.sdlc-stage-arrow {
+  width: 18px;
+  height: 26px;
+  display: block;
+}
+
+/* Detail panel -------------------------------------------------------------- */
+.sdlc-detail {
+  margin-top: 24px;
+  padding: 22px 26px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  animation: sdlc-slide-in 0.2s ease-out;
+}
+
+@keyframes sdlc-slide-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sdlc-detail-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.sdlc-detail-eyebrow {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin: 0 0 2px;
+}
+
+.sdlc-detail-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-text-strong);
+  margin: 0 0 4px;
+}
+
+.sdlc-detail-subtitle {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.sdlc-detail-close {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 22px;
+  padding: 0 4px;
+  line-height: 1;
+  transition: color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.sdlc-detail-close:hover {
+  color: var(--color-text-strong);
+}
+
+.sdlc-detail-purpose {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 10px 0 16px;
+}
+
+.sdlc-detail-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.sdlc-detail-col h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-strong);
+  margin: 0 0 10px;
+}
+
+.sdlc-threat-list,
+.sdlc-defense-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sdlc-threat-item {
+  display: flex;
+  gap: 10px;
+  /* Align the row on the first text line so the category dot sits next to
+   * the bold title — not centered on the whole wrapped block.
+   */
+  align-items: flex-start;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.sdlc-threat-item.highlighted {
+  border-color: var(--color-primary);
+  background: rgba(67, 57, 219, 0.06);
+}
+
+.sdlc-threat-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  /* Pull the dot down so its vertical center aligns with the middle of the
+   * first title line (13px × 1.4 line-height → center at ~9.1px from top of
+   * label; dot center sits at 5px from its own top, so offset ≈ 4px).
+   */
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.sdlc-threat-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.sdlc-threat-label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-strong);
+  margin: 0 0 2px;
+}
+
+.sdlc-threat-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.sdlc-defense-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-strong);
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+
+.sdlc-defense-item.highlighted {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.sdlc-defense-bullet {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.sdlc-detail-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-card);
+}
+
+.sdlc-detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-size: 12px;
+}
+
+.sdlc-detail-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--border-card);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.sdlc-detail-links a:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.sdlc-detail-cta {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  padding: 7px 16px;
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  color: var(--color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.sdlc-detail-cta:hover {
+  background: rgba(67, 57, 219, 0.08);
+}
+
+/* Responsive tightening ----------------------------------------------------- */
+@media (max-width: 640px) {
+  .sdlc-pipeline-vertical {
+    --sdlc-loop-gutter: 30px;
+  }
+
+  .sdlc-stage-card {
+    padding: 14px 14px;
+    gap: 12px;
+  }
+
+  .sdlc-stage-card.selected {
+    padding: 13px 13px;
+  }
+
+  .sdlc-stage-title {
+    font-size: 1.1rem;
+  }
+
+  .sdlc-stage-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .sdlc-stage-constellation {
+    padding-left: 8px;
+    gap: 6px;
+  }
+
+  .sdlc-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .sdlc-detail {
+    padding: 18px 18px;
+  }
+
+  .sdlc-detail-columns {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sdlc-detail-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Print --------------------------------------------------------------------- */
+@media print {
+  .sdlc-detail-close { display: none; }
+  .sdlc-dot { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .sdlc-threat-dot { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .sdlc-loop-line { opacity: 0.7; }
+}
