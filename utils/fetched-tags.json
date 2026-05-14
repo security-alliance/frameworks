@@ -544,6 +544,12 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/incident-management/forensic-readiness": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps",
+      "SRE"
+    ],
     "/incident-management/incident-detection-and-response": [
       "Security Specialist",
       "Operations & Strategy"
@@ -767,6 +773,10 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/intro/attack-surface": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/intro/introduction": [
       "SEAL/Initiative"
     ],
@@ -940,7 +950,19 @@
       "DevOps",
       "SRE"
     ],
+    "/opsec/passwords/managers": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/opsec/passwords/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/passwords/rootaccounts": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/passwords/sso": [
       "Security Specialist",
       "Operations & Strategy"
     ],
@@ -1318,6 +1340,14 @@
     "For Signers": "multisig-for-protocols",
     "Operational Security": "opsec",
     "OpSec Core Concepts": "opsec",
+    "Security Fundamentals": "opsec",
+    "Implementation Process": "opsec",
+    "Web3 considerations": "opsec",
+    "Secure Operating Systems": "opsec",
+    "Endpoint Security": "guides",
+    "Browser Security": "opsec",
+    "Multi-Factor Authentication": "opsec",
+    "Password Management": "opsec",
     "While Traveling": "opsec",
     "Privacy": "privacy",
     "Safe Harbor": "safe-harbor",
@@ -1332,7 +1362,6 @@
     "Signing & Verification": "wallet-security",
     "Guides": "guides",
     "Account Management": "guides",
-    "Endpoint Security": "guides",
     "SEAL Certifications": "certs",
     "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"

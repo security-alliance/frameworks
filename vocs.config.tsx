@@ -367,7 +367,7 @@ const config = {
             { text: 'Password Management', 
               collapsed: false,
               items: [
-                { text: 'Password Basics', link: '/opsec/passwords/basics', dev: true },
+                { text: 'Password Basics', link: '/opsec/passwords/overview', dev: true },
                 { text: 'Password Managers', link: '/opsec/passwords/managers', dev: true },
                 { text: 'Single Sign-on', link: '/opsec/passwords/sso', dev: true },
                 { text: 'Root Accounts', link: '/opsec/passwords/rootaccounts', dev: true }  
