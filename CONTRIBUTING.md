@@ -67,6 +67,11 @@ across every page on the site, which is what makes the Frameworks readable as a 
 individual contributions. Open it before you start writing, even if you are only adding a section to an existing page,
 since the same structural rules apply.
 
+**Keep each page focused on a single topic.** If your content would require more than 5-6 top-level
+sections (## headings), it is covering too much ground in one place. Split it into separate pages
+within a framework folder, one page per major angle of the topic. Each sub-page should be
+self-contained enough that a reader can land on it directly without needing to read the others first.
+
 The workflow:
 
 1. **Fork the repository** to your own GitHub account. For how to set up the project locally, see
@@ -364,10 +369,10 @@ fits, for example in block-quotes.
   where you can jump straight to draw!
 
   ```mermaid
-pie title What Voldemort doesn't have?
-          "FRIENDS" : 2
-          "FAMILY" : 3
-          "NOSE" : 45
+  pie title What Voldemort doesn't have?
+      "FRIENDS" : 2
+      "FAMILY" : 3
+      "NOSE" : 45
   ```
 
 - Adding images is welcome and encouraged.
