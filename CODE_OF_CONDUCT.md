@@ -15,7 +15,7 @@ diverse, inclusive, and healthy community.
 ## Alignment with the Security Alliance (SEAL) Code of Conduct
 
 This initiative follows the
-<a href="https://radar.securityalliance.org/code_of_conduct/" target="_blank" rel="noopener noreferrer">Security Alliance (SEAL) Code of Conduct</a>,
+[Security Alliance (SEAL) Code of Conduct](https://radar.securityalliance.org/code_of_conduct/),
 which sets expectations for all members and contributors across the organization.
 
 At SEAL, we commit to:
