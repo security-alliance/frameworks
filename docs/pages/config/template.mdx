@@ -114,9 +114,11 @@ contributors:
   framework folder). If your page sits one level deeper, for example
   docs/pages/<framework-folder>/<subfolder>/<your-page>.mdx, add one more '../'
   so the import becomes '../../../../components'.
+
+  If your page uses interactive checklists, add Checklist to the import:
+  import { ..., Checklist } from '../../../components'
 */}
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../components'
-{/* Add Checklist to the import above only if your page uses interactive checklists. */}
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
 <TagProvider>
 <TagFilter />
