@@ -12,7 +12,7 @@ contributors:
     users: [pinalikefruit, engn33r]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -120,6 +120,7 @@ invariant is violated.
 
 ## Pre-Launch Checklist
 
+<Checklist id="pre-launch-checklist">
 - [ ] Safe deployed with correct threshold
 - [ ] All signer addresses added and [verified](/multisig-for-protocols/registration-and-documentation#signer-verification-process)
 - [ ] Allowance module configured (if required)
@@ -127,6 +128,7 @@ invariant is violated.
 - [ ] All signers confirmed they can sign
 - [ ] [Communication channels](/multisig-for-protocols/communication-setup) tested during transaction
 - [ ] Safe addresses documented for all networks
+</Checklist>
 
 ### Practice on Testnet
 

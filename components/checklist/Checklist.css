@@ -1,0 +1,68 @@
+.checklist {
+  margin-top: -0.25rem;
+}
+
+.checklist ul {
+  list-style: none !important;
+  padding-left: 0;
+  margin: 0.25em 0;
+}
+
+.checklist ul ul {
+  list-style: none !important;
+  padding-left: 1.25rem;
+  margin: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 26px;
+  margin: 4px 0;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* Non-checkbox items: show a bullet and reduce left indent */
+.checklist li:not(:has(> input[type="checkbox"])) {
+  padding-left: 1rem;
+}
+
+.checklist li:not(:has(> input[type="checkbox"]))::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Non-checkbox nested items: tighter spacing */
+.checklist ul ul li:not(:has(input[type="checkbox"])) {
+  margin: 1px 0;
+}
+
+.checklist li input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--color-primary, #4339db);
+}
+
+/* Strikethrough applied only to the label span, never cascades into nested lists. */
+.checklist .checklist-label.is-checked {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+/* Tighten paragraph wrappers that loose lists add around item text. */
+.checklist li p {
+  margin: 0;
+}
+
+/* When a checklist follows a list item label, indent to match list depth. */
+ul + .checklist,
+ol + .checklist {
+  padding-left: 1.25rem;
+}

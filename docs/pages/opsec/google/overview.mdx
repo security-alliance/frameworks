@@ -12,7 +12,7 @@ contributors:
     users: [mattaereal]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -42,6 +42,7 @@ These settings apply to your personal Google account. All team members and admin
 
 ### Account Security Checklist
 
+<Checklist id="account-security-checklist">
 - [Google Security Settings](https://myaccount.google.com/security):
   - [ ]  Settings > Security > Skip passwords when possible > **Enabled**
     - *Skipping password entry allows you to renew logins in public places without having to type out your password or
@@ -72,6 +73,7 @@ These settings apply to your personal Google account. All team members and admin
   - Publicly visible personal info can aid attackers in impersonating you.
   - [ ]  Check Visibility: If any info is set to "Anyone," switch it to private if unnecessary
   - [ ]  **Birthday:** Consider making it private
+</Checklist>
 
 ---
 
@@ -79,6 +81,7 @@ These settings apply to your personal Google account. All team members and admin
 
 For a comprehensive security review, follow these steps from [Google Security](https://myaccount.google.com/security):
 
+<Checklist id="extended-security-settings">
 - [ ]  "Your connection to third-party apps & Services" > Revoke all applications that should not be connected
 - [ ]  "Log out of all unknown devices"
 - [ ]  "Turn off" skip password when possible (below previous step)
@@ -86,6 +89,7 @@ For a comprehensive security review, follow these steps from [Google Security](h
 - [ ]  Ensure you do not have a recovery phone setup. No SMS 2FA or phone number on your account at all.
 - [ ]  Change your password after completing these steps
 - [ ]  Note down your backup codes
+</Checklist>
 
 > If using Google Authenticator as a 2FA app on your phone, disconnect it from the cloud, as backup codes are then stored
 > in the google cloud associated to email. Use it without an account and ensure backup codes are written down offline.
@@ -98,17 +102,21 @@ For those who are public figures or need heightened security, Google's **Advance
 considering. It requires the use of security keys, limits access to unverified apps, and makes the process of account
 recovery more challenging.
 
+<Checklist id="advanced-protection">
 - [ ]  [Enroll in Advanced Protection Program](https://myaccount.google.com/advanced-protection/landing)
+</Checklist>
 
 ---
 
 ### Best Practices & Ongoing Maintenance
 
+<Checklist id="best-practices">
 - [ ]  **Review Security Alerts:** Pay attention to any email or phone notifications from Google regarding unusual
   sign-ins or account changes.
 - [ ]  **Perform a Security Checkup:** Regularly visit [Google's Security Checkup](https://myaccount.google.com/security-checkup)
   to identify potential issues and resolve them.
 - [ ]  **Consider** using identity **monitoring** apps like [Push Security](https://pushsecurity.com).
+</Checklist>
 
 ---
 
@@ -134,6 +142,7 @@ These settings and practices apply to Google Workspace administrators with eleva
 #### Rules and Notifications
 
 - [Rules](https://admin.google.com/ac/ax) > Enable notifications for security events
+<Checklist id="admin-rules-notifications">
   - [ ]  "User's password changed"
   - [ ]  "Suspicious login"
   - [ ]  "User granted Admin privilege"
@@ -141,9 +150,11 @@ These settings and practices apply to Google Workspace administrators with eleva
   - [ ]  "Primary admin changed"
   - [ ]  "Leaked password"
   - [ ]  "Device compromised" [[1]](#1-security-alerts)
+</Checklist>
 
 #### Security Settings
 
+<Checklist id="admin-security-settings">
 - [ ]  Security > Overview > Less Secure Apps > **Disable access to less secure apps**
 - [ ]  Security > Authentication > 2-Step Verification > **Allow users to turn on 2-Step Verification**
   - [ ]  Enforcement > **On**
@@ -156,9 +167,11 @@ These settings and practices apply to Google Workspace administrators with eleva
 - [ ]  Security > Access and data control > Google Cloud session control > Reauthentication policy > **Require reauthentication**
   - [ ]  Exempt Trusted apps > **Off**
   - [ ]  Reauthentication frequency > **16**
+</Checklist>
 
 #### Apps and Data Control
 
+<Checklist id="admin-apps-data">
 - [ ]  Apps > Google Workspace > Drive and Docs > Sharing options >
   - [ ]  Sharing outside of organization > **OFF** or **ALLOWLISTED DOMAINS**
     - [ ]  Allow users in organization to receive files from users or shared drives outside of
@@ -167,10 +180,12 @@ These settings and practices apply to Google Workspace administrators with eleva
     web content visible to anyone with the link > **Off**
   - [ ]  Distributing content outside of organization > **No one**
 - [ ]  Apps > Google Workspace > Settings for Google Chat > Service Settings > **OFF for everyone**
+</Checklist>
 
 #### Gmail Security
 
 - Apps > Google Workspace > Settings for Gmail >
+<Checklist id="admin-gmail-security">
   - [ ]  Authenticate email > Set up **DKIM** with your DNS provider
   - **Safety >**
     - [ ]  Attachments > **Enable** all protections and set to quarantine
@@ -179,6 +194,7 @@ These settings and practices apply to Google Workspace administrators with eleva
     - [ ]  Spoofing and authentication > **Enable** all and set to quarantine
       - [ ]  **Protect against any unauthenticated emails** can be set to **Keep email in inbox and show warning**
       in order to prevent blocking external emails
+</Checklist>
 
 #### Email Authentication
 

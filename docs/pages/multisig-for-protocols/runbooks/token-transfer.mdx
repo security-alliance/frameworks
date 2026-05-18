@@ -10,7 +10,7 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -38,9 +38,11 @@ Sending tokens (ETH, ERC20, SOL, SPL tokens) from a multisig to another address.
 
 ## Prerequisites
 
+<Checklist id="prerequisites">
 - [ ] Recipient address verified via independent source (not just chat message)
 - [ ] Amount confirmed
 - [ ] Reason for transfer documented or approved
+</Checklist>
 
 ## EVM (Safe) Procedure
 
@@ -86,16 +88,20 @@ Or use [OpenZeppelin Safe Utils](https://safe-utils.openzeppelin.com).
 
 ### 3. Sign
 
+<Checklist id="evm-sign">
 - [ ] Review transaction on hardware wallet
 - [ ] Verify message hash matches tool output
 - [ ] Sign
 - [ ] Communicate: "Verified and signed, X more needed"
+</Checklist>
 
 ### 4. Execute
 
+<Checklist id="evm-execute">
 - [ ] Last signer clicks "Execute" (or designated executor)
 - [ ] Confirm transaction on-chain via block explorer
 - [ ] Communicate: "Executed - [tx hash]"
+</Checklist>
 
 ## Solana (Squads) Procedure
 
@@ -129,16 +135,20 @@ Or use [OpenZeppelin Safe Utils](https://safe-utils.openzeppelin.com).
 
 ### 3. Sign
 
+<Checklist id="squads-sign">
 - [ ] Click "Approve"
 - [ ] Verify hash in Squads UI matches Ledger display
 - [ ] Sign on Ledger
 - [ ] Communicate: "Verified and signed, X more needed"
+</Checklist>
 
 ### 4. Execute
 
+<Checklist id="squads-execute">
 - [ ] Last signer executes
 - [ ] Verify on Solana Explorer
 - [ ] Communicate: "Executed - [tx signature]"
+</Checklist>
 
 ## Verification Details
 
