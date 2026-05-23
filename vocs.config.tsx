@@ -383,6 +383,22 @@ const config = {
           ]
         },
         {
+          text: 'Physical Security',
+          collapsed: true,
+          items: [
+            { text: 'Overview', link: 'physical-security/overview' },
+            { text: 'Threat Model', link: '/physical-security/threat-model' },
+            { text: 'Risk Factors and Early Signals', link: '/physical-security/risk-factors-and-early-signals' },
+            { text: 'Defensive Design Principles', link: '/physical-security/defensive-design-principles' },
+            { text: 'Wallet and Key Architecture', link: '/physical-security/wallet-and-key-architecture' },
+            { text: 'Personal and Family OpSec', link: '/physical-security/personal-and-family-opsec' },
+            { text: 'Transaction Flows Under Duress', link: '/physical-security/transaction-flows-under-duress' },
+            { text: 'Incident Response', link: '/physical-security/incident-response' },
+            { text: 'Recovery and Resilience', link: '/physical-security/recovery-and-resilience' },
+            { text: 'Checklist', link: '/physical-security/checklist' },
+          ]
+        },        
+        {
           text: 'Privacy',
           collapsed: true,
           dev: true,
