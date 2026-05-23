@@ -1,0 +1,99 @@
+---
+title: "Overview | Security Alliance"
+description: "What wrench attacks are, why they matter now, and the scope of this framework defending crypto holders against physical coercion of their keys."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# How to Protect Against Wrench Attacks
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **Key Takeaway**:
+> Physical attacks bypass technical security by coercing the people who hold keys. As self-custody and on-chain treasuries grow, this threat vector now affects individuals and organizations alike, demanding dedicated controls beyond cryptography.
+
+Cryptography protects keys from algorithmic attack, not from coercion of the people who hold them. As self-custody, on-chain treasuries, and high-profile crypto-native individuals become more common, adversaries increasingly bypass technical defenses by targeting people directly through threats, surveillance, kidnapping, or extortion. These are commonly referred to as **wrench attacks**.
+
+## What is a wrench attack?
+
+A wrench attack is any situation where an attacker bypasses technical security by directly targeting the person who controls the keys. Unlike phishing, malware, or protocol exploits, wrench attacks assume the attacker has physical proximity or credible reach to the victim, and that technical controls alone are insufficient.
+
+The term originates from the [xkcd webcomic](https://xkcd.com/538/), which satirically illustrated that sophisticated 4096-bit RSA encryption could be bypassed more effectively by a $5 wrench than by a supercomputer.
+
+## Why this matters now
+
+- Growth of self-custody, non-custodial wallets, and on-chain treasuries means more value is directly controlled by a small number of individuals, often without institutional physical security.
+- Public on-chain data, social media signaling, and leaks make it easier for adversaries to identify likely high-value targets and correlate them with real-world identities.
+- Existing wallet security guidance focuses mainly on technical compromise, leaving physical and social-engineering vectors underserved.
+
+## Scope
+
+This framework covers individuals (founders, traders, KOLs) and organizations such as crypto exchanges, funds, DAOs, and protocols operating with significant on-chain or custodial balances.
+
+It assumes that adversaries can use basic OSINT, social engineering, and physical surveillance to find and pressure key-holders.
+
+## Table of Contents
+
+- [**Threat Model**](/physical-security/threat-model)
+  - [Attacker types](/physical-security/threat-model#attacker-types)
+  - [Attacker objectives](/physical-security/threat-model#attacker-objectives)
+  - [Attack surfaces](/physical-security/threat-model#attack-surfaces)
+- [**Risk Factors and Early Signals**](/physical-security/risk-factors-and-early-signals)
+  - [Individual risk factors](/physical-security/risk-factors-and-early-signals#individual-risk-factors)
+  - [Organizational risk factors](/physical-security/risk-factors-and-early-signals#organizational-risk-factors)
+  - [Environmental and geographic risk factors](/physical-security/risk-factors-and-early-signals#environmental-and-geographic-risk-factors)
+  - [Early signals and pre-incident indicators](/physical-security/risk-factors-and-early-signals#early-signals-and-pre-incident-indicators)
+- [**Defensive Design Principles**](/physical-security/defensive-design-principles)
+  - [Minimization](/physical-security/defensive-design-principles#minimization)
+  - [Compartmentalization](/physical-security/defensive-design-principles#compartmentalization)
+  - [Plausibility](/physical-security/defensive-design-principles#plausibility)
+  - [Resilience](/physical-security/defensive-design-principles#resilience)
+  - [Prioritization](/physical-security/defensive-design-principles#prioritization)
+- [**Wallet and Key Architecture**](/physical-security/wallet-and-key-architecture)
+  - [Wallet strategy](/physical-security/wallet-and-key-architecture#wallet-strategy)
+  - [Multisig and MPC](/physical-security/wallet-and-key-architecture#multisig-and-mpc)
+  - [Geographically decoupled key storage](/physical-security/wallet-and-key-architecture#geographically-decoupled-key-storage)
+  - [Decoy and compliance wallets](/physical-security/wallet-and-key-architecture#decoy-and-compliance-wallets)
+  - [Key ceremonies and rotation policies](/physical-security/wallet-and-key-architecture#key-ceremonies-and-rotation-policies)
+- [**Personal and Family OpSec**](/physical-security/personal-and-family-opsec)
+  - [Digital hygiene](/physical-security/personal-and-family-opsec#digital-hygiene)
+  - [Identity separation](/physical-security/personal-and-family-opsec#identity-separation)
+  - [Family and staff training](/physical-security/personal-and-family-opsec#family-and-staff-training)
+  - [Physical routine hardening](/physical-security/personal-and-family-opsec#physical-routine-hardening)
+  - [Social engineering resistance](/physical-security/personal-and-family-opsec#social-engineering-resistance)
+- [**Transaction Flows Under Duress**](/physical-security/transaction-flows-under-duress)
+  - [Hard limits and friction](/physical-security/transaction-flows-under-duress#hard-limits-and-friction)
+  - [Separation of approval channels](/physical-security/transaction-flows-under-duress#separation-of-approval-channels)
+  - [Duress-compatible operating modes](/physical-security/transaction-flows-under-duress#duress-compatible-operating-modes)
+  - [High-risk period tightening](/physical-security/transaction-flows-under-duress#high-risk-period-tightening)
+- [**Incident Response**](/physical-security/incident-response)
+  - [Immediate triage](/physical-security/incident-response#immediate-triage)
+  - [De-escalation](/physical-security/incident-response#de-escalation)
+  - [Technical containment](/physical-security/incident-response#technical-containment)
+  - [Coordination with external parties](/physical-security/incident-response#coordination-with-external-parties)
+  - [Evidence and decision logging](/physical-security/incident-response#evidence-and-decision-logging)
+  - [Post-incident actions](/physical-security/incident-response#post-incident-actions)
+- [**Recovery and Resilience**](/physical-security/recovery-and-resilience)
+  - [Human factors](/physical-security/recovery-and-resilience#human-factors)
+  - [Infrastructure reconstruction](/physical-security/recovery-and-resilience#infrastructure-reconstruction)
+  - [Governance](/physical-security/recovery-and-resilience#governance)
+  - [Long-term monitoring](/physical-security/recovery-and-resilience#long-term-monitoring)
+- [**Checklist**](/physical-security/checklist)
+
+</TagProvider>
+
+<ContributeFooter />

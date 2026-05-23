@@ -1,0 +1,62 @@
+---
+title: "Wallet and Key Architecture | Security Alliance"
+description: "Tiered wallet strategy, multisig and MPC, geographic key distribution, decoy wallets, and key ceremonies hardening crypto holdings against coercion."
+tags:
+  - Security Specialist
+  - Engineer/Developer
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Wallet and Key Architecture
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **Key Takeaway**:
+> Tiered wallet structures (hot, warm, cold, deep-cold) combined with multisig or MPC, geographic key distribution, plausible decoys, and rotation policies ensure no single coerced individual can drain strategic reserves under pressure.
+
+## Wallet strategy
+
+- **Hot wallets (0–1% of total value):** Daily operational funds on L1/L2 for gas, small payments, emergency liquidity. Strict daily spend limits (under $10k equivalent), no direct path to cold storage.
+- **Warm wallets (1–5%):** Short-term operational (1–7 days) funds for payroll, vendor payments, marketing. Geo-fenced approvals, multisig with time delays for larger moves.
+- **Cold wallets (5–25%):** Medium-term holdings accessible within 24–72 hours via hardware signers. Stored in bank vaults or secure facilities, never at primary residence or office.
+- **Deep-cold (remaining balance):** Strategic reserves in air-gapped HSMs, multi-party custodians, or institutional custody. Recovery requires legal processes or key ceremonies spanning weeks.
+
+## Multisig and MPC
+
+- **Multisig setups:** Minimum 3-of-5 or 4-of-7 signers for any material movement; distribute across geographies and risk profiles so coercing one person blocks action.
+- **MPC (multi-party computation):** Threshold schemes where no single key share enables spending.
+
+## Geographically decoupled key storage
+
+- **Primary residence:** Never store hardware wallets, seeds, or signer devices. Use only temporary hot wallet access via secure elements (YubiKey, phone-bound keys).
+- **Secure offsite locations:** Bank safety deposit boxes, private vaults, or trusted family abroad for cold wallet hardware.
+- **Institutional custodians:** Fireblocks, Copper, or regulated providers for deep-cold.
+- **Smart contract guardians:** Protocol-level treasuries use on-chain timelocks, pause functions, or emergency multisig for protocol upgrades under duress.
+
+## Decoy and compliance wallets
+
+- **Plausible decoy wallets:** Create 2–3 secondary wallets with $2k–$5k balances matching observed transaction patterns. Seeds and PINs memorized separately for handover.
+- **Duress codes and PINs:** Secondary credentials unlock decoy wallets or trigger silent alarms or limits.
+- **Burner exchange accounts:** Pre-funded CEX accounts (around $10k) linked to public personas, for immediate compliance transfers without touching core holdings.
+
+## Key ceremonies and rotation policies
+
+- **Initial key ceremonies:** Conducted in neutral third-party locations with video audit trails. Mnemonic shards split across a minimum of 3 participants, never whole seeds.
+- **Periodic rotations:** Quarterly review of signer eligibility. Annual full key refresh with new hardware and devices. Trigger rotations after travel to high-risk jurisdictions.
+- **Post-incident rotation:** Pre-defined playbook for 24-hour signer replacement, contract migrations, and full-stack rebuild without single points of failure.
+
+</TagProvider>
+
+<ContributeFooter />

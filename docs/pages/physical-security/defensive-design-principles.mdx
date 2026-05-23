@@ -1,0 +1,59 @@
+---
+title: "Defensive Design Principles | Security Alliance"
+description: "Five principles for wrench-attack defense: minimization, compartmentalization, plausibility, resilience, and prioritization of human safety over assets."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Defensive Design Principles
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **Key Takeaway**:
+> Five principles anchor wrench-attack defense: minimization limits what any coerced individual can authorize; compartmentalization segments keys and roles; plausibility uses decoys; resilience enables recovery; prioritization always favors human safety over assets.
+
+These principles guide all subsequent controls, ensuring wallet architectures and operational processes withstand coercion without relying solely on the victim's resistance under extreme pressure.
+
+## Minimization
+
+- Minimize the value and impact of what any single coerced individual can authorize during a time-constrained attack window.
+- Design wallet tiers and signing limits so that even full compliance yields only low-to-moderate losses, forcing attackers to sustain operations longer and increasing their detection risk.
+
+## Compartmentalization
+
+- Segment keys, identities, devices, locations, and roles to prevent compromise of one element from cascading across the entire stack.
+- Separate hot wallets for daily ops from cold storage for long-term holdings, and distribute signer responsibilities across jurisdictions, risk profiles, and access methods.
+
+## Plausibility
+
+- Incorporate believable decoy structures that align with the victim's public profile, such as low-value "compliance wallets" containing realistic but sacrificial balances. Decoys must appear operationally consistent to withstand basic scrutiny.
+
+## Resilience
+
+- Design for post-incident recovery without single points of failure.
+- Protect human factors: avoid blame cycles, control information flows to prevent secondary leaks or attrition.
+- Maintain operational continuity through distributed knowledge and pre-tested reconstruction.
+
+## Prioritization
+
+- Sequence all controls to favor human safety over assets during active threats.
+- No policy should incentivize physical resistance; wallet rules yield immediately to safety triggers.
+- Integrate with physical security, crisis management, and law enforcement protocols.
+
+</TagProvider>
+
+<ContributeFooter />
