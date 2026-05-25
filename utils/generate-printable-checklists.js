@@ -45,8 +45,6 @@ function generateHTML(title, subtitle, sections, certName) {
   subtitle = escapeHtml(subtitle);
   certName = sanitizeCertName(certName);
 
-  const controlCount = sections.reduce((sum, s) => sum + (s.controls?.length || 0), 0);
-
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -363,7 +361,6 @@ function sanitizeCertName(name) {
  * Main execution
  */
 function main() {
-  console.log('Generating printable checklists...\n');
 
   // Ensure output directory exists
   if (!fs.existsSync(OUTPUT_DIR)) {
@@ -409,12 +406,10 @@ function main() {
 
     fs.writeFileSync(outputPath, html);
 
-    const controlCount = data.cert.reduce((sum, s) => sum + (s.controls?.length || 0), 0);
-    console.log(`  ✓ ${certName}.html (${data.cert.length} sections, ${controlCount} controls)`);
     generated++;
   });
 
-  console.log(`\n✅ Generated ${generated} printable checklists in docs/public/printable/`);
+  console.log(`✅ Generated ${generated} printable checklists in docs/public/printable/`);
 }
 
 main();

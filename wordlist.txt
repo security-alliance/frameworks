@@ -1,3 +1,4 @@
+AADAPT
 AccuKnox
 Acuvity
 Aderyn
@@ -142,6 +143,7 @@ HIDS
 HIPAA
 Hoogenkamp
 HSM
+HSTS
 IAPP
 IAST
 ICANN
@@ -182,6 +184,7 @@ ledgerhq
 levation
 lexpunk
 liquidatable
+llms
 LLVM
 LUKS
 Mahhouk
@@ -287,6 +290,7 @@ sambacha
 satisfiable
 SBLWT
 Schneier
+SCWE
 SDLC
 SED
 SEDs

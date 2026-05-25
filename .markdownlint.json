@@ -42,7 +42,9 @@
       "DevOnly",
       "BadgeLegend",
       "ExportAllCerts",
-      "AttackSurfaceDashboard"
+      "AttackSurfaceDashboard",
+      "GovernanceSDLCPipeline",
+      "ChecklistItem"
     ]
   },
   "MD037": false,

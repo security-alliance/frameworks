@@ -24,7 +24,6 @@ const CERT_ORDER = [
 ];
 
 function main() {
-  console.log('Generating cert data JSON...\n');
 
   const certs = [];
 
@@ -44,15 +43,12 @@ function main() {
     }
 
     const name = file.replace('.mdx', '');
-    const controlCount = data.cert.reduce((sum, s) => sum + (s.controls?.length || 0), 0);
-
     certs.push({
       name,
       label,
       sections: data.cert,
     });
 
-    console.log(`  ✓ ${name} (${data.cert.length} sections, ${controlCount} controls)`);
   }
 
   // Ensure output directory exists
@@ -66,7 +62,7 @@ function main() {
   const totalControls = certs.reduce((sum, c) => 
     sum + c.sections.reduce((s, sec) => s + (sec.controls?.length || 0), 0), 0
   );
-  console.log(`\n✅ Generated cert-data.json (${certs.length} certs, ${totalControls} total controls)`);
+  console.log(`✅ Generated cert-data.json (${certs.length} certs, ${totalControls} total controls)`);
 }
 
 main();
