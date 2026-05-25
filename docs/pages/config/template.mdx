@@ -58,6 +58,12 @@ contributors:
   procedural, and reference material, often within the same page, and the
   template is meant to support that.
 
+  Keep each page focused on a single topic. If your content would require more
+  than 5-6 top-level sections (## headings), it is covering too much ground in
+  one place. Split it into separate pages within a framework folder, one page
+  per major angle of the topic. Each sub-page should be self-contained enough
+  that a reader can land on it directly without needing to read the others first.
+
   Do NOT remove the imports and the components below (e.g. <TagProvider> or <ContributeFooter>).
   They are required for every page to render correctly.
 
@@ -110,9 +116,9 @@ contributors:
 
 {/*
   IMPORT PATH: the '../../../components' path below works for pages placed at
-  docs/pages/<framework-folder>/<your-page>.mdx (one level deep inside a
+  docs/pages/{framework-folder}/{your-page}.mdx (one level deep inside a
   framework folder). If your page sits one level deeper, for example
-  docs/pages/<framework-folder>/<subfolder>/<your-page>.mdx, add one more '../'
+  docs/pages/{framework-folder}/{subfolder}/{your-page}.mdx, add one more '../'
   so the import becomes '../../../../components'.
 */}
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
