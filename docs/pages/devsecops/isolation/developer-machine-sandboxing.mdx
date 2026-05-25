@@ -153,7 +153,7 @@ For a more controllable baseline, run OpenCode inside the hardened dev container
 
 ## VS Code dev containers
 
-Dev containers run VS Code and every extension installed into it (including AI coding agents) inside a Docker container. The container only sees what you explicitly mount. SSH keys, AWS credentials, and anything else under `~` stays on the host.
+Dev containers run VS Code and every extension installed into it (including AI coding agents) inside a Docker container. The container's filesystem only sees what you explicitly mount, but the isolation is leakier than it looks: the Remote extension that makes dev containers work forwards your SSH and GPG agent sockets and copies your Git configuration into the container by default, effectively handing the container your host credentials without ever mounting the files. See the trust-model section below before treating a dev container as a security boundary.
 
 **Baseline `.devcontainer/devcontainer.json`**:
 
@@ -176,6 +176,33 @@ Dev containers run VS Code and every extension installed into it (including AI c
 - Single `workspaceMount`: the host filesystem outside the project directory is not visible
 - Container memory can also be restricted to prevent software running inside a container from crashing the computer.
 
+### The Remote extension trust model
+
+Dev containers are powered by VS Code's Remote extension, which deploys a `vscode-server` agent inside the container and links it to the host IDE over an RPC channel. That bridge undermines the container boundary by design:
+
+- **Forwarded SSH agent.** If you have an `ssh-agent` running, the Dev Containers extension forwards it into the container automatically and sets `SSH_AUTH_SOCK`. Any process inside can then ask your host agent to authenticate (`ssh-add -L` to list keys, then pivot to other hosts) without ever reading the key files. A passphrase only protects the initial unlock; once the agent has cached the key, it signs silently. (GPG commit signing is *not* forwarded automatically; it requires extra setup inside the container.)
+- **Copied Git configuration.** Your host `~/.gitconfig`, including `user.signingkey` and `credential.helper`, is copied in by default. This enables commit signing and push auth seamlessly, but also allows impersonation and credential reuse.
+- **Host terminal access from extensions.** A workspace extension running inside the container can call `workbench.action.terminal.newLocal` and `sendSequence` to open a terminal on the *host* and run arbitrary commands. This is a container-to-host RCE path that needs no exploit; it is part of the API.
+- **Extension-host manipulation.** `.vscode/settings.json` and `.devcontainer/devcontainer.json` live in the bind-mounted workspace, so a workspace extension can edit them to inject `remote.extensionKind` overrides, then call `workbench.action.reloadWindow`. The host applies the poisoned config on reload, shifting an extension to run host-side.
+
+Secure credentials by clearing the forwarded sockets and disabling the Git-config copy in `devcontainer.json`:
+
+```json
+{
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "",
+    "GIT_ASKPASS": ""
+  },
+  "settings": {
+    "dev.containers.copyGitConfig": false
+  }
+}
+```
+
+These disable the SSH agent forwarding and Git-config copy. They do **not** address the host-terminal RCE path; that is only contained by trusting every extension installed in the workspace, so review extensions the same way you would review a dependency.
+
+With forwarding off, run `git push` and commit signing from a host terminal (the workspace is bind-mounted, so the files are identical), or scope the container to a single-repo token rather than your full agent.
+
 ### Limitations
 
 Dev containers aren't designed as security sandboxes; convenience shortcuts dominate the defaults. Three things to fix:
@@ -194,6 +221,9 @@ Trail of Bits has published a hardened devcontainer at [trailofbits/claude-code-
 - [Run OpenCode in a Docker container](https://docs.docker.com/ai/sandboxes/agents/opencode/)
 - [Trail of Bits claude-code-devcontainer](https://github.com/trailofbits/claude-code-devcontainer)
 - [VS Code: Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
+- [The Red Guild, *Leveraging VSCode Internals to Escape Containers*](https://blog.theredguild.org/leveraging-vscode-internals-to-escape-containers/)
+- [Calif, *"Vibe Hacking": Abusing Developer Trust in Cursor and VS Code Remote Development*](https://blog.calif.io/p/vibe-hacking-abusing-developer-trust)
+- [Fly.io, *VSCode's SSH Agent Is Bananas*](https://fly.io/blog/vscode-ssh-wtf/)
 - [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
 - [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
 
