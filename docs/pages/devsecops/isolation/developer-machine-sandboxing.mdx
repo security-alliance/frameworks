@@ -113,6 +113,44 @@ writable_roots = ["./"]
 domains = {}
 ```
 
+## OpenCode: permission gating plus a Docker sandbox
+
+Unlike Claude Code and Codex, OpenCode has no native OS-level sandbox. Its built-in controls are a *permission* system, allow / ask / deny per tool, which gates what the agent does but does not isolate it. Treat permissions as a guardrail and run OpenCode inside a docker container to create a boundary.
+
+**Step 1: gate tools with `permission` in `opencode.json`**:
+
+The config lives in your project root (the key is `permission`, singular) and is safe to commit. Each tool, including `bash`, `edit`, `read`, `webfetch`, and `external_directory`, takes `allow`, `ask`, or `deny`, with `*`/`?` wildcard patterns where the last match wins.
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "bash": { "*": "ask", "git status*": "allow", "rm *": "deny" },
+    "edit": { "*": "deny", "src/**": "allow" },
+    "external_directory": "deny",
+    "webfetch": "ask"
+  }
+}
+```
+
+This is the analog of Codex's approval policy, not of its sandbox. It prompts before risky actions, but a command you approve still runs with full host access; it cannot stop an approved command from reading `~/.ssh`.
+
+**Step 2: run OpenCode inside a container**:
+
+Because there is no native sandbox, isolation comes from wrapping OpenCode in Docker. Docker's agent sandbox CLI (`sbx`) runs it in a container that does not inherit your host user config and only sees the project directory, with provider credentials injected through a proxy rather than mounted:
+
+```bash
+sbx run opencode ~/my-project
+```
+
+For a more controllable baseline, run OpenCode inside the hardened dev container described in the next section (`--cap-drop=ALL`, `--security-opt=no-new-privileges`, a single `workspaceMount`, and no Docker socket). Either way the container is the boundary, and the `permission` rules ride along inside it as a second layer.
+
+### Limitations
+
+- The `permission` system is a UX gate. On its own it provides no filesystem or network boundary; an approved command has full host access.
+- Container isolation inherits the usual Docker footguns covered in the VS Code dev containers section below: passwordless `sudo` in default images, Docker socket mounts, and no egress filtering unless explicitly added.
+- Remote-backend plugins (for example, Daytona) offer stronger isolation by executing in a cloud sandbox, but they shift the trust boundary to a third party and turn the provider API key on your machine into a high-value target. They also sync over git and can overwrite local branches.
+
 ## VS Code dev containers
 
 Dev containers run VS Code and every extension installed into it (including AI coding agents) inside a Docker container. The container only sees what you explicitly mount. SSH keys, AWS credentials, and anything else under `~` stays on the host.
@@ -152,6 +190,8 @@ Trail of Bits has published a hardened devcontainer at [trailofbits/claude-code-
 
 - [Claude Code sandboxing](https://code.claude.com/docs/en/sandboxing)
 - [Codex CLI sandboxing](https://developers.openai.com/codex/concepts/sandboxing)
+- [OpenCode permissions](https://opencode.ai/docs/permissions/)
+- [Run OpenCode in a Docker container](https://docs.docker.com/ai/sandboxes/agents/opencode/)
 - [Trail of Bits claude-code-devcontainer](https://github.com/trailofbits/claude-code-devcontainer)
 - [VS Code: Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
 - [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
