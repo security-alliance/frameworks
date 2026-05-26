@@ -23,7 +23,7 @@
       { "name": "Issue-Opener-5", "assigned": "2024-08-22" },
       { "name": "Issue-Opener-10", "assigned": "2024-08-24" },
       { "name": "Issue-Opener-25", "assigned": "2024-09-25" },
-      { "name": "Active-Last-7d", "lastActive": "2026-05-05" }
+      { "name": "Active-Last-7d", "lastActive": "2026-05-11" }
     ]
   },
   "fredriksvantes": {
@@ -81,8 +81,7 @@
     "badges": [
       { "name": "Framework-Steward", "framework": "Community Management" },
       { "name": "First-Contribution", "assigned": "2025-01-29" },
-      { "name": "First-Review", "assigned": "2025-12-16" },
-      { "name": "Active-Last-30d", "lastActive": "2026-04-07" }
+      { "name": "First-Review", "assigned": "2025-12-16" }
     ]
   },
   "robert": {
@@ -191,8 +190,7 @@
     "badges": [
       { "name": "Framework-Steward", "assigned": "2025-07-10", "framework": "Wallet Security" },
       { "name": "First-Contribution", "assigned": "2025-07-10" },
-      { "name": "First-Review", "assigned": "2025-09-25" },
-      { "name": "Active-Last-30d", "lastActive": "2026-04-07" }
+      { "name": "First-Review", "assigned": "2025-09-25" }
     ]
   },
   "njelich": {
@@ -338,7 +336,7 @@
     "description": "Founder & Engineer",
     "badges": [
       { "name": "First-Contribution", "assigned": "2025-06-02" },
-      { "name": "Active-Last-7d", "lastActive": "2026-05-05" }
+      { "name": "Active-Last-30d", "lastActive": "2026-05-05" }
     ]
   },
   "isaac": {
@@ -449,7 +447,7 @@
       { "name": "First-Review", "assigned": "2025-08-12" },
       { "name": "Reviewer-10", "assigned": "2025-09-12" },
       { "name": "Reviewer-25", "assigned": "2026-03-20" },
-      { "name": "Active-Last-7d", "lastActive": "2026-05-06" }
+      { "name": "Active-Last-7d", "lastActive": "2026-05-15" }
     ]
   },
   "gunnim": {
@@ -479,7 +477,8 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2025-12-16" }
+      { "name": "First-Contribution", "assigned": "2025-12-16" },
+      { "name": "Dormant-90d+", "lastActive": "2026-02-09" }
     ]
   },
   "monperrus": {
@@ -607,7 +606,8 @@
     "description": "Frameworks Contributor",
     "badges": [
       { "name": "First-Contribution", "assigned": "2025-12-03" },
-      { "name": "Issue-Opener-5", "assigned": "2026-02-05" }
+      { "name": "Issue-Opener-5", "assigned": "2026-02-05" },
+      { "name": "Dormant-90d+", "lastActive": "2026-02-10" }
     ]
   },
   "davidthegardens": {
@@ -699,8 +699,7 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-04-07" },
-      { "name": "Active-Last-30d", "lastActive": "2026-04-07" }
+      { "name": "First-Contribution", "assigned": "2026-04-07" }
     ]
   },
   "shallem": {
@@ -716,8 +715,7 @@
     "description": "Steward of Opsec framework",
     "badges": [
       { "name": "Framework-Steward", "assigned": "2026-04-09", "framework": "Operational Security" },
-      { "name": "First-Contribution", "assigned": "2025-09-10" },
-      { "name": "Active-Last-30d", "lastActive": "2026-04-09" }
+      { "name": "First-Contribution", "assigned": "2025-09-10" }
     ]
   },
   "txscope-sol": {
@@ -765,6 +763,23 @@
     "description": "Frameworks Contributor",
     "badges": [
       { "name": "First-Contribution", "assigned": "2026-03-10" }
+    ]
+  },
+  "tansawit": {
+    "slug": "tansawit",
+    "name": "tansawit",
+    "avatar": "https://avatars.githubusercontent.com/tansawit",
+    "github": "https://github.com/tansawit",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-05-07" },
+      { "name": "New-Joiner", "lastActive": "2026-05-07" },
+      { "name": "Active-Last-30d", "lastActive": "2026-05-07" }
     ]
   }
 }

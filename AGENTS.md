@@ -1,5 +1,7 @@
 # AGENTS.md
 
+> **Note for agents.** This file describes how to **contribute to** this repository. For agents **retrieving** SEAL Frameworks content to answer user questions (not editing the repo), see [SKILL.md](./SKILL.md) instead.
+
 ## Workflow
 - Before contributing, see `CODE_OF_CONDUCT.md`. For SEAL Certifications, also see `docs/pages/certs/contributions.mdx`. To take ownership of a framework, see `docs/pages/contribute/stewards`.
 - PRs target `develop` branch.
@@ -39,7 +41,7 @@ contributors:
 - Sections: Practical guidance (steps/checklist), Why important (incidents), Pitfalls/examples, Cheat sheet, Further reading
 - Tech details: Balanced (detailed for AWS/Cloudflare/etc., generic timeless principles)
 - Links: Descriptive; Resources section; relative internal paths
-- Frontmatter precision: title: "Page | Security Alliance" (&lt;60 chars or "| SEAL"), description: 140-160 chars (action verbs/keywords like tool names/attacks/standards), contributors: add github username under the appropriate role (wrote|reviewed|fact-checked). First-time contributors must also register a profile in `docs/pages/config/contributors.json` (see "Contributors database" below).
+- Frontmatter precision: title: "Page | Security Alliance" (<60 chars or "| SEAL"), description: 140-160 chars (action verbs/keywords like tool names/attacks/standards), contributors: add github username under the appropriate role (wrote|reviewed|fact-checked). First-time contributors must also register a profile in `docs/pages/config/contributors.json` (see "Contributors database" below).
 - Contributors database: first-time contributors must register a profile in `docs/pages/config/contributors.json` keyed by GitHub username. Structure: 
 ```
 "<github-username>": {
@@ -59,10 +61,10 @@ contributors:
 Leave `badges: []` and `role: "contributor"` when self-registering as badges and specific roles are assigned by maintainers.
 - Style: American English; objective/explanatory tone (no simplifications); introduce acronyms; future-proof; no full-AI content (grammar ok); mermaid; images via PR comments → S3 (/img-bot)
 - New pages: MUST update vocs.config.tsx sidebar items (dev: true for WIP)
-- WIP pages: Add stub notice &gt; ⚠️ Stub/in progress, help contribute/expand
+- WIP pages: Add stub notice > ⚠️ Stub/in progress, help contribute/expand
 
 ## Commits/PRs
 - Sign: `git commit -S`; amend unsigned via rebase/edit/amend-S/continue; force-push
 - Pre-PR: Build + preview locally; update contributors.json if new
 - CI enforces: Spellcheck comments PRs, mdlint, preview deploys, vocs-config reminders
-- Unsigned commits fix: git rebase -i HEAD~N; pick→edit; git commit --amend -S --no-edit &amp;&amp; git rebase --continue (repeat); git push --force; verify git log --show-signature
+- Unsigned commits fix: git rebase -i HEAD~N; pick→edit; git commit --amend -S --no-edit && git rebase --continue (repeat); git push --force; verify git log --show-signature
