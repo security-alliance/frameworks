@@ -7,10 +7,12 @@ updates:
       day: "monday"
       time: "09:00"
       timezone: "UTC"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     target-branch: "develop"
     groups:
-      npm_and_yarn:
+      pnpm-deps:
         patterns:
           - "*"
         update-types:
@@ -22,16 +24,24 @@ updates:
       - "dependencies"
 
   - package-ecosystem: "github-actions"
-    directory: "/.github/workflows"
+    directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "09:00"
       timezone: "UTC"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 3
     target-branch: "develop"
+    groups:
+      actions:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
     commit-message:
       prefix: "chore(gha)"
     labels:
       - "dependencies"
-      - "github-actions"
