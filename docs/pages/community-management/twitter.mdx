@@ -16,7 +16,67 @@ import { TagList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 
-For a comprehensive guide on securing your X (Twitter) account, see the [**Twitter/X Security Guide**](/guides/account-management/twitter).
+X account security spans authentication hardening, session management, third-party app access, and recovery settings — each covered in depth in the [X (Twitter) Security Guide](https://frameworks.securityalliance.dev/guides/account-management/twitter). Use this page to find the right section.
+
+---
+
+## The community manager's role in security
+
+A community manager running a project's X account is one of the highest-value targets in Web3. Your account is public-facing, often verified, and carries the implicit trust of every follower you've built. When you post a link, people click it. When you make an announcement, people act on it. That reach is exactly what attackers are after.
+
+Unlike Discord — where compromise requires navigating server permissions and roles; a taken-over X account can do damage in a single post. Scam links, fake token launches, fraudulent airdrop announcements: all of these reach your entire audience instantly, from an account they already trust. The window between compromise and widespread harm is measured in minutes.
+
+X account takeovers in the Web3 space follow a small number of well-documented patterns: SIM swapping to bypass SMS-based 2FA, phishing via fake login screens, and exploitation of forgotten third-party app tokens that retain OAuth access long after the app was last used. None of these require sophisticated attacks. All of them are preventable with the controls in this guide.
+
+### Why following this guide is not optional
+
+The most common failure mode is not ignorance, it is configuration drift. An account that was secured at setup gradually accumulates risk: a phone number added for convenience, a scheduling tool connected years ago with broad permissions, a session left open on an old device. Each of these is a door. Attackers look for unlocked ones.
+
+As a community manager you are also the last line of defence before your followers are exposed. Your organisation can have excellent internal security practices and still have its community harmed through a single unsecured social account. The guide exists to close those gaps in a way that is repeatable and auditable.
+
+### What's at stake if you don't
+
+| Risk | Consequence |
+|---|---|
+| **Account takeover via SIM swap** | Attacker ports your phone number, resets your X password, and locks you out; often within the same hour |
+| **Phishing via fake login screen** | Credentials harvested through convincing X login replicas; account access transferred before you notice |
+| **Third-party app token abuse** | Old OAuth tokens from connected apps exploited after those apps are breached, granting persistent account access without your password |
+| **Retained access post-recovery** | Connected accounts left in place allow an attacker to regain access even after you change your password |
+| **Scam broadcast to followers** | Fake links, fraudulent token launches, or malicious airdrops posted from your account to an audience that trusts it |
+| **Reputational damage** | Compromise events on public accounts are screenshotted and shared within minutes; community trust takes months to rebuild |
+
+The guide addresses each of these with specific, step-by-step controls. None require technical expertise. All of them significantly reduce the probability and impact of a takeover.
+
+---
+
+## What the guide covers
+
+The guide applies to every team member with access to the account, not only the primary account holder.
+
+| Audience | What it covers |
+|---|---|
+| **All account holders** | 2FA method selection, phone number removal, email security, backup codes |
+| **Account admins** | Password reset protection, connected account audit, third-party app permissions, active session review |
+
+---
+
+## Topic index
+
+| Topic | Summary | Guide section |
+|---|---|---|
+| **2FA method** | Use an authenticator app or hardware security key; SMS-based 2FA is vulnerable to SIM swapping and should be removed | [→ 2FA](https://frameworks.securityalliance.dev/guides/account-management/twitter#account-security-checklist) |
+| **Phone number removal** | Remove your phone number from the account entirely — it is the primary vector for SIM swap takeovers | [→ Phone number](https://frameworks.securityalliance.dev/guides/account-management/twitter#account-security-checklist) |
+| **Email security** | Use a non-obvious email address not linked to your public identity; enable password reset protection | [→ Email](https://frameworks.securityalliance.dev/guides/account-management/twitter#1-email-security) |
+| **Password reset protection** | Require email or phone confirmation before a reset can be initiated, blocking hint-based attacks | [→ Reset protection](https://frameworks.securityalliance.dev/guides/account-management/twitter#account-security-checklist) |
+| **Connected accounts** | Review and remove any third-party accounts used to log in; prior compromise can persist through these | [→ Connected accounts](https://frameworks.securityalliance.dev/guides/account-management/twitter#account-security-checklist) |
+| **Third-party app permissions** | Audit and revoke OAuth access for apps no longer in use; old tokens remain valid until explicitly revoked | [→ App permissions](https://frameworks.securityalliance.dev/guides/account-management/twitter#best-practices--additional-tips) |
+| **Active session review** | Log out of unrecognised devices and sessions; any unfamiliar session is a potential persistent access point | [→ Sessions](https://frameworks.securityalliance.dev/guides/account-management/twitter#best-practices--additional-tips) |
+
+---
+
+> Spotted an error or have ideas to enhance this content? Your contributions are valuable to us.
+
+For a comprehensive guide on securing your X (Twitter) account, see the [**Twitter/X Security Guide**](https://frameworks.securityalliance.dev/guides/account-management/twitter).
 
 ---
 
