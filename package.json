@@ -8,7 +8,7 @@
     "@types/react-dom": "^19.2.3",
     "cspell": "9.8.0",
     "tailwindcss": "4.3.0",
-    "vocs": "1.4.1"
+    "vocs": "2.0.10"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
