@@ -1,8 +1,23 @@
 /* Governance SDLC Pipeline — vertical, 4 stacked full-width stage cards */
 
 .sdlc-wrap {
+  --color-primary: #4339db;
+  --color-text-strong: #ffffff;
+  --color-text-muted: #9ca3af;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --border-card: rgba(255, 255, 255, 0.1);
+  --sdlc-loop-label-bg: #1b1b1b;
+
   max-width: 860px;
   margin: 0 auto;
+}
+
+:root:not([data-vocs-theme='dark']) .sdlc-wrap {
+  --color-text-strong: #202020;
+  --color-text-muted: #6b7280;
+  --bg-card: rgba(0, 0, 0, 0.02);
+  --border-card: rgba(0, 0, 0, 0.08);
+  --sdlc-loop-label-bg: #ffffff;
 }
 
 .sdlc-caption {
@@ -87,7 +102,7 @@
   letter-spacing: 0.04em;
   white-space: nowrap;
   color: var(--color-text-muted);
-  background: var(--vocs-color_background, #fff);
+  background: var(--sdlc-loop-label-bg);
   padding: 2px 6px;
   opacity: 0.9;
 }

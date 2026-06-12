@@ -65,48 +65,34 @@
 }
 
 /* Dark theme styling for contribute footer */
-html.ayu .contribute-footer,
-html.coal .contribute-footer,
-html.navy .contribute-footer {
+:root[data-vocs-theme='dark'] .contribute-footer {
   background-color: transparent;
   border: none;
 }
 
-html.ayu .contribute-footer-title,
-html.coal .contribute-footer-title,
-html.navy .contribute-footer-title {
+:root[data-vocs-theme='dark'] .contribute-footer-title {
   color: #6b63e8; /* Brighter SEAL Blue for dark themes */
 }
 
-html.ayu .contribute-footer-subtitle,
-html.coal .contribute-footer-subtitle,
-html.navy .contribute-footer-subtitle {
+:root[data-vocs-theme='dark'] .contribute-footer-subtitle {
   color: #a8adb2; /* Lighter gray for dark themes */
 }
 
-html.ayu .contribute-footer-link,
-html.coal .contribute-footer-link,
-html.navy .contribute-footer-link {
+:root[data-vocs-theme='dark'] .contribute-footer-link {
   color: #6b63e8; /* Brighter SEAL Blue for dark themes */
 }
 
-html.ayu .contribute-footer-link:hover,
-html.coal .contribute-footer-link:hover,
-html.navy .contribute-footer-link:hover {
+:root[data-vocs-theme='dark'] .contribute-footer-link:hover {
   color: #8c85f0; /* Even brighter SEAL Blue for dark themes */
 }
 
-html.ayu .contribute-footer-button,
-html.coal .contribute-footer-button,
-html.navy .contribute-footer-button {
+:root[data-vocs-theme='dark'] .contribute-footer-button {
   color: #FFFFFF;
   border-color: #6b63e8; /* Brighter SEAL Blue for dark themes */
   background-color: #6b63e8;
 }
 
-html.ayu .contribute-footer-button:hover,
-html.coal .contribute-footer-button:hover,
-html.navy .contribute-footer-button:hover {
+:root[data-vocs-theme='dark'] .contribute-footer-button:hover {
   background-color: #8c85f0; /* Even brighter SEAL Blue for dark themes */
   border-color: #8c85f0;
   color: #1a1a1a; /* Darker background for contrast */

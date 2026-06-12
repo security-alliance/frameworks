@@ -24,7 +24,7 @@
 .stat-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  border-color: var(--vocs-color_codeInlineBg);
+  border-color: rgba(128, 128, 128, 0.25);
 }
 
 .stat-item.highlight {
@@ -39,7 +39,7 @@
   line-height: 1;
   margin-bottom: 0.5rem;
   color: var(--fg);
-  background: linear-gradient(135deg, var(--fg) 0%, var(--vocs-color_codeInlineBg) 100%);
+  background: linear-gradient(135deg, var(--fg) 0%, rgba(128, 128, 128, 0.25) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -116,7 +116,7 @@
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--vocs-color_codeInlineBg), transparent);
+  background: linear-gradient(90deg, rgba(128, 128, 128, 0.25), transparent);
 }
 
 /* Grid Layout */
@@ -278,13 +278,13 @@
 }
 
 /* Light mode for simple role tooltip */
-:root:not(.dark) .role-badge-simple-tooltip {
+:root:not([data-vocs-theme='dark']) .role-badge-simple-tooltip {
   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   color: #111827;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
-:root:not(.dark) .role-badge-simple-tooltip::before {
+:root:not([data-vocs-theme='dark']) .role-badge-simple-tooltip::before {
   border-right-color: #ffffff;
 }
 
@@ -394,7 +394,7 @@
 }
 
 .contributors-page-card:hover .contributors-page-steward {
-  border-color: var(--vocs-color_codeInlineBg);
+  border-color: rgba(128, 128, 128, 0.25);
   transform: translateY(-2px);
 }
 
@@ -453,12 +453,12 @@
   height: 2px;
   background: linear-gradient(90deg,
       transparent,
-      var(--vocs-color_codeInlineBg),
+      rgba(128, 128, 128, 0.25),
       transparent);
 }
 
 .contributors-page-card:hover .contributors-page-badges {
-  border-top-color: var(--vocs-color_codeInlineBg);
+  border-top-color: rgba(128, 128, 128, 0.25);
 }
 
 /* Ensure badges are properly centered in compact mode */
@@ -636,22 +636,22 @@
   padding-top: 0.5rem;
 }
 
-:root:not(.dark) .contributor-hover-card {
+:root:not([data-vocs-theme='dark']) .contributor-hover-card {
   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   border-color: rgba(15, 23, 42, 0.08);
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.06);
 }
 
-:root:not(.dark) .hover-card-name    { color: #111827; }
-:root:not(.dark) .hover-card-job-title { color: #6b7280; }
-:root:not(.dark) .hover-card-company {
+:root:not([data-vocs-theme='dark']) .hover-card-name    { color: #111827; }
+:root:not([data-vocs-theme='dark']) .hover-card-job-title { color: #6b7280; }
+:root:not([data-vocs-theme='dark']) .hover-card-company {
   color: #374151;
   background: rgba(15, 23, 42, 0.05);
   border-color: rgba(15, 23, 42, 0.1);
 }
-:root:not(.dark) .hover-card-steward  { color: #2563eb; }
-:root:not(.dark) .hover-card-description { color: #4b5563; border-top-color: rgba(15, 23, 42, 0.08); }
-:root:not(.dark) .hover-card-avatar   { border-color: rgba(15, 23, 42, 0.15); }
+:root:not([data-vocs-theme='dark']) .hover-card-steward  { color: #2563eb; }
+:root:not([data-vocs-theme='dark']) .hover-card-description { color: #4b5563; border-top-color: rgba(15, 23, 42, 0.08); }
+:root:not([data-vocs-theme='dark']) .hover-card-avatar   { border-color: rgba(15, 23, 42, 0.15); }
 
 /* Corner Accent for elite contributors */
 .corner-accent {
@@ -669,7 +669,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  color: var(--vocs-color_codeInlineBg);
+  color: rgba(128, 128, 128, 0.25);
 }
 
 /* Loading Animation */

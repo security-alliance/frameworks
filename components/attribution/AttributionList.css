@@ -7,7 +7,8 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-:root:not(.dark) .attribution-container {
+:root:not([data-vocs-theme='dark']) .attribution-container {
+  background: rgba(0, 0, 0, 0.02);
   border: 1px solid rgba(19, 15, 15, 0.498);
 }
 
@@ -32,7 +33,7 @@
   padding-top: 4px;
 }
 
-:root:not(.dark) .role-title {
+:root:not([data-vocs-theme='dark']) .role-title {
   color: #202020;
 }
 
@@ -58,19 +59,19 @@
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-:root:not(.dark) .contributor-avatar {
+:root:not([data-vocs-theme='dark']) .contributor-avatar {
   border: 2px solid rgb(0 0 0 / 46%);
 }
 
-:root:not(.dark) .contributor-company {
+:root:not([data-vocs-theme='dark']) .contributor-company {
   color: #202020;
 }
 
-:root:not(.dark) .contributor-link {
+:root:not([data-vocs-theme='dark']) .contributor-link {
   color: #202020;
 }
 
-:root:not(.dark) .contributor-name {
+:root:not([data-vocs-theme='dark']) .contributor-name {
   color: #202020;
 }
 
@@ -110,36 +111,8 @@
   color: #60a5fa;
 }
 
-/* Light mode adjustments */
-@media (prefers-color-scheme: light) {
-  .attribution-container {
-    background: rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-  }
-
-  .role-title {
-    color: #6b7280;
-  }
-
-  .contributor-name {
-    color: #1f2937;
-  }
-
-  .contributor-company {
-    color: #6b7280;
-  }
-
-  .contributor-avatar {
-    border: 2px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .contributor-link {
-    color: #6b7280;
-  }
-
-  .contributor-link:hover {
-    color: #2563eb;
-  }
+:root:not([data-vocs-theme='dark']) .contributor-link:hover {
+  color: #2563eb;
 }
 
 /* Responsive design */

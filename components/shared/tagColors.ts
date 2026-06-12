@@ -26,7 +26,7 @@ export const TAG_COLORS: Record<string, string> = {
   'Business Tools': '#3ebbc9',
   'Communication Platforms': '#bf9504',
   'DevOps Accounts': '#f43e7c',
-  'Smart Contracts': '#def621',
+  'Smart Contracts': '#229427',
 }
 
 /**
