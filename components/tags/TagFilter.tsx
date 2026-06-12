@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTagFilter } from './TagContext'
 import { getTagColor } from '../shared/tagColors'

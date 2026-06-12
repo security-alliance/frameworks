@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+"use client";
+
+import { useEffect, useRef, useState } from 'react';
 import './BadgeDisplay.css';
 import contributorsData from '../../docs/pages/config/contributors.json';
 import { getBadgeConfig, BadgeIcon } from '../shared/badgeConfig';
