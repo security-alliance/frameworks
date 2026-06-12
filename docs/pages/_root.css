@@ -1,124 +1,60 @@
-@import "tailwindcss";
-@source "../components";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../../components";
 
-details .vocs_Paragraph {
-    margin-bottom: var(--vocs-space_24);
+[data-v-content] details p {
+  margin-bottom: 24px;
 }
 
-.vocs_NavLogo_logoImage {
-    height: 80% !important;
+[data-v-logo-image] {
+  height: 130% !important;
+  max-height: none !important;
 }
 
-.vocs_DocsLayout_gutterLeft {
-    justify-content: flex-start;
-    width: unset;
+[data-v-gutter-left] {
+  justify-content: flex-start;
+  width: unset;
 }
 
-@media (max-width: 1650px) {
-    .vocs_DocsLayout_gutterRight {
-        justify-content: flex-end;
-        width: calc(100vw - var(--vocs-content_width) - var(--vocs_DocsLayout_leftGutterWidth));
-    }
+[data-v-gutter-top] [data-v-logo-link] {
+  display: none;
 }
 
-.vocs_DesktopTopNav_logoWrapper {
-    display: none;
+html:not([data-vocs-theme='dark']) [data-v-main] {
+  color: #060606;
 }
 
-.vocs_Outline_nav {
-    padding-bottom: var(--vocs-space_24);
+html:not([data-vocs-theme='dark']) [data-v-content] blockquote {
+  border-left: 2px solid #000000;
+  color: #060606;
 }
 
-:root:not(.dark) .vocs_DocsLayout {
-    color: #060606;
+html:not([data-vocs-theme='dark']) [data-v-content] blockquote>p {
+  color: #0706069e;
+  font-weight: bolder;
 }
 
-:root:not(.dark) .vocs_Sidebar_item[data-active="true"] {
-    font-weight: 500;
+html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup='dialog'] {
+  border-color: #908f8f;
 }
 
-:root:not(.dark) .vocs_Sidebar_item {
-    font-weight: 400;
+html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup='dialog']:hover {
+  border-color: #303030;
+  color: #1e1e1e;
 }
 
-:root:not(.dark) .vocs_Blockquote {
-    border-left: 2px solid #000000;
-}
-
-:root:not(.dark) .vocs_Sidebar_sectionHeader .vocs_Sidebar_item {
-    color: #000000;
-    font-weight: 450;
-}
-
-:root:not(.dark) .vocs_Blockquote>.vocs_Paragraph {
-    color: #0706069e;
-    font-weight: bolder;
-}
-
-:root:not(.dark) .vocs_Blockquote {
-    color: #060606;
-}
-
-:root:not(.dark) .vocs_DesktopSearch_search {
-    border: 1px solid #908f8f;
-}
-
-:root:not(.dark) .vocs_DesktopSearch_search:hover {
-    border-color: #303030;
-    color: #1e1e1e;
-}
-
-
-:root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft {
-    border: 1px solid #908f8f;
-}
-
-:root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft:hover {
-    border-color: #303030;
-    color: #1e1e1e;
-}
-
-:root:not(.dark) .vocs_AiCtaDropdown_buttonRight.vocs_AiCtaDropdown_buttonRight {
-    border: 1px solid #908f8f;
-}
-
-:root:not(.dark) .vocs_AiCtaDropdown_buttonRight.vocs_AiCtaDropdown_buttonRight:hover {
-    border-color: #303030;
-    color: #1e1e1e;
-}
-
-:root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft {
-    border: 1px solid #908f8f;
-}
-
-:root:not(.dark) .vocs_AiCtaDropdown_buttonLeft.vocs_AiCtaDropdown_buttonLeft:hover {
-    border-color: #303030;
-    color: #1e1e1e;
-}
-
-:root:not(.dark) .vocs_AiCtaDropdown_dropdownMenuContent {
-    border: 1px solid #908f8f;
-}
-
-:root:not(.dark) .vocs_AiCtaDropdown_dropdownMenuContent:hover {
-    border-color: #303030;
-    color: #1e1e1e;
-}
-
-.vocs_Sidebar_footerContent {
-    margin-bottom: calc(10px + var(--vocs_Banner_bannerHeight, 0px));
-}
-
-.vocs_Outline_item {
-    margin-bottom: 0.3rem;
+.vocs\:justify-end {
+  justify-content: center;
 }
 
 /* Print stylesheet - hide chrome, optimize for paper */
 @media print {
+
   /* Force light color scheme */
   :root {
     color-scheme: light only !important;
   }
+
   /* Hide navigation and decorative elements */
   .vocs_Banner,
   .vocs_DesktopTopNav,
@@ -174,11 +110,18 @@ details .vocs_Paragraph {
   }
 
   /* Don't break inside these elements */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     page-break-after: avoid;
   }
 
-  pre, blockquote, table {
+  pre,
+  blockquote,
+  table {
     page-break-inside: avoid;
   }
 
@@ -198,7 +141,7 @@ details .vocs_Paragraph {
     grid-template-rows: 1fr !important;
   }
 
-  .cert-section-content > * {
+  .cert-section-content>* {
     overflow: visible !important;
   }
 
@@ -250,10 +193,14 @@ details .vocs_Paragraph {
 
 .footer {
   align-items: center;
-  color: var(--vocs-color_text3);
+  color: #9ca3af; /* muted gray, dark default (see migration category 11) */
   display: flex;
   flex-direction: column;
   font-size: 14px;
   line-height: 1.5em;
   width: 100%;
+}
+
+:root:not([data-vocs-theme='dark']) .footer {
+  color: #6b7280;
 }
