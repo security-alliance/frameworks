@@ -265,7 +265,7 @@ jobs:
           # Run script and capture output
           TEMP_OUTPUT=$(mktemp)
           set +e
-          node .github/scripts/process-images.js > "$TEMP_OUTPUT" 2>&1
+          node .github/scripts/process-images.cjs > "$TEMP_OUTPUT" 2>&1
           EXIT_CODE=$?
           set -e
 
