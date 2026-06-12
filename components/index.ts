@@ -17,7 +17,6 @@ export { BenchmarkList } from './benchmark/Benchmark'
 export { CertList } from './cert/CertList'
 export { ExportAllCerts } from './cert/ExportAllCerts'
 export type { Control, Section, CertListProps, ControlState, ControlData } from './cert/types'
-export { default as MermaidRenderer } from './mermaid/MermaidRenderer';
 export * from './shared/tagColors'
 export { CertifiedProtocols } from './cert/certified-protocols/CertifiedProtocols'
 export { CertifiedProtocolsWrapper } from './cert/certified-protocols/CertifiedProtocolsWrapper'

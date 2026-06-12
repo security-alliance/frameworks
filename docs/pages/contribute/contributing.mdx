@@ -15,10 +15,8 @@ This file is automatically synced to the root level CONTRIBUTING.md during the b
 build command.
 */}
 
-import { ContributeFooter, TagFilter, TagProvider, MermaidRenderer } from '../../../components'
+import { ContributeFooter } from '../../../components'
 
-<TagProvider>
-<TagFilter />
 
 # **Contributing guidelines**
 
@@ -380,12 +378,12 @@ fits, for example in block-quotes.
   [playground](https://www.mermaidchart.com/play#pako:eNqrVkrOT0lVslIqyExVKMksyUlVCM9ILFEIy89JSc3NLypRSMlPLc5TL1HISCxLtY_JU4CBGCW3IE9XP5fgGCUFKwUjVBlHX0-fSLCEMYqEn3-wK1jYxDQmT6kWAEyMIfc)
   where you can jump straight to draw!
 
-  <MermaidRenderer
-  id="manual-diagram"
-  code={`pie title What Voldemort doesn't have?
-    "FRIENDS" : 2
-    "FAMILY" : 3
-    "NOSE" : 45`} />
+   ```mermaid
+      pie title What Voldemort doesn't have?
+         "FRIENDS" : 2
+         "FAMILY" : 3
+         "NOSE" : 45
+   ```
 
 - Adding images is welcome and encouraged.
   Please follow the steps below to include them correctly:
@@ -427,5 +425,4 @@ Originally inspired by the [Ethereum Protocol Fellows](https://github.com/eth-pr
 
 ---
 
-</TagProvider>
 <ContributeFooter />
