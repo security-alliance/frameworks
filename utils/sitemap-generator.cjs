@@ -17,6 +17,7 @@ function escapeXml(str) {
 
 function findDistDir() {
   const candidates = [
+    path.join(workspaceRoot, 'dist', 'public'),
     path.join(workspaceRoot, 'docs', 'dist'),
     path.join(workspaceRoot, 'dist'),
   ];

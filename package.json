@@ -16,7 +16,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && vocs dev --host 0.0.0.0 --port 5173",
     "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run generate-printables && pnpm run generate-cert-data && vocs build",
-    "postdocs:build": "node utils/searchbar-indexing.cjs && node utils/sitemap-generator.cjs && node utils/generate-llms.cjs",
+    "postdocs:build": "node utils/sitemap-generator.cjs && node utils/generate-llms.cjs",
     "docs:preview": "vocs preview",
     "generate-tags": "node utils/tags-fetcher.cjs",
     "generate-indexes": "node utils/generate-folder-indexes.cjs",
@@ -28,7 +28,9 @@
   "license": "CC-BY-SA-4.0",
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild",
+      "esbuild"
+    ],
+    "ignoredBuiltDependencies": [
       "just-install"
     ],
     "overrides": {

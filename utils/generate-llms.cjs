@@ -21,6 +21,7 @@ const isMainBranch = process.env.CF_PAGES_BRANCH === 'main';
 
 function findDistDir() {
   const candidates = [
+    path.join(workspaceRoot, 'dist', 'public'),
     path.join(workspaceRoot, 'docs', 'dist'),
     path.join(workspaceRoot, 'dist'),
   ];
