@@ -47,6 +47,14 @@ html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup
   justify-content: center;
 }
 
+[data-v-gutter-logo] {
+  justify-content: flex-start !important;
+}
+
+[data-v-banner-content] {
+  font-style: italic;
+}
+
 /* Print stylesheet - hide chrome, optimize for paper */
 @media print {
 
@@ -193,7 +201,7 @@ html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup
 
 .footer {
   align-items: center;
-  color: #9ca3af; /* muted gray, dark default (see migration category 11) */
+  color: #9ca3af;
   display: flex;
   flex-direction: column;
   font-size: 14px;
