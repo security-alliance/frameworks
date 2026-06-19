@@ -60,6 +60,101 @@
   align-items: stretch;
 }
 
+/* Overflow chip */
+.badge-overflow-chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 2px dashed var(--theme-popup-border);
+  background: var(--quote-bg, rgba(0, 0, 0, 0.05));
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--fg);
+  opacity: 0.7;
+  cursor: default;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+  z-index: 1;
+}
+
+.badge-overflow-chip:hover {
+  opacity: 1;
+  border-color: var(--vocs-color_codeInlineBg);
+  z-index: 99999;
+}
+
+.badge-overflow-chip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: -8px;
+  right: -8px;
+  height: 14px;
+}
+
+.badge-overflow-tooltip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  padding: 0.625rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 999999;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.badge-overflow-tooltip { width: max-content; }
+
+.badge-overflow-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: #111827;
+}
+
+.badge-overflow-chip:hover .badge-overflow-tooltip,
+.badge-overflow-tooltip:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.badge-overflow-tooltip-grid {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
+}
+
+.badge-overflow-tooltip-grid[data-cols="1"] { grid-template-columns: repeat(1, 48px); }
+.badge-overflow-tooltip-grid[data-cols="2"] { grid-template-columns: repeat(2, 48px); }
+.badge-overflow-tooltip-grid[data-cols="3"] { grid-template-columns: repeat(3, 48px); }
+.badge-overflow-tooltip-grid[data-cols="4"] { grid-template-columns: repeat(4, 48px); }
+
+.badge-overflow-tooltip .badge-wrapper {
+  z-index: 1;
+}
+
+.badge-overflow-tooltip .badge-wrapper:hover {
+  z-index: 99999;
+}
+
+:root:not(.dark) .badge-overflow-tooltip {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+:root:not(.dark) .badge-overflow-tooltip::before {
+  border-top-color: #ffffff;
+}
+
 /* Badge Wrapper */
 .badge-wrapper {
   position: relative;

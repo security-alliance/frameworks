@@ -71,12 +71,74 @@ function getBadgeDateLabel(badge: Badge): 'Earned' | 'Last active' {
   return badge.lastActive ? 'Last active' : 'Earned';
 }
 
+const COMPACT_MAX_VISIBLE = 5;
+
 interface BadgeDisplayProps {
   contributorSlug?: string;
   badges?: Badge[];
   compact?: boolean;
   showCount?: boolean;
   layout?: 'grid' | 'stack';
+}
+
+function BadgeCard({ badge, index, compact }: { badge: Badge; index: number; compact: boolean }) {
+  const config = getBadgeConfig(badge.name);
+  const effectiveDate = getBadgeDate(badge);
+  const dateLabel = getBadgeDateLabel(badge);
+  const isNew = isNewlyEarned(effectiveDate);
+  const badgeDate = formatDate(effectiveDate);
+  const badgeKey = `${badge.name}-${badge.framework || ''}-${index}`;
+  const badgeLabel = badge.name === 'Framework-Steward' ? 'Steward' : config.label;
+  const badgeDescription = badge.framework && badge.name === 'Framework-Steward'
+    ? `Steward of the ${badge.framework} framework`
+    : config.description;
+
+  return (
+    <div
+      key={badgeKey}
+      className={`badge-wrapper tier-${config.tier} ${isNew ? 'newly-earned' : ''} ${config.category}`}
+      style={{
+        '--delay': `${index * 0.08}s`,
+        '--badge-color': config.color,
+        '--tier-glow': `${config.color}33`
+      } as React.CSSProperties}
+      title={`${badgeLabel} - ${badgeDescription}`}
+    >
+      <div className="badge-card">
+        <BadgeIcon name={badge.name} isNew={isNew} />
+        {isNew && (
+          <div className="new-indicator">
+            <span className="pulse-dot"></span>
+          </div>
+        )}
+        {!compact && (
+          <div className="badge-tier-indicator">
+            {config.tier === 'legendary' && '👑'}
+            {config.tier === 'epic' && '💎'}
+            {config.tier === 'rare' && '⭐'}
+          </div>
+        )}
+      </div>
+
+      <div className="badge-tooltip">
+        <div className="tooltip-header">
+          <strong>{badgeLabel}</strong>
+          <span className={`tier-badge tier-${config.tier}`}>
+            {config.tier?.toUpperCase()}
+          </span>
+        </div>
+        <p className="tooltip-description">{badgeDescription}</p>
+        {badgeDate && (
+          <div className="tooltip-footer">
+            <span className="tooltip-date">
+              {isNew && <span className="new-badge-text">✨ NEW</span>}
+              {dateLabel} {badgeDate}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export function BadgeDisplay({
@@ -93,7 +155,7 @@ export function BadgeDisplay({
   if (badges) {
     displayBadges = badges.filter(b => b.name && b.name.trim() !== '');
   } else if (contributorSlug) {
-    const contributors = contributorsData as Record<string, Contributor>;
+    const contributors = contributorsData as unknown as Record<string, Contributor>;
     const contributor = contributors[contributorSlug];
     if (contributor?.badges) {
       displayBadges = contributor.badges.filter(b => b.name && b.name.trim() !== '');
@@ -102,12 +164,22 @@ export function BadgeDisplay({
 
   if (displayBadges.length === 0) return null;
 
-  // Sort badges chronologically by date (newest first)
-  const sortedBadges = [...displayBadges].sort((a, b) => {
-    const dateA = new Date(getBadgeDate(a) || '1970-01-01').getTime();
-    const dateB = new Date(getBadgeDate(b) || '1970-01-01').getTime();
-    return dateB - dateA;
-  });
+  const byDateDesc = (a: Badge, b: Badge) =>
+    new Date(getBadgeDate(b) || '1970-01-01').getTime() - new Date(getBadgeDate(a) || '1970-01-01').getTime();
+
+  let visibleBadges: Badge[];
+  let hiddenBadges: Badge[];
+
+  if (compact) {
+    const roleBadges = displayBadges.filter(b => getBadgeConfig(b.name).category === 'role').sort(byDateDesc);
+    const nonRoleBadges = displayBadges.filter(b => getBadgeConfig(b.name).category !== 'role').sort(byDateDesc);
+    const nonRoleSlots = Math.max(0, COMPACT_MAX_VISIBLE - roleBadges.length);
+    visibleBadges = [...nonRoleBadges.slice(0, nonRoleSlots), ...roleBadges];
+    hiddenBadges = nonRoleBadges.slice(nonRoleSlots);
+  } else {
+    visibleBadges = [...displayBadges].sort(byDateDesc);
+    hiddenBadges = [];
+  }
 
   return (
     <div
@@ -122,67 +194,25 @@ export function BadgeDisplay({
       )}
 
       <div className={`badges-container ${layout}`}>
-        {sortedBadges.map((badge, index) => {
-          const config = getBadgeConfig(badge.name);
-          const effectiveDate = getBadgeDate(badge);
-          const dateLabel = getBadgeDateLabel(badge);
-          const isNew = isNewlyEarned(effectiveDate);
-          const badgeDate = formatDate(effectiveDate);
-          const badgeKey = `${badge.name}-${badge.framework || ''}-${index}`;
-          const badgeLabel = badge.name === 'Framework-Steward'
-            ? 'Steward'
-            : config.label;
-          const badgeDescription = badge.framework && badge.name === 'Framework-Steward'
-            ? `Steward of the ${badge.framework} framework`
-            : config.description;
-
+        {visibleBadges.map((badge, index) => (
+          <BadgeCard key={`${badge.name}-${badge.framework || ''}-${index}`} badge={badge} index={index} compact={compact} />
+        ))}
+        {hiddenBadges.length > 0 && (() => {
+          const count = hiddenBadges.length;
+          const cols = count <= 3 ? count : count === 4 ? 2 : 4;
           return (
-            <div
-              key={badgeKey}
-              className={`badge-wrapper tier-${config.tier} ${isNew ? 'newly-earned' : ''} ${config.category}`}
-              style={{
-                '--delay': `${index * 0.08}s`,
-                '--badge-color': config.color,
-                '--tier-glow': `${config.color}33`
-              } as React.CSSProperties}
-              title={`${badgeLabel} - ${badgeDescription}`}
-            >
-              <div className="badge-card">
-                <BadgeIcon name={badge.name} isNew={isNew} />
-                {isNew && (
-                  <div className="new-indicator">
-                    <span className="pulse-dot"></span>
-                  </div>
-                )}
-                {!compact && (
-                  <div className="badge-tier-indicator">
-                    {config.tier === 'legendary' && '👑'}
-                    {config.tier === 'epic' && '💎'}
-                    {config.tier === 'rare' && '⭐'}
-                  </div>
-                )}
-              </div>
-
-              <div className="badge-tooltip">
-                <div className="tooltip-header">
-                  <strong>{badgeLabel}</strong>
-                  <span className={`tier-badge tier-${config.tier}`}>
-                    {config.tier?.toUpperCase()}
-                  </span>
+            <div className="badge-overflow-chip">
+              +{count}
+              <div className="badge-overflow-tooltip" data-cols={cols}>
+                <div className="badge-overflow-tooltip-grid" data-cols={cols}>
+                  {hiddenBadges.map((badge, index) => (
+                    <BadgeCard key={`overflow-${badge.name}-${badge.framework || ''}-${index}`} badge={badge} index={index} compact={true} />
+                  ))}
                 </div>
-                <p className="tooltip-description">{badgeDescription}</p>
-                {badgeDate && (
-                  <div className="tooltip-footer">
-                    <span className="tooltip-date">
-                      {isNew && <span className="new-badge-text">✨ NEW</span>}
-                      {dateLabel} {badgeDate}
-                    </span>
-                  </div>
-                )}
               </div>
             </div>
           );
-        })}
+        })()}
       </div>
     </div>
   );

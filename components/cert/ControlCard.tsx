@@ -84,6 +84,8 @@ export const ControlCard = memo(function ControlCard({
                 </div>
                 <div className="flex-1">
                     <div className={`font-bold mb-1 control-title ${completedStyles}`}>
+                        <span className="control-id">{control.id}</span>
+                        <span className="control-id-sep"> · </span>
                         {control.title}
                     </div>
                     <div className={`text-md control-description ${completedStyles}`}>

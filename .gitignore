@@ -46,3 +46,4 @@ docs/public/printable/
 
 # Avoid submitting certs data to repo
 cert-data.json
+.worktrees/

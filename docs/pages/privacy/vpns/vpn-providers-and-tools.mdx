@@ -1,0 +1,98 @@
+---
+title: "VPN Providers and Tools | Security Alliance"
+description: "Recommended no-logs VPN providers, plus privacy tools organized by network, DNS, device, and browser level, and verification tools to test your setup."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+outline: deep
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# VPN Providers and Tools
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Recommended VPN Services
+
+These providers are commonly recommended by privacy-focused communities. Evaluate each against your own threat model:
+
+1. **MullvadVPN** — Strong privacy policy, no-logs (audited), fast speeds, WireGuard support, account-number-only
+   registration (no email required).
+2. **ProtonVPN** — Strong focus on privacy, no-logs policy, free tier available, Secure Core architecture routes
+   traffic through privacy-friendly jurisdictions, open-source apps.
+3. **IVPN** — No-logs (audited), WireGuard and OpenVPN support, account-number-only registration, privacy-first
+   business model.
+
+> Avoid free VPNs — they often come with data caps, slower speeds, and may monetize your data or bundle malware.
+
+## Tools and Measures
+
+Select tools that match your threat model. You do not need all of these.
+
+### Network Level
+
+- **Portable travel router** — Devices like the GL.iNet Beryl or Slate run OpenWrt, let you force all traffic through a
+  VPN before it leaves your pocket, and isolate your devices from untrusted networks.
+- **Pi-hole** — A DNS sinkhole that blocks ads and trackers at the network level. Pair it with Unbound for local
+  recursive DNS resolution.
+- **Curated VPN providers** — Check [Privacy Guides](https://www.privacyguides.org/en/vpn/) recommended providers and
+  their selection criteria.
+- **PiVPN or Algo** — If you do not trust any VPN provider, run your own. Algo by Trail of Bits deploys a WireGuard
+  server on any cloud VM in minutes.
+
+### DNS Level
+
+- **DoH or DoT** — Configure encrypted DNS at the OS level so it applies to all apps, not just your browser.
+- **Cloudflare WARP (1.1.1.1)** — Free app that encrypts DNS queries and device traffic through Cloudflare's network.
+  Not a full VPN (does not anonymize or spoof location).
+- **Mullvad DNS** — Available at 100.64.0.2 (with ad/tracker blocking) or via their DoH endpoint. No account needed.
+- **AdGuard DNS** — Similar to Mullvad's offering with configurable filter lists and DoH/DoT support. Free tier
+  available.
+- **NextDNS** — Granular custom blocklists with query logging (optional). Free up to 300k queries per month.
+
+### Device Level
+
+- **Force HTTPS-Only mode** — Safari, Firefox, Chrome, and Brave all support this. Prevents accidental HTTP connections.
+- **iCloud Private Relay** — Apple's two-hop proxy for Safari traffic. Not a VPN, not Tor, but separates who you are
+  from where you are going. Only works in Safari on iCloud+ plans.
+- **Disable WPAD** — On Windows, disable "Automatically detect settings" in proxy config. WPAD lets a local network
+  push a proxy configuration to your machine without asking.
+- **Turn off auto-join for open networks** — On iOS and Android, disable the setting that auto-connects to known open
+  SSIDs.
+
+### Browser Level
+
+- **Tor Browser** — The only browser that truly defeats fingerprinting. Use it when anonymity matters.
+- **Mullvad Browser** — A fork of Tor Browser with the Tor network removed, designed to be paired with a VPN or used
+  standalone. Trades network-level anonymity for a general-purpose privacy-hardened browser.
+- **Brave** — Fingerprint randomization on by default, built-in ad blocking, and optional Tor windows.
+- **Firefox with hardening** — Enable `privacy.resistFingerprinting`, HTTPS-Only mode, and a content blocker like
+  uBlock Origin.
+
+### Verification Tools
+
+- [EFF Cover Your Tracks](https://coveryourtracks.eff.org/) — Shows your browser fingerprint uniqueness.
+- [amiunique.org](https://amiunique.org/) — Detailed fingerprint breakdown.
+- [IPLeak.net](https://ipleak.net/) — Checks IP, DNS, WebRTC, and torrent IP leaks.
+- [BadSSL](https://badssl.com/) — Tests your browser's TLS and certificate handling.
+- [DNS Leak Test](https://dnsleaktest.com/) — Checks whether your DNS queries are leaking outside the VPN tunnel.
+
+## Resources
+
+- [Are VPNs really necessary? Is HTTPS enough?](https://blog.theredguild.org/are-vpns-really-necessary-is-https-enough/):
+  The Red Guild article on HTTPS vs VPN, metadata leakage, and threat modeling.
+
+---
+
+</TagProvider>
+<ContributeFooter />

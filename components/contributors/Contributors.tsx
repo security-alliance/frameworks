@@ -82,6 +82,39 @@ function RoleBadgeOverlay({ role, badges }: { role: string; badges: Badge[] }) {
   );
 }
 
+function ContributorHoverCard({ contributor }: { contributor: Contributor }) {
+  const hasContent = contributor.company || contributor.job_title || contributor.description;
+  if (!hasContent) return null;
+  const frameworks = getStewardFrameworks(contributor.badges || []);
+  return (
+    <div className="contributor-hover-card">
+      <div className="hover-card-header">
+        <img
+          src={contributor.avatar}
+          alt={contributor.name}
+          className="hover-card-avatar"
+          loading="lazy"
+        />
+        <div className="hover-card-identity">
+          <div className="hover-card-name">{contributor.name}</div>
+          {contributor.job_title && (
+            <div className="hover-card-job-title">{contributor.job_title}</div>
+          )}
+        </div>
+      </div>
+      {contributor.company && (
+        <div className="hover-card-company">{contributor.company}</div>
+      )}
+      {frameworks.length > 0 && (
+        <div className="hover-card-steward">Steward of {formatFrameworks(frameworks)}</div>
+      )}
+      {contributor.description && (
+        <p className="hover-card-description">{contributor.description}</p>
+      )}
+    </div>
+  );
+}
+
 // Helper component for steward info
 function StewardInfo({ badges }: { badges: Badge[] }) {
   const frameworks = getStewardFrameworks(badges);
@@ -160,7 +193,7 @@ function slugify(text: string): string {
 
 export function Contributors() {
   // Convert JSON object to array
-  const contributors = Object.values(contributorsData as Record<string, Contributor>);
+  const contributors = Object.values(contributorsData as unknown as Record<string, Contributor>);
 
   const groups: ContributorGroup[] = [
     {
@@ -215,7 +248,7 @@ export function Contributors() {
                   id={contributor.name.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9_-]/g, '')}
                   style={{ '--card-index': index } as React.CSSProperties}
                 >
-                  {/* Avatar with role badge */}
+                  {/* Avatar with role badge and profile hover card */}
                   <div className="avatar-wrapper">
                     <img
                       className="contributors-page-avatar"
@@ -226,6 +259,7 @@ export function Contributors() {
                     {(contributor.role === 'lead' || contributor.role === 'core' || contributor.role === 'steward') && (
                       <RoleBadgeOverlay role={contributor.role} badges={contributor.badges || []} />
                     )}
+                    <ContributorHoverCard contributor={contributor} />
                   </div>
 
                   {/* Header with name */}
@@ -235,28 +269,10 @@ export function Contributors() {
                     </div>
                   </div>
 
-                  {/* Content area - flexible section */}
-                  <div className="contributors-page-content">
-                    {/* Company */}
-                    <div className={`contributors-page-company ${!contributor.company ? 'empty-placeholder' : ''}`}>
-                      {contributor.company || '\u00A0'}
-                    </div>
-
-                    {/* Job Title */}
-                    <div className={`contributors-page-role ${!contributor.job_title ? 'empty-placeholder' : ''}`}>
-                      {contributor.job_title || '\u00A0'}
-                    </div>
-
-                    {/* Steward info */}
+                  {/* Steward info */}
+                  {contributor.role === 'steward' && (
                     <StewardInfo badges={contributor.badges || []} />
-
-                    {/* Description - only show for non-stewards */}
-                    {contributor.description && contributor.role !== "steward" && (
-                      <div className="contributors-page-description">
-                        {contributor.description}
-                      </div>
-                    )}
-                  </div>
+                  )}
 
                   {/* Badges display */}
                   {contributor.badges && contributor.badges.length > 0 && (

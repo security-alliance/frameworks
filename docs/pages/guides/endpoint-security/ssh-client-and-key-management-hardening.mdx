@@ -1,0 +1,167 @@
+---
+title: "SSH Client and Key Management Hardening | Security Alliance"
+description: "Harden SSH client usage with better key handling, agent discipline, host verification, and rotation."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [dickson]
+  - role: reviewed
+    users: [mattaereal, pinalikefruit]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# SSH Client and Key Management Hardening
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway for SSH Client and Key Management Hardening:** Use dedicated SSH keys for distinct purposes,
+> prefer Ed25519 for new software keys, use hardware-backed `*-sk` keys for higher-risk access where practical,
+> protect keys with passphrases, keep agent forwarding off by default, and maintain a simple revoke-and-reissue plan
+> for lost devices or role changes.
+
+SSH is often the path from a developer laptop into code hosting, CI/CD, bastions, and production infrastructure. Treat
+SSH keys as privileged access.
+
+## For Individuals
+
+These steps apply to developers, operators, admins, and contributors who use SSH from a local workstation.
+
+### Setup Checklist
+
+- [ ] Use **Ed25519** for new software keys by default
+- [ ] Add a **strong passphrase** to every human-held software key
+- [ ] For higher-risk access, prefer a **hardware-backed security-key SSH credential** such as `ed25519-sk`
+- [ ] Keep separate keys for:
+      Git hosting, staging/internal infrastructure, production/bastion access, and automation
+- [ ] Keep `ForwardAgent no` unless there is a specific and reviewed operational need
+- [ ] Use explicit per-host entries in `~/.ssh/config` with `IdentityFile` and `IdentitiesOnly yes`
+- [ ] Keep `StrictHostKeyChecking` enabled:
+      use `accept-new` only for lower-risk hosts where trust-on-first-use is acceptable, and use `yes` for bastions
+      and production systems where host verification should be explicit
+- [ ] Use `UpdateHostKeys yes` only for hosts you already trust and manage, especially where you expect planned key
+      rotation
+- [ ] Keep `~/.ssh` and private key files accessible only to you
+- [ ] Review and remove stale keys after device loss, role changes, or offboarding
+
+### Passphrases and Local Protection
+
+- Use a passphrase on every human-held software key
+- Avoid leaving sensitive keys loaded into an agent indefinitely
+- Prefer confirmation or time-limited agent loading for sensitive keys
+- Do not store private keys in cloud notes, chat, or shared drives
+- Avoid copying the same private key between multiple laptops or admin workstations
+
+### `~/.ssh/config` Hygiene
+
+Keep `~/.ssh/config` explicit and purpose-specific so your SSH client offers only the intended key to each service.
+
+- Use per-host entries with `IdentityFile` and `IdentitiesOnly yes`
+- Keep `ForwardAgent no` unless there is a reviewed exception
+- Use stricter host verification for bastions and production hosts than for low-risk systems
+
+### Agent Forwarding and Remote Risk
+
+Treat agent forwarding as an exception, not a default workflow.
+
+- Keep `ForwardAgent no` by default
+- Never use `Host *` with `ForwardAgent yes`
+- Prefer `ProxyJump`, a bastion pattern, or a purpose-specific key on the intermediary host instead
+
+Agent forwarding lets a remote system use your loaded identities for as long as the session is live, so it is a poor
+default for weakly trusted systems.
+
+### Host Verification and `known_hosts`
+
+Do not normalize `StrictHostKeyChecking no` or "just click through" behavior for host key changes.
+
+- Verify important host fingerprints from official documentation when available
+- Use `accept-new` only where trust-on-first-use is acceptable for the environment
+- Use `yes` for bastions, production systems, and other high-sensitivity hosts
+- Do not rely on `accept-new` for first contact with high-sensitivity systems
+- Preseed `known_hosts` for CI and automation from a trusted source instead of discovering keys live in the job
+- Investigate unexpected host key changes instead of bypassing the warning
+
+### File Permissions and Device Hygiene
+
+- On Unix-like systems, use `chmod 700 ~/.ssh`
+- Use `chmod 600` for private keys and for `~/.ssh/config`
+- On Windows, keep private keys readable only by your user account and administrators
+
+If a laptop is lost, stolen, or suspected compromised, assume the SSH material on it may also need to be revoked and
+reissued.
+
+## For Admins
+
+These practices apply to administrators responsible for issuing, reviewing, rotating, and revoking SSH access across a
+team.
+
+### Program Checklist
+
+- [ ] Maintain an inventory for each SSH credential:
+      owner, device, purpose, target systems, creation date, and revoke trigger
+- [ ] Require one key per person, device, and purpose instead of shared identities
+- [ ] Prefer hardware-backed SSH credentials for privileged production access where practical
+- [ ] Review account SSH keys, deploy keys, and automation keys on a regular cadence
+- [ ] Remove unknown, stale, or unapproved keys during access reviews
+- [ ] Revoke keys immediately after offboarding, device loss, or suspected compromise
+- [ ] Keep human access and automation access logically separate
+- [ ] Document a simple recovery and reissue process for lost devices and security keys
+
+### Git Hosting, CI/CD, and Automation
+
+- Human users should have account-level SSH keys with clear labels
+- CI/CD and deployment systems should use dedicated automation credentials, not a developer's personal laptop key
+- Review deploy keys carefully because they are often long-lived and easy to forget
+- Revoke and reissue keys promptly after device loss, offboarding, or suspected compromise
+
+### Higher-Maturity Option: SSH Certificates
+
+For larger teams or higher-sensitivity environments, consider using SSH certificates instead of managing long-lived
+authorized keys on each target system.
+
+With SSH certificates, a trusted internal certificate authority (CA) signs user or host keys for a limited period
+of time. This can make access management easier by allowing teams to:
+
+- Issue short-lived SSH access without distributing permanent keys to every host
+- Centralize approval, expiration, and revocation workflows
+- Reduce the operational burden of updating `authorized_keys` across many systems
+- Tie SSH access more closely to role, device, or incident-response requirements
+
+SSH certificates introduce their own operational complexity and should be implemented carefully, but they are worth
+evaluating for organizations that need stronger central control over SSH access.
+
+## Web3-Specific Operational Rules
+
+Use these rules consistently:
+
+1. Do not use the same SSH key for Git hosting, deploy systems, and production administration.
+2. Treat bastion, production, and incident-response SSH access as privileged and higher assurance.
+3. Keep agent forwarding off unless there is a reviewed exception.
+4. Investigate host key changes before reconnecting to important systems.
+5. Revoke and replace SSH keys immediately after device loss or admin-role changes.
+6. Keep automation credentials separate from human workstation credentials.
+
+## Further Reading
+
+- [NIST IR 7966: Security of Interactive and Automated Access Management Using Secure Shell (SSH)](https://csrc.nist.gov/pubs/ir/7966/final)
+- [OpenBSD `ssh_config(5)`](https://man.openbsd.org/ssh_config)
+- [OpenBSD `ssh-keygen(1)`](https://man.openbsd.org/ssh-keygen.1)
+- [OpenBSD `ssh-add(1)`](https://man.openbsd.org/ssh-add.1)
+- [GitHub: Generating a New SSH Key and Adding It to the SSH Agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+- [GitHub: Reviewing Your SSH Keys](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/reviewing-your-ssh-keys)
+- [GitHub: GitHub's SSH Key Fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)
+- [GitLab: SSH Keys](https://docs.gitlab.com/user/ssh/)
+- [GitLab: Using SSH Keys with GitLab CI/CD](https://docs.gitlab.com/ci/jobs/ssh_keys/)
+- [Microsoft Learn: OpenSSH Key Management on Windows](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement)
+
+</TagProvider>
+<ContributeFooter />

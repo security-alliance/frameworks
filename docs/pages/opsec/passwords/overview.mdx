@@ -1,8 +1,12 @@
 ---
 title: "Password Management | Security Alliance"
+description: "Implement strong password basics: length, complexity, uniqueness, generation to resist brute-force/dictionary attacks. Essential foundation."
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [shallem]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -15,7 +19,50 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Placeholder for Password Management content
+Password security is the first line of defense protecting access to data and tools that you rely on daily. While
+passwords should never be the only line of defense (see [MFA](/opsec/mfa/overview)), following best practices in setting
+and securing passwords is an essential measure to keep your organization safe.
+
+## First Principles
+
+### What is a strong password?
+
+Strong passwords are hard to guess (by either human or machine) but easy for you to remember. To set such a password and keep your password confidential, 
+follow these rules:
+
+1. **Longer passwords are better** - a long, multi-word sentence (often referred to as a passphrase) is a best practice. 
+For the rest of this section we use the term passphrase to refer to a password of this form.
+2. **Personal** - a passphrase should not incorporate any publicly available information about you.
+3. **Punctuated and varied** - variations in punctuation, capitalization, and the addition of non-letter characters 
+add significant complexity.
+4. **Private** - passphrases should never, ever be shared with anyone under any circumstances.
+5. **Memorable** - a passphrase is ideally so hard to forget that it does not need to be written down, but if you do 
+choose to write it down, do so only on a physical piece of paper and store that paper in an offline, 
+safe location (e.g., a physical safe in your house or a safe deposit box at a bank).
+
+Given the requirements above, it is clear that any human's capacity to remember such a passphrase is limited. Hence,
+the best practice is to remember only one such passphrase.
+
+### Best practices for using passwords
+
+Good passwords are hard to remember, so the ideal situation is to only have to remember one excellent password. It 
+used to be considered a best practice to rotate passwords, but that recommendation no longer makes sense in all 
+scenarios.
+
+To help manage the many different sites that require a password, two additional, supporting technologies are essential
+to a secure password management system:
+
+1. **Enterprise Password Manager** - an enterprise password manager is a locked vault that stores all of your 
+passwords. Enterprise password managers also allow admin control to set policies governing password access, 
+enable secure password sharing, and enable secure storage/sharing of other types of 
+data (text notes, files, etc.). 
+
+2. **SSO** - as much as possible, a single, strong password should be all that each individual needs to remember 
+because that single password is used to unlock access to everything needed for work. SSO is described in more detail
+on the dedicated [SSO](/opsec/passwords/sso) page.
+
+3. **Root Account Passwords** - as described in the dedicated [Root Account Passwords](/opsec/passwords/rootaccounts)
+page, root account passwords are a special case for many online services (e.g., Vercel, AWS, etc.) that require special handling.
 
 </TagProvider>
 <ContributeFooter />

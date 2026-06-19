@@ -26,7 +26,7 @@ const certTypeToName: Record<string, string> = {
   'sfc-ms': 'Multisig Operations',
   'sfc-dns': 'DNS Registrar',
   'sfc-tro': "Treasury Operations",
-  'sfc-ws': "Workspace Security",
+  'sfc-ida': "Identity & Accounts",
 };
 
 function ProtocolCard({ protocol }: ProtocolCardProps) {

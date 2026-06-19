@@ -1,8 +1,15 @@
 ---
 title: "Endpoint Security | Security Alliance"
+description: "Device provisioning tiers for Web3 organizations: managed devices with EDR/MDM, virtual desktops for global contractors, and enterprise browsers for minimum viable security."
 tags:
   - Security Specialist
   - Operations & Strategy
+  - HR
+contributors:
+  - role: wrote
+    users: [andrew-chang-gu, dickson]
+  - role: reviewed
+    users: []
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -15,7 +22,76 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Placeholder for Endpoint Security content
+> **Key Takeaway:** Match device security investment to role risk. Managed hardware for privileged operators,
+> VDI for global contractors, enterprise browsers as minimum viable security for everyone else.
+
+Unmanaged personal devices are a primary vector for credential theft and lateral movement in Web3 organizations.
+Infostealers, malicious browser extensions, and compromised development environments all start at the endpoint.
+Organizations need a device provisioning strategy that scales security with role sensitivity.
+
+## Device Security Tiers
+
+### Tier 1: Managed Devices (Gold Standard)
+
+Issue organization-managed hardware to your highest-risk roles. This provides full security stack visibility and control.
+
+- **EDR** (CrowdStrike Falcon, SentinelOne) for real-time behavioral monitoring and threat hunting
+- **MDM** (Intune, JAMF) to enforce configuration policy and enable remote wipe
+- **Full disk encryption** (BitLocker, FileVault) so stolen devices reveal nothing
+- **Biometric authentication** (TouchID, Windows Hello) for phishing-resistant local auth
+- **Centralized logging** for threat hunting and incident reconstruction
+
+**Target roles:** Developers with production access, leadership, treasury custodians, key signers, security leads.
+
+### Tier 2: Virtual Desktop Infrastructure (Privacy-First Scale)
+
+For global contractors where issuing hardware is impractical, VDI provides a secure cloud-hosted environment
+accessible from any device. The employee's personal machine becomes a thin client — all sensitive work happens
+inside the managed virtual desktop.
+
+- Complete visibility and control inside the virtual environment
+- Corporate web proxying and traffic inspection
+- Protects employee device privacy (organization sees inside VDI, not the host)
+- **Limitation:** Susceptible to host-level keyloggers and screen capture
+- **Limitation:** Performance and latency overhead
+- **Limitation:** Hardware authentication dongle (YubiKey) compatibility issues in virtualized environments
+
+**Target roles:** Global operations, customer support, regional teams, contractors with defined scopes.
+Providers: AWS WorkSpaces, Azure Virtual Desktop, Google Cloud Workstations.
+
+### Tier 3: Enterprise Browser (Minimum Viable Security)
+
+For general staff and short-term contractors, an enterprise browser provides a managed browsing environment on any machine.
+
+- **Extension allowlisting** — eliminates malicious extension vectors (e.g., Discord session cookie theft)
+- **IdP integration** — enforces identity and access policies at the browser layer
+- **Isolated history and cookies** — work browsing sandboxed from personal browsing
+- **Limitation:** Zero protection if the host OS is compromised
+- **Limitation:** Cannot block host-level screen capture or USB access
+
+**Target roles:** General staff, community managers, short-term contractors.
+
+> If you use Google Workspace, you already have **Chrome Enterprise Core** at no additional cost. Enabling
+> extension allowlisting alone eliminates one of the most common attack vectors against Discord and web-based platforms.
+
+## Choosing the Right Tier
+
+| Factor | Managed Device | VDI | Enterprise Browser |
+| ------ | -------------- | --- | ------------------ |
+| **Visibility** | Full (OS + apps) | Inside VDI only | Browser only |
+| **Host compromise protection** | Yes — EDR on host | Partial — Host keyloggers | No — None |
+| **Hardware cost** | High (org buys devices) | Low (any device) | None |
+| **Privacy** | Low (org owns device) | Medium (host is private) | High (only browser managed) |
+| **Best for** | Core team, signers | Global contractors | General staff |
+
+Most Web3 organizations will use all three tiers simultaneously — the goal is to match investment to actual risk,
+not to force a single approach across all roles.
+
+## Further Reading
+
+- [Hardening your organization](/dprk-it-workers/mitigating-dprk-it-workers#hardening-your-organization)
+  — Access control policies for remote workers
+- [Browser Security](/opsec/browser/overview) — Browser-specific hardening
 
 </TagProvider>
 <ContributeFooter />

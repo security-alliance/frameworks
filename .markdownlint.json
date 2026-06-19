@@ -41,10 +41,14 @@
       "MermaidRenderer",
       "DevOnly",
       "BadgeLegend",
-      "ExportAllCerts"
+      "ExportAllCerts",
+      "AttackSurfaceDashboard",
+      "GovernanceSDLCPipeline",
+      "ChecklistItem"
     ]
   },
   "MD037": false,
   "MD040": false,
-  "MD041": false
+  "MD041": false,
+  "MD051": false
 }

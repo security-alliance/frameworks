@@ -1,0 +1,53 @@
+---
+title: "VPN Services | Security Alliance"
+description: "Understand when a VPN is necessary, how it differs from HTTPS, what metadata it hides, DNS leaks, attack surfaces on public networks, threat models, and recommended providers and tools."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# VPN Services
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Virtual Private Networks (VPNs) encrypt your internet traffic and route it through a remote server, hiding your IP
+address from the websites you visit and shielding your activity from anyone on your local network. But a VPN is not a
+magic shield — it solves specific problems, and understanding those problems is essential before choosing to use one.
+
+This section covers the key aspects of VPN usage, from understanding why HTTPS alone is not enough, to evaluating
+providers and configuring tools that match your threat model.
+
+---
+
+## Subtopics
+
+- **[HTTPS vs VPN](/privacy/vpns/https-vs-vpn)** — Why HTTPS does not make VPNs unnecessary. How metadata leaks even
+  with encrypted connections, and what a VPN actually hides.
+
+- **[Attack Surfaces on Public Networks](/privacy/vpns/attack-surfaces-public-networks)** — Specific risks on open
+  Wi-Fi networks: rogue hotspots, captive portals, DNS spoofing, and insecure mini-browsers.
+
+- **[When to Use a VPN](/privacy/vpns/when-to-use-vpn)** — A threat-model-based decision framework. Includes how to
+  choose a VPN service that fits your needs.
+
+- **[VPN Limitations](/privacy/vpns/vpn-limitations)** — What a VPN cannot protect you from: provider trust, DNS leaks,
+  TunnelVision, browser fingerprinting, and endpoint compromise.
+
+- **[VPN Providers and Tools](/privacy/vpns/vpn-providers-and-tools)** — Recommended no-logs providers, plus tools
+  organized by network, DNS, device, and browser level.
+
+---
+
+</TagProvider>
+<ContributeFooter />

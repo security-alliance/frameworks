@@ -115,6 +115,11 @@
       "SEAL/Initiative",
       "Certifications"
     ],
+    "/certs/changelog": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
     "/certs/contributions": [
       "SEAL/Initiative",
       "Certifications"
@@ -133,6 +138,11 @@
       "Certifications",
       "SFC"
     ],
+    "/certs/sfc-identity-accounts": [
+      "SEAL/Initiative",
+      "Certifications",
+      "SFC"
+    ],
     "/certs/sfc-incident-response": [
       "SEAL/Initiative",
       "Certifications",
@@ -144,11 +154,6 @@
       "SFC"
     ],
     "/certs/sfc-treasury-ops": [
-      "SEAL/Initiative",
-      "Certifications",
-      "SFC"
-    ],
-    "/certs/sfc-workspace-security": [
       "SEAL/Initiative",
       "Certifications",
       "SFC"
@@ -178,6 +183,11 @@
       "SRE"
     ],
     "/devsecops/data-security-upgrade-checklist": [
+      "Engineer/Developer",
+      "Operations & Strategy",
+      "Smart Contracts"
+    ],
+    "/devsecops/governance-proposal-security": [
       "Engineer/Developer",
       "Operations & Strategy",
       "Smart Contracts"
@@ -413,6 +423,10 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/front-end-web-app/third-party-script-security": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/front-end-web-app/web-application-security": [
       "Engineer/Developer",
       "Security Specialist"
@@ -486,6 +500,18 @@
     "/guides/account-management/vercel": [
       "DevOps Accounts"
     ],
+    "/guides/endpoint-security/hardware-security-keys": [
+      "Security Specialist"
+    ],
+    "/guides/endpoint-security/password-manager-endpoint-hardening": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "Engineer/Developer"
+    ],
+    "/guides/endpoint-security/ssh-client-and-key-management-hardening": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/guides/endpoint-security/zoom-hardening": [
       "Security Specialist",
       "Operations & Strategy"
@@ -522,6 +548,12 @@
     "/incident-management/communication-strategies": [
       "Security Specialist",
       "Operations & Strategy"
+    ],
+    "/incident-management/forensic-readiness": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps",
+      "SRE"
     ],
     "/incident-management/incident-detection-and-response": [
       "Security Specialist",
@@ -746,6 +778,10 @@
       "Security Specialist",
       "Operations & Strategy"
     ],
+    "/intro/attack-surface": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/intro/introduction": [
       "SEAL/Initiative"
     ],
@@ -901,7 +937,8 @@
     ],
     "/opsec/endpoint/overview": [
       "Security Specialist",
-      "Operations & Strategy"
+      "Operations & Strategy",
+      "HR"
     ],
     "/opsec/google/overview": [
       "Community & Marketing",
@@ -924,7 +961,19 @@
       "DevOps",
       "SRE"
     ],
+    "/opsec/passwords/managers": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/opsec/passwords/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/passwords/rootaccounts": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/passwords/sso": [
       "Security Specialist",
       "Operations & Strategy"
     ],
@@ -983,7 +1032,27 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
-    "/privacy/vpn-services": [
+    "/privacy/vpns/attack-surfaces-public-networks": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/https-vs-vpn": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/overview": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/vpn-limitations": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/vpn-providers-and-tools": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/privacy/vpns/when-to-use-vpn": [
       "Engineer/Developer",
       "Security Specialist"
     ],
@@ -1302,8 +1371,17 @@
     "For Signers": "multisig-for-protocols",
     "Operational Security": "opsec",
     "OpSec Core Concepts": "opsec",
+    "Security Fundamentals": "opsec",
+    "Implementation Process": "opsec",
+    "Web3 considerations": "opsec",
+    "Secure Operating Systems": "opsec",
+    "Endpoint Security": "guides",
+    "Browser Security": "opsec",
+    "Multi-Factor Authentication": "opsec",
+    "Password Management": "opsec",
     "While Traveling": "opsec",
     "Privacy": "privacy",
+    "VPN Services": "privacy",
     "Safe Harbor": "safe-harbor",
     "Secure Software Development": "secure-software-development",
     "Security Automation": "security-automation",
@@ -1316,7 +1394,6 @@
     "Signing & Verification": "wallet-security",
     "Guides": "guides",
     "Account Management": "guides",
-    "Endpoint Security": "guides",
     "SEAL Certifications": "certs",
     "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"

@@ -28,8 +28,8 @@ const CERT_META = {
   'sfc-incident-response': {
     subtitle: 'Detection, response procedures, communication, containment, recovery, and post-incident review.'
   },
-  'sfc-workspace-security': {
-    subtitle: 'Access management, device security, network controls, and data protection.'
+  'sfc-identity-accounts': {
+    subtitle: 'Organizational account inventory, phishing-resistant MFA, credential management, account lifecycle, and takeover monitoring.'
   },
   'sfc-devops-infrastructure': {
     subtitle: 'CI/CD security, infrastructure hardening, secrets management, and deployment controls.'
@@ -44,8 +44,6 @@ function generateHTML(title, subtitle, sections, certName) {
   title = escapeHtml(title);
   subtitle = escapeHtml(subtitle);
   certName = sanitizeCertName(certName);
-
-  const controlCount = sections.reduce((sum, s) => sum + (s.controls?.length || 0), 0);
 
   return `<!doctype html>
 <html lang="en">
@@ -363,7 +361,6 @@ function sanitizeCertName(name) {
  * Main execution
  */
 function main() {
-  console.log('Generating printable checklists...\n');
 
   // Ensure output directory exists
   if (!fs.existsSync(OUTPUT_DIR)) {
@@ -409,12 +406,10 @@ function main() {
 
     fs.writeFileSync(outputPath, html);
 
-    const controlCount = data.cert.reduce((sum, s) => sum + (s.controls?.length || 0), 0);
-    console.log(`  ✓ ${certName}.html (${data.cert.length} sections, ${controlCount} controls)`);
     generated++;
   });
 
-  console.log(`\n✅ Generated ${generated} printable checklists in docs/public/printable/`);
+  console.log(`✅ Generated ${generated} printable checklists in docs/public/printable/`);
 }
 
 main();

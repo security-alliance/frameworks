@@ -17,14 +17,13 @@ const OUTPUT_PATH = path.join(__dirname, '../docs/public/cert-data.json');
 const CERT_ORDER = [
   { file: 'sfc-devops-infrastructure.mdx', label: 'DevOps & Infrastructure' },
   { file: 'sfc-dns-registrar.mdx', label: 'DNS Registrar' },
+  { file: 'sfc-identity-accounts.mdx', label: 'Identity & Accounts' },
   { file: 'sfc-incident-response.mdx', label: 'Incident Response' },
   { file: 'sfc-multisig-ops.mdx', label: 'Multisig Operations' },
   { file: 'sfc-treasury-ops.mdx', label: 'Treasury Operations' },
-  { file: 'sfc-workspace-security.mdx', label: 'Workspace Security' },
 ];
 
 function main() {
-  console.log('Generating cert data JSON...\n');
 
   const certs = [];
 
@@ -44,15 +43,12 @@ function main() {
     }
 
     const name = file.replace('.mdx', '');
-    const controlCount = data.cert.reduce((sum, s) => sum + (s.controls?.length || 0), 0);
-
     certs.push({
       name,
       label,
       sections: data.cert,
     });
 
-    console.log(`  ✓ ${name} (${data.cert.length} sections, ${controlCount} controls)`);
   }
 
   // Ensure output directory exists
@@ -66,7 +62,7 @@ function main() {
   const totalControls = certs.reduce((sum, c) => 
     sum + c.sections.reduce((s, sec) => s + (sec.controls?.length || 0), 0), 0
   );
-  console.log(`\n✅ Generated cert-data.json (${certs.length} certs, ${totalControls} total controls)`);
+  console.log(`✅ Generated cert-data.json (${certs.length} certs, ${totalControls} total controls)`);
 }
 
 main();

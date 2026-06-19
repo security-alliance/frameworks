@@ -1,0 +1,60 @@
+---
+title: "Attack Surfaces on Public Networks | Security Alliance"
+description: "Risks on open Wi-Fi networks: rogue hotspots, captive portals, DNS spoofing, SSL stripping, and the dangers of mini-browsers and in-app WebViews."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: [scode2277]
+outline: deep
+---
+
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+
+<TagProvider>
+<TagFilter />
+
+# Attack Surfaces on Public Networks
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Public and open Wi-Fi networks (airports, hotels, coffee shops) introduce specific risks:
+
+## Common Risks
+
+- **Rogue hotspot (evil twin)** — Attackers set up networks mimicking legitimate ones. Devices auto-reconnect to the
+  stronger, attacker-controlled SSID.
+- **Captive-portal credential harvesting** — Login pages on captive portals ask for email, phone, or OAuth tokens that
+  can be sold or used in phishing.
+- **Lateral scanning** — Open client-to-client traffic allows anyone to probe SMB, AirDrop, SSH, and other exposed
+  services.
+- **Malicious updates** — Man-in-the-middle positions allow tampering with insecure update channels.
+- **Long-term device fingerprinting** — MAC randomization has been defeated by browser and protocol fingerprinting and
+  stable radio attributes.
+
+## Less Frequent Risks
+
+- **DNS spoofing / rogue DHCP** — Attackers respond to DNS or DHCP requests faster than legitimate servers, pushing a
+  malicious resolver or gateway.
+- **SSL stripping / downgrade** — Intercepting HTTP-to-HTTPS redirects. Modern browsers display warnings or block this,
+  but outdated or weakened browsers remain vulnerable.
+- **Session hijack / cookie theft** — Sniffed session cookies might allow attackers to replay your authenticated state.
+
+## Unsecure Browsers and Captive Portals
+
+When connecting to a network with a captive portal, your OS fires a plain-HTTP request to a hard-coded URL. If it
+receives anything other than the expected response, it launches a minimal browser (mini-browser) to display the portal.
+These mini-browsers often lack the security features of full browsers — no extension support, limited certificate
+validation, and reduced script blocking.
+
+Similarly, in-app browsers (WebViews) used by social media and messaging apps can inject JavaScript, share cookies with
+the host app, and lack address bars for verifying origins. Both scenarios weaken the protection HTTPS normally provides.
+
+---
+
+</TagProvider>
+<ContributeFooter />
