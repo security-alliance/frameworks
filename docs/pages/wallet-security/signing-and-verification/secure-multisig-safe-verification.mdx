@@ -167,6 +167,14 @@ decoded and reviewed.
 - **Unfamiliar function selectors**: If you cannot identify the function being called, do not sign until you verify it.
 - **Parameters that do not match the briefing**: Wrong recipient, wrong amount, wrong contract address.
 - **Mismatched target contract**: The function call is going to a different contract than described.
+- **Unverified contract being called**: If the target contract's source is not verified on the block explorer, you
+  cannot confirm what the decoded function actually does. Treat any call into an unverified contract as a stop sign
+  until the source is published and reviewed.
+- **Calldata that contradicts the simulation**: The decoded function and the observed effect must agree. If the
+  selector decodes to `transfer(address,uint256)` but the simulation shows no token movement (or moves a different
+  asset), the contract is not behaving as its interface claims. The Bybit theft worked this way at the contract level:
+  an unverified contract on Etherscan whose calldata decoded to a benign-looking operation while it actually executed
+  something else. Always reconcile the decoded calldata against the simulated effect before signing.
 
 ### Tool Diversity Recommendation
 
