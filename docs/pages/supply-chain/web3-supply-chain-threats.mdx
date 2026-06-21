@@ -199,7 +199,7 @@ Integrity is harder. The base defense is cross-validation, applied at increasing
 
 - **KelpDAO / LayerZero exploit (April 2026).** An attacker, attributed to North Korea's Lazarus Group, drained
   approximately $292 million in rsETH from KelpDAO's LayerZero-powered bridge. The attackers compromised RPC nodes
-  run by Layer Zero Labs to return forged transaction data. With KelpDAO's 1-of-1 DVN configuration, a fabricated
+  run by LayerZero Labs to return forged transaction data. With KelpDAO's 1-of-1 DVN configuration, a fabricated
   cross-chain message claiming to originate from Unichain was accepted as valid, and the OFTAdapter released 116,500
   rsETH. LayerZero's DVN was configured to cross-check across multiple RPCs, but attackers compromised two op-geth nodes and caused the healthy endpoints to be unreachable, forcing the DVN onto the poisoned ones. The incident illustrates that RPC integrity, not just availability, is
   part of the security boundary for any system that derives state from off-chain calls.
