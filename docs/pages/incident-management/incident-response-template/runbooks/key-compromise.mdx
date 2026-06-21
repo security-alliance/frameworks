@@ -11,7 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -37,11 +37,13 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ### Symptoms
 
+<Checklist id="symptoms">
 - [ ] Unauthorized transactions from controlled addresses
 - [ ] Unexpected multisig proposals
 - [ ] Key holder reports compromise
 - [ ] Suspicious signing activity
 - [ ] Social engineering attempt succeeded
+</Checklist>
 
 ### Key Types
 
@@ -58,17 +60,21 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 **Why:** Avoid false positives, but err on side of caution
 
+<Checklist id="step-1-confirm-compromise">
 - [ ] Verify with key holder directly (not via potentially compromised channels)
 - [ ] Check for unauthorized transactions
 - [ ] Review recent signing activity
+</Checklist>
 
 ### Step 2: Assess Blast Radius
 
 **Why:** Understand what the attacker can do
 
+<Checklist id="step-2-assess-blast-radius">
 - [ ] What can this key sign?
 - [ ] Are there timelocks?
 - [ ] What other systems use this key?
+</Checklist>
 
 ### Step 3: Revoke/Rotate
 
@@ -76,34 +82,44 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 For multisig signers:
 
+<Checklist id="step-3-revokerotate">
 - [ ] Remove compromised signer
 - [ ] Add replacement signer
+</Checklist>
 
 For admin keys:
 
+<Checklist id="step-3-revokerotate-2">
 - [ ] Transfer ownership to new address
 - [ ] Or revoke permissions if possible
+</Checklist>
 
 For hot wallets:
 
+<Checklist id="step-3-revokerotate-3">
 - [ ] Move remaining funds to secure address
+</Checklist>
 
 ### Step 4: Check for Damage
 
 **Why:** Understand if attacker acted
 
+<Checklist id="step-4-check-for-damage">
 - [ ] Review all transactions from compromised key
 - [ ] Check pending proposals/timelocks
 - [ ] Audit any systems key had access to
+</Checklist>
 
 ## Investigation
 
 ### Key Questions
 
+<Checklist id="key-questions">
 - [ ] How was the key compromised? (phishing, malware, insider, leaked)
 - [ ] When was it compromised?
 - [ ] What did the attacker do (if anything)?
 - [ ] Are other keys at risk?
+</Checklist>
 
 ### Evidence to Collect
 
@@ -140,20 +156,24 @@ For hot wallets:
 
 ## Escalation
 
+<Checklist id="escalation">
 - [ ] [Decision Makers](../contacts#decision-makers) - immediately for any confirmed compromise
 - [ ] [Security Partners](../contacts#security-partners) - for investigation support
 - [ ] [Legal](../contacts#legal--communications) - if funds were stolen
+</Checklist>
 
 ## Prevention Checklist
 
 After resolving, review:
 
+<Checklist id="prevention-checklist">
 - [ ] Key storage practices
 - [ ] Phishing awareness training
 - [ ] Hardware wallet usage
 - [ ] Multisig thresholds
 - [ ] Access logging
 - [ ] Key rotation schedule
+</Checklist>
 
 ## Related
 
