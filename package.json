@@ -41,9 +41,9 @@
   },
   "packageManager": "pnpm@10.15.0",
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1053.0",
-    "@aws-sdk/lib-storage": "3.1053.0",
-    "axios": "1.16.1",
+    "@aws-sdk/client-s3": "3.1063.0",
+    "@aws-sdk/lib-storage": "3.1063.0",
+    "axios": "1.17.0",
     "exceljs": "^4.4.0",
     "gray-matter": "^4.0.3",
     "just-install": "^2.0.2",
