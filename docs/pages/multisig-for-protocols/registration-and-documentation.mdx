@@ -47,6 +47,17 @@ Signers:
 Controlled contracts: [List contract addresses and purposes]
 On-chain roles: [Describe roles like ownable, Access Control roles (PAUSER_ROLE)]
 
+Access Control Inventory:
+- Role: [Role name, e.g., UPGRADER_ROLE]
+  Held by: [This multisig address]
+  Contract: [Contract address and name]
+  Capabilities: [What this role can do]
+  Constraints: [Timelock duration, parameter bounds, etc.]
+  Blast radius: [Maximum potential impact if compromised]
+
+Timelock configuration: [Timelock contract address, delay duration, who can cancel]
+Related multisigs: [Other multisigs that interact with the same contracts or share signers]
+
 Impact assessment:
 - Financial exposure: $[amount] ([reasoning])
 - Protocol impact: [description]

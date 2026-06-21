@@ -53,12 +53,17 @@ For emergency situations when the primary UI is unavailable, see
 
 ## Delegated Proposer
 
-It is recommended, but not required to authorize a separate transaction proposer for a Safe. This address can prepare
-transactions for signers to sign but is not an authorized signer on the Safe. Therefore **there is no risk of malicious
-signatures which can affect the Safe assets**. This wallet can hold no funds and simply act as a proposer. The primary
-reason to have a delegated proposer is that the hash verification utilities depend on the Safe API (unless details are
-entered manually). Until a transaction is **proposed** it does not show up in the API so the hash verification tools
-cannot detect it.
+It is recommended to authorize a separate transaction proposer for a Safe. This address can prepare transactions for
+signers to sign but is not an authorized signer on the Safe. This wallet can hold no funds and simply acts as a
+proposer.
+
+Hash verification tools rely on the Safe API, which only has transaction data after the transaction is proposed.
+Without a delegated proposer, the first signer faces additional challenges to verify what they are signing. A
+delegated proposer submits the transaction to the API before any signer approves, so every signer can verify.
+
+For a related reason, the final signer should avoid "sign and execute." Verification tools do not provide the expected
+hashes for this combined action. Instead, have all signers sign only, then have a non-signer execute the fully-signed
+transaction.
 
 ![Delegated proposer configuration interface](https://frameworks-static.s3.us-east-2.amazonaws.com/images/multisig-for-protocols/delegated-proposer-configuration-interface.png)
 
@@ -159,6 +164,16 @@ After completing setup:
 Implement monitoring and alerting systems to be immediately notified of any on-chain activity related to the multisig,
 including proposed transactions, new signatures, and owner changes (e.g., using tools like [Safe
 Watcher](https://github.com/Gearbox-protocol/safe-watcher)).
+
+Monitoring should also cover activity on individual signer addresses to detect unauthorized use of signer keys outside
+the multisig context.
+
+### Timelock Transaction Monitoring
+
+For any multisig that uses a timelock, configure automated monitoring for all timelock events (queue, execute, cancel).
+Alerts should fire immediately when a new transaction is queued, providing decoded calldata and a countdown to the
+execution window. See
+[Timelock Monitoring](/multisig-for-protocols/use-case-specific-requirements#timelock-monitoring) for full requirements.
 
 ### Immutable Monitoring Channels
 
