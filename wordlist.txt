@@ -63,6 +63,7 @@ Cyfrin
 Cypherock
 dapp
 Darknet
+Daytona
 DCAP
 Deauthorize
 debevoise
@@ -107,6 +108,7 @@ erc
 Ethlint
 Excalidraw
 exfiltrated
+exfiltrates
 Exfiltrating
 exfiltration
 Fábrega
@@ -332,6 +334,7 @@ TLSA
 TOS
 TOTP
 TPM
+trailofbits
 triaging
 trojanized
 Tuta
@@ -347,6 +350,7 @@ uncompromised
 unproxied
 Unrekt
 unreviewed
+Unsandboxed
 unstake
 unstaking
 unvalidated

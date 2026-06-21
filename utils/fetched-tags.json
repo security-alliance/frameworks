@@ -190,7 +190,8 @@
     "/devsecops/governance-proposal-security": [
       "Engineer/Developer",
       "Operations & Strategy",
-      "Smart Contracts"
+      "Smart Contracts",
+      "DevOps"
     ],
     "/devsecops/integrated-development-environments": [
       "Engineer/Developer",
@@ -201,6 +202,11 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
+    ],
+    "/devsecops/isolation/developer-machine-sandboxing": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps"
     ],
     "/devsecops/isolation/execution-sandboxing-practical-guide": [
       "Engineer/Developer",
