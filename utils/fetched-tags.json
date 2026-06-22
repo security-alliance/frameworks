@@ -190,7 +190,8 @@
     "/devsecops/governance-proposal-security": [
       "Engineer/Developer",
       "Operations & Strategy",
-      "Smart Contracts"
+      "Smart Contracts",
+      "DevOps"
     ],
     "/devsecops/integrated-development-environments": [
       "Engineer/Developer",
@@ -201,6 +202,11 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
+    ],
+    "/devsecops/isolation/developer-machine-sandboxing": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps"
     ],
     "/devsecops/isolation/execution-sandboxing-practical-guide": [
       "Engineer/Developer",
@@ -835,6 +841,12 @@
       "Security Specialist",
       "Multisig Security"
     ],
+    "/multisig-for-protocols/key-takeaways": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Multisig Security"
+    ],
     "/multisig-for-protocols/offboarding": [
       "Engineer/Developer",
       "Security Specialist",
@@ -955,7 +967,19 @@
       "DevOps",
       "SRE"
     ],
+    "/opsec/passwords/managers": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/opsec/passwords/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/passwords/rootaccounts": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/passwords/sso": [
       "Security Specialist",
       "Operations & Strategy"
     ],
@@ -1353,6 +1377,14 @@
     "For Signers": "multisig-for-protocols",
     "Operational Security": "opsec",
     "OpSec Core Concepts": "opsec",
+    "Security Fundamentals": "opsec",
+    "Implementation Process": "opsec",
+    "Web3 considerations": "opsec",
+    "Secure Operating Systems": "opsec",
+    "Endpoint Security": "guides",
+    "Browser Security": "opsec",
+    "Multi-Factor Authentication": "opsec",
+    "Password Management": "opsec",
     "While Traveling": "opsec",
     "Privacy": "privacy",
     "VPN Services": "privacy",
@@ -1368,7 +1400,6 @@
     "Signing & Verification": "wallet-security",
     "Guides": "guides",
     "Account Management": "guides",
-    "Endpoint Security": "guides",
     "SEAL Certifications": "certs",
     "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"

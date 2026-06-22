@@ -8,7 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -35,10 +35,12 @@ These settings apply to your personal Render account. All team members and admin
 ### Account Security Checklist
 
 - Account Settings >
+<Checklist id="account-security-checklist">
   - [ ]  Account Security > Two-Factor Authentication > **Enabled**
   - [ ]  CLI Tokens > **Review and remove any unnecessary or unrecognized**
   - [ ]  API Keys > **Review and remove any unnecessary or unrecognized**
   - [ ]  SSH Public Keys > **Review and remove any unnecessary or unrecognized**
+</Checklist>
 
 ---
 
@@ -61,9 +63,11 @@ These settings and practices apply to Render workspace administrators with eleva
 ### Workspace Settings
 
 - Workspace Settings >
+<Checklist id="workspace-settings">
   - [ ]  Team Members > **Review and remove any unnecessary or unrecognized**
   - [ ]  Audit Logs > It is highly recommended that you sign up for an **Organization or Enterprise** plan in order
   to enable this
+</Checklist>
 
 ---
 

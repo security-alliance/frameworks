@@ -58,6 +58,12 @@ contributors:
   procedural, and reference material, often within the same page, and the
   template is meant to support that.
 
+  Keep each page focused on a single topic. If your content would require more
+  than 5-6 top-level sections (## headings), it is covering too much ground in
+  one place. Split it into separate pages within a framework folder, one page
+  per major angle of the topic. Each sub-page should be self-contained enough
+  that a reader can land on it directly without needing to read the others first.
+
   Do NOT remove the imports and the components below (e.g. <TagProvider> or <ContributeFooter>).
   They are required for every page to render correctly.
 
@@ -110,10 +116,13 @@ contributors:
 
 {/*
   IMPORT PATH: the '../../../components' path below works for pages placed at
-  docs/pages/<framework-folder>/<your-page>.mdx (one level deep inside a
+  docs/pages/{framework-folder}/{your-page}.mdx (one level deep inside a
   framework folder). If your page sits one level deeper, for example
-  docs/pages/<framework-folder>/<subfolder>/<your-page>.mdx, add one more '../'
+  docs/pages/{framework-folder}/{subfolder}/{your-page}.mdx, add one more '../'
   so the import becomes '../../../../components'.
+
+  If your page uses interactive checklists, add Checklist to the import:
+  import { ..., Checklist } from '../../../components'
 */}
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
 
@@ -163,7 +172,22 @@ Use ### subsections within each one as needed.
 Common formats to mix and match within a section:
 
 - **Walkthrough**: numbered steps, top to bottom. Use when order matters.
-- **Checklist**: bullet points the reader can tick. Use when order does not matter.
+- **Checklist**: action items the reader can tick off. Use when order does not matter.
+  Use the `<Checklist>` component — never plain `- [ ]` syntax, which renders as a static,
+  non-interactive checkbox. Each block needs a unique `id` (kebab-case) per page:
+
+  ```mdx
+  <Checklist id="section-name">
+  - [ ] First item
+  - [ ] Second item
+    - Descriptive sub-bullet (no checkbox, renders as a bullet)
+  </Checklist>
+  ```
+
+  Rules: `id` values must be unique within the page. Do not use `> blockquote` syntax
+  inside a `<Checklist>` block (use `- _Note: ..._` instead). Keep nesting shallow
+  (avoid 5+ levels). See [`guides/account-management/github.mdx`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/guides/account-management/github.mdx)
+  for a full worked example.
 - **Decision tree or matrix**: table or branching guide. Use when the right
   answer depends on the reader's situation.
 - **Plain explanation**: paragraphs. Use when the content is conceptual or

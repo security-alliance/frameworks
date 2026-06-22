@@ -10,7 +10,7 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -40,12 +40,14 @@ your organization's policies.
 
 ## Prerequisites
 
+<Checklist id="prerequisites">
 - [ ] Justification documented
 - [ ] New threshold meets policy requirements:
   - Minimum 50% of signers
   - Avoid `N of N` configurations
 - [ ] If decreasing: approval from security contact
 - [ ] All signers notified of change
+</Checklist>
 
 ## Policy Requirements
 
@@ -87,16 +89,20 @@ your organization's policies.
 
 ### 3. Sign and Execute
 
+<Checklist id="evm-sign-execute">
 - [ ] Verify hash on hardware wallet
 - [ ] Sign immediately after verification
 - [ ] Message: "Signed - [X/Y] - [your name]"
 - [ ] Stay available until executed
 - [ ] Last signer executes once threshold is reached
+</Checklist>
 
 ### 4. Verify
 
+<Checklist id="evm-verify">
 - [ ] Check Safe settings show new threshold
 - [ ] Test that the next transaction requires new threshold
+</Checklist>
 
 ## Solana (Squads) Procedure
 
@@ -119,22 +125,28 @@ your organization's policies.
 
 ### 3. Sign and Execute
 
+<Checklist id="squads-sign-execute">
 - [ ] Verify proposal details on hardware wallet
 - [ ] Sign immediately after verification
 - [ ] Message: "Signed - [X/Y] - [your name]"
 - [ ] Stay available until executed
 - [ ] Last signer executes once threshold is reached
+</Checklist>
 
 ### 4. Verify
 
+<Checklist id="squads-verify">
 - [ ] Check Squads settings show new threshold
 - [ ] Test that the next transaction requires new threshold
+</Checklist>
 
 ## Post-Change
 
+<Checklist id="post-change">
 - [ ] Update registration or internal documentation with new threshold
 - [ ] Notify all signers of new threshold
 - [ ] Update any documentation referencing old threshold
+</Checklist>
 
 ## Common Scenarios
 

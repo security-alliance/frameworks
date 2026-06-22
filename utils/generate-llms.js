@@ -273,6 +273,8 @@ function buildRoutingIndex(frameworks) {
     '',
     'Do not fetch multiple framework files at once. Each framework index is self-contained.',
     '',
+    'If your tool loads a skill or policy file, a retrieval policy for this repository is available at https://github.com/security-alliance/frameworks/blob/develop/SKILL.md. It defines branch policy, behavior with retrieved content, and what to do when retrieval returns nothing relevant.',
+    '',
     '---',
     '',
     '## Frameworks',

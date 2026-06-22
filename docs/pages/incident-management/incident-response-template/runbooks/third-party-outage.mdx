@@ -11,7 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
+import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../../components'
 
 <TagProvider>
 <TagFilter />
@@ -37,10 +37,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ### Symptoms
 
+<Checklist id="symptoms">
 - [ ] Specific functionality broken
 - [ ] Errors referencing external service
 - [ ] Status page shows provider outage
 - [ ] Timeouts to external endpoints
+</Checklist>
 
 ### Common Dependencies
 
@@ -60,21 +62,27 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 **Why:** Verify it's not your own infrastructure
 
+<Checklist id="step-1-confirm-third-party-issue">
 - [ ] Check provider status page
 - [ ] Test provider directly
 - [ ] Check if other users reporting (Twitter, Discord)
+</Checklist>
 
 ### Step 2: Assess Your Impact
 
+<Checklist id="step-2-assess-your-impact">
 - [ ] Which of your services affected?
 - [ ] What functionality is degraded/broken?
 - [ ] User-facing impact?
+</Checklist>
 
 ### Step 3: Enable Fallback (if available)
 
+<Checklist id="step-3-enable-fallback-if-available">
 - [ ] Switch to backup provider
 - [ ] Enable cached/degraded mode
 - [ ] Disable affected features gracefully
+</Checklist>
 
 ## By Service Type
 
@@ -131,9 +139,11 @@ Include:
 
 ## Monitoring the Outage
 
+<Checklist id="monitoring-the-outage">
 - [ ] Subscribe to provider status updates
 - [ ] Set reminder to check every 15-30 min
 - [ ] Monitor your own metrics for recovery
+</Checklist>
 
 ## Recovery
 
@@ -146,26 +156,32 @@ Include:
 
 ### Post-Outage
 
+<Checklist id="post-outage">
 - [ ] Document timeline
 - [ ] Review if fallback worked
 - [ ] Assess if additional redundancy needed
 - [ ] Consider SLA review with provider
+</Checklist>
 
 ## Escalation
 
+<Checklist id="escalation">
 - [ ] [Infrastructure Vendors](../contacts#infrastructure-vendors) - contact provider support
 - [ ] [Decision Makers](../contacts#decision-makers) - if extended outage or no ETA
+</Checklist>
 
 ## Prevention
 
 Reduce third-party dependency risk:
 
+<Checklist id="prevention">
 - [ ] Multiple RPC providers
 - [ ] Multi-region hosting
 - [ ] CDN with failover
 - [ ] Graceful degradation
 - [ ] Cached fallbacks where appropriate
 - [ ] Regular dependency review
+</Checklist>
 
 ## Provider Contacts
 
