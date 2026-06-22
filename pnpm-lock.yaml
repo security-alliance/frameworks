@@ -44,14 +44,14 @@ importers:
         specifier: ^1.60.0
         version: 1.60.0
       react:
-        specifier: ^19.2.6
+        specifier: 19.2.7
         version: 19.2.7
       react-dom:
-        specifier: ^19.2.6
-        version: 19.2.6(react@19.2.7)
+        specifier: 19.2.7
+        version: 19.2.7(react@19.2.7)
       react-router-dom:
         specifier: ^7.15.1
-        version: 7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7)
+        version: 7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
@@ -73,10 +73,10 @@ importers:
         version: 4.3.1
       vocs:
         specifier: 2.0.10
-        version: 2.0.10(@types/react@19.2.17)(mermaid@11.15.0)(react-dom@19.2.6(react@19.2.7))(react-router-dom@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7))(react-router@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(waku@1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.6(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
+        version: 2.0.10(@types/react@19.2.17)(mermaid@11.15.0)(react-dom@19.2.7(react@19.2.7))(react-router-dom@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-router@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(waku@1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
       waku:
         specifier: 1.0.0-beta.1
-        version: 1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.6(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
+        version: 1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
 
 packages:
 
@@ -3549,10 +3549,10 @@ packages:
   react-devtools-inline@4.4.0:
     resolution: {integrity: sha512-ES0GolSrKO8wsKbsEkVeiR/ZAaHQTY4zDh1UW8DImVmm8oaGLl3ijJDvSGe+qDRKPZdPRnDtWWnSvvrgxXdThQ==}
 
-  react-dom@19.2.6:
-    resolution: {integrity: sha512-0prMI+hvBbPjsWnxDLxlCGyM8PN6UuWjEUCYmZhO67xIV9Xasa/r/vDnq+Xyq4Lo27g8QSbO5YzARu0D1Sps3g==}
+  react-dom@19.2.7:
+    resolution: {integrity: sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ==}
     peerDependencies:
-      react: ^19.2.6
+      react: ^19.2.7
 
   react-error-boundary@6.1.2:
     resolution: {integrity: sha512-3DpCr5HVdZ0caUjYE/kIHBEJN0mNP3ZCgf16c48uJ5TbWjorKVp+YG8W3XqlJ7vJAVNw6wNIImyPXmFydwmyng==}
@@ -4635,24 +4635,24 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@base-ui/react@1.5.0(@types/react@19.2.17)(react-dom@19.2.6(react@19.2.7))(react@19.2.7)':
+  '@base-ui/react@1.5.0(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.2
-      '@base-ui/utils': 0.2.9(@types/react@19.2.17)(react-dom@19.2.6(react@19.2.7))(react@19.2.7)
-      '@floating-ui/react-dom': 2.1.8(react-dom@19.2.6(react@19.2.7))(react@19.2.7)
+      '@base-ui/utils': 0.2.9(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@floating-ui/react-dom': 2.1.8(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@floating-ui/utils': 0.2.11
       react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
       use-sync-external-store: 1.6.0(react@19.2.7)
     optionalDependencies:
       '@types/react': 19.2.17
 
-  '@base-ui/utils@0.2.9(@types/react@19.2.17)(react-dom@19.2.6(react@19.2.7))(react@19.2.7)':
+  '@base-ui/utils@0.2.9(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.2
       '@floating-ui/utils': 0.2.11
       react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
       reselect: 5.2.0
       use-sync-external-store: 1.6.0(react@19.2.7)
     optionalDependencies:
@@ -4746,7 +4746,7 @@ snapshots:
       outvariant: 1.4.0
       static-browser-server: 1.0.3
 
-  '@codesandbox/sandpack-react@2.20.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7)':
+  '@codesandbox/sandpack-react@2.20.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@codemirror/autocomplete': 6.20.2
       '@codemirror/commands': 6.10.3
@@ -4767,7 +4767,7 @@ snapshots:
       lz-string: 1.5.0
       react: 19.2.7
       react-devtools-inline: 4.4.0
-      react-dom: 19.2.6(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
       react-is: 17.0.2
 
   '@cspell/cspell-bundled-dicts@10.0.1':
@@ -5119,11 +5119,11 @@ snapshots:
       '@floating-ui/core': 1.7.5
       '@floating-ui/utils': 0.2.11
 
-  '@floating-ui/react-dom@2.1.8(react-dom@19.2.6(react@19.2.7))(react@19.2.7)':
+  '@floating-ui/react-dom@2.1.8(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@floating-ui/dom': 1.7.6
       react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
 
   '@floating-ui/utils@0.2.11': {}
 
@@ -6027,21 +6027,21 @@ snapshots:
       '@rolldown/pluginutils': 1.0.1
       vite: 8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
 
-  '@vitejs/plugin-rsc@0.5.27(react-dom@19.2.6(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))':
+  '@vitejs/plugin-rsc@0.5.27(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       es-module-lexer: 2.1.0
       estree-walker: 3.0.3
       magic-string: 0.30.21
       react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
       srvx: 0.11.16
       strip-literal: 3.1.0
       turbo-stream: 3.2.0
       vite: 8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
       vitefu: 1.1.3(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
     optionalDependencies:
-      react-server-dom-webpack: 19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0))
+      react-server-dom-webpack: 19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0))
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
@@ -8126,13 +8126,13 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  nuqs@2.8.9(react-router-dom@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7))(react-router@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7))(react@19.2.7):
+  nuqs@2.8.9(react-router-dom@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-router@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7):
     dependencies:
       '@standard-schema/spec': 1.0.0
       react: 19.2.7
     optionalDependencies:
-      react-router: 7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7)
-      react-router-dom: 7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7)
+      react-router: 7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      react-router-dom: 7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
 
   object-assign@4.1.1: {}
 
@@ -8275,7 +8275,7 @@ snapshots:
     dependencies:
       es6-symbol: 3.1.4
 
-  react-dom@19.2.6(react@19.2.7):
+  react-dom@19.2.7(react@19.2.7):
     dependencies:
       react: 19.2.7
       scheduler: 0.27.0
@@ -8286,26 +8286,26 @@ snapshots:
 
   react-is@17.0.2: {}
 
-  react-router-dom@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7):
+  react-router-dom@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
     dependencies:
       react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
-      react-router: 7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
+      react-router: 7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
 
-  react-router@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7):
+  react-router@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
     dependencies:
       cookie: 1.1.1
       react: 19.2.7
       set-cookie-parser: 2.7.2
     optionalDependencies:
-      react-dom: 19.2.6(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
 
-  react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)):
+  react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)):
     dependencies:
       acorn-loose: 8.5.2
       neo-async: 2.6.2
       react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
       webpack: 5.107.2(esbuild@0.28.0)
       webpack-sources: 3.5.0
 
@@ -9022,10 +9022,10 @@ snapshots:
     optionalDependencies:
       vite: 8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
 
-  vocs@2.0.10(@types/react@19.2.17)(mermaid@11.15.0)(react-dom@19.2.6(react@19.2.7))(react-router-dom@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7))(react-router@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(waku@1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.6(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)):
+  vocs@2.0.10(@types/react@19.2.17)(mermaid@11.15.0)(react-dom@19.2.7(react@19.2.7))(react-router-dom@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-router@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(waku@1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)):
     dependencies:
-      '@base-ui/react': 1.5.0(@types/react@19.2.17)(react-dom@19.2.6(react@19.2.7))(react@19.2.7)
-      '@codesandbox/sandpack-react': 2.20.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7)
+      '@base-ui/react': 1.5.0(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@codesandbox/sandpack-react': 2.20.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@hono/node-server': 2.0.4(hono@4.12.19)
       '@iconify-json/lucide': 1.2.111
       '@iconify-json/simple-icons': 1.2.85
@@ -9047,7 +9047,7 @@ snapshots:
       '@takumi-rs/image-response': 0.62.8
       '@takumi-rs/wasm': 0.62.8
       '@vitejs/plugin-react': 6.0.2(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
-      '@vitejs/plugin-rsc': 0.5.27(react-dom@19.2.6(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
+      '@vitejs/plugin-rsc': 0.5.27(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
       cac: 6.7.14
       cva: class-variance-authority@0.7.1
       debug: 4.4.3
@@ -9068,9 +9068,9 @@ snapshots:
       mdast-util-to-string: 4.0.0
       micromark-extension-gfm: 3.0.0
       minisearch: 7.2.0
-      nuqs: 2.8.9(react-router-dom@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7))(react-router@7.17.0(react-dom@19.2.6(react@19.2.7))(react@19.2.7))(react@19.2.7)
+      nuqs: 2.8.9(react-router-dom@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-router@7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
       react-error-boundary: 6.1.2(react@19.2.7)
       rehype-autolink-headings: 7.1.0
       rehype-slug: 6.0.0
@@ -9101,7 +9101,7 @@ snapshots:
     optionalDependencies:
       mermaid: 11.15.0
       vite: 8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
-      waku: 1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.6(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
+      waku: 1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@cfworker/json-schema'
       - '@date-fns/tz'
@@ -9130,18 +9130,18 @@ snapshots:
 
   w3c-keyname@2.2.8: {}
 
-  waku@1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.6(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0):
+  waku@1.0.0-beta.1(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0):
     dependencies:
       '@hono/node-server': 2.0.4(hono@4.12.19)
       '@vitejs/plugin-react': 6.0.2(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
-      '@vitejs/plugin-rsc': 0.5.27(react-dom@19.2.6(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
+      '@vitejs/plugin-rsc': 0.5.27(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0)))(react@19.2.7)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
       dotenv: 17.4.2
       hono: 4.12.19
       magic-string: 0.30.21
       picocolors: 1.1.1
       react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
-      react-server-dom-webpack: 19.2.7(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0))
+      react-dom: 19.2.7(react@19.2.7)
+      react-server-dom-webpack: 19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.0))
       rsc-html-stream: 0.0.7
       vite: 8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
     transitivePeerDependencies:
