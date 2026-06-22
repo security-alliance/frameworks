@@ -1,6 +1,6 @@
 ---
 title: "Wallet and Key Architecture | Security Alliance"
-description: "Tiered wallet strategy, multisig and MPC, geographic key distribution, decoy wallets, and key ceremonies hardening crypto holdings against coercion."
+description: "Tiered wallet strategy, multisig and MPC, geographic key distribution, controlled-surrender wallets, and key ceremonies hardening crypto holdings against coercion."
 tags:
   - Security Specialist
   - Engineer/Developer
@@ -24,7 +24,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <AttributionList contributors={frontmatter.contributors} />
 
 > **Key Takeaway**:
-> Tiered wallet structures (hot, warm, cold, deep-cold) combined with multisig or MPC, geographic key distribution, plausible decoys, and rotation policies ensure no single coerced individual can drain strategic reserves under pressure.
+> Tiered wallet structures (hot, warm, cold, deep-cold) combined with multisig or MPC, geographic key distribution, controlled-surrender wallets, and rotation policies ensure no single coerced individual can drain strategic reserves under pressure.
 
 ## Wallet strategy
 
@@ -45,11 +45,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 - **Institutional custodians:** Fireblocks, Copper, or regulated providers for deep-cold.
 - **Smart contract guardians:** Protocol-level treasuries use on-chain timelocks, pause functions, or emergency multisig for protocol upgrades under duress.
 
-## Decoy and compliance wallets
+## Controlled-surrender wallets and duress tripwires
 
-- **Plausible decoy wallets:** Create 2–3 secondary wallets with $2k–$5k balances matching observed transaction patterns. Seeds and PINs memorized separately for handover.
-- **Duress codes and PINs:** Secondary credentials unlock decoy wallets or trigger silent alarms or limits.
-- **Burner exchange accounts:** Pre-funded CEX accounts (around $10k) linked to public personas, for immediate compliance transfers without touching core holdings.
+- **Readily-surrendered funds:** Keep one small wallet ($2k–$5k, with balances matching observed transaction patterns) that can be handed over truthfully under duress, rather than relying on a lie that may fail under stress. Seeds and PINs memorized separately for handover.
+- **Visible friction on real reserves:** Use on-chain time-locks, multisig, and multi-party approval on strategic funds so larger amounts demonstrably cannot be moved quickly, reducing the attacker's incentive to keep coercing.
+- **Duress tripwires:** Tie the small wallet's duress PIN to silent alerts that notify trusted contacts and, where appropriate, law enforcement.
+- **Burner exchange accounts:** Pre-funded CEX accounts (around $10k) linked to public personas, for immediate handover without touching core holdings.
 
 ## Key ceremonies and rotation policies
 

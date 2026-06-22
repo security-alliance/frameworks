@@ -1,6 +1,6 @@
 ---
 title: "Defensive Design Principles | Security Alliance"
-description: "Five principles for wrench-attack defense: minimization, compartmentalization, plausibility, resilience, and prioritization of human safety over assets."
+description: "Five principles for wrench-attack defense: minimization, compartmentalization, controlled surrender, resilience, and prioritization of human safety over assets."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -24,7 +24,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 <AttributionList contributors={frontmatter.contributors} />
 
 > **Key Takeaway**:
-> Five principles anchor wrench-attack defense: minimization limits what any coerced individual can authorize; compartmentalization segments keys and roles; plausibility uses decoys; resilience enables recovery; prioritization always favors human safety over assets.
+> Five principles anchor wrench-attack defense: minimization limits what any coerced individual can authorize; compartmentalization segments keys and roles; controlled surrender offers a believable low-value payout while real reserves sit behind visible delay; resilience enables recovery; prioritization always favors human safety over assets.
 
 These principles guide all subsequent controls, ensuring wallet architectures and operational processes withstand coercion without relying solely on the victim's resistance under extreme pressure.
 
@@ -38,9 +38,10 @@ These principles guide all subsequent controls, ensuring wallet architectures an
 - Segment keys, identities, devices, locations, and roles to prevent compromise of one element from cascading across the entire stack.
 - Separate hot wallets for daily ops from cold storage for long-term holdings, and distribute signer responsibilities across jurisdictions, risk profiles, and access methods.
 
-## Plausibility
+## Controlled surrender
 
-- Incorporate believable decoy structures that align with the victim's public profile, such as low-value "compliance wallets" containing realistic but sacrificial balances. Decoys must appear operationally consistent to withstand basic scrutiny.
+- Offer attackers a small, believable payout they can take immediately, such as a low-value wallet with balances matching the victim's public profile.
+- Keep strategic reserves behind time-locks and multi-party approval whose delay is visible and cannot be shortened under coercion.
 
 ## Resilience
 
