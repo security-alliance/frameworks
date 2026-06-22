@@ -386,16 +386,47 @@ const config = {
           text: 'Physical Security',
           collapsed: true,
           items: [
-            { text: 'Overview', link: 'physical-security/overview' },
-            { text: 'Threat Model', link: '/physical-security/threat-model' },
-            { text: 'Risk Factors and Early Signals', link: '/physical-security/risk-factors-and-early-signals' },
-            { text: 'Defensive Design Principles', link: '/physical-security/defensive-design-principles' },
-            { text: 'Wallet and Key Architecture', link: '/physical-security/wallet-and-key-architecture' },
-            { text: 'Personal and Family OpSec', link: '/physical-security/personal-and-family-opsec' },
-            { text: 'Transaction Flows Under Duress', link: '/physical-security/transaction-flows-under-duress' },
-            { text: 'Incident Response', link: '/physical-security/incident-response' },
-            { text: 'Recovery and Resilience', link: '/physical-security/recovery-and-resilience' },
-            { text: 'Checklist', link: '/physical-security/checklist' },
+            { text: 'Overview', link: '/physical-security/overview' },
+            {
+              text: 'Coercion & Duress',
+              collapsed: true,
+              items: [
+                { text: 'Overview', link: '/physical-security/coercion-and-duress/overview' },
+                { text: 'Threat Model', link: '/physical-security/coercion-and-duress/threat-model' },
+                { text: 'Risk Factors and Early Signals', link: '/physical-security/coercion-and-duress/risk-factors-and-early-signals' },
+                { text: 'Defensive Design Principles', link: '/physical-security/coercion-and-duress/defensive-design-principles' },
+                { text: 'Wallet and Key Architecture', link: '/physical-security/coercion-and-duress/wallet-and-key-architecture' },
+                { text: 'Personal and Family Safety', link: '/physical-security/coercion-and-duress/personal-and-family-safety' },
+                { text: 'Transaction Flows Under Duress', link: '/physical-security/coercion-and-duress/transaction-flows-under-duress' },
+                { text: 'Incident Response', link: '/physical-security/coercion-and-duress/incident-response' },
+                { text: 'Recovery and Resilience', link: '/physical-security/coercion-and-duress/recovery-and-resilience' },
+                { text: 'Checklist', link: '/physical-security/coercion-and-duress/checklist' },
+              ]
+            },
+            {
+              text: 'Facility & Perimeter Security',
+              collapsed: true,
+              dev: true,
+              items: [
+                { text: 'Overview', link: '/physical-security/facility-and-perimeter/overview', dev: true },
+              ]
+            },
+            {
+              text: 'Physical Counter-Surveillance',
+              collapsed: true,
+              dev: true,
+              items: [
+                { text: 'Overview', link: '/physical-security/physical-counter-surveillance/overview', dev: true },
+              ]
+            },
+            {
+              text: 'Supply Chain Physical Integrity',
+              collapsed: true,
+              dev: true,
+              items: [
+                { text: 'Overview', link: '/physical-security/supply-chain-physical-integrity/overview', dev: true },
+              ]
+            },
           ]
         },        
         {
