@@ -11,7 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
 
 
 # Runbook: CDN/Hosting Compromise
@@ -34,9 +34,11 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../../compo
 
 ### Symptoms
 
+<Checklist id="symptoms">
 - [ ] Malicious files being served
 - [ ] File hashes don't match expected
 - [ ] Unauthorized access in provider logs
+</Checklist>
 
 ### Confirm Compromise
 
@@ -45,25 +47,31 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../../compo
 
 ## Immediate Actions
 
-1. [ ] Purge CDN cache
-2. [ ] Take down site or redirect to maintenance page
-3. [ ] Rotate all access credentials
-4. [ ] Review access logs for unauthorized activity
+<Checklist id="immediate-actions">
+- [ ] Purge CDN cache
+- [ ] Take down site or redirect to maintenance page
+- [ ] Rotate all access credentials
+- [ ] Review access logs for unauthorized activity
+</Checklist>
 
 ## Mitigation
 
-1. [ ] Redeploy from verified source (git, not existing infra)
-2. [ ] Verify deployment matches expected
-3. [ ] Enable additional access controls
-4. [ ] Set up file integrity monitoring
+<Checklist id="mitigation">
+- [ ] Redeploy from verified source (git, not existing infra)
+- [ ] Verify deployment matches expected
+- [ ] Enable additional access controls
+- [ ] Set up file integrity monitoring
+</Checklist>
 
 ## Prevention
 
+<Checklist id="prevention">
 - [ ] Limit hosting/CDN admin access
 - [ ] Enable 2FA on all accounts
 - [ ] Use subresource integrity (SRI)
 - [ ] Implement Content Security Policy (CSP)
 - [ ] Regular access audits
+</Checklist>
 
 ## Related
 

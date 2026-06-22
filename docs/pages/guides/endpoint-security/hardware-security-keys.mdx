@@ -8,7 +8,7 @@ contributors:
     users: [dickson, louis, pablo]
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 
 # Hardware Security Keys
@@ -33,6 +33,7 @@ hardware key.
 
 ### Setup Checklist
 
+<Checklist id="setup-checklist">
 - [ ] Buy at least **two** security keys from a reputable vendor such as Yubico
 - [ ] Prefer keys that match your device mix:
   - USB-C for modern laptops and phones
@@ -52,6 +53,7 @@ hardware key.
 - [ ] Disable **SMS** as a recovery or second-factor method wherever the service allows it
 - [ ] Save provider-issued backup or recovery codes offline
 - [ ] Test both the primary and backup key after enrollment
+</Checklist>
 
 ### YubiKey Setup Notes
 

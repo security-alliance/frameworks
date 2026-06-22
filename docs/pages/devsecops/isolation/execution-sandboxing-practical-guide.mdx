@@ -14,7 +14,7 @@ contributors:
     users: [mattaereal]
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 
 # Execution Sandboxing: A Practical Guide
@@ -212,6 +212,7 @@ Have a playbook for:
 
 ## Operational checklist
 
+<Checklist id="operational-checklist">
 - [ ] Untrusted PRs isolated from privileged runners
 - [ ] Ephemeral runners enabled
 - [ ] CI token defaults set to read-only
@@ -221,6 +222,7 @@ Have a playbook for:
 - [ ] Resource quotas and timeouts configured
 - [ ] Artifact signing/provenance verified at release
 - [ ] Incident response runbook tested
+</Checklist>
 
 ## References
 

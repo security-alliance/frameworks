@@ -11,7 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
 
 
 # Runbook Template
@@ -36,9 +36,11 @@ Copy this template to create runbooks for specific incident types.
 
 ### Symptoms
 
+<Checklist id="symptoms">
 - [ ] Symptom 1
 - [ ] Symptom 2
 - [ ] Symptom 3
+</Checklist>
 
 ### Alerts
 
@@ -73,9 +75,11 @@ If you see [X] but not [Y], it might be [different issue] instead.
 
 ### Key Questions
 
+<Checklist id="key-questions">
 - [ ] What is the scope?
 - [ ] When did it start?
 - [ ] What changed recently?
+</Checklist>
 
 ### Information to Gather
 
@@ -110,16 +114,20 @@ If you see [X] but not [Y], it might be [different issue] instead.
 
 Escalate to [Contacts](../contacts) if:
 
+<Checklist id="escalation">
 - [ ] Mitigation doesn't work within [time]
 - [ ] Impact expands
 - [ ] [Condition]
+</Checklist>
 
 ## Resolution Checklist
 
+<Checklist id="resolution-checklist">
 - [ ] Mitigation verified
 - [ ] Stakeholders notified
 - [ ] Timeline documented in [Incident Log](../templates/incident-log-template)
 - [ ] Post-mortem scheduled if warranted
+</Checklist>
 
 ## Common Root Causes
 

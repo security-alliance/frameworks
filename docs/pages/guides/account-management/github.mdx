@@ -8,7 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 
 # GitHub Security
@@ -24,8 +24,6 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
 
----
-
 ## For Individuals
 
 These settings apply to your personal GitHub account. All team members and admins should configure these on their own
@@ -34,6 +32,7 @@ accounts.
 ### Individual Account Settings
 
 - Account Settings:
+<Checklist id="individual-account-settings">
   - [ ]  Public profile > Contributions & activity > Make profile private and hide activity > **On**
   - [ ]  Password and authentication > Two-factor authentication > Enable and configure any method other than
   **SMS/Text message**
@@ -46,6 +45,7 @@ accounts.
     - [ ]  GitHub Apps > Review and remove any unnecessary
     - [ ]  OAuth Apps > Review and remove any unnecessary
     - [ ]  Personal access tokens > Review and remove any unnecessary
+</Checklist>
 
 ---
 
@@ -71,21 +71,26 @@ These settings and practices apply to GitHub organization administrators with el
 
 #### General Settings
 
+<Checklist id="repo-general-settings">
 - [ ]  General > Danger Zone > Repository visibility > **Private**
 - [ ]  Collaborators and teams > Review access and remove any unnecessary
   - [ ]  Ensure there are no more than 3 admins
+</Checklist>
 
 #### Branch Protection
 
+<Checklist id="repo-branch-protection">
 - [ ]  Branches > Branch protection rules > For each branch that triggers automated deployments, set the following
 protections:
   - Protect matching branches > Require a pull request before merging
     - Require approvals > **2+** recommended
   - Rules applied to everyone including administrators > Allow force pushes > **Off**
+</Checklist>
 
 #### Repository Rules
 
 - Rules > Rulesets > New ruleset > New branch ruleset:
+<Checklist id="repo-rules">
   - [ ]  **Name**: EnforceSignedCommits
     - **Targets**: All branches
     - **Rules**:
@@ -94,10 +99,12 @@ protections:
     - **Targets**: All branches
     - **Rules**:
       - Block force pushes > **On**
+</Checklist>
 
 #### Actions Security
 
 - Actions >
+<Checklist id="repo-actions-security">
   - [ ]  Actions permissions > Set minimum permissions needed
     - **Disable actions** - if not needed
     - **Allow organization actions and reusable workflows** - if only internal actions are used
@@ -107,9 +114,11 @@ protections:
   - [ ]  Workflow permissions > **Read repository contents and packages permissions**
     - [ ]  Allow GitHub Actions to create and approve pull requests > **Off**
   - [ ]  Access > **Not accessible**
+</Checklist>
 
 #### Security Features
 
+<Checklist id="repo-security-features">
 - [ ]  Webhooks > Review webhooks and delete any unnecessary or overly permissive
 - [ ]  Pages > Branch > **None** (to disable)
 - Code security >
@@ -119,19 +128,23 @@ protections:
   - [ ]  Grouped security updates > **Disabled**
   - [ ]  Dependabot version updates > **Disabled**
   - [ ]  Access to alerts > No additional users (only admins)
+</Checklist>
 
 #### Access Control
 
+<Checklist id="repo-access-control">
 - [ ]  Deploy keys > Remove all [[1]](#1-deploy-keys-warning)
 - [ ]  Secrets and variables > Review secrets and variables and remove any unnecessary
 - [ ]  GitHub Apps > Installed GitHub Apps > Review configurations and uninstall any unnecessary
   - [ ]  Review permissions are appropriate and that repository access is scoped only to relevant repositories
+</Checklist>
 
 ### Organization Settings
 
 #### Member Privileges
 
 - Member privileges >
+<Checklist id="org-member-privileges">
   - [ ]  Base permissions > Any other than **Admin**
   - [ ]  Repository creation > Public > **Off**
   - [ ]  Repository forking > Allow forking of private repositories > **Off**
@@ -142,10 +155,12 @@ protections:
     - [ ]  Allow members to delete or transfer repositories for this organization > **Off**
     - [ ]  Allow repository administrators to delete issues for this organization > **Off**
   - [ ]  Member team permissions > Allow members to create teams > **Off**
+</Checklist>
 
 #### Organization Rules
 
 - Repository > Rulesets > New ruleset > New branch ruleset: [[2]](#2-enterprise-features)
+<Checklist id="org-rules">
   - [ ]  **Name**: EnforceSignedCommits
     - **Targets > Target repositories**: All branches
     - **Rules > Branch rules**:
@@ -154,9 +169,11 @@ protections:
     - **Targets > Target repositories**: All branches
     - **Rules > Branch rules**:
       - Block force pushes > **On**
+</Checklist>
 
 #### Project and Actions Settings
 
+<Checklist id="org-project-actions">
 - [ ]  Planning > Projects > Allow members to change project visibilities for this organization > **Off**
 - Actions > General >
   - Policies > **All repositories**
@@ -167,9 +184,11 @@ protections:
   - [ ]  Fork pull request workflows in private repositories > Run workflows from fork pull requests > **On**
   - [ ]  Workflow permissions > **Read repository contents and packages permissions**
     - [ ]  Allow GitHub Actions to create and approve pull requests > **Off**
+</Checklist>
 
 #### Security and Access
 
+<Checklist id="org-security-access">
 - [ ]  Webhooks > Review and remove any unnecessary
   - [ ]  For each webhook, ensure SSL verification is enabled
 - [ ]  Packages > Package creation > Public > **Disabled**
@@ -177,10 +196,12 @@ protections:
   - [ ]  Require two-factor authentication for everyone in the organization. > **On**
     - [ ]  Only allow secure two-factor methods > **On**
 - [ ]  Deploy keys > **Disabled**
+</Checklist>
 
 #### Code Security Configuration
 
 - Code security > Configurations > New configuration:
+<Checklist id="org-code-security">
   - Dependency graph and Dependabot >
     - [ ]  Dependency graph > **Enabled**
     - [ ]  Dependabot alerts > **Enabled**
@@ -194,9 +215,11 @@ protections:
     - [ ]  Use as default for newly created repositories > **All repositories**
     - [ ]  Enforce configurations > **Enforce**
   - [ ]  **Save configuration** and **Apply to > All repositories**
+</Checklist>
 
 #### Access Management
 
+<Checklist id="org-access-management">
 - [ ]  Secrets and variables > Review secrets and variables and remove any unnecessary
 - [ ]  GitHub Apps > Installed GitHub Apps > Review configurations and uninstall any unnecessary
   - [ ]  Review permissions are appropriate and that repository access is scoped only to relevant repositories
@@ -206,6 +229,7 @@ protections:
   - [ ]  **Require administrator approval**
   - [ ]  **Restrict access via personal access tokens (classic)**
   - [ ]  **Enroll** [[3]](#3-audit-logs)
+</Checklist>
 
 ---
 

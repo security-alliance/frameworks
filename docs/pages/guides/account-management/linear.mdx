@@ -8,7 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 
 # Linear Security
@@ -33,9 +33,11 @@ These settings apply to your personal Linear account. All team members and admin
 ### Individual Account Settings
 
 - Settings >
+<Checklist id="individual-account-settings">
   - [ ]  Sessions, Personal API keys, & Authorized Applications > **Review and remove any unnecessary or unrecognized**
   - [ ]  Passkeys > Add a passkey (recommended)
   - [ ]  Connected Accounts > **Review and remove any unnecessary or unrecognized**
+</Checklist>
 
 ---
 
@@ -58,15 +60,19 @@ These settings and practices apply to Linear workspace administrators with eleva
 
 ### Admin Settings
 
+<Checklist id="admin-settings">
 - [ ]  Administration >
   - [ ]  Members > **Review and remove any unnecessary or unrecognized**
+</Checklist>
   - **Security >**
+<Checklist id="admin-settings-2">
     - [ ]  Invite links > **Off**
     - [ ]  Approved email domains > **Review and remove any unnecessary or unrecognized**
     - [ ]  Workspace restrictions > **Restrict all**
     - [ ]  Integrations & applications > **Control third-party applications**
   - [ ]  API > OAuth Applications, Webhooks, & Member API keys > **Review and remove any unnecessary or unrecognized**
   - [ ]  Applications > **Review and remove any unnecessary or unrecognized**
+</Checklist>
 
 ---
 

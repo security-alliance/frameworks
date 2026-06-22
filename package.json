@@ -7,8 +7,8 @@
   "devDependencies": {
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "cspell": "9.8.0",
-    "tailwindcss": "4.3.0",
+    "cspell": "10.0.1",
+    "tailwindcss": "4.3.1",
     "vocs": "2.0.10",
     "waku": "1.0.0-beta.1"
   },
@@ -37,14 +37,16 @@
       "lodash-es": ">=4.18.1",
       "yaml": ">=2.8.4",
       "fast-xml-parser": ">=5.7.0",
-      "hono": ">=4.12.18"
+      "hono": ">=4.12.18",
+      "uuid": ">=11.1.1",
+      "tmp": ">=0.2.6"
     }
   },
   "packageManager": "pnpm@10.15.0",
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1053.0",
-    "@aws-sdk/lib-storage": "3.1053.0",
-    "axios": "1.16.1",
+    "@aws-sdk/client-s3": "3.1063.0",
+    "@aws-sdk/lib-storage": "3.1063.0",
+    "axios": "1.17.0",
     "exceljs": "^4.4.0",
     "gray-matter": "^4.0.3",
     "just-install": "^2.0.2",

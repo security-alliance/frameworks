@@ -7,6 +7,8 @@ tags:
 contributors:
   - role: wrote
     users: [scode2277]
+  - role: fact-checked
+    users: [yuvalava]
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -171,13 +173,36 @@ does not need to exploit your code; it just needs to feed it bad data or go offl
 
 ### RPC Provider Compromise
 
-RPC providers mediate every interaction between your app and the blockchain. A provider that returns manipulated data,
-whether due to compromise, misconfiguration, or deliberate malfeasance, can cause your application to display
-incorrect balances, construct transactions against stale state, or fail silently during high-value operations. A
-single-provider dependency also creates a single point of failure: if it goes down, your application goes dark.
+RPC providers mediate every interaction between your app and the blockchain. The risk has two distinct shapes. A
+single-RPC dependency exposes you to both, and the integrity case is far harder to detect because nothing looks
+broken from the outside.
+
+1. **Availability:** a provider goes down and your application goes dark.
+2. **Integrity:** a provider returns data that looks valid but isn't — manipulated balances, forged transaction
+   receipts, stale state — and downstream systems act on it without realizing.
+
+Running nodes internally is a possible path to reduce reliance on third parties, but it requires significant
+resources and a strong security posture to do well.
+
+Availability is addressed by reliable monitoring and automatic failover across independently operated providers — when one degrades or
+drops, traffic shifts without manual intervention.
+
+Integrity is harder. The base defense is cross-validation, applied at increasing strictness:
+
+- **Simple quorum:** multiple RPCs must agree. Weak if they share an operator or upstream source.
+- **Multi-source quorum:** requires independent operators on independent infrastructure.
+- **Risk-aware policies:** automatically require a higher quorum threshold for high-value operations, like sensitive
+  reads that inform downstream actions or reads confirming high-value transactions.
+- **Failover-tightened thresholds:** tighten requirements when a source drops.
 
 **Notable incidents:**
 
+- **KelpDAO / LayerZero exploit (April 2026).** An attacker, attributed to North Korea's Lazarus Group, drained
+  approximately $292 million in rsETH from KelpDAO's LayerZero-powered bridge. The attackers compromised RPC nodes
+  run by LayerZero Labs to return forged transaction data. With KelpDAO's 1-of-1 DVN configuration, a fabricated
+  cross-chain message claiming to originate from Unichain was accepted as valid, and the OFTAdapter released 116,500
+  rsETH. LayerZero's DVN was configured to cross-check across multiple RPCs, but attackers compromised two op-geth nodes and caused the healthy endpoints to be unreachable, forcing the DVN onto the poisoned ones. The incident illustrates that RPC integrity, not just availability, is
+  part of the security boundary for any system that derives state from off-chain calls.
 - **Infura outage (November 2020).** Infura's nodes were running outdated Geth versions when a silently patched
   consensus bug caused a chain split. MetaMask (which defaults to Infura) stopped working for hours. Binance, Upbit,
   and other exchanges halted ETH withdrawals. Uniswap, MakerDAO, and Compound were all affected. No funds were stolen,

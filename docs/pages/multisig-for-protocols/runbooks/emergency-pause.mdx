@@ -10,7 +10,7 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 
 # Emergency Pause Runbook
@@ -42,9 +42,11 @@ addresses, pause functions, emergency contacts, and communication channels.
 
 ### 1. Alert Team
 
+<Checklist id="1-alert-team">
 - [ ] Send alert to emergency Signal group
 - [ ] Page signers via configured paging system
 - [ ] Notify the security contact
+</Checklist>
 
 **Alert template**:
 
@@ -57,10 +59,12 @@ Respond ASAP - <2hr SLA
 
 ### 2. Assess Situation
 
+<Checklist id="2-assess-situation">
 - [ ] Confirm threat is real (not false alarm)
 - [ ] Identify affected contracts or assets
 - [ ] Determine which pause function(s) to call
 - [ ] Estimate urgency
+</Checklist>
 
 ### 3. Prepare Transaction
 
@@ -89,15 +93,19 @@ Emergency signing follows abbreviated verification.
 
 ### Sign and Communicate
 
+<Checklist id="sign-and-communicate">
 - [ ] Sign immediately after verification
 - [ ] Message: "Signed - [X/Y] - [your name]"
 - [ ] Stay available until executed
+</Checklist>
 
 ### Execute
 
+<Checklist id="execute">
 - [ ] Execute as soon as threshold is reached
 - [ ] Verify pause took effect (check contract state)
 - [ ] Communicate: "EXECUTED - pause confirmed"
+</Checklist>
 
 ## Contract Reference
 
@@ -111,22 +119,28 @@ Emergency signing follows abbreviated verification.
 
 ### Immediate (Within 1 hour)
 
+<Checklist id="immediate-within-1-hour">
 - [ ] Confirm pause is effective
 - [ ] Document incident using [Incident Reporting](/multisig-for-protocols/incident-reporting)
 - [ ] Notify stakeholders
+</Checklist>
 
 ### Short-term (Within 24 hours)
 
+<Checklist id="short-term-within-24-hours">
 - [ ] Root cause analysis
 - [ ] Plan for resolution
 - [ ] Draft public communication if needed
+</Checklist>
 
 ### Resolution
 
+<Checklist id="resolution">
 - [ ] Fix underlying issue
 - [ ] Test fix thoroughly
 - [ ] Plan unpause procedure
 - [ ] Execute unpause with full verification (not emergency process)
+</Checklist>
 
 ## If Primary UI is Down
 

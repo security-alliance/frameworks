@@ -94,6 +94,7 @@ const config = {
                 { text: 'Network & Resource Isolation', link: '/devsecops/isolation/network-and-resource-isolation' },
                 { text: 'Sandboxing & Policy Enforcement', link: '/devsecops/isolation/sandboxing-and-policy-enforcement' },
                 { text: 'Execution Sandboxing: A Practical Guide', link: '/devsecops/isolation/execution-sandboxing-practical-guide' },
+                { text: 'Developer Machine Sandboxing', link: '/devsecops/isolation/developer-machine-sandboxing' },
               ]
             },
             { text: 'Code Signing', link: '/devsecops/code-signing' },
@@ -305,6 +306,7 @@ const config = {
           collapsed: true,
           items: [
             { text: 'Overview', link: '/multisig-for-protocols/overview' },
+            { text: 'Key Takeaways', link: '/multisig-for-protocols/key-takeaways' },
 
             {
               text: 'Multisig Administration',
@@ -361,7 +363,15 @@ const config = {
             { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
             { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
             { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
-            { text: 'Password Management', link: '/opsec/passwords/overview', dev: true },
+            { text: 'Password Management', 
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/opsec/passwords/overview', dev: true },
+                { text: 'Password Managers', link: '/opsec/passwords/managers', dev: true },
+                { text: 'Single Sign-on', link: '/opsec/passwords/sso', dev: true },
+                { text: 'Root Accounts', link: '/opsec/passwords/rootaccounts', dev: true }  
+              ]
+            },
             { text: 'Google Workspace Security', link: '/opsec/google/overview', dev: true },
             { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
             { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },

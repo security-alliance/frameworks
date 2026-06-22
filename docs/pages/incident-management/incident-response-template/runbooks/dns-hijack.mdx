@@ -11,7 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
 
 
 # Runbook: DNS Hijack
@@ -34,9 +34,11 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../../compo
 
 ### Symptoms
 
+<Checklist id="symptoms">
 - [ ] Domain pointing to wrong IP
 - [ ] Users redirected to malicious site
 - [ ] SSL certificate errors (attacker using different cert)
+</Checklist>
 
 ### Confirm DNS Hijack
 
@@ -47,10 +49,12 @@ dig yourdomain.com
 
 ## Immediate Actions
 
+<Checklist id="immediate-actions">
 1. [ ] Regain access to DNS provider account
 2. [ ] Enable 2FA if not already enabled
 3. [ ] Point DNS to known good infrastructure or maintenance page
 4. [ ] Enable DNS lock / registrar lock
+</Checklist>
 
 ## Mitigation
 
@@ -58,11 +62,13 @@ dig yourdomain.com
 
 ## Prevention
 
+<Checklist id="prevention">
 - [ ] Enable registrar lock
 - [ ] Use DNSSEC
 - [ ] Enable 2FA on DNS provider
 - [ ] Limit DNS admin access
 - [ ] Monitor DNS records for changes
+</Checklist>
 
 ## Related
 

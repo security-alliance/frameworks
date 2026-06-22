@@ -8,7 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 
 # Trello Security
@@ -35,14 +35,17 @@ These settings apply to your personal Trello account.
 ### Account Security Checklist
 
 - Account Settings:
+<Checklist id="account-settings">
   - [ ]  Applications > Review and remove any unnecessary
   - [ ]  Sessions > Manage your recent devices > Review and remove any unnecessary
   - [ ]  Sessions > Two-step verification > **On**
+</Checklist>
 
 ---
 
 ### Best Practices & Additional Tips
 
+<Checklist id="best-practices">
 - [ ]  **Use a Strong, Unique Password**
   - Ensure your Trello password is unique and not reused from other services.
 - [ ]  **Review Board Permissions**
@@ -51,6 +54,7 @@ These settings apply to your personal Trello account.
   - Only enable Power-Ups from trusted sources, as they may have access to your board data.
 - [ ]  **Check Email Notifications**
   - Ensure notifications are enabled so you're alerted to any unexpected board activity or access changes.
+</Checklist>
 
 ---
 

@@ -11,7 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
 
 
 # Runbook: DDoS Attack
@@ -35,11 +35,13 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../../compo
 
 ### Symptoms
 
+<Checklist id="symptoms">
 - [ ] Website/API unresponsive or slow
 - [ ] Monitoring shows traffic spike
 - [ ] CDN/hosting alerts
 - [ ] Error rate increase
 - [ ] Legitimate requests timing out
+</Checklist>
 
 ### Differentiation
 
@@ -57,9 +59,11 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../../compo
 
 **Why:** Distinguish from application issues
 
+<Checklist id="step-1-confirm-ddos">
 - [ ] Check CDN/WAF dashboards
 - [ ] Review traffic patterns
 - [ ] Check if specific endpoints targeted
+</Checklist>
 
 ### Step 2: Enable DDoS Protection
 
@@ -79,18 +83,22 @@ For AWS:
 
 ### Step 3: Assess Impact
 
+<Checklist id="step-3-assess-impact">
 - [ ] Which services affected?
 - [ ] Are critical functions available?
 - [ ] User impact level?
+</Checklist>
 
 ## Investigation
 
 ### Key Questions
 
+<Checklist id="key-questions">
 - [ ] Attack type (volumetric, protocol, application layer)?
 - [ ] Targeted endpoints?
 - [ ] Attack source patterns?
 - [ ] Why now? (retaliation, extortion, distraction?)
+</Checklist>
 
 ### Data to Collect
 
@@ -126,8 +134,10 @@ For AWS:
 
 ## Escalation
 
+<Checklist id="escalation">
 - [ ] [CDN/hosting provider](../contacts#infrastructure-vendors) - for attack mitigation support
 - [ ] [Decision Makers](../contacts#decision-makers) - if extended outage
+</Checklist>
 
 ## Recovery
 
@@ -140,10 +150,12 @@ For AWS:
 
 ### Post-Attack
 
+<Checklist id="post-attack">
 - [ ] Review logs for attack details
 - [ ] Update protection rules
 - [ ] Document attack patterns
 - [ ] Consider permanent mitigations
+</Checklist>
 
 ## Communication
 
@@ -162,11 +174,13 @@ Usually not needed for brief DDoS attacks. Avoid drawing attention.
 
 After resolving, consider:
 
+<Checklist id="prevention">
 - [ ] Always-on DDoS protection
 - [ ] Rate limiting by default
 - [ ] Geographic restrictions if appropriate
 - [ ] Improved caching
 - [ ] Backup/failover infrastructure
+</Checklist>
 
 ## Related
 

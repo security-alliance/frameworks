@@ -1,22 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import "./ChecklistItem.css";
-
-/**
- * ChecklistItem — renders a governance SDLC checklist item as a single
- * interactive checkbox next to a bold title, with a plain-paragraph
- * description below (no nested list marker).
- *
- * State is persisted to localStorage so a signer / reviewer can work
- * through the list across sessions. The storage key is
- * `governance-sdlc-checklist:<id>`, where `id` defaults to a slugified
- * version of the title.
- */
+import "./GovernanceChecklistItem.css";
 
 const STORAGE_PREFIX = "governance-sdlc-checklist:";
 
-interface ChecklistItemProps {
+interface GovernanceChecklistItemProps {
   title: string;
   id?: string;
   children: ReactNode;
@@ -29,7 +18,7 @@ function slugify(input: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-export function ChecklistItem({ title, id, children }: ChecklistItemProps) {
+export function GovernanceChecklistItem({ title, id, children }: GovernanceChecklistItemProps) {
   const slug = useMemo(() => id ?? slugify(title), [id, title]);
   const storageKey = `${STORAGE_PREFIX}${slug}`;
   const descId = `${slug}-desc`;

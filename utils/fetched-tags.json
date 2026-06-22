@@ -122,7 +122,8 @@
     ],
     "/certs/contributions": [
       "SEAL/Initiative",
-      "Certifications"
+      "Certifications",
+      "SFC"
     ],
     "/certs/overview": [
       "SEAL/Initiative",
@@ -201,6 +202,11 @@
       "Engineer/Developer",
       "Security Specialist",
       "Operations & Strategy"
+    ],
+    "/devsecops/isolation/developer-machine-sandboxing": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps"
     ],
     "/devsecops/isolation/execution-sandboxing-practical-guide": [
       "Engineer/Developer",
@@ -835,6 +841,12 @@
       "Security Specialist",
       "Multisig Security"
     ],
+    "/multisig-for-protocols/key-takeaways": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "Multisig Security"
+    ],
     "/multisig-for-protocols/offboarding": [
       "Engineer/Developer",
       "Security Specialist",
@@ -955,7 +967,19 @@
       "DevOps",
       "SRE"
     ],
+    "/opsec/passwords/managers": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
     "/opsec/passwords/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/passwords/rootaccounts": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/opsec/passwords/sso": [
       "Security Specialist",
       "Operations & Strategy"
     ],
@@ -1353,6 +1377,14 @@
     "For Signers": "multisig-for-protocols",
     "Operational Security": "opsec",
     "OpSec Core Concepts": "core-concepts",
+    "Security Fundamentals": "passwords",
+    "Implementation Process": "passwords",
+    "Web3 considerations": "passwords",
+    "Secure Operating Systems": "passwords",
+    "Endpoint Security": "endpoint-security",
+    "Browser Security": "passwords",
+    "Multi-Factor Authentication": "passwords",
+    "Password Management": "passwords",
     "While Traveling": "travel",
     "Privacy": "privacy",
     "VPN Services": "vpns",
@@ -1368,7 +1400,6 @@
     "Signing & Verification": "signing-and-verification",
     "Guides": "guides",
     "Account Management": "account-management",
-    "Endpoint Security": "endpoint-security",
     "SEAL Certifications": "certs",
     "SEAL Certification Frameworks": "certs",
     "Contributing": "contribute"
