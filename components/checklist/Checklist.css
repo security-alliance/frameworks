@@ -1,5 +1,10 @@
 .checklist {
   margin-top: -0.25rem;
+  --color-text-muted: #9ca3af;
+}
+
+:root:not([data-vocs-theme='dark']) .checklist {
+  --color-text-muted: #6b7280;
 }
 
 .checklist ul {
@@ -19,7 +24,6 @@
   padding-left: 26px;
   margin: 4px 0;
   line-height: 1.5;
-  color: var(--color-text);
 }
 
 /* Non-checkbox items: show a bullet and reduce left indent */

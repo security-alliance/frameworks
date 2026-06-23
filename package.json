@@ -3,31 +3,34 @@
   "version": "1.0.0",
   "description": "Official repository to the Security Frameworks by SEAL. This repository contains the entire structure and contents of the frameworks. Feel free to suggest from new categories to grammar corrections. Collaboration is open to everyone. **This is a work in progress.**",
   "main": "index.js",
+  "type": "module",
   "devDependencies": {
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "cspell": "10.0.1",
     "tailwindcss": "4.3.1",
-    "vocs": "1.4.1"
+    "vocs": "2.0.10",
+    "waku": "1.0.0-beta.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && vocs dev --host 0.0.0.0 --port 5173",
-    "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run mermaid-wrapper && pnpm run generate-printables && pnpm run generate-cert-data && vocs build",
-    "postdocs:build": "node utils/searchbar-indexing.js && node utils/sitemap-generator.js && node utils/generate-llms.js",
+    "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && vocs dev --host 0.0.0.0 --port 5173",
+    "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run generate-printables && pnpm run generate-cert-data && vocs build",
+    "postdocs:build": "node utils/sitemap-generator.cjs && node utils/generate-llms.cjs",
     "docs:preview": "vocs preview",
-    "generate-tags": "node utils/tags-fetcher.js",
-    "mermaid-wrapper": "node utils/mermaid-block-wrapper.js",
-    "generate-indexes": "node utils/generate-folder-indexes.js",
-    "generate-printables": "node utils/generate-printable-checklists.js",
-    "generate-cert-data": "node utils/generate-cert-data.js"
+    "generate-tags": "node utils/tags-fetcher.cjs",
+    "generate-indexes": "node utils/generate-folder-indexes.cjs",
+    "generate-printables": "node utils/generate-printable-checklists.cjs",
+    "generate-cert-data": "node utils/generate-cert-data.cjs"
   },
   "keywords": [],
   "author": "",
   "license": "CC-BY-SA-4.0",
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild",
+      "esbuild"
+    ],
+    "ignoredBuiltDependencies": [
       "just-install"
     ],
     "overrides": {
@@ -50,8 +53,8 @@
     "mermaid": "^11.15.0",
     "minisearch": "^7.2.0",
     "playwright": "^1.60.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "react-router-dom": "^7.15.1",
     "sharp": "^0.34.5",
     "uuid": "^14.0.0"

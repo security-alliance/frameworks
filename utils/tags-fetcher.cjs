@@ -10,7 +10,7 @@ const path = require('path');
 
 const workspaceRoot = process.cwd();
 const pagesDir = path.join(workspaceRoot, 'docs', 'pages');
-const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.tsx');
+const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.ts');
 
 // Simple frontmatter parser
 function parseFrontmatter(filePath) {
@@ -92,10 +92,18 @@ function computeHref(filePath) {
   return `/${noIndex}`;
 }
 
-// Extract URL segment from a link (e.g., '/community-management/overview' -> 'community-management')
+// Extract the segment that identifies a section, i.e. the folder that directly
+// contains its pages (the segment before the leaf page). This keeps nested
+// sections distinct instead of collapsing them onto their parent's prefix:
+//   '/community-management/overview'           -> 'community-management'
+//   '/guides/account-management/overview'      -> 'account-management'
+//   '/devsecops/isolation/execution-sandboxing' -> 'isolation'
+// The runtime (TagFilter) matches sections against the first two path segments
+// of each page, so this always lands at depth 0 or 1 as expected.
 function extractUrlSegment(link) {
   const parts = link.split('/').filter(Boolean);
-  return parts[0] || '';
+  if (parts.length <= 1) return parts[0] || '';
+  return parts[parts.length - 2];
 }
 
 // Extract allowed routes from sidebar config
@@ -142,7 +150,7 @@ function getAllowedRoutes() {
       
       if (routes.size > 0) allowedRoutes = routes;
     } catch (e) {
-      console.warn('Failed to parse vocs.config.tsx:', e.message);
+      console.warn('Failed to parse vocs.config.ts:', e.message);
     }
   }
 
@@ -202,7 +210,7 @@ function getAllTagsFromMDX(docsDir) {
   return { allTags: Array.from(tags).sort(), pageTagsMap };
 }
 
-// Extract section mappings from vocs.config.tsx
+// Extract section mappings from vocs.config.ts
 function extractSectionMappings() {
   try {
     const vocsConfigContent = fs.readFileSync(vocsConfigPath, 'utf-8');
@@ -267,7 +275,7 @@ function extractSectionMappings() {
     return sectionMappings;
     
   } catch (error) {
-    console.warn('Failed to extract section mappings from vocs.config.tsx:', error);
+    console.warn('Failed to extract section mappings from vocs.config.ts:', error);
     return {};
   }
 }

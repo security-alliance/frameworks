@@ -11,39 +11,7 @@ contributors:
     users: [dickson, mattaereal]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, MermaidRenderer } from '../../../../components'
-
-export const dnsFlowDiagram = `flowchart TD
-    Start([User types:<br/>example.com]) --> Cache{Check<br/>Cache?}
-
-    Cache -->|Found| Fast[Return IP instantly<br/>93.184.216.34]
-    Cache -->|Not Found| Recursive[Your ISP DNS<br/>Recursive Resolver]
-    
-    Recursive -->|1. Where is .com?| Root[Root Server<br/>.]
-    Root -->|2. Ask TLD| Recursive
-    
-    Recursive -->|3. Where is example.com?| TLD[TLD Server<br/>.com]
-    TLD -->|4. Ask Authoritative| Recursive
-    
-    Recursive -->|5. What's the IP?| Auth[Authoritative Server<br/>example.com]
-    Auth -->|6. IP: 93.184.216.34<br/>TTL: 24h| Recursive
-    
-    Recursive -->|7. Validated & Cached| Result[Return IP<br/>93.184.216.34]
-    
-    Fast --> Connect([Connect to Website])
-    Result --> Connect
-    
-    style Start fill:#e1f5ff
-    style Connect fill:#d4edda
-    style Root fill:#fff3cd
-    style TLD fill:#fff3cd
-    style Auth fill:#d1ecf1
-    style Recursive fill:#e7e7ff
-    style Fast fill:#a8e6cf
-    style Cache fill:#ffeaa7`;
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
 # DNS Basics & Common Attacks
 
@@ -61,10 +29,36 @@ resolver config, and provider):
 4. TLD registry servers
 5. Your authoritative nameservers
 
-<MermaidRenderer
-  id="dns-resolution-flow"
-  code={dnsFlowDiagram}
-/>
+```mermaid
+flowchart TD
+    Start([User types:<br/>example.com]) --> Cache{Check<br/>Cache?}
+
+    Cache -->|Found| Fast[Return IP instantly<br/>93.184.216.34]
+    Cache -->|Not Found| Recursive[Your ISP DNS<br/>Recursive Resolver]
+
+    Recursive -->|1. Where is .com?| Root[Root Server<br/>.]
+    Root -->|2. Ask TLD| Recursive
+
+    Recursive -->|3. Where is example.com?| TLD[TLD Server<br/>.com]
+    TLD -->|4. Ask Authoritative| Recursive
+
+    Recursive -->|5. What's the IP?| Auth[Authoritative Server<br/>example.com]
+    Auth -->|6. IP: 93.184.216.34<br/>TTL: 24h| Recursive
+
+    Recursive -->|7. Validated & Cached| Result[Return IP<br/>93.184.216.34]
+
+    Fast --> Connect([Connect to Website])
+    Result --> Connect
+
+    style Start fill:#e1f5ff
+    style Connect fill:#d4edda
+    style Root fill:#fff3cd
+    style TLD fill:#fff3cd
+    style Auth fill:#d1ecf1
+    style Recursive fill:#e7e7ff
+    style Fast fill:#a8e6cf
+    style Cache fill:#ffeaa7
+```
 
 Each step represents a potential attack surface where responses can be intercepted, modified, or poisoned. This
 multi-step process creates numerous opportunities for attackers to redirect users to malicious sites while their browser
@@ -82,5 +76,5 @@ still shows the correct domain name.
 - DNS Cache Poisoning: Injecting forged responses into a resolver's cache to redirect subsequent queries
 
 ---
-</TagProvider>
+
 <ContributeFooter />

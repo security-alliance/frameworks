@@ -12,7 +12,7 @@ const path = require('path');
 const matter = require('gray-matter');
 
 const CERTS_DIR = path.join(__dirname, '../docs/pages/certs');
-const OUTPUT_DIR = path.join(__dirname, '../docs/public/printable');
+const OUTPUT_DIR = path.join(__dirname, '../public/printable');
 
 // Certification metadata for subtitles
 const CERT_META = {
@@ -409,7 +409,7 @@ function main() {
     generated++;
   });
 
-  console.log(`✅ Generated ${generated} printable checklists in docs/public/printable/`);
+  console.log(`✅ Generated ${generated} printable checklists in public/printable/`);
 }
 
 main();

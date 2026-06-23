@@ -1,23 +1,21 @@
-import { defineConfig } from 'vocs'
+import { createElement, Fragment } from 'react'
+import { defineConfig } from 'vocs/config'
 
 const MAIN_SITE_URL = 'https://frameworks.securityalliance.org'
 
 const isMainBranch = process.env.CF_PAGES_BRANCH === 'main'
 
 const config = {
+  srcDir: 'docs',
+  renderStrategy: 'full-static' as const,
   head({ path }: { path: string }) {
     const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
-    if (!isMainBranch && devOnlyLinks.has(cleanPath)) return <></>
+    if (!isMainBranch && devOnlyLinks.has(cleanPath)) return createElement(Fragment)
     const canonicalUrl = `${MAIN_SITE_URL}${cleanPath || '/'}`
-    return <link rel="canonical" href={canonicalUrl} />
-  },
-  vite: {
-    define: {
-      __IS_MAIN_BRANCH__: JSON.stringify(isMainBranch)
-    }
+    return createElement('link', { rel: 'canonical', href: canonicalUrl })
   },
   banner: {
-    content: '***This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.***',
+    content: 'This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.',
     height: '30px',
     backgroundColor: '#8b5cf6',
     textColor: 'white',
@@ -28,9 +26,7 @@ const config = {
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
   logoUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full.svg',
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
-  ogImageUrl: {
-    '/': 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png'
-  },
+  ogImageUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png',
   checkDeadlinks: "warn" as const,
   sidebar: [
     {
@@ -631,7 +627,7 @@ const config = {
     },
   ],
   editLink: {
-    pattern: 'https://github.com/security-alliance/frameworks/edit/develop/docs/pages/:path',
+    link: 'https://github.com/security-alliance/frameworks/edit/develop/docs/pages/:path',
     text: 'Suggest changes to this page'
   }
 }

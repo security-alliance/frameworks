@@ -33,7 +33,7 @@
   --border-state-no: rgba(255, 255, 255, 0.2);
 }
 
-:root:not(.dark) {
+:root:not([data-vocs-theme='dark']) {
   /* Text colors (light mode) */
   --color-text-muted: #6b7280;
   --color-text-primary: #1f2937;
@@ -66,7 +66,7 @@
   --state-na-text: var(--color-neutral-text);
 }
 
-:root:not(.dark) .control-list {
+:root:not([data-vocs-theme='dark']) .control-list {
   --state-na-bg: var(--color-neutral-light);
   --state-na-border: var(--color-neutral);
 }
@@ -107,7 +107,7 @@
   border-radius: 0 6px 6px 0;
 }
 
-:root:not(.dark) .control-baselines {
+:root:not([data-vocs-theme='dark']) .control-baselines {
   background: rgba(67, 57, 219, 0.04);
 }
 
@@ -295,7 +295,7 @@
   transition: width 0.3s ease;
 }
 
-:root:not(.dark) .section-progress-fill-na {
+:root:not([data-vocs-theme='dark']) .section-progress-fill-na {
   background: var(--color-neutral-light);
 }
 
@@ -393,7 +393,7 @@
   font-weight: 500;
 }
 
-:root:not(.dark) .cert-error-message {
+:root:not([data-vocs-theme='dark']) .cert-error-message {
   background: rgba(239, 68, 68, 0.05);
   border-color: rgba(239, 68, 68, 0.2);
   color: #dc2626;

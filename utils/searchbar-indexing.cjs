@@ -8,7 +8,7 @@
   - Builds a MiniSearch index **only** from the files listed in the sidebar (i.e., the ones
     we explicitly want indexed).
   - Respects branch-based filtering: on main branch, excludes pages marked with dev: true
-    (matching the sidebar filtering logic in vocs.config.tsx).
+    (matching the sidebar filtering logic in vocs.config.ts).
   - Parses MDX files as plain text, extracting headings and content.
   - Generates a clean search index that includes all pages — even those with imports.
   - After the build, it overwrites Vocs' generated `search-index-<hash>.json`
@@ -19,7 +19,7 @@
   2) Locate the generated search index file by scanning common output paths:
      - dist/.vocs                             (Cloudflare Pages build output)
      - docs/dist/.vocs                        (local build output)
-  3) Parse vocs.config.tsx sidebar to collect allowed routes (excluding dev: true on main).
+  3) Parse vocs.config.ts sidebar to collect allowed routes (excluding dev: true on main).
   4) Walk docs/pages and extract sections using markdown headings (#, ##, etc.).
   5) Filter to only allowed routes and build a MiniSearch index (code tags stripped).
   6) Overwrite the found `search-index-<hash>.json` and mirror it across other .vocs dirs.
@@ -35,7 +35,7 @@ const pagesDir = path.join(workspaceRoot, 'docs', 'pages');
 const distVocsDir = path.join(workspaceRoot, 'docs', 'dist', '.vocs');
 const cfPagesDistVocsDir = path.join(workspaceRoot, 'dist', '.vocs');
 const cfPagesStaticDir = path.join(workspaceRoot, 'dist');
-const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.tsx');
+const vocsConfigPath = path.join(workspaceRoot, 'vocs.config.ts');
 
 function walkFiles(dir, out = []) {
   // Recursively collect .mdx files
@@ -201,7 +201,7 @@ async function main() {
     });
   }
 
-  // Check if we're on main branch (same logic as vocs.config.tsx filterDevItems)
+  // Check if we're on main branch (same logic as vocs.config.ts filterDevItems)
   const isMainBranch = process.env.CF_PAGES_BRANCH === 'main';
   console.log(`Branch check: ${isMainBranch ? 'main (filtering dev: true pages)' : 'develop (including all pages)'}`);
 
@@ -245,12 +245,12 @@ async function main() {
       
       if (routes.size > 0) allowedRoutes = routes;
     } catch (e) {
-      console.warn('Failed to parse vocs.config.tsx:', e.message);
+      console.warn('Failed to parse vocs.config.ts:', e.message);
     }
   }
   if (!allowedRoutes) {
     // Fallback: walk dist/static directory and collect all directories that contain index.html
-    // (This happens when vocs.config.tsx parsing fails or yields no routes)
+    // (This happens when vocs.config.ts parsing fails or yields no routes)
     const staticDir = fs.existsSync(cfPagesStaticDir) ? cfPagesStaticDir : null;
     
     if (staticDir) {

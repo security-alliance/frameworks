@@ -17,6 +17,7 @@ function escapeXml(str) {
 
 function findDistDir() {
   const candidates = [
+    path.join(workspaceRoot, 'dist', 'public'),
     path.join(workspaceRoot, 'docs', 'dist'),
     path.join(workspaceRoot, 'dist'),
   ];
@@ -24,7 +25,7 @@ function findDistDir() {
 }
 
 function extractSidebarLinks() {
-  const configPath = path.join(workspaceRoot, 'vocs.config.tsx');
+  const configPath = path.join(workspaceRoot, 'vocs.config.ts');
   if (!fs.existsSync(configPath)) return [];
 
   const lines = fs.readFileSync(configPath, 'utf8').split('\n');
