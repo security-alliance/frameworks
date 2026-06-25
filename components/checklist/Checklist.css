@@ -54,10 +54,17 @@
   accent-color: var(--color-primary, #4339db);
 }
 
-/* Strikethrough applied only to the label span, never cascades into nested lists. */
-.checklist .checklist-label.is-checked {
+/* Strike through and mute a checked item, but reset both on its nested list so
+   the strikethrough never carries into sub-items. */
+.checklist li.is-checked {
   text-decoration: line-through;
   color: var(--color-text-muted);
+}
+
+.checklist li.is-checked > ul,
+.checklist li.is-checked > ol {
+  text-decoration: none;
+  color: var(--vocs-text-color-primary, currentColor);
 }
 
 /* Tighten paragraph wrappers that loose lists add around item text. */

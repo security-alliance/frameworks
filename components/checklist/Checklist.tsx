@@ -36,30 +36,21 @@ export function Checklist({ id, children }: ChecklistProps) {
       );
       if (!checkbox) return;
 
-      // Wrap the label text (everything except the checkbox and nested lists)
-      // in a span so strikethrough only paints over the label, not nested items.
-      let labelSpan = li.querySelector<HTMLSpanElement>(":scope > .checklist-label");
-      if (!labelSpan) {
-        labelSpan = document.createElement("span");
-        labelSpan.className = "checklist-label";
-        const toMove: Node[] = [];
-        li.childNodes.forEach((node) => {
-          if (node !== checkbox && !(node instanceof HTMLUListElement)) {
-            toMove.push(node);
-          }
-        });
-        toMove.forEach((node) => labelSpan!.appendChild(node));
-        checkbox.insertAdjacentElement("afterend", labelSpan);
-      }
+      let labelText = "";
+      li.childNodes.forEach((node) => {
+        if (node === checkbox) return;
+        if (node instanceof HTMLUListElement || node instanceof HTMLOListElement) return;
+        labelText += node.textContent ?? "";
+      });
 
-      const key = `checklist:${id}:${slugify(labelSpan.textContent ?? "")}`;
+      const key = `checklist:${id}:${slugify(labelText)}`;
 
       checkbox.disabled = false;
 
       try {
         if (localStorage.getItem(key) === "true") {
           checkbox.checked = true;
-          labelSpan.classList.add("is-checked");
+          li.classList.add("is-checked");
         }
       } catch {}
 
@@ -68,7 +59,7 @@ export function Checklist({ id, children }: ChecklistProps) {
         try {
           localStorage.setItem(key, checked ? "true" : "false");
         } catch {}
-        labelSpan!.classList.toggle("is-checked", checked);
+        li.classList.toggle("is-checked", checked);
       };
 
       checkbox.addEventListener("change", handler);
