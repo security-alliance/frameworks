@@ -32,6 +32,7 @@ CCIP
 CCPA
 CCSS
 Certora
+cicd
 CIS
 CISA
 Clippy
@@ -128,6 +129,7 @@ Gnosis
 GoDaddy
 GOkart
 Golangci
+GrapheneOS
 gosec
 govulncheck
 gpgsign
@@ -276,6 +278,7 @@ reimage
 reinit
 Rekt
 renderer
+reprompt
 requestor
 resolvability
 Resolvers
