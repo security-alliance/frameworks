@@ -1,17 +1,23 @@
-## Frameworks PR Checklist
-
-Thank you for contributing to the Security Frameworks! Before you open a PR, make sure to read [information for contributors](https://frameworks.securityalliance.dev/contribute/contributing) and take a look at the following checklist:
-
-- [ ] Describe your changes, substitute this text with the information
-- [ ] If you are touching an existing piece of content, tag current contributors from the attribution list
-- [ ] If there is a steward for that framework, ask the steward to review it
-- [ ] If you're modifying the general outline, make sure to update it in the `vocs.config.ts` adding the `dev: true` parameter
-- [ ] If you need feedback for your content from the wider community, share the PR in our Discord
-- [ ] Review changes to ensure there are no typos; see instructions below.
-
 <!--
-ℹ️ Checking for typos locally
-1. Install [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
-2. Install [just](https://github.com/casey/just)
-3. Run `npx just lint`
+Thanks for contributing! New here? Skim the contributor guide first:
+https://frameworks.securityalliance.dev/contribute/contributing
 -->
+
+### What does this PR change?
+<!-- A short summary: what you changed and why. -->
+<!-- Opened an issue first, or completing one? Add "Closes #123" here so the issue auto-closes when this PR merges. -->
+
+### Type of change
+- [ ] New content
+- [ ] Edit to existing content
+- [ ] Outline / structure change
+- [ ] Typo or formatting fix
+- [ ] Tooling / config
+
+### If applicable
+- [ ] Editing existing content: tagged the current contributors from the attribution list
+- [ ] Framework has a steward: asked them to review
+- [ ] Outline change: updated `vocs.config.ts` with the `dev: true` parameter
+- [ ] Want community feedback: shared this PR in our Discord
+
+Stuck on anything? Just write it here and we're happy to help.
