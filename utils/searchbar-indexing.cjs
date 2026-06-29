@@ -183,4 +183,9 @@ function main() {
   );
 }
 
-main();
+try {
+  main();
+} catch (err) {
+  console.error(`Search index: failed to filter index: ${err.message}`);
+  process.exit(1);
+}
