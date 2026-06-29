@@ -14,7 +14,6 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
-
 # Discord Security
 
 <TagList tags={frontmatter.tags} />
@@ -84,6 +83,7 @@ These settings and practices apply to server administrators with elevated privil
 <Checklist id="safety-setup">
   - [ ] Require 2FA for moderation > **Enabled**
   - This ensures all moderators have an extra layer of security
+
 </Checklist>
 - Safety Setup > Verification Level:
 <Checklist id="safety-setup-2">
@@ -118,6 +118,7 @@ These settings and practices apply to server administrators with elevated privil
   - [ ] Add to the existing automod rule to block keywords in a user's name: Support, Bot, Admin, Tech, Helpdesk, etc.
   - [ ] Create a private channel that mods, team, and admins have visibility to and set each AutoMod rule to send
     logs to that channel for review
+
 </Checklist>
 
 #### Server Overview
@@ -137,6 +138,7 @@ These settings and practices apply to server administrators with elevated privil
     Server**, **Administrator**
   - [ ] Remove any lingering or overly broad permissions, and any roles with excess or unintended members
   - [ ] Check channel-level permission overrides on private channels
+
 </Checklist>
 
 > **Note on Role Permissions:** For each role, carefully review the 32 available permissions. Key permissions to
@@ -161,6 +163,7 @@ These settings and practices apply to server administrators with elevated privil
 <Checklist id="integrations">
   - [ ] Review each bot's permissions and remove unnecessary permissions
   - [ ] Remove any unnecessary integrations & reevaluate necessity of integrations with excessive permissions
+
 </Checklist>
 - Server Settings > Integrations > Manage Bot/App > **Roles & Members** / **Channels**:
 <Checklist id="integrations-2">
@@ -186,6 +189,7 @@ These settings and practices apply to server administrators with elevated privil
 - Server Settings > Invites:
 <Checklist id="invites">
   - [ ] Review and delete unnecessary or old invites regularly
+
 </Checklist>
 
 #### Privacy Settings
@@ -193,6 +197,7 @@ These settings and practices apply to server administrators with elevated privil
 - Server Settings > Privacy Settings:
 <Checklist id="privacy-settings">
   - [ ] Disable **Direct Messages** — this prevents users from DMing other members in this server
+
 </Checklist>
 
 #### Community Features
@@ -202,6 +207,7 @@ These settings and practices apply to server administrators with elevated privil
   - [ ] Enable the Community Feature
   - Unlocks tools like membership screening, server insights, welcome screen, and discovery settings. Helps maintain
     a structured, secure environment by surfacing official rules and critical info to newcomers.
+
 </Checklist>
 - Server Settings > Server Insights:
 <Checklist id="community-features-2">

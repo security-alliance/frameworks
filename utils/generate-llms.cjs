@@ -367,4 +367,4 @@ for (const folderName of frameworkFolders) {
 const routingIndex = buildRoutingIndex(frameworkMeta);
 fs.writeFileSync(path.join(distDir, 'llms.txt'), routingIndex);
 
-console.log(`Done. ${frameworkFolders.length} framework index files + ${totalPageFiles} per-page files + routing index written to ${distDir}`);
+console.log(`llms.txt: ${frameworkFolders.length} frameworks, ${totalPageFiles} pages.`);

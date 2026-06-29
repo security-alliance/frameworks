@@ -17,7 +17,6 @@ build command.
 
 import { ContributeFooter } from '../../../components'
 
-
 # **Contributing guidelines**
 
 The Security Frameworks is an open and collaborative initiative. Whether you are part of the Security Alliance or not,
@@ -92,7 +91,7 @@ The workflow:
 3. **Make your changes** in MDX on your fork. Add yourself to the file's `contributors` field in the frontmatter, and
    create your profile in [`docs/pages/config/contributors.json`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/contributors.json)
    if you do not already have one. This is how attribution works on the site.
-4. **Update the sidebar** (`vocs.config.tsx`) so your new page appears in site navigation. New content should always
+4. **Update the sidebar** (`vocs.config.ts`) so your new page appears in site navigation. New content should always
    be added with the `dev: true` flag, which keeps it on the development site only. Reviewed content gets promoted to
    the stable site periodically when we merge `develop` into `main`. See [Sidebar / Navigation](#sidebar--navigation)
    below.
@@ -253,7 +252,7 @@ and worked examples) live in the [page template](https://github.com/security-all
 ### Sidebar / Navigation
 
 Because of how we handle the `.org` and `.dev` domains in different branches, when contributing **new pages** you must
-also **update `vocs.config.tsx`** so that the page appears in the site's sidebar. New content should always be added
+also **update `vocs.config.ts`** so that the page appears in the site's sidebar. New content should always be added
 with `dev: true`. Reviewed content gets promoted to the stable site periodically when we merge `develop` into `main`.
 
 Example of a category with multiple pages:

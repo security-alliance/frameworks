@@ -13,7 +13,6 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
-
 # Web3 Supply Chain Threats
 
 <TagList tags={frontmatter.tags} />
@@ -184,8 +183,8 @@ broken from the outside.
 Running nodes internally is a possible path to reduce reliance on third parties, but it requires significant
 resources and a strong security posture to do well.
 
-Availability is addressed by reliable monitoring and automatic failover across independently operated providers — when one degrades or
-drops, traffic shifts without manual intervention.
+Availability is addressed by reliable monitoring and automatic failover across independently operated providers — when
+one degrades or drops, traffic shifts without manual intervention.
 
 Integrity is harder. The base defense is cross-validation, applied at increasing strictness:
 
@@ -201,8 +200,10 @@ Integrity is harder. The base defense is cross-validation, applied at increasing
   approximately $292 million in rsETH from KelpDAO's LayerZero-powered bridge. The attackers compromised RPC nodes
   run by LayerZero Labs to return forged transaction data. With KelpDAO's 1-of-1 DVN configuration, a fabricated
   cross-chain message claiming to originate from Unichain was accepted as valid, and the OFTAdapter released 116,500
-  rsETH. LayerZero's DVN was configured to cross-check across multiple RPCs, but attackers compromised two op-geth nodes and caused the healthy endpoints to be unreachable, forcing the DVN onto the poisoned ones. The incident illustrates that RPC integrity, not just availability, is
-  part of the security boundary for any system that derives state from off-chain calls.
+  rsETH. LayerZero's DVN was configured to cross-check across multiple RPCs, but attackers compromised two op-geth
+  nodes and caused the healthy endpoints to be unreachable, forcing the DVN onto the poisoned ones. The incident
+  illustrates that RPC integrity, not just availability, is part of the security boundary for any system that derives
+  state from off-chain calls.
 - **Infura outage (November 2020).** Infura's nodes were running outdated Geth versions when a silently patched
   consensus bug caused a chain split. MetaMask (which defaults to Infura) stopped working for hours. Binance, Upbit,
   and other exchanges halted ETH withdrawals. Uniswap, MakerDAO, and Compound were all affected. No funds were stolen,

@@ -12,15 +12,18 @@ contributors:
 
 import { TagList, AttributionList } from '../../../components'
 
-
 # Contributing to SEAL Certifications
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Like the rest of Frameworks, SEAL Certifications is open-source and welcomes community contributions. Because the certification carries more weight than general docs, changes go through a more stringent review, and final decisions are made by the SEAL Certifications initiative lead.
+Like the rest of Frameworks, SEAL Certifications is open-source and welcomes community contributions. Because the
+certification carries more weight than general docs, changes go through a more stringent review, and final decisions
+are made by the SEAL Certifications initiative lead.
 
-**This repository is the source of truth for all certification controls.** The controls for each certification category (Multisig Ops, Treasury Ops, Incident Response, and so on) live in the `cert:` block at the top of its page, for example [`sfc-multisig-ops.mdx`](/certs/sfc-multisig-ops). To change what the certification requires, change it here.
+**This repository is the source of truth for all certification controls.** The controls for each certification category
+(Multisig Ops, Treasury Ops, Incident Response, and so on) live in the `cert:` block at the top of its page, for
+example [`sfc-multisig-ops.mdx`](/certs/sfc-multisig-ops). To change what the certification requires, change it here.
 
 ## What You Can Contribute
 
@@ -32,19 +35,25 @@ The section structure within each certification category is fixed; new controls 
 
 ## How to Contribute
 
-- **Submit a pull request** to this repo. See the general [Contributing guide](/contribute/contributing) for setup, branching, commit signing, and attribution.
-- **For larger ideas** (a new certification category, or restructuring), open an issue with the `certifications` tag first so we can align before any code is written.
+- **Submit a pull request** to this repo. See the general [Contributing guide](/contribute/contributing) for setup,
+  branching, commit signing, and attribution.
+- **For larger ideas** (a new certification category, or restructuring), open an issue with the `certifications` tag
+  first so we can align before any code is written.
 
-Feedback from auditors running real engagements is especially valuable. If a control or baseline doesn't hold up in practice, please tell us; a PR is even better.
+Feedback from auditors running real engagements is especially valuable. If a control or baseline doesn't hold up in
+practice, please tell us; a PR is even better.
 
 Reach out directly through:
+
 - Email: [certs@securityalliance.org](mailto:certs@securityalliance.org)
 - Discord: [Security Alliance server](http://discord.gg/securityalliance)
 
 ## Versioning and Releases
 
 - Each certification category page carries a **`version`** in its header.
-- **Control IDs** (such as `ms-2.1.2`) are kept stable across revisions wherever possible. When a control is renumbered, it's called out in the changelog so anyone tracking controls can re-map cleanly.
-- Changes are batched into periodic **named releases** and recorded in the [changelog](/certs/changelog), which summarizes what changed, when, and why.
-- Releases are named after **seal species**, advancing alphabetically (Baikal, Bearded, Crabeater, Elephant, and so on), so a given state of the framework can be referred to by name as well as by version.
-
+- **Control IDs** (such as `ms-2.1.2`) are kept stable across revisions wherever possible. When a control is
+  renumbered, it's called out in the changelog so anyone tracking controls can re-map cleanly.
+- Changes are batched into periodic **named releases** and recorded in the [changelog](/certs/changelog), which
+  summarizes what changed, when, and why.
+- Releases are named after **seal species**, advancing alphabetically (Baikal, Bearded, Crabeater, Elephant, and so
+  on), so a given state of the framework can be referred to by name as well as by version.
