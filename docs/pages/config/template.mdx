@@ -64,8 +64,8 @@ contributors:
   per major angle of the topic. Each sub-page should be self-contained enough
   that a reader can land on it directly without needing to read the others first.
 
-  Do NOT remove the imports and the components below (e.g. <TagProvider> or <ContributeFooter>).
-  They are required for every page to render correctly.
+  Keep the import and the components below: <TagList /> and <AttributionList />
+  near the top, and <ContributeFooter /> at the bottom.
 
   For the full contribution workflow (environment setup, signed commits,
   sidebar updates, build commands), see docs/pages/contribute/contributing.
@@ -124,10 +124,7 @@ contributors:
   If your page uses interactive checklists, add Checklist to the import:
   import { ..., Checklist } from '../../../components'
 */}
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # Title of this Page
 
@@ -248,5 +245,4 @@ here", no "this article".]
 
 ---
 
-</TagProvider>
 <ContributeFooter />

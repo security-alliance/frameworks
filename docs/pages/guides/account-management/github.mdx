@@ -8,10 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # GitHub Security
 
@@ -47,6 +44,7 @@ accounts.
     - [ ]  GitHub Apps > Review and remove any unnecessary
     - [ ]  OAuth Apps > Review and remove any unnecessary
     - [ ]  Personal access tokens > Review and remove any unnecessary
+
 </Checklist>
 
 ---
@@ -101,6 +99,7 @@ protections:
     - **Targets**: All branches
     - **Rules**:
       - Block force pushes > **On**
+
 </Checklist>
 
 #### Actions Security
@@ -116,6 +115,7 @@ protections:
   - [ ]  Workflow permissions > **Read repository contents and packages permissions**
     - [ ]  Allow GitHub Actions to create and approve pull requests > **Off**
   - [ ]  Access > **Not accessible**
+
 </Checklist>
 
 #### Security Features
@@ -157,6 +157,7 @@ protections:
     - [ ]  Allow members to delete or transfer repositories for this organization > **Off**
     - [ ]  Allow repository administrators to delete issues for this organization > **Off**
   - [ ]  Member team permissions > Allow members to create teams > **Off**
+
 </Checklist>
 
 #### Organization Rules
@@ -171,6 +172,7 @@ protections:
     - **Targets > Target repositories**: All branches
     - **Rules > Branch rules**:
       - Block force pushes > **On**
+
 </Checklist>
 
 #### Project and Actions Settings
@@ -217,6 +219,7 @@ protections:
     - [ ]  Use as default for newly created repositories > **All repositories**
     - [ ]  Enforce configurations > **Enforce**
   - [ ]  **Save configuration** and **Apply to > All repositories**
+
 </Checklist>
 
 #### Access Management
@@ -257,5 +260,4 @@ It is recommended to regularly review audit logs for your organization at Logs >
 
 ---
 
-</TagProvider>
 <ContributeFooter />

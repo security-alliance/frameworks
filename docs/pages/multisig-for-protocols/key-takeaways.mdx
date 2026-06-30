@@ -102,8 +102,9 @@ and verify the function, target, and parameters match what was described. Watch 
 
 Set up a [delegated proposer](/multisig-for-protocols/setup-and-configuration#delegated-proposer) for Safe multisigs.
 Hash verification tools rely on the Safe API, which only has data after a transaction is proposed. Without a delegated
-proposer, the first signer faces additional challenges to verify what they are signing. For a related reason, avoid "sign and execute" for the final signature, as verification tools do not provide the
-expected hashes for this combined action. Instead, have all signers sign only, then have a non-signer execute the
+proposer, the first signer faces additional challenges to verify what they are signing. For a related reason, avoid
+"sign and execute" for the final signature, as verification tools do not provide the expected hashes for this combined
+action. Instead, have all signers sign only, then have a non-signer execute the
 fully-signed transaction.
 
 ## 11. Hardware Wallets, Backup Infrastructure, and Drills

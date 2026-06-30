@@ -8,10 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Sentry Security
 
@@ -43,6 +40,7 @@ These settings apply to your personal Sentry account. All team members and admin
   - **API >**
     - [ ]  Applications > **Review and remove any unnecessary or unrecognized**
     - [ ]  User Auth Tokens > **Review and remove any unnecessary or unrecognized**
+
 </Checklist>
 
 ## For Team Members
@@ -71,6 +69,7 @@ These settings and practices apply to Sentry organization administrators with el
   - **Data Scrubbing >**
     - [ ] Prevent Storing of IP Addresses > **Off**
   - [ ] Integrations > **Review and remove any unnecessary or unrecognized**
+
 </Checklist>
 
 ### Developer Settings
@@ -79,9 +78,9 @@ These settings and practices apply to Sentry organization administrators with el
 <Checklist id="developer-settings">
   - [ ] Organization Tokens > **Review and remove any unnecessary or unrecognized**
   - [ ] Custom Integrations > **Review and remove any unnecessary or unrecognized**
+
 </Checklist>
 
 ---
 
-</TagProvider>
 <ContributeFooter />

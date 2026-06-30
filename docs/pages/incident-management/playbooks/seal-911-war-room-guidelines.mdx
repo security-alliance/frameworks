@@ -9,10 +9,7 @@ contributors:
     users: [SEAL]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # SEAL 911
 
@@ -47,9 +44,10 @@ the security researchers.
 1. **Assign Key Roles to War Room Members**:
 <Checklist id="perform-in-parallel-by-role">
    - [ ] Assign members to specific roles.
+
 </Checklist>
 
-2. **Analysis**:
+1. **Analysis**:
 <Checklist id="perform-in-parallel-by-role-2">
    - [ ] Scope the impact of the attack.
    - [ ] Gather Transactions Involved.
@@ -58,9 +56,10 @@ the security researchers.
    - [ ] Gather Attacker Information.
    - [ ] Investigate the issue and update the Issue Description.
    - [ ] Propose workable solutions.
+
 </Checklist>
 
-3. **Protocol actions**:
+1. **Protocol actions**:
 <Checklist id="perform-in-parallel-by-role-3">
    - [ ] Take immediate corrective/preventative actions to prevent further loss of funds.
    - [ ] Pause contracts if possible.
@@ -68,16 +67,18 @@ the security researchers.
    - [ ] Prioritize proposed solutions.
    - [ ] Validate and execute the solution.
    - [ ] Prepare monitoring alerts for situations that require future actions.
+
 </Checklist>
 
-4. **Web actions**:
+1. **Web actions**:
 <Checklist id="perform-in-parallel-by-role-4">
    - [ ] Disable deposits and/or withdrawals as needed in the web UI.
    - [ ] Enable front-end IP or Address blacklisting.
    - [ ] Create front-end for any user actions necessary (approval revoking, fund migrating, etc.).
+
 </Checklist>
 
-5. **Communications**:
+1. **Communications**:
 <Checklist id="perform-in-parallel-by-role-5">
    - [ ] Identify social platforms that communications on the incident must be sent to.
    - [ ] Prepare messages for incident communication internally and externally.
@@ -85,6 +86,7 @@ the security researchers.
    - [ ] Notify block explorers (like Etherscan) for attacker address labeling.
    - [ ] Continuously monitor social media for users providing additional information that aids whitehat efforts.
    - [ ] Monitor War Room efforts and maintain the Event Timeline.
+
 </Checklist>
 
 ### After all of the above is complete, consider Post Incident Actions
@@ -283,5 +285,4 @@ Funds at Risk: [Estimated Amount in USD or Token]
 
 ---
 
-</TagProvider>
 <ContributeFooter />

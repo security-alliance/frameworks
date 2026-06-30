@@ -9,7 +9,7 @@
   --popup-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   --popup-text: #e5e7eb;
 
-  :root:not(.dark) & {
+  :root:not([data-vocs-theme='dark']) & {
     --card-bg: rgba(0, 0, 0, 0.02);
     --card-border: rgba(0, 0, 0, 0.08);
     --card-text: #1f2937;

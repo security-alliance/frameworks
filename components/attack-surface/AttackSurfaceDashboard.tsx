@@ -1,5 +1,7 @@
-import { useState, useCallback, useEffect, useMemo, useRef } from "react";
-import { Link } from "react-router-dom";
+"use client";
+
+import { useState, useCallback, useEffect, useMemo, useRef, type ComponentProps } from "react";
+import { Link } from "vocs";
 import { threatVectors, severityMeta, type PostureState, type ThreatVector } from "./threatData";
 import "./AttackSurface.css";
 
@@ -73,11 +75,13 @@ function wrapLabel(title: string): string[] {
   return lines;
 }
 
+const round2 = (n: number) => Math.round(n * 100) / 100;
+
 function nodePosition(index: number, total: number) {
   const angle = ((2 * Math.PI) / total) * index - Math.PI / 2;
   return {
-    x: CX + RADIUS * Math.cos(angle),
-    y: CY + RADIUS * Math.sin(angle),
+    x: round2(CX + RADIUS * Math.cos(angle)),
+    y: round2(CY + RADIUS * Math.sin(angle)),
   };
 }
 
@@ -332,7 +336,7 @@ function DetailCard({
           ))}
         </div>
         <Link
-          to={vector.primaryLink}
+          to={vector.primaryLink as ComponentProps<typeof Link>["to"]}
           className="as-detail-cta"
         >
           {vector.primaryLinkLabel} &rarr;

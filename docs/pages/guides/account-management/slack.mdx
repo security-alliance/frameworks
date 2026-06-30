@@ -8,10 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, Checklist } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Slack Security
 
@@ -54,6 +51,7 @@ These settings and practices apply to Slack workspace administrators with elevat
     - [ ]  Joining This Workspace > **Review auto-approve domains** or **disable**
   - **Permissions >**
     - [ ]  Invitations > **Require Admin Approval**
+
 </Checklist>
 
 ### Member Management
@@ -61,6 +59,7 @@ These settings and practices apply to Slack workspace administrators with elevat
 - Manage members (\<your-workspace\>.slack.com/admin)
 <Checklist id="member-management">
   - [ ]  Review member list and Account type for each member
+
 </Checklist>
 
 ### Security Settings
@@ -72,9 +71,9 @@ These settings and practices apply to Slack workspace administrators with elevat
       - [ ]  Allowed 2FA methods > **Authenticator apps only**
   - **Device Settings >**
     - [ ]  Jailbroken or rooted devices > **Not allowed**
+
 </Checklist>
 
 ---
 
-</TagProvider>
 <ContributeFooter />

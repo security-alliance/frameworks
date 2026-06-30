@@ -223,20 +223,24 @@ export function Contributors() {
             key={group.label}
             className={`contributors-group ${group.label.toLowerCase().replace(' ', '-')}-group`}
           >
-            <h2 className="vocs_H2 vocs_Heading">
-              <div id={headingSlug} className="vocs_Heading_slugTarget"></div>
+            <h2 id={headingSlug} data-v="">
               {group.label}
-              <a
-                className="vocs_Anchor vocs_Autolink"
-                aria-hidden="true"
-                tabIndex={-1}
-                href={`#${headingSlug}`}
-              >
-                <div
-                  data-autolink-icon="true"
-                  className="vocs_Div vocs_AutolinkIcon"
-                  style={{ '--vocs_AutolinkIcon_iconUrl': 'url(/.vocs/icons/link.svg)' } as React.CSSProperties}
-                ></div>
+              <a className="heading-anchor" href={`#${headingSlug}`} aria-label="Link to this section">
+                <svg
+                  className="heading-anchor-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="0.75em"
+                  height="0.75em"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                </svg>
               </a>
             </h2>
 

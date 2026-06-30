@@ -1,196 +1,60 @@
-/* Tag Filter Component Styling */
+/* Tag Filter Component - rendered in the vocs 2.0 SidebarHeader slot (top of
+   the sidebar). It flows in-document, so it folds into the mobile drawer
+   automatically and needs no fixed positioning or per-width media queries. */
 .tag-filter {
-  position: fixed;
-  right: 850px;
-  top: calc(10px + var(--vocs_Banner_bannerHeight, 0px));
-  z-index: 9999;
+  position: relative;
+  width: 100%;
 }
 
-/* Responsive positioning for different screen sizes */
-@media (max-width: 1900px) {
-  .tag-filter {
-    right: 830px;
-  }
+/* Pin the filter to the top of the sidebar so it stays visible while the nav
+   list scrolls under it. The sidebar header is a direct child of the scrolling
+   container ([data-v-sidebar-container] is overflow-y-auto), so position:sticky
+   anchors to it. The opaque background matches the body/sidebar background so
+   scrolling links do not show through, and padding-bottom replaces vocs's mb-4
+   (an unlayered rule, so it overrides the vocs:mb-4 utility) to cover the gap. */
+[data-v-sidebar-header] {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  background: var(--vocs-color-background-primary);
 }
 
-@media (max-width: 1810px) {
-  .tag-filter {
-    right: 800px;
-  }
-}
-
-@media (max-width: 1760px) {
-  .tag-filter {
-    right: 750px;
-  }
-}
-
-@media (max-width: 1650px) {
-  .tag-filter {
-    right: 700px;
-  }
-}
-
-@media (max-width: 1560px) {
-  .tag-filter {
-    right: 650px;
-  }
-}
-
-@media (max-width: 1470px) {
-  .tag-filter {
-    right: 600px;
-  }
-}
-
-@media (max-width: 1380px) {
-  .tag-filter {
-    right: 550px;
-  }
-}
-
-@media (max-width: 1330px) {
-  .tag-filter {
-    right: 500px;
-  }
-}
-
-@media (max-width: 1280px) {
-  .tag-filter {
-    right: 450px;
-  }
-}
-
-@media (max-width: 1220px) {
-  .tag-filter {
-    right: 400px;
-  }
-}
-
-@media (max-width: 1175px) {
-  .tag-filter {
-    right: 350px;
-  }
-}
-
-@media (max-width: 1130px) {
-  .tag-filter {
-    right: 300px;
-  }
-}
-
-/* For smaller screens, position filter inline with content */
-@media (max-width: 1080px) {
-  .tag-filter {
-    position: static;
-    right: auto;
-    top: auto;
-    z-index: auto;
-    display: inline-block;
-    margin: 0 0 16px 0;
-  }
-
-  /* Fix dropdown positioning for static positioning */
-  .tag-filter-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: auto;
-    width: 320px;
-    max-width: 90vw;
-    /* Prevent overflow on very small screens */
-  }
-
-  /* Ensure dropdown appears above other content */
-  .tag-filter {
-    position: relative;
-    z-index: 1000;
-  }
-}
-
-/* Special positioning for header placement */
-.header-filter {
-  position: fixed;
-  top: 16px;
-  right: 280px;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border-radius: 6px;
-  padding: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.header-filter-awareness {
-  position: fixed;
-  top: 16px;
-  right: 280px;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border-radius: 6px;
-  padding: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Light mode support for header filter */
-:root:not(.dark) .tag-filter-toggle {
-  background: #f6f6f6;
+/* Light mode support for the tag filter */
+:root:not([data-vocs-theme='dark']) .tag-filter-toggle {
   border: 1px solid #908f8f;
   color: #838383;
 }
 
-:root:not(.dark) .clear-filters {
+:root:not([data-vocs-theme='dark']) .clear-filters {
   color: #f61a1a;
 }
 
 
-:root:not(.dark) .tag-filter-toggle:hover {
-  border-color: #303030;
-  color: #1e1e1e;
-}
-
-:root:not(.dark) .tag-filter-dropdown {
+:root:not([data-vocs-theme='dark']) .tag-filter-dropdown {
   background-color: #94b3df;
 }
 
-:root:not(.dark) .tag-filter-header h3 {
+:root:not([data-vocs-theme='dark']) .tag-filter-header h3 {
   color: #00000096;
 }
 
-:root:not(.dark) .tag-filter-search input {
+:root:not([data-vocs-theme='dark']) .tag-filter-search input {
   background-color: rgb(255 255 255 / 29%);
 }
 
-/* Responsive positioning for header filter */
-@media (max-width: 1200px) {
-  .header-filter {
-    right: 200px;
-  }
-}
-
-@media (max-width: 900px) {
-  .header-filter {
-    right: 60px;
-    top: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  .header-filter {
-    right: 50px;
-    top: 8px;
-  }
-}
-
 .tag-filter-toggle {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: rgb(26 25 27);
+  background: var(--vocs-background-color-surface);
+  /* search button base; hover lifts to surfaceTint */
   border: 1px solid rgb(43 41 45);
-  border-radius: 6px;
+  border-radius: 0.75rem;
+  /* match vocs 2.0 search button (rounded-xl) */
   color: #a3a3a4;
   font-size: 0.875rem;
   cursor: pointer;
@@ -199,9 +63,12 @@
   height: 2.5rem;
 }
 
+/* Match the vocs 2.0 search button hover: only the background changes, to the
+   same surfaceTint token the search button uses (light-dark aware, works in
+   both themes). */
 .tag-filter-toggle:hover {
-  color: rgba(255, 255, 255, 0.8);
-  border-color: #3c393f;
+  background-color: var(--vocs-background-color-surfaceTint);
+  color: var(--vocs-text-color-primary);
 }
 
 .tag-filter-toggle.active {
@@ -213,7 +80,7 @@
 }
 
 .filter-count {
-  background: #60a5fa;
+  background: #4339db;
   color: white;
   font-size: 12px;
   padding: 2px 6px;
@@ -245,9 +112,10 @@
   right: 0;
   max-width: 320px;
   min-width: 250px;
-  background: #1a191b;
+  background: #1b1b1b;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  border-radius: 0.75rem;
+  /* match vocs 2.0 rounded corners */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   z-index: 10000;
   margin-top: 2px;
@@ -289,6 +157,7 @@
 
 .tag-filter-search {
   margin-bottom: 12px;
+  display: none;
 }
 
 .tag-filter-search input {
@@ -317,7 +186,7 @@
   flex-direction: column;
   gap: 4px;
   /* Reduced gap between items */
-  max-height: 300px;
+  max-height: 120px;
   overflow-y: auto;
 }
 
@@ -342,7 +211,7 @@
   /* Reduced padding for smaller tags */
   border-radius: 8px;
   /* Smaller border radius */
-  font-size: 11px;
+  font-size: 13px;
   /* Smaller font size */
   font-weight: 500;
   color: white;
@@ -362,15 +231,17 @@
 }
 
 /* Light mode adjustments */
-@media (prefers-color-scheme: light) {
+:root:not([data-vocs-theme='dark']) {
   .tag-filter-toggle {
-    border-color: rgba(0, 0, 0, 0.2);
-    color: #374151;
+    border-color: #908f8f;
+    color: var(--vocs-text-color-secondary);
   }
 
+  /* Light-scoped hover so it outranks the light base background above. */
   .tag-filter-toggle:hover {
-    background: rgba(0, 0, 0, 0.05);
-    border-color: rgba(0, 0, 0, 0.3);
+    background: var(--vocs-background-color-surfaceTint);
+    border-color: #303030;
+    color: #1e1e1e;
   }
 
   .tag-filter-toggle.active {
@@ -384,7 +255,7 @@
   }
 
   .filter-count {
-    background: #2563eb;
+    background: #4339db;
   }
 
   .tag-filter-dropdown {

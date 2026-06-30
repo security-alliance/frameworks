@@ -251,10 +251,7 @@ cert:
 ---
 
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertList } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, CertList } from '../../../components'
 
 # SFC - Multisig Operations
 
@@ -266,5 +263,3 @@ securely.  It covers governance, risk management, signer security, operational p
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 
 <CertList sections={frontmatter.cert} name="sfc-multisig-ops" />
-
-</TagProvider>

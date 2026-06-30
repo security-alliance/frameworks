@@ -3,7 +3,16 @@
  */
 
 .gov-checklist-item {
+  --color-primary: #4339db;
+  --color-text-strong: #ffffff;
+  --color-text-muted: #9ca3af;
+
   margin: 12px 0 16px;
+}
+
+:root:not([data-vocs-theme='dark']) .gov-checklist-item {
+  --color-text-strong: #202020;
+  --color-text-muted: #6b7280;
 }
 
 .gov-checklist-row {

@@ -1,3 +1,5 @@
+"use client";
+
 import { memo, useState } from "react";
 import "./control.css";
 import { Control, ControlData, ControlState } from "./types";
