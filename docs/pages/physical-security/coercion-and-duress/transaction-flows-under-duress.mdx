@@ -14,10 +14,8 @@ contributors:
     users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
-<TagProvider>
-<TagFilter />
 
 # Transaction Flows Under Duress
 
@@ -30,7 +28,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 ## Hard limits and friction
 
 - Enforce per-transaction limits and daily limits on hot and warm wallets so coerced actions cannot drain strategic reserves in one sitting.
-- Require additional approvals once a transfer crosses predefined thresholds, even if the request looks operationally normal.
+- Require additional approvals once a transfer crosses predefined thresholds, even if the request looks operationally normal. Route approval requests across multiple independent communication channels so that a single compromised account cannot unilaterally authorize a transfer.
 - Prefer time delays for larger movements so that an attacker must sustain control for longer, increasing the chance of interruption.
 
 ## Separation of approval channels
@@ -50,6 +48,5 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 - During travel, temporarily lower limits and increase required approvals by policy.
 - Treat credible threats, doxxing, or surveillance indicators as triggers to move operations into a heightened security mode with reduced transaction capability.
 
-</TagProvider>
 
 <ContributeFooter />

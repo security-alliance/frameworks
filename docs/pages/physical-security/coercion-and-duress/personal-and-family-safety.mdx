@@ -14,10 +14,8 @@ contributors:
     users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
-<TagProvider>
-<TagFilter />
 
 # Personal and Family Safety
 
@@ -31,7 +29,7 @@ Opsec shrinks the real-world attack surface by reducing what adversaries can lea
 
 ## Digital hygiene
 
-- **Eliminate persistent OSINT signals:** Scrub public profiles of home addresses, vehicle plates, routine locations (gyms, cafés), and geo-tagged photos. Use temporary numbers and emails for non-essential accounts.
+- **Eliminate persistent OSINT signals:** Scrub public profiles of home addresses, vehicle plates, routine locations (gyms, cafés), and geo-tagged photos. Use temporary numbers and emails for non-essential accounts. Complete PII removal often requires a corporate or legal entity as a shield. Run a tabletop threat model first to gauge what exposure is acceptable for your risk profile.
 - **Harden devices:** Full-disk encryption, no seed phrases or wallet apps on always-on phones or laptops, regular factory resets on operational devices, no cloud sync of sensitive data.
 - **Financial anonymity:** Route crypto operations through privacy-preserving tools where legally permissible, avoid linking exchange KYC to public social handles, use business entities for high-value holdings.
 
@@ -41,11 +39,16 @@ Opsec shrinks the real-world attack surface by reducing what adversaries can lea
 - **Compartmentalized devices:** Public phone for social and travel use; signer phone kept in secure location, never carried together.
 - **Family dissociation:** No joint public profiles, separate finances and devices, educate on not discussing crypto holdings or signing routines at home or social events.
 
+## Physical security
+
+- **Key storage:** Never keep cold-storage signing keys on your person or in a location that follows your physical routine. Store hardware wallets and seed backups in geographically separate secure locations.
+
 ## Family and staff training
 
 - **Simple family protocols:** "If someone asks about money or crypto, say nothing and text [safe word] to [emergency contact]." Pre-rehearsed silent alarms to neighbors or security.
 - **Staff NDAs and drills:** Drivers and assistants trained to vary routes, report surveillance, and never discuss the principal's assets or locations. Tabletop exercises for home and office scenarios.
 - **Children and vulnerable contacts:** Age-appropriate rules ("never open the door for strangers," "never share phone screens"), school pick-up codes, and emergency family assembly points.
+- **Panic buttons:** Fit home and vehicles with discrete panic buttons linked to a monitoring service so any household member can trigger a silent alert.
 
 ## Physical routine hardening
 
@@ -59,6 +62,5 @@ Opsec shrinks the real-world attack surface by reducing what adversaries can lea
 - **Cover narratives:** Plausible stories like "Everything's in custody" or "The team handles treasury," consistent across family and staff, to deflect without raising suspicion.
 - **Regular audits:** Quarterly review of social profiles, on-chain links to identities, and staff access by external security consultants.
 
-</TagProvider>
 
 <ContributeFooter />

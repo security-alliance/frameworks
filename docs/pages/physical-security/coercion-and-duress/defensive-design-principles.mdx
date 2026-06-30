@@ -13,10 +13,8 @@ contributors:
     users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
-<TagProvider>
-<TagFilter />
 
 # Defensive Design Principles
 
@@ -42,6 +40,7 @@ These principles guide all subsequent controls, ensuring wallet architectures an
 
 - Offer attackers a small, believable payout they can take immediately, such as a low-value wallet with balances matching the victim's public profile.
 - Keep strategic reserves behind time-locks and multi-party approval whose delay is visible and cannot be shortened under coercion.
+- Wire duress wallets to fund-movement alerts that notify trusted contacts silently, enabling distress signaling without any call or text from the victim.
 
 ## Resilience
 
@@ -55,6 +54,5 @@ These principles guide all subsequent controls, ensuring wallet architectures an
 - No policy should incentivize physical resistance; wallet rules yield immediately to safety triggers.
 - Integrate with physical security, crisis management, and law enforcement protocols.
 
-</TagProvider>
 
 <ContributeFooter />
