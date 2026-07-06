@@ -370,27 +370,20 @@ no confidential data or open ports are accessible before connecting to unfamilia
 ### **Physical safety and common sense**
 
 Operational security also has a physical aspect. **Trust your instincts** and normal travel safety rules: stick to
-well-lit and populated areas if carrying devices at night, don’t let strangers “shoulder surf” your ATM or credit card
+well-lit and populated areas if carrying devices at night, don't let strangers "shoulder surf" your ATM or credit card
 PIN (check for skimmers, fake interfaces), and keep your travel documents secure since identity theft can be as damaging
 as device theft.
 
 Use hotel lockers at conferences if provided (for example, some events offer secure charging lockers – use them rather
 than leaving devices out only).
 
-Beware of the classic “evil maid” scenario in hotels (where someone might tamper with your laptop in your room): using
-tamper-evident tape or seals on your laptop case can help detect this, though it’s mostly a concern for high-risk
-targets. If you have tamper-evident stickers or tamper-evident bags, you can seal your device in them overnight – any
-attempt to open or remove the device will leave a visible trace. While not foolproof against a determined adversary, it
-raises the bar and can deter casual snooping.
+For physical tamper-evidence measures (evil-maid scenarios, tamper-evident seals, decoy containers) and coercion
+defense while traveling, see the
+[Physical Security](/physical-security/overview) framework. That domain covers physical threats — coercion, forced
+access, tampering, and surveillance — that go beyond the digital and procedural scope of this travel guide.
 
-Petty thieves may look beyond obvious valuables. Simply locking items in a dorm safe or hiding them at home might deter
-casual theft, but savvy criminals often search inside books, behind electrical outlets, or within patterns on walls or
-furniture to find hidden stashes. Consider unconventional hiding spots and avoid predictable storage methods. Layer your
-physical security measures with tamper-evident seals or discreet decoy containers to raise the effort required for
-unauthorized access.
-
-Above all, maintain an **alert posture**: be aware of who’s around when you’re working, and if something feels off (like
-someone persistently hovering or a device acting strangely), don’t ignore it. You can always relocate, power down your
+Above all, maintain an **alert posture**: be aware of who's around when you're working, and if something feels off (like
+someone persistently hovering or a device acting strangely), don't ignore it. You can always relocate, power down your
 device, or otherwise cut off exposure at the first sign of trouble.
 
 ## Returning home
@@ -513,21 +506,15 @@ for new scratches, screws that look tampered with, or unexpected behavior.
 
 ### **Protect crypto keys with multi-party controls**
 
-If you have access to significant crypto funds (exchanges, DAO treasury, etc.), implement policies that prevent a single
-point of failure while you’re traveling. For example, if you’re one of N-of-M multisig signers, consider temporarily
-**requiring an extra signer** for transactions while you’re away (so if normally 2-of-3 can move funds, bump it to
-3-of-3 or add a 4th backup signer) so that a compromised key or coerced action cannot alone execute a transfer.
+For coercion-specific defenses — duress codes, decoy/controlled-surrender wallets, geographic key splitting, and
+multi-party approval policies while traveling — see the
+[Physical Security > Coercion & Duress](/physical-security/coercion-and-duress/overview) framework. That domain covers
+these controls in depth because they address physical threats that bypass cryptography entirely.
 
-If you hold hardware keys, keep them **geographically split** – e.g. bring one key device with you, leave the backup key
-in a safe place at home, and perhaps give a third key to a colleague, so that even a forced disclosure cannot result in
-an immediate loss of funds without collaboration. Use duress codes if your hardware supports it (some wallets allow a
-secondary PIN that opens a decoy account with minimal funds, the same can also be made with encryption volumes).
-
-In general, **assume a determined adversary could target you** specifically for your role: use confidential
-communication to stay in touch with your team (so they know you’re safe daily), and establish a code word or protocol
-for emergencies. High-risk travelers might also arrange a “check-in” schedule with their security team or colleagues –
-if you don’t check in by a certain time, they can take pre-agreed actions (like disabling your accounts or alerting
-authorities). This kind of planning is an extra safety net when the stakes are especially high.
+From an OpSec perspective while traveling: maintain confidential communication with your team so they know you're
+safe, establish a code word or protocol for emergencies, and arrange a "check-in" schedule with your security team or
+colleagues — if you don't check in by a certain time, they can take pre-agreed actions like disabling your accounts or
+alerting authorities.
 
 ### **Post-trip device rebuilding**
 
