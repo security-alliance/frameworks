@@ -1,6 +1,6 @@
 ---
-title: "Rebrands & Reorganizations"
-description: "Recommendations and case studies on how to handle rebrands, acquisitions, and winding down of companies and protocols"
+title: "Rebrands & Reorganizations | Security Alliance"
+description: "Practical guidance and case studies on handling rebrands, acquisitions, and wind-downs to protect communities from scams, phishing, and impersonation during transitions."
 tags:
   - Operations & Strategy
   - Community & Marketing
@@ -25,6 +25,8 @@ can create genuine safety risks for community members during the transition and 
 months afterwards. Having a clear plan and consistent communication strategy can keep
 community members safe.
 
+> 🔑 **Key Takeaway**: Rebrands and wind-downs create confusion that attackers exploit through phishing, impersonation, and fake migrations. Secure old accounts, communicate clearly, and monitor aggressively to protect your community.
+
 ## Practical guidance
 
 ### Communication & Transparency
@@ -43,16 +45,12 @@ swaps, and impersonation accounts
 
 ### Keep Old Accounts
 
-- **Domains**: Renew them, even if the project is over. It’s cheap, and it blocks attackers.
-- **Social Media Handles**: Keep them. Add a link to the new account in the bio. Or contact support
-to request a username change while transferring the old handle to a new account you control.
-- **Discord Vanity URL**: Vanity URLs are unlocked on boosted servers at level 3. As soon as you stop 
-paying for nitro boosts for your server, scammers will likely snipe it and create a fake Discord server with a 
-drainer verification bot.
-- **X.com Handle Marketplace**: In Fall 2025, X.com launched a new [handles marketplace](https://handles.x.com/) in Beta. This is a service
-that allows you to purchase usernames on X. However, there are [many conditions](https://legal.x.com/en/x-handle-transfer-agreement.html#:~:text=3c.%20Maintaining%20Your%20Access%20To%20A%20Transferred%20Handle) placed on these handles
-in order to maintain access including an ongoing X Premium subscription. If you don't maintain these requirements,
-the handle will be reclaimed and available for others to purchase.
+| Asset | Risk if Abandoned | Action |
+|-------|-------------------|--------|
+| Domains | Expired domains can be re-registered by attackers to host phishing sites or impersonate the project. | Renew them, even if the project is over. It's cheap, and it blocks attackers. |
+| Social Media Handles | Abandoned handles can be claimed by impersonators who exploit the residual follower base and brand trust. | Keep them. Add a link to the new account in the bio. Or contact support to request a username change while transferring the old handle to a new account you control. |
+| Discord Vanity URL | When server Nitro boosts lapse below level 3, the vanity URL is released and can be sniped by scammers to create a fake Discord server with a drainer verification bot. | Maintain server boosts or monitor the vanity URL closely. If releasing it, warn the community and have a takedown plan ready. |
+| X.com Handle Marketplace | Handles purchased through the [X handles marketplace](https://handles.x.com/) require an ongoing X Premium subscription and adherence to transfer conditions. If requirements are not maintained, the handle is reclaimed and made available to others. | Monitor and maintain all X Premium and marketplace requirements for as long as the handle is needed. |
 
 ### Notify Partners, Aggregators, and Security Providers
 
@@ -78,16 +76,12 @@ that exploit the change.
 When decentralized projects announce rebrands, acquisitions, or shut down, it creates an opportunity for attackers
 to weaponize established brands and their infrastructure for scams.
 
-### Inherited Reputation
+### Inherited Reputation and DNS
 
-While sites go offline and domains expire, the reputation that is linked to these assets online remains for quite some time.
-
-### DNS
-
-DNS is used for more than just pointing to a web server:
-
-- MX records point to email servers and ability to send email messages to community
-- TXT records are used to verify ownership of a domain and social accounts
+While sites go offline and domains expire, the reputation linked to these assets remains for quite some time. DNS is
+used for more than just pointing to a web server: MX records point to email servers and enable sending messages to
+the community, and TXT records are used to verify ownership of a domain and social accounts. Attackers can exploit
+these lingering trust signals by re-claiming expired domains and inheriting their DNS-backed legitimacy.
 
 ### Confusion Is the Primary Weapon
 
@@ -141,6 +135,8 @@ and confusion about the conversion of MKR governance tokens to SKY.
 
 The main mistake made by Sky was that they did not keep ownership of their original handle during the migration.
 
+**Lesson:** Never release a verified social handle before the new one is secured and announced.
+
 https://x.com/ForesightNewsEN/status/1829080229622808850
 
 ### FTX Collapse & Bankruptcy (November 2022)
@@ -153,6 +149,8 @@ claims page.
 - SIM-swapping attacks targeting leaked customer data that was improperly obtained from a data breach of the claims administrator Kroll.
 - Advance-Fee Fraud where victims are instructed to pay a commission, legal fee, or tax upfront to expedite the release of their frozen crypto assets.
 
+**Lesson:** During bankruptcy and claims processes, expect phishing targeting the claim process — communicate only through court-verified channels.
+
 https://finance.yahoo.com/news/ftx-customers-hit-withdrawal-phishing-064440389.html?guccounter=1
 
 ### OpenClaw / ClawdBot Rebrand (January 2026)
@@ -162,6 +160,8 @@ releasing old social media handles and claiming new ones, scammers seized the ab
 identity and launched a fake Solana-based token called $CLAWD that reached $16 million in market cap before crashing 90%. 
 
 The core mistake was simple: they released old handles before securing new ones, creating a window attackers were ready to exploit.
+
+**Lesson:** Secure new handles before releasing old ones, and monitor for token impersonation in the window between rebrand and community awareness.
 
 https://www.malwarebytes.com/blog/threat-intel/2026/01/clawdbots-rename-to-moltbot-sparks-impersonation-campaign
 
@@ -182,9 +182,15 @@ https://www.malwarebytes.com/blog/threat-intel/2026/01/clawdbots-rename-to-moltb
 
 ## Additional Resources
 
-- https://www.coinspect.com/blog/zombie-dapps/
-- https://x.com/0xngmi/status/2022300978427396233?s=20
-- https://x.com/Defi_Scribbler/status/2040051531223814163?s=20
+- [Coinspect: Zombie Dapps](https://www.coinspect.com/blog/zombie-dapps/)
+- [@0xngmi on rebrand scams](https://x.com/0xngmi/status/2022300978427396233?s=20)
+- [@Defi_Scribbler on rebrand risks](https://x.com/Defi_Scribbler/status/2040051531223814163?s=20)
+
+## Related Frameworks
+
+- [Risk Management](/governance/risk-management) — Assess and mitigate risks during organizational transitions.
+- [Incident Detection and Response](/incident-management/incident-detection-and-response) — Monitor for and respond to scams and phishing during and after transitions.
+- [OpSec: Endpoint Overview](/opsec/endpoint/overview) — Key rotation, credential hygiene, and endpoint security during transitions.
 
 ---
 
