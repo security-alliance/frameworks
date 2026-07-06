@@ -312,10 +312,7 @@ cert:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertList } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, CertList } from '../../../components'
 
 # SFC - Treasury Operations
 
@@ -337,5 +334,3 @@ transaction security and platform configuration.
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 
 <CertList sections={frontmatter.cert} name="sfc-treasury-ops" />
-
-</TagProvider>

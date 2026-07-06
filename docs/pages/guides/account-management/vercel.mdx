@@ -8,10 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Vercel Security
 
@@ -36,9 +33,11 @@ These settings apply to your personal Vercel account. All team members and admin
 
 For individual Vercel accounts, ensure you have:
 
+<Checklist id="individual-account-settings">
 - [ ]  Two-factor authentication enabled on your account
 - [ ]  Review and remove any unnecessary personal access tokens
 - [ ]  Review connected Git accounts and remove any unnecessary connections
+</Checklist>
 
 ---
 
@@ -63,6 +62,7 @@ These settings and practices apply to Vercel team administrators with elevated p
 ### Team Settings
 
 - Team Settings >
+<Checklist id="team-settings">
   - Members >
     - [ ] Team Members > **Review and remove any unnecessary or unrecognized**
     - [ ] Pending Invitations > **Review and remove any unnecessary or unrecognized**
@@ -81,14 +81,18 @@ These settings and practices apply to Vercel team administrators with elevated p
     - [ ] Access > **Review and remove any unnecessary or unrecognized**
   - [ ] Environment Variables > **Review and ensure all secrets are marked as Sensitive**
 
+</Checklist>
+
 ### Project Settings
 
 - Project Settings > Security >
+<Checklist id="project-settings">
   - [ ]  Build Logs and Source Protection > **Enabled**
   - [ ] Git Fork Protection > **Enabled**
   - [ ] Secure Backend Access With OIDC Federation > **Team**
 
+</Checklist>
+
 ---
 
-</TagProvider>
 <ContributeFooter />

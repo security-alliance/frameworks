@@ -11,10 +11,7 @@ contributors:
     users: [mattaereal, pinalikefruit]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # SSH Client and Key Management Hardening
 
@@ -37,6 +34,7 @@ These steps apply to developers, operators, admins, and contributors who use SSH
 
 ### Setup Checklist
 
+<Checklist id="setup-checklist">
 - [ ] Use **Ed25519** for new software keys by default
 - [ ] Add a **strong passphrase** to every human-held software key
 - [ ] For higher-risk access, prefer a **hardware-backed security-key SSH credential** such as `ed25519-sk`
@@ -51,6 +49,7 @@ These steps apply to developers, operators, admins, and contributors who use SSH
       rotation
 - [ ] Keep `~/.ssh` and private key files accessible only to you
 - [ ] Review and remove stale keys after device loss, role changes, or offboarding
+</Checklist>
 
 ### Passphrases and Local Protection
 
@@ -106,6 +105,7 @@ team.
 
 ### Program Checklist
 
+<Checklist id="program-checklist">
 - [ ] Maintain an inventory for each SSH credential:
       owner, device, purpose, target systems, creation date, and revoke trigger
 - [ ] Require one key per person, device, and purpose instead of shared identities
@@ -115,6 +115,7 @@ team.
 - [ ] Revoke keys immediately after offboarding, device loss, or suspected compromise
 - [ ] Keep human access and automation access logically separate
 - [ ] Document a simple recovery and reissue process for lost devices and security keys
+</Checklist>
 
 ### Git Hosting, CI/CD, and Automation
 
@@ -163,5 +164,4 @@ Use these rules consistently:
 - [GitLab: Using SSH Keys with GitLab CI/CD](https://docs.gitlab.com/ci/jobs/ssh_keys/)
 - [Microsoft Learn: OpenSSH Key Management on Windows](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement)
 
-</TagProvider>
 <ContributeFooter />

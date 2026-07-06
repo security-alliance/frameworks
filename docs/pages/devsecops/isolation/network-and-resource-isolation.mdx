@@ -14,10 +14,7 @@ contributors:
     users: [mattaereal]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Network & Resource Isolation
 
@@ -77,6 +74,7 @@ These controls are both security and reliability controls.
 
 ## CI/CD implementation checklist
 
+<Checklist id="cicd-implementation-checklist">
 - [ ] Untrusted jobs run in isolated runner pool
 - [ ] Default-deny egress applied to untrusted zone
 - [ ] Destination allowlists documented per pipeline stage
@@ -84,6 +82,7 @@ These controls are both security and reliability controls.
 - [ ] CPU/memory/pids limits configured
 - [ ] Job and step timeouts enforced
 - [ ] Max artifact/log size capped
+</Checklist>
 
 ## Example control matrix
 
@@ -113,5 +112,4 @@ These controls are both security and reliability controls.
 
 ---
 
-</TagProvider>
 <ContributeFooter />

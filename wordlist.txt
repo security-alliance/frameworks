@@ -32,6 +32,7 @@ CCIP
 CCPA
 CCSS
 Certora
+cicd
 CIS
 CISA
 Clippy
@@ -63,6 +64,7 @@ Cyfrin
 Cypherock
 dapp
 Darknet
+Daytona
 DCAP
 Deauthorize
 debevoise
@@ -107,6 +109,7 @@ erc
 Ethlint
 Excalidraw
 exfiltrated
+exfiltrates
 Exfiltrating
 exfiltration
 Fábrega
@@ -126,6 +129,7 @@ Gnosis
 GoDaddy
 GOkart
 Golangci
+GrapheneOS
 gosec
 govulncheck
 gpgsign
@@ -274,6 +278,7 @@ reimage
 reinit
 Rekt
 renderer
+reprompt
 requestor
 resolvability
 Resolvers
@@ -332,6 +337,7 @@ TLSA
 TOS
 TOTP
 TPM
+trailofbits
 triaging
 trojanized
 Tuta
@@ -347,6 +353,7 @@ uncompromised
 unproxied
 Unrekt
 unreviewed
+Unsandboxed
 unstake
 unstaking
 unvalidated

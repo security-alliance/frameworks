@@ -23,7 +23,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, var(--vocs-color_codeInlineBg), transparent);
+  background: linear-gradient(135deg, rgba(128, 128, 128, 0.25), transparent);
   border: 2px solid var(--theme-popup-border);
   border-radius: 20px;
   margin-bottom: 1rem;
@@ -82,7 +82,7 @@
 
 .badge-overflow-chip:hover {
   opacity: 1;
-  border-color: var(--vocs-color_codeInlineBg);
+  border-color: rgba(128, 128, 128, 0.25);
   z-index: 99999;
 }
 
@@ -146,12 +146,12 @@
   z-index: 99999;
 }
 
-:root:not(.dark) .badge-overflow-tooltip {
+:root:not([data-vocs-theme='dark']) .badge-overflow-tooltip {
   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.08);
 }
 
-:root:not(.dark) .badge-overflow-tooltip::before {
+:root:not([data-vocs-theme='dark']) .badge-overflow-tooltip::before {
   border-top-color: #ffffff;
 }
 
@@ -366,7 +366,7 @@
   visibility: hidden;
 }
 
-:root:not(.dark) .badge-tooltip {
+:root:not([data-vocs-theme='dark']) .badge-tooltip {
   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   color: #111827;
   box-shadow:
@@ -375,19 +375,19 @@
   border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
-:root:not(.dark) .badge-tooltip::before {
+:root:not([data-vocs-theme='dark']) .badge-tooltip::before {
   border-top-color: #ffffff;
 }
 
-:root:not(.dark) .tooltip-description {
+:root:not([data-vocs-theme='dark']) .tooltip-description {
   color: #4b5563;
 }
 
-:root:not(.dark) .tooltip-footer {
+:root:not([data-vocs-theme='dark']) .tooltip-footer {
   border-top-color: rgba(15, 23, 42, 0.1);
 }
 
-:root:not(.dark) .tooltip-date {
+:root:not([data-vocs-theme='dark']) .tooltip-date {
   color: #6b7280;
 }
 
@@ -583,62 +583,62 @@
 }
 
 /* Dark mode adjustments for badges */
-:root.dark .badge-card {
+:root[data-vocs-theme='dark'] .badge-card {
   background: linear-gradient(135deg, var(--sidebar-bg, #1f2937) 0%, var(--quote-bg, rgba(255, 255, 255, 0.05)) 100%);
   border-color: var(--theme-popup-border, #374151);
 }
 
-:root.dark .badge-wrapper.role .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.role .badge-card {
   border-color: #60a5fa;
   box-shadow: 0 0 0 2px rgb(96 165 250 / 85%), 2px 2px 3px rgba(96, 165, 250, 0.35);
 }
 
-:root.dark .badge-wrapper.milestone .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.milestone .badge-card {
   border-color: #34d399;
   box-shadow: 0 0 0 2px rgba(52, 211, 153, 70%), 2px 2px 3px rgba(52, 211, 153, 0.35);
 }
 
-:root.dark .badge-wrapper.activity .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.activity .badge-card {
   border-color: #fcd34d;
   box-shadow: 0 0 0 2px rgb(252 211 77 / 70%), 2px 2px 3px rgba(252, 211, 77, 0.35);
 }
 
-:root.dark .badge-wrapper.tier-legendary .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.tier-legendary .badge-card {
   background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(245, 158, 11, 0.15) 100%);
 }
 
-:root.dark .badge-wrapper.tier-epic .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.tier-epic .badge-card {
   background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(147, 51, 234, 0.15) 100%);
 }
 
-:root.dark .badge-wrapper.tier-rare .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.tier-rare .badge-card {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.15) 100%);
 }
 
-:root.dark .badge-wrapper.tier-common .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.tier-common .badge-card {
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.15) 100%);
 }
 
-:root.dark .badge-wrapper.role:hover .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.role:hover .badge-card {
   border-color: #93c5fd;
   box-shadow: 0 0 0 3px rgba(96, 165, 250, 100%), 0 8px 24px rgba(96, 165, 250, 0.45);
 }
 
-:root.dark .badge-wrapper.milestone:hover .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.milestone:hover .badge-card {
   border-color: #6ee7b7;
   box-shadow: 0 0 0 3px rgba(52, 211, 153, 100%), 0 8px 24px rgba(52, 211, 153, 0.45);
 }
 
-:root.dark .badge-wrapper.activity:hover .badge-card {
+:root[data-vocs-theme='dark'] .badge-wrapper.activity:hover .badge-card {
   border-color: #fde68a;
   box-shadow: 0 0 0 3px rgba(252, 211, 77, 100%), 0 8px 24px rgba(252, 211, 77, 0.45);
 }
 
-:root.dark .new-indicator {
+:root[data-vocs-theme='dark'] .new-indicator {
   border-color: var(--sidebar-bg, #1f2937);
 }
 
-:root.dark .badge-tier-indicator {
+:root[data-vocs-theme='dark'] .badge-tier-indicator {
   background: var(--sidebar-bg, #1f2937);
 }
 

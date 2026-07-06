@@ -8,10 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Notion Security
 
@@ -35,6 +32,7 @@ These settings apply to your personal Notion account. All team members and admin
 ### Account Security Checklist
 
 - Account Settings:
+<Checklist id="account-security-checklist">
   - [ ]  My account > Password > If enabled (not using SSO), Enable **2-step verification**
     - Use **Code from authenticator**
     - DO NOT use **Text me a code**
@@ -43,6 +41,8 @@ These settings apply to your personal Notion account. All team members and admin
   - [ ]  My settings > Privacy > Cookie Settings > Only **Strictly necessary**
   - [ ]  My settings > Privacy > Profile discoverability > **Disabled**
   - [ ]  My connections > Review and disconnect any unnecessary
+
+</Checklist>
 
 ---
 
@@ -66,12 +66,15 @@ These settings and practices apply to Notion workspace administrators with eleva
 
 #### Member and Site Management
 
+<Checklist id="member-and-site-management">
 - [ ]  People > Review members and guests
 - [ ]  Sites > Review and unpublish any unnecessary pages
+</Checklist>
 
 #### Security & Data Settings
 
 - Security & data > [[1]](#1-enterprise-features)
+<Checklist id="security-data-settings">
   - [ ]  Disable publishing sites and forms > **On**
   - [ ]  Disable duplicating pages to other workspaces > **On**
   - [ ]  Disable export > **On**
@@ -82,12 +85,17 @@ These settings and practices apply to Notion workspace administrators with eleva
   - [ ]  Allow any user to request to be added as a member of the workspace > **Off**
   - [ ]  Allow page guests to request to be added as members to the workspace > **Off**
 
+</Checklist>
+
 #### Connections Management
 
 - Connections >
+<Checklist id="connections-management">
   - [ ]  Restrict members from adding connections > **Restricted**
   - [ ]  Allow webhooks in automations > **Disabled**
   - [ ]  Review the connections and disconnection any unnecessary
+
+</Checklist>
 
 ---
 
@@ -101,5 +109,4 @@ extra protections.
 
 ---
 
-</TagProvider>
 <ContributeFooter />

@@ -183,55 +183,55 @@
 }
 
 /* Dark mode adjustments */
-:root.dark .badge-legend {
-  background: #121113;
+:root[data-vocs-theme='dark'] .badge-legend {
+  background: #1b1b1b;
   border-color: var(--theme-popup-border, #374151);
 }
 
-:root.dark .badge-legend-intro {
+:root[data-vocs-theme='dark'] .badge-legend-intro {
   color: var(--fg, #d1d5db);
 }
 
-:root.dark .badge-legend-category {
+:root[data-vocs-theme='dark'] .badge-legend-category {
   background: rgba(0, 0, 0, 0.2);
 }
 
-:root.dark .badge-legend-category.role {
+:root[data-vocs-theme='dark'] .badge-legend-category.role {
   border-color: rgba(59, 130, 246, 0.6);
   background: rgba(59, 130, 246, 0.1);
 }
 
-:root.dark .badge-legend-category.milestone {
+:root[data-vocs-theme='dark'] .badge-legend-category.milestone {
   border-color: rgba(16, 185, 129, 0.6);
   background: rgba(16, 185, 129, 0.1);
 }
 
-:root.dark .badge-legend-category.activity {
+:root[data-vocs-theme='dark'] .badge-legend-category.activity {
   border-color: rgba(251, 191, 36, 0.6);
   background: rgba(251, 191, 36, 0.1);
 }
 
-:root.dark .category-title {
+:root[data-vocs-theme='dark'] .category-title {
   color: var(--fg, #f9fafb);
 }
 
-:root.dark .category-description {
+:root[data-vocs-theme='dark'] .category-description {
   color: var(--fg, #9ca3af);
 }
 
-:root.dark .badge-item {
+:root[data-vocs-theme='dark'] .badge-item {
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
-:root.dark .badge-label {
+:root[data-vocs-theme='dark'] .badge-label {
   color: var(--fg, #f9fafb);
 }
 
-:root.dark .badge-description {
+:root[data-vocs-theme='dark'] .badge-description {
   color: var(--fg, #9ca3af);
 }
 
-:root.dark .badge-legend-note {
+:root[data-vocs-theme='dark'] .badge-legend-note {
   background: rgba(251, 191, 36, 0.15);
   color: #fcd34d;
 }

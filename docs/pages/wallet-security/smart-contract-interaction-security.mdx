@@ -13,10 +13,7 @@ contributors:
     users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
 
 # Smart Contract Interaction Security
 
@@ -114,6 +111,7 @@ in Microsoft threat research.
 
 ## Quick Reference Checklist
 
+<Checklist id="quick-reference-checklist">
 - [ ] **Verify the contract address** — Cross-reference against official docs and block explorer
   labels (see
   [Verifying Standard Transactions](/wallet-security/signing-and-verification/verifying-standard-transactions))
@@ -124,8 +122,8 @@ in Microsoft threat research.
 - [ ] **Read what you are signing** — Inspect EIP-712 domains, types, and values. If you don't
   understand it, don't sign it.
 - [ ] **Use MEV protection for DEX trades** — Route through Flashbots Protect or MEV Blocker.
+</Checklist>
 
 ---
 
-</TagProvider>
 <ContributeFooter />

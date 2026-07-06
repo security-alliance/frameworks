@@ -1,4 +1,4 @@
-import React from 'react';
+import '../control.css';
 import './CertifiedProtocols.css';
 
 export interface Certification {

@@ -13,10 +13,6 @@
   --cert-dns-text: #9a3412;
 }
 
-:root:not(.dark) {
-  /* Light mode uses same colors */
-}
-
 /* Certified Protocols Grid */
 .certified-protocols {
   --card-border: var(--border-card);

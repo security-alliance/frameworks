@@ -3,7 +3,7 @@
   - llms.txt: thin routing index listing all frameworks with descriptions and page topics
   - llms/{framework}.txt: framework index — overview content + links to all per-page files
   - llms/{framework}/{page}.txt: one file per sidebar page with full stripped markdown content
-  - Page order follows the sidebar order defined in vocs.config.tsx
+  - Page order follows the sidebar order defined in vocs.config.ts
   - Runs post-build and writes to the dist directory
 */
 
@@ -21,6 +21,7 @@ const isMainBranch = process.env.CF_PAGES_BRANCH === 'main';
 
 function findDistDir() {
   const candidates = [
+    path.join(workspaceRoot, 'dist', 'public'),
     path.join(workspaceRoot, 'docs', 'dist'),
     path.join(workspaceRoot, 'dist'),
   ];
@@ -30,7 +31,7 @@ function findDistDir() {
 // Returns all sidebar links in document order, filtered to a specific folder prefix.
 // Tracks brace depth so a dev: true flag on a parent block is inherited by all child links.
 function getSidebarLinksForFolder(folderName) {
-  const configPath = path.join(workspaceRoot, 'vocs.config.tsx');
+  const configPath = path.join(workspaceRoot, 'vocs.config.ts');
   if (!fs.existsSync(configPath)) return [];
 
   const lines = fs.readFileSync(configPath, 'utf8').split('\n');
@@ -366,4 +367,4 @@ for (const folderName of frameworkFolders) {
 const routingIndex = buildRoutingIndex(frameworkMeta);
 fs.writeFileSync(path.join(distDir, 'llms.txt'), routingIndex);
 
-console.log(`Done. ${frameworkFolders.length} framework index files + ${totalPageFiles} per-page files + routing index written to ${distDir}`);
+console.log(`llms.txt: ${frameworkFolders.length} frameworks, ${totalPageFiles} pages.`);

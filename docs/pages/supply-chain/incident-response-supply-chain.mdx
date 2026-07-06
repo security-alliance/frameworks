@@ -10,10 +10,7 @@ contributors:
     users: [scode2277]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
 
 # Supply Chain Incident Response
 
@@ -139,6 +136,7 @@ Once the immediate threat is contained:
 
 When a supply chain compromise is reported:
 
+<Checklist id="quick-reference-checklist">
 - [ ] Is the compromised version in your lockfile?
 - [ ] Was it included in any build that reached production?
 - [ ] Did it run during CI? If so, rotate all CI secrets.
@@ -149,6 +147,7 @@ When a supply chain compromise is reported:
 - [ ] Rotate any secrets the package could have accessed.
 - [ ] Report to the registry and coordinate with the package maintainer.
 - [ ] Document the incident timeline and run a retrospective.
+</Checklist>
 
 ## Further Reading
 
@@ -162,5 +161,4 @@ When a supply chain compromise is reported:
 
 ---
 
-</TagProvider>
 <ContributeFooter />

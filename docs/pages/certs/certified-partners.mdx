@@ -1,39 +1,114 @@
 ---
-title: "Certified Auditors | Security Alliance"
-description: "Become a SEAL-certified auditor: demonstrate blockchain security expertise, conduct audits against SEAL Certification Framework, and issue on-chain attestations."
+title: "Auditor Accreditation | Security Alliance"
+description: "Become a SEAL-accredited auditor: a supervised first engagement and authorization to assess protocols against the SEAL Certification Framework and issue on-chain attestations."
 tags:
   - SEAL/Initiative
   - Certifications
-auditors:
-
+contributors:
+  - role: wrote
+    users: [isaac]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, AttributionList } from '../../../components'
 
-<TagProvider>
-<TagFilter />
-
-# Certified Partners
+# Auditor Accreditation
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-## Current Status: Request for Qualifications (RFQ)
+SEAL accredits third-party auditing firms to assess protocols against the SEAL Certification Framework and issue
+on-chain attestations. The framework is stable and has been validated through engagements with major DeFi protocols,
+staking operations, and treasury management teams, and accreditation is open now.
 
-SEAL Certifications is currently in the process of establishing our certified auditor partner program. We are actively
-seeking qualified auditing firms to become authorized certification issuers.
+## How Accreditation Works
 
-### Timeline
+Accreditation starts with an intro call about your firm: what you do, your experience and track record, and why you
+want to be involved. If it is a good fit, we share the accreditation agreement, and you loop us in when you are ready
+for your first engagement.
 
-- **Now - December 31st, 2025**: RFC Phase & Auditor RFQ Period
-- **Q1 2026**: Begin issuing formal certifications with certified auditor partners
+Your first client assessment is supervised by SEAL across scoping, evidence review, gap analysis, and certification
+issuance. We are looking at how you apply the standard, not collecting your client's data. Once we are confident in
+your team's judgment, you operate independently.
 
-## Becoming a Certified Auditor
+Fees and terms are set out in the accreditation agreement, which will be shared after our initial call.
 
-SEAL will work with a select group of third-party auditing firms to provide certification audits. SEAL-certified
-auditors will demonstrate expertise in blockchain security and operational security practices, and will be authorized to
-conduct audits against the SEAL Certification Framework and issue on-chain attestations.
+## What's Involved
 
-If your firm is interested, please fill [out this form](https://securityalliance.typeform.com/CertsAuditor)
+A full-suite assessment spans a few weeks, but it is not weeks of full-time work. Most of the time is spent
+coordinating with the client on evidence collection; the focused assessment work is modest. Assessments cover up to
+six modules (Multisig Ops, Treasury Ops, Incident Response, DevOps & Infrastructure, DNS & Registrar, and Identity &
+Accounts), and scoping determines which apply to a given protocol.
 
-</TagProvider>
+You do not need to share confidential client information with SEAL. We are observing how you assess, not collecting
+sensitive client data. Redacted reports or discussions about your process are sufficient, and we are happy to sign an
+NDA where you or your client requests one.
+
+## Getting Started
+
+If your firm is interested, [fill out the form](https://securityalliance.typeform.com/CertsAuditor). We will then have
+an initial call to discuss the process, your background, and how everything works.
+
+## FAQ
+
+<details>
+<summary>What does accreditation cost?</summary>
+
+Specific fees and timing are set out in the accreditation agreement, which will be shared after our initial call.
+
+</details>
+<details>
+<summary>How does accreditation start?</summary>
+
+An intro call where you tell us about your firm, experience, track record, and why you want to be involved. If it is a
+fit, we share the accreditation agreement and you loop us in when you are ready for your first engagement.
+
+</details>
+<details>
+<summary>What does the supervised first engagement involve?</summary>
+
+We check in at about five points across the engagement: scoping, where you set your evidence bar, how you deliver gap
+feedback to the client, how you verify remediation, and final assessment and delivery. Expect a few one-hour calls,
+with us on standby in between.
+
+</details>
+<details>
+<summary>Do we have to share confidential client information with SEAL?</summary>
+
+No. Redacted reports or discussions about your process are enough. We are observing how you assess, not collecting
+sensitive client data, which can itself be a liability to store.
+
+</details>
+<details>
+<summary>Can we or our client sign an NDA with SEAL?</summary>
+
+Yes, as needed, as long as it does not restrict our ability to run the certifications initiative.
+
+</details>
+<details>
+<summary>What counts as sufficient evidence?</summary>
+
+Assessment is judgment-based. A documented interview where you confirmed how a control is handled can be sufficient on
+its own; you do not need to collect and store sensitive client artifacts to satisfy a control. You are evaluating
+whether a protocol's practices are adequate for its scale and risk.
+
+</details>
+<details>
+<summary>How prescriptive are the controls?</summary>
+
+They are a baseline you interpret against the client's maturity. Your job is to judge whether what they have is good
+enough for where they are. Exceptions are fine when they are justified and documented.
+
+</details>
+<details>
+<summary>Can we use the controls outside a full certification?</summary>
+
+Yes. The same controls work for lighter engagements such as a gap analysis or ongoing retainer work.
+
+</details>
+<details>
+<summary>How do we give feedback on the controls?</summary>
+
+Open an issue or pull request in the frameworks repo. Feedback from firms running real engagements is how the standard
+improves. See the [Contributing guide](/certs/contributions) for details.
+
+</details>

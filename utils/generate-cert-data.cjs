@@ -12,7 +12,7 @@ const path = require('path');
 const matter = require('gray-matter');
 
 const CERTS_DIR = path.join(__dirname, '../docs/pages/certs');
-const OUTPUT_PATH = path.join(__dirname, '../docs/public/cert-data.json');
+const OUTPUT_PATH = path.join(__dirname, '../public/cert-data.json');
 
 const CERT_ORDER = [
   { file: 'sfc-devops-infrastructure.mdx', label: 'DevOps & Infrastructure' },
