@@ -813,5 +813,18 @@
       { "name": "New-Joiner", "lastActive": "2026-06-21" },
       { "name": "Active-Last-7d", "lastActive": "2026-06-21" }
     ]
+  },
+  "umar-ahmed": {
+    "slug": "umar-ahmed",
+    "name": "umar-ahmed",
+    "avatar": "https://avatars.githubusercontent.com/umar-ahmed",
+    "github": "https://github.com/umar-ahmed",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": []
   }
 }
