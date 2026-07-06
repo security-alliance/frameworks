@@ -9,7 +9,7 @@
     "@types/react-dom": "^19.2.3",
     "cspell": "10.0.1",
     "tailwindcss": "4.3.1",
-    "vocs": "2.1.10",
+    "vocs": "2.1.12",
     "waku": "1.0.0-beta.3"
   },
   "scripts": {
@@ -46,7 +46,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "3.1068.0",
     "@aws-sdk/lib-storage": "3.1068.0",
-    "axios": "1.18.0",
+    "axios": "1.18.1",
     "exceljs": "^4.4.0",
     "gray-matter": "^4.0.3",
     "just-install": "^2.0.2",
