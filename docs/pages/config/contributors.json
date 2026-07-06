@@ -767,6 +767,21 @@
       { "name": "Dormant-90d+", "lastActive": "2026-03-10" }
     ]
   },
+  "AllyPry": {
+    "slug": "AllyPry",
+    "name": "Jonathan Riss",
+    "avatar": "https://avatars.githubusercontent.com/AllyPry",
+    "github": "https://github.com/AllyPry",
+    "twitter": "https://x.com/allypry",
+    "website": "https://www.certik.com/",
+    "company": "CertiK",
+    "job_title": "OSINT and Blockchain Intelligence Analyst",
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-05-24" }
+    ]
+  },
   "tansawit": {
     "slug": "tansawit",
     "name": "tansawit",
