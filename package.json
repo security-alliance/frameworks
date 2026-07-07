@@ -9,8 +9,8 @@
     "@types/react-dom": "^19.2.3",
     "cspell": "10.0.1",
     "tailwindcss": "4.3.1",
-    "vocs": "2.1.10",
-    "waku": "1.0.0-beta.3"
+    "vocs": "2.3.3",
+    "waku": "1.0.0-beta.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

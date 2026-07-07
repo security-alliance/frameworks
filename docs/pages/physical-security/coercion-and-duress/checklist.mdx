@@ -1,0 +1,101 @@
+---
+title: "Checklist | Security Alliance"
+description: "Phased checklist translating this coercion & duress section into actions: maturity assessment, day 1-7 hardening, month 1-3 structural, and 3-6+ advanced."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
+
+
+# Checklist
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+This checklist translates this section's guidance into concrete actions, divided by implementation phase and entity type, to help prioritize deployment.
+
+## Maturity assessment
+
+- **Basic (high risk):** Single-factor cold storage, no daily limits, ad-hoc signing, high public visibility.
+- **Intermediate (medium risk):** Multisig or MPC for treasury, basic limits, separate signing devices, some staff training.
+- **Advanced (low risk):** Geo-distributed keys, strict role separation, time-locked reserves, regular drills, 24/7 monitoring.
+
+## Immediate hardening (day 1–7)
+
+### Individual
+
+<Checklist id="immediate-individual">
+- [ ] Remove all wallet apps, exchange account apps, seeds, and screenshots from daily-driver phones and laptops.
+- [ ] Set strict daily spending limits on hot wallets (under $10k equivalent) and move excess to cold storage.
+- [ ] Create one small "give-up" wallet with a realistic balance you can surrender truthfully under duress, and wire its duress PIN to a silent alert.
+- [ ] Audit home and office for visible hardware wallets or recovery sheets and move them to secure storage.
+</Checklist>
+
+### Organization
+
+<Checklist id="immediate-org">
+- [ ] Audit all active signers.
+- [ ] Verify that no single person can unilaterally move more than 1–5% of treasury assets without a second approver.
+- [ ] Brief key staff on "safety first" protocols.
+</Checklist>
+
+## Structural architecture (month 1–3)
+
+### Individual
+
+<Checklist id="structural-individual">
+- [ ] Separate "public identity" digital footprint from "asset control" identity:
+  - [ ] Dedicated email
+  - [ ] Dedicated SIM and phone
+  - [ ] Dedicated device
+- [ ] Establish a cold storage tier (multisig or MPC) where keys are geographically separated.
+- [ ] Implement a "duress code" or panic protocol with a trusted contact or security service:
+  - [ ] Trusted contact
+  - [ ] Security service
+</Checklist>
+
+### Organization
+
+<Checklist id="structural-org">
+- [ ] Deploy a tiered wallet architecture (hot, warm, cold) with automated limits and a defined purpose per tier.
+- [ ] Implement MPC or multisig with geographic and role-based distribution (e.g., Legal + Finance + Ops).
+- [ ] Formalize the "key ceremony" process for generating and backing up new operational keys.
+- [ ] Integrate wallet security training into onboarding for all staff.
+</Checklist>
+
+## Advanced resilience (month 3–6+)
+
+### Individual
+
+<Checklist id="advanced-individual">
+- [ ] Conduct a full OSINT cleanup of personal data:
+  - [ ] Home address
+  - [ ] Family details
+  - [ ] Travel patterns
+  - [ ] Social media
+- [ ] Establish a relationship with a physical security provider for travel risk assessments and monitoring.
+- [ ] Set up a formal legal structure (trust or LLC) to obscure asset ownership where possible.
+- [ ] Evaluate K&R (kidnap and ransom) insurance with a policy that covers crypto-specific risks; these providers typically include hostage negotiators and can advise on travel risk assessments.
+</Checklist>
+
+### Organization
+
+<Checklist id="advanced-org">
+- [ ] Run quarterly tabletop exercises simulating coercion, kidnapping, and insider threats.
+- [ ] Implement real-time transaction monitoring and anomaly detection for treasury wallets.
+- [ ] Establish a retained incident response relationship with crypto-specialized investigators and negotiators.
+- [ ] Conduct third-party penetration tests targeting technical infrastructure.
+- [ ] Conduct third-party penetration tests targeting staff social engineering resistance.
+</Checklist>
+
+
+<ContributeFooter />
