@@ -5,18 +5,19 @@ tags:
   - Community & Marketing
 contributors:
   - role: wrote
-    users: [mattaereal, zedt3ster, fredriksvantes, auditware]
+    users: [mattaereal, zedt3ster, fredriksvantes, auditware, nftdreww]
   - role: reviewed
-    users: [mattaereal]
+    users: [mattaereal, nftdreww]
 ---
 
-import { TagList, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # X (Twitter)
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
-X account security spans authentication hardening, session management, third-party app access, and recovery settings — each covered in depth in the [X (Twitter) Security Guide](https://frameworks.securityalliance.dev/guides/account-management/twitter). Use this page to find the right section.
+X account security spans authentication hardening, session management, third-party app access, and recovery settings — each covered in depth in the [X (Twitter) Security Guide](/guides/account-management/twitter). Use this page to find the right section.
 
 ---
 
@@ -47,8 +48,6 @@ As a community manager you are also the last line of defence before your followe
 
 The guide addresses each of these with specific, step-by-step controls. None require technical expertise. All of them significantly reduce the probability and impact of a takeover.
 
----
-
 ## What the guide covers
 
 The guide applies to every team member with access to the account, not only the primary account holder.
@@ -64,20 +63,18 @@ The guide applies to every team member with access to the account, not only the 
 
 | Topic | Summary | Guide section |
 |---|---|---|
-| **2FA method** | Use an authenticator app or hardware security key; SMS-based 2FA is vulnerable to SIM swapping and should be removed | [→ 2FA](https://frameworks.securityalliance.dev/guides/account-management/twitter#account-security-checklist) |
-| **Phone number removal** | Remove your phone number from the account entirely — it is the primary vector for SIM swap takeovers | [→ Phone number](https://frameworks.securityalliance.dev/guides/account-management/twitter#account-security-checklist) |
-| **Email security** | Use a non-obvious email address not linked to your public identity; enable password reset protection | [→ Email](https://frameworks.securityalliance.dev/guides/account-management/twitter#1-email-security) |
-| **Password reset protection** | Require email or phone confirmation before a reset can be initiated, blocking hint-based attacks | [→ Reset protection](https://frameworks.securityalliance.dev/guides/account-management/twitter#account-security-checklist) |
-| **Connected accounts** | Review and remove any third-party accounts used to log in; prior compromise can persist through these | [→ Connected accounts](https://frameworks.securityalliance.dev/guides/account-management/twitter#account-security-checklist) |
-| **Third-party app permissions** | Audit and revoke OAuth access for apps no longer in use; old tokens remain valid until explicitly revoked | [→ App permissions](https://frameworks.securityalliance.dev/guides/account-management/twitter#best-practices--additional-tips) |
-| **Active session review** | Log out of unrecognised devices and sessions; any unfamiliar session is a potential persistent access point | [→ Sessions](https://frameworks.securityalliance.dev/guides/account-management/twitter#best-practices--additional-tips) |
+| **2FA method** | Use an authenticator app or hardware security key; SMS-based 2FA is vulnerable to SIM swapping and should be removed | [→ 2FA](/guides/account-management/twitter#account-security-checklist) |
+| **Phone number removal** | Remove your phone number from the account entirely — it is the primary vector for SIM swap takeovers | [→ Phone number](/guides/account-management/twitter#account-security-checklist) |
+| **Email security** | Use a non-obvious email address not linked to your public identity; enable password reset protection | [→ Email](/guides/account-management/twitter#1-email-security) |
+| **Password reset protection** | Require email or phone confirmation before a reset can be initiated, blocking hint-based attacks | [→ Reset protection](/guides/account-management/twitter#account-security-checklist) |
+| **Connected accounts** | Review and remove any third-party accounts used to log in; prior compromise can persist through these | [→ Connected accounts](/guides/account-management/twitter#account-security-checklist) |
+| **Third-party app permissions** | Audit and revoke OAuth access for apps no longer in use; old tokens remain valid until explicitly revoked | [→ App permissions](/guides/account-management/twitter#best-practices--additional-tips) |
+| **Active session review** | Log out of unrecognised devices and sessions; any unfamiliar session is a potential persistent access point | [→ Sessions](/guides/account-management/twitter#best-practices--additional-tips) |
 
 ---
 
 > Spotted an error or have ideas to enhance this content? Your contributions are valuable to us.
 
-For a comprehensive guide on securing your X (Twitter) account, see the [**Twitter/X Security Guide**](https://frameworks.securityalliance.dev/guides/account-management/twitter).
-
----
+For a comprehensive guide on securing your X (Twitter) account, see the [**Twitter/X Security Guide**](/guides/account-management/twitter).
 
 <ContributeFooter />
