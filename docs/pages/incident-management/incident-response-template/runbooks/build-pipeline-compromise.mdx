@@ -11,10 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
 
 # Runbook: Build Pipeline Compromise
 
@@ -36,10 +33,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ### Symptoms
 
+<Checklist id="symptoms">
 - [ ] Unexpected code in deployed artifacts
 - [ ] CI/CD configuration changed without approval
 - [ ] Secrets accessed or exfiltrated
 - [ ] Unauthorized workflow runs
+</Checklist>
 
 ### Confirm Compromise
 
@@ -49,26 +48,32 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ## Immediate Actions
 
-1. [ ] Disable compromised pipelines
-2. [ ] Rotate all secrets and tokens
-3. [ ] Take down potentially compromised deployments
-4. [ ] Audit recent builds and deployments
+<Checklist id="immediate-actions">
+- [ ] Disable compromised pipelines
+- [ ] Rotate all secrets and tokens
+- [ ] Take down potentially compromised deployments
+- [ ] Audit recent builds and deployments
+</Checklist>
 
 ## Mitigation
 
-1. [ ] Audit CI/CD configuration for unauthorized changes
-2. [ ] Rebuild from trusted commit using clean pipeline
-3. [ ] Implement additional approval requirements
-4. [ ] Review and restrict pipeline permissions
+<Checklist id="mitigation">
+- [ ] Audit CI/CD configuration for unauthorized changes
+- [ ] Rebuild from trusted commit using clean pipeline
+- [ ] Implement additional approval requirements
+- [ ] Review and restrict pipeline permissions
+</Checklist>
 
 ## Prevention
 
+<Checklist id="prevention">
 - [ ] Require approval for CI/CD config changes
 - [ ] Use short-lived credentials
 - [ ] Implement branch protection
 - [ ] Audit pipeline access regularly
 - [ ] Use signed commits
 - [ ] Separate build and deploy permissions
+</Checklist>
 
 ## Related
 
@@ -76,5 +81,4 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 - [Dependency Attack](./dependency-attack)
 - [Incident Response Policy](../incident-response-policy)
 
-</TagProvider>
 <ContributeFooter />

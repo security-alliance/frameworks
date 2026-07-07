@@ -11,10 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
 
 # Runbook: Frontend Compromise
 
@@ -37,12 +34,14 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ### Symptoms
 
+<Checklist id="symptoms">
 - [ ] Users report unexpected transaction requests
 - [ ] UI behaving differently than expected
 - [ ] Wallet drainer detected
 - [ ] Injected scripts in page source
 - [ ] DNS/domain issues
 - [ ] Community reports of phishing via official domain
+</Checklist>
 
 ### Attack Vectors
 
@@ -62,18 +61,22 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 Options:
 
+<Checklist id="step-1-take-down-or-redirect">
 - [ ] Point DNS to maintenance page
 - [ ] Disable CDN distribution
 - [ ] Remove site from hosting
 - [ ] Add banner/warning if partial control
+</Checklist>
 
 ### Step 2: Warn Users
 
 **Why:** Prevent further damage
 
+<Checklist id="step-2-warn-users">
 - [ ] Post on Twitter/X
 - [ ] Post in Discord/Telegram
 - [ ] Update status page
+</Checklist>
 
 Message template:
 > Our website may be compromised. Do NOT interact with [domain] or approve any transactions until further notice.
@@ -81,10 +84,12 @@ Message template:
 
 ### Step 3: Assess Scope
 
+<Checklist id="step-3-assess-scope">
 - [ ] What was changed?
 - [ ] How long was it compromised?
 - [ ] How many users potentially affected?
 - [ ] Were any transactions signed?
+</Checklist>
 
 ## Investigation
 
@@ -92,7 +97,9 @@ Message template:
 
 The first priority is understanding how the attacker gained access so you can close that vector:
 
+<Checklist id="priority-identify-attack-vector">
 - [ ] **How did attacker gain access?** (DNS, CDN, dependencies, CI/CD, hosting)
+</Checklist>
 
 Once identified, go to the specific runbook:
 
@@ -105,9 +112,11 @@ Once identified, go to the specific runbook:
 
 After the threat is contained, investigate impact:
 
+<Checklist id="post-mitigation-investigation">
 - [ ] What was injected/changed?
 - [ ] Which users interacted during compromise window?
 - [ ] What were users tricked into signing?
+</Checklist>
 
 ### Check These
 
@@ -132,11 +141,13 @@ See the specific runbook for detailed mitigation steps:
 
 ### Before Restoring Service
 
+<Checklist id="before-restoring-service">
 - [ ] Root cause identified
 - [ ] Vulnerability fixed
 - [ ] Fresh deployment from verified source
 - [ ] All credentials rotated
 - [ ] Additional security measures in place
+</Checklist>
 
 ### Restoring Service
 
@@ -150,27 +161,33 @@ See the specific runbook for detailed mitigation steps:
 
 If users signed malicious transactions:
 
+<Checklist id="affected-user-support">
 - [ ] Compile list of affected addresses (from chain data)
 - [ ] Provide guidance on revoking approvals
 - [ ] Consider compensation if protocol at fault
 - [ ] Document for post-mortem
+</Checklist>
 
 ## Escalation
 
+<Checklist id="escalation">
 - [ ] [Decision Makers](../contacts#decision-makers) - immediately
 - [ ] [Infrastructure Vendors](../contacts#infrastructure-vendors) - if hosting/CDN involved
 - [ ] [Legal & Communications](../contacts#legal--communications) - for user communication
+</Checklist>
 
 ## Prevention Checklist
 
 After resolving, review:
 
+<Checklist id="prevention-checklist">
 - [ ] DNS provider security (2FA, lock)
 - [ ] Hosting access controls
 - [ ] CI/CD security
 - [ ] Dependency management
 - [ ] Subresource integrity
 - [ ] Content Security Policy
+</Checklist>
 
 ## Related
 
@@ -182,5 +199,4 @@ After resolving, review:
 - [Third-Party Outage](./third-party-outage)
 - [Incident Response Policy](../incident-response-policy)
 
-</TagProvider>
 <ContributeFooter />

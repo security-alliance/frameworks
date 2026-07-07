@@ -10,10 +10,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Critical Contacts
 
@@ -126,21 +123,24 @@ Protocols, exchanges, or other partners to notify during major incidents.
 
 For P1 (critical) incidents, contact in this order:
 
+<Checklist id="quick-reference---p1-escalation">
 1. [ ] SEAL 911 (if active exploit)
 2. [ ] Decision Makers (internal)
 3. [ ] Security Partners (if needed)
 4. [ ] Legal (if fund loss or regulatory implications)
+</Checklist>
 
 ## Maintenance
 
+<Checklist id="maintenance">
 - [ ] Review and update quarterly
 - [ ] Verify contact info after team changes
 - [ ] Test escalation paths periodically
+</Checklist>
 
 **Owner:** [Assign someone to maintain this document]
 
 *See [Incident Response Policy](./incident-response-policy) and [Roles and Staffing](./roles-and-staffing) for how
 these contacts fit into the response process.*
 
-</TagProvider>
 <ContributeFooter />

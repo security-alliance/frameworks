@@ -1,13 +1,13 @@
 import { ReactNode } from 'react'
 
-declare const __IS_MAIN_BRANCH__: boolean
+const isMainBranch = process.env.CF_PAGES_BRANCH === 'main'
 
 interface Props {
   children: ReactNode
 }
 
 export function DevOnly({ children }: Props) {
-  if (__IS_MAIN_BRANCH__) {
+  if (isMainBranch) {
     return null
   }
   return <>{children}</>

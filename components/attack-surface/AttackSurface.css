@@ -1,8 +1,23 @@
 /* Attack Surface — Radial Threat Map */
 
 .as-wrap {
+  --color-primary: #4339db;
+  --color-text-muted: #9ca3af;
+  --color-text-primary: #e5e7eb;
+  --color-text-strong: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --border-card: rgba(255, 255, 255, 0.1);
+
   max-width: 860px;
   margin: 0 auto;
+}
+
+:root:not([data-vocs-theme='dark']) .as-wrap {
+  --color-text-muted: #6b7280;
+  --color-text-primary: #1f2937;
+  --color-text-strong: #202020;
+  --bg-card: rgba(0, 0, 0, 0.02);
+  --border-card: rgba(0, 0, 0, 0.08);
 }
 
 /* Summary Bar */
@@ -235,7 +250,7 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-:root:not(.dark) .as-toggle-btn:hover {
+html:not([data-vocs-theme='dark']) .as-toggle-btn:hover {
   background: rgba(0, 0, 0, 0.03);
 }
 

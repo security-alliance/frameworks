@@ -10,10 +10,7 @@ contributors:
     users: [mattaereal]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Telegram Security
 
@@ -43,6 +40,7 @@ their own accounts.
 ### Account Security Checklist
 
 - Account Settings:
+<Checklist id="account-security-checklist">
   - Privacy & Security >
     - Security >
       - [ ]  Two-Step Verification > **On**
@@ -97,9 +95,7 @@ their own accounts.
       - [ ]  Calls > Who can call me > **Nobody**/**My Contacts**
       - [ ]  Calls > Exceptions > Remove all
       - [ ]  Calls > Peer-to-peer > Use peer-to-peer with > **Nobody**/**My Contacts**
-
-        > **Note**: Peer-to-peer calls leak your IP address to callers. Set to **Nobody** to preserve anonymity
-
+        - _Note: Peer-to-peer calls leak your IP address to callers. Set to **Nobody** to preserve anonymity_
       - [ ]  Calls > Peer-to-peer > Exceptions > Always allow > Remove all
       - [ ]  Groups & Channels > Who can add me to groups and channels > **Nobody**/**My contacts**
         - This helps prevent being added to random groups that may impersonate legitimate groups and lead to scams.
@@ -115,14 +111,14 @@ their own accounts.
       attacker who gains access to your account could find such information quite valuable.
   - Advanced >
     - [ ]  Automatic media download > Disable all types in all cases
-
-      > **Note**: Automatic media download leaves you exposed to advanced malware attacks
-
+      - _Note: Automatic media download leaves you exposed to advanced malware attacks_
     - Version and updates >
       - Ensure you are always using the latest version of Telegram to benefit from the newest security patches and features.
       - [ ]  Check for Updates: Visit your device's app store regularly
       - [ ]  Update automatically > **Enabled**
       - [ ]  Install beta versions > **Disabled**
+
+</Checklist>
 
 > **Authentication Guidelines**: When establishing a secret chat,
 > [compare the encryption keys](https://core.telegram.org/techfaq#q-how-are-secret-chats-authenticated)
@@ -139,26 +135,24 @@ to use a secure platform like [Signal](https://signal.org/) for confidential com
 
 Securing the device you use for Telegram is crucial for preventing unauthorized access to your account and messages.
 
+<Checklist id="device-security">
 - [ ]  **Enable Full Device Encryption**:
   - Ensure your device has full disk encryption enabled
   - For iOS: This is enabled by default with a passcode
   - For Android: Go to **Settings > Security > Encryption** and follow instructions
-
 - [ ]  **Set Strong Device Passcodes**:
   - Use alphanumeric passwords rather than simple PINs
   - Enable biometric authentication as a secondary measure
-
 - [ ]  **Keep Your Device Updated**:
   - Install OS updates promptly to patch security vulnerabilities
   - Update Telegram to the latest version regularly
-
 - [ ]  **Install Security Software**:
   - Use reputable anti-malware software on your device
   - Consider privacy-focused apps that detect network anomalies
-
 - [ ]  **Secure Your Backups**:
   - Ensure any device backups containing Telegram data are encrypted
   - Be cautious about cloud backups that might store Telegram messages
+</Checklist>
 
 ---
 
@@ -197,13 +191,16 @@ encryption**.
 
 **Go to:** Settings > Privacy and Security > Data Settings
 
+<Checklist id="data-settings">
 - [ ]  **Sync Contacts:** Disable (depending on use of Telegram) to prevent syncing your contacts.
 - [ ]  **Suggest Frequent Contacts:** Disable (depending on use of Telegram) to avoid unsolicited contact suggestions.
+</Checklist>
 
 ---
 
 ### Best Practices for Safe Use
 
+<Checklist id="best-practices">
 - [ ]  **Use Secret Chats:** When messaging someone, create a 'secret' chat to ensure encrypted 1:1 communication,
 providing end-to-end encryption for sensitive transactions.
 - [ ]  **Verify Group Invites and Authenticity:** Always triple-check group invitations and confirm the legitimacy of
@@ -229,6 +226,7 @@ instead of just deleting chats.
   app.
 - [ ]  **Stay Vigilant Against Scam Ads:** Be aware that anyone can post ads in channels, with 99% being scam ads.
 Exercise caution when interacting with advertisements.
+</Checklist>
 
 ---
 
@@ -298,13 +296,17 @@ These settings and practices apply to Telegram group/channel administrators with
 #### Channel Settings
 
 - Open channel > click channel name > **Channel settings**
+<Checklist id="channel-settings">
   - [ ]  Sign messages > **Enable** (if non-repudiation is desired)
   - [ ]  Administrators > Review the list and remove any unnecessary
+
+</Checklist>
 
 #### Group Settings
 
 - Open group > click group name > click three dots >
   **Manage group**
+<Checklist id="group-settings">
   - [ ]  Channel type > **Private** (if public discoverability is not necessary)
   - [ ]  Channel type > Content protection > **Enabled** (if confidentiality is needed)
   - [ ]  Sign messages > **Enabled**
@@ -327,48 +329,49 @@ These settings and practices apply to Telegram group/channel administrators with
     - **Aggressive Anti-Spam** > **Enabled**
   - [ ]  **Members** > Review and remove unnecessary (If a confidential channel)
 
+</Checklist>
+
 ---
 
 ### Admin Permissions Management
 
 If you manage Telegram groups or channels, properly configuring admin permissions is crucial for maintaining security.
 
+<Checklist id="admin-permissions">
 - [ ]  **Limit Admin Privileges**:
   - Go to your group/channel, tap the group name, select **Administrators**
   - Only grant necessary permissions to each admin
   - Avoid giving "Add Users" permission to untrusted admins
-
 - [ ]  **Implement Admin Verification**:
   - Establish a verification process before promoting members to admin
   - Use separate channels (like voice calls) to confirm admin identities
   - Document when admin changes occur and why
-
 - [ ]  **Configure Group Settings**:
   - Restrict member actions such as sending media or links
   - Enable "Slow Mode" for large groups to prevent spam
   - Use discussion groups for channels to control information flow
-
 - [ ]  **Audit Admin Activities**:
   - Regularly review admin actions in the group
   - Remove inactive or suspicious admins
   - Consider using admin action logs if available
-
 - [ ]  **Handle Admin Transitions Securely**:
   - Have protocols for transferring ownership if needed
   - Revoke admin rights immediately when team members leave
-
 - [ ]  **Limit Group Permissions:** Restrict who can add members to groups to prevent unauthorized cloning and protect
 against raids.
+</Checklist>
 
 ---
 
 ### Additional Recommendations
 
+<Checklist id="additional-recommendations">
 - [ ]  Add a disclaimer in the description and/or as a pinned message to your channel that states that you will not DM
 users, and that support will only be offered via the public channel and dedicated support channels
 [[2]](#2-security-disclaimers)
 - [ ]  Add a suffix to admin usernames, for example: "MyName | will never DM you"
 - [ ]  Each admin must follow the guidance for securing their individual accounts
+</Checklist>
 
 ---
 
@@ -376,30 +379,28 @@ users, and that support will only be offered via the public channel and dedicate
 
 If you're managing a community on Telegram, educating your members about security is vital for collective protection.
 
+<Checklist id="community-education">
 - [ ]  **Regular Security Announcements**:
   - Schedule periodic reminders about security best practices
   - Pin important security announcements in your group/channel
   - Create dedicated security FAQ channels or posts
-
 - [ ]  **Clear Verification Procedures**:
   - Establish and communicate how official communications will occur
   - Create verification steps for new members to follow
   - Document how to verify the authenticity of admins and official messages
-
 - [ ]  **Threat Awareness Training**:
   - Share examples of common scams targeting your community
   - Post screenshots of phishing attempts (with sensitive info redacted)
   - Explain the "Man-in-the-Group Attack" and how to avoid it
-
 - [ ]  **Incident Reporting Protocol**:
   - Create clear guidelines for reporting suspicious activity
   - Designate security-focused admins to handle reports
   - Acknowledge reports publicly (without specifics) to encourage vigilance
-
 - [ ]  **Security Resources**:
   - Develop simple, accessible security guides for members
   - Share platform-specific security updates when Telegram releases them
   - Create a security checklist for new community members
+</Checklist>
 
 ---
 
@@ -421,5 +422,4 @@ Please report scams to reports@\<company\>.com"
 
 ---
 
-</TagProvider>
 <ContributeFooter />

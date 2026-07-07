@@ -13,10 +13,7 @@ contributors:
     users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Zoom Hardening Guide
 
@@ -52,6 +49,7 @@ These mitigations address the specific attack vectors described in the Trail of 
 COMET research and should be treated as **non-negotiable** for any organization handling
 sensitive assets.
 
+<Checklist id="required-mitigations">
 - [ ] **Disable remote control**: Settings > Meeting > In Meeting (Basic) > Remote control > **OFF**
 - [ ] **Disable participant screen sharing (host only)**: Settings > Meeting > In Meeting (Basic) >
   Screen sharing > Who can share? > **Host Only**
@@ -65,17 +63,20 @@ sensitive assets.
   [macOS mitigations](#macos-specific-mitigations) below.
 - [ ] **Remove Zoom desktop client when possible**: Uninstall entirely to eliminate the
   attack surface.
+</Checklist>
 
 ### Optional
 
 General Zoom security best practices. These do not directly mitigate the ELUSIVE COMET attack
 but improve overall meeting security hygiene.
 
+<Checklist id="optional-mitigations">
 - [ ] **Enable waiting rooms**: Settings > Meeting > Security > Waiting Room > **ON**
 - [ ] **Require meeting passcodes**: Settings > Meeting > Security >
   Require a passcode when scheduling new meetings > **ON**
 - [ ] **Disable automatic recording**: Settings > Meeting > Recording >
   Automatic recording > **OFF** (enable only when explicitly needed)
+</Checklist>
 
 ## macOS-specific mitigations
 
@@ -169,5 +170,4 @@ the [ELUSIVE COMET playbook](/incident-management/playbooks/hacked-elusive-comet
 
 ---
 
-</TagProvider>
 <ContributeFooter />

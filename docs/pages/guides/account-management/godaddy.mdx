@@ -8,10 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # GoDaddy Security
 
@@ -35,10 +32,13 @@ These settings apply to your personal GoDaddy account. All team members and admi
 ### Individual Account Settings
 
 - Account Settings >
+<Checklist id="individual-account-settings">
   - Login & Pin >
     - [ ]  2-Step Verification > **On** (non-SMS)
     - [ ]  Active sign-ins > **Review and remove any unused or unrecognized**
   - [ ]  Delegate Access > **Review and remove any unused or unrecognized**
+
+</Checklist>
 
 ---
 
@@ -61,7 +61,9 @@ These settings and practices apply to GoDaddy account administrators who manage 
 
 ### Domain Security
 
+<Checklist id="domain-security">
 - [ ]  Domain Settings > DNS > DNSSEC > **On**
+</Checklist>
 
 ### Best Practices
 
@@ -76,5 +78,4 @@ These settings and practices apply to GoDaddy account administrators who manage 
 
 ---
 
-</TagProvider>
 <ContributeFooter />

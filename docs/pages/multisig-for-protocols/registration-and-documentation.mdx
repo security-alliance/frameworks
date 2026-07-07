@@ -12,10 +12,7 @@ contributors:
     users: [pinalikefruit, engn33r]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # Registration & Documentation
 
@@ -46,6 +43,17 @@ Signers:
 
 Controlled contracts: [List contract addresses and purposes]
 On-chain roles: [Describe roles like ownable, Access Control roles (PAUSER_ROLE)]
+
+Access Control Inventory:
+- Role: [Role name, e.g., UPGRADER_ROLE]
+  Held by: [This multisig address]
+  Contract: [Contract address and name]
+  Capabilities: [What this role can do]
+  Constraints: [Timelock duration, parameter bounds, etc.]
+  Blast radius: [Maximum potential impact if compromised]
+
+Timelock configuration: [Timelock contract address, delay duration, who can cancel]
+Related multisigs: [Other multisigs that interact with the same contracts or share signers]
 
 Impact assessment:
 - Financial exposure: $[amount] ([reasoning])
@@ -377,5 +385,4 @@ Use the template in [Registration & Documentation → Update Template](/multisig
 - [Joining a Multisig](/multisig-for-protocols/joining-a-multisig) - Signer verification process
 - [Operational Runbooks](/multisig-for-protocols/runbooks/overview) - Example procedures for common operations
 
-</TagProvider>
 <ContributeFooter />

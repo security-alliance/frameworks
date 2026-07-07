@@ -1,3 +1,5 @@
+"use client";
+
 import { memo, useMemo, useState } from "react";
 import { ControlData, Section } from "./types";
 import { ControlCard } from "./ControlCard";

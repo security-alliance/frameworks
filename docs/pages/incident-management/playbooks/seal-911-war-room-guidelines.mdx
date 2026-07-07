@@ -9,10 +9,7 @@ contributors:
     users: [SEAL]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # SEAL 911
 
@@ -35,17 +32,23 @@ the security researchers.
 
 ### Perform Immediately
 
+<Checklist id="perform-immediately">
 - [ ] Notify SEAL 911 Bot of the incident. Use this message template to get started.
 - [ ] Create a War Room with audio and share the invite link with trusted individuals.
 - [ ] Duplicate this document to allow collaboration and share the link in the War Room.
 - [ ] Review the Advice to Keep in Mind section.
+</Checklist>
 
 ### Perform in Parallel by Role
 
 1. **Assign Key Roles to War Room Members**:
+<Checklist id="perform-in-parallel-by-role">
    - [ ] Assign members to specific roles.
 
-2. **Analysis**:
+</Checklist>
+
+1. **Analysis**:
+<Checklist id="perform-in-parallel-by-role-2">
    - [ ] Scope the impact of the attack.
    - [ ] Gather Transactions Involved.
    - [ ] Gather Affected Addresses.
@@ -54,7 +57,10 @@ the security researchers.
    - [ ] Investigate the issue and update the Issue Description.
    - [ ] Propose workable solutions.
 
-3. **Protocol actions**:
+</Checklist>
+
+1. **Protocol actions**:
+<Checklist id="perform-in-parallel-by-role-3">
    - [ ] Take immediate corrective/preventative actions to prevent further loss of funds.
    - [ ] Pause contracts if possible.
    - [ ] Execute pre-made defensive scripts.
@@ -62,18 +68,26 @@ the security researchers.
    - [ ] Validate and execute the solution.
    - [ ] Prepare monitoring alerts for situations that require future actions.
 
-4. **Web actions**:
+</Checklist>
+
+1. **Web actions**:
+<Checklist id="perform-in-parallel-by-role-4">
    - [ ] Disable deposits and/or withdrawals as needed in the web UI.
    - [ ] Enable front-end IP or Address blacklisting.
    - [ ] Create front-end for any user actions necessary (approval revoking, fund migrating, etc.).
 
-5. **Communications**:
+</Checklist>
+
+1. **Communications**:
+<Checklist id="perform-in-parallel-by-role-5">
    - [ ] Identify social platforms that communications on the incident must be sent to.
    - [ ] Prepare messages for incident communication internally and externally.
    - [ ] Gather security contacts for any potentially affected downstream protocols (bridges, lending protocols).
    - [ ] Notify block explorers (like Etherscan) for attacker address labeling.
    - [ ] Continuously monitor social media for users providing additional information that aids whitehat efforts.
    - [ ] Monitor War Room efforts and maintain the Event Timeline.
+
+</Checklist>
 
 ### After all of the above is complete, consider Post Incident Actions
 
@@ -196,9 +210,11 @@ executes the rescue via EIP-7702 delegation. The script also resets the authoriz
 
 ### When to Use It
 
+<Checklist id="when-to-use-it">
 - [ ] A wallet's private key is confirmed compromised and funds remain.
 - [ ] The rescue team has a safe destination wallet and the victim's private key.
 - [ ] Someone on the team can run Bash scripts with Foundry's `cast` installed.
+</Checklist>
 
 ### Important Caveats
 
@@ -269,5 +285,4 @@ Funds at Risk: [Estimated Amount in USD or Token]
 
 ---
 
-</TagProvider>
 <ContributeFooter />

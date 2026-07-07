@@ -12,10 +12,7 @@ contributors:
     users: [nftdreww]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Discord Security
 
@@ -46,6 +43,7 @@ on their own accounts.
 
 ### Account Security Checklist
 
+<Checklist id="account-security-checklist">
 - [ ] User Settings > My Account: Ensure **2FA** is enabled (authenticator app and/or security key), Remove a phone
   number if you have one added to your account, and after 2FA is setup select **View Backup Codes**, and note down
   your backup codes offline
@@ -56,6 +54,7 @@ on their own accounts.
 - [ ] User Settings > Authorized Apps: Review and **Deauthorize** any unnecessary apps
 - [ ] User Setting > Devices: Review and remove unnecessary devices, or **Log Out All Known Devices**
 - [ ] User Settings > Connections: Review and remove any unnecessary connections
+</Checklist>
 
 ---
 
@@ -81,34 +80,46 @@ These settings and practices apply to server administrators with elevated privil
 #### Safety Setup
 
 - Safety Setup > Moderation:
+<Checklist id="safety-setup">
   - [ ] Require 2FA for moderation > **Enabled**
   - This ensures all moderators have an extra layer of security
+
+</Checklist>
 - Safety Setup > Verification Level:
+<Checklist id="safety-setup-2">
   - [ ] Choose from: None, Low, Medium, High, Highest
   - [ ] Set to at least **Medium** (registered on Discord for 5+ minutes) — Recommended: "Moderate" for public servers
   - Higher levels protect against spammers and raids
+</Checklist>
 - Safety Setup > Raid Protection and CAPTCHA:
+<Checklist id="safety-setup-3">
   - [ ] Activate all relevant settings to require CAPTCHA for new user actions
   - [ ] Activity Alerts > **Enabled**
   - [ ] CAPTCHA suspicious accounts before they are able to join > **Enabled**
   - [ ] CAPTCHA all accounts before they are able to join during a suspected raid > **Enabled**
   - This protection uses machine learning to detect and block bot-driven join-raids. When activated, it sends alerts
     to a specified channel and requires CAPTCHA verification for new users for one hour after detection.
+</Checklist>
 - Safety Setup > DM and Spam Protection:
+<Checklist id="safety-setup-4">
   - [ ] Hide DMs from suspicious users > **Enabled**
   - [ ] Filter DMs from unknown users > **Enabled**
   - [ ] Warn members before they visit outbound links > **Enabled**
   - [ ] Hide all messages from and delete suspected spammers > **Enabled**
+</Checklist>
 
 #### AutoMod
 
 - Server Settings > Safety Setup > AutoMod:
+<Checklist id="automod">
   - [ ] Set up rules for: **Spam**, **Harmful Links**, **Mention Spam**, **Inappropriate Words**
   - [ ] Configure custom keyword filters and exempted roles
   - [ ] Customize the response to spam (block message, send alert, timeout member)
   - [ ] Add to the existing automod rule to block keywords in a user's name: Support, Bot, Admin, Tech, Helpdesk, etc.
   - [ ] Create a private channel that mods, team, and admins have visibility to and set each AutoMod rule to send
     logs to that channel for review
+
+</Checklist>
 
 #### Server Overview
 
@@ -118,6 +129,7 @@ These settings and practices apply to server administrators with elevated privil
 #### Roles
 
 - Server Settings > Roles:
+<Checklist id="roles">
   - [ ] Review admin role members — high-privilege roles with **Administrator** permission should have **2-3 members
     max**
   - [ ] Review bot role permissions and confirm members list contains only the bot user
@@ -126,6 +138,8 @@ These settings and practices apply to server administrators with elevated privil
     Server**, **Administrator**
   - [ ] Remove any lingering or overly broad permissions, and any roles with excess or unintended members
   - [ ] Check channel-level permission overrides on private channels
+
+</Checklist>
 
 > **Note on Role Permissions:** For each role, carefully review the 32 available permissions. Key permissions to
 > restrict: Administrator, Manage Webhooks, Manage Server, Manage Roles, & Manage Channels. Never give Admin or Kick
@@ -146,9 +160,13 @@ These settings and practices apply to server administrators with elevated privil
 #### Integrations
 
 - Server Settings > Integrations:
+<Checklist id="integrations">
   - [ ] Review each bot's permissions and remove unnecessary permissions
   - [ ] Remove any unnecessary integrations & reevaluate necessity of integrations with excessive permissions
+
+</Checklist>
 - Server Settings > Integrations > Manage Bot/App > **Roles & Members** / **Channels**:
+<Checklist id="integrations-2">
   - [ ] Remove permissions for bots that ask for Admin or other permissions that aren't needed — use least privilege
     with permissions at the role level and channel level
   - [ ] Uninstall any bots that aren't actively used or needed
@@ -156,9 +174,12 @@ These settings and practices apply to server administrators with elevated privil
     [**Verified**](https://support-dev.discord.com/hc/en-us/articles/23926564536471-How-Do-I-Get-My-App-Verified)
   - [ ] Restrict command permissions of integrations where possible (Manage > Roles & Members / Channels / Command
     Overrides)
+</Checklist>
 - Server Settings > Integrations > Webhooks:
+<Checklist id="integrations-3">
   - [ ] Review and remove any unnecessary webhooks
   - [ ] Reevaluate necessity of webhooks with excessive permissions
+</Checklist>
 
 > **Note on Integration Security:** Integrations and webhooks add 3rd party risk and permission misconfiguration risk.
 > Ensure that permissions are correct, and either remove external integrations or understand the risk they present.
@@ -166,22 +187,33 @@ These settings and practices apply to server administrators with elevated privil
 #### Invites
 
 - Server Settings > Invites:
+<Checklist id="invites">
   - [ ] Review and delete unnecessary or old invites regularly
+
+</Checklist>
 
 #### Privacy Settings
 
 - Server Settings > Privacy Settings:
+<Checklist id="privacy-settings">
   - [ ] Disable **Direct Messages** — this prevents users from DMing other members in this server
+
+</Checklist>
 
 #### Community Features
 
 - Server Settings > Community:
+<Checklist id="community-features">
   - [ ] Enable the Community Feature
   - Unlocks tools like membership screening, server insights, welcome screen, and discovery settings. Helps maintain
     a structured, secure environment by surfacing official rules and critical info to newcomers.
+
+</Checklist>
 - Server Settings > Server Insights:
+<Checklist id="community-features-2">
   - [ ] Enable Server Insights for detailed analytics
   - Use this data to inform moderation strategies and server improvements
+</Checklist>
 
 > **Note on Safety Features:**
 >
@@ -228,12 +260,16 @@ Use **Server Settings > Roles > [Role] > View Server as Role** to see what membe
 
 (Right-click channel > Edit Channel > Permissions):
 
+<Checklist id="per-channel-settings">
 - [ ] Set custom permissions for roles or members in specific channels
+</Checklist>
 
 #### Channel Settings > Overview
 
+<Checklist id="channel-settings-overview">
 - [ ] Slow Mode: Set appropriate cooldown (e.g., 5-30 seconds) for busy channels
 - [ ] Age-Restricted Channel: Enable for channels with mature content
+</Checklist>
 
 ---
 
@@ -348,29 +384,35 @@ setup and maintenance must ONLY access the Cold Admin account from a cold device
 Create a brand new Gmail account specifically for this Discord account. Do not use a VPN during this process, and
 it's best to use an incognito browser. After creating the Gmail account:
 
+<Checklist id="step-1-create-a-dedicated-email-account">
 - [ ] Set up 2FA immediately (authenticator app recommended, or Security Key for maximum security)
 - [ ] Ensure "Skip password when possible" is **off**
 - [ ] Do not add a phone number to the account
 - [ ] Note down the 10 backup codes **offline on paper** (DO NOT store online)
 - [ ] Write down the email, password, and backup codes on paper and store securely
+</Checklist>
 
 ##### Step 2: Create the Discord account
 
 Head to [https://discord.com](https://discord.com) and create a new account using the Gmail account you just created.
 
+<Checklist id="step-2-create-the-discord-account">
 - [ ] Write down the email, username, password, and date of birth **offline**
 - [ ] Use a username that is not related to your project
 - [ ] Give the profile a profile picture in **My Account > Edit User Profile**
 - [ ] Go to **Content & Social** and disable DMs from server members and set spam filter to maximum
 - [ ] Set the account status to **Invisible** so no one can see if it's online (click profile in bottom left > change status)
+</Checklist>
 
 ##### Step 3: Join the server and transfer ownership
 
+<Checklist id="step-3-join-the-server-and-transfer-ownership">
 - [ ] Send the Cold Admin account a friend request from your personal Discord account
 - [ ] Have the Cold Admin join the Discord server and complete verification like a normal account
 - [ ] Assign the Cold Admin the highest admin role
 - [ ] Have the Cold Admin send a few messages in a private team chat
 - [ ] Wait approximately 24 hours, send a few more messages, then transfer ownership
+</Checklist>
 
 **To transfer ownership:** Go to **Server Settings > Members** > Search for the Cold Admin account > Click the three
 dots > Select **Transfer Ownership** > Input 2FA > Confirm
@@ -423,5 +465,4 @@ dots > Select **Transfer Ownership** > Input 2FA > Confirm
 
 ---
 
-</TagProvider>
 <ContributeFooter />

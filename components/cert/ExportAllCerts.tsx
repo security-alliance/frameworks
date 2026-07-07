@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import ExcelJS from "exceljs";
 import { ControlData, ControlState, Section } from "./types";

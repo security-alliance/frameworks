@@ -1,37 +1,97 @@
 version: 2
+
 updates:
   - package-ecosystem: "npm"
     directory: "/"
+
     schedule:
       interval: "weekly"
       day: "monday"
       time: "09:00"
       timezone: "UTC"
-    open-pull-requests-limit: 5
+
     target-branch: "develop"
+
+    # Normal version updates only.
+    # Security updates are not delayed by cooldown.
+    cooldown:
+      default-days: 7
+      semver-patch-days: 7
+      semver-minor-days: 14
+      semver-major-days: 30
+
+    open-pull-requests-limit: 5
+
+    # Conservative npm behavior:
+    # do not rewrite package.json ranges unless needed.
+    versioning-strategy: "increase-if-necessary"
+
     groups:
-      npm_and_yarn:
+      pnpm-patch:
+        applies-to: "version-updates"
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+
+      pnpm-minor:
+        applies-to: "version-updates"
         patterns:
           - "*"
         update-types:
           - "minor"
-          - "patch"
+
+    # Block routine major updates.
+    # Handle majors manually / intentionally.
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+
     commit-message:
       prefix: "chore(deps)"
+
     labels:
       - "dependencies"
 
   - package-ecosystem: "github-actions"
-    directory: "/.github/workflows"
+    directory: "/"
+
     schedule:
       interval: "weekly"
       day: "monday"
       time: "09:00"
       timezone: "UTC"
-    open-pull-requests-limit: 3
+
     target-branch: "develop"
+
+    cooldown:
+      default-days: 7
+
+    open-pull-requests-limit: 3
+
+    groups:
+      actions-patch:
+        applies-to: "version-updates"
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+
+      actions-minor:
+        applies-to: "version-updates"
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+
     commit-message:
       prefix: "chore(gha)"
+
     labels:
       - "dependencies"
-      - "github-actions"

@@ -15,10 +15,7 @@ contributors:
     users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
 
 # Forensic Readiness
 
@@ -122,6 +119,7 @@ silent mutation, and associated with a defensible chain of custody. That is a di
 
 ### Best-practice checklist
 
+<Checklist id="best-practice-checklist">
 - [ ] All critical evidence sources are inventoried and classified by volatility
 - [ ] Retention periods are defined for each evidence source and meet or exceed regulatory requirements
 - [ ] High-volatility evidence (ephemeral containers, in-memory data) has automated capture before loss
@@ -132,6 +130,7 @@ silent mutation, and associated with a defensible chain of custody. That is a di
 - [ ] Forensic readiness procedures are referenced in the incident response plan
 - [ ] Tabletop exercises include forensic readiness validation at least annually
 - [ ] Access to forensic artifacts is logged and restricted to authorized personnel
+</Checklist>
 
 ### Role-based tips
 
@@ -218,5 +217,4 @@ management systems -- generates ephemeral evidence that must be deliberately pre
 
 ---
 
-</TagProvider>
 <ContributeFooter />

@@ -8,10 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Signal Security
 
@@ -43,6 +40,7 @@ These settings apply to your personal Signal account. You must be on the phone a
 ### Account Security Checklist
 
 - Account Settings:
+<Checklist id="account-security-checklist">
   - [ ]  Settings > Account > Registration Lock > **Enable**
   - [ ]  Settings > Linked Devices > Review the list
   - [ ]  Settings > Calls > Always relay calls (*if privacy is desired*)
@@ -57,18 +55,21 @@ These settings apply to your personal Signal account. You must be on the phone a
   - [ ]  Settings > Privacy > Advanced > Always Relay Calls > **Enabled** (privacy)
     - *This leaks your IP address to contacts via calls when disabled*
 
+</Checklist>
+
 ---
 
 ### Best Practices & Additional Tips
 
+<Checklist id="best-practices">
 - [ ]  **Review Linked Devices Regularly**
   - Periodically check your linked devices and remove any that you no longer use or don't recognize.
 - [ ]  **Use a Strong Device PIN**
   - Signal's security relies on your device's security. Ensure you have a strong PIN or biometric lock on your phone.
 - [ ]  **Be Cautious with Safety Numbers**
   - Verify safety numbers with contacts when they change to ensure you're communicating with the intended person.
+</Checklist>
 
 ---
 
-</TagProvider>
 <ContributeFooter />

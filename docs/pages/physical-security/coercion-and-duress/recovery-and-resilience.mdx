@@ -1,0 +1,54 @@
+---
+title: "Recovery and Resilience | Security Alliance"
+description: "Post-incident recovery for wrench attacks: human factors, infrastructure reconstruction, governance updates, and long-term monitoring of affected parties."
+tags:
+  - Security Specialist
+  - HR
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+
+
+# Recovery and Resilience
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> **Key Takeaway**:
+> Recovery rebuilds trust in wallet infrastructure and supports affected people. Reconstruction never reuses exposed keys, governance closes exploited gaps, and long-term monitoring detects persistent surveillance or follow-on attempts targeting victims and replacement wallets.
+
+Recovery focuses on safely restoring trust in the wallet infrastructure and supporting the people affected. Resilience means learning from the event to harden the entire system against future coercion attempts.
+
+## Human factors
+
+- Provide psychological support and professional counseling for victims and their families.
+- Assess whether the targeted individual can realistically continue in a key-holding role given their heightened profile and potential ongoing risk.
+- Address broader team morale and fear by communicating clearly about new security measures and support resources.
+
+## Infrastructure reconstruction
+
+- Do not reuse any seed phrases, private keys, or devices that were physically accessible during the incident, even if they appear untouched.
+- Build a new wallet hierarchy from scratch and migrate remaining assets only after validating the new setup.
+- Re-verify all multisig participants, threshold settings, and allowlists to ensure no attacker-controlled addresses or signers were inserted during the compromise.
+
+## Governance
+
+- Revise travel, remote-work, and high-value transaction policies to close specific gaps exploited in the attack.
+- Formalize "lessons learned" into the risk register and training materials so new team members understand why specific constraints exist.
+
+## Long-term monitoring
+
+- Implement enhanced monitoring for the affected individuals and new wallet addresses to detect any persistent surveillance or follow-on attempts.
+- Periodically re-assess the threat landscape to ensure the recovered posture remains effective over time.
+- Maintain a relationship with threat intelligence and physical security partners to stay ahead of evolving coercion techniques targeting the sector.
+
+
+<ContributeFooter />

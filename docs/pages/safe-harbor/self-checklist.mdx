@@ -11,10 +11,7 @@ contributors:
     users: [dickson]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
 
 # Safe Harbor Eligibility Checklist
 
@@ -26,6 +23,7 @@ protocol.
 
 ## Can Safe Harbor Help Your Protocol?
 
+<Checklist id="can-safe-harbor-help-your-protocol">
 - [ ] **Do you hold user funds in smart contracts?** Without Safe Harbor, whitehats who could save your users' funds
 might hesitate to act due to legal uncertainty around unauthorized access.
 - [ ] **Do you want whitehats to help during active attacks?** Safe Harbor gives ethical hackers legal protection to
@@ -34,6 +32,7 @@ intervene immediately, before attackers can drain your protocol.
 bounty can't cover - live attacks happening right now when disclosure timelines don't matter.
 - [ ] **Do you want to increase the odds of recovering funds?** Safe Harbor encourages rescue attempts by trusted
 whitehats.
+</Checklist>
 
 If you checked any of the above - you can benefit from adopting our Safe Harbor.
 
@@ -74,5 +73,4 @@ Contact us at: [safe-harbor@securityalliance.org](mailto:safe-harbor@securityall
 
 ---
 
-</TagProvider>
 <ContributeFooter />

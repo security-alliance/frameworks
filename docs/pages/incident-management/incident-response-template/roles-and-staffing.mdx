@@ -11,10 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Roles and Staffing
 
@@ -148,12 +145,14 @@ ex. With 8 people per rotation, each person is on-call one week every two months
 
 Before going on-call, complete:
 
+<Checklist id="first-responder-training">
 - [ ] Review [Incident Response Policy](./incident-response-policy)
 - [ ] Review [Incident Log](./templates/incident-log-template) and [Post-Mortem](./templates/post-mortem-template) templates
 - [ ] Read 2-3 past post-mortems
 - [ ] Understand basic architecture (infra and smart contracts)
 - [ ] Know how to reach SMEs and Decision Makers
 - [ ] Test alerting system access
+</Checklist>
 
 ### On-Call Expectations
 
@@ -191,12 +190,14 @@ These people should be reachable 24/7 for critical incidents. Consider:
 
 Ensure your on-call personnel have access to:
 
+<Checklist id="tools-checklist">
 - [ ] Alerting system (PagerDuty, etc.)
 - [ ] Communication platform (Slack, Discord, etc.)
 - [ ] Video conferencing
 - [ ] Monitoring dashboards
 - [ ] On-call schedule
 - [ ] [Contacts](./contacts) list
+</Checklist>
 
 ## Choosing Your Model
 
@@ -212,5 +213,4 @@ that gets ignored.
 
 *See [Incident Response Policy](./incident-response-policy) for how these roles work during an actual incident.*
 
-</TagProvider>
 <ContributeFooter />
