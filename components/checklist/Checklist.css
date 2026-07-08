@@ -1,0 +1,79 @@
+.checklist {
+  margin-top: -0.25rem;
+  --color-text-muted: #9ca3af;
+}
+
+:root:not([data-vocs-theme='dark']) .checklist {
+  --color-text-muted: #6b7280;
+}
+
+.checklist ul {
+  list-style: none !important;
+  padding-left: 0;
+  margin: 0.25em 0;
+}
+
+.checklist ul ul {
+  list-style: none !important;
+  padding-left: 1.25rem;
+  margin: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 26px;
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+/* Non-checkbox items: show a bullet and reduce left indent */
+.checklist li:not(:has(> input[type="checkbox"])) {
+  padding-left: 1rem;
+}
+
+.checklist li:not(:has(> input[type="checkbox"]))::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Non-checkbox nested items: tighter spacing */
+.checklist ul ul li:not(:has(input[type="checkbox"])) {
+  margin: 1px 0;
+}
+
+.checklist li input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--color-primary, #4339db);
+}
+
+/* Strike through and mute a checked item, but reset both on its nested list so
+   the strikethrough never carries into sub-items. */
+.checklist li.is-checked {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.checklist li.is-checked > ul,
+.checklist li.is-checked > ol {
+  text-decoration: none;
+  color: var(--vocs-text-color-primary, currentColor);
+}
+
+/* Tighten paragraph wrappers that loose lists add around item text. */
+.checklist li p {
+  margin: 0;
+}
+
+/* When a checklist follows a list item label, indent to match list depth. */
+ul + .checklist,
+ol + .checklist {
+  padding-left: 1.25rem;
+}

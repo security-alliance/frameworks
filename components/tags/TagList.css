@@ -22,10 +22,8 @@
 }
 
 /* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .tag-item {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
+:root[data-vocs-theme='dark'] .tag-item {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive design */

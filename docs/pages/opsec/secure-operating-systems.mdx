@@ -14,10 +14,7 @@ contributors:
     users: [mattaereal]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
 
 # Secure Operating Systems
 
@@ -119,6 +116,7 @@ strong sandboxing and exploit mitigations while maintaining Android app compatib
 
 ### Setup Recommendations
 
+<Checklist id="grapheneos-setup">
 - [ ] Use a **dedicated Pixel device** for crypto operations (not your daily phone)
 - [ ] Create a **separate user profile** for wallet apps — keep it isolated from messaging and browsing
 - [ ] **Disable network access** for wallet apps that don't need it (GrapheneOS supports per-app
@@ -126,6 +124,7 @@ strong sandboxing and exploit mitigations while maintaining Android app compatib
 - [ ] Enable **auto-reboot** after a period of inactivity to clear RAM
 - [ ] Use a **strong alphanumeric passcode**, not a PIN or pattern
 - [ ] Keep the device updated — GrapheneOS ships security patches within days of upstream releases
+</Checklist>
 
 ### Limitations
 
@@ -205,6 +204,7 @@ systems on practical day-to-day security at team scale.
 
 ### macOS
 
+<Checklist id="macos-hardening">
 - [ ] Enable [FileVault](https://support.apple.com/guide/mac-help/protect-data-on-your-mac-with-filevault-mh11785/mac)
   full-disk encryption
 - [ ] Enable the built-in firewall (System Settings > Network > Firewall)
@@ -212,9 +212,11 @@ systems on practical day-to-day security at team scale.
 - [ ] Use a non-admin account for daily work
 - [ ] Disable automatic login and require password on wake
 - [ ] Review and restrict app permissions (Full Disk Access, Accessibility, Input Monitoring)
+</Checklist>
 
 ### Linux
 
+<Checklist id="linux-hardening">
 - [ ] Enable full-disk encryption (LUKS) at install time
 - [ ] Use a distribution with timely security updates (Fedora, Debian Stable, Ubuntu LTS)
 - [ ] Enable a firewall (`ufw` or `firewalld`)
@@ -222,15 +224,18 @@ systems on practical day-to-day security at team scale.
   applications
 - [ ] Disable SSH password authentication — use key-based only
 - [ ] Consider [Kicksecure](https://www.kicksecure.com/) as a hardened Debian derivative
+</Checklist>
 
 ### Windows
 
+<Checklist id="windows-hardening">
 - [ ] Enable BitLocker full-disk encryption
 - [ ] Keep Windows and drivers fully updated
 - [ ] Use Microsoft Defender with tamper protection enabled
 - [ ] Use a standard user account for daily work
 - [ ] Disable or restrict unnecessary remote access services
 - [ ] Review browser extensions and installed applications regularly
+</Checklist>
 
 ## Further Reading
 
@@ -246,5 +251,4 @@ systems on practical day-to-day security at team scale.
   (OS hardening reference)
 - [DPRK IT Workers](/dprk-it-workers/overview) — Threat context for why OS isolation matters in Web3
 
-</TagProvider>
 <ContributeFooter />

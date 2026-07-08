@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check for added, renamed, or removed documentation files
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.1.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             // Sanitize filenames
@@ -141,7 +141,7 @@ jobs:
             ${fileListSection}
 
             Please ensure that:
-            - [ ] The sidebar in \`vocs.config.tsx\` has been updated to include these files
+            - [ ] The sidebar in \`vocs.config.ts\` has been updated to include these files
             - [ ] New content has the \`dev: true\` parameter so it's marked as under development
             - [ ] Sidebar links match the file paths - use the preview deployment to verify
 

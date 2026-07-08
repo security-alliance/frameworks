@@ -40,9 +40,13 @@ CLAUDE.md
 **/dist/
 
 # Generated printable checklists
-docs/public/printable/
+public/printable/
 
 .direnv
 
 # Avoid submitting certs data to repo
 cert-data.json
+.worktrees/
+
+# vocs/waku auto-generated route types
+docs/pages.gen.ts

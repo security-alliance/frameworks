@@ -14,12 +14,9 @@ contributors:
     users: [mattaereal]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
-<TagProvider>
-<TagFilter />
-
-# 1. Core Awareness Principles
+# Core Awareness Principles
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
@@ -63,5 +60,4 @@ understand their role in maintaining security.
 
 ---
 
-</TagProvider>
 <ContributeFooter />

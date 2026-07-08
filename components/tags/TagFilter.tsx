@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTagFilter } from './TagContext'
 import { getTagColor } from '../shared/tagColors'
@@ -85,67 +87,61 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     
     const sectionsWithMatches = getSectionsWithMatchingPages(selectedPages)
     
-    // Find the sidebar and specifically target child sections within "Frameworks"
-    const sidebar = document.querySelector('aside')
+    // Find the sidebar. We only toggle child sections inside the outer
+    // container sections that hold taggable content ("Frameworks", "Guides").
+    const sidebar = document.querySelector('[data-v-sidebar-container]')
     if (!sidebar) return
-    
-    // Find the "Frameworks" section first
-    const frameworksSection = Array.from(sidebar.querySelectorAll('nav > div > section')).find(section => {
-      const titleElement = section.querySelector('div > div, div > a')
-      return titleElement?.textContent?.trim() === 'Frameworks'
+
+    const OUTER_SECTIONS = ['Frameworks', 'Guides']
+    const titleOf = (section: Element) =>
+      section.querySelector('[data-v-sidebar-section-header]')?.textContent?.trim()
+
+    const outerSections = Array.from(
+      sidebar.querySelectorAll('[data-v-sidebar-section]')
+    ).filter(section => {
+      const title = titleOf(section)
+      return title ? OUTER_SECTIONS.includes(title) : false
     })
-    
-    if (!frameworksSection) {
+
+    if (outerSections.length === 0) {
       return
     }
-    
+
     // Helper function to toggle sections based on matches
     const toggleSections = (sections: NodeListOf<Element>) => {
       sections.forEach(section => {
-        const sectionTitleElement = section.querySelector('div > div, div > a')
-        const sectionTitle = sectionTitleElement?.textContent?.trim()
-        
-        if (!sectionTitle) return
-        
+        // The section header is the clickable toggle (role="button"); the
+        // <section> element carries data-collapsed ("true" | "false").
+        const header = section.querySelector('[data-v-sidebar-section-header]') as HTMLElement | null
+        const sectionTitle = header?.textContent?.trim()
+        if (!header || !sectionTitle) return
+
         // Use the pre-generated section mappings from fetched-tags.json
         const sectionMappings: Record<string, string> = tagsFetched?.sectionMappings || {}
         const sectionUrlSegment = sectionMappings[sectionTitle]
-        
+
         const shouldExpand = sectionUrlSegment && sectionsWithMatches.has(sectionUrlSegment)
-        
-        // Find the collapse/expand button
-        const collapseButton = section.querySelector('[role="button"]')
-        if (!collapseButton) return
-        
-        // Detect if section is currently collapsed by checking for visible links
-        const allLinksInSection = section.querySelectorAll('a')
-        const visibleLinks = Array.from(allLinksInSection).filter(link => {
-          const style = getComputedStyle(link)
-          return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0'
-        })
-        
-        const isCurrentlyCollapsed = visibleLinks.length === 0
-        
-        // Only click if we need to change the state
+
+        const isCurrentlyCollapsed = section.getAttribute('data-collapsed') === 'true'
+
+        // Only click the header to toggle if we need to change the state
         if (shouldExpand && isCurrentlyCollapsed) {
-          // Need to expand
-          ;(collapseButton as HTMLElement).click()
+          header.click()
         } else if (!shouldExpand && !isCurrentlyCollapsed) {
-          // Need to collapse
-          ;(collapseButton as HTMLElement).click()
+          header.click()
         }
       })
     }
-    
-    // First pass: toggle all currently visible sections (top-level)
-    const childSections = frameworksSection.querySelectorAll('section')
-    toggleSections(childSections)
-    
-    // Second pass: wait for DOM to update, then toggle newly visible nested subsections
-    setTimeout(() => {
-      const updatedSections = frameworksSection.querySelectorAll('section')
-      toggleSections(updatedSections)
-    }, 200)
+
+    // Toggle the child sections of each outer section. Two passes so nested
+    // subsections revealed by the first expand also get processed.
+    const toggleOuter = () => {
+      outerSections.forEach(outer => {
+        toggleSections(outer.querySelectorAll('[data-v-sidebar-section]'))
+      })
+    }
+    toggleOuter()
+    setTimeout(toggleOuter, 200)
     
     // Reset flag after all passes complete
     setTimeout(() => {
@@ -159,7 +155,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
    */
   const reapplyHighlighting = (selectedPages: Set<string>) => {
     // Clear all previous highlighting and styles first
-    const allLinksForClearing = document.querySelectorAll('aside a, nav a, .sidebar a')
+    const allLinksForClearing = document.querySelectorAll('[data-v-sidebar-container] a')
     allLinksForClearing.forEach((link) => {
       link.classList.remove('selected')
       if (link instanceof HTMLElement) {
@@ -182,14 +178,14 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       let matchingLinks: Element[] = []
       
       // Try exact href match in sidebar only (get ALL matches, not just first)
-      let links = document.querySelectorAll(`aside a[href="${page}"]`)
+      let links = document.querySelectorAll(`[data-v-sidebar-container] a[href="${page}"]`)
       if (links.length > 0) {
         matchingLinks = Array.from(links)
       }
       
       // Try href ending with page in sidebar only
       if (matchingLinks.length === 0) {
-        links = document.querySelectorAll(`aside a[href$="${page}"]`)
+        links = document.querySelectorAll(`[data-v-sidebar-container] a[href$="${page}"]`)
         if (links.length > 0) {
           matchingLinks = Array.from(links)
         }
@@ -198,7 +194,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       // Try href containing page in sidebar only (without leading slash)
       if (matchingLinks.length === 0) {
         const pageWithoutSlash = page.startsWith('/') ? page.slice(1) : page
-        links = document.querySelectorAll(`aside a[href*="${pageWithoutSlash}"]`)
+        links = document.querySelectorAll(`[data-v-sidebar-container] a[href*="${pageWithoutSlash}"]`)
         if (links.length > 0) {
           matchingLinks = Array.from(links)
         }
@@ -206,7 +202,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       
       // Try flexible matching across all sidebar links
       if (matchingLinks.length === 0) {
-        const allLinks = document.querySelectorAll('aside a')
+        const allLinks = document.querySelectorAll('[data-v-sidebar-container] a')
         Array.from(allLinks).forEach(linkEl => {
           const href = linkEl.getAttribute('href')
           if (href && href !== '/' && href.length > 1) {
@@ -259,7 +255,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     })
 
     // Re-apply dimming to non-selected links
-    const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
+    const sidebar = document.querySelector('[data-v-sidebar-container]')
     if (sidebar instanceof HTMLElement) {
       sidebar.classList.add('filtered')
       
@@ -304,7 +300,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       mutationObserverRef.current.disconnect()
     }
 
-    const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
+    const sidebar = document.querySelector('[data-v-sidebar-container]')
     if (!sidebar || selectedTags.length === 0) {
       return
     }
@@ -382,7 +378,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
    */
   const clearAllHighlighting = () => {
     // Remove all selected classes and inline styles from all links
-    const allLinks = document.querySelectorAll('aside a, nav a, .sidebar a, [data-testid="sidebar"] a, .vocs_sidebar a, #sidebar a')
+    const allLinks = document.querySelectorAll('[data-v-sidebar-container] a')
     allLinks.forEach((link) => {
       link.classList.remove('selected')
       
@@ -402,7 +398,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     })
     
     // Remove filtered class from sidebar
-    const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
+    const sidebar = document.querySelector('[data-v-sidebar-container]')
     if (sidebar instanceof HTMLElement) {
       sidebar.classList.remove('filtered')
     }
@@ -510,7 +506,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       
       // Retry if no links were highlighted
       setTimeout(() => {
-        const highlightedCount = document.querySelectorAll('aside a.selected').length
+        const highlightedCount = document.querySelectorAll('[data-v-sidebar-container] a.selected').length
         if (highlightedCount === 0 && selectedPages.size > 0) {
           reapplyHighlighting(selectedPages)
         }
@@ -534,14 +530,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
     
     if (tagsWereCleared) {
       // Clear all styling from sidebar links
-      const sidebarSelectors = [
-        'aside a',
-        'nav a',
-        '.sidebar a',
-        '[data-testid="sidebar"] a',
-        '.vocs_sidebar a',
-        '#sidebar a'
-      ]
+      const sidebarSelectors = ['[data-v-sidebar-container] a']
       
       sidebarSelectors.forEach(selector => {
         document.querySelectorAll(selector).forEach((link) => {
@@ -562,7 +551,7 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
         })
       })
 
-      const sidebar = document.querySelector('aside, nav, .sidebar, [data-testid="sidebar"], .vocs_sidebar, #sidebar')
+      const sidebar = document.querySelector('[data-v-sidebar-container]')
       if (sidebar instanceof HTMLElement) {
         sidebar.classList.remove('filtered')
         
@@ -599,8 +588,8 @@ export function TagFilter({ onTagSelect, availableTags }: TagFilterProps) {
       // Check if highlights and dimming are properly applied
       const checkAndReapplyHighlights = () => {
         const expectedHighlights = selectedPages.size
-        const currentHighlights = document.querySelectorAll('aside a.selected').length
-        const allVisibleLinks = document.querySelectorAll('aside a')
+        const currentHighlights = document.querySelectorAll('[data-v-sidebar-container] a.selected').length
+        const allVisibleLinks = document.querySelectorAll('[data-v-sidebar-container] a')
         let needsReapply = false
         
         // Check if highlights are missing

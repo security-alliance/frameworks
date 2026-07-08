@@ -8,10 +8,7 @@ contributors:
     users: [auditware]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Sentry Security
 
@@ -26,8 +23,6 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
 
----
-
 ## For Individuals
 
 These settings apply to your personal Sentry account. All team members and admins should configure these on their own accounts.
@@ -35,6 +30,7 @@ These settings apply to your personal Sentry account. All team members and admin
 ### Individual Account Settings
 
 - User Settings >
+<Checklist id="individual-account-settings">
   - **Account >**
     - Security >
       - [ ]  Sessions > **Sign out of all devices**
@@ -45,7 +41,7 @@ These settings apply to your personal Sentry account. All team members and admin
     - [ ]  Applications > **Review and remove any unnecessary or unrecognized**
     - [ ]  User Auth Tokens > **Review and remove any unnecessary or unrecognized**
 
----
+</Checklist>
 
 ## For Team Members
 
@@ -58,8 +54,6 @@ Team members should:
 - Regularly review and remove any unnecessary API tokens or authorized applications
 - Report any suspicious activity or unrecognized access to administrators
 
----
-
 ## For Admins
 
 These settings and practices apply to Sentry organization administrators with elevated privileges.
@@ -67,6 +61,7 @@ These settings and practices apply to Sentry organization administrators with el
 ### Organization Settings
 
 - Organization >
+<Checklist id="organization-settings">
   - [ ] Members > **Review and remove any unnecessary or unrecognized**
   - **Security & Privacy >**
     - [ ] Require Two-Factor Authentication > **On**
@@ -75,13 +70,17 @@ These settings and practices apply to Sentry organization administrators with el
     - [ ] Prevent Storing of IP Addresses > **Off**
   - [ ] Integrations > **Review and remove any unnecessary or unrecognized**
 
+</Checklist>
+
 ### Developer Settings
 
 - Developer Settings >
+<Checklist id="developer-settings">
   - [ ] Organization Tokens > **Review and remove any unnecessary or unrecognized**
   - [ ] Custom Integrations > **Review and remove any unnecessary or unrecognized**
 
+</Checklist>
+
 ---
 
-</TagProvider>
 <ContributeFooter />

@@ -1,5 +1,7 @@
-import { forwardRef, useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { Link } from "react-router-dom";
+"use client";
+
+import { forwardRef, useState, useEffect, useRef, useCallback, useMemo, type ComponentProps } from "react";
+import { Link } from "vocs";
 import {
   sdlcStages,
   categoryMeta,
@@ -309,14 +311,14 @@ const DetailPanel = forwardRef<HTMLDivElement, DetailPanelProps>(function Detail
       <div className="sdlc-detail-foot">
         <div className="sdlc-detail-links">
           {stage.frameworkLinks.map((link) => (
-            <Link key={link.href} to={link.href}>
+            <Link key={link.href} to={link.href as ComponentProps<typeof Link>["to"]}>
               {link.label}
             </Link>
           ))}
         </div>
-        <Link to={`#${stage.anchor}`} className="sdlc-detail-cta">
+        <a href={`#${stage.anchor}`} className="sdlc-detail-cta">
           Jump to section &rarr;
-        </Link>
+        </a>
       </div>
     </div>
   );

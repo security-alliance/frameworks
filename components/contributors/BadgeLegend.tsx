@@ -1,4 +1,3 @@
-import React from 'react';
 import './BadgeLegend.css';
 import { BADGE_CONFIG, BadgeCategory } from '../shared/badgeConfig';
 
@@ -58,20 +57,24 @@ function CategoryCard({ category }: { category: BadgeCategory }) {
 export function BadgeLegend() {
   return (
     <div className="badge-legend">
-      <h2 className="vocs_H2 vocs_Heading badge-legend-title">
-        <div id="badge-legend" className="vocs_Heading_slugTarget"></div>
+      <h2 id="badge-legend" data-v="" className="badge-legend-title">
         Badge Legend
-        <a
-          className="vocs_Anchor vocs_Autolink"
-          aria-hidden="true"
-          tabIndex={-1}
-          href="#badge-legend"
-        >
-          <div
-            data-autolink-icon="true"
-            className="vocs_Div vocs_AutolinkIcon"
-            style={{ '--vocs_AutolinkIcon_iconUrl': 'url(/.vocs/icons/link.svg)' } as React.CSSProperties}
-          ></div>
+        <a className="heading-anchor" href="#badge-legend" aria-label="Link to this section">
+          <svg
+            className="heading-anchor-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="0.75em"
+            height="0.75em"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+          </svg>
         </a>
       </h2>
       <p className="badge-legend-intro">

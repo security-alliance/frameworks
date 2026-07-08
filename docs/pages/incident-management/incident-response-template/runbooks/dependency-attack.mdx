@@ -11,10 +11,7 @@ contributors:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
 
 # Runbook: Dependency Attack
 
@@ -36,10 +33,12 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 ### Symptoms
 
+<Checklist id="symptoms">
 - [ ] Unexpected behavior after dependency update
 - [ ] Security advisory for a package you use
 - [ ] Malicious code found in node_modules or similar
 - [ ] Lockfile changes you didn't make
+</Checklist>
 
 ### Confirm Dependency Attack
 
@@ -53,26 +52,32 @@ Check for recent lockfile changes in git history.
 
 ## Immediate Actions
 
+<Checklist id="immediate-actions">
 1. [ ] Take down site to stop serving malicious code
 2. [ ] Identify the malicious package
 3. [ ] Pin dependencies to last known good version
 4. [ ] Rebuild from clean environment
+</Checklist>
 
 ## Mitigation
 
+<Checklist id="mitigation">
 1. [ ] Remove or replace malicious package
 2. [ ] Update lockfile with known good versions
 3. [ ] Rebuild using `npm ci` or `yarn --frozen-lockfile`
 4. [ ] Redeploy verified build
+</Checklist>
 
 ## Prevention
 
+<Checklist id="prevention">
 - [ ] Use lockfiles and commit them
 - [ ] Use `npm ci` / `yarn --frozen-lockfile` in CI
 - [ ] Regularly audit dependencies
 - [ ] Consider using a private registry
 - [ ] Pin exact versions for critical packages
 - [ ] Review dependency changes in PRs
+</Checklist>
 
 ## Related
 
@@ -80,5 +85,4 @@ Check for recent lockfile changes in git history.
 - [Build Pipeline Compromise](./build-pipeline-compromise)
 - [Incident Response Policy](../incident-response-policy)
 
-</TagProvider>
 <ContributeFooter />

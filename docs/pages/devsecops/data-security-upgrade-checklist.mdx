@@ -12,10 +12,7 @@ contributors:
     users: [mattaereal]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
 
 # Data Security Checklist
 
@@ -27,6 +24,7 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 Protecting critical data through automated, encrypted backups and tested recovery procedures is essential for business
 continuity in Web3 operations.
 
+<Checklist id="1-data-backup-disaster-recovery">
 - [ ]  **Automated backups for critical databases, configurations, and off-chain state**
   - Configure automated backup schedules for all mission-critical systems, including databases (PostgreSQL, MongoDB,
     etc.), application configurations, environment variables, and off-chain state data (indexer databases, cache
@@ -72,12 +70,14 @@ continuity in Web3 operations.
     Splunk, DataDog, or ELK stack. Set up alerts for backup failures, unauthorized access attempts, or unusual
     deletion activities. For compliance, retain backup logs for at least 1 year and ensure they are tamper-resistant
     using immutable or write-once logging/storage controls where appropriate.
+</Checklist>
 
 ## 2. Secure Storage & Encryption
 
 Proper classification and encryption of sensitive data protects user privacy, prevents credential theft, and ensures
 regulatory compliance.
 
+<Checklist id="2-secure-storage-encryption">
 - [ ]  **Sensitive data classification (PII, credentials, secrets, API keys)**
   - Conduct a data inventory and classify all data by sensitivity: Public (marketing materials), Internal (business
     data), Confidential (user PII, financial records), and Restricted (credentials, private keys, secrets). In Web3
@@ -119,12 +119,14 @@ regulatory compliance.
     configuration files. Scan repositories with tools like git-secrets, TruffleHog, or GitHub's secret scanning to
     detect accidentally committed credentials. For Web3 projects, use hardware wallets or MPC systems for deployment
     keys rather than filesystem-stored private keys. Implement pre-commit hooks to prevent secret commits.
+</Checklist>
 
 ## 3. Third-Party Integrations
 
 Web3 projects rely heavily on external services—from RPC providers to cloud infrastructure. Properly vetting and
 securing these integrations prevents supply chain attacks and data breaches.
 
+<Checklist id="3-third-party-integrations">
 - [ ]  **Maintain comprehensive inventory of all services and integrations**
   - Document every third-party service your project uses: infrastructure (AWS, Google Cloud, Vercel), blockchain
     services (Infura, Alchemy, QuickNode), analytics (Mixpanel, Amplitude), monitoring (DataDog, Sentry),
@@ -167,8 +169,8 @@ securing these integrations prevents supply chain attacks and data breaches.
     contract termination), subprocessor restrictions (vendor must disclose and get approval for subcontractors), audit
     rights (you can audit vendor's security practices), and liability for breaches. For GDPR/CCPA compliance, require
     Data Processing Agreements (DPAs). Review contracts annually and before renewals.
+</Checklist>
 
 ---
 
-</TagProvider>
 <ContributeFooter />

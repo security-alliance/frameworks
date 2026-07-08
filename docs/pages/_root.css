@@ -1,0 +1,214 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../../components";
+
+[data-v-content] details p {
+  margin-bottom: 24px;
+}
+
+[data-v-logo-image] {
+  height: 130% !important;
+  max-height: none !important;
+}
+
+[data-v-gutter-left] {
+  justify-content: flex-start;
+  width: unset;
+}
+
+[data-v-gutter-top] [data-v-logo-link] {
+  display: none;
+}
+
+html:not([data-vocs-theme='dark']) [data-v-main] {
+  color: #060606;
+}
+
+html:not([data-vocs-theme='dark']) [data-v-content] blockquote {
+  border-left: 2px solid #000000;
+  color: #060606;
+}
+
+html:not([data-vocs-theme='dark']) [data-v-content] blockquote>p {
+  color: #0706069e;
+  font-weight: bolder;
+}
+
+html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup='dialog'] {
+  border-color: #908f8f;
+}
+
+html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup='dialog']:hover {
+  border-color: #303030;
+  color: #1e1e1e;
+}
+
+.vocs\:justify-end {
+  justify-content: center;
+}
+
+[data-v-gutter-logo] {
+  justify-content: flex-start !important;
+}
+
+[data-v-banner-content] {
+  font-style: italic;
+}
+
+/* Print stylesheet - hide chrome, optimize for paper */
+@media print {
+
+  /* Force light color scheme */
+  :root {
+    color-scheme: light only !important;
+  }
+
+  /* Hide navigation and decorative elements */
+  .vocs_Banner,
+  .vocs_DesktopTopNav,
+  .vocs_DesktopTopNav_curtain,
+  .vocs_DesktopSearch_search,
+  .vocs_MobileTopNav,
+  .vocs_Sidebar,
+  .vocs_DocsLayout_gutterLeft,
+  .vocs_DocsLayout_gutterRight,
+  .vocs_DocsLayout_gutterTop,
+  .vocs_DocsLayout_gutterTop_offsetLeftGutter,
+  .vocs_DocsLayout_gutterTopCurtain,
+  .vocs_DocsLayout_gutterTopCurtain_withSidebar,
+  .vocs_Outline,
+  .vocs_AiCtaDropdown,
+  .vocs_Sidebar_backLink,
+  .vocs_Footer,
+  .cert-actions,
+  .tag-filter {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Full width content */
+  .vocs_DocsLayout_content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0.3in !important;
+  }
+
+  /* Force light mode backgrounds on everything */
+  html,
+  body,
+  .vocs_DocsLayout,
+  .vocs_DocsLayout_content,
+  main,
+  article,
+  section,
+  div {
+    background: white !important;
+    background-color: white !important;
+  }
+
+  /* Ensure all text is black */
+  *,
+  *::before,
+  *::after {
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Don't break inside these elements */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+  }
+
+  pre,
+  blockquote,
+  table {
+    page-break-inside: avoid;
+  }
+
+  /* === Certification checklist print styles === */
+
+  /* Hide interactive elements in cert pages */
+  .section-progress,
+  .cert-section-toggle,
+  .control-info-btn,
+  .control-expanded-content,
+  .control-inputs-section {
+    display: none !important;
+  }
+
+  /* Force sections to expand */
+  .cert-section-content {
+    grid-template-rows: 1fr !important;
+  }
+
+  .cert-section-content>* {
+    overflow: visible !important;
+  }
+
+  /* Clean control cards for print */
+  .control-card {
+    padding: 6px 0 !important;
+    border: none !important;
+    border-bottom: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    background: white !important;
+    background-color: white !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Control list container */
+  .control-list,
+  .cert-list-container,
+  .cert-section {
+    background: white !important;
+    background-color: white !important;
+  }
+
+  /* Checkbox styling for print */
+  .control-state-btn {
+    border: 1.5px solid #222 !important;
+    border-radius: 2px !important;
+    background: white !important;
+    background-color: white !important;
+    color: transparent !important;
+  }
+
+  /* Section headers */
+  .cert-section-header {
+    background: white !important;
+    background-color: white !important;
+    border-color: #ddd !important;
+  }
+
+  /* Control text colors */
+  .control-title {
+    color: black !important;
+  }
+
+  .control-description {
+    color: #333 !important;
+  }
+}
+
+.footer {
+  align-items: center;
+  color: #9ca3af;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 1.5em;
+  width: 100%;
+}
+
+:root:not([data-vocs-theme='dark']) .footer {
+  color: #6b7280;
+}

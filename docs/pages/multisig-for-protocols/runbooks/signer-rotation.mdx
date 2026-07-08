@@ -10,10 +10,7 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
 # Signer Rotation Runbook
 
@@ -40,11 +37,13 @@ addresses, signer requirements, and communication channels.
 
 ## Prerequisites
 
+<Checklist id="prerequisites">
 - [ ] Reason for change documented
 - [ ] New signer has completed [Joining a Multisig](/multisig-for-protocols/joining-a-multisig) (if new)
 - [ ] New signer's address verified via signed message
 - [ ] Change maintains minimum signer count and threshold requirements
 - [ ] If reducing signers or threshold: justification documented and approved
+</Checklist>
 
 ## Adding a Signer
 
@@ -150,20 +149,24 @@ Can combine add and remove in a single transaction:
 
 After execution:
 
+<Checklist id="post-transaction">
 - [ ] Update registration or internal documentation with the new signer list
 - [ ] Update communication channel membership
 - [ ] Removed signer leaves communication channels
 - [ ] Test that the new signer can successfully sign a test transaction
+</Checklist>
 
 ## Offboarding Checklist
 
 When removing a signer:
 
+<Checklist id="offboarding-checklist">
 - [ ] Signer removed from multisig on-chain
 - [ ] Signer removed from communication channels
 - [ ] Documentation updated
 - [ ] Signer deleted local sensitive information
 - [ ] Any shared credentials rotated (if applicable)
+</Checklist>
 
 **Timeline requirements**:
 
@@ -178,5 +181,4 @@ When removing a signer:
 - [Offboarding](/multisig-for-protocols/offboarding)
 - [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
 
-</TagProvider>
 <ContributeFooter />

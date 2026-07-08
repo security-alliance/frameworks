@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react'
 
 interface TagContextType {

@@ -312,18 +312,15 @@ cert:
 
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter, CertList } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, CertList } from '../../../components'
 
 # SFC - Treasury Operations
-
-*Revision {frontmatter.version} · Updated {frontmatter.revised} · [Changelog](/certs/changelog)*
 
 The SEAL Framework Checklist (SFC) for Treasury Operations provides structured guidelines for securely managing and
 operating an organization's treasury covering governance, access control, transaction security, monitoring, and vendor
 management.
+
+*Revision {frontmatter.version} · Updated {frontmatter.revised} · [Changelog](/certs/changelog)*
 
 **Scope note**: These baselines target internal treasury operations (DAO treasuries, protocol
 treasuries, operational wallets). Professional treasury operations such as OTC desks, market-making,
@@ -337,5 +334,3 @@ transaction security and platform configuration.
 For more details on certifications or self-assessments, refer to the [Certification Guidelines](/certs/certification-guidelines).
 
 <CertList sections={frontmatter.cert} name="sfc-treasury-ops" />
-
-</TagProvider>
