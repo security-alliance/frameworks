@@ -1,0 +1,197 @@
+---
+title: "Rebrands & Reorganizations | Security Alliance"
+description: "Practical guidance and case studies on handling rebrands, acquisitions, and wind-downs to protect communities from scams, phishing, and impersonation during transitions."
+tags:
+  - Operations & Strategy
+  - Community & Marketing
+contributors:
+  - role: wrote
+    users: [umar-ahmed]
+  - role: reviewed
+    users: [mattaereal, scode2277]
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
+
+# Rebrands & Reorganizations
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+Rebrands, acquisitions, and company shutdowns are prime hunting grounds for scammers and
+can create genuine safety risks for community members during the transition and many
+months afterwards. Having a clear plan and consistent communication strategy can keep
+community members safe.
+
+> 🔑 **Key Takeaway**: Rebrands and wind-downs create confusion that attackers exploit through phishing, impersonation, and fake migrations. Secure old accounts, communicate clearly, and monitor aggressively to protect your community.
+
+## Practical guidance
+
+### Communication & Transparency
+
+- Announce transitions early and through every official channel simultaneously.
+- Establish a single, canonical source of truth (e.g., an official blog post or governance proposal)
+and link to it everywhere.
+- Transition posts should be authored by a reputable voice in the organization so that users know
+it is an official decision.
+- Use language consistent with your previous posts so community members can verify messaging isn't
+coming from a new author.
+- During rebrands especially, clearly state which old domains, social accounts, and contracts are
+being deprecated and which new ones are canonical.
+- Prepare your community by warning them that scammers will spin up fake migration sites, fake token
+swaps, and impersonation accounts
+
+### Keep Old Accounts
+
+| Asset | Risk if Abandoned | Action |
+|-------|-------------------|--------|
+| Domains | Expired domains can be re-registered by attackers to host phishing sites or impersonate the project. | Renew them, even if the project is over. It's cheap, and it blocks attackers. |
+| Social Media Handles | Abandoned handles can be claimed by impersonators who exploit the residual follower base and brand trust. | Keep them. Add a link to the new account in the bio. Or contact support to request a username change while transferring the old handle to a new account you control. |
+| Discord Vanity URL | When server Nitro boosts lapse below level 3, the vanity URL is released and can be sniped by scammers to create a fake Discord server with a drainer verification bot. | Maintain server boosts or monitor the vanity URL closely. If releasing it, warn the community and have a takedown plan ready. |
+| X.com Handle Marketplace | Handles purchased through the [X handles marketplace](https://handles.x.com/) require an ongoing X Premium subscription and adherence to transfer conditions. If requirements are not maintained, the handle is reclaimed and made available to others. | Monitor and maintain all X Premium and marketplace requirements for as long as the handle is needed. |
+
+### Notify Partners, Aggregators, and Security Providers
+
+- Tell platforms like DefiLlama to mark the project as deprecated or link to the new brand.
+- Notify SEAL that the dapps are intentionally going offline so that future blocks
+on the domains can be performed swiftly.
+
+### Archive Important Knowledge
+
+- Publish important content to IPFS or Internet Archive to make sure that knowledge is not lost
+when you stop paying hosting and server bills.
+- Audit external links and point users to mirrors and alternatives.
+
+### Post-Transition Monitoring
+
+- After any transition, actively monitor for scam domains, fake social accounts, and phishing campaigns
+that exploit the change.
+- Report and take down impersonators quickly.
+- Keep a dedicated support channel open for confused users for at least several months after the transition completes.
+
+## Why is it Important
+
+When decentralized projects announce rebrands, acquisitions, or shut down, it creates an opportunity for attackers
+to weaponize established brands and their infrastructure for scams.
+
+### Inherited Reputation and DNS
+
+While sites go offline and domains expire, the reputation linked to these assets remains for quite some time. DNS is
+used for more than just pointing to a web server: MX records point to email servers and enable sending messages to
+the community, and TXT records are used to verify ownership of a domain and social accounts. Attackers can exploit
+these lingering trust signals by re-claiming expired domains and inheriting their DNS-backed legitimacy.
+
+### Confusion Is the Primary Weapon
+
+During normal operations, community members have mental models for what's legitimate. They know the domain, the 
+Twitter handle, the contract addresses. A rebrand or acquisition shatters all of that at once. When everything is 
+"supposed to" look different, people lose their ability to distinguish real changes from fake ones.
+
+### Urgency Is Built In
+
+Transitions naturally create time pressure. "Migrate your tokens before the deadline." "Claim your airdrop for the new token." 
+"Update your wallet connection to the new protocol." Attackers don't even need to manufacture urgency, the legitimate project 
+is already doing it for them. They just mirror the real messaging with a malicious link swapped in.
+
+### Bull vs. Bear Market
+
+Shutdowns and acquisitions often coincide with market trends. During the bear market, when most users are not paying attention
+is exactly when projects announce their shut downs and transitions. By the time markets swing back in the other direction and 
+"retail users" regain their interest in the projects that they engaged with before, many users have forgotten which assets they own 
+and who the authoritative sources of information are. This makes it easy for attackers to exploit and impersonate authoritative figures.
+
+### Authority Structures Are Disrupted
+
+During acquisitions, community members may not know who's in charge anymore. New team members appear, old ones leave, 
+communication channels shift. This makes impersonation trivially easy since nobody knows what the "new" team sounds like yet, 
+so a fake account claiming to be the new community lead is hard to distinguish from a real one.
+
+### The User Base Is Pre-Qualified
+
+Wind-downs and migrations tell attackers exactly who holds assets and is motivated to act. A phishing campaign targeting 
+"all holders of token X who need to migrate" is far more effective than a generic scam, because the targets are real, 
+financially exposed, and expecting to take action.
+
+### Emotional Vulnerability
+
+Wind-downs especially create frustration, fear, and desperation. People who are worried about losing their money or are 
+frustrated with the projects new direction are more likely to act impulsively, click suspicious links, and skip verification steps. 
+
+### Information Asymmetry
+
+During these transitions, insiders know details that the community doesn't yet. Attackers exploit this gap by "leaking" fake insider 
+information — fake migration addresses, fake acquisition terms, fake deadlines — and people believe it because they know real 
+information is being withheld or rolled out gradually.
+
+## Common pitfalls & examples
+
+### MakerDAO → Sky Rebrand (September 2024)
+
+During the rebrand of MakerDAO to Sky, the old Twitter account handle @MakerDAO was changed and left available. Another user registered
+the username and began posting memes. It did not help that there were many questions in the community about the abrupt nature of the rebrand
+and confusion about the conversion of MKR governance tokens to SKY.
+
+The main mistake made by Sky was that they did not keep ownership of their original handle during the migration.
+
+**Lesson:** Never release a verified social handle before the new one is secured and announced.
+
+https://x.com/ForesightNewsEN/status/1829080229622808850
+
+### FTX Collapse & Bankruptcy (November 2022)
+
+In the weeks and months following the FTX collapse and ongoing bankruptcy proceedings, several impersonation and phishing attacks
+were seen targeting former customers:
+
+- Emails saying "You have been identified as an eligible client to begin withdrawing digital assets from your FTX account" with a fake
+claims page.
+- SIM-swapping attacks targeting leaked customer data that was improperly obtained from a data breach of the claims administrator Kroll.
+- Advance-Fee Fraud where victims are instructed to pay a commission, legal fee, or tax upfront to expedite the release of their frozen crypto assets.
+
+**Lesson:** During bankruptcy and claims processes, expect phishing targeting the claim process — communicate only through court-verified channels.
+
+https://finance.yahoo.com/news/ftx-customers-hit-withdrawal-phishing-064440389.html?guccounter=1
+
+### OpenClaw / ClawdBot Rebrand (January 2026)
+
+When OpenClaw received a trademark notice about its original name, the team went through a rebrand. During the brief window between 
+releasing old social media handles and claiming new ones, scammers seized the abandoned accounts on X.com and GitHub. Attackers stole the 
+identity and launched a fake Solana-based token called $CLAWD that reached $16 million in market cap before crashing 90%. 
+
+The core mistake was simple: they released old handles before securing new ones, creating a window attackers were ready to exploit.
+
+**Lesson:** Secure new handles before releasing old ones, and monitor for token impersonation in the window between rebrand and community awareness.
+
+https://www.malwarebytes.com/blog/threat-intel/2026/01/clawdbots-rename-to-moltbot-sparks-impersonation-campaign
+
+
+## Best Practices
+
+1. Announce transitions early and simultaneously across all official channels, establishing a single canonical source of truth.
+2. Warn your community in advance that scammers will exploit the transition, and teach them how to verify legitimate communications.
+3. Keep old accounts, domains, and channels active with redirect notices rather than abandoning them to hijackers.
+4. Publish new contract addresses and official links well in advance through multiple verified channels.
+5. Never manufacture urgency. Provide long grace periods for migrations and withdrawals, extend well beyond announced end dates.
+6. Be explicit about what happens to treasury funds, user data, and any information transferring to an acquirer.
+7. Run major transitions through governance and give the community a voice, even if the project isn't fully decentralized.
+8. Rotate keys, revoke deprecated contract permissions, and audit access credentials as part of every transition.
+9. Archive all documentation, governance decisions, and community discussions publicly and permanently.
+10. Monitor aggressively for scam domains, fake social accounts, and phishing campaigns after every transition.
+11. Maintain a dedicated support channel for confused users for at least several months after the transition completes.
+
+## Additional Resources
+
+- [Coinspect: Zombie Dapps](https://www.coinspect.com/blog/zombie-dapps/)
+- [@0xngmi on rebrand scams](https://x.com/0xngmi/status/2022300978427396233?s=20)
+- [@Defi_Scribbler on rebrand risks](https://x.com/Defi_Scribbler/status/2040051531223814163?s=20)
+
+## Related Frameworks
+
+- [Risk Management](/governance/risk-management) — Assess and mitigate risks during organizational transitions.
+- [Incident Detection and Response](/incident-management/incident-detection-and-response) — Monitor for and respond to scams and phishing during and after transitions.
+- [OpSec: Endpoint Overview](/opsec/endpoint/overview) — Key rotation, credential hygiene, and endpoint security during transitions.
+
+---
+
+<ContributeFooter />
