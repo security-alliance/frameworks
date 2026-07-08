@@ -437,7 +437,6 @@ const config = {
         {
           text: 'Privacy',
           collapsed: true,
-          dev: true,
           items: [
             { text: 'Overview', link: '/privacy/overview', dev: true },
             { text: 'Secure Browsing', link: '/privacy/secure-browsing', dev: true },
@@ -450,12 +449,12 @@ const config = {
               text: 'VPN Services',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/privacy/vpns/overview', dev: true },
-                { text: 'HTTPS vs VPN', link: '/privacy/vpns/https-vs-vpn', dev: true },
-                { text: 'Attack Surfaces on Public Networks', link: '/privacy/vpns/attack-surfaces-public-networks', dev: true },
-                { text: 'When to Use a VPN', link: '/privacy/vpns/when-to-use-vpn', dev: true },
-                { text: 'VPN Limitations', link: '/privacy/vpns/vpn-limitations', dev: true },
-                { text: 'VPN Providers and Tools', link: '/privacy/vpns/vpn-providers-and-tools', dev: true },
+                { text: 'Overview', link: '/privacy/vpns/overview' },
+                { text: 'HTTPS vs VPN', link: '/privacy/vpns/https-vs-vpn' },
+                { text: 'Attack Surfaces on Public Networks', link: '/privacy/vpns/attack-surfaces-public-networks' },
+                { text: 'When to Use a VPN', link: '/privacy/vpns/when-to-use-vpn' },
+                { text: 'VPN Limitations', link: '/privacy/vpns/vpn-limitations' },
+                { text: 'VPN Providers and Tools', link: '/privacy/vpns/vpn-providers-and-tools' },
               ],
             },
           ]
