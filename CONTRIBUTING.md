@@ -386,17 +386,6 @@ fits, for example in block-quotes.
 > ⚠️ Please do not add images directly to the repository.
 > This helps us avoid bloating the Git history and ensures all images follow our standardized storage and delivery method.
 
-- Adding images is welcome and encouraged.
-  Please follow the steps below to include them correctly:
-
-  1. After making your changes and opening a PR, add the images you want to include in the PR's comments
-  (by uploading them directly)
-  2. During the review, a maintainer will upload your images to our S3 bucket and reply with the links you should use.
-  3. Once you receive the new links, update your PR to add the images' links.
-
-> ⚠️ Please do not add images directly to the repository.
-> This helps us avoid bloating the Git history and ensures all images follow our standardized storage and delivery method.
-
 ### Linking resources
 
 - Prefer descriptive names for external links (e.g., `inevitableeth.com` instead of "this wiki").
