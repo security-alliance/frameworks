@@ -397,3 +397,9 @@ Zksync
 ZWJ
 Zyfa
 Zyfai
+Kroll
+Clawd
+CLAWD
+Coinspect
+xngmi
+doxxing
