@@ -5,7 +5,7 @@ tags:
   - Community & Marketing
 contributors:
   - role: wrote
-    users: [mattaereal, robert]
+    users: [mattaereal, robert, nftdreww]
   - role: reviewed
     users: [ghadi8]
 ---
@@ -17,72 +17,33 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Communities might be key to many Web3 projects, but they also represent a significant security challenge. From
-casual users to top-level executives, everyone within an organization can be targeted by social engineering tactics
-across platforms like Telegram, Discord, X (formerly Twitter), Google, and more. When a community channel is
-compromised—whether by phishing, fraudulent links, or account takeovers—it can quickly become a vehicle for wider
-attacks, putting both users and organizational reputations at risk.
+Communities are often the foundation of Web3 projects, serving as the primary connection point between organizations and their users. However, they also represent one of the largest attack surfaces. From community members and moderators to founders and executives, every individual within an ecosystem can become a target of social engineering, phishing, impersonation, account compromise, malware, and other attacks across platforms such as Discord, Telegram, X (formerly Twitter), Google Workspace, and beyond.
 
-Here, we present essential best practices to safeguard your community. In the following sections, we will explore
-platform-specific recommendations in more depth.
+When a community channel is compromised—whether through a malicious link, a compromised team member account, fraudulent support interaction, or a coordinated social engineering campaign—it can quickly become a launch point for wider attacks that impact users, project assets, and organizational reputation.
 
-## Best Practices for Community Security
+This framework provides essential guidance, best practices, and security controls to help organizations build, operate, and maintain secure communities. The following sections explore platform-specific recommendations and defensive strategies in greater detail, enabling teams to reduce risk while fostering safe and trusted environments for their communities.
 
-### Strong Passwords and Two-Factor Authentication (2FA)
+---
 
-- Use unique, complex passwords for each service and store them securely in a reputable password manager. Refer to the
-  [**Operational Security Framework**](/opsec/overview) and [**Wallet Security Framework**](/wallet-security/overview) for
-  more information on this.
-- Secure the email account linked to your community platforms with a unique password and 2FA.
-- Always enable 2FA. Prefer hardware-based tokens (e.g., Yubikey) or mobile authenticator apps over SMS-based methods,
-  which are vulnerable to SIM-swapping.
-- If you use an authenticator app like Authy, 1Password, or Aegis to generate time-based one-time passwords (TOTP),
-  Ensure that the secret keys are stored encrypted and protected with robust security measures.
-- Configure your app to require a password, PIN, or biometric authentication (e.g., fingerprint or face recognition) to
-  unlock access to the tokens. This prevents unauthorized access and ensures the tokens remain secure even if someone
-  gains physical or remote access to your device.
-- Keep password generation and 2FA codes separate; do not use your password manager to generate 2FA codes. Otherwise, if
-  the password manager is compromised, it could render the 2FA ineffective, allowing unauthorized access to your
-  accounts.
-- Encourage community members to adopt these practices as well.
+## Platform frameworks
 
-### Phishing Awareness
+| Platform | What it covers | Link |
+|---|---|---|
+| **Discord** | Server permissions, role hygiene, raid protection, bot vetting, and anti-impersonation | [→ Discord framework](/community-management/discord) |
+| **X (Twitter)** | Account security, impersonation risks, API token scope, and official channel hygiene | [→ X framework](/community-management/twitter) |
+| **Telegram** | Two-step verification, phone number privacy, admin permissions, and man-in-the-group attacks | [→ Telegram framework](/community-management/telegram) |
 
-- Educate members on recognizing and reporting phishing attempts.
-- Clearly communicate to community members that your team will never send the first direct message to them. This is
-  important because attackers often impersonate team members and initiate direct messages to trick users into believing
-  they are legitimate, thereby gaining their trust and potentially compromising their security.  
-  However, statements such as “will never DM first” or labels like “Official,” “Support,” or platform
-  status indicators (e.g., premium badges) must not be treated as proof of legitimacy.
-- Publicly define all official communication channels and clearly state which platforms are not used.  
-If a platform is unsupported, declare this alongside official links (e.g., “We do not operate a Telegram community”).  
-Where possible, reserve common impersonation handles and maintain placeholder accounts that redirect
-users to official channels.  
+---
 
-Refer to the [**Security Awareness framework**](/awareness/overview) to learn more about social engineering techniques
-and security training best practices.
+## Security domain index
 
-### Operational Security (OpSec)
+| Domain | What it covers | Framework |
+|---|---|---|
+| **Authentication & passwords** | Unique credentials per service, hardware token preference, and 2FA requirements for linked email accounts | [Operational Security →](/opsec/overview) |
+| **Phishing & social engineering** | Official channel verification, DM policies, and recognizing impersonation tactics targeting your team and users | [Security Awareness →](/awareness/overview) |
+| **Operational security** | Device hygiene, software update discipline, and reducing the attack surface used to manage community channels | [Operational Security →](/opsec/overview) |
+| **Emergency response** | Pre-defined protocols for account compromise, rapid revocation of access, and community notification procedures | [Incident Response →](/incident-management/overview) |
 
-- Be mindful of the devices you use to manage community channels. Malware or compromised hardware can give attackers an
-  entry point.
-- Regularly update software, run antivirus checks, and avoid installing untrusted applications that may compromise your
-  security.
-
-For a comprehensive understanding of Operational Security, including additional strategies and guidelines, please refer
-to the dedicated [**Operational Security framework**](/opsec/overview).
-
-### Emergency Response Plan
-
-- Prepare a clear protocol for handling security incidents, including how to quickly remove compromised accounts and
-  warn community members.
-- Adopt a proactive mindset: it's not a matter of if but when a breach will occur. Having a plan in place helps you act
-  decisively and contain damage.
-
-As part of the communication team, it is crucial to know when and how to communicate effectively during an incident.
-This involves understanding the appropriate timing and messaging to ensure clarity and prevent misinformation. For more
-insights on where this role fits within an incident, refer to the [**Incident Management
-framework**](/incident-management/overview).
 
 ---
 
