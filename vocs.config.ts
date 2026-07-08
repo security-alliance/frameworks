@@ -36,7 +36,7 @@ const config = {
         { text: 'Introduction to Frameworks', link: '/intro/introduction' },
         { text: 'How to Navigate the Website', link: '/intro/how-to-navigate-the-website' },
         { text: 'Overview of each Framework', link: '/intro/overview-of-each-framework' },
-        { text: 'Attack Surface Overview', link: '/intro/attack-surface', dev: true },
+        { text: 'Attack Surface Overview', link: '/intro/attack-surface' },
       ]
     },
     {
@@ -190,7 +190,7 @@ const config = {
             { text: 'Risk Management', link: '/governance/risk-management', dev: true },
             { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
             { text: 'Security Council Best Practices', link: '/governance/council-best-practices', dev: true },
-            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs', dev: true },
+            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs', dev:true },
           ]
         },
         {
@@ -322,11 +322,11 @@ const config = {
                   text: 'Operational Runbooks',
                   collapsed: false,
                   items: [
-                    { text: 'Overview', link: '/multisig-for-protocols/runbooks/overview', dev: true },
-                    { text: 'Token Transfer', link: '/multisig-for-protocols/runbooks/token-transfer', dev: true },
-                    { text: 'Signer Rotation', link: '/multisig-for-protocols/runbooks/signer-rotation', dev: true },
-                    { text: 'Threshold Change', link: '/multisig-for-protocols/runbooks/threshold-change', dev: true },
-                    { text: 'Emergency Pause', link: '/multisig-for-protocols/runbooks/emergency-pause', dev: true },
+                    { text: 'Overview', link: '/multisig-for-protocols/runbooks/overview' },
+                    { text: 'Token Transfer', link: '/multisig-for-protocols/runbooks/token-transfer', },
+                    { text: 'Signer Rotation', link: '/multisig-for-protocols/runbooks/signer-rotation', },
+                    { text: 'Threshold Change', link: '/multisig-for-protocols/runbooks/threshold-change', },
+                    { text: 'Emergency Pause', link: '/multisig-for-protocols/runbooks/emergency-pause', },
                   ]
                 },
               ]
@@ -335,12 +335,12 @@ const config = {
               text: 'For Signers',
               collapsed: false,
               items: [
-                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig', dev: true },
-                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures', dev: true },
-                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure', dev: true },
-                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec', dev: true },
-                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting', dev: true },
-                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding', dev: true },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure' },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting' },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },
               ]
             },
             { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist' },
@@ -360,23 +360,23 @@ const config = {
                 { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
-            { text: 'Secure Operating Systems', link: '/opsec/secure-operating-systems', dev: true },
-            { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
+            { text: 'Secure Operating Systems', link: '/opsec/secure-operating-systems' },
+            { text: 'Endpoint Security', link: '/opsec/endpoint/overview' },
             { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
-            { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
+            { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview' },
             { text: 'Password Management', 
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/opsec/passwords/overview', dev: true },
-                { text: 'Password Managers', link: '/opsec/passwords/managers', dev: true },
-                { text: 'Single Sign-on', link: '/opsec/passwords/sso', dev: true },
-                { text: 'Root Accounts', link: '/opsec/passwords/rootaccounts', dev: true }  
+                { text: 'Overview', link: '/opsec/passwords/overview' },
+                { text: 'Password Managers', link: '/opsec/passwords/managers' },
+                { text: 'Single Sign-on', link: '/opsec/passwords/sso' },
+                { text: 'Root Accounts', link: '/opsec/passwords/rootaccounts' }  
               ]
             },
             { text: 'Google Workspace Security', link: '/opsec/google/overview', dev: true },
             { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
             { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
-            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview' },
             {
               text: 'While Traveling',
               collapsed: true,
@@ -439,7 +439,6 @@ const config = {
         {
           text: 'Privacy',
           collapsed: true,
-          dev: true,
           items: [
             { text: 'Overview', link: '/privacy/overview', dev: true },
             { text: 'Secure Browsing', link: '/privacy/secure-browsing', dev: true },
@@ -452,12 +451,12 @@ const config = {
               text: 'VPN Services',
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/privacy/vpns/overview', dev: true },
-                { text: 'HTTPS vs VPN', link: '/privacy/vpns/https-vs-vpn', dev: true },
-                { text: 'Attack Surfaces on Public Networks', link: '/privacy/vpns/attack-surfaces-public-networks', dev: true },
-                { text: 'When to Use a VPN', link: '/privacy/vpns/when-to-use-vpn', dev: true },
-                { text: 'VPN Limitations', link: '/privacy/vpns/vpn-limitations', dev: true },
-                { text: 'VPN Providers and Tools', link: '/privacy/vpns/vpn-providers-and-tools', dev: true },
+                { text: 'Overview', link: '/privacy/vpns/overview' },
+                { text: 'HTTPS vs VPN', link: '/privacy/vpns/https-vs-vpn' },
+                { text: 'Attack Surfaces on Public Networks', link: '/privacy/vpns/attack-surfaces-public-networks' },
+                { text: 'When to Use a VPN', link: '/privacy/vpns/when-to-use-vpn' },
+                { text: 'VPN Limitations', link: '/privacy/vpns/vpn-limitations' },
+                { text: 'VPN Providers and Tools', link: '/privacy/vpns/vpn-providers-and-tools' },
               ],
             },
           ]
@@ -535,13 +534,12 @@ const config = {
         {
           text: 'Treasury Operations',
           collapsed: true,
-          dev: true,
           items: [
-            { text: 'Overview', link: '/treasury-operations/overview', dev: true },
-            { text: 'Custodial Inventory & Controls', link: '/treasury-operations/classification', dev: true },
-            { text: 'Registration Documents', link: '/treasury-operations/registration-documents', dev: true },
-            { text: 'Enhanced Controls for High-Risk Accounts', link: '/treasury-operations/enhanced-controls', dev: true },
-            { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification', dev: true },
+            { text: 'Overview', link: '/treasury-operations/overview' },
+            { text: 'Custodial Inventory & Controls', link: '/treasury-operations/classification' },
+            { text: 'Registration Documents', link: '/treasury-operations/registration-documents' },
+            { text: 'Enhanced Controls for High-Risk Accounts', link: '/treasury-operations/enhanced-controls' },
+            { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification' },
           ]
         },
         {
@@ -573,12 +571,12 @@ const config = {
                 { text: 'Overview', link: '/wallet-security/signing-and-verification/signing-verification' },
                 { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/signing-and-verification/verifying-standard-transactions' },
                 { text: 'Multisig Signing Process', link: '/wallet-security/signing-and-verification/secure-multisig-signing-process' },
-                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-safe-verification', dev: true },
-                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-squads-verification', dev: true },
+                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-safe-verification' },
+                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-squads-verification' },
                 { text: 'Using EIP-7702', link: '/wallet-security/signing-and-verification/verifying-7702' },
               ]
             },
-            { text: 'Smart Contract Interaction Security', link: '/wallet-security/smart-contract-interaction-security', dev: true },
+            { text: 'Smart Contract Interaction Security', link: '/wallet-security/smart-contract-interaction-security' },
             { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-and-resources' },
           ]
@@ -617,7 +615,7 @@ const config = {
           items: [
             { text: 'SSH Client and Key Management Hardening', link: '/guides/endpoint-security/ssh-client-and-key-management-hardening' },
             { text: 'Hardware Security Keys', link: '/guides/endpoint-security/hardware-security-keys' },
-            { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening', dev: true },
+            { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening' },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },
