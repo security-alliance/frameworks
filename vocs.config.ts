@@ -36,7 +36,7 @@ const config = {
         { text: 'Introduction to Frameworks', link: '/intro/introduction' },
         { text: 'How to Navigate the Website', link: '/intro/how-to-navigate-the-website' },
         { text: 'Overview of each Framework', link: '/intro/overview-of-each-framework' },
-        { text: 'Attack Surface Overview', link: '/intro/attack-surface', dev: true },
+        { text: 'Attack Surface Overview', link: '/intro/attack-surface' },
       ]
     },
     {
@@ -170,11 +170,10 @@ const config = {
         {
           text: 'Front-End/Web Application',
           collapsed: true,
-          dev: true,
           items: [
             { text: 'Overview', link: '/front-end-web-app/overview', dev: true },
             { text: 'Web Application Security', link: '/front-end-web-app/web-application-security', dev: true },
-            { text: 'Third-Party Script Security', link: '/front-end-web-app/third-party-script-security', dev: true },
+            { text: 'Third-Party Script Security', link: '/front-end-web-app/third-party-script-security' },
             { text: 'Mobile Application Security', link: '/front-end-web-app/mobile-application-security', dev: true },
             { text: 'Common Vulnerabilities', link: '/front-end-web-app/common-vulnerabilities', dev: true },
             { text: 'Security Tools and Resources', link: '/front-end-web-app/security-tools-resources', dev: true },
@@ -183,14 +182,13 @@ const config = {
         {
           text: 'Governance',
           collapsed: true,
-          dev: true,
           items: [
             { text: 'Overview', link: '/governance/overview', dev: true },
             { text: 'Compliance with Regulatory Requirements', link: '/governance/compliance-regulatory-requirements', dev: true },
             { text: 'Risk Management', link: '/governance/risk-management', dev: true },
             { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
             { text: 'Security Council Best Practices', link: '/governance/council-best-practices', dev: true },
-            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs', dev: true },
+            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs' },
           ]
         },
         {
@@ -322,11 +320,11 @@ const config = {
                   text: 'Operational Runbooks',
                   collapsed: false,
                   items: [
-                    { text: 'Overview', link: '/multisig-for-protocols/runbooks/overview', dev: true },
-                    { text: 'Token Transfer', link: '/multisig-for-protocols/runbooks/token-transfer', dev: true },
-                    { text: 'Signer Rotation', link: '/multisig-for-protocols/runbooks/signer-rotation', dev: true },
-                    { text: 'Threshold Change', link: '/multisig-for-protocols/runbooks/threshold-change', dev: true },
-                    { text: 'Emergency Pause', link: '/multisig-for-protocols/runbooks/emergency-pause', dev: true },
+                    { text: 'Overview', link: '/multisig-for-protocols/runbooks/overview' },
+                    { text: 'Token Transfer', link: '/multisig-for-protocols/runbooks/token-transfer', },
+                    { text: 'Signer Rotation', link: '/multisig-for-protocols/runbooks/signer-rotation', },
+                    { text: 'Threshold Change', link: '/multisig-for-protocols/runbooks/threshold-change', },
+                    { text: 'Emergency Pause', link: '/multisig-for-protocols/runbooks/emergency-pause', },
                   ]
                 },
               ]
@@ -335,12 +333,12 @@ const config = {
               text: 'For Signers',
               collapsed: false,
               items: [
-                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig', dev: true },
-                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures', dev: true },
-                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure', dev: true },
-                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec', dev: true },
-                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting', dev: true },
-                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding', dev: true },
+                { text: 'Joining a Multisig', link: '/multisig-for-protocols/joining-a-multisig' },
+                { text: 'Emergency Procedures', link: '/multisig-for-protocols/emergency-procedures' },
+                { text: 'Backup Signing & Infrastructure', link: '/multisig-for-protocols/backup-signing-and-infrastructure' },
+                { text: 'Personal Security & OPSEC', link: '/multisig-for-protocols/personal-security-opsec' },
+                { text: 'Incident Reporting', link: '/multisig-for-protocols/incident-reporting' },
+                { text: 'Offboarding', link: '/multisig-for-protocols/offboarding' },
               ]
             },
             { text: 'Implementation Checklist', link: '/multisig-for-protocols/implementation-checklist' },
@@ -360,23 +358,23 @@ const config = {
                 { text: 'Web3 considerations', link: '/opsec/core-concepts/web3-considerations' },
               ]
             },
-            { text: 'Secure Operating Systems', link: '/opsec/secure-operating-systems', dev: true },
-            { text: 'Endpoint Security', link: '/opsec/endpoint/overview', dev: true },
+            { text: 'Secure Operating Systems', link: '/opsec/secure-operating-systems' },
+            { text: 'Endpoint Security', link: '/opsec/endpoint/overview' },
             { text: 'Browser Security', link: '/opsec/browser/overview', dev: true },
-            { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview', dev: true },
+            { text: 'Multi-Factor Authentication', link: '/opsec/mfa/overview' },
             { text: 'Password Management', 
               collapsed: false,
               items: [
-                { text: 'Overview', link: '/opsec/passwords/overview', dev: true },
-                { text: 'Password Managers', link: '/opsec/passwords/managers', dev: true },
-                { text: 'Single Sign-on', link: '/opsec/passwords/sso', dev: true },
-                { text: 'Root Accounts', link: '/opsec/passwords/rootaccounts', dev: true }  
+                { text: 'Overview', link: '/opsec/passwords/overview' },
+                { text: 'Password Managers', link: '/opsec/passwords/managers' },
+                { text: 'Single Sign-on', link: '/opsec/passwords/sso' },
+                { text: 'Root Accounts', link: '/opsec/passwords/rootaccounts' }  
               ]
             },
             { text: 'Google Workspace Security', link: '/opsec/google/overview', dev: true },
             { text: 'Control Domains', link: '/opsec/control-domains/overview', dev: true },
             { text: 'Continuous Improvement & Metrics', link: '/opsec/continuous-improvement-metrics', dev: true },
-            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview', dev: true },
+            { text: 'Integration & Mapping to Other Frameworks', link: '/opsec/integration/overview' },
             {
               text: 'While Traveling',
               collapsed: true,
@@ -535,13 +533,12 @@ const config = {
         {
           text: 'Treasury Operations',
           collapsed: true,
-          dev: true,
           items: [
-            { text: 'Overview', link: '/treasury-operations/overview', dev: true },
-            { text: 'Custodial Inventory & Controls', link: '/treasury-operations/classification', dev: true },
-            { text: 'Registration Documents', link: '/treasury-operations/registration-documents', dev: true },
-            { text: 'Enhanced Controls for High-Risk Accounts', link: '/treasury-operations/enhanced-controls', dev: true },
-            { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification', dev: true },
+            { text: 'Overview', link: '/treasury-operations/overview' },
+            { text: 'Custodial Inventory & Controls', link: '/treasury-operations/classification' },
+            { text: 'Registration Documents', link: '/treasury-operations/registration-documents' },
+            { text: 'Enhanced Controls for High-Risk Accounts', link: '/treasury-operations/enhanced-controls' },
+            { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification' },
           ]
         },
         {
@@ -617,7 +614,7 @@ const config = {
           items: [
             { text: 'SSH Client and Key Management Hardening', link: '/guides/endpoint-security/ssh-client-and-key-management-hardening' },
             { text: 'Hardware Security Keys', link: '/guides/endpoint-security/hardware-security-keys' },
-            { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening', dev: true },
+            { text: 'Password Manager Endpoint Hardening', link: '/guides/endpoint-security/password-manager-endpoint-hardening' },
             { text: 'Zoom Hardening', link: '/guides/endpoint-security/zoom-hardening' },
           ]
         },
