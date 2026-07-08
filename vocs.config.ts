@@ -170,10 +170,11 @@ const config = {
         {
           text: 'Front-End/Web Application',
           collapsed: true,
+          dev: true,
           items: [
             { text: 'Overview', link: '/front-end-web-app/overview', dev: true },
             { text: 'Web Application Security', link: '/front-end-web-app/web-application-security', dev: true },
-            { text: 'Third-Party Script Security', link: '/front-end-web-app/third-party-script-security' },
+            { text: 'Third-Party Script Security', link: '/front-end-web-app/third-party-script-security', dev: true },
             { text: 'Mobile Application Security', link: '/front-end-web-app/mobile-application-security', dev: true },
             { text: 'Common Vulnerabilities', link: '/front-end-web-app/common-vulnerabilities', dev: true },
             { text: 'Security Tools and Resources', link: '/front-end-web-app/security-tools-resources', dev: true },
@@ -182,13 +183,14 @@ const config = {
         {
           text: 'Governance',
           collapsed: true,
+          dev: true,
           items: [
             { text: 'Overview', link: '/governance/overview', dev: true },
             { text: 'Compliance with Regulatory Requirements', link: '/governance/compliance-regulatory-requirements', dev: true },
             { text: 'Risk Management', link: '/governance/risk-management', dev: true },
             { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
             { text: 'Security Council Best Practices', link: '/governance/council-best-practices', dev: true },
-            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs' },
+            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs', dev:true },
           ]
         },
         {
@@ -569,12 +571,12 @@ const config = {
                 { text: 'Overview', link: '/wallet-security/signing-and-verification/signing-verification' },
                 { text: 'Verifying Standard Transactions (EOA)', link: '/wallet-security/signing-and-verification/verifying-standard-transactions' },
                 { text: 'Multisig Signing Process', link: '/wallet-security/signing-and-verification/secure-multisig-signing-process' },
-                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-safe-verification', dev: true },
-                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-squads-verification', dev: true },
+                { text: 'Safe Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-safe-verification' },
+                { text: 'Squads Multisig: Step-by-Step Verification', link: '/wallet-security/signing-and-verification/secure-multisig-squads-verification' },
                 { text: 'Using EIP-7702', link: '/wallet-security/signing-and-verification/verifying-7702' },
               ]
             },
-            { text: 'Smart Contract Interaction Security', link: '/wallet-security/smart-contract-interaction-security', dev: true },
+            { text: 'Smart Contract Interaction Security', link: '/wallet-security/smart-contract-interaction-security' },
             { text: 'Seed Phrase Management', link: '/wallet-security/seed-phrase-management' },
             { text: 'Tools & Resources', link: '/wallet-security/tools-and-resources' },
           ]
