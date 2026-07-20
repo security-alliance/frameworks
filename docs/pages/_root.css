@@ -55,6 +55,17 @@ html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup
   font-style: italic;
 }
 
+[data-v-banner] {
+  height: auto !important;
+  min-height: 30px;
+}
+
+[data-v-banner-content] {
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
 /* Print stylesheet - hide chrome, optimize for paper */
 @media print {
 
