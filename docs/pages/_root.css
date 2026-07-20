@@ -51,9 +51,6 @@ html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup
   justify-content: flex-start !important;
 }
 
-[data-v-banner-content] {
-  font-style: italic;
-}
 
 [data-v-banner] {
   height: auto !important;
@@ -61,6 +58,7 @@ html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup
 }
 
 [data-v-banner-content] {
+  font-style: italic;
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
