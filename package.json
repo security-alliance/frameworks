@@ -21,7 +21,8 @@
     "generate-tags": "node utils/tags-fetcher.cjs",
     "generate-indexes": "node utils/generate-folder-indexes.cjs",
     "generate-printables": "node utils/generate-printable-checklists.cjs",
-    "generate-cert-data": "node utils/generate-cert-data.cjs"
+    "generate-cert-data": "node utils/generate-cert-data.cjs",
+    "validate:content": "node utils/validate-content.cjs"
   },
   "keywords": [],
   "author": "",

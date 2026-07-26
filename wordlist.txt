@@ -10,6 +10,7 @@ AKAMAI
 Alchemix
 ampering
 anonymization
+ASVS
 Aublin
 authenticator
 Authy
@@ -35,11 +36,14 @@ Certora
 cicd
 CIS
 CISA
+Clawd
+CLAWD
 Clippy
 CloudSploit
 CMDB
 CMDBs
 COBIT
+Coinspect
 collab
 collateralized
 Comms
@@ -86,6 +90,7 @@ dmarcian
 dnsleaktest
 DNSSEC
 DocuSign
+doxxing
 DPRK
 Dreww
 DTEX
@@ -129,10 +134,10 @@ Gnosis
 GoDaddy
 GOkart
 Golangci
-GrapheneOS
 gosec
 govulncheck
 gpgsign
+GrapheneOS
 Hackathon
 hacken
 Hackenproof
@@ -179,6 +184,7 @@ keyid
 KICS
 KMS
 Kpis
+Kroll
 kyc
 Lakera
 LDNS
@@ -191,6 +197,7 @@ LLVM
 LUKS
 Mahhouk
 Mailvelope
+mdlint
 MDM
 MEE
 Mehdi
@@ -348,8 +355,11 @@ TXT
 unaudited
 unbond
 unbonding
+uncited
 uncollateralized
 uncompromised
+unhackable
+unheaded
 unproxied
 Unrekt
 unreviewed
@@ -382,6 +392,7 @@ WPA
 WPAD
 xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 xkcd
+xngmi
 XSS
 xyz
 Yubico
@@ -397,9 +408,3 @@ Zksync
 ZWJ
 Zyfa
 Zyfai
-Kroll
-Clawd
-CLAWD
-Coinspect
-xngmi
-doxxing

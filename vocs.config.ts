@@ -653,6 +653,13 @@ const config = {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/contribute/contributing' },
+            { text: 'Content Model', link: '/contribute/content-model', dev: true },
+            { text: 'Style and Terminology', link: '/contribute/style-and-terminology', dev: true },
+            {
+              text: 'Docs Normalization Checklist',
+              link: '/contribute/docs-normalization-checklist',
+              dev: true,
+            },
             { text: 'Spotlight Zone', link: '/contribute/spotlight-zone' },
             { text: 'Stewardship', link: '/contribute/stewards' },
 

@@ -48,31 +48,33 @@ contributors:
 ---
 
 {/*
-  This file is the template for new framework pages. Copy it as your starting
-  point, replace the placeholder content, and remove any instructional comments
-  before opening a PR.
+  This file is the executable skeleton for new framework pages. Copy it as your
+  starting point, replace the placeholder content, and remove instructional
+  comments before opening a PR.
 
-  The structure below is a proposed layout, not a strict mold. Some sections
-  are marked (required), every page needs these. The rest are optional building
-  blocks; pick the ones that fit your content. Pages on this site mix conceptual,
-  procedural, and reference material, often within the same page, and the
-  template is meant to support that.
+  Canonical standards (do not fork conflicting rules into this file):
+  - Page types, required/optional sections, overview maps, exceptions:
+    docs/pages/contribute/content-model.mdx
+  - Voice, modality (must/should/may), terminology:
+    docs/pages/contribute/style-and-terminology.mdx
+  - Contributor workflow (setup, signed commits, sidebar, images):
+    docs/pages/contribute/contributing.mdx
+
+  Pick one primary page type from the content model before writing. This
+  skeleton defaults to a standard educational page (conceptual or mixed).
+  Overviews, runbooks, templates, cert pages, and project docs adjust sections
+  per that model. Record justified deviations with a content-model-exception
+  HTML comment (see content-model.mdx).
 
   Keep each page focused on a single topic. If your content would require more
-  than 5-6 top-level sections (## headings), it is covering too much ground in
-  one place. Split it into separate pages within a framework folder, one page
-  per major angle of the topic. Each sub-page should be self-contained enough
-  that a reader can land on it directly without needing to read the others first.
+  than 5-6 top-level sections (## headings), split it into separate pages.
+  Each sub-page should be self-contained enough for direct landing from search.
 
-  Keep the import and the components below: <TagList /> and <AttributionList />
-  near the top, and <ContributeFooter /> at the bottom.
+  Keep components: <TagList /> and <AttributionList /> near the top, and
+  <ContributeFooter /> at the bottom.
 
-  For the full contribution workflow (environment setup, signed commits,
-  sidebar updates, build commands), see docs/pages/contribute/contributing.
-
-  Heading hierarchy: # for the page title, ## for sections, ### for subsections.
-  Never skip levels (e.g., jumping from ## directly to ####), as it breaks the
-  table of contents and screen-reader navigation.
+  Heading hierarchy: # page title, ## sections, ### subsections. Never skip
+  levels (breaks TOC and assistive navigation).
 */}
 
 {/* ============================================================================
@@ -131,10 +133,11 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: [Required. One or two sentences a reader can walk away
-> with if they read nothing else. Not a summary of the page; the *point* of the
-> page. Avoid filler conclusions like "By doing this..." or "Having these
-> practices...". Prefer concrete claims over abstract ones.]
+> 🔑 **Key Takeaway**: [Required for most page types. Canonical label and
+> punctuation exactly as written here. One or two sentences, target under 40
+> words. Not a summary of the page; the *point* of the page. Avoid filler like
+> "By following these practices...". Prefer concrete claims. Full rules:
+> content-model.mdx "Key Takeaway contract".]
 
 [Required. This block sits directly under the Key Takeaway with no heading of
 its own, so the page opens as continuous reading. Write two or three short
@@ -205,12 +208,17 @@ When you do include an example, link to the source: an incident write-up, a
 CISA advisory, a CVE, a post-mortem, or a credible reporting source.]
 
 {/* ============================================================================
-    OVERVIEW PAGES ONLY: include the "Pages" section below.
+    OVERVIEW PAGES ONLY: include a page map section.
 
-    If this is the overview.mdx for a framework, include a Pages section that
-    lists every sub-page in the framework with a one-line description, like this:
+    Acceptable H2 titles (see content-model.mdx):
+    - ## Pages
+    - ## What This Framework Covers
+    - ## Framework structure / ## Contents (only if each child has a one-line
+      description, not bare links)
 
-    ## Pages
+    Example:
+
+    ## What This Framework Covers
 
     1. [Dependency Awareness](/supply-chain/dependency-awareness):
        managing external packages, version pinning, lockfile integrity, and
@@ -219,8 +227,8 @@ CISA advisory, a CVE, a post-mortem, or a credible reporting source.]
        threat vectors specific to Web3, from frontend library hijacking to
        infrastructure compromise.
 
-    Keep this list in sync with the sidebar config when pages are added,
-    renamed, or removed.
+    Keep this list in sync with vocs.config.ts when pages are added, renamed,
+    or removed. Reference: docs/pages/supply-chain/overview.mdx
 
     If this is a regular sub-page (not an overview), delete this comment and
     skip straight to "Further Reading & Tools" below.
