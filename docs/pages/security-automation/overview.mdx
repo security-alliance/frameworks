@@ -1,12 +1,19 @@
 ---
 title: "Security Automation | Security Alliance"
-description: "Security Automation Framework: Automate compliance checks, IaC security scans, and threat detection. Reduce human error and respond to threats faster."
+description: "Security automation for Web3 teams: compliance checks, infrastructure-as-code scanning, and threat detection workflows that cut repetitive risk and speed response."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
   - Cloud
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,10 +23,47 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Security automation involves using technology to perform security tasks with minimal human intervention. By automating
-repetitive and complex security processes, teams can improve efficiency, reduce the risk of human error, and respond to
-threats more quickly. This section covers best practices and tools for automating various aspects of security, including
-compliance checks, infrastructure as code, and threat detection and response.
+> 🔑 **Key Takeaway**: Automate security work that is repetitive, measurable, and easy to get wrong by hand—then keep a
+> human owner for triage, exceptions, and response.
+
+Security automation uses tooling to run security tasks with minimal manual steps. Done well, it improves consistency,
+reduces configuration drift and other human error, and shortens time from detection to action. Done poorly, it floods
+teams with unowned alerts or encodes wrong policies.
+
+This framework covers three common automation surfaces: continuous compliance evaluation, secure infrastructure as
+code (IaC), and detection-and-response automation that feeds human process.
+
+## Basics
+
+- **Automate the check, not placeholder judgment.** Policy engines and scanners excel at known configurations, not at
+  deciding business risk without an owner.
+- **Wire into delivery.** Checks that run only on a yearly spreadsheet do not prevent drift; prefer pipeline and
+  continuous control-plane evaluation.
+- **Link to response.** Detection without [incident management](/incident-management/overview) runbooks is noise.
+
+## What this framework covers
+
+1. [Threat Detection and Response](/security-automation/threat-detection-response): continuous monitoring, SIEM-style
+   aggregation, and a sample detection-to-recovery flow.
+2. [Compliance Checks](/security-automation/compliance-checks): automated policy evaluation (cloud and open-source
+   options) and pipeline integration.
+3. [Infrastructure as Code](/security-automation/infrastructure-as-code): secure IaC practices and common scanners or
+   platforms.
+
+## Related frameworks
+
+- [DevSecOps](/devsecops/overview): CI/CD security automation and pipeline controls
+- [Monitoring](/monitoring/overview): on-chain monitoring complementary to off-chain detection
+- [Incident Management](/incident-management/overview): human response when automation fires
+- [Infrastructure](/infrastructure/overview): platform baseline security
+- [IAM](/iam/overview): identity controls that automation often encodes as policy
+
+## Further Reading & Tools
+
+- [OWASP DevSecOps Guideline](https://owasp.org/www-project-devsecops-guideline/)
+- [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks)
+- [NIST SP 800-53 control catalog](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) (for mapping automated
+  checks to controls)
 
 ---
 

@@ -1,12 +1,19 @@
 ---
 title: "Infrastructure as Code Security | SEAL"
-description: "Secure your Infrastructure as Code (IaC) with Terraform, AWS CloudFormation, and Ansible. Integrate security scans using Checkov, tfsec, and Terrascan to prevent misconfigurations."
+description: "Secure Infrastructure as Code (IaC) with trusted modules, least privilege, encryption, and scanners such as Checkov, tfsec, and Terrascan in the delivery pipeline."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
   - Cloud
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,63 +23,60 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Infrastructure as Code (IaC) is the management and provisioning of computing infrastructure through machine-readable
-definition files, rather than manual configuration or interactive configuration tools. Automating security within IaC
-helps ensure that infrastructure is configured securely and consistently.
+> 🔑 **Key Takeaway**: Treat infrastructure definitions as production code—review them, scan them, and apply least
+> privilege—because a bad template can recreate a bad estate at scale.
 
-## Benefits of Automating Security in IaC
+Infrastructure as Code (IaC) provisions and manages infrastructure from machine-readable definitions instead of
+one-off console clicks. Automating security around IaC helps environments stay consistent and reduces recurring
+misconfigurations.
+
+## Benefits of securing IaC
 
 1. **Consistency**
-   - Ensures that infrastructure is provisioned and configured consistently across environments.
-   - Reduces the risk of configuration drift and security misconfigurations.
-
+   - Same definitions across environments reduce snowflake risks.
+   - Lower chance of silent manual drift (when humans stop “fixing prod by hand”).
 2. **Scalability**
-   - Enables scalable deployment of secure infrastructure.
-   - Simplifies management of large-scale environments.
+   - Secure patterns encode once and deploy many times.
+3. **Version control**
+   - History, code review, and rollback become available for infrastructure changes.
 
-3. **Version Control**
-   - Treats infrastructure configurations as code, allowing version control and change tracking.
-   - Facilitates rollback to previous configurations if issues arise.
+## Practices
 
-## Best Practices for Secure IaC
+1. **Use trusted modules**
+   - Prefer verified modules or templates.
+   - Avoid unverified or abandoned modules that may ship weak defaults.
+2. **Implement least privilege**
+   - Grant infrastructure components only required permissions.
+   - Use role-based access control (RBAC) and short-lived credentials where possible (see [IAM](/iam/overview)).
+3. **Automate security scans**
+   - Integrate scanners into the IaC pipeline.
+   - Common Terraform-oriented options cited by practitioners include Checkov, tfsec, and Terrascan—evaluate current
+     fit for the stack.
+4. **Encrypt sensitive data**
+   - Encrypt sensitive data at rest and in transit as the platform allows.
+   - Prefer managed key services over bespoke secret sprawl (see [Encryption](/encryption/overview)).
+5. **Keep templates current**
+   - Update modules and base images or AMIs as vendors fix issues.
+   - Re-review high-risk stacks when threat models change.
 
-1. **Use Trusted Modules**
-   - Use trusted and verified modules or templates for infrastructure provisioning.
-   - Avoid using unverified or outdated modules that may contain vulnerabilities.
+## Tools and platforms
 
-2. **Implement Least Privilege**
-   - Ensure that infrastructure components have the minimum necessary permissions.
-   - Use role-based access control (RBAC) to manage permissions.
+Capability matrix changes frequently; treat this as a starting catalog.
 
-3. **Automate Security Scans**
-   - Integrate security scanning tools into the IaC pipeline to automatically detect and remediate vulnerabilities.
-   - Use tools like Checkov, tfsec, and Terrascan to scan Terraform configurations for security issues.
+1. **Terraform** — multi-cloud IaC with a large module ecosystem; commonly paired with policy and scan tools.
+2. **AWS CloudFormation** — native AWS IaC; pairs with AWS Config-style compliance evaluation.
+3. **Azure Resource Manager (ARM) / Bicep templates** — Azure native IaC; pairs with Azure Policy.
+4. **Ansible** — configuration management and deployment automation; use hardened roles and avoid shipping secrets in
+   plain playbooks.
 
-4. **Encrypt Sensitive Data**
-   - Encrypt sensitive data at rest and in transit within the infrastructure.
-   - Use managed encryption services provided by cloud providers.
+## Further Reading & Tools
 
-5. **Regularly Update IaC Templates**
-   - Keep IaC templates and modules up to date with the latest security patches and best practices.
-   - Regularly review and update configurations to address new security threats.
-
-## Tools for Automating Security in IaC
-
-1. **Terraform**
-   - A widely used IaC tool that allows for the automated provisioning of infrastructure across various cloud providers.
-   - Supports integration with security scanning tools like tfsec and Checkov.
-
-2. **AWS CloudFormation**
-   - An IaC service provided by AWS for modeling and setting up AWS resources.
-   - Supports AWS Config rules for automated compliance checks.
-
-3. **Azure Resource Manager (ARM) Templates**
-   - IaC templates for deploying and managing Azure resources.
-   - Integrates with Azure Policy for enforcing security policies.
-
-4. **Ansible**
-   - An open-source automation tool for configuration management and application deployment.
-   - Supports security roles and playbooks for automating security configurations.
+- [Checkov](https://www.checkov.io/)
+- [tfsec](https://aquasecurity.github.io/tfsec/)
+- [Terrascan](https://runterrascan.io/)
+- [OWASP Infrastructure as Code Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Infrastructure_as_Code_Security_Cheat_Sheet.html)
+  (if maintained for your version, verify content currency)
+- Project [DevSecOps](/devsecops/overview)
 
 ---
 
