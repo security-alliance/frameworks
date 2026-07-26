@@ -1,6 +1,6 @@
 ---
-title: "On-Chain Monitoring Tools | Security Alliance"
-description: "On-chain monitoring tools catalog: open-source and commercial options for transaction monitoring, anomaly detection, alerting, and reliability assessment."
+title: "On-Chain Monitoring Tools | SEAL"
+description: "Catalog of open-source and commercial on-chain monitoring tools with reliability criteria: uptime, time-to-alert, delivery, and redundancy."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -20,9 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> The tools below are primarily focused on EVM-compatible chains. For non-EVM chains (Solana, Cosmos, etc.), verify
-> chain support before selecting a tool. For critical systems, consider running monitors from two independent providers
-> simultaneously. See the [Reliability Considerations](#reliability-considerations) section below.
+> 🔑 **Key Takeaway**: Choose monitoring tools for detection quality and operational reliability — uptime, time-to-alert,
+> delivery guarantees, and redundant coverage — not feature lists alone.
+
+The catalog below is primarily focused on EVM-compatible chains. For non-EVM chains (Solana, Cosmos, and others),
+verify chain support before selecting a tool. For critical systems, run monitors from two independent providers when
+practical. See [Reliability considerations](#reliability-considerations).
 
 ## Open Source / Self-Hosted
 
@@ -151,6 +154,14 @@ channel, not primary paging (high latency, often filtered to spam)
 
 For high-severity alerts, use a dedicated paging tool with escalation so that if the primary on-call misses the
 alert, it automatically escalates to a secondary.
+
+## Further Reading & Tools
+
+- [Monitoring overview](/monitoring/overview): first principles and when redundancy is warranted
+- [Monitoring guidelines](/monitoring/guidelines): what to cover before buying tooling
+- [Alert thresholds](/monitoring/thresholds): tuning signals against baseline behavior
+- [OpenZeppelin Monitor documentation](https://docs.openzeppelin.com/monitor)
+- [Forta documentation](https://docs.forta.network/)
 
 ---
 

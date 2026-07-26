@@ -1,6 +1,6 @@
 ---
-title: "Monitoring Alert Thresholds | Security Alliance"
-description: "On-chain threshold configuration: set baseline metrics, multi-layered alerts, and anomaly detection rules to catch unusual blockchain activity."
+title: "Monitoring Alert Thresholds | SEAL"
+description: "Configure on-chain alert thresholds from baselines: multi-layered rules, adaptive updates, and anomaly detection without drowning responders in noise."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -20,46 +20,51 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Setting appropriate thresholds for on-chain monitoring is hard when taking into account you want to detect unusual
-activities, without generating excessive false positives. Here are some guidelines for defining and configuring
-thresholds. For guidance on what to monitor and how to set up alerting, see the
-[Guidelines](/monitoring/guidelines) page.
+> 🔑 **Key Takeaway**: Thresholds must catch meaningful deviation from normal protocol behavior without drowning
+> responders in false positives — and they must be reviewed as activity patterns change.
 
-## Generic Guidelines
+Setting thresholds is a balance: detect unusual activity early without drowning operators in noise. For what to monitor
+and how to design alerting ownership, see [Guidelines](/monitoring/guidelines).
 
-### Understand Normal Activity Patterns
+## Understand normal activity patterns
 
-1. Establish baseline metrics for normal activities, such as average transaction volumes and typical token minting rates
-(if any).
+1. Establish baseline metrics for normal activity, such as average transaction volumes and typical token minting rates
+   (if any).
 2. Use historical data to understand activity patterns and identify deviations from the norm.
 
-### Set Thresholds for Alerts
+## Set thresholds for alerts
 
 1. Define thresholds for large fund transfers from project wallets, considering both absolute amounts and relative
-percentages.
-2. Set thresholds for token minting events, including the number of tokens minted and the frequency of minting.
+   percentages.
+2. Set thresholds for token minting events, including volume minted and mint frequency.
 3. Establish thresholds for changes in contract ownership or significant modifications to contract code.
 
-### Adjust Thresholds Over Time
+## Adjust thresholds over time
 
-1. Implement adaptive thresholds that can adjust based on changing activity patterns and emerging threats.
-2. Periodically review and update thresholds to ensure they remain relevant and effective.
+1. Prefer adaptive thresholds that can adjust based on changing activity patterns and emerging threats when tooling
+   supports them.
+2. Periodically review and update thresholds so they remain relevant and effective.
 
-### Multi-Layered Thresholds
+## Multi-layered thresholds
 
 1. Use primary thresholds for critical alerts and secondary thresholds for less urgent notifications.
-2. Define thresholds based on a combination of metrics to reduce false positives and improve accuracy.
+2. Combine metrics where single-signal rules produce too many false positives.
 
-### Anomaly Detection
+## Anomaly detection
 
-It is hard, if not impossible, to predict every type of alert one should set up for their project. As such, implementing
-an anomaly detection system can be of great value as it will monitor the project and its transactions in real time, and
-compare it to its previous behavior. If for example it is common that 4% of tokens change owner each day and there's a
-day with 20% of tokens changing owner in the past 10 minutes, then that could be detected as an anomaly and a cause
-for investigation.
+It is difficult to enumerate every alert a project will eventually need. Anomaly detection systems that compare live
+behavior to recent history can catch novel deviations. Example: if roughly 4% of tokens typically change owners each day
+and 20% change owners in ten minutes, that ramp may warrant investigation even without a pre-written absolute
+threshold.
 
-Several of the tools in the [Tools](/monitoring/tools) catalog offer built-in anomaly detection. Hypernative uses
-ML-based behavioral modeling, and Tenderly supports custom alert rules that can approximate anomaly thresholds.
+Several tools in the [Tools](/monitoring/tools) catalog offer built-in anomaly detection. Hypernative uses ML-based
+behavioral modeling, and Tenderly supports custom alert rules that can approximate anomaly thresholds.
+
+## Further Reading & Tools
+
+- [Monitoring guidelines](/monitoring/guidelines): coverage objectives and alert ownership
+- [On-chain monitoring tools](/monitoring/tools): platforms with threshold and anomaly features
+- [Incident Management](/incident-management/overview): response when a threshold fires
 
 ---
 

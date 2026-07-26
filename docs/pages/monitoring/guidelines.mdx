@@ -1,6 +1,6 @@
 ---
-title: "On-Chain Monitoring Guidelines | Security Alliance"
-description: "On-chain monitoring: track large fund transfers, token minting, and anomalies. Set up automated tools and real-time alerts via email, SMS, and messaging apps."
+title: "On-Chain Monitoring Guidelines | SEAL"
+description: "Define on-chain monitoring objectives, coverage tracks, owned multi-channel alerts, periodic alert tests, and forensic readiness links for protocols."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -20,8 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Effective on-chain monitoring is complex and involves setting up systems and processes to continuously observe
-blockchain activities and detect any anomalies.
+> 🔑 **Key Takeaway**: Effective on-chain monitoring pairs continuous observation with owned alerts, tested delivery
+> paths, and a response plan — not tool installation alone.
+
+Effective on-chain monitoring combines systems and processes that continuously observe blockchain activity, surface
+anomalies, and drive a prepared response. Start from the [First principles](/monitoring/overview#first-principles) on
+the framework overview before expanding coverage.
 
 ## Key Principles
 
@@ -108,11 +112,17 @@ Structure monitoring coverage across these tracks:
 
 ### Forensic readiness
 
-Monitoring detects anomalies. Forensic readiness ensures you can reconstruct and prove what happened with defensible
-evidence. These are complementary capabilities: monitoring without forensic readiness means you can notice an incident
-but may struggle to investigate, substantiate, or disclose it reliably. See
-[Forensic Readiness](/incident-management/forensic-readiness) for how to design evidence collection into your
-architecture.
+Monitoring detects anomalies. Forensic readiness ensures teams can reconstruct and prove what happened with defensible
+evidence. These are complementary capabilities: monitoring without forensic readiness means responders can notice an
+incident but may struggle to investigate, substantiate, or disclose it reliably. See
+[Forensic Readiness](/incident-management/forensic-readiness) for designing evidence collection into architecture.
+
+## Further Reading & Tools
+
+- [Monitoring overview](/monitoring/overview): first principles and page map
+- [Incident Management](/incident-management/overview): response and communications after an alert
+- [Forensic Readiness](/incident-management/forensic-readiness): evidence design for defensible investigation
+- [On-chain monitoring tools](/monitoring/tools): catalog and reliability criteria
 
 ---
 
