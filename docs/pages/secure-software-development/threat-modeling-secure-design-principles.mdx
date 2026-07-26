@@ -1,9 +1,16 @@
 ---
-title: "Threat Modeling & Secure Design | SEAL"
-description: "Identify and mitigate security threats during the design phase using STRIDE methodology and secure design principles like least privilege, defense in depth, and fail securely."
+title: "Threat Modeling and Secure Design | SEAL"
+description: "Identify and mitigate design-time threats with STRIDE-style modeling and secure design principles: least privilege, defense in depth, fail securely, and secure defaults."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,55 +20,49 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Threat modeling and secure design principles help identify and mitigating potential security threats during the design
-phase of software development. T
+> 🔑 **Key Takeaway**: Threat modeling before build chooses which controls matter. Secure design principles keep residual
+> risk from depending on a single lucky check.
 
-## Threat Modeling
+Threat modeling and secure design identify and mitigate security threats during design—before code cements bad
+assumptions. For broader organizational threat-modeling practice, see the dedicated
+[Threat Modeling](/threat-modeling/overview) framework.
 
-1. **Identify Assets**
-   - Determine the valuable assets that need protection, such as user funds, sensitive data, user credentials, and
-   intellectual property.
+## Threat modeling
 
-2. **Identify Threats**
-   - Identify potential threats to the assets using models like STRIDE (Spoofing, Tampering, Repudiation, Information
-   Disclosure, Denial of Service, Elevation of Privilege).
+1. **Identify assets**
+   - Name what needs protection: user funds, sensitive data, credentials, admin keys, intellectual property, and
+     reputation-critical services.
+2. **Identify threats**
+   - Enumerate threats against those assets. STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of
+     Service, Elevation of Privilege) is one common structure—not the only valid one.
+3. **Assess risks**
+   - Rank threats by likelihood and impact in the real deployment context.
+4. **Develop mitigations**
+   - Design controls that reduce the top risks first; accept residual risk consciously.
+5. **Validate and iterate**
+   - Update the model as architecture, trust boundaries, and assets change.
 
-3. **Assess Risks**
-   - Evaluate the risks associated with each identified threat based on its likelihood and potential impact.
+## Secure design principles
 
-4. **Develop Mitigations**
-   - Design and implement security controls to mitigate the identified threats. Prioritize mitigations based on the
-   assessed risks.
+1. **Least privilege**
+   - Grant users and systems only the access required for the function.
+2. **Defense in depth**
+   - Layer independent controls so single failures do not equal total loss.
+3. **Fail securely**
+   - On error, prefer closed/safe states; do not leak secrets in failure paths.
+4. **Secure defaults**
+   - Ship restrictive defaults; require deliberate action to weaken security.
+5. **Separation of duties**
+   - Split powerful actions so one person or service cannot unilaterally abuse the system.
+6. **Secure by design**
+   - Treat security as a first-class design constraint at every major architecture decision.
 
-5. **Validate and Iterate**
-   - Regularly validate the threat model and update it as the application evolves. Continuously assess and improve
-   security measures.
+## Further Reading & Tools
 
-## Secure Design Principles
-
-1. **Principle of Least Privilege**
-   - Grant users and systems the minimum level of access necessary to perform their functions. Reduce the attack surface
-   by limiting permissions.
-
-2. **Defense in Depth**
-   - Implement multiple layers of security controls to protect against different types of threats. Ensure that security
-   is not reliant on a single control.
-
-3. **Fail Securely**
-   - Design systems to fail in a secure manner. Ensure that errors and failures do not expose sensitive information or
-   create security vulnerabilities.
-
-4. **Secure Defaults**
-   - Configure systems with secure default settings. Require users to opt into less secure configurations rather than
-   opting into secure ones.
-
-5. **Separation of Duties**
-   - Separate critical functions to prevent a single individual or system from having excessive control. Implement
-   checks and balances.
-
-6. **Secure by Design**
-   - Integrate security into the design and architecture of the application. Consider security implications during every
-   stage of the design process.
+- [Threat Modeling framework](/threat-modeling/overview)
+- [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
+- [Microsoft SDL — Threat modeling](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
+- [NIST SSDF (SP 800-218)](https://csrc.nist.gov/publications/detail/sp/800-218/final)
 
 ---
 
