@@ -1,9 +1,17 @@
 ---
-title: "Creating Threat Models | Security Alliance"
-description: "Create threat models using STRIDE framework: define scope, identify assets and threats, evaluate risks, and develop mitigations. Tools: Microsoft Threat Modeling Tool, OWASP Threat Dragon."
+title: "Creating Threat Models | SEAL"
+description: "Create and maintain threat models: scope, assets, STRIDE threats, attack scenarios, prioritization,
+mitigations, and tools like Threat Dragon."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [scode2277]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -12,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: A useful threat model is a maintained artifact — redefine scope and mitigations when architecture
+> or value at risk changes.
+
+This page walks through creating a threat model and keeping it current. Pair it with [Identify and Mitigate
+Threats](/threat-modeling/identity-mitigate-threats) for enumeration depth.
 
 Creating and maintaining threat models helps identify potential security risks and develop mitigation strategies to
 protect the project.
@@ -81,6 +95,12 @@ protect the project.
    - An open-source threat modeling tool for creating diagrams and identifying threats.
    - Pros: Free, web-based, supports multiple platforms.
    - Cons: Limited features compared to commercial tools.
+
+## Further Reading & Tools
+
+- [Threat modeling overview](/threat-modeling/overview)
+- [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
+- [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/)
 
 ---
 
