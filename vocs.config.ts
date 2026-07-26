@@ -69,6 +69,25 @@ const config = {
           ]
         },
         {
+          text: 'User and Team Security',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/user-team-security/overview', dev: true },
+            {
+              text: 'Phishing and Social Engineering',
+              link: '/user-team-security/phishing-social-engineering',
+              dev: true,
+            },
+            {
+              text: 'Security-Aware Culture',
+              link: '/user-team-security/security-aware-culture',
+              dev: true,
+            },
+            { text: 'Security Training', link: '/user-team-security/security-training', dev: true },
+          ]
+        },
+        {
           text: 'Community Management',
           collapsed: true,
           items: [
