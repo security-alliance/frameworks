@@ -1,11 +1,19 @@
 ---
 title: "Encryption | Security Alliance"
-description: "Encryption Framework: Comprehensive guide covering cloud, communication, database, email, file, full disk, and hardware encryption to protect sensitive information from unauthorized access."
+description: "Encryption framework for data at rest and in transit: cloud, messaging, email, databases, files, volumes,
+partitions, full disk, and hardware-backed keys."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
   - Cloud
+contributors:
+  - role: wrote
+    users: [scode2277]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,20 +23,53 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Encryption is a fundamental aspect of securing data, ensuring that sensitive information remains confidential and
-protected from unauthorized access. This section covers various types of encryption and best practices for implementing
-them effectively.
+> 🔑 **Key Takeaway**: Encryption protects confidentiality when keys are managed deliberately across data at rest and
+> in transit — algorithms alone do not compensate for weak custody or cleartext channels.
 
-## Contents
+Encryption keeps sensitive information confidential when storage, backups, devices, or network paths are exposed to
+unauthorized parties. In Web3 organizations the same patterns apply to operator laptops, cloud control planes, chat
+used for incident coordination, and databases that hold customer or key-adjacent metadata.
 
-1. [Cloud Data Encryption](/encryption/cloud-data-encryption)
-2. [Communication Encryption](/encryption/communication-encryption)
-3. [Encryption in Transit](/encryption/encryption-in-transit)
-4. [Database Encryption](/encryption/database-encryption)
-5. [Email Encryption](/encryption/email-encryption)
-6. [File Encryption](/encryption/file-encryption)
-7. [Full Disk Encryption](/encryption/full-disk-encryption)
-8. [Hardware Encryption](/encryption/hardware-encryption)
+This framework spans common encryption applications without replacing product-specific hardening guides under OpSec,
+privacy, or infrastructure.
+
+## Core ideas
+
+- **At rest vs in transit:** protect stored data and data in motion with appropriate controls; many systems need both.
+- **Key management:** algorithms fail open when keys are shared widely, never rotated, or live in the same breach domain
+  as the ciphertext without additional controls.
+- **Threat model first:** full-disk encryption addresses device loss; it does not stop a logged-in malware session.
+
+## What this framework covers
+
+1. [Cloud Data Encryption](/encryption/cloud-data-encryption): at-rest and in-transit controls, KMS and BYOK patterns on
+   major clouds.
+2. [Communication Encryption](/encryption/communication-encryption): messaging tools with and without default E2EE.
+3. [Encryption in Transit](/encryption/encryption-in-transit): TLS, VPN, SSH, and message-level email crypto.
+4. [Database Encryption](/encryption/database-encryption): file/column encryption, TDE, HSM-backed keys, access control.
+5. [Email Encryption](/encryption/email-encryption): S/MIME and PGP/GPG patterns and tooling.
+6. [File Encryption](/encryption/file-encryption): encrypting individual sensitive files with trusted tools.
+7. [Full Disk Encryption](/encryption/full-disk-encryption): endpoint FDE and secure boot basics.
+8. [Hardware Encryption](/encryption/hardware-encryption): TPM, self-encrypting drives, and HSMs.
+9. [Partition Encryption](/encryption/partition-encryption): selective partition encryption with BitLocker, LUKS, or
+   VeraCrypt.
+10. [Volume Encryption](/encryption/volume-encryption): volume-level encryption and key-handling practices.
+
+## Related frameworks
+
+- [OpSec](/opsec/overview): endpoint and operational controls that surround encryption choices
+- [Privacy](/privacy/overview): communications privacy and related tooling
+- [Infrastructure](/infrastructure/overview): broader platform and network security
+- [Wallet Security](/wallet-security/overview): key material for on-chain assets (distinct from disk/OS encryption)
+
+## Further Reading & Tools
+
+- [NIST SP 800-175B Rev. 1](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): using cryptographic
+  standards
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
+- [OWASP Transport Layer Protection Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html)
 
 ---
 

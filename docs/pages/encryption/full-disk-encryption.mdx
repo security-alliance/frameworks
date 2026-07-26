@@ -1,9 +1,17 @@
 ---
-title: "Full Disk Encryption | Security Alliance"
-description: "Enable full disk encryption on laptops, desktops, and mobile devices to protect all data if stolen or lost. Includes secure boot implementation for trusted software loading."
+title: "Full Disk Encryption | SEAL"
+description: "Enable full-disk encryption on laptops, desktops, and mobiles so lost or stolen devices do not expose
+plaintext; combine with secure boot where available."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [scode2277]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -12,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Full-disk encryption must be enabled on endpoints that store work data so lost or stolen devices
+> do not expose plaintext at rest.
+
+Modern operating systems ship FDE capabilities, sometimes on by default. Teams still need to confirm status, algorithms,
+and recovery key custody.
 
 Full disk encryption protects all data stored on a device in the event that it's stolen or lost. Today, all major
 Operating Systems for workstations, servers and mobile phones have full disk encryption capabilities built in, and
@@ -23,6 +37,14 @@ enabled by default.
 1. Ensure that full disk encryption uses strong industry-standard algorithms.
 2. Enable full disk encryption by default on all devices, including laptops, desktops, and mobile devices.
 3. Implement secure boot to ensure that only trusted software can be loaded during the boot process.
+
+## Further Reading & Tools
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 

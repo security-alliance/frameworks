@@ -1,9 +1,17 @@
 ---
-title: "File Encryption | Security Alliance"
-description: "Protect sensitive files stored on local and network drives using strong encryption algorithms and trusted file encryption tools."
+title: "File Encryption | SEAL"
+description: "Encrypt sensitive files on local and network drives with strong algorithms and trusted tools so offline
+media and shares do not expose plaintext."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [scode2277]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,10 +21,24 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Sensitive files on disks and shares must use trusted file encryption — OS login locks alone do not
+> protect power-off or copied files.
+
+File encryption protects individual objects when full-disk or volume encryption is unavailable or when files leave the
+encrypted host boundary.
+
 File encryption protects sensitive information stored in files.
 
 Use strong encryption algorithms to encrypt sensitive files stored on local and network drives.
 There are multiple tools available for file encryption; use one that is regarded as trusted.
+
+## Further Reading & Tools
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 

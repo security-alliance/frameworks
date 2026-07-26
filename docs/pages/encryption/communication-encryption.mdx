@@ -1,9 +1,17 @@
 ---
-title: "Securing Communications | Security Alliance"
-description: "Compare secure messaging systems with end-to-end encryption: Signal, Matrix/Element, WhatsApp, Wire vs. non-E2EE platforms like Telegram, Discord, Slack, and Microsoft Teams."
+title: "Securing Communications | SEAL"
+description: "Choose messaging systems with default end-to-end encryption for sensitive operations; compare Signal,
+Matrix, WhatsApp, Wire against non-E2EE defaults."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [scode2277]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -12,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: For sensitive operational communications, prefer messengers with end-to-end encryption enabled by
+> default and a threat model that matches the data shared.
+
+Messaging defaults decide whether compromise of a server or operator yields plaintext. This page compares common tools
+by encryption posture so teams can pick channels that match risk.
 
 Using secure messaging systems is crucial for protecting the privacy and integrity of your communications. Here are some
 popular messaging systems that offer end-to-end encryption and those that do not by default.
@@ -63,7 +77,15 @@ for messages.
    - Does not offer end-to-end encryption for messages.
    - [Microsoft Teams](https://www.microsoft.com/en/microsoft-teams/group-chat-software)
 
-For secure communication, it is recommended to use messaging systems that offer end-to-end encryption by default.
+Prefer messengers that offer end-to-end encryption by default for sensitive operational traffic.
+
+## Further Reading & Tools
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 

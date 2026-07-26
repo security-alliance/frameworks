@@ -1,9 +1,17 @@
 ---
-title: "Partition Encryption | Security Alliance"
-description: "Selectively encrypt specific disk partitions with BitLocker, LUKS, or VeraCrypt. Protect sensitive data while maintaining flexibility for un-encrypted data on the same device."
+title: "Partition Encryption | SEAL"
+description: "Encrypt selected partitions with BitLocker, LUKS, or VeraCrypt when full-disk encryption is too broad;
+protect keys with MFA and backups."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: [scode2277]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -12,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Partition encryption protects high-sensitivity regions of a disk when full-disk encryption is not
+> appropriate for every partition on the device.
 
 ## What is Partition Encryption?
 
@@ -58,8 +69,13 @@ decommissioned or repurposed.
 6. **Monitor and Audit**: Regularly monitor and audit encryption settings and access logs to ensure compliance and
   detect any unauthorized access attempts.
 
-By following these best practices and using reliable partition encryption technologies, organizations can significantly
-enhance the security of their data and protect against unauthorized access and data breaches.
+## Further Reading & Tools
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 

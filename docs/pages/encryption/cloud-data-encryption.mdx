@@ -1,11 +1,19 @@
 ---
-title: "Cloud Data Encryption | Security Alliance"
-description: "Protect cloud data with AES-256 encryption at rest and TLS 1.2+ in transit. Best practices for AWS KMS, Azure Key Vault, Google Cloud KMS, and bring your own keys (BYOK)."
+title: "Cloud Data Encryption | SEAL"
+description: "Encrypt cloud data at rest and in transit with strong algorithms, provider KMS or BYOK, access controls,
+and MFA on key management paths."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
   - Cloud
+contributors:
+  - role: wrote
+    users: [scode2277]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -14,6 +22,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Cloud data must be encrypted in transit and at rest, with keys controlled through a deliberate KMS
+> or BYOK design — not left on default storage alone.
+
+Cloud storage and managed databases fail open when encryption and key custody are afterthoughts. This page lists
+practical controls for major cloud providers without replacing provider-specific runbooks.
 
 You should consider using the best practices below to ensure that data stored in the cloud
 is protected from unauthorized access:
@@ -67,8 +81,13 @@ keys.**
     - Ensure that all encryption-related software is kept up-to-date with the latest security patches.
     - Monitor for vulnerabilities in encryption libraries and apply patches promptly.
 
-By following these best practices and utilizing the recommended tools, you can significantly enhance the security of
-your data stored in the cloud.
+## Further Reading & Tools
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 
