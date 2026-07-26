@@ -1,6 +1,6 @@
 ---
 title: "Security Testing | Security Alliance"
-description: "Security Testing Framework: Unit tests, integration tests, fuzz testing, static analysis, and formal verification for smart contracts."
+description: "Security testing for smart contracts: unit, integration, fuzz, static analysis, formal verification, and mutation testing to find defects before deployment."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,10 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac, mattaereal, nbelenkov]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,53 +23,71 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-The objective of Security testing, while most likely impossible, is to ensure that applications and systems are
-resilient to attacks and free from vulnerabilities. This section covers various security testing methodologies,
-including dynamic and static application security testing, fuzz testing, and security regression testing.
+> 🔑 **Key Takeaway**: No single test type proves smart contracts safe. Combine coverage-focused unit and integration
+> tests, fuzzing, static analysis, and—where warranted—formal methods, then measure the suite with mutation testing.
 
-There are several types of testing:
+Security testing aims to find vulnerabilities and behavioral regressions before attackers or production users do. Full
+freedom from defects is not a realistic guarantee; layered testing raises confidence and reduces missed classes of bug.
 
-- **Unit Testing**: Tests individual components or functions of the codebase.
-- **Integration Testing**: Tests the interaction between different components or systems.
-- **Fuzz Testing**: Tests the application by providing random or unexpected inputs to identify vulnerabilities.
-- **Static Analysis**: Analyzes the code without executing it to find potential vulnerabilities.
-- **Formal Verification**: Uses mathematical methods to prove the correctness of algorithms and protocols.
+This framework focuses on approaches commonly applied to smart contracts (Solidity examples appear in child pages). Types
+overlap—for example a unit test can also be a fuzz test.
 
-Some types of testing overlap, for example, a unit test could also be a fuzz test. We will focus on testing and how it
-applies to smart contracts, and use solidity as an example.
+## Testing types
+
+- **Unit testing:** individual components or functions
+- **Integration testing:** interaction between components or external systems (often fork tests)
+- **Fuzz testing:** random or unexpected inputs to break assumptions
+- **Static analysis:** examine code without executing it
+- **Formal verification:** mathematical methods to prove properties of algorithms and protocols
+- **Mutation testing:** evaluate whether the suite detects intentional faults
 
 ## Goal
 
-The goal of security testing is to identify vulnerabilities and weaknesses in the codebase, while also making sure that
-the code behaves the same way even after changes. Different types of testing can help achieve this goal in different
-ways. There is no "one size fits all" solution, and the choice of testing methodology depends on the specific
-requirements and constraints of the project.
+Identify vulnerabilities and weaknesses while confirming behavior still holds after change. Choice of depth depends on
+asset risk, complexity, and resources—there is no universal single method.
 
-## Smart Contracts
+## Smart contracts: when to use each type
 
-For smart contracts in particular, here is when to use each type of testing:
+- **Unit testing:** always; aim for high path coverage
+- **Integration testing:** always; often combined with fork testing
+- **Fuzz testing:** always where practical; many unit tests can become fuzzer targets
+- **Static analysis:** always; tools such as [Slither](https://github.com/crytic/slither) and
+  [Aderyn](https://github.com/Cyfrin/aderyn) are common baselines
+- **Formal verification:** situation-dependent—especially math-heavy logic, critical invariants, or parity with a
+  reference model
+- **Mutation testing:** use to measure whether existing tests would catch realistic faults
 
-- **Unit Testing**: Always. And aim for high "code coverage" (i.e. unit test as many paths as possible)
-- **Integration Testing**: Always. This can also be combined with fork testing.
-- **Fuzz Testing**: Always. Most unit tests can be fuzz tests.
-- **Static Analysis**: Always. Use tools like [Slither](https://github.com/crytic/slither) and
-[Aderyn](https://github.com/Cyfrin/aderyn) to analyze the code for vulnerabilities.
-- **Formal Verification**: Dependent. Anywhere functions are math heavy, stateless, or functionality matches another
-system, this should be used.
+## Evaluating the test suite
 
-## Evaluating your test suite
+- **Coverage analysis:** code and branch coverage reduce blind spots (coverage alone does not prove meaningful
+  assertions).
+- **Mutation testing:** introduce small code mutations; tests that still pass indicate weak assertions or missing
+  cases.
 
-To ensure you're meeting the goals of security testing, it's essential to evaluate the quality and completeness of your
-test suite. This can be done through several approaches:
+## What this framework covers
 
-- **Coverage Analysis**: High code and branch coverage helps assess how thoroughly your test suite exercises different
-execution paths. Aim for comprehensive coverage to reduce blind spots.
-- **Mutation Testing**: This technique measures the effectiveness of your test suite. It works by introducing small
-changes (or "mutations") to the code and checking whether the tests detect and fail on those changes. If a mutation
-doesn’t cause a failure, it may indicate a gap in your test logic.
+1. [Unit Testing](/security-testing/unit-testing): foundation coverage for functions, access control, and expected
+   state changes.
+2. [Integration Testing](/security-testing/integration-testing): forked and multi-system behavior vs real protocol
+   state.
+3. [Fuzz Testing](/security-testing/fuzz-testing): stateless and stateful (invariant) fuzzing.
+4. [Static Analysis](/security-testing/static-analysis): pattern-based analysis without execution.
+5. [Formal Verification](/security-testing/formal-verification): symbolic / mathematical property checking.
+6. [Mutation Testing](/security-testing/mutation-testing): suite quality via killed vs surviving mutants.
 
-Together, methods like these can give a more complete picture of how well your tests validate both expected and
-unexpected behaviors.
+## Related frameworks
+
+- [Secure Software Development](/secure-software-development/overview): reviews and coding standards
+- [DevSecOps](/devsecops/overview): pipeline automation of tests and scanners
+- [External Security Reviews](/external-security-reviews/overview): independent audits beyond internal testing
+- [Threat Modeling](/threat-modeling/overview): which behaviors and assets tests must protect
+- [Supply Chain](/supply-chain/overview): tooling trust and dependency risk in the test stack
+
+## Further Reading & Tools
+
+- [Cyfrin Updraft Security Testing](https://updraft.cyfrin.io) (curriculum referenced by several child pages)
+- [Foundry Book](https://book.getfoundry.sh/)
+- [Trail of Bits — Building secure contracts](https://secure-contracts.com/)
 
 ---
 

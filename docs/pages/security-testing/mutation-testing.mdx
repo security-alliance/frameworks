@@ -12,19 +12,25 @@ contributors:
     users: [nbelenkov]
   - role: reviewed
     users: [patrickalphac]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
-## What is Mutation Testing?
+# Mutation Testing
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Mutation testing is a technique used to evaluate the quality of a test suite by introducing small changes (mutations) to
-the code and checking if the tests catch these changes. Each change, called a "mutant," simulates a potential bug. If
-your tests fail when a mutant is introduced, the mutant is "killed," indicating your tests are effective. If the tests
-pass, the mutant "survives," revealing a potential gap in your test coverage.
+> 🔑 **Key Takeaway**: Mutation testing grades the test suite, not the product under test. Surviving mutants mean
+> assertions or cases are too weak to catch realistic faults.
+
+## What is mutation testing?
+
+Mutation testing evaluates suite quality by introducing small code changes (mutations) and checking whether tests
+detect them. Each change (“mutant”) simulates a potential bug. If tests fail, the mutant is “killed.” If tests still
+pass, the mutant “survives,” exposing a gap.
 
 ## How does it work?
 
