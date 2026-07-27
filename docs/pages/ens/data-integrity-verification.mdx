@@ -5,8 +5,12 @@ tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
-- role: wrote
-  users: [ghadi8]
+  - role: wrote
+    users: [ghadi8]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: For fund movement, resolve from Ethereum L1 (or equivalently trusted L1 RPC with
+> verified stack)—not stale indexers—and always verify reverse records with a matching forward lookup.
 
 ## Use On-chain Resolution for Financial Transactions
 

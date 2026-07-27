@@ -5,8 +5,12 @@ tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
-- role: wrote
-  users: [ghadi8]
+  - role: wrote
+    users: [ghadi8]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Call EIP-165 `supportsInterface` before resolver methods. Missing checks create fragile
+> integrations and failed or unsafe calls on limited resolvers.
 
 ## Verify Resolver Interface Support
 

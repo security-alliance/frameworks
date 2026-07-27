@@ -7,6 +7,10 @@ tags:
 contributors:
   - role: wrote
     users: [ghadi8]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Use the correct cointype per chain and handle CCIP-Read timeouts and fallbacks. Wrong-chain
+> resolution sends value to the wrong destination set.
 
 ## Respect Cointype for [Chain-Specific Resolution](https://docs.ens.domains/ensip/9)
 
