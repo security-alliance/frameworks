@@ -1,0 +1,165 @@
+---
+title: "Style and Terminology | SEAL"
+description: "Voice, normative modality, American English, capitalization, and canonical Web3 security terminology for SEAL Security Frameworks pages."
+tags:
+  - SEAL/Initiative
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
+
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Meta editorial standard page.
+  owner: maintainers
+*/}
+
+# Style and Terminology
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Write direct American English with explicit subjects, defined acronyms, and `must` / `should` /
+> `may` modality. Prefer the canonical terms below over local variants.
+
+This page is the **canonical editorial standard** for wording and terminology. Structure and page types live in the
+[content model](/contribute/content-model). Contributor workflow lives in the [contributing guide](/contribute/contributing).
+
+## Voice and wording
+
+- **American English** spelling and punctuation
+- **Objective, explanatory, technical** tone; do not oversimplify into slogans
+- **No first person** for recommendations (`Implement X`, not `I suggest X` or `We recommend X`)
+- Prefer **present tense** for enduring guidance; past tense for historical incidents
+- **Active voice** when the actor matters (`Signers verify the raw transaction`)
+- **Concrete subjects:** teams, operators, signers, maintainers, responders, stewards
+- **Non-technical orientation before technical depth** on every educational page
+- Introduce each acronym on first use: `multi-factor authentication (MFA)`
+- Prefer future-proof wording over product-version trivia unless a page is a product guide
+- Grammar assistance tools are fine; submitting wholly AI-generated pages is not
+- Keep paragraphs short; break complex ideas with lists, tables, or diagrams
+- Sentence length: favor clarity over filler; split stacked clauses when a step or risk appears
+
+### What to avoid
+
+- Conversational asides and hype
+- Unsupported absolute guarantees (`bulletproof`, `unhackable`, `fully secure`)
+- Generic openings that restate the title without stakes
+- “Click here” or bare URLs as link text
+- Mixing British and American spelling in the same framework
+
+## Normative modality
+
+Use RFC-style modality in procedures, checklists, and requirements:
+
+| Term | Meaning |
+| --- | --- |
+| **must** | Required for correctness, security of the stated control, compliance with the page’s procedure, or safe operation |
+| **should** | Default recommendation with valid, stated or obvious exceptions |
+| **may** | Optional or situational |
+
+Guidelines:
+
+- Do not silently upgrade every `should` to `must`
+- Prefer `must` / `should` / `may` over “it is recommended that”, “consider doing”, or “where possible” unless the
+  condition is explained in the same sentence
+- When exception conditions matter, write them next to the requirement
+- Descriptive prose (architecture background) does not need modality on every sentence
+
+## Evidence and links
+
+- Primary sources beat secondary summaries for incidents, CVEs, standards, and product behavior
+- Historical loss figures and attack attributions need a citation or must be softened/removed
+- Prefer descriptive link text (`OWASP ASVS`, not `this article`)
+- Use **relative paths** for internal links (`/wallet-security/overview`)
+- Prefer a **Further Reading & Tools** (or Resources) section for external catalogs; keep in-body citations where
+  the claim appears when that helps verification
+- For important external material, add archived mirrors when available
+- Do not invent citations from model memory
+
+Dead or unstable links: replace, archive, or remove the claim. Do not leave knowingly broken authority links.
+
+## Capitalization and names
+
+| Form | Rule |
+| --- | --- |
+| Security Alliance | Full organization name |
+| SEAL | Acronym after first expansion when needed; acceptable in titles with `\| SEAL` |
+| Security Frameworks | This project’s suite |
+| Vault Boy–style product names | Use official capitalization (GitHub, Discord, Cloudflare) |
+| Headings | Sentence case preferred (`Signing verification`), not Title Case Every Word, unless a proper noun |
+
+## Canonical terminology
+
+Preferred forms derived from high-quality existing usage in this repository. Use the preferred column unless a quoted
+API, UI string, or legal name requires another form.
+
+| Preferred | Avoid / limit | Notes |
+| --- | --- | --- |
+| Web3 | web3, Web 3, WEB3 | Capital **W**, no space |
+| blockchain | Blockchain (except headings/starts) | Common noun |
+| smart contract | Smart Contract (mid-sentence) | |
+| multisig | multi-sig, multi sig, MultiSig | Adjective or noun; expand once if audience is new |
+| multi-factor authentication (MFA) | inconsistent 2FA-only language when MFA is meant | Use **2FA** when the control is exactly two factors |
+| two-factor authentication (2FA) | 2fa, Two Factor | |
+| operational security (OpSec) | OPSEC, opsec (prose) | `OpSec` after expansion; folder slug remains `opsec` |
+| incident response | Incident Response (mid-sentence) | Capitalize in formal team names |
+| supply chain | supply-chain (noun) | Hyphenate as adjective: `supply-chain attack` |
+| front end (noun), front-end (adjective) | frontend in prose | `frontend` allowed in code, package names, path slugs |
+| on-chain / off-chain | onchain, offchain, on chain | Hyphenated |
+| allowlist / denylist | whitelist / blacklist | Except historical quotes |
+| wallet | | Client or account UX users sign with |
+| signer | | Party authorized to approve |
+| account | | Protocol or platform account; disambiguate from wallet |
+| key / credential | “secret” when key material is meant | Be precise |
+| seed phrase | seedphrase, mnemonic (unless defining) | |
+| private key | privkey in prose | |
+| protocol | project/org when you mean the company or DAO | Do not call a company a “protocol” casually |
+| team / organization / DAO | indistinct “they” | Name the actor |
+| Security Alliance / SEAL | Seal, S.E.A.L. | |
+
+### Product and stack names
+
+Use vendor capitalization: npm, Ethereum, Solana, Bitcoin, EVM, RPC, DNS, DNSSEC, CDN, CI/CD, HSM, hardware wallet
+brand names per vendor docs.
+
+### Path and filename conventions
+
+- Directories and MDX slugs: `kebab-case`
+- Framework entry file: `overview.mdx` (not `README.mdx` for new pages)
+- No spaces or underscores in new content paths
+
+## Examples
+
+**Prefer:**
+
+> Signers must verify the destination, asset, and calldata on a hardware wallet display before approving.
+
+**Avoid:**
+
+> We recommend that you consider verifying transactions where possible so you can be fully secure.
+
+**Prefer:**
+
+> Operational security (OpSec) reduces the chance that sensitive workflows leak to an adversary.
+
+**Avoid:**
+
+> OPSEC is critical in web3 and all teams should basically do it.
+
+## Related pages
+
+- [Content model](/contribute/content-model)
+- [Contributing guide](/contribute/contributing)
+- [Page template](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx)
+
+---
+
+<ContributeFooter />
