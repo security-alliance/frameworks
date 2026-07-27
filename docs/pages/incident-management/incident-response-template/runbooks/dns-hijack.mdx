@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,7 +21,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Stub runbook.** Customize with your DNS provider details and procedures.
+> 🔑 **Key Takeaway**: DNS hijacks redirect users to attacker infrastructure. Lock
+> registrar controls, restore authoritative records, force cache abandonment, and verify
+> resolution from multiple resolvers.
+
+**Stub runbook.** Customize with your DNS provider details and procedures.
 
 ## Quick Reference
 
@@ -71,7 +78,9 @@ dig yourdomain.com
 
 ## Related
 
-- [Frontend Compromise](./frontend-compromise)
-- [Incident Response Policy](../incident-response-policy)
+- [Frontend Compromise](/incident-management/incident-response-template/runbooks/frontend-compromise)
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy)
+
+---
 
 <ContributeFooter />

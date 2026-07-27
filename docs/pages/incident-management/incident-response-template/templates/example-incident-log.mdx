@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
@@ -18,7 +21,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../../compo
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example incident log.** Delete this file or use it as reference when creating real incident logs.
+> 🔑 **Key Takeaway**: Use this filled API-outage log as a format reference only. Replace
+> it with real incident records; never treat sample commands or timelines as operational
+> truth.
+
+**This is an example incident log.** Delete this file or use it as reference when creating real
+incident logs.
 
 ## Summary
 
@@ -124,7 +132,7 @@ Rolled back rate limiter configuration to previous known-good version.
 ## Post-Incident
 
 - [x] Post-mortem scheduled for: 2024-01-17 15:00 UTC
-- [x] [Post-mortem document](./example-post-mortem) created
+- [x] [Post-mortem document](/incident-management/incident-response-template/templates/example-post-mortem) created
 - [ ] Action items assigned (pending post-mortem)
 
 ## Links & Evidence
@@ -133,6 +141,8 @@ Rolled back rate limiter configuration to previous known-good version.
 - Config PR that caused issue: [link]
 - Rollback PR: [link]
 
-*See [Incident Response Policy](../incident-response-policy) for severity definitions and process.*
+*See [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy) for severity definitions and process.*
+
+---
 
 <ContributeFooter />

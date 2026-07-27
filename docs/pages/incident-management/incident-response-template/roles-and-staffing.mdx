@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -18,10 +21,16 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Match IR staffing to team size: small teams split lead versus fix,
+> larger teams add on-call and specialists. A light process people follow beats a
+> heavyweight binder nobody opens.
+
 How you staff incident response depends on your team size and structure. This document covers options from small teams
 to larger organizations.
 
-See [Incident Response Policy](./incident-response-policy#roles) for role definitions.
+See [Incident Response
+  Policy](/incident-management/incident-response-template/incident-response-policy#roles) for role
+  definitions.
 
 ## Core Roles (All Team Sizes)
 
@@ -30,7 +39,7 @@ Every incident needs these roles filled, even if one person wears multiple hats:
 | Role | Responsibility |
 | ------- | ----------------- |
 | **Incident Leader** | Coordinates response, assigns tasks, makes decisions |
-| **Scribe** | Documents everything in [Incident Log](./templates/incident-log-template) |
+| **Scribe** | Documents everything in [Incident Log](/incident-management/incident-response-template/templates/incident-log-template) |
 | **Responders** | Execute fixes, investigate, implement mitigations |
 
 For larger incidents, add:
@@ -56,7 +65,7 @@ Everyone knows everything. Just make sure someone is always reachable.
 
 ### Expectations
 
-- Keep a shared contact list (see [Contacts](./contacts))
+- Keep a shared contact list (see [Contacts](/incident-management/incident-response-template/contacts))
 - Establish one communication channel for incidents
 - Someone should always be reachable (informal coverage)
 
@@ -146,8 +155,11 @@ ex. With 8 people per rotation, each person is on-call one week every two months
 Before going on-call, complete:
 
 <Checklist id="first-responder-training">
-- [ ] Review [Incident Response Policy](./incident-response-policy)
-- [ ] Review [Incident Log](./templates/incident-log-template) and [Post-Mortem](./templates/post-mortem-template) templates
+- [ ] Review [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy)
+- [ ] Review [Incident
+      Log](/incident-management/incident-response-template/templates/incident-log-template) and
+      [Post-Mortem](/incident-management/incident-response-template/templates/post-mortem-template)
+      templates
 - [ ] Read 2-3 past post-mortems
 - [ ] Understand basic architecture (infra and smart contracts)
 - [ ] Know how to reach SMEs and Decision Makers
@@ -196,7 +208,7 @@ Ensure your on-call personnel have access to:
 - [ ] Video conferencing
 - [ ] Monitoring dashboards
 - [ ] On-call schedule
-- [ ] [Contacts](./contacts) list
+- [ ] [Contacts](/incident-management/incident-response-template/contacts) list
 </Checklist>
 
 ## Choosing Your Model
@@ -211,6 +223,8 @@ Ensure your on-call personnel have access to:
 **Start simple and add structure as you grow.** A lightweight process that people follow beats a heavyweight process
 that gets ignored.
 
-*See [Incident Response Policy](./incident-response-policy) for how these roles work during an actual incident.*
+*See [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy) for how these roles work during an actual incident.*
+
+---
 
 <ContributeFooter />

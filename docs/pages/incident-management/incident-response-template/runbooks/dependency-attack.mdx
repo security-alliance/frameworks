@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,7 +21,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Stub runbook.** Customize with your package management and build procedures.
+> 🔑 **Key Takeaway**: Malicious package updates poison builds and frontends. Pin and
+> verify dependencies, revoke tainted artifacts, rotate exposed secrets, and rebuild
+> from known-good sources.
+
+**Stub runbook.** Customize with your package management and build procedures.
 
 ## Quick Reference
 
@@ -81,8 +88,10 @@ Check for recent lockfile changes in git history.
 
 ## Related
 
-- [Frontend Compromise](./frontend-compromise)
-- [Build Pipeline Compromise](./build-pipeline-compromise)
-- [Incident Response Policy](../incident-response-policy)
+- [Frontend Compromise](/incident-management/incident-response-template/runbooks/frontend-compromise)
+- [Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise)
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy)
+
+---
 
 <ContributeFooter />

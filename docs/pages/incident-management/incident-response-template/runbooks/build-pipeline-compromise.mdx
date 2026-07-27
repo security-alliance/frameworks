@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,7 +21,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Stub runbook.** Customize with your CI/CD platform and procedures.
+> 🔑 **Key Takeaway**: A compromised CI/CD path can ship trojans as trusted releases.
+> Freeze pipelines, rotate secrets and signing keys, audit recent jobs, and only
+> re-enable after integrity checks pass.
+
+**Stub runbook.** Customize with your CI/CD platform and procedures.
 
 ## Quick Reference
 
@@ -77,8 +84,10 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Related
 
-- [Frontend Compromise](./frontend-compromise)
-- [Dependency Attack](./dependency-attack)
-- [Incident Response Policy](../incident-response-policy)
+- [Frontend Compromise](/incident-management/incident-response-template/runbooks/frontend-compromise)
+- [Dependency Attack](/incident-management/incident-response-template/runbooks/dependency-attack)
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy)
+
+---
 
 <ContributeFooter />

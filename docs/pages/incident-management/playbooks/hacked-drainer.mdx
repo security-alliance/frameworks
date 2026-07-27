@@ -7,13 +7,22 @@ tags:
 contributors:
   - role: wrote
     users: [SEAL]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
+
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
 # Wallet Drainer Attack
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Wallet drainers abuse approvals, signatures, and account
+> upgrades—not always seed phrases. Identify the drainer type first; recovery steps
+> differ for approvals versus full key control.
 
 If you’ve been sent this document, then we believe that your funds have been stolen by a wallet drainer. This document
 will give you some information about drainers, how they work, and how you can protect yourself going forward.

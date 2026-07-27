@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
@@ -18,6 +21,10 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../../compo
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Practice incident log, post-mortem, and runbook templates before the
+> first real page-out. Format familiarity under calm conditions ends format thrash
+> during emergencies.
+
 Templates for incident response documentation. Copy these when needed.
 
 > **Review these templates before your first incident.** Familiarize yourself with the structure so you're not
@@ -25,25 +32,25 @@ Templates for incident response documentation. Copy these when needed.
 
 ## Available Templates
 
-| Template | When to Use |
-| -------- | ----------- |
-| [Incident Log Template](./incident-log-template) | Copy when declaring an incident |
-| [Post-Mortem Template](./post-mortem-template) | Copy after resolving a significant incident (P1-P3) |
-| [Runbook Template](./runbook-template) | Copy when creating a new scenario-specific runbook |
+1. [Incident Log Template](/incident-management/incident-response-template/templates/incident-log-template):
+   copy when declaring an incident.
+2. [Post-Mortem Template](/incident-management/incident-response-template/templates/post-mortem-template):
+   copy after resolving a significant incident (P1-P3).
+3. [Runbook Template](/incident-management/incident-response-template/templates/runbook-template):
+   copy when creating a new scenario-specific runbook.
+4. [Example Incident Log](/incident-management/incident-response-template/templates/example-incident-log):
+   filled-out incident log for format reference.
+5. [Example Post-Mortem](/incident-management/incident-response-template/templates/example-post-mortem):
+   filled-out post-mortem for format reference.
 
-## Examples
+For communication guidance and examples, see
+[Communications](/incident-management/incident-response-template/communications).
 
-| Example | Purpose |
-| ------- | ------- |
-| [Example Incident Log](./example-incident-log) | Shows a filled-out incident log for reference |
-| [Example Post-Mortem](./example-post-mortem) | Shows a filled-out post-mortem for reference |
+See [Runbooks](/incident-management/incident-response-template/runbooks/overview) for existing
+scenario runbooks, and
+[Incident Response Policy](/incident-management/incident-response-template/incident-response-policy)
+for the full response process.
 
-For communication guidance and examples, see [Communications](../communications).
-
-## Runbook Template
-
-See [Runbooks](../runbooks/overview) for the runbook template and existing runbooks.
-
-*See [Incident Response Policy](../incident-response-policy) for the full response process.*
+---
 
 <ContributeFooter />

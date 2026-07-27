@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -17,6 +20,10 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Clone this structure for each scenario: quick reference, detection,
+> containment, eradication, recovery, and communication. Fill real commands and owners
+> before an incident, not during one.
 
 Copy this template to create runbooks for specific incident types.
 
@@ -111,7 +118,7 @@ If you see [X] but not [Y], it might be [different issue] instead.
 
 ## Escalation
 
-Escalate to [Contacts](../contacts) if:
+Escalate to [Contacts](/incident-management/incident-response-template/contacts) if:
 
 <Checklist id="escalation">
 - [ ] Mitigation doesn't work within [time]
@@ -124,7 +131,7 @@ Escalate to [Contacts](../contacts) if:
 <Checklist id="resolution-checklist">
 - [ ] Mitigation verified
 - [ ] Stakeholders notified
-- [ ] Timeline documented in [Incident Log](../templates/incident-log-template)
+- [ ] Timeline documented in [Incident Log](/incident-management/incident-response-template/templates/incident-log-template)
 - [ ] Post-mortem scheduled if warranted
 </Checklist>
 
@@ -137,6 +144,8 @@ Escalate to [Contacts](../contacts) if:
 ## Related
 
 - Related runbook for this scenario
-- [Incident Response Policy](../incident-response-policy)
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy)
+
+---
 
 <ContributeFooter />

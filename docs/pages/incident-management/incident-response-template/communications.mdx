@@ -7,7 +7,10 @@ tags:
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -16,6 +19,10 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Adapt pre-built internal and public message blocks so spokespeople
+> ship factual updates under pressure. Avoid root-cause speculation, blame, and
+> excessive apologies until facts are confirmed.
 
 Templates and building blocks for incident communications. Adapt these to your situation and tone.
 
@@ -201,6 +208,8 @@ Use these as modular pieces. Combine as needed for your situation.
 - Acknowledge impact on users
 - Avoid excessive apologies (one is enough)
 
-*See [Incident Response Policy](./incident-response-policy) for the overall response process.*
+*See [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy) for the overall response process.*
+
+---
 
 <ContributeFooter />
