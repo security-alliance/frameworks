@@ -5,6 +5,13 @@ tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Prioritize account takeover of admin surfaces, XSS/CSRF/IDOR, and mobile storage flaws. Map each
+> class to concrete mitigations, not awareness alone.
 
 Understanding and mitigating common vulnerabilities is crucial for securing your web and mobile applications. Here are
 some frequently encountered vulnerabilities:

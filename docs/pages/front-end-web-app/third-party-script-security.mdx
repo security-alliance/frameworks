@@ -7,6 +7,10 @@ tags:
 contributors:
   - role: wrote
     users: [scode2277]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,7 +20,7 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway:** Every third-party script running on your frontend shares your page's origin, meaning it
+> 🔑 **Key Takeaway**: Every third-party script running on your frontend shares your page's origin, meaning it
 > can access cookies, localStorage, session tokens, and call `window.ethereum` methods directly. Use Content
 > Security Policy, Subresource Integrity, and Trusted Types to control what code executes, verify it has not
 > been tampered with, and lock down dangerous DOM APIs.

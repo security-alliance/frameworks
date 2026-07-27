@@ -1,30 +1,60 @@
 ---
 title: "Front-End Web Application Security | SEAL"
-description: "Front-End Security Framework: Secure your Web3 front-end against attacks that could expose users to malicious contracts. Best practices for web and mobile application security."
+description: "Secure Web3 frontends and mobile clients so users never interact with swapped contracts or malicious scripts; web, mobile, third-party scripts, and common vuln classes."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
-# Front-End Web Application Security Best Practices
+# Front-End Web Application Security
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Although often overlooked, ensuring the security of your front-end web and potential mobile applications is crucial
-for protecting your users. If the front-end web application is compromised, it could have severe effects on your users
-as they could, for example, start interacting with a malicious contract instead of your official contract.
+> 🔑 **Key Takeaway**: A compromised frontend can silently route wallets to attacker contracts. Treat web and mobile
+> clients as high-value control planes, not cosmetic packaging.
 
-## Contents
+Front-end and mobile surfaces of Web3 protocols are often overlooked relative to on-chain review. If a client is
+compromised—injected scripts, swapped destinations, malicious dependencies—users can interact with attacker-controlled
+contracts or leak session power without any smart-contract bug.
 
-1. [Web Application Security](/front-end-web-app/web-application-security)
-2. [Mobile Application Security](/front-end-web-app/mobile-application-security)
-3. [Third-Party Script Security](/front-end-web-app/third-party-script-security)
-4. [Common Vulnerabilities](/front-end-web-app/common-vulnerabilities)
-5. [Security Tools and Resources](/front-end-web-app/security-tools-resources)
+This framework covers baseline web app practices, third-party script controls (CSP/SRI and related), mobile notes, common
+vulnerability classes, and catalogues of tools.
+
+## What this framework covers
+
+1. [Web Application Security](/front-end-web-app/web-application-security): frameworks, OWASP-oriented defects, hosting
+   lock-down, availability patterns.
+2. [Third-Party Script Security](/front-end-web-app/third-party-script-security): CSP, SRI, Trusted Types, and incident
+   lessons for script supply chain.
+3. [Mobile Application Security](/front-end-web-app/mobile-application-security): mobile client controls for Web3 apps.
+4. [Common Vulnerabilities](/front-end-web-app/common-vulnerabilities): ATO, XSS, CSRF, IDOR, and related classes.
+5. [Security Tools and Resources](/front-end-web-app/security-tools-resources): scanners and curated tool lists.
+
+## Related frameworks
+
+- [Supply Chain](/supply-chain/overview): dependency and frontend delivery integrity
+- [ENS](/ens/overview): name resolution integrity when clients display or resolve names
+- [Infrastructure](/infrastructure/overview): hosting, DNS, CDN, DDoS
+- [Wallet Security](/wallet-security/overview): wallet UX and signing confirmation boundaries
+- [Secure Software Development](/secure-software-development/overview): reviews and coding standards
+- [Security Testing](/security-testing/overview): dynamic and static test methods
+
+## Further Reading & Tools
+
+- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
+- [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- [MDN — Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
 
 ---
 
