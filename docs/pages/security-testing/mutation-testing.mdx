@@ -44,7 +44,7 @@ changing a `+` to a `-`, or replacing a `<` with a `=<`).
 4. **Mutation Score**: The effectiveness of your tests is measured by the mutation score, calculated as the percentage
 of mutants killed by the test suite.
 
-## Types of Mutants
+### Types of mutants
 
 There is a wide range of mutations that you can have, ranging from common software engineering ones to solidity-specific
 ones, for example:
@@ -88,7 +88,7 @@ What it's NOT good at:
 - Performance issues not related to logic
 - Documentation or specification mismatches
 
-## Modifier Mutation Example
+### Modifier mutation example
 
 Let's say you have this simple Token Vault that allows users to withdraw funds:
 
@@ -128,7 +128,7 @@ The tool will produce a report, where survived and killed mutations will be high
 investigate whether any mutations have survived and, if so, whether testing for that case makes sense, or if there is a
 bug in the code.
 
-## Best Practices and things to keep in mind
+## Best practices and things to keep in mind
 
 ### 1. Make sure your Line and Branch coverage is already very high, close to 100%
 
@@ -170,7 +170,7 @@ In summary, mutation testing is a great tool if used correctly, but it is not a 
 While it can significantly improve test quality by identifying gaps in your test suite, it requires careful
 configuration and interpretation of results.
 
-## Tools and Frameworks
+## Tools and frameworks
 
 - [SuMo](https://github.com/MorenaBarboni/SuMo-SOlidity-MUtator) by MorenaBarboni
 - [vertigo-rs](https://github.com/RareSkills/vertigo-rs) by RareSkills
