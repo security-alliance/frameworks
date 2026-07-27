@@ -8,6 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -16,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Preparation (docs, tests, static analysis cleanup) multiplies audit ROI. Handing over untested
+> code makes experts expensive nannies for basic defects.
 
 A common misconception is that when doing a security review, you can just hand off the written code and let reviewers do
 their work. This approach is inefficient and costly, as auditors will spend time on issues you could have resolved
