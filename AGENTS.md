@@ -56,8 +56,7 @@ Canonical framework overview example: `docs/pages/supply-chain/overview.mdx`.
 - Images: do not commit images to the repo. In the PR description (or a PR comment), attach the images and flag that
   they need uploading. A maintainer or a steward will trigger the `/img-bot` workflow, which uploads to S3 and posts
   the resulting links back as a PR comment. Then, use those links in the PR content.
-- Generators run on build: tags, indexes, printables, certs (postbuild: sitemap, llms, searchbar index). Mermaid
-  renders natively in Vocs v2, no generator step.
+- Generators run on build: tags, indexes, printables, certs (postbuild: sitemap, llms, searchbar index).
 
 ## Conventions Agents Miss
 

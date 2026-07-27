@@ -97,7 +97,9 @@ function hasFurther(hs) {
   return hs.some(
     (h) =>
       h.level === 2 &&
-      /further reading|resources|references|related frameworks|tools/i.test(h.text),
+      /^(further reading|resources|references|related frameworks|tools)$/i.test(
+        h.text.replace(/[?:].*$/, '').trim(),
+      ),
   )
 }
 
