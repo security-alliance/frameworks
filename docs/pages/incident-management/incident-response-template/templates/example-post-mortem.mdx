@@ -16,6 +16,14 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
 
+{/*
+  content-model-exception:
+  type: template
+  reason: Reusable template body intentionally uses many H2 placeholders and static task lists for copy-paste.
+  owner: maintainers
+*/}
+
+
 # Post-Mortem: API Outage - Rate Limiter Misconfiguration
 
 <TagList tags={frontmatter.tags} />
@@ -122,13 +130,13 @@ Human error during configuration change. The rate limit threshold was typed as `
 3. Alert took 17 minutes to fire (threshold too high)
 4. No validation for obviously wrong values (10 vs 1000)
 
-## Where We Got Lucky
+### Where We Got Lucky
 
 1. This happened during business hours when the team was available
 2. The fix (rollback) was simple. If the old config was also broken, recovery would have been harder
 3. No financial impact because this was the API layer, not smart contracts
 
-## Action Items
+### Action Items
 
 | Action | Owner | Deadline | Status |
 | ------ | ----- | -------- | ------ |
@@ -138,14 +146,14 @@ Human error during configuration change. The rate limit threshold was typed as `
 | Add staging environment testing for config changes | Dave | 2024-02-15 | In Progress |
 | Document config change process | Alice | 2024-01-31 | Not Started |
 
-## Lessons for Runbooks
+### Lessons for Runbooks
 
 - [x] Existing runbook sufficient: [Third-Party
       Outage](/incident-management/incident-response-template/runbooks/third-party-outage) (config
       rollback section applicable)
 - [ ] No new runbook needed
 
-## Detection
+### Detection
 
 | Aspect | Details |
 | ------ | ------- |
@@ -153,14 +161,14 @@ Human error during configuration change. The rate limit threshold was typed as `
 | Time to detection | 17 minutes |
 | Could we detect faster? | Yes - lower alert threshold to 1% |
 
-## Links
+### Links
 
 - Incident Log: [2024-01-15 Example API Outage](/incident-management/incident-response-template/templates/example-incident-log)
 - Config PR (bad): [link]
 - Rollback PR: [link]
 - Monitoring dashboard: [link]
 
-## Meeting Notes
+### Meeting Notes
 
 **Attendees:** Alice, Bob, Carol, Dave
 

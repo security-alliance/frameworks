@@ -16,6 +16,14 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
 
+{/*
+  content-model-exception:
+  type: template
+  reason: Reusable template body intentionally uses many H2 placeholders and static task lists for copy-paste.
+  owner: maintainers
+*/}
+
+
 # Incident: API Outage - Rate Limiter Misconfiguration
 
 <TagList tags={frontmatter.tags} />
@@ -121,7 +129,7 @@ Rolled back rate limiter configuration to previous known-good version.
 - [x] Sample API calls succeeding
 - [x] No user reports of issues post-fix
 
-## Communications Sent
+### Communications Sent
 
 | Time | Channel | Summary |
 | ---- | ------- | ------- |
@@ -129,13 +137,13 @@ Rolled back rate limiter configuration to previous known-good version.
 | 15:45 UTC | Discord #announcements | "API issues resolved" |
 | 16:00 UTC | Twitter | Brief update (optional) |
 
-## Post-Incident
+### Post-Incident
 
 - [x] Post-mortem scheduled for: 2024-01-17 15:00 UTC
 - [x] [Post-mortem document](/incident-management/incident-response-template/templates/example-post-mortem) created
 - [ ] Action items assigned (pending post-mortem)
 
-## Links & Evidence
+### Links & Evidence
 
 - DataDog dashboard: [link]
 - Config PR that caused issue: [link]

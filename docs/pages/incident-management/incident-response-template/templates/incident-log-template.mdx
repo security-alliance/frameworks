@@ -16,6 +16,14 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
 
+{/*
+  content-model-exception:
+  type: template
+  reason: Reusable template body intentionally uses many H2 placeholders and static task lists for copy-paste.
+  owner: maintainers
+*/}
+
+
 # Incident Log Template
 
 <TagList tags={frontmatter.tags} />
@@ -106,7 +114,7 @@ HH:MM UTC - ...
 - [ ] [Action] @[Owner]
 </Checklist>
 
-## Resolution Summary
+### Resolution Summary
 
 ### Mitigation Applied
 
@@ -117,13 +125,13 @@ HH:MM UTC - ...
 - [ ] [Check 2]
 </Checklist>
 
-## Communications Sent
+### Communications Sent
 
 | Time | Channel | Summary |
 | ---- | ------- | ------- |
 | | | |
 
-## Post-Incident
+### Post-Incident
 
 <Checklist id="post-incident">
 - [ ] Post-mortem scheduled for: [date]
@@ -133,13 +141,13 @@ HH:MM UTC - ...
 - [ ] Action items assigned
 </Checklist>
 
-## Links & Evidence
+### Links & Evidence
 
 - [Relevant dashboard]
 - [Relevant PR/commit]
 - [Screenshots]
 
-## Severity Reference
+### Severity Reference
 
 | Level | Description |
 | ----- | ----------- |
