@@ -9,6 +9,8 @@ contributors:
     users: [dickson]
   - role: reviewed
     users: [mattaereal, pinalikefruit]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -20,7 +22,7 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Summary
 
-> 🔑 **Key Takeaway for SSH Client and Key Management Hardening:** Use dedicated SSH keys for distinct purposes,
+> 🔑 **Key Takeaway**: Use dedicated SSH keys for distinct purposes,
 > prefer Ed25519 for new software keys, use hardware-backed `*-sk` keys for higher-risk access where practical,
 > protect keys with passphrases, keep agent forwarding off by default, and maintain a simple revoke-and-reissue plan
 > for lost devices or role changes.

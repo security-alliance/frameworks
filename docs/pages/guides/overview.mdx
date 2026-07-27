@@ -1,10 +1,18 @@
 ---
-title: "Guides"
+title: "Guides | Security Alliance"
+description: "Practical SEAL security guides: harden account management across platforms and endpoint controls for SSH, security keys, password managers, and Zoom."
 tags:
   - Security Specialist
+  - Engineer/Developer
+  - Operations & Strategy
+  - Community & Marketing
 contributors:
   - role: wrote
     users: [dickson, nftdreww]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -12,22 +20,42 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 # Guides
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
-This section contains practical, step-by-step guides that help you implement security best practices across various
-platforms and tools. Each guide provides actionable instructions you can follow to secure your operations.
+> 🔑 **Key Takeaway**: Guides turn framework principles into product-specific checklists. Follow the steps for each
+> tool, then keep settings reviewed as vendors change defaults.
 
-## Available Guide Categories
+This section contains practical, step-by-step guides for implementing security controls across platforms and endpoints.
+Each guide is actionable for individuals, team members, and administrators where roles differ.
 
-### [Account Management](/guides/account-management/overview)
+## What this section covers
 
-Comprehensive guides for securing your accounts across communication platforms, DevOps tools, and business applications.
-These guides cover:
+1. [Account Management](/guides/account-management/overview): secure communication platforms, DevOps/infrastructure
+   accounts, and business tools.
+2. [SSH Client and Key Management Hardening](/guides/endpoint-security/ssh-client-and-key-management-hardening): SSH key
+   hygiene, agent discipline, host verification.
+3. [Hardware Security Keys](/guides/endpoint-security/hardware-security-keys): FIDO2/WebAuthn enrollment and practices.
+4. [Password Manager Endpoint Hardening](/guides/endpoint-security/password-manager-endpoint-hardening): device and
+   endpoint controls around password vaults.
+5. [Zoom Hardening](/guides/endpoint-security/zoom-hardening): Zoom remote-control and meeting security posture.
 
-- **Communication Platforms** - Discord, Telegram, Twitter/X, Signal, Slack
-- **DevOps & Infrastructure** - GitHub, GoDaddy, Render, Sentry, Vercel
-- **Business Tools** - Linear, Mercury, Notion, Trello
+### Account management children
 
-Each account management guide includes security checklists for individuals, team members, and administrators.
+See the [Account Management overview](/guides/account-management/overview) for the full product list (Discord, Telegram,
+Twitter/X, Signal, Slack, GitHub, GoDaddy, Render, Sentry, Vercel, Linear, Mercury, Notion, Trello).
+
+## Related frameworks
+
+- [Community Management](/community-management/overview): community-facing risks tied to these account guides
+- [OpSec](/opsec/overview): broader MFA, passwords, and device controls
+- [IAM](/iam/overview): identity lifecycle and least privilege
+- [Infrastructure](/infrastructure/overview): DNS, hosting, and network context for registrar/DevOps guides
+- [User and Team Security](/user-team-security/overview): staff security posture (when expanded)
+
+## Further Reading & Tools
+
+Use the linked product guides and their in-page checklists. Prefer vendor security docs for current UI paths when
+product surfaces change.
 
 ---
 
