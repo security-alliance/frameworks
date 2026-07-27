@@ -13,6 +13,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -22,9 +24,8 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Default-deny ingress, segment everything, encrypt in transit,
-> log and audit continuously. Network security is not a single tool but a layered posture —
-> each layer assumes the one below it may fail.
+> 🔑 **Key Takeaway**: Default-deny ingress, segment everything, encrypt in transit, log and audit continuously. Network
+> security is not a single tool but a layered posture — each layer assumes the one below it may fail.
 
 Network security spans every boundary where your infrastructure touches the internet or other
 untrusted networks. In Web3, the stakes are higher than typical SaaS: a compromised frontend

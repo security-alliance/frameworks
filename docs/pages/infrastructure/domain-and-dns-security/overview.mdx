@@ -10,6 +10,8 @@ contributors:
     users: [Raiders0786]
   - role: reviewed
     users: [dickson, mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Compromised DNS or registrar control can serve wallet drainers as "the real site." Lock
+> registrars, monitor changes, and treat domain security as fund security.
 
 DNS (Domain Name System) is the backbone of the internet, translating domain names into IP addresses. In Web3, domain
 security is particularly critical as compromised domains can lead to irreversible financial losses through wallet
@@ -41,6 +46,17 @@ characteristics of blockchain technology:
   to user funds without needing to compromise individual accounts.
 - **Reputation damage**: One domain hijack incident can permanently destroy protocol trust, as users lose confidence in
   the project's security practices.
+
+## What this section covers
+
+1. [DNS Basics and Common Attacks](/infrastructure/domain-and-dns-security/dns-basics-and-attacks): resolution model and
+   common attack paths.
+2. [DNSSEC, CAA, SMTP DANE and Email Security](/infrastructure/domain-and-dns-security/dnssec-and-email): integrity and
+   email authentication controls.
+3. [Registrar Security and Registry Locks](/infrastructure/domain-and-dns-security/registrar-and-locks): account and lock
+   controls that stop many seizures.
+4. [Monitoring, Alerts, and GitOps](/infrastructure/domain-and-dns-security/monitoring-and-alerting): detect and revert
+   hostile changes quickly.
 
 ## Historical Context
 

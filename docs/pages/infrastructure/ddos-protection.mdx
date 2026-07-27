@@ -8,6 +8,13 @@ tags:
   - DevOps
   - Cloud
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,6 +23,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Plan DDoS controls before a flood, not during one. Combine provider native protections with CDN or
+> scrubbing services matched to traffic profile.
 
 Distributed Denial of Service (DDoS) attacks are a pervasive threat that can disrupt your services by overwhelming them
 with excessive traffic.

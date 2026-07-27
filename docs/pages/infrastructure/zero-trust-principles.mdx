@@ -5,6 +5,13 @@ tags:
   - Engineer/Developer
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Zero trust means authenticate and authorize every request with least privilege—location on the LAN
+> is not a trust signal.
 
 The Zero-Trust security model assumes that threats can exist both inside and outside the network. It requires strict
 verification for every user and device attempting to access resources, regardless of their location.

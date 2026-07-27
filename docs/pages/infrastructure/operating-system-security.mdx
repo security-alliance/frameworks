@@ -7,6 +7,13 @@ tags:
   - Operations & Strategy
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,6 +22,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Patch early, prefer key-based SSH with MFA where supported, and keep host firewalls default-deny.
+> OS hardening is table stakes under every higher control.
 
 This document outlines some general best practices one should follow with regards to operating system security, however
 if you're interested in a much more comprehensive guide you could look at [NIST

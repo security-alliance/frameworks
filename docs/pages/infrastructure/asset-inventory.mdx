@@ -6,6 +6,13 @@ tags:
   - Security Specialist
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -14,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: You cannot protect what you do not inventory. Document assets, owners, and criticality—and refresh
+> the list on a fixed cadence.
 
 An asset inventory means having information about everything related to your project, meaning for example contracts,
 hardware, software, cloud providers, dependencies and network components. This is important, as if you don't have

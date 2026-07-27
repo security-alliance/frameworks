@@ -1,12 +1,19 @@
 ---
 title: "Infrastructure | Security Alliance"
-description: "Infrastructure Framework: Secure Web3 infrastructure including cloud providers, DNS security, domain registrars, DDoS protection, network security, and zero-trust principles."
+description: "Secure Web3 infrastructure: asset inventory, cloud, DDoS, domain and DNS, network, OS hardening, zero trust, and a pointer to the dedicated IAM framework."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
   - Cloud
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,26 +23,55 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Infrastructure can often be overlooked in web3, but it's often a very important area given that most front-end web
-applications are running on centralized infrastructure. This section focuses on Infrastructure Security, encompassing
-critical aspects such as cloud infrastructure, DNS providers, domain registrars, and DDoS (Distributed Denial of
-Service) protection.
+> 🔑 **Key Takeaway**: Web3 frontends and ops still run on centralized infrastructure. Inventory it, harden cloud and
+> DNS, and weigh single-provider simplicity against multi-provider blast-radius reduction.
 
-When designing your architecture, it may be worth considering how many different providers you rely on. Are you going to
-use different providers for infrastructure, DDoS protection, domain registration, and DNS, or will you choose a
-provider that provides all of these? On one hand, putting all your eggs in one basket means a failure of that service
-would cause downtime. On the other hand, using a single service and ensuring it follows all best practices with regard
-to security measures means a lower risk surface.
+Infrastructure is often underrated relative to smart contracts, yet most front-end applications and operator tooling run
+on centralized systems. This framework covers cloud posture, DNS and domain registration, DDoS protection, network and
+OS hardening, asset inventory, and zero-trust principles.
 
-## Contents
+When designing architecture, weigh provider concentration: one vendor for hosting, DDoS, registrar, and DNS lowers
+integration cost but creates a shared failure domain; decoupling raises complexity but can limit blast radius. Apply
+strong security practice either way.
 
-1. [Asset Inventory](/infrastructure/asset-inventory)
-2. [Cloud Infrastructure](/infrastructure/cloud)
-3. [DDoS Protection](/infrastructure/ddos-protection)
-4. [DNS and Domain Registration](/infrastructure/domain-and-dns-security/overview)
-5. [Network Security](/infrastructure/network-security)
-6. [Operating System Security](/infrastructure/operating-system-security)
-7. [Zero-Trust Principles](/infrastructure/zero-trust-principles)
+Identity and access lifecycle for people is primarily covered in the dedicated [IAM](/iam/overview) framework; the
+infrastructure IAM page is a pointer.
+
+## What this framework covers
+
+1. [Asset Inventory](/infrastructure/asset-inventory): know what to protect and who owns it.
+2. [Cloud Infrastructure](/infrastructure/cloud): RBAC, encryption, network boundaries, logging.
+3. [DDoS Protection](/infrastructure/ddos-protection): cloud-native and third-party mitigation options.
+4. [Domain and DNS Security](/infrastructure/domain-and-dns-security/overview): registrar locks, DNSSEC and email
+   security, monitoring.
+5. [Identity and Access Management (pointer)](/infrastructure/identity-and-access-management): routes to the IAM
+   framework.
+6. [Network Security](/infrastructure/network-security): default-deny, segmentation, transit encryption.
+7. [Operating System Security](/infrastructure/operating-system-security): patching, SSH, host firewall baselines.
+8. [Zero-Trust Principles](/infrastructure/zero-trust-principles): verify continuously; least privilege access.
+
+### Domain and DNS subsection
+
+1. [DNS Overview](/infrastructure/domain-and-dns-security/overview)
+2. [DNS Basics and Common Attacks](/infrastructure/domain-and-dns-security/dns-basics-and-attacks)
+3. [DNSSEC, CAA, SMTP DANE and Email Security](/infrastructure/domain-and-dns-security/dnssec-and-email)
+4. [Registrar Security and Registry Locks](/infrastructure/domain-and-dns-security/registrar-and-locks)
+5. [Monitoring, Alerts, and GitOps](/infrastructure/domain-and-dns-security/monitoring-and-alerting)
+
+## Related frameworks
+
+- [IAM](/iam/overview): org identity, MFA, RBAC lifecycle
+- [Front-End Web App](/front-end-web-app/overview): client delivery over infrastructure
+- [DevSecOps](/devsecops/overview): pipeline and isolation
+- [Privacy — VPNs](/privacy/vpns/overview): operator path privacy complementary to network controls
+- [Monitoring](/monitoring/overview): on-chain signals complementary to infra telemetry
+- [Guides — Account Management](/guides/account-management/overview): product account hardening for common stacks
+
+## Further Reading & Tools
+
+- Nested DNS pages and [NIST SP 800-123](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-123.pdf)
+  for OS baselines
+- Cloud provider security benchmarks for your stack
 
 ---
 

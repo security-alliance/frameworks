@@ -8,6 +8,13 @@ tags:
   - DevOps
   - Cloud
   - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,6 +23,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Cloud security is IAM, encryption, network boundary, and logging done consistently. Misconfigured
+> public storage and overly broad roles remain common failure modes.
 
 Securing your cloud infrastructure could be considered as important as securing your decentralized application, as a lot
 of users will be interacting with your dapp through the cloud provider. Some best practices to consider are:
