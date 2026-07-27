@@ -293,7 +293,7 @@ Trusted Types can be disruptive to adopt because many libraries (including some 
 Trusted Types are supported across all modern browsers as of early 2026. The CSP directive degrades gracefully
 on older browsers: it is simply ignored, so it will not break your application.
 
-## Self-Hosting Critical Dependencies
+### Self-hosting critical dependencies
 
 The strongest defense against third-party script compromise is to eliminate the third party entirely by
 bundling dependencies into your own build output. CSP and SRI reduce the risk of loading external scripts;
@@ -357,7 +357,7 @@ and compares its hash to the expected value. A hash mismatch on a resource that 
 early indicator of a supply chain compromise. Integrate this into your CI pipeline and your production monitoring
 separately: CI catches changes at build time, production monitoring catches changes at serve time.
 
-## Additional Defenses
+### Additional defenses
 
 Beyond the core mechanisms above, consider these complementary measures:
 
@@ -380,7 +380,7 @@ Beyond the core mechanisms above, consider these complementary measures:
   -> API reference and browser compatibility
 - [Google: Trusted Types Adoption Guide](https://web.dev/articles/trusted-types) -> step-by-step policy implementation guide
 
-## Related Frameworks
+## Related frameworks
 
 - [Supply Chain Security](/supply-chain/overview): Dependency management, vendor risk, and incident response
   for compromised components
