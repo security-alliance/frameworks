@@ -1,12 +1,16 @@
 ---
 title: "Root Account Passwords | Security Alliance"
-description: "Secure root/admin accounts: password rotation and storage, cold accounts, password manager sharing, monitoring. Prevents escalation in Linux/AWS/cloud."
+description: "Secure root and admin accounts: keep them cold day-to-day, share via password manager with re-prompt, rotate on exit, and watch OAuth grants carefully."
 tags:
   - Security Specialist
   - Operations & Strategy
 contributors:
   - role: wrote
     users: [shallem]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -18,6 +22,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Treat root accounts as cold break-glass identities: minimal daily use, shared only via a
+> password manager with re-prompt, and rotated when access should end.
 
 Root accounts refer to the accounts that are used to configure new services. For example,
 when you first register for Amazon AWS, you create a root account that is a super privileged
@@ -61,4 +68,7 @@ the password is rotated. Periodic rotation also helps protect against any brute 
 to compromise a root account.
 
 </TagProvider>
+
+---
+
 <ContributeFooter />

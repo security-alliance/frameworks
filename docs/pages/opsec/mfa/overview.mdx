@@ -1,11 +1,16 @@
 ---
 title: "Multi-Factor Authentication | Security Alliance"
+description: "MFA for Web3 OpSec: prefer passkeys and hardware keys over SMS/email; use push or TOTP as interim steps and protect admin accounts with YubiKeys."
 tags:
   - Security Specialist
   - Operations & Strategy
 contributors:
   - role: wrote
     users: [shallem]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -14,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: MFA is necessary but not sufficient—prefer passkeys and hardware keys over SMS or email, and
+> protect high-value logins and recovery paths as carefully as the second factor itself.
 
 MFA is necessary but not sufficient as an OpSec strategy. If you have not yet implemented MFA, we suggest making it
 your first priority as soon as you finish reading this page.
@@ -62,5 +70,7 @@ password manager with biometric authentication (e.g., Bitwarden, 1Password). Pas
 that uses phone or SMS as a recovery mechanism make overall security worse, not better. Before finalizing any decision
 to migrate to passkeys, please read the password management section and ensure that you are ready to store your
 passkeys securely.
+
+---
 
 <ContributeFooter />

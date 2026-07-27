@@ -1,12 +1,16 @@
 ---
 title: "Single Sign-on | Security Alliance"
-description: "Use SSO (OAuth/SAML) for federated passwordless auth with Okta/Auth0/Google. Reduces secrets sprawl, enforces MFA, session controls, IdP hardening."
+description: "SSO for OpSec: federate sign-in through one hardened IdP to enforce MFA, cut sprawl, and centralize session and device controls across SaaS tools."
 tags:
   - Security Specialist
   - Operations & Strategy
 contributors:
   - role: wrote
     users: [shallem]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
@@ -18,6 +22,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: SSO is not password reuse—federate authentication through one hardened identity provider so MFA,
+> sessions, and recovery are centralized and consistent.
 
 Single Sign-on refers to the ability to sign in to all of the tools that
 you use to work with a single identity provider. The identity provider is
@@ -92,4 +99,7 @@ all of the security considerations, choosing SSO with a reputable identity
 provider is the most secure option.
 
 </TagProvider>
+
+---
+
 <ContributeFooter />
