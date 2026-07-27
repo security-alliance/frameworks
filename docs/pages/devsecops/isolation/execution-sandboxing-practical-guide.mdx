@@ -1,6 +1,6 @@
 ---
 title: "Execution Sandboxing: A Practical Guide | SEAL"
-description: "Implementation-focused sandboxing guide for CI/CD, runners, untrusted PR workflows, secrets handling, and network egress control."
+description: "Practical sandboxing for untrusted PRs: trust zones, ephemeral runners, short-lived credentials, secrets handling, and deny-by-default egress."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -12,6 +12,9 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
+
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -223,7 +226,7 @@ Have a playbook for:
 - [ ] Incident response runbook tested
 </Checklist>
 
-## References
+## Further reading
 
 - [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
 - [NIST SP 800-204A, *Building Secure Microservices-based Applications Using Service-Mesh Architecture*](https://csrc.nist.gov/pubs/sp/800/204/a/final)

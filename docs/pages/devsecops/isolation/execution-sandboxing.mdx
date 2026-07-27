@@ -1,6 +1,6 @@
 ---
 title: "Execution Sandboxing | SEAL"
-description: "How to sandbox execution across CI/CD, build tooling, and automation to reduce blast radius and prevent privilege abuse."
+description: "Sandbox CI builds and automation with ephemeral least-privilege runtimes that isolate process, filesystem, identity, and network access paths."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -11,6 +11,9 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
+
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -100,7 +103,7 @@ Build, sign, publish, and deploy should be distinct stages with explicit policy 
 - Allowing unrestricted egress from build jobs.
 - Granting broad default CI token permissions.
 
-## References
+## Further reading
 
 - [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
 - [NIST SP 800-53 Rev. 5, *Security and Privacy Controls*](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)

@@ -1,6 +1,6 @@
 ---
 title: "Securing CI/CD Pipelines | Security Alliance"
-description: "Build secure CI/CD pipelines with GitHub Actions: unit tests, integration tests, vulnerability scanning, deterministic builds, secret management, and strict access controls for pipeline configurations."
+description: "Secure CI/CD with required checks, dependency and secret scans, ephemeral runners, scoped secrets, and deterministic build and deploy paths."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -11,6 +11,9 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
+
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -332,7 +335,7 @@ to CI/CD pipeline security.
 | Sign artifacts | Cosign for containers, GPG for tags, SLSA provenance |
 | Audit workflow changes | CODEOWNERS on `.github/workflows/` |
 
-## References
+## Further reading
 
 - [SLSA Specification v1.0](https://slsa.dev/spec/v1.0/)
 - [NIST SP 800-218, Secure Software Development Framework](https://csrc.nist.gov/pubs/sp/800/218/final)

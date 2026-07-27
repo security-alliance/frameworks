@@ -1,6 +1,6 @@
 ---
 title: "Sandboxing & Policy Enforcement | SEAL"
-description: "Defense-in-depth model that combines runtime isolation with policy-as-code across CI/CD and automation workflows."
+description: "Combine policy-as-code gates with runtime sandboxing before, during, and after execution so unsafe workflows never promote into production paths."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -11,6 +11,9 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
+
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -89,7 +92,7 @@ A practical stack for pipelines:
 - Failing open when policy engine is unavailable.
 - Skipping auditability for policy decisions.
 
-## References
+## Further reading
 
 - [NIST SP 800-53 Rev. 5 (policy, audit, and access controls)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
 - [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)

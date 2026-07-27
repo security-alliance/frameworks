@@ -1,6 +1,6 @@
 ---
 title: "Capability-Based Isolation | SEAL"
-description: "Capability-scoped isolation patterns that replace broad runtime privileges with explicit, auditable permissions."
+description: "Replace ambient admin rights with short-lived, task-scoped capabilities so compromised CI jobs and tools cannot exceed their explicit grants."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,9 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
+
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -96,7 +99,7 @@ Capability revocation should be immediate and automated for suspicious activity.
 - Capability definitions without contextual conditions.
 - Missing visibility into denied actions (blind spots hide attacks).
 
-## References
+## Further reading
 
 - [NIST SP 800-53 Rev. 5 (least privilege and access control)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
 - [NIST SSDF (SP 800-218)](https://csrc.nist.gov/pubs/sp/800/218/final)

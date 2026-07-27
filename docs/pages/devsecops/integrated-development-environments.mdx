@@ -1,6 +1,6 @@
 ---
 title: "Securing Development Environments | SEAL"
-description: "Secure your IDE with plugins from trusted sources only, restricted mode for untrusted projects, static code analysis tools, and isolation from production environments."
+description: "Secure IDEs with trusted extensions only, restricted mode for untrusted projects, built-in static analysis, least privilege, and isolation from production."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -8,6 +8,9 @@ tags:
 contributors:
   - role: wrote
     users: [mattaereal, fredriksvantes, ElliotFriedman]
+  - role: fact-checked
+    users: []
+
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,8 +20,13 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Integrated Development Environments (IDEs) are essential tools for developers, but they also need to be secured.
-Consider implementing the following best practices:
+> 🔑 **Key Takeaway**: Treat the IDE as part of the attack surface: install
+> extensions only after publisher and source verification, keep tooling
+> patched, enable in-editor security analysis, and keep development
+> environments isolated from production.
+
+Integrated Development Environments (IDEs) are essential tools for developers,
+but they also need to be secured. Implement the following practices:
 
 1. Install plugins and extensions only from trusted sources, and verify each one through multiple independent channels
   before installing:
@@ -35,6 +43,14 @@ Consider implementing the following best practices:
 3. Integrate static code analysis tools within the IDE to catch security issues early in the development process.
 4. Configure IDEs to follow the principle of least privilege, limiting access to sensitive information and systems.
 5. Ensure that potential development environments are isolated from production environments.
+
+## Related frameworks
+
+- [Developer Machine Confinement](/devsecops/isolation/developer-machine-sandboxing) —
+  confine agent and IDE workloads on the laptop
+- [Repository Hardening](/devsecops/repository-hardening) — controls for the code the IDE
+  pushes
+- [Security Testing](/devsecops/security-testing) — pipeline counterparts to IDE analysis
 
 ---
 
