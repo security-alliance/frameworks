@@ -183,8 +183,6 @@ package deploy.gate
 
 import rego.v1
 
-# Thresholds are not hardcoded. They are read from policy data, keyed by what
-# the artifact can reach and how reversible its release is.
 tier := data.reachability[input.artifact.repo]
 
 deny contains v if {
@@ -413,7 +411,7 @@ team shipping npm packages into wallet frontends, this is the widest gap in the 
 - [ ] Release data preserved: module versions, configuration, operational metadata
 </Checklist>
 
-## Further Reading & Tools
+## Further reading
 
 - [Policy as Code: Overview](/devsecops/policy-as-code/overview): the engine, the two modes,
   and what the standard requires

@@ -126,14 +126,18 @@ scanner suppressions, which carry a finding id, a rationale, a linked ticket, an
 date. The same fields, applied to the policy set.
 
 Structured rule output is what makes this possible. The gate routes on `class`, the exception
-register matches on `id`, and an expired entry returns to the blocking set:
+register matches on `id`, and an expired entry returns to the blocking set.
+
+In the rules below, `violation` emits a structured record rather than a string so the gate can
+route on it. `suppressed` reads the exception register and stops matching once the expiry has
+passed. `blocking` collects anything that is neither downgraded to a judgment call nor covered
+by a live exception.
 
 ```python
 package build.gate
 
 import rego.v1
 
-# Rules emit a structured violation, not a string, so the gate can route on class.
 violation contains v if {
   some job_name, i
   uses := input.workflow.jobs[job_name].steps[i].uses
@@ -145,14 +149,11 @@ violation contains v if {
   }
 }
 
-# Exceptions live in checked-in data with an owner and an expiry. Once the
-# expiry passes, the entry stops suppressing anything.
 suppressed(v) if {
   exception := data.exceptions[v.id]
   time.parse_rfc3339_ns(exception.expires) > time.now_ns()
 }
 
-# Anything not explicitly excepted, and not explicitly downgraded, blocks.
 blocking contains v if {
   some v in violation
   v.class != "judgment"
@@ -324,7 +325,7 @@ response. Evidence that nobody reads during an incident is cost without benefit.
 - [ ] Rules that have not fired in a year get an explicit keep-or-retire decision
 </Checklist>
 
-## Further Reading & Tools
+## Further reading
 
 - [Policy as Code: Overview](/devsecops/policy-as-code/overview): the engine, the two modes,
   and what the standard requires
