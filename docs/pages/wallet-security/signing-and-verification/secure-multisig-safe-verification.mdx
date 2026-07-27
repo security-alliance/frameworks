@@ -125,7 +125,7 @@ Important: Both tools require checksummed addresses:
 - Interactive mode note: In interactive mode the CLI does not decode calldata; be sure to perform the calldata
   verification in step 5.
 
-## 4) Hash Comparison
+### 4) Hash Comparison
 
 - Message Hash on tools must match hardware wallet display
 - Domain Hash ensures correct Safe
@@ -134,7 +134,7 @@ Important: Both tools require checksummed addresses:
   compromised. When signing, verify the **entire** hash displayed on your hardware wallet, not just the first and last
   few characters.
 
-## 5) Calldata Review
+### 5) Calldata Review
 
 Hash verification confirms you are signing the right transaction (the one that was proposed), but the hash alone does
 not tell you what the transaction actually does. You need to decode the calldata to understand the on-chain action.
@@ -183,13 +183,13 @@ decoded and reviewed.
 Signers should not all use identical tools. Cross-verify results between multiple tools (CLI and web) for critical
 operations.
 
-## Special Cases: Nested Safes
+### Special Cases: Nested Safes
 
 - Use `--nested-safe-address` and `--nested-safe-nonce` to verify approveHash flows
 
 ---
 
-## Related Documents
+### Related Documents
 
 - [Hardware Wallet Setup](/wallet-security/intermediates-and-medium-funds)
 - [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure)
