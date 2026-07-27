@@ -27,16 +27,16 @@ Effective on-chain monitoring combines systems and processes that continuously o
 anomalies, and drive a prepared response. Start from the [First principles](/monitoring/overview#first-principles) on
 the framework overview before expanding coverage.
 
-## Key Principles
+## Key principles
 
-- **Transparency:** Prefer open-source or auditable tools so your monitoring infrastructure can itself be reviewed.
+- **Transparency:** Prefer open-source or auditable tools so the monitoring infrastructure can itself be reviewed.
 - **Real-time detection:** Minimize the time between an on-chain event and the alert reaching a responder.
 - **Automation:** Automate repetitive detection tasks to reduce human error and ensure consistent coverage.
-- **Scalability:** Design your monitoring setup to scale as protocol activity and the number of monitored contracts grows.
+- **Scalability:** Design the monitoring setup to scale as protocol activity and the number of monitored contracts grows.
 
-## Best Practices
+## Best practices
 
-### Define Monitoring Objectives
+### Define monitoring objectives
 
 1. Determine the critical metrics to monitor. Common categories include:
    - Large fund transfers from protocol or treasury wallets
@@ -46,20 +46,20 @@ the framework overview before expanding coverage.
    - Access control modifications (role grants, revocations)
    - Unusual gas usage patterns that may indicate griefing or exploitation attempts
 
-### Implement Monitoring Tools
+### Implement monitoring tools
 
 1. Use automated monitoring tools that can continuously track blockchain activities and generate alerts for anomalies.
-   See the [Tools](/monitoring/tools) page for a catalog of available options.
+    See the [Tools](/monitoring/tools) page for a catalog of available options.
 2. Supplement automated tools with periodic manual reviews.
 
-### Establish Alerting Mechanisms
+### Establish alerting mechanisms
 
 1. Set up real-time alerts to notify relevant project members of any suspicious activities or threshold breaches.
 2. Use multiple channels for alerts (Discord webhooks, Telegram bots, PagerDuty, Slack) to ensure timely delivery.
 3. Every alert must have a designated owner and a documented response. An alert with no one responsible is
-   indistinguishable from no alert at all.
+    indistinguishable from no alert at all.
 
-### Monitoring Strategies
+### Monitoring strategies
 
 Structure monitoring coverage across these tracks:
 
@@ -92,23 +92,23 @@ Structure monitoring coverage across these tracks:
 - Network latency affecting transaction confirmation
 - RPC endpoint availability
 
-### Regular Reviews and Updates
+### Regular reviews and updates
 
-1. Conduct regular reviews of your monitoring systems to ensure they are functioning correctly and covering all
-   necessary metrics.
-2. Regularly update thresholds and alert configurations to reflect your current needs.
-3. **Test your alerts periodically**: verify that alert delivery actually works end-to-end, not just that the
-   detection rule is configured. A misconfigured webhook or expired token can silently break your alerting.
+1. Conduct regular reviews of monitoring systems to ensure they are functioning correctly and covering all
+    necessary metrics.
+2. Regularly update thresholds and alert configurations to reflect current needs.
+3. **Test alerts periodically**: verify that alert delivery actually works end-to-end, not just that the
+    detection rule is configured. A misconfigured webhook or expired token can silently break alerting.
 4. **Alert on alert tampering**: configure alerts for the disabling or modification of existing alerts. This
-   protects against both accidental misconfiguration and adversarial tampering that could silently disable your
-   detection coverage.
+    protects against both accidental misconfiguration and adversarial tampering that could silently disable
+    detection coverage.
 
-### Incident Response
+### Incident response
 
 1. Develop and maintain an [incident response plan](/incident-management/overview) to handle alerts and anomalies as
-   soon as possible.
+    soon as possible.
 2. Document who gets paged for each alert category and what the first response steps are. This should be decided
-   before an incident, not during one.
+    before an incident, not during one.
 
 ### Forensic readiness
 
@@ -117,7 +117,7 @@ evidence. These are complementary capabilities: monitoring without forensic read
 incident but may struggle to investigate, substantiate, or disclose it reliably. See
 [Forensic Readiness](/incident-management/forensic-readiness) for designing evidence collection into architecture.
 
-## Further Reading & Tools
+## Further Reading
 
 - [Monitoring overview](/monitoring/overview): first principles and page map
 - [Incident Management](/incident-management/overview): response and communications after an alert

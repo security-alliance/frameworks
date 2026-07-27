@@ -1,6 +1,6 @@
 ---
 title: "On-Chain Monitoring Tools | SEAL"
-description: "Catalog of open-source and commercial on-chain monitoring tools with reliability criteria: uptime, time-to-alert, delivery, and redundancy."
+description: "Catalog open-source and commercial on-chain monitoring tools with reliability criteria: uptime, time-to-alert, delivery guarantees, and redundancy."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -27,7 +27,7 @@ The catalog below is primarily focused on EVM-compatible chains. For non-EVM cha
 verify chain support before selecting a tool. For critical systems, run monitors from two independent providers when
 practical. See [Reliability considerations](#reliability-considerations).
 
-## Open Source / Self-Hosted
+## Open source / self-hosted
 
 ### BlockScout
 
@@ -50,7 +50,7 @@ via a scraper.
 - **Chains:** Chain-agnostic (infrastructure layer)
 - **GitHub:** [prometheus/prometheus](https://github.com/prometheus/prometheus) | [grafana/grafana](https://github.com/grafana/grafana)
 
-## Commercial / Hosted
+## Commercial / hosted
 
 ### Etherscan
 
@@ -117,24 +117,24 @@ and Slack alerts.
 - **Chains:** Solana
 - **Website:** [txscope.com](https://txscope.com)
 
-## Reliability Considerations
+## Reliability considerations
 
-Your monitoring system is only effective if it is itself reliable. Before committing to a tooling setup, evaluate
+A monitoring system is only effective if it is itself reliable. Before committing to a tooling setup, evaluate
 these factors:
 
 ### Self-hosted vs. managed
 
-| | Self-Hosted | Managed Platform |
+| | Self-hosted | Managed platform |
 | --- | --- | --- |
 | **Control** | Full control over configuration and data | Vendor controls infrastructure |
-| **Operational burden** | You own uptime, upgrades, and maintenance | Vendor handles ops |
-| **Vendor risk** | None | Platform downtime or shutdown affects you |
+| **Operational burden** | Operators own uptime, upgrades, and maintenance | Vendor handles ops |
+| **Vendor risk** | None | Platform downtime or shutdown removes visibility |
 | **Cost** | Infrastructure cost + engineering time | Subscription fee |
 
 ### Key reliability metrics to evaluate
 
 - **Uptime SLA:** What guaranteed availability does the provider offer? Is there a status page?
-- **Time-to-alert:** How quickly after an on-chain event does a notification reach you? Minutes matter during an exploit.
+- **Time-to-alert:** How quickly after an on-chain event does a notification reach responders? Minutes matter during an exploit.
 - **Alert delivery guarantees:** Does the platform guarantee at-least-once delivery, or is it best-effort?
 
 ### Redundancy recommendation
@@ -145,17 +145,17 @@ platform has downtime or misses an anomaly, the self-hosted layer still provides
 
 ### Alert channel reliability
 
-Your monitoring is only as good as the delivery mechanism for its alerts.
+Monitoring is only as good as the delivery mechanism for its alerts.
 
 - **Prefer:** PagerDuty or OpsGenie (escalation policies, on-call rotations, delivery receipts)
 - **Use with care:** Slack, Discord, Telegram (useful for visibility, but easy to miss; no delivery guarantees)
-- **Don’t rely on email as the sole channel for critical alerts**: Email may be appropriate as a secondary or audit
+- **Do not rely on email as the sole channel for critical alerts**: Email may be appropriate as a secondary or audit
 channel, not primary paging (high latency, often filtered to spam)
 
 For high-severity alerts, use a dedicated paging tool with escalation so that if the primary on-call misses the
 alert, it automatically escalates to a secondary.
 
-## Further Reading & Tools
+## Further Reading
 
 - [Monitoring overview](/monitoring/overview): first principles and when redundancy is warranted
 - [Monitoring guidelines](/monitoring/guidelines): what to cover before buying tooling
