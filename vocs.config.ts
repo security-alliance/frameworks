@@ -160,6 +160,17 @@ const config = {
             { text: 'Data Security Checklist', link: '/devsecops/data-security-upgrade-checklist' },
             { text: 'Governance Proposal Security Across the SDLC', link: '/devsecops/governance-proposal-security' },
             { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments' },
+            {
+              text: 'Policy as Code',
+              collapsed: true,
+              dev: true,
+              items: [
+                { text: 'Overview', link: '/devsecops/policy-as-code/overview', dev: true },
+                { text: 'Policy in the CI Pipeline', link: '/devsecops/policy-as-code/ci-pipeline', dev: true },
+                { text: 'Policy in Release and Runtime', link: '/devsecops/policy-as-code/release-and-runtime', dev: true },
+                { text: 'Governing the Policy Set', link: '/devsecops/policy-as-code/governance', dev: true },
+              ]
+            },
             { text: 'Repository Hardening', link: '/devsecops/repository-hardening' },
             { text: 'Security Testing', link: '/devsecops/security-testing' },
           ]

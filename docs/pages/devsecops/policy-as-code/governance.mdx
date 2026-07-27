@@ -1,0 +1,352 @@
+---
+title: "Governing the Policy Set | SEAL"
+description: "Governing a policy set: which violations block a release, who may override them, where thresholds come from, and how rules are owned and retired."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
+  - DevOps
+contributors:
+  - role: wrote
+    users: [s1ns3nz0]
+  - role: reviewed
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
+
+# Governing the Policy Set
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: A policy engine that can only answer "fail" is not usable for long.
+> What decides whether a gate survives is which violations stop a release outright, which ones
+> a named owner may override, and what that override leaves behind.
+
+The rules in the preceding pages do nothing until three questions are answered: what blocks a
+release, who is allowed to decide otherwise, and how the rule set stays current.
+
+Getting these wrong fails in both directions. A gate where every finding blocks is disabled
+within a quarter, usually during an incident when someone needs to ship. A gate where every new
+rule ships as advisory blocks nothing and accumulates rules nobody has tested.
+
+This page is the organizational half of policy as code. The rules are code; the decisions about
+who may override them, and what happens when nobody maintains them, are not.
+
+## Deciding what blocks
+
+Three decisions govern a gate: how a violation is classified, where the threshold for a
+judgment call comes from, and how an override is recorded.
+
+### Class, not just severity
+
+[Security Testing](/devsecops/security-testing) sets severity thresholds for scanner findings:
+Critical blocks the pull request, Low is tracked. Severity measures how bad a finding is.
+
+Class measures something else: whether anyone is entitled to decide about it. A Critical
+vulnerability and an unpinned action can both block a release, but only the first has a person
+who can reasonably say "ship anyway, and here is why."
+
+The two are independent. A finding can be low severity and still have no override path.
+
+Treating every finding as blocking produces a gate that is eventually disabled. Four outcomes
+cover the cases, and each is decided in advance.
+
+| Violation class | Outcome | Decided by | Recorded | Expiry |
+| --- | --- | --- | --- | --- |
+| Deterministic | No-Go, no in-pipeline override | No one; the input is fixed | Rule id, artifact digest, decision log entry | None |
+| Judgment | No-Go pending explicit decision | Named owner of the rule | Who, why, artifact digest, linked issue | 90 days, then re-decided |
+| Unclassified | No-Go | Rule author and a security reviewer | As for judgment | Until a class is assigned |
+| Engine failure | No-Go | No one; treated as an incident | Alert and the failed evaluation | None |
+
+**Deterministic violations** have no override path because there is nothing to decide. The
+input is corrected.
+
+**Judgment violations** require an explicit decision from the rule's owner, and the record has
+to identify who decided and why. The decision expires, so it is made again at the next
+release.
+
+**Unclassified violations** cover rules that are new or not yet triaged. Blocking is the deliberate
+default. If new rules shipped as advisory until proven necessary, every rule would enter
+service as a no-op and the rule set would document controls that are not enforced.
+
+**Engine failures** cover an unreachable engine, a stale bundle, or an evaluation error. These
+are incidents. The remedy is to repair the engine and re-run the evaluation.
+
+The engine-failure row is where the PDP and PEP separation becomes an operational decision.
+When the decision point is unavailable, the enforcement point acts without a verdict. Fail
+closed and treat an absent verdict as a refusal. An enforcement point that fails open converts
+every engine outage into an organization-wide bypass that leaves no record.
+
+What holds this together is the record. A No-Go that anyone can convert to a Go without leaving
+one behind only delays the release.
+
+### Where thresholds come from
+
+Deterministic rules require no threshold. Judgment rules do, and this is where most policy sets
+become arbitrary. "Block Critical, track Low" appears in a great deal of documentation, this
+framework included, without an explanation of why the line sits at that point. A threshold that
+cannot be derived will not be defended when it blocks a release.
+
+Two properties of the artifact determine the threshold.
+
+**Reachability.** If this artifact is malicious, what does it touch? For a Web3 team the answer
+is frequently user funds. A library loaded by a page where users sign transactions is not
+equivalent to an internal dashboard, and each deserves its own threshold.
+
+**Reversibility.** A cluster deployment rolls back in minutes. A published npm version is
+already on other machines and cannot be recalled. Removing it from the registry does not
+remove it from lockfiles that already pinned it. An on-chain upgrade may be irreversible. The less reversible
+the release, the more the gate has to catch before it runs.
+
+Combining the two produces the tiers. High reachability with low reversibility takes the
+strictest thresholds you can operate. Low reachability with straightforward rollback takes
+thresholds loose enough to keep the gate off the critical path.
+
+Thresholds belong in policy data keyed by repository or artifact class, in the same form as the
+exception register. A rule that hardcodes `severity == "critical"` has to be forked for every
+repository that needs a different line. A rule that reads `tier.blocking_severities` is written
+once and configured per artifact. The deploy gate in
+[Policy in Release and Runtime](/devsecops/policy-as-code/release-and-runtime) works this way.
+
+The standard does not supply these numbers. NIST SP 800-204D requires that a policy exist and
+be enforced; it does not state that a Medium finding should block a wallet library. That
+derivation is yours, which is why the reasoning behind a threshold belongs in the policy
+repository alongside the threshold itself.
+
+### Overrides are data, not edits
+
+An exception carries three fields: the rule it suppresses, an owner, and an expiry. It lives in
+a checked-in file under the same review as the rules, and once the expiry passes it stops
+suppressing anything.
+
+This extends a discipline [Security Testing](/devsecops/security-testing) already applies to
+scanner suppressions, which carry a finding id, a rationale, a linked ticket, and an expiry
+date. The same fields, applied to the policy set.
+
+Structured rule output is what makes this possible. The gate routes on `class`, the exception
+register matches on `id`, and an expired entry returns to the blocking set:
+
+```python
+package build.gate
+
+import rego.v1
+
+# Rules emit a structured violation, not a string, so the gate can route on class.
+violation contains v if {
+  some job_name, i
+  uses := input.workflow.jobs[job_name].steps[i].uses
+  not regex.match(`@[0-9a-f]{40}$`, uses)
+  v := {
+    "id": "build-tooling.pinned-actions",
+    "class": "deterministic",
+    "msg": sprintf("%q is not pinned to a commit SHA", [uses]),
+  }
+}
+
+# Exceptions live in checked-in data with an owner and an expiry. Once the
+# expiry passes, the entry stops suppressing anything.
+suppressed(v) if {
+  exception := data.exceptions[v.id]
+  time.parse_rfc3339_ns(exception.expires) > time.now_ns()
+}
+
+# Anything not explicitly excepted, and not explicitly downgraded, blocks.
+blocking contains v if {
+  some v in violation
+  v.class != "judgment"
+  not suppressed(v)
+}
+```
+
+```json
+{
+  "exceptions": {
+    "build-tooling.pinned-actions": {
+      "owner": "@security-team",
+      "reason": "vendor action ships no tags; tracked in SEC-142",
+      "expires": "2026-09-30T00:00:00Z"
+    }
+  }
+}
+```
+
+## Metadata that ties the chain together
+
+Each stage in the preceding pages emits records. Four properties turn those records into
+something answerable during an incident.
+
+**Use the artifact digest as the join key.** Commit SHAs identify source and tags identify
+releases, but only the digest identifies the exact bytes that were built, signed, deployed, and
+are running. Every record should carry it: attestation, SBOM, scan result, admission decision,
+drift event. Records keyed by version string cannot distinguish two builds of `v1.2.3`.
+
+**Store evidence outside the pipeline run that produced it.** Evidence must be tamper-proof and
+access-controlled. A decision log held in CI job output is removed with log retention. An
+attestation held only in the build workspace does not persist. Store evidence alongside the
+artifact it describes, or in a dedicated attestation store.
+
+**Set retention by artifact lifetime.** An SBOM is required when
+a CVE is disclosed against a dependency, which may be years after the build. Retain SBOMs and
+provenance for as long as the artifact may still be running.
+
+**Verify the metadata by answering an incident question.** Starting from a digest running in
+production:
+
+| Question | Record that answers it |
+| --- | --- |
+| What is running? | Deployed digest in declared state |
+| Where did it come from? | Provenance: source repository, ref, builder identity |
+| What is in it? | SBOM |
+| Who allowed it through? | Admission decision log, exception register |
+| Has it changed since? | Drift events |
+
+If answering any of these requires asking a person, the record chain is incomplete at that
+point.
+
+## Owning and maintaining the policy set
+
+Three questions decide whether a policy set survives contact with a growing organization: who
+owns the rules, how the set stays current, and how much of it to adopt at once.
+
+### Policy needs a central owner
+
+These pages assume a single policy set for the whole organization. Without that, policy as code
+reproduces the problem it was introduced to solve.
+
+The failure mode is consistent. Each repository grows its own `policy/` directory, seeded by
+copying whatever the previous team wrote. A rule is fixed in one of them and stays broken in
+the others, because nothing connects them. The organization's enforced posture becomes the
+weakest copy, and no one can state what is actually enforced without auditing every
+repository.
+
+Centralization means four things.
+
+**One source of rules, distributed to consumers.** What is centralized is the rule set. The
+engine still runs at merge, at build, and at deploy. Rules live in one repository
+and ship to consumers as versioned, signed bundles. Consumers pull a version; forking the
+content is not supported. A rule change then reaches every consumer on the next pull, and the
+enforced version is a property you can read. This also follows from the standard's definition of a
+policy as "a signed document that encodes the requirements for an artifact to be validated":
+an unsigned bundle cannot be verified as received intact.
+
+**One owner, with delegation.** A named team owns the rule set and reviews every change through
+CODEOWNERS on the policy repository. Domain teams contribute the rules they understand best;
+the owning team reviews them. No rule enters or leaves the enforced set without an accountable
+reviewer. A policy that can be weakened through an unreviewed pull request offers no
+protection.
+
+**One place decisions land.** Decision logs from every enforcement point go to a common store,
+and there is one enforcement point per stage. A common store makes organization-wide questions
+answerable: which rules fire most, which are overridden most, and which have never fired. Those
+answers drive the review and retirement steps below.
+
+**One exception register.** Exceptions are held with the policy, under the same review as the
+rules. A waiver granted in one repository should be visible to whoever reviews the
+rule set. A rule waived in four places is not being waived; it is not working.
+
+Scale the machinery to the problem. A single-repository team does not need a bundle registry; a
+local `policy/` directory under CODEOWNERS is the proportionate answer. The indirection earns
+its cost once rules span more than one repository or more than one enforcement point. For most
+protocol teams that happens early, because contracts, frontend, infrastructure, and keepers are
+already separate repositories sharing the same signing keys.
+
+### Keeping the policy set alive
+
+Run the policy set through the same lifecycle as any other code.
+
+**Author.** Every rule carries an id, a named owner, and a class before it ships. A rule with
+none of these cannot be routed, overridden, or reviewed.
+
+**Test.** Rego has a built-in test framework. Write a passing fixture and a failing fixture for
+every rule and run both in CI. An untested rule that stopped matching, because a field was
+renamed or a path changed, produces the same green pipeline as a rule that works. Nothing
+distinguishes the two until an incident does.
+
+**Stage.** New rules run in dry-run, then warn, then block, and each staged rule gets an
+enforcement date when it is created. A warn-only rule with no date is a permanent no-op that
+makes the rule set look more complete than it is. For sequencing against the underlying
+controls, the
+[execution sandboxing guide](/devsecops/isolation/execution-sandboxing-practical-guide) sets
+out a 30/60/90 day rollout; enforce each rule as the control it checks lands.
+
+**Enforce and distribute.** Fail closed on engine error, unreachable bundle, or evaluation
+timeout. Serve bundles signed and versioned so a consumer can verify what it is enforcing. Put
+the policy source behind CODEOWNERS with a security reviewer, and treat a pull request that
+weakens a rule with the same scrutiny as one that touches a signing key.
+
+**Review.** Decision logs turn the gate into evidence: which rules fire, how often, how many
+are overridden and by whom. Review the exception register on a fixed cadence. An exception that
+has been renewed three times is a rule that does not match reality, and renewing it a fourth
+time is maintenance work disguised as a risk decision.
+
+**Retire.** A rule that has not fired in a year is either dead or its risk is gone. Both need a
+decision. Rules that accumulate without pruning make the suite slow, and a slow gate is the one
+somebody argues for skipping.
+
+### Adopting this without stalling delivery
+
+SP 800-204D states directly that the full control set "cannot be implemented all at once in the
+SDLC of all enterprises without a great deal of disruption to underlying business processes and
+operational costs." It groups solutions into four types, which work as a sequencing guide.
+
+1. **Per-task pipeline features.** Tamper-proof build pipelines with verified visibility into
+   dependencies and build steps, since compromised dependencies and build tools are the largest
+   source of poisoned workflows. Per-stage checklists that the pipeline enforces.
+2. **Integrity and provenance** through digital signatures and attestations.
+3. **Currency of running code.** Institute a build horizon, where code older than a set period
+   is not launched, keeping production close to the reviewed commit.
+4. **Securing CI/CD clients** against malicious code that steals source, signing keys, or cloud
+   credentials, reads secrets from environment variables, or exfiltrates to an
+   attacker-controlled endpoint.
+
+A workable order: assess against SSDF to find the gaps, map the supply chain, analyze the
+threats, add pipeline controls stage by stage, then connect the resulting evidence to incident
+response. Evidence that nobody reads during an incident is cost without benefit.
+
+## Policy set health checklist
+
+<Checklist id="policy-set-health">
+- [ ] Every rule carries an id, a named owner, and a class
+- [ ] Rules live in one place and ship as versioned, signed bundles
+- [ ] Every rule has a passing and a failing test fixture, run in CI
+- [ ] New rules go dry-run, then warn, then block, each with an enforcement date set at creation
+- [ ] Unclassified rules block by default
+- [ ] The gate fails closed on engine error, unreachable bundle, or evaluation timeout
+- [ ] The policy source is behind CODEOWNERS with a security reviewer
+- [ ] Thresholds live in policy data keyed by reachability, not hardcoded in rules
+- [ ] Exceptions carry a rule id, an owner, and an expiry, and live in one register
+- [ ] Expired exceptions stop suppressing, verified by a test
+- [ ] Decision logs from every enforcement point land in a common store
+- [ ] The exception register is reviewed on a fixed cadence, not when it hurts
+- [ ] Chronically renewed exceptions are treated as broken rules, not accepted risk
+- [ ] Rules that have not fired in a year get an explicit keep-or-retire decision
+</Checklist>
+
+## Further Reading & Tools
+
+- [Policy as Code: Overview](/devsecops/policy-as-code/overview): the engine, the two modes,
+  and what the standard requires
+- [Policy in the CI Pipeline](/devsecops/policy-as-code/ci-pipeline): the rules this page governs
+- [Policy in Release and Runtime](/devsecops/policy-as-code/release-and-runtime): where the tier
+  thresholds derived here get applied
+- [Security Testing](/devsecops/security-testing): severity thresholds for scanner findings, and
+  the suppression discipline this page extends to the policy set
+- [Repository Hardening](/devsecops/repository-hardening): CODEOWNERS and branch protection for
+  the policy repository itself
+- [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement):
+  policy checkpoints across pre-execution, runtime, and post-execution
+- [Execution Sandboxing: A Practical Guide](/devsecops/isolation/execution-sandboxing-practical-guide):
+  a 30/60/90 rollout to sequence rule enforcement against
+- [NIST SP 800-204D](https://csrc.nist.gov/pubs/sp/800/204/d/final): the implementation strategy
+  section, and the definition of a policy as a signed document
+- [OPA policy testing](https://www.openpolicyagent.org/docs/latest/policy-testing/): the `opa test`
+  framework
+- [OPA bundles](https://www.openpolicyagent.org/docs/latest/management-bundles/): versioned,
+  signed policy distribution
+- [OPA decision logs](https://www.openpolicyagent.org/docs/latest/management-decision-logs/)
+
+---
+
+<ContributeFooter />

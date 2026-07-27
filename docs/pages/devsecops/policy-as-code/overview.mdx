@@ -1,0 +1,257 @@
+---
+title: "Policy as Code through the CI/CD Pipeline | SEAL"
+description: "Policy as code across the CI/CD pipeline: what a policy engine decides, what NIST SP 800-204D requires of it, and how each gate reads the build evidence."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - DevOps
+  - SRE
+  - Protocol
+contributors:
+  - role: wrote
+    users: [s1ns3nz0]
+  - role: reviewed
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+
+# Policy as Code through the CI/CD Pipeline
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Configuration states an intent. Policy enforces it and leaves a record.
+> Every pipeline stage should verify the previous one against evidence it can read, and the
+> record it leaves is what the next stage has to work with.
+
+A setting is a statement of intent. Anyone with access can change it, and nothing records that
+it changed or who changed it. A policy is a rule the pipeline evaluates on every run, and its
+output is a decision with a reason attached.
+
+That difference is what these pages are about. Other DevSecOps pages document which settings to
+enable; this one covers what a policy engine decides, what evidence each stage produces, and
+which of those decisions a person is allowed to override. A pipeline moves an artifact through
+commit, merge, build, release, deployment, and runtime. Each stage receives something from the
+previous one and either verifies it or assumes it.
+
+For a Web3 team the assumption is expensive. Pipelines hold deploy keys and signing wallets,
+and publish packages that load into wallet frontends. An artifact that reaches production
+without a verifiable origin has taken the shortest available path to user funds.
+
+These pages walk the pipeline in order, state what policy applies at each stage, and link to
+the pages that document the underlying controls.
+
+## The basics
+
+### General concepts
+
+- **Policy Decision Point (PDP)**: evaluates rules, returns a verdict and a reason.
+- **Policy Enforcement Point (PEP)**: acts on the verdict. A CI step exiting non-zero, a
+  deploy gate, a merge block.
+- **Policy data**: what the decision is made against, plus context such as trusted builders,
+  the registry allowlist, and the exception register.
+
+Numerous types of artifacts are created during the CI/CD process. If you don't have any
+policies or security gates throughout your CI/CD pipeline, you can't stop attackers from
+accessing resources through a compromised pipeline. A policy engine is the officially
+recommended tool for preventing and detecting compromised artifacts.
+
+One PDP serves many PEPs. The engine that decides is the same at every stage. The component
+that acts on its verdict differs per stage:
+
+| Stage | Enforcement point |
+| --- | --- |
+| Commit | Push protection at the SCM, and a CI step exiting non-zero |
+| Merge | A required status check that branch protection will not merge without |
+| Build | The build job, failing before it produces an artifact |
+| Release | The signing step, which does not run without a passing verdict |
+| Deploy | An admission controller, or the deploy job refusing promotion |
+| Runtime | The GitOps controller, resyncing or alerting on divergence |
+
+Two consequences follow.
+
+- Most adoption effort goes into wiring enforcement points. Rules are portable across
+  platforms; enforcement points are platform-specific.
+- A step only enforces if it exits non-zero. Printing violations and returning success leaves
+  the pipeline unchanged.
+
+**Policy data** keeps one rule set serving many contexts. The rule states what must be true.
+The data states what is true in a given repository: approved runners, the current roster,
+allowed registries, blocking severities, and live exceptions. In the examples throughout these
+pages, `data.` references mark that boundary.
+
+### Artifacts
+
+- **SBOM** (Software Bill of Materials): what components are in this software?
+- **Provenance**: which source, dependencies, environment, and process produced this artifact?
+- **Attestation**: who claims a check was performed, and can that claim be trusted?
+
+### Associated frameworks
+
+- **NIST SP 800-218 (SSDF)**: the Secure Software Development Framework, applicable to any
+  software architecture.
+  - Provides a core set of secure software development practices that can be integrated into
+    an existing SDLC.
+  - Technology-neutral, organized around the security outcomes an organization should achieve.
+- **NIST SP 800-204D**: *Strategies for the Integration of Software Supply Chain Security in
+  DevSecOps CI/CD Pipelines*.
+  - Explains how software supply chain security can be integrated into the CI/CD pipelines
+    used to develop and deploy cloud-native applications.
+
+**NIST SP 800-204D can therefore be understood as guidance on how to implement SSDF security
+objectives within a CI/CD pipeline.**
+
+Appendix A of SP 800-204D maps each pipeline task to an SSDF practice, so this work is
+reportable as SSDF conformance. Secure build maps to PO.1 and PW.6.
+
+### Associated project
+
+- [Open Policy Agent (OPA)](https://www.openpolicyagent.org/): a policy engine that
+  streamlines policy management across your stack for improved development, security, and
+  audit capability. This engine is officially referred to in NIST SP 800-204D as a policy
+  engine.
+
+## What a policy engine gives you
+
+A policy engine is a component that answers exactly one question: given this input, do the
+rules allow it?
+
+- Works regardless of execution environment
+- Only takes structured data such as workflow files, attestations, and manifests
+- Returns a verdict and a reason, usable as a decision point
+
+A simple `if`-statement script evaluates conditions directly within individual code paths,
+whereas a policy engine separates and centralizes policy evaluation so the same rules can be
+applied consistently across multiple systems.
+
+Rules become reviewable artifacts. They live in Git, change through pull requests, and can be
+owned via CODEOWNERS. They are also testable: write a fixture for the passing case and one for
+the failing case, and run both in CI. An untested rule that stops matching because a field was
+renamed produces the same green pipeline as a rule that works.
+
+Decisions come back structured. The gate can route on the result:
+block, warn, or require a named owner to sign off. Every evaluation can be logged with its
+input and its verdict, which supplies evidence for incident response and conformance reporting.
+
+In addition, policy logic stays separate from policy data. Trusted builders, registry
+allowlists, and the exception register are inputs, not code, so granting an exception does not
+mean editing a rule, and the exception can carry its own owner and expiry.
+
+Finally, a policy rule engine enables organizations to manage their policies as code across
+various environments.
+
+The cost is real. An engine is another component to operate, another language to learn, and a
+dependency the pipeline now fails closed on. It earns that cost once rules span more than one
+repository or more than one enforcement point. Below that, a workflow linter and branch
+protection do the same job with less machinery.
+
+## What NIST SP 800-204D asks for
+
+The standard names the policy engine as the enforcement mechanism in four places.
+
+**Pipeline prerequisites.** Organizations must define pipeline activities and security
+requirements for application code, for infrastructure as code, and for **policy as code and
+configuration code**. Policy as code is listed alongside the application itself.
+
+**Secure build.** The second of three required tasks is to enforce build policies "using
+techniques such as an agent and policy enforcement engine." Appendix A restates the same task
+when mapping it to SSDF: enforce those policies "using an agent or some other means **and a
+policy enforcement engine**."
+
+**Repository operations.** Where a source-code management system lacks the built-in protections
+the standard requires, external tooling must evaluate the SCM account's security settings
+against a policy and report actionable findings. The document names **Open Policy Agent** as
+the example, and OpenSSF Scorecard as the example tool.
+
+**Deployment.** CD measures "can be implemented by defining verification policies for allowing
+or disallowing an artifact for deployment."
+
+The standard also defines what a policy is: "a signed document that encodes the requirements
+for an artifact to be validated." A rule that anyone can edit without review does not meet
+that definition.
+
+## Two enforcement modes
+
+A policy engine operates in two modes. Distinguishing them matters because only the first is
+commonly implemented.
+
+**Mode 1: artifacts flowing through the pipeline.** A workflow file, a build attestation, a
+deployment manifest. The document already exists. The engine reads it and returns a verdict.
+
+**Mode 2: the platform's own configuration.** "Require signed commits" is a setting. "No
+repository in this organization permits self-approval, and the release gate fails when one
+does" is a policy. The first describes an intended state. The second is verified and recorded.
+
+Mode 2 is what distinguishes these pages from
+[Repository Hardening](/devsecops/repository-hardening), which documents which settings to
+enable. The question here is how you confirm they are still enabled next quarter, across every
+repository, without manual review.
+
+Mode 2 requires a collector: a component that calls the platform API, shapes the response into
+JSON, and passes it to the engine. That collector becomes part of the trust base. If its token
+is stolen or its output is modified, the engine evaluates fabricated data and returns a passing
+verdict. The standard's requirement that evidence come from a process more trusted than what it
+describes applies to posture data as well, so the collector belongs inside the pipeline's trust
+boundary.
+
+### About the examples in these pages
+
+Every Rego snippet in this section is illustrative, and represents what the engine reads, what
+it decides, and what it returns.
+
+Two things have to come from your organization.
+
+- The input structure depends on which SCM, registry, and CI platform you run and on how your
+  collectors shape their output. The field names will not match yours.
+- The rule content is a statement of what your organization has decided to require, which is a
+  different question from what a standard permits.
+- The work is deriving your own requirements from your own threat model, organizational
+  regulations, and incident history.
+
+## Start here
+
+Where to start depends on what already exists. If nothing is enforced yet, begin with the merge
+gate: workflow definitions are the highest-leverage document and the cheapest to evaluate. If
+gates exist but releases route around them, the problem is governance. If
+artifacts ship without provenance, start with release.
+
+1. [Policy in the CI Pipeline](/devsecops/policy-as-code/ci-pipeline): what policy applies at
+   commit, merge, and build, and what each stage emits for the next one.
+2. [Policy in Release and Runtime](/devsecops/policy-as-code/release-and-runtime): publishing
+   identity, deployment gates, and holding running state to what was declared.
+3. [Governing the Policy Set](/devsecops/policy-as-code/governance): which violations block,
+   who may override, where thresholds come from, and how a policy set is maintained.
+
+## Further Reading & Tools
+
+- [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment):
+  configuration for the controls these pages gate
+- [Repository Hardening](/devsecops/repository-hardening): the branch protection and
+  organization settings the posture checks evaluate
+- [Security Testing](/devsecops/security-testing): SAST, DAST, and SCA tooling, and severity
+  thresholds
+- [Implementing Code Signing](/devsecops/code-signing): signing mechanics behind the release
+  gate
+- [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation): runner and build
+  containment
+- [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement):
+  admission-time and runtime enforcement
+- [NIST SP 800-204D](https://csrc.nist.gov/pubs/sp/800/204/d/final): the source document
+- [NIST SP 800-218 (SSDF)](https://csrc.nist.gov/pubs/sp/800/218/final): the practices
+  SP 800-204D implements
+- [Open Policy Agent documentation](https://www.openpolicyagent.org/docs/latest/) and the
+  [Rego policy reference](https://www.openpolicyagent.org/docs/latest/policy-reference/)
+- [Conftest](https://www.conftest.dev/): evaluating structured configuration against Rego
+- [OpenSSF Scorecard](https://securityscorecards.dev/): named in SP 800-204D as the example
+  tool for assessing SCM posture
+- [SLSA specification](https://slsa.dev/spec/v1.0/): provenance format for build evidence
+- [zizmor](https://docs.zizmor.sh/): static analysis for GitHub Actions workflows
+
+---
+
+> *Note:* Rego examples in this section are fenced as `python`. The site's syntax highlighter
+> has no Rego grammar, and an unrecognized language fails the build. Python is the closest
+> available approximation.
+
+<ContributeFooter />
