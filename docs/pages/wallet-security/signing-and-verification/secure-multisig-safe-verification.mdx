@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r, ElliotFriedman]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Safe verification requires matching transaction hashes and decoded intent across independent
+> channels before any signature.
 
 Hash verification protects against UI compromise attacks where malicious transactions are injected into the signing
 flow. The goal is to ensure that what you see in the UI matches what your hardware wallet actually signs.

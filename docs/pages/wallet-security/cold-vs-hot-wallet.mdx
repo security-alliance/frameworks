@@ -10,6 +10,8 @@ contributors:
     users: [pinalikefruit]
   - role: reviewed
     users: [Coinspect, patrickalphac]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Hot wallets maximize convenience and online exposure; cold wallets reduce remote attack surface
+> at the cost of operational friction. Match fund tier to exposure.
 
 The primary distinction between wallet types is their connectivity to the internet. This factor dictates their security
 threat model, risk profile, and ideal use cases.

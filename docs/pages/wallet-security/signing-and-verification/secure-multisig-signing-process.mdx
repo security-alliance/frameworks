@@ -10,6 +10,8 @@ contributors:
     users: [engn33r,pinalikefruit, isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Multisig signing needs a coordinated, independent verification path for every signer. Skipping
+> hash and intent checks is how shared treasuries get drained.
 
 The security of a multisig wallet relies on each signer independently verifying what they are signing. A compromised web
 interface could present a legitimate-looking transaction while tricking a hardware wallet into signing a malicious one.

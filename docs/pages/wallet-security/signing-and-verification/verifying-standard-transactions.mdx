@@ -9,6 +9,8 @@ contributors:
     users: [pinalikefruit]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: For EOA signing, verify recipient, amount, network, and calldata meaning—including token approvals—before
+> confirming on the device.
 
 When interacting with a dApp using a standard Externally Owned Account (EOA) via a wallet, you must verify several key
 components of the transaction request before signing.

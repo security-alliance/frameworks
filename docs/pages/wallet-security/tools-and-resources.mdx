@@ -9,6 +9,8 @@ contributors:
     users: [pinalikefruit, auditware]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Independent wallet reviews, simulation, and calldata decoding tools only help when used before
+> signing—not after a bad signature hardens on-chain.
 
 This section provides a curated list of tools and resources to help users select wallets, practice safe signing habits,
 and verify transactions. Using these tools is a critical part of a robust security strategy.

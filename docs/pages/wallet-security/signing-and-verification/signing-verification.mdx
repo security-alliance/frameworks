@@ -10,9 +10,10 @@ contributors:
     users: [pinalikefruit, isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [Coinspect, engn33r]
+  - role: fact-checked
+    users: []
 
 ---
-
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
@@ -20,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Never sign blindly. Prefer the hardware wallet screen and independently verified calldata as
+> ground truth over any web UI claim.
 
 This section provides a guide to transaction verification, from basic EOA interactions to advanced multisig operations.
 

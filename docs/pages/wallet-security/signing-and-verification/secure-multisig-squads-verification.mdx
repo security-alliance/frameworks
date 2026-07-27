@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -21,6 +23,9 @@ cross-verify with team members.
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Squads multisig verification follows the same principle as Safe: independently verify the
+> proposal payload and hashes on trusted paths before signing.
 
 ## Solana vs. EVM: Key Differences for Multisig Security
 

@@ -9,6 +9,8 @@ contributors:
     users: [pinalikefruit]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: EIP-7702 lets EOAs opt into smart-account behavior. Verify authorization scope carefully—new
+> power means new ways to hand control to the wrong code.
 
 The Pectra network upgrade introduces **EIP-7702**, which allows a standard Externally Owned Account (EOA) to
 temporarily function like a smart contract wallet. This is achieved via a new transaction type (`0x04`) that lets an EOA
