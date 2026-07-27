@@ -2,7 +2,13 @@
 /**
  * Objective content-structure checks for SEAL Security Frameworks MDX pages.
  * Structural rules: docs/pages/contribute/content-model.mdx
- * Editorial rules remain human-reviewed.
+ * Editorial rules (including heading sentence case): style-and-terminology.mdx
+ * Editorial judgment remains human-reviewed.
+ *
+ * Catalog H2 names below are matched case-insensitively so unmigrated Title Case
+ * still validates; preferred spelling is sentence case (e.g. "Further reading",
+ * "What this framework covers"). Strict Title-Case lint for freeform headings is
+ * intentionally not automated yet.
  *
  * Usage:
  *   node utils/validate-content.cjs
@@ -84,6 +90,8 @@ function hasAnyTakeaway(body) {
 }
 
 function hasPageMap(hs) {
+  // Preferred labels (sentence case): What this framework covers, Framework structure,
+  // Contents, Table of contents. "Pages" remains accepted for legacy maps.
   return hs.some(
     (h) =>
       h.level === 2 &&
@@ -94,6 +102,8 @@ function hasPageMap(hs) {
 }
 
 function hasFurther(hs) {
+  // Preferred label (sentence case): Further reading. Also: Resources, References,
+  // Related frameworks, Tools. Do not use "Further Reading & Tools".
   return hs.some(
     (h) =>
       h.level === 2 &&
