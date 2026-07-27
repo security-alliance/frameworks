@@ -79,7 +79,7 @@ Guidelines:
 - Historical loss figures and attack attributions need a citation or must be softened/removed
 - Prefer descriptive link text (`OWASP ASVS`, not `this article`)
 - Use **relative paths** for internal links (`/wallet-security/overview`)
-- Prefer a **Further Reading & Tools** (or Resources) section for external catalogs; keep in-body citations where
+- Prefer a **Further reading** (or Resources / Tools) section for external catalogs; keep in-body citations where
   the claim appears when that helps verification
 - For important external material, add archived mirrors when available
 - Do not invent citations from model memory
@@ -94,7 +94,34 @@ Dead or unstable links: replace, archive, or remove the claim. Do not leave know
 | SEAL | Acronym after first expansion when needed; acceptable in titles with `\| SEAL` |
 | Security Frameworks | This project’s suite |
 | Vault Boy–style product names | Use official capitalization (GitHub, Discord, Cloudflare) |
-| Headings | Sentence case preferred (`Signing verification`), not Title Case Every Word, unless a proper noun |
+| Headings (`#` / `##` / `###`) | **Sentence case required** (see below) |
+
+### Heading sentence case (required)
+
+All Markdown headings on framework pages use **sentence case**:
+
+1. Capitalize the first word
+2. Capitalize proper nouns, product names, and acronyms (`GitHub`, `STRIDE`, `MFA`, `Web3`)
+3. Leave every other word lowercase
+
+| Use | Avoid |
+| --- | --- |
+| `## Signing verification` | `## Signing Verification` |
+| `## Steps to create a threat model` | `## Steps to Create a Threat Model` |
+| `## What this framework covers` | `## What This Framework Covers` |
+| `## Further reading` | `## Further Reading`, `## Further Reading & Tools` |
+| `## Related frameworks` | `## Related Frameworks` |
+
+This applies to **every** heading level, including fixed catalog section names used by the content model and
+`validate:content` (page maps, further-material sections, and similar). Do not switch reserved labels to Title Case
+“because they are special.” Write them in sentence case; the validator matches those names case-insensitively so older
+Title Case headings still pass until framework PRs finish migrating.
+
+Frontmatter `title` values are a separate concern (browser tab chrome with `| Security Alliance` / `| SEAL`). They are
+not required to follow body-heading sentence case.
+
+Sidebar labels in `vocs.config.ts` should read naturally and match the page H1 topic; prefer the same words as the
+page title without truncated grammar (for example `Identify and Mitigate Threats`, not `Identity Mitigate Threats`).
 
 ## Canonical terminology
 

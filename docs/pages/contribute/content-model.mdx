@@ -200,17 +200,20 @@ Do not rewrite historical contributor attribution without clear evidence it is w
 Unheaded introduction (2–3 short paragraphs)
 ## Foundational section (named for the topic)
 ## Main sections...
-## Further Reading & Tools (or equivalent)
+## Further reading
 ---
 <ContributeFooter />
 ```
+
+All `##` / `###` headings use **sentence case** (first word and proper nouns only). See
+[Heading sentence case](/contribute/style-and-terminology#heading-sentence-case-required) in the style guide.
+Reserved catalog names below are already written in sentence case — do not Title-Case them.
 
 ## Key Takeaway contract
 
 Canonical form (exact label and punctuation):
 
 > 🔑 **Key Takeaway**: Concrete claim a reader can act on or remember. Prefer one or two sentences under 40 words.
-```
 
 Rules:
 
@@ -239,10 +242,24 @@ A framework overview must:
 9. Link adjacent frameworks when reader journeys commonly cross domains
 10. Include Further reading and/or Related frameworks for primary references
 
-Name the page map section family of titles:
+Name the page map section with one of these **sentence-case** titles (validator matches case-insensitively):
 
-- `## What This Framework Covers`
-- `## Framework structure` / `## Contents` when those headings already enumerate linked children with descriptions
+- `## What this framework covers` (preferred)
+- `## Framework structure`
+- `## Contents`
+- `## Table of contents`
+- `## Pages` (legacy accept; prefer a more descriptive map title on new work)
+
+Name further-material sections with one of these **sentence-case** titles:
+
+- `## Further reading` (preferred for mixed internal + external links)
+- `## Resources`
+- `## References`
+- `## Related frameworks` (framework overviews and cross-domain hubs)
+- `## Tools`
+
+Do **not** use `## Further Reading & Tools`, Title Case variants (`## Further Reading`, `## Related Frameworks`), or
+other synonyms. Put tools and external catalogs under `## Further reading` or `## Tools` as appropriate.
 
 A bare bullet list of links without one-line descriptions is not enough.
 
@@ -309,7 +326,8 @@ exception block when automation supports it.
 - Canonical Key Takeaway label present when required
 - Heading level skips
 - Static checklist detection
-- Overview page-map heading presence
+- Overview page-map heading presence (allowed sentence-case catalog names)
+- Further-material heading presence (allowed sentence-case catalog names)
 - `dev: true` reminders are CI-side elsewhere
 
 **Human / steward judgment:**
@@ -320,6 +338,7 @@ exception block when automation supports it.
 - When to split pages
 - Substantive conflicts between frameworks
 - Exception approval
+- **Heading sentence case** on non-catalog H2/H3 labels (validator does not Title-Case-lint freeform headings yet)
 
 ## Migration strategy
 
