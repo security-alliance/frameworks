@@ -9,6 +9,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: A VPN encrypts and relocates network egress for specific threat models. It is not anonymity,
+> malware defense, or a substitute for HTTPS and endpoint security.
 
 Virtual Private Networks (VPNs) encrypt your internet traffic and route it through a remote server, hiding your IP
 address from the websites you visit and shielding your activity from anyone on your local network. But a VPN is not a
@@ -27,7 +32,7 @@ providers and configuring tools that match your threat model.
 
 ---
 
-## Subtopics
+## What this section covers
 
 - **[HTTPS vs VPN](/privacy/vpns/https-vs-vpn)** — Why HTTPS does not make VPNs unnecessary. How metadata leaks even
   with encrypted connections, and what a VPN actually hides.

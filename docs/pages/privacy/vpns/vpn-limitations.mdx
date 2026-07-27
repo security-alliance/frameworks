@@ -9,6 +9,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 outline: deep
 ---
 
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: VPNs fail open via leaks, provider trust, fingerprinting, and broken kill switches. Model those
+> residual risks before calling the tunnel "safe."
 
 A VPN is not infallible. Consider these factors in your threat model:
 

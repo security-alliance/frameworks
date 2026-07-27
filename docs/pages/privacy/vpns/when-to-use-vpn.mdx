@@ -9,6 +9,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 outline: deep
 ---
 
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Choose VPN use from the threat model: optional on low-risk public Wi-Fi with good HTTPS, useful
+> to hide metadata from the local path, insufficient alone against a dedicated adversary.
 
 Use this mental model to decide:
 
