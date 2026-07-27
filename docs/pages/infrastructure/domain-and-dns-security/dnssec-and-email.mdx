@@ -129,17 +129,17 @@ The Common CA Database also provides a
 [comprehensive collection to reference](https://ccadb.org/resources).
 
 ```
-# Allow only specific CAs to issue certificates
+ # Allow only specific CAs to issue certificates
 example.com. CAA 0 issue "letsencrypt.org"
 example.com. CAA 0 issue "digicert.com"
 
-# Send violation reports when unauthorized CAs attempt issuance
+ # Send violation reports when unauthorized CAs attempt issuance
 example.com. CAA 0 iodef "mailto:security@example.com"
 
-# Control wildcard certificate issuance separately
+ # Control wildcard certificate issuance separately
 example.com. CAA 0 issuewild "letsencrypt.org"
 
-# Completely disable all certificate issuance (useful for non-web domains)
+ # Completely disable all certificate issuance (useful for non-web domains)
 example.com. CAA 0 issue ";"
 ```
 
