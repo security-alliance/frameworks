@@ -528,7 +528,7 @@ const config = {
           items: [
             { text: 'Overview', link: '/threat-modeling/overview', dev: true },
             { text: 'Create and Maintain Threat Models', link: '/threat-modeling/create-maintain-threat-models', dev: true },
-            { text: 'Identity Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats', dev: true },
+            { text: 'Identify and Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats', dev: true },
           ]
         },
         {
