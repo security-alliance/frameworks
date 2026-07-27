@@ -1,7 +1,5 @@
 import { defineConfig } from 'vocs/config'
 
-const MAIN_SITE_URL = 'https://frameworks.securityalliance.org'
-
 const isMainBranch = process.env.CF_PAGES_BRANCH === 'main'
 
 const config = {
@@ -9,9 +7,7 @@ const config = {
   renderStrategy: 'full-static' as const,
   head(path: string) {
     const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
-    if (!isMainBranch && devOnlyLinks.has(cleanPath)) return { canonical: false as const }
-    const canonicalUrl = `${MAIN_SITE_URL}${cleanPath || '/'}`
-    return { canonical: canonicalUrl }
+    return { canonical: `https://frameworks.securityalliance.org${cleanPath || '/'}` }
   },
   banner: {
     content: 'This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.',
@@ -699,6 +695,20 @@ function collectDevLinks(items: any[], parentIsDev = false): Set<string> {
 }
 
 const devOnlyLinks = collectDevLinks(config.sidebar)
+
+if (!isMainBranch && devOnlyLinks.size > 0) {
+  const devRoutesLiteral = JSON.stringify([...devOnlyLinks])
+  // @ts-expect-error - head is rebuilt from source so the dev-route list is
+  config.head = new Function(
+    'path',
+    `
+      const devOnlyLinks = new Set(${devRoutesLiteral});
+      const cleanPath = path.replace(/\\/index\\.html$/, '').replace(/\\.html$/, '').replace(/\\/$/, '');
+      if (devOnlyLinks.has(cleanPath)) return { canonical: false };
+      return { canonical: 'https://frameworks.securityalliance.org' + (cleanPath || '/') };
+    `,
+  )
+}
 
 if (isMainBranch) {
   config.sidebar = filterDevItems(config.sidebar)
