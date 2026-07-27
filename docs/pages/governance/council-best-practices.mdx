@@ -9,6 +9,8 @@ contributors:
     users: [michael, bram]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,11 +18,14 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 # Security Council Best Practices in Rollup Governance
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
-> **Attribution**: This section is based on
-> [From Stage 0 to Stage 1: Security Council Best Practices in Rollup Governance](https://www.openzeppelin.com/news/security-council-best-practices-guide)
-> by [OpenZeppelin](https://www.openzeppelin.com),
-> authored by Bram Hoogenkamp and Michael Lewellen.
+> 🔑 **Key Takeaway**: Security councils speed emergency response when membership, multisigs, drills, and governance
+> bounds are explicit—borrow proven practices; do not invent powers under pressure.
+
+**Attribution:** This section is based on
+[From Stage 0 to Stage 1: Security Council Best Practices in Rollup Governance](https://www.openzeppelin.com/news/security-council-best-practices-guide)
+by [OpenZeppelin](https://www.openzeppelin.com), authored by Bram Hoogenkamp and Michael Lewellen.
 
 Security Councils serve as specialized governance bodies that act as the final line of defense against exploits,
 governance attacks, and systemic failures in decentralized protocols. This guide focuses primarily on rollups and
