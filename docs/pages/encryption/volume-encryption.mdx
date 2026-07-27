@@ -1,9 +1,16 @@
 ---
-title: "Volume Encryption | Security Alliance"
-description: "Encrypt specific storage volumes with BitLocker, LUKS, or VeraCrypt for selective data protection. Create virtual encrypted disks and implement AES-256 with MFA access controls."
+title: "Volume Encryption | SEAL"
+description: "Encrypt selected volumes with BitLocker, LUKS, or VeraCrypt for flexible protection of sensitive storage, with MFA access and secure key backup."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,19 +20,22 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-## What is Volume Encryption?
+> 🔑 **Key Takeaway**: Volume encryption lets teams protect specific sensitive storage volumes without encrypting every
+> volume the same way.
+
+## What is volume encryption?
 
 Volume encryption is the process of encrypting a specific storage volume or partition to protect the data it contains.
 Unlike full disk encryption, which encrypts the entire disk, volume encryption allows for selective encryption of
 specific volumes, providing flexibility in managing encrypted and un-encrypted data on the same device.
 
-## Importance of Volume Encryption
+## Importance of volume encryption
 
 Volume encryption is essential for protecting sensitive information from unauthorized access, especially in environments
 where different types of data coexist on the same device. It helps prevent data breaches in case of unauthorized access
 to specific volumes and ensures compliance with data protection regulations.
 
-## Uses of Volume Encryption
+## Uses of volume encryption
 
 - **Protecting Sensitive Data**: Ensures that sensitive information stored on specific volumes is secure.
 - **Compliance**: Helps organizations meet regulatory requirements for data protection.
@@ -33,14 +43,14 @@ to specific volumes and ensures compliance with data protection regulations.
 - **Secure Decommissioning**: Ensures that data on encrypted volumes is not recoverable when storage devices are
   decommissioned or repurposed.
 
-## Examples of Volume Encryption
+## Examples of volume encryption
 
 - **Partition Encryption**: Encrypts specific partitions or volumes on a disk, allowing for selective encryption of
   sensitive data.
 - **Virtual Encrypted Disks**: Creates virtual encrypted disks within files, providing an additional layer of security
   for sensitive data.
 
-## Known Technologies for Volume Encryption
+## Known technologies for volume encryption
 
 - **BitLocker**: A volume encryption feature included with Microsoft Windows that provides encryption for specific
   volumes.
@@ -49,7 +59,7 @@ to specific volumes and ensures compliance with data protection regulations.
 - **VeraCrypt**: An open-source disk encryption software that can create virtual encrypted disks within a file or
   encrypt specific partitions.
 
-## Best Practices for Volume Encryption
+## Best practices for volume encryption
 
 1. **Use Strong Encryption Algorithms**: Ensure that the encryption algorithms used are strong and up-to-date, such as
   AES-256.
@@ -62,8 +72,13 @@ to specific volumes and ensures compliance with data protection regulations.
 6. **Monitor and Audit**: Regularly monitor and audit encryption settings and access logs to ensure compliance and
   detect any unauthorized access attempts.
 
-By following these best practices and using reliable volume encryption technologies, organizations can significantly
-enhance the security of their data and protect against unauthorized access and data breaches.
+## Further Reading
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 
