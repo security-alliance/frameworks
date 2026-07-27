@@ -77,8 +77,33 @@ function RoleSection({ role, userSlugs }: { role: string; userSlugs: string[] })
   )
 }
 
+function hasAnyContributor(contributors: ContributorRole[]): boolean {
+  return contributors.some(group =>
+    group.users.some(slug => getContributor(slug) !== null)
+  )
+}
+
 export function AttributionList({ contributors = [] }: AttributionListProps) {
   if (!contributors || contributors.length === 0) return null
+
+  const hasContributors = hasAnyContributor(contributors)
+
+  if (!hasContributors) {
+    return (
+      <div className="attribution-container attribution-empty">
+        <p className="attribution-placeholder">
+          No contributors yet.{' '}
+          <a
+            href="/contribute/contributing"
+            className="attribution-placeholder-link"
+          >
+            Be the first to contribute
+          </a>
+          !
+        </p>
+      </div>
+    )
+  }
 
   return (
     <div className="attribution-container">
