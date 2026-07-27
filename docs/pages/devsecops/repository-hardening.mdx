@@ -137,21 +137,21 @@ CODEOWNERS files define who must review changes to specific paths. Use them
 to require security or ops team sign-off on sensitive directories:
 
 ```bash
-# .github/CODEOWNERS
+ # .github/CODEOWNERS
 
-# Security-sensitive paths — require security team review
+ # Security-sensitive paths — require security team review
 /.github/workflows/    @myorg/security-team
 /contracts/           @myorg/security-team @myorg/lead-dev
 /deploy/              @myorg/security-team @myorg/devops
 /secrets.env.example   @myorg/security-team
 
-# Dependencies — require security review for any dependency changes
+ # Dependencies — require security review for any dependency changes
 package.json          @myorg/security-team
 package-lock.json     @myorg/security-team
 Gemfile               @myorg/security-team
 requirements.txt      @myorg/security-team
 
-# Default — all other changes need at least 1 approval from anyone
+ # Default — all other changes need at least 1 approval from anyone
 *                     @myorg/dev-team
 ```
 
@@ -165,7 +165,7 @@ GitHub provides additional security features under "Code security and analysis":
 **Code scanning (CodeQL):** Automated SAST integrated directly into GitHub.
 
 ```yaml
-# .github/workflows/codeql.yml
+ # .github/workflows/codeql.yml
 name: CodeQL
 on:
   push:
@@ -206,16 +206,16 @@ A `SECURITY.md` file in the repository root tells security researchers how
 to report vulnerabilities:
 
 ```markdown
-# Security Policy
+ # Security Policy
 
-## Supported Versions
+ ## Supported Versions
 
 | Version | Supported          |
 | ------- | ------------------ |
 | 1.x     | :white_check_mark: |
 | 0.x     | :x:                |
 
-## Reporting a Vulnerability
+ ## Reporting a Vulnerability
 
 Please report vulnerabilities by:
 1. **Do not** open a public GitHub issue.
@@ -225,7 +225,7 @@ Please report vulnerabilities by:
 We aim to respond within 48 hours and will keep you informed
 throughout the disclosure process.
 
-## Bug Bounty
+ ## Bug Bounty
 
 We participate in the Immunefi bug bounty program. Rewards up to
 $50,000 for critical vulnerabilities. See: https://immunefi.com/bounty
