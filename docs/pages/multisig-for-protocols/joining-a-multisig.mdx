@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r, ElliotFriedman]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Join with a dedicated hardware-wallet address per multisig and prove ownership before
+> you are relied on to sign.
+
+Complete dedicated-key setup and address ownership proof before accepting signer
+responsibility on a protocol multisig.
 
 ## Use a Dedicated Key for Each Multisig
 
@@ -79,5 +87,7 @@ Note: Enter plain text message (not the hex version MyEtherWallet will give!) an
 
 Note that "msg" is hex text starting with 0x (add 0x before the hex encoded string if necessary). 4. See whether the
 signature provided is valid.
+
+---
 
 <ContributeFooter />

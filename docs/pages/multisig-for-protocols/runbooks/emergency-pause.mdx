@@ -8,6 +8,8 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -16,6 +18,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Pause runbooks trade review time for speed: constrain what emergency paths can do and
+> use pre-tested backup UIs when minutes matter.
 
 This is an example runbook. Review and customize it for your protocol before use. Add your specific contract
 addresses, pause functions, emergency contacts, and communication channels.
@@ -177,5 +182,7 @@ If threshold cannot be reached within SLA:
 - [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure)
 - [Incident Reporting](/multisig-for-protocols/incident-reporting)
 - [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+
+---
 
 <ContributeFooter />

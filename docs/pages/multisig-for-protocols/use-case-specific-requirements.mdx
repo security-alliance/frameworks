@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [pinalikefruit, engn33r, ElliotFriedman]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Split admin powers by function so one compromised set cannot upgrade, pause, and move
+> treasury in one shot; match timelock and threshold to blast radius.
+
+Different admin powers deserve different multisigs, thresholds, and delays. Apply
+the patterns below instead of one global God-mode set.
 
 ## Separating Multisigs by Function
 
@@ -231,5 +239,7 @@ proposal will simply execute after the delay period. The monitoring window IS th
 
 Make timelock queues publicly visible through a dashboard or notification feed. This allows the broader
 community to observe pending changes, which adds an additional layer of scrutiny beyond the core team.
+
+---
 
 <ContributeFooter />

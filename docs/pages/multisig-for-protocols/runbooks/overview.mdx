@@ -8,6 +8,8 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -16,6 +18,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Treat these runbooks as templates. Customize addresses, channels, and policy before the
+> first production operation.
 
 These are example runbooks for common multisig operations. Review and customize them for your protocol before use.
 
@@ -37,5 +42,7 @@ These are example runbooks for common multisig operations. Review and customize 
 - [Emergency Procedures](/multisig-for-protocols/emergency-procedures) - Coordinate incidents and recovery actions
 - [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure) - Use backup interfaces
   when primary systems are unavailable
+
+---
 
 <ContributeFooter />

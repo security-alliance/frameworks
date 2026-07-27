@@ -11,6 +11,8 @@ contributors:
     users: [isaac]
   - role: reviewed
     users: [ElliotFriedman]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
@@ -22,6 +24,9 @@ import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } fr
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: If you only read one multisig page, read this one: timelocks, function separation,
+> dedicated keys, calldata verification, and monitored queues beat unenforced policy.
 
 If you read one page from the Multisig Security Framework, make it this one. These are the principles that matter most.
 
@@ -120,4 +125,7 @@ that communication channels work. See the
 For the full framework, see the [Multisig Security Framework Overview](/multisig-for-protocols/overview).
 
 </TagProvider>
+
+---
+
 <ContributeFooter />

@@ -8,9 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
-
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Give every multisig a dedicated E2EE primary channel, a backup on a different platform,
+> and paging for critical response windows.
+
+Establish secure primary and backup channels before the first real signing ceremony so
+emergencies are not the first time the team coordinates.
 
 ## Primary channel
 
@@ -45,5 +52,7 @@ For multisigs requiring rapid response:
 - Include essential info in page: multisig name, urgency level, primary action needed
 - Link to emergency runbooks in notification message
 - Test quarterly to ensure reliability
+
+---
 
 <ContributeFooter />

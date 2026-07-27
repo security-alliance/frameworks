@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Deploy configuration must match the plan: owners, threshold, modules, delegated
+> proposers, and network verified on-chain before first real use.
 
 This page covers the technical deployment and configuration of multisigs on supported networks.
 
@@ -179,5 +184,7 @@ execution window. See
 Monitoring channels (e.g. email, Slack or Telegram chats) must be immutable (or trigger alerts when their configuration
 changes or logs are deleted/tampered with) and redundant such that an admin could not disable or tamper with one
 monitoring channel without generating an alert on the other channel.
+
+---
 
 <ContributeFooter />

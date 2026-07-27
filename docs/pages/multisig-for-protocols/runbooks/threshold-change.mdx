@@ -8,6 +8,8 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -16,6 +18,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Threshold changes alter liveness and security together—confirm new m-of-n is authorized,
+> executable with remaining keys, and recorded.
 
 This is an example runbook. Review and customize it for your protocol before use. Adjust threshold requirements to match
 your organization's policies.
@@ -173,5 +178,7 @@ When removing a signer, plan final signer count and threshold together:
 - [Planning & Classification](/multisig-for-protocols/planning-and-classification)
 - [Registration & Documentation](/multisig-for-protocols/registration-and-documentation)
 - [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+
+---
 
 <ContributeFooter />

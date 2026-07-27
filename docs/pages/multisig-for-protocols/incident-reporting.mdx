@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Report suspected key compromise and account takeovers immediately; operational tooling
+> failures within 24 hours and with enough detail to act.
+
+Fast, accurate reporting is how a compromised key becomes a rotation instead of a drain.
+Use the definitions and templates below.
 
 ## What to Report
 
@@ -130,5 +138,7 @@ Impact:
 Additional notes:
 [Any other relevant information]
 ```
+
+---
 
 <ContributeFooter />

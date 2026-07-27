@@ -8,6 +8,8 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -16,6 +18,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Rotate signers without dropping below policy towards threshold; verify membership
+> on-chain after the change settles.
 
 This is an example runbook. Review and customize it for your protocol before use. Add your specific multisig
 addresses, signer requirements, and communication channels.
@@ -180,5 +185,7 @@ When removing a signer:
 - [Threshold Change Runbook](/multisig-for-protocols/runbooks/threshold-change)
 - [Offboarding](/multisig-for-protocols/offboarding)
 - [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+
+---
 
 <ContributeFooter />

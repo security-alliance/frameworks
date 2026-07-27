@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from "../../../components"
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from "../../../components"
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Practice alternate Safe/Squads clients before the primary UI fails; backup
+> infrastructure is useless if first used during an incident.
 
 If the default interfaces for either Safe or Squads are down or suspected of being compromised, these alternatives
 enable continued critical signing operations. As a signer, you should familiarize yourself with these tools and practice
@@ -232,5 +237,7 @@ When using backup systems:
 Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification) - Verification procedures
 - [Emergency Procedures](/multisig-for-protocols/emergency-procedures) - General emergency response
 - [Communication Setup](/multisig-for-protocols/communication-setup) - Backup communication during outages
+
+---
 
 <ContributeFooter />

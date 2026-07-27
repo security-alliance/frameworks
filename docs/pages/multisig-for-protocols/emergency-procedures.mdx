@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Pre-agree compromise, lost-key, and channel-breach steps so the team can rotate or
+> freeze without improvising under pressure.
 
 When security incidents occur, quick and decisive action is critical. This page covers procedures for key compromise,
 lost access, and communication breaches.
@@ -234,5 +239,7 @@ and use the runbook page for the transaction-specific signing and execution step
 - [Seed Phrase Management](/wallet-security/seed-phrase-management) - Key recovery procedures
 - [Personal Security (OpSec)](/multisig-for-protocols/personal-security-opsec) - Account security measures
 - [Operational Runbooks](/multisig-for-protocols/runbooks/overview) - Example runbooks for common operations
+
+---
 
 <ContributeFooter />

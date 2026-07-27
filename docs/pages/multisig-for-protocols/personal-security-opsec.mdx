@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Signer OpSec is part of the quorum: phishing, SIM-swap, and device theft bypass
+> cryptography faster than rogue co-signers.
+
+Personal account and device security is part of the multisig trust model. The guidance
+below covers baseline and elevated OpSec for signers.
 
 ## Account Security
 
@@ -197,5 +205,7 @@ Remember: Perfect security doesn't exist - focus on practical improvements that 
 remaining operationally feasible.
 
 For the full OpSec article, see [Operational Security](/opsec/overview).
+
+---
 
 <ContributeFooter />
