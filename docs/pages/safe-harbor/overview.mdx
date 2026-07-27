@@ -9,6 +9,10 @@ tags:
 contributors:
   - role: wrote
     users: [robert, dickson]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from "../../../components"
@@ -23,8 +27,8 @@ import { TagList, AttributionList, ContributeFooter } from "../../../components"
   alt="SEAL Whitehat Safe Harbor logo - DeFi exploit protection framework"
 />
 
-> 💡 An industry-standard framework, letting your protocol pre-authorize whitehats to rescue funds during active
-> exploits
+> 🔑 **Key Takeaway**: Safe Harbor lets protocols pre-authorize whitehats to rescue funds during *active* exploits under
+> defined scope and rules. It is not a substitute for bug bounties or pre-exploit responsible disclosure.
 
 <div align="center">
   <video controls width="600" preload="none">
@@ -127,6 +131,22 @@ scope, and your protocol is protected.
 
 > Whether you're a DAO or not, adopting Safe Harbor is a low-lift way to enable real-time defense and recover funds
 > during live exploits.
+
+## What this framework covers
+
+1. [Safe Harbor Eligibility Checklist](/safe-harbor/self-checklist): decide whether adoption fits the protocol.
+2. [Self-Adoption Guide](/safe-harbor/self-adoption-guide): step-by-step self-adoption path and templates.
+3. [Safe Harbor Scope Terms](/safe-harbor/scope-terms): scope parameters whitehats and protocols rely on.
+4. [On-Chain Adoption Guide](/safe-harbor/on-chain-adoption-guide): register adoption on-chain.
+5. [Safe Harbor for Whitehats](/safe-harbor/whitehat): intervention, recovery, and whitehat-oriented guidance.
+
+## Related frameworks
+
+- [Vulnerability Disclosure](/vulnerability-disclosure/overview): contacts and bounty programs for *pre-exploit* reports
+- [Incident Management](/incident-management/overview): response operations during and after active incidents
+- [SEAL911 war room guidelines](/incident-management/playbooks/seal-911-war-room-guidelines): coordination during active
+  events
+- [Wallet Security](/wallet-security/overview): recovery address and multisig hardening guidance
 
 ## Proven Results: Whitehats Have Recovered $150M+
 

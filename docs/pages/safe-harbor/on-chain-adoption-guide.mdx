@@ -9,6 +9,10 @@ tags:
 contributors:
   - role: wrote
     users: [dickson]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: On-chain registration makes Safe Harbor adoption public, verifiable, and discoverable to
+> whitehats who check the registry before intervening.
 
 This guide explains how protocols can register their Safe Harbor adoption on-chain. Registering ensures your adoption is
 **public, verifiable, and enforceable**.
