@@ -1,6 +1,6 @@
 ---
 title: "Cloud Data Encryption | SEAL"
-description: "Encrypt cloud data at rest and in transit with strong algorithms, provider KMS or BYOK, access controls, and MFA on key management paths."
+description: "Encrypt cloud data at rest on object stores and disks: KMS custody, bucket defaults, customer-managed keys, server-side encryption, and access separation."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -31,7 +31,7 @@ practical controls for major cloud providers without replacing provider-specific
 You should consider using the best practices below to ensure that data stored in the cloud
 is protected from unauthorized access:
 
-## Best Practices
+## Best practices
 
 1. **Use strong encryption algorithms.**
    - Example: Use AES-256 for data at rest and TLS 1.2 or higher for data in transit.
@@ -80,7 +80,7 @@ keys.**
     - Ensure that all encryption-related software is kept up-to-date with the latest security patches.
     - Monitor for vulnerabilities in encryption libraries and apply patches promptly.
 
-## Further Reading & Tools
+## Further Reading
 
 - [Encryption overview](/encryption/overview): framework map and shared concepts
 - [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using

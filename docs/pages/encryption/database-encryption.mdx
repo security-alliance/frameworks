@@ -1,6 +1,6 @@
 ---
 title: "Database Encryption | SEAL"
-description: "Protect database contents with strong algorithms, column-level encryption for PII, Transparent Data Encryption (TDE), HSM-backed keys, and strict access control."
+description: "Encrypt databases at rest and in use: TDE, column-level crypto, keys held outside the DB host, and performance trade-offs for protocol backends."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -29,7 +29,7 @@ classes of backup leakage, but application and access control still matter.
 Often, databases contain information that should not be publicly available. In order to protect your database, you may
 consider implementing the following best practices:
 
-## Best Practices
+## Best practices
 
 1. Use strong encryption algorithms to encrypt database files and backups.
 2. Encrypt sensitive columns within the database, such as those containing personally identifiable information (PII).
@@ -38,7 +38,7 @@ consider implementing the following best practices:
 case.
 5. Enforce strict access controls to prevent unauthorized access to encrypted data.
 
-## Further Reading & Tools
+## Further Reading
 
 - [Encryption overview](/encryption/overview): framework map and shared concepts
 - [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
