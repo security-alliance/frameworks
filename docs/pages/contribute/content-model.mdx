@@ -185,8 +185,8 @@ Unless an exception applies, non-generated content pages include:
 | --- | --- |
 | `title` | `"Topic \| Security Alliance"` under 60 characters total; use `"\| SEAL"` when needed |
 | `description` | 140–160 characters preferred; 120–170 acceptable; topic name + searchable terms + action verbs |
-| `tags` | At least one tag from the known set; new tags are allowed and auto-colored at build time |
-| `contributors` | Roles `wrote`, `reviewed`, `fact-checked` with GitHub usernames; first-time authors also register in `contributors.json` |
+| `tags` | At least one tag from the [known set](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx?plain=1#L12-L37); new tags are allowed and auto-colored at build time |
+| `contributors` | Roles `wrote`, `reviewed`, `fact-checked` with slugs defined in the contributors database; first-time authors also register in `contributors.json` |
 
 Do not rewrite historical contributor attribution without clear evidence it is wrong.
 
@@ -209,7 +209,6 @@ Unheaded introduction (2–3 short paragraphs)
 
 Canonical form (exact label and punctuation):
 
-```mdx
 > 🔑 **Key Takeaway**: Concrete claim a reader can act on or remember. Prefer one or two sentences under 40 words.
 ```
 
@@ -242,7 +241,6 @@ A framework overview must:
 
 Name the page map section family of titles:
 
-- `## Pages`
 - `## What This Framework Covers`
 - `## Framework structure` / `## Contents` when those headings already enumerate linked children with descriptions
 
@@ -274,7 +272,7 @@ when the flow is non-linear.
 | `<TagList />` | All standard content pages with tags |
 | `<AttributionList />` | All standard content pages with contributors |
 | `<ContributeFooter />` | End of page after `---` |
-| `<Checklist id="kebab-id">` | Interactive checklists; unique `id` per page |
+| `<Checklist id="kebab-id">` | Interactive checklists; unique `id` per checklist |
 | Mermaid fences | Flows, architectures, state machines |
 | Stub notice | Incomplete pages (wording in contributing guide) |
 | Dev-only flag | `dev: true` on sidebar items until reviewed |
