@@ -1,4 +1,3 @@
-import { createElement, Fragment } from 'react'
 import { defineConfig } from 'vocs/config'
 
 const MAIN_SITE_URL = 'https://frameworks.securityalliance.org'
@@ -8,11 +7,11 @@ const isMainBranch = process.env.CF_PAGES_BRANCH === 'main'
 const config = {
   srcDir: 'docs',
   renderStrategy: 'full-static' as const,
-  head({ path }: { path: string }) {
+  head(path: string) {
     const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
-    if (!isMainBranch && devOnlyLinks.has(cleanPath)) return createElement(Fragment)
+    if (!isMainBranch && devOnlyLinks.has(cleanPath)) return { canonical: false as const }
     const canonicalUrl = `${MAIN_SITE_URL}${cleanPath || '/'}`
-    return createElement('link', { rel: 'canonical', href: canonicalUrl })
+    return { canonical: canonicalUrl }
   },
   banner: {
     content: 'This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.',
