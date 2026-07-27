@@ -9,6 +9,8 @@ tags:
 contributors:
   - role: wrote
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Isolation and sandboxing for AI tool runners live primarily under DevSecOps. Use this page as
+> the bridge; implement containment there.
 
 For AI systems that execute tools, run code, or touch sensitive environments,
 strong isolation is a runtime safety baseline. Keep AI Security focused on

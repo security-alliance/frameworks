@@ -10,6 +10,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: AI browsers load untrusted web content into the model context. Inspect inbound content and
+> outbound actions in real time or the open web becomes the control plane.
 
 AI browsers are interfaces that enable models to interact with external content, such as web pages, APIs, and online
 data sources. While they expand the model's context and capability, they also broaden the attack surface by introducing

@@ -11,6 +11,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Agentic AI expands instruction-following into irreversible actions. Prefer runtime
+> execution-path controls and isolation over prompt templates alone.
 
 ## The AI Security Imperative
 
@@ -106,24 +111,38 @@ Web3 ecosystems, where agents connect to wallets, DeFi protocols, and governance
 systems, a compromised prompt can initiate irreversible on-chain activity such
 as token transfers, altered governance votes, or treasury losses.
 
-## Sections in this framework
+## What this framework covers
 
-The sections that follow outline the major threat vectors facing AI-driven
-systems, including prompt injection, browser-based manipulation, data
-exfiltration, and execution path weaknesses. They also highlight established
-security providers whose tools address each category. A short cross-reference
-is included for DevSecOps isolation guidance. The objective is to clarify the
-defensive landscape so that security teams, developers, and protocol designers
-can build layered protections that fit their specific deployment models and
-risk tolerance.
+Major threat vectors for AI-driven systems—prompt injection, browser-based manipulation, data exfiltration, and
+execution-path weaknesses—and how defenses differ for developers vs non-developers. A short cross-reference points to
+DevSecOps isolation guidance. Loss figures and industry reports cited above should be treated as time-bound literature;
+verify currency before using them in decisions.
 
-- [Prompt Injection Defenses](/ai-security/prompt-injection-defenses)
-- [AI Browsers](/ai-security/ai-browsers)
-- [AI Workflows: Developers vs Non-Developers](/ai-security/ai-workflows-developers-vs-non-developers)
-- [Data Exfiltration via Generative Systems](/ai-security/data-exfiltration-via-generative-systems)
-- [Execution-Path Enforcement](/ai-security/execution-path-enforcement)
-- [DevSecOps Isolation & Sandboxing (Brief Reference)](/ai-security/devsecops-isolation-sandboxing-reference)
-- [Developer Machine Sandboxing](/devsecops/isolation/developer-machine-sandboxing)
+1. [Prompt Injection Defenses](/ai-security/prompt-injection-defenses): treat model inputs as untrusted instructions and
+   constrain before execution.
+2. [AI Browsers](/ai-security/ai-browsers): threat model when models fetch live web/API content.
+3. [AI Workflows: Developers vs Non-Developers](/ai-security/ai-workflows-developers-vs-non-developers): different
+   control surfaces by role.
+4. [Data Exfiltration via Generative Systems](/ai-security/data-exfiltration-via-generative-systems): runtime constraints
+   against leakage.
+5. [Execution-Path Enforcement](/ai-security/execution-path-enforcement): gate high-risk actions at the moment of action.
+6. [DevSecOps Isolation and Sandboxing (Brief Reference)](/ai-security/devsecops-isolation-sandboxing-reference):
+   pointers into containment patterns.
+7. [Developer Machine Sandboxing](/devsecops/isolation/developer-machine-sandboxing): related DevSecOps page.
+
+## Related frameworks
+
+- [DevSecOps](/devsecops/overview): isolation, pipeline, and sandbox depth
+- [Secure Software Development](/secure-software-development/overview): when AI code lands in production paths
+- [Supply Chain](/supply-chain/overview): model, plugin, and MCP-style tool trust
+- [OpSec](/opsec/overview): operator and key-handling next to agent tools
+- [Awareness](/awareness/overview): human misuse and social engineering with AI assistants
+- [Incident Management](/incident-management/overview): response when agentic systems cause loss
+
+## Further Reading & Tools
+
+- Citations already linked above (industry reports are secondary and time-bound—verify before relying)
+- [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 
 ---
 

@@ -10,6 +10,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Prompt injection succeeds because models treat text as instructions. Constrain and classify
+> inputs at the execution boundary—do not rely on boilerplate system prompts alone.
 
 As LLMs execute based on statistical patterns rather than explicit checks, malicious or cleverly structured prompts can
 cause the model to ignore safety instructions, reveal sensitive data, or perform unintended actions. Effective

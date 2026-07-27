@@ -11,6 +11,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Developer agent stacks need tool and sandbox gates; non-developer SaaS AI needs data
+> classification, output gates, and approved-app policy—same risk theme, different controls.
 
 AI workflows differ significantly based on user intent and technical context. Developer workflows involve code, APIs,
 model orchestration, and embedded systems where execution paths are explicit and controllable. Non-developer workflows,

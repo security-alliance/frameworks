@@ -10,6 +10,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Generative systems can be coaxed to emit sensitive inputs. Block or quarantine unsafe outputs
+> before release instead of hoping post-hoc reviews catch history.
 
 AI systems that process sensitive inputs such as documents, logs, or enterprise data are vulnerable to exfiltration
 attacks. Without proper runtime controls, models can be coaxed into extracting and exporting confidential information
