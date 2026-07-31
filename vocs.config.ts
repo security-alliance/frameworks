@@ -1,18 +1,21 @@
-import { createElement, Fragment } from 'react'
-import { defineConfig } from 'vocs/config'
+import { readFileSync } from 'node:fs'
+import { Changelog, defineConfig } from 'vocs/config'
 
-const MAIN_SITE_URL = 'https://frameworks.securityalliance.org'
+function siteVersion(): string {
+  try {
+    const raw = readFileSync(new URL('./VERSION', import.meta.url), 'utf8').trim()
+    if (raw) return raw.startsWith('v') ? raw : `v${raw}`
+  } catch {}
+  return 'v0.0.0'
+}
 
 const isMainBranch = process.env.CF_PAGES_BRANCH === 'main'
 
 const config = {
   srcDir: 'docs',
   renderStrategy: 'full-static' as const,
-  head({ path }: { path: string }) {
-    const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
-    if (!isMainBranch && devOnlyLinks.has(cleanPath)) return createElement(Fragment)
-    const canonicalUrl = `${MAIN_SITE_URL}${cleanPath || '/'}`
-    return createElement('link', { rel: 'canonical', href: canonicalUrl })
+  head(path: string) {    const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
+    return { canonical: `https://frameworks.securityalliance.org${cleanPath || '/'}` }
   },
   banner: {
     content: 'This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.',
@@ -28,6 +31,16 @@ const config = {
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
   ogImageUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png',
   checkDeadlinks: "warn" as const,
+  changelog: Changelog.github({ repo: 'security-alliance/frameworks' }),
+  topNav: [
+    {
+      text: siteVersion(),
+      items: [
+        { text: 'Changelog', link: '/changelog' },
+        { text: 'Contributing', link: '/contribute/contributing' },
+      ],
+    },
+  ],
   sidebar: [
     {
       text: 'Introduction',
@@ -700,6 +713,20 @@ function collectDevLinks(items: any[], parentIsDev = false): Set<string> {
 }
 
 const devOnlyLinks = collectDevLinks(config.sidebar)
+
+if (!isMainBranch && devOnlyLinks.size > 0) {
+  const devRoutesLiteral = JSON.stringify([...devOnlyLinks])
+  // @ts-expect-error - head is rebuilt from source so the dev-route list is
+  config.head = new Function(
+    'path',
+    `
+      const devOnlyLinks = new Set(${devRoutesLiteral});
+      const cleanPath = path.replace(/\\/index\\.html$/, '').replace(/\\.html$/, '').replace(/\\/$/, '');
+      if (devOnlyLinks.has(cleanPath)) return { canonical: false };
+      return { canonical: 'https://frameworks.securityalliance.org' + (cleanPath || '/') };
+    `,
+  )
+}
 
 if (isMainBranch) {
   config.sidebar = filterDevItems(config.sidebar)
