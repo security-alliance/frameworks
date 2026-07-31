@@ -3,7 +3,7 @@ import { Changelog, defineConfig } from 'vocs/config'
 
 function siteVersion(): string {
   try {
-    const raw = readFileSync(new URL('./VERSION', import.meta.url), 'utf8').trim()
+    const raw = readFileSync('VERSION', 'utf8').trim()
     if (raw) return raw.startsWith('v') ? raw : `v${raw}`
   } catch {}
   return 'v0.0.0'
@@ -31,7 +31,10 @@ const config = {
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
   ogImageUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png',
   checkDeadlinks: "warn" as const,
-  changelog: Changelog.github({ repo: 'security-alliance/frameworks' }),
+  changelog:
+    typeof Changelog !== 'undefined'
+      ? Changelog.github({ repo: 'security-alliance/frameworks' })
+      : undefined,
   topNav: [
     {
       text: siteVersion(),
