@@ -8,6 +8,8 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: reviewed
+    users: []
   - role: fact-checked
     users: []
 ---
@@ -150,7 +152,7 @@ Can combine add and remove in a single transaction:
 
 **Benefits**: Atomic operation, no intermediate state with wrong threshold.
 
-### Post-Transaction
+## Post-Transaction
 
 After execution:
 
@@ -161,7 +163,7 @@ After execution:
 - [ ] Test that the new signer can successfully sign a test transaction
 </Checklist>
 
-### Offboarding Checklist
+## Offboarding Checklist
 
 When removing a signer:
 
@@ -179,17 +181,13 @@ When removing a signer:
 - Critical-class: 7 days
 - Others: 14 days
 
-### Related Documents
-
-- [Joining a Multisig](/multisig-for-protocols/joining-a-multisig)
-- [Threshold Change Runbook](/multisig-for-protocols/runbooks/threshold-change)
-- [Offboarding](/multisig-for-protocols/offboarding)
-- [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
-
-
 ## Further Reading
 
-- [Multisig For Protocols overview](/multisig-for-protocols/overview)
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview): how the runbooks in this section fit together
+- [Joining a Multisig](/multisig-for-protocols/joining-a-multisig): verification steps for the incoming signer
+- [Offboarding](/multisig-for-protocols/offboarding): revoking the outgoing signer's wider access
+- [Threshold Change Runbook](/multisig-for-protocols/runbooks/threshold-change): the companion procedure when the
+  threshold moves too
 
 ---
 

@@ -137,7 +137,7 @@ invariant is violated.
 - [ ] Safe addresses documented for all networks
 </Checklist>
 
-### Practice on Testnet
+## Practice on Testnet
 
 Before deploying on mainnet, thoroughly practice wallet creation, transaction signing, and owner management on
 a test network.
@@ -145,7 +145,7 @@ a test network.
 Once setup is complete, proceed to [Registration &
 Documentation](/multisig-for-protocols/registration-and-documentation) for registration and documentation requirements.
 
-### Nested Safes
+## Nested Safes
 
 A nested Safe is one in which a Safe is set as a signer on another Safe rather than an EOA. This can be useful on a
 case-by-case basis. For example, if a signer is an entity that might want to have multiple individual signers, the
@@ -155,7 +155,7 @@ allows the signers on the nested Safe to update the signer addresses without nee
 It is generally recommended **not** to use nested safe on protocol multisigs unless there is a specific use case that
 it enables.
 
-### Next Steps
+## Next Steps
 
 After completing setup:
 
@@ -163,7 +163,7 @@ After completing setup:
 2. [Communication Setup](/multisig-for-protocols/communication-setup) - Establish secure communication
 3. [Hardware Wallet Setup](/wallet-security/intermediates-and-medium-funds) - Ensure all signers are properly configured
 
-### Active Monitoring
+## Active Monitoring
 
 Implement monitoring and alerting systems to be immediately notified of any on-chain activity related to the multisig,
 including proposed transactions, new signatures, and owner changes (e.g., using tools like [Safe
@@ -185,10 +185,15 @@ Monitoring channels (e.g. email, Slack or Telegram chats) must be immutable (or 
 changes or logs are deleted/tampered with) and redundant such that an admin could not disable or tamper with one
 monitoring channel without generating an alert on the other channel.
 
-
 ## Further Reading
 
-- [Multisig For Protocols overview](/multisig-for-protocols/overview)
+- [Multisig for Protocols overview](/multisig-for-protocols/overview): how the pages of this framework fit together
+- [Planning & Classification](/multisig-for-protocols/planning-and-classification): the classification that drives these
+  settings
+- [Use-Case Specific Requirements](/multisig-for-protocols/use-case-specific-requirements): per-function configuration
+  rules
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): signer, threshold, and device
+  design principles
 
 ---
 
