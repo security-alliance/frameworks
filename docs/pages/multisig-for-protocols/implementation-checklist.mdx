@@ -1,6 +1,6 @@
 ---
 title: "Multisig Implementation Checklist | SEAL"
-description: "Verify multisig readiness: administrator planning, signer hardware setup, transaction verification skills, emergency preparedness, personal security (OpSec), and role-specific training requirements."
+description: "Verify multisig readiness: administrator planning, signer hardware setup, transaction verification skills, emergency preparedness, personal security (OpSec)"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Do not go live until admins and every signer can complete the role checklist: plan,
+> hardware, verification skills, emergency drills, and OpSec baseline.
 
 This checklist ensures all multisig participants have the knowledge and skills necessary for secure operations. Complete
 all applicable sections before beginning multisig operations.
@@ -267,9 +272,16 @@ Additional training required after:
 - New tool adoption
 - Role changes or additional responsibilities
 
-## Related Documents
+## Further Reading
 
-All documents in this framework serve as training materials. Refer to individual documents for detailed procedures and
-requirements specific to your role.
+All pages in this framework double as training material. Refer to individual pages for procedures specific to your role.
+
+- [Multisig for Protocols overview](/multisig-for-protocols/overview): how the pages of this framework fit together
+- [Key Takeaways](/multisig-for-protocols/key-takeaways): the condensed version to train against
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview): the procedures signers should rehearse
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): the design rules behind this
+  checklist
+
+---
 
 <ContributeFooter />
