@@ -1,6 +1,6 @@
 ---
 title: "Execution-Path Enforcement | SEAL"
-description: "Execution-path security controls for AI systems to gate high-risk actions at runtime."
+description: "Execution-path security controls for AI systems to gate high-risk actions at runtime. Monitoring after the fact is too late for irreversible actions."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -11,6 +11,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Enforce allow, warn, or block where the agent is about to act (tool call, transaction, file
+> write). Monitoring after the fact is too late for irreversible actions.
 
 Execution-path enforcement is a security principle where controls are placed at the point where actions are taken, not
 where they are merely observed. In AI systems, this means intercepting and evaluating model inputs and intended outputs
@@ -35,6 +40,16 @@ critical to prevent unintended or irreversible on-chain actions.
 - Cisco AI Defense - runtime MCP traffic guardrails for agentic threats
 - Operant AI - active trust-boundary enforcement across agent ecosystems
 - AccuKnox - eBPF and LSM-based runtime enforcement in Kubernetes AI workloads
+
+## Further Reading
+
+- [AI Security overview](/ai-security/overview): how the pages of this framework fit together
+- [DevSecOps Isolation & Sandboxing](/ai-security/devsecops-isolation-sandboxing-reference): containment for the tools
+  an agent invokes
+- [Sandboxing for Tool Execution](/devsecops/isolation/sandboxing-for-tool-execution): implementing the boundary where
+  enforcement happens
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework): governance context for
+  runtime controls
 
 ---
 
