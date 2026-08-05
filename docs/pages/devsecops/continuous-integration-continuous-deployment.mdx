@@ -171,7 +171,7 @@ for build integrity. GitHub Actions can generate provenance using the
 `slsa-framework/slsa-github-generator` action:
 
 ```yaml
- # In your release workflow
+# In your release workflow
 - name: Generate SLSA provenance
   uses: slsa-framework/slsa-github-generator@v2.0.0
   with:
@@ -184,7 +184,7 @@ Provenance attestation links the artifact to the exact source commit, builder
 identity, and build process. Verify provenance before deployment:
 
 ```bash
- # Verify with Cosign (if using Cosign for image signing)
+# Verify with Cosign (if using Cosign for image signing)
 cosign verify-attestation \
   --certificate-identity=https://github.com/<org>/<repo>.github/workflows/<workflow>@refs/tags/<tag> \
   --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
@@ -208,7 +208,7 @@ A Software Bill of Materials (SBOM) enumerates all dependencies and their versio
 enabling rapid vulnerability response when a CVE is disclosed.
 
 ```yaml
- # Generate SBOM with Syft in CI
+# Generate SBOM with Syft in CI
 - name: Generate SBOM
   uses: anchore/sbom-action@v0
   with:
@@ -216,7 +216,7 @@ enabling rapid vulnerability response when a CVE is disclosed.
     format: spdx-json
     output-file: sbom.spdx.json
 
- # Upload as artifact
+# Upload as artifact
 - name: Upload SBOM
   uses: actions/upload-artifact@v4
   with:
@@ -237,7 +237,7 @@ eliminates them entirely by granting short-lived, scoped tokens on demand.
 **GitHub Actions → AWS:**
 
 ```yaml
- # In your workflow
+# In your workflow
 - name: Configure AWS credentials
   uses: aws-actions/configure-aws-credentials@v4
   with:

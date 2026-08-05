@@ -152,7 +152,7 @@ Prevent runaway or abusive workloads:
 
 These controls reduce denial-of-service risk and limit cost impact from malicious or broken tasks.
 
-### 6) Build integrity and provenance
+## 6) Build integrity and provenance
 
 Sandboxing reduces runtime blast radius; integrity controls reduce supply-chain risk.
 
@@ -165,7 +165,7 @@ Recommended:
 
 Use SLSA-aligned controls to define maturity targets over time.
 
-### 7) Policy gates (before and after execution)
+## 7) Policy gates (before and after execution)
 
 Implement policy-as-code checks at multiple points:
 
@@ -173,7 +173,7 @@ Implement policy-as-code checks at multiple points:
 - **Runtime:** enforce admission and sandbox policy (seccomp, allowed images, namespace constraints).
 - **Post-execution:** verify provenance/signatures and deployment policy.
 
-### 8) Logging and incident readiness
+## 8) Logging and incident readiness
 
 At minimum capture:
 
@@ -191,7 +191,7 @@ Have a playbook for:
 4. invalidate suspicious artifacts
 5. re-run trusted build from clean source
 
-### 30/60/90 day implementation plan
+## 30/60/90 day implementation plan
 
 ### First 30 days
 
@@ -212,7 +212,7 @@ Have a playbook for:
 - Enforce policy-as-code gates for workflow and runtime configuration.
 - Run a tabletop exercise for CI compromise response.
 
-### Operational checklist
+## Operational checklist
 
 <Checklist id="operational-checklist">
 - [ ] Untrusted PRs isolated from privileged runners

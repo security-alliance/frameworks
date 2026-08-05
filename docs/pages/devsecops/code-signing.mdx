@@ -78,13 +78,13 @@ Good key management is the foundation of code signing. A poorly managed key unde
 Use RSA 4096 or Ed25519 (the latter is modern, fast, and secure):
 
 ```bash
- # Ed25519 (recommended for modern setups)
+# Ed25519 (recommended for modern setups)
 gpg --full-generate-key
- # Choose Ed25519 when prompted, or: gpg --quick-gen-key your@email.com ed25519 sign,auth cert never
+# Choose Ed25519 when prompted, or: gpg --quick-gen-key your@email.com ed25519 sign,auth cert never
 
- # RSA 4096 (legacy compatibility)
+# RSA 4096 (legacy compatibility)
 gpg --full-generate-key
- # Choose RSA 4096
+# Choose RSA 4096
 ```
 
 #### Using subkeys for separation of duties
@@ -93,14 +93,14 @@ Create separate subkeys for signing and encryption. This lets you keep the maste
 key completely offline while using subkeys daily:
 
 ```bash
- # Add a signing subkey
+# Add a signing subkey
 gpg --edit-key YOUR_KEYID
 gpg> addkey
- # Choose: RSA 4096, Sign only, expiry 1-2 years
+# Choose: RSA 4096, Sign only, expiry 1-2 years
 
- # Add an encryption subkey (separate from any encryption subkey you already have)
+# Add an encryption subkey (separate from any encryption subkey you already have)
 gpg> addkey
- # Choose: RSA 4096, Encrypt only, expiry 1-2 years
+# Choose: RSA 4096, Encrypt only, expiry 1-2 years
 
 gpg> save
 ```
@@ -115,13 +115,13 @@ Generate GPG keys directly on the YubiKey so the private key material never
 touches the host system:
 
 ```bash
- # Initialize the YubiKey OpenPGP applet
+# Initialize the YubiKey OpenPGP applet
 gpg --card-edit
 gpg> admin
 gpg> generate
- # Choose a touch policy (require touch for signing operations)
+# Choose a touch policy (require touch for signing operations)
 
- # Or move existing subkeys to the YubiKey:
+# Or move existing subkeys to the YubiKey:
 gpg --edit-key YOUR_KEYID
 gpg> key 1        # Select the signing subkey
 gpg> keytocard    # Move it to YubiKey
@@ -140,7 +140,7 @@ Protect GPG keys with a strong passphrase (20+ characters, random). Use `gpg-age
 caching to avoid re-entering it constantly:
 
 ```bash
- # In ~/.gnupg/gpg-agent.conf:
+# In ~/.gnupg/gpg-agent.conf:
 pinentry-program /usr/bin/pinentry-tty
 default-cache-ttl 86400      # Cache for 24 hours
 max-cache-ttl 604800         # Expire after 1 week
@@ -168,21 +168,21 @@ a stolen key means forged commits.
 **Backup the master key:**
 
 ```bash
- # Export to an encrypted file
+# Export to an encrypted file
 gpg --export-secret-keys --armor YOUR_KEYID | \
   gpg --symmetric --cipher-algo AES256 \
   --output master-key-backup.gpg
 
- # Store on: encrypted USB (LUKS), paper (print the ASCII armor and seal in a safe),
- # or a password manager as an encrypted attachment
+# Store on: encrypted USB (LUKS), paper (print the ASCII armor and seal in a safe),
+# or a password manager as an encrypted attachment
 ```
 
 **Generate and store revocation certificates immediately:**
 
 ```bash
 gpg --gen-revoke YOUR_KEYID > revocation-certificate.asc
- # Store this certificate alongside the backup. If you lose access to the key,
- # publishing the revocation certificate invalidates the compromised key.
+# Store this certificate alongside the backup. If you lose access to the key,
+# publishing the revocation certificate invalidates the compromised key.
 ```
 
 **Recovery test:** Periodically verify you can decrypt using your backup
