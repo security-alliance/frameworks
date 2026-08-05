@@ -6,6 +6,8 @@ tags:
 contributors:
   - role: wrote
     users: [auditware]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -17,13 +19,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Summary
 
-> 🔑 **Key Takeaway for GoDaddy:** Protect your domain registrar account with non-SMS two-factor authentication,
+> 🔑 **Key Takeaway**: Protect your domain registrar account with non-SMS two-factor authentication,
 > regularly review delegate access and active sessions, and enable DNSSEC on all domains to prevent DNS spoofing
 > and domain hijacking attacks.
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
-
----
 
 ## For Individuals
 
@@ -40,8 +40,6 @@ These settings apply to your personal GoDaddy account. All team members and admi
 
 </Checklist>
 
----
-
 ## For Team Members
 
 These guidelines apply to team members who have delegate access to GoDaddy accounts but don't have full administrative control.
@@ -52,8 +50,6 @@ Team members should:
 - Understand the scope of their delegate access permissions
 - Report any suspicious domain or DNS activity to account administrators
 - Never share login credentials or delegate access with unauthorized parties
-
----
 
 ## For Admins
 
@@ -72,9 +68,16 @@ These settings and practices apply to GoDaddy account administrators who manage 
 - Use domain locking features to prevent unauthorized transfers
 - Review DNS records periodically for any unauthorized changes
 
----
-
 **Related**: For comprehensive DNS security guidance, see [Infrastructure - Domain & DNS Security](/infrastructure/domain-and-dns-security/overview).
+
+## Further Reading
+
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Registrar and Locks](/infrastructure/domain-and-dns-security/registrar-and-locks): registrar-level protections
+  beyond the account itself
+- [DNS Hijack Runbook](/incident-management/incident-response-template/runbooks/dns-hijack): response steps if the
+  registrar account is taken over
+- [Secure Authentication](/iam/secure-authentication): 2FA and recovery design for the registrar account itself
 
 ---
 

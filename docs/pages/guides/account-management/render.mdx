@@ -1,11 +1,13 @@
 ---
 title: "Render Security | Security Alliance"
-description: "Secure your Render deployment platform with 2FA, API key management, and workspace-level team access controls and audit logging."
+description: "Secure your Render deployment platform with 2FA, API key management, and workspace-level team access controls and audit logging. This checklist is adapted"
 tags:
   - DevOps Accounts
 contributors:
   - role: wrote
     users: [auditware]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -17,13 +19,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Summary
 
-> 🔑 **Key Takeaway for Render:** Secure your Render account by enabling two-factor authentication, regularly reviewing
+> 🔑 **Key Takeaway**: Secure your Render account by enabling two-factor authentication, regularly reviewing
 > CLI tokens, API keys, and SSH public keys, and for workspaces, maintaining strict team member access controls
 > and enabling audit logs.
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
-
----
 
 ## For Individuals
 
@@ -40,8 +40,6 @@ These settings apply to your personal Render account. All team members and admin
 
 </Checklist>
 
----
-
 ## For Team Members
 
 These guidelines apply to team members who have access to shared Render workspaces but don't have full administrative access.
@@ -51,8 +49,6 @@ Team members should:
 - Ensure their individual account settings are configured according to the checklist above
 - Use the principle of least privilege when accessing workspace resources
 - Report any suspicious deployments or unauthorized changes to workspace admins
-
----
 
 ## For Admins
 
@@ -67,6 +63,13 @@ These settings and practices apply to Render workspace administrators with eleva
   to enable this
 
 </Checklist>
+
+## Further Reading
+
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Cloud Security](/infrastructure/cloud): the wider hosting posture this account controls
+- [CI/CD Security](/devsecops/continuous-integration-continuous-deployment): protecting the deploy pipeline behind it
+- [Render: organizations](https://render.com/docs/organizations): vendor documentation for members, roles, and access
 
 ---
 

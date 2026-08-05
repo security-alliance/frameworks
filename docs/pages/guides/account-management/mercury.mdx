@@ -6,6 +6,8 @@ tags:
 contributors:
   - role: wrote
     users: [auditware]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -17,13 +19,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Summary
 
-> 🔑 **Key Takeaway for Mercury:** Secure your Mercury account by enabling two-factor authentication, regularly
+> 🔑 **Key Takeaway**: Secure your Mercury account by enabling two-factor authentication, regularly
 > reviewing active sessions and linked profiles, and for organizations, enabling ACH authorization and dual admin
 > approval to prevent unauthorized transactions.
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
-
----
 
 ## For Individuals
 
@@ -41,8 +41,6 @@ These settings apply to your personal Mercury account. All team members and admi
 
 </Checklist>
 
----
-
 ## For Team Members
 
 These guidelines apply to team members who have access to company Mercury accounts but don't have full administrative access.
@@ -52,8 +50,6 @@ Team members should:
 - Ensure their individual account settings are configured according to the checklist above
 - Be aware of their permissions and only perform actions within their authorized scope
 - Report any suspicious activity or unrecognized transactions to admins immediately
-
----
 
 ## For Admins
 
@@ -69,6 +65,14 @@ These settings and practices apply to Mercury account administrators with elevat
   - [ ]  API Tokens > **Review and remove any unused or unrecognized**
 
 </Checklist>
+
+## Further Reading
+
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Treasury Operations](/treasury-operations/overview): controls around the funds this account moves
+- [Transaction Verification](/treasury-operations/transaction-verification): dual approval and payment verification
+  practice
+- [Secure Authentication](/iam/secure-authentication): 2FA, session review, and device trust for the account
 
 ---
 

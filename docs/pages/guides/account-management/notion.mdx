@@ -6,6 +6,8 @@ tags:
 contributors:
   - role: wrote
     users: [auditware]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -17,13 +19,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Summary
 
-> 🔑 **Key Takeaway for Notion:** Secure your Notion account by enabling 2-step verification with an authenticator app
+> 🔑 **Key Takeaway**: Secure your Notion account by enabling 2-step verification with an authenticator app
 > (not SMS), disabling support access, and for workspaces, restricting publishing, export, and guest access to
 > prevent unauthorized data exposure.
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
-
----
 
 ## For Individuals
 
@@ -44,8 +44,6 @@ These settings apply to your personal Notion account. All team members and admin
 
 </Checklist>
 
----
-
 ## For Team Members
 
 These guidelines apply to team members who have access to shared Notion workspaces but don't have full administrative access.
@@ -55,8 +53,6 @@ Team members should:
 - Ensure their individual account settings are configured according to the checklist above
 - Be mindful of page sharing settings and avoid publishing or sharing pages externally without approval
 - Report any suspicious activity or unauthorized access requests to workspace admins
-
----
 
 ## For Admins
 
@@ -97,8 +93,6 @@ These settings and practices apply to Notion workspace administrators with eleva
 
 </Checklist>
 
----
-
 ## Notes
 
 ### [1] Enterprise Features
@@ -106,6 +100,14 @@ These settings and practices apply to Notion workspace administrators with eleva
 Some of these settings require an Enterprise workspace plan. These can be omitted, but it is recommended to consider
 upgrading your plan for the security benefits if the size and/or risk tolerance of your organization warrants the
 extra protections.
+
+## Further Reading
+
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Role-Based Access Control](/iam/role-based-access-control): structuring workspace and page permissions
+- [Multi-Factor Authentication](/opsec/mfa/overview): choosing factors before enabling them here
+- [Notion: two-step verification](https://www.notion.com/help/two-step-verification): vendor documentation for current
+  UI paths
 
 ---
 
