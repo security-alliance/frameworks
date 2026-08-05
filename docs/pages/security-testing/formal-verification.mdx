@@ -1,6 +1,6 @@
 ---
 title: "Formal Verification | Security Alliance"
-description: "Achieve mathematical certainty that smart contracts behave correctly using formal verification and symbolic execution. Tools like Halmos, HEVM, and Certora Prover explore all execution paths."
+description: "Achieve mathematical certainty that smart contracts behave correctly using formal verification and symbolic execution. Formal methods raise assurance"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,10 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,13 +23,15 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Formal verification is the act of proving or disproving a given property of a system using a mathematical model. While
-fuzz testing tries to break properties by throwing random data at your system, formal verification tries to break
-properties using mathematical proofs.
+> 🔑 **Key Takeaway**: Formal methods raise assurance for critical properties when models match reality. They are costly
+> to specify correctly and do not replace adversarial review of behavior outside the model.
 
-This is the highest level of assurance you can achieve in smart contract testing - mathematical certainty that your code
-behaves correctly under all possible conditions. The downside, is that it is often the most time-consuming to get
-correct.
+Formal verification is the act of proving or disproving a given property of a system using a mathematical model. While
+fuzz testing tries to break properties with generated inputs, formal verification reasons with proofs over a model of
+the system.
+
+When the model and properties are right, this is among the strongest assurance levels available in smart contract
+testing. Specifying and maintaining those models is often the most time-consuming path.
 
 ## What is Formal Verification?
 
