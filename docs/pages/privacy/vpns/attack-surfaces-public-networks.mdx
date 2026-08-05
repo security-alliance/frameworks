@@ -9,6 +9,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 outline: deep
 ---
 
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Open Wi-Fi multiplies rogue AP, captive-portal, and local scanning risk. Assume the LAN is
+> adversarial and minimize sensitive work—or tunnel with a trustworthy VPN.
 
 Public and open Wi-Fi networks (airports, hotels, coffee shops) introduce specific risks:
 
@@ -50,6 +55,14 @@ validation, and reduced script blocking.
 
 Similarly, in-app browsers (WebViews) used by social media and messaging apps can inject JavaScript, share cookies with
 the host app, and lack address bars for verifying origins. Both scenarios weaken the protection HTTPS normally provides.
+
+
+## Further Reading
+
+- [VPN Services overview](/privacy/vpns/overview): how the pages in this section fit together
+- [When to Use a VPN](/privacy/vpns/when-to-use-vpn): deciding whether these risks justify a tunnel
+- [Secure Browsing](/privacy/secure-browsing): browser-side defenses against portal and WebView tricks
+- [Travel Security Guide](/opsec/travel/guide): operating on untrusted networks away from the office
 
 ---
 

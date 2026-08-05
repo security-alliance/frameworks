@@ -9,6 +9,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 outline: deep
 ---
 
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Choose VPN use from the threat model: optional on low-risk public Wi-Fi with good HTTPS, useful
+> to hide metadata from the local path, insufficient alone against a dedicated adversary.
 
 Use this mental model to decide:
 
@@ -53,6 +58,14 @@ When selecting a VPN service, consider the following factors:
 
 6. **Provider trust model** — A VPN shifts trust from your ISP to the VPN provider. Evaluate the jurisdiction, ownership
    structure, and track record of the provider.
+
+
+## Further Reading
+
+- [VPN Services overview](/privacy/vpns/overview): how the pages in this section fit together
+- [VPN Limitations](/privacy/vpns/vpn-limitations): the failure modes to weigh against each scenario above
+- [VPN Providers and Tools](/privacy/vpns/vpn-providers-and-tools): applying these criteria to actual providers
+- [Threat Modeling overview](/threat-modeling/overview): a structured way to define what you are defending against
 
 ---
 

@@ -1,9 +1,16 @@
 ---
 title: "Secure Browsing | Security Alliance"
-description: "Secure browsing best practices: use HTTPS, avoid public WiFi, disable third-party cookies. Tools: Tor Browser, Brave, uBlock Origin, Privacy Badger. Search engines: DuckDuckGo, Startpage."
+description: "Secure browsing best practices: use HTTPS, avoid public WiFi, disable third-party cookies. Tools: Tor Browser, Brave, uBlock Origin, Privacy Badger"
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -12,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Prefer HTTPS end to end, reduce trackers and third-party cookies, and treat public Wi-Fi as
+> hostile unless traffic is additionally protected (for example with a VPN).
 
 Secure browsing is essential to protect your privacy and personal information while using the internet.
 
@@ -70,11 +80,21 @@ Secure browsing is essential to protect your privacy and personal information wh
    - Pros: Google search results, strong privacy.
    - Cons: Slower than Google.
 
-## Best Practices
+## Best practices
 
 1. Regularly clear your browsing history, cookies, and cache to remove any stored data.
 2. Only install trusted browser extensions and regularly review their permissions.
 3. Use a password manager to create and store strong, unique passwords for each website.
+
+
+## Further Reading
+
+- [Privacy overview](/privacy/overview): how the pages of this framework fit together
+- [Browser Security](/opsec/browser/overview): profile separation, extensions, and wallet-facing browser hardening
+- [Attack Surfaces on Public Networks](/privacy/vpns/attack-surfaces-public-networks): what actually goes wrong on open
+  Wi-Fi
+- [Privacy Guides: Desktop Browsers](https://www.privacyguides.org/en/desktop-browsers/): current browser and extension
+  recommendations
 
 ---
 
