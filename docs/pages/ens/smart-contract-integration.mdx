@@ -1,12 +1,16 @@
 ---
 title: "ENS Smart Contract Integration | SEAL"
-description: "Register ENS names for smart contracts to improve user experience and reduce address errors. Use ENS for service discovery, upgradeability mechanisms, and protocol metadata storage."
+description: "Register ENS names for smart contracts to improve user experience and reduce address errors. Use ENS for service discovery, upgradeability mechanisms"
 tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
   - role: wrote
     users: [ghadi8]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Name protocol contracts in ENS and treat those names as operator and user trust anchors—
+> document reverse records and naming patterns.
 
 ## Name Your Smart Contracts
 
@@ -44,6 +51,17 @@ architectures, as contract dependencies can be redirected without requiring cont
 robust governance models while maintaining a consistent user interface. Additionally, using ENS to register official
 extensions creates a trust layer that helps users identify legitimate protocol integrations, while storing protocol
 metadata in ENS records improves discoverability and system documentation.
+
+
+## Further Reading
+
+- [ENS overview](/ens/overview): how the pages of this framework fit together
+- [Data Integrity & Verification](/ens/data-integrity-verification): making sure a contract name resolves to what users
+  expect
+- [Smart Contract Interaction Security](/wallet-security/smart-contract-interaction-security): how users verify the
+  contract behind a name
+- [ENS docs: naming contracts](https://docs.ens.domains/web/naming-contracts): setting reverse records for deployed
+  contracts
 
 ---
 

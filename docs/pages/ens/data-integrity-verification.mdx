@@ -1,12 +1,16 @@
 ---
 title: "ENS Data Integrity Verification | SEAL"
-description: "Always resolve ENS data directly from Ethereum mainnet for financial transactions. Verify forward resolution on reverse records to prevent address spoofing and impersonation attacks."
+description: "Always resolve ENS data directly from Ethereum mainnet for financial transactions. Verify forward resolution on reverse records to prevent address spoofing and"
 tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
-- role: wrote
-  users: [ghadi8]
+  - role: wrote
+    users: [ghadi8]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: For fund movement, resolve from Ethereum L1 (or equivalently trusted L1 RPC with
+> verified stack)—not stale indexers—and always verify reverse records with a matching forward lookup.
 
 ## Use On-chain Resolution for Financial Transactions
 
@@ -39,6 +46,15 @@ reverse records can be set independently, creating the possibility for spoofing 
 verified. By performing forward resolution on the result of a reverse lookup and comparing it to the original address,
 applications can ensure the bidirectional integrity of the ENS data, preventing potential phishing or impersonation
 attacks.
+
+
+## Further Reading
+
+- [ENS overview](/ens/overview): how the pages of this framework fit together
+- [Name Handling & Normalization](/ens/name-handling-normalization): normalizing a name before it is ever resolved
+- [Signing and Verification](/wallet-security/signing-and-verification/signing-verification): confirming the recipient
+  address at signing time
+- [ENSIP-3: Reverse Resolution](https://docs.ens.domains/ensip/3): why a reverse record alone proves nothing
 
 ---
 
