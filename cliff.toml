@@ -1,0 +1,49 @@
+[changelog]
+header = """
+# Changelog
+
+All notable changes to the Security Frameworks are documented here.
+"""
+
+body = """
+{% macro remote_url() %}https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}{% endmacro %}
+{% if version %}
+## {{ version | trim_start_matches(pat="v") }} ({{ timestamp | date(format="%Y-%m-%d") }})
+{% else %}
+## Unreleased
+{% endif %}
+{% for group, commits in commits | filter(attribute="merge_commit", value=false) | group_by(attribute="group") %}
+### {{ group | striptags | trim | upper_first }}
+{% for commit in commits %}
+{%- if commit.remote.pr_title -%}
+{%- set entry = commit.remote.pr_title -%}
+{%- else -%}
+{%- set entry = commit.message | split(pat="\n") | first -%}
+{%- endif %}
+- {{ entry | trim }}{% if commit.remote.pr_number %} ([#{{ commit.remote.pr_number }}]({{ self::remote_url() }}/pull/{{ commit.remote.pr_number }})){% endif %}{% if commit.remote.username %} by @{{ commit.remote.username }}{% endif %}
+{%- endfor %}
+{% endfor %}
+"""
+
+trim = true
+
+[git]
+conventional_commits = false
+filter_unconventional = false
+filter_commits = false
+sort_commits = "oldest"
+
+commit_parsers = [
+  { message = "^Merge pull request", skip = true },
+  { message = "^Merge branch", skip = true },
+  { message = "^chore\\(release\\)", skip = true },
+
+  { field = "github.pr_labels", pattern = "dependencies", skip = true },
+
+  { field = "github.pr_labels", pattern = "content:add",    group = "<!-- 0 --> New content" },
+  { field = "github.pr_labels", pattern = "content:update", group = "<!-- 1 --> Updated content" },
+  { field = "github.pr_labels", pattern = "enhancement",    group = "<!-- 2 --> Enhancements" },
+  { field = "github.pr_labels", pattern = "certifications", group = "<!-- 3 --> Certifications" },
+
+  { message = ".*", group = "<!-- 9 --> Other" },
+]
