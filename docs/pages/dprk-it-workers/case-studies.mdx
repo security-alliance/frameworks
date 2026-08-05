@@ -1,6 +1,6 @@
 ---
 title: "DPRK IT Worker Case Studies | SEAL"
-description: "Real anonymized case studies of DPRK IT Workers: stolen 10-year-old GitHub accounts, workers with legitimate company backstories, and facilitators using laptop farms to hide their location."
+description: "Real anonymized case studies of DPRK IT Workers: stolen 10-year-old GitHub accounts, workers with legitimate company backstories"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,17 +8,23 @@ tags:
   - HR
   - Engineer/Developer
 contributors:
-- role: wrote
-  users: [blackbigswan]
-- role: reviewed
-  users: [yaniv, dickson]
+  - role: wrote
+    users: [blackbigswan]
+  - role: reviewed
+    users: [yaniv, dickson]
+  - role: fact-checked
+    users: []
 ---
+
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # Case Studies
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Anomalous cases still fit the mission: identity fraud enabling access.
+> Stay open-minded as actor methods change.
 
 Here are a few deviations from the usual DPRK IT Worker patterns. **As mentioned a few times already, the goal is to
 always be open-minded about threat actor tactics.** They are known to evolve and adapt while also pushing their methods
@@ -72,6 +78,16 @@ them were high-confidence DPRK IT Workers. From their profiles, we managed to pi
 gave them a reason to perform additional KYC - "to make sure the (suspected) dev account is not compromised." The actor
 was asked to go outside his claimed location and take a "selfie" in front of the house where he supposedly lived. He
 refused and resigned immediately, blocking all accounts.
+
+
+## Further Reading
+
+- [DPRK IT Workers overview](/dprk-it-workers/overview): how the pages of this framework fit together
+- [Techniques, Tactics, and Procedures](/dprk-it-workers/techniques-tactics-and-procedures): the baseline patterns these
+  cases deviate from
+- [Mitigating DPRK IT Workers](/dprk-it-workers/mitigating-dprk-it-workers): controls that hold up even when the
+  indicators do not
+- [Lessons Learned](/incident-management/lessons-learned): turning cases like these into internal training material
 
 ---
 
