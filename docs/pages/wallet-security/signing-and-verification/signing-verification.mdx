@@ -1,6 +1,6 @@
 ---
 title: "Signing Verification | Security Alliance"
-description: "Transaction verification guide: verify origin, smart contract address, function parameters, and simulate before signing. Never sign blindly—your hardware wallet display is the source of truth."
+description: "Transaction verification guide: verify origin, smart contract address, function parameters, and simulate before signing. This section provides a guide"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,9 +10,9 @@ contributors:
     users: [pinalikefruit, isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [Coinspect, engn33r]
-
+  - role: fact-checked
+    users: []
 ---
-
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
@@ -20,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Never sign blindly. Prefer the hardware wallet screen and independently verified calldata as
+> ground truth over any web UI claim.
 
 This section provides a guide to transaction verification, from basic EOA interactions to advanced multisig operations.
 
@@ -65,6 +68,14 @@ act as smart contracts, with specific guidance for both users and developers.
 
 To apply these principles, this framework provides a curated list of verification and simulation tools in the **[Tools &
 Resources](/wallet-security/tools-and-resources)**.
+
+## Further Reading
+
+- [Wallet Security overview](/wallet-security/overview): how the pages of this framework fit together
+- [Smart Contract Interaction Security](/wallet-security/smart-contract-interaction-security): approvals, slippage, and
+  contract checks around signing
+- [Tools & Resources](/wallet-security/tools-and-resources): simulation and calldata decoding tools for these checks
+- [Wise Signer](https://wise-signer.cyfrin.io/): practice verifying real transactions before it counts
 
 ---
 

@@ -10,6 +10,8 @@ contributors:
     users: [pinalikefruit]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Custody is who holds the private keys. Custodial services trade self-sovereignty for recovery
+> convenience and counterparty risk; non-custodial flips that tradeoff.
 
 The distinction between custodial and non-custodial wallets centers on who controls the private keys. This control
 directly impacts ownership, security responsibility, and the ability to interact with the web3 ecosystem.
@@ -74,6 +79,13 @@ to undertake the responsibility of self-custody.
 | **Web3 Interaction**        | Limited                                    | Direct and Full                             |
 | **Primary Risk**            | Counterparty Risk, Centralization          | User Error, Loss of Keys                    |
 | **Use Case**                | New Users, Trading on CEX, Convenience     | Full Control, dApp Use, Long-Term Storage   |
+
+## Further Reading
+
+- [Wallet Security overview](/wallet-security/overview): how the pages of this framework fit together
+- [Cold vs. Hot Wallets](/wallet-security/cold-vs-hot-wallet): the other axis to decide alongside custody
+- [Seed Phrase Management](/wallet-security/seed-phrase-management): the responsibility that comes with self-custody
+- [Account Abstraction Wallets](/wallet-security/account-abstraction): recovery options without handing over the keys
 
 ---
 

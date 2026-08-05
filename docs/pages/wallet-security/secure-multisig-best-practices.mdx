@@ -1,6 +1,6 @@
 ---
 title: "Secure Multisig Best Practices | SEAL"
-description: "Multisig best practices: M-of-N thresholds, signer distribution, hardware wallet requirements, communication protocols, timelock enforcement, and disaster recovery planning for high-value assets."
+description: "Multisig best practices: M-of-N thresholds, signer distribution, hardware wallet requirements, communication protocols, timelock enforcement"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -10,7 +10,8 @@ contributors:
     users: [engn33r, pinalikefruit, isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [Coinspect]
-
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -20,8 +21,11 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> Guidance for designing, operating, and auditing high-assurance multisigs. Use this as your single source for baseline
-> rules, setup guidance, and daily operations.
+> 🔑 **Key Takeaway**: Multisig raises the bar only when signers, thresholds, devices, and verification procedures are
+> independent and rehearsed. A poorly run multisig is theater.
+
+Guidance for designing, operating, and auditing high-assurance multisigs. Use this as your single source for baseline
+rules, setup guidance, and daily operations.
 
 ## Who This Is For
 
@@ -254,7 +258,7 @@ Safe.
 - If a new Safe appears in your dashboard that you did not create or expect, **do not interact with it**
 - Use your verified address book to confirm any Safe address before transacting
 
-## Contract-Level Security
+### Contract-Level Security
 
 - **Invariant Enforcement:** Design contracts to enforce invariants and expected state changes such as token balance
 changes, ownership and administration, and proxy implementation addresses. Ensure contracts automatically revert
@@ -271,6 +275,14 @@ For detailed configuration guidance, see
 
 Some ideas were borrowed from the [EF's multisig SOP notes](https://notes.ethereum.org/@fredrik/multisig-sop) and
 [Manifold Finance multisig best practices](https://hackmd.io/@manifoldx/multisig-best-practices).
+
+## Further Reading
+
+- [Wallet Security overview](/wallet-security/overview): how the pages of this framework fit together
+- [Verifying Multisig Transactions](/wallet-security/signing-and-verification/secure-multisig-signing-process): the
+  per-signer verification these rules assume
+- [Multisig for Protocols](/multisig-for-protocols/overview): running a multisig as an organization, with runbooks
+- [Treasury Operations](/treasury-operations/overview): classification and controls for the funds being protected
 
 ---
 

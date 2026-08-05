@@ -1,6 +1,6 @@
 ---
 title: "Account Abstraction Wallets | Security Alliance"
-description: "ERC-4337 Account Abstraction wallets: social recovery, gas sponsorship, batch transactions, and customizable security policies. Eliminate single points of failure like seed phrase loss."
+description: "ERC-4337 Account Abstraction wallets: social recovery, gas sponsorship, batch transactions, and customizable security policies"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [pinalikefruit]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Account abstraction adds programmable controls and recovery options—and new attack surfaces.
+> Threat-model guardians, modules, and session keys before relying on them.
 
 ## User Profile
 
@@ -84,6 +89,15 @@ new one without having to move all assets to a new wallet address.
 (MPC)**. In an MPC-based recovery, guardians hold cryptographic shares that are used collectively to authorize a
 recovery action. This method allows guardians to produce a valid signature through a distributed computation using their
 individual shares, without ever reconstructing a single master key on any device.
+
+## Further Reading
+
+- [Wallet Security overview](/wallet-security/overview): how the pages of this framework fit together
+- [Using EIP-7702](/wallet-security/signing-and-verification/verifying-7702): the delegation path that brings this to
+  existing EOAs
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): the established alternative to
+  guardian-based recovery
+- [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337): the specification behind UserOperations and bundlers
 
 ---
 

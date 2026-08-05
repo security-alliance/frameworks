@@ -1,6 +1,6 @@
 ---
 title: "Wallets for Intermediates & Medium Funds | SEAL"
-description: "Hardware wallet guide for intermediate users with medium balances. Select devices with secure elements, verify supply chain integrity, configure PINs, and maintain backup devices."
+description: "Hardware wallet guide for intermediate users with medium balances. Select devices with secure elements, verify supply chain integrity, configure PINs"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -9,6 +9,8 @@ contributors:
     users: [pinalikefruit, isaac, geoffrey, louis, pablo, dickson, auditware]
   - role: reviewed
     users: [Coinspect, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: As balances grow, add hardware isolation, better backup design, and stricter signing habits—do
+> not keep intermediate funds on the same hot path as everyday spending wallets.
 
 ## User Profile
 
@@ -114,6 +119,15 @@ Maintain a backup hardware wallet to avoid needing to access your seed phrase if
 * Test both devices can create valid signatures
 * Store backup securely
 * Monthly verification that backup device functions correctly
+
+## Further Reading
+
+- [Wallet Security overview](/wallet-security/overview): how the pages of this framework fit together
+- [Seed Phrase Management](/wallet-security/seed-phrase-management): backup design for the devices set up here
+- [Signing & Verification](/wallet-security/signing-and-verification/signing-verification): the stricter signing habits
+  this tier requires
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): the next step once a single signer
+  is too much risk
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Verifying EIP-7702 Transactions | SEAL"
-description: "EIP-7702 security: enable smart contract features for EOAs including transaction batching and gas sponsorship. Protect against phishing attacks and multi-chain replay vulnerabilities."
+description: "EIP-7702 security: enable smart contract features for EOAs including transaction batching and gas sponsorship. Protect against phishing attacks and multi-chain"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -9,6 +9,8 @@ contributors:
     users: [pinalikefruit]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: EIP-7702 lets EOAs opt into smart-account behavior. Verify authorization scope carefully—new
+> power means new ways to hand control to the wrong code.
 
 The Pectra network upgrade introduces **EIP-7702**, which allows a standard Externally Owned Account (EOA) to
 temporarily function like a smart contract wallet. This is achieved via a new transaction type (`0x04`) that lets an EOA
@@ -59,6 +64,15 @@ comes from an external link or pop-up.
 
 > ⚠️ Wallets will only prompt you to switch to a smart account within the wallet's native. Any request to do so via
 > email, a website, or a direct message is a phishing scam.
+
+## Further Reading
+
+- [Signing & Verification](/wallet-security/signing-and-verification/signing-verification): the verification discipline
+  this builds on
+- [Verifying Standard Transactions](/wallet-security/signing-and-verification/verifying-standard-transactions): the
+  baseline EOA checks
+- [Account Abstraction Wallets](/wallet-security/account-abstraction): the smart account model 7702 borrows from
+- [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702): the specification and its authorization semantics
 
 ---
 
