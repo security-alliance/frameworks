@@ -1,10 +1,17 @@
 ---
 title: "Secure Software Development | SEAL"
-description: "Secure Software Development Framework: Integrate security throughout the SDLC with code reviews, secure coding standards, version control, threat modeling, and secure design principles."
+description: "Secure software development across the SDLC: coding standards, peer reviews, repository controls, and threat modeling with secure design principles."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -14,10 +21,49 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Secure software development is the practice of integrating security measures throughout the entire software development
-lifecycle (SDLC). This approach ensures that software is designed, developed, and maintained with security in mind,
-protecting against vulnerabilities and threats. This section provides guidelines and best practices for secure software
-development, including code reviews, secure coding standards, version control, and threat modeling.
+> 🔑 **Key Takeaway**: Security in the software development lifecycle (SDLC) is continuous—design, code, review, and
+> repository controls—not a final gate before ship.
+
+Secure software development integrates security work throughout the SDLC so software is designed, built, and maintained
+with enforceable controls—not only late audits. This framework covers coding standards, peer review practices, version
+control hardening, and design-time threat modeling.
+
+It complements [DevSecOps](/devsecops/overview) (pipeline automation), [Supply Chain](/supply-chain/overview)
+(dependencies and build integrity), [Threat Modeling](/threat-modeling/overview) (broader modeling methods), and
+[External Security Reviews](/external-security-reviews/overview) (independent assessment).
+
+## Basics
+
+- **Shift decisions left:** fix classes of defect cheaper in design and review than in production response.
+- **Standards without enforcement fail:** branch protection, review requirements, and scanners must match written rules.
+- **Web3 raises stakes:** smart contracts and frontends that touch wallets make many bugs irreversible asset loss.
+
+## What this framework covers
+
+1. [Secure Coding Standards and Guidelines](/secure-software-development/secure-coding-standards-guidelines): input
+   validation, encoding, authz checks, error handling, least privilege in code, and secure data handling.
+2. [Code Reviews and Peer Audits](/secure-software-development/code-reviews-peer-audits): review cadence, checklists,
+   automation assist, and collaborative peer audit culture.
+3. [Secure Code Repositories and Version Control](/secure-software-development/secure-code-repositories-version-control):
+   access control, multi-factor authentication (MFA), branch protection, audit logs, commit signing, backups, CI/CD
+   security checks.
+4. [Threat Modeling and Secure Design Principles](/secure-software-development/threat-modeling-secure-design-principles):
+   asset/threat/risk/mitigation loops and durable design principles.
+
+## Related frameworks
+
+- [Threat Modeling](/threat-modeling/overview): dedicated modeling workflow and depth
+- [DevSecOps](/devsecops/overview): pipeline security and automation
+- [Supply Chain](/supply-chain/overview): dependency and build artifact integrity
+- [Security Testing](/security-testing/overview): dynamic and specialized testing beyond review
+- [Security Automation](/security-automation/overview): continuous policy and scan automation
+- [External Security Reviews](/external-security-reviews/overview): third-party audits and assessments
+
+## Further Reading
+
+- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)
+- [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- [NIST SSDF (SP 800-218)](https://csrc.nist.gov/publications/detail/sp/800-218/final)
 
 ---
 
