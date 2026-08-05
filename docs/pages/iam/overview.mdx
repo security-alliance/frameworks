@@ -1,10 +1,19 @@
 ---
 title: "Identity and Access Management | SEAL"
-description: "Identity and Access Management Framework: Control who accesses your systems and data with RBAC, secure authentication, and access management to prevent unauthorized access and insider threats."
+description: "IAM for Web3 teams: RBAC, secure authentication with MFA/SSO, and access lifecycle management to limit unauthorized access and insider risk."
 tags:
   - Engineer/Developer
   - Security Specialist
   - Operations & Strategy
+  - DevOps
+  - HR
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -14,15 +23,40 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Identity and Access Management (IAM) is defined as managing who has access to your systems and data, and ensuring that
-access is secure and appropriate. Effective IAM practices help prevent unauthorized access, reduce the risk of insider
-threats, and ensure that users have the necessary access to perform their roles efficiently.
+> 🔑 **Key Takeaway**: IAM answers who can act on which systems, with least privilege, strong authentication, and fast
+> revocation when roles change.
 
-## Contents
+Identity and Access Management (IAM) is how teams control who reaches systems and data, and how that access stays
+appropriate over time. Weak IAM enables account takeover, privilege abuse, and lingering access after people leave —
+common failure modes for Web3 projects that move fast across many SaaS tools and shared admin paths.
 
-1. [Role-Based Access Control (RBAC)](/iam/role-based-access-control)
-2. [Secure Authentication](/iam/secure-authentication)
-3. [Access Management Best Practices](/iam/access-management)
+## Basics
+
+IAM has three linked concerns:
+
+- **Identity:** proving who a person or service is
+- **Authentication:** verifying that identity (passwords, MFA, SSO)
+- **Authorization and access lifecycle:** what that identity may do, for how long, and when access ends
+
+## What this framework covers
+
+1. [Role-Based Access Control](/iam/role-based-access-control): define roles with minimum permissions and separation of
+   duties.
+2. [Secure Authentication](/iam/secure-authentication): MFA (prefer hardware keys), SSO hygiene, and password practices.
+3. [Access Management](/iam/access-management): JIT access, reviews, onboarding/offboarding, and access logging.
+
+## Related frameworks
+
+- [OpSec — Multi-Factor Authentication](/opsec/mfa/overview)
+- [OpSec — Password Management](/opsec/passwords/overview)
+- [Guides — Account Management](/guides/account-management/overview)
+- [DPRK IT Workers](/dprk-it-workers/overview): insider and hiring-path risks
+- [Infrastructure](/infrastructure/overview): platform IAM overlays
+
+## Further Reading
+
+- [NIST SP 800-63 Digital Identity Guidelines](https://pages.nist.gov/800-63-3/)
+- [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 
 ---
 

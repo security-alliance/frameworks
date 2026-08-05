@@ -1,12 +1,19 @@
 ---
-title: "Secure Authentication | Security Alliance"
-description: "Secure authentication best practices: require Multi-Factor Authentication (MFA) with hardware tokens like Yubikeys over SMS, implement SSO, and enforce strong password policies with managers."
+title: "Secure Authentication | SEAL"
+description: "Require MFA with hardware security keys over SMS, harden SSO entry points, enforce strong passwords with managers, and monitor suspicious sign-ins."
 tags:
   - Engineer/Developer
   - Security Specialist
   - Operations & Strategy
   - DevOps
   - HR
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,28 +23,35 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Secure authentication is essential for verifying the identity of team members and ensuring that only authorized
-individuals have access. By implementing strong authentication mechanisms you can protect your project against
-unauthorized access and lower the risk for potential security breaches.
+> 🔑 **Key Takeaway**: Authentication must prove identity with phishing-resistant factors where available — prefer
+> hardware-backed MFA over SMS, and protect the SSO account that unlocks everything else.
 
-## Key Authentication Methods
+Secure authentication verifies that only authorized people and services obtain sessions. Weak factors, SMS phishing,
+and unmonitored login anomalies are standard entry points into Web3 organization tooling and funds-adjacent systems.
 
-- **Multi-Factor Authentication (MFA)**: Require multiple forms of verification (e.g., something you know, something you
-have, something you are) to enhance security. It is strongly suggested that one does not use SMS as a form of
-multi-factor authentication, but instead utilizes hardware tokens such as Yubikeys.
-- **Single Sign-On (SSO)**: Enable SSO in services you use to allow team members to authenticate once and gain access to
-multiple systems without re-entering credentials, but make sure that the account connected to SSO is secured by strong
-Multi-Factor Authentication.
-- **Password Management**: Enforce strong password policies and encourage the use of password managers to generate and
-store complex passwords.
+## Core methods
 
-## Best Practices for Secure Authentication
+- **Multi-factor authentication (MFA):** Require multiple independent factors. Do **not** rely on SMS as the primary
+  second factor for sensitive systems; prefer hardware security keys (for example YubiKey-class devices) or other
+  phishing-resistant methods where platforms support them. See [OpSec MFA](/opsec/mfa/overview).
+- **Single sign-on (SSO):** SSO reduces password sprawl but concentrates risk on the identity provider account — that
+  account must itself use strong MFA and hardened recovery paths.
+- **Password management:** Enforce strong password policies and password managers for unique, high-entropy secrets. See
+  [Password management](/opsec/passwords/overview).
 
-1. Require MFA for all team members, especially for accessing sensitive systems and data. Encourage the use of hardware
-tokens (e.g., Yubikeys) over SMS-based MFA.
-2. Implement monitoring and alerting for suspicious authentication attempts, such as repeated failed logins or logins
-from unusual locations.
-3. Provide training on secure authentication practices and the importance of protecting authentication credentials.
+## Practices
+
+1. Require MFA for all team members on sensitive systems; prioritize hardware-backed factors for admins and finance.
+2. Monitor and alert on suspicious authentication (repeated failures, impossible travel, new device enrollment).
+3. Train staff on phishing of MFA prompts, recovery flows, and never sharing OTPs or seed material.
+
+## Further Reading
+
+- [IAM overview](/iam/overview)
+- [OpSec — Multi-Factor Authentication](/opsec/mfa/overview)
+- [OpSec — Password Management](/opsec/passwords/overview)
+- [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
+- [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ---
 
