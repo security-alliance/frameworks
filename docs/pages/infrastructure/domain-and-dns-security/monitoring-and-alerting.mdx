@@ -1,6 +1,6 @@
 ---
 title: "DNS Monitoring & Incident Response | SEAL"
-description: "Monitor DNS records for unauthorized changes. Set critical alerts for nameserver changes, DNSSEC failures, and CAA removal. Use Certificate Transparency logs and passive DNS monitoring."
+description: "Monitor DNS records for unauthorized changes. Set critical alerts for nameserver changes, DNSSEC failures, and CAA removal"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [Raiders0786]
   - role: reviewed
     users: [dickson, mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Detection of DNS and registrar change must be fast and owned. GitOps and continuous monitoring
+> catch silent record swaps before users do.
 
 ## DNS Record Monitoring
 
@@ -190,6 +195,16 @@ might be missed by periodic checks.
 2. **Update security measures** based on lessons learned
 3. **Consider legal action** if appropriate
 4. **Publish transparency report** to rebuild trust
+
+
+## Further Reading
+
+- [Domain & DNS Security overview](/infrastructure/domain-and-dns-security/overview): how this subsection fits together
+- [Monitoring overview](/monitoring/overview): the wider detection and alerting practice
+- [Incident Detection and Response](/incident-management/incident-detection-and-response): what happens after an alert
+  fires
+- [DNS Hijack Runbook](/incident-management/incident-response-template/runbooks/dns-hijack): the specific response for
+  unauthorized record changes
 
 ---
 
