@@ -1,6 +1,6 @@
 ---
 title: "Understanding Threat Vectors | Security Alliance"
-description: "Identify phishing, vishing, and social engineering attacks. Learn about Web3 threats like crypto drainers, rug pulls, token approval exploits, and smart contract vulnerabilities."
+description: "Identify phishing, vishing, and social engineering attacks. Learn about Web3 threats like crypto drainers, rug pulls, token approval exploits"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -12,6 +12,8 @@ contributors:
     users: [mattaereal, zedt3ster, fredriksvantes]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -21,9 +23,8 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Understanding the various ways attackers can target you and your organization is essential for
-> effective defense. By recognizing common attack patterns like phishing, social engineering, and emerging threats in
-> digital spaces, you can better protect yourself and your team from potential security breaches.
+> 🔑 **Key Takeaway**: Effective defense starts by knowing common attack paths—phishing, social engineering, and
+> Web3-specific fraud patterns—and recognizing their indicators before acting.
 
 ## Traditional Attack Vectors
 
@@ -204,6 +205,15 @@ that seem too good to be true.
 Use hardware wallets for storing significant cryptocurrency holdings.
 **Scenario Example:** Keeping your long-term investments on a hardware wallet while only maintaining small amounts in
 hot wallets for daily transactions.
+
+## Further Reading
+
+- [Awareness overview](/awareness/overview): how the pages of this framework fit together
+- [Phishing and Social Engineering](/user-team-security/phishing-social-engineering): deeper treatment of lures,
+  pretexts, and team-level defenses
+- [Smart Contract Interaction Security](/wallet-security/smart-contract-interaction-security): how approvals and
+  allowances are abused by drainers
+- [MITRE ATT&CK](https://attack.mitre.org/): catalogue of adversary techniques mapped to real campaigns
 
 ---
 
