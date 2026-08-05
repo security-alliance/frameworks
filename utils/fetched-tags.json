@@ -1013,6 +1013,66 @@
       "DevOps",
       "SRE"
     ],
+    "/physical-security/coercion-and-duress/checklist": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/defensive-design-principles": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/incident-response": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/personal-and-family-safety": [
+      "Security Specialist",
+      "HR",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/recovery-and-resilience": [
+      "Security Specialist",
+      "HR",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/risk-factors-and-early-signals": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/threat-model": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/transaction-flows-under-duress": [
+      "Security Specialist",
+      "Engineer/Developer",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/wallet-and-key-architecture": [
+      "Security Specialist",
+      "Engineer/Developer"
+    ],
+    "/physical-security/facility-and-perimeter/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/physical-counter-surveillance/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/supply-chain-physical-integrity/overview": [
+      "Security Specialist",
+      "Engineer/Developer",
+      "Operations & Strategy"
+    ],
     "/privacy/data-removal-services": [
       "Engineer/Developer",
       "Security Specialist"
@@ -1390,6 +1450,11 @@
     "Multi-Factor Authentication": "passwords",
     "Password Management": "passwords",
     "While Traveling": "travel",
+    "Physical Security": "physical-security",
+    "Coercion & Duress": "coercion-and-duress",
+    "Facility & Perimeter Security": "facility-and-perimeter",
+    "Physical Counter-Surveillance": "physical-counter-surveillance",
+    "Supply Chain Physical Integrity": "supply-chain-physical-integrity",
     "Privacy": "privacy",
     "VPN Services": "vpns",
     "Safe Harbor": "safe-harbor",
