@@ -16,37 +16,43 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
-
 # Transaction Flows Under Duress
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
 > **Key Takeaway**:
-> Hard limits, time delays, separation of approval channels, plausible compliance paths, and tighter controls during high-risk periods ensure that coerced transactions cannot drain reserves or escalate to higher-privilege actions.
+> Hard limits, time delays, separation of approval channels, plausible compliance paths, and tighter controls during
+> high-risk periods ensure that coerced transactions cannot drain reserves or escalate to higher-privilege actions.
 
 ## Hard limits and friction
 
-- Enforce per-transaction limits and daily limits on hot and warm wallets so coerced actions cannot drain strategic reserves in one sitting.
-- Require additional approvals once a transfer crosses predefined thresholds, even if the request looks operationally normal. Route approval requests across multiple independent communication channels so that a single compromised account cannot unilaterally authorize a transfer.
-- Prefer time delays for larger movements so that an attacker must sustain control for longer, increasing the chance of interruption.
+- Enforce per-transaction limits and daily limits on hot and warm wallets so coerced actions cannot drain strategic
+  reserves in one sitting.
+- Require additional approvals once a transfer crosses predefined thresholds, even if the request looks operationally
+  normal. Route approval requests across multiple independent communication channels so that a single compromised
+  account cannot unilaterally authorize a transfer.
+- Prefer time delays for larger movements so that an attacker must sustain control for longer, increasing the chance of
+  interruption.
 
 ## Separation of approval channels
 
-- Ensure the request and approval path are on different devices and ideally different people, so coercing one operator does not complete the full flow.
+- Ensure the request and approval path are on different devices and ideally different people, so coercing one operator
+  does not complete the full flow.
 - Keep high-privilege signing devices physically separated from day-to-day devices used in public or during travel.
 - Use geographic diversity for signers so a local incident cannot immediately compel all required approvals.
 
 ## Duress-compatible operating modes
 
 - Maintain a plausible, low-value compliance path that can satisfy an attacker quickly without exposing core funds.
-- Keep that compliance path consistent with the target's profile and normal activity so it can withstand basic scrutiny during coercion.
+- Keep that compliance path consistent with the target's profile and normal activity so it can withstand basic scrutiny
+  during coercion.
 - Ensure the compliance path has no direct upgrade route to higher tiers.
 
 ## High-risk period tightening
 
 - During travel, temporarily lower limits and increase required approvals by policy.
-- Treat credible threats, doxxing, or surveillance indicators as triggers to move operations into a heightened security mode with reduced transaction capability.
-
+- Treat credible threats, doxxing, or surveillance indicators as triggers to move operations into a heightened security
+  mode with reduced transaction capability.
 
 <ContributeFooter />

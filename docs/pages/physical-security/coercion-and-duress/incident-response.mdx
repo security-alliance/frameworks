@@ -15,52 +15,66 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
-
 # Incident Response
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
 > **Key Takeaway**:
-> During an active wrench attack, prioritize human safety first, then contain the technical surface: rotate signers, pause contracts where possible, coordinate with custodians and law enforcement, and preserve evidence for investigation.
+> During an active wrench attack, prioritize human safety first, then contain the technical surface: rotate signers,
+> pause contracts where possible, coordinate with custodians and law enforcement, and preserve evidence for
+> investigation.
 
-Wrench-attack incident response must prioritize human safety first, while rapidly containing any ability to move funds or coerce additional signers.
+Wrench-attack incident response must prioritize human safety first, while rapidly containing any ability to move funds
+or coerce additional signers.
 
 ## Immediate triage
 
 - Treat it as a life-safety emergency first, and assume the victim may still be under observation or ongoing coercion.
-- Activate a pre-defined crisis channel and a single incident commander to avoid fragmented decisions and conflicting instructions. If the victim has K&R (kidnap and ransom) insurance, immediately contact their team for assistance; reputable firms retain hostage negotiators for these situations.
+- Activate a pre-defined crisis channel and a single incident commander to avoid fragmented decisions and conflicting
+  instructions. If the victim has K&R (kidnap and ransom) insurance, immediately contact their team for assistance;
+  reputable firms retain hostage negotiators for these situations.
 - Make an initial determination of what the attacker likely obtained.
 
 ## De-escalation
 
 - Do not instruct actions that could escalate violence while the victim is under direct threat.
-- Move the victim (and family, if relevant) to a safe location and coordinate medical care, then transition to controlled debriefing once stable.
+- Move the victim (and family, if relevant) to a safe location and coordinate medical care, then transition to
+  controlled debriefing once stable.
 - If travel-related, assume device seizure or border detention dynamics and involve local legal support immediately.
 
 ## Technical containment
 
 - Rotate signers, disable compromised signers, and migrate funds from exposed tiers to contingency wallets.
-- If smart contracts are in scope, consider pausing, timelocking, or restricting privileged functions to prevent coercion-driven upgrades or admin actions.
+- If smart contracts are in scope, consider pausing, timelocking, or restricting privileged functions to prevent
+  coercion-driven upgrades or admin actions.
 - Assume all secrets on any unlocked device are compromised, and rebuild from clean hardware with new credentials.
 
 ## Coordination with external parties
 
-- Contact custodians, exchanges, and key infrastructure vendors via established escalation paths to block suspicious movements and document actions taken.
-- Engage law enforcement through counsel and crisis-management support to preserve victim safety and handle reporting in a way that does not increase risk.
-- If insurance is relevant, notify per policy requirements while controlling operational details that could leak sensitive signer or location information.
+- Contact custodians, exchanges, and key infrastructure vendors via established escalation paths to block suspicious
+  movements and document actions taken.
+- Engage law enforcement through counsel and crisis-management support to preserve victim safety and handle reporting in
+  a way that does not increase risk.
+- If insurance is relevant, notify per policy requirements while controlling operational details that could leak
+  sensitive signer or location information.
 
 ## Evidence and decision logging
 
-- Preserve transaction hashes, timestamps, communications, and device state information to support investigations and recovery actions.
-- Maintain a secure incident log of decisions, approvals, and containment steps to enable post-incident audit and prevent confusion across teams.
-- Limit internal distribution of sensitive incident details to a strict need-to-know group to reduce secondary leakage and follow-on targeting.
+- Preserve transaction hashes, timestamps, communications, and device state information to support investigations and
+  recovery actions.
+- Maintain a secure incident log of decisions, approvals, and containment steps to enable post-incident audit and
+  prevent confusion across teams.
+- Limit internal distribution of sensitive incident details to a strict need-to-know group to reduce secondary leakage
+  and follow-on targeting.
 
 ## Post-incident actions
 
-- Conduct a controlled post-mortem that covers both wallet architecture weaknesses and physical/OSINT exposure, then implement prioritized remediation.
-- Refresh the entire key-management posture: new signer sets, revised limits, updated travel rules, and retraining for high-risk roles.
-- Provide structured support for affected individuals (time off, security upgrades, relocation support when necessary) to reduce further harm and stabilize operations.
-
+- Conduct a controlled post-mortem that covers both wallet architecture weaknesses and physical/OSINT exposure, then
+  implement prioritized remediation.
+- Refresh the entire key-management posture: new signer sets, revised limits, updated travel rules, and retraining for
+  high-risk roles.
+- Provide structured support for affected individuals (time off, security upgrades, relocation support when necessary)
+  to reduce further harm and stabilize operations.
 
 <ContributeFooter />

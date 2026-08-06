@@ -172,6 +172,15 @@
     "/community-management/twitter": [
       "Community & Marketing"
     ],
+    "/contribute/content-model": [
+      "SEAL/Initiative"
+    ],
+    "/contribute/docs-normalization-checklist": [
+      "SEAL/Initiative"
+    ],
+    "/contribute/style-and-terminology": [
+      "SEAL/Initiative"
+    ],
     "/devsecops/code-signing": [
       "Engineer/Developer",
       "Security Specialist",
@@ -484,7 +493,8 @@
     ],
     "/guides/account-management/overview": [
       "Community & Marketing",
-      "Security Specialist"
+      "Security Specialist",
+      "Engineer/Developer"
     ],
     "/guides/account-management/render": [
       "DevOps Accounts"
@@ -527,7 +537,10 @@
       "Operations & Strategy"
     ],
     "/guides/overview": [
-      "Security Specialist"
+      "Security Specialist",
+      "Engineer/Developer",
+      "Operations & Strategy",
+      "Community & Marketing"
     ],
     "/iam/access-management": [
       "Engineer/Developer",
@@ -539,7 +552,9 @@
     "/iam/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "Operations & Strategy"
+      "Operations & Strategy",
+      "DevOps",
+      "HR"
     ],
     "/iam/role-based-access-control": [
       "Engineer/Developer",
@@ -1013,6 +1028,66 @@
       "DevOps",
       "SRE"
     ],
+    "/physical-security/coercion-and-duress/checklist": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/defensive-design-principles": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/incident-response": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/personal-and-family-safety": [
+      "Security Specialist",
+      "HR",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/recovery-and-resilience": [
+      "Security Specialist",
+      "HR",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/risk-factors-and-early-signals": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/threat-model": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/transaction-flows-under-duress": [
+      "Security Specialist",
+      "Engineer/Developer",
+      "Operations & Strategy"
+    ],
+    "/physical-security/coercion-and-duress/wallet-and-key-architecture": [
+      "Security Specialist",
+      "Engineer/Developer"
+    ],
+    "/physical-security/facility-and-perimeter/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/physical-counter-surveillance/overview": [
+      "Security Specialist",
+      "Operations & Strategy"
+    ],
+    "/physical-security/supply-chain-physical-integrity/overview": [
+      "Security Specialist",
+      "Engineer/Developer",
+      "Operations & Strategy"
+    ],
     "/privacy/data-removal-services": [
       "Engineer/Developer",
       "Security Specialist"
@@ -1236,7 +1311,8 @@
     ],
     "/threat-modeling/overview": [
       "Engineer/Developer",
-      "Security Specialist"
+      "Security Specialist",
+      "DevOps"
     ],
     "/treasury-operations/classification": [
       "Treasury Ops",
@@ -1264,6 +1340,29 @@
       "Operations",
       "Risk Management",
       "DeFi"
+    ],
+    "/user-team-security/overview": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "HR",
+      "Engineer/Developer"
+    ],
+    "/user-team-security/phishing-social-engineering": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "HR",
+      "Engineer/Developer"
+    ],
+    "/user-team-security/security-aware-culture": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "HR"
+    ],
+    "/user-team-security/security-training": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "HR",
+      "Engineer/Developer"
     ],
     "/vulnerability-disclosure/bug-bounties": [
       "Engineer/Developer",
@@ -1302,9 +1401,18 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/wallet-security/hardware-wallets": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/wallet-security/intermediates-and-medium-funds": [
       "Engineer/Developer",
       "Security Specialist"
+    ],
+    "/wallet-security/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/wallet-security/secure-multisig-best-practices": [
       "Security Specialist",
@@ -1344,7 +1452,15 @@
       "Engineer/Developer",
       "Security Specialist"
     ],
+    "/wallet-security/signing-schemes": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
     "/wallet-security/smart-contract-interaction-security": [
+      "Engineer/Developer",
+      "Security Specialist"
+    ],
+    "/wallet-security/software-wallets": [
       "Engineer/Developer",
       "Security Specialist"
     ],
@@ -1390,6 +1506,11 @@
     "Multi-Factor Authentication": "passwords",
     "Password Management": "passwords",
     "While Traveling": "travel",
+    "Physical Security": "physical-security",
+    "Coercion & Duress": "coercion-and-duress",
+    "Facility & Perimeter Security": "facility-and-perimeter",
+    "Physical Counter-Surveillance": "physical-counter-surveillance",
+    "Supply Chain Physical Integrity": "supply-chain-physical-integrity",
     "Privacy": "privacy",
     "VPN Services": "vpns",
     "Safe Harbor": "safe-harbor",
@@ -1399,6 +1520,7 @@
     "Supply Chain": "supply-chain",
     "Threat Modeling": "threat-modeling",
     "Treasury Operations": "treasury-operations",
+    "User and Team Security": "user-team-security",
     "Vulnerability Disclosure": "vulnerability-disclosure",
     "Wallet Security": "wallet-security",
     "Signing & Verification": "signing-and-verification",
