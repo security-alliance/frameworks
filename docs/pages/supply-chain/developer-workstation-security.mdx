@@ -1,0 +1,190 @@
+---
+title: "Developer Workstation Security | SEAL"
+description: "Screen repositories, IDE configuration, AI tools, and dependencies before execution to stop supply chain attacks at the developer workstation boundary."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - DevOps
+contributors:
+  - role: wrote
+    users: [s1ns3nz0]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, Checklist, ContributeFooter } from '../../../components'
+
+# Developer Workstation Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Screen untrusted development material before an IDE, package manager, model loader, or AI
+> agent interprets it. Confinement limits the damage when screening misses a malicious input.
+
+A developer workstation is an execution boundary, not just a place to edit code. Routine actions can activate content
+from another party before a developer reaches the application entry point.
+
+This guidance applies when evaluating a new repository, contributor branch, coding exercise, dependency, development
+tool, agent integration, or model artifact. Perform intake on a credential-free system, then move only approved
+material into normal development environments.
+
+## Why the workstation is part of the supply chain
+
+Source code reaches production through developers, their tools, and their credentials. A compromised workstation can
+alter source or lockfiles, steal package-publishing and cloud credentials, tamper with commits, or provide a foothold
+into internal systems. It can therefore compromise downstream builds even when the production pipeline is isolated.
+
+Execution may begin when an IDE opens a repository, a package manager runs a lifecycle script, an extension or Model
+Context Protocol (MCP) server starts, an AI agent reads project instructions, or a framework deserializes a model
+artifact. Treat opening, installing, importing, building, testing, and asking an agent to work as distinct execution
+decisions.
+
+## Treat development inputs as untrusted
+
+Trust applies to a specific artifact and version, not to a familiar filename, repository name, or author profile.
+Review these inputs before allowing them to interact with a normal workstation:
+
+| Input | Possible execution path | Review focus |
+| --- | --- | --- |
+| Repository configuration | IDE tasks, workspace settings, debug launchers, dev-container hooks, shell hooks, or build configuration | Commands, referenced executables, environment access, and automatic triggers |
+| Dependencies | Package-manager lifecycle scripts, native builds, compiler plugins, or imported modules | Canonical publisher, resolved version, lockfile entry, integrity metadata, and install scripts |
+| IDE and coding-agent extensions | Extension activation with the editor user's permissions | Publisher, source, requested capabilities, release provenance, and organizational approval |
+| MCP servers | A local server binary or startup command launched by an AI client | Distribution source, command, filesystem and network scope, credentials, and exposed tools |
+| Agent rules and skills | Instructions interpreted by an agent that can call tools or run commands | Hidden instructions, external downloads, destructive actions, credential requests, and permission changes |
+| AI-suggested packages | A plausible but nonexistent name that an attacker can register | Existence, ownership, release history, canonical documentation, and internal approval |
+| Model artifacts | Deserialization or custom model code during loading | File format, expected hash, provenance, loader behavior, and whether executable deserialization is required |
+
+Local MCP servers can run with the client's privileges, so treat their configuration as executable software rather
+than passive metadata. Likewise, do not deserialize untrusted pickle-based model files; prefer a non-executable weight
+format when the ecosystem supports one.
+
+## Screen before execution
+
+Apply the following gates in order. A failed or inconclusive gate keeps the material in quarantine.
+
+1. **Acquire without execution.** Fetch the material into a quarantine directory or disposable virtual machine (VM)
+   with IDE integration, file previews, shell directory hooks, agents, and package installation disabled. Do not start
+   a referenced MCP server or load a model merely to inspect it.
+
+2. **Inspect provenance and execution triggers.** Confirm the canonical source through an independent channel, then
+   inspect signatures, release metadata, contributors, and the exact revision. Search workspace tasks and settings,
+   launch and container files, Git hooks, package scripts, build plugins, MCP startup commands, agent rules and skills,
+   and model-loading code. A plausible commit author or old timestamp does not defeat **forged history**; corroborate
+   important revisions with signed releases, immutable object identifiers, repository audit data, or a known upstream.
+   A trusted workspace may permit **workspace auto-run**, so keep Workspace Trust disabled and automatic tasks off
+   until these files pass review.
+
+3. **Scan and compare artifacts with reviewed source.** Run static malware, dependency, secret, and policy scans without
+   importing the project. Inspect unusually large whitespace, encoded strings, binary files in source paths, and
+   bidirectional or invisible Unicode. **Invisible Unicode** can make displayed control flow differ from the compiled
+   source, so use a scanner or editor view that exposes code points. Compare packaged files and model artifacts with
+   reviewed source, checksums, signatures, and provenance; a clean source tree does not prove a separately built
+   artifact is identical.
+
+4. **Approve dependencies and tools.** Resolve every package name against the expected registry and publisher,
+   including names proposed by AI tools. Pin approved dependencies, extensions, MCP servers, actions, and model
+   revisions to immutable versions or digests and verify integrity metadata. **Install scripts** execute during common
+   package-manager operations, so block them by default and approve exceptions only after review. **Mutable versions**
+   such as branches, floating tags, and ranges can resolve to different code after approval; do not treat them as a
+   stable security decision.
+
+5. **Execute only in a confined, disposable environment.** Use a fresh VM or hardened development container with no
+   production, publishing, wallet, source-control, cloud, or personal credentials. Grant only required filesystem and
+   process access, record activity, and allowlist required destinations. **Unrestricted egress** turns any missed
+   execution path into a simple channel for payload retrieval or data exfiltration. Destroy the environment after the
+   evaluation and promote only reviewed source and locked metadata.
+
+## Apply baseline controls
+
+Standardize controls so a developer does not have to reconstruct the intake boundary for each project. Workspace Trust
+reduces repository-driven execution, while extension and MCP allowlists address separately installed executable tools.
+Use endpoint detection and response (EDR) and mobile device management (MDM) to enforce and observe the baseline.
+
+<Checklist id="developer-workstation-supply-chain-baseline">
+
+- Require Workspace Trust or the IDE's equivalent before project features activate
+- Disable automatic workspace tasks and review task configuration before enabling it
+- Allowlist IDE extensions, coding-agent extensions, and MCP servers
+- Pin approved tool and dependency versions and verify integrity metadata
+- Block install-time scripts by default and document approved exceptions
+- Detect invisible Unicode and suspicious obfuscation in code and agent instruction files
+- Keep production, publishing, and treasury credentials outside untrusted development environments
+- Apply EDR and MDM controls to managed developer endpoints
+- Restrict outbound traffic from evaluation environments
+- Open untrusted projects only in disposable VMs or hardened development containers
+
+</Checklist>
+
+This checklist defines the intake baseline. Apply the implementation patterns in
+[Developer Machine Confinement](/devsecops/isolation/developer-machine-sandboxing) and
+[Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation) rather than copying product-specific container,
+filesystem, or network configuration into this page.
+
+## Detect and respond
+
+Collect endpoint, process, filesystem, network, IDE, agent, source-control, and package-registry telemetry. Alert on:
+
+- **Unexpected child processes:** editors, agents, package managers, model loaders, or MCP clients spawning shells,
+  downloaders, interpreters, persistence tools, or unsigned binaries outside an approved workflow
+- **Credential-path access:** reads of wallet stores, browser profiles, SSH keys, cloud configuration, password-manager
+  data, package tokens, or source-control credentials by development processes
+- **Unapproved egress:** new domains, direct IP connections, tunneling, paste sites, or blockchain endpoints from an
+  evaluation environment
+- **Tool drift:** unapproved extension or MCP-server installation, changed hashes, disabled Workspace Trust, enabled
+  automatic tasks, or divergence from the managed tool inventory
+- **Registry anomalies:** a new publisher, unexpected ownership change, release outside the normal cadence, republished
+  version, provenance failure, or package contents that differ from the reviewed source
+
+When a signal indicates execution, isolate the endpoint without destroying volatile evidence, preserve relevant
+repository and tool artifacts, and identify every credential or signing capability the process could access. Revoke
+sessions and rotate exposed credentials from a clean device. Quarantine affected commits, packages, and build outputs;
+then hunt for the same indicators across developer systems, repositories, continuous integration, and registry logs.
+Coordinate the investigation through [Supply Chain Incident Response](/supply-chain/incident-response-supply-chain).
+If malware may have executed, follow the immediate containment and recovery steps in the
+[Malware Infection playbook](/incident-management/playbooks/malware).
+
+## Case study and related guidance
+
+The DPRK-linked **Contagious Interview** activity used convincing coding exercises and repositories to push developers
+toward installation or execution. Technical reporting on the related **PolinRider** cluster documents malicious
+project files, including `.vscode/tasks.json` entries with `runOn: "folderOpen"`, that retrieved and executed a payload
+after the workspace allowed automatic tasks.
+
+This execution path is **repository-controlled workspace automation, not a malicious VS Code extension**. The task
+definition arrives as a project file and the IDE's built-in task runner interprets it. A malicious extension is a
+separate executable supply-chain risk that requires publisher verification and extension allowlisting. Both risks are
+reduced by keeping an unfamiliar repository in Restricted Mode, but they have different artifacts, approval paths, and
+detection signals.
+
+## Further reading
+
+- [DPRK IT Workers](/dprk-it-workers/overview): organizational controls for DPRK-linked hiring and insider risk
+- [Integrated Development Environments](/devsecops/integrated-development-environments): extension review and general
+  IDE hardening
+- [Dependency Awareness](/supply-chain/dependency-awareness): package pinning, lockfiles, and dependency review
+- [VS Code Workspace Trust](https://code.visualstudio.com/docs/editing/workspaces/workspace-trust): official behavior
+  for Restricted Mode, tasks, settings, extensions, and AI agents
+- [VS Code automatic task controls](https://code.visualstudio.com/docs/debugtest/tasks#_run-behavior): official
+  documentation for `runOn: "folderOpen"` and `task.allowAutomaticTasks`
+- [OpenSourceMalware PolinRider technical dossier](https://github.com/OpenSourceMalware/PolinRider): campaign analysis,
+  project-file execution paths, and detection artifacts
+- [Contagious Interview technical analysis](https://kudelskisecurity.com/research/how-dprks-contagious-interview-campaign-targets-developers):
+  technical analysis of the fake-interview repository and its VS Code task trigger
+- [Model Context Protocol security best practices](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices):
+  risks and confinement guidance for local MCP servers
+- [SLSA artifact verification](https://slsa.dev/spec/v1.2/verifying-artifacts): verifying artifact digests, signatures,
+  canonical source, builders, and provenance
+- [npm lifecycle scripts](https://docs.npmjs.com/cli/using-npm/scripts/): install-time execution behavior
+- [PyTorch model loading](https://docs.pytorch.org/docs/stable/generated/torch.load.html): warning against loading data
+  from untrusted sources
+- [Trojan Source paper](https://www.usenix.org/system/files/usenixsecurity23-boucher.pdf): analysis of bidirectional
+  Unicode control characters that can alter how source code is displayed
+- [USENIX package hallucination study](https://www.usenix.org/system/files/usenixsecurity25-spracklen.pdf): research on
+  nonexistent package names generated by coding models and the resulting package-confusion risk
+
+---
+
+<ContributeFooter />
