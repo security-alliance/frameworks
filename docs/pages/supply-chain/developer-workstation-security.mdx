@@ -16,6 +16,8 @@ contributors:
 
 import { TagList, AttributionList, Checklist, ContributeFooter } from '../../../components'
 
+{/* cspell:ignore ngularity */}
+
 # Developer Workstation Security
 
 <TagList tags={frontmatter.tags} />
@@ -38,25 +40,52 @@ Source code reaches production through developers, their tools, and their creden
 alter source or lockfiles, steal package-publishing and cloud credentials, tamper with commits, or provide a foothold
 into internal systems. It can therefore compromise downstream builds even when the production pipeline is isolated.
 
-Execution may begin when an IDE opens a repository, a package manager runs a lifecycle script, an extension or Model
-Context Protocol (MCP) server starts, an AI agent reads project instructions, or a framework deserializes a model
-artifact. Treat opening, installing, importing, building, testing, and asking an agent to work as distinct execution
-decisions. For that reason, trust applies to a specific artifact and version, not to a familiar filename, repository
-name, or author profile. Treat these development inputs as untrusted until they have been reviewed:
+Execution may begin when a tool interprets repository configuration, installs packages or extensions, starts Model
+Context Protocol (MCP) servers, follows agent rules or skills, accepts AI-suggested packages, or loads executable model
+artifacts. Treat opening, installing, importing, building, testing, and asking an agent to work as distinct execution
+decisions. Trust applies to a specific artifact and version, not to a familiar name, repository, or author profile.
 
-| Input | Possible execution path | Review focus |
-| --- | --- | --- |
-| Repository configuration | IDE tasks, workspace settings, debug launchers, dev-container hooks, shell hooks, or build configuration | Commands, referenced executables, environment access, and automatic triggers |
-| Dependencies | Package-manager lifecycle scripts, native builds, compiler plugins, or imported modules | Canonical publisher, resolved version, lockfile entry, integrity metadata, and install scripts |
-| IDE and coding-agent extensions | Extension activation with the editor user's permissions | Publisher, source, requested capabilities, release provenance, and organizational approval |
-| MCP servers | A local server binary or startup command launched by an AI client | Distribution source, command, filesystem and network scope, credentials, and exposed tools |
-| Agent rules and skills | Instructions interpreted by an agent that can call tools or run commands | Hidden instructions, external downloads, destructive actions, credential requests, and permission changes |
-| AI-suggested packages | A plausible but nonexistent name that an attacker can register | Existence, ownership, release history, canonical documentation, and internal approval |
-| Model artifacts | Deserialization or custom model code during loading | File format, expected hash, provenance, loader behavior, and whether executable deserialization is required |
+Review each input's canonical source, execution triggers, requested permissions, data and credential access, network
+destinations, update behavior, and integrity evidence. Local MCP servers can run with the client's privileges, and
+some model formats execute code during deserialization, so their configuration and artifacts are executable software
+rather than passive data.
 
-Local MCP servers can run with the client's privileges, so treat their configuration as executable software rather
-than passive metadata. Likewise, do not deserialize untrusted pickle-based model files; prefer a non-executable weight
-format when the ecosystem supports one.
+## Govern external development tools
+
+Organizations should govern extensions, MCP servers, coding agents, package-manager plugins, model loaders, and other
+external development tools throughout their lifecycle:
+
+1. **Establish business need.** Record the approved use and why an existing capability does not meet it.
+2. **Classify risk.** Assess execution, data, update, and communication risk in the intended environment.
+3. **Review the tool.** Examine provenance, permissions, data flows, credentials, egress, and behavior.
+4. **Make the risk decision.** Approve, reject, or grant a time-limited exception with compensating controls.
+5. **Deploy the decision.** Distribute and enforce the approved version and configuration.
+6. **Monitor drift.** Detect changes in version, permission, publisher, and behavior.
+7. **Reassess the decision.** Review on a defined cadence and after material changes or incidents.
+8. **Revoke and remove.** Withdraw access, remove the tool, and preserve the decision record.
+
+Organizations may combine these functions in one role or distribute them across security, engineering, procurement,
+legal, and operations. The control objective is documented separation between the request, the risk decision, and
+ongoing ownership, not a prescribed department or organization chart.
+
+Maintain a managed allowlist as the authoritative inventory of approved external development tools. Each record must
+include:
+
+| Record field | Required evidence |
+| --- | --- |
+| Identity and use | Tool or category and approved use |
+| Provenance | Canonical publisher and distribution source |
+| Release constraint | Approved version, digest, or update channel |
+| Access | Permissions, accessible data, network destinations, and credential access |
+| Ownership | Review date, designated approver, tool owner, and next review date |
+| Safeguards | Required technical and operational safeguards |
+| Exception | Recorded exception reference and expiration |
+| Exit plan | Removal and incident-response instructions |
+
+Inspection evidence should show inventory completeness, approval records, expired exceptions, periodic review
+completion, configuration enforcement, version or permission drift, removal evidence, and linked incident records.
+This evidence lets owners demonstrate that decisions remain current without asserting compliance with a particular
+regulation or standard.
 
 ## Screen before execution
 
@@ -82,11 +111,11 @@ Apply the following gates in order. A failed or inconclusive gate keeps the mate
    artifact is identical.
 
 4. **Approve dependencies and tools.** Resolve every package name against the expected registry and publisher,
-   including names proposed by AI tools. Pin approved dependencies, extensions, MCP servers, actions, and model
-   revisions to immutable versions or digests and verify integrity metadata. **Install scripts** execute during common
-   package-manager operations, so block them by default and approve exceptions only after review. **Mutable versions**
-   such as branches, floating tags, and ranges can resolve to different code after approval; do not treat them as a
-   stable security decision.
+   including names proposed by AI tools. Confirm the item and intended use appear in the managed allowlist. Pin
+   approved dependencies, extensions, MCP servers, actions, and model revisions to immutable versions or digests and
+   verify integrity metadata. **Install scripts** execute during common package-manager operations, so block them by
+   default and approve exceptions only after review. **Mutable versions** such as branches, floating tags, and ranges
+   can resolve to different code after approval; do not treat them as a stable security decision.
 
 5. **Execute only in a confined, disposable environment.** Use a fresh VM or hardened development container with no
    production, publishing, wallet, source-control, cloud, or personal credentials. Grant only required filesystem and
@@ -94,14 +123,20 @@ Apply the following gates in order. A failed or inconclusive gate keeps the mate
    execution path into a simple channel for payload retrieval or data exfiltration. Destroy the environment after the
    evaluation and promote only reviewed source and locked metadata.
 
-## Apply baseline controls
+## Apply and verify baseline controls
 
 Standardize controls so a developer does not have to reconstruct the intake boundary for each project. Workspace Trust
 reduces repository-driven execution, while extension and MCP allowlists address separately installed executable tools.
-Use endpoint detection and response (EDR) and mobile device management (MDM) to enforce and observe the baseline.
+Use endpoint detection and response (EDR) and mobile device management (MDM) to enforce and observe the baseline. Test
+the deployed configuration and retain its results; a documented setting is not evidence that endpoints enforce it.
 
 <Checklist id="developer-workstation-supply-chain-baseline">
 
+- [ ] Define approved and prohibited external-tool categories and document approval criteria
+- [ ] Maintain an allowlist with tool owners, approved uses, versions, permissions, safeguards, and review dates
+- [ ] Record exceptions with scope, compensating controls, an owner, and an expiration date
+- [ ] Reassess tools after material publisher, ownership, permission, update, behavior, or incident changes
+- [ ] Remove unapproved or expired tools and retain evidence of the decision and removal
 - [ ] Keep Workspace Trust enabled, leave unfamiliar folders untrusted, and require explicit approval before trusting them
 - [ ] Disable automatic workspace tasks and review task configuration before enabling it
 - [ ] Allowlist IDE extensions, coding-agent extensions, and MCP servers
@@ -120,7 +155,7 @@ This checklist defines the intake baseline. Apply the implementation patterns in
 [Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation) rather than copying product-specific container,
 filesystem, or network configuration into this page.
 
-## Detect and respond
+## Detect, respond, and learn from incidents
 
 Collect endpoint, process, filesystem, network, IDE, agent, source-control, and package-registry telemetry. Alert on:
 
@@ -143,24 +178,25 @@ Coordinate the investigation through [Supply Chain Incident Response](/supply-ch
 If malware may have executed, follow the immediate containment and recovery steps in the
 [Malware Infection playbook](/incident-management/playbooks/malware).
 
-## Case study and related guidance
+The examples below connect a documented failure to a governance lesson. The PolinRider execution path is
+**repository-controlled workspace automation, not a malicious extension installation**: the repository supplies the
+task, while the IDE's built-in task runner interprets it after trust is granted. Extension publishing incidents involve
+a separate artifact, approval path, and detection signal.
 
-Activity linked to the Democratic People's Republic of Korea (DPRK), tracked as **Contagious Interview**, used
-convincing coding exercises and repositories to push developers toward installation or execution. OpenSourceMalware
-dated its related **PolinRider** dossier March 7, 2026, and last updated it April 11, 2026; a separate Contagious
-Interview repository analysis was published June 30, 2026. These are report publication and update dates, not claims
-about when the activity began or ended. The reports document malicious project files, including
-`.vscode/tasks.json` entries with `runOn: "folderOpen"`, that retrieved and executed a payload after the workspace
-allowed automatic tasks.
-
-This execution path is **repository-controlled workspace automation, not a malicious VS Code extension**. The task
-definition arrives as a project file and the IDE's built-in task runner interprets it. A malicious extension is a
-separate executable supply-chain risk that requires publisher verification and extension allowlisting. Both risks are
-reduced by keeping an unfamiliar repository in Restricted Mode, but they have different artifacts, approval paths, and
-detection signals.
+| Example | Control failure | Governance lesson |
+| --- | --- | --- |
+| [Contagious Interview / PolinRider](https://github.com/OpenSourceMalware/PolinRider) | Repository-controlled workspace tasks executed locally | Quarantine repositories and require explicit workspace trust |
+| [Amazon Q extension incident](https://aws.amazon.com/security/security-bulletins/AWS-2025-015/) | An extension publishing path and release control were compromised | Approve publishers and versions, control updates, and monitor release drift |
+| [`postmark-mcp`](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) | A later MCP package version added covert data exfiltration | Treat MCP servers as executable vendors; pin, review, monitor, and revoke |
+| [Nx `s1ngularity`](https://github.com/nrwl/nx/security/advisories/GHSA-cxm3-wv7p-598c) | A compromised dependency used local AI tooling and credentials | Separate credentials, constrain agent capabilities, and monitor package behavior |
+| [Slopsquatting research](https://www.usenix.org/system/files/usenixsecurity25-spracklen.pdf) | AI generated plausible package names that did not exist | Verify package identity against canonical documentation before approval |
 
 ## Further reading
 
+- [Risk Management](/governance/risk-management): ownership patterns for risk acceptance, exception decisions, and
+  recurring review
+- [Compliance & Regulatory Requirements](/governance/compliance-regulatory-requirements): adaptable compliance-
+  governance context for assigning evidence, review, and oversight responsibilities
 - [DPRK IT Workers](/dprk-it-workers/overview): organizational controls for DPRK-linked hiring and insider risk
 - [AI Security](/ai-security/overview): runtime controls for AI systems, coding agents, tool calls, and model use
 - [Endpoint Security](/opsec/endpoint/overview): managed endpoint provisioning, EDR, MDM, and credential-separation
@@ -172,10 +208,6 @@ detection signals.
   for Restricted Mode, tasks, settings, extensions, and AI agents
 - [VS Code automatic task controls](https://code.visualstudio.com/docs/debugtest/tasks#_run-behavior): official
   documentation for `runOn: "folderOpen"` and `task.allowAutomaticTasks`
-- [OpenSourceMalware PolinRider technical dossier](https://github.com/OpenSourceMalware/PolinRider): campaign analysis,
-  project-file execution paths, and detection artifacts
-- [Contagious Interview technical analysis](https://kudelskisecurity.com/research/how-dprks-contagious-interview-campaign-targets-developers):
-  technical analysis of the fake-interview repository and its VS Code task trigger
 - [Model Context Protocol security best practices](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices):
   risks and confinement guidance for local MCP servers
 - [SLSA artifact verification](https://slsa.dev/spec/v1.2/verifying-artifacts): verifying artifact digests, signatures,
@@ -185,8 +217,6 @@ detection signals.
   from untrusted sources
 - [Trojan Source paper](https://www.usenix.org/system/files/usenixsecurity23-boucher.pdf): analysis of bidirectional
   Unicode control characters that can alter how source code is displayed
-- [USENIX package hallucination study](https://www.usenix.org/system/files/usenixsecurity25-spracklen.pdf): research on
-  nonexistent package names generated by coding models and the resulting package-confusion risk
 
 ---
 
