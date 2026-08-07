@@ -72,8 +72,8 @@ importers:
         specifier: 4.3.2
         version: 4.3.2
       vocs:
-        specifier: 2.6.0
-        version: 2.6.0(@types/react@19.2.17)(@vue/compiler-sfc@3.5.40)(axios@1.18.1)(esbuild@0.28.1)(mermaid@11.16.0)(react-dom@19.2.7(react@19.2.7))(react-router-dom@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-router@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.1)))(react@19.2.7)(rolldown@1.0.1)(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(waku@1.0.0-beta.6(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.1)))(react@19.2.7)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(webpack@5.107.2(esbuild@0.28.1))
+        specifier: 2.3.3
+        version: 2.3.3(@types/react@19.2.17)(@vue/compiler-sfc@3.5.40)(axios@1.18.1)(mermaid@11.16.0)(react-dom@19.2.7(react@19.2.7))(react-router-dom@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-router@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.1)))(react@19.2.7)(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(waku@1.0.0-beta.6(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.1)))(react@19.2.7)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
       waku:
         specifier: 1.0.0-beta.6
         version: 1.0.0-beta.6(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.1)))(react@19.2.7)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)
@@ -94,6 +94,9 @@ packages:
   '@aws-sdk/core@3.977.4':
     resolution: {integrity: sha512-CEkcQlMOQJCvul60U7wdAOACjtdgFWDsfJI+6wUOGdhGNV2lGbuJpi/R50QLpFG3Tp+sQxa/RmzC3X7KHbhuTA==}
     engines: {node: '>=20.0.0'}
+    deprecated: |-
+      Deprecated due to Document number parsing bug in JSON, see
+        https://github.com/aws/aws-sdk-js-v3/issues/8246. Newer version available.
 
   '@aws-sdk/credential-provider-env@3.972.65':
     resolution: {integrity: sha512-lJT2aRw9wCV8jPHyFJjdZLD4HTydL6/22AnCSOB8e/LqOc55nEJGLHkJQeSxhn8QiqyjFwPKQFtMw0ovjRUY/g==}
@@ -771,9 +774,6 @@ packages:
 
   '@iconify-json/lucide@1.2.121':
     resolution: {integrity: sha512-zSoQQSmsyFaeTpSwURHJ9PIrsDcGFpDNhGlpiTrs+Ua4uFeH5UsE26L4OEBLrgLWoSK0UO+JhsO8yehSw0403g==}
-
-  '@iconify-json/ri@1.2.10':
-    resolution: {integrity: sha512-WWMhoncVVM+Xmu9T5fgu2lhYRrKTEWhKk3Com0KiM111EeEsRLiASjpsFKnC/SrB6covhUp95r2mH8tGxhgd5Q==}
 
   '@iconify-json/simple-icons@1.2.93':
     resolution: {integrity: sha512-/XhANjfGYOuqvSR3TmUnkQkINvQ4GVjVuukvymRbxtVFBvIq/yiXJqCDycKcQPT401OYT9H2vIY6ihAlz1QIAw==}
@@ -3151,9 +3151,6 @@ packages:
     resolution: {integrity: sha512-GqXJqY/xJkJmuloTrnV1ZEXG3fqte+VjkUqoRNZXcrUidiUOP4fMSIHHY4tsqZBK++kVyWmt/AAfSUuy57/eSA==}
     engines: {node: '>=16.9.0'}
 
-  hookable@6.1.1:
-    resolution: {integrity: sha512-U9LYDy1CwhMCnprUfeAZWZGByVbhd54hwepegYTK7Pi5NvqEj63ifz5z+xukznehT7i6NIZRu89Ay1AZmRsLEQ==}
-
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
 
@@ -4545,14 +4542,6 @@ packages:
   undici-types@8.3.0:
     resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
 
-  unhead@3.2.3:
-    resolution: {integrity: sha512-BBkKvthUOufEJzG4C4u5NCdxnGMNaQdb//oPDI8lkv/6qj0faEqnPIvIPejt3FnSE501LX25Gbe2MVgKDuFnyQ==}
-    peerDependencies:
-      vite: '>=6.4.2'
-    peerDependenciesMeta:
-      vite:
-        optional: true
-
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
 
@@ -4610,39 +4599,6 @@ packages:
   unplugin@2.3.11:
     resolution: {integrity: sha512-5uKD0nqiYVzlmCRs01Fhs2BdkEgBS3SAVP6ndrBsuK42iC2+JHyxM05Rm9G8+5mkmRtzMZGY8Ct5+mliZxU/Ww==}
     engines: {node: '>=18.12.0'}
-
-  unplugin@3.3.0:
-    resolution: {integrity: sha512-qa66K+crbfyE6JK10GjvbJeRrOsuC/JpbnHctfyp/i4oBTxWOzJfRZyDiOk1PtErMFRu8JhsU/wPvOdBNWe5Rg==}
-    engines: {node: ^20.19.0 || >=22.12.0}
-    peerDependencies:
-      '@farmfe/core': '*'
-      '@rspack/core': '*'
-      bun-types-no-globals: '*'
-      esbuild: '*'
-      rolldown: '*'
-      rollup: '*'
-      unloader: '*'
-      vite: '*'
-      webpack: '*'
-    peerDependenciesMeta:
-      '@farmfe/core':
-        optional: true
-      '@rspack/core':
-        optional: true
-      bun-types-no-globals:
-        optional: true
-      esbuild:
-        optional: true
-      rolldown:
-        optional: true
-      rollup:
-        optional: true
-      unloader:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
 
   unzipper@0.10.14:
     resolution: {integrity: sha512-ti4wZj+0bQTiX2KmKWuwj7lhV+2n//uXEotUmGuQqrbVZSEGFMbI68+c6JCQ8aAmUWYvtHEz2A8K6wXvueR/6g==}
@@ -4740,8 +4696,8 @@ packages:
       vite:
         optional: true
 
-  vocs@2.6.0:
-    resolution: {integrity: sha512-wRfYytFgAHZPuWDLxp3rfarS8j8Zo4nXhfSQZYx2vCqk42FUsQrGoXqO+AXdtx7SCf/xWIB06560AUMw+WYZLA==}
+  vocs@2.3.3:
+    resolution: {integrity: sha512-mIRjZ4pCAXVM+2tJHJrloMW1U2tlSSm1g/lmZSF/uSABrOfMubZW0BagdBt90E/3j2/brEeKQVHSPKPvY8wkAg==}
     hasBin: true
     peerDependencies:
       '@vocs/twoslash-rust': ^0.1.0
@@ -5689,7 +5645,7 @@ snapshots:
   '@floating-ui/vue@1.1.9(vue@3.5.40(typescript@5.9.3))':
     dependencies:
       '@floating-ui/dom': 1.8.0
-      '@floating-ui/utils': 0.2.10
+      '@floating-ui/utils': 0.2.12
       vue-demi: 0.14.10(vue@3.5.40(typescript@5.9.3))
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -5713,10 +5669,6 @@ snapshots:
       hono: 4.12.19
 
   '@iconify-json/lucide@1.2.121':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify-json/ri@1.2.10':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -8477,8 +8429,6 @@ snapshots:
 
   hono@4.12.34: {}
 
-  hookable@6.1.1: {}
-
   html-void-elements@3.0.0: {}
 
   html-whitespace-sensitive-tag-names@3.0.1: {}
@@ -10218,22 +10168,6 @@ snapshots:
 
   undici-types@8.3.0: {}
 
-  unhead@3.2.3(esbuild@0.28.1)(rolldown@1.0.1)(rollup@4.60.4)(vite@8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(webpack@5.107.2(esbuild@0.28.1)):
-    dependencies:
-      hookable: 6.1.1
-      unplugin: 3.3.0(esbuild@0.28.1)(rolldown@1.0.1)(rollup@4.60.4)(vite@8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(webpack@5.107.2(esbuild@0.28.1))
-    optionalDependencies:
-      vite: 8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)
-    transitivePeerDependencies:
-      - '@farmfe/core'
-      - '@rspack/core'
-      - bun-types-no-globals
-      - esbuild
-      - rolldown
-      - rollup
-      - unloader
-      - webpack
-
   unified@11.0.5:
     dependencies:
       '@types/unist': 3.0.3
@@ -10308,18 +10242,6 @@ snapshots:
       picomatch: 4.0.5
       webpack-virtual-modules: 0.6.2
 
-  unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.0.1)(rollup@4.60.4)(vite@8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(webpack@5.107.2(esbuild@0.28.1)):
-    dependencies:
-      '@jridgewell/remapping': 2.3.5
-      picomatch: 4.0.5
-      webpack-virtual-modules: 0.6.2
-    optionalDependencies:
-      esbuild: 0.28.1
-      rolldown: 1.0.1
-      rollup: 4.60.4
-      vite: 8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)
-      webpack: 5.107.2(esbuild@0.28.1)
-
   unzipper@0.10.14:
     dependencies:
       big-integer: 1.6.52
@@ -10392,13 +10314,12 @@ snapshots:
     optionalDependencies:
       vite: 8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)
 
-  vocs@2.6.0(@types/react@19.2.17)(@vue/compiler-sfc@3.5.40)(axios@1.18.1)(esbuild@0.28.1)(mermaid@11.16.0)(react-dom@19.2.7(react@19.2.7))(react-router-dom@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-router@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.1)))(react@19.2.7)(rolldown@1.0.1)(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(waku@1.0.0-beta.6(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.1)))(react@19.2.7)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(webpack@5.107.2(esbuild@0.28.1)):
+  vocs@2.3.3(@types/react@19.2.17)(@vue/compiler-sfc@3.5.40)(axios@1.18.1)(mermaid@11.16.0)(react-dom@19.2.7(react@19.2.7))(react-router-dom@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-router@7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.1)))(react@19.2.7)(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(waku@1.0.0-beta.6(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react-server-dom-webpack@19.2.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(webpack@5.107.2(esbuild@0.28.1)))(react@19.2.7)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)):
     dependencies:
       '@base-ui/react': 1.6.0(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@codesandbox/sandpack-react': 2.20.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@hono/node-server': 2.0.12(hono@4.12.34)
       '@iconify-json/lucide': 1.2.121
-      '@iconify-json/ri': 1.2.10
       '@iconify-json/simple-icons': 1.2.93
       '@iconify-json/vscode-icons': 1.2.68
       '@iconify/types': 2.0.0
@@ -10465,7 +10386,6 @@ snapshots:
       tailwindcss-logical: 4.2.0(tailwindcss@4.3.2)
       tsx: 4.23.5
       twoslash: 0.3.9(typescript@5.9.3)
-      unhead: 3.2.3(esbuild@0.28.1)(rolldown@1.0.1)(rollup@4.60.4)(vite@8.0.13(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))(webpack@5.107.2(esbuild@0.28.1))
       unified: 11.0.5
       unist-util-visit: 5.1.0
       unplugin-icons: 22.5.0(@svgr/core@8.1.0(typescript@5.9.3))(@vue/compiler-sfc@3.5.40)
@@ -10482,10 +10402,8 @@ snapshots:
     transitivePeerDependencies:
       - '@cfworker/json-schema'
       - '@date-fns/tz'
-      - '@farmfe/core'
       - '@remix-run/react'
       - '@rolldown/plugin-babel'
-      - '@rspack/core'
       - '@svgx/core'
       - '@tanstack/react-router'
       - '@types/react'
@@ -10494,11 +10412,9 @@ snapshots:
       - async-validator
       - axios
       - babel-plugin-react-compiler
-      - bun-types-no-globals
       - change-case
       - date-fns
       - drauu
-      - esbuild
       - idb-keyval
       - jwt-decode
       - next
@@ -10507,17 +10423,14 @@ snapshots:
       - react-router
       - react-router-dom
       - react-server-dom-webpack
-      - rolldown
       - rollup
       - sortablejs
       - supports-color
       - svelte
       - typescript
       - universal-cookie
-      - unloader
       - vue-template-compiler
       - vue-template-es2015-compiler
-      - webpack
 
   vscode-languageserver-textdocument@1.0.12: {}
 
