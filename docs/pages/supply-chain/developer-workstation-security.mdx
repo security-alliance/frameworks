@@ -40,12 +40,8 @@ into internal systems. It can therefore compromise downstream builds even when t
 Execution may begin when an IDE opens a repository, a package manager runs a lifecycle script, an extension or Model
 Context Protocol (MCP) server starts, an AI agent reads project instructions, or a framework deserializes a model
 artifact. Treat opening, installing, importing, building, testing, and asking an agent to work as distinct execution
-decisions.
-
-## Treat development inputs as untrusted
-
-Trust applies to a specific artifact and version, not to a familiar filename, repository name, or author profile.
-Review these inputs before allowing them to interact with a normal workstation:
+decisions. For that reason, trust applies to a specific artifact and version, not to a familiar filename, repository
+name, or author profile. Treat these development inputs as untrusted until they have been reviewed:
 
 | Input | Possible execution path | Review focus |
 | --- | --- | --- |
