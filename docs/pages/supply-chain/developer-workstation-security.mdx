@@ -1,6 +1,6 @@
 ---
 title: "Developer Workstation Security | SEAL"
-description: "Screen repositories, IDE configuration, AI tools, and dependencies before execution to stop supply chain attacks at the developer workstation boundary."
+description: "Screen repositories, IDE configuration, AI tools, and dependencies before execution to stop supply-chain attacks at the developer workstation boundary."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -21,8 +21,9 @@ import { TagList, AttributionList, Checklist, ContributeFooter } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Screen untrusted development material before an IDE, package manager, model loader, or AI
-> agent interprets it. Confinement limits the damage when screening misses a malicious input.
+> 🔑 **Key Takeaway**: Screen untrusted development material before an integrated development environment (IDE),
+> package manager, model loader, or artificial intelligence (AI) agent interprets it. Confinement limits the damage
+> when screening misses a malicious input.
 
 A developer workstation is an execution boundary, not just a place to edit code. Routine actions can activate content
 from another party before a developer reaches the application entry point.
@@ -70,8 +71,8 @@ Apply the following gates in order. A failed or inconclusive gate keeps the mate
    launch and container files, Git hooks, package scripts, build plugins, MCP startup commands, agent rules and skills,
    and model-loading code. A plausible commit author or old timestamp does not defeat **forged history**; corroborate
    important revisions with signed releases, immutable object identifiers, repository audit data, or a known upstream.
-   A trusted workspace may permit **workspace auto-run**, so keep Workspace Trust disabled and automatic tasks off
-   until these files pass review.
+   A trusted workspace may permit **workspace auto-run**, so keep Workspace Trust enabled, leave the folder untrusted
+   in Restricted Mode, and require explicit approval before trusting it or enabling automatic tasks.
 
 3. **Scan and compare artifacts with reviewed source.** Run static malware, dependency, secret, and policy scans without
    importing the project. Inspect unusually large whitespace, encoded strings, binary files in source paths, and
@@ -101,7 +102,7 @@ Use endpoint detection and response (EDR) and mobile device management (MDM) to 
 
 <Checklist id="developer-workstation-supply-chain-baseline">
 
-- [ ] Require Workspace Trust or the IDE's equivalent before project features activate
+- [ ] Keep Workspace Trust enabled, leave unfamiliar folders untrusted, and require explicit approval before trusting them
 - [ ] Disable automatic workspace tasks and review task configuration before enabling it
 - [ ] Allowlist IDE extensions, coding-agent extensions, and MCP servers
 - [ ] Pin approved tool and dependency versions and verify integrity metadata
@@ -144,10 +145,13 @@ If malware may have executed, follow the immediate containment and recovery step
 
 ## Case study and related guidance
 
-The DPRK-linked **Contagious Interview** activity used convincing coding exercises and repositories to push developers
-toward installation or execution. Technical reporting on the related **PolinRider** cluster documents malicious
-project files, including `.vscode/tasks.json` entries with `runOn: "folderOpen"`, that retrieved and executed a payload
-after the workspace allowed automatic tasks.
+Activity linked to the Democratic People's Republic of Korea (DPRK), tracked as **Contagious Interview**, used
+convincing coding exercises and repositories to push developers toward installation or execution. OpenSourceMalware
+dated its related **PolinRider** dossier March 7, 2026, and last updated it April 11, 2026; a separate Contagious
+Interview repository analysis was published June 30, 2026. These are report publication and update dates, not claims
+about when the activity began or ended. The reports document malicious project files, including
+`.vscode/tasks.json` entries with `runOn: "folderOpen"`, that retrieved and executed a payload after the workspace
+allowed automatic tasks.
 
 This execution path is **repository-controlled workspace automation, not a malicious VS Code extension**. The task
 definition arrives as a project file and the IDE's built-in task runner interprets it. A malicious extension is a
@@ -158,6 +162,9 @@ detection signals.
 ## Further reading
 
 - [DPRK IT Workers](/dprk-it-workers/overview): organizational controls for DPRK-linked hiring and insider risk
+- [AI Security](/ai-security/overview): runtime controls for AI systems, coding agents, tool calls, and model use
+- [Endpoint Security](/opsec/endpoint/overview): managed endpoint provisioning, EDR, MDM, and credential-separation
+  ownership
 - [Integrated Development Environments](/devsecops/integrated-development-environments): extension review and general
   IDE hardening
 - [Dependency Awareness](/supply-chain/dependency-awareness): package pinning, lockfiles, and dependency review
