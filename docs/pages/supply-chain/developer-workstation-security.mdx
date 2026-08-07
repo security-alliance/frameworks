@@ -178,18 +178,19 @@ Coordinate the investigation through [Supply Chain Incident Response](/supply-ch
 If malware may have executed, follow the immediate containment and recovery steps in the
 [Malware Infection playbook](/incident-management/playbooks/malware).
 
-The examples below connect a documented failure to a governance lesson. The PolinRider execution path is
+The examples below connect a documented failure to a governance lesson. Dates are source publication and update dates,
+not when activity began or ended. The PolinRider execution path is
 **repository-controlled workspace automation, not a malicious extension installation**: the repository supplies the
 task, while the IDE's built-in task runner interprets it after trust is granted. Extension publishing incidents involve
 a separate artifact, approval path, and detection signal.
 
 | Example | Control failure | Governance lesson |
 | --- | --- | --- |
-| [Contagious Interview / PolinRider](https://github.com/OpenSourceMalware/PolinRider) | Repository-controlled workspace tasks executed locally | Quarantine repositories and require explicit workspace trust |
-| [Amazon Q extension incident](https://aws.amazon.com/security/security-bulletins/AWS-2025-015/) | An extension publishing path and release control were compromised | Approve publishers and versions, control updates, and monitor release drift |
-| [`postmark-mcp`](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/) | A later MCP package version added covert data exfiltration | Treat MCP servers as executable vendors; pin, review, monitor, and revoke |
-| [Nx `s1ngularity`](https://github.com/nrwl/nx/security/advisories/GHSA-cxm3-wv7p-598c) | A compromised dependency used local AI tooling and credentials | Separate credentials, constrain agent capabilities, and monitor package behavior |
-| [Slopsquatting research](https://www.usenix.org/system/files/usenixsecurity25-spracklen.pdf) | AI generated plausible package names that did not exist | Verify package identity against canonical documentation before approval |
+| [Contagious Interview / PolinRider](https://github.com/OpenSourceMalware/PolinRider)<br />Dossier: March 7, 2026; updated April 11, 2026 | Repository-controlled workspace tasks executed locally | Quarantine repositories and require explicit workspace trust |
+| [Amazon Q extension incident](https://aws.amazon.com/security/security-bulletins/AWS-2025-015/)<br />AWS bulletin: July 23, 2025; updated July 25, 2025 | An extension publishing path and release control were compromised | Approve publishers and versions, control updates, and monitor release drift |
+| [`postmark-mcp`](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/)<br />Snyk analysis: September 25, 2025 | A later MCP package version added covert data exfiltration | Treat MCP servers as executable vendors; pin, review, monitor, and revoke |
+| [Nx `s1ngularity`](https://github.com/nrwl/nx/security/advisories/GHSA-cxm3-wv7p-598c)<br />GitHub advisory: August 27, 2025; updated August 30, 2025 | A compromised dependency used local AI tooling and credentials | Separate credentials, constrain agent capabilities, and monitor package behavior |
+| [Slopsquatting research](https://www.usenix.org/system/files/usenixsecurity25-spracklen.pdf)<br />USENIX Security 2025 paper | AI generated plausible package names that did not exist | Verify package identity against canonical documentation before approval |
 
 ## Further reading
 
