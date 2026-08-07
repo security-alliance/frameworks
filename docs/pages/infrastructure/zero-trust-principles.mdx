@@ -1,10 +1,17 @@
 ---
 title: "Zero Trust Principles | Security Alliance"
-description: "Implement Zero-Trust security: verify every user and device regardless of location. Use MFA, micro-segmentation, just-in-time access, and continuous monitoring for breach prevention."
+description: "Implement Zero-Trust security: verify every user and device regardless of location. Use MFA, micro-segmentation, just-in-time access"
 tags:
   - Engineer/Developer
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -14,10 +21,13 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Zero trust means authenticate and authorize every request with least privilege—location on the LAN
+> is not a trust signal.
+
 The Zero-Trust security model assumes that threats can exist both inside and outside the network. It requires strict
 verification for every user and device attempting to access resources, regardless of their location.
 
-## Key Principles
+## Key principles
 
 1. Always authenticate and authorize based on all available data points, including user identity, location, device
 health, and service or workload.
@@ -32,6 +42,15 @@ protection.
 3. Ensure all endpoints (e.g., devices, servers) comply with security policies before granting access.
 4. Implement continuous monitoring and analytics to detect and respond to anomalies in real-time.
 5. Use automation to enforce security policies consistently across the network.
+
+
+## Further Reading
+
+- [Infrastructure overview](/infrastructure/overview): how the pages of this framework fit together
+- [Access Management](/iam/access-management): the identity controls zero trust depends on
+- [Network Security](/infrastructure/network-security): segmentation and encryption between workloads
+- [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final): the reference definition and
+  deployment models
 
 ---
 

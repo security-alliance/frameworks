@@ -1,12 +1,16 @@
 ---
 title: "ENS Interface Compliance | Security Alliance"
-description: "Verify ENS resolver interface support with EIP-165 supportsInterface() before calling methods. Implement proper interface signaling in custom resolvers and stay updated with ENSIPs."
+description: "Verify ENS resolver interface support with EIP-165 supportsInterface() before calling methods. Implement proper interface signaling in custom resolvers and stay"
 tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
-- role: wrote
-  users: [ghadi8]
+  - role: wrote
+    users: [ghadi8]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Call EIP-165 `supportsInterface` before resolver methods. Missing checks create fragile
+> integrations and failed or unsafe calls on limited resolvers.
 
 ## Verify Resolver Interface Support
 
@@ -56,6 +63,15 @@ broader ecosystem and can leverage new functionality as it becomes available. EN
 vulnerabilities, improve user experience, or add valuable new features that users will come to expect. Implementers who
 track and promptly adopt new ENSIPs gain competitive advantages while contributing to the overall health and advancement
 of the ENS ecosystem.
+
+
+## Further Reading
+
+- [ENS overview](/ens/overview): how the pages of this framework fit together
+- [Cross-Chain Compatibility](/ens/cross-chain-compatibility): the resolver features most often missing on other chains
+- [EIP-165: Standard Interface Detection](https://eips.ethereum.org/EIPS/eip-165): the `supportsInterface` contract this
+  page relies on
+- [ensdomains/ensips](https://github.com/ensdomains/ensips): track new and deprecated interfaces as proposals progress
 
 ---
 

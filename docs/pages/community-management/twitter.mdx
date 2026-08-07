@@ -1,6 +1,6 @@
 ---
 title: "Twitter/X Security | Security Alliance"
-description: "Protect your X (Twitter) account from SIM swapping: remove your phone number, enable 2FA with an authenticator app or security key, and enable password reset protection."
+description: "Protect project X (Twitter) accounts from SIM swapping and OAuth abuse: remove phone recovery paths, prefer strong MFA, audit apps and sessions"
 tags:
   - Community & Marketing
 contributors:
@@ -8,6 +8,8 @@ contributors:
     users: [mattaereal, zedt3ster, fredriksvantes, auditware, nftdreww]
   - role: reviewed
     users: [mattaereal, nftdreww]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,62 +19,77 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-X account security spans authentication hardening, session management, third-party app access, and recovery settings — each covered in depth in the [X (Twitter) Security Guide](/guides/account-management/twitter). Use this page to find the right section.
+> 🔑 **Key Takeaway**: A project X account can broadcast scams in one post. Prefer strong multi-factor authentication
+> (MFA), remove SIM-swapable recovery paths, and revoke stale OAuth access.
 
----
+X account security spans authentication hardening, session management, third-party app access, and recovery settings—
+each covered in depth in the [X (Twitter) Security Guide](/guides/account-management/twitter). Use this page to find the
+right section.
 
 ## The community manager's role in security
 
-A community manager running a project's X account is one of the highest-value targets in Web3. Your account is public-facing, often verified, and carries the implicit trust of every follower you've built. When you post a link, people click it. When you make an announcement, people act on it. That reach is exactly what attackers are after.
+A community manager running a project's X account is a high-value Web3 target. The account is public-facing, often
+verified, and carries follower trust. Posted links get clicked; announcements get acted on. That reach is what attackers
+want.
 
-Unlike Discord — where compromise requires navigating server permissions and roles- a taken-over X account can do damage in a single post. Scam links, fake token launches, fraudulent airdrop announcements: all of these reach your entire audience instantly, from an account they already trust. The window between compromise and widespread harm is measured in minutes.
+Unlike Discord—where compromise often still navigates roles and permissions—a taken-over X account can do damage in a
+single post. Scam links, fake token launches, and fraudulent airdrop announcements can reach the full audience from an
+account followers already trust. The window between compromise and widespread harm is measured in minutes.
 
-X account takeovers in the Web3 space follow a small number of well-documented patterns: SIM swapping to bypass SMS-based 2FA, phishing via fake login screens, and exploitation of forgotten third-party app tokens that retain OAuth access long after the app was last used. None of these require sophisticated attacks. All of them are preventable with the controls in this guide.
+X account takeovers in Web3 often follow documented patterns: SIM swapping against SMS-based MFA, phishing via fake
+login screens, and exploitation of forgotten third-party OAuth tokens that retain access long after the app was last
+used. These paths do not require exotic vulnerabilities. The linked guide documents preventable controls.
 
 ### Why following this guide is not optional
 
-The most common failure mode is not ignorance; it is configuration drift. An account that was secured at setup gradually accumulates risk: a phone number added for convenience, a scheduling tool connected years ago with broad permissions, a session left open on an old device. Each of these is a door. Attackers look for unlocked ones.
+A common failure mode is configuration drift. An account secured at setup gradually accumulates risk: a phone number
+added for convenience, a scheduling tool connected years ago with broad permissions, a session left open on an old
+device. Each is a door. Attackers look for unlocked ones.
 
-As a community manager, you are also the last line of defense before your followers are exposed. Your organization can have excellent internal security practices and still have its community harmed through a single unsecured social account. The guide exists to close those gaps in a way that is repeatable and auditable.
+Community managers are also a last line of defense before followers are exposed. Strong internal security does not help
+if a single social account is the weak outbound path. The guide closes those gaps in a repeatable way.
 
-### What's at stake if you don't
+### What is at stake
 
 | Risk | Consequence |
-|---|---|
-| **Account takeover via SIM swap** | Attacker ports your phone number, resets your X password, and locks you out; often within the same hour |
-| **Phishing via fake login screen** | Credentials harvested through convincing X login replicas; account access transferred before you notice |
-| **Third-party app token abuse** | Old OAuth tokens from connected apps exploited after those apps are breached, granting persistent account access without your password |
-| **Retained access post-recovery** | Connected accounts left in place allow an attacker to regain access even after you change your password |
-| **Scam broadcast to followers** | Fake links, fraudulent token launches, or malicious airdrops posted from your account to an audience that trusts it |
-| **Reputational damage** | Compromise events on public accounts are screenshotted and shared within minutes; community trust takes months to rebuild |
+| --- | --- |
+| **Account takeover via SIM swap** | Attacker ports the phone number, resets the X password, and locks operators out |
+| **Phishing via fake login screen** | Credentials harvested; account access transfers before detection |
+| **Third-party app token abuse** | Old OAuth tokens from connected apps grant persistent access without the password |
+| **Retained access post-recovery** | Connected accounts left in place allow re-entry after a password change |
+| **Scam broadcast to followers** | Fake links or malicious airdrops posted from a trusted account |
+| **Reputational damage** | Public compromise is captured quickly; trust rebuild is slow |
 
-The guide addresses each of these with specific, step-by-step controls. None require technical expertise. All of them significantly reduce the probability and impact of a takeover.
+The guide addresses these with specific controls that do not require deep technical expertise.
 
 ## What the guide covers
 
-The guide applies to every team member with access to the account, not only the primary account holder.
+The guide applies to every team member with access to the account, not only the primary holder.
 
 | Audience | What it covers |
-|---|---|
-| **All account holders** | 2FA method selection, phone number removal, email security, backup codes |
+| --- | --- |
+| **All account holders** | MFA method selection, phone number removal, email security, backup codes |
 | **Account admins** | Password reset protection, connected account audit, third-party app permissions, active session review |
-
----
 
 ## Topic index
 
 | Topic | Summary | Guide section |
-|---|---|---|
-| **2FA method** | Use an authenticator app or hardware security key; SMS-based 2FA is vulnerable to SIM swapping and should be removed | [→ 2FA](/guides/account-management/twitter#account-security-checklist) |
-| **Phone number removal** | Remove your phone number from the account entirely — it is the primary vector for SIM swap takeovers | [→ Phone number](/guides/account-management/twitter#account-security-checklist) |
-| **Email security** | Use a non-obvious email address not linked to your public identity; enable password reset protection | [→ Email](/guides/account-management/twitter#1-email-security) |
-| **Password reset protection** | Require email or phone confirmation before a reset can be initiated, blocking hint-based attacks | [→ Reset protection](/guides/account-management/twitter#account-security-checklist) |
-| **Connected accounts** | Review and remove any third-party accounts used to log in; prior compromise can persist through these | [→ Connected accounts](/guides/account-management/twitter#account-security-checklist) |
-| **Third-party app permissions** | Audit and revoke OAuth access for apps no longer in use; old tokens remain valid until explicitly revoked | [→ App permissions](/guides/account-management/twitter#best-practices--additional-tips) |
-| **Active session review** | Log out of unrecognized devices and sessions; any unfamiliar session is a potential persistent access point | [→ Sessions](/guides/account-management/twitter#best-practices--additional-tips) |
+| --- | --- | --- |
+| **MFA method** | Prefer authenticator apps or hardware security keys; remove SMS MFA when feasible (SIM-swap risk) | [MFA](/guides/account-management/twitter#account-security-checklist) |
+| **Phone number removal** | Remove the phone number from the account when operationally possible—primary SIM-swap vector | [Phone number](/guides/account-management/twitter#account-security-checklist) |
+| **Email security** | Prefer a non-obvious email not tied to public identity; enable password reset protection | [Email](/guides/account-management/twitter#1-email-security) |
+| **Password reset protection** | Require email or controlled confirmation before reset to block weak recovery paths | [Reset protection](/guides/account-management/twitter#account-security-checklist) |
+| **Connected accounts** | Review and remove third-party login linkages that can retain compromise | [Connected accounts](/guides/account-management/twitter#account-security-checklist) |
+| **Third-party app permissions** | Audit and revoke OAuth for unused apps; tokens remain until revoked | [App permissions](/guides/account-management/twitter#best-practices--additional-tips) |
+| **Active session review** | Sign out unrecognized devices; treat unfamiliar sessions as potential persistence | [Sessions](/guides/account-management/twitter#best-practices--additional-tips) |
+
+For step-by-step procedures, see the [X (Twitter) Security Guide](/guides/account-management/twitter).
+
+## Further Reading
+
+- [X (Twitter) Security Guide](/guides/account-management/twitter)
+- [X Help Center — Account security](https://help.x.com/en/safety-and-security/account-security-tips)
 
 ---
-
-For a comprehensive guide on securing your X (Twitter) account, see the [**Twitter/X Security Guide**](/guides/account-management/twitter).
 
 <ContributeFooter />

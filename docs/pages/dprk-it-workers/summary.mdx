@@ -1,6 +1,6 @@
 ---
 title: "DPRK IT Workers Summary | Security Alliance"
-description: "Quick reference guide: who are DPRK IT Workers, how to spot them during hiring, verify existing employees, harden your organization with least privilege access, and respond after discovery."
+description: "Quick reference guide: who are DPRK IT Workers, how to spot them during hiring, verify existing employees, harden your organization with least privilege access"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,17 +8,23 @@ tags:
   - HR
   - Engineer/Developer
 contributors:
-- role: wrote
-  users: [blackbigswan]
-- role: reviewed
-  users: [yaniv, dickson]
+  - role: wrote
+    users: [blackbigswan]
+  - role: reviewed
+    users: [yaniv, dickson]
+  - role: fact-checked
+    users: []
 ---
+
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # Summary
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Hire for identity integrity, verify remote workers continuously, apply least
+> privilege, and respond with urgency when a DPRK worker is discovered.
 
 * **Who are DPRK IT Workers?** They are North Korean individuals, often operating from abroad (primarily China and
 Russia), who use fraudulent identities to secure remote IT jobs. Their primary goal is to generate revenue for the North
@@ -67,6 +73,15 @@ future hacking activities.
     files (CI/CD), and potential backdoors.
   * Once your systems are secure, terminate their contract using a business-related reason (e.g., downsizing, change
     in direction) and report the incident to law enforcement.
+
+
+## Further Reading
+
+- [DPRK IT Workers overview](/dprk-it-workers/overview): how the pages of this framework fit together
+- [Techniques, Tactics, and Procedures](/dprk-it-workers/techniques-tactics-and-procedures): the full set of hiring and
+  post-hire indicators
+- [Mitigating DPRK IT Workers](/dprk-it-workers/mitigating-dprk-it-workers): the detailed hardening and response steps
+- [DPRK Attack Playbook](/incident-management/playbooks/hacked-dprk): incident response once a worker is confirmed
 
 ---
 

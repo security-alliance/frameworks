@@ -1,6 +1,6 @@
 ---
 title: "DevSecOps Isolation & Sandboxing Reference | SEAL"
-description: "Brief AI Security takeaway with direct links to DevSecOps isolation and sandboxing guidance."
+description: "Brief AI Security takeaway with direct links to DevSecOps isolation and sandboxing guidance. Use this page as the bridge; implement containment there."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -9,6 +9,8 @@ tags:
 contributors:
   - role: wrote
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Isolation and sandboxing for AI tool runners live primarily under DevSecOps. Use this page as
+> the bridge; implement containment there.
 
 For AI systems that execute tools, run code, or touch sensitive environments,
 strong isolation is a runtime safety baseline. Keep AI Security focused on
@@ -33,6 +38,14 @@ containment patterns.
 - [Network & Resource Isolation](/devsecops/isolation/network-and-resource-isolation)
 - [Sandboxing for Tool Execution](/devsecops/isolation/sandboxing-for-tool-execution)
 - [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement)
+
+## Further Reading
+
+- [AI Security overview](/ai-security/overview): how the pages of this framework fit together
+- [Execution-Path Enforcement](/ai-security/execution-path-enforcement): the AI-side control that isolation backstops
+- [Developer Machine Sandboxing](/devsecops/isolation/developer-machine-sandboxing): containing agents running on a
+  workstation
+- [DevSecOps overview](/devsecops/overview): where these containment patterns sit in the delivery pipeline
 
 ---
 

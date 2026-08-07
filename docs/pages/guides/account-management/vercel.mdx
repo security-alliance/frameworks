@@ -1,11 +1,13 @@
 ---
 title: "Vercel Security | Security Alliance"
-description: "Secure your Vercel account and team: enable 2FA, review access tokens, manage team members, configure deployment protection, and ensure sensitive environment variables are properly secured."
+description: "Secure your Vercel account and team: enable 2FA, review access tokens, manage team members, configure deployment protection"
 tags:
   - DevOps Accounts
 contributors:
   - role: wrote
     users: [auditware]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -17,13 +19,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Summary
 
-> 🔑 **Key Takeaway for Vercel:** Secure your Vercel account by enabling two-factor authentication, reviewing personal
+> 🔑 **Key Takeaway**: Secure your Vercel account by enabling two-factor authentication, reviewing personal
 > access tokens, and ensuring team-level security policies are enforced. Configure deployment protection, mark sensitive
 > environment variables appropriately, and regularly audit team member access and integrations.
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
-
----
 
 ## For Individuals
 
@@ -39,8 +39,6 @@ For individual Vercel accounts, ensure you have:
 - [ ]  Review connected Git accounts and remove any unnecessary connections
 </Checklist>
 
----
-
 ## For Team Members
 
 These guidelines apply to team members who use Vercel but don't have full administrative access.
@@ -52,8 +50,6 @@ Team members should:
 - Regularly review and remove any unnecessary personal access tokens
 - Be aware of which projects they have access to and report any unexpected access
 - Never share environment variables or secrets outside of approved channels
-
----
 
 ## For Admins
 
@@ -92,6 +88,14 @@ These settings and practices apply to Vercel team administrators with elevated p
   - [ ] Secure Backend Access With OIDC Federation > **Team**
 
 </Checklist>
+
+## Further Reading
+
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Web Application Security](/front-end-web-app/web-application-security): securing what gets deployed here
+- [CDN & Hosting Compromise Runbook](/incident-management/incident-response-template/runbooks/cdn-hosting-compromise):
+  response steps if the deployment platform is taken over
+- [Vercel: security](https://vercel.com/docs/security): vendor documentation for platform and team controls
 
 ---
 

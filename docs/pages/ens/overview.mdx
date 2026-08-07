@@ -1,12 +1,16 @@
 ---
 title: "ENS Best Practices | Security Alliance"
-description: "ENS Framework: Securely implement ENS in your applications with L1 data verification, ENSIP-15 normalization, bidirectional resolution, CCIP-Read support, and cross-chain compatibility."
+description: "Secure ENS integration: L1-backed resolution for funds, ENSIP-15 normalization, bidirectional checks, interface detection, cointype, and CCIP-Read (EIP-3668)."
 tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
-- role: wrote
-  users: [ghadi8]
+  - role: wrote
+    users: [ghadi8]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,32 +20,41 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: To securely implement ENS in your applications, prioritize direct L1 data verification, enforce
-> proper name normalization, and validate bidirectional resolution. Always verify interface support before interaction,
-> respect chain-specific cointype parameters, and implement [CCIP-Read](https://eips.ethereum.org/EIPS/eip-3668)
-> functionality correctly. These practices prevent address spoofing, ensure cross-chain compatibility, and maintain data
-> integrity throughout the ENS ecosystem.
+> 🔑 **Key Takeaway**: Secure ENS use means fresh L1-backed resolution for funds moves, correct name normalization, and
+> verified bidirectional records—plus interface checks, cointype awareness, and correct CCIP-Read handling.
 
-The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.
+The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system on Ethereum. It maps human-readable
+names (for example `alice.eth`) to machine-readable identifiers such as addresses, content hashes, and metadata. ENS
+also supports reverse resolution so addresses can advertise a primary name and related metadata.
 
-ENS maps human-readable names like 'alice.eth' to machine-readable identifiers such as Ethereum addresses, other
-cryptocurrency addresses, content hashes, metadata, and more. ENS also supports 'reverse resolution', making it possible
-to associate metadata such as primary names or interface descriptions with Ethereum addresses.
+Mis-implemented ENS flows cause spoofed names, wrong-chain sends, and failed or dangerous resolutions. This framework
+collects integration practices that reduce those failures.
 
-## What This Framework Covers
+## What this framework covers
 
-This best practices framework includes guidance on:
+1. [Data Integrity and Verification](/ens/data-integrity-verification): L1 resolution for financial actions and reverse
+   record verification.
+2. [Cross-Chain Compatibility](/ens/cross-chain-compatibility): cointype (ENSIP-11), CCIP-Read (EIP-3668), reverse
+   records per chain (ENSIP-19 context on the first-party docs).
+3. [Smart Contract Integration](/ens/smart-contract-integration): naming contracts and using ENS as infrastructure.
+4. [Interface Compliance](/ens/interface-compliance): EIP-165 `supportsInterface` before method calls and custom resolver
+   signaling.
+5. [Name Handling and Normalization](/ens/name-handling-normalization): ENSIP-15 normalization and homograph defenses.
 
-* **[Data Integrity & Verification](/ens/data-integrity-verification)** - Ensuring reliable and secure name resolution
-* **[Cross-Chain Compatibility](/ens/cross-chain-compatibility)** - Supporting ENS across multiple blockchain networks
-* **[Smart Contract Integration](/ens/smart-contract-integration)** - Leveraging ENS in smart contract systems
-* **[Interface Compliance](/ens/interface-compliance)** - Correctly implementing and [verifying ENS
-  interfaces](https://eips.ethereum.org/EIPS/eip-165)
-* **[Name Handling & Normalization](/ens/name-handling-normalization)** - Properly processing and displaying ENS names
+## Related frameworks
 
-These recommendations are designed for developers integrating ENS into applications, wallets, smart contracts, or other
-blockchain systems. Following these practices will help create more secure, reliable, and user-friendly ENS
-implementations.
+- [Front-End / Web App](/front-end-web-app/overview): client surfaces that display and resolve names
+- [Wallet Security](/wallet-security/overview): confirmation UX when resolving to send destinations
+- [Smart contract external reviews](/external-security-reviews/smart-contracts/overview): when contracts embed resolvers
+- [Infrastructure](/infrastructure/overview): RPC and node trust assumptions for resolution
+- [Secure Software Development](/secure-software-development/overview): reviews and standards for resolver-using code
+
+## Further Reading
+
+- [ENS documentation](https://docs.ens.domains/)
+- [ENSIP index](https://docs.ens.domains/ensip/)
+- [EIP-3668 (CCIP-Read)](https://eips.ethereum.org/EIPS/eip-3668)
+- [EIP-165](https://eips.ethereum.org/EIPS/eip-165)
 
 ---
 

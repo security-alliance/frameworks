@@ -26,3 +26,7 @@ lint:
     @echo ""
     @echo "Running markdownlint..."
     find ./docs/pages -name "*.mdx" -print0 | xargs -0 markdownlint-cli2
+
+# Objective MDX structure checks (non-strict by default; see content-model.mdx)
+validate-content *args:
+    pnpm run validate:content -- {{args}}

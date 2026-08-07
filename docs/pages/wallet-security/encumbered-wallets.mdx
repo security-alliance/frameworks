@@ -1,6 +1,6 @@
 ---
 title: "TEE-based Encumbered Wallets | Security Alliance"
-description: "TEE-based encumbered wallets: implement cross-chain security policies using Trusted Execution Environments. Fine-grained permissions, time-bounded access, and compliance features for any blockchain."
+description: "TEE-based encumbered wallets: implement cross-chain security policies using Trusted Execution Environments. Fine-grained permissions, time-bounded access"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,7 +10,8 @@ contributors:
     users: [njelich]
   - role: reviewed
     users: [pinalikefruit]
-
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: TEE and encumbrance-based wallets shift trust into hardware and policy constraints. Validate the
+> threat model and failure modes; they are not automatic trustlessness.
 
 ## User Profile
 
@@ -167,6 +171,15 @@ solutions, as even root or physical access to the host system cannot compromise 
 * Yu, J. (n.d.). PASS: A Provenanced Access Subaccount System for Blockchain Wallets [Stanford University](https://cs191.stanford.edu/projects/Yu,%20Jay_Systems%20191W.pdf)
 * Aublin, P.-L., Mahhouk, M., & Kapitza, R. (n.d.). Towards TEEs with Large Secure Memory and Integrity Protection
   Against HW Attacks [IIJ Innovation Institute, TU Braunschweig](https://www.ibr.cs.tu-bs.de/bib/xml/aublin2022scalableSGX.html)
+
+## Further Reading
+
+- [Wallet Security overview](/wallet-security/overview): how the pages of this framework fit together
+- [Account Abstraction Wallets](/wallet-security/account-abstraction): the on-chain route to programmable policy
+- [Custodial vs. Non-Custodial Wallets](/wallet-security/custodial-vs-non-custodial): the trust model TEE custody sits
+  between
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): distributing trust across signers
+  instead of hardware
 
 ---
 

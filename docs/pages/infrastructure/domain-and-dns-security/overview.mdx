@@ -1,6 +1,6 @@
 ---
 title: "Domain & DNS Security | SEAL"
-description: "Protect Web3 domains from hijacking and wallet drainer attacks. Learn from Curve Finance and Galxe incidents. Prevent irreversible financial losses with DNS security best practices."
+description: "Protect Web3 domains from hijacking and wallet drainer attacks. Learn from Curve Finance and Galxe incidents. Prevent irreversible financial losses with DNS"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [Raiders0786]
   - role: reviewed
     users: [dickson, mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Compromised DNS or registrar control can serve wallet drainers as "the real site." Lock
+> registrars, monitor changes, and treat domain security as fund security.
 
 DNS (Domain Name System) is the backbone of the internet, translating domain names into IP addresses. In Web3, domain
 security is particularly critical as compromised domains can lead to irreversible financial losses through wallet
@@ -41,6 +46,16 @@ characteristics of blockchain technology:
   to user funds without needing to compromise individual accounts.
 - **Reputation damage**: One domain hijack incident can permanently destroy protocol trust, as users lose confidence in
   the project's security practices.
+
+## What this framework covers
+1. [DNS Basics and Common Attacks](/infrastructure/domain-and-dns-security/dns-basics-and-attacks): resolution model and
+   common attack paths.
+2. [DNSSEC, CAA, SMTP DANE and Email Security](/infrastructure/domain-and-dns-security/dnssec-and-email): integrity and
+   email authentication controls.
+3. [Registrar Security and Registry Locks](/infrastructure/domain-and-dns-security/registrar-and-locks): account and lock
+   controls that stop many seizures.
+4. [Monitoring, Alerts, and GitOps](/infrastructure/domain-and-dns-security/monitoring-and-alerting): detect and revert
+   hostile changes quickly.
 
 ## Historical Context
 
@@ -80,6 +95,15 @@ These incidents highlight the critical importance of proper domain security meas
 - [DNS Security in Web3: Attacks & Monitoring Setup
   Explained](https://web3secnews.substack.com/p/the-hidden-dns-threats-that-could) - Comprehensive Web3 DNS security
   guide
+
+
+## Further Reading
+
+- [Infrastructure overview](/infrastructure/overview): how this subsection fits the wider framework
+- [DNS Hijack Runbook](/incident-management/incident-response-template/runbooks/dns-hijack): response steps when records
+  change without authorization
+- [GoDaddy Security](/guides/account-management/godaddy): hardening a registrar account in practice
+- [Front-End & Web App](/front-end-web-app/overview): the site users reach once DNS resolves
 
 ---
 

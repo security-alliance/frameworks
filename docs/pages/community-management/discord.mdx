@@ -1,6 +1,6 @@
 ---
 title: "Discord Security | Security Alliance"
-description: "Secure your Discord server against raids and phishing with 2FA for moderation, Raid Protection, Auto-Moderation Rules, Cold Admin Accounts, and anti-impersonation bots like Wick."
+description: "Secure Discord servers against raids and phishing: managed MFA for mods, raid protection, AutoMod, Cold Admin accounts, bot least privilege, and anti-impersonation."
 tags:
   - Community & Marketing
   - Security Specialist
@@ -20,64 +20,76 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Discord server security spans account hygiene, role architecture, server hardening, and bot management — each covered in depth in the [Discord Security Guide](/guides/account-management/discord). Use this page to find the right section.
+> 🔑 **Key Takeaway**: Discord trust is centralized in operator and bot permissions. Harden accounts and roles before a
+> compromise turns the server into a broadcast phishing channel.
 
----
+Discord server security spans account hygiene, role architecture, server hardening, and bot management—each covered in
+depth in the [Discord Security Guide](/guides/account-management/discord). Use this page to find the right section.
 
 ## The community manager's role in security
 
-A community manager is the primary public-facing operator of a project's Discord server. They control who gets access, which bots run, what permissions roles carry, and how the server responds when something goes wrong. In a Web3 context, that responsibility is significant: your server is often the first place users go to ask questions, verify information, and form their opinion of your project's legitimacy.
+A community manager is the primary public-facing operator of a project's Discord server. They control who gets access,
+which bots run, what permissions roles carry, and how the server responds when something goes wrong. In a Web3 context,
+that responsibility is significant: the server is often the first place users go to ask questions, verify information,
+and form their opinion of project legitimacy.
 
-That visibility is also what makes the community manager one of the most targeted roles in the organization. Attackers specifically pursue community manager accounts because a compromised account grants immediate access to a trusted, high-reach communication channel. A bad actor who takes control of your Discord can post malicious links to your entire community, impersonate your team to drain wallets, lock out your administrators, and permanently damage user trust, often within minutes.
+That visibility is also what makes the community manager one of the most targeted roles in the organization. Attackers
+pursue community manager accounts because compromise grants immediate access to a trusted, high-reach channel. A bad
+actor who takes control can post malicious links, impersonate the team, lock out administrators, and damage trust—often
+within minutes.
 
 ### Why following this guide is not optional
 
-Most Discord compromises do not happen because of sophisticated zero-day exploits. They happen because of predictable, preventable failures: reused passwords, SMS-based 2FA, over-permissioned bots, and admin accounts used for everyday activity. The controls in this guide exist specifically because these attack patterns repeat across projects at scale.
+Most Discord compromises do not require advanced exploits. They follow predictable failures: reused passwords, SMS-based
+multi-factor authentication (MFA), over-permissioned bots, and admin accounts used for everyday activity. The controls
+in the linked guide exist because these patterns repeat across projects.
 
-As a community manager, you are a custodian of user trust. Members follow links you post, believe announcements you make, and act on guidance your account sends. That trust is the attack surface. Hardening your account and your server configuration is not a technical exercise; it is a direct obligation to the people in your community.
+As a community manager, operators are custodians of user trust. Members follow posted links, believe announcements, and
+act on guidance from trusted accounts. That trust is the attack surface. Hardening accounts and server configuration is
+a direct obligation to the community.
 
-### What's at stake if you don't
+### What is at stake
 
 | Risk | Consequence |
-|---|---|
-| **Account takeover** | Attacker posts phishing links to your entire member base from a trusted account |
-| **Admin privilege abuse** | Compromised admin role used to add malicious bots, wipe channels, or ban legitimate team members |
-| **Bot or webhook hijack** | Automated announcements replaced with scam content; hard to detect and revoke quickly |
-| **Impersonation** | Lookalike accounts exploit gaps in anti-impersonation rules to social-engineer users at scale |
-| **Raid or coordinated attack** | Unprotected servers can be flooded with spam or illegal content, triggering platform action against your server |
-| **Reputational damage** | Even brief compromise events are publicly visible, screenshot, and shared; recovery of community trust is slow |
+| --- | --- |
+| **Account takeover** | Attacker posts phishing links to the full member base from a trusted account |
+| **Admin privilege abuse** | Compromised admin role used to add malicious bots, wipe channels, or ban team |
+| **Bot or webhook hijack** | Automated announcements replaced with scam content; slow to detect and revoke |
+| **Impersonation** | Lookalike accounts exploit gaps in anti-impersonation rules at scale |
+| **Raid or coordinated attack** | Unprotected servers flooded with spam or illegal content; platform risk |
+| **Reputational damage** | Brief compromise events are captured publicly; trust recovery is slow |
 
-The controls in this guide address each of these directly. None of them require advanced technical skills. All of them take significantly less time to implement than a compromise takes to recover from.
-
----
+The linked guide addresses these risks with controls that do not require advanced technical skills and take less time
+than compromise recovery.
 
 ## What the guide covers
 
-The guide is structured by privilege level, so find your role and start there.
+The guide is structured by privilege level—start with the matching role.
 
 | Audience | What it covers |
-|---|---|
+| --- | --- |
 | **All team members** | DM spam filtering, authorized app review, connected device audit |
-| **Moderators** | Reading your role permissions, understanding AutoMod rule scope |
+| **Moderators** | Reading role permissions, understanding AutoMod rule scope |
 | **Administrators** | Role architecture, Cold Admin setup, verification levels, raid protection, bot vetting, anti-impersonation, integration security |
-
----
 
 ## Topic index
 
 | Topic | Summary | Guide section |
-|---|---|---|
-| **Role permissions** | Restrict Administrator, Manage Webhooks, Manage Server, Manage Roles, and Manage Channels to the minimum required roles | [Role permissions →](/guides/account-management/discord#roles) |
-| **Cold Admin account** | A dedicated owner account on a factory-reset device, used only for major changes and incident recovery | [Cold Admin →](/guides/account-management/discord#cold-admin-setup) |
-| **Verification level** | Set to at least Medium (5+ minutes on Discord) — Moderate recommended for public servers | [Verification →](/guides/account-management/discord#member-screening-setup) |
-| **Raid protection** | ML-based join-raid detection with auto-lockdown and CAPTCHA for new users | [Raid protection →](/guides/account-management/discord#safety-setup) |
-| **AutoMod rules** | Block spam, harmful links, mention spam, and impersonation keywords in usernames | [AutoMod →](/guides/account-management/discord#automod) |
-| **Anti-impersonation** | Custom rules blocking lookalike usernames and profile pictures; bots like Wick | [Anti-impersonation →](/guides/account-management/discord#anti-impersonation-bots) |
-| **Bot & integration security** | Apply least privilege to bots; restrict command permissions; audit webhooks | [Integrations →](/guides/account-management/discord#additional-recommendations) |
+| --- | --- | --- |
+| **Role permissions** | Restrict Administrator, Manage Webhooks, Manage Server, Manage Roles, and Manage Channels to the minimum required roles | [Role permissions](/guides/account-management/discord#roles) |
+| **Cold Admin account** | Dedicated owner account on a factory-reset device, used only for major changes and incident recovery | [Cold Admin](/guides/account-management/discord#cold-admin-setup) |
+| **Verification level** | Set to at least Medium (5+ minutes on Discord); Moderate recommended for public servers | [Verification](/guides/account-management/discord#member-screening-setup) |
+| **Raid protection** | ML-based join-raid detection with auto-lockdown and CAPTCHA for new users | [Raid protection](/guides/account-management/discord#safety-setup) |
+| **AutoMod rules** | Block spam, harmful links, mention spam, and impersonation keywords in usernames | [AutoMod](/guides/account-management/discord#automod) |
+| **Anti-impersonation** | Custom rules blocking lookalike usernames and profile pictures; bots such as Wick | [Anti-impersonation](/guides/account-management/discord#anti-impersonation-bots) |
+| **Bot and integration security** | Least privilege for bots; restrict command permissions; audit webhooks | [Integrations](/guides/account-management/discord#additional-recommendations) |
 
----
+For step-by-step procedures, see the [Discord Security Guide](/guides/account-management/discord).
 
-For a comprehensive guide on securing your Discord server, see the [**Discord Security Guide**](/guides/account-management/discord).
+## Further Reading
+
+- [Discord Security Guide](/guides/account-management/discord)
+- [Discord Safety Center](https://discord.com/safety)
 
 ---
 

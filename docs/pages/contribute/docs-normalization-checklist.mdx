@@ -1,0 +1,95 @@
+---
+title: "Docs Normalization Checklist | SEAL"
+description: "Reusable pull request checklist for framework content normalization against the SEAL content model, style guide, and objective validators."
+tags:
+  - SEAL/Initiative
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
+
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Process checklist for normalization PRs.
+  owner: maintainers
+*/}
+
+# Docs Normalization Checklist
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Use this checklist for each framework-scoped normalization PR. One framework per PR; no
+> repository-wide content rewrites.
+
+## Before you start
+
+- Read the [content model](/contribute/content-model) and [style and terminology](/contribute/style-and-terminology)
+- Branch from latest `origin/develop`: `docs/normalize-<framework-slug>`
+- Do not copy unmerged standards-doc changes into every framework PR; link the foundational PR instead
+
+## Scope guardrails
+
+- Only pages for this framework, its sidebar entries, and required framework-local fixtures
+- No other frameworks, shared component drive-bys, dependency bumps, or hand-edited generated files
+- No invented security guidance; mark expert gaps instead
+
+## Page review
+
+<Checklist id="normalization-page-review">
+- [ ] Primary page type identified per content model
+- [ ] Frontmatter title, description, tags, contributors valid
+- [ ] TagList, AttributionList, ContributeFooter present when required
+- [ ] Canonical Key Takeaway where required (`> 🔑 **Key Takeaway**:`)
+- [ ] Unheaded introduction establishes stakes without filler
+- [ ] Foundational section orients top new readers
+- [ ] Heading levels do not skip
+- [ ] Headings use sentence case (first word + proper nouns only; including `## Further reading`, not Title Case)
+- [ ] Page focus roughly ≤6 top-level sections or intentionally split
+- [ ] Further reading / related frameworks present when required (catalog H2 names; sentence case)
+- [ ] Overview page map lists every child sidebar page with one-line descriptions
+- [ ] Overview page-map H2 is a catalog name (`What this framework covers`, `Contents`, …)
+- [ ] Interactive `<Checklist>` used instead of static task lists where appropriate
+- [ ] Terminology and modality match the style guide
+- [ ] Citations present for incidents, standards, and product-specific claims
+- [ ] Internal links relative and accurate
+- [ ] Stub notices only where content is actually incomplete
+- [ ] Exceptions documented with `content-model-exception` comment when needed
+</Checklist>
+
+## Validation
+
+<Checklist id="normalization-validation">
+- [ ] Commits signed (`git commit -S`) and `git log --show-signature` clean
+- [ ] `pnpm exec cspell` clean on touched paths (or full `docs/pages`)
+- [ ] markdownlint clean on touched paths
+- [ ] `pnpm run validate:content -- --path docs/pages/<framework>` reviewed
+- [ ] `pnpm run docs:build` passed (or baseline failure documented)
+- [ ] Local preview inspected for navigation, anchors, checklists
+- [ ] Generated LLM/index files not hand-edited
+- [ ] Diff limited to this framework
+</Checklist>
+
+## PR body
+
+Copy the framework PR template sections from the content normalization initiative brief (Scope, Why, Content model
+applied, Changes, Substantive security changes, Intentionally unchanged, Validation, Dependencies, Reviewer focus).
+
+## Reviewer focus
+
+Call out:
+
+- Substantive security wording changes and their sources
+- Unresolved cross-page conflicts
+- Sections needing steward or fact-checker review
+
+---
+
+<ContributeFooter />

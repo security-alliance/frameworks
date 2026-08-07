@@ -1,6 +1,6 @@
 ---
 title: "Security Council Best Practices | Security Alliance"
-description: "Establish effective Security Councils for rollup governance with best practices covering formation, incident response, multi-sig setup, governance integration, and readiness drills."
+description: "Establish effective Security Councils for rollup governance with best practices covering formation, incident response, multi-sig setup, governance integration"
 tags:
   - Operations & Strategy
   - Legal & Compliance
@@ -9,6 +9,8 @@ contributors:
     users: [michael, bram]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,11 +18,14 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 # Security Council Best Practices in Rollup Governance
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
-> **Attribution**: This section is based on
-> [From Stage 0 to Stage 1: Security Council Best Practices in Rollup Governance](https://www.openzeppelin.com/news/security-council-best-practices-guide)
-> by [OpenZeppelin](https://www.openzeppelin.com),
-> authored by Bram Hoogenkamp and Michael Lewellen.
+> 🔑 **Key Takeaway**: Security councils speed emergency response when membership, multisigs, drills, and governance
+> bounds are explicit—borrow proven practices; do not invent powers under pressure.
+
+**Attribution:** This section is based on
+[From Stage 0 to Stage 1: Security Council Best Practices in Rollup Governance](https://www.openzeppelin.com/news/security-council-best-practices-guide)
+by [OpenZeppelin](https://www.openzeppelin.com), authored by Bram Hoogenkamp and Michael Lewellen.
 
 Security Councils serve as specialized governance bodies that act as the final line of defense against exploits,
 governance attacks, and systemic failures in decentralized protocols. This guide focuses primarily on rollups and
@@ -387,7 +392,7 @@ Security Councils should evolve through:
 - Community input on Council effectiveness
 - Benchmark comparisons with other protocols
 
-## Integration with SEAL Resources
+### Integration with SEAL resources
 
 Security Councils can leverage existing SEAL infrastructure:
 
@@ -412,7 +417,7 @@ Security Councils can leverage existing SEAL infrastructure:
 - Escalation frameworks
 - See [Incident Management](/incident-management/overview)
 
-## Best Practices Summary
+### Best practices summary
 
 1. **Establish clear prerequisites** before forming Security Councils to avoid premature overhead
 2. **Balance diverse expertise** across technical security, crisis management, and compliance domains
@@ -425,13 +430,15 @@ Security Councils can leverage existing SEAL infrastructure:
 9. **Collaborate across protocols** through shared monitoring and threat intelligence
 10. **Continuously improve** based on drills, incidents, and community feedback
 
-## Additional Resources
+## Further Reading
 
-- [OpenZeppelin Security Council Best Practices Guide](https://www.openzeppelin.com/news/security-council-best-practices-guide)
-- [Incident Management Framework](/incident-management/overview)
-- [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines)
-- [Multisig for Protocols](/multisig-for-protocols/overview)
-- [Risk Management](/governance/risk-management)
+- [Governance overview](/governance/overview): how the pages of this framework fit together
+- [Multisig for Protocols](/multisig-for-protocols/overview): signer selection, thresholds, and custody for council
+  multisigs
+- [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines): coordination during the
+  emergencies councils exist for
+- [OpenZeppelin: Security Council Best Practices](https://www.openzeppelin.com/news/security-council-best-practices-guide):
+  the full guide this page is based on
 
 ---
 

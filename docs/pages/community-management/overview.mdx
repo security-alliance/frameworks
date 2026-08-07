@@ -1,6 +1,6 @@
 ---
 title: "Community Management | Security Alliance"
-description: "Community Management Framework: Secure your Web3 community on Telegram, Discord, and X (Twitter). Essential practices for 2FA, phishing prevention, and emergency response planning."
+description: "Secure Web3 communities on Discord, X (Twitter), and Telegram: operator credentials, anti-impersonation, phishing resistance, and incident handoff when channels fail."
 tags:
   - Community & Marketing
 contributors:
@@ -8,6 +8,8 @@ contributors:
     users: [mattaereal, robert, nftdreww]
   - role: reviewed
     users: [ghadi8]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,33 +19,54 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Communities are often the foundation of Web3 projects, serving as the primary connection point between organizations and their users. However, they also represent one of the largest attack surfaces. From community members and moderators to founders and executives, every individual within an ecosystem can become a target of social engineering, phishing, impersonation, account compromise, malware, and other attacks across platforms such as Discord, Telegram, X (formerly Twitter), Google Workspace, and beyond.
+> 🔑 **Key Takeaway**: Community channels are high-trust broadcast paths. Compromised operator accounts and weak platform
+> configuration turn that trust into phishing scale.
 
-When a community channel is compromised—whether through a malicious link, a compromised team member account, fraudulent support interaction, or a coordinated social engineering campaign—it can quickly become a launch point for wider attacks that impact users, project assets, and organizational reputation.
+Communities are often the foundation of Web3 projects and the primary connection between organizations and users. They
+are also a large attack surface. Community members, moderators, founders, and executives can be targeted with social
+engineering, phishing, impersonation, account compromise, malware, and related attacks across Discord, Telegram,
+X (formerly Twitter), shared workspaces, and more.
 
-This framework provides essential guidance, best practices, and security controls to help organizations build, operate, and maintain secure communities. The following sections explore platform-specific recommendations and defensive strategies in greater detail, enabling teams to reduce risk while fostering safe and trusted environments for their communities.
+When a community channel is compromised—whether through a malicious link, a compromised team account, a fraudulent
+support interaction, or a coordinated social engineering campaign—it can become a launch point for wider attacks that
+impact users, project assets, and organizational reputation.
 
----
+This framework orients teams to platform-specific pages and the broader security domains that constrain community risk.
+Deep, step-by-step controls live in the linked account-management guides.
 
-## Platform frameworks
+## What this framework covers
 
-| Platform | What it covers | Link |
-|---|---|---|
-| **Discord** | Server permissions, role hygiene, raid protection, bot vetting, and anti-impersonation | [→ Discord framework](/community-management/discord) |
-| **X (Twitter)** | Account security, impersonation risks, API token scope, and official channel hygiene | [→ X framework](/community-management/twitter) |
-| **Telegram** | Two-step verification, phone number privacy, admin permissions, and man-in-the-group attacks | [→ Telegram framework](/community-management/telegram) |
+1. [Discord](/community-management/discord): server permissions, role hygiene, raid protection, bot vetting, and
+   anti-impersonation (hub into the Discord guide).
+2. [X (Twitter)](/community-management/twitter): account security, SIM-swap failure modes, OAuth token hygiene, and
+   official-channel practices.
+3. [Telegram](/community-management/telegram): two-step verification, phone-number privacy, admin permissions, and
+   man-in-the-group style threats.
 
----
-
-## Security domain index
+## Related security domains
 
 | Domain | What it covers | Framework |
-|---|---|---|
-| **Authentication & passwords** | Unique credentials per service, hardware token preference, and 2FA requirements for linked email accounts | [Operational Security →](/opsec/overview) |
-| **Phishing & social engineering** | Official channel verification, DM policies, and recognizing impersonation tactics targeting your team and users | [Security Awareness →](/awareness/overview) |
-| **Operational security** | Device hygiene, software update discipline, and reducing the attack surface used to manage community channels | [Operational Security →](/opsec/overview) |
-| **Emergency response** | Pre-defined protocols for account compromise, rapid revocation of access, and community notification procedures | [Incident Response →](/incident-management/overview) |
+| --- | --- | --- |
+| Authentication and passwords | Unique credentials, hardware-backed multi-factor authentication (MFA), linked email protection | [Operational Security](/opsec/overview) |
+| Phishing and social engineering | Official channel verification, DM policy, impersonation recognition | [Security Awareness](/awareness/overview) |
+| Operational security | Device hygiene, update discipline, reduced attack surface for operators | [Operational Security](/opsec/overview) |
+| Emergency response | Compromise playbooks, access revocation, community notification | [Incident Management](/incident-management/overview) |
 
+## Related frameworks
+
+- [Guides — Account Management](/guides/account-management/overview): platform hardening procedures referenced by each
+  child page
+- [User and Team Security](/user-team-security/overview): staff-facing security postures (when expanded)
+- [Awareness](/awareness/overview): phishing and social-engineering education for operators and members
+- [OpSec](/opsec/overview): credentials, MFA, and device hygiene for people who run community tools
+- [Incident Management](/incident-management/overview): response when a community channel is compromised
+
+## Further Reading
+
+- Platform pages above and their linked guides under `/guides/account-management/`
+- [Discord Safety Center](https://discord.com/safety)
+- [X Help Center — How to protect your account](https://help.x.com/en/safety-and-security/account-security-tips)
+- [Telegram FAQ — Two-Step Verification](https://telegram.org/faq#q-what-is-two-step-verification)
 
 ---
 

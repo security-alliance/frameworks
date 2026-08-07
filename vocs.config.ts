@@ -1,4 +1,13 @@
-import { defineConfig } from 'vocs/config'
+import { readFileSync } from 'node:fs'
+import { Changelog, defineConfig } from 'vocs/config'
+
+function siteVersion(): string {
+  try {
+    const raw = readFileSync('VERSION', 'utf8').trim()
+    if (raw) return raw.startsWith('v') ? raw : `v${raw}`
+  } catch {}
+  return 'v0.0.0'
+}
 
 const isMainBranch = process.env.CF_PAGES_BRANCH === 'main'
 
@@ -23,6 +32,19 @@ const config = {
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
   ogImageUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png',
   checkDeadlinks: "warn" as const,
+  changelog:
+    typeof Changelog !== 'undefined'
+      ? Changelog.github({ repo: 'security-alliance/frameworks' })
+      : undefined,
+  topNav: [
+    {
+      text: siteVersion(),
+      items: [
+        { text: 'Changelog', link: '/changelog' },
+        { text: 'Contributing', link: '/contribute/contributing' },
+      ],
+    },
+  ],
   sidebar: [
     {
       text: 'Introduction',
@@ -61,6 +83,25 @@ const config = {
             { text: 'Cultivating a Security-Aware Mindset', link: '/awareness/cultivating-a-security-aware-mindset' },
             { text: 'Staying Informed & Continuous Learning', link: '/awareness/staying-informed-and-continuous-learning' },
             { text: 'Resources & Further Reading', link: '/awareness/resources-and-further-reading' },
+          ]
+        },
+        {
+          text: 'User and Team Security',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/user-team-security/overview', dev: true },
+            {
+              text: 'Phishing and Social Engineering',
+              link: '/user-team-security/phishing-social-engineering',
+              dev: true,
+            },
+            {
+              text: 'Security-Aware Culture',
+              link: '/user-team-security/security-aware-culture',
+              dev: true,
+            },
+            { text: 'Security Training', link: '/user-team-security/security-training', dev: true },
           ]
         },
         {
@@ -523,7 +564,7 @@ const config = {
           items: [
             { text: 'Overview', link: '/threat-modeling/overview', dev: true },
             { text: 'Create and Maintain Threat Models', link: '/threat-modeling/create-maintain-threat-models', dev: true },
-            { text: 'Identity Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats', dev: true },
+            { text: 'Identify and Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats', dev: true },
           ]
         },
         {
@@ -554,11 +595,14 @@ const config = {
             { text: 'Overview', link: '/wallet-security/overview' },
             { text: 'Custodial vs Non-Custodial', link: '/wallet-security/custodial-vs-non-custodial' },
             { text: 'Cold vs Hot Wallet', link: '/wallet-security/cold-vs-hot-wallet' },
+            { text: 'Software Wallets', link: '/wallet-security/software-wallets', dev: true },
+            { text: 'Hardware Wallets', link: '/wallet-security/hardware-wallets', dev: true },
             { text: 'Wallets For Beginners & Small Balances', link: '/wallet-security/for-beginners-and-small-balances' },
             { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-and-medium-funds' },
             { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
             { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets' },
+            { text: 'Signing Schemes', link: '/wallet-security/signing-schemes', dev: true },
             {
               text: 'Signing & Verification',
               collapsed: false,
@@ -648,6 +692,9 @@ const config = {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/contribute/contributing' },
+            { text: 'Content Model', link: '/contribute/content-model', dev: true },
+            { text: 'Style and Terminology', link: '/contribute/style-and-terminology', dev: true },
+            { text: 'Docs Normalization Checklist', link: '/contribute/docs-normalization-checklist', dev: true },
             { text: 'Spotlight Zone', link: '/contribute/spotlight-zone' },
             { text: 'Stewardship', link: '/contribute/stewards' },
 

@@ -1,9 +1,16 @@
 ---
-title: "Secure Coding Standards & Guidelines | SEAL"
-description: "Secure coding standards: input validation with whitelisting, output encoding, strong authentication, error handling. Follow least privilege, use vetted libraries, encrypt sensitive data."
+title: "Secure Coding Standards | SEAL"
+description: "Secure coding standards: validate inputs with allowlists, encode output, authenticate and authorize correctly, handle errors safely, and protect sensitive data."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,49 +20,51 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Using secure coding standards and guidelines increases the likelihood of you being resilient to security threats. Having
-these type of standards can help developers avoid common vulnerabilities, and help ensure that security is considered
-at every stage of development.
+> 🔑 **Key Takeaway**: Shared coding standards reduce common vulnerability classes when teams enforce them in review and
+> tooling—not only in a wiki page.
 
-## Secure Coding Standards
+Secure coding standards and guidelines help developers avoid common vulnerability classes and keep security visible at
+every stage of development. Adopt language- and stack-specific rules on top of these general controls.
 
-1. **Input Validation**
-   - Validate all inputs to ensure they conform to expected formats and ranges.
-   - Use whitelisting (allowing only known good inputs) rather than blacklisting.
+## Secure coding standards
 
-2. **Output Encoding**
-   - Encode output data.
-   - Use libraries and frameworks that provide built-in encoding functions.
+1. **Input validation**
+   - Validate all inputs against expected formats and ranges.
+   - Prefer allowlisting (only known-good inputs) over blocklisting alone.
+2. **Output encoding**
+   - Encode output appropriate to the sink (HTML, SQL parameters via APIs, etc.).
+   - Prefer frameworks and libraries with built-in safe encoding or parameterized interfaces.
+3. **Authentication and authorization**
+   - Use strong authentication appropriate to the risk (see [IAM](/iam/overview)).
+   - Enforce authorization checks on every privileged action—not only at the UI edge.
+4. **Error handling**
+   - Handle errors without leaking secrets, stack traces, or internal paths to users.
+   - Log detail securely for operators; show generic messages to end users.
 
-3. **Authentication and Authorization**
-   - Implement strong authentication mechanisms to verify user identities.
-   - Ensure proper authorization checks are in place to control access to resources based on user roles.
+## Guidelines
 
-4. **Error Handling**
-   - Handle errors gracefully without revealing sensitive information.
-   - Log errors securely and provide generic error messages to users.
+1. **Use secure libraries and frameworks**
+   - Prefer maintained libraries with a security track record and update cadence.
+   - Avoid deprecated or abandoned dependencies (see [Supply Chain](/supply-chain/overview)).
+2. **Follow least privilege**
+   - Grant code and service accounts only the access they need.
+   - Avoid running unrestricted privileges “for convenience.”
+3. **Secure data storage**
+   - Protect sensitive data at rest and in transit with appropriate cryptography ([Encryption](/encryption/overview)).
+   - Store credentials and secrets in purpose-built secret stores—not source control.
+4. **Regular code reviews**
+   - Review for security issues as part of normal merge process
+     ([Code Reviews and Peer Audits](/secure-software-development/code-reviews-peer-audits)).
+   - Use automated analysis to complement—not replace—human review.
+5. **Continuous security training**
+   - Keep developers current on relevant vulnerability classes and internal standards.
+   - Encourage participation in security communities and learning paths ([Awareness](/awareness/overview)).
 
-## Guidelines for Secure Coding
+## Further Reading
 
-1. **Use Secure Libraries and Frameworks**
-   - Use libraries and frameworks that have been vetted for security and are regularly updated.
-   - Avoid using deprecated or unmaintained libraries.
-
-2. **Follow Principle of Least Privilege**
-   - Grant the minimum level of access necessary for code to function.
-   - Avoid running code high privileges.
-
-3. **Secure Data Storage**
-   - Encrypt sensitive data both at rest and in transit.
-   - Use secure storage mechanisms for credentials and secrets.
-
-4. **Regular Code Reviews**
-   - Conduct regular code reviews to identify and fix security vulnerabilities.
-   - Use automated tools to complement manual code reviews.
-
-5. **Continuous Security Training**
-   - Provide ongoing security training for developers to keep them informed about the latest threats and best practices.
-   - Encourage participation in security communities and events.
+- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
+- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
+- [CWE Top 25](https://cwe.mitre.org/top25/)
 
 ---
 

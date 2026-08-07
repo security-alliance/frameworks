@@ -1,6 +1,6 @@
 ---
 title: "Telegram Security | Security Alliance"
-description: "Secure Telegram against SIM swapping and Man-in-the-Group attacks. Configure passkeys, Two-Step Verification, hide your phone number, use Secret Chats with end-to-end encryption, and manage admin permissions."
+description: "Secure Telegram accounts and groups: two-step verification, phone-number privacy, session hygiene, Secret Chats, admin least privilege, and man-in-the-group defenses."
 tags:
   - Community & Marketing
 contributors:
@@ -8,6 +8,8 @@ contributors:
     users: [mattaereal, zedt3ster, fredriksvantes, auditware, nftdreww]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,71 +19,83 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Telegram ties recovery to phone numbers by default. Enable two-step verification, hide phone
+> exposure, and limit admin rights so one SIM swap or compromised mod cannot own the community.
 
-Telegram account and group security spans two-step verification, phone number privacy, session management, admin permissions, and group hardening — each covered in depth in the [Telegram Security Guide](/guides/account-management/telegram). Use this page to find the right section.
-
----
+Telegram account and group security spans two-step verification, phone number privacy, session management, admin
+permissions, and group hardening—each covered in depth in the
+[Telegram Security Guide](/guides/account-management/telegram). Use this page to find the right section.
 
 ## The community manager's role in security
 
-Telegram is the de facto community platform for Web3 projects. Large groups, public channels, and direct access to members make it uniquely valuable and uniquely dangerous. A community manager running a Telegram group holds a position of structural authority: you control who has admin rights, who can add new members, what bots operate in the group, and how announcements reach your community. Attackers understand that authority and target it specifically.
+Telegram is a de facto community platform for many Web3 projects. Large groups, public channels, and direct member
+access make it valuable and risky. A community manager controlling a group holds structural authority: admin rights,
+member adds, bots, and announcement reach. Attackers target that authority.
 
-What makes Telegram different from Discord and X is its phone number dependency. By default, every Telegram account is tied to a phone number — and that number is the primary recovery mechanism. If an attacker successfully SIM swaps your number, they receive your Telegram login code directly and can take over your account without ever knowing your password. Two-step verification is the only control that stands between a SIM swap and a full account compromise.
+What differs from Discord and X is phone-number dependency. By default, Telegram accounts tie to a phone number used as
+a primary recovery path. If an attacker successfully SIM swaps that number, they can receive login codes and take over
+the account without knowing the cloud password—unless two-step verification is configured. Two-step verification is the
+control that stands between many SIM swaps and full account compromise.
 
-Telegram also introduces a threat that has no direct equivalent on other platforms: the Man-in-the-Group attack. An attacker creates an account impersonating a team member, joins your community group, and begins operating as if they have authority; answering questions, directing users to malicious links, or instructing members to send funds. Because Telegram groups can be large and fast-moving, these imposters often operate undetected for significant periods.
+Telegram also enables man-in-the-group style attacks: an impostor account joins, answers questions as if staff, and
+directs members to malicious links or fund transfers. Large, fast-moving groups can delay detection.
 
 ### Why following this guide is not optional
 
-Regular Telegram chats are not end-to-end encrypted by default. Messages sent in group chats are stored on Telegram's servers, which means a compromised account exposes not just future messages but your full accessible chat history. Combined with the platform's phone number dependency, this makes Telegram one of the highest-risk surfaces a community manager operates on.
+Regular Telegram chats are not end-to-end encrypted by default. Group messages live on Telegram's infrastructure, so a
+compromised account can expose accessible history as well as future traffic. Combined with phone-number dependency, this
+makes Telegram a high-risk surface for community operators.
 
-Admin permissions in Telegram groups are also less granular than Discord's role system. It is easy to over-grant permissions to moderators or bots out of convenience, and difficult to audit what each admin can actually do. The guide covers how to structure permissions so that a single compromised admin account cannot do irreversible damage to your group.
+Admin permissions in Telegram groups are also less granular than Discord roles. It is easy to over-grant permissions to
+moderators or bots and hard to audit actual capability. The linked guide covers tighter permission structure so one
+compromised admin account cannot do irreversible damage.
 
-As a community manager, your members assume that anything coming from your account or your admins is legitimate. That assumption is the attack surface. The controls in this guide exist to ensure that the assumption is as difficult to exploit as possible.
+Members assume messages from project accounts and admins are legitimate. That assumption is the attack surface. The
+controls in the guide make that assumption harder to exploit.
 
-### What's at stake if you don't
+### What is at stake
 
 | Risk | Consequence |
-|---|---|
-| **SIM swap account takeover** | Attacker ports your phone number, receives your Telegram login code, and gains full account access; bypassing your password entirely |
-| **Man-in-the-Group attack** | Impersonator joins your group posing as a team member, social-engineers members from within a trusted environment |
-| **IP address exposure** | Peer-to-peer Telegram calls reveal your real IP address, enabling targeted doxing or follow-on attacks |
-| **Group cloning** | Attackers replicate your group with a near-identical name and invite link, redirecting members into a scam environment |
-| **Mini app phishing** | Malicious mini apps redirect users outside Telegram to harvest credentials or seed malware |
-| **Message history exposure** | Compromised account gives attacker access to unencrypted chat history stored on Telegram's servers |
-| **Over-permissioned admin compromise** | A single breached moderator account with excessive rights can add bots, remove legitimate admins, or flood the group with scam content |
+| --- | --- |
+| **SIM swap account takeover** | Attacker ports the number, receives login codes, and gains account access |
+| **Man-in-the-group attack** | Impersonator social-engineers members from inside a trusted group |
+| **IP address exposure** | Peer-to-peer calls can reveal real IP addresses and enable follow-on harassment |
+| **Group cloning** | Near-identical groups and invite links redirect members into scam environments |
+| **Mini app phishing** | Malicious mini apps redirect outside Telegram to harvest credentials or malware |
+| **Message history exposure** | Compromise can expose non-E2EE history accessible to the account |
+| **Over-permissioned admin compromise** | One breached moderator can add bots, remove admins, or push scam content |
 
-The guide addresses each of these with specific, actionable controls. Several of them — two-step verification and phone number privacy in particular- take under five minutes to configure and eliminate the most common attack paths entirely.
-
----
+The guide addresses these with actionable controls. Two-step verification and phone-number privacy in particular are
+fast to configure and block common takeover paths when applied correctly.
 
 ## What the guide covers
 
-The guide is structured by scope: your personal account first, then your group.
+The guide is structured by scope: personal account first, then group.
 
 | Scope | What it covers |
-|---|---|
-| **Personal account** | Two-step verification, phone number privacy, active session review, auto-delete, P2P call settings, contact sync |
-| **Group management** | Admin permission structure, member add restrictions, bot vetting, mini app guidance, scam ad awareness, community education |
-
----
+| --- | --- |
+| **Personal account** | Two-step verification, phone privacy, sessions, auto-delete, P2P calls, contact sync |
+| **Group management** | Admin permission structure, member-add limits, bot vetting, mini apps, education |
 
 ## Topic index
 
 | Topic | Summary | Guide section |
-|---|---|---|
-| **Two-step verification** | Set an additional password on your account — the only control that prevents takeover if your phone number is SIM swapped | [→ Two-step verification](/guides/account-management/telegram#account-security-checklist) |
-| **Phone number privacy** | Hide your number from contacts and the public; consider a burner or Fragment anonymous number for the account itself | [→ Phone number](/guides/account-management/telegram#account-security-checklist) |
-| **Active sessions** | Review all logged-in devices; terminate unrecognized sessions; set auto-termination for inactive sessions | [→ Active sessions](/guides/account-management/telegram#account-security-checklist) |
-| **Auto-delete messages** | Set a global message deletion timer to limit the value of your history if your account is compromised | [→ Auto-delete](/guides/account-management/telegram#account-security-checklist) |
-| **Secret Chats** | Use end-to-end encrypted Secret Chats for sensitive team communication; regular chats are not E2EE by default | [→ Secret Chats](/guides/account-management/telegram#account-security-checklist) |
-| **P2P call settings** | Disable peer-to-peer calls or route them via Telegram's servers to prevent IP address leakage | [→ P2P calls](/guides/account-management/telegram#account-security-checklist) |
-| **Group admin permissions** | Restrict who can add members; apply least privilege to all admin roles; audit bot permissions regularly | [→ Admin permissions](/guides/account-management/telegram#admin-permissions-management) |
-| **Mini app caution** | Verify mini app usernames carefully; avoid apps that redirect outside Telegram; never run commands received via Telegram | [→ Mini apps](/guides/account-management/telegram#best-practices-for-safe-use) |
+| --- | --- | --- |
+| **Two-step verification** | Additional account password—critical if the phone number is SIM swapped | [Two-step verification](/guides/account-management/telegram#account-security-checklist) |
+| **Phone number privacy** | Hide the number; consider secondary/anonymous numbers where policy allows | [Phone number](/guides/account-management/telegram#account-security-checklist) |
+| **Active sessions** | Review devices; terminate unknowns; auto-terminate inactive sessions | [Active sessions](/guides/account-management/telegram#account-security-checklist) |
+| **Auto-delete messages** | Global deletion timer limits history value after compromise | [Auto-delete](/guides/account-management/telegram#account-security-checklist) |
+| **Secret Chats** | Prefer end-to-end encrypted Secret Chats for sensitive team traffic | [Secret Chats](/guides/account-management/telegram#account-security-checklist) |
+| **P2P call settings** | Disable P2P or route via Telegram servers to reduce IP leakage | [P2P calls](/guides/account-management/telegram#account-security-checklist) |
+| **Group admin permissions** | Least privilege; restrict member adds; audit bot rights | [Admin permissions](/guides/account-management/telegram#admin-permissions-management) |
+| **Mini app caution** | Verify usernames; avoid off-platform redirects; never run untrusted commands | [Mini apps](/guides/account-management/telegram#best-practices-for-safe-use) |
 
----
+For step-by-step procedures, see the [Telegram Security Guide](/guides/account-management/telegram).
 
+## Further Reading
 
-For a comprehensive guide on securing your Telegram account and groups, see the [**Telegram Security Guide**](/guides/account-management/telegram).
+- [Telegram Security Guide](/guides/account-management/telegram)
+- [Telegram FAQ — Two-Step Verification](https://telegram.org/faq#q-what-is-two-step-verification)
 
 ---
 

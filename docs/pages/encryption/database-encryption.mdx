@@ -1,9 +1,16 @@
 ---
-title: "Database Encryption | Security Alliance"
-description: "Protect database contents with strong encryption algorithms, encrypted sensitive columns for PII, Transparent Data Encryption (TDE), HSM key management, and strict access controls."
+title: "Database Encryption | SEAL"
+description: "Encrypt databases at rest and in use: TDE, column-level crypto, keys held outside the DB host, and performance trade-offs for protocol backends."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,10 +20,16 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Databases that hold PII or secrets need encryption of files/backups and sensitive columns, plus
+> key management and access control — TDE alone is not a complete design.
+
+Databases often concentrate regulated and high-value data. Encryption reduces the impact of storage theft and some
+classes of backup leakage, but application and access control still matter.
+
 Often, databases contain information that should not be publicly available. In order to protect your database, you may
 consider implementing the following best practices:
 
-## Best Practices
+## Best practices
 
 1. Use strong encryption algorithms to encrypt database files and backups.
 2. Encrypt sensitive columns within the database, such as those containing personally identifiable information (PII).
@@ -24,6 +37,14 @@ consider implementing the following best practices:
 4. Implement robust key management practices, including the use of HSMs and regular key rotation depending on your use
 case.
 5. Enforce strict access controls to prevent unauthorized access to encrypted data.
+
+## Further Reading
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 

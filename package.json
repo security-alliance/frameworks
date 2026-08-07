@@ -1,6 +1,6 @@
 {
   "name": "workspace",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Official repository to the Security Frameworks by SEAL. This repository contains the entire structure and contents of the frameworks. Feel free to suggest from new categories to grammar corrections. Collaboration is open to everyone. **This is a work in progress.**",
   "main": "index.js",
   "type": "module",
@@ -21,7 +21,8 @@
     "generate-tags": "node utils/tags-fetcher.cjs",
     "generate-indexes": "node utils/generate-folder-indexes.cjs",
     "generate-printables": "node utils/generate-printable-checklists.cjs",
-    "generate-cert-data": "node utils/generate-cert-data.cjs"
+    "generate-cert-data": "node utils/generate-cert-data.cjs",
+    "validate:content": "node utils/validate-content.cjs"
   },
   "keywords": [],
   "author": "",

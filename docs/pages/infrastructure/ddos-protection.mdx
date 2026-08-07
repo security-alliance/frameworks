@@ -1,6 +1,6 @@
 ---
 title: "DDoS Protection | Security Alliance"
-description: "Protect against DDoS attacks with AWS Shield, Azure DDoS Protection, Google Cloud Armor, and external providers like Cloudflare, Akamai, and Imperva. Cloud-native and third-party solutions compared."
+description: "Protect against DDoS attacks with AWS Shield, Azure DDoS Protection, Google Cloud Armor, and external providers like Cloudflare, Akamai, and Imperva"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -8,6 +8,13 @@ tags:
   - DevOps
   - Cloud
   - SRE
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,10 +24,13 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Plan DDoS controls before a flood, not during one. Combine provider native protections with CDN or
+> scrubbing services matched to traffic profile.
+
 Distributed Denial of Service (DDoS) attacks are a pervasive threat that can disrupt your services by overwhelming them
 with excessive traffic.
 
-## Best Practices
+## Best practices
 
 - **Use Cloud Provider Solutions**: Utilize DDoS protection services offered by your cloud provider:
 
@@ -55,6 +65,15 @@ In addition to cloud provider solutions, consider external DDoS protection servi
 - **Cloudflare**: Offers comprehensive DDoS protection and mitigation services.
 - **Akamai**: Provides scalable DDoS protection solutions.
 - **Imperva**: Specializes in DDoS protection and mitigation.
+
+
+## Further Reading
+
+- [Infrastructure overview](/infrastructure/overview): how the pages of this framework fit together
+- [Network Security](/infrastructure/network-security): the traffic controls these protections sit on top of
+- [DDoS Attack Runbook](/incident-management/incident-response-template/runbooks/ddos-attack): what to do once an
+  attack is underway
+- [Web Application Security](/front-end-web-app/web-application-security): front-end availability and IPFS fallbacks
 
 ---
 

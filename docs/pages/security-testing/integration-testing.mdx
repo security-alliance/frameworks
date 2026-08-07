@@ -1,6 +1,6 @@
 ---
 title: "Integration Testing | Security Alliance"
-description: "Integration testing for smart contracts: use fork testing to verify interactions with real blockchain state, external protocols, oracles, and real-world conditions before deployment."
+description: "Integration testing for smart contracts: use fork testing to verify interactions with real blockchain state, external protocols, oracles"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,10 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,10 +23,13 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Integration and fork tests catch interaction bugs unit mocks miss—especially oracles, external
+> protocols, and real chain state assumptions before deployment.
+
 While unit tests verify individual functions work in isolation (often with mocked dependencies), integration tests
-verify that your smart contracts work correctly with real external systems. In Web3, this primarily means testing with
-**fork tests** - running your contracts against real blockchain state. In unit tests, we `mock` interactions with
-external systems; integration tests, however, actually work with those systems by running as:
+verify that smart contracts work correctly with real external systems. In Web3, this primarily means testing with
+**fork tests**—running contracts against real blockchain state. In unit tests, teams `mock` interactions with
+external systems; integration tests actually exercise those systems by running as:
 
 - Fork tests
 - Testnet Tests

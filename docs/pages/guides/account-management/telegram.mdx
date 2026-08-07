@@ -1,6 +1,6 @@
 ---
 title: "Telegram Security | Security Alliance"
-description: "Secure Telegram against SIM swapping and Man-in-the-Group attacks. Configure passkeys, Two-Step Verification, hide your phone number, use Secret Chats with end-to-end encryption, and manage admin permissions."
+description: "Secure Telegram against SIM swapping and Man-in-the-Group attacks. Configure passkeys, Two-Step Verification, hide your phone number"
 tags:
   - Community & Marketing
 contributors:
@@ -8,6 +8,8 @@ contributors:
     users: [mattaereal, zedt3ster, fredriksvantes, auditware]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -19,7 +21,7 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Summary
 
-> 🔑 **Key Takeaway:** Enable passkeys and Two-Step Verification, hide your phone number, and stay vigilant with group
+> 🔑 **Key Takeaway**: Enable passkeys and Two-Step Verification, hide your phone number, and stay vigilant with group
 > chats. Implement verification steps and secure communication practices to protect against interception attacks.
 
 While **Telegram** is widely used in the crypto community, it's crucial to understand its security limitations. Telegram
@@ -29,8 +31,6 @@ swapping attacks, and its peer-to-peer call feature can reveal your IP address t
 priority, consider using [Signal](https://signal.org/).
 
 However, if you choose to use **Telegram**, the following best practices can help enhance your security.
-
----
 
 ## For Individuals
 
@@ -129,8 +129,6 @@ their own accounts.
 > attacks. You **must** confirm these details if using Telegram for private communications. That said, it is suggested
 to use a secure platform like [Signal](https://signal.org/) for confidential communication.
 
----
-
 ### Device-Level Security
 
 Securing the device you use for Telegram is crucial for preventing unauthorized access to your account and messages.
@@ -153,8 +151,6 @@ Securing the device you use for Telegram is crucial for preventing unauthorized 
   - Ensure any device backups containing Telegram data are encrypted
   - Be cautious about cloud backups that might store Telegram messages
 </Checklist>
-
----
 
 ### Advanced Privacy Measures
 
@@ -196,8 +192,6 @@ encryption**.
 - [ ]  **Suggest Frequent Contacts:** Disable (depending on use of Telegram) to avoid unsolicited contact suggestions.
 </Checklist>
 
----
-
 ### Best Practices for Safe Use
 
 <Checklist id="best-practices">
@@ -227,8 +221,6 @@ instead of just deleting chats.
 - [ ]  **Stay Vigilant Against Scam Ads:** Be aware that anyone can post ads in channels, with 99% being scam ads.
 Exercise caution when interacting with advertisements.
 </Checklist>
-
----
 
 ### Platform-Specific Risks: Man-in-the-Group Attack
 
@@ -270,8 +262,6 @@ Here's a concise example of how such an attack might occur:
 - **Alice** sends the payment to what she believes are Bob's details but are actually those of Fake Bob.
 - The attacker now controls both ends of the conversation, having successfully redirected the funds.
 
----
-
 ## For Team Members
 
 These guidelines apply to team members who help manage Telegram groups/channels but don't have full administrative
@@ -284,8 +274,6 @@ Team members should:
 - Add a suffix to your username, for example: "MyName | will never DM you"
 - Understand how to verify the authenticity of admins and official messages
 - Be aware of the Man-in-the-Group Attack scenario described above
-
----
 
 ## For Admins
 
@@ -331,8 +319,6 @@ These settings and practices apply to Telegram group/channel administrators with
 
 </Checklist>
 
----
-
 ### Admin Permissions Management
 
 If you manage Telegram groups or channels, properly configuring admin permissions is crucial for maintaining security.
@@ -361,8 +347,6 @@ If you manage Telegram groups or channels, properly configuring admin permission
 against raids.
 </Checklist>
 
----
-
 ### Additional Recommendations
 
 <Checklist id="additional-recommendations">
@@ -372,8 +356,6 @@ users, and that support will only be offered via the public channel and dedicate
 - [ ]  Add a suffix to admin usernames, for example: "MyName | will never DM you"
 - [ ]  Each admin must follow the guidance for securing their individual accounts
 </Checklist>
-
----
 
 ### Educate Community Members on Security Practices
 
@@ -402,8 +384,6 @@ If you're managing a community on Telegram, educating your members about securit
   - Create a security checklist for new community members
 </Checklist>
 
----
-
 ### Notes
 
 #### [1] Member Control
@@ -419,6 +399,14 @@ encrypted, except for 1:1 "secret chats" (which should not be commingled with un
 Example disclaimer: "We will NEVER message you directly to offer support or assistance with our product. For support,
 please email us at support@\<company\>.com. DO NOT interact with anyone DMing and claiming to be a \<company\> member.
 Please report scams to reports@\<company\>.com"
+
+## Further Reading
+
+- [Community Management: Telegram](/community-management/telegram): running a Telegram community safely
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Secure Authentication](/iam/secure-authentication): two-step verification and recovery design
+- [Telegram: two-step verification](https://telegram.org/faq#q-what-is-two-step-verification): vendor documentation for
+  current UI paths
 
 ---
 

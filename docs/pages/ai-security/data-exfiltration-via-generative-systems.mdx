@@ -1,6 +1,6 @@
 ---
 title: "Data Exfiltration via Generative Systems | SEAL"
-description: "Runtime data exfiltration risk and controls for generative AI systems processing sensitive information."
+description: "Runtime data exfiltration risk and controls for generative AI systems processing sensitive information. AI systems that process sensitive inputs such"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Generative systems can be coaxed to emit sensitive inputs. Block or quarantine unsafe outputs
+> before release instead of hoping post-hoc reviews catch history.
 
 AI systems that process sensitive inputs such as documents, logs, or enterprise data are vulnerable to exfiltration
 attacks. Without proper runtime controls, models can be coaxed into extracting and exporting confidential information
@@ -37,6 +42,15 @@ operational or financial information, even when underlying blockchain data is pu
 - Nightfall AI - AI-based detection across SaaS, endpoints, email, browsers, and AI data flows
 - Proofpoint (Acuvity) - runtime inspection and enforcement across AI apps, agents, and MCP servers
 - Reco AI - SaaS AI exposure discovery, permission auditing, and exfiltration pathway detection
+
+## Further Reading
+
+- [AI Security overview](/ai-security/overview): how the pages of this framework fit together
+- [Prompt Injection Defenses](/ai-security/prompt-injection-defenses): the input-side control that prevents most
+  coerced disclosure
+- [AI Workflows: Developers vs Non-Developers](/ai-security/ai-workflows-developers-vs-non-developers): data
+  classification for SaaS AI tools
+- [MITRE ATLAS](https://atlas.mitre.org/): adversary techniques against AI systems, including exfiltration
 
 ---
 
