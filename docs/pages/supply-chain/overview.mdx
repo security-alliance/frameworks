@@ -28,7 +28,8 @@ target the libraries you import, the CDNs that serve your front end, the RPC end
 contractors your team onboards.
 
 These are not theoretical risks. Attacks targeting npm packages, wallet connector libraries, and compiler toolchains
-have resulted in hundreds of millions of dollars in losses across the Web3 ecosystem.
+have resulted in hundreds of millions of dollars in losses across the Web3 ecosystem, documented case by case in
+[Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats).
 
 ## What makes up a Web3 supply chain?
 
@@ -42,6 +43,10 @@ A Web3 project's supply chain includes every external component between your sou
 - **Human supply chain:** Contractors, freelancers, open-source contributors
 
 A compromise at any point in this chain can affect your users.
+
+This framework concentrates on the code, delivery, tooling, and provider layers. Hardware integrity is covered in
+depth by [Wallet Security](/wallet-security/overview), and the human supply chain by
+[DPRK IT Workers](/dprk-it-workers/overview).
 
 ## What this framework covers
 
@@ -67,6 +72,16 @@ Supply chain security intersects with several other areas covered in this projec
 - [Wallet Security](/wallet-security/overview): Hardware wallet supply chain integrity and key management
 - [External Security Reviews](/external-security-reviews/overview): Selecting and working with security auditors
 - [Incident Management](/incident-management/overview): General incident response procedures
+
+## Further reading
+
+- [SLSA](https://slsa.dev/): Build integrity framework defining provenance and hardening levels for build platforms.
+  Note that SLSA levels describe build assurance, not the artifact criticality tiers used in
+  [Supply Chain Levels for Software Artifacts](/supply-chain/supply-chain-levels-software-artifacts).
+- [NIST SP 800-218, Secure Software Development Framework](https://csrc.nist.gov/pubs/sp/800/218/final): Practices for
+  producing software with fewer vulnerabilities, including third-party component controls
+- [OpenSSF](https://openssf.org/): Working groups and tooling for open source supply chain security, including
+  Scorecard and Sigstore
 
 ---
 
