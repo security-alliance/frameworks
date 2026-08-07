@@ -52,8 +52,9 @@ rather than passive data.
 
 ## Govern external development tools
 
-Organizations should govern extensions, MCP servers, coding agents, package-manager plugins, model loaders, and other
-external development tools throughout their lifecycle:
+Organizations should govern anything brought into the development environment from an external source throughout its
+lifecycle. This includes extensions, MCP servers, coding agents, package-manager plugins and packages, model loaders
+and model artifacts, repository-supplied configuration, and other external development inputs and tools:
 
 1. **Establish business need.** Record the approved use and why an existing capability does not meet it.
 2. **Classify risk.** Assess execution, data, update, and communication risk in the intended environment.
@@ -79,7 +80,7 @@ include:
 | Access | Permissions, accessible data, network destinations, and credential access |
 | Ownership | Review date, designated approver, tool owner, and next review date |
 | Safeguards | Required technical and operational safeguards |
-| Exception | Recorded exception reference and expiration |
+| Exception | Exception reference and expiration when applicable; otherwise, an explicit not-applicable state |
 | Exit plan | Removal and incident-response instructions |
 
 Inspection evidence should show inventory completeness, approval records, expired exceptions, periodic review
@@ -135,7 +136,7 @@ the deployed configuration and retain its results; a documented setting is not e
 - [ ] Define approved and prohibited external-tool categories and document approval criteria
 - [ ] Maintain an allowlist with tool owners, approved uses, versions, permissions, safeguards, and review dates
 - [ ] Record exceptions with scope, compensating controls, an owner, and an expiration date
-- [ ] Reassess tools after material publisher, ownership, permission, update, behavior, or incident changes
+- [ ] Periodically review inventory and enforcement evidence for version, permission, publisher, and behavior drift
 - [ ] Remove unapproved or expired tools and retain evidence of the decision and removal
 - [ ] Keep Workspace Trust enabled, leave unfamiliar folders untrusted, and require explicit approval before trusting them
 - [ ] Disable automatic workspace tasks and review task configuration before enabling it
