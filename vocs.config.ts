@@ -572,6 +572,11 @@ const config = {
           collapsed: true,
           items: [
             { text: 'Overview', link: '/supply-chain/overview' },
+            {
+              text: 'Developer Workstation Security',
+              link: '/supply-chain/developer-workstation-security',
+              dev: true,
+            },
             { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts' },
             { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness' },
             { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats' },
