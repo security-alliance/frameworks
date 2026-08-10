@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,8 +21,12 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example runbook.** Review and customize for your protocol before use. Add your specific DNS
-> provider, hosting platform, and deployment procedures.
+> 🔑 **Key Takeaway**: Treat a compromised UI as a user-fund risk path. Restrict traffic,
+> identify the vector (DNS, CDN, dependency, or pipeline), and route into the matching
+> specialized runbook.
+
+**This is an example runbook.** Review and customize for your protocol before use. Add your specific
+DNS provider, hosting platform, and deployment procedures.
 
 ## Quick Reference
 
@@ -103,10 +110,10 @@ The first priority is understanding how the attacker gained access so you can cl
 
 Once identified, go to the specific runbook:
 
-- DNS hijack → [DNS Hijack](./dns-hijack)
-- CDN/hosting compromise → [CDN/Hosting Compromise](./cdn-hosting-compromise)
-- Dependency attack → [Dependency Attack](./dependency-attack)
-- Build pipeline compromise → [Build Pipeline Compromise](./build-pipeline-compromise)
+- DNS hijack → [DNS Hijack](/incident-management/incident-response-template/runbooks/dns-hijack)
+- CDN/hosting compromise → [CDN/Hosting Compromise](/incident-management/incident-response-template/runbooks/cdn-hosting-compromise)
+- Dependency attack → [Dependency Attack](/incident-management/incident-response-template/runbooks/dependency-attack)
+- Build pipeline compromise → [Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise)
 
 ### Post-Mitigation Investigation
 
@@ -132,10 +139,10 @@ After the threat is contained, investigate impact:
 
 See the specific runbook for detailed mitigation steps:
 
-- [DNS Hijack](./dns-hijack)
-- [CDN/Hosting Compromise](./cdn-hosting-compromise)
-- [Dependency Attack](./dependency-attack)
-- [Build Pipeline Compromise](./build-pipeline-compromise)
+- [DNS Hijack](/incident-management/incident-response-template/runbooks/dns-hijack)
+- [CDN/Hosting Compromise](/incident-management/incident-response-template/runbooks/cdn-hosting-compromise)
+- [Dependency Attack](/incident-management/incident-response-template/runbooks/dependency-attack)
+- [Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise)
 
 ## Recovery
 
@@ -171,9 +178,13 @@ If users signed malicious transactions:
 ## Escalation
 
 <Checklist id="escalation">
-- [ ] [Decision Makers](../contacts#decision-makers) - immediately
-- [ ] [Infrastructure Vendors](../contacts#infrastructure-vendors) - if hosting/CDN involved
-- [ ] [Legal & Communications](../contacts#legal--communications) - for user communication
+- [ ] [Decision Makers](/incident-management/incident-response-template/contacts#decision-makers) - immediately
+- [ ] [Infrastructure
+      Vendors](/incident-management/incident-response-template/contacts#infrastructure-vendors) - if
+      hosting/CDN involved
+- [ ] [Legal &
+      Communications](/incident-management/incident-response-template/contacts#legal--communications)
+      - for user communication
 </Checklist>
 
 ## Prevention Checklist
@@ -189,14 +200,13 @@ After resolving, review:
 - [ ] Content Security Policy
 </Checklist>
 
-## Related
+## Further reading
 
-- [DNS Hijack](./dns-hijack)
-- [CDN/Hosting Compromise](./cdn-hosting-compromise)
-- [Dependency Attack](./dependency-attack)
-- [Build Pipeline Compromise](./build-pipeline-compromise)
-- [DDoS Attack](./ddos-attack)
-- [Third-Party Outage](./third-party-outage)
-- [Incident Response Policy](../incident-response-policy)
+- [Runbooks overview](/incident-management/incident-response-template/runbooks/overview): how the runbooks in this section fit together
+- [DNS Hijack](/incident-management/incident-response-template/runbooks/dns-hijack): one of the common root causes
+- [CDN/Hosting Compromise](/incident-management/incident-response-template/runbooks/cdn-hosting-compromise): another common root cause
+- [Web Application Security](/front-end-web-app/web-application-security): hardening the app itself
+
+---
 
 <ContributeFooter />

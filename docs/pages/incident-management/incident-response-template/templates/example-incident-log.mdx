@@ -1,6 +1,6 @@
 ---
 title: "Incident: API Outage - Rate Limiter Misconfiguration | Security Alliance"
-description: "This is an example incident log. Delete this file or use it as reference when creating real incident logs."
+description: "This is an example incident log. Delete this file or use it as reference when creating real incident logs. never treat sample commands or timelines as"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,17 +8,32 @@ tags:
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+
+{/*
+  content-model-exception:
+  type: template
+  reason: Reusable template body intentionally uses many H2 placeholders and static task lists for copy-paste.
+  owner: maintainers
+*/}
 
 # Incident: API Outage - Rate Limiter Misconfiguration
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example incident log.** Delete this file or use it as reference when creating real incident logs.
+> 🔑 **Key Takeaway**: Use this filled API-outage log as a format reference only. Replace
+> it with real incident records; never treat sample commands or timelines as operational
+> truth.
+
+**This is an example incident log.** Delete this file or use it as reference when creating real
+incident logs.
 
 ## Summary
 
@@ -113,7 +128,7 @@ Rolled back rate limiter configuration to previous known-good version.
 - [x] Sample API calls succeeding
 - [x] No user reports of issues post-fix
 
-## Communications Sent
+### Communications Sent
 
 | Time | Channel | Summary |
 | ---- | ------- | ------- |
@@ -121,18 +136,27 @@ Rolled back rate limiter configuration to previous known-good version.
 | 15:45 UTC | Discord #announcements | "API issues resolved" |
 | 16:00 UTC | Twitter | Brief update (optional) |
 
-## Post-Incident
+### Post-Incident
 
 - [x] Post-mortem scheduled for: 2024-01-17 15:00 UTC
-- [x] [Post-mortem document](./example-post-mortem) created
+- [x] [Post-mortem document](/incident-management/incident-response-template/templates/example-post-mortem) created
 - [ ] Action items assigned (pending post-mortem)
 
-## Links & Evidence
+### Links & Evidence
 
 - DataDog dashboard: [link]
 - Config PR that caused issue: [link]
 - Rollback PR: [link]
 
-*See [Incident Response Policy](../incident-response-policy) for severity definitions and process.*
+*See [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy) for severity definitions and process.*
+
+## Further reading
+
+- [Templates overview](/incident-management/incident-response-template/templates/overview): how the templates in this section fit together
+- [Incident Log Template](/incident-management/incident-response-template/templates/incident-log-template): the blank version to copy
+- [Post-Mortem Template](/incident-management/incident-response-template/templates/post-mortem-template): what to complete once the incident closes
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy): severity levels, roles, and escalation
+
+---
 
 <ContributeFooter />

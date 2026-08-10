@@ -1,9 +1,16 @@
 ---
 title: "Incident Response Playbooks | Security Alliance"
-description: "Create step-by-step incident response playbooks for stolen funds, data breaches, and DDoS attacks. Define indicators of compromise (IOCs), containment actions, and recovery procedures."
+description: "Create step-by-step incident response playbooks for stolen funds, data breaches, and DDoS attacks. Define indicators of compromise (IOCs), containment actions"
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -13,15 +20,33 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Generally speaking, incident response playbooks aim to provide detailed, step-by-step procedures for handling specific
-types of security incidents. Obviously, it's not possible to have thought about every possible scenario ahead of time,
-but one could create documentation for the most likely or devastating scenarios.
+> 🔑 **Key Takeaway**: Write playbooks for your most likely and most devastating scenarios
+> before they hit. Each playbook should cover detection IOCs, containment, eradication,
+> recovery, and a lessons-learned loop.
 
-## Best Practices
+Incident response playbooks provide step-by-step procedures for handling specific security incidents.
+You cannot cover every scenario ahead of time, so prioritize the most likely and most devastating cases.
+
+## What this framework covers
+
+1. [Malware Infection](/incident-management/playbooks/malware): immediate containment when a host may be
+   compromised.
+2. [North Korea (DPRK) Attack](/incident-management/playbooks/hacked-dprk): victim guidance for confirmed
+   DPRK compromise paths.
+3. [Wallet Drainer Attack](/incident-management/playbooks/hacked-drainer): recover control after approval
+   or signature drainage.
+4. [ELUSIVE COMET Attack](/incident-management/playbooks/hacked-elusive-comet): Zoom remote-control social
+   engineering response.
+5. [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines): how to
+   engage SEAL 911 and run a crisis channel.
+6. [Decentralized Incident Response Framework (DeIRF)](/incident-management/playbooks/decentralized-ir):
+   IR scaffold for teams without a single authority.
+
+## Best practices
 
 1. Define the type of incident the playbook addresses (e.g., stolen funds, data breach, DDoS attack).
-2. Outline the steps for detecting and analyzing the incident, including key indicators of compromise (IOCs) and tools
-to use.
+2. Outline the steps for detecting and analyzing the incident, including key indicators of compromise
+   (IOCs) and tools to use.
 3. Describe immediate actions to contain the incident and prevent further damage.
 4. Provide detailed steps for eradicating the root cause of the incident.
 5. Outline procedures for restoring everything affected to normal operation.
@@ -29,6 +54,13 @@ to use.
 
 For example incident runbooks and templates, see
 [Incident Response Template: Templates](/incident-management/incident-response-template/templates/overview).
+
+## Further reading
+
+- [Incident Management overview](/incident-management/overview): how the pages of this framework fit together
+- [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines): reaching outside help fast
+- [Incident Response Template overview](/incident-management/incident-response-template/overview): how the template pieces fit together
+- [Incident Detection and Response](/incident-management/incident-detection-and-response): the detection step before any playbook
 
 ---
 

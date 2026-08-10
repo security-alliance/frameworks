@@ -1,6 +1,6 @@
 ---
 title: "Post-Mortem: API Outage - Rate Limiter Misconfiguration | Security Alliance"
-description: "This is an example post-mortem. Delete this file or use it as reference when creating real post-mortems."
+description: "This is an example post-mortem. Delete this file or use it as reference when creating real post-mortems. Covers Post-Mortem: API Outage - Rate Limiter"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,17 +8,32 @@ tags:
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+
+{/*
+  content-model-exception:
+  type: template
+  reason: Reusable template body intentionally uses many H2 placeholders and static task lists for copy-paste.
+  owner: maintainers
+*/}
 
 # Post-Mortem: API Outage - Rate Limiter Misconfiguration
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example post-mortem.** Delete this file or use it as reference when creating real post-mortems.
+> 🔑 **Key Takeaway**: This sample post-mortem shows tone and structure for a config-driven
+> outage. Copy the learning posture—systems over blame—and write your own facts for
+> every real incident.
+
+**This is an example post-mortem.** Delete this file or use it as reference when creating real post-
+mortems.
 
 ## Metadata
 
@@ -28,7 +43,7 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../../compo
 | **Severity** | P2 |
 | **Authors** | Alice, Bob |
 | **Status** | Final |
-| **Incident Log** | [2024-01-15 Example API Outage](./example-incident-log) |
+| **Incident Log** | [2024-01-15 Example API Outage](/incident-management/incident-response-template/templates/example-incident-log) |
 
 ## Summary
 
@@ -74,7 +89,7 @@ at risk, but approximately 3,000 users experienced failed transactions during th
 | 15:25 | Rollback complete |
 | 16:45 | Incident resolved |
 
-See [Incident Log](./example-incident-log) for detailed timeline.
+See [Incident Log](/incident-management/incident-response-template/templates/example-incident-log) for detailed timeline.
 
 ## Root Cause
 
@@ -114,13 +129,13 @@ Human error during configuration change. The rate limit threshold was typed as `
 3. Alert took 17 minutes to fire (threshold too high)
 4. No validation for obviously wrong values (10 vs 1000)
 
-## Where We Got Lucky
+### Where We Got Lucky
 
 1. This happened during business hours when the team was available
 2. The fix (rollback) was simple. If the old config was also broken, recovery would have been harder
 3. No financial impact because this was the API layer, not smart contracts
 
-## Action Items
+### Action Items
 
 | Action | Owner | Deadline | Status |
 | ------ | ----- | -------- | ------ |
@@ -130,12 +145,14 @@ Human error during configuration change. The rate limit threshold was typed as `
 | Add staging environment testing for config changes | Dave | 2024-02-15 | In Progress |
 | Document config change process | Alice | 2024-01-31 | Not Started |
 
-## Lessons for Runbooks
+### Lessons for Runbooks
 
-- [x] Existing runbook sufficient: [Third-Party Outage](../runbooks/third-party-outage) (config rollback section applicable)
+- [x] Existing runbook sufficient: [Third-Party
+      Outage](/incident-management/incident-response-template/runbooks/third-party-outage) (config
+      rollback section applicable)
 - [ ] No new runbook needed
 
-## Detection
+### Detection
 
 | Aspect | Details |
 | ------ | ------- |
@@ -143,14 +160,14 @@ Human error during configuration change. The rate limit threshold was typed as `
 | Time to detection | 17 minutes |
 | Could we detect faster? | Yes - lower alert threshold to 1% |
 
-## Links
+### Links
 
-- Incident Log: [2024-01-15 Example API Outage](./example-incident-log)
+- Incident Log: [2024-01-15 Example API Outage](/incident-management/incident-response-template/templates/example-incident-log)
 - Config PR (bad): [link]
 - Rollback PR: [link]
 - Monitoring dashboard: [link]
 
-## Meeting Notes
+### Meeting Notes
 
 **Attendees:** Alice, Bob, Carol, Dave
 
@@ -160,6 +177,15 @@ Human error during configuration change. The rate limit threshold was typed as `
 - Discussed whether to require staging for all changes (decided yes)
 - Dave to implement validation this week
 
-*See [Incident Response Policy](../incident-response-policy#step-6-post-incident-review) for post-mortem process.*
+*See [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy#step-6-post-incident-review) for post-mortem process.*
+
+## Further reading
+
+- [Templates overview](/incident-management/incident-response-template/templates/overview): how the templates in this section fit together
+- [Post-Mortem Template](/incident-management/incident-response-template/templates/post-mortem-template): the blank version to copy
+- [Lessons Learned](/incident-management/lessons-learned): turning findings into durable change
+- [Incident Log Template](/incident-management/incident-response-template/templates/incident-log-template): the record this draws from
+
+---
 
 <ContributeFooter />

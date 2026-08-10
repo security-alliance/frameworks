@@ -1,11 +1,18 @@
 ---
 title: "Incident Lessons Learned | Security Alliance"
-description: "Conduct post-incident reviews to improve response capabilities. Document timelines, root causes, and action plans. Share lessons with the ecosystem to promote security awareness."
+description: "Conduct post-incident reviews to improve response capabilities. Document timelines, root causes, and action plans. By analyzing what went well and what"
 tags:
   - Security Specialist
   - Operations & Strategy
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,11 +22,15 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Review every significant incident blamelessly while memory is fresh.
+> Capture timeline, root cause, and owners with deadlines so the output is procedure
+> change, not a tucked-away write-up.
+
 Conducting a post-incident review and identifying lessons learned will improve your project's incident response
 capabilities. By analyzing what went well and what could be improved, you can enhance your readiness for future
 incidents.
 
-## Best Practices
+## Best practices
 
 1. Review the incident together with everybody involved in handling it shortly after the incident is resolved.
 2. Record details about the incident, including the timeline, root cause, impact, and response efforts.
@@ -56,6 +67,13 @@ For a concrete post-mortem structure and example write-up, see
 [Incident Response Template: Post-Mortem Template](/incident-management/incident-response-template/templates/post-mortem-template)
 and
 [Incident Response Template: Example Post-Mortem](/incident-management/incident-response-template/templates/example-post-mortem).
+
+## Further reading
+
+- [Incident Management overview](/incident-management/overview): how the pages of this framework fit together
+- [Post-Mortem Template](/incident-management/incident-response-template/templates/post-mortem-template): the structure for writing it up
+- [Example Post-Mortem](/incident-management/incident-response-template/templates/example-post-mortem): a completed example to model
+- [Security Metrics and KPIs](/governance/security-metrics-kpis): tracking whether lessons changed outcomes
 
 ---
 

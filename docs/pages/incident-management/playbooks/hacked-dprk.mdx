@@ -1,12 +1,16 @@
 ---
 title: "North Korea (DPRK) Attack Response | SEAL"
-description: "Respond to North Korea (DPRK) cyberattacks. Learn how hacking squads use fake video conference software and fake PDFs to steal private keys, files, and credentials. Immediate response steps included."
+description: "Respond to North Korea (DPRK) cyberattacks. Learn how hacking squads use fake video conference software and fake PDFs to steal private keys, files"
 tags:
   - Security Specialist
   - Operations & Strategy
 contributors:
   - role: wrote
     users: [SEAL]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -15,6 +19,10 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Treat a confirmed DPRK compromise as full credential and key theft.
+> Follow the malware playbook first, assume impersonation risk to contacts, and rotate
+> everything reachable from the infected host.
 
 If you’ve been sent this document, then we have very good reason to believe that you have been hacked by North Korea
 (DPRK). This document will give you some information about North Korea, why they’ve hacked you, and how they might’ve
@@ -80,6 +88,13 @@ In this method, you are sent a link to download a report, slide deck, or other p
 
 If you download and run this file, you will have executed the malware. The first thing the malware does is open the PDF
 file you were expecting, so that you do not suspect you were infected.
+
+## Further reading
+
+- [Playbooks overview](/incident-management/playbooks/overview): how the playbooks in this section fit together
+- [DPRK IT Workers](/dprk-it-workers/overview): who the actor is and how they get hired
+- [Mitigating DPRK IT Workers](/dprk-it-workers/mitigating-dprk-it-workers): hardening and post-discovery steps
+- [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines): reaching outside help fast
 
 ---
 

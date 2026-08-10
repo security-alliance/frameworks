@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,8 +21,12 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example runbook.** Review and customize for your protocol before use. Fill in your key types, what
-> each controls, and your specific rotation procedures.
+> 🔑 **Key Takeaway**: On suspected key or signer compromise, inventory what the key
+> controls, revoke and rotate fast, and assess blast radius before declaring the
+> environment clean.
+
+**This is an example runbook.** Review and customize for your protocol before use. Fill in your key
+types, what each controls, and your specific rotation procedures.
 
 ## Quick Reference
 
@@ -154,9 +161,12 @@ For hot wallets:
 ## Escalation
 
 <Checklist id="escalation">
-- [ ] [Decision Makers](../contacts#decision-makers) - immediately for any confirmed compromise
-- [ ] [Security Partners](../contacts#security-partners) - for investigation support
-- [ ] [Legal](../contacts#legal--communications) - if funds were stolen
+- [ ] [Decision Makers](/incident-management/incident-response-template/contacts#decision-makers) -
+      immediately for any confirmed compromise
+- [ ] [Security
+      Partners](/incident-management/incident-response-template/contacts#security-partners) - for
+      investigation support
+- [ ] [Legal](/incident-management/incident-response-template/contacts#legal--communications) - if funds were stolen
 </Checklist>
 
 ## Prevention Checklist
@@ -172,9 +182,13 @@ After resolving, review:
 - [ ] Key rotation schedule
 </Checklist>
 
-## Related
+## Further reading
 
-- [Smart Contract Exploit](./smart-contract-exploit)
-- [Incident Response Policy](../incident-response-policy)
+- [Runbooks overview](/incident-management/incident-response-template/runbooks/overview): how the runbooks in this section fit together
+- [Smart Contract Exploit](/incident-management/incident-response-template/runbooks/smart-contract-exploit): the follow-on scenario when keys hold admin roles
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy): severity levels, roles, and escalation
+- [Seed Phrase Management](/wallet-security/seed-phrase-management): key custody practice that limits exposure
+
+---
 
 <ContributeFooter />
