@@ -14,7 +14,8 @@ const isMainBranch = process.env.CF_PAGES_BRANCH === 'main'
 const config = {
   srcDir: 'docs',
   renderStrategy: 'full-static' as const,
-  head(path: string) {    const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
+  head(path: string) {
+    const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
     return { canonical: `https://frameworks.securityalliance.org${cleanPath || '/'}` }
   },
   banner: {
