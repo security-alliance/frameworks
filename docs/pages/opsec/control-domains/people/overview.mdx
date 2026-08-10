@@ -1,19 +1,36 @@
 ---
 title: "Personnel Security Controls | Security Alliance"
-description: "People controls: defend against social engineering, mitigate insider threats, build security training programs, and establish personnel security measures for Web3 teams with distributed contributors."
+description: "People OpSec controls: social-engineering defense, insider-threat mitigation, security training, and culture practices for distributed Web3 teams."
 tags:
   - Security Specialist
   - Operations & Strategy
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Nested OpSec overview; child map lives in parent IA / sidebar until section pages stabilize.
+  owner: maintainers
+*/}
 
 # People & Personnel Controls
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: People controls reduce human-targeted risk through training, social-engineering defenses,
+> insider-threat measures, and a culture that makes secure behavior normal.
 
 People are both the greatest asset and potentially the greatest vulnerability in any security program. This section
 outlines controls to mitigate human-related security risks while fostering a security-aware culture.
@@ -135,6 +152,13 @@ Ensuring appropriate security controls throughout the employment lifecycle.
 Effective people and personnel controls recognize that security is fundamentally a human issue. By addressing social
 engineering, insider threats, and security awareness, organizations can transform their people from potential
 vulnerabilities into a critical line of defense.
+
+## Further reading
+
+- [Control Domains overview](/opsec/control-domains/overview): how the four control domains fit together
+- [Insider Threat Mitigation](/opsec/control-domains/people/insider-threat-mitigation): risk from trusted access
+- [Security Training and Culture](/opsec/control-domains/people/security-training-culture): building durable habits
+- [Social Engineering Defense](/opsec/control-domains/people/social-engineering-defense): resisting manipulation
 
 ---
 

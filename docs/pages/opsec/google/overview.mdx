@@ -1,6 +1,6 @@
 ---
 title: "Google Workspace Security | Security Alliance"
-description: "Protect your Google account from SIM swaps: configure 2FA with hardware security keys, remove recovery phone numbers, audit OAuth applications, and enroll in Advanced Protection Program."
+description: "Harden Google accounts and Workspace: hardware-key 2FA, remove risky recovery phones, audit OAuth apps, and use Advanced Protection for high-risk users."
 tags:
   - Community & Marketing
   - Operations & Strategy
@@ -10,25 +10,30 @@ contributors:
     users: [mattaereal, zedt3ster, fredriksvantes, auditware]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
-import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
+import { TagList, AttributionList, Checklist, ContributeFooter } from '../../../../components'
+
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Nested OpSec overview; child map lives in parent IA / sidebar until section pages stabilize.
+  owner: maintainers
+*/}
 
 # Google Security
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-## Summary
-
-> 🔑 **Key Takeaway:** Enhance your Google account security by implementing robust 2FA, eliminating redundant recovery
-> options, and diligently overseeing third-party access.
+> 🔑 **Key Takeaway**: Harden Google security by enforcing strong 2FA, removing risky recovery options that enable
+> SIM-swap paths, and continuously auditing third-party and device access.
 
 **Google** provides a wide range of services—from email to file storage. Safeguarding your Google account is among the
 most critical steps you can take to protect your personal and professional data. Below are simple yet effective measures
 to improve your Google account security.
-
----
 
 ## For Individuals
 
@@ -72,8 +77,6 @@ These settings apply to your personal Google account. All team members and admin
   - [ ]  **Birthday:** Consider making it private
 </Checklist>
 
----
-
 ### Extended Security Settings
 
 For a comprehensive security review, follow these steps from [Google Security](https://myaccount.google.com/security):
@@ -91,8 +94,6 @@ For a comprehensive security review, follow these steps from [Google Security](h
 > If using Google Authenticator as a 2FA app on your phone, disconnect it from the cloud, as backup codes are then stored
 > in the google cloud associated to email. Use it without an account and ensure backup codes are written down offline.
 
----
-
 ### Advanced Protection Program
 
 For those who are public figures or need heightened security, Google's **Advanced Protection Program** is worth
@@ -102,8 +103,6 @@ recovery more challenging.
 <Checklist id="advanced-protection">
 - [ ]  [Enroll in Advanced Protection Program](https://myaccount.google.com/advanced-protection/landing)
 </Checklist>
-
----
 
 ### Best Practices & Ongoing Maintenance
 
@@ -115,8 +114,6 @@ recovery more challenging.
 - [ ]  **Consider** using identity **monitoring** apps like [Push Security](https://pushsecurity.com).
 </Checklist>
 
----
-
 ## For Team Members
 
 These guidelines apply to team members who use Google Workspace but don't have administrative access.
@@ -127,8 +124,6 @@ Team members should:
 - Pay attention to any email or phone notifications from Google regarding unusual sign-ins or account changes
 - Regularly visit [Google's Security Checkup](https://myaccount.google.com/security-checkup) to identify potential
 issues and resolve them
-
----
 
 ## For Admins
 
@@ -207,8 +202,6 @@ These settings and practices apply to Google Workspace administrators with eleva
 - Enroll in the [Advanced Protection Program](https://landing.google.com/advancedprotection/) for high-risk users
 or your entire organization
 
----
-
 ### Notes
 
 #### [1] Security Alerts
@@ -220,6 +213,13 @@ indicate concerns.
 
 You can confirm user enrollment status at Directory > Users, under the **2-step verification enrollment** and
 **Advanced Protection Program enrollment** columns.
+
+## Further reading
+
+- [OpSec overview](/opsec/overview): how the pages of this framework fit together
+- [Secure Authentication](/iam/secure-authentication): account and recovery design
+- [Multi-Factor Authentication](/opsec/mfa/overview): choosing factors for these accounts
+- [Account Management guides](/guides/account-management/overview): per-product hardening walkthroughs
 
 ---
 
