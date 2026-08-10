@@ -1,6 +1,6 @@
 ---
 title: "Repository Hardening | Security Alliance"
-description: "Harden your GitHub repository with MFA, protected branches, signed commits, CODEOWNERS, and security hardening for GitHub Actions. Prevent token theft, unauthorized access, and supply chain attacks on critical branches."
+description: "Harden GitHub repos with org MFA, protected branches, signed commits, CODEOWNERS, least-privilege tokens, and hardened GitHub Actions defaults."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -315,7 +317,7 @@ apply to repository hardening.
 | Secret scanning + push protection | Org Settings > Code security > Enable both |
 | Scorecard audit | `npx @ossf/scorecard --repo=<owner>/<repo>` |
 
-## References
+## Further reading
 
 - [GitHub Docs: About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - [GitHub Docs: Security hardening for GitHub Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions)
