@@ -1,6 +1,6 @@
 ---
 title: "Physical Security | Security Alliance"
-description: "Physical security for crypto holders: protect people and assets from coercion, theft, surveillance, and tampering, and how it relates to operational security."
+description: "Physical security for crypto key-holders: coercion and duress, facility controls, counter-surveillance, and hardware supply-chain integrity."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -15,16 +15,20 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
-
 # Physical Security
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Key Takeaway**:
-> Physical security protects people and assets from threats that bypass cryptography entirely: coercion, theft, surveillance, and tampering. It is a distinct domain from operational security, addressing bodily harm, forced access, and physical integrity rather than information disclosure.
+> 🔑 **Key Takeaway**: Physical security protects people and assets from threats that bypass cryptography entirely:
+> coercion, theft, surveillance, and tampering. It is a distinct domain from operational security, addressing bodily
+> harm, forced access, and physical integrity rather than information disclosure.
 
-Cryptography and digital controls protect keys and data from algorithmic and remote attack. They do not protect the people who hold those keys from physical threats, nor the hardware and facilities those keys depend on. Physical security is the domain that addresses these threats directly: protecting people from harm and coercion, protecting physical assets from theft and tampering, detecting physical surveillance, and preserving the integrity of the hardware supply chain.
+Cryptography and digital controls protect keys and data from algorithmic and remote attack. They do not protect the
+people who hold those keys from physical threats, nor the hardware and facilities those keys depend on. Physical
+security is the domain that addresses these threats directly: protecting people from harm and coercion, protecting
+physical assets from theft and tampering, detecting physical surveillance, and preserving the integrity of the hardware
+supply chain.
 
 ## What physical security covers
 
@@ -37,21 +41,41 @@ Cryptography and digital controls protect keys and data from algorithmic and rem
 
 Physical security and [Operational Security](/opsec/overview) are distinct but overlapping domains:
 
-- **Operational Security** mitigates information disclosure through procedural and digital controls. Its goal is to reduce what an adversary can learn.
-- **Physical Security** mitigates bodily harm, forced access, and physical tampering through barriers, deterrence, deception, and response. Its goal is to reduce what an adversary can physically do.
+- **Operational Security** mitigates information disclosure through procedural and digital controls. Its goal is to
+  reduce what an adversary can learn.
+- **Physical Security** mitigates bodily harm, forced access, and physical tampering through barriers, deterrence,
+  deception, and response. Its goal is to reduce what an adversary can physically do.
 
-Overlap areas — such as travel safety and device theft — are handled by cross-references rather than duplication. Where OpSec guidance touches physical coercion (for example, duress codes or border inspections), it links here rather than restating the controls.
+Overlap areas — such as travel safety and device theft — are handled by cross-references rather than duplication. Where
+OpSec guidance touches physical coercion (for example, duress codes or border inspections), it links here rather than
+restating the controls.
 
-## Sub-categories
+## What this framework covers
 
-- [**Coercion & Duress**](/physical-security/coercion-and-duress/overview) — Defending key-holders against wrench attacks: coercion, kidnapping, and extortion targeting the people who control keys. This is the most developed sub-section of the framework.
-- [**Facility & Perimeter Security**](/physical-security/facility-and-perimeter/overview) — Access control, surveillance, environmental controls, and secure facility design. *(In progress.)*
-- [**Physical Counter-Surveillance**](/physical-security/physical-counter-surveillance/overview) — Detecting and countering physical surveillance of people and locations. *(In progress.)*
-- [**Supply Chain Physical Integrity**](/physical-security/supply-chain-physical-integrity/overview) — Tamper evidence and hardware provenance for devices that custody keys. *(In progress.)*
+- [**Coercion & Duress**](/physical-security/coercion-and-duress/overview) — Defending key-holders against wrench
+  attacks: coercion, kidnapping, and extortion targeting the people who control keys. This is the most developed
+  sub-section of the framework.
+- [**Facility & Perimeter Security**](/physical-security/facility-and-perimeter/overview) — Access control,
+  surveillance, environmental controls, and secure facility design. *(In progress.)*
+- [**Physical Counter-Surveillance**](/physical-security/physical-counter-surveillance/overview) — Detecting and
+  countering physical surveillance of people and locations. *(In progress.)*
+- [**Supply Chain Physical Integrity**](/physical-security/supply-chain-physical-integrity/overview) — Tamper evidence
+  and hardware provenance for devices that custody keys. *(In progress.)*
+
+## Related frameworks
+
+- [Operational Security](/opsec/overview) — information disclosure and routine OPSEC
+- [Wallet Security](/wallet-security/overview) — technical custody and wallet controls
+- [Incident Management](/incident-management/overview) — general incident response
+- [Supply Chain Security](/supply-chain/overview) — software and vendor supply chain
+- [Treasury Operations](/treasury-operations/overview) — organizational treasury process
 
 ## Who this framework serves
 
-This framework serves individuals (founders, traders, KOLs) and organizations (exchanges, funds, DAOs, and protocols) that control significant on-chain or custodial balances, as well as anyone whose role makes them a target for physical attack because of the assets they can access.
+This framework serves individuals (founders, traders, KOLs) and organizations (exchanges, funds, DAOs, and protocols)
+that control significant on-chain or custodial balances, as well as anyone whose role makes them a target for physical
+attack because of the assets they can access.
 
+---
 
 <ContributeFooter />

@@ -1,6 +1,6 @@
 ---
 title: "Threat Model | Security Alliance"
-description: "Wrench attack threat model: attacker types, objectives, and physical attack surfaces facing individuals and organizations holding significant crypto."
+description: "Wrench-attack threat model: opportunistic crime, organized groups, insiders, and state actors across home, work, public, and family surfaces."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -15,37 +15,68 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
-
 # Threat Model
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Key Takeaway**:
-> Wrench attackers range from opportunistic criminals to organized crime, insiders, and state actors. Their objectives span direct theft, extortion, operational coercion, and intelligence gathering, executed across residential, workplace, public, and family-adjacent attack surfaces.
+> 🔑 **Key Takeaway**: Wrench attackers range from opportunistic criminals to organized crime, insiders, and state
+> actors. Their objectives span direct theft, extortion, operational coercion, and intelligence gathering, executed
+> across residential, workplace, public, and family-adjacent attack surfaces.
 
-Wrench attacks rely on coercing people, not breaking cryptography. This section characterizes who the adversaries are, what they want, and where they are most likely to strike, so that wallet and key setups can be aligned to real-world risk instead of purely technical assumptions.
+Wrench attacks rely on coercing people, not breaking cryptography. This section characterizes who the adversaries are,
+what they want, and where they are most likely to strike, so that wallet and key setups can be aligned to real-world
+risk instead of purely technical assumptions.
 
 ## Attacker types
 
-- **Opportunistic criminals:** Street-level or local gangs who become aware that a target "has crypto" (through social media, lifestyle, or loose talk) and attempt fast, high-pressure extortion with limited technical skills. These actors typically aim for immediate liquid funds (hot wallets, exchange accounts) and are more sensitive to time pressure and visible risk.
-- **Organized crime groups:** Structured groups that combine OSINT, surveillance, and insider recruitment to identify and pressure high-value key-holders, including founders and treasury staff.
-- **Insiders and close circle:** Current or former employees, contractors, business partners, family members, or intimate partners who know or suspect that the victim controls significant digital assets. They often possess contextual knowledge (where devices are, when approvals happen, who else can sign), making them especially dangerous in blended social–physical attacks.
-- **State actors:** Security services, law-enforcement units, or proxy groups in jurisdictions with weak rule of law or hostile regulatory environments, using detention, travel stops, or raids to obtain keys or force on-chain actions.
+- **Opportunistic criminals:** Street-level or local gangs who become aware that a target "has crypto" (through social
+  media, lifestyle, or loose talk) and attempt fast, high-pressure extortion with limited technical skills. These actors
+  typically aim for immediate liquid funds (hot wallets, exchange accounts) and are more sensitive to time pressure and
+  visible risk.
+- **Organized crime groups:** Structured groups that combine OSINT, surveillance, and insider recruitment to identify
+  and pressure high-value key-holders, including founders and treasury staff.
+- **Insiders and close circle:** Current or former employees, contractors, business partners, family members, or
+  intimate partners who know or suspect that the victim controls significant digital assets. They often possess
+  contextual knowledge (where devices are, when approvals happen, who else can sign), making them especially dangerous
+  in blended social–physical attacks.
+- **State actors:** Security services, law-enforcement units, or proxy groups in jurisdictions with weak rule of law or
+  hostile regulatory environments, using detention, travel stops, or raids to obtain keys or force on-chain actions.
 
 ## Attacker objectives
 
-- **Direct theft:** Forcing the victim to unlock devices, disclose seed phrases, or sign transactions to transfer funds to attacker-controlled addresses.
-- **Extortion and blackmail:** Using threats of continued violence, exposure, or reputational damage to demand repeated payments over time. May target both personal funds and organizational treasuries.
-- **Operational coercion:** Forcing specific on-chain actions: pausing or upgrading contracts, whitelisting addresses, approving malicious proposals, or leaking internal secrets and signing policies.
-- **Intelligence gathering:** Mapping the organization's wallet architecture, signing processes, key-holders, and recovery mechanisms for future operations.
+- **Direct theft:** Forcing the victim to unlock devices, disclose seed phrases, or sign transactions to transfer funds
+  to attacker-controlled addresses.
+- **Extortion and blackmail:** Using threats of continued violence, exposure, or reputational damage to demand repeated
+  payments over time. May target both personal funds and organizational treasuries.
+- **Operational coercion:** Forcing specific on-chain actions: pausing or upgrading contracts, whitelisting addresses,
+  approving malicious proposals, or leaking internal secrets and signing policies.
+- **Intelligence gathering:** Mapping the organization's wallet architecture, signing processes, key-holders, and
+  recovery mechanisms for future operations.
 
 ## Attack surfaces
 
-- **Residential environment:** Home invasions, confrontations in building common areas, parking ambushes, and threats involving family members or roommates.
-- **Workplace:** Approaching treasury, operations, or engineering staff near the office, parking areas, or on their commute home. Risks increase when work devices with wallet access leave secure premises or when visitors can move freely inside office spaces.
-- **Public spaces:** Incidents in cafés, restaurants, airports, hotels, or nightlife locations where routine patterns are easy to observe. Crypto events (conferences, side-events) are particularly attractive hunting grounds, as they densely concentrate potential targets.
-- **Family, friends, and staff:** Threats directed at spouses, partners, children, drivers, assistants, or security staff, who may have indirect access. Attackers can also use them as leverage.
+- **Residential environment:** Home invasions, confrontations in building common areas, parking ambushes, and threats
+  involving family members or roommates.
+- **Workplace:** Approaching treasury, operations, or engineering staff near the office, parking areas, or on their
+  commute home. Risks increase when work devices with wallet access leave secure premises or when visitors can move
+  freely inside office spaces.
+- **Public spaces:** Incidents in cafés, restaurants, airports, hotels, or nightlife locations where routine patterns
+  are easy to observe. Crypto events (conferences, side-events) are particularly attractive hunting grounds, as they
+  densely concentrate potential targets.
+- **Family, friends, and staff:** Threats directed at spouses, partners, children, drivers, assistants, or security
+  staff, who may have indirect access. Attackers can also use them as leverage.
 
+## Further reading
+
+- [Coercion & Duress overview](/physical-security/coercion-and-duress/overview): how the pages of this sub-section fit
+  together
+- [Risk Factors and Early Signals](/physical-security/coercion-and-duress/risk-factors-and-early-signals): how these
+  attackers select and approach targets
+- [Defensive Design Principles](/physical-security/coercion-and-duress/defensive-design-principles): the controls that
+  answer this threat model
+- [Threat Modeling](/threat-modeling/overview): a structured method for building your own
+
+---
 
 <ContributeFooter />
