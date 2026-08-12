@@ -1,6 +1,6 @@
 ---
 title: "Transaction Flows Under Duress | Security Alliance"
-description: "Designing transaction flows that resist coercion: hard limits, separation of approvals, duress-compatible modes, and high-risk period tightening."
+description: "Transaction flows under duress: hard limits, delayed approvals, separated channels, plausible compliance paths, and high-risk period tightening."
 tags:
   - Security Specialist
   - Engineer/Developer
@@ -21,9 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Key Takeaway**:
-> Hard limits, time delays, separation of approval channels, plausible compliance paths, and tighter controls during
-> high-risk periods ensure that coerced transactions cannot drain reserves or escalate to higher-privilege actions.
+> 🔑 **Key Takeaway**: Hard limits, time delays, separation of approval channels, plausible compliance paths, and tighter
+> controls during high-risk periods ensure that coerced transactions cannot drain reserves or escalate to
+> higher-privilege actions.
 
 ## Hard limits and friction
 
@@ -54,5 +54,16 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 - During travel, temporarily lower limits and increase required approvals by policy.
 - Treat credible threats, doxxing, or surveillance indicators as triggers to move operations into a heightened security
   mode with reduced transaction capability.
+
+## Further reading
+
+- [Coercion & Duress overview](/physical-security/coercion-and-duress/overview): how the pages of this sub-section fit
+  together
+- [Wallet and Key Architecture](/physical-security/coercion-and-duress/wallet-and-key-architecture): the custody split
+  these flows depend on
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): thresholds and signer separation
+- [Multisig for Protocols](/multisig-for-protocols/overview): timelocks and approval paths at organization scale
+
+---
 
 <ContributeFooter />

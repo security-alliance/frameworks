@@ -115,6 +115,36 @@
   color: #2563eb;
 }
 
+/* Empty state placeholder */
+.attribution-empty {
+  text-align: center;
+}
+
+.attribution-placeholder {
+  margin: 0;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+:root:not([data-vocs-theme='dark']) .attribution-placeholder {
+  color: #202020;
+}
+
+.attribution-placeholder-link {
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.attribution-placeholder-link:hover {
+  text-decoration: underline;
+}
+
+:root:not([data-vocs-theme='dark']) .attribution-placeholder-link {
+  color: #2563eb;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .attribution-container {

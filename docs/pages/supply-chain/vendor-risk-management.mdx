@@ -17,7 +17,7 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway:** Every provider, auditor, and contractor in your stack is a trust decision you are making on
+> 🔑 **Key Takeaway**: Every provider, auditor, and contractor in your stack is a trust decision you are making on
 > behalf of your users. Assess that trust before onboarding, set expectations contractually, and review it regularly.
 
 Web3 projects are built on top of infrastructure and services they do not own. RPC providers relay every transaction.
@@ -26,9 +26,9 @@ CDN providers serve the JavaScript that connects users to wallets. Each of these
 decision, and most teams make it informally, based on reputation, convenience, or whoever the previous developer used.
 Vendor risk management is the practice of making these trust decisions deliberately rather than by default.
 
-## Categories of Third-Party Risk
+## Categories of third-party risk
 
-### Infrastructure Providers
+### Infrastructure providers
 
 - **RPC providers:** Every read and write your application makes to the blockchain goes through them. A compromised
   or misconfigured provider can return manipulated data, and a single-provider dependency means your application goes
@@ -36,7 +36,7 @@ Vendor risk management is the practice of making these trust decisions deliberat
 - **Indexing services:** Applications that rely on indexed data for displaying balances, transaction history, or
   contract state are trusting that the index is accurate and up to date. Stale or incorrect results can mislead users
   or cause faulty transaction construction.
-- **Hosting and CDN:** Your frontend is served through these providers. If compromised, they can inject or modify the
+- **Hosting and CDN:** Your front end is served through these providers. If compromised, they can inject or modify the
   JavaScript that users execute in their browsers, including wallet interaction code.
 - **Domain registrars:** Control of your domain means control of where users are directed. An unauthorized transfer
   or DNS modification can redirect all traffic to a phishing clone. For DNS and hosting hardening, see
@@ -44,7 +44,7 @@ Vendor risk management is the practice of making these trust decisions deliberat
 
 For real-world incidents involving these providers, see [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats).
 
-### Security Service Providers
+### Security service providers
 
 - **Smart contract auditors:** Audit quality depends on the auditor's domain expertise, methodology, and the time
   allocated relative to codebase complexity. Choosing the right auditor for your technology stack and protocol type
@@ -57,14 +57,14 @@ For real-world incidents involving these providers, see [Web3 Supply Chain Threa
 
 For guidance on selecting auditors, see [External Security Reviews](/external-security-reviews/overview).
 
-### Human Supply Chain
+### Human supply chain
 
 Contractors, freelancers, and pseudonymous open-source contributors all represent insider risk. In the Web3 industry
 this is not theoretical. The [DPRK IT Workers](/dprk-it-workers/overview) framework documents a specific and
 increasingly common pattern of state-affiliated actors gaining access to projects through legitimate-looking employment.
 Contractor vetting deserves the same rigor as any other vendor assessment.
 
-## Ongoing Monitoring
+## Ongoing monitoring
 
 Vendor assessment is not a one-time event. Security postures change, ownership changes, and incidents happen. Reassess
 vendors periodically based on criticality, e.g., at a minimum annually, and quarterly for high-trust relationships.
@@ -75,7 +75,7 @@ For every critical vendor, have an exit plan: know which alternative you would m
 take, and what data or configuration would need to move. Vendor lock-in becomes a critical risk when you need to
 move quickly during an incident.
 
-## Common Pitfalls
+## Common pitfalls
 
 - **Assuming "decentralized" means "no vendor risk."** Even decentralized services have operators, maintainers, and
   infrastructure that can be compromised.

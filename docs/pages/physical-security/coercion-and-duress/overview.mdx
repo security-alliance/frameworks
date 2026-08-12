@@ -1,6 +1,6 @@
 ---
 title: "Coercion and Duress | Security Alliance"
-description: "What wrench attacks are, why they matter now, and the scope of this section defending crypto holders against physical coercion of their keys."
+description: "Wrench attacks coerce key-holders: why they matter now, section scope, and a full map of threat model, wallets, safety, IR, and recovery pages."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -20,15 +20,14 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Key Takeaway**:
-> Physical attacks bypass technical security by coercing the people who hold keys. As self-custody and on-chain
-> treasuries grow, this threat vector now affects individuals and organizations alike, demanding dedicated controls
-> beyond cryptography.
+> 🔑 **Key Takeaway**: Physical attacks bypass technical security by coercing the people who hold keys. As self-custody
+> and on-chain treasuries grow, this threat vector now affects individuals and organizations alike, demanding dedicated
+> controls beyond cryptography.
 
 This page is the overview of the **Coercion & Duress** sub-section of the
-[Physical Security](/physical-security/overview) framework. It focuses specifically on wrench attacks: coercion of the
-people who control keys. For other physical security domains, see the
-[Physical Security overview](/physical-security/overview) .
+[Physical Security](/physical-security/overview) framework. It focuses specifically on wrench
+attacks: coercion of the people who control keys. For other physical security domains, see the
+[Physical Security overview](/physical-security/overview).
 
 Cryptography protects keys from algorithmic attack, not from coercion of the people who hold them. As self-custody,
 on-chain treasuries, and high-profile crypto-native individuals become more common, adversaries increasingly bypass
@@ -41,8 +40,9 @@ A wrench attack is any situation where an attacker bypasses technical security b
 controls the keys. Unlike phishing, malware, or protocol exploits, wrench attacks assume the attacker has physical
 proximity or credible reach to the victim, and that technical controls alone are insufficient.
 
-The term originates from the [xkcd webcomic](https://xkcd.com/538/) , which satirically illustrated that sophisticated
-4096-bit RSA encryption could be bypassed more effectively by a $5 wrench than by a supercomputer.
+The term originates from the [xkcd webcomic](https://xkcd.com/538/), which satirically illustrated
+that sophisticated 4096-bit RSA encryption could be bypassed more effectively by a $5 wrench than by
+a supercomputer.
 
 ## Why this matters now
 
@@ -68,10 +68,14 @@ key-holders.
   - [Attacker objectives](/physical-security/coercion-and-duress/threat-model#attacker-objectives)
   - [Attack surfaces](/physical-security/coercion-and-duress/threat-model#attack-surfaces)
 - [**Risk Factors and Early Signals**](/physical-security/coercion-and-duress/risk-factors-and-early-signals)
-  - [Individual risk factors](/physical-security/coercion-and-duress/risk-factors-and-early-signals#individual-risk-factors)
-  - [Organizational risk factors](/physical-security/coercion-and-duress/risk-factors-and-early-signals#organizational-risk-factors)
-  - [Environmental and geographic risk factors](/physical-security/coercion-and-duress/risk-factors-and-early-signals#environmental-and-geographic-risk-factors)
-  - [Early signals and pre-incident indicators](/physical-security/coercion-and-duress/risk-factors-and-early-signals#early-signals-and-pre-incident-indicators)
+  - [Individual risk
+    factors](/physical-security/coercion-and-duress/risk-factors-and-early-signals#individual-risk-factors)
+  - [Organizational risk
+    factors](/physical-security/coercion-and-duress/risk-factors-and-early-signals#organizational-risk-factors)
+  - [Environmental and geographic risk
+    factors](/physical-security/coercion-and-duress/risk-factors-and-early-signals#environmental-and-geographic-risk-factors)
+  - [Early signals and pre-incident
+    indicators](/physical-security/coercion-and-duress/risk-factors-and-early-signals#early-signals-and-pre-incident-indicators)
 - [**Defensive Design Principles**](/physical-security/coercion-and-duress/defensive-design-principles)
   - [Minimization](/physical-security/coercion-and-duress/defensive-design-principles#minimization)
   - [Compartmentalization](/physical-security/coercion-and-duress/defensive-design-principles#compartmentalization)
@@ -81,32 +85,54 @@ key-holders.
 - [**Wallet and Key Architecture**](/physical-security/coercion-and-duress/wallet-and-key-architecture)
   - [Wallet strategy](/physical-security/coercion-and-duress/wallet-and-key-architecture#wallet-strategy)
   - [Multisig and MPC](/physical-security/coercion-and-duress/wallet-and-key-architecture#multisig-and-mpc)
-  - [Geographically decoupled key storage](/physical-security/coercion-and-duress/wallet-and-key-architecture#geographically-decoupled-key-storage)
-  - [Controlled-surrender wallets and duress tripwires](/physical-security/coercion-and-duress/wallet-and-key-architecture#controlled-surrender-wallets-and-duress-tripwires)
-  - [Key ceremonies and rotation policies](/physical-security/coercion-and-duress/wallet-and-key-architecture#key-ceremonies-and-rotation-policies)
+  - [Geographically decoupled key
+    storage](/physical-security/coercion-and-duress/wallet-and-key-architecture#geographically-decoupled-key-storage)
+  - [Controlled-surrender wallets and duress
+    tripwires](/physical-security/coercion-and-duress/wallet-and-key-architecture#controlled-surrender-wallets-and-duress-tripwires)
+  - [Key ceremonies and rotation
+    policies](/physical-security/coercion-and-duress/wallet-and-key-architecture#key-ceremonies-and-rotation-policies)
 - [**Personal and Family Safety**](/physical-security/coercion-and-duress/personal-and-family-safety)
   - [Digital hygiene](/physical-security/coercion-and-duress/personal-and-family-safety#digital-hygiene)
   - [Identity separation](/physical-security/coercion-and-duress/personal-and-family-safety#identity-separation)
-  - [Family and staff training](/physical-security/coercion-and-duress/personal-and-family-safety#family-and-staff-training)
-  - [Physical routine hardening](/physical-security/coercion-and-duress/personal-and-family-safety#physical-routine-hardening)
-  - [Social engineering resistance](/physical-security/coercion-and-duress/personal-and-family-safety#social-engineering-resistance)
+  - [Family and staff
+    training](/physical-security/coercion-and-duress/personal-and-family-safety#family-and-staff-training)
+  - [Physical routine
+    hardening](/physical-security/coercion-and-duress/personal-and-family-safety#physical-routine-hardening)
+  - [Social engineering
+    resistance](/physical-security/coercion-and-duress/personal-and-family-safety#social-engineering-resistance)
 - [**Transaction Flows Under Duress**](/physical-security/coercion-and-duress/transaction-flows-under-duress)
-  - [Hard limits and friction](/physical-security/coercion-and-duress/transaction-flows-under-duress#hard-limits-and-friction)
-  - [Separation of approval channels](/physical-security/coercion-and-duress/transaction-flows-under-duress#separation-of-approval-channels)
-  - [Duress-compatible operating modes](/physical-security/coercion-and-duress/transaction-flows-under-duress#duress-compatible-operating-modes)
-  - [High-risk period tightening](/physical-security/coercion-and-duress/transaction-flows-under-duress#high-risk-period-tightening)
+  - [Hard limits and
+    friction](/physical-security/coercion-and-duress/transaction-flows-under-duress#hard-limits-and-friction)
+  - [Separation of approval
+    channels](/physical-security/coercion-and-duress/transaction-flows-under-duress#separation-of-approval-channels)
+  - [Duress-compatible operating
+    modes](/physical-security/coercion-and-duress/transaction-flows-under-duress#duress-compatible-operating-modes)
+  - [High-risk period
+    tightening](/physical-security/coercion-and-duress/transaction-flows-under-duress#high-risk-period-tightening)
 - [**Incident Response**](/physical-security/coercion-and-duress/incident-response)
   - [Immediate triage](/physical-security/coercion-and-duress/incident-response#immediate-triage)
   - [De-escalation](/physical-security/coercion-and-duress/incident-response#de-escalation)
   - [Technical containment](/physical-security/coercion-and-duress/incident-response#technical-containment)
-  - [Coordination with external parties](/physical-security/coercion-and-duress/incident-response#coordination-with-external-parties)
-  - [Evidence and decision logging](/physical-security/coercion-and-duress/incident-response#evidence-and-decision-logging)
+  - [Coordination with external
+    parties](/physical-security/coercion-and-duress/incident-response#coordination-with-external-parties)
+  - [Evidence and decision
+    logging](/physical-security/coercion-and-duress/incident-response#evidence-and-decision-logging)
   - [Post-incident actions](/physical-security/coercion-and-duress/incident-response#post-incident-actions)
 - [**Recovery and Resilience**](/physical-security/coercion-and-duress/recovery-and-resilience)
   - [Human factors](/physical-security/coercion-and-duress/recovery-and-resilience#human-factors)
-  - [Infrastructure reconstruction](/physical-security/coercion-and-duress/recovery-and-resilience#infrastructure-reconstruction)
+  - [Infrastructure
+    reconstruction](/physical-security/coercion-and-duress/recovery-and-resilience#infrastructure-reconstruction)
   - [Governance](/physical-security/coercion-and-duress/recovery-and-resilience#governance)
   - [Long-term monitoring](/physical-security/coercion-and-duress/recovery-and-resilience#long-term-monitoring)
 - [**Checklist**](/physical-security/coercion-and-duress/checklist)
+
+## Related frameworks
+
+- [Physical Security overview](/physical-security/overview)
+- [Wallet Security](/wallet-security/overview)
+- [Operational Security](/opsec/overview)
+- [Incident Management](/incident-management/overview)
+
+---
 
 <ContributeFooter />

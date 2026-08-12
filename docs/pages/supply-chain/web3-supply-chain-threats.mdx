@@ -1,6 +1,6 @@
 ---
 title: "Web3 Supply Chain Threats | SEAL"
-description: "Identify and mitigate Web3-specific supply chain threats including frontend attacks, smart contract dependency risks, infrastructure compromise, and hardware tampering."
+description: "Web3-specific supply-chain threats with real incidents: front-end and wallet connector attacks, compiler tampering, governance takeovers, RPC and oracle abuse."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -18,20 +18,20 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway:** Supply chain attacks skip your code entirely. They compromise what your code depends on. A
+> 🔑 **Key Takeaway**: Supply chain attacks skip your code entirely. They compromise what your code depends on. A
 > single hijacked npm package, a manipulated compiler, or a spoofed RPC response can result in irreversible fund loss
 > with no exploit of your own contracts required.
 
 This page catalogs the specific threat vectors that target Web3 supply chains, with real incidents for each. For the
 broader context on why supply chain security matters, see the [Overview](/supply-chain/overview).
 
-## Frontend Supply Chain Attacks
+## Front-end supply chain attacks
 
 The most common attack vector for end users is the JavaScript supply chain. Because wallet interactions happen through
-the browser, any code that runs on your frontend before a user signs a transaction is in a position to manipulate or
+the browser, any code that runs on your front end before a user signs a transaction is in a position to manipulate or
 redirect it.
 
-### NPM Package Compromise
+### npm package compromise
 
 Attackers gain control of popular npm packages through account takeovers, social engineering of maintainers, or
 publishing malicious packages with similar names. Once a compromised version is installed, malicious code executes in
@@ -44,9 +44,11 @@ the user's browser.
   18 packages including `chalk`, `debug`, and `ansi-styles` (2.6 billion combined weekly downloads). The payload
   hooked `window.ethereum` to intercept wallet calls and overwrote `fetch`/`XMLHttpRequest` to reroute cryptocurrency
   transactions to attacker-controlled addresses. The compromise was detected
-  and the malicious versions were removed within approximately two hours.
+  and the malicious versions were removed within approximately two hours. See
+  [Wiz's breakdown of the impact and scope](https://www.wiz.io/blog/widespread-npm-supply-chain-attack-breaking-down-impact-scope-across-debug-chalk).
 - **Solana web3.js (2024).** Malicious versions (1.95.6 and 1.95.7) were published to npm containing code that
-  exfiltrated private keys from any developer or user who installed those versions.
+  exfiltrated private keys from any developer or user who installed those versions. See the
+  [project security advisory](https://github.com/solana-labs/solana-web3.js/security/advisories/GHSA-jcxm-7wvp-g6p5).
 - **ua-parser-js (2021).** A package with over eight million weekly downloads was briefly hijacked to inject a
   cryptominer and credential stealer into every project that ran `npm install` during the window.
 - **event-stream (2018).** A new maintainer was granted control of a package with over two million weekly downloads,
@@ -58,7 +60,7 @@ For practices to defend against these attacks, see [Dependency Awareness](/suppl
 For runtime integrity verification using Subresource Integrity and Content Security Policy, see
 [Third-Party Script Security](/front-end-web-app/third-party-script-security).
 
-### Wallet Connector Library Hijacking
+### Wallet connector library hijacking
 
 Wallet connector libraries are a particularly high-value target because they sit at the exact point where user intent
 meets transaction construction.
@@ -68,13 +70,14 @@ meets transaction construction.
 - **Ledger Connect Kit (December 2023).** A former employee's npm credentials were used to publish a malicious version
   of `@ledgerhq/connect-kit`. The injected code rendered a fake wallet connection interface that redirected funds.
   Every dApp using the library was affected simultaneously. No vulnerability in any smart contract was involved.
+  See [Ledger's incident statement](https://www.ledger.com/blog/a-letter-from-ledger-chairman-ceo-pascal-gauthier-regarding-ledger-connect-kit-exploit).
 
 For wallet-specific security practices, see the [Wallet Security](/wallet-security/overview) framework.
 
 For browser-level controls that would have blocked execution of the tampered library, see
 [Third-Party Script Security](/front-end-web-app/third-party-script-security).
 
-### CDN and Hosting Compromise
+### CDN and hosting compromise
 
 An attacker who compromises your hosting provider or poisons a CDN cache can serve tampered JavaScript to all users
 without touching your repository.
@@ -90,14 +93,14 @@ For browser-level defenses against CDN and hosting compromise, including Content
 Subresource Integrity, and self-hosting strategies, see
 [Third-Party Script Security](/front-end-web-app/third-party-script-security).
 
-## Smart Contract Dependency Risks
+## Smart contract dependency risks
 
 Smart contracts inherit the risk of every library and tool in their build chain. While upgradeable proxy patterns
 allow post-deployment fixes, they add governance complexity and introduce their own attack surface. In either case,
 a compromised dependency that makes it into a deployment, whether upgradeable or not, has immediate on-chain
 consequences.
 
-### Compiler Tampering
+### Compiler tampering
 
 The Solidity compiler itself is a dependency. Different `solc` versions produce different bytecode, and a compromised
 compiler binary could inject behavior that is invisible in source code review. Because developers typically trust the
@@ -110,9 +113,10 @@ source.
   reentrancy guards to be incorrectly compiled at the bytecode level, despite appearing correct in source code. The
   bug had been present for over two years before attackers exploited it to drain approximately $69 million from
   multiple Curve Finance pools, Alchemix, JPEG'd, and Metronome. The contracts were not poorly written; the compiler
-  produced faulty bytecode from correct source.
+  produced faulty bytecode from correct source. See the
+  [LlamaRisk pool reentrancy postmortem](https://hackmd.io/@LlamaRisk/BJzSKHNjn).
 
-### Malicious Libraries and Plugins
+### Malicious libraries and plugins
 
 Build toolchains in Solidity projects (Hardhat, Foundry) rely on plugins, libraries, and Git-sourced dependencies.
 Each is an entry point. A malicious Hardhat plugin runs during compilation and deployment, meaning it could modify
@@ -120,7 +124,7 @@ bytecode, exfiltrate private keys from the deployer's environment, or alter depl
 `forge install` pulls directly from Git repositories, so a compromised or mutable branch reference means the code
 you build against today may not be the code you reviewed yesterday.
 
-### Unverified Deployments
+### Unverified deployments
 
 Source verification (via [Sourcify](https://sourcify.dev/) or Etherscan) is standard practice, but its absence
 is itself a supply chain risk. Without it, a build-time compromise leaves no detectable trace: the deployed bytecode
@@ -139,7 +143,7 @@ For practices to mitigate these risks, see [DevSecOps](/devsecops/overview),
 [Security Testing](/security-testing/overview), and
 [Dependency Awareness](/supply-chain/dependency-awareness).
 
-## Governance Attacks
+## Governance attacks
 
 Upgradeable smart contracts introduce a supply chain vector that exists entirely on-chain: governance. If a protocol
 uses a proxy pattern where the implementation contract can be swapped through a governance vote or a multisig
@@ -148,7 +152,7 @@ not need to find a bug or tamper with a dependency. They just need enough votes 
 
 In upgradeable systems, governance is effectively part of the code delivery path.
 
-### Malicious Governance Proposals
+### Malicious governance proposals
 
 An attacker who acquires sufficient voting power (through token purchases, flash loan voting, or social engineering
 of delegates) can submit a proposal that upgrades a proxy to a malicious implementation. If the proposal passes, the
@@ -160,31 +164,33 @@ with the protocol may not notice anything changed until funds are drained.
 - **Tornado Cash governance takeover (May 2023).** An attacker submitted a proposal that appeared to be a routine
   update but contained hidden code granting the attacker 1.2 million fake TORN votes. With majority voting power, the
   attacker gained full control of governance and used it to drain locked TORN tokens from the governance contract.
+  See [CoinDesk's report on the vote fraud](https://www.coindesk.com/tech/2023/05/21/attacker-takes-over-tornado-cash-dao-with-vote-fraud-token-slumps-40).
 - **Beanstalk (April 2022).** An attacker used a flash loan to acquire enough STALK governance tokens to pass a
   malicious governance proposal in a single transaction. The proposal transferred all protocol assets to the
   attacker's address, draining approximately $182 million. The attack exploited the fact that governance voting and
-  execution could happen in the same block with no time delay.
+  execution could happen in the same block with no time delay. See
+  [Veridise's analysis of the flash loan governance vulnerability](https://veridise.com/blog/audit-insights/flash_loan_governance_vulnerability_beanstalk_182m/).
 
-## Infrastructure Dependency Risks
+## Infrastructure dependency risks
 
 Web3 applications depend on external infrastructure that they do not control. A compromised or unreliable provider
 does not need to exploit your code; it just needs to feed it bad data or go offline at the wrong moment.
 
-### RPC Provider Compromise
+### RPC provider compromise
 
 RPC providers mediate every interaction between your app and the blockchain. The risk has two distinct shapes. A
 single-RPC dependency exposes you to both, and the integrity case is far harder to detect because nothing looks
 broken from the outside.
 
 1. **Availability:** a provider goes down and your application goes dark.
-2. **Integrity:** a provider returns data that looks valid but isn't — manipulated balances, forged transaction
-   receipts, stale state — and downstream systems act on it without realizing.
+2. **Integrity:** a provider returns data that looks valid but is not, such as manipulated balances, forged
+   transaction receipts, or stale state, and downstream systems act on it without realizing.
 
 Running nodes internally is a possible path to reduce reliance on third parties, but it requires significant
 resources and a strong security posture to do well.
 
-Availability is addressed by reliable monitoring and automatic failover across independently operated providers — when
-one degrades or drops, traffic shifts without manual intervention.
+Availability is addressed by reliable monitoring and automatic failover across independently operated providers.
+When one degrades or drops, traffic shifts without manual intervention.
 
 Integrity is harder. The base defense is cross-validation, applied at increasing strictness:
 
@@ -203,13 +209,15 @@ Integrity is harder. The base defense is cross-validation, applied at increasing
   rsETH. LayerZero's DVN was configured to cross-check across multiple RPCs, but attackers compromised two op-geth
   nodes and caused the healthy endpoints to be unreachable, forcing the DVN onto the poisoned ones. The incident
   illustrates that RPC integrity, not just availability, is part of the security boundary for any system that derives
-  state from off-chain calls.
+  state from off-chain calls. See
+  [LayerZero Labs' incident report](https://layerzero.network/blog/layerzero-labs-kelpdao-incident-report).
 - **Infura outage (November 2020).** Infura's nodes were running outdated Geth versions when a silently patched
   consensus bug caused a chain split. MetaMask (which defaults to Infura) stopped working for hours. Binance, Upbit,
   and other exchanges halted ETH withdrawals. Uniswap, MakerDAO, and Compound were all affected. No funds were stolen,
-  but the incident demonstrated how a single provider dependency can take down large portions of the ecosystem.
+  but the incident demonstrated how a single provider dependency can take down large portions of the ecosystem. See
+  [CoinDesk's report](https://www.coindesk.com/tech/2020/11/11/ethereum-service-providers-scramble-to-update-software-after-unannounced-hard-fork).
 
-### Oracle Manipulation
+### Oracle manipulation
 
 Oracle networks are a direct and well-documented attack surface. Manipulated oracle data has been the root cause of
 hundreds of millions of dollars in DeFi losses. The typical pattern: an attacker manipulates a spot price on a
@@ -221,15 +229,19 @@ attacker only needs to manipulate one data point.
 
 **Notable incidents:**
 
-- **Mango Markets (October 2022).** An attacker pumped MNGO spot price from $0.02 to $0.91 on thin-liquidity markets
-  within ten minutes, then used the inflated collateral to drain $112 million from the protocol's treasury.
+- **Mango Markets (October 2022).** An attacker pumped the MNGO spot price across the thin-liquidity markets feeding
+  Mango's oracle, then used the inflated collateral value to withdraw over $110 million from the protocol. The
+  [CFTC charged the trader](https://www.cftc.gov/PressRoom/PressReleases/8647-23) in its first enforcement action
+  for oracle manipulation.
 - **Cream Finance (October 2021).** Flash loans totaling over $1.5 billion were used to manipulate the yUSD price
-  oracle, inflating collateral value and draining $130 million in lending assets.
+  oracle, inflating collateral value and draining $130 million in lending assets. See
+  [Halborn's breakdown of the hack](https://www.halborn.com/blog/post/explained-the-cream-finance-hack-october-2021).
 - **bZx (February 2020).** The first major flash loan oracle attacks. The attacker used flash-loaned ETH to manipulate
   WBTC and sUSD prices on Uniswap, which bZx used as its sole price oracle. Two attacks within one week, approximately
-  $1 million total.
+  $1 million total. See samczsun's
+  [analysis of the undercollateralized loans](https://samczsun.com/taking-undercollateralized-loans-for-fun-and-for-profit/).
 
-### Block Explorer API Dependence
+### Block explorer API dependence
 
 Block explorer APIs (Etherscan, Basescan, and their equivalents) are often used to fetch ABIs, verify contract state,
 or display transaction history. These are third-party services with their own availability and integrity risks. An
@@ -255,7 +267,7 @@ For a structured approach to evaluating and managing third-party providers, see
 [Vendor Risk Management](/supply-chain/vendor-risk-management). For infrastructure hardening, see the
 [Infrastructure](/infrastructure/overview) framework.
 
-## Hardware Supply Chain
+## Hardware supply chain
 
 Hardware wallets and signing devices introduce physical supply chain risks. A tampered device can be programmed to
 leak private keys on first use or to sign transactions differently from what is displayed on screen. Devices
@@ -265,14 +277,17 @@ could extract keys or alter signing behavior while appearing to function normall
 
 **Notable incidents:**
 
-- **Trezor Safe 3 vulnerability (2025).** Ledger's security research team disclosed that the Trezor
-  Safe 3 is vulnerable to voltage glitching attacks that can allow an attacker with physical access (during
-  manufacturing or transit) to read and modify firmware without leaving detectable signs. No confirmed exploits in the
-  wild, but the disclosure demonstrates that hardware supply chain attacks are practical, not theoretical.
-- **Ledger customer database breach (2020).** An unauthorized party accessed Ledger's e-commerce database via a
-  misconfigured API key. Over 272,000 customers had their names, physical addresses, and phone numbers leaked. No
-  private keys were compromised, but the exposed data fueled targeted phishing campaigns, extortion attempts, and
-  credible physical threats against wallet holders.
+- **Trezor Safe 3 vulnerability (2025).** Ledger's Donjon research team demonstrated that voltage glitching can
+  bypass the Safe 3 authenticity and firmware hash checks, so an attacker with full physical access (during
+  manufacturing or transit) could load modified firmware that the device still reports as genuine. No private key or
+  PIN extraction was demonstrated, and the Safe 5 uses a more resilient microcontroller, but the disclosure shows
+  that hardware supply chain attacks are practical rather than theoretical. See
+  [Trezor's disclosure of the Donjon evaluation](https://trezor.io/vulnerability/donjon-s-trezor-safe-3-evaluation).
+- **Ledger customer database breach (2020).** An unauthorized party accessed Ledger's e-commerce and marketing
+  database through a third party's API key. Roughly 272,000 customers had their names, physical addresses, and phone
+  numbers leaked. No private keys were compromised, but the exposed data fueled targeted phishing campaigns,
+  extortion attempts, and credible physical threats against wallet holders. See
+  [Ledger's statement on the breach](https://www.ledger.com/addressing-the-july-2020-e-commerce-and-marketing-data-breach).
 
 For hardware wallet security guidance, see the [Wallet Security](/wallet-security/overview) framework.
 

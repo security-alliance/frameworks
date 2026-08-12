@@ -1,6 +1,6 @@
 ---
 title: "Endpoint Security | Security Alliance"
-description: "Device provisioning tiers for Web3 organizations: managed devices with EDR/MDM, virtual desktops for global contractors, and enterprise browsers for minimum viable security."
+description: "Endpoint tiers for Web3 orgs: managed devices with EDR/MDM, VDI for contractors, and enterprise browsers as minimum viable security matched to role risk."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -10,17 +10,26 @@ contributors:
     users: [andrew-chang-gu, dickson]
   - role: reviewed
     users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Nested OpSec overview; child map lives in parent IA / sidebar until section pages stabilize.
+  owner: maintainers
+*/}
 
 # Endpoint Security
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Key Takeaway:** Match device security investment to role risk. Managed hardware for privileged operators,
-> VDI for global contractors, enterprise browsers as minimum viable security for everyone else.
+> 🔑 **Key Takeaway**: Match device security investment to role risk: managed hardware for privileged operators, VDI
+> for global contractors, enterprise browsers as minimum viable security for everyone else.
 
 Unmanaged personal devices are a primary vector for credential theft and lateral movement in Web3 organizations.
 Infostealers, malicious browser extensions, and compromised development environments all start at the endpoint.
@@ -89,5 +98,7 @@ not to force a single approach across all roles.
 - [Hardening your organization](/dprk-it-workers/mitigating-dprk-it-workers#hardening-your-organization)
   — Access control policies for remote workers
 - [Browser Security](/opsec/browser/overview) — Browser-specific hardening
+
+---
 
 <ContributeFooter />

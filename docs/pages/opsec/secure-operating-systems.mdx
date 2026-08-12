@@ -1,6 +1,6 @@
 ---
 title: "Secure Operating Systems | Security Alliance"
-description: "Secure operating systems for Web3 teams: Qubes OS for isolation, Tails for ephemeral sessions, GrapheneOS for mobile. Defend against infostealers, DPRK malware, and key material theft."
+description: "Secure OS choices for Web3 teams: Qubes OS isolation, GrapheneOS mobile, and Tails ephemeral sessions against infostealers, malware, and key-material theft."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -14,15 +14,15 @@ contributors:
     users: [mattaereal]
 ---
 
-import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
+import { TagList, AttributionList, Checklist, ContributeFooter } from '../../../components'
 
 # Secure Operating Systems
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway:** Use compartmentalized operating systems to isolate sensitive operations from everyday
-> browsing. Qubes OS for desktop, GrapheneOS for mobile, Tails for ephemeral sessions.
+> 🔑 **Key Takeaway**: Use compartmentalized operating systems to isolate sensitive operations from everyday browsing —
+> Qubes OS for desktop, GrapheneOS for mobile, Tails for ephemeral sessions.
 
 Infostealer malware is among the most common initial access vectors in Web3 compromises. A single infected
 machine can exfiltrate browser sessions, wallet keys, SSH credentials, and authentication tokens in seconds.
@@ -250,5 +250,7 @@ systems on practical day-to-day security at team scale.
 - [NIST SP 800-123: Guide to General Server Security](https://csrc.nist.gov/pubs/sp/800/123/final)
   (OS hardening reference)
 - [DPRK IT Workers](/dprk-it-workers/overview) — Threat context for why OS isolation matters in Web3
+
+---
 
 <ContributeFooter />

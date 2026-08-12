@@ -1,6 +1,6 @@
 ---
 title: "Wallet and Key Architecture | Security Alliance"
-description: "Tiered wallet strategy, multisig and MPC, geographic key distribution, controlled-surrender wallets, and key ceremonies hardening crypto holdings against coercion."
+description: "Tiered hot-to-deep-cold wallets, multisig or MPC, geographic key storage, controlled-surrender wallets, and ceremonies that resist coercion."
 tags:
   - Security Specialist
   - Engineer/Developer
@@ -20,10 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Key Takeaway**:
-> Tiered wallet structures (hot, warm, cold, deep-cold) combined with multisig or MPC, geographic key distribution,
-> controlled-surrender wallets, and rotation policies ensure no single coerced individual can drain strategic reserves
-> under pressure.
+> 🔑 **Key Takeaway**: Tiered wallet structures (hot, warm, cold, deep-cold) combined with multisig or MPC, geographic
+> key distribution, controlled-surrender wallets, and rotation policies ensure no single coerced individual can drain
+> strategic reserves under pressure.
 
 ## Wallet strategy
 
@@ -72,5 +71,16 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
   Trigger rotations after travel to high-risk jurisdictions.
 - **Post-incident rotation:** Pre-defined playbook for 24-hour signer replacement, contract migrations, and full-stack
   rebuild without single points of failure.
+
+## Further reading
+
+- [Coercion & Duress overview](/physical-security/coercion-and-duress/overview): how the pages of this sub-section fit
+  together
+- [Transaction Flows Under Duress](/physical-security/coercion-and-duress/transaction-flows-under-duress): how this
+  architecture behaves under pressure
+- [Seed Phrase Management](/wallet-security/seed-phrase-management): offline custody for the material split here
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): signer and threshold design
+
+---
 
 <ContributeFooter />

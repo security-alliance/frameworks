@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,8 +21,12 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example runbook.** Review and customize for your protocol before use. Fill in your specific vendors,
-> dependencies, and failover procedures.
+> 🔑 **Key Takeaway**: Vendor outages cascade into protocol impact. Identify the
+> dependency, fail over if ready, communicate status honestly, and track vendor
+> remediation without pretending you control their systems.
+
+**This is an example runbook.** Review and customize for your protocol before use. Fill in your
+specific vendors, dependencies, and failover procedures.
 
 ## Quick Reference
 
@@ -163,8 +170,11 @@ Include:
 ## Escalation
 
 <Checklist id="escalation">
-- [ ] [Infrastructure Vendors](../contacts#infrastructure-vendors) - contact provider support
-- [ ] [Decision Makers](../contacts#decision-makers) - if extended outage or no ETA
+- [ ] [Infrastructure
+      Vendors](/incident-management/incident-response-template/contacts#infrastructure-vendors) -
+      contact provider support
+- [ ] [Decision Makers](/incident-management/incident-response-template/contacts#decision-makers) -
+      if extended outage or no ETA
 </Checklist>
 
 ## Prevention
@@ -187,9 +197,13 @@ Reduce third-party dependency risk:
 | | | |
 | | | |
 
-## Related
+## Further reading
 
-- [DDoS Attack](./ddos-attack)
-- [Incident Response Policy](../incident-response-policy)
+- [Runbooks overview](/incident-management/incident-response-template/runbooks/overview): how the runbooks in this section fit together
+- [DDoS Attack](/incident-management/incident-response-template/runbooks/ddos-attack): the adjacent availability scenario
+- [Vendor Risk Management](/supply-chain/vendor-risk-management): assessing dependencies before they fail
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy): severity levels, roles, and escalation
+
+---
 
 <ContributeFooter />

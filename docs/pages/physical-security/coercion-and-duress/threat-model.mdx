@@ -1,6 +1,6 @@
 ---
 title: "Threat Model | Security Alliance"
-description: "Wrench attack threat model: attacker types, objectives, and physical attack surfaces facing individuals and organizations holding significant crypto."
+description: "Wrench-attack threat model: opportunistic crime, organized groups, insiders, and state actors across home, work, public, and family surfaces."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -20,10 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Key Takeaway**:
-> Wrench attackers range from opportunistic criminals to organized crime, insiders, and state actors. Their objectives
-> span direct theft, extortion, operational coercion, and intelligence gathering, executed across residential,
-> workplace, public, and family-adjacent attack surfaces.
+> 🔑 **Key Takeaway**: Wrench attackers range from opportunistic criminals to organized crime, insiders, and state
+> actors. Their objectives span direct theft, extortion, operational coercion, and intelligence gathering, executed
+> across residential, workplace, public, and family-adjacent attack surfaces.
 
 Wrench attacks rely on coercing people, not breaking cryptography. This section characterizes who the adversaries are,
 what they want, and where they are most likely to strike, so that wallet and key setups can be aligned to real-world
@@ -67,5 +66,17 @@ risk instead of purely technical assumptions.
   densely concentrate potential targets.
 - **Family, friends, and staff:** Threats directed at spouses, partners, children, drivers, assistants, or security
   staff, who may have indirect access. Attackers can also use them as leverage.
+
+## Further reading
+
+- [Coercion & Duress overview](/physical-security/coercion-and-duress/overview): how the pages of this sub-section fit
+  together
+- [Risk Factors and Early Signals](/physical-security/coercion-and-duress/risk-factors-and-early-signals): how these
+  attackers select and approach targets
+- [Defensive Design Principles](/physical-security/coercion-and-duress/defensive-design-principles): the controls that
+  answer this threat model
+- [Threat Modeling](/threat-modeling/overview): a structured method for building your own
+
+---
 
 <ContributeFooter />

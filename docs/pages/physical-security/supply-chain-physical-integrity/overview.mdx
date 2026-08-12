@@ -1,6 +1,6 @@
 ---
 title: "Supply Chain Physical Integrity | Security Alliance"
-description: "Supply chain physical integrity for hardware wallets and signing devices: tamper evidence, provenance verification, and detection of interdiction or substitution."
+description: "Hardware wallet supply-chain integrity: tamper evidence, provenance checks, and detection of interdiction or device substitution in transit."
 tags:
   - Security Specialist
   - Engineer/Developer
@@ -16,19 +16,27 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Nested stub overview with no child pages yet; page map deferred until section is filled.
+  owner: maintainers
+*/}
+
 # Supply Chain Physical Integrity
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
 > ⚠️ Stub/in progress, help contribute/expand.
->
-> **Key Takeaway**:
-> Hardware that custodies keys can be compromised before it reaches the user through interdiction, substitution, or
-> tampering. Verifying physical provenance and tamper evidence protects the root of trust.
 
-This sub-section of the [Physical Security](/physical-security/overview) framework will cover the physical integrity
-of the hardware supply chain for devices that custody keys.
+{/* stub-boundary */}
+
+> 🔑 **Key Takeaway**: Hardware that custodies keys can be compromised before it reaches the user through interdiction,
+> substitution, or tampering. Verifying physical provenance and tamper evidence protects the root of trust.
+
+This sub-section of the [Physical Security](/physical-security/overview) framework will cover
+the physical integrity of the hardware supply chain for devices that custody keys.
 
 Planned topics include:
 
@@ -38,5 +46,15 @@ Planned topics include:
 - Secure procurement and chain-of-custody practices
 
 Contributions are welcome. See the [contributing guide](/contribute/contributing) to help expand this section.
+
+## Further reading
+
+- [Physical Security overview](/physical-security/overview): how the pages of this framework fit together
+- [Tamper Evidence](/opsec/control-domains/physical-environmental/tamper-evidence): existing guidance on seals and
+  detection
+- [Supply Chain Security](/supply-chain/overview): the software and vendor counterpart
+- [Contributing guide](/contribute/contributing): how to help expand this section
+
+---
 
 <ContributeFooter />

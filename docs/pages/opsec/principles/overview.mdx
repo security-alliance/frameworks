@@ -1,6 +1,6 @@
 ---
 title: "OpSec Principles & Concepts | Security Alliance"
-description: "OpSec principles: defense in depth, least privilege, need-to-know basis, compartmentalization, and continuous monitoring. Five-step process for identifying and protecting critical information assets."
+description: "OpSec principles overview: defense in depth, least privilege, need-to-know, compartmentalization, continuous monitoring, and the five-step OpSec process."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -17,10 +17,20 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Nested OpSec overview; child map lives in parent IA / sidebar until section pages stabilize.
+  owner: maintainers
+*/}
+
 # Principles & Concepts Overview
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: OpSec principles—defense in depth, least privilege, need-to-know, compartmentalization, and
+> continuous monitoring—guide the five-step process for protecting critical information.
 
 Operational Security (OpSec) is built upon foundational principles and processes that help organizations protect
 sensitive information and critical assets. This section covers the essential concepts that form the basis of an
@@ -73,6 +83,13 @@ In Web3 environments, operational security must address unique challenges:
 - **Cryptocurrency Security**: Protecting digital assets and private keys
 - **Smart Contract Vulnerabilities**: Addressing the immutable nature of deployed code
 - **Community Dynamics**: Managing security in open, community-driven projects
+
+## Further reading
+
+- [OpSec overview](/opsec/overview): how the pages of this framework fit together
+- [Principles](/opsec/principles/principles): the principles themselves
+- [Five Steps](/opsec/principles/five-steps): the process in short form
+- [Web3 Considerations](/opsec/principles/web3-considerations): what changes for Web3 operators
 
 ---
 

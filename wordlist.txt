@@ -33,6 +33,7 @@ CCIP
 CCPA
 CCSS
 Certora
+CFTC
 cicd
 CIS
 CISA
@@ -376,6 +377,7 @@ UUPS
 Valimail
 VDI
 Vercel
+Veridise
 verifiability
 verifiably
 viem

@@ -1,6 +1,6 @@
 ---
 title: "Defensive Design Principles | Security Alliance"
-description: "Five principles for wrench-attack defense: minimization, compartmentalization, controlled surrender, resilience, and prioritization of human safety over assets."
+description: "Five wrench-attack defense principles: minimize unlocking power, compartmentalize, enable controlled surrender, recover fast, and prioritize human safety."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -20,10 +20,10 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Key Takeaway**:
-> Five principles anchor wrench-attack defense: minimization limits what any coerced individual can authorize;
-> compartmentalization segments keys and roles; controlled surrender offers a believable low-value payout while real
-> reserves sit behind visible delay; resilience enables recovery; prioritization always favors human safety over assets.
+> 🔑 **Key Takeaway**: Five principles anchor wrench-attack defense: minimization limits what any coerced individual can
+> authorize; compartmentalization segments keys and roles; controlled surrender offers a believable low-value payout
+> while real reserves sit behind visible delay; resilience enables recovery; prioritization always favors human safety
+> over assets.
 
 These principles guide all subsequent controls, ensuring wallet architectures and operational processes withstand
 coercion without relying solely on the victim's resistance under extreme pressure.
@@ -62,5 +62,17 @@ coercion without relying solely on the victim's resistance under extreme pressur
 - Sequence all controls to favor human safety over assets during active threats.
 - No policy should incentivize physical resistance; wallet rules yield immediately to safety triggers.
 - Integrate with physical security, crisis management, and law enforcement protocols.
+
+## Further reading
+
+- [Coercion & Duress overview](/physical-security/coercion-and-duress/overview): how the pages of this sub-section fit
+  together
+- [Wallet and Key Architecture](/physical-security/coercion-and-duress/wallet-and-key-architecture): minimization and
+  compartmentalization applied to keys
+- [Transaction Flows Under Duress](/physical-security/coercion-and-duress/transaction-flows-under-duress): controlled
+  surrender in the signing path
+- [Checklist](/physical-security/coercion-and-duress/checklist): turning these principles into sequenced work
+
+---
 
 <ContributeFooter />

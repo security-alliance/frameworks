@@ -1,3 +1,4 @@
+import { Link } from 'vocs'
 import contributorsData from '../../docs/pages/config/contributors.json'
 import './AttributionList.css'
 
@@ -77,12 +78,36 @@ function RoleSection({ role, userSlugs }: { role: string; userSlugs: string[] })
   )
 }
 
+function hasAnyContributor(contributors: ContributorRole[]): boolean {
+  return contributors.some(group =>
+    Array.isArray(group?.users) &&
+    group.users.some(slug => getContributor(slug) !== null)
+  )
+}
+
 export function AttributionList({ contributors = [] }: AttributionListProps) {
-  if (!contributors || contributors.length === 0) return null
+  const roleGroups = Array.isArray(contributors) ? contributors : []
+
+  if (!hasAnyContributor(roleGroups)) {
+    return (
+      <div className="attribution-container attribution-empty">
+        <p className="attribution-placeholder">
+          No contributors yet.{' '}
+          <Link
+            to="/contribute/contributing"
+            className="attribution-placeholder-link"
+          >
+            Be the first to contribute
+          </Link>
+          !
+        </p>
+      </div>
+    )
+  }
 
   return (
     <div className="attribution-container">
-      {contributors.map((roleGroup, index) => (
+      {roleGroups.map((roleGroup, index) => (
         <RoleSection 
           key={index}
           role={roleGroup.role} 
