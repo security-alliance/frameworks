@@ -50,6 +50,15 @@ via a scraper.
 - **Chains:** Chain-agnostic (infrastructure layer)
 - **GitHub:** [prometheus/prometheus](https://github.com/prometheus/prometheus) | [grafana/grafana](https://github.com/grafana/grafana)
 
+### OpenChainBench
+
+Continuous infrastructure-level benchmark suite for RPC reliability, oracle price deviation, and bridge latency across 20+ chains. Tracks stale-state probability per RPC endpoint from three probe regions, measures oracle deviation against on-chain values for Chainlink, Pyth, and Redstone feeds, and benchmarks MEV-protection RPC endpoints (Flashbots Protect, MEV Blocker, Merkle). Useful as an independent baseline alongside Prometheus/Grafana scrapers and commercial monitors like Hypernative.
+
+- **Chains:** 20+ (EVM and non-EVM)
+- **License:** MIT (harnesses), CC-BY-4.0 (data)
+- **GitHub:** [ChainBench/OpenChainBench](https://github.com/ChainBench/OpenChainBench)
+- **Website:** [openchainbench.com](https://openchainbench.com)
+
 ## Commercial / hosted
 
 ### Etherscan
