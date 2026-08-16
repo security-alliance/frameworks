@@ -93,6 +93,7 @@ DNSSEC
 DocuSign
 doxxing
 DPRK
+Draupnir
 Dreww
 DTEX
 Dyno
@@ -207,6 +208,7 @@ mev
 mgmt
 mimick
 mitre
+Mjolnir
 MNGO
 Monero
 Morena
@@ -237,6 +239,7 @@ ofac
 OpenSCAP
 OPSEC
 Opsek
+Orbot
 ossf
 pagetoc
 Palo
@@ -318,6 +321,7 @@ SMS
 smt
 smtpdane
 SOE
+SOGS
 Solana
 Solcurity
 SonarQube
@@ -393,6 +397,7 @@ WIDS
 WPA
 WPAD
 xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+XFTP
 xkcd
 xngmi
 XSS

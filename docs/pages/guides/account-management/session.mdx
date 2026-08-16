@@ -1,0 +1,172 @@
+---
+title: "Session Security | Security Alliance"
+description: "Secure Session accounts: protect the recovery password like a seed phrase, harden privacy settings, verify Account IDs, and moderate unencrypted Communities."
+tags:
+  - Communication Platforms
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
+
+# Session Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway**: The Session recovery password is the account. Store it like a wallet seed phrase, verify Account
+> IDs out of band, and never treat Communities as confidential: they are not end-to-end encrypted on the server.
+
+Session is a messenger built on the Session Network, an onion-routing network of community-operated service nodes. It
+requires no phone number and no email address. Identity is a randomly generated Account ID (also called a Session ID),
+and the account exists only as a key pair the app holds.
+
+That design removes the SIM-swap exposure that dominates Telegram and Signal threat models, but it moves the entire risk
+onto one secret: the recovery password. There is no support desk, no password reset, and no identity provider that can
+restore an account or lock an attacker out. The controls below reflect that trade-off.
+
+## For individuals
+
+These settings apply to a personal Session account. Every team member and moderator should configure them on their own
+account. Menu labels differ slightly between the desktop, Android, and iOS clients; the
+[official documentation](https://docs.getsession.org/) holds current paths.
+
+### Account security checklist
+
+<Checklist id="account-security-checklist">
+- [ ]  **Recovery password** > Record it offline and store it in a password manager or on paper
+  - The recovery password is a mnemonic seed that encodes the account's long-term private key. Anyone holding it can
+  restore the account and impersonate the operator to every contact.
+  - Treat it exactly like a wallet seed phrase: never type it into a website, never paste it into a chat, never
+  screenshot it, and never store it in cloud notes.
+  - Session support cannot recover a lost recovery password and cannot revoke a leaked one. A leaked recovery password
+  requires abandoning the Account ID and telling contacts about the new one through a separately verified channel.
+  - Restoring an account recovers the Account ID and contacts, but message history older than roughly two weeks is not
+  retained by the network. Do not treat Session as an archive of record.
+- [ ]  Settings > Privacy > Screen Lock > **Enabled**
+  - Requires device biometrics or passcode to open the app.
+- [ ]  Settings > Privacy > Read Receipts > **Disabled**
+- [ ]  Settings > Privacy > Typing Indicators > **Disabled**
+- [ ]  Settings > Privacy > Link Previews > **Disabled**
+  - Generating a preview fetches the target URL. Leaving previews off avoids touching attacker-controlled links.
+- [ ]  Settings > Privacy > Community Message Requests > **Disabled**
+  - Blocks unsolicited direct messages from people who saw the Account ID in a Community. This is the main spam and
+  phishing vector against operators who post publicly.
+- [ ]  Settings > Privacy > Voice and Video Calls > **Disabled** unless needed
+  - Calls can expose IP address information to the other party. Enable per contact only when required.
+- [ ]  Settings > Notifications > Notification Content > **No Name or Content**
+  - Keeps message contents off the lock screen of a device that may be seized, shoulder-surfed, or shared.
+- [ ]  Settings > Privacy > Blocked Contacts > Review the list periodically
+- [ ]  Install only from [getsession.org](https://getsession.org/download) or an official app store listing, and keep
+  automatic updates enabled
+</Checklist>
+
+### Verifying who is on the other end
+
+Session has no usernames tied to a directory and no verified-account badge. An Account ID is a long hexadecimal string,
+which makes lookalike IDs easy to produce and hard for members to spot.
+
+<Checklist id="contact-verification">
+- [ ]  **Exchange Account IDs out of band**
+  - Scan a QR code in person, or confirm the full Account ID over a channel already authenticated by other means (a
+  verified Signal thread, a signed message, a video call).
+- [ ]  **Compare the entire string, not the ends**
+  - Vanity generation makes matching prefixes and suffixes cheap. Checking only the first and last characters is not a
+  verification.
+- [ ]  **Re-verify after any device change**
+  - A contact who reinstalled and restored keeps the same Account ID; a contact who created a new account does not.
+  Treat an unexplained new Account ID as an impersonation attempt until proven otherwise.
+- [ ]  **Enable disappearing messages for sensitive threads**
+  - Set per conversation. This limits what a later device compromise can expose.
+</Checklist>
+
+### Best practices for safe use
+
+<Checklist id="best-practices">
+- [ ]  **Keep the operator Account ID out of public Communities**
+  - Posting in a Community exposes the Account ID to every member. Use a separate account for public moderation and a
+  private one for team communication where the threat model warrants it.
+- [ ]  **Never act on inbound message requests alone**
+  - Requests from unknown Account IDs claiming to be team members, support, or partners are the standard phishing
+  pattern. Confirm through an established channel before responding.
+- [ ]  **Do not use Communities for confidential coordination**
+  - Community messages are not end-to-end encrypted while stored on the Community server. Use groups or one-to-one
+  conversations for anything sensitive.
+- [ ]  **Back up the recovery password before it is needed**
+  - Account restoration is impossible after device loss without it. Store a copy in the same place the organization
+  keeps other high-value secrets.
+- [ ]  **Verify links before opening them**
+  - Session does not scan or reputation-check URLs. Assume any link from an unverified contact is hostile.
+</Checklist>
+
+## For team members
+
+Team members who help moderate but do not administer Community servers should:
+
+- Configure every setting in the checklists above on their own account.
+- Store their recovery password in the organization's password manager, not in personal cloud storage.
+- Publish their Account ID through one canonical, project-controlled location so members can verify it, and state
+  publicly that moderators never initiate direct messages.
+- Report impersonating Account IDs to admins rather than engaging with them.
+
+## For admins
+
+These practices apply to operators who run Session groups and Communities.
+
+### Choosing groups or Communities
+
+| Feature | Groups | Communities |
+| --- | --- | --- |
+| **Encryption** | End-to-end encrypted through the Session protocol | Not end-to-end encrypted on the Community server |
+| **Hosting** | No dedicated server; carried by the Session Network | Requires a Session Open Group Server (SOGS) run by an operator |
+| **Scale** | Small teams, roughly 100 members | Hundreds to thousands of members |
+| **Correct use** | Team coordination, incident response, anything confidential | Public announcements and open community discussion |
+
+The decision is a security decision, not a capacity one. Move any thread that would damage the project if published
+into a group or a one-to-one conversation.
+
+### Community and server checklist
+
+<Checklist id="community-administration">
+- [ ]  **Understand who can read Community traffic**
+  - Whoever operates the SOGS instance can read message content stored on it. Self-hosting moves that trust to the
+  project; using a third-party server extends it to that operator.
+- [ ]  **Grant moderator capabilities at the minimum level**
+  - SOGS permissions are granular — read, write, upload, and access. Give moderators what their job requires and
+  nothing more, and keep the list of server administrators short.
+- [ ]  **Keep the admin list auditable**
+  - Record who holds admin rights on which room, when it was granted, and why. Revoke immediately when someone leaves
+  the team.
+- [ ]  **Harden the SOGS host like production infrastructure**
+  - A self-hosted Community server is an internet-facing service. Apply the same patching, access control, backup, and
+  monitoring standards used for other project infrastructure.
+- [ ]  **Publish an official channel list**
+  - Community rooms are trivially cloned. Members need one authoritative, project-controlled page listing the real
+  invite URLs and Account IDs.
+- [ ]  **Pin a support policy**
+  - State explicitly that moderators never send the first direct message and never ask for seed phrases, wallet
+  connections, or payments.
+- [ ]  **Plan for moderator account compromise**
+  - Because there is no central account provider, response is local: remove the compromised Account ID's permissions on
+  the server, announce the compromise, and re-establish the moderator under a new Account ID.
+</Checklist>
+
+## Further reading
+
+- [Community Management: Session](/community-management/session): running a Session community safely
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Encrypted Communication Tools](/privacy/encrypted-communication-tools): how Session compares to other messengers
+- [Communication Encryption](/encryption/communication-encryption): the mechanics behind end-to-end encryption
+- [Session documentation](https://docs.getsession.org/): vendor documentation for current settings paths
+- [How to stay safe on Session](https://getsession.org/blog/how-to-stay-safe-on-session): vendor security guidance
+
+---
+
+<ContributeFooter />
