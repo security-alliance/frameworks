@@ -826,5 +826,22 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": []
+  },
+  "0xusmanf": {
+    "slug": "0xusmanf",
+    "name": "Usman",
+    "avatar": "https://avatars.githubusercontent.com/0xusmanf",
+    "github": "https://github.com/0xusmanf",
+    "twitter": "https://x.com/0xusmanf",
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-08-19" },
+      { "name": "New-Joiner", "lastActive": "2026-08-19" },
+      { "name": "Active-Last-7d", "lastActive": "2026-08-19" }
+    ]
   }
 }
