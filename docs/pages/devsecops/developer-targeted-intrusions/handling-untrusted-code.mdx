@@ -8,9 +8,9 @@ tags:
   - SRE
 contributors:
   - role: wrote
-    users: [mattaereal]
+    users: [blackbigswan]
   - role: reviewed
-    users: []
+    users: [mattaereal]
   - role: fact-checked
     users: []
 ---
@@ -28,14 +28,14 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 Use this procedure for code received through recruiting, support, audits, community requests, new vendors, external
 contributors, or any other path that has not passed the team's normal review and provenance controls.
 
-Teams need a sanctioned disposable environment before the request arrives. A developer under time pressure will use a
-normal workstation when the safer path is unavailable or too slow. The isolation service should support inspection,
+Teams must provide a sanctioned disposable environment before the request arrives. A developer under time pressure will
+use a normal workstation when the safer path is unavailable or too slow. The isolation service must support inspection,
 controlled dependency retrieval, execution, evidence export, and complete teardown without exposing personal or
 production credentials.
 
 ## Safety model
 
-Choose the strongest practical boundary for the expected risk:
+Operators must choose the strongest practical boundary for the expected risk:
 
 | Boundary | Use | Minimum properties |
 | --- | --- | --- |
@@ -43,14 +43,14 @@ Choose the strongest practical boundary for the expected risk:
 | Disposable virtual machine or cloud sandbox | Normal external-code review | Fresh image, no inherited credentials, restricted egress, snapshots or evidence export, destroyed after use |
 | Hardened container or dev container | Lower-risk routine work when stronger isolation is unavailable | Rootless execution, no privileged mode, no Docker socket, no home-directory binds, no forwarded agents, restricted egress |
 
-Containers share a kernel and are confinement rather than a complete isolation boundary. Read the container definition
-before starting it: a repository-controlled configuration can request the exact privileges, mounts, or sockets that
-remove the intended protection.
+Containers share a kernel and are confinement rather than a complete isolation boundary. Operators must read the
+container definition before starting it: a repository-controlled configuration can request the exact privileges,
+mounts, or sockets that remove the intended protection.
 
 ## Procedure
 
-Complete the steps in order. Stop when provenance cannot be established, a requested capability does not match the
-task, or the isolation control cannot be verified.
+Operators must complete the steps in order. Stop when provenance cannot be established, a requested capability does not
+match the task, or the isolation control cannot be verified.
 
 ### 1. Verify before retrieval
 
@@ -63,8 +63,8 @@ task, or the isolation control cannot be verified.
 - [ ] Route unexplained urgency, secrecy, payment changes, or privilege requests to the security team before retrieval
 </Checklist>
 
-Identity verification does not approve the code. It only answers who sent it. Continue to treat every byte as
-untrusted until technical review and constrained execution are complete.
+Identity verification does not approve the code. It only answers who sent it. Operators must continue to treat every
+byte as untrusted until technical review and constrained execution are complete.
 
 ### 2. Retrieve in isolation
 
@@ -77,8 +77,9 @@ untrusted until technical review and constrained execution are complete.
 - [ ] Restrict egress to required sources and log permitted network activity
 </Checklist>
 
-If retrieval requires authentication, use a short-lived, read-only credential scoped to the single repository and
-created for the disposable environment. Do not reuse the developer's normal credential or forward an unlocked agent.
+If retrieval requires authentication, operators must use a short-lived, read-only credential scoped to the single
+repository and created for the disposable environment. Do not reuse the developer's normal credential or forward an
+unlocked agent.
 
 ### 3. Inspect before tool execution
 
@@ -96,8 +97,8 @@ created for the disposable environment. Do not reuse the developer's normal cred
       mounts, home-directory mounts, or cloud credentials
 </Checklist>
 
-Static inspection can miss a staged payload or behavior that depends on a remote response. Passing this step permits
-constrained execution; it does not promote the repository to a normal workstation.
+Static inspection can miss a staged payload or behavior that depends on a remote response. Passing this step may permit
+constrained execution; it must not promote the repository to a normal workstation.
 
 ### 4. Execute with bounded capabilities
 
@@ -113,7 +114,7 @@ constrained execution; it does not promote the repository to a normal workstatio
 </Checklist>
 
 Do not export installed dependencies, build caches, binaries, editor state, Git configuration, or opaque archives to a
-trusted machine. Move reviewed patches through the normal repository and CI/CD review path.
+trusted machine. Reviewed patches must move through the normal repository and CI/CD review path.
 
 ### 5. Revalidate every update
 
@@ -125,13 +126,13 @@ trusted machine. Move reviewed patches through the normal repository and CI/CD r
 - [ ] Repeat constrained build and runtime validation before using the revision on a trusted workstation or pipeline
 </Checklist>
 
-Trust in a project name, maintainer, prior commit, or URL does not transfer automatically to new bytes.
+Trust in a project name, maintainer, prior commit, or URL must not transfer automatically to new bytes.
 
 ## If compromise is suspected
 
-Trigger incident response when a repository or tool unexpectedly starts a process, reaches an unknown destination,
-requests unrelated access, writes persistence, reads credentials, disables security tooling, or behaves differently
-from the reviewed configuration.
+Operators must trigger incident response when a repository or tool unexpectedly starts a process, reaches an unknown
+destination, requests unrelated access, writes persistence, reads credentials, disables security tooling, or behaves
+differently from the reviewed configuration.
 
 <Checklist id="suspected-compromise-response">
 - [ ] Stop work and disconnect the affected endpoint from networks according to the incident-response plan
@@ -144,8 +145,8 @@ from the reviewed configuration.
 - [ ] Rebuild the endpoint from a trusted image and restore only reviewed data after containment and credential rotation
 </Checklist>
 
-Assume the same lure may have reached multiple team members. One developer reporting the contact does not establish
-that every other recipient avoided execution.
+Assume the same lure may have reached multiple team members. One developer reporting the contact must not be treated as
+proof that every other recipient avoided execution.
 
 ## Further reading
 
