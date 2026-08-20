@@ -1,0 +1,126 @@
+---
+title: "Developer-Targeted Intrusions | SEAL"
+description: "Developer-targeted intrusions: recognize malicious code lures, hidden execution paths, changing trust, and controls that contain endpoint compromise."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - DevOps
+  - SRE
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+
+# Developer-targeted intrusions
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: External code is untrusted before installation. Retrieval, workspace trust, tool initialization,
+> and agent review can cross execution boundaries, so first contact belongs in a disposable, credential-free environment.
+
+Developer-targeted intrusions turn normal engineering work into initial access. A threat actor may approach through a
+job opportunity, paid test, support request, prior contact, or project impersonation. The request is often specific,
+credible, and ends with a repository, archive, extension, or setup command.
+
+The goal is to get attacker-controlled input onto an endpoint that can reach source code, cloud sessions, signing
+systems, infrastructure, or production. This section helps individual developers, security teams, and platform teams
+identify the execution boundary before crossing it and contain the effect if inspection misses a payload.
+
+## How the intrusion starts
+
+The social pretext changes, but the handoff is consistent: the target is asked to clone, open, inspect, build, debug,
+or update external code. Treat these requests as untrusted even when the sender appears familiar. Accounts can be
+impersonated or compromised, and a real relationship does not verify the bytes being delivered.
+
+Common pretexts include:
+
+- A community member asks for help debugging a failing test or smart contract
+- A recruiter or founder offers a paid task, part-time role, or technical interview
+- A prior contact restarts a conversation and shares a new repository
+- A project representative requests help in a narrow technical area
+- A contact asks the developer to let an AI coding agent set up or review the project
+
+Verify the person, organization, repository owner, and expected task through a separate trusted channel. Verification
+reduces social risk; it does not make the repository safe to execute.
+
+## Four execution boundaries
+
+Reading source text does not normally execute it. Risk appears when a tool interprets repository-controlled data,
+loads executable configuration, retrieves dependencies, or follows instructions. Separate the threat model into four
+boundaries so the triggering behavior and the responsible control are visible.
+
+| Boundary | Attacker-controlled input | Typical trigger | Primary control |
+| --- | --- | --- | --- |
+| Source and dependencies | Install hooks, build scripts, test fixtures, serialized data, obfuscated code | Install, build, test, import, or application run | Inspect manifests and source; execute only in isolation |
+| IDE and extensions | Tasks, workspace settings, debug configuration, recommended or bundled extensions | Trusting or opening a workspace, launching a task, installing an extension | Keep Restricted Mode; inspect workspace files; prohibit repository-local extensions |
+| Git and developer tooling | Submodules, attributes, framework configuration, container definitions, provider sources | Recursive clone, checkout with configured filters, build, initialization, or container start | Update tools; inspect configuration; remove host credentials and dangerous mounts |
+| AI coding agents | Repository instructions, tool configuration, prompt injection, generated commands | Agent reads content, calls a tool, or receives approval to run a command | Require approval; scope tools; run the agent inside the same isolated environment |
+
+Operations also fall into two behavioral classes:
+
+- **Explicit execution** communicates that code will run, such as installing a package, starting a container, running a
+  test, or applying infrastructure configuration.
+- **Passive-looking operations** appear to retrieve or inspect data, but may reach an execution boundary through a
+  vulnerable Git version, configured filter, trusted workspace task, extension, framework loader, or agent tool call.
+
+Plain `git clone`, `git pull`, `git checkout`, and opening a folder do not universally execute repository code. The
+specific vulnerability, configuration, trust decision, or follow-on tool provides the execution path. Avoid broad
+claims about commands; identify the condition that turns data into code.
+
+## Trust must be re-established
+
+Trust applies to a specific identity, revision, dependency graph, and configuration at a point in time. A later pull,
+new release, changed download, compromised maintainer, or rewritten tag can invalidate an earlier review.
+
+Re-establish trust when:
+
+- A repository changes ownership, remote URL, default branch, submodule, or release-signing practice
+- A dependency version, integrity value, install script, provider source, or container image changes
+- Workspace, agent, Git, package-manager, or infrastructure-tool configuration changes
+- An installer URL returns bytes that cannot be matched to a reviewed version and digest
+
+A routine update is not necessarily malicious, and `git pull` does not normally execute repository content by itself.
+The update changes the bytes that trusted automation may execute next. Review the diff and repeat isolated validation
+before allowing the new revision onto a privileged workstation or into a trusted build path.
+
+## What this framework covers
+
+1. [Execution paths in untrusted code](/devsecops/developer-targeted-intrusions/execution-paths): how source,
+   Git, IDEs, containers, framework tooling, and AI coding agents turn repository-controlled input into execution.
+2. [Handling untrusted code](/devsecops/developer-targeted-intrusions/handling-untrusted-code): an intake,
+   isolation, inspection, first-execution, update, and escalation procedure for external repositories.
+
+## Related frameworks
+
+- [Integrated development environments](/devsecops/integrated-development-environments): detailed Workspace Trust,
+  task, extension, and preview controls
+- [Developer machine confinement](/devsecops/isolation/developer-machine-sandboxing): implementation options for
+  confining developer tools and AI coding agents
+- [Supply Chain Security](/supply-chain/overview): dependency, build, and release integrity after code enters the
+  delivery system
+- [AI Security](/ai-security/overview): prompt-injection and agent execution controls beyond repository intake
+- [DPRK IT Workers](/dprk-it-workers/overview): identity, hiring, and organizational controls for a related but
+  distinct intrusion problem
+- [Incident Management](/incident-management/overview): response preparation and playbooks after suspected execution
+
+## Further reading
+
+- [SEAL: VS Code Tasks Abuse](https://radar.securityalliance.org/vs-code-tasks-abuse-by-contagious-interview-dprk/):
+  a developer-targeted campaign using workspace tasks
+- [Elastic Security Labs: Bit ByBit](https://www.elastic.co/security-labs/bit-bybit): analysis of malicious source,
+  unsafe data handling, and container configuration in a developer lure
+- [Git security advisory for CVE-2024-32002](https://github.com/git/git/security/advisories/GHSA-8h77-4q3w-gfgv):
+  the conditions and patched versions for a recursive-clone vulnerability
+- [NIST SP 800-218: Secure Software Development Framework](https://csrc.nist.gov/pubs/sp/800/218/final):
+  organization-level practices for protecting software development
+
+---
+
+<ContributeFooter />
