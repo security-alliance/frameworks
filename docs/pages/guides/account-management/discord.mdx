@@ -43,16 +43,16 @@ on their own accounts.
 ### Account Security Checklist
 
 <Checklist id="account-security-checklist">
-- [ ] User Settings > My Account: Ensure **2FA** is enabled (authenticator app and/or security key), Remove a phone
+- [ ] User Settings > Account > Password & Security > Multi-Factor Authentication: Ensure **2FA** is enabled (authenticator app and/or security key), Remove a phone
   number if you have one added to your account, and after 2FA is setup select **View Backup Codes**, and note down
   your backup codes offline
-- [ ] User Settings > My Account: Ensure **SMS Backup Authentication** is **disabled**
-- [ ] User Settings > Content & Social > Social Permissions: Allow DMs from other server members > **Disabled**
-- [ ] User Settings > Content & Social > Direct Message Spam: Select **Filter all** to filter all DMs for spam
+- [ ] User Settings > Account > Account Info: Ensure **SMS Backup Authentication** is **disabled**
+- [ ] User Settings > Messaging Permissions > Direct Messages > Direct Message (DM) Permissions: Allow DMs from other server members > **Disabled**, Filter messages from server members I may not know > **Disabled**
+- [ ] User Settings > Messaging Permissions > Spam Filters: Select **Filter all spam** to filter all DMs for spam
   (encourages moderators and community members to adopt the same setting to minimize phishing DMs)
-- [ ] User Settings > Authorized Apps: Review and **Deauthorize** any unnecessary apps
-- [ ] User Setting > Devices: Review and remove unnecessary devices, or **Log Out All Known Devices**
-- [ ] User Settings > Connections: Review and remove any unnecessary connections
+- [ ] User Settings > Connected Apps > Authorized Apps: Review and **Deauthorize** any unnecessary apps
+- [ ] User Settings > Account > Password & Security > Logged-in Devices: Review and remove unnecessary devices, or **Log Out All Known Devices**
+- [ ] User Settings > Connected Apps > Connections: Review and remove any unnecessary connections
 </Checklist>
 
 ## For Team Members
@@ -74,16 +74,18 @@ These settings and practices apply to server administrators with elevated privil
 
 #### Safety Setup
 
-- Safety Setup > Moderation:
+- Safety Setup > Moderation > Permissions:
 <Checklist id="safety-setup">
   - [ ] Require 2FA for moderation > **Enabled**
+  - [ ] Restrict prune members to admin > **Enabled**
+  - [ ] Remove risky permissions for @everyone > **Enabled**
   - This ensures all moderators have an extra layer of security
 
 </Checklist>
-- Safety Setup > Verification Level:
+- Safety Setup > DM and Spam Protection > Verification Level:
 <Checklist id="safety-setup-2">
   - [ ] Choose from: None, Low, Medium, High, Highest
-  - [ ] Set to at least **Medium** (registered on Discord for 5+ minutes) — Recommended: "Moderate" for public servers
+  - [ ] Set to at least **Medium** (regist ered on Discord for 5+ minutes) — Recommended: "Moderate" for public servers
   - Higher levels protect against spammers and raids
 </Checklist>
 - Safety Setup > Raid Protection and CAPTCHA:
