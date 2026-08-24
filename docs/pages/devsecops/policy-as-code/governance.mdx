@@ -133,6 +133,9 @@ route on it. `suppressed` reads the exception register and stops matching once t
 passed. `blocking` collects anything that is neither downgraded to a judgment call nor covered
 by a live exception.
 
+> *Note:* Rego examples on this page are fenced as `python`, because the site's syntax
+> highlighter has no Rego grammar and an unrecognized language fails the build.
+
 ```python
 package build.gate
 
@@ -309,20 +312,22 @@ response. Evidence that nobody reads during an incident is cost without benefit.
 ## Policy set health checklist
 
 <Checklist id="policy-set-health">
-- [ ] Every rule carries an id, a named owner, and a class
-- [ ] Rules live in one place and ship as versioned, signed bundles
-- [ ] Every rule has a passing and a failing test fixture, run in CI
-- [ ] New rules go dry-run, then warn, then block, each with an enforcement date set at creation
-- [ ] Unclassified rules block by default
-- [ ] The gate fails closed on engine error, unreachable bundle, or evaluation timeout
-- [ ] The policy source is behind CODEOWNERS with a security reviewer
-- [ ] Thresholds live in policy data keyed by reachability, not hardcoded in rules
-- [ ] Exceptions carry a rule id, an owner, and an expiry, and live in one register
-- [ ] Expired exceptions stop suppressing, verified by a test
-- [ ] Decision logs from every enforcement point land in a common store
-- [ ] The exception register is reviewed on a fixed cadence, not when it hurts
-- [ ] Chronically renewed exceptions are treated as broken rules, not accepted risk
-- [ ] Rules that have not fired in a year get an explicit keep-or-retire decision
+- [ ] Every rule **must** carry an id, a named owner, and a class
+- [ ] Rules **should** live in one place and ship as versioned, signed bundles
+- [ ] Every rule **must** have a passing and a failing test fixture, run in CI
+- [ ] New rules **should** go dry-run, then warn, then block, each with an enforcement date set
+  at creation
+- [ ] Unclassified rules **must** block by default
+- [ ] The gate **must** fail closed on engine error, unreachable bundle, or evaluation timeout
+- [ ] The policy source **must** sit behind CODEOWNERS with a security reviewer
+- [ ] Thresholds **should** live in policy data keyed by reachability, not hardcoded in rules
+- [ ] Exceptions **must** carry a rule id, an owner, and an expiry, and **should** live in one
+  register
+- [ ] Expired exceptions **must** stop suppressing, verified by a test
+- [ ] Decision logs from every enforcement point **should** land in a common store
+- [ ] The exception register **should** be reviewed on a fixed cadence, not when it hurts
+- [ ] Chronically renewed exceptions **should** be treated as broken rules, not accepted risk
+- [ ] Rules that have not fired in a year **should** get an explicit keep-or-retire decision
 </Checklist>
 
 ## Further reading

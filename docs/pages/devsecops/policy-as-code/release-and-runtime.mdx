@@ -72,6 +72,9 @@ authorization. This
 is mode 2 applied to a different platform: the registry's member list and token inventory,
 compared against the organization roster.
 
+> *Note:* Rego examples on this page are fenced as `python`, because the site's syntax
+> highlighter has no Rego grammar and an unrecognized language fails the build.
+
 ```python
 package release.publish
 
@@ -153,9 +156,8 @@ Three records leave this stage, all bound to the same digest.
 The SBOM is what answers whether you are affected when a CVE is disclosed against a dependency,
 which may be years after the build.
 
-Most teams emit nothing here that anything downstream reads. The package is published and the
-record stops. For a team shipping npm packages into wallet frontends, this is the widest gap in
-the sequence.
+Most teams emit nothing here that anything downstream reads. The package is published, the
+record stops, and no installer is in a position to notice.
 
 Controls: [Implementing Code Signing](/devsecops/code-signing).
 
@@ -391,24 +393,29 @@ team shipping npm packages into wallet frontends, this is the widest gap in the 
 ## Release and runtime checklist
 
 <Checklist id="release-runtime-policy">
-- [ ] Signing gated on the build policy result, checked before signing runs
-- [ ] Publishing identities org-owned, MFA-enforced, resolved against the current roster
-- [ ] Signing roles hold multiple keys under threshold or quorum trust
-- [ ] Online keys are not the keys clients ultimately trust; unavoidable ones are HSM-backed
-- [ ] Published digest equals the attested digest
-- [ ] Registry version immutability enabled
-- [ ] Provenance, SBOM, and signature bundle published and bound to the same digest
-- [ ] Signature verified before any attestation claim is evaluated
-- [ ] Provenance matched against builder identity, source repository, and ref
-- [ ] Missing evidence produces refusal
-- [ ] Attested vulnerability scan required, with a tier-specific age threshold
-- [ ] Deployable content scanned for secrets; dependency review before promotion
-- [ ] Deployment identity short-lived and environment-scoped; production requires approval
-- [ ] Admission decisions logged with rule ids, verdict, digest, and evidence consulted
-- [ ] Deployed digest pinned in the manifest, never a mutable tag
-- [ ] Drift detected continuously, with auto-resync or alerting
-- [ ] Manual runtime mutation blocked; rollbacks revert declared state
-- [ ] Release data preserved: module versions, configuration, operational metadata
+- [ ] Signing **must** be gated on the build policy result, checked before signing runs
+- [ ] Publishing identities **must** be org-owned, MFA-enforced, and resolved against the
+  current roster
+- [ ] Signing roles **should** hold multiple keys under threshold or quorum trust
+- [ ] Online keys **should** not be the keys clients ultimately trust; unavoidable ones **must**
+  be HSM-backed
+- [ ] The published digest **must** equal the attested digest
+- [ ] Registry version immutability **must** be enabled
+- [ ] Provenance, SBOM, and signature bundle **must** be published and bound to the same digest
+- [ ] The signature **must** be verified before any attestation claim is evaluated
+- [ ] Provenance **must** be matched against builder identity, source repository, and ref
+- [ ] Missing evidence **must** produce refusal
+- [ ] An attested vulnerability scan **must** be required, with a tier-specific age threshold
+- [ ] Deployable content **must** be scanned for secrets; dependency review **should** precede
+  promotion
+- [ ] The deployment identity **must** be short-lived and environment-scoped; production
+  **must** require approval
+- [ ] Admission decisions **must** be logged with rule ids, verdict, digest, and evidence
+  consulted
+- [ ] The deployed digest **must** be pinned in the manifest, never a mutable tag
+- [ ] Drift **should** be detected continuously, with auto-resync or alerting
+- [ ] Manual runtime mutation **must** be blocked; rollbacks **must** revert declared state
+- [ ] Release data **should** be preserved: module versions, configuration, operational metadata
 </Checklist>
 
 ## Further reading

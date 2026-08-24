@@ -50,12 +50,14 @@ the pages that document the underlying controls.
 - **Policy Enforcement Point (PEP)**: acts on the verdict. A CI step exiting non-zero, a
   deploy gate, a merge block.
 - **Policy data**: what the decision is made against, plus context such as trusted builders,
-  the registry allowlist, and the exception register.
+  the registry allowlist, and the exception register. The rule states what must be true; the
+  data states what is true in a given repository. In the examples throughout these pages,
+  `data.` references mark that boundary.
 
-Numerous types of artifacts are created during the CI/CD process. If you don't have any
-policies or security gates throughout your CI/CD pipeline, you can't stop attackers from
-accessing resources through a compromised pipeline. A policy engine is the officially
-recommended tool for preventing and detecting compromised artifacts.
+A CI/CD pipeline produces many kinds of artifact, and without gates between them nothing stops
+an attacker who has compromised one stage from reaching the next. SP 800-204D names a policy
+enforcement engine as one technique for enforcing build policies, and names Open Policy Agent
+as an example.
 
 One PDP serves many PEPs. The engine that decides is the same at every stage. The component
 that acts on its verdict differs per stage:
@@ -69,17 +71,9 @@ that acts on its verdict differs per stage:
 | Deploy | An admission controller, or the deploy job refusing promotion |
 | Runtime | The GitOps controller, resyncing or alerting on divergence |
 
-Two consequences follow.
-
-- Most adoption effort goes into wiring enforcement points. Rules are portable across
-  platforms; enforcement points are platform-specific.
-- A step only enforces if it exits non-zero. Printing violations and returning success leaves
-  the pipeline unchanged.
-
-**Policy data** keeps one rule set serving many contexts. The rule states what must be true.
-The data states what is true in a given repository: approved runners, the current roster,
-allowed registries, blocking severities, and live exceptions. In the examples throughout these
-pages, `data.` references mark that boundary.
+Most adoption effort goes into wiring those enforcement points, because rules are portable
+across platforms and enforcement points are not. A step only enforces if it exits non-zero:
+printing violations and returning success leaves the pipeline unchanged.
 
 ### Artifacts
 
@@ -89,28 +83,21 @@ pages, `data.` references mark that boundary.
 
 ### Associated frameworks
 
-- **NIST SP 800-218 (SSDF)**: the Secure Software Development Framework, applicable to any
-  software architecture.
-  - Provides a core set of secure software development practices that can be integrated into
-    an existing SDLC.
-  - Technology-neutral, organized around the security outcomes an organization should achieve.
+- **NIST SP 800-218 (SSDF)**: technology-neutral secure development practices, organized
+  around security outcomes and integrable into an existing SDLC.
 - **NIST SP 800-204D**: *Strategies for the Integration of Software Supply Chain Security in
-  DevSecOps CI/CD Pipelines*.
-  - Explains how software supply chain security can be integrated into the CI/CD pipelines
-    used to develop and deploy cloud-native applications.
+  DevSecOps CI/CD Pipelines*, which applies those outcomes to cloud-native CI/CD.
 
-**NIST SP 800-204D can therefore be understood as guidance on how to implement SSDF security
-objectives within a CI/CD pipeline.**
-
-Appendix A of SP 800-204D maps each pipeline task to an SSDF practice, so this work is
-reportable as SSDF conformance. Secure build maps to PO.1 and PW.6.
+SP 800-204D can therefore be read as guidance on implementing SSDF objectives inside a
+pipeline. Its Appendix A maps each pipeline task to an SSDF practice, so this work is
+reportable as SSDF conformance; secure build maps to PO.1 and PW.6.
 
 ### Associated project
 
 - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/): a policy engine that
   streamlines policy management across your stack for improved development, security, and
-  audit capability. This engine is officially referred to in NIST SP 800-204D as a policy
-  engine.
+  audit capability. This engine is officially named in SP 800-204D as an example of such a
+  tool.
 
 ## What a policy engine gives you
 
@@ -249,9 +236,5 @@ artifacts ship without provenance, start with release.
 - [zizmor](https://docs.zizmor.sh/): static analysis for GitHub Actions workflows
 
 ---
-
-> *Note:* Rego examples in this section are fenced as `python`. The site's syntax highlighter
-> has no Rego grammar, and an unrecognized language fails the build. Python is the closest
-> available approximation.
 
 <ContributeFooter />
