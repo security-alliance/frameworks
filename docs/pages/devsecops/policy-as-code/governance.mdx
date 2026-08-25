@@ -101,7 +101,7 @@ remove it from lockfiles that already pinned it. An on-chain upgrade may be irre
 the release, the more the gate has to catch before it runs.
 
 Combining the two produces the tiers. High reachability with low reversibility takes the
-strictest thresholds you can operate. Low reachability with straightforward rollback takes
+strictest thresholds a team can operate. Low reachability with straightforward rollback takes
 thresholds loose enough to keep the gate off the critical path.
 
 Thresholds belong in policy data keyed by repository or artifact class, in the same form as the
@@ -112,8 +112,8 @@ once and configured per artifact. The deploy gate in
 
 The standard does not supply these numbers. NIST SP 800-204D requires that a policy exist and
 be enforced; it does not state that a Medium finding should block a wallet library. That
-derivation is yours, which is why the reasoning behind a threshold belongs in the policy
-repository alongside the threshold itself.
+derivation belongs to the adopting organization, which is why the reasoning behind a threshold
+belongs in the policy repository alongside the threshold itself.
 
 ### Overrides are data, not edits
 
@@ -132,9 +132,6 @@ In the rules below, `violation` emits a structured record rather than a string s
 route on it. `suppressed` reads the exception register and stops matching once the expiry has
 passed. `blocking` collects anything that is neither downgraded to a judgment call nor covered
 by a live exception.
-
-> *Note:* Rego examples on this page are fenced as `python`, because the site's syntax
-> highlighter has no Rego grammar and an unrecognized language fails the build.
 
 ```python
 package build.gate
@@ -231,7 +228,7 @@ Centralization means four things.
 engine still runs at merge, at build, and at deploy. Rules live in one repository
 and ship to consumers as versioned, signed bundles. Consumers pull a version; forking the
 content is not supported. A rule change then reaches every consumer on the next pull, and the
-enforced version is a property you can read. This also follows from the standard's definition of a
+enforced version is a readable property. This also follows from the standard's definition of a
 policy as "a signed document that encodes the requirements for an artifact to be validated":
 an unsigned bundle cannot be verified as received intact.
 

@@ -72,9 +72,6 @@ The roster is policy data. It changes at every join and departure, so the rule r
 evaluation time through `data.roster`. A hand-maintained list goes stale at the first
 offboarding.
 
-> *Note:* Rego examples on this page are fenced as `python`, because the site's syntax
-> highlighter has no Rego grammar and an unrecognized language fails the build.
-
 ```python
 package commit.signing
 
@@ -226,8 +223,8 @@ deny contains v if {
 ```
 
 Where the decision is enforced? A required status check. Branch protection refuses the merge
-while the check fails. The enforcement point is a platform feature you configure; the decision
-behind it is yours.
+while the check fails. The enforcement point is a platform feature to configure; the decision
+behind it belongs to the organization.
 
 The posture check uses a different enforcement point. It runs on a schedule, and its verdict
 raises an alert against the repository whose setting drifted.
@@ -380,12 +377,12 @@ Result: `Deterministic`
 
 Three requirements:
 
-- the runner is on an allowlist you maintain
+- the runner is on a maintained allowlist
 - the job does not run privileged
 - the runner is ephemeral and re-provisioned per job
 
-The allowlist is policy data (`data.approved_runners`). It describes your infrastructure rather
-than a general security property, and will differ between organizations.
+The allowlist is policy data (`data.approved_runners`). It describes a specific infrastructure
+rather than a general security property, and will differ between organizations.
 
 ```python
 package build.platform
@@ -412,9 +409,9 @@ Result: `Deterministic`
 
 Pin compiler and toolchain versions, base images, lockfiles, and third-party actions.
 
-A tag is a mutable pointer. It can be moved to different content without any change in your
-repository, so a build that passed previously can produce different output from identical
-source.
+A tag is a mutable pointer. It can be moved to different content without any change in the
+consuming repository, so a build that passed previously can produce different output from
+identical source.
 
 ```python
 package build.pinning

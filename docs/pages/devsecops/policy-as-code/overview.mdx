@@ -95,11 +95,11 @@ reportable as SSDF conformance; secure build maps to PO.1 and PW.6.
 ### Associated project
 
 - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/): a policy engine that
-  streamlines policy management across your stack for improved development, security, and
+  streamlines policy management across a stack for improved development, security, and
   audit capability. This engine is officially named in SP 800-204D as an example of such a
   tool.
 
-## What a policy engine gives you
+## What a policy engine provides
 
 A policy engine is a component that answers exactly one question: given this input, do the
 rules allow it?
@@ -172,8 +172,8 @@ does" is a policy. The first describes an intended state. The second is verified
 
 Mode 2 is what distinguishes these pages from
 [Repository Hardening](/devsecops/repository-hardening), which documents which settings to
-enable. The question here is how you confirm they are still enabled next quarter, across every
-repository, without manual review.
+enable. The question here is how a team confirms they are still enabled next quarter, across
+every repository, without manual review.
 
 Mode 2 requires a collector: a component that calls the platform API, shapes the response into
 JSON, and passes it to the engine. That collector becomes part of the trust base. If its token
@@ -187,14 +187,14 @@ boundary.
 Every Rego snippet in this section is illustrative, and represents what the engine reads, what
 it decides, and what it returns.
 
-Two things have to come from your organization.
+Two things have to come from the adopting organization.
 
-- The input structure depends on which SCM, registry, and CI platform you run and on how your
-  collectors shape their output. The field names will not match yours.
-- The rule content is a statement of what your organization has decided to require, which is a
-  different question from what a standard permits. Deriving those requirements from your own
+- The input structure depends on which SCM, registry, and CI platform the organization runs and
+  on how its collectors shape their output. The field names will differ.
+- The rule content is a statement of what the organization has decided to require, which is a
+  different question from what a standard permits. Deriving those requirements from a team's own
   threat model, organizational regulations, and incident history is the work these examples do
-  not do for you.
+  not do.
 
 ## What this framework covers
 

@@ -29,8 +29,8 @@ The artifact and its attestation arrive from
 [Policy in the CI Pipeline](/devsecops/policy-as-code/ci-pipeline). Three stages remain:
 publish it, deploy it, and keep the running state matching what was declared.
 
-The earlier stages evaluate things you control directly. From here the artifact leaves your
-systems, and the gates read signed evidence about it.
+The earlier stages evaluate things the team controls directly. From here the artifact leaves
+those systems, and the gates read signed evidence about it.
 
 The publish stage matters most for Web3 teams and is gated least often. A package published to
 a registry is loaded by wallet frontends within hours, and the registry account that publishes
@@ -46,7 +46,7 @@ that distinguishes a legitimate release from a malicious one. Verifying a signat
 metadata is not sufficient, because the signature generation step is itself attackable.
 
 What the engine evaluates? Publishing identity lives in a package registry's account settings
-and not in your repository, so this stage uses mode 2 and requires a second collector. The
+and not in the repository, so this stage uses mode 2 and requires a second collector. The
 registry's member list, MFA status, and token inventory are pulled and compared against the
 current organization roster, which is the same policy data the commit stage reads. Most
 organizations do not build this collector.
@@ -71,9 +71,6 @@ Authorization must be evaluated at release time. Account setup is not evidence o
 authorization. This
 is mode 2 applied to a different platform: the registry's member list and token inventory,
 compared against the organization roster.
-
-> *Note:* Rego examples on this page are fenced as `python`, because the site's syntax
-> highlighter has no Rego grammar and an unrecognized language fails the build.
 
 ```python
 package release.publish
@@ -153,8 +150,8 @@ Three records leave this stage, all bound to the same digest.
 | SBOM | SPDX or CycloneDX | Artifact store, retained for the artifact's life | Incident response, deploy gate |
 | Signature and certificate | Cosign bundle, transparency log entry | Registry, Rekor | Any external verifier |
 
-The SBOM is what answers whether you are affected when a CVE is disclosed against a dependency,
-which may be years after the build.
+The SBOM is what answers whether a release is affected when a CVE is disclosed against a
+dependency, which may be years after the build.
 
 Most teams emit nothing here that anything downstream reads. The package is published, the
 record stops, and no installer is in a position to notice.
@@ -263,7 +260,7 @@ attestation; this gate refuses any artifact that cannot produce one naming an ap
 builder.
 
 This refusal is what makes the CI pipeline enforceable. Without it, the build can be as careful
-as you like and nothing prevents a different artifact from reaching production under the same
+as it likes and nothing prevents a different artifact from reaching production under the same
 version number.
 
 ### Missing evidence produces refusal, not an assumption of good faith
@@ -372,7 +369,7 @@ state that is running are then two different things.
 Result: `Deterministic`
 
 Retain module versions, configuration files, and operational metadata for every release. This
-is what allows you to determine what was running at a given point in time during a
+is what allows responders to determine what was running at a given point in time during a
 post-incident review.
 
 Enforcement at admission time, using tools such as Gatekeeper or the Sigstore policy controller,
