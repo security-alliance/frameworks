@@ -133,22 +133,23 @@ the deployed configuration and retain its results; a documented setting is not e
 
 <Checklist id="developer-workstation-supply-chain-baseline">
 
-- [ ] Define approved and prohibited external-tool categories and document approval criteria
-- [ ] Maintain an allowlist with tool owners, approved uses, versions, permissions, safeguards, and review dates
-- [ ] Record exceptions with scope, compensating controls, an owner, and an expiration date
-- [ ] Periodically review inventory and enforcement evidence for version, permission, publisher, and behavior drift
-- [ ] Reassess tools after material publisher, ownership, permission, update, behavior, or incident changes
-- [ ] Remove unapproved or expired tools and retain evidence of the decision and removal
-- [ ] Keep Workspace Trust enabled, leave unfamiliar folders untrusted, and require explicit approval before trusting them
-- [ ] Disable automatic workspace tasks and review task configuration before enabling it
-- [ ] Allowlist IDE extensions, coding-agent extensions, and MCP servers
-- [ ] Pin approved tool and dependency versions and verify integrity metadata
-- [ ] Block install-time scripts by default and document approved exceptions
-- [ ] Detect invisible Unicode and suspicious obfuscation in code and agent instruction files
-- [ ] Keep production, publishing, and treasury credentials outside untrusted development environments
-- [ ] Apply EDR and MDM controls to managed developer endpoints
-- [ ] Restrict outbound traffic from evaluation environments
-- [ ] Open untrusted projects only in disposable VMs or hardened development containers
+- [ ] Approved and prohibited external-tool categories **must** be defined, and the approval criteria documented
+- [ ] The allowlist **must** record tool owners, approved uses, versions, permissions, safeguards, and review dates
+- [ ] Exceptions **must** carry a scope, compensating controls, an owner, and an expiration date
+- [ ] Inventory and enforcement evidence **should** be reviewed for version, permission, publisher, and behavior drift
+- [ ] Tools **must** be reassessed after material publisher, ownership, permission, update, behavior, or incident changes
+- [ ] Unapproved or expired tools **must** be removed, and evidence of the decision and removal retained
+- [ ] Workspace Trust **must** stay enabled, unfamiliar folders **must** remain untrusted, and trusting one **must**
+  require explicit approval
+- [ ] Automatic workspace tasks **must** be disabled, and task configuration reviewed before enabling it
+- [ ] IDE extensions, coding-agent extensions, and MCP servers **must** be allowlisted
+- [ ] Approved tool and dependency versions **must** be pinned, and their integrity metadata verified
+- [ ] Install-time scripts **should** be blocked by default, with approved exceptions documented
+- [ ] Invisible Unicode and suspicious obfuscation **should** be detected in code and agent instruction files
+- [ ] Production, publishing, and treasury credentials **must** stay outside untrusted development environments
+- [ ] EDR and MDM controls **should** be applied to managed developer endpoints
+- [ ] Outbound traffic from evaluation environments **must** be restricted
+- [ ] Untrusted projects **must** be opened only in disposable VMs or hardened development containers
 
 </Checklist>
 
