@@ -56,6 +56,11 @@ you scope it.
 - Make fixes, formatting, and clarifications, favoring major modifications over just a few grammar mistakes.
 - Changes go through GitHub's web interface without requiring local setup.
 
+> 💡 **On attribution:** we value small fixes, but they will not credit you as an author, reviewer, or fact-checker on
+> the page. Those three roles are for more substantial contributions. Your work still counts: every merged change
+> earns badges on your contributor profile in the [Spotlight Zone](/docs/pages/contribute/spotlight-zone.mdx). For the rules on each
+> role, see [Attribution and contributor roles](#attribution-and-contributor-roles).
+
 ### 2. Add a new page or expand an existing one
 
 This covers writing a new page, adding a section to an existing page, or rewriting existing content.
@@ -65,7 +70,9 @@ the starting point for any new page. It lays out the required sections (key take
 further reading), the optional ones, the frontmatter rules, and the import paths. The structure is the same one used
 across every page on the site, which is what makes the Frameworks readable as a whole rather than as a pile of
 individual contributions. Open it before you start writing, even if you are only adding a section to an existing page,
-since the same structural rules apply.
+since the same structural rules apply. Headings use **sentence case** (see
+[style and terminology](/docs/pages/contribute/style-and-terminology.mdx#heading-sentence-case-required)); catalog names such as
+`## Further reading` and `## What this framework covers` stay sentence case too.
 
 **Keep each page focused on a single topic.** If your content would require more than 5-6 top-level
 sections (## headings), it is covering too much ground in one place. Split it into separate pages
@@ -79,9 +86,13 @@ The workflow:
 2. **For a new page**, copy `template.mdx` into the relevant framework folder under `docs/pages/`, replace the
    placeholder content, and follow the instructions inside it. **For changes to an existing page**, edit the file
    directly; the same structural and frontmatter rules apply.
-3. **Make your changes** in MDX on your fork. Add yourself to the file's `contributors` field in the frontmatter, and
-   create your profile in [`docs/pages/config/contributors.json`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/contributors.json)
-   if you do not already have one. This is how attribution works on the site.
+3. **Make your changes** in MDX on your fork. Add yourself to the file's `contributors` field in the frontmatter under
+   the role that matches what you actually did, and create your profile in
+   [`docs/pages/config/contributors.json`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/contributors.json)
+   if you do not already have one. This is how attribution works on the site. Authorship (`wrote`) is for new pages,
+   new sections, and substantial rewrites. A smaller change to a page someone else wrote belongs under `fact-checked`
+   when it corrects, qualifies, or sources a claim the page got wrong, and nowhere when it does not. See
+   [Attribution and contributor roles](#attribution-and-contributor-roles).
 4. **Update the sidebar** (`vocs.config.ts`) so your new page appears in site navigation. New content should always
    be added with the `dev: true` flag, which keeps it on the development site only. Reviewed content gets promoted to
    the stable site periodically when we merge `develop` into `main`. See [Sidebar / Navigation](#sidebar--navigation)
@@ -203,12 +214,19 @@ development environment.
 
 ## Page requirements
 
-The [page template](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx) is
-the source of truth for what every page should contain: required and optional sections, frontmatter rules, import
-paths, and writing guidance. Open it before you start writing.
+Standards are split so they do not drift:
+
+| Concern | Authority |
+| --- | --- |
+| Page types, required sections, overview maps, exceptions | [Content model](/docs/pages/contribute/content-model.mdx) |
+| Voice, modality, terminology | [Style and terminology](/docs/pages/contribute/style-and-terminology.mdx) |
+| Executable skeleton and import paths | [Page template](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx) |
+| Framework normalization PRs | [Docs normalization checklist](/docs/pages/contribute/docs-normalization-checklist.mdx) |
+
+Open the template before you start writing. Open the content model before you invent a new page shape.
 
 The sections below cover the parts of contributing that live outside the page itself: how the sidebar works, how to
-make sure the build passes, and the writing style we expect across all pages.
+make sure the build passes, and a short style summary (full rules are in the style guide).
 
 ### Frontmatter
 
@@ -226,6 +244,8 @@ contributors:
     users: [your-github-username]
   - role: reviewed
     users: []
+  - role: fact-checked
+    users: []
 ---
 ```
 
@@ -235,10 +255,65 @@ Two things worth knowing up front:
   Avoid generic names like "Overview" or "Guide" alone.
 - **Contributors are managed centrally.** Your `users:` entries reference profiles in
   [`docs/pages/config/contributors.json`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/contributors.json).
-  Add yourself there if you do not already have an entry.
+  Add yourself there if you do not already have an entry. Which of the three lists you belong in depends on what you
+  actually did to the page: see [Attribution and contributor roles](#attribution-and-contributor-roles) below.
 
 The full rules (description length, searchable terms, role list for tags, the auto-generation behavior for new tags,
 and worked examples) live in the [page template](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx?plain=1).
+
+### Attribution and contributor roles
+
+Attribution records **what you did to a page**, not that you touched it. The three roles are not interchangeable, and
+the site renders each one as its own section on the page: "Authored by", "Reviewed by", and "Fact-checked by".
+
+- **`wrote` is authorship.** You created the page, wrote a whole section, or substantially rewrote existing content.
+  This is the role that says you are accountable for the shape and the substance of that content, and it is the list
+  people look at when they want to know who owns a page.
+- **`reviewed` is a sign-off on the page as a whole.** A reviewer reads the full page and judges whether it holds
+  together: structure, scope, coverage, tone, and accuracy, then approves it in a PR review. The scope is the entire
+  page and the judgement is editorial as well as technical. Reviewers are usually the framework's steward, a
+  maintainer, or a subject-matter expert brought in for a professional opinion.
+- **`fact-checked` is verification of specific claims.** A fact-checker confirms individual statements against primary
+  sources (vendor documentation, specifications, actual tool behavior), then corrects, qualifies, or sources them where
+  the page was wrong, outdated, or unsupported. The scope is narrower than a review, a claim rather than a page, but
+  the bar is the same one: the page has to be more accurate afterwards than it was before.
+
+The three roles carry the same weight. A page is only as good as the writing, the checking, and the sign-off behind
+it, and the Security Frameworks need all three to be worth trusting. What follows is about describing different kinds of work
+accurately, not about ranking contributors.
+
+The short version: a reviewer answers "is this page good?", a fact-checker answers "is this statement true?". Both
+roles are earned by the work of checking, not by the size of the diff. Text that adds words without settling either
+question is neither one.
+
+Which role is yours:
+
+| What you did in this PR | Where you belong |
+| --- | --- |
+| New page, new section, or a substantial rewrite of existing prose | `wrote` |
+| Read the full page and approved it in a PR review | `reviewed`, added by the reviewer or by the maintainer merging the PR |
+| Corrected, qualified, or sourced a specific claim on a page someone else wrote: a wrong default, an outdated version or link, a missing step that breaks a procedure, an unsupported figure, a caveat that changes what the reader should do | `fact-checked` |
+| Typos, formatting, tooling, config, or general advice that does not change what is true on the page | Nothing on the page. The git history and your contributor badges are the record |
+
+A few rules that follow from this:
+
+- **Adding a few sentences does not make you an author.** If your diff is a couple of lines of prose on a page written
+  by someone else, you are not in the `wrote` list.
+- **It does not automatically make you a fact-checker either.** `fact-checked` is not the fallback list for anything
+  too small to be authorship. It is for changes that settle a question of accuracy: something on the page was wrong,
+  stale, or unsupported, and your change fixed it. Two sentences that correct a wrong default or add the source for a
+  claim qualify. Two sentences of general advice on a page that already gives that advice do not, however carefully
+  they are written.
+- **Not being listed on a page is not a snub.** Every merged PR counts toward your profile on the
+  [Spotlight Zone](/docs/pages/contribute/spotlight-zone.mdx) and the badges shown there (first contribution, then 5, 10, and 25
+  merged contributions), and the git history records your change permanently. Page attribution is a narrower
+  instrument: it tells readers who is accountable for the content, so it stays limited to the people who wrote it,
+  verified it, or signed it off.
+- **Do not add yourself under `reviewed` on your own PR.** That role records someone else's sign-off on your work.
+- **Never remove, replace, or reorder the contributors already listed.** Attribution is cumulative. Append yourself to
+  the right list and leave everyone else exactly as they are.
+- **Not sure where you fit?** Say so in the PR description and leave your entry out. A maintainer will place you, and
+  no one is turned away for guessing wrong.
 
 ### Sidebar / Navigation
 
@@ -328,36 +403,34 @@ Or look at your branch on GitHub, commits should show a green **Verified** badge
 
 ## Style guide
 
-Wiki pages follow standard MDX.
+Wiki pages follow standard MDX. Full editorial rules live in
+[Style and terminology](/docs/pages/contribute/style-and-terminology.mdx). Structural rules live in the
+[content model](/docs/pages/contribute/content-model.mdx).
 
-The audience of this wiki is technical, and the content should reflect that. There are many guides on technical and
-documentation writing you can learn from; for example, you can check [this
-lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM) to get started.
+The audience is technical. For general craft of writing, [this lecture](https://www.youtube.com/watch?v=vtIzMaLkCaM)
+is a useful starting point.
 
-### Writing guidelines
+### Writing guidelines (summary)
 
-- Write in an objective, explanatory tone; avoid unnecessary simplifications.
-- Use concise sentences and break down complex ideas with bullet points, tables, images, or block-quotes.
-- Always link your resources and verify them.
-- Introduce acronyms and technical jargon before using them.
-- Web3 changes fast; write the content to be as future-proof as possible.
-- Do **not** submit content entirely generated by AI; however, we recommend using it to fix grammar or phrasing.
-- Consider tutorials or hands-on guides for practical steps.
-- Use visualizations (mermaid, diagrams, tables) to clarify concepts.
-- Add recommended reading or dependencies at the top of a page if relevant.
-- Focus on delivering credible, formal, technical content without unnecessary high-level introductions; use examples,
-  comparisons, or anecdotes to clarify complex topics.
+- Objective, explanatory tone; no first-person recommendations (`Implement X`, not `I suggest X`)
+- Concise sentences; use lists, tables, Mermaid, and block quotes to break down complexity
+- **Headings in sentence case** on every `##` / `###`, including catalog labels (`## Further reading`, not
+  `## Further Reading` or `## Further Reading & Tools`) — full rule:
+  [Heading sentence case](/docs/pages/contribute/style-and-terminology.mdx#heading-sentence-case-required)
+- Link and verify resources; introduce acronyms on first use
+- Web3 changes fast: prefer future-proof wording
+- Do **not** submit fully AI-generated pages; grammar/phrasing help is fine
+- Prefer tutorials or guides when the reader must perform a procedure
+- Use concrete subjects (`signers`, `operators`) and `must` / `should` / `may` modality for requirements
+- Opening structure and Key Takeaway format: see the [content model](/docs/pages/contribute/content-model.mdx)
 
-### Content standardization
+### Content standardization (summary)
 
-- Use **American English** consistently.
-- Follow consistent terminology, capitalization, and nomenclature (see [Ethereum.org style
-guide](https://ethereum.org/contributing/style-guide/content-standardization)).
-- Usage of images and visualizations is encouraged. If you are using an image created by a third party, make sure its
-license allows it and provide a link to the original. For creating your own visualizations, we suggest
-[excalidraw.com](https://github.com/excalidraw/excalidraw).
-- Feel free to use [emojis](https://docsify.js.org/#/emoji?id=emoji) or [icons](https://icongr.am/fontawesome) where it
-fits, for example in block-quotes.
+- **American English** and the [canonical terminology table](/docs/pages/contribute/style-and-terminology.mdx#canonical-terminology)
+- External consistency reference: [Ethereum.org content standardization](https://ethereum.org/contributing/style-guide/content-standardization)
+- Images and diagrams encouraged under the image workflow below; third-party art needs a compatible license and source
+  link. [Excalidraw](https://github.com/excalidraw/excalidraw) is a common drafting tool
+- Emojis or icons are fine in notices and takeaways when they match existing patterns
 
 ### Visual representation / drawings
 
@@ -368,12 +441,12 @@ fits, for example in block-quotes.
   [playground](https://www.mermaidchart.com/play#pako:eNqrVkrOT0lVslIqyExVKMksyUlVCM9ILFEIy89JSc3NLypRSMlPLc5TL1HISCxLtY_JU4CBGCW3IE9XP5fgGCUFKwUjVBlHX0-fSLCEMYqEn3-wK1jYxDQmT6kWAEyMIfc)
   where you can jump straight to draw!
 
-  ```mermaid
-  pie title What Voldemort doesn't have?
-      "FRIENDS" : 2
-      "FAMILY" : 3
-      "NOSE" : 45
-  ```
+   ```mermaid
+      pie title What Voldemort doesn't have?
+         "FRIENDS" : 2
+         "FAMILY" : 3
+         "NOSE" : 45
+   ```
 
 - Adding images is welcome and encouraged.
   Please follow the steps below to include them correctly:
