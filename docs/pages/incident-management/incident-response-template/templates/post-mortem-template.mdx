@@ -1,6 +1,6 @@
 ---
 title: "Post-Mortem Template | Security Alliance"
-description: "Complete this after significant incidents (P1-P3). Focus on learning, not blame."
+description: "Complete this after significant incidents (P1-P3). Focus on learning, not blame. Timeline, impact, contributing factors, and tracked actions turn pain"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,15 +8,29 @@ tags:
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
+
+{/*
+  content-model-exception:
+  type: template
+  reason: Reusable template body intentionally uses many H2 placeholders and static task lists for copy-paste.
+  owner: maintainers
+*/}
 
 # Post-Mortem Template
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Complete a blameless post-mortem after P1–P3 incidents. Timeline,
+> impact, contributing factors, and tracked actions turn pain into durable process
+> improvement.
 
 Complete this after significant incidents (P1-P3). Focus on learning, not blame.
 
@@ -111,14 +125,14 @@ See linked Incident Log for detailed timeline.
 2.
 3.
 
-## Where We Got Lucky
+### Where We Got Lucky
 
 [What fortunate circumstances helped that we shouldn't rely on next time?]
 
 1.
 2.
 
-## Action Items
+### Action Items
 
 > Every action item needs an owner and deadline.
 
@@ -128,9 +142,10 @@ See linked Incident Log for detailed timeline.
 | | | | |
 | | | | |
 
-## Lessons for Runbooks
+### Lessons for Runbooks
 
-Should we create or update a [runbook](../runbooks/overview) based on this incident?
+Should we create or update a
+  [runbook](/incident-management/incident-response-template/runbooks/overview) based on this incident?
 
 <Checklist id="lessons-for-runbooks">
 - [ ] New runbook needed: [type]
@@ -138,7 +153,7 @@ Should we create or update a [runbook](../runbooks/overview) based on this incid
 - [ ] No runbook changes needed
 </Checklist>
 
-## Detection
+### Detection
 
 | Aspect | Details |
 | ------ | ------- |
@@ -146,19 +161,28 @@ Should we create or update a [runbook](../runbooks/overview) based on this incid
 | Time to detection | |
 | Could we detect faster? | |
 
-## Links
+### Links
 
 - Incident Log: [Link to incident log]
 - Relevant PRs:
 - Dashboards:
 - External references:
 
-## Meeting Notes
+### Meeting Notes
 
 **Attendees:**
 
 **Discussion points:**
 
-*Template based on [Incident Response Policy](../incident-response-policy#step-6-post-incident-review)*
+*Template based on [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy#step-6-post-incident-review)*
+
+## Further reading
+
+- [Templates overview](/incident-management/incident-response-template/templates/overview): how the templates in this section fit together
+- [Example Post-Mortem](/incident-management/incident-response-template/templates/example-post-mortem): a completed write-up to model
+- [Incident Log Template](/incident-management/incident-response-template/templates/incident-log-template): the record this draws from
+- [Lessons Learned](/incident-management/lessons-learned): turning findings into durable change
+
+---
 
 <ContributeFooter />

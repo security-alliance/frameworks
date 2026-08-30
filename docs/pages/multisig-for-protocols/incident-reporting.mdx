@@ -1,6 +1,6 @@
 ---
 title: "Multisig Incident Reporting | SEAL"
-description: "Report multisig security incidents: key compromise, account takeovers, device theft, and phishing attempts. Templates for urgent security incidents and standard operational issue reports."
+description: "Report multisig security incidents: key compromise, account takeovers, device theft, and phishing attempts. Templates for urgent security incidents and standard"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Report suspected key compromise and account takeovers immediately; operational tooling
+> failures within 24 hours and with enough detail to act.
+
+Fast, accurate reporting is how a compromised key becomes a rotation instead of a drain.
+Use the definitions and templates below.
 
 ## What to Report
 
@@ -130,5 +138,15 @@ Impact:
 Additional notes:
 [Any other relevant information]
 ```
+
+## Further Reading
+
+- [Multisig for Protocols overview](/multisig-for-protocols/overview): how the pages of this framework fit together
+- [Emergency Procedures](/multisig-for-protocols/emergency-procedures): containment steps that precede a report
+- [Incident Management overview](/incident-management/overview): the wider response process
+- [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines): reaching outside help
+  quickly
+
+---
 
 <ContributeFooter />

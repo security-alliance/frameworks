@@ -1,6 +1,6 @@
 ---
 title: "Sandboxing & Isolation | SEAL"
-description: "DevSecOps guidance for sandboxing, isolation, and containment across CI/CD, runners, tooling, and execution environments."
+description: "Layered sandboxing and isolation for DevSecOps: threat model, isolation decision tree, CI baseline controls, and map of every section child page."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -9,6 +9,10 @@ tags:
 contributors:
   - role: wrote
     users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -100,8 +104,10 @@ calls and side effects.
 constrained capabilities.
 - [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement) — integrating
 policy-as-code with runtime isolation.
+- [Developer Machine Confinement](/devsecops/isolation/developer-machine-sandboxing) — confinement
+patterns for local AI coding agents and IDE containers.
 
-## References
+## Further reading
 
 - [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
 - [NIST SP 800-53 Rev. 5, *Security and Privacy Controls*](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)

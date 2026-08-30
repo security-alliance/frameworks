@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,8 +21,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **This is an example runbook.** Review and customize for your protocol before use. Add your specific CDN/WAF
-> provider commands and escalation contacts.
+> 🔑 **Key Takeaway**: Under DDoS, engage your CDN/WAF play, protect origin capacity, and
+> separate availability response from security compromise until evidence says otherwise.
+
+**This is an example runbook.** Review and customize for your protocol before use. Add your specific
+CDN/WAF provider commands and escalation contacts.
 
 ## Quick Reference
 
@@ -134,8 +140,10 @@ For AWS:
 ## Escalation
 
 <Checklist id="escalation">
-- [ ] [CDN/hosting provider](../contacts#infrastructure-vendors) - for attack mitigation support
-- [ ] [Decision Makers](../contacts#decision-makers) - if extended outage
+- [ ] [CDN/hosting
+      provider](/incident-management/incident-response-template/contacts#infrastructure-vendors) -
+      for attack mitigation support
+- [ ] [Decision Makers](/incident-management/incident-response-template/contacts#decision-makers) - if extended outage
 </Checklist>
 
 ## Recovery
@@ -181,10 +189,13 @@ After resolving, consider:
 - [ ] Backup/failover infrastructure
 </Checklist>
 
-## Related
+## Further reading
 
-- [Third-Party Outage](./third-party-outage)
-- [Frontend Compromise](./frontend-compromise)
-- [Incident Response Policy](../incident-response-policy)
+- [Runbooks overview](/incident-management/incident-response-template/runbooks/overview): how the runbooks in this section fit together
+- [Third-Party Outage](/incident-management/incident-response-template/runbooks/third-party-outage): the adjacent availability scenario
+- [DDoS Protection](/infrastructure/ddos-protection): controls to have in place beforehand
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy): severity levels, roles, and escalation
+
+---
 
 <ContributeFooter />

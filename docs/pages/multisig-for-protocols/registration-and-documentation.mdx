@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Write down who can do what, which address holds which role, and keep the inventory
+> matched to on-chain state after every change.
 
 Proper documentation is essential for multisig security and accountability. This page covers the registration process
 and required documentation.
@@ -379,10 +384,13 @@ After any signer change:
 
 Use the template in [Registration & Documentation → Update Template](/multisig-for-protocols/registration-and-documentation#update-template).
 
-## Related Documents
+## Further Reading
 
-- [Planning & Classification](/multisig-for-protocols/planning-and-classification) - How to classify your multisig
-- [Joining a Multisig](/multisig-for-protocols/joining-a-multisig) - Signer verification process
-- [Operational Runbooks](/multisig-for-protocols/runbooks/overview) - Example procedures for common operations
+- [Multisig for Protocols overview](/multisig-for-protocols/overview): how the pages of this framework fit together
+- [Planning and Classification](/multisig-for-protocols/planning-and-classification): how to classify your multisig
+- [Joining a Multisig](/multisig-for-protocols/joining-a-multisig): the signer verification process
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview): procedures whose changes must be recorded here
+
+---
 
 <ContributeFooter />

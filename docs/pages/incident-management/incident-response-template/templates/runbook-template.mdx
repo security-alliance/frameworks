@@ -1,6 +1,6 @@
 ---
 title: "Runbook Template | Security Alliance"
-description: "Copy this template to create runbooks for specific incident types."
+description: "Copy this template to create runbooks for specific incident types. Clone this structure for each scenario: quick reference, detection, containment"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,15 +8,29 @@ tags:
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
+
+{/*
+  content-model-exception:
+  type: template
+  reason: Reusable template body intentionally uses many H2 placeholders and static task lists for copy-paste.
+  owner: maintainers
+*/}
 
 # Runbook Template
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Clone this structure for each scenario: quick reference, detection,
+> containment, eradication, recovery, and communication. Fill real commands and owners
+> before an incident, not during one.
 
 Copy this template to create runbooks for specific incident types.
 
@@ -111,7 +125,7 @@ If you see [X] but not [Y], it might be [different issue] instead.
 
 ## Escalation
 
-Escalate to [Contacts](../contacts) if:
+Escalate to [Contacts](/incident-management/incident-response-template/contacts) if:
 
 <Checklist id="escalation">
 - [ ] Mitigation doesn't work within [time]
@@ -124,19 +138,23 @@ Escalate to [Contacts](../contacts) if:
 <Checklist id="resolution-checklist">
 - [ ] Mitigation verified
 - [ ] Stakeholders notified
-- [ ] Timeline documented in [Incident Log](../templates/incident-log-template)
+- [ ] Timeline documented in [Incident Log](/incident-management/incident-response-template/templates/incident-log-template)
 - [ ] Post-mortem scheduled if warranted
 </Checklist>
 
-## Common Root Causes
+### Common Root Causes
 
 | Cause | Signs | Fix |
 | ----- | ----- | --- |
 | | | |
 
-## Related
+## Further reading
 
-- Related runbook for this scenario
-- [Incident Response Policy](../incident-response-policy)
+- [Templates overview](/incident-management/incident-response-template/templates/overview): how the templates in this section fit together
+- [Runbooks overview](/incident-management/incident-response-template/runbooks/overview): how the runbooks in this section fit together
+- [Key Compromise runbook](/incident-management/incident-response-template/runbooks/key-compromise): a worked example of this structure
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy): severity levels, roles, and escalation
+
+---
 
 <ContributeFooter />
