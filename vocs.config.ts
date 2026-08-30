@@ -133,6 +133,28 @@ const config = {
                 { text: 'Developer Machine Sandboxing', link: '/devsecops/isolation/developer-machine-sandboxing' },
               ]
             },
+            {
+              text: 'Developer-Targeted Intrusions',
+              collapsed: false,
+              dev: true,
+              items: [
+                {
+                  text: 'Overview',
+                  link: '/devsecops/developer-targeted-intrusions/overview',
+                  dev: true,
+                },
+                {
+                  text: 'Execution Paths in Untrusted Code',
+                  link: '/devsecops/developer-targeted-intrusions/execution-paths',
+                  dev: true,
+                },
+                {
+                  text: 'Handling Untrusted Code',
+                  link: '/devsecops/developer-targeted-intrusions/handling-untrusted-code',
+                  dev: true,
+                },
+              ],
+            },
             { text: 'Code Signing', link: '/devsecops/code-signing' },
             { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment' },
             { text: 'Data Security Checklist', link: '/devsecops/data-security-upgrade-checklist' },
