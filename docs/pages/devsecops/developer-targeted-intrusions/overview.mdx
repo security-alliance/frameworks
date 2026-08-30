@@ -50,6 +50,22 @@ Common pretexts include:
 Verify the person, organization, repository owner, and expected task through a separate trusted channel. Verification
 reduces social risk; it does not make the repository safe to execute.
 
+## Core principles
+
+Three principles reduce risk across every execution boundary and intake step. Under pressure, follow these before
+reaching for the detailed procedures in the pages below.
+
+1. **Treat time pressure as a warning sign.** Urgency to install, build, or run external code is itself a signal to
+   stop and reassess. Attackers exploit deadlines and stress to bypass normal controls.
+2. **Verify through multiple channels.** Confirm the request and the requester through a separate trusted channel — a
+   different messaging platform, a phone call, or an internal directory. A single message from a familiar account is
+   not verification; accounts can be impersonated or compromised.
+3. **Isolate untrusted code.** Do not run anything from an untrusted source on a workstation with production access,
+   reusable credentials, or personal accounts. Use a disposable environment with restricted egress and no inherited
+   credentials, and destroy it after use.
+
+These principles do not replace the full procedure — they are the minimum bar when there is no time for anything else.
+
 ## Four execution boundaries
 
 Reading source text does not normally execute it. Risk appears when a tool interprets repository-controlled data,

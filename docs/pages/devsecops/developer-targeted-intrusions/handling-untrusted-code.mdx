@@ -28,6 +28,10 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 Use this procedure for code received through recruiting, support, audits, community requests, new vendors, external
 contributors, or any other path that has not passed the team's normal review and provenance controls.
 
+> ⚠️ **Under time pressure?** Follow the three core principles in the
+> [overview](/devsecops/developer-targeted-intrusions/overview#core-principles) before reaching for the full procedure:
+> treat urgency as a warning sign, verify through multiple channels, and isolate untrusted code.
+
 Teams must provide a sanctioned disposable environment before the request arrives. A developer under time pressure will
 use a normal workstation when the safer path is unavailable or too slow. The isolation service must support inspection,
 controlled dependency retrieval, execution, evidence export, and complete teardown without exposing personal or
@@ -139,7 +143,9 @@ differently from the reviewed configuration.
 - [ ] Notify the security or incident-response lead and identify everyone who received the same repository or outreach
 - [ ] Preserve volatile and disk evidence as directed; do not clean or rebuild the device before responder review
 - [ ] From a known-clean device, revoke and rotate every credential, key, token, wallet session, browser session, and
-      authentication factor the endpoint could access
+      authentication factor the endpoint could access. If the endpoint had access to private keys or seed phrases,
+      migrate assets to a newly generated wallet from the clean device — revoking the wallet session alone may not
+      prevent theft
 - [ ] Hunt for persistence, credential use, lateral movement, changed source, and activity from the developer's active
       sessions across identity, source-control, cloud, CI/CD, and production logs
 - [ ] Rebuild the endpoint from a trusted image and restore only reviewed data after containment and credential rotation
