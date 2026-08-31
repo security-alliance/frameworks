@@ -69,7 +69,8 @@ Canonical framework overview example: `docs/pages/supply-chain/overview.mdx`.
 - Explain: non-technical first, then technical depth
 - Language: direct/technical, no first person (`implement X` not `I suggest`)
 - Headings: **sentence case required** (`## Signing verification`, not Title Case). Applies to all H2/H3 **including**
-  catalog labels: `## Further reading`, `## Related frameworks`, `## What this framework covers` — never
+  catalog labels: `## Further reading`, `## Related frameworks`, `## What this framework covers` (or
+  `## What this section covers` on a nested subsection overview) — never
   `## Further Reading & Tools` or Title Case reserved names. See `docs/pages/contribute/style-and-terminology.mdx`
 - Key Takeaway (canonical): `> 🔑 **Key Takeaway**:` under ~40 words; the point of the page, not a TOC summary
 - Use `<Checklist>` for interactive checklists; never plain `- [ ]` task lists outside examples

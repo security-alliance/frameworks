@@ -7,8 +7,8 @@
  *
  * Catalog H2 names below are matched case-insensitively so unmigrated Title Case
  * still validates; preferred spelling is sentence case (e.g. "Further reading",
- * "What this framework covers"). Strict Title-Case lint for freeform headings is
- * intentionally not automated yet.
+ * "What this framework covers" / "What this section covers"). Strict Title-Case
+ * lint for freeform headings is intentionally not automated yet.
  *
  * Usage:
  *   node utils/validate-content.cjs
@@ -108,12 +108,14 @@ function hasAnyTakeaway(body) {
 }
 
 function hasPageMap(hs) {
-  // Preferred labels (sentence case): What this framework covers, Framework structure,
-  // Contents, Table of contents. "Pages" remains accepted for legacy maps.
+  // Preferred labels (sentence case): What this framework covers for a top-level
+  // framework overview, What this section covers for a nested subsection overview.
+  // Also accepted: Framework structure, Section structure, Contents, Table of
+  // contents. "Pages" remains accepted for legacy maps.
   return hs.some(
     (h) =>
       h.level === 2 &&
-      /^(pages|what this framework covers|framework structure|contents|table of contents)$/i.test(
+      /^(pages|what this (framework|section) covers|(framework|section) structure|contents|table of contents)$/i.test(
         h.text.replace(/[?:].*$/, '').trim(),
       ),
   )
