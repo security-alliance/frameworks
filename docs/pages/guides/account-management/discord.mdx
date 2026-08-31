@@ -44,16 +44,16 @@ on their own accounts.
 ### Account Security Checklist
 
 <Checklist id="account-security-checklist">
-- [ ] User Settings > My Account: Ensure **2FA** is enabled (authenticator app and/or security key), Remove a phone
-  number if you have one added to your account, and after 2FA is setup select **View Backup Codes**, and note down
+- [ ] User Settings > Account > Password & Security > Multi-Factor Authentication: Ensure **2FA** is enabled (authenticator app and/or security key), Remove a phone if you have one added to your account, and after 2FA is setup select **View Backup Codes**, and note down
   your backup codes offline
-- [ ] User Settings > My Account: Ensure **SMS Backup Authentication** is **disabled**
+- [ ] User Settings > Account > Account Info: Ensure **SMS Backup Authentication** is **disabled**
 - [ ] User Settings > Content & Social > Social Permissions: Allow DMs from other server members > **Disabled**
-- [ ] User Settings > Content & Social > Direct Message Spam: Select **Filter all** to filter all DMs for spam
+- [ ] User Settings > Messaging Permissions > Direct Messages > Direct Message (DM) Permissions: Allow DMs from other server members > **Disabled**, Filter messages from server members I may not know > **Disabled**
   (encourages moderators and community members to adopt the same setting to minimize phishing DMs)
-- [ ] User Settings > Authorized Apps: Review and **Deauthorize** any unnecessary apps
-- [ ] User Setting > Devices: Review and remove unnecessary devices, or **Log Out All Known Devices**
-- [ ] User Settings > Connections: Review and remove any unnecessary connections
+- [ ] User Settings > Messaging Permissions > Spam Filters: Select **Filter all spam** to filter all DMs for spam
+- [ ] User Settings > Connected Apps > Authorized Apps: Review and **Deauthorize** any unnecessary apps
+- [ ] User Settings > Account > Password & Security > Logged-in Devices: Review and remove unnecessary devices, or **Log Out All Known Devices**
+- [ ] User Settings > Connected Apps > Connections: Review and remove any unnecessary connections
 </Checklist>
 
 ---
@@ -79,13 +79,15 @@ These settings and practices apply to server administrators with elevated privil
 
 #### Safety Setup
 
-- Safety Setup > Moderation:
+- Safety Setup > Moderation > Permissions:
 <Checklist id="safety-setup">
   - [ ] Require 2FA for moderation > **Enabled**
   - This ensures all moderators have an extra layer of security
+  - [ ] Restrict prune members to admin > **Enabled**
+  - [ ] Remove risky permissions for @everyone > **Enabled**
 
 </Checklist>
-- Safety Setup > Verification Level:
+- Safety Setup > DM and Spam Protection > Verification Level:
 <Checklist id="safety-setup-2">
   - [ ] Choose from: None, Low, Medium, High, Highest
   - [ ] Set to at least **Medium** (registered on Discord for 5+ minutes) — Recommended: "Moderate" for public servers
@@ -324,14 +326,13 @@ This is a monitoring system to observe and note any changes (spontaneous or plan
 server. Some key observation markers are channel and role creation/deletions, banning or kicking members, and webhook
 creation/deletion. A popular bot in this category is [Wick Bot](https://wickbot.com/).
 
-#### Moderation & Link Allowlisting Bots
+#### Elevated Permissions & Link Allowlisting Bots
 
-These bots enforce least privilege by requiring a successful 2FA session before elevated permissions are granted. These bots only allow approved links to be sent in a Discord server, all other links are blocked. Popular bots in this category are [ZTS Guard Bot](https://zts-guard.gitbook.io/zts-guard-Discord-bot) or [Goodknight Bot](https://docs.goodknightbot.com/).
+These bots enforce least privilege by requiring a successful 2FA session before elevated permissions are granted. These bots only allow approved links to be sent in a Discord server, all other links are blocked with admins being able to manage an allowlist. Popular bots in this category are [ZTS Guard Bot](https://zts-guard.gitbook.io/zts-guard-Discord-bot) or [Goodknight Bot](https://docs.goodknightbot.com/).
 
 #### General Moderation Bots
 
-Consider bots like [Dyno](https://dyno.gg/) or [ZTS Guard Bot](https://zts-guard.gitbook.io/zts-guard-Discord-bot) for advanced moderation and logging, or [Carl-bot](https://carl.gg/) for reaction roles and custom commands. Set
-up security Bots as described above.
+General moderation settings include logging on server actions, anti-webhook enforcement, extending security to DMs outside of the Discord server, and other discord settings that can be enforced from these bots. Consider bots like [Dyno](https://dyno.gg/) or [ZTS Guard Bot](https://zts-guard.gitbook.io/zts-guard-Discord-bot) for advanced moderation and logging, or [Carl-bot](https://carl.gg/) for reaction roles and custom commands. Set up security Bots as described above.
 
 _The bots above are not all-inclusive but rather a recommended list of bots to help protect your Discord server in
 these categories._
@@ -394,9 +395,9 @@ it's best to use an incognito browser. After creating the Gmail account:
 
 ##### Step 2: Create the Discord account
 
-Head to [https://Discord.com](https://Discord.com) and create a new account using the Gmail account you just created.
+Head to [https://discord.com](https://discord.com) and create a new account using the Gmail account you just created.
 
-<Checklist id="step-2-create-the-Discord-account">
+<Checklist id="step-2-create-the-discord-account">
 - [ ] Write down the email, username, password, and date of birth **offline**
 - [ ] Use a username that is not related to your project
 - [ ] Give the profile a profile picture in **My Account > Edit User Profile**
