@@ -198,6 +198,7 @@ LLVM
 LUKS
 Mahhouk
 Mailvelope
+MASVS
 mdlint
 MDM
 MEE

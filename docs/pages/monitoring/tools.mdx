@@ -20,8 +20,8 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Choose monitoring tools for detection quality and operational reliability — uptime, time-to-alert,
-> delivery guarantees, and redundant coverage — not feature lists alone.
+> 🔑 **Key Takeaway**: Choose monitoring tools for detection quality and operational reliability — uptime,
+> time-to-alert, delivery guarantees, and redundant coverage — not feature lists alone.
 
 The catalog below is primarily focused on EVM-compatible chains. For non-EVM chains (Solana, Cosmos, and others),
 verify chain support before selecting a tool. For critical systems, run monitors from two independent providers when
@@ -48,7 +48,8 @@ blockchain node health, block propagation times, RPC endpoint availability, and 
 via a scraper.
 
 - **Chains:** Chain-agnostic (infrastructure layer)
-- **GitHub:** [prometheus/prometheus](https://github.com/prometheus/prometheus) | [grafana/grafana](https://github.com/grafana/grafana)
+- **GitHub:** [prometheus/prometheus](https://github.com/prometheus/prometheus) |
+  [grafana/grafana](https://github.com/grafana/grafana)
 
 ## Commercial / hosted
 
@@ -134,7 +135,8 @@ these factors:
 ### Key reliability metrics to evaluate
 
 - **Uptime SLA:** What guaranteed availability does the provider offer? Is there a status page?
-- **Time-to-alert:** How quickly after an on-chain event does a notification reach responders? Minutes matter during an exploit.
+- **Time-to-alert:** How quickly after an on-chain event does a notification reach responders? Minutes matter during an
+  exploit.
 - **Alert delivery guarantees:** Does the platform guarantee at-least-once delivery, or is it best-effort?
 
 ### Redundancy recommendation
@@ -155,7 +157,7 @@ channel, not primary paging (high latency, often filtered to spam)
 For high-severity alerts, use a dedicated paging tool with escalation so that if the primary on-call misses the
 alert, it automatically escalates to a secondary.
 
-## Further Reading
+## Further reading
 
 - [Monitoring overview](/monitoring/overview): first principles and when redundancy is warranted
 - [Monitoring guidelines](/monitoring/guidelines): what to cover before buying tooling

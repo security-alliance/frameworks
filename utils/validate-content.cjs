@@ -55,15 +55,33 @@ function readException(body) {
 }
 
 function stripCode(body) {
-  return body.replace(/```[\s\S]*?```/g, '')
+  const lines = body.split('\n')
+  let fence = null
+  return lines
+    .map((line) => {
+      const m = line.match(/^\s*(`{3,}|~{3,})/)
+      if (m) {
+        if (fence === null) {
+          fence = m[1][0]
+          return ''
+        }
+        if (m[1][0] === fence) {
+          fence = null
+          return ''
+        }
+      }
+      return fence === null ? line : ''
+    })
+    .join('\n')
 }
 
 function headings(body) {
   const hs = []
-  for (const line of body.split('\n')) {
+  const lines = stripCode(body).split('\n')
+  lines.forEach((line, i) => {
     const m = line.match(/^(#{1,6})\s+(.+)/)
-    if (m) hs.push({ level: m[1].length, text: m[2].trim() })
-  }
+    if (m) hs.push({ level: m[1].length, text: m[2].trim(), line: i + 1 })
+  })
   return hs
 }
 
