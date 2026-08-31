@@ -857,5 +857,18 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": []
+  },
+  "tayvano": {
+    "slug": "tayvano",
+    "name": "tayvano",
+    "avatar": "https://avatars.githubusercontent.com/tayvano",
+    "github": "https://github.com/tayvano",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": []
   }
 }
