@@ -10,7 +10,7 @@ contributors:
   - role: reviewed
     users: [Coinspect, engn33r]
   - role: fact-checked
-    users: []
+    users: [0xusmanf]
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -104,8 +104,9 @@ Before using a new hardware wallet, verify its authenticity:
 - **Generate New Keys:** Generate new private keys on the device, do not import them from your computer or another device
 - **No Digital Storage:** Never export or store your private keys or seed phrases in any digital format, including
 pictures or in password managers
-- Generate seed following device instructions
-- Create accounts as needed
+* Generate seed following device instructions
+* **Dry-run Recovery Check:** Perform a dry-run recovery via native hardware wallet features before adding funds or multisig keys. If using a 25th-word passphrase, verify it in a temporary session to ensure the derived receiving address matches.
+* Create accounts as needed
 
 ### Clear Signing
 
