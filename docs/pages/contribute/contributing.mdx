@@ -65,6 +65,11 @@ you scope it.
 - Make fixes, formatting, and clarifications, favoring major modifications over just a few grammar mistakes.
 - Changes go through GitHub's web interface without requiring local setup.
 
+> 💡 **On attribution:** we value small fixes, but they will not credit you as an author, reviewer, or fact-checker on
+> the page. Those three roles are for more substantial contributions. Your work still counts: every merged change
+> earns badges on your contributor profile in the [Spotlight Zone](/contribute/spotlight-zone). For the rules on each
+> role, see [Attribution and contributor roles](#attribution-and-contributor-roles).
+
 ### 2. Add a new page or expand an existing one
 
 This covers writing a new page, adding a section to an existing page, or rewriting existing content.
@@ -90,9 +95,13 @@ The workflow:
 2. **For a new page**, copy `template.mdx` into the relevant framework folder under `docs/pages/`, replace the
    placeholder content, and follow the instructions inside it. **For changes to an existing page**, edit the file
    directly; the same structural and frontmatter rules apply.
-3. **Make your changes** in MDX on your fork. Add yourself to the file's `contributors` field in the frontmatter, and
-   create your profile in [`docs/pages/config/contributors.json`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/contributors.json)
-   if you do not already have one. This is how attribution works on the site.
+3. **Make your changes** in MDX on your fork. Add yourself to the file's `contributors` field in the frontmatter under
+   the role that matches what you actually did, and create your profile in
+   [`docs/pages/config/contributors.json`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/contributors.json)
+   if you do not already have one. This is how attribution works on the site. Authorship (`wrote`) is for new pages,
+   new sections, and substantial rewrites. A smaller change to a page someone else wrote belongs under `fact-checked`
+   when it corrects, qualifies, or sources a claim the page got wrong, and nowhere when it does not. See
+   [Attribution and contributor roles](#attribution-and-contributor-roles).
 4. **Update the sidebar** (`vocs.config.ts`) so your new page appears in site navigation. New content should always
    be added with the `dev: true` flag, which keeps it on the development site only. Reviewed content gets promoted to
    the stable site periodically when we merge `develop` into `main`. See [Sidebar / Navigation](#sidebar--navigation)
@@ -244,6 +253,8 @@ contributors:
     users: [your-github-username]
   - role: reviewed
     users: []
+  - role: fact-checked
+    users: []
 ---
 ```
 
@@ -253,10 +264,65 @@ Two things worth knowing up front:
   Avoid generic names like "Overview" or "Guide" alone.
 - **Contributors are managed centrally.** Your `users:` entries reference profiles in
   [`docs/pages/config/contributors.json`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/contributors.json).
-  Add yourself there if you do not already have an entry.
+  Add yourself there if you do not already have an entry. Which of the three lists you belong in depends on what you
+  actually did to the page: see [Attribution and contributor roles](#attribution-and-contributor-roles) below.
 
 The full rules (description length, searchable terms, role list for tags, the auto-generation behavior for new tags,
 and worked examples) live in the [page template](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx?plain=1).
+
+### Attribution and contributor roles
+
+Attribution records **what you did to a page**, not that you touched it. The three roles are not interchangeable, and
+the site renders each one as its own section on the page: "Authored by", "Reviewed by", and "Fact-checked by".
+
+- **`wrote` is authorship.** You created the page, wrote a whole section, or substantially rewrote existing content.
+  This is the role that says you are accountable for the shape and the substance of that content, and it is the list
+  people look at when they want to know who owns a page.
+- **`reviewed` is a sign-off on the page as a whole.** A reviewer reads the full page and judges whether it holds
+  together: structure, scope, coverage, tone, and accuracy, then approves it in a PR review. The scope is the entire
+  page and the judgment is editorial as well as technical. Reviewers are usually the framework's steward, a
+  maintainer, or a subject-matter expert brought in for a professional opinion.
+- **`fact-checked` is verification of specific claims.** A fact-checker confirms individual statements against primary
+  sources (vendor documentation, specifications, actual tool behavior), then corrects, qualifies, or sources them where
+  the page was wrong, outdated, or unsupported. The scope is narrower than a review, a claim rather than a page, but
+  the bar is the same one: the page has to be more accurate afterwards than it was before.
+
+The three roles carry the same weight. A page is only as good as the writing, the checking, and the sign-off behind
+it, and the Security Frameworks need all three to be worth trusting. What follows is about describing different kinds of work
+accurately, not about ranking contributors.
+
+The short version: a reviewer answers "is this page good?", a fact-checker answers "is this statement true?". Both
+roles are earned by the work of checking, not by the size of the diff. Text that adds words without settling either
+question is neither one.
+
+Which role is yours:
+
+| What you did in this PR | Where you belong |
+| --- | --- |
+| New page, new section, or a substantial rewrite of existing prose | `wrote` |
+| Read the full page and approved it in a PR review | `reviewed`, added by the reviewer or by the maintainer merging the PR |
+| Corrected, qualified, or sourced a specific claim on a page someone else wrote: a wrong default, an outdated version or link, a missing step that breaks a procedure, an unsupported figure, a caveat that changes what the reader should do | `fact-checked` |
+| Typos, formatting, tooling, config, or general advice that does not change what is true on the page | Nothing on the page. The git history and your contributor badges are the record |
+
+A few rules that follow from this:
+
+- **Adding a few sentences does not make you an author.** If your diff is a couple of lines of prose on a page written
+  by someone else, you are not in the `wrote` list.
+- **It does not automatically make you a fact-checker either.** `fact-checked` is not the fallback list for anything
+  too small to be authorship. It is for changes that settle a question of accuracy: something on the page was wrong,
+  stale, or unsupported, and your change fixed it. Two sentences that correct a wrong default or add the source for a
+  claim qualify. Two sentences of general advice on a page that already gives that advice do not, however carefully
+  they are written.
+- **Not being listed on a page is not a snub.** Every merged PR counts toward your profile on the
+  [Spotlight Zone](/contribute/spotlight-zone) and the badges shown there (first contribution, then 5, 10, and 25
+  merged contributions), and the git history records your change permanently. Page attribution is a narrower
+  instrument: it tells readers who is accountable for the content, so it stays limited to the people who wrote it,
+  verified it, or signed it off.
+- **Do not add yourself under `reviewed` on your own PR.** That role records someone else's sign-off on your work.
+- **Never remove, replace, or reorder the contributors already listed.** Attribution is cumulative. Append yourself to
+  the right list and leave everyone else exactly as they are.
+- **Not sure where you fit?** Say so in the PR description and leave your entry out. A maintainer will place you, and
+  no one is turned away for guessing wrong.
 
 ### Sidebar / Navigation
 

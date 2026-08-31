@@ -10,7 +10,7 @@ contributors:
   - role: wrote
     users: []
   - role: reviewed
-    users: []
+    users: [mattaereal]
   - role: fact-checked
     users: []
 ---
@@ -59,19 +59,27 @@ development, operations, and security:
    — Implementation sequence for runners, secrets, and egress.
 8. [Developer Machine Confinement](/devsecops/isolation/developer-machine-sandboxing) —
    Confinement for Claude Code, Codex CLI, and VS Code dev containers.
-9. [Code Signing](/devsecops/code-signing) — GPG/SSH-signed commits and tags with verified
+9. [Developer-Targeted Intrusions](/devsecops/developer-targeted-intrusions/overview) —
+   Threat model for social lures and execution boundaries in external repositories.
+10. [Execution Paths in Untrusted Code](/devsecops/developer-targeted-intrusions/execution-paths) —
+    Conditions that turn source, Git, IDE, framework, container, and agent inputs into execution.
+11. [Handling Untrusted Code](/devsecops/developer-targeted-intrusions/handling-untrusted-code) —
+    Intake, isolation, inspection, first-execution, update, and escalation procedure.
+12. [Code Signing](/devsecops/code-signing) — GPG/SSH-signed commits and tags with verified
    identity.
-10. [Continuous Integration and Deployment](/devsecops/continuous-integration-continuous-deployment)
+13. [Continuous Integration and Deployment](/devsecops/continuous-integration-continuous-deployment)
     — Secure pipelines, secrets, and ephemeral builds.
-11. [Data Security Checklist](/devsecops/data-security-upgrade-checklist) — Backups,
+14. [Data Security Checklist](/devsecops/data-security-upgrade-checklist) — Backups,
     encryption, and third-party data controls.
-12. [Governance Proposal Security Across the SDLC](/devsecops/governance-proposal-security)
+15. [Governance Proposal Security Across the SDLC](/devsecops/governance-proposal-security)
     — Threat model for upgrade proposals across the proposal lifecycle.
-13. [Integrated Development Environments](/devsecops/integrated-development-environments)
+16. [Integrated Development Environments](/devsecops/integrated-development-environments)
     — Secure IDEs, extensions, and analysis plugins.
-14. [Repository Hardening](/devsecops/repository-hardening) — MFA, branch protection,
+17. [Policy as Code](/devsecops/policy-as-code/overview) — Policy engines and NIST SP
+    800-204D applied from commit through runtime (section hub).
+18. [Repository Hardening](/devsecops/repository-hardening) — MFA, branch protection,
     CODEOWNERS, and Actions hardening.
-15. [Security Testing](/devsecops/security-testing) — SAST, DAST, IAST, and fuzzing in the
+19. [Security Testing](/devsecops/security-testing) — SAST, DAST, IAST, and fuzzing in the
     delivery path.
 
 ## Related frameworks

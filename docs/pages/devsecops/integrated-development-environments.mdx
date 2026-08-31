@@ -7,51 +7,108 @@ tags:
   - DevOps
 contributors:
   - role: wrote
-    users: [mattaereal, fredriksvantes, ElliotFriedman]
+    users: [mattaereal, fredriksvantes, ElliotFriedman, blackbigswan]
   - role: reviewed
-    users: []
+    users: [mattaereal]
   - role: fact-checked
     users: []
 ---
 
-import { TagList, AttributionList, ContributeFooter } from '../../../components'
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
 
-# Integrated Development Environments (IDEs)
+# Integrated development environments (IDEs)
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Treat the IDE as part of the attack surface: install
-> extensions only after publisher and source verification, keep tooling
-> patched, enable in-editor security analysis, and keep development
-> environments isolated from production.
+> 🔑 **Key Takeaway**: Treat the IDE as an execution environment. Keep external projects in Restricted Mode, inspect
+> workspace configuration before trust, verify extensions independently, and isolate the editor from production access.
 
-Integrated Development Environments (IDEs) are essential tools for developers,
-but they also need to be secured. Implement the following practices:
+Integrated development environments (IDEs) combine an editor, terminal, debugger, task runner, language servers,
+extensions, source-control clients, and remote-development bridges. This convenience also gives repository-controlled
+configuration several ways to select programs, start tasks, retrieve content, or influence tools that already have the
+developer's privileges.
 
-1. Install plugins and extensions only from trusted sources, and verify each one through multiple independent channels
-  before installing:
-    - Confirm the publisher matches the expected organization — typosquats and lookalike publishers are common.
-    - Cross-reference the extension's source repository on GitHub; skim recent commits, open issues, and any security
-      advisories.
-    - Check install counts and verified-publisher badges, and prefer signed / officially-published releases over
-      sideloaded builds.
+An IDE does not execute every file it opens. The risk depends on a trust decision, enabled feature, extension behavior,
+vulnerability, or explicit action. Identify that condition before describing a project as safe or dangerous.
 
-    Due diligence on extensions is typically low, which is precisely why threat actors target this vector: a single
-    malicious or compromised extension can exfiltrate source, secrets, and session tokens across every project on the
-    machine. Use restricted mode if you don't fully trust a project.
-2. Keep IDEs and their plugins/extensions up-to-date to protect against vulnerabilities.
-3. Integrate static code analysis tools within the IDE to catch security issues early in the development process.
-4. Configure IDEs to follow the principle of least privilege, limiting access to sensitive information and systems.
-5. Ensure that potential development environments are isolated from production environments.
+## Why workspace trust matters
+
+Visual Studio Code uses Workspace Trust to separate trusted projects from Restricted Mode. Restricted Mode limits or
+disables tasks, debugging, workspace settings, and extensions that could execute code. Similar editors may use
+different names and enforcement, so teams should document the equivalent controls for each approved IDE.
+
+Workspace Trust is a security boundary, not a nuisance prompt. Grant it only after the repository and its workspace
+configuration have been reviewed in an isolated environment. A familiar sender, legitimate project name, or clean
+top-level source file does not establish trust in nested configuration or later updates.
+
+## Workspace-controlled execution
+
+Inspect every workspace file that can select an executable, command, environment, remote resource, or extension:
+
+| Surface | Risk | Review |
+| --- | --- | --- |
+| `.vscode/tasks.json` | A task may run a shell command, including after folder open when automatic tasks are allowed | Commands, arguments, dependencies, problem matchers, and `runOptions.runOn` |
+| `.vscode/settings.json` | Workspace settings may redirect interpreters, formatters, linters, test runners, or other tools | Every executable path, environment variable, extension-specific setting, and remote URL |
+| `.vscode/launch.json` | Debug configuration may run a program, task, adapter, or pre-launch command | Program paths, task references, adapters, arguments, and environment files |
+| `.vscode/extensions.json` | Recommendations can pressure developers to install unnecessary or lookalike extensions | Publisher, extension identifier, ownership, source, permissions, and current advisories |
+| `.idea/` and editor-specific files | Other IDEs expose equivalent project settings, tasks, plugins, and run configurations | Project-controlled executables, hooks, remote content, and plugin requests |
+| `.devcontainer/` | Container settings may request mounts, capabilities, forwarded credentials, or host integration | Image source, features, lifecycle commands, mounts, sockets, privileges, and forwarded agents |
+
+Visual Studio Code tasks configured with `runOptions.runOn: folderOpen` can run when a folder opens after the workspace
+is trusted and automatic tasks are permitted. Restricted Mode blocks task execution. Keep automatic tasks managed, and
+review the exact task rather than relying on a harmless-looking label or filename.
+
+## Extensions and preview surfaces
+
+Extensions execute with broad access to the editor context and may start processes, read the workspace, and make
+network requests according to the platform and extension design. Verify an extension through independent channels:
+
+- Confirm the exact publisher and extension identifier; display names and icons are not identities
+- Match the marketplace listing to the expected source repository and release process
+- Review recent ownership changes, releases, security advisories, and requested capabilities
+- Prefer organization-approved extensions and remove extensions that no longer have a business need
+- Keep the IDE and approved extensions patched
+
+Do not install a VSIX package supplied inside an untrusted repository or by the contact who sent it. Sideloading
+bypasses marketplace distribution and runs the package provided by the sender. A workspace recommendation is also not
+approval to install an extension.
+
+Previews, language servers, schema resolvers, and extensions may retrieve remote content when a file opens or renders,
+depending on configuration. Treat unexpected remote references as possible beacons or untrusted parser input. Restrict
+remote content and outbound network access in the external-code environment.
+
+## Opening untrusted projects
+
+<Checklist id="opening-untrusted-projects">
+- [ ] Open the initial copy in a disposable, credential-free environment that cannot reach production
+- [ ] Inspect `.vscode/`, `.idea/`, `.devcontainer/`, editor rules, and agent configuration with a plain text viewer
+- [ ] Keep Workspace Trust in Restricted Mode until tasks, settings, extensions, and tool paths are reviewed
+- [ ] Decline automatic tasks, repository-local VSIX packages, and unexpected extension recommendations
+- [ ] Disable forwarded SSH/GPG agents, credential helpers, cloud credentials, wallets, and password-manager integration
+- [ ] Restrict egress and review remote resources requested by previews, language servers, and extensions
+- [ ] Re-check workspace configuration after every pull or branch change before preserving trust
+- [ ] Export reviewed source changes only; discard editor state, installed extensions, build outputs, and caches
+</Checklist>
+
+Static analysis inside the IDE can improve feedback during normal development, but it does not validate the IDE,
+extension, or repository configuration that hosts it. Keep the pipeline's independent security testing and review
+controls in place.
 
 ## Further reading
 
 - [DevSecOps overview](/devsecops/overview): how the pages of this framework fit together
-- [Developer Machine Confinement](/devsecops/isolation/developer-machine-sandboxing): confining agent and IDE
+- [Developer-targeted intrusions](/devsecops/developer-targeted-intrusions/overview): threat model and safe handling for
+  external repositories
+- [Developer machine confinement](/devsecops/isolation/developer-machine-sandboxing): confining agent and IDE
   workloads on the laptop
-- [Repository Hardening](/devsecops/repository-hardening): controls for the code the IDE pushes
-- [Security Testing](/devsecops/security-testing): pipeline counterparts to IDE analysis
+- [Repository hardening](/devsecops/repository-hardening): controls for the code the IDE pushes
+- [Security testing](/devsecops/security-testing): pipeline counterparts to IDE analysis
+- [Visual Studio Code Workspace Trust](https://code.visualstudio.com/docs/editing/workspaces/workspace-trust):
+  Restricted Mode and trust-sensitive features
+- [Visual Studio Code tasks](https://code.visualstudio.com/docs/debugtest/tasks): task configuration and automatic tasks
+- [Visual Studio Code extension runtime security](https://code.visualstudio.com/docs/configure/extensions/extension-runtime-security):
+  extension signatures, publisher trust, and runtime controls
 
 ---
 
