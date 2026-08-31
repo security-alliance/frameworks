@@ -204,6 +204,7 @@ LUKS
 Mahhouk
 Mailvelope
 mainnet
+MASVS
 mdlint
 MDM
 MEE
