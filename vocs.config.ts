@@ -86,25 +86,6 @@ const config = {
           ]
         },
         {
-          text: 'User and Team Security',
-          collapsed: true,
-          dev: true,
-          items: [
-            { text: 'Overview', link: '/user-team-security/overview', dev: true },
-            {
-              text: 'Phishing and Social Engineering',
-              link: '/user-team-security/phishing-social-engineering',
-              dev: true,
-            },
-            {
-              text: 'Security-Aware Culture',
-              link: '/user-team-security/security-aware-culture',
-              dev: true,
-            },
-            { text: 'Security Training', link: '/user-team-security/security-training', dev: true },
-          ]
-        },
-        {
           text: 'Community Management',
           collapsed: true,
           items: [
@@ -112,6 +93,9 @@ const config = {
             { text: 'Discord', link: '/community-management/discord' },
             { text: 'Twitter', link: '/community-management/twitter' },
             { text: 'Telegram', link: '/community-management/telegram' },
+            { text: 'Matrix', link: '/community-management/matrix' },
+            { text: 'Session', link: '/community-management/session' },
+            { text: 'SimpleX', link: '/community-management/simplex' },
           ]
         },
         {
@@ -133,11 +117,44 @@ const config = {
                 { text: 'Developer Machine Sandboxing', link: '/devsecops/isolation/developer-machine-sandboxing' },
               ]
             },
+            {
+              text: 'Developer-Targeted Intrusions',
+              collapsed: false,
+              dev: true,
+              items: [
+                {
+                  text: 'Overview',
+                  link: '/devsecops/developer-targeted-intrusions/overview',
+                  dev: true,
+                },
+                {
+                  text: 'Execution Paths in Untrusted Code',
+                  link: '/devsecops/developer-targeted-intrusions/execution-paths',
+                  dev: true,
+                },
+                {
+                  text: 'Handling Untrusted Code',
+                  link: '/devsecops/developer-targeted-intrusions/handling-untrusted-code',
+                  dev: true,
+                },
+              ],
+            },
             { text: 'Code Signing', link: '/devsecops/code-signing' },
             { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment' },
             { text: 'Data Security Checklist', link: '/devsecops/data-security-upgrade-checklist' },
             { text: 'Governance Proposal Security Across the SDLC', link: '/devsecops/governance-proposal-security' },
             { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments' },
+            {
+              text: 'Policy as Code',
+              collapsed: true,
+              dev: true,
+              items: [
+                { text: 'Overview', link: '/devsecops/policy-as-code/overview', dev: true },
+                { text: 'Policy in the CI Pipeline', link: '/devsecops/policy-as-code/ci-pipeline', dev: true },
+                { text: 'Policy in Release and Runtime', link: '/devsecops/policy-as-code/release-and-runtime', dev: true },
+                { text: 'Governing the Policy Set', link: '/devsecops/policy-as-code/governance', dev: true },
+              ]
+            },
             { text: 'Repository Hardening', link: '/devsecops/repository-hardening' },
             { text: 'Security Testing', link: '/devsecops/security-testing' },
           ]
@@ -579,6 +596,25 @@ const config = {
           ]
         },
         {
+          text: 'User and Team Security',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/user-team-security/overview', dev: true },
+            {
+              text: 'Phishing and Social Engineering',
+              link: '/user-team-security/phishing-social-engineering',
+              dev: true,
+            },
+            {
+              text: 'Security-Aware Culture',
+              link: '/user-team-security/security-aware-culture',
+              dev: true,
+            },
+            { text: 'Security Training', link: '/user-team-security/security-training', dev: true },
+          ]
+        },
+        {
           text: 'Vulnerability Disclosure',
           collapsed: true,
           dev: true,
@@ -636,11 +672,14 @@ const config = {
             { text: 'GitHub Security', link: '/guides/account-management/github' },
             { text: 'GoDaddy Security', link: '/guides/account-management/godaddy' },
             { text: 'Linear Security', link: '/guides/account-management/linear' },
+            { text: 'Matrix Security', link: '/guides/account-management/matrix' },
             { text: 'Mercury Security', link: '/guides/account-management/mercury' },
             { text: 'Notion Security', link: '/guides/account-management/notion' },
             { text: 'Render Security', link: '/guides/account-management/render' },
             { text: 'Sentry Security', link: '/guides/account-management/sentry' },
+            { text: 'Session Security', link: '/guides/account-management/session' },
             { text: 'Signal Security', link: '/guides/account-management/signal' },
+            { text: 'SimpleX Security', link: '/guides/account-management/simplex' },
             { text: 'Slack Security', link: '/guides/account-management/slack' },
             { text: 'Telegram Security', link: '/guides/account-management/telegram' },
             { text: 'Trello Security', link: '/guides/account-management/trello' },

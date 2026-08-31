@@ -1,0 +1,528 @@
+---
+title: "Policy in the CI Pipeline | SEAL"
+description: "Commit, merge, and build policy gates: what the engine evaluates at each stage, which violations block, and what evidence each stage records."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - DevOps
+  - SRE
+contributors:
+  - role: wrote
+    users: [s1ns3nz0]
+  - role: reviewed
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
+
+# Policy in the CI Pipeline
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Each CI stage verifies the previous one and records what it found. A
+> stage that verifies thoroughly but records nothing has given the next gate no reason to trust
+> it, which is the same position as having verified nothing.
+
+Commit, merge, and build are the first three stages of the pipeline. They start with a
+developer identity and end with an artifact and its attestation, and everything downstream
+reads that attestation instead of re-checking the source.
+
+Each stage below is described the same way: what arrives and who asserts it, what document the
+engine evaluates, where the decision is enforced, what is checked, and what the stage records
+for the next one.
+
+For the policy engine itself, the two evaluation modes, and what the standard requires, see
+[Policy as Code: Overview](/devsecops/policy-as-code/overview).
+
+Two terms recur below. A check is **deterministic** when it has one correct answer and no
+override is reasonable. A check is a matter of **judgment** when the correct result depends on
+context the engine does not have.
+[Governing the Policy Set](/devsecops/policy-as-code/governance) maps that distinction to
+override authority.
+
+## Commit
+
+What arrives is a set of source changes and a developer identity asserted by the source-code
+management system. Nothing upstream attests to that identity, and a phished session token
+satisfies it. Every check downstream inherits this assumption.
+
+What the engine evaluates? A commit is not JSON, so the input has to be assembled:
+
+- changed file paths and signature status, from the SCM API
+- secret scanner output, as JSON
+- SCA output, as JSON
+
+Teams that skip the assembly step enforce this stage entirely through platform settings, which
+holds until a setting is changed.
+
+Where the decision is enforced? Two enforcement points share this stage. Push protection at the
+SCM rejects the push before it reaches the repository. A CI step covers what push protection
+cannot evaluate, and functions as an enforcement point only if it exits non-zero.
+
+### Commits are signed, and the signature is verified
+
+Result: `Deterministic`
+
+Requiring a signature and verifying it are separate controls. A platform setting can require
+that a signature be present. Confirming that the signing key belongs to a current member
+requires resolving the identity against the roster.
+
+The roster is policy data. It changes at every join and departure, so the rule reads it at
+evaluation time through `data.roster`. A hand-maintained list goes stale at the first
+offboarding.
+
+```python
+package commit.signing
+
+import rego.v1
+
+deny contains msg if {
+  not input.commit.signature.verified
+  msg := sprintf("commit %s is not signed by a verified key", [input.commit.sha])
+}
+
+deny contains msg if {
+  input.commit.signature.verified
+  not input.commit.author.login in data.roster.active_members
+  msg := sprintf("commit %s signed by %q, who is not a current member", [input.commit.sha, input.commit.author.login])
+}
+```
+
+### Sensitive paths require their owning team
+
+Result: `Deterministic`
+
+CODEOWNERS handles review routing. Paths that determine pipeline behavior need more than
+routing:
+
+- `.github/workflows/` determines what runs with access to secrets
+- the policy directory determines what blocks a release
+
+Encoding the path-to-owner map as policy allows the same rule to run at merge and in a
+scheduled audit, and records the decision.
+
+```python
+package commit.paths
+
+import rego.v1
+
+protected := {
+  ".github/workflows/": "ci-platform",
+  "policy/": "security",
+}
+
+deny contains msg if {
+  some path in input.commit.changed_files
+  some prefix, owner in protected
+  startswith(path, prefix)
+  not owner in input.commit.approving_teams
+  msg := sprintf("%q requires approval from %q", [path, owner])
+}
+```
+
+### No secrets enter the repository
+
+Result: `Deterministic`
+
+Enable push protection at the SCM and run a scanner in CI. Scan the repository before it holds
+code as well: a credential already present may already be exposed, depending on repository
+visibility.
+
+There is no threshold to configure. The rule reads scanner output and fails on any finding.
+
+### Dependencies are fully resolved, and truncation is a failure
+
+Result: `Judgment`
+
+The severity threshold is a judgment call, covered in
+[Governing the Policy Set](/devsecops/policy-as-code/governance).
+
+Resolution depth is not. If the SCA tool stopped before resolving the full transitive graph,
+the result is an incomplete scan, and it is indistinguishable from a clean one unless the rule
+checks for it. Encode truncation as a violation.
+
+```python
+package commit.dependencies
+
+import rego.v1
+
+deny contains msg if {
+  input.sca.max_depth_reached
+  msg := "SCA stopped before resolving all transitive dependencies"
+}
+
+deny contains msg if {
+  some dep in input.sca.dependencies
+  dep.severity in data.reachability[input.repo].blocking_severities
+  msg := sprintf("%s in %s@%s blocks at this tier", [dep.severity, dep.name, dep.version])
+}
+```
+
+### Analysis covers every language actually in use
+
+Result: `Judgment`
+
+A pipeline that runs SAST on the primary language and skips Solidity, shell scripts, or
+Terraform reports a clean run without having examined those files. Encode the expected language
+set as data and fail when actual scanner coverage does not match it.
+
+### Every result is recorded and keyed to the commit SHA
+
+Result: `Deterministic`
+
+Three records leave this stage.
+
+| Record | Consumed by |
+| --- | --- |
+| Commit signature, as a Git object | Merge gate |
+| Secret-scan result | Merge gate |
+| Dependency inventory, as an SBOM fragment or lockfile digest | Build, deploy |
+
+The next gate can only read records that persist outside the CI job.
+
+Every check above rests on an identity the SCM asserts and nothing attests to. A phished
+session token satisfies all of them. This is the weakest link in the sequence, and no later
+stage can recover it.
+
+Controls: [Security Testing](/devsecops/security-testing),
+[Repository Hardening](/devsecops/repository-hardening).
+
+## Merge
+
+What arrives is a proposed change at a known commit SHA, its signature, and the results the
+commit stage produced. Treat fork contributions as untrusted: they are attacker-controlled
+content requesting execution inside the pipeline.
+
+What the engine evaluates? Two documents.
+
+The workflow definitions themselves. `.github/workflows/**` is parsed from YAML into JSON and
+evaluated before anything runs. This catches conditions platform settings cannot express: a
+workflow can satisfy every branch protection rule while checking out untrusted code with
+secrets in scope.
+
+The SCM account's own configuration, pulled through the platform API or taken from an OpenSSF
+Scorecard run, and shaped into a record the engine can walk.
+
+```python
+package ci.workflow
+
+import rego.v1
+
+deny contains v if {
+  some job_name, i
+  uses := input.jobs[job_name].steps[i].uses
+  not startswith(uses, "./")
+  not regex.match(`@[0-9a-f]{40}$`, uses)
+  v := {
+    "id": "build-tooling.pinned-actions",
+    "class": "deterministic",
+    "msg": sprintf("job %q step %d uses %q, which is not pinned to a commit SHA", [job_name, i, uses]),
+  }
+}
+```
+
+Where the decision is enforced? A required status check. Branch protection refuses the merge
+while the check fails. The enforcement point is a platform feature to configure; the decision
+behind it belongs to the organization.
+
+The posture check uses a different enforcement point. It runs on a schedule, and its verdict
+raises an alert against the repository whose setting drifted.
+
+### No one approves their own change, and the approval count fits what it can reach
+
+Result: `Deterministic` for self-approval, `Judgment` for the count
+
+Blocking self-approval is a platform setting. Deciding that a library loaded by a signing page
+requires two independent approvals while an internal tool requires one is a policy.
+
+Store the count as tier data, so one rule serves every
+repository and the difference between them is visible as configuration.
+
+### Required checks ran against the commit being merged
+
+Result: `Deterministic`
+
+A check bound to a branch rather than a commit can pass against a state that no longer exists.
+The failure is silent: the check ran, it succeeded, and it examined different code.
+
+```python
+package merge.review
+
+import rego.v1
+
+deny contains msg if {
+  input.pull_request.author in input.pull_request.approvers
+  msg := sprintf("PR %d approved by its own author %q", [input.pull_request.number, input.pull_request.author])
+}
+
+deny contains msg if {
+  count(input.pull_request.approvers) < data.reachability[input.repo].min_approvals
+  msg := sprintf("PR %d has %d approvals; this tier requires %d", [input.pull_request.number, count(input.pull_request.approvers), data.reachability[input.repo].min_approvals])
+}
+
+deny contains msg if {
+  some check in input.pull_request.required_checks
+  check.head_sha != input.pull_request.head_sha
+  msg := sprintf("check %q ran against %s, not the head commit %s", [check.name, check.head_sha, input.pull_request.head_sha])
+}
+```
+
+### Workflow definitions are evaluated before they execute
+
+Result: `Deterministic`
+
+Require the following in every workflow file:
+
+- third-party actions pinned to full commit SHAs
+- `permissions` declared explicitly rather than inherited
+- no untrusted checkout under a privileged trigger
+
+`pull_request_target` combined with an untrusted checkout grants repository secrets to whoever
+opened the pull request. Branch protection does not detect this.
+
+### Untrusted contributions cannot reach secrets
+
+Result: `Deterministic`
+
+Choose one of two configurations. Both are acceptable; a fork workflow with secrets in scope
+and no approval gate is not.
+
+- Fork workflows run sandboxed, with no network access, no privileged access, and no ability to
+  read secrets.
+- Fork workflows wait for a maintainer with write access to approve the run, with the approval
+  setting at the strictest level the platform offers.
+
+### The SCM account's configuration is assessed against policy on a schedule
+
+Result: `Deterministic`
+
+The settings involved are the same ones
+[Repository Hardening](/devsecops/repository-hardening) documents. The difference is that this
+check runs across every repository on a cadence and produces a record, which converts an
+enabled setting into a verified one.
+
+NIST SP 800-204D requires this where an SCM lacks sufficient built-in protection, naming Open
+Policy Agent as the example mechanism and OpenSSF Scorecard as the example tool.
+
+```python
+package scm.posture
+
+import rego.v1
+
+deny contains v if {
+  some repo in input.repositories
+  repo.settings.allow_self_approval
+  v := {
+    "id": "scm-posture.self-approval",
+    "class": "deterministic",
+    "subject": repo.name,
+    "msg": "merge approval by the change author is permitted",
+  }
+}
+
+deny contains v if {
+  some repo in input.repositories
+  not repo.settings.require_signed_commits
+  v := {
+    "id": "scm-posture.unsigned-commits",
+    "class": "deterministic",
+    "subject": repo.name,
+    "msg": "signed commits are not required on the default branch",
+  }
+}
+```
+
+### Build tooling comes from a trusted origin
+
+Result: `Judgment`
+
+Run pipelines only with tools whose source-code origin can be established. How much provenance
+is sufficient is an organizational decision and should be documented.
+
+### The merge record carries reviewer identities alongside check results
+
+Result: `Deterministic`
+
+What leaves this stage:
+
+| Record | Consumed by |
+| --- | --- |
+| Merge commit at a known ref, with reviewer identities | Build |
+| Status check records bound to the head SHA | Build, audit |
+| SCM posture report | Scheduled review |
+
+The posture report feeds a scheduled review. A drifted setting raises an alert against the
+repository it belongs to, leaving unrelated releases unaffected.
+
+Controls: [Repository Hardening](/devsecops/repository-hardening).
+
+## Build
+
+What arrives is reviewed source at an approved ref and the resolved dependency set. Anything
+the build touches that is not declared here is an unrecorded input.
+
+What the engine evaluates? Before the build, the workflow document again, read for runner
+labels, container privileges, and trigger conditions. After the build, the attestation, which
+is consumed at the deploy gate. This stage specifies policy and emits
+evidence; most verification happens on either side of it.
+
+Where the decision is enforced? The build job. A failing verdict stops the job before it
+produces an artifact. If the artifact is produced first, it can be referenced by digest, and
+the deploy gate becomes the only remaining control.
+
+### Builds run only on approved, non-privileged, ephemeral runners
+
+Result: `Deterministic`
+
+Three requirements:
+
+- the runner is on a maintained allowlist
+- the job does not run privileged
+- the runner is ephemeral and re-provisioned per job
+
+The allowlist is policy data (`data.approved_runners`). It describes a specific infrastructure
+rather than a general security property, and will differ between organizations.
+
+```python
+package build.platform
+
+import rego.v1
+
+deny contains msg if {
+  some job_name, job in input.jobs
+  not job["runs-on"] in data.approved_runners
+  msg := sprintf("job %q runs on %v, which is not an approved runner", [job_name, job["runs-on"]])
+}
+
+deny contains msg if {
+  some job_name, job in input.jobs
+  job.container.options
+  contains(job.container.options, "--privileged")
+  msg := sprintf("job %q requests a privileged container", [job_name])
+}
+```
+
+### Everything the build consumes is pinned immutably
+
+Result: `Deterministic`
+
+Pin compiler and toolchain versions, base images, lockfiles, and third-party actions.
+
+A tag is a mutable pointer. It can be moved to different content without any change in the
+consuming repository, so a build that passed previously can produce different output from
+identical source.
+
+```python
+package build.pinning
+
+import rego.v1
+
+deny contains msg if {
+  some job_name, job in input.jobs
+  image := job.container.image
+  not contains(image, "@sha256:")
+  msg := sprintf("job %q uses image %q, which is pinned by tag rather than digest", [job_name, image])
+}
+```
+
+In March 2025 an attacker gained write access to `tj-actions/changed-files`, a widely used
+GitHub Action, and moved its version tags to a malicious commit that dumped runner memory into
+build logs. Over 23,000 repositories used the action. An estimated 218 leaked secrets,
+most of them short-lived workflow tokens
+([CVE-2025-30066](https://nvd.nist.gov/vuln/detail/CVE-2025-30066)).
+Repositories that pinned the action by commit SHA were not affected by the tag manipulation.
+
+### Release builds run only from protected refs, under a purpose-scoped identity
+
+Result: `Deterministic`
+
+The identity that builds a release should not be able to deploy, publish, or read unrelated
+secrets. How finely identities are scoped is an organizational decision and should be
+documented.
+
+### Network egress is default-deny with an explicit allowlist
+
+Result: `Judgment`
+
+Which registries and APIs a build requires changes over time. The allowlist is policy data and
+requires periodic review.
+
+### An attestation covers environment, process, materials, and artifacts
+
+Result: `Deterministic`
+
+| Component | Contents |
+| --- | --- |
+| Environment | Build system inventory: compiler, interpreter, platform |
+| Process | Programs that transformed source into artifact, and those that tested it |
+| Materials | Configuration, source, dependencies |
+| Artifacts | Output of the step: a binary, or a scan result |
+
+### The attestation is signed, stored tamper-proof, and produced by something more trusted than the build
+
+Result: `Deterministic`
+
+Three requirements on the evidence:
+
+- cryptographically signed with a secure key
+- stored tamper-proof, under access control
+- generated by a process at a higher level of trust or isolation than the build itself
+
+The third requirement is the one that carries weight. A signature identifies who wrote a
+statement; it does not establish that the statement is true. If the build step can sign its own
+attestation, an attacker who controls the build also controls the evidence describing it, and
+the signature verifies correctly the whole time.
+
+Treat every workflow job as untrusted, and treat a self-hosted runner as compromised once it
+has executed one.
+
+Controls: [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment),
+[Sandboxing & Isolation](/devsecops/isolation/sandboxing-and-isolation).
+
+## CI pipeline checklist
+
+<Checklist id="ci-pipeline-policy">
+- [ ] Commit signatures **must** be verified, not merely required
+- [ ] Signing identities **must** resolve against the current roster
+- [ ] Protected paths **must** require their owning team
+- [ ] Secret scanning **must** run at push and in CI, and the repository **should** have been
+  scanned before it held code
+- [ ] SCA **must** resolve the full transitive graph, and truncation **must** be treated as a
+  failure
+- [ ] Analysis **must** cover every language in use, verified against an expected set
+- [ ] Commit-stage results **should** be recorded and keyed to the commit SHA
+- [ ] Self-approval **must** be blocked; approval count **should** be set per tier
+- [ ] Required checks **must** bind to the head SHA, not the branch
+- [ ] Workflow definitions **must** be evaluated by policy before they execute
+- [ ] `pull_request_target` **must** never be combined with an untrusted checkout
+- [ ] Fork workflows **must** be either sandboxed or held for maintainer approval
+- [ ] SCM posture **should** be assessed on a schedule and recorded
+- [ ] Runners **must** be restricted to an approved allowlist, non-privileged and ephemeral
+- [ ] Images **must** be pinned by digest; toolchains, lockfiles, and actions **must** be pinned
+  immutably
+- [ ] Release builds **must** be restricted to protected refs under a purpose-scoped identity
+- [ ] Egress **should** be default-deny with a documented allowlist
+- [ ] Attestation **must** be emitted, signed, and stored tamper-proof
+- [ ] Attestation **must** be generated by a process more trusted than the build it describes
+</Checklist>
+
+## Further reading
+
+- [Policy as Code: Overview](/devsecops/policy-as-code/overview): the engine, the two modes,
+  and what the standard requires
+- [Policy in Release and Runtime](/devsecops/policy-as-code/release-and-runtime): what happens
+  to the artifact and attestation this section produces
+- [Governing the Policy Set](/devsecops/policy-as-code/governance): rule class, thresholds,
+  exceptions, and central ownership
+- [Securing CI/CD Pipelines](/devsecops/continuous-integration-continuous-deployment):
+  configuration for the controls gated here
+- [Repository Hardening](/devsecops/repository-hardening): the settings the posture checks read
+- [Security Testing](/devsecops/security-testing): SAST, DAST, and SCA tooling
+- [Conftest](https://www.conftest.dev/): evaluating structured configuration against Rego
+- [zizmor](https://docs.zizmor.sh/): static analysis for GitHub Actions workflows
+- [CVE-2025-30066](https://nvd.nist.gov/vuln/detail/CVE-2025-30066): the tj-actions compromise
+
+---
+
+<ContributeFooter />

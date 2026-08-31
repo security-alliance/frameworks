@@ -1,5 +1,6 @@
 AADAPT
 AccuKnox
+actionlint
 Acuvity
 Aderyn
 adraffy
@@ -13,7 +14,9 @@ anonymization
 ASVS
 Aublin
 authenticator
+authn
 Authy
+authz
 automod
 autorun
 axie
@@ -48,6 +51,7 @@ Coinspect
 collab
 collateralized
 Comms
+Conftest
 confusables
 Consensys
 Cowork
@@ -93,6 +97,7 @@ DNSSEC
 DocuSign
 doxxing
 DPRK
+Draupnir
 Dreww
 DTEX
 Dyno
@@ -128,6 +133,7 @@ firewalld
 Forta
 Galxe
 Gapped
+Gatekeeper
 Ghostery
 GitHub
 GitLab
@@ -198,6 +204,8 @@ LLVM
 LUKS
 Mahhouk
 Mailvelope
+mainnet
+MASVS
 mdlint
 MDM
 MEE
@@ -207,6 +215,7 @@ mev
 mgmt
 mimick
 mitre
+Mjolnir
 MNGO
 Monero
 Morena
@@ -237,6 +246,7 @@ ofac
 OpenSCAP
 OPSEC
 Opsek
+Orbot
 ossf
 pagetoc
 Palo
@@ -282,8 +292,10 @@ Reco
 recoverooor
 redactions
 reentrancy
+Rego
 reimage
 reinit
+Rekor
 Rekt
 renderer
 reprompt
@@ -309,6 +321,7 @@ Shamir's
 shorteners
 SIEM
 sig
+Sigstore
 simbolik
 SLSA
 slugified
@@ -318,6 +331,7 @@ SMS
 smt
 smtpdane
 SOE
+SOGS
 Solana
 Solcurity
 SonarQube
@@ -393,6 +407,7 @@ WIDS
 WPA
 WPAD
 xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+XFTP
 xkcd
 xngmi
 XSS
