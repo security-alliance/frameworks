@@ -90,39 +90,26 @@ regulation or standard.
 
 ## Screen before execution
 
-Apply the following gates in order. A failed or inconclusive gate keeps the material in quarantine.
+[Handling Untrusted Code](/devsecops/developer-targeted-intrusions/handling-untrusted-code) owns the operator
+procedure: verify before retrieval, retrieve in isolation, inspect before tool execution, execute with bounded
+capabilities, and revalidate every update. Follow that procedure rather than a second version of it here, and see
+[Developer Machine Confinement](/devsecops/isolation/developer-machine-sandboxing) for the environment it runs in. A
+failed or inconclusive step keeps the material in quarantine.
 
-1. **Acquire without execution.** Fetch the material into a quarantine directory or disposable virtual machine (VM)
-   with IDE integration, file previews, shell directory hooks, agents, and package installation disabled. Do not start
-   a referenced MCP server or load a model merely to inspect it.
+Two governance decisions sit inside that procedure and belong to this page, because they are approvals rather than
+handling steps.
 
-2. **Inspect provenance and execution triggers.** Confirm the canonical source through an independent channel, then
-   inspect signatures, release metadata, contributors, and the exact revision. Search workspace tasks and settings,
-   launch and container files, Git hooks, package scripts, build plugins, MCP startup commands, agent rules and skills,
-   and model-loading code. A plausible commit author or old timestamp does not defeat **forged history**; corroborate
-   important revisions with signed releases, immutable object identifiers, repository audit data, or a known upstream.
-   A trusted workspace may permit **workspace auto-run**, so keep Workspace Trust enabled, leave the folder untrusted
-   in Restricted Mode, and require explicit approval before trusting it or enabling automatic tasks.
+**Approve dependencies and tools before they enter the allowlist.** Resolve every package name against the expected
+registry and publisher, including names proposed by AI tools. Confirm the item and its intended use appear in the
+managed allowlist. Pin approved dependencies, extensions, MCP servers, actions, and model revisions to immutable
+versions or digests, and verify integrity metadata. Install scripts execute during common package-manager operations,
+so block them by default and approve exceptions only after review. Mutable versions such as branches, floating tags,
+and ranges can resolve to different code after approval, so they are not a stable security decision.
 
-3. **Scan and compare artifacts with reviewed source.** Run static malware, dependency, secret, and policy scans without
-   importing the project. Inspect unusually large whitespace, encoded strings, binary files in source paths, and
-   bidirectional or invisible Unicode. **Invisible Unicode** can make displayed control flow differ from the compiled
-   source, so use a scanner or editor view that exposes code points. Compare packaged files and model artifacts with
-   reviewed source, checksums, signatures, and provenance; a clean source tree does not prove a separately built
-   artifact is identical.
-
-4. **Approve dependencies and tools.** Resolve every package name against the expected registry and publisher,
-   including names proposed by AI tools. Confirm the item and intended use appear in the managed allowlist. Pin
-   approved dependencies, extensions, MCP servers, actions, and model revisions to immutable versions or digests and
-   verify integrity metadata. **Install scripts** execute during common package-manager operations, so block them by
-   default and approve exceptions only after review. **Mutable versions** such as branches, floating tags, and ranges
-   can resolve to different code after approval; do not treat them as a stable security decision.
-
-5. **Execute only in a confined, disposable environment.** Use a fresh VM or hardened development container with no
-   production, publishing, wallet, source-control, cloud, or personal credentials. Grant only required filesystem and
-   process access, record activity, and allowlist required destinations. **Unrestricted egress** turns any missed
-   execution path into a simple channel for payload retrieval or data exfiltration. Destroy the environment after the
-   evaluation and promote only reviewed source and locked metadata.
+**Compare model artifacts against reviewed source.** A packaged model is a separately built artifact, and a clean
+source tree does not prove the two match. Compare packaged files and model artifacts with reviewed source, checksums,
+signatures, and provenance before an approval decision records the artifact as reviewed. Do not start a referenced MCP
+server or load a model merely to inspect it.
 
 ## Apply and verify baseline controls
 
@@ -197,6 +184,14 @@ a separate artifact, approval path, and detection signal.
 
 ## Further reading
 
+- [Developer-Targeted Intrusions](/devsecops/developer-targeted-intrusions/overview): threat model for the lures and
+  execution boundaries this page governs approval for
+- [Handling Untrusted Code](/devsecops/developer-targeted-intrusions/handling-untrusted-code): the operator procedure
+  for intake, isolation, inspection, first execution, and compromise response
+- [Execution Paths in Untrusted Code](/devsecops/developer-targeted-intrusions/execution-paths): the conditions that
+  turn source, Git, IDE, container, and agent inputs into execution
+- [Developer Machine Confinement](/devsecops/isolation/developer-machine-sandboxing): confining agent and IDE
+  workloads on the laptop
 - [Risk Management](/governance/risk-management): ownership patterns for risk acceptance, exception decisions, and
   recurring review
 - [Compliance & Regulatory Requirements](/governance/compliance-regulatory-requirements): adaptable compliance-
