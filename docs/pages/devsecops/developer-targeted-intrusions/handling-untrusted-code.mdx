@@ -1,0 +1,174 @@
+---
+title: "Handling Untrusted Code | SEAL"
+description: "Handle untrusted code safely: verify its origin, retrieve and inspect it in isolation, constrain first execution, and respond to suspected compromise."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - DevOps
+  - SRE
+contributors:
+  - role: wrote
+    users: [blackbigswan]
+  - role: reviewed
+    users: [mattaereal, ElliotFriedman, AllyPry, scode2277]
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
+
+# Handling untrusted code
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Keep external code away from production access and reusable credentials from first retrieval
+> through first execution. Destroy the environment after use and revalidate every update.
+
+Use this procedure for code received through recruiting, support, audits, community requests, new vendors, external
+contributors, or any other path that has not passed the team's normal review and provenance controls.
+
+> ⚠️ **Under time pressure?** Follow the three core principles in the
+> [overview](/devsecops/developer-targeted-intrusions/overview#core-principles) before reaching for the full procedure:
+> treat urgency as a warning sign, verify through multiple channels, and isolate untrusted code (restricted egress, no
+> unnecessary open ports, no inherited credentials).
+
+Teams must provide a sanctioned disposable environment before the request arrives. A developer under time pressure will
+use a normal workstation when the safer path is unavailable or too slow. The isolation service must support inspection,
+controlled dependency retrieval, execution, evidence export, and complete teardown without exposing personal or
+production credentials.
+
+## Safety model
+
+Operators must choose the strongest practical boundary for the expected risk:
+
+| Boundary | Use | Minimum properties |
+| --- | --- | --- |
+| Separate analysis device | Repeated high-risk research or credible targeted activity | No production access, no personal accounts, separate identity and network controls |
+| Disposable virtual machine or cloud sandbox | Normal external-code review | Fresh image, no inherited credentials, restricted egress, snapshots or evidence export, destroyed after use |
+| Hardened container or dev container | Lower-risk routine work when stronger isolation is unavailable | Rootless execution, no privileged mode, no Docker socket, no home-directory binds, no forwarded agents, restricted egress |
+
+Containers share a kernel and are confinement rather than a complete isolation boundary. Operators must read the
+container definition before starting it: a repository-controlled configuration can request the exact privileges,
+mounts, or sockets that remove the intended protection.
+
+## Procedure
+
+Operators must complete the steps in order. Stop when provenance cannot be established, a requested capability does not
+match the task, or the isolation control cannot be verified.
+
+### 1. Verify before retrieval
+
+<Checklist id="verify-before-retrieval">
+- [ ] Record the sender, organization, original channel, repository URL, requested revision, and requested task
+- [ ] Verify the sender through a separate trusted channel; do not rely on the account that delivered the code
+- [ ] Confirm the repository owner, creation history, upstream project, default branch, and expected commit or release
+- [ ] Ask why the task needs installation, recursive submodules, a bundled extension, elevated privileges, cloud
+      credentials, or production access
+- [ ] Route unexplained urgency, secrecy, payment changes, or privilege requests to the security team before retrieval
+</Checklist>
+
+Identity verification does not approve the code. It only answers who sent it. Operators must continue to treat every
+byte as untrusted until technical review and constrained execution are complete.
+
+### 2. Retrieve in isolation
+
+<Checklist id="retrieve-in-isolation">
+- [ ] Start a fresh environment with no SSH agent, Git credential helper, browser session, cloud credential, wallet,
+      signing key, password manager, or production network route
+- [ ] Use a current Git release and a clean user and system configuration
+- [ ] Retrieve the top-level repository without recursive submodules and without embedding a token in the URL
+- [ ] Keep the workspace untrusted in the IDE and keep AI coding agents disabled during initial inspection
+- [ ] Restrict egress to required sources and log permitted network activity
+</Checklist>
+
+If retrieval requires authentication, operators must use a short-lived, read-only credential scoped to the single
+repository and created for the disposable environment. Do not reuse the developer's normal credential or forward an
+unlocked agent.
+
+### 3. Inspect before tool execution
+
+<Checklist id="inspect-before-execution">
+- [ ] Compare the repository with its claimed upstream or release and review the complete diff
+- [ ] Inspect package manifests, lockfiles, install hooks, build scripts, interpreter startup files, tests, fixtures,
+      executable configuration, encoded content, long lines, and bidirectional control characters
+- [ ] Inspect `.gitmodules`, `.gitattributes`, `.vscode/`, `.idea/`, `.devcontainer/`, agent instruction files, project
+      hooks, MCP configuration, Dockerfiles, Compose files, Terraform files, and framework configuration
+- [ ] Review effective Git filters, hooks paths, credential helpers, diff and merge drivers, and URL rewrites from a
+      clean configuration
+- [ ] Resolve every dependency, submodule, container image, provider, plugin, and remote installer to its source,
+      version, and integrity value
+- [ ] Reject repository-local extension packages and unexpected requests for privileged containers, Docker socket
+      mounts, home-directory mounts, or cloud credentials
+</Checklist>
+
+Static inspection can miss a staged payload or behavior that depends on a remote response. Passing this step may permit
+constrained execution; it must not promote the repository to a normal workstation.
+
+### 4. Execute with bounded capabilities
+
+<Checklist id="execute-with-bounded-capabilities">
+- [ ] Snapshot or record the clean environment, process tree, filesystem, and network policy before execution
+- [ ] Install dependencies, build, test, open the trusted workspace, or start an agent one boundary at a time
+- [ ] Keep privileged mode, host sockets, home-directory mounts, forwarded authentication agents, and production routes
+      disabled
+- [ ] Require approval for agent shell, network, file-write, and external-tool calls; read the exact command and target
+- [ ] Grant only the network destinations and temporary credentials needed for the current step
+- [ ] Capture process, file, persistence, and network changes for review
+- [ ] Export only reviewed source changes or reports, then destroy the environment and revoke temporary credentials
+</Checklist>
+
+Do not export installed dependencies, build caches, binaries, editor state, Git configuration, or opaque archives to a
+trusted machine. Reviewed patches must move through the normal repository and CI/CD review path.
+
+### 5. Revalidate every update
+
+<Checklist id="revalidate-updates">
+- [ ] Treat a new commit, pull, tag, release, dependency, lockfile, image digest, installer, or tool configuration as
+      new input
+- [ ] Compare it with the last reviewed identity and tree in a fresh or reset isolated environment
+- [ ] Repeat inspection for files that can execute automatically or change tool resolution
+- [ ] Repeat constrained build and runtime validation before using the revision on a trusted workstation or pipeline
+</Checklist>
+
+Trust in a project name, maintainer, prior commit, or URL must not transfer automatically to new bytes.
+
+## If compromise is suspected
+
+Operators must trigger incident response when a repository or tool unexpectedly starts a process, reaches an unknown
+destination, requests unrelated access, writes persistence, reads credentials, disables security tooling, or behaves
+differently from the reviewed configuration.
+
+<Checklist id="suspected-compromise-response">
+- [ ] Stop work and disconnect the affected endpoint from networks according to the incident-response plan
+- [ ] Notify the security or incident-response lead and identify everyone who received the same repository or outreach
+- [ ] Preserve volatile and disk evidence as directed; do not clean or rebuild the device before responder review
+- [ ] From a known-clean device, revoke and rotate every credential, key, token, wallet session, browser session, and
+      authentication factor the endpoint could access
+- [ ] If the endpoint had access to private keys or seed phrases, migrate assets to a newly generated wallet from the
+      clean device — revoking the wallet session alone may not prevent theft
+- [ ] Hunt for persistence, credential use, lateral movement, changed source, and activity from the developer's active
+      sessions across identity, source-control, cloud, CI/CD, and production logs
+- [ ] Rebuild the endpoint from a trusted image and restore only reviewed data after containment and credential rotation
+</Checklist>
+
+Assume the same lure may have reached multiple team members. One developer reporting the contact must not be treated as
+proof that every other recipient avoided execution.
+
+## Further reading
+
+- [Execution paths in untrusted code](/devsecops/developer-targeted-intrusions/execution-paths): conditions that turn
+  repository-controlled input into code execution
+- [Developer machine confinement](/devsecops/isolation/developer-machine-sandboxing): practical confinement patterns
+  for developer tools and AI coding agents
+- [Incident Management](/incident-management/overview): preparation, escalation, investigation, containment, and
+  recovery guidance
+- [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines): emergency coordination
+  for active Web3 incidents
+- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final): incident-response recommendations
+- [CISA Cybersecurity Performance Goals](https://www.cisa.gov/cybersecurity-performance-goals): baseline controls for
+  credentials, logs, vulnerability management, and incident response
+
+---
+
+<ContributeFooter />
