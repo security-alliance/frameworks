@@ -844,5 +844,18 @@
       { "name": "First-Contribution", "assigned": "2024-11-12" },
       { "name": "Dormant-90d+", "lastActive": "2024-11-12" }
     ]
+  },
+  "RobQocharyan123": {
+    "slug": "RobQocharyan123",
+    "name": "RobQocharyan123",
+    "avatar": "https://avatars.githubusercontent.com/RobQocharyan123",
+    "github": "https://github.com/RobQocharyan123",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": []
   }
 }
