@@ -271,7 +271,7 @@ the site renders each one as its own section on the page: "Authored by", "Review
   people look at when they want to know who owns a page.
 - **`reviewed` is a sign-off on the page as a whole.** A reviewer reads the full page and judges whether it holds
   together: structure, scope, coverage, tone, and accuracy, then approves it in a PR review. The scope is the entire
-  page and the judgement is editorial as well as technical. Reviewers are usually the framework's steward, a
+  page and the judgment is editorial as well as technical. Reviewers are usually the framework's steward, a
   maintainer, or a subject-matter expert brought in for a professional opinion.
 - **`fact-checked` is verification of specific claims.** A fact-checker confirms individual statements against primary
   sources (vendor documentation, specifications, actual tool behavior), then corrects, qualifies, or sources them where
