@@ -210,6 +210,7 @@ mdlint
 MDM
 MEE
 Mehdi
+Merkle
 Metana
 mev
 mgmt
