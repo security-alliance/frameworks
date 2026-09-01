@@ -1,6 +1,6 @@
 ---
 title: "DNS Basics & Common Attacks | SEAL"
-description: "Understand DNS resolution and common attack vectors: social engineering at registrars, expired domain sniping, DNS hijacking, MX tampering, DNS tunneling, and cache poisoning."
+description: "Understand DNS resolution and its common attack vectors, from social engineering at registrars and expired domain sniping to hijacking and MX tampering."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -9,6 +9,8 @@ contributors:
     users: [Raiders0786]
   - role: reviewed
     users: [dickson, mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Know how DNS resolution and common hijack paths work before layering defenses. Attackers change
+> records, not just apps.
 
 ## How DNS Resolution Works
 
@@ -74,6 +79,16 @@ still shows the correct domain name.
 - Email Interception (MX tampering): Password reset attacks and communication interception
 - DNS Tunneling: Encoding data within DNS queries for covert communication channels, often used for data exfiltration
 - DNS Cache Poisoning: Injecting forged responses into a resolver's cache to redirect subsequent queries
+
+## Further reading
+
+- [Domain & DNS Security overview](/infrastructure/domain-and-dns-security/overview): how this subsection fits together
+- [Registrar Security & Registry Locks](/infrastructure/domain-and-dns-security/registrar-and-locks): closing the
+  registrar path these attacks use
+- [Monitoring, Alerts, and Incident Response](/infrastructure/domain-and-dns-security/monitoring-and-alerting):
+  detecting record changes quickly
+- [DNS Hijack Runbook](/incident-management/incident-response-template/runbooks/dns-hijack): response steps once an
+  attack lands
 
 ---
 

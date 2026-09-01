@@ -1,6 +1,6 @@
 ---
 title: "Multisig Planning & Classification | SEAL"
-description: "Plan multisig setup: assess financial exposure, protocol impact, and reputational risk. Classify by impact level (Low to Critical) and operational type (Routine, Time-Sensitive, Emergency)."
+description: "Plan multisig setup: assess financial exposure, protocol impact, and reputational risk. Classify by impact level (Low to Critical) and operational type"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from "../../../components"
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from "../../../components"
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Classify impact and access urgency before choosing thresholds, signers, and modules.
+> Wrong sizing is a design defect, not a tooling problem.
 
 Before setting up a new multisig, take time to properly assess its role and requirements. This planning phase will guide
 all subsequent configuration decisions and help ensure appropriate security measures.
@@ -172,5 +177,15 @@ After completing classification, proceed to:
 
 1. [Setup & Configuration](/multisig-for-protocols/setup-and-configuration) - Deploy your multisig
 2. [Registration & Documentation](/multisig-for-protocols/registration-and-documentation) - Document your setup
+
+## Further reading
+
+- [Multisig for Protocols overview](/multisig-for-protocols/overview): how the pages of this framework fit together
+- [Setup and Configuration](/multisig-for-protocols/setup-and-configuration): applying the classification to real settings
+- [Use-Case Specific Requirements](/multisig-for-protocols/use-case-specific-requirements): per-function rules once
+  classified
+- [Registration and Documentation](/multisig-for-protocols/registration-and-documentation): recording the result
+
+---
 
 <ContributeFooter />

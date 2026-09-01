@@ -1,6 +1,6 @@
 ---
 title: "Runbook: Dependency Attack | Security Alliance"
-description: "Stub runbook. Customize with your package management and build procedures."
+description: "Stub runbook. Customize with your package management and build procedures. Pin and verify dependencies, revoke tainted artifacts, rotate exposed secrets"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,7 +21,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Stub runbook.** Customize with your package management and build procedures.
+> 🔑 **Key Takeaway**: Malicious package updates poison builds and frontends. Pin and
+> verify dependencies, revoke tainted artifacts, rotate exposed secrets, and rebuild
+> from known-good sources.
+
+**Stub runbook.** Customize with your package management and build procedures.
 
 ## Quick Reference
 
@@ -44,7 +51,7 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ```
 npm audit
-# or
+ # or
 yarn audit
 ```
 
@@ -79,10 +86,13 @@ Check for recent lockfile changes in git history.
 - [ ] Review dependency changes in PRs
 </Checklist>
 
-## Related
+## Further reading
 
-- [Frontend Compromise](./frontend-compromise)
-- [Build Pipeline Compromise](./build-pipeline-compromise)
-- [Incident Response Policy](../incident-response-policy)
+- [Runbooks overview](/incident-management/incident-response-template/runbooks/overview): how the runbooks in this section fit together
+- [Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise): the adjacent scenario upstream
+- [Frontend Compromise](/incident-management/incident-response-template/runbooks/frontend-compromise): where a poisoned dependency usually surfaces
+- [Supply Chain](/supply-chain/overview): prevention side of the same risk
+
+---
 
 <ContributeFooter />

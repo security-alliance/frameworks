@@ -1,6 +1,6 @@
 ---
 title: "Backup Signing & Infrastructure | SEAL"
-description: "Use backup interfaces when Safe or Squads are compromised. Eternal Safe for EVM, Squads Public Client for Solana, alternative RPCs, and block explorers like Blockscout for emergency signing."
+description: "Use backup interfaces when Safe or Squads are compromised. Eternal Safe for EVM, Squads Public Client for Solana, alternative RPCs"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from "../../../components"
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from "../../../components"
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Practice alternate Safe/Squads clients before the primary UI fails; backup
+> infrastructure is useless if first used during an incident.
 
 If the default interfaces for either Safe or Squads are down or suspected of being compromised, these alternatives
 enable continued critical signing operations. As a signer, you should familiarize yourself with these tools and practice
@@ -198,7 +203,7 @@ When using backup systems:
 - **Emergency operations only**: For critical emergency responses, proceed with enhanced verification
 - **Communication**: Keep team informed about system status and verification procedures
 
-## Testing and Preparation
+### Testing and Preparation
 
 ### Regular Practice
 
@@ -212,7 +217,7 @@ When using backup systems:
 - **Communication testing**: Verify backup communication channels work with backup UIs
 - **Time measurement**: Track how long backup system activation takes
 
-## Troubleshooting
+### Troubleshooting
 
 ### Common Issues
 
@@ -226,11 +231,14 @@ When using backup systems:
 - **Team assistance**: Coordinate with other signers for problem-solving
 - **Alternative tools**: Have multiple backup options available
 
-## Related Documents
+## Further reading
 
-- [Safe Multisig: Step-by-Step
-Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification) - Verification procedures
-- [Emergency Procedures](/multisig-for-protocols/emergency-procedures) - General emergency response
-- [Communication Setup](/multisig-for-protocols/communication-setup) - Backup communication during outages
+- [Multisig for Protocols overview](/multisig-for-protocols/overview): how the pages of this framework fit together
+- [Emergency Procedures](/multisig-for-protocols/emergency-procedures): general emergency response
+- [Communication Setup](/multisig-for-protocols/communication-setup): backup communication during outages
+- [Safe Multisig Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification):
+  verification procedures on the backup path
+
+---
 
 <ContributeFooter />

@@ -1,18 +1,22 @@
-import { createElement, Fragment } from 'react'
-import { defineConfig } from 'vocs/config'
+import { readFileSync } from 'node:fs'
+import { Changelog, defineConfig } from 'vocs/config'
 
-const MAIN_SITE_URL = 'https://frameworks.securityalliance.org'
+function siteVersion(): string {
+  try {
+    const raw = readFileSync('VERSION', 'utf8').trim()
+    if (raw) return raw.startsWith('v') ? raw : `v${raw}`
+  } catch {}
+  return 'v0.0.0'
+}
 
 const isMainBranch = process.env.CF_PAGES_BRANCH === 'main'
 
 const config = {
   srcDir: 'docs',
   renderStrategy: 'full-static' as const,
-  head({ path }: { path: string }) {
+  head(path: string) {
     const cleanPath = path.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
-    if (!isMainBranch && devOnlyLinks.has(cleanPath)) return createElement(Fragment)
-    const canonicalUrl = `${MAIN_SITE_URL}${cleanPath || '/'}`
-    return createElement('link', { rel: 'canonical', href: canonicalUrl })
+    return { canonical: `https://frameworks.securityalliance.org${cleanPath || '/'}` }
   },
   banner: {
     content: 'This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.',
@@ -28,6 +32,19 @@ const config = {
   iconUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/favicon.svg',
   ogImageUrl: 'https://frameworks-static.s3.us-east-2.amazonaws.com/images/logo/frameworks-full-cropped.png',
   checkDeadlinks: "warn" as const,
+  changelog:
+    typeof Changelog !== 'undefined'
+      ? Changelog.github({ repo: 'security-alliance/frameworks' })
+      : undefined,
+  topNav: [
+    {
+      text: siteVersion(),
+      items: [
+        { text: 'Changelog', link: '/changelog' },
+        { text: 'Contributing', link: '/contribute/contributing' },
+      ],
+    },
+  ],
   sidebar: [
     {
       text: 'Introduction',
@@ -76,6 +93,9 @@ const config = {
             { text: 'Discord', link: '/community-management/discord' },
             { text: 'Twitter', link: '/community-management/twitter' },
             { text: 'Telegram', link: '/community-management/telegram' },
+            { text: 'Matrix', link: '/community-management/matrix' },
+            { text: 'Session', link: '/community-management/session' },
+            { text: 'SimpleX', link: '/community-management/simplex' },
           ]
         },
         {
@@ -97,11 +117,44 @@ const config = {
                 { text: 'Developer Machine Sandboxing', link: '/devsecops/isolation/developer-machine-sandboxing' },
               ]
             },
+            {
+              text: 'Developer-Targeted Intrusions',
+              collapsed: false,
+              dev: true,
+              items: [
+                {
+                  text: 'Overview',
+                  link: '/devsecops/developer-targeted-intrusions/overview',
+                  dev: true,
+                },
+                {
+                  text: 'Execution Paths in Untrusted Code',
+                  link: '/devsecops/developer-targeted-intrusions/execution-paths',
+                  dev: true,
+                },
+                {
+                  text: 'Handling Untrusted Code',
+                  link: '/devsecops/developer-targeted-intrusions/handling-untrusted-code',
+                  dev: true,
+                },
+              ],
+            },
             { text: 'Code Signing', link: '/devsecops/code-signing' },
             { text: 'Continuous Integration and Deployment', link: '/devsecops/continuous-integration-continuous-deployment' },
             { text: 'Data Security Checklist', link: '/devsecops/data-security-upgrade-checklist' },
             { text: 'Governance Proposal Security Across the SDLC', link: '/devsecops/governance-proposal-security' },
             { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments' },
+            {
+              text: 'Policy as Code',
+              collapsed: true,
+              dev: true,
+              items: [
+                { text: 'Overview', link: '/devsecops/policy-as-code/overview', dev: true },
+                { text: 'Policy in the CI Pipeline', link: '/devsecops/policy-as-code/ci-pipeline', dev: true },
+                { text: 'Policy in Release and Runtime', link: '/devsecops/policy-as-code/release-and-runtime', dev: true },
+                { text: 'Governing the Policy Set', link: '/devsecops/policy-as-code/governance', dev: true },
+              ]
+            },
             { text: 'Repository Hardening', link: '/devsecops/repository-hardening' },
             { text: 'Security Testing', link: '/devsecops/security-testing' },
           ]
@@ -528,7 +581,7 @@ const config = {
           items: [
             { text: 'Overview', link: '/threat-modeling/overview', dev: true },
             { text: 'Create and Maintain Threat Models', link: '/threat-modeling/create-maintain-threat-models', dev: true },
-            { text: 'Identity Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats', dev: true },
+            { text: 'Identify and Mitigate Threats', link: '/threat-modeling/identity-mitigate-threats', dev: true },
           ]
         },
         {
@@ -540,6 +593,25 @@ const config = {
             { text: 'Registration Documents', link: '/treasury-operations/registration-documents' },
             { text: 'Enhanced Controls for High-Risk Accounts', link: '/treasury-operations/enhanced-controls' },
             { text: 'Guide: Large Cryptocurrency Transfers', link: '/treasury-operations/transaction-verification' },
+          ]
+        },
+        {
+          text: 'User and Team Security',
+          collapsed: true,
+          dev: true,
+          items: [
+            { text: 'Overview', link: '/user-team-security/overview', dev: true },
+            {
+              text: 'Phishing and Social Engineering',
+              link: '/user-team-security/phishing-social-engineering',
+              dev: true,
+            },
+            {
+              text: 'Security-Aware Culture',
+              link: '/user-team-security/security-aware-culture',
+              dev: true,
+            },
+            { text: 'Security Training', link: '/user-team-security/security-training', dev: true },
           ]
         },
         {
@@ -559,11 +631,14 @@ const config = {
             { text: 'Overview', link: '/wallet-security/overview' },
             { text: 'Custodial vs Non-Custodial', link: '/wallet-security/custodial-vs-non-custodial' },
             { text: 'Cold vs Hot Wallet', link: '/wallet-security/cold-vs-hot-wallet' },
+            { text: 'Software Wallets', link: '/wallet-security/software-wallets', dev: true },
+            { text: 'Hardware Wallets', link: '/wallet-security/hardware-wallets', dev: true },
             { text: 'Wallets For Beginners & Small Balances', link: '/wallet-security/for-beginners-and-small-balances' },
             { text: 'Wallets For Intermediates & Medium Funds', link: '/wallet-security/intermediates-and-medium-funds' },
             { text: 'Multisig Wallets For Advanced Users & High Funds', link: '/wallet-security/secure-multisig-best-practices' },
             { text: 'Account Abstraction Wallets', link: '/wallet-security/account-abstraction' },
             { text: 'TEE-based Encumbered Wallets', link: '/wallet-security/encumbered-wallets' },
+            { text: 'Signing Schemes', link: '/wallet-security/signing-schemes', dev: true },
             {
               text: 'Signing & Verification',
               collapsed: false,
@@ -597,11 +672,14 @@ const config = {
             { text: 'GitHub Security', link: '/guides/account-management/github' },
             { text: 'GoDaddy Security', link: '/guides/account-management/godaddy' },
             { text: 'Linear Security', link: '/guides/account-management/linear' },
+            { text: 'Matrix Security', link: '/guides/account-management/matrix' },
             { text: 'Mercury Security', link: '/guides/account-management/mercury' },
             { text: 'Notion Security', link: '/guides/account-management/notion' },
             { text: 'Render Security', link: '/guides/account-management/render' },
             { text: 'Sentry Security', link: '/guides/account-management/sentry' },
+            { text: 'Session Security', link: '/guides/account-management/session' },
             { text: 'Signal Security', link: '/guides/account-management/signal' },
+            { text: 'SimpleX Security', link: '/guides/account-management/simplex' },
             { text: 'Slack Security', link: '/guides/account-management/slack' },
             { text: 'Telegram Security', link: '/guides/account-management/telegram' },
             { text: 'Trello Security', link: '/guides/account-management/trello' },
@@ -653,6 +731,9 @@ const config = {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/contribute/contributing' },
+            { text: 'Content Model', link: '/contribute/content-model', dev: true },
+            { text: 'Style and Terminology', link: '/contribute/style-and-terminology', dev: true },
+            { text: 'Docs Normalization Checklist', link: '/contribute/docs-normalization-checklist', dev: true },
             { text: 'Spotlight Zone', link: '/contribute/spotlight-zone' },
             { text: 'Stewardship', link: '/contribute/stewards' },
 
@@ -700,6 +781,20 @@ function collectDevLinks(items: any[], parentIsDev = false): Set<string> {
 }
 
 const devOnlyLinks = collectDevLinks(config.sidebar)
+
+if (!isMainBranch && devOnlyLinks.size > 0) {
+  const devRoutesLiteral = JSON.stringify([...devOnlyLinks])
+  // @ts-expect-error - head is rebuilt from source so the dev-route list is
+  config.head = new Function(
+    'path',
+    `
+      const devOnlyLinks = new Set(${devRoutesLiteral});
+      const cleanPath = path.replace(/\\/index\\.html$/, '').replace(/\\.html$/, '').replace(/\\/$/, '');
+      if (devOnlyLinks.has(cleanPath)) return { canonical: false };
+      return { canonical: 'https://frameworks.securityalliance.org' + (cleanPath || '/') };
+    `,
+  )
+}
 
 if (isMainBranch) {
   config.sidebar = filterDevItems(config.sidebar)

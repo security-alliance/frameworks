@@ -1,6 +1,6 @@
 ---
 title: "Registrar Security & Registry Locks | SEAL"
-description: "Choose enterprise registrars like MarkMonitor over GoDaddy. Enable Registry Lock (EPP Lock), hardware security keys for MFA, WHOIS privacy, and RDAP for domain security audits."
+description: "Choose an enterprise registrar, enable Registry Lock and EPP transfer locks, require hardware security keys for MFA, and keep WHOIS privacy in place."
 tags:
   - Operations & Strategy
   - Security Specialist
@@ -9,6 +9,8 @@ contributors:
     users: [Raiders0786]
   - role: reviewed
     users: [dickson, mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Registrar locks and hardened registrar accounts stop many domain seizures. Treat registrar access
+> like a root prod credential.
 
 ## Choosing a Secure Registrar
 
@@ -297,6 +302,15 @@ respective registries. Always verify your specific TLD's expiration policy with 
 - **Designate a backup person** responsible for domain renewals
 
 **Pro tip**: Set calendar reminders to check auto-renewal status quarterly - don't assume it's working until you verify.
+
+## Further reading
+
+- [Domain & DNS Security overview](/infrastructure/domain-and-dns-security/overview): how this subsection fits together
+- [GoDaddy Security](/guides/account-management/godaddy): a worked example of hardening a registrar account
+- [DNS Hijack Runbook](/incident-management/incident-response-template/runbooks/dns-hijack): response steps if a
+  transfer or seizure succeeds
+- [ICANN: EPP status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en): what each lock status
+  actually prevents
 
 ---
 

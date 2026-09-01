@@ -1,6 +1,6 @@
 ---
 title: "Threshold Change Runbook | SEAL"
-description: "Runbook for changing multisig thresholds on Safe and Squads, including policy checks, signer coordination, and post-change verification."
+description: "Runbook for changing multisig thresholds on Safe and Squads, including policy checks, signer coordination, and post-change verification. This is an example"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -8,6 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -16,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Threshold changes alter liveness and security together—confirm new m-of-n is authorized,
+> executable with remaining keys, and recorded.
 
 This is an example runbook. Review and customize it for your protocol before use. Adjust threshold requirements to match
 your organization's policies.
@@ -168,10 +175,16 @@ When removing a signer, plan final signer count and threshold together:
 1. If needed, reduce threshold first or in the same change window
 2. Ensure the final configuration still meets policy requirements and avoids `N of N`
 
-## Related Documents
+## Further reading
 
-- [Planning & Classification](/multisig-for-protocols/planning-and-classification)
-- [Registration & Documentation](/multisig-for-protocols/registration-and-documentation)
-- [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview): how the runbooks in this section fit together
+- [Planning & Classification](/multisig-for-protocols/planning-and-classification): the classification matrix that sets
+  the target threshold
+- [Registration & Documentation](/multisig-for-protocols/registration-and-documentation): recording the change
+  afterwards
+- [Signer Rotation Runbook](/multisig-for-protocols/runbooks/signer-rotation): the companion procedure when membership
+  changes too
+
+---
 
 <ContributeFooter />

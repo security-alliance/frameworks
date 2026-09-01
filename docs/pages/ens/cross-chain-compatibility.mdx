@@ -1,12 +1,16 @@
 ---
 title: "ENS Cross Chain Compatibility | SEAL"
-description: "Support ENS across multiple blockchains: use correct cointype parameters per ENSIP-11, implement CCIP-Read (EIP-3668) for off-chain resolution, and handle reverse records per chain with ENSIP-19."
+description: "Support ENS across multiple blockchains: use correct cointype parameters per ENSIP-11, implement CCIP-Read (EIP-3668) for off-chain resolution"
 tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
   - role: wrote
     users: [ghadi8]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Use the correct cointype per chain and handle CCIP-Read timeouts and fallbacks. Wrong-chain
+> resolution sends value to the wrong destination set.
 
 ## Respect Cointype for [Chain-Specific Resolution](https://docs.ens.domains/ensip/9)
 
@@ -61,6 +68,13 @@ set and queried on any chain, not just Ethereum mainnet. This allows users to se
 address across different networks, enabling more contextual and chain-specific identity resolution. Applications that
 only check mainnet reverse records will miss valid reverse resolutions on other chains where users are actually active,
 leading to incomplete or incorrect identity displays.
+
+## Further reading
+
+- [ENS overview](/ens/overview): how the pages of this framework fit together
+- [Interface Compliance](/ens/interface-compliance): checking resolver support before calling chain-specific methods
+- [ENSIP-11: EVM Coin Types](https://docs.ens.domains/ensip/11): deriving cointypes from chain IDs
+- [EIP-3668: CCIP-Read](https://eips.ethereum.org/EIPS/eip-3668): the off-chain resolution flow and its failure modes
 
 ---
 

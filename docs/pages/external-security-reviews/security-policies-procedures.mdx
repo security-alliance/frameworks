@@ -9,6 +9,10 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: External product reviews are stronger when policies for IR, access, change management, and
+> training exist and match real practice—not only binder aspirational documents.
 
 As part of the external security review, it could be beneficial to also review the internal security policies and
 procedures as well.
@@ -27,6 +34,16 @@ Some of the things that could be relevant to review are:
 3. Ensure there are processes implemented for managing changes to the codebase and infrastructure.
 4. Ensure there are regular training sessions conducted for all team members on security best practices.
 5. Ensure adherence to any potentially relevant regulatory and industry standards for your project.
+
+## Further reading
+
+- [External Security Reviews overview](/external-security-reviews/overview): how the pages of this framework fit
+  together
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy): a template for
+  the response plan reviewers look for
+- [Role-Based Access Control](/iam/role-based-access-control): defining roles and least privilege in practice
+- [Compliance with Regulatory Requirements](/governance/compliance-regulatory-requirements): the standards these
+  policies are measured against
 
 ---
 

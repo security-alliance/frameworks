@@ -1,6 +1,6 @@
 ---
 title: "Seed Phrase Management | Security Alliance"
-description: "Secure seed phrase management: physical written copies, metal backups, and 3-piece splitting strategies. Emergency access plans, tamper-evident bags, and prohibited digital storage practices."
+description: "Secure seed phrase management: physical written copies, metal backups, and 3-piece splitting strategies. Emergency access plans, tamper-evident bags"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [pinalikefruit, isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: The seed phrase is complete wallet control. Keep it offline, treat any digital exposure as full
+> compromise, and move funds if exposure is even suspected.
 
 ## Private Key & Seed Phrase Management
 
@@ -213,5 +218,15 @@ both pieces to reconstruct seed immediately, then change all security settings."
 
 Remember: Your seed phrase security is the foundation of multisig security. Take time to implement proper storage
 procedures appropriate for your risk level.
+
+## Further reading
+
+- [Wallet Security overview](/wallet-security/overview): how the pages of this framework fit together
+- [Cold vs. Hot Wallets](/wallet-security/cold-vs-hot-wallet): matching storage exposure to the value being backed up
+- [Wallet and Key Architecture](/physical-security/coercion-and-duress/wallet-and-key-architecture): designing key
+  layout for coercion scenarios
+- [BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki): the mnemonic standard these phrases follow
+
+---
 
 <ContributeFooter />

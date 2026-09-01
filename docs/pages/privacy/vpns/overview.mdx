@@ -1,6 +1,6 @@
 ---
 title: "VPN Services | Security Alliance"
-description: "Understand when a VPN is necessary, how it differs from HTTPS, what metadata it hides, DNS leaks, attack surfaces on public networks, threat models, and recommended providers and tools."
+description: "Understand when a VPN is necessary, how it differs from HTTPS, what metadata it hides, DNS leaks, attack surfaces on public networks, threat models"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -9,6 +9,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: A VPN encrypts and relocates network egress for specific threat models. It is not anonymity,
+> malware defense, or a substitute for HTTPS and endpoint security.
 
 Virtual Private Networks (VPNs) encrypt your internet traffic and route it through a remote server, hiding your IP
 address from the websites you visit and shielding your activity from anyone on your local network. But a VPN is not a
@@ -27,7 +32,7 @@ providers and configuring tools that match your threat model.
 
 ---
 
-## Subtopics
+## What this section covers
 
 - **[HTTPS vs VPN](/privacy/vpns/https-vs-vpn)** — Why HTTPS does not make VPNs unnecessary. How metadata leaks even
   with encrypted connections, and what a VPN actually hides.
@@ -43,6 +48,13 @@ providers and configuring tools that match your threat model.
 
 - **[VPN Providers and Tools](/privacy/vpns/vpn-providers-and-tools)** — Recommended no-logs providers, plus tools
   organized by network, DNS, device, and browser level.
+
+## Further reading
+
+- [Privacy overview](/privacy/overview): how VPNs fit into the wider privacy framework
+- [HTTPS vs VPN](/privacy/vpns/https-vs-vpn): start here if you are unsure a VPN adds anything
+- [VPN Limitations](/privacy/vpns/vpn-limitations): the residual risks a tunnel does not remove
+- [Privacy Guides: VPN Services](https://www.privacyguides.org/en/vpn/): independent provider criteria and audit status
 
 ---
 

@@ -1,0 +1,365 @@
+---
+title: "Content Model | Security Alliance"
+description: "Canonical page types, section contracts, Key Takeaway rules, overview maps, exceptions, and automation bounds for SEAL Security Frameworks documentation."
+tags:
+  - SEAL/Initiative
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
+
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Meta standard; many H2 sections intentionally document the taxonomy.
+  owner: maintainers
+*/}
+
+# Content Model
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Consistency means pages with the same purpose follow the same content contract. It does not mean
+> every page repeats the same headings.
+
+This page is the **canonical structural standard** for SEAL Security Frameworks content. Use it with the
+[page template](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx), the
+[style and terminology guide](/contribute/style-and-terminology), and the
+[contributing guide](/contribute/contributing).
+
+## Document ownership
+
+| Concern | Authoritative source |
+| --- | --- |
+| Agent workflow, build commands, generated-file rules | [`AGENTS.md`](https://github.com/security-alliance/frameworks/blob/develop/AGENTS.md) |
+| Human contributor workflow, PRs, sidebar, signed commits | [Contributing guide](/contribute/contributing) |
+| Page types, required sections, overview maps, exceptions | **This page** |
+| Voice, modality, terminology, capitalization | [Style and terminology](/contribute/style-and-terminology) |
+| Executable page skeleton and import paths | [`docs/pages/config/template.mdx`](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx) |
+| Cert-specific process | [SEAL Certifications contributions](/certs/contributions) |
+| Retrieval / Q&A policy for agents | [`SKILL.md`](https://github.com/security-alliance/frameworks/blob/develop/SKILL.md) |
+| Objective automated checks | `pnpm run validate:content` |
+
+Do not duplicate long rules across files. Point between documents.
+
+## What counts as a framework
+
+A **framework** is a domain of security knowledge with:
+
+- A dedicated folder under `docs/pages/<framework-slug>/` (kebab-case)
+- An `overview.mdx` that introduces the domain and maps child pages
+- One or more focused child pages
+- A matching sidebar block in `vocs.config.ts`
+
+Also treat these as independently reviewable **content families** (not always packaged as security frameworks):
+
+| Family | Path / location | Notes |
+| --- | --- | --- |
+| Security frameworks | `docs/pages/<framework>/` | Primary product surface |
+| Guides | `docs/pages/guides/` | Product/platform hardening guides |
+| Incident-response templates and runbooks | under `incident-management/` | Operational scaffolds |
+| Multisig runbooks | under `multisig-for-protocols/runbooks/` | Procedure packs |
+| SEAL Certifications | `docs/pages/certs/` | Evaluation criteria; special rules |
+| Introduction / project info | `docs/pages/intro/` | Project orientation |
+| Contributing documentation | `docs/pages/contribute/` | Process docs |
+| Shared config | `docs/pages/config/` | Templates and contributor database only |
+
+Do not merge unrelated domains into one PR just because they share a parent folder. Nested overviews (for example
+`external-security-reviews/smart-contracts/`) are still part of their parent family unless maintainers split them.
+
+**Canonical framework overview example:** [`supply-chain/overview.mdx`](/supply-chain/overview).
+
+## Page types
+
+Classify every page with one **primary** type. A page may mix formats (checklist inside a procedure) without changing
+its primary type.
+
+### 1. Framework overview
+
+- **Purpose:** Orient readers to a domain and route them to child pages.
+- **Audience:** Anyone landing on the framework for the first time.
+- **Required:** Key Takeaway; unheaded introduction; foundational/definitional section; page map of every child page
+  registered in the sidebar; Further reading or Related frameworks when cross-links exist; standard components.
+- **Optional:** Explicit “out of scope” section; adjacent-framework callouts; maturity notes.
+- **Voice:** Explanatory; present tense; no procedure dump.
+- **Canonical example:** [`/supply-chain/overview`](/supply-chain/overview)
+
+### 2. Conceptual explanation
+
+- **Purpose:** Teach ideas, models, or vocabulary before procedures.
+- **Required:** Key Takeaway; introduction; foundational section; substantive body; Further reading.
+- **Optional:** Real-world examples with citations; diagrams.
+- **Canonical example:** high-quality concept pages inside OpSec core concepts and supply-chain threat pages once
+  normalized.
+
+### 3. Procedure or implementation guide
+
+- **Purpose:** Get a reader to a correct implemented outcome.
+- **Required:** Key Takeaway stating the outcome; short intro with prerequisites; ordered steps or clear decision
+  points; failure conditions anchored next to the step they affect; Further reading.
+- **Voice:** Imperative in steps (`Configure X`, not `Teams might configure X`).
+- **Canonical example:** account-management guides under [`/guides`](/guides/overview).
+
+### 4. Operational playbook
+
+- **Purpose:** Role-oriented actions during a defined scenario.
+- **Required:** Key Takeaway; scope/when-to-use; roles; steps; escalation; Further reading or related runbooks.
+- **Canonical example:** pages under [`/incident-management/playbooks`](/incident-management/playbooks/overview).
+
+### 5. Incident-response runbook
+
+- **Purpose:** Time-critical, checklist-friendly response steps.
+- **Required:** Key Takeaway; trigger conditions; immediate actions; investigation; containment/eradication; recovery;
+  communications pointers; Further reading or parent IR policy links.
+- **Notes:** Prefer `<Checklist>` for tickable action blocks.
+- **Canonical example:** runbooks under incident-response template folders.
+
+### 6. Checklist
+
+- **Purpose:** Verifiable control or readiness list without deep narrative.
+- **Required:** Key Takeaway; brief context; one or more `<Checklist id="...">` blocks; Further reading optional when
+  the parent page already holds theory.
+- **Forbidden:** Static `- [ ]` Markdown task lists outside code fences when the interactive component applies.
+
+### 7. Reference or catalog
+
+- **Purpose:** Tools, tables, matrices, or inventories.
+- **Required:** Short intro stating selection criteria; structured tables or lists; sources for third-party entries.
+- **Key Takeaway:** Required unless an explicit exception note is present.
+- **Canonical example:** curated tools pages (for example wallet security tools once normalized).
+
+### 8. Reusable template
+
+- **Purpose:** Copy-ready document skeleton (policy, log, post-mortem).
+- **Required:** One-line usage note; the template body clearly delimited; placeholders in `[BRACKETS]` or similar.
+- **Key Takeaway:** Optional; prefer a one-sentence usage blurb if omitted (record exception).
+
+### 9. Case study or real-world incident
+
+- **Purpose:** Teach from a named incident or exercise.
+- **Required:** Key Takeaway with the transferable lesson; factual summary; linked primary sources; what to change
+  operationally.
+- **Forbidden:** Invented incident claims or uncited loss figures.
+
+### 10. Certification requirements or evaluation criteria
+
+- **Purpose:** Auditable controls for SEAL Certifications.
+- **Authority:** [Cert contributions](/certs/contributions) plus cert overview pages.
+- **Required:** Follow cert templates and control metadata; do not force framework overview foundation sections onto
+  control cards or generated cert surfaces.
+- **Exception:** Certification pages may omit marketing-style Key Takeaways when the page is a control list; prefer a
+  short scope sentence instead and mark the exception.
+
+### 11. Project, contribution, or navigation documentation
+
+- **Purpose:** Explain the project, stewardship, or contribution process.
+- **Required:** Clear scope; operationally accurate steps; links to authoritative workflow docs.
+- **Key Takeaway:** Recommended for long process pages; optional for tiny notices.
+
+## Shared page chrome
+
+Unless an exception applies, non-generated content pages include:
+
+1. YAML frontmatter: `title`, `description`, `tags`, `contributors`
+2. Import of `TagList`, `AttributionList`, `ContributeFooter` (plus `Checklist` when needed)
+3. Single `#` page title matching the topic
+4. `<TagList />` and `<AttributionList />` immediately under the H1
+5. Key Takeaway (when required for the page type)
+6. Unheaded introduction
+7. Body sections with `##` / `###` only (never skip levels)
+8. Further reading / resources / related frameworks (when required)
+9. `<ContributeFooter />` after a horizontal rule
+
+**Generated `index.mdx` files are never hand-edited.** Register routes in `vocs.config.ts` and run the build.
+
+### Frontmatter contract
+
+| Field | Rule |
+| --- | --- |
+| `title` | `"Topic \| Security Alliance"` under 60 characters total; use `"\| SEAL"` when needed |
+| `description` | 140–160 characters preferred; 120–170 acceptable; topic name + searchable terms + action verbs |
+| `tags` | At least one tag from the [known set](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/config/template.mdx?plain=1#L12-L37); new tags are allowed and auto-colored at build time |
+| `contributors` | Roles `wrote`, `reviewed`, `fact-checked` with slugs defined in the contributors database; first-time authors also register in `contributors.json`. Which role a given contribution belongs under is defined in the [contributing guide](/contribute/contributing#attribution-and-contributor-roles) |
+
+Do not rewrite historical contributor attribution without clear evidence it is wrong, and never remove or reorder
+contributors already listed on a page.
+
+### Opening sequence
+
+```text
+# Title
+<TagList />
+<AttributionList />
+> Key Takeaway
+Unheaded introduction (2–3 short paragraphs)
+## Foundational section (named for the topic)
+## Main sections...
+## Further reading
+---
+<ContributeFooter />
+```
+
+All `##` / `###` headings use **sentence case** (first word and proper nouns only). See
+[Heading sentence case](/contribute/style-and-terminology#heading-sentence-case-required) in the style guide.
+Reserved catalog names below are already written in sentence case — do not Title-Case them.
+
+## Key Takeaway contract
+
+Canonical form (exact label and punctuation):
+
+> 🔑 **Key Takeaway**: Concrete claim a reader can act on or remember. Prefer one or two sentences under 40 words.
+
+Rules:
+
+- Required for framework overviews, conceptual pages, procedures, playbooks, runbooks, and checklists unless an
+  exception note exists
+- States the **point** of the page, not a table-of-contents paraphrase
+- Avoid filler: “By following these practices…”, “Having these controls…”, “It is important to…”
+- Avoid unsupported guarantees (“fully secure”, “impossible to attack”)
+- Prefer concrete subjects (`signers`, `operators`, `maintainers`) over “you should generally”
+- Multi-line blockquotes may continue with `>` on each line
+
+Validator treats missing, non-canonical, or obviously filler takeaways as failures when the page type requires one.
+
+## Framework overview contract
+
+A framework overview must:
+
+1. State what the framework covers
+2. Prefer an explicit or implicit edge on what it does **not** cover when scope is easy to confuse
+3. Name primary audiences when non-obvious
+4. Explain why the subject matters in Web3 without Web3 filler paragraphs
+5. Define core terms or point to the foundational section that does
+6. Describe the framework’s approach briefly when helpful
+7. Include a **page map** of every child page in the sidebar for that folder, each with a one-line description
+8. Keep the page map synchronized with `vocs.config.ts`
+9. Link adjacent frameworks when reader journeys commonly cross domains
+10. Include Further reading and/or Related frameworks for primary references
+
+Name the page map section with one of these **sentence-case** titles (validator matches case-insensitively):
+
+- `## What this framework covers` (preferred for a top-level framework overview)
+- `## What this section covers` (preferred for a nested subsection overview)
+- `## Framework structure` / `## Section structure`
+- `## Contents`
+- `## Table of contents`
+- `## Pages` (legacy accept; prefer a more descriptive map title on new work)
+
+Name further-material sections with one of these **sentence-case** titles:
+
+- `## Further reading` (preferred for mixed internal + external links)
+- `## Resources`
+- `## References`
+- `## Related frameworks` (framework overviews and cross-domain hubs)
+- `## Tools`
+
+Do **not** use `## Further Reading & Tools`, Title Case variants (`## Further Reading`, `## Related Frameworks`), or
+other synonyms. Put tools and external catalogs under `## Further reading` or `## Tools` as appropriate.
+
+A bare bullet list of links without one-line descriptions is not enough.
+
+An overview is **not** a generic article titled “Overview” with no map. Nested “overview” pages inside a subfolder
+follow the same map rules for **their** children.
+
+## Regular page contract
+
+1. **Single-topic focus:** prefer splitting when more than about six top-level `##` sections appear
+2. **Landing safety:** a reader may open the page from search; define prerequisites instead
+  of assuming another page was read
+3. **Foundation before depth:** non-technical orientation, then technical detail
+4. **Evidence:** security claims, historical incidents, and product-specific behaviors need citations (see style guide)
+5. **Maximum scope:** if two audiences need incompatible depth, split pages rather than stuffing both
+
+## Procedure modality (structural use)
+
+Procedures state requirements with `must` / `should` / `may` as defined in
+[style and terminology](/contribute/style-and-terminology#normative-modality). Do not convert every recommendation into
+`must`. Structural sections adapt: a procedure “must” list failure modes next to steps; it “should” include a diagram
+when the flow is non-linear.
+
+## Components
+
+| Component | When |
+| --- | --- |
+| `<TagList />` | All standard content pages with tags |
+| `<AttributionList />` | All standard content pages with contributors |
+| `<ContributeFooter />` | End of page after `---` |
+| `<Checklist id="kebab-id">` | Interactive checklists; unique `id` per checklist |
+| Mermaid fences | Flows, architectures, state machines |
+| Stub notice | Incomplete pages (wording in contributing guide) |
+| Dev-only flag | `dev: true` on sidebar items until reviewed |
+
+Static Markdown task lists (`- [ ]`) outside fenced examples are non-compliant when `<Checklist>` is appropriate.
+
+## Exception mechanism
+
+Deviations from this model must be rare, explicit, and reviewable.
+
+Add an HTML comment near the top of the MDX body (after imports):
+
+```mdx
+{/*
+  content-model-exception:
+  type: certification-control-list
+  reason: Control enumeration mirrors cert schema; Key Takeaway omitted by design.
+  owner: certs-steward
+*/}
+```
+
+Allowed exception reasons include: generated surfaces, pure templates, certification control lists, legal text that
+must later mirror upstream documents, or steward-approved navigation hubs.
+
+PR reviewers treat unexplained structural omission as a defect. Validators may skip checks listed in a parseable
+exception block when automation supports it.
+
+## Rules for automation vs human review
+
+**Automation suitable (`pnpm run validate:content`):**
+
+- Frontmatter presence and rough description length
+- Required component imports/usages
+- Canonical Key Takeaway label present when required
+- Heading level skips
+- Static checklist detection
+- Overview page-map heading presence (allowed sentence-case catalog names)
+- Further-material heading presence (allowed sentence-case catalog names)
+- `dev: true` reminders are CI-side elsewhere
+
+**Human / steward judgment:**
+
+- Technical correctness of security guidance
+- Whether a takeaway is insightful vs filler beyond simple patterns
+- Citation quality and primary-source fitness
+- When to split pages
+- Substantive conflicts between frameworks
+- Exception approval
+- **Heading sentence case** on non-catalog H2/H3 labels (validator does not Title-Case-lint freeform headings yet)
+
+## Migration strategy
+
+1. Land this content model without rewriting frameworks in the same PR
+2. Normalize **one framework per PR** against this model
+3. Prefer reorganization of existing supported prose over inventing new security guidance
+4. Leave expert gaps called out in the framework PR body
+5. Do not hand-edit generated indexes or `llms` artifacts; regenerate via build
+
+## Compatibility with generators
+
+- Folder indexes: `utils/generate-folder-indexes.cjs`
+- LLM route files: `utils/generate-llms.cjs` (sidebar-ordered)
+- Printable checklists: `utils/generate-printable-checklists.cjs`
+- Tags: `utils/tags-fetcher.cjs`
+- Root `CONTRIBUTING.md`: synced from this folder’s contributing page
+
+Normalization must preserve sidebar links so LLM indexes and search allowlists stay correct after `docs:build`.
+
+---
+
+<ContributeFooter />

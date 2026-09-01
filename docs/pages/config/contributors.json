@@ -23,7 +23,7 @@
       { "name": "Issue-Opener-5", "assigned": "2024-08-22" },
       { "name": "Issue-Opener-10", "assigned": "2024-08-24" },
       { "name": "Issue-Opener-25", "assigned": "2024-09-25" },
-      { "name": "Active-Last-7d", "lastActive": "2026-06-21" }
+      { "name": "Active-Last-7d", "lastActive": "2026-08-05" }
     ]
   },
   "fredriksvantes": {
@@ -81,8 +81,9 @@
     "badges": [
       { "name": "Framework-Steward", "framework": "Community Management" },
       { "name": "First-Contribution", "assigned": "2025-01-29" },
+      { "name": "Contributor-5", "assigned": "2026-07-08" },
       { "name": "First-Review", "assigned": "2025-12-16" },
-      { "name": "Active-Last-7d", "lastActive": "2026-06-21" }
+      { "name": "Active-Last-7d", "lastActive": "2026-08-04" }
     ]
   },
   "robert": {
@@ -155,7 +156,8 @@
     "badges": [
       { "name": "Framework-Steward", "assigned": "2025-03-29", "framework": "ENS" },
       { "name": "First-Contribution", "assigned": "2025-05-29" },
-      { "name": "First-Review", "assigned": "2025-08-09" }
+      { "name": "First-Review", "assigned": "2025-08-09" },
+      { "name": "Dormant-90d+", "lastActive": "2026-04-23" }
     ]
   },
   "patrickalphac": {
@@ -190,7 +192,8 @@
     "badges": [
       { "name": "Framework-Steward", "assigned": "2025-07-10", "framework": "Wallet Security" },
       { "name": "First-Contribution", "assigned": "2025-07-10" },
-      { "name": "First-Review", "assigned": "2025-09-25" }
+      { "name": "First-Review", "assigned": "2025-09-25" },
+      { "name": "Dormant-90d+", "lastActive": "2026-04-07" }
     ]
   },
   "njelich": {
@@ -229,8 +232,7 @@
       { "name": "Contributor-25", "assigned": "2026-02-09" },
       { "name": "First-Review", "assigned": "2025-08-11" },
       { "name": "Reviewer-10", "assigned": "2026-02-24" },
-      { "name": "Reviewer-25", "assigned": "2024-03-01" },
-      { "name": "Active-Last-7d", "lastActive": "2026-06-19" }
+      { "name": "Reviewer-25", "assigned": "2024-03-01" }
     ]
   },
   "blackbigswan": {
@@ -336,8 +338,7 @@
     "description": "Founder & Engineer",
     "badges": [
       { "name": "First-Contribution", "assigned": "2025-06-02" },
-      { "name": "Contributor-5", "assigned": "2026-06-21" },
-      { "name": "Active-Last-7d", "lastActive": "2026-06-21" }
+      { "name": "Contributor-5", "assigned": "2026-06-21" }
     ]
   },
   "isaac": {
@@ -354,8 +355,7 @@
     "badges": [
       { "name": "Framework-Steward", "assigned": "2025-12-17", "framework": "SEAL Certs" },
       { "name": "First-Contribution", "assigned": "2026-04-21" },
-      { "name": "First-Review", "assigned": "2026-01-26" },
-      { "name": "Active-Last-7d", "lastActive": "2026-06-21" }
+      { "name": "First-Review", "assigned": "2026-01-26" }
     ]
   },
   "geoffrey": {
@@ -428,6 +428,19 @@
     "description": "Industry leading OpSec audits, security tools, and code reviews performed by true security wizards",
     "badges": []
   },
+  "s1ns3nz0": {
+    "slug": "s1ns3nz0",
+    "name": "s1ns3nz0",
+    "avatar": "https://avatars.githubusercontent.com/s1ns3nz0",
+    "github": "https://github.com/s1ns3nz0",
+    "twitter": null,
+    "website": "https://miata.cloud",
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": []
+  },
   "scode2277": {
     "slug": "scode2277",
     "name": "Sara Russo",
@@ -448,7 +461,7 @@
       { "name": "First-Review", "assigned": "2025-08-12" },
       { "name": "Reviewer-10", "assigned": "2025-09-12" },
       { "name": "Reviewer-25", "assigned": "2026-03-20" },
-      { "name": "Active-Last-7d", "lastActive": "2026-06-26" }
+      { "name": "Active-Last-7d", "lastActive": "2026-08-06" }
     ]
   },
   "gunnim": {
@@ -686,7 +699,8 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-04-05" }
+      { "name": "First-Contribution", "assigned": "2026-04-05" },
+      { "name": "Dormant-90d+", "lastActive": "2026-04-21" }
     ]
   },
   "fvelazquez-x": {
@@ -701,7 +715,8 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-04-07" }
+      { "name": "First-Contribution", "assigned": "2026-04-07" },
+      { "name": "Dormant-90d+", "lastActive": "2026-04-07" }
     ]
   },
   "shallem": {
@@ -717,8 +732,7 @@
     "description": "Steward of Opsec framework",
     "badges": [
       { "name": "Framework-Steward", "assigned": "2026-04-09", "framework": "Operational Security" },
-      { "name": "First-Contribution", "assigned": "2025-09-10" },
-      { "name": "Active-Last-7d", "lastActive": "2026-06-19" }
+      { "name": "First-Contribution", "assigned": "2025-09-10" }
     ]
   },
   "txscope-sol": {
@@ -733,7 +747,8 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-04-21" }
+      { "name": "First-Contribution", "assigned": "2026-04-21" },
+      { "name": "Dormant-90d+", "lastActive": "2026-04-21" }
     ]
   },
   "welttowelt": {
@@ -748,7 +763,8 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-04-21" }
+      { "name": "First-Contribution", "assigned": "2026-04-21" },
+      { "name": "Dormant-90d+", "lastActive": "2026-04-21" }
     ]
   },
   "iam0ti": {
@@ -794,7 +810,8 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-05-07" }
+      { "name": "First-Contribution", "assigned": "2026-05-07" },
+      { "name": "Dormant-90d+", "lastActive": "2026-05-07" }
     ]
   },
   "yuvalava": {
@@ -809,9 +826,7 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-06-21" },
-      { "name": "New-Joiner", "lastActive": "2026-06-21" },
-      { "name": "Active-Last-7d", "lastActive": "2026-06-21" }
+      { "name": "First-Contribution", "assigned": "2026-06-21" }
     ]
   },
   "umar-ahmed": {
@@ -825,6 +840,52 @@
     "job_title": null,
     "role": "contributor",
     "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2024-11-12" },
+      { "name": "Dormant-90d+", "lastActive": "2024-11-12" }
+    ]
+  },
+  "RobQocharyan123": {
+    "slug": "RobQocharyan123",
+    "name": "RobQocharyan123",
+    "avatar": "https://avatars.githubusercontent.com/RobQocharyan123",
+    "github": "https://github.com/RobQocharyan123",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
     "badges": []
+  },
+  "tayvano": {
+    "slug": "tayvano",
+    "name": "tayvano",
+    "avatar": "https://avatars.githubusercontent.com/tayvano",
+    "github": "https://github.com/tayvano",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": []
+  },
+  "0xusmanf": {
+    "slug": "0xusmanf",
+    "name": "Usman",
+    "avatar": "https://avatars.githubusercontent.com/0xusmanf",
+    "github": "https://github.com/0xusmanf",
+    "twitter": "https://x.com/0xusmanf",
+    "website": null,
+    "company": null,
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-08-19" },
+      { "name": "New-Joiner", "lastActive": "2026-08-19" },
+      { "name": "Active-Last-7d", "lastActive": "2026-08-19" }
+    ]
   }
 }

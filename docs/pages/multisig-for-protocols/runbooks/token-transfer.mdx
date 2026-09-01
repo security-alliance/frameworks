@@ -1,6 +1,6 @@
 ---
 title: "Token Transfer Runbook | SEAL"
-description: "Runbook for multisig token transfers on Safe and Squads, including verification, simulation, signing, and execution checks."
+description: "Runbook for multisig token transfers on Safe and Squads, including verification, simulation, signing, and execution checks. Add your specific multisig"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -8,6 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -16,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Token sends fail on address and network mistakes: verify destination from authoritative
+> sources, test small, then execute with full dual-check.
 
 This is an example runbook. Review and customize it for your protocol before use. Add your specific multisig addresses,
 token details, and verification procedures.
@@ -175,10 +182,15 @@ For ERC20 or SPL tokens, verify decimals:
 | Nonce mismatch | Clear pending transactions first |
 | Recipient can't receive | Verify address is correct type (EOA vs contract) |
 
-## Related Documents
+## Further reading
 
-- [Safe Multisig: Step-by-Step Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification)
-- [Squads Multisig: Step-by-Step Verification](/wallet-security/signing-and-verification/secure-multisig-squads-verification)
-- [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview): how the runbooks in this section fit together
+- [Safe Multisig Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification): the EVM
+  verification walkthrough
+- [Squads Multisig Verification](/wallet-security/signing-and-verification/secure-multisig-squads-verification): the
+  Solana equivalent
+- [Transaction Verification](/treasury-operations/transaction-verification): treasury-side checks before a transfer
+
+---
 
 <ContributeFooter />

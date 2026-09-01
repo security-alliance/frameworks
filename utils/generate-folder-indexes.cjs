@@ -247,7 +247,7 @@ function loadSidebarConfig(branchName) {
     .replace(/^(?:import[^\n]*\n)+/, '')
     .replace(/export default defineConfig\(config\)\s*;?\s*$/, 'return defineConfig(config);')
     .replace(/\bas const\b/g, '')
-    .replace(/head\(\{[^}]*\}\s*:\s*\{[^}]*\}\)\s*\{[\s\S]*?\n  \},/, '')
+    .replace(/head\([^)]*\)\s*\{[\s\S]*?\n  \},/, '')
     .replace(/new Set<[^>]+>\(/g, 'new Set(')
     .replace(/function\s+(\w+)\(([^)]*)\)\s*:\s*[^\s{]+/g, (_, name, params) => {
       const cleaned = params.replace(/:\s*[^,)]+/g, '');

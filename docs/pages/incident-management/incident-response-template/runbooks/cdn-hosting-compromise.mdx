@@ -1,6 +1,6 @@
 ---
 title: "Runbook: CDN/Hosting Compromise | Security Alliance"
-description: "Stub runbook. Customize with your CDN and hosting provider details."
+description: "Stub runbook. Customize with your CDN and hosting provider details. Compromised CDN or hosting can serve malicious assets at your legitimate origin."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,7 +21,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> **Stub runbook.** Customize with your CDN and hosting provider details.
+> 🔑 **Key Takeaway**: Compromised CDN or hosting can serve malicious assets at your
+> legitimate origin. Invalidate caches, rotate credentials, restore known-good builds,
+> and verify integrity of what users fetch.
+
+**Stub runbook.** Customize with your CDN and hosting provider details.
 
 ## Quick Reference
 
@@ -72,9 +79,13 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 - [ ] Regular access audits
 </Checklist>
 
-## Related
+## Further reading
 
-- [Frontend Compromise](./frontend-compromise)
-- [Incident Response Policy](../incident-response-policy)
+- [Runbooks overview](/incident-management/incident-response-template/runbooks/overview): how the runbooks in this section fit together
+- [Frontend Compromise](/incident-management/incident-response-template/runbooks/frontend-compromise): the broader scenario this feeds into
+- [Web Application Security](/front-end-web-app/web-application-security): hardening the delivery path
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy): severity levels, roles, and escalation
+
+---
 
 <ContributeFooter />

@@ -6,6 +6,8 @@ tags:
 contributors:
   - role: wrote
     users: [auditware]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -17,13 +19,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Summary
 
-> 🔑 **Key Takeaway for Linear:** Secure your Linear account with passkeys, regularly review sessions and connected
+> 🔑 **Key Takeaway**: Secure your Linear account with passkeys, regularly review sessions and connected
 > applications, and for workspaces, disable invite links, restrict approved email domains, and control
 > third-party integrations to protect sensitive project data.
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
-
----
 
 ## For Individuals
 
@@ -39,8 +39,6 @@ These settings apply to your personal Linear account. All team members and admin
 
 </Checklist>
 
----
-
 ## For Team Members
 
 These guidelines apply to team members who use Linear for project management but don't have administrative access.
@@ -51,8 +49,6 @@ Team members should:
 - Use passkeys for stronger authentication when available
 - Be cautious about authorizing third-party applications to access Linear
 - Report any suspicious workspace activity to administrators
-
----
 
 ## For Admins
 
@@ -73,6 +69,14 @@ These settings and practices apply to Linear workspace administrators with eleva
   - [ ]  API > OAuth Applications, Webhooks, & Member API keys > **Review and remove any unnecessary or unrecognized**
   - [ ]  Applications > **Review and remove any unnecessary or unrecognized**
 </Checklist>
+
+## Further reading
+
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Secure Authentication](/iam/secure-authentication): passkeys and SSO choices behind these settings
+- [Access Management](/iam/access-management): workspace membership and offboarding
+- [Linear: security and access](https://linear.app/docs/security-and-access): vendor documentation for current UI
+  paths
 
 ---
 

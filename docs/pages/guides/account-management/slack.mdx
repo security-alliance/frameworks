@@ -6,6 +6,8 @@ tags:
 contributors:
   - role: wrote
     users: [auditware]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -17,13 +19,11 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 ## Summary
 
-> 🔑 **Key Takeaway for Slack:** Secure your Slack workspace by enforcing two-factor authentication with authenticator
+> 🔑 **Key Takeaway**: Secure your Slack workspace by enforcing two-factor authentication with authenticator
 > apps only, requiring admin approval for invitations, regularly reviewing member access levels, and blocking jailbroken
 > or rooted devices from accessing the workspace.
 
 This checklist is adapted from [Auditware's W3OSC](https://github.com/W3OSC/web3-opsec-standard) standards.
-
----
 
 ## For Team Members
 
@@ -36,8 +36,6 @@ Team members should:
 - Report any suspicious messages or unrecognized workspace members to administrators
 - Avoid accessing the workspace from jailbroken or rooted devices
 - Be mindful of what sensitive information is shared in channels
-
----
 
 ## For Admins
 
@@ -73,6 +71,15 @@ These settings and practices apply to Slack workspace administrators with elevat
     - [ ]  Jailbroken or rooted devices > **Not allowed**
 
 </Checklist>
+
+## Further reading
+
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Access Management](/iam/access-management): workspace membership, guests, and app approvals
+- [Encrypted Communication Tools](/privacy/encrypted-communication-tools): where to move genuinely sensitive
+  discussions
+- [Slack: set up two-factor authentication](https://slack.com/help/articles/204509068-Set-up-two-factor-authentication):
+  vendor documentation for current UI paths
 
 ---
 

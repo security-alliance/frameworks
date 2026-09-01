@@ -1,11 +1,17 @@
 ---
 title: "Wallet Security | Security Alliance"
-description: "Wallet Security Framework: Secure digital assets with hot/cold wallets, multisig best practices, transaction verification, seed phrase management, and account abstraction."
+description: "Wallet security for Web3: custody models, hot/cold tradeoffs, tiered setups, multisig and AA, signing verification, seed phrases, and interaction hygiene."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - Operations & Strategy
 contributors:
   - role: wrote
     users: [pinalikefruit]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,52 +21,49 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-In cryptocurrency, the security of digital assets is directly tied to how control over the funds is protected. This
-section provides a technical deep-dive into wallet security, covering the range from fundamental concepts to advanced
-practices for safeguarding assets against theft, loss, and unauthorized access.
+> 🔑 **Key Takeaway**: Wallet security is control of keys and verification of every signature. Hardware and multisig
+> fail if users sign attacker-controlled calldata blindly.
 
-The goal is to move beyond introductory concepts and provide actionable, technical knowledge for securely managing
-crypto assets.
+In cryptocurrency, asset security is tied to how control over funds is protected. This framework goes from ownership
+models and wallet types to signing verification, seed-phrase custody, and safer smart contract interaction.
 
-## Table of Contents
+## What this framework covers
 
-- [Custodial vs Non-Custodial](/wallet-security/custodial-vs-non-custodial) - Comparing custodial and non-custodial
-wallet solutions.
-- [Cold vs Hot Wallet](/wallet-security/cold-vs-hot-wallet) - Understanding the security trade-offs of online and
-offline wallets.
-- [Wallets For Beginners & Small Balances](/wallet-security/for-beginners-and-small-balances) - Recommended setups for
-users with non-critical funds.
-- [Wallets For Intermediates & Medium Funds](/wallet-security/intermediates-and-medium-funds) - Security upgrades for
-users with significant assets.
-- [Multisig Wallets For Advanced Users & High Funds](/wallet-security/secure-multisig-best-practices) - Best practices
-for setting up and managing multisig wallets.
-- [Account Abstraction Wallets](/wallet-security/account-abstraction) - Exploring the security features of smart
-contract wallets.
-- [Signing & Verification](/wallet-security/signing-and-verification/signing-verification) - An overview of secure
-transaction signing and verification.
-  - [Verifying Standard Transactions (EOA)](/wallet-security/signing-and-verification/verifying-standard-transactions) -
-  How to safely verify transactions from standard wallets.
-  - [Multisig Signing Process](/wallet-security/signing-and-verification/secure-multisig-signing-process) - Detailed
-  guide for secure multisig transaction signing.
-  - [Using EIP-7702](/wallet-security/signing-and-verification/verifying-7702) -  Enabling smart contract features for
-  EOAs and mitigating new risks.
-- [Seed Phrase Management](/wallet-security/seed-phrase-management) - Best practices for securing your seed phrase.
-- [Tools & Resources](/wallet-security/tools-and-resources) - A curated list of security tools and resources.
+1. [Custodial vs Non-Custodial](/wallet-security/custodial-vs-non-custodial): who holds keys and what risk that creates.
+2. [Cold vs Hot Wallet](/wallet-security/cold-vs-hot-wallet): online convenience versus offline isolation tradeoffs.
+3. [Wallets for Beginners and Small Balances](/wallet-security/for-beginners-and-small-balances): lighter setups for lower
+   stakes.
+4. [Wallets for Intermediates and Medium Funds](/wallet-security/intermediates-and-medium-funds): upgrades as value grows.
+5. [Multisig Wallets for Advanced Users and High Funds](/wallet-security/secure-multisig-best-practices): high-value
+   multi-signer design.
+6. [Account Abstraction Wallets](/wallet-security/account-abstraction): smart-account features and new risk surface.
+7. [TEE-based Encumbered Wallets](/wallet-security/encumbered-wallets): encumbered/TEE-oriented models and caveats.
+8. [Signing and Verification](/wallet-security/signing-and-verification/signing-verification): never sign blindly.
+   - [Verifying Standard Transactions (EOA)](/wallet-security/signing-and-verification/verifying-standard-transactions)
+   - [Multisig Signing Process](/wallet-security/signing-and-verification/secure-multisig-signing-process)
+   - [Safe Multisig: Step-by-Step Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification)
+   - [Squads Multisig: Step-by-Step Verification](/wallet-security/signing-and-verification/secure-multisig-squads-verification)
+   - [Using EIP-7702](/wallet-security/signing-and-verification/verifying-7702)
+9. [Smart Contract Interaction Security](/wallet-security/smart-contract-interaction-security): addresses, approvals, and
+   simulation before interact.
+10. [Seed Phrase Management](/wallet-security/seed-phrase-management): offline custody and emergency handling.
+11. [Tools and Resources](/wallet-security/tools-and-resources): curated verification and training tools.
 
-In this section you can learn:
+## Related frameworks
 
-- Explore wallet fundamentals, analyzing the security trade-offs of hot vs. cold wallets and the ownership implications
-of custodial vs. non-custodial models.
-- Receive guidance on choosing the right wallet for your threat model, from basic setups to advanced configurations like
- Multisignature (Multisig) and Account Abstraction wallets.
-- Master transaction verification techniques, from basic smart contract interactions to the advanced verification.
-- Implement security best practices for private key and seed phrase management.
+- [Multisig for Protocols](/multisig-for-protocols/overview): protocol treasury and organizational multisig ops
+- [OpSec](/opsec/overview): device and operator hygiene around keys
+- [Front-End Web App](/front-end-web-app/overview): client compromise can rewrite what wallets sign
+- [ENS](/ens/overview): name resolution integrity on send destinations
+- [Physical Security](/physical-security/overview): seed and device physical risks
+- [Incident Management](/incident-management/overview): response after suspected key compromise
 
-Mastering wallet security is a critical skill for any developer, user, or organization operating in the web3 ecosystem.
+## Further reading
+
+See [Tools and Resources](/wallet-security/tools-and-resources). Classic related prose:
+[xkcd 538](https://xkcd.com/538/) on physical coercion of crypto holders.
 
 ![security](https://github.com/security-alliance/frameworks/assets/84518844/12e2cba3-f69e-4fde-85f1-8a235b9808af)
-
-[xkcd](https://xkcd.com/538/)
 
 ---
 

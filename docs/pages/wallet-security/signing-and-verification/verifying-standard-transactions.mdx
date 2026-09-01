@@ -1,6 +1,6 @@
 ---
 title: "Verifying Standard Transactions | SEAL"
-description: "Verify EOA transactions: check origin URL, smart contract address, function names, parameters, and gas fees. Cross-reference with official documentation and block explorers before signing."
+description: "Verify EOA transactions: check origin URL, smart contract address, function names, parameters, and gas fees. Cross-reference with official documentation and"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -9,6 +9,8 @@ contributors:
     users: [pinalikefruit]
   - role: reviewed
     users: [Coinspect]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: For EOA signing, verify recipient, amount, network, and calldata meaning—including token approvals—before
+> confirming on the device.
 
 When interacting with a dApp using a standard Externally Owned Account (EOA) via a wallet, you must verify several key
 components of the transaction request before signing.
@@ -56,6 +61,15 @@ ensure the address is your own or the intended recipient.
 - **What to check**: The estimated gas fee for the transaction.
 - **Why it's critical**: An unusually high gas fee for a simple operation can be a red flag, potentially indicating an
 inefficient or malicious contract designed to waste user funds.
+
+## Further reading
+
+- [Signing & Verification](/wallet-security/signing-and-verification/signing-verification): the principles behind these
+  four checks
+- [Smart Contract Interaction Security](/wallet-security/smart-contract-interaction-security): what to check about the
+  contract itself
+- [Using EIP-7702](/wallet-security/signing-and-verification/verifying-7702): extra checks once an EOA can delegate
+- [Tools & Resources](/wallet-security/tools-and-resources): simulators and decoders for inspecting calldata
 
 ---
 

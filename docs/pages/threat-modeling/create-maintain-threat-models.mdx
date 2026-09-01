@@ -1,9 +1,16 @@
 ---
-title: "Creating Threat Models | Security Alliance"
-description: "Create threat models using STRIDE framework: define scope, identify assets and threats, evaluate risks, and develop mitigations. Tools: Microsoft Threat Modeling Tool, OWASP Threat Dragon."
+title: "Creating Threat Models | SEAL"
+description: "Create and maintain threat models: scope, assets, STRIDE threats, attack scenarios, prioritization, mitigations, and tools like Threat Dragon."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,10 +20,13 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Creating and maintaining threat models helps identify potential security risks and develop mitigation strategies to
-protect the project.
+> 🔑 **Key Takeaway**: A useful threat model is a maintained artifact — redefine scope and mitigations when architecture
+> or value at risk changes.
 
-## Steps to Create a Threat Model
+This page walks through creating a threat model and keeping it current. Pair it with [Identify and Mitigate
+Threats](/threat-modeling/identity-mitigate-threats) for enumeration depth.
+
+## Steps to create a threat model
 
 1. **Define the Scope**
    - Identify the contract, system, application, or component to be analyzed.
@@ -52,7 +62,7 @@ protect the project.
    scenarios, and mitigation strategies.
    - Use templates and standardized formats to ensure consistency.
 
-## Maintaining Threat Models
+## Maintaining threat models
 
 1. **Regular Updates**
    - Update the threat model regularly to reflect changes in the system, new threats, and emerging vulnerabilities.
@@ -70,7 +80,7 @@ protect the project.
    - Provide training for team members on threat modeling concepts and techniques.
    - Raise awareness about the importance of threat modeling in maintaining security.
 
-## Tools for Threat Modeling
+## Tools for threat modeling
 
 1. **Microsoft Threat Modeling Tool**
    - A free tool that helps create threat models using the STRIDE framework.
@@ -81,6 +91,12 @@ protect the project.
    - An open-source threat modeling tool for creating diagrams and identifying threats.
    - Pros: Free, web-based, supports multiple platforms.
    - Cons: Limited features compared to commercial tools.
+
+## Further reading
+
+- [Threat modeling overview](/threat-modeling/overview)
+- [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
+- [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/)
 
 ---
 

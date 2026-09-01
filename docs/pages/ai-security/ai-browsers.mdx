@@ -1,6 +1,6 @@
 ---
 title: "AI Browsers | SEAL"
-description: "Threat model and controls for AI browsers interacting with dynamic external web content and APIs."
+description: "Threat model and controls for AI browsers interacting with dynamic external web content and APIs. Inspect inbound content and outbound actions in real"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: AI browsers load untrusted web content into the model context. Inspect inbound content and
+> outbound actions in real time or the open web becomes the control plane.
 
 AI browsers are interfaces that enable models to interact with external content, such as web pages, APIs, and online
 data sources. While they expand the model's context and capability, they also broaden the attack surface by introducing
@@ -37,6 +42,14 @@ data sources. On-chain visibility does not guarantee safety without runtime vali
 - Zenity - step-level execution monitoring with inline controls for unsafe browser actions
 - Akamai Firewall for AI - edge runtime inspection for prompts and responses
 - Wiz AI-SPM - posture management visibility into AI app configuration and data exposure
+
+## Further reading
+
+- [AI Security overview](/ai-security/overview): how the pages of this framework fit together
+- [Prompt Injection Defenses](/ai-security/prompt-injection-defenses): the attack class that web content delivers
+- [Browser Security](/opsec/browser/overview): profile separation and extension hygiene for the underlying browser
+- [Brave: Comet prompt injection research](https://brave.com/blog/comet-prompt-injection/): a worked example of a page
+  hijacking an AI browser
 
 ---
 

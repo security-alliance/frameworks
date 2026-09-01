@@ -1,9 +1,16 @@
 ---
-title: "Partition Encryption | Security Alliance"
-description: "Selectively encrypt specific disk partitions with BitLocker, LUKS, or VeraCrypt. Protect sensitive data while maintaining flexibility for un-encrypted data on the same device."
+title: "Partition Encryption | SEAL"
+description: "Encrypt selected partitions with BitLocker, LUKS, or VeraCrypt when full-disk encryption is too broad; protect keys with MFA and backups. Unlike full"
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,20 +20,23 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-## What is Partition Encryption?
+> 🔑 **Key Takeaway**: Partition encryption protects high-sensitivity regions of a disk when full-disk encryption is not
+> appropriate for every partition on the device.
+
+## What is partition encryption?
 
 Partition encryption is the process of encrypting specific partitions on a storage device. This allows for selective
 encryption of data, providing flexibility in managing encrypted and un-encrypted data on the same device. Unlike full
 disk encryption, which encrypts the entire disk, partition encryption targets specific areas, making it ideal for
 protecting sensitive data without impacting the entire storage system.
 
-## Importance of Partition Encryption
+## Importance of partition encryption
 
 Partition encryption is crucial for protecting sensitive information from unauthorized access, especially in
 environments where different types of data coexist on the same device. It helps prevent data breaches in case of
 unauthorized access to specific partitions and ensures compliance with data protection regulations.
 
-## Uses of Partition Encryption
+## Uses of partition encryption
 
 - **Protecting Sensitive Data**: Ensures that sensitive information stored on specific partitions is secure.
 - **Compliance**: Helps organizations meet regulatory requirements for data protection.
@@ -34,7 +44,7 @@ unauthorized access to specific partitions and ensures compliance with data prot
 - **Secure Decommissioning**: Ensures that data on encrypted partitions is not recoverable when storage devices are
 decommissioned or repurposed.
 
-## Examples of Partition Encryption
+## Examples of partition encryption
 
 - **BitLocker**: A partition encryption feature included with Microsoft Windows that provides encryption for specific
   partitions. [Learn how to use
@@ -44,7 +54,7 @@ decommissioned or repurposed.
 - **VeraCrypt**: An open-source disk encryption software that can encrypt specific partitions. [Learn how to use
   VeraCrypt](https://www.veracrypt.fr/en/Documentation.html)
 
-## Best Practices for Partition Encryption
+## Best practices for partition encryption
 
 1. **Use Strong Encryption Algorithms**: Ensure that the encryption algorithms used are strong and up-to-date, such as
   AES-256.
@@ -58,8 +68,13 @@ decommissioned or repurposed.
 6. **Monitor and Audit**: Regularly monitor and audit encryption settings and access logs to ensure compliance and
   detect any unauthorized access attempts.
 
-By following these best practices and using reliable partition encryption technologies, organizations can significantly
-enhance the security of their data and protect against unauthorized access and data breaches.
+## Further reading
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 

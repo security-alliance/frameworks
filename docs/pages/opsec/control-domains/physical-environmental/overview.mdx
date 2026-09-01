@@ -1,20 +1,36 @@
 ---
-title: "Physical & Environmental Security | Security Alliance"
-description: "Physical security controls: secure workspaces, travel security, tamper-evidence measures against evil-maid attacks. Protect hardware wallets, cold storage, seed phrases, and validator infrastructure."
+title: "Physical & Environmental Security | SEAL"
+description: "Physical OpSec controls: secure workspaces, travel practices, and tamper-evidence against evil-maid attacks on wallets, backups, and devices."
 tags:
   - Security Specialist
   - Operations & Strategy
   - DevOps
   - SRE
-
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Nested OpSec overview; child map lives in parent IA / sidebar until section pages stabilize.
+  owner: maintainers
+*/}
 
 # Physical & Environmental Controls
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Physical and environmental controls protect workspaces, travel, and unattended devices so theft,
+> tampering, and hostile environments cannot bypass digital OpSec.
 
 Physical security is a crucial component of operational security that is often overlooked in digital-focused
 organizations. This section covers controls to protect physical assets, secure workspaces, and address travel security
@@ -131,6 +147,14 @@ For threats that go beyond procedural and digital controls — coercion of key-h
 counter-surveillance, and supply-chain tamper evidence — see the
 [Physical Security](/physical-security/overview) framework. That domain covers physical threats to people and assets
 that complement the OpSec controls described here.
+
+## Further reading
+
+- [Control Domains overview](/opsec/control-domains/overview): how the four control domains fit together
+- [Secure Workspace and Travel](/opsec/control-domains/physical-environmental/secure-workspace-travel): protecting where
+  work happens
+- [Tamper Evidence](/opsec/control-domains/physical-environmental/tamper-evidence): detecting physical interference
+- [Physical Security](/physical-security/overview): the dedicated framework for physical threats
 
 ---
 

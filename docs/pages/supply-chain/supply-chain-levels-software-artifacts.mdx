@@ -1,6 +1,6 @@
 ---
 title: "Supply Chain Levels for Software Artifacts | SEAL"
-description: "Classify software components by risk level and apply proportional security controls to your dependency tree."
+description: "Classify software components by risk level, from value-handling libraries down to local build tooling, and apply proportional controls across your dependency tree."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -16,7 +16,7 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway:** Not every dependency carries the same risk. Apply your strictest controls to components that
+> 🔑 **Key Takeaway**: Not every dependency carries the same risk. Apply your strictest controls to components that
 > touch user funds or signing operations, and scale down from there. Applying the same scrutiny to everything means
 > applying it effectively to nothing.
 
@@ -26,9 +26,9 @@ a test framework or a documentation generator. Classification frameworks exist t
 components carry the most risk, then concentrate your strongest controls there and apply proportionally lighter
 measures to lower-risk artifacts.
 
-## Risk Classification Framework
+## Risk classification framework
 
-### Level 1: Critical Artifacts
+### Level 1: critical artifacts
 
 Components that directly handle value, signing operations, or core protocol logic. Smart contract libraries
 (OpenZeppelin Contracts), wallet interaction libraries (ethers.js, viem, web3.js), signing and cryptographic modules,
@@ -43,7 +43,7 @@ For specific practices, see
 [Security Testing Framework](/security-testing/overview), and
 [External Security Reviews Framework](/external-security-reviews/smart-contracts/overview).
 
-### Level 2: High-Risk Artifacts
+### Level 2: high-risk artifacts
 
 Components that are important to application function but do not directly handle funds. Authentication and
 authorization modules, API gateway and middleware components, database connectors, and oracle integration code fall
@@ -57,25 +57,25 @@ For dependency management practices, see [Dependency Awareness](/supply-chain/de
 
 For CI/CD pipeline security, see [DevSecOps](/devsecops/overview).
 
-### Level 3: Moderate-Risk Artifacts
+### Level 3: moderate-risk artifacts
 
 High-usage components with limited blast radius. UI frameworks (React, Vue), general utility libraries (lodash,
 date-fns), data processing modules, and analytics libraries sit in this tier.
 
-User-facing frontend dependencies that influence wallet connection, transaction construction, signing flows, or
-security-critical UI should be treated as high-risk or critical, even if they are "just frontend libraries".
+User-facing front-end dependencies that influence wallet connection, transaction construction, signing flows, or
+security-critical UI should be treated as high-risk or critical, even if they are "just front-end libraries".
 
 Compromise could cause service degradation or facilitate phishing, but not direct fund loss. Standard update
 practices and periodic vulnerability scanning are sufficient.
 
-### Level 4: Low-Risk Artifacts
+### Level 4: low-risk artifacts
 
 Components that do not run in production or have no access to sensitive data. Test frameworks (Jest, Mocha), linting
 and formatting tools, documentation generators, and local development utilities belong here.
 
 Basic security hygiene (trusted sources, occasional updates) is sufficient here.
 
-## Further Reading
+## Further reading
 
 - [Dependency Awareness](/supply-chain/dependency-awareness): Practical guidance on managing dependencies
 - [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats): Real-world attacks across the supply chain

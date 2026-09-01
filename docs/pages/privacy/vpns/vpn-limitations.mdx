@@ -9,6 +9,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 outline: deep
 ---
 
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: VPNs fail open via leaks, provider trust, fingerprinting, and broken kill switches. Model those
+> residual risks before calling the tunnel "safe."
 
 A VPN is not infallible. Consider these factors in your threat model:
 
@@ -44,6 +49,14 @@ HTTPS encrypts what you are saying, but not who you are talking to, when, how of
 exchanging. A DNS leak occurs when your DNS queries bypass the VPN tunnel and go directly to your ISP's resolver,
 revealing the domains you visit. You can test for DNS leaks using tools like
 [dnsleaktest.com](https://dnsleaktest.com/).
+
+## Further reading
+
+- [VPN Services overview](/privacy/vpns/overview): how the pages in this section fit together
+- [When to Use a VPN](/privacy/vpns/when-to-use-vpn): matching these residual risks to your threat model
+- [VPN Providers and Tools](/privacy/vpns/vpn-providers-and-tools): leak tests and provider selection criteria
+- [TunnelVision (CVE-2024-3661)](https://www.leviathansecurity.com/blog/tunnelvision): the DHCP route attack that
+  decloaks VPN traffic
 
 ---
 

@@ -1,9 +1,16 @@
 ---
 title: "Identity And Access Management | SEAL"
-description: "Infrastructure Identity and Access Management (IAM) best practices. For comprehensive IAM guidance including RBAC, secure authentication, and access management, see the dedicated IAM framework."
+description: "Infrastructure IAM pointer: RBAC, authentication, and access lifecycle guidance lives in the dedicated IAM framework, which this page cross-links to."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,8 +20,20 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Right now, this subsection has an entire category of its own. Please refer to [Incident and Access Management
-(IAM)](/iam/access-management)
+> 🔑 **Key Takeaway**: Infrastructure IAM details live in the dedicated IAM framework. Use that for RBAC, authentication,
+> and access lifecycle; keep this page as the cross-link.
+
+This infrastructure subsection is covered by a dedicated framework. See
+[Identity and Access Management (IAM)](/iam/overview) and especially
+[Access Management](/iam/access-management) for role-based access control, authentication, lifecycle, and review
+practices that apply to cloud and infrastructure control planes.
+
+## Further reading
+
+- [IAM overview](/iam/overview): the dedicated framework this page defers to
+- [Access Management](/iam/access-management): provisioning, review, and offboarding for control planes
+- [Role-Based Access Control](/iam/role-based-access-control): structuring roles across infrastructure
+- [Infrastructure overview](/infrastructure/overview): how the pages of this framework fit together
 
 ---
 

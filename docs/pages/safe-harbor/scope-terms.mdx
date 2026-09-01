@@ -9,6 +9,10 @@ tags:
 contributors:
   - role: wrote
     users: [dickson]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Scope terms—recovery address, contacts, assets, bounty, and identity rules—tell whitehats exactly
+> how a rescue must work for a given protocol.
 
 When adopting Safe Harbor, you'll define specific parameters that control what's covered and how whitehat rescues work.
 Below is an explanation of each term with tips and best practices.
@@ -149,6 +156,15 @@ are compliant with legal and regulatory standards before qualifying for payment.
 If you ever need help or have any questions, don't hesitate to reach out!
 
 📬 Contact us at: [safe-harbor@securityalliance.org](mailto:safe-harbor@securityalliance.org)
+
+## Further reading
+
+- [Safe Harbor overview](/safe-harbor/overview): what the agreement covers and why protocols adopt it
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): hardening the asset recovery
+  address
+- [Security Contact](/vulnerability-disclosure/security-contact): publishing contacts whitehats can reach during an
+  exploit
+- [Bug Bounties](/vulnerability-disclosure/bug-bounties): aligning bounty percentage and cap with your existing program
 
 ---
 

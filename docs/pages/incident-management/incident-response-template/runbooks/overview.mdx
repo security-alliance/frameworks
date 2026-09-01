@@ -8,7 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
@@ -18,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Runbooks cut cognitive load during active incidents. Customize every
+> command and contact for your stack; untested generic runbooks can be worse than none.
+
 Step-by-step guides for specific incident types. Use these during active incidents to reduce cognitive load and
 ensure consistent response.
 
@@ -26,26 +32,37 @@ ensure consistent response.
 > and procedures before relying on them during an actual incident. Untested runbooks can be worse than no runbook
 > at all.
 
-## Available Runbooks
+## What this section covers
 
 ### Critical (P1)
 
-- [Smart Contract Exploit](./smart-contract-exploit) - Active exploit or critical vulnerability
-- [Key Compromise](./key-compromise) - Private key or signer compromise
-- [Frontend Compromise](./frontend-compromise) - Website/UI compromise (routes to specific runbooks below)
-  - [DNS Hijack](./dns-hijack) - Domain/DNS compromise
-  - [CDN/Hosting Compromise](./cdn-hosting-compromise) - CDN or hosting provider compromise
-  - [Dependency Attack](./dependency-attack) - npm/package supply chain attack
-  - [Build Pipeline Compromise](./build-pipeline-compromise) - CI/CD compromise
+1. [Smart Contract Exploit](/incident-management/incident-response-template/runbooks/smart-contract-exploit):
+   active exploit or critical vulnerability.
+2. [Key Compromise](/incident-management/incident-response-template/runbooks/key-compromise): private
+   key or signer compromise.
+3. [Frontend Compromise](/incident-management/incident-response-template/runbooks/frontend-compromise):
+   website/UI compromise (routes to specialized runbooks below).
+4. [DNS Hijack](/incident-management/incident-response-template/runbooks/dns-hijack): domain/DNS
+   compromise.
+5. [CDN/Hosting Compromise](/incident-management/incident-response-template/runbooks/cdn-hosting-compromise):
+   CDN or hosting provider compromise.
+6. [Dependency Attack](/incident-management/incident-response-template/runbooks/dependency-attack):
+   npm/package supply chain attack.
+7. [Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise):
+   CI/CD compromise.
 
 ### High/Moderate (P2-P3)
 
-- [DDoS Attack](./ddos-attack) - Denial of service attacks
-- [Third-Party Outage](./third-party-outage) - External provider issues
+1. [DDoS Attack](/incident-management/incident-response-template/runbooks/ddos-attack): denial of
+   service attacks.
+2. [Third-Party Outage](/incident-management/incident-response-template/runbooks/third-party-outage):
+   external provider issues.
 
 ## Creating New Runbooks
 
-Use [Runbook Template](../templates/runbook-template) as your starting point.
+Use
+[Runbook Template](/incident-management/incident-response-template/templates/runbook-template) as
+your starting point.
 
 Good runbooks:
 
@@ -66,6 +83,17 @@ Consider creating runbooks for:
 - [ ] Data inconsistency
 </Checklist>
 
-*See [Incident Response Policy](../incident-response-policy) for the overall response process.*
+See
+[Incident Response Policy](/incident-management/incident-response-template/incident-response-policy)
+for the overall response process.
+
+## Further reading
+
+- [Incident Response Template overview](/incident-management/incident-response-template/overview): how the template pieces fit together
+- [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy): severity levels, roles, and escalation
+- [Runbook Template](/incident-management/incident-response-template/templates/runbook-template): the blank structure for writing your own
+- [Incident Management overview](/incident-management/overview): how the pages of this framework fit together
+
+---
 
 <ContributeFooter />

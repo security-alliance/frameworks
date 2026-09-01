@@ -1,6 +1,6 @@
 ---
 title: "External Security Reviews | Security Alliance"
-description: "External Security Reviews: Security assessments to identify vulnerabilities in applications and infrastructure. Build stakeholder trust and meet compliance."
+description: "Scope and run external security reviews for apps, infrastructure, and smart contracts—plus policy review and vendor selection—so findings become fixes"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,6 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,43 +21,65 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-An external security review is a time-boxed, security-based assessment of software systems, applications, and
-infrastructure to enhance security and identify vulnerabilities. External security reviews are essential for
-organizations to protect against threats and build trust with users and stakeholders.
+> 🔑 **Key Takeaway**: External reviews are time-boxed expert assessments. They reduce risk and educate teams, but they
+> are not a certificate of safety—pair them with preparation, remediation, and ongoing testing.
 
-## Why Are External Security Reviews Important?
+An external security review is a time-boxed, security-focused assessment of software systems, applications, and
+infrastructure to identify vulnerabilities and strengthen defenses. Reviews build trust with users and stakeholders when
+findings are fixed and openly tracked.
 
-According to research, significant value and data have been compromised due to security vulnerabilities in software
-systems. Modern applications face complex threats from malicious actors, and security issues can lead to data breaches,
-financial losses, and reputation damage.
+## Why external security reviews matter
 
-Beyond preventing security incidents, external security reviews provide several key benefits:
+Modern applications face complex threats. Security defects can lead to data breaches, financial loss, and reputation
+damage. Beyond incident prevention, reviews commonly deliver:
 
-- **Enhanced Security**: Find and fix vulnerabilities before they can be exploited
-- **Team Education**: Level up your engineering team's knowledge through security best practices
-- **Trust Building**: Demonstrate maturity and safety to users and stakeholders
-- **Risk Mitigation**: Identify business logic issues and implementation flaws
-- **Compliance**: Meet regulatory and industry security requirements
+- **Enhanced security:** find and fix issues before exploitation
+- **Team education:** transfer techniques and standards to engineers
+- **Trust building:** demonstrate maturity to users and counterparties
+- **Risk mitigation:** surface business-logic and implementation flaws
+- **Compliance support:** evidence for regulated or partner requirements
 
-## Scope of External Security Reviews
+## Scope of reviews
 
-Security reviews can encompass multiple layers of an organization's technology stack:
+Reviews can cover many layers:
 
-- **Applications**: Web applications, mobile apps, APIs, and microservices
-- **Infrastructure**: Cloud configurations, network security, access controls, and deployment pipelines
-- **Data Systems**: Databases, data processing pipelines, and storage security
-- **Third-party Integrations**: External APIs, libraries, and vendor services
-- **Documentation**: Technical specifications, security policies, and incident response procedures
+- **Applications:** web, mobile, APIs, microservices
+- **Infrastructure:** cloud config, network security, access control, pipelines
+- **Data systems:** databases, processing pipelines, storage controls
+- **Third-party integrations:** external APIs, libraries, vendors
+- **Documentation and process:** specifications, security policies, incident procedures
 
-External security reviews are not foolproof and cannot guarantee absolute security. They represent an ongoing commitment
-to safety rather than a one-time event.
+External reviews are not foolproof and cannot guarantee absolute security. Treat them as recurring commitment, not a
+one-time badge.
 
-## Contents
+## What this framework covers
 
-There are many different kinds of external security reviews, and we have some context on many of them here.
+1. [Smart Contract Security Reviews](/external-security-reviews/smart-contracts/overview): scoping, preparation, methods,
+   and vendor choice for on-chain code.
+2. [Security Policies and Procedures](/external-security-reviews/security-policies-procedures): reviewing internal
+   policy maturity alongside product assessments.
 
-1. [Smart Contract Audits](/external-security-reviews/smart-contracts/overview)
-2. [Security Policies and Procedures](/external-security-reviews/security-policies-procedures)
+### Smart contract subsection
+
+1. [Expectations](/external-security-reviews/smart-contracts/expectation): engagement phases and what good looks like.
+2. [Preparation](/external-security-reviews/smart-contracts/preparation): how to maximize review value before kickoff.
+3. [Vendor Selection](/external-security-reviews/smart-contracts/vendor-selection): private vs competitive audits and
+   selection criteria.
+4. [Manual Review](/external-security-reviews/smart-contracts/manual-review): how reviewers structure deep code analysis.
+
+## Related frameworks
+
+- [Security Testing](/security-testing/overview): internal testing that should precede and follow audits
+- [Secure Software Development](/secure-software-development/overview): review and coding standards
+- [Vulnerability Disclosure](/vulnerability-disclosure/overview): ongoing reporting after audits
+- [Incident Management](/incident-management/overview): when reviews or production uncover active issues
+- [Supply Chain](/supply-chain/overview): dependency and delivery integrity next to app reviews
+
+## Further reading
+
+- Nested smart-contract pages for engagement detail
+- [OWASP](https://owasp.org/) application assessment resources
+- [Trail of Bits — Building secure contracts](https://secure-contracts.com/)
 
 ---
 

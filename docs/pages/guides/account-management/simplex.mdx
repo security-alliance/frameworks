@@ -1,0 +1,155 @@
+---
+title: "SimpleX Chat Security | Security Alliance"
+description: "Secure SimpleX Chat: set a database passphrase, enable SimpleX Lock, verify security codes, control invitation links, and run groups without user identities."
+tags:
+  - Communication Platforms
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
+
+# SimpleX Chat Security
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+## Summary
+
+> 🔑 **Key Takeaway**: SimpleX has no accounts, so the local database is the identity. Set a passphrase, enable SimpleX
+> Lock, export encrypted backups, and verify security codes — nothing is recoverable from a server.
+
+SimpleX Chat has no user identifiers. There is no account, no username, and no directory entry. Contacts connect
+through single-use invitation links or a long-term contact address, and each connection uses its own pair of message
+queues on relay servers that never see a persistent identity.
+
+That removes the enumeration and impersonation surface most platforms carry, and it moves the entire risk to the
+device. Everything — contacts, groups, history, keys — lives in the local database. Losing the device without an
+exported backup loses every connection permanently, and there is no operator who can restore it or lock an attacker
+out. Settings labels below follow the mobile app; the desktop client is close but not identical.
+
+## For individuals
+
+These settings apply to a personal SimpleX installation. Every team member and moderator should configure them.
+
+### Account security checklist
+
+<Checklist id="account-security-checklist">
+- [ ]  **Set a database passphrase and store it in a password manager**
+  - Settings > Database passphrase & export > set your own passphrase.
+  - The app generates a random passphrase at install and keeps it in the device keystore. Setting an explicit
+  passphrase is what makes an exported backup usable on a new device.
+  - A lost passphrase is unrecoverable. There is no reset, no escrow, and no support path.
+- [ ]  Settings > Privacy & security > SimpleX Lock > **Enabled**
+  - Requires authentication when the app resumes from the background.
+  - Lock mode **Passcode** additionally allows a self-destruct passcode, which wipes the database and opens a new empty
+  profile when entered. Configure it only where coercion is a real risk, and understand that it destroys data with no
+  recovery.
+- [ ]  Settings > Privacy & security > Protect app screen > **Enabled**
+  - Blocks screenshots and hides content in the app switcher.
+- [ ]  Settings > Privacy & security > Send link previews > **Disabled**
+- [ ]  Settings > Privacy & security > Auto-accept images > **Disabled**
+  - Prevents unsolicited media from being fetched and written to the device automatically.
+- [ ]  **Export an encrypted database backup and test restoring it**
+  - Settings > Database passphrase & export > Export database, then store the file where the organization keeps other
+  high-value backups. The export is encrypted with the passphrase above.
+  - An untested backup is not a backup. Restore it on a second device before relying on it.
+- [ ]  **Set a message retention period**
+  - Database passphrase & export > delete messages after a chosen interval. This limits what a device compromise
+  exposes.
+- [ ]  **Keep the app updated and install it from an official source**
+  - [simplex.chat](https://simplex.chat/downloads/) or an official app store listing.
+</Checklist>
+
+### Verifying contacts and controlling connections
+
+SimpleX cannot be phished for an account, but a connection link can still be intercepted or relayed by an attacker
+sitting between the two parties at the moment of introduction.
+
+<Checklist id="connection-hygiene">
+- [ ]  **Verify the security code with every contact that matters**
+  - Open the contact > verify the security code by scanning it in person or reading it aloud on a video call. This is
+  the defense against a man-in-the-middle at connection time.
+- [ ]  **Prefer one-time invitation links over a shared contact address**
+  - A one-time link works for a single connection. A long-term contact address posted publicly invites unsolicited
+  contact from anyone who finds it.
+- [ ]  **Deliver invitation links over an already-authenticated channel**
+  - A link sent through a compromised channel connects the recipient to whoever intercepted it.
+- [ ]  **Use incognito mode for connections that should not see the main profile**
+  - Settings > Incognito. A random profile name is generated per new contact or group.
+- [ ]  **Separate roles with distinct chat profiles**
+  - A public-facing moderation profile and a private team profile can coexist in one installation; hidden profiles add
+  a password gate on top.
+</Checklist>
+
+### Network and metadata settings
+
+<Checklist id="network-settings">
+- [ ]  **Review which relay servers are in use**
+  - Settings > Network & servers. Preset operator servers are the default; a project with a strict metadata policy can
+  add or self-host SMP (messaging) and XFTP (file) servers.
+  - Self-hosting relays changes who observes traffic patterns. It does not grant access to message content, which is
+  end-to-end encrypted regardless of the relay.
+- [ ]  **Keep private message routing enabled**
+  - It separates the server that receives a message from the server that delivers it, so neither sees both ends.
+- [ ]  **Route over Tor when the network path itself is sensitive**
+  - Android supports a SOCKS proxy with Orbot and `.onion` host addresses; iOS routes through a VPN.
+- [ ]  **Understand the residual metadata**
+  - Relay operators see connection and traffic timing for the queues they host. SimpleX minimizes correlation between
+  queues; it does not eliminate network observation.
+</Checklist>
+
+## For team members
+
+Team members who help moderate but do not own groups should:
+
+- Complete every item in the checklists above, in particular the database passphrase and an exported backup.
+- Verify security codes with each teammate before treating a conversation as authenticated.
+- Never republish a group invitation link outside the channel it was intended for; the link is the access control.
+- Report suspected impersonation to group owners, who hold the moderation capabilities.
+
+## For admins
+
+These practices apply to operators who run SimpleX groups for a team or community.
+
+### Group configuration checklist
+
+<Checklist id="group-configuration">
+- [ ]  **Assign the lowest workable role to each member**
+  - Roles are observer (read-only), member, admin (can remove members and delete others' messages), and owner (can
+  change group preferences). Keep the owner count small and deliberate.
+- [ ]  **Choose the default role for link joiners consciously**
+  - A group link can admit new members as observers, which is the safe default for announcement-style groups.
+- [ ]  **Rotate the group link after any leak, and after staff departures**
+  - Anyone holding the link can join. There is no membership approval queue to fall back on.
+- [ ]  **Set group preferences to match the group's purpose**
+  - Disappearing messages, direct messages between members, delete-for-everyone, and voice messages are all owner-
+  controlled. Disabling direct messages between members reduces internal phishing in a public group.
+- [ ]  **Keep groups small enough to work**
+  - Every message is delivered separately to every member, so large groups degrade. Use SimpleX for team and
+  small-community use, not for a mass announcement channel.
+- [ ]  **Plan moderation without a global identity**
+  - There is no platform-wide ban and no account to report. Removal is per group, and a removed member can return
+  through any link they still hold — which is why link rotation is the real control.
+- [ ]  **Publish the canonical way to reach the project**
+  - Because there are no verified accounts, members have no way to distinguish a real operator from an impostor except
+  a project-controlled page listing the official link and the support policy.
+</Checklist>
+
+## Further reading
+
+- [Community Management: SimpleX](/community-management/simplex): running a SimpleX community safely
+- [Account Management overview](/guides/account-management/overview): how these product guides fit together
+- [Encrypted Communication Tools](/privacy/encrypted-communication-tools): how SimpleX compares to other messengers
+- [Communication Encryption](/encryption/communication-encryption): the mechanics behind end-to-end encryption
+- [SimpleX guide: privacy and security](https://simplex.chat/docs/guide/privacy-security.html): vendor documentation
+- [SimpleX guide: app settings](https://simplex.chat/docs/guide/app-settings.html): current settings paths
+
+---
+
+<ContributeFooter />

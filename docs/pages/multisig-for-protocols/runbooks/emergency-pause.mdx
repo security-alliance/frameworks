@@ -1,6 +1,6 @@
 ---
 title: "Emergency Pause Runbook | SEAL"
-description: "Runbook for emergency multisig pause transactions, including alerting, streamlined verification, backup interfaces, and post-pause actions."
+description: "Runbook for emergency multisig pause transactions, including alerting, streamlined verification, backup interfaces, and post-pause actions. This is an example"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -8,6 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -16,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Pause runbooks trade review time for speed: constrain what emergency paths can do and
+> use pre-tested backup UIs when minutes matter.
 
 This is an example runbook. Review and customize it for your protocol before use. Add your specific contract
 addresses, pause functions, emergency contacts, and communication channels.
@@ -160,7 +167,7 @@ Use backup infrastructure:
 
 See [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure) for detailed instructions.
 
-## Escalation
+### Escalation
 
 If threshold cannot be reached within SLA:
 
@@ -171,11 +178,14 @@ If threshold cannot be reached within SLA:
 
 **Emergency contacts**: See your configured emergency contact list.
 
-## Related Documents
+## Further reading
 
-- [Emergency Procedures](/multisig-for-protocols/emergency-procedures)
-- [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure)
-- [Incident Reporting](/multisig-for-protocols/incident-reporting)
-- [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview): how the runbooks in this section fit together
+- [Emergency Procedures](/multisig-for-protocols/emergency-procedures): the wider response this pause is part of
+- [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure): signing paths when the
+  primary interface is down
+- [Incident Reporting](/multisig-for-protocols/incident-reporting): formal reporting once the pause is in place
+
+---
 
 <ContributeFooter />

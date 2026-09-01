@@ -1,6 +1,6 @@
 ---
-title: "On-Chain Monitoring Tools | Security Alliance"
-description: "On-chain monitoring tools catalog: open-source and commercial options for transaction monitoring, anomaly detection, alerting, and reliability assessment."
+title: "On-Chain Monitoring Tools | SEAL"
+description: "Catalog open-source and commercial on-chain monitoring tools with reliability criteria: uptime, time-to-alert, delivery guarantees, and redundancy."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -20,11 +20,14 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> The tools below are primarily focused on EVM-compatible chains. For non-EVM chains (Solana, Cosmos, etc.), verify
-> chain support before selecting a tool. For critical systems, consider running monitors from two independent providers
-> simultaneously. See the [Reliability Considerations](#reliability-considerations) section below.
+> 🔑 **Key Takeaway**: Choose monitoring tools for detection quality and operational reliability — uptime,
+> time-to-alert, delivery guarantees, and redundant coverage — not feature lists alone.
 
-## Open Source / Self-Hosted
+The catalog below is primarily focused on EVM-compatible chains. For non-EVM chains (Solana, Cosmos, and others),
+verify chain support before selecting a tool. For critical systems, run monitors from two independent providers when
+practical. See [Reliability considerations](#reliability-considerations).
+
+## Open source / self-hosted
 
 ### BlockScout
 
@@ -45,9 +48,23 @@ blockchain node health, block propagation times, RPC endpoint availability, and 
 via a scraper.
 
 - **Chains:** Chain-agnostic (infrastructure layer)
-- **GitHub:** [prometheus/prometheus](https://github.com/prometheus/prometheus) | [grafana/grafana](https://github.com/grafana/grafana)
+- **GitHub:** [prometheus/prometheus](https://github.com/prometheus/prometheus) |
+  [grafana/grafana](https://github.com/grafana/grafana)
 
-## Commercial / Hosted
+### OpenChainBench
+
+:::warning
+This is a very recent project. Navigate with caution.
+:::
+
+Continuous infrastructure-level benchmark suite for RPC reliability, oracle price deviation, and bridge latency across 20+ chains. Tracks stale-state probability per RPC endpoint from three probe regions, measures oracle deviation against on-chain values for Chainlink, Pyth, and Redstone feeds, and benchmarks MEV-protection RPC endpoints (Flashbots Protect, MEV Blocker, Merkle). Useful as an independent baseline alongside Prometheus/Grafana scrapers and commercial monitors like Hypernative.
+
+- **Chains:** 20+ (EVM and non-EVM)
+- **License:** MIT (harnesses), CC-BY-4.0 (data)
+- **GitHub:** [ChainBench/OpenChainBench](https://github.com/ChainBench/OpenChainBench)
+- **Website:** [openchainbench.com](https://openchainbench.com)
+
+## Commercial / hosted
 
 ### Etherscan
 
@@ -114,24 +131,25 @@ and Slack alerts.
 - **Chains:** Solana
 - **Website:** [txscope.com](https://txscope.com)
 
-## Reliability Considerations
+## Reliability considerations
 
-Your monitoring system is only effective if it is itself reliable. Before committing to a tooling setup, evaluate
+A monitoring system is only effective if it is itself reliable. Before committing to a tooling setup, evaluate
 these factors:
 
 ### Self-hosted vs. managed
 
-| | Self-Hosted | Managed Platform |
+| | Self-hosted | Managed platform |
 | --- | --- | --- |
 | **Control** | Full control over configuration and data | Vendor controls infrastructure |
-| **Operational burden** | You own uptime, upgrades, and maintenance | Vendor handles ops |
-| **Vendor risk** | None | Platform downtime or shutdown affects you |
+| **Operational burden** | Operators own uptime, upgrades, and maintenance | Vendor handles ops |
+| **Vendor risk** | None | Platform downtime or shutdown removes visibility |
 | **Cost** | Infrastructure cost + engineering time | Subscription fee |
 
 ### Key reliability metrics to evaluate
 
 - **Uptime SLA:** What guaranteed availability does the provider offer? Is there a status page?
-- **Time-to-alert:** How quickly after an on-chain event does a notification reach you? Minutes matter during an exploit.
+- **Time-to-alert:** How quickly after an on-chain event does a notification reach responders? Minutes matter during an
+  exploit.
 - **Alert delivery guarantees:** Does the platform guarantee at-least-once delivery, or is it best-effort?
 
 ### Redundancy recommendation
@@ -142,15 +160,23 @@ platform has downtime or misses an anomaly, the self-hosted layer still provides
 
 ### Alert channel reliability
 
-Your monitoring is only as good as the delivery mechanism for its alerts.
+Monitoring is only as good as the delivery mechanism for its alerts.
 
 - **Prefer:** PagerDuty or OpsGenie (escalation policies, on-call rotations, delivery receipts)
 - **Use with care:** Slack, Discord, Telegram (useful for visibility, but easy to miss; no delivery guarantees)
-- **Don’t rely on email as the sole channel for critical alerts**: Email may be appropriate as a secondary or audit
+- **Do not rely on email as the sole channel for critical alerts**: Email may be appropriate as a secondary or audit
 channel, not primary paging (high latency, often filtered to spam)
 
 For high-severity alerts, use a dedicated paging tool with escalation so that if the primary on-call misses the
 alert, it automatically escalates to a secondary.
+
+## Further reading
+
+- [Monitoring overview](/monitoring/overview): first principles and when redundancy is warranted
+- [Monitoring guidelines](/monitoring/guidelines): what to cover before buying tooling
+- [Alert thresholds](/monitoring/thresholds): tuning signals against baseline behavior
+- [OpenZeppelin Monitor documentation](https://docs.openzeppelin.com/monitor)
+- [Forta documentation](https://docs.forta.network/)
 
 ---
 

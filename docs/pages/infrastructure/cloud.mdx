@@ -1,6 +1,6 @@
 ---
 title: "Cloud Infrastructure | Security Alliance"
-description: "Secure cloud infrastructure with RBAC, MFA, data encryption, VPCs, and CloudTrail logging. AWS, Azure, and GCP hardening guides plus open-source tools like CloudSploit and Prowler."
+description: "Secure cloud infrastructure with RBAC, MFA, encryption, VPCs, and audit logging, plus hardening guides for AWS, Azure, and GCP and open-source audit tools."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -8,6 +8,13 @@ tags:
   - DevOps
   - Cloud
   - SRE
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,6 +23,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Cloud security is IAM, encryption, network boundary, and logging done consistently. Misconfigured
+> public storage and overly broad roles remain common failure modes.
 
 Securing your cloud infrastructure could be considered as important as securing your decentralized application, as a lot
 of users will be interacting with your dapp through the cloud provider. Some best practices to consider are:
@@ -50,6 +60,14 @@ To aid with vulnerability detection and compliance, you could consider using the
 - **Prowler**: [Prowler](https://github.com/prowler-cloud/prowler)
 - **S3Scanner (AWS)**: [S3Scanner](https://github.com/sa7mon/S3Scanner)
 - **Zeus (AWS)**: [Zeus](https://github.com/DenizParlak/Zeus)
+
+## Further reading
+
+- [Infrastructure overview](/infrastructure/overview): how the pages of this framework fit together
+- [Access Management](/iam/access-management): the RBAC and lifecycle practice behind cloud control planes
+- [Network Security](/infrastructure/network-security): VPC boundaries, firewalls, and traffic monitoring
+- [AWS Well-Architected Security Pillar](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html):
+  a reference model for reviewing a cloud footprint
 
 ---
 

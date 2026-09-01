@@ -1,10 +1,17 @@
 ---
-title: "Identify & Mitigate Threats | Security Alliance"
-description: "Identify threats using STRIDE, attack surface analysis, and adversary modeling. Mitigate with defense in depth, least privilege, security by design, and incident response planning."
+title: "Identify and Mitigate Threats | SEAL"
+description: "Identify threats with STRIDE, attack-surface analysis, and adversary profiles; mitigate with defense in depth, least privilege, and response readiness."
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -14,10 +21,13 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Identifying and mitigating threats is a crucial part of the threat modeling process. By understanding potential threats
-and developing strategies to address them, projects can help protect their systems and data from security incidents.
+> 🔑 **Key Takeaway**: Enumerate threats against real entry points, then apply layered mitigations owned by specific
+> teams — lists without owners do not reduce risk.
 
-## Identifying Threats
+Identification and mitigation is the analytic core of threat modeling. Expand STRIDE-style analysis with Web3 attack
+surfaces such as contracts, wallets, and third-party integrations.
+
+## Identifying threats
 
 1. **Threat Enumeration**
    - Use frameworks like STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation
@@ -37,7 +47,7 @@ and developing strategies to address them, projects can help protect their syste
    - Review past security incidents and vulnerabilities to identify common attack patterns and weaknesses.
    - Use vulnerability databases and threat intelligence feeds to stay informed about emerging threats.
 
-## Mitigating Threats
+## Mitigating threats
 
 1. **Security Controls**
    - Implement security controls to mitigate identified threats. These can include technical controls, administrative
@@ -64,6 +74,12 @@ and developing strategies to address them, projects can help protect their syste
    - Develop and maintain an [incident response plan](/incident-management/overview) to quickly and effectively address
    security incidents.
    - Train team members on incident response procedures and conduct regular drills to ensure readiness.
+
+## Further reading
+
+- [Threat modeling overview](/threat-modeling/overview)
+- [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
+- [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/)
 
 ---
 
