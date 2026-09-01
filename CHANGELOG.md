@@ -412,5 +412,217 @@ Everything below predates our labelled-PR workflow: the original mdBook version 
 - Normalizing summary.md by @mattaereal
 - Updating Telegram, also a ToC and MITM attack by @mattaereal
 - Updating Google, added ToC, and SUMMARY by @mattaereal
+- Normalizing dividers by @mattaereal
+- Minor modifications, reordering SUMMARY by @mattaereal
+- Update src/community-management/README.md by @mattaereal
+- Update src/community-management/README.md by @mattaereal
+- Added key takeaways and improved some wording. by @mattaereal
+- Trying JoreAli's mdBook pagetoc by @mattaereal
+- feat: fix toc and package theme into "toc" folder ([#100](https://github.com/security-alliance/frameworks/pull/100)) by @Robert-MacWha
+- Update spell-check.yml by @mattaereal
+- Update discord.md by @NFTDreww
+- Update google.md by @NFTDreww
+- Update telegram.md by @NFTDreww
+- Update twitter.md by @NFTDreww
+- Improved formatting and summarized contents by @mattaereal
+- Improved formatting and summarized contents (google) by @mattaereal
+- Improved formatting and summarized contents (telegram) by @mattaereal
+- Improved formatting and summarized contents (X) by @mattaereal
+- Fw community mgmt ([#99](https://github.com/security-alliance/frameworks/pull/99)) by @NFTDreww
+- Solving conflicts from previous merge by @mattaereal
+- Solving more conflicts from previous merge. My ide messed up something by @mattaereal
+- Adding following banner, improved ToC, footer, and more by @mattaereal
+- Normalizing platform contents for comm mgmt by @mattaereal
+- update telegram session management instructions ([#104](https://github.com/security-alliance/frameworks/pull/104)) by @matt-dragonfly
+- Removing remove from toc title for twitter by @mattaereal
+- Tweaked footer by @mattaereal
+- Adding conditional banner, and prebuild to change SUMMARY depending on branch. by @mattaereal
+- Testing pre-build run on develop by @mattaereal
+- Merge from develop, testing conditional banner by @mattaereal
+- Merge from develop! New stage. ([#111](https://github.com/security-alliance/frameworks/pull/111)) by @mattaereal
+- Updating summary by @mattaereal
+- Merge prebuild-summary into develop ([#114](https://github.com/security-alliance/frameworks/pull/114)) by @mattaereal
+- Merge prebuild-summary into develop ([#116](https://github.com/security-alliance/frameworks/pull/116)) by @mattaereal
+- Updating prebuild.sh to work with vercel's config and fixing grammar ([#117](https://github.com/security-alliance/frameworks/pull/117)) by @mattaereal
+- Merge prebuild-summary into develop ([#118](https://github.com/security-alliance/frameworks/pull/118)) by @mattaereal
+- Contributors first run by @mattaereal
+- Tags and Contributors plugin merge into mdbook-metadata, plus an example by @mattaereal
+- Cleaned contributors plugin, removing unused code by @mattaereal
+- Fix broken link by @engn33r
+- Updating spellcheck wordlist.txt by @mattaereal
+- Updating spellcheck wordlist.txt (removing invalid character by @mattaereal
+- Updating spellcheck wordlist.txt (adding draww again). This spellcheck I swear to god... by @mattaereal
+- Initial commit for this updated framework by @mattaereal
+- Adding new words to wordlist by @mattaereal
+- Merging user-team-security into awareness, at least for now. A lot of overlap by @mattaereal
+- Updating summary to remove user-team-security by @mattaereal
+- Proof reading and improving current contents with Claude. Adding Key takeaways. by @mattaereal
+- Removing user-team-security folder, no longer needed after merging it with awareness. by @mattaereal
+- Added prebuild.sh to vercel_build and updated Summaries. by @mattaereal
+- Updating prebuild to work in vercel for dynamic summaries. by @mattaereal
+- Updating wordlist as well for summaries by @mattaereal
+- Updating wordlist by @mattaereal
+- Updating prebuild config. by @mattaereal
+- Restructuring contributors and tags generation by @mattaereal
+- Improving the format of contributors on the contributing final list by @mattaereal
+- Forgot to keep track of these files on the previous commit. by @mattaereal
+- Moved CSS from within rust to actual CSS/HTML files, with a fallback in rust for some themes, but mainly files. by @mattaereal
+- Fix announcement banner width ([#131](https://github.com/security-alliance/frameworks/pull/131)) by @davidthegardens
+- feat: remove banner from production site ([#133](https://github.com/security-alliance/frameworks/pull/133)) by @Robert-MacWha
+- chore: update Cargo.lock for mdbook-metadata plugin by @mattaereal
+- Updating contributions by @mattaereal
+- Contributors style and formatting upgrade ([#136](https://github.com/security-alliance/frameworks/pull/136)) by @mattaereal
+- Minor theme fix, bullets on outline by @mattaereal
+- Updated contributor list with correct information by @mattaereal
+- Merging develop from mdbook-contributors ([#138](https://github.com/security-alliance/frameworks/pull/138)) by @mattaereal
+- Ens best practices ([#139](https://github.com/security-alliance/frameworks/pull/139)) by @Ghadi8
+- ENS, Awareness, Summaries and Contributors hygiene. by @mattaereal
+- Removing track of contributorsindex and tagsindex by @mattaereal
+- Code review additions ([#145](https://github.com/security-alliance/frameworks/pull/145)) by @ElliotFriedman
+- Updated contributing and readme.md by @mattaereal
+- Removed catpuccin, updated mdbook and admonish. ([#147](https://github.com/security-alliance/frameworks/pull/147)) by @mattaereal
+- Clean update of logo and favicon. ([#151](https://github.com/security-alliance/frameworks/pull/151)) by @mattaereal
+- Updating develop to the new and more humane beginning of a written Opsec Framework ([#154](https://github.com/security-alliance/frameworks/pull/154)) by @mattaereal
+- Updating Opsec with latest updates ([#157](https://github.com/security-alliance/frameworks/pull/157)) by @mattaereal
+- Initial draft of personal security travel guide! ([#158](https://github.com/security-alliance/frameworks/pull/158)) by @mattaereal
+- Attribution by @mattaereal
+- Updating naming on opsec travel guide by @mattaereal
+- Updating, and re-ordering paragraphs from opsec travel guide by @mattaereal
+- Attribution to sources by @mattaereal
+- Add Secure Multisig Signing Process ([#122](https://github.com/security-alliance/frameworks/pull/122)) by @engn33r
+- Removing the old operational-security folder, moving secure-multisig contents within wallet-security, and re-generated the overview of frameworks with AI. by @mattaereal
+- feat: Safe Harbor Framework ([#144](https://github.com/security-alliance/frameworks/pull/144)) by @Robert-MacWha
+- doc: Instruction for re-writing history to sign commits ([#156](https://github.com/security-alliance/frameworks/pull/156)) by @Robert-MacWha
+- Tidy plugins ([#143](https://github.com/security-alliance/frameworks/pull/143)) by @Robert-MacWha
+- feat: overhaul of the Wallet Security section ([#164](https://github.com/security-alliance/frameworks/pull/164)) by @pinalikefruit
+- feat: fix extra fields & add verbose errors ([#167](https://github.com/security-alliance/frameworks/pull/167)) by @Robert-MacWha
+- Fix several misc ([#168](https://github.com/security-alliance/frameworks/pull/168)) by @mattaereal
+- Removing spell-check from develop. Only on main from now on. Exploratory. by @mattaereal
+- feat: security testing - solidity focused ([#163](https://github.com/security-alliance/frameworks/pull/163)) by @PatrickAlphaC
+- Introducing Decentralized IR Framework ([#165](https://github.com/security-alliance/frameworks/pull/165)) by @relotnek
+- feat: external security reviews & patrick addition ([#160](https://github.com/security-alliance/frameworks/pull/160)) by @PatrickAlphaC
+- Adding to the outline the latest pushed content. by @mattaereal
+- Bump mdbook version ([#177](https://github.com/security-alliance/frameworks/pull/177)) by @davidthegardens
+- feat: added more information on wallet security ([#173](https://github.com/security-alliance/frameworks/pull/173)) by @PatrickAlphaC
+- Update PULL_REQUEST_TEMPLATE.md ([#174](https://github.com/security-alliance/frameworks/pull/174)) by @mattaereal
+- fix: stewards ([#172](https://github.com/security-alliance/frameworks/pull/172)) by @PatrickAlphaC
+- Update tldr.md ([#181](https://github.com/security-alliance/frameworks/pull/181)) by @NFTDreww
+- Update README.md ([#178](https://github.com/security-alliance/frameworks/pull/178)) by @GodwinDA
+- Update implementation-process.md ([#179](https://github.com/security-alliance/frameworks/pull/179)) by @GodwinDA
+- feat: updating linting, devcontainer, and local development ([#184](https://github.com/security-alliance/frameworks/pull/184)) by @PatrickAlphaC
+- Going back to 0.4.40 stable. by @mattaereal
+- Fix spelling issues and update wordlist ([#188](https://github.com/security-alliance/frameworks/pull/188)) by @mattaereal
+- Fix typos in mdbook-metadata README.md and add renderer to wordlist by @mattaereal
+- Update threat-modeling-overview.md ([#182](https://github.com/security-alliance/frameworks/pull/182)) by @damboy0
+- Updating Safe Harbor Documentation ([#186](https://github.com/security-alliance/frameworks/pull/186)) by @DicksonWu654
+- Updating outlines. Removing empty frameworks from main by @mattaereal
+- Fixing broken link in PR template by @mattaereal
+- Fixing grammar issues and spellcheck by @mattaereal
+- 3 frameworks, contributors and spellcheck (Wallet Security, External Security Reviews, and Security Testing frameworks) ([#187](https://github.com/security-alliance/frameworks/pull/187)) by @mattaereal
+- feat: handle reverse records per chain ([#199](https://github.com/security-alliance/frameworks/pull/199)) by @Ghadi8
+- Update Safe Harbor documentation for clarity and consistency ([#195](https://github.com/security-alliance/frameworks/pull/195)) by @DicksonWu654
+- Fix cross-site image loading issues ([#200](https://github.com/security-alliance/frameworks/pull/200)) by @Robert-MacWha
+- quick fix for external security reviews by @mattaereal
+- Fixed DevContainer Issue + github cli + Updated Documentation + Pre-build docker image ([#198](https://github.com/security-alliance/frameworks/pull/198)) by @DicksonWu654
+- Update link in Identity and Access Management documentation for accuracy ([#203](https://github.com/security-alliance/frameworks/pull/203)) by @DicksonWu654
+- Update links in self-checklist.md for improved navigation ([#205](https://github.com/security-alliance/frameworks/pull/205)) by @DicksonWu654
+- feat: Add insider-threats framework (DPRK IT Workers) ([#193](https://github.com/security-alliance/frameworks/pull/193)) by @shortdoom
+- Addition of a Mutation Testing Section ([#180](https://github.com/security-alliance/frameworks/pull/180)) by @nbelenkov
+- docs: update wallet security resources ([#213](https://github.com/security-alliance/frameworks/pull/213)) by @pinalikefruit
+- Add manual review page in External Security Reviews framework. ([#183](https://github.com/security-alliance/frameworks/pull/183)) by @the-caliber
+- Update guide to put some realistic info a bout juice jacking by @mattaereal
+- Updated dev ([#215](https://github.com/security-alliance/frameworks/pull/215)) by @Robert-MacWha
+- Updating main on missing commits due to previous selective-merging ([#192](https://github.com/security-alliance/frameworks/pull/192)) by @mattaereal
+- quick fix for external security reviews by @mattaereal
+- Adding dobs suggestions by @mattaereal
+- Add Yaniv Sofer as a contributor and update review roles in insider t… ([#221](https://github.com/security-alliance/frameworks/pull/221)) by @DicksonWu654
+- hotfix: fix broken summary.md.main link by @Robert-MacWha
+- fix: naming change - explicit DPRK IT Workers framework ([#223](https://github.com/security-alliance/frameworks/pull/223)) by @shortdoom
+- Incident management playbook ([#224](https://github.com/security-alliance/frameworks/pull/224)) by @00xWizard
+- Incident management playbooks ([#233](https://github.com/security-alliance/frameworks/pull/233)) by @scode2277
+- Vocs Migration ([#227](https://github.com/security-alliance/frameworks/pull/227)) by @scode2277
+- Restructure README.md and CONTRIBUTING.md ([#225](https://github.com/security-alliance/frameworks/pull/225)) by @scode2277
+- Fix logo path in README.md ([#237](https://github.com/security-alliance/frameworks/pull/237)) by @scode2277
+- Update telegram.mdx ([#243](https://github.com/security-alliance/frameworks/pull/243)) by @aviggiano
+- feat: update the PULL_REQUEST_TEMPLATE for vocs ([#245](https://github.com/security-alliance/frameworks/pull/245)) by @scode2277
+- feat: Benchmark component ([#241](https://github.com/security-alliance/frameworks/pull/241)) by @Robert-MacWha
+- feat: create mermaid wrapper pre-build script ([#242](https://github.com/security-alliance/frameworks/pull/242)) by @scode2277
+- chore(images): migrate all images to S3 ([#252](https://github.com/security-alliance/frameworks/pull/252)) by @scode2277
+- fix: CONTRIBUTING.md + contributing.mdx ([#250](https://github.com/security-alliance/frameworks/pull/250)) by @scode2277
+- chore: update tags ([#253](https://github.com/security-alliance/frameworks/pull/253)) by @scode2277
+- fix(flickering on reload): remove redirects from vercel.json ([#249](https://github.com/security-alliance/frameworks/pull/249)) by @scode2277
+- chore(spellcheck): migrate from Aspell to CSpell ([#251](https://github.com/security-alliance/frameworks/pull/251)) by @scode2277
+- chore: add temporary patch for Vocs search indexing issue ([#257](https://github.com/security-alliance/frameworks/pull/257)) by @scode2277
+- fix: branch-related files ([#259](https://github.com/security-alliance/frameworks/pull/259)) by @scode2277
+- Adding indexes! index.mdx -> index.html ([#260](https://github.com/security-alliance/frameworks/pull/260)) by @mattaereal
+- Migrating from npm to pnpm ([#261](https://github.com/security-alliance/frameworks/pull/261)) by @mattaereal
+- fix: remove duplicate framework from sidebar ([#262](https://github.com/security-alliance/frameworks/pull/262)) by @scode2277
+- Fix/markdown lint outputs ([#271](https://github.com/security-alliance/frameworks/pull/271)) by @scode2277
+- chore: add pre-build script to sync the contributing files ([#264](https://github.com/security-alliance/frameworks/pull/264)) by @scode2277
+- chore: update the issue templates to be more frameworks-customized ([#265](https://github.com/security-alliance/frameworks/pull/265)) by @scode2277
+- chore: add og images for preview links ([#276](https://github.com/security-alliance/frameworks/pull/276)) by @scode2277
+- feat/issue-forms ([#279](https://github.com/security-alliance/frameworks/pull/279)) by @scode2277
+- DNS & Domain security PR (final) ([#284](https://github.com/security-alliance/frameworks/pull/284)) by @mattaereal
+- Fix/dickson slug in infra framework ([#285](https://github.com/security-alliance/frameworks/pull/285)) by @scode2277
+- chore: upgrade filter ([#277](https://github.com/security-alliance/frameworks/pull/277)) by @scode2277
+- update collapsed sections ([#286](https://github.com/security-alliance/frameworks/pull/286)) by @scode2277
+- Monthly update & migration (mdbook -> vocs) ([#255](https://github.com/security-alliance/frameworks/pull/255)) by @mattaereal
+- Updating vsconfig to enable new updates on main by @mattaereal
+- Updating vsconfig to enable new updates on main ([#289](https://github.com/security-alliance/frameworks/pull/289)) by @mattaereal
+- Chore/travel guide update ([#291](https://github.com/security-alliance/frameworks/pull/291)) by @scode2277
+- SEAL Certifications incorporation, including 5 certs ([#294](https://github.com/security-alliance/frameworks/pull/294)) by @Robert-MacWha
+- Certs fix: adding current status to overview and minor typos/grammar improvements ([#296](https://github.com/security-alliance/frameworks/pull/296)) by @DicksonWu654
+- Certs fix: Updating certified partners ([#297](https://github.com/security-alliance/frameworks/pull/297)) by @DicksonWu654
+- Sync Main ([#295](https://github.com/security-alliance/frameworks/pull/295)) by @Robert-MacWha
+- Wallet security multisig content ([#275](https://github.com/security-alliance/frameworks/pull/275)) by @DicksonWu654
+- fix: update safe mobile app references and titles ([#292](https://github.com/security-alliance/frameworks/pull/292)) by @compojoom
+- Create Devops Cert & Updating 2 other Certs ([#304](https://github.com/security-alliance/frameworks/pull/304)) by @DicksonWu654
+- Pnpm update ([#308](https://github.com/security-alliance/frameworks/pull/308)) by @Robert-MacWha
+- fixing spotlight zone ([#311](https://github.com/security-alliance/frameworks/pull/311)) by @scode2277
+- making the vite deadlinks error just a warning ([#312](https://github.com/security-alliance/frameworks/pull/312)) by @scode2277
+- Revert "Create Devops Cert & Updating 2 other Certs" ([#317](https://github.com/security-alliance/frameworks/pull/317)) by @DicksonWu654
+- Restore automated tag colors and fix broken link ([#310](https://github.com/security-alliance/frameworks/pull/310)) by @scode2277
+- Add Isaac and Dickson as stewards ([#316](https://github.com/security-alliance/frameworks/pull/316)) by @DicksonWu654
+- fix md-linter path in the github workflow ([#331](https://github.com/security-alliance/frameworks/pull/331)) by @scode2277
+- Add meta descriptions to every page for SEO enhancement ([#324](https://github.com/security-alliance/frameworks/pull/324)) by @scode2277
+- Remove misadded files ([#338](https://github.com/security-alliance/frameworks/pull/338)) by @scode2277
+- Bump up react-router-dom dep ([#341](https://github.com/security-alliance/frameworks/pull/341)) by @scode2277
+- Making the searchbar indexer not run in local builds ([#348](https://github.com/security-alliance/frameworks/pull/348)) by @scode2277
+- Certs: Changes to Multisig Cert from Auditor's Feedback ([#339](https://github.com/security-alliance/frameworks/pull/339)) by @DicksonWu654
+- Certs: SFC DNS fixes based on feedback ([#340](https://github.com/security-alliance/frameworks/pull/340)) by @DicksonWu654
+- fix: restore Tailwind usage for Certs components after vocs upgrade ([#354](https://github.com/security-alliance/frameworks/pull/354)) by @scode2277
+- Chore: fix index generator titles/ordering + update fetched tags ([#352](https://github.com/security-alliance/frameworks/pull/352)) by @scode2277
+- Update Safe Harbor documentation for clarity and accuracy ([#356](https://github.com/security-alliance/frameworks/pull/356)) by @DicksonWu654
+- Fix double title suffix by adding titleTemplate config ([#361](https://github.com/security-alliance/frameworks/pull/361)) by @smagdali
+- Cert Multisig Updates ([#362](https://github.com/security-alliance/frameworks/pull/362)) by @DicksonWu654
+- Certs Incident Response update ([#363](https://github.com/security-alliance/frameworks/pull/363)) by @DicksonWu654
+- Certs DNS Update ([#364](https://github.com/security-alliance/frameworks/pull/364)) by @DicksonWu654
+- Certs treasury ops update ([#365](https://github.com/security-alliance/frameworks/pull/365)) by @DicksonWu654
+- Certs workspace update ([#366](https://github.com/security-alliance/frameworks/pull/366)) by @DicksonWu654
+- Certs devops update ([#367](https://github.com/security-alliance/frameworks/pull/367)) by @DicksonWu654
+- Update vocs.config.ts to explore frameworks and outline collapsed or not ([#368](https://github.com/security-alliance/frameworks/pull/368)) by @mattaereal
+- Merge Develop into Main ([#298](https://github.com/security-alliance/frameworks/pull/298)) by @davidthegardens
+- Grammar fix on-chain-adoption-guide.mdx by @mattaereal
+- Update wordlist.txt by @mattaereal
+- Add reauthentication to wordlist.txt by @mattaereal
+- Rename files with '&' to 'and' for URL compatibility ([#372](https://github.com/security-alliance/frameworks/pull/372)) by @smagdali
+- Chore: add sitemap.xml ([#371](https://github.com/security-alliance/frameworks/pull/371)) by @scode2277
+- Update styles.css by @mattaereal
+- Enhancement: Extending sidebar reminder to work on PRs from forks too by using pull_request_target ([#373](https://github.com/security-alliance/frameworks/pull/373)) by @scode2277
+- Fix: vocs.config path in index generator + added more in depth escapes for ts syntax ([#394](https://github.com/security-alliance/frameworks/pull/394)) by @scode2277
+- chore: migrate preview deployments from Vercel to Cloudflare Pages via GitHub Actions ([#395](https://github.com/security-alliance/frameworks/pull/395)) by @scode2277
+- Chore: Remove production workflow as it works with the git integration ([#402](https://github.com/security-alliance/frameworks/pull/402)) by @scode2277
+- Chore: weekly repo cleanup ([#413](https://github.com/security-alliance/frameworks/pull/413)) by @scode2277
+- Incident response template integration ([#407](https://github.com/security-alliance/frameworks/pull/407)) by @DicksonWu654
+- Revert "chore(deps): bump the npm_and_yarn group across 1 directory with 2 updates" ([#426](https://github.com/security-alliance/frameworks/pull/426)) by @mattaereal
+- Fix indentation for fact-check contributor entry ([#427](https://github.com/security-alliance/frameworks/pull/427)) by @mattaereal
+- Fix typos across docs ([#415](https://github.com/security-alliance/frameworks/pull/415)) by @DicksonWu654
+- Incident management attribution cleanup ([#423](https://github.com/security-alliance/frameworks/pull/423)) by @DicksonWu654
+- Clarify preview feedback path on contribution docs ([#418](https://github.com/security-alliance/frameworks/pull/418)) by @DicksonWu654
+- Updating main from develop ([#436](https://github.com/security-alliance/frameworks/pull/436)) by @scode2277
+- Chore: making Monitoring, DevSecOps, Supply Chain, AI Security and In… ([#438](https://github.com/security-alliance/frameworks/pull/438)) by @scode2277
+- Monthly Main branch update ([#486](https://github.com/security-alliance/frameworks/pull/486)) by @scode2277
+- Chore: monthly .org update ([#552](https://github.com/security-alliance/frameworks/pull/552)) by @scode2277
+- Chore: monthly .org update (#617)
 
 </details>
