@@ -1,9 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
 import './BadgeDisplay.css';
 import contributorsData from '../../docs/pages/config/contributors.json';
-import { getBadgeConfig, BadgeIcon } from '../shared/badgeConfig';
+import {
+  getBadgeConfig,
+  badgeIconUid,
+  BadgeIcon,
+  getTierChip,
+  isDisplayableBadge,
+  renderBadgeIcon
+} from '../shared/badgeConfig';
 
 interface Badge {
   name: string;
@@ -27,25 +33,6 @@ interface Contributor {
   badges: Badge[];
 }
 
-function useIntersectionObserver(options = {}) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(entry.target);
-      }
-    }, options);
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return [ref, isVisible] as const;
-}
-
 function isNewlyEarned(assignedDate: string): boolean {
   if (!assignedDate) return false;
   try {
@@ -63,7 +50,12 @@ function formatDate(dateString: string): string {
   if (!dateString) return '';
   try {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC'
+    });
   } catch {
     return dateString;
   }
@@ -83,8 +75,9 @@ interface BadgeDisplayProps {
   layout?: 'grid' | 'stack';
 }
 
-function BadgeCard({ badge, index, compact }: { badge: Badge; index: number; compact: boolean }) {
+function BadgeCard({ badge, index, uid }: { badge: Badge; index: number; uid: string }) {
   const config = getBadgeConfig(badge.name);
+  const tierChip = getTierChip(config);
   const effectiveDate = getBadgeDate(badge);
   const dateLabel = getBadgeDateLabel(badge);
   const isNew = isNewlyEarned(effectiveDate);
@@ -104,29 +97,26 @@ function BadgeCard({ badge, index, compact }: { badge: Badge; index: number; com
         '--badge-color': config.color,
         '--tier-glow': `${config.color}33`
       } as React.CSSProperties}
-      title={`${badgeLabel} - ${badgeDescription}`}
+      role="img"
+      aria-label={`${badgeLabel}: ${badgeDescription}`}
     >
       <div className="badge-card">
-        <BadgeIcon name={badge.name} isNew={isNew} />
+        <BadgeIcon name={badge.name} isNew={isNew} uid={uid} />
         {isNew && (
           <div className="new-indicator">
             <span className="pulse-dot"></span>
-          </div>
-        )}
-        {!compact && (
-          <div className="badge-tier-indicator">
-            {config.tier === 'legendary' && '👑'}
-            {config.tier === 'epic' && '💎'}
-            {config.tier === 'rare' && '⭐'}
           </div>
         )}
       </div>
 
       <div className="badge-tooltip">
         <div className="tooltip-header">
-          <strong>{badgeLabel}</strong>
-          <span className={`tier-badge tier-${config.tier}`}>
-            {config.tier?.toUpperCase()}
+          <span className="tooltip-art" aria-hidden="true">
+            {renderBadgeIcon(badge.name, `${uid}-tip`)}
+          </span>
+          <span className="tooltip-heading">
+            <strong>{badgeLabel}</strong>
+            <span className={`tier-badge ${tierChip.className}`}>{tierChip.text}</span>
           </span>
         </div>
         <p className="tooltip-description">{badgeDescription}</p>
@@ -150,17 +140,15 @@ export function BadgeDisplay({
   showCount = false,
   layout = 'grid'
 }: BadgeDisplayProps) {
-  const [containerRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
-
   let displayBadges: Badge[] = [];
 
   if (badges) {
-    displayBadges = badges.filter(b => b.name && b.name.trim() !== '');
+    displayBadges = badges.filter(b => isDisplayableBadge(b.name));
   } else if (contributorSlug) {
     const contributors = contributorsData as unknown as Record<string, Contributor>;
     const contributor = contributors[contributorSlug];
     if (contributor?.badges) {
-      displayBadges = contributor.badges.filter(b => b.name && b.name.trim() !== '');
+      displayBadges = contributor.badges.filter(b => isDisplayableBadge(b.name));
     }
   }
 
@@ -184,10 +172,7 @@ export function BadgeDisplay({
   }
 
   return (
-    <div
-      ref={containerRef}
-      className={`badge-display ${compact ? 'compact' : ''} ${layout} ${isVisible ? 'visible' : ''}`}
-    >
+    <div className={`badge-display ${compact ? 'compact' : ''} ${layout}`}>
       {showCount && !compact && (
         <div className="badge-summary">
           <span className="badge-count">{displayBadges.length}</span>
@@ -197,7 +182,12 @@ export function BadgeDisplay({
 
       <div className={`badges-container ${layout}`}>
         {visibleBadges.map((badge, index) => (
-          <BadgeCard key={`${badge.name}-${badge.framework || ''}-${index}`} badge={badge} index={index} compact={compact} />
+          <BadgeCard
+            key={`${badge.name}-${badge.framework || ''}-${index}`}
+            badge={badge}
+            index={index}
+            uid={badgeIconUid('b', contributorSlug, index)}
+          />
         ))}
         {hiddenBadges.length > 0 && (() => {
           const count = hiddenBadges.length;
@@ -208,7 +198,12 @@ export function BadgeDisplay({
               <div className="badge-overflow-tooltip" data-cols={cols}>
                 <div className="badge-overflow-tooltip-grid" data-cols={cols}>
                   {hiddenBadges.map((badge, index) => (
-                    <BadgeCard key={`overflow-${badge.name}-${badge.framework || ''}-${index}`} badge={badge} index={index} compact={true} />
+                    <BadgeCard
+                      key={`overflow-${badge.name}-${badge.framework || ''}-${index}`}
+                      badge={badge}
+                      index={index}
+                      uid={badgeIconUid('o', contributorSlug, index)}
+                    />
                   ))}
                 </div>
               </div>

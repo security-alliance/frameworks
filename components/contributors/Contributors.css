@@ -104,26 +104,14 @@
 
 .contributors-group h2 {
   margin-bottom: 2rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid var(--theme-popup-border);
   position: relative;
-}
-
-.contributors-group h2::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(128, 128, 128, 0.25), transparent);
 }
 
 /* Grid Layout */
 .contributors-page-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
   padding: 0 0.5rem;
   max-width: 1400px;
 }
@@ -133,9 +121,10 @@
   background: var(--sidebar-bg);
   border: 1px solid var(--theme-popup-border);
   border-radius: 6px;
-  padding: 0.75rem 0.625rem;
+  padding: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease, z-index 0s 0.2s;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,11 +133,13 @@
   position: relative;
   min-height: 0;
   min-width: 0;
-  isolation: isolate;
 }
 
 .contributors-page-card:hover {
   transform: translateY(-3px);
+  /* Above neighbouring cards only. See the stacking note below. */
+  z-index: 3;
+  transition: all 0.2s ease, z-index 0s;
 }
 
 /* Content wrapper */
@@ -170,8 +161,8 @@
 }
 
 .contributors-page-avatar {
-  width: 60px;
-  height: 60px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--theme-popup-border);
@@ -203,13 +194,14 @@
   box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
 }
 
-/* Role badge overlay on avatar corner */
+/* Role badge overlay on avatar corner.
+   Offset tracks the avatar: half its width (26px) plus a 6px overhang. */
 .role-badge-overlay {
   position: absolute;
   bottom: -4px;
-  right: calc(50% - 38px);
-  width: 26px;
-  height: 26px;
+  right: calc(50% - 32px);
+  width: 22px;
+  height: 22px;
   z-index: 3;
   cursor: pointer;
 }
@@ -370,10 +362,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  font-size: 0.75rem;
+  gap: 0.125rem;
+  font-size: 0.7rem;
   color: var(--fg);
-  padding: 0.5rem 0.75rem;
+  padding: 0.375rem 0.5rem;
   border: 1px solid var(--theme-popup-border);
   border-radius: 6px;
   width: 100%;
@@ -381,7 +373,7 @@
 }
 
 .steward-label {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -437,24 +429,10 @@
 
 /* Badge Display Section */
 .contributors-page-badges {
-  padding-top: 0.75rem;
+  padding-top: 0.5rem;
   border-top: 1px solid var(--theme-popup-border);
   width: 100%;
   margin-top: auto;
-}
-
-.contributors-page-badges::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg,
-      transparent,
-      rgba(128, 128, 128, 0.25),
-      transparent);
 }
 
 .contributors-page-card:hover .contributors-page-badges {
@@ -478,7 +456,7 @@
 .contributors-page-card:has(.role-badge-overlay:hover),
 .contributors-page-card:has(.avatar-wrapper:hover),
 .contributors-page-card:has(.contributor-hover-card:hover) {
-  z-index: 99999;
+  z-index: 3;
   transition-delay: 0s;
   isolation: auto;
 }
@@ -535,15 +513,13 @@
 
 .contributors-group .contributors-page-card {
   border-left: 4px solid #a855f7;
-  border-right: 1px solid #ffffff17;
-  border-bottom: 1px solid #ffffff17;
 }
 
 /* Contributor hover card (shown when hovering avatar) */
 .contributor-hover-card {
   position: absolute;
-  /* sit right next to the avatar: 50% of avatar-wrapper (card center) + half-avatar (30px) */
-  left: calc(50% + 50px);
+  /* sit right next to the avatar: 50% of avatar-wrapper (card center) + half-avatar (26px) */
+  left: calc(50% + 46px);
   top: 50%;
   transform: translateY(-50%);
   width: 230px;
@@ -598,14 +574,13 @@
   line-height: 1.2;
 }
 
+/* Job titles wrap onto as many lines as they need. Truncating them to a single
+   line hid most of the text, which is the only place it appears. */
 .hover-card-job-title {
   font-size: 0.7rem;
   color: #9ca3af;
   font-style: italic;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.35;
 }
 
 .hover-card-company {
@@ -642,16 +617,32 @@
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.06);
 }
 
-:root:not([data-vocs-theme='dark']) .hover-card-name    { color: #111827; }
-:root:not([data-vocs-theme='dark']) .hover-card-job-title { color: #6b7280; }
+:root:not([data-vocs-theme='dark']) .hover-card-name {
+  color: #111827;
+}
+
+:root:not([data-vocs-theme='dark']) .hover-card-job-title {
+  color: #6b7280;
+}
+
 :root:not([data-vocs-theme='dark']) .hover-card-company {
   color: #374151;
   background: rgba(15, 23, 42, 0.05);
   border-color: rgba(15, 23, 42, 0.1);
 }
-:root:not([data-vocs-theme='dark']) .hover-card-steward  { color: #2563eb; }
-:root:not([data-vocs-theme='dark']) .hover-card-description { color: #4b5563; border-top-color: rgba(15, 23, 42, 0.08); }
-:root:not([data-vocs-theme='dark']) .hover-card-avatar   { border-color: rgba(15, 23, 42, 0.15); }
+
+:root:not([data-vocs-theme='dark']) .hover-card-steward {
+  color: #2563eb;
+}
+
+:root:not([data-vocs-theme='dark']) .hover-card-description {
+  color: #4b5563;
+  border-top-color: rgba(15, 23, 42, 0.08);
+}
+
+:root:not([data-vocs-theme='dark']) .hover-card-avatar {
+  border-color: rgba(15, 23, 42, 0.15);
+}
 
 /* Corner Accent for elite contributors */
 .corner-accent {
@@ -706,40 +697,32 @@
   }
 
   .contributors-page-list {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.625rem;
     padding: 0;
   }
 
   .contributors-page-card {
-    padding: 0.625rem 0.5rem;
+    padding: 0.5rem 0.375rem;
   }
 
   .contributors-page-avatar {
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
   }
 
-  .avatar-badge {
-    right: calc(50% - 30px - 6px);
-    width: 22px;
-    height: 22px;
-    font-size: 0.75rem;
+  .role-badge-overlay {
+    right: calc(50% - 28px);
+    width: 20px;
+    height: 20px;
+  }
+
+  .contributor-hover-card {
+    left: calc(50% + 42px);
   }
 
   .contributors-page-badges {
-    margin: 1rem 0 0.5rem;
-    padding-top: 1rem;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .contributors-page-list {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 0.875rem;
-  }
-
-  .stat-number {
-    font-size: 2.5rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
   }
 }
