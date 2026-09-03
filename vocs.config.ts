@@ -120,23 +120,10 @@ const config = {
             {
               text: 'Developer-Targeted Intrusions',
               collapsed: false,
-              dev: true,
               items: [
-                {
-                  text: 'Overview',
-                  link: '/devsecops/developer-targeted-intrusions/overview',
-                  dev: true,
-                },
-                {
-                  text: 'Execution Paths in Untrusted Code',
-                  link: '/devsecops/developer-targeted-intrusions/execution-paths',
-                  dev: true,
-                },
-                {
-                  text: 'Handling Untrusted Code',
-                  link: '/devsecops/developer-targeted-intrusions/handling-untrusted-code',
-                  dev: true,
-                },
+                { text: 'Overview', link: '/devsecops/developer-targeted-intrusions/overview' },
+                { text: 'Execution Paths in Untrusted Code', link: '/devsecops/developer-targeted-intrusions/execution-paths' },
+                { text: 'Handling Untrusted Code', link: '/devsecops/developer-targeted-intrusions/handling-untrusted-code' },
               ],
             },
             { text: 'Code Signing', link: '/devsecops/code-signing' },
