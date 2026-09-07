@@ -8,7 +8,7 @@
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "cspell": "10.0.1",
-    "tailwindcss": "4.3.2",
+    "tailwindcss": "4.3.3",
     "vocs": "2.6.2",
     "waku": "1.0.0-beta.6"
   },
@@ -67,8 +67,8 @@
     "mermaid": "^11.16.1",
     "minisearch": "^7.2.0",
     "playwright": "^1.60.0",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "react-router-dom": "^7.15.1",
     "sharp": "^0.35.1",
     "uuid": "^14.0.0"
