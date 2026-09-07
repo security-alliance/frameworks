@@ -1,0 +1,180 @@
+---
+title: "Private Registries and Package Mirrors | Security Alliance"
+description: "Run an internal package registry: what mirroring defends against, how routing blocks dependency confusion, and why the registry itself becomes a control."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - DevOps
+  - SRE
+contributors:
+  - role: wrote
+    users: [s1ns3nz0]
+  - role: reviewed
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../components'
+
+# Private registries and package mirrors
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: An internal registry gives a team one place to decide what enters a build, and one record of
+> what actually entered. It is also a component every build trusts, so its write access and its upstream credentials
+> become security controls.
+
+A private registry sits between an organization's developers and the public registries their builds depend on. Instead
+of every workstation and every CI job resolving `npm install` or `pip install` straight to npmjs.com or PyPI, requests
+go to a server the organization runs, which serves its own copy when it has one and otherwise fetches from upstream
+and stores what it retrieved.
+
+Routing every request through one server is what makes the rest possible. A package can be inspected, approved, or
+refused at that point instead of in each repository that consumes it. A copy stays available after upstream removes
+the original. And because nothing resolves without passing through, there is a record of what was served, to whom,
+and when. A lockfile cannot answer that: it records what a build intended to resolve, not which builds actually pulled
+a version, which is the question an incident asks.
+
+The same concentration is the cost. One server now stands between every build in the organization and the code it
+compiles. Running a registry is a trade: fewer paths out to the open internet, and one more system that has to be
+secured like part of the pipeline.
+
+## Cache, curation, and vendoring
+
+What that trade buys depends on which of three arrangements is deployed. All three get called the same thing, and they
+carry different work and different guarantees.
+
+A **pull-through cache** is that arrangement at its simplest. Setup is close to trivial and adoption is a
+configuration change. It does not decide anything: whatever upstream serves, the cache serves, so it delivers
+availability and a record, but not a gate.
+
+A **curated repository** admits packages only after an approval step. A package that has not been reviewed is not
+available, and a build requesting it fails. The request never falls through to the public registry unnoticed.
+This is the arrangement that turns a registry into a control. It also needs an owner, because every new dependency
+now waits on a person.
+
+**Vendoring** commits dependency source directly into the repository. There is no registry and no network fetch at
+build time. Reviews happen in pull requests like any other code. The cost is that updates become commits and the
+repository grows, which is why vendoring tends to be reserved for a small set of critical dependencies.
+
+These compose. A cache is a reasonable starting point because it changes nothing about how developers work, and
+curation can then be applied to the small number of packages that warrant it. Choosing by artifact risk keeps the
+review load survivable; see
+[Supply Chain Levels for Software Artifacts](/supply-chain/supply-chain-levels-software-artifacts) for a tiering
+to base that on.
+
+## Dependency confusion
+
+None of those arrangements decides which source a name resolves from. That is a separate question, and it has a
+failure mode that deploying a registry does not fix on its own.
+
+Package managers frequently search more than one source. When an internal name exists only inside the organization and
+the resolver is also allowed to consult a public registry, an attacker who publishes that same name publicly, at a
+higher version, can win the resolution. The build then installs attacker code under a name the team considers its own.
+
+The failure is in resolution order, not in the package itself, so pinning a version does not address it. A pinned
+internal package that has never been published publicly is still resolvable from a public source the moment an
+attacker registers the name.
+
+Two controls close it, and both belong at the registry rather than in each repository.
+
+**Reserve the namespace publicly.** Registering the organization's scope or package names on the public registry
+means an attacker cannot claim them. This is cheap and worth doing even where routing is already correct, because it
+survives a misconfigured client.
+
+**Route by name, and replace rather than extend.** Internal scopes should resolve only from the internal registry.
+The exact mechanism differs by ecosystem, and the distinction that matters is whether a setting *replaces* the index
+or *adds* to it. In pip, `--index-url` replaces the default index while `--extra-index-url` adds a second one that is
+searched alongside it, with version precedence deciding the winner; the second form is the one that is exploitable.
+In npm, a scope can be bound to a registry so that `@org/*` never resolves elsewhere.
+
+A team that runs a registry without configuring routing has added a cache and none of the protection.
+
+## The registry is part of the trust base
+
+Routing configured correctly means every resolution now terminates at the internal registry. That is the protection,
+and it is also what makes the registry worth attacking: a single component that can serve modified bytes to every
+build in the organization at once. That is the same trust concentration a CI runner has, and it deserves comparable
+treatment.
+
+A lockfile looks like it closes this, and the reason it does not is a matter of timing. It records integrity hashes
+computed from whatever was fetched when the lock was written. If the registry serves
+modified content *after* that point, the hash catches it. If the registry was already serving modified content when
+the lock was written or last updated, the hash records the modified bytes and every later build verifies successfully
+against them. Lockfiles protect the window after locking, not the moment of locking, so the registry's integrity
+matters most during dependency updates.
+
+Four properties of the registry therefore become security controls:
+
+- **Write access to internal namespaces.** Whoever can publish `@org/internal-lib` can reach every build that consumes
+  it, with none of the review a source change would get.
+- **The promotion path.** If a package can move from unreviewed to approved without a recorded decision, curation is
+  a label rather than a gate.
+- **The registry's own upstream credentials.** A token that lets the registry fetch from upstream is a token
+  worth stealing, and it is easy to leave long-lived because nothing prompts a rotation.
+- **Backups and rebuild capability.** A registry holding the only copy of an artifact that upstream has removed is
+  holding an artifact that cannot be re-fetched.
+
+Access to the registry should be governed like access to the pipeline, not like access to a file share. The
+enforcement patterns in [Policy as Code](/devsecops/policy-as-code/overview) apply directly: a registry allowlist is
+policy data a gate reads, and this page is about how the registry behind that allowlist is run.
+
+## Operational failure modes
+
+The failures below need no attacker. Each is ordinary operation, and each removes one of the properties the registry
+was deployed for.
+
+**A cache can hide an upstream fix.** A stale entry keeps serving a version that has since been superseded by a
+security release. Cached content needs a refresh policy and a way to force invalidation when an advisory lands.
+
+**A curated repository stalls delivery if nobody owns it.** Approval queues that nobody works get routed around, and
+the workaround is usually a developer pointing at the public registry directly. Curate the artifacts that warrant it
+and let the rest pass through.
+
+**An upstream deletion stops being visible.** One reason to run a mirror is to survive a package disappearing. The same
+property means a team may not notice that it disappeared, including when the reason was a malware takedown. Reconcile
+the mirror against upstream state; a successful build is no evidence that upstream is unchanged.
+
+**A registry concentrates availability risk.** Every build depends on it. Teams should know how to build when it is
+down, and should have run that path at least once.
+
+<Checklist id="private-registry-baseline">
+- [ ] Internal scopes and package names **must** be reserved on the public registry
+- [ ] Internal scopes **must** resolve only from the internal registry, using index replacement rather than index
+  extension
+- [ ] Publish access to internal namespaces **must** be restricted and reviewed on the same cadence as pipeline access
+- [ ] The registry's upstream credentials **must** be short-lived or rotated on a defined schedule
+- [ ] Packages entering the registry **should** be scanned once at entry, with the result attached to the artifact
+- [ ] Promotion from unreviewed to approved **must** record who decided and on what basis
+- [ ] Cached content **should** have a refresh policy and a documented way to force invalidation
+- [ ] The mirror **should** be reconciled against upstream so withdrawals and takedowns stay visible
+- [ ] Registry logs **should** be retained long enough to answer which builds pulled a given version
+- [ ] Teams **should** keep a build path that works while the registry is unavailable, and **should** have exercised
+  it at least once
+</Checklist>
+
+## Further reading
+
+- [Dependency Awareness](/supply-chain/dependency-awareness): version pinning, lockfile integrity, and checksum
+  verification for teams consuming packages
+- [Supply Chain Levels for Software Artifacts](/supply-chain/supply-chain-levels-software-artifacts): risk tiering to
+  decide which dependencies warrant curation
+- [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats): the attack patterns these controls address
+- [Supply Chain Incident Response](/supply-chain/incident-response-supply-chain): what to do when a served package
+  turns out to be compromised
+- [Policy as Code](/devsecops/policy-as-code/overview): enforcing registry allowlists and artifact provenance at
+  pipeline gates
+- [Third-Party Script Security](/front-end-web-app/third-party-script-security): self-hosting third-party scripts,
+  the browser-delivery counterpart to vendoring
+- [Dependency confusion](https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610): Alex Birsan's 2021
+  writeup of the resolution-order attack
+- [3 ways to mitigate risk when using private package feeds](https://azure.microsoft.com/en-us/resources/3-ways-to-mitigate-risk-using-private-package-feeds/):
+  Microsoft's guidance published in response to the same disclosure
+- [npm scoped registries](https://docs.npmjs.com/cli/using-npm/scope#associating-a-scope-with-a-registry): binding a
+  scope to a specific registry
+- [pip index options](https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-index-url): the difference between
+  replacing and extending the package index
+
+---
+
+<ContributeFooter />
