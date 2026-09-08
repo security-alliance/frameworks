@@ -163,7 +163,16 @@
       "Community & Marketing",
       "Security Specialist"
     ],
+    "/community-management/matrix": [
+      "Community & Marketing"
+    ],
     "/community-management/overview": [
+      "Community & Marketing"
+    ],
+    "/community-management/session": [
+      "Community & Marketing"
+    ],
+    "/community-management/simplex": [
       "Community & Marketing"
     ],
     "/community-management/telegram": [
@@ -196,6 +205,24 @@
       "Engineer/Developer",
       "Operations & Strategy",
       "Smart Contracts"
+    ],
+    "/devsecops/developer-targeted-intrusions/execution-paths": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps",
+      "SRE"
+    ],
+    "/devsecops/developer-targeted-intrusions/handling-untrusted-code": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps",
+      "SRE"
+    ],
+    "/devsecops/developer-targeted-intrusions/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps",
+      "SRE"
     ],
     "/devsecops/governance-proposal-security": [
       "Engineer/Developer",
@@ -260,6 +287,32 @@
       "Security Specialist",
       "DevOps",
       "SRE"
+    ],
+    "/devsecops/policy-as-code/ci-pipeline": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps",
+      "SRE"
+    ],
+    "/devsecops/policy-as-code/governance": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
+    "/devsecops/policy-as-code/overview": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps",
+      "SRE",
+      "Protocol"
+    ],
+    "/devsecops/policy-as-code/release-and-runtime": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps",
+      "SRE",
+      "Protocol"
     ],
     "/devsecops/repository-hardening": [
       "Engineer/Developer",
@@ -485,6 +538,9 @@
     "/guides/account-management/linear": [
       "Business Tools"
     ],
+    "/guides/account-management/matrix": [
+      "Communication Platforms"
+    ],
     "/guides/account-management/mercury": [
       "Business Tools"
     ],
@@ -502,7 +558,13 @@
     "/guides/account-management/sentry": [
       "DevOps Accounts"
     ],
+    "/guides/account-management/session": [
+      "Communication Platforms"
+    ],
     "/guides/account-management/signal": [
+      "Communication Platforms"
+    ],
+    "/guides/account-management/simplex": [
       "Communication Platforms"
     ],
     "/guides/account-management/slack": [
@@ -1475,6 +1537,7 @@
     "Community Management": "community-management",
     "DevSecOps": "devsecops",
     "Isolation & Sandboxing": "isolation",
+    "Policy as Code": "policy-as-code",
     "DPRK IT Workers": "dprk-it-workers",
     "Encryption": "encryption",
     "ENS": "ens",
