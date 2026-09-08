@@ -48,9 +48,10 @@ function transformMdxToMd(content) {
   
   // Convert internal MDX links to MD paths
   // /contribute/... -> /docs/pages/contribute/...mdx
+  // Keep any #anchor after the .mdx extension instead of inside it
   content = content.replace(
-    /\[([^\]]+)\]\(\/contribute\/([^\)]+)\)/g,
-    '[$1](/docs/pages/contribute/$2.mdx)'
+    /\[([^\]]+)\]\(\/contribute\/([^\)#]+)(#[^\)]*)?\)/g,
+    (_m, text, page, hash) => `[${text}](/docs/pages/contribute/${page}.mdx${hash || ''})`
   );
   
   // Remove horizontal rules (standalone --- lines, but not in code blocks)

@@ -1,6 +1,6 @@
 ---
 title: "Developer Machine Confinement | SEAL"
-description: "Practical confinement configurations for Claude Code, Codex CLI, and VS Code dev containers to constrain blast radius on developer machines."
+description: "Confine Claude Code, Codex CLI, and VS Code dev containers on developer machines to limit blast radius from agents and untrusted local code."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,12 +10,11 @@ contributors:
     users: [ElliotFriedman]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
 # Developer Machine Confinement
 
@@ -284,8 +283,10 @@ Trail of Bits has published a hardened devcontainer at
 Claude Code and VSCode Containers against untrusted codebases in security audits. It's a useful starting point if you
 want a well-considered baseline rather than building from scratch.
 
-## References
+## Further reading
 
+* [Developer-targeted intrusions](/devsecops/developer-targeted-intrusions/overview): execution paths and the intake
+  procedure that confinement supports
 * [Claude Code sandboxing](https://code.claude.com/docs/en/sandboxing)
 * [Codex CLI sandboxing](https://developers.openai.com/codex/concepts/sandboxing)
 * [OpenCode permissions](https://opencode.ai/docs/permissions/)
@@ -298,4 +299,6 @@ want a well-considered baseline rather than building from scratch.
 * [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)
 * [Docker, *Docker Engine Security*](https://docs.docker.com/engine/security/)
 
-</TagProvider>
+---
+
+<ContributeFooter />

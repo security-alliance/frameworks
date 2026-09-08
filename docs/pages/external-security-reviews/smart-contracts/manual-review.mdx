@@ -8,6 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [the-caliber]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -16,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Manual review finds logic and design flaws automation misses. Systematic notes, diagrams, and
+> checklists keep analysis complete under time pressure.
 
 Manual review of a smart contract is the process of carefully examining the source code to identify potential
 vulnerabilities, logic errors, and design flaws.
@@ -340,14 +347,20 @@ Update the report and issue status based on the updated code.
         - These may include the reasons why an issue is acknowledged, or mitigations that will not be implemented at the
         smart contract level, but are not limited to these.
 
-## Final thoughts
+### Final thoughts
 
 Having multiple teams/members review each contract individually leads to better results, as it ensures more sets of eyes
 are examining the code.
 
-## References
+## Further reading
 
-- [Auditing mental model by Caliber](https://www.calibersec.com/smart-contract-auditing-mental-model/)
+- [Smart Contract Security Reviews](/external-security-reviews/smart-contracts/overview): where manual review sits
+  among the other methodologies
+- [Code Reviews and Peer Audits](/secure-software-development/code-reviews-peer-audits): applying the same reading
+  discipline internally
+- [Auditing mental model by Caliber](https://www.calibersec.com/smart-contract-auditing-mental-model/): how experienced
+  reviewers structure a pass
+- [Building Secure Contracts](https://secure-contracts.com/): Trail of Bits guidance on properties and known pitfalls
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "DNSSEC, CAA, SMTP DANE and Email Security | SEAL"
-description: "Implement DNSSEC for cryptographic DNS authentication, CAA records to control certificate issuance, and email security with SPF, DKIM, MTA-STS, and DMARC to prevent spoofing attacks."
+description: "Implement DNSSEC for cryptographic DNS authentication, CAA records to control certificate issuance, and SPF, DKIM, DMARC, MTA-STS, and DANE for email."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -9,6 +9,8 @@ contributors:
     users: [Raiders0786, gunnim]
   - role: reviewed
     users: [dickson, mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -17,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: DNSSEC, CAA, and email authentication (SPF/DKIM/DMARC, DANE where used) reduce spoofing and
+> unauthorized certificate or mail paths. Configure and monitor them as production controls.
 
 ## DNSSEC Implementation
 
@@ -380,6 +385,14 @@ via SMTP, sending MTAs MUST deliver reports despite any TLS-
 related failures and SHOULD NOT include this SMTP session in the
 next report. This may mean that the reports are delivered
 unencrypted.*
+
+## Further reading
+
+- [Domain & DNS Security overview](/infrastructure/domain-and-dns-security/overview): how this subsection fits together
+- [DNS Basics & Common Attacks](/infrastructure/domain-and-dns-security/dns-basics-and-attacks): the spoofing paths
+  these controls close
+- [Email Encryption](/encryption/email-encryption): protecting message content alongside authentication
+- [Internet.nl](https://internet.nl/): test a domain's DNSSEC, DMARC, and STARTTLS configuration
 
 ---
 

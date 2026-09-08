@@ -1,6 +1,6 @@
 ---
 title: "Cold Vs Hot Wallet | Security Alliance"
-description: "Compare cold vs hot wallets: security trade-offs, use cases, and risk profiles. Hardware wallets, paper wallets, and air-gapped devices vs browser extensions and mobile wallets."
+description: "Compare cold vs hot wallets: security trade-offs, use cases, and risk profiles. Hardware wallets, paper wallets. The primary distinction between wallet"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [pinalikefruit]
   - role: reviewed
     users: [Coinspect, patrickalphac]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Hot wallets maximize convenience and online exposure; cold wallets reduce remote attack surface
+> at the cost of operational friction. Match fund tier to exposure.
 
 The primary distinction between wallet types is their connectivity to the internet. This factor dictates their security
 threat model, risk profile, and ideal use cases.
@@ -90,6 +95,15 @@ Regardless of the type, non-custodial wallets place the full burden of security 
 - **Online Vulnerabilities**: If the device they are on (computer or phone) is compromised, your assets can be stolen.
 - **Supply Chain Attacks**: Be cautious of both software and hardware integrity. Always download wallet software from
 official sources and purchase hardware wallets directly from the manufacturer to avoid receiving a tampered device.
+
+## Further reading
+
+- [Wallet Security overview](/wallet-security/overview): how the pages of this framework fit together
+- [For Beginners & Small Balances](/wallet-security/for-beginners-and-small-balances): a hot-wallet-first setup done
+  safely
+- [For Intermediates & Medium Balances](/wallet-security/intermediates-and-medium-funds): adding cold storage as
+  balances grow
+- [Seed Phrase Management](/wallet-security/seed-phrase-management): the backup practices both wallet types depend on
 
 ---
 

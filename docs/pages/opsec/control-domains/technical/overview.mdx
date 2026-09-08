@@ -1,19 +1,36 @@
 ---
 title: "Technical Security Controls | Security Alliance"
-description: "Technical controls: device hardening, network security, encrypted storage, MFA with hardware keys, cold storage, and multisig wallet security for Web3."
+description: "Technical OpSec controls: device hardening, network security, encrypted storage, hardware MFA, and cryptocurrency-specific custody patterns."
 tags:
   - Security Specialist
   - Operations & Strategy
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Nested OpSec overview; child map lives in parent IA / sidebar until section pages stabilize.
+  owner: maintainers
+*/}
 
 # Technical & Digital Controls
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Technical controls harden devices, networks, storage, authentication, and crypto-asset handling
+> so digital attack paths are reduced and monitored.
 
 Technical controls form the backbone of operational security, protecting systems, networks, and data from digital
 threats. This section outlines key technical controls that should be implemented as part of a comprehensive security
@@ -167,6 +184,14 @@ Technical controls specifically designed to address the unique security challeng
 Effective technical and digital controls provide a strong foundation for operational security. By implementing
 comprehensive device, network, data, and authentication protections, organizations can significantly reduce their attack
 surface and better protect their digital assets.
+
+## Further reading
+
+- [Control Domains overview](/opsec/control-domains/overview): how the four control domains fit together
+- [Device Hardening](/opsec/control-domains/technical/device-hardening): securing the endpoints
+- [Network and Communication Security](/opsec/control-domains/technical/network-communication-security): protecting
+  traffic and channels
+- [Encrypted Storage and Backups](/opsec/control-domains/technical/encrypted-storage-backups): protecting data at rest
 
 ---
 

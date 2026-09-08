@@ -1,6 +1,6 @@
 ---
 title: "Enhanced Controls for High-Risk Accounts | SEAL"
-description: "Enhanced security controls for high-risk custodial accounts: MPC custody recommendations, zero-trust architecture, hardware security keys, dedicated devices, SIEM monitoring, and policy engine rules."
+description: "Enhanced controls for high-risk custodial accounts: MPC thresholds, zero-trust access paths, hardware keys, dedicated devices, SIEM monitoring"
 tags:
   - Treasury Ops
   - Operations
@@ -10,16 +10,22 @@ contributors:
     users: [dickson]
   - role: reviewed
     users: [relotnek, bsamuels453, ElliotFriedman]
+  - role: fact-checked
+    users: []
 ---
 
-import { TagList, AttributionList, ContributeFooter } from "../../../components"
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # Enhanced Controls for High-Risk Accounts
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-For Critical and High impact custodial accounts, implement the following controls in addition to baseline measures.
+> 🔑 **Key Takeaway**: High and Critical impact accounts need more than baseline MFA: dedicated devices, stronger
+> quorum/MPC patterns, policy-engine gates, and monitored access paths.
+
+For Critical and High impact custodial accounts, implement the following controls in addition to baseline measures from
+the [Classification Framework](/treasury-operations/classification).
 
 ---
 
@@ -32,6 +38,8 @@ For Critical and High impact custodial accounts, implement the following control
 
 For DeFi interactions: refer to the [DeFi Risk Assessment Guide](https://entethalliance.org/specs/defi-risks/v1/) for
 recommended procedures.
+
+Large receive/send ceremonies: [Guide: Large Cryptocurrency Transfers](/treasury-operations/transaction-verification).
 
 ## Access Security
 
@@ -86,14 +94,14 @@ Policy scope definitions (examples):
 
 Suggested approver thresholds (treasury contexts):
 
-| Operation            | Impact   | Urgency        | Approver Threshold            |
-| -------------------- | -------- | -------------- | ----------------------------- |
-| Emergency Freeze     | Critical | Emergency      | 2/4                           |
-| Protocol Parameters  | High     | Routine        | 4/7 (7/9+ for upgrades)       |
-| Capital Allocation   | High     | Time-Sensitive | 3/5                           |
-| Treasury - Large     | High     | Routine        | 4/7                           |
-| Treasury - Small     | Medium   | Routine        | 3/5                           |
-| Constrained DeFi     | Medium   | Time-Sensitive | 2/3                           |
+| Operation | Impact | Urgency | Approver Threshold |
+| --- | --- | --- | --- |
+| Emergency Freeze | Critical | Emergency | 2/4 |
+| Protocol Parameters | High | Routine | 4/7 (7/9+ for upgrades) |
+| Capital Allocation | High | Time-Sensitive | 3/5 |
+| Treasury - Large | High | Routine | 4/7 |
+| Treasury - Small | Medium | Routine | 3/5 |
+| Constrained DeFi | Medium | Time-Sensitive | 2/3 |
 
 ## Custody Policy Engine Rules
 
@@ -122,7 +130,7 @@ enforcement.
   - Bastion enforces MFA, device posture checks, and approved software versions
   - No direct custody access from employee devices
   - Centralized patch management and security configuration
-  
+
 - Cloud Workspace Isolation: Use browser-isolated or virtual workspace environments (e.g., Citrix, AWS WorkSpaces, Azure
   Virtual Desktop)
   - Custody access occurs only within a controlled virtual environment
@@ -148,11 +156,16 @@ For Critical and High impact accounts, implement centralized security monitoring
 For Medium and Low impact accounts, leverage custodian's native audit logs with weekly manual review and automated
 alerting for critical events (new device enrollment, policy changes, transactions above threshold).
 
+## Further reading
+
+- [Classification Framework](/treasury-operations/classification)
+- [Registration Documents](/treasury-operations/registration-documents)
+- [Transaction Verification](/treasury-operations/transaction-verification)
+- [Treasury Operations overview](/treasury-operations/overview)
+- [Multisig for Protocols](/multisig-for-protocols/overview)
+- [Infrastructure — Zero-Trust Principles](/infrastructure/zero-trust-principles)
+- [Monitoring](/monitoring/overview)
+
 ---
-
-### See also
-
-- Classification: [Custodial Treasury Security: Classification Framework](./classification)
-- Templates: [Registration Documents](./registration-documents)
 
 <ContributeFooter />

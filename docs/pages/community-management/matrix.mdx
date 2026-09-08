@@ -1,0 +1,105 @@
+---
+title: "Matrix Security | Security Alliance"
+description: "Run a Matrix community safely: federation and homeserver trust, room join rules, power levels, ban lists and server ACLs, and cross-signed operator devices."
+tags:
+  - Community & Marketing
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
+
+# Matrix
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Federation makes room membership a data-distribution decision. Every homeserver with a member in
+> a room holds a copy of it, and every unverified operator device is an unaccounted-for reader.
+
+Matrix community security spans homeserver choice, device verification, room configuration, and federated
+moderation—each covered in depth in the [Matrix Security Guide](/guides/account-management/matrix). Use this page to
+find the right section.
+
+## The community manager's role in security
+
+Matrix is the decentralized option Web3 projects reach for when they want to run community infrastructure they control
+rather than rent. A project can host its own homeserver, keep its own metadata, and remain reachable from every other
+server in the federation. Element is the client most members will use.
+
+That control comes with operator responsibility that Discord and Telegram absorb on the project's behalf. Spam
+filtering, raid response, ban propagation, and abuse handling are the community team's job, executed through room
+configuration and moderation bots rather than a vendor's trust-and-safety pipeline.
+
+What differs most from centralized platforms is the trust boundary. A Matrix room is replicated to every homeserver
+that has a member in it, so admitting one member from a hostile server hands that server a copy of the room's history
+going forward. Encryption limits this to metadata, but many large community rooms are deliberately unencrypted so that
+moderation tooling works — which means content, too.
+
+### Why following this guide is not optional
+
+Matrix's per-device encryption model has an operational consequence community managers meet immediately: an unverified
+session is untrusted. Cross-signing exists so that a device added to an operator account — by an attacker with the
+password, or by a compromised homeserver administrator — is visibly unverified to everyone in the room. Ignoring those
+warnings discards the only signal the protocol provides.
+
+Room defaults are the other recurring failure. Encryption cannot be enabled retroactively and cannot be turned off once
+enabled, history visibility decides how much archive a raid inherits, and power level 100 cannot be revoked by an
+equal. These are decisions made at room creation that are painful to correct afterwards.
+
+### What is at stake
+
+| Risk | Consequence |
+| --- | --- |
+| **Unverified operator device** | Attacker-added session reads encrypted rooms and posts as the team |
+| **Lost recovery key** | Encrypted history becomes permanently unreadable on any new device |
+| **Hostile federated server** | A member from an abusive homeserver gives that server a copy of the room |
+| **Over-granted power levels** | A compromised administrator at level 100 cannot be demoted by another administrator |
+| **Permissive join rules** | Public, directory-listed rooms invite raids and archive scraping |
+| **Bridge exposure** | A bridge to another platform decrypts room content for the bridged side |
+| **Homeserver compromise** | Server operator visibility over metadata, and over content in unencrypted rooms |
+
+The guide addresses these with room-level configuration, moderation tooling, and homeserver operating practice.
+
+## What the guide covers
+
+The guide is structured by scope: personal account first, then room and server operations.
+
+| Scope | What it covers |
+| --- | --- |
+| **Personal account** | Recovery key setup, cross-signing every session, session review, discovery settings |
+| **Encryption limits** | Metadata exposure, unencrypted federated rooms, bridges, homeserver choice |
+| **Room and space operations** | Join rules, history visibility, power levels, moderation bots, ban lists, server ACLs |
+| **Homeserver operations** | Patching, registration policy, admin credentials, backups, federation monitoring |
+
+## Topic index
+
+| Topic | Summary | Guide section |
+| --- | --- | --- |
+| **Recovery key** | Secure Backup key that restores encrypted history and verifies new logins | [Account security checklist](/guides/account-management/matrix#account-security-checklist) |
+| **Cross-signing** | Verify every session; unverified devices are the protocol's compromise signal | [Account security checklist](/guides/account-management/matrix#account-security-checklist) |
+| **Session review** | Audit signed-in clients and sign out anything unrecognized | [Account security checklist](/guides/account-management/matrix#account-security-checklist) |
+| **What encryption covers** | Content is protected; membership, timestamps, and device lists are not | [Encryption limits](/guides/account-management/matrix#understanding-what-encryption-does-and-does-not-cover) |
+| **Join rules and history** | Invite-only, space-member, or knock rules; restrict pre-join history | [Room configuration](/guides/account-management/matrix#room-configuration-checklist) |
+| **Power levels** | Default 0, moderator 50, administrator 100; grant 100 rarely and audit it | [Room configuration](/guides/account-management/matrix#room-configuration-checklist) |
+| **Moderation bots and ban lists** | Draupnir enforcing bans and redactions across every protected room | [Moderation](/guides/account-management/matrix#moderation-and-abuse-response) |
+| **Server ACLs** | Ban an abusive homeserver from a room instead of chasing recreated accounts | [Moderation](/guides/account-management/matrix#moderation-and-abuse-response) |
+| **Homeserver hygiene** | Patching, restricted registration, admin MFA, tested backups | [Homeserver operations](/guides/account-management/matrix#homeserver-operations) |
+
+For step-by-step procedures, see the [Matrix Security Guide](/guides/account-management/matrix).
+
+## Further reading
+
+- [Matrix Security Guide](/guides/account-management/matrix)
+- [Community Management overview](/community-management/overview): how platform pages fit together
+- [Matrix.org moderation guide](https://matrix.org/docs/communities/moderation/): power levels, ban lists, server ACLs
+- [Element documentation](https://docs.element.io/): client settings and account security
+
+---
+
+<ContributeFooter />

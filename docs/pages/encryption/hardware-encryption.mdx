@@ -1,9 +1,16 @@
 ---
-title: "Hardware Encryption | Security Alliance"
-description: "Use dedicated hardware for robust encryption: enable TPM on computers, deploy self-encrypting drives (SEDs), and use HSMs to securely generate, store, and manage encryption keys."
+title: "Hardware Encryption | SEAL"
+description: "Use TPM, self-encrypting drives, and HSMs where appropriate to generate, store, and apply cryptographic keys in hardware-backed environments."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,14 +20,28 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Hardware-backed key storage (TPM, SED, HSM) reduces exposure of keys to host memory and malware
+> when deployed and managed correctly.
+
+Hardware encryption moves key use into purpose-built modules. Consumer endpoints often rely on TPM; high-assurance key
+custody uses HSMs.
+
 Hardware encryption, such as HSM, uses dedicated hardware to encrypt data, providing robust security. Utilizing a HSM is
 a fairly specialized thing, but consumers are for example often using TPM.
 
-## Best Practices
+## Best practices
 
 1. Enable TPM when available on your computer to enhance the security of hardware-based encryption.
 2. Consider using self-encrypting drives (SEDs) for storage to ensure data is encrypted at the hardware level.
 3. If relevant for your use case, use HSMs to securely generate, store, and manage encryption keys.
+
+## Further reading
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Multisig Security Framework | SEAL"
-description: "Multisig Security Framework: Complete guide for setup, signer onboarding, hardware wallet requirements, transaction verification, and emergency procedures."
+description: "Multisig security for protocols: plan and classify risk, configure Safe/Squads, onboard signers, run operational runbooks, and prepare emergency and backup signing paths."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,62 +21,104 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-## How to use this guide
+> 🔑 **Key Takeaway**: Protocol multisigs fail operationally more often than cryptographically. Separate functions, match
+> thresholds to blast radius, verify calldata—not just hashes—and drill emergency and backup paths.
 
-**Short on time?** Start with [Key Takeaways](/multisig-for-protocols/key-takeaways) for the most important points
-on one page.
+This framework covers how protocols and product teams design, deploy, operate, and exit multi-signature control of
+privileged actions: upgrades, parameters, treasury, and emergency pause. Wallet construction and seed hygiene live
+primarily in [Wallet Security](/wallet-security/overview); this family focuses on protocol multisig administration and
+signer operations.
 
-**Quick start**: New to multisigs? Start with the Foundation for the essentials, then jump to your role:
-
-- Setting up a new multisig? → Multisig Administration: [Setup &
-  Configuration](/multisig-for-protocols/setup-and-configuration) and [Registration &
-  Documentation](/multisig-for-protocols/registration-and-documentation)
-- Joining as a signer? → [Joining a Multisig](/multisig-for-protocols/joining-a-multisig) and [Hardware Wallet Setup](/wallet-security/intermediates-and-medium-funds)
-- Need to sign a transaction? → Signing & Verification:
-[Safe Multisig](/wallet-security/signing-and-verification/secure-multisig-safe-verification) and
-[Squads](/wallet-security/signing-and-verification/secure-multisig-squads-verification), plus
-[Operational Runbooks](/multisig-for-protocols/runbooks/overview)
-- Emergency situation? → [Emergency Procedures](/multisig-for-protocols/emergency-procedures)
+**Short on time?** Read [Key Takeaways](/multisig-for-protocols/key-takeaways) first.
 
 ## Core principles
 
-- **Security first**: Every multisig must meet [minimum security standards](/wallet-security/secure-multisig-best-practices)
-- **Built-in slowness**: Timelocks and review windows are intentional security mechanisms, not obstacles to work around
-- **Constrained emergency powers**: Emergency bypass mechanisms should do the minimum necessary and nothing more
+- **Security first**: Meet [minimum multisig standards](/wallet-security/secure-multisig-best-practices)
+- **Built-in slowness**: Timelocks and review windows are intentional controls, not friction to bypass
+- **Constrained emergency powers**: Bypass paths should do the minimum necessary and nothing more
 - **Operational readiness**: Procedures that work under pressure
-- **Clear accountability**: Everyone knows their role and responsibilities
-- **Emergency preparedness**: Plans for when things go wrong
+- **Clear accountability**: Defined roles for proposers, signers, and executors
+- **Emergency preparedness**: Documented loss-of-key and channel-compromise paths
 
-## Framework Structure
+## How to use this guide
 
-### 1. Foundation
+- **New multisig setup**: [Planning & Classification](/multisig-for-protocols/planning-and-classification) →
+  [Setup & Configuration](/multisig-for-protocols/setup-and-configuration) →
+  [Registration](/multisig-for-protocols/registration-and-documentation)
+- **Joining as a signer**: [Joining a Multisig](/multisig-for-protocols/joining-a-multisig) and
+  [Hardware Wallet Setup](/wallet-security/intermediates-and-medium-funds)
+- **Signing a transaction**:
+  [Safe verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification),
+  [Squads verification](/wallet-security/signing-and-verification/secure-multisig-squads-verification),
+  [Runbooks](/multisig-for-protocols/runbooks/overview)
+- **Emergency**: [Emergency Procedures](/multisig-for-protocols/emergency-procedures)
+- **Readiness check**: [Implementation Checklist](/multisig-for-protocols/implementation-checklist)
 
-- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices) - Core requirements for all multisigs
+## What this framework covers
 
-### 2. Multisig Administration
+### Foundation
 
-- [Planning & Classification](/multisig-for-protocols/planning-and-classification) - Assess requirements and classify risk
-- [Setup & Configuration](/multisig-for-protocols/setup-and-configuration) - Deploy and configure multisigs
-- [Registration & Documentation](/multisig-for-protocols/registration-and-documentation) - Document and verify setup
-- [Communication Setup](/multisig-for-protocols/communication-setup) - Establish secure communication channels
-- [Use Case Specific Requirements](/multisig-for-protocols/use-case-specific-requirements) - Special requirements by type
-- [Operational Runbooks](/multisig-for-protocols/runbooks/overview) - Example procedures for common operations
+1. [Key Takeaways](/multisig-for-protocols/key-takeaways): highest-leverage principles on one page
+2. [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): core requirements (Wallet
+   Security)
 
-### 3. For Signers
+### Multisig administration
 
-- [Hardware Wallet Setup](/wallet-security/intermediates-and-medium-funds) - Secure device configuration
-- [Seed Phrase Management](/wallet-security/seed-phrase-management) - Protect your recovery keys
-- [Joining a Multisig](/multisig-for-protocols/joining-a-multisig) - Verification and onboarding process
+1. [Planning & Classification](/multisig-for-protocols/planning-and-classification): impact assessment and thresholds
+2. [Setup & Configuration](/multisig-for-protocols/setup-and-configuration): deploy and configure on supported networks
+3. [Registration & Documentation](/multisig-for-protocols/registration-and-documentation): inventory and audit trail
+4. [Communication Setup](/multisig-for-protocols/communication-setup): primary, backup, and paging channels
+5. [Use Case Specific Requirements](/multisig-for-protocols/use-case-specific-requirements): separation, timelocks,
+   treasury patterns
+6. [Operational Runbooks](/multisig-for-protocols/runbooks/overview): token transfer, signer rotation, threshold
+   change, emergency pause
+
+### For signers
+
+1. [Joining a Multisig](/multisig-for-protocols/joining-a-multisig): dedicated keys and proof of ownership
+2. [Emergency Procedures](/multisig-for-protocols/emergency-procedures): compromise and lost-access response
+3. [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure): alternate UIs when
+   primary fails
+4. [Personal Security (OpSec)](/multisig-for-protocols/personal-security-opsec): accounts, devices, travel
+5. [Incident Reporting](/multisig-for-protocols/incident-reporting): what and how to report
+6. [Offboarding](/multisig-for-protocols/offboarding): leave a signer role cleanly
+
+Related signer hardware and verification (Wallet Security):
+
+- [Hardware Wallet Setup](/wallet-security/intermediates-and-medium-funds)
+- [Seed Phrase Management](/wallet-security/seed-phrase-management)
 - [Safe Multisig: Step-by-Step
-Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification) - Safely verify and sign transactions
-- [Emergency Procedures](/multisig-for-protocols/emergency-procedures) - Handle key compromise and emergencies
-- [Backup Signing & Infrastructure](/multisig-for-protocols/backup-signing-and-infrastructure) - Use backup interfaces
-- [Personal Security (OpSec)](/multisig-for-protocols/personal-security-opsec) - Protect your accounts and devices
-- [Incident Reporting](/multisig-for-protocols/incident-reporting) - Report security issues and incidents
-- [Offboarding](/multisig-for-protocols/offboarding) - Safely leave a multisig role
+  Verification](/wallet-security/signing-and-verification/secure-multisig-safe-verification)
+- [Squads Multisig: Step-by-Step
+  Verification](/wallet-security/signing-and-verification/secure-multisig-squads-verification)
 
-### 4. Reference
+### Reference
 
-- [Implementation Checklist](/multisig-for-protocols/implementation-checklist) - Verify readiness for multisig operations
+1. [Implementation Checklist](/multisig-for-protocols/implementation-checklist): administrator and signer readiness
+
+### Runbooks subsection
+
+1. [Runbooks overview](/multisig-for-protocols/runbooks/overview)
+2. [Token Transfer](/multisig-for-protocols/runbooks/token-transfer)
+3. [Signer Rotation](/multisig-for-protocols/runbooks/signer-rotation)
+4. [Threshold Change](/multisig-for-protocols/runbooks/threshold-change)
+5. [Emergency Pause](/multisig-for-protocols/runbooks/emergency-pause)
+
+## Related frameworks
+
+- [Wallet Security](/wallet-security/overview): device setup, best practices, signing verification
+- [Treasury Operations](/treasury-operations/overview): custodial large-transfer ceremonies
+- [Incident Management](/incident-management/overview): broader IR beyond multisig-specific paths
+- [OpSec](/opsec/overview): personnel and physical security depth
+- [Governance](/governance/overview): governance process context for admin powers
+- [SEAL 911 Cert — Multisig Operations](/certs/sfc-multisig-ops): certification surface
+
+## Further reading
+
+- Condensed principles on [Key Takeaways](/multisig-for-protocols/key-takeaways)
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices)
+- Platform docs for Safe and Squads used by your stack
+
+---
 
 <ContributeFooter />

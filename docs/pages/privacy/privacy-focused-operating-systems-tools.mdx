@@ -1,9 +1,16 @@
 ---
 title: "Privacy-Focused Operating Systems | SEAL"
-description: "Privacy-focused operating systems: Tails (live USB), Qubes OS (isolation), and Whonix (Tor anonymity). Tools: Tor Browser, Signal, KeePass password manager, and VeraCrypt disk encryption."
+description: "Privacy-focused operating systems: Tails (live USB), Qubes OS (isolation), and Whonix (Tor anonymity). Tools: Tor Browser, Signal, KeePass password manager"
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -12,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Privacy OSes (Tails, Qubes, Whonix) raise the bar when threat models justify operational cost.
+> Most teams still need ordinary baseline OpSec on daily drivers.
 
 Using privacy-focused operating systems and tools can significantly enhance your digital privacy. These systems and
 tools are designed to protect your data and minimize your digital footprint.
@@ -53,6 +63,14 @@ tools are designed to protect your data and minimize your digital footprint.
 4. **VeraCrypt**
    - A disk encryption software for creating secure, encrypted volumes.
    - Pros: Strong encryption, supports hidden volumes.
+
+## Further reading
+
+- [Privacy overview](/privacy/overview): how the pages of this framework fit together
+- [Secure Operating Systems](/opsec/secure-operating-systems): Web3 threat models and deployment configurations for
+  these systems
+- [Full Disk Encryption](/encryption/full-disk-encryption): protecting data at rest on the daily driver
+- [Qubes OS documentation](https://www.qubes-os.org/doc/): install requirements and the isolation model in practice
 
 ---
 

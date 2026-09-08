@@ -145,7 +145,7 @@ jobs:
             - [ ] New content has the \`dev: true\` parameter so it's marked as under development
             - [ ] Sidebar links match the file paths - use the preview deployment to verify
 
-            See [Contributing Guide – Sidebar & Navigation](https://frameworks.securityalliance.org/contribute/contributing/#3-sidebar--navigation) for more details.
+            See [Contributing guidelines - Sidebar / Navigation](https://frameworks.securityalliance.org/contribute/contributing#sidebar--navigation) for more details.
 
             ---
             <sub>This is an automated reminder. If this PR doesn't need sidebar changes, you can ignore this message.</sub>`;

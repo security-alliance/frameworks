@@ -1,6 +1,6 @@
 ---
 title: "Joining a Multisig | Security Alliance"
-description: "Join a multisig securely: create fresh hardware wallet addresses, sign proof of ownership messages via MyCrypto, and verify Ethereum signatures using Etherscan or MyCrypto verification tools."
+description: "Join a multisig securely: create fresh hardware wallet addresses, sign proof of ownership messages via MyCrypto. Join with a dedicated hardware-wallet"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r, ElliotFriedman]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,12 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Join with a dedicated hardware-wallet address per multisig and prove ownership before
+> you are relied on to sign.
+
+Complete dedicated-key setup and address ownership proof before accepting signer
+responsibility on a protocol multisig.
 
 ## Use a Dedicated Key for Each Multisig
 
@@ -79,5 +87,16 @@ Note: Enter plain text message (not the hex version MyEtherWallet will give!) an
 
 Note that "msg" is hex text starting with 0x (add 0x before the hex encoded string if necessary). 4. See whether the
 signature provided is valid.
+
+## Further reading
+
+- [Multisig for Protocols overview](/multisig-for-protocols/overview): how the pages of this framework fit together
+- [Registration & Documentation](/multisig-for-protocols/registration-and-documentation): the record your signer entry
+  creates
+- [Personal Security (OpSec)](/multisig-for-protocols/personal-security-opsec): the posture expected of every signer
+- [Signing & Verification](/wallet-security/signing-and-verification/signing-verification): what you commit to checking
+  before each signature
+
+---
 
 <ContributeFooter />

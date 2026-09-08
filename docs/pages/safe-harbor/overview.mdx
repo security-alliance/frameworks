@@ -9,6 +9,10 @@ tags:
 contributors:
   - role: wrote
     users: [robert, dickson]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from "../../../components"
@@ -23,8 +27,8 @@ import { TagList, AttributionList, ContributeFooter } from "../../../components"
   alt="SEAL Whitehat Safe Harbor logo - DeFi exploit protection framework"
 />
 
-> 💡 An industry-standard framework, letting your protocol pre-authorize whitehats to rescue funds during active
-> exploits
+> 🔑 **Key Takeaway**: Safe Harbor lets protocols pre-authorize whitehats to rescue funds during *active* exploits under
+> defined scope and rules. It is not a substitute for bug bounties or pre-exploit responsible disclosure.
 
 <div align="center">
   <video controls width="600" preload="none">
@@ -55,7 +59,7 @@ By adopting Safe Harbor, protocols allow:
 > stood by, willing to help, but unable to act without legal protection. With Safe Harbor, our goal is to make sure that
 > never happens again and to empower whitehats to rescue funds.
 
-## Vetted by industry leaders and top Web3 lawyers
+### Vetted by industry leaders and top Web3 lawyers
 
 > Safe Harbor was developed over two years with direct input and rigorous legal review from experts at a16z Crypto,
 > Cooley, Debevoise & Plimpton, Filecoin Foundation, MetaLeX, Paradigm, Piper Alderman, Powerhouse, and more.
@@ -65,7 +69,7 @@ By adopting Safe Harbor, protocols allow:
   alt="Law firms that reviewed Safe Harbor: a16z Crypto, Cooley, Debevoise & Plimpton, Paradigm, and others"
 />
 
-## Who's Adopted Safe Harbor
+### Who's adopted Safe Harbor
 
 > Safe Harbor is already protecting $68B+ in assets across leading DeFi protocols. It has been adopted by 20+ protocols.
 > Current adopters include Uniswap, Aave, Pendle, PancakeSwap, Balancer, Silo Finance, Zksync, and more. See the
@@ -80,7 +84,7 @@ By adopting Safe Harbor, protocols allow:
 - **Protocols pre-authorize rescues:** You clearly define when and how whitehats are allowed to step in - covering what
   assets are protected, where to return funds, and what bounty terms apply, etc
 - **Whitehats act only during active exploits:** Safe Harbor **only** applies when an exploit is already in progress or
-  imminent - e.g., in the mempool, or after initial funds have been drained. It's _not_ for bug bounty reports, and it
+  imminent - e.g., in the mempool, or after initial funds have been drained. It's *not* for bug bounty reports, and it
   does not protect blackhats. Only whitehats who rescue funds without initiating the exploit are covered.
 - **Funds are returned, bounty is automatic:** Whitehats must send rescued funds to your official recovery addresses
   within 72 hours. Bounties are enforceable and pre-defined - no negotiation, no chaos.
@@ -128,7 +132,23 @@ scope, and your protocol is protected.
 > Whether you're a DAO or not, adopting Safe Harbor is a low-lift way to enable real-time defense and recover funds
 > during live exploits.
 
-## Proven Results: Whitehats Have Recovered $150M+
+## What this framework covers
+
+1. [Safe Harbor Eligibility Checklist](/safe-harbor/self-checklist): decide whether adoption fits the protocol.
+2. [Self-Adoption Guide](/safe-harbor/self-adoption-guide): step-by-step self-adoption path and templates.
+3. [Safe Harbor Scope Terms](/safe-harbor/scope-terms): scope parameters whitehats and protocols rely on.
+4. [On-Chain Adoption Guide](/safe-harbor/on-chain-adoption-guide): register adoption on-chain.
+5. [Safe Harbor for Whitehats](/safe-harbor/whitehat): intervention, recovery, and whitehat-oriented guidance.
+
+## Related frameworks
+
+- [Vulnerability Disclosure](/vulnerability-disclosure/overview): contacts and bounty programs for *pre-exploit* reports
+- [Incident Management](/incident-management/overview): response operations during and after active incidents
+- [SEAL911 war room guidelines](/incident-management/playbooks/seal-911-war-room-guidelines): coordination during active
+  events
+- [Wallet Security](/wallet-security/overview): recovery address and multisig hardening guidance
+
+### Proven results: whitehats have recovered $150M+
 
 > 💡 [SEAL911](/incident-management/playbooks/seal-911-war-room-guidelines) and the broader whitehat community have
 > already helped protocols recover over $150M from live attacks - proving that fast, responsible intervention is
@@ -139,7 +159,7 @@ scope, and your protocol is protected.
 <details>
 <summary>What counts as an active exploit?</summary>
 
-An _active exploit_ is one that's already in progress or imminent - for example, a malicious transaction sitting in the
+An *active exploit* is one that's already in progress or imminent - for example, a malicious transaction sitting in the
 mempool or a vulnerability that's already being exploited. Safe Harbor only applies when immediate action is required to
 prevent or stop fund loss. It does **not** apply to situations where there is no imminent threat and where responsible
 disclosure can prevent fund loss.
@@ -149,8 +169,8 @@ disclosure can prevent fund loss.
 <details>
 <summary>How is it different than a Bug Bounty?</summary>
 
-Bug bounties reward whitehats for responsibly disclosing vulnerabilities _before_ they're exploited. Safe Harbor kicks
-in _after_ an exploit is underway - when there's no time for disclosure, and whitehats need legal cover to intervene and
+Bug bounties reward whitehats for responsibly disclosing vulnerabilities *before* they're exploited. Safe Harbor kicks
+in *after* an exploit is underway - when there's no time for disclosure, and whitehats need legal cover to intervene and
 recover funds in real time.
 
 </details>
@@ -187,7 +207,7 @@ is required. Many protocols who have adopted are centralized teams (Pendle, Poly
 <summary>Who is the agreement with?</summary>
 
 The Safe Harbor agreement is structured as a **public unilateral offer -** a legally binding offer made by your protocol
-to _any whitehat_ who acts under the published terms. There's no need to know or pre-approve the individual. If a
+to *any whitehat* who acts under the published terms. There's no need to know or pre-approve the individual. If a
 whitehat follows your rules (e.g. intervenes during an active exploit, returns funds to the recovery address, meets any
 KYC requirements), the agreement becomes binding. No signatures or formal negotiation required.
 

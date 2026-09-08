@@ -1,9 +1,16 @@
 ---
 title: "Mobile Application Security | Security Alliance"
-description: "Secure mobile applications for web3 protocols: trusted execution environment for secrets, certificate pinning, encrypted data storage and transmission, and OWASP Mobile Security Project guidelines."
+description: "Secure mobile applications for web3 protocols: trusted execution environment for secrets, certificate pinning, encrypted data storage and transmission"
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,11 +20,14 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Mobile Web3 clients need secure storage, transport protection, certificate pinning, and current
+> dependencies—the device is another high-trust wallet gateway.
+
 Mobile applications are increasingly used as front-ends for web3 protocols. As more projects are using mobile
 applications, it also becomes an increasing target for threat actors. Below, you can find some suggestions to help
 protect your mobile application:
 
-## Best Practices
+## Best practices
 
 1. Follow secure coding practices to prevent common vulnerabilities such as:
    - Insecure Data Storage
@@ -31,6 +41,13 @@ authorization by implementing certificate pinning to help prevent man-in-the-mid
 5. Keep the mobile application and its dependencies updated to protect against known vulnerabilities.
 6. Leverage security libraries and frameworks designed for mobile application security, such as OWASP Mobile Security
 Project.
+
+## Further reading
+
+- [Front End Web App overview](/front-end-web-app/overview): how the pages of this framework fit together
+- [Common Vulnerabilities](/front-end-web-app/common-vulnerabilities): the mobile flaw classes referenced above
+- [Security Testing overview](/security-testing/overview): building these checks into a testing program
+- [OWASP MASVS](https://mas.owasp.org/MASVS/): the mobile verification standard to test your app against
 
 ---
 

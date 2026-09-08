@@ -1,6 +1,6 @@
 ---
 title: "Checklist | Security Alliance"
-description: "Phased checklist translating this coercion & duress section into actions: maturity assessment, day 1-7 hardening, month 1-3 structural, and 3-6+ advanced."
+description: "Phased coercion and duress checklist: maturity rating, day 1-7 hardening, month 1-3 architecture, and advanced monitoring for people and orgs."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -15,19 +15,25 @@ contributors:
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
 
-
 # Checklist
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-This checklist translates this section's guidance into concrete actions, divided by implementation phase and entity type, to help prioritize deployment.
+> 🔑 **Key Takeaway**: Use phased actions — immediate personal and org hardening, structural wallet and role changes
+> within months, then advanced drills and monitoring — so coercion defenses mature on a clear timeline rather than ad
+> hoc.
+
+This checklist translates this section's guidance into concrete actions, divided by implementation phase and entity
+type, to help prioritize deployment.
 
 ## Maturity assessment
 
 - **Basic (high risk):** Single-factor cold storage, no daily limits, ad-hoc signing, high public visibility.
-- **Intermediate (medium risk):** Multisig or MPC for treasury, basic limits, separate signing devices, some staff training.
-- **Advanced (low risk):** Geo-distributed keys, strict role separation, time-locked reserves, regular drills, 24/7 monitoring.
+- **Intermediate (medium risk):** Multisig or MPC for treasury, basic limits, separate signing devices, some staff
+  training.
+- **Advanced (low risk):** Geo-distributed keys, strict role separation, time-locked reserves, regular drills, 24/7
+  monitoring.
 
 ## Immediate hardening (day 1–7)
 
@@ -36,7 +42,8 @@ This checklist translates this section's guidance into concrete actions, divided
 <Checklist id="immediate-individual">
 - [ ] Remove all wallet apps, exchange account apps, seeds, and screenshots from daily-driver phones and laptops.
 - [ ] Set strict daily spending limits on hot wallets (under $10k equivalent) and move excess to cold storage.
-- [ ] Create one small "give-up" wallet with a realistic balance you can surrender truthfully under duress, and wire its duress PIN to a silent alert.
+- [ ] Create one small "give-up" wallet with a realistic balance you can surrender truthfully under duress, and wire its
+  duress PIN to a silent alert.
 - [ ] Audit home and office for visible hardware wallets or recovery sheets and move them to secure storage.
 </Checklist>
 
@@ -84,7 +91,8 @@ This checklist translates this section's guidance into concrete actions, divided
   - [ ] Social media
 - [ ] Establish a relationship with a physical security provider for travel risk assessments and monitoring.
 - [ ] Set up a formal legal structure (trust or LLC) to obscure asset ownership where possible.
-- [ ] Evaluate K&R (kidnap and ransom) insurance with a policy that covers crypto-specific risks; these providers typically include hostage negotiators and can advise on travel risk assessments.
+- [ ] Evaluate K&R (kidnap and ransom) insurance with a policy that covers crypto-specific risks; these providers
+  typically include hostage negotiators and can advise on travel risk assessments.
 </Checklist>
 
 ### Organization
@@ -97,5 +105,17 @@ This checklist translates this section's guidance into concrete actions, divided
 - [ ] Conduct third-party penetration tests targeting staff social engineering resistance.
 </Checklist>
 
+## Further reading
+
+- [Coercion & Duress overview](/physical-security/coercion-and-duress/overview): how the pages of this sub-section fit
+  together
+- [Defensive Design Principles](/physical-security/coercion-and-duress/defensive-design-principles): the reasoning
+  behind these controls
+- [Wallet and Key Architecture](/physical-security/coercion-and-duress/wallet-and-key-architecture): the custody design
+  the structural items assume
+- [Personal and Family Safety](/physical-security/coercion-and-duress/personal-and-family-safety): the individual
+  habits behind the day 1-7 items
+
+---
 
 <ContributeFooter />

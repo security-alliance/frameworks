@@ -8,6 +8,10 @@ tags:
 contributors:
   - role: wrote
     users: [isaac, geoffrey, louis, pablo, dickson]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -16,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Rotate signers without dropping below policy towards threshold; verify membership
+> on-chain after the change settles.
 
 This is an example runbook. Review and customize it for your protocol before use. Add your specific multisig
 addresses, signer requirements, and communication channels.
@@ -174,11 +181,14 @@ When removing a signer:
 - Critical-class: 7 days
 - Others: 14 days
 
-## Related Documents
+## Further reading
 
-- [Joining a Multisig](/multisig-for-protocols/joining-a-multisig)
-- [Threshold Change Runbook](/multisig-for-protocols/runbooks/threshold-change)
-- [Offboarding](/multisig-for-protocols/offboarding)
-- [Operational Runbooks](/multisig-for-protocols/runbooks/overview)
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview): how the runbooks in this section fit together
+- [Joining a Multisig](/multisig-for-protocols/joining-a-multisig): verification steps for the incoming signer
+- [Offboarding](/multisig-for-protocols/offboarding): revoking the outgoing signer's wider access
+- [Threshold Change Runbook](/multisig-for-protocols/runbooks/threshold-change): the companion procedure when the
+  threshold moves too
+
+---
 
 <ContributeFooter />

@@ -1,6 +1,6 @@
 ---
 title: "Multisig Emergency Procedures | SEAL"
-description: "Handle multisig key compromise, lost access, and communication breaches. 30-minute immediate action checklist, identity verification processes, key recovery, and emergency notification templates."
+description: "Handle multisig key compromise, lost access, and communication breaches. 30-minute immediate action checklist, identity verification processes, key recovery"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,8 @@ contributors:
     users: [isaac, geoffrey, louis, pablo, dickson]
   - role: reviewed
     users: [pinalikefruit, engn33r]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Pre-agree compromise, lost-key, and channel-breach steps so the team can rotate or
+> freeze without improvising under pressure.
 
 When security incidents occur, quick and decisive action is critical. This page covers procedures for key compromise,
 lost access, and communication breaches.
@@ -176,15 +181,15 @@ Use the full [Emergency Pause Runbook](/multisig-for-protocols/runbooks/emergenc
 playbook for emergency pause transactions. Keep this page focused on incident coordination, communication, and recovery,
 and use the runbook page for the transaction-specific signing and execution steps.
 
-### Emergency Drill Procedures
+## Emergency Drill Procedures
 
-#### Regular Testing Schedule
+### Regular Testing Schedule
 
 - **Quarterly**: Communication system tests
 - **Bi-annually**: Emergency paging system tests
 - **Annually**: Full emergency simulation with all signers
 
-#### Drill Components
+### Drill Components
 
 1. **Notification test** - Verify all signers receive alerts
 2. **Response time measurement** - Track time to threshold signatures
@@ -226,13 +231,13 @@ and use the runbook page for the transaction-specific signing and execution step
 - **Technical team**: [Emergency technical contact]
 - **Legal/compliance**: [If regulatory notification required]
 
-## Related Documents
+## Further reading
 
-- [Incident Reporting](/multisig-for-protocols/incident-reporting) - Formal incident reporting procedures
-- [Communication Setup](/multisig-for-protocols/communication-setup) - Backup communication channels
-- [Hardware Wallet Setup](/wallet-security/intermediates-and-medium-funds) - Device replacement procedures
-- [Seed Phrase Management](/wallet-security/seed-phrase-management) - Key recovery procedures
-- [Personal Security (OpSec)](/multisig-for-protocols/personal-security-opsec) - Account security measures
-- [Operational Runbooks](/multisig-for-protocols/runbooks/overview) - Example runbooks for common operations
+- [Incident Reporting](/multisig-for-protocols/incident-reporting): formal incident reporting procedures
+- [Communication Setup](/multisig-for-protocols/communication-setup): backup communication channels
+- [Seed Phrase Management](/wallet-security/seed-phrase-management): key recovery procedures
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview): step-by-step procedures for pause and rotation
+
+---
 
 <ContributeFooter />

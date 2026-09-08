@@ -9,6 +9,10 @@ tags:
 contributors:
   - role: wrote
     users: [dickson]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -17,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: On-chain registration makes Safe Harbor adoption public, verifiable, and discoverable to
+> whitehats who check the registry before intervening.
 
 This guide explains how protocols can register their Safe Harbor adoption on-chain. Registering ensures your adoption is
 **public, verifiable, and enforceable**.
@@ -133,6 +140,15 @@ supported EVM chains.
 
 If you ever need help or have any questions, don't hesitate to reach out!
 📬 Contact us at: [safe-harbor@securityalliance.org](mailto:safe-harbor@securityalliance.org)
+
+## Further reading
+
+- [Safe Harbor overview](/safe-harbor/overview): what the agreement covers and why protocols adopt it
+- [Self-Adoption Guide](/safe-harbor/self-adoption-guide): the surrounding steps, from scope definition to announcement
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): executing the registration
+  transaction safely
+- [security-alliance/safe-harbor](https://github.com/security-alliance/safe-harbor): registry contracts, Foundry
+  scripts, and audit reports
 
 ---
 

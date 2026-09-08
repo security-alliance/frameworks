@@ -1,6 +1,6 @@
 ---
 title: "Dependency Awareness | Security Alliance"
-description: "Manage external dependencies to prevent vulnerabilities. Use version pinning, lockfile verification, vulnerability scanning, and behavioral analysis to secure your project's supply chain."
+description: "Manage external dependencies with version pinning, lockfile enforcement in CI, vulnerability scanning, and package trust signals that keep malicious code out."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -16,13 +16,13 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway:** Every dependency is code you did not write but are fully responsible for. Know exactly what is
+> 🔑 **Key Takeaway**: Every dependency is code you did not write but are fully responsible for. Know exactly what is
 > in your tree, pin versions for anything security-critical, enforce your lockfile in CI, and treat every update as a
 > change that requires review.
 
 ## Fundamentals
 
-### What Is a Dependency?
+### What is a dependency?
 
 A dependency is any external code your project relies on to build or run. When you add a library to your project, you
 are making a trust decision: you are choosing to run someone else's code as if it were your own, with all the access
@@ -33,7 +33,7 @@ single developer, and some are actively targeted by attackers. A compromised pac
 depends on it, without any action required from the project owners. For details on specific attacks and how they
 exploited weak dependency practices, see [Supply Chain Threats](/supply-chain/web3-supply-chain-threats).
 
-### Direct and Transitive Dependencies
+### Direct and transitive dependencies
 
 - **Direct dependencies** are the packages you explicitly add to your project (listed in your `package.json`,
   `Cargo.toml`, `go.mod`, `requirements.txt`, etc.).
@@ -50,7 +50,7 @@ of packages you have never seen. This matters because:
 3. **You are responsible for all of them.** Your users do not care whether a vulnerability was in code you wrote or in
    a package five levels down your dependency tree.
 
-### How Ecosystems Handle Dependency Locking
+### How ecosystems handle dependency locking
 
 When you declare a dependency like `"my-library": "^1.2.0"`, you are expressing a *range* of acceptable versions, not
 a single one. Without any locking mechanism, every time you or your CI pipeline runs an install command, the package manager
@@ -71,9 +71,9 @@ Not every language or package manager implements locking the same way. Some use 
 vendoring, and some barely address the problem at all. Understanding how your ecosystem works is the first step to
 securing it.
 
-| Ecosystem | Lockfile / Mechanism | What to Know |
+| Ecosystem | Lockfile / mechanism | What to know |
 | --------- | ------------------- | ------------ |
-| **Node.js (npm/pnpm/yarn)** | Three package managers, each with its own lockfile: `package-lock.json` (npm), `pnpm-lock.yaml` (pnpm), `yarn.lock` (yarn v1 and Berry). They are not interchangeable. | Switching package managers means regenerating the lockfile. Pick one and enforce it across the team. See [Lockfile Integrity](#lockfile-integrity) section below for how each one works. |
+| **Node.js (npm/pnpm/yarn)** | Three package managers, each with its own lockfile: `package-lock.json` (npm), `pnpm-lock.yaml` (pnpm), `yarn.lock` (yarn v1 and Berry). They are not interchangeable. | Switching package managers means regenerating the lockfile. Pick one and enforce it across the team. See [Lockfile integrity](#lockfile-integrity) section below for how each one works. |
 | **Rust (Cargo)** | `Cargo.lock` records exact versions and checksums for every dependency. Cargo verifies these checksums automatically against `crates.io` on every build. | For libraries, `Cargo.lock` is often `.gitignore`d because downstream consumers resolve their own versions. For binaries and applications, always commit it. |
 | **Go** | No traditional lockfile. `go.sum` stores cryptographic checksums for every dependency, and the public checksum database (`sum.golang.org`) lets you verify that everyone gets the same code for a given version. The module proxy caches modules so they remain available even if the original source disappears. | Go's approach is verification-first rather than lock-first. `go.mod` declares minimum versions, `go.sum` verifies integrity, and `go mod tidy` is the primary way updates enter the dependency tree. |
 | **Python (pip/Poetry/PDM)** | pip has no built-in lockfile. You either generate a pinned `requirements.txt` with tools like `pip-compile`, or use Poetry (`poetry.lock`) or PDM (`pdm.lock`), which manage their own lockfile formats. | There is no single standard. Multiple competing tools solve this problem differently, and none of them are part of pip itself. Pick one approach for your project and enforce it across the team. |
@@ -86,11 +86,11 @@ The core principle is the same regardless of ecosystem: **you need a reproducibl
 code gets pulled into your project**. If your ecosystem provides a lockfile, commit it and enforce it. If it does not,
 look for checksum verification, vendoring, or commit-pinning as alternatives.
 
-## Lockfile Integrity
+## Lockfile integrity
 
 ### Node.js (npm / pnpm / yarn)
 
-The Node.js ecosystem is the most common in Web3 development: frontends, tooling (Hardhat, Foundry's companion
+The Node.js ecosystem is the most common in Web3 development: front ends, tooling (Hardhat, Foundry's companion
 scripts), and most Web3 libraries (ethers.js, viem, wagmi) all live here. It is also one of the most targeted
 ecosystems for supply chain attacks due to its massive registry, deep dependency trees, and install-time script
 execution.
@@ -127,7 +127,7 @@ pick it up.
 4. **Watch for lockfile-only PRs.** A PR that modifies only the lockfile without a corresponding change to
    `package.json` is a meaningful signal worth investigating.
 
-### Cross-Ecosystem Reference
+### Cross-ecosystem reference
 
 The same principles apply beyond Node.js, though the specific commands and mechanisms differ:
 
@@ -142,7 +142,7 @@ The same principles apply beyond Node.js, though the specific commands and mecha
   branch names. Review submodule updates as carefully as you would lockfile changes. A submodule pointing at `main`
   is the equivalent of using `"latest"` in npm.
 
-### Install Scripts
+### Install scripts
 
 npm packages can define lifecycle scripts (`preinstall`, `postinstall`, `prepare`) that run automatically during
 installation. These scripts execute with the same permissions as the user running the install, which means a
@@ -183,7 +183,7 @@ import or use it. This is the primary execution mechanism behind most npm supply
 
 4. **Never run the install command with elevated privileges.** If a script requires `sudo`, that is a red flag.
 
-## Version Pinning
+## Version pinning
 
 How you declare a dependency version determines how much control you have over what gets installed. The syntax varies
 by ecosystem, but the concept is universal: the more flexibility you allow, the more trust you place in upstream
@@ -191,7 +191,7 @@ maintainers.
 
 ### Node.js (npm / pnpm / yarn)
 
-| Strategy | Example | Risk Level | When to Use |
+| Strategy | Example | Risk level | When to use |
 | -------- | ------- | --------- | ---------- |
 | **Exact version** | `"1.2.3"` | Lowest | Security-critical packages, wallet libraries, production dependencies |
 | **Patch range** | `"~1.2.3"` | Low | General dependencies where you trust patch releases |
@@ -207,12 +207,12 @@ production dependency manifest.
 > semver ranges declared by the packages you depend on. This is why lockfile integrity matters: the lockfile is what
 > actually pins the full tree.
 
-### Cross-Ecosystem Reference
+### Cross-ecosystem reference
 
 Each ecosystem has its own version range syntax and defaults. The principles are the same: pin tightly for anything
 security-critical, allow ranges only where the tradeoff is justified.
 
-| Ecosystem | How to Pin Exactly | How Flexible Ranges Work |
+| Ecosystem | How to pin exactly | How flexible ranges work |
 | --------- | ----------------- | ------------------------ |
 | **Rust (Cargo)** | `=1.2.3` | By default, `1.2.3` allows compatible updates within the same major version. Use `=` for strict pinning. |
 | **Python (pip)** | `==1.2.3` | `~=1.2.3` allows patch updates only. Omitting a version specifier accepts anything, so always specify one. |
@@ -220,7 +220,7 @@ security-critical, allow ranges only where the tradeoff is justified.
 | **Java (Maven)** | `1.2.3` (exact by default) | Range syntax like `[1.2,1.3)` is available but rarely used. Avoid `LATEST` and `RELEASE` in production. |
 | **Ruby (Bundler)** | `= 1.2.3` | `~> 1.2` is the "pessimistic" operator. It allows patch updates within `1.2.x` but not `1.3.0`. |
 
-### GitHub Actions SHA Pinning
+### GitHub Actions SHA pinning
 
 GitHub Actions are themselves a supply chain dependency. When you reference an action by tag
 (`uses: actions/checkout@v4`), the tag owner can move it to point at different code at any time. Pinning to a full
@@ -234,13 +234,13 @@ commit SHA ensures that the action you run today is the same one you reviewed:
 - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 ```
 
-## Trust and Verification
+## Trust and verification
 
 Lockfiles and version pinning ensure you get the code you expect, but they do not help you decide whether to trust a
 package in the first place. Trust and verification are about evaluating packages *before* they enter your dependency
 tree, and ensuring that the packages you receive were published by who you think they were.
 
-### Package Trust Signals
+### Package trust signals
 
 Before adding a new dependency, evaluate it. No single signal is definitive, but taken together they form a reasonable
 picture of risk:
@@ -302,12 +302,12 @@ who mistype a package name during installation.
 5. **Consider `minimumReleaseAge`** (pnpm) or equivalent policies. Delaying installations of newly published versions
    by a configurable period gives the community time to detect malicious releases before they reach your project.
 
-## Vulnerability Scanning
+## Vulnerability scanning
 
 Most ecosystems provide built-in or community-standard tools for checking dependencies against known vulnerability
 databases. Run these in CI and fail builds on high or critical findings.
 
-| Ecosystem | Built-in / Standard Tool | Command |
+| Ecosystem | Built-in / standard tool | Command |
 | --------- | ---------------------- | ------- |
 | **Node.js** | `npm audit` / `pnpm audit` | `pnpm audit --audit-level=high` |
 | **Rust** | `cargo-audit` | `cargo audit` |
@@ -316,7 +316,7 @@ databases. Run these in CI and fail builds on high or critical findings.
 | **Ruby** | `bundler-audit` | `bundle audit check --update` |
 | **Java** | OWASP Dependency-Check | Gradle/Maven plugin |
 
-### Cross-Ecosystem Tools
+### Cross-ecosystem tools
 
 - [Dependabot](https://github.com/dependabot) is a GitHub built-in tool that supports npm, pip, Cargo, Go modules,
   Maven, Bundler, Composer, and more. It monitors your dependencies for known vulnerabilities, opens security alerts on
@@ -334,9 +334,9 @@ databases. Run these in CI and fail builds on high or critical findings.
 > vulnerabilities and updates. The security value comes from reviewing those updates in depth, especially security
 > patches.
 
-## Ecosystem-Specific Considerations
+## Ecosystem-specific considerations
 
-### Smart Contract Dependencies
+### Smart contract dependencies
 
 Smart contract dependencies carry unique risk because deployed code is immutable. Static analysis, testing strategies,
 and secure coding practices for Solidity are covered in depth in the [Security Testing](/security-testing/overview)
@@ -344,7 +344,7 @@ and [Secure Software Development](/secure-software-development/overview) framewo
 contracts and their imported libraries, see
 [External Security Reviews for Smart Contracts](/external-security-reviews/smart-contracts/overview).
 
-## Common Pitfalls
+## Common pitfalls
 
 1. **Blindly merging dependency update PRs.** Always review what changed, especially across major versions. Check the
    changelog and release notes before merging.
@@ -364,7 +364,7 @@ contracts and their imported libraries, see
 7. **Trusting packages without verification.** Download counts and GitHub stars are not security guarantees. Check
    provenance, maintainer history, and dependency footprint before adding a new package.
 
-## Further Reading
+## Further reading
 
 - [npm Security Best Practices](https://docs.npmjs.com/packages-and-modules/securing-your-code): Official npm
   security documentation

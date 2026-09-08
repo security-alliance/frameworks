@@ -1,6 +1,6 @@
 ---
 title: "Operational Security | Security Alliance"
-description: "Operational Security Framework: Comprehensive OpSec for Web2 and Web3. Identify critical information, analyze threats, assess vulnerabilities, evaluate risks, and implement zero-trust countermeasures."
+description: "OpSec for Web2 and Web3 teams: identify critical information, analyze threats, assess vulnerabilities, evaluate risks, and apply protective countermeasures."
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -22,41 +22,43 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: OpSec is a continuous cycle—identify critical information, analyze threats and vulnerabilities,
+> evaluate risk, and apply proportionate countermeasures across people, process, and technology.
+
 Operational Security (OpSec) is a systematic approach to identifying critical information, determining threats to that
 information, analyzing vulnerabilities, assessing risks, and implementing countermeasures to protect sensitive data and
 operations. This framework provides comprehensive guidance for implementing effective operational security practices in
 Web2 and Web3 environments.
 
-## Core Components
+## What this framework covers
 
-This framework is organized into several interconnected components:
+1. **OpSec Core Concepts**
+   - [Security Fundamentals](/opsec/core-concepts/security-fundamentals) — Core principles that form the foundation of
+     effective operational security
+   - [Implementation Process](/opsec/core-concepts/implementation-process) — Step-by-step actions for applying operational
+     security in practice
+   - [Web3 Considerations](/opsec/core-concepts/web3-considerations) — Unique challenges and practices for decentralized
+     environments
+2. [Secure Operating Systems](/opsec/secure-operating-systems) — Compartmentalized OS choices for high-risk workflows
+3. [Endpoint Security](/opsec/endpoint/overview) — Device provisioning tiers matched to role risk
+4. [Browser Security](/opsec/browser/overview) — Safer browsing patterns for operators
+5. [Multi-Factor Authentication](/opsec/mfa/overview) — Stronger authentication factors and recovery hygiene
+6. **Password Management**
+   - [Overview](/opsec/passwords/overview) — Password and passphrase fundamentals
+   - [Password Managers](/opsec/passwords/managers) — Enterprise managers and secret storage
+   - [Single Sign-on](/opsec/passwords/sso) — Federated authentication via a hardened IdP
+   - [Root Accounts](/opsec/passwords/rootaccounts) — Cold admin and break-glass credentials
+7. [Google Workspace Security](/opsec/google/overview) — Account and Workspace hardening checklists
+8. [Control Domains](/opsec/control-domains/overview) — Organizational, people, physical, and technical control areas
+9. [Continuous Improvement & Metrics](/opsec/continuous-improvement-metrics) — KPIs, post-mortems, and culture
+10. [Integration & Mapping to Other Frameworks](/opsec/integration/overview) — DevSecOps, privacy, governance, and standards
+11. **While Traveling**
+    - [Overview](/opsec/travel/overview) — Travel risk framing
+    - [Guide](/opsec/travel/guide) — Full pre-trip, on-trip, and return guidance
+    - [TL;DR](/opsec/travel/tldr) — Concise travel checklist
+12. [Appendices](/opsec/appendices/overview) — Policies, case studies, exercises, and glossary
 
-1. OpSec Core Concepts:
-   - [Security Fundamentals](/opsec/core-concepts/security-fundamentals) – Core principles that form the foundation of
-   effective operational security
-   - [Operational Implementation Process](/opsec/core-concepts/implementation-process) – Step-by-step actions for
-   applying operational security in practice
-   - [Web3 Considerations](/opsec/core-concepts/web3-considerations) – Unique challenges and security practices for
-   decentralized environments
-2. [Endpoint Security](/opsec/endpoint/overview): Securing Workstations
-3. [Browser Security](/opsec/browser/overview): Browsing Safely
-4. [Multi-Factor Authentication](/opsec/mfa/overview): Hardening Authentication
-5. [Password Management](/opsec/passwords/overview): Password Robustness
-6. [Google Workspace Security](/opsec/google/overview): Google Workspace Hardening
-7. [Control Domains Overview](/opsec/control-domains/overview): Key areas requiring specific security controls and
-practices
-8. [Continuous Improvement Overview](/opsec/continuous-improvement-metrics): Learning from incidents and evolving
-security practices
-9. [Integration & Mapping to Other Frameworks](/opsec/integration): Integrate OpSec with other security domains and frameworks
-
-## Additional contents
-
-- [While Traveling](/opsec/travel/overview)
-  - [TL;DR](/opsec/travel/tldr)
-  - [Guide](/opsec/travel/guide)
-- [Appendices](/opsec/appendices)
-
-## Related Frameworks
+## Related frameworks
 
 - [Physical Security](/physical-security/overview) — Protects people and physical assets from coercion, theft,
 surveillance, and tampering. Where OpSec guidance touches physical threats (duress codes, border coercion, device

@@ -1,11 +1,10 @@
 ---
 title: "Travel Security Guide | Security Alliance"
-description: "Travel security guide: device encryption, 2FA backup, hardware wallet protection, network safety, border crossing protocols, and high-risk traveler guidance."
+description: "Full travel security guide: threat-model before departure, encrypt devices, secure 2FA and wallets, avoid risky networks/USBs, and sanitize gear on return."
 tags:
   - Security Specialist
   - Operations & Strategy
   - Engineer/Developer
-  - Security Specialist
   - DevOps
   - SRE
 contributors:
@@ -24,6 +23,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Minimize what you carry, encrypt and update devices, secure accounts and wallets without seed
+> phrases, stay cautious on networks and in physical spaces, then sanitize on return.
+
 Travel introduces unique security risks to your digital assets and sensitive information. Proper preparation before,
 vigilance during, and careful review after travel creates a comprehensive defense strategy that balances security
 with practical usability.
@@ -32,12 +34,6 @@ When we travel, our normal security routines are disrupted, and we face elevated
 surveillance, border inspections, and social engineering. Web3 professionals face additional challenges when traveling
 with crypto assets or access to treasury funds. The resources in this guide provide practical guidance for maintaining
 operational security while traveling.
-
-> 🔑 Key Takeaway: Minimize data exposure by carrying only essential devices with full-disk encryption and updated
-> software. Secure accounts with backup 2FA methods, avoid biometrics at borders, use trusted networks with VPNs, and
-> never leave devices unattended. Guard against USB attacks, shoulder surfing, and hidden cameras. For crypto, use
-> strong passphrases and never travel with seed phrases. Upon returning, scan devices for malware and consider resetting
-> high-risk devices.
 
 {/* separator */}
 
@@ -585,6 +581,13 @@ and finding hidden cameras in rentals |
 [washingtonpost.com](https://www.washingtonpost.com/travel/2024/05/22/hidden-cameras-airnbnb-rental-properties/#:~:text=On%20the%20kitchen%20table%2C%20he,activate%20the%20camera%20tucked%20inside).
 - GitHub USBGuard – tool to enforce USB device policies on laptops (helps block malicious USB devices) |
 [github.com](https://github.com/USBGuard/usbguard#:~:text=USBGuard%20is%20a%20software%20framework,may%20interact%20with%20the%20system).
+
+## Further reading
+
+- [Travel overview](/opsec/travel/overview): how the travel pages fit together
+- [Travel TL;DR](/opsec/travel/tldr): the condensed checklist
+- [Physical Security](/physical-security/overview): coercion and personal safety while travelling
+- [When to Use a VPN](/privacy/vpns/when-to-use-vpn): deciding on tunnels for hostile networks
 
 ---
 

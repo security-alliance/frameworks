@@ -1,0 +1,105 @@
+---
+title: "SimpleX Security | Security Alliance"
+description: "Run a SimpleX community safely: invitation links as access control, member roles, database custody, group scale limits, and moderation without user identities."
+tags:
+  - Community & Marketing
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
+
+# SimpleX
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: With no user identities, the invitation link is the access control and the local database is the
+> identity. Rotate links after a leak, and back up the database or lose the community.
+
+SimpleX community security spans database custody, invitation-link discipline, contact verification, and group role
+management—each covered in depth in the [SimpleX Chat Security Guide](/guides/account-management/simplex). Use this
+page to find the right section.
+
+## The community manager's role in security
+
+SimpleX goes further than Session or Matrix: it has no user identifiers at all. There is no account, no username, and
+no directory. Contacts connect through invitation links, and each connection uses its own message queues on relays that
+never hold a persistent identity.
+
+For a project whose threat model includes correlation of who talks to whom, that is a strong property. For a community
+manager, it also means the familiar moderation primitives do not exist. There is no account to report, no platform-wide
+ban, and no profile page members can check to confirm they are talking to the real team.
+
+Two consequences follow. Access control becomes link management: anyone holding a group link can join, and a leaked
+link is corrected by rotating it, not by banning the people who used it. Continuity becomes backup management: the
+local database holds every contact, group, and key, so a lost device without an exported backup ends the operator's
+relationships permanently.
+
+### Why following this guide is not optional
+
+The most common failure is treating SimpleX like an app with an account behind it. Operators install it, connect to
+their team, and never set an explicit database passphrase or export a backup — then lose a phone and discover there is
+nothing to restore from. The platform is explicit that no server holds recoverable state.
+
+The second failure is scale. Every message is delivered separately to each group member, so SimpleX groups are designed
+for teams and small communities rather than mass announcement channels. Projects that push a large public community
+onto SimpleX get degraded delivery and no better moderation than they had, while giving up the tooling their
+centralized channels provided.
+
+### What is at stake
+
+| Risk | Consequence |
+| --- | --- |
+| **Lost database passphrase or device** | Every contact, group, and message is unrecoverable; no server-side state exists |
+| **Leaked group invitation link** | Anyone holding it can join; removal is per group and reversible by rejoining |
+| **Man-in-the-middle at connection time** | An intercepted invitation link connects the member to an impostor |
+| **Impersonation of the project** | No verified accounts exist, so only an out-of-band canonical link proves authenticity |
+| **Over-granted group roles** | An admin or owner can remove members and alter group preferences |
+| **Device compromise** | The database is the identity; unlocked device access is full account access |
+| **Scale misuse** | Per-member fan-out degrades large groups and hides moderation problems |
+
+The guide addresses these with device-side controls, connection hygiene, and group role management.
+
+## What the guide covers
+
+The guide is structured by scope: personal installation first, then group operations.
+
+| Scope | What it covers |
+| --- | --- |
+| **Personal installation** | Database passphrase, SimpleX Lock and self-destruct passcode, screen protection, backups, retention |
+| **Connections** | Security-code verification, one-time links, incognito mode, separate chat profiles |
+| **Network** | Relay server choice, private message routing, Tor routing, residual metadata |
+| **Group operations** | Member roles, link joiner defaults, link rotation, group preferences, scale limits |
+
+## Topic index
+
+| Topic | Summary | Guide section |
+| --- | --- | --- |
+| **Database passphrase** | Set an explicit passphrase; it is what makes an exported backup usable | [Account security checklist](/guides/account-management/simplex#account-security-checklist) |
+| **SimpleX Lock** | App-level authentication, with an optional self-destruct passcode under coercion | [Account security checklist](/guides/account-management/simplex#account-security-checklist) |
+| **Encrypted backups** | Export the database, store it with other high-value backups, and test restoring | [Account security checklist](/guides/account-management/simplex#account-security-checklist) |
+| **Security code verification** | Per-contact verification against a man-in-the-middle at introduction | [Verifying contacts](/guides/account-management/simplex#verifying-contacts-and-controlling-connections) |
+| **One-time invitation links** | Single-use links over a publicly posted contact address | [Verifying contacts](/guides/account-management/simplex#verifying-contacts-and-controlling-connections) |
+| **Incognito and profiles** | Random per-contact profiles, and separate public and team profiles | [Verifying contacts](/guides/account-management/simplex#verifying-contacts-and-controlling-connections) |
+| **Relay servers and routing** | Preset or self-hosted SMP and XFTP relays, private message routing, Tor | [Network settings](/guides/account-management/simplex#network-and-metadata-settings) |
+| **Group roles** | Observer, member, admin, and owner capabilities; keep owners few | [Group configuration](/guides/account-management/simplex#group-configuration-checklist) |
+| **Link rotation** | The real access control after a leak or a staff departure | [Group configuration](/guides/account-management/simplex#group-configuration-checklist) |
+
+For step-by-step procedures, see the [SimpleX Chat Security Guide](/guides/account-management/simplex).
+
+## Further reading
+
+- [SimpleX Chat Security Guide](/guides/account-management/simplex)
+- [Community Management overview](/community-management/overview): how platform pages fit together
+- [SimpleX guide: privacy and security](https://simplex.chat/docs/guide/privacy-security.html): vendor documentation
+- [SimpleX guide: groups](https://simplex.chat/docs/guide/secret-groups.html): roles, links, and group preferences
+
+---
+
+<ContributeFooter />

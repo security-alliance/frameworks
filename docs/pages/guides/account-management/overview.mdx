@@ -1,11 +1,17 @@
 ---
-title: "Account Management"
+title: "Account Management | Security Alliance"
+description: "Account management security guides for Discord, Telegram, Slack, Twitter/X, GitHub, domain registrars, cloud deploy platforms, and common business tools."
 tags:
   - Community & Marketing
   - Security Specialist
+  - Engineer/Developer
 contributors:
   - role: wrote
     users: [dickson, nftdreww]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -15,38 +21,56 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-This section contains practical, step-by-step guides that help you implement security best practices across various
-platforms and tools. Each guide provides actionable instructions you can follow to secure your operations.
+> 🔑 **Key Takeaway**: High-value SaaS and community accounts need strong MFA, session hygiene, least privilege, and
+> admin separation. Compromise of one admin surface often becomes org-wide phishing scale.
 
-## Communication Platforms
+Practical, step-by-step guide hub for securing accounts across communication platforms, DevOps tools, and business
+applications. Most child guides include checklists for individuals, team members, and administrators.
 
-Guides for securing your communication and community platforms.
+## What this section covers
 
-- [**Discord Security**](/guides/account-management/discord) - Comprehensive guide to securing your Discord server
-- [**Signal Security**](/guides/account-management/signal) - Secure messaging with registration lock and privacy settings
-- [**Slack Security**](/guides/account-management/slack) - Workspace security and admin settings for teams
-- [**Telegram Security**](/guides/account-management/telegram) - Comprehensive guide to securing your Telegram account
-  and groups
-- [**Twitter/X Security**](/guides/account-management/twitter) - Comprehensive guide to securing your X (Twitter) account
+### Communication platforms
 
-## DevOps & Infrastructure
+1. [Discord Security](/guides/account-management/discord): server roles, raid protection, bot least privilege.
+2. [Matrix Security](/guides/account-management/matrix): recovery keys, cross-signing, room and homeserver hardening.
+3. [Session Security](/guides/account-management/session): recovery password custody and Community server limits.
+4. [Signal Security](/guides/account-management/signal): registration lock and privacy settings.
+5. [SimpleX Chat Security](/guides/account-management/simplex): database passphrase, app lock, and group links.
+6. [Slack Security](/guides/account-management/slack): workspace admin and MFA posture.
+7. [Telegram Security](/guides/account-management/telegram): two-step verification, phone privacy, group admin rights.
+8. [Twitter/X Security](/guides/account-management/twitter): SIM-swap resistant MFA and OAuth hygiene.
 
-Guides for securing your development and infrastructure accounts.
+### DevOps and infrastructure
 
-- [**GitHub Security**](/guides/account-management/github) - Repository security, 2FA, SSH keys, and organization settings
-- [**GoDaddy Security**](/guides/account-management/godaddy) - Domain security, DNSSEC, and registrar settings
-- [**Render Security**](/guides/account-management/render) - Cloud platform security, API keys, and team management
-- [**Sentry Security**](/guides/account-management/sentry) - Error tracking platform security and access control
-- [**Vercel Security**](/guides/account-management/vercel) - Deployment platform security and team settings
+1. [GitHub Security](/guides/account-management/github): 2FA, SSH, org settings, push protection.
+2. [GoDaddy Security](/guides/account-management/godaddy): registrar and DNSSEC-oriented controls.
+3. [Render Security](/guides/account-management/render): platform access and API keys.
+4. [Sentry Security](/guides/account-management/sentry): error-tracking access control.
+5. [Vercel Security](/guides/account-management/vercel): deployment platform and team settings.
 
-## Business Tools
+### Business tools
 
-Guides for securing your productivity and business applications.
+1. [Linear Security](/guides/account-management/linear): passkeys and workspace settings.
+2. [Mercury Security](/guides/account-management/mercury): banking MFA and dual approval patterns.
+3. [Notion Security](/guides/account-management/notion): workspace access and 2-step verification.
+4. [Trello Security](/guides/account-management/trello): board and session management.
 
-- [**Linear Security**](/guides/account-management/linear) - Project management security with passkeys and workspace settings
-- [**Mercury Security**](/guides/account-management/mercury) - Banking security, ACH authorization, and dual approval
-- [**Notion Security**](/guides/account-management/notion) - Workspace security, 2-step verification, and access controls
-- [**Trello Security**](/guides/account-management/trello) - Board security and session management
+## Related frameworks
+
+- [Guides overview](/guides/overview): endpoint guides (SSH, security keys, password managers, Zoom)
+- [Community Management](/community-management/overview): community-facing channel risk
+- [OpSec](/opsec/overview): MFA and password foundations
+- [IAM](/iam/overview): org-wide access lifecycle
+
+## Further reading
+
+- [Secure Authentication](/iam/secure-authentication): the account controls these product guides configure
+- [Hardware Security Keys](/guides/endpoint-security/hardware-security-keys): the strongest second factor across every
+  product here
+- [CISA: implementing phishing-resistant MFA](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf):
+  why factor choice matters more than factor count
+- [NIST SP 800-63B: Digital Identity Guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html): the standard behind
+  these authentication recommendations
 
 ---
 

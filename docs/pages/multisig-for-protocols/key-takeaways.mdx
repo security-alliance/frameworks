@@ -11,17 +11,19 @@ contributors:
     users: [isaac]
   - role: reviewed
     users: [ElliotFriedman]
+  - role: fact-checked
+    users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # Key Takeaways
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: If you only read one multisig page, read this one: timelocks, function separation,
+> dedicated keys, calldata verification, and monitored queues beat unenforced policy.
 
 If you read one page from the Multisig Security Framework, make it this one. These are the principles that matter most.
 
@@ -115,9 +117,14 @@ Client) in case primary UIs go down. Run regular emergency drills to verify that
 that communication channels work. See the
 [Implementation Checklist](/multisig-for-protocols/implementation-checklist).
 
+## Further reading
+
+- [Multisig for Protocols overview](/multisig-for-protocols/overview): how the pages of this framework fit together
+- [Implementation Checklist](/multisig-for-protocols/implementation-checklist): turning these takeaways into tracked
+  work
+- [Operational Runbooks](/multisig-for-protocols/runbooks/overview): the procedures behind the takeaways
+- [Secure Multisig Best Practices](/wallet-security/secure-multisig-best-practices): the detailed design rules
+
 ---
 
-For the full framework, see the [Multisig Security Framework Overview](/multisig-for-protocols/overview).
-
-</TagProvider>
 <ContributeFooter />

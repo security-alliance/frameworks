@@ -1,12 +1,19 @@
 ---
 title: "Operating System Security | Security Alliance"
-description: "Harden operating systems with security patches, fail2ban, SSH key authentication, MFA, RBAC, and host-based firewalls. Follow NIST 800-123 guidelines for comprehensive OS security."
+description: "Harden operating systems with prompt security patching, fail2ban, SSH key authentication, MFA, least-privilege accounts, and host-based firewalls."
 tags:
   - Engineer/Developer
   - Security Specialist
   - Operations & Strategy
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,11 +23,14 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Patch early, prefer key-based SSH with MFA where supported, and keep host firewalls default-deny.
+> OS hardening is table stakes under every higher control.
+
 This document outlines some general best practices one should follow with regards to operating system security, however
 if you're interested in a much more comprehensive guide you could look at [NIST
 800-123](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-123.pdf).
 
-## Best Practices
+## Best practices
 
 1. Keep your operating systems updated with the latest security patches and updates.
 2. Block the remote shell port from all but required IPs.
@@ -33,6 +43,13 @@ if you're interested in a much more comprehensive guide you could look at [NIST
 9. Configure host-based firewalls to control incoming and outgoing network traffic.
 10. Implement host-based intrusion detection and prevention systems (HIDS/HIPS).
 11. Follow secure configuration guides, such as the NIST 800-123 guidelines, to harden your operating systems.
+
+## Further reading
+
+- [Infrastructure overview](/infrastructure/overview): how the pages of this framework fit together
+- [Secure Operating Systems](/opsec/secure-operating-systems): hardened OS choices for high-risk operator machines
+- [Network Security](/infrastructure/network-security): the firewall and segmentation layer around these hosts
+- [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks): per-OS hardening baselines you can audit against
 
 ---
 

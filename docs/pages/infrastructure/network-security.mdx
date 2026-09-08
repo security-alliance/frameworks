@@ -1,6 +1,6 @@
 ---
 title: "Network Security | Security Alliance"
-description: "Network security primer for Web3: default-deny firewalls, segmentation, IDS/IPS, VPNs for remote access, encrypted transit, ACLs, and audit cadence. Cross-references DDoS, DNS, and privacy VPN guidance."
+description: "Network security primer for Web3: default-deny firewalls, segmentation, IDS/IPS, VPNs for remote access, encrypted transit, ACLs, and audit cadence."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -13,6 +13,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -22,9 +24,8 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway**: Default-deny ingress, segment everything, encrypt in transit,
-> log and audit continuously. Network security is not a single tool but a layered posture —
-> each layer assumes the one below it may fail.
+> 🔑 **Key Takeaway**: Default-deny ingress, segment everything, encrypt in transit, log and audit continuously. Network
+> security is not a single tool but a layered posture — each layer assumes the one below it may fail.
 
 Network security spans every boundary where your infrastructure touches the internet or other
 untrusted networks. In Web3, the stakes are higher than typical SaaS: a compromised frontend
@@ -169,7 +170,7 @@ management ports), not smart contract bugs.
 | Flow logging | Enabled | Centralized + alerts on anomalies |
 | Audit cadence | Quarterly | Continuous automated + quarterly manual review |
 
-## Further Reading & Tools
+## Further reading
 
 - [NIST SP 800-41 Rev. 1](https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final)
   — Guidelines for Firewalls and Firewall Policy

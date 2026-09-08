@@ -1,11 +1,18 @@
 ---
 title: "Incident Management | Security Alliance"
-description: "Incident Management Framework: Prepare for, detect, respond to, and recover from security incidents. Build response plans, communication strategies, playbooks, and lessons learned processes."
+description: "Incident management for Web3: prepare detection and response, communications, forensics, playbooks, SEAL 911 paths, and a customizable IR template with runbooks."
 tags:
   - Security Specialist
   - Operations & Strategy
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,19 +22,83 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Incident management involves preparing for, detecting, responding to, and recovering from security incidents. By
-thinking about incident management prior to actually experiencing an incident, you can help increase the likelihood of a
-timely recovery.
+> 🔑 **Key Takeaway**: Decide who leads, how you communicate, and what to freeze before the incident. Web3 response
+> windows are short and many losses are irreversible.
 
-## Contents
+Incident management is preparing for, detecting, responding to, and recovering from security incidents. Plans written
+under stress lose to plans practiced in calm. This framework covers communication, detection and response, forensic
+preparation, lessons learned, SEAL-oriented victim playbooks, and a full customizable incident response template with
+policy, templates, and technical runbooks.
 
-1. [Communication Strategies](/incident-management/communication-strategies)
-2. [Incident Detection and Response](/incident-management/incident-detection-and-response)
-3. [Forensic Readiness](/incident-management/forensic-readiness)
-4. [Lessons Learned](/incident-management/lessons-learned)
-5. [Playbooks](/incident-management/playbooks/overview)
+## What this framework covers
+
+1. [Communication Strategies](/incident-management/communication-strategies): spokespeople, schedules, and stakeholder
+   updates without spreading unconfirmed claims.
+2. [Incident Detection and Response](/incident-management/incident-detection-and-response): find incidents early and work
+   a basic response cycle.
+3. [Forensic Readiness](/incident-management/forensic-readiness): preserve trustworthy evidence before you need it
+   (`dev` page — in progress).
+4. [Lessons Learned](/incident-management/lessons-learned): post-incident review that improves the next response.
+5. [Playbooks](/incident-management/playbooks/overview): scenario playbooks and SEAL 911 victim guidance.
+6. [Incident Response Template](/incident-management/incident-response-template/overview): policy, roles, contacts,
+   copy-ready templates, and technical runbooks for Web3 protocols.
+
+### Playbooks subsection
+
+1. [Playbooks overview](/incident-management/playbooks/overview)
+2. [Malware Infection](/incident-management/playbooks/malware)
+3. [North Korea (DPRK) Attack](/incident-management/playbooks/hacked-dprk)
+4. [Wallet Drainer Attack](/incident-management/playbooks/hacked-drainer)
+5. [ELUSIVE COMET Attack](/incident-management/playbooks/hacked-elusive-comet)
 6. [SEAL 911 War Room Guidelines](/incident-management/playbooks/seal-911-war-room-guidelines)
-7. [Incident Response Template](/incident-management/incident-response-template/overview)
+7. [Decentralized Incident Response Framework (DeIRF)](/incident-management/playbooks/decentralized-ir)
+
+### Incident response template subsection
+
+1. [Template overview](/incident-management/incident-response-template/overview)
+2. [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy)
+3. [Roles and Staffing](/incident-management/incident-response-template/roles-and-staffing)
+4. [Communications](/incident-management/incident-response-template/communications)
+5. [Contacts](/incident-management/incident-response-template/contacts)
+6. [Templates hub](/incident-management/incident-response-template/templates/overview)
+7. [Runbooks hub](/incident-management/incident-response-template/runbooks/overview)
+
+### IR templates
+
+1. [Incident Log Template](/incident-management/incident-response-template/templates/incident-log-template)
+2. [Post-Mortem Template](/incident-management/incident-response-template/templates/post-mortem-template)
+3. [Runbook Template](/incident-management/incident-response-template/templates/runbook-template)
+4. [Example Incident Log](/incident-management/incident-response-template/templates/example-incident-log)
+5. [Example Post-Mortem](/incident-management/incident-response-template/templates/example-post-mortem)
+
+### IR runbooks
+
+1. [Smart Contract Exploit](/incident-management/incident-response-template/runbooks/smart-contract-exploit)
+2. [Key Compromise](/incident-management/incident-response-template/runbooks/key-compromise)
+3. [Frontend Compromise](/incident-management/incident-response-template/runbooks/frontend-compromise)
+4. [DNS Hijack](/incident-management/incident-response-template/runbooks/dns-hijack)
+5. [CDN/Hosting Compromise](/incident-management/incident-response-template/runbooks/cdn-hosting-compromise)
+6. [Dependency Attack](/incident-management/incident-response-template/runbooks/dependency-attack)
+7. [Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise)
+8. [DDoS Attack](/incident-management/incident-response-template/runbooks/ddos-attack)
+9. [Third-Party Outage](/incident-management/incident-response-template/runbooks/third-party-outage)
+
+## Related frameworks
+
+- [Monitoring](/monitoring/overview): signals that feed detection
+- [Multisig for Protocols](/multisig-for-protocols/overview): emergency signer and admin paths
+- [Wallet Security](/wallet-security/overview): key and signer hygiene adjacent to compromise playbooks
+- [DPRK IT Workers](/dprk-it-workers/overview): long-running human threat context for DPRK playbooks
+- [Supply Chain](/supply-chain/overview): dependency and pipeline incidents
+- [Infrastructure](/infrastructure/overview): DNS, DDoS, and hosting response context
+- [SEAL Certifications](/certs/overview): certification paths related to ops maturity
+
+## Further reading
+
+- [Incident Response Template](/incident-management/incident-response-template/overview): the customization checklist
+  for adapting these documents
+- [SEAL 911](https://securityalliance.org/seal-911): emergency response coordination
+- [Rekt News](https://rekt.news/): public post-mortems to learn from
 
 ---
 

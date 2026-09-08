@@ -1,10 +1,17 @@
 ---
 title: "Common Web Vulnerabilities | Security Alliance"
-description: "Understand common web and mobile vulnerabilities: Account Takeovers, Cross-Site Scripting (XSS), CSRF, IDOR, Insecure Data Storage, and code tampering. Reference OWASP Top 10 for mitigation."
+description: "Understand common web and mobile vulnerabilities: Account Takeovers, Cross-Site Scripting (XSS), CSRF, IDOR, Insecure Data Storage, and code tampering"
 tags:
   - Engineer/Developer
   - Security Specialist
   - DevOps
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Prioritize account takeover of admin surfaces, XSS/CSRF/IDOR, and mobile storage flaws. Map each
+> class to concrete mitigations, not awareness alone.
 
 Understanding and mitigating common vulnerabilities is crucial for securing your web and mobile applications. Here are
 some frequently encountered vulnerabilities:
@@ -41,6 +51,14 @@ hijacking.
 Refer to the [OWASP Top 10](https://owasp.org/www-project-top-ten/) and [OWASP Mobile Security
 Project](https://owasp.org/www-project-mobile-top-10/) for more details on common vulnerabilities and mitigation
 strategies.
+
+## Further reading
+
+- [Front End Web App overview](/front-end-web-app/overview): how the pages of this framework fit together
+- [Web Application Security](/front-end-web-app/web-application-security): framework and deployment choices that prevent
+  these classes
+- [Secure Authentication](/iam/secure-authentication): hardware 2FA and the admin account takeover path
+- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/): concrete mitigations per vulnerability class
 
 ---
 

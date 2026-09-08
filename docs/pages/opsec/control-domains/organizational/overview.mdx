@@ -1,19 +1,36 @@
 ---
-title: "Organizational Security Controls | Security Alliance"
-description: "Organizational controls: regulatory compliance, supply chain security, vendor assessments, and security governance. Web3 guidance for DAOs and multisig."
+title: "Organizational Security Controls | SEAL"
+description: "Organizational OpSec controls: compliance alignment, supply-chain security, vendor assurance, and governance structures that sustain the program."
 tags:
   - Security Specialist
   - Operations & Strategy
   - DevOps
   - SRE
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../../components'
+
+{/*
+  content-model-exception:
+  type: project-doc
+  reason: Nested OpSec overview; child map lives in parent IA / sidebar until section pages stabilize.
+  owner: maintainers
+*/}
 
 # Organizational Controls
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Organizational controls set policies, compliance mapping, and third-party assurance so technical
+> and people controls have durable ownership and funding.
 
 Organizational controls form the foundation of an operational security program. These controls establish the governance
 structures, policies, and processes necessary to implement and maintain security throughout the organization.
@@ -107,6 +124,14 @@ Establishing clear security responsibilities and accountability throughout the o
 Effective organizational controls provide the structure needed to implement and maintain operational security throughout
 your organization. By establishing clear governance, compliance processes, and supply chain controls, you create a
 foundation for all other security measures.
+
+## Further reading
+
+- [Control Domains overview](/opsec/control-domains/overview): how the four control domains fit together
+- [Compliance and Regulatory Alignment](/opsec/control-domains/organizational/compliance-regulatory-alignment): mapping
+  obligations to controls
+- [Supply Chain Security](/opsec/control-domains/organizational/supply-chain-security): vendor and dependency risk
+- [Governance](/governance/overview): the decision structures behind these controls
 
 ---
 

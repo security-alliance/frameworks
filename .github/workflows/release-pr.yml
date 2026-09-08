@@ -1,0 +1,114 @@
+name: Release PR
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Override version (e.g. v0.0.3). Leave blank to auto-bump."
+        required: false
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: release-pr
+  cancel-in-progress: false
+
+jobs:
+  release-pr:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, 'chore(release):') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: false
+
+      - name: Compute next version
+        id: version
+        env:
+          OVERRIDE: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          if [ -n "${OVERRIDE:-}" ]; then
+            if ! printf '%s' "$OVERRIDE" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+              echo "::error::Invalid version override '$OVERRIDE' (expected vMAJOR.MINOR.PATCH)"
+              exit 1
+            fi
+            next="$OVERRIDE"
+            echo "Using override: $next"
+          else
+            latest=$(git tag --list 'v*.*.*' --sort=-v:refname | head -n1 || true)
+            if [ -z "$latest" ]; then
+              next="v0.0.1"
+            else
+              v="${latest#v}"
+              major="${v%%.*}"
+              rest="${v#*.}"
+              minor="${rest%%.*}"
+              patch="${rest#*.}"
+              next="v${major}.${minor}.$((patch + 1))"
+            fi
+            echo "Latest tag: ${latest:-none}"
+          fi
+          echo "next=$next" >> "$GITHUB_OUTPUT"
+          echo "Next version: $next"
+
+      - name: Ensure changelog exists
+        run: touch CHANGELOG.md
+
+      - name: Generate changelog
+        uses: orhun/git-cliff-action@f50e11560dce63f7c33227798f90b924471a88b5 # v4.8.0
+        id: git-cliff
+        with:
+          config: cliff.toml
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          args: --unreleased --tag ${{ steps.version.outputs.next }} --prepend CHANGELOG.md
+        env:
+          OUTPUT: RELEASE_NOTES.md
+
+      - name: Check for releasable changes
+        id: check
+        run: |
+          set -euo pipefail
+          if grep -qE '^- ' RELEASE_NOTES.md; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            echo "Changes found:"
+            cat RELEASE_NOTES.md
+          else
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing to release since the last tag. Skipping."
+          fi
+
+      - name: Write VERSION
+        if: steps.check.outputs.has_changes == 'true'
+        env:
+          NEXT: ${{ steps.version.outputs.next }}
+        run: printf '%s\n' "$NEXT" > VERSION
+
+      - name: Open release PR
+        if: steps.check.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7.0.11
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sign-commits: true
+          base: main
+          branch: release/${{ steps.version.outputs.next }}
+          title: "chore(release): ${{ steps.version.outputs.next }}"
+          commit-message: "chore(release): ${{ steps.version.outputs.next }}"
+          labels: release
+          delete-branch: true
+          add-paths: |
+            CHANGELOG.md
+            VERSION
+          body: |
+            Automated release PR for **${{ steps.version.outputs.next }}**.
+
+            Review the changelog, edit if needed, then merge.
+            Merging creates the tag and publishes the GitHub Release.

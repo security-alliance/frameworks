@@ -1,9 +1,16 @@
 ---
-title: "Code Reviews & Peer Audits | Security Alliance"
-description: "Conduct effective security code reviews: use checklists for input validation, error handling, authentication. Automate with SonarQube, Checkmarx, Snyk. Foster collaborative peer audit culture."
+title: "Code Reviews and Peer Audits | SEAL"
+description: "Run security-focused code reviews with checklists, automated analysis, peer audits, tracked findings, and continuous improvement of the review process."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,44 +20,48 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Code reviews and peer audits help identifying and mitigating security vulnerabilities in software. They involve
-systematically examining code to ensure it adheres to the security standards and best practices of the project.
+> 🔑 **Key Takeaway**: Code reviews catch vulnerabilities early when security is an explicit checklist item, findings are
+> tracked to close, and automation backs human judgment.
 
-## Best Practices for Code Reviews
+Code reviews and peer audits systematically examine changes for security defects and project standards before merge.
+They reduce the chance that single-author blind spots ship into production.
 
-1. **Regular Reviews**
-   - Conduct code reviews regularly to identify and fix security vulnerabilities early in the development process.
-   - Integrate code reviews into the development workflow to make them a routine part of the process.
+## Best practices
 
-2. **Review Checklists**
-   - Use review checklists to ensure that all security aspects are covered during the review.
-   - Checklists should include common security issues such as input validation, error handling, and authentication.
+1. **Regular reviews**
+   - Review early and often; late mega-reviews hide issues.
+   - Make review a required workflow step for protected branches.
+2. **Review checklists**
+   - Cover security items: input handling, authz, crypto misuse, secrets, error paths, and dangerous defaults.
+   - Keep checklists short enough that reviewers actually use them.
+3. **Automated tools**
+   - Use static and dependency analysis to flag candidates for human attention.
+   - Examples practitioners use include SonarQube, Checkmarx, and Snyk—evaluate fit for the stack and false-positive load.
+4. **Peer audits**
+   - Have teammates review each other’s code for a second perspective.
+   - Rotate reviewers so knowledge and scrutiny spread across the team.
 
-3. **Automated Tools**
-   - Use automated code analysis tools to assist in identifying potential security vulnerabilities.
-   - Tools like SonarQube, Checkmarx, and Snyk can help in detecting issues that might be missed during manual reviews.
+## Conducting effective reviews
 
-4. **Peer Audits**
-   - Encourage peer audits where team members review each other's code.
-   - Peer audits provide a fresh perspective and can help identify issues that the original developer might overlook.
+1. **Focus on security**
+   - Explicitly prioritize security-relevant diffs, not only style.
+   - Hold changes to the project’s
+     [secure coding standards](/secure-software-development/secure-coding-standards-guidelines).
+2. **Collaborative approach**
+   - Treat review as joint quality work, not gatekeeping theater.
+   - Prefer specific, constructive comments tied to risk.
+3. **Document findings**
+   - Record issues and track resolution in the team’s issue system.
+   - Do not merge “we’ll fix later” critical findings without a tracked follow-up and acceptance criteria.
+4. **Continuous improvement**
+   - Update checklists when incidents or near-misses reveal gaps.
+   - Revisit tool rules when noise blocks real signal.
 
-## Conducting Effective Code Reviews
+## Further reading
 
-1. **Focus on Security**
-   - Prioritize security issues during code reviews.
-   - Ensure that code follows secure coding standards and guidelines.
-
-2. **Collaborative Approach**
-   - Foster a collaborative environment where reviewers and developers work together to improve code quality.
-   - Provide constructive feedback and encourage open communication.
-
-3. **Document Findings**
-   - Document all findings from code reviews and track their resolution.
-   - Use issue tracking systems to manage identified vulnerabilities and ensure they are addressed.
-
-4. **Continuous Improvement**
-   - Continuously improve the code review process based on feedback and lessons learned.
-   - Regularly update review checklists and practices to keep up with evolving security threats.
+- [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/)
+- [Google Engineering Practices — Code Review](https://google.github.io/eng-practices/review/)
+- Project [Security Testing](/security-testing/overview)
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "AI Workflows: Developers vs Non-Developers | SEAL"
-description: "How AI security strategy should differ between developer and non-developer AI usage workflows."
+description: "How AI security strategy should differ between developer and non-developer AI usage workflows. non-developer SaaS AI needs data classification, output"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -11,6 +11,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -19,6 +21,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Developer agent stacks need tool and sandbox gates; non-developer SaaS AI needs data
+> classification, output gates, and approved-app policy—same risk theme, different controls.
 
 AI workflows differ significantly based on user intent and technical context. Developer workflows involve code, APIs,
 model orchestration, and embedded systems where execution paths are explicit and controllable. Non-developer workflows,
@@ -39,6 +44,14 @@ public blockchain data but still require safeguards against misinterpretation or
 - CalypsoAI - cognitive-layer analysis of agent reasoning and plan execution
 - Obsidian Security - browser-level enforcement for AI data policies and prompt inspection
 - Nightfall AI - AI-native DLP across SaaS, endpoints, browsers, and AI applications
+
+## Further reading
+
+- [AI Security overview](/ai-security/overview): how the pages of this framework fit together
+- [Data Exfiltration via Generative Systems](/ai-security/data-exfiltration-via-generative-systems): the shared risk
+  behind both workflow types
+- [Security Training](/user-team-security/security-training): role-based guidance for non-developer AI users
+- [OWASP GenAI Security Project](https://genai.owasp.org/): control guidance for LLM and agentic applications
 
 ---
 

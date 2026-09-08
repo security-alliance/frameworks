@@ -1,6 +1,6 @@
 ---
 title: "Treasury Transaction Verification | SEAL"
-description: "Step-by-step protocols for large cryptocurrency transfers: address verification, bidirectional test transactions, video verification, anti-social-engineering measures, and multi-party confirmation."
+description: "Protocols for large cryptocurrency transfers: address verification, bidirectional tests, video checks, anti-social-engineering controls"
 tags:
   - Treasury Ops
   - Protocol
@@ -12,19 +12,29 @@ contributors:
     users: [dickson]
   - role: reviewed
     users: [relotnek, ElliotFriedman]
+  - role: fact-checked
+    users: []
 ---
 
-import { TagList, AttributionList, ContributeFooter } from "../../../components"
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # Guide: Large Cryptocurrency Transfers
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Large transfers are irreversible. Verify destination and amount through multiple people and
+> channels, run small tests first, and treat urgency as a social-engineering signal.
+
 ## Core Principles
 
 Large cryptocurrency transfers require rigorous verification because transactions are irreversible. This guide covers
 both receiving and sending significant amounts, with security measures scaling to transfer size.
+
+For account classification and custody policy baselines, start with the
+[Classification Framework](/treasury-operations/classification) and
+[Enhanced Controls](/treasury-operations/enhanced-controls). For protocol multisig operations, see
+[Multisig for Protocols](/multisig-for-protocols/overview).
 
 ## Part 1: Receiving Large Transfers
 
@@ -70,7 +80,7 @@ Have 2-3 team members independently verify the address:
 
 This should occur **24-48 hours before the main transfer**.
 
-**Phase 1: Sender → You (Incoming Test): **
+**Phase 1: Sender → You (Incoming Test):**
 
 ```
 1. Sender sends small amount (0.001 ETH or 0.0001 BTC) to your new address
@@ -81,7 +91,7 @@ This should occur **24-48 hours before the main transfer**.
 3. Document transaction hash and confirmation time
 ```
 
-**Phase 2: You → Sender (Outgoing Test): **
+**Phase 2: You → Sender (Outgoing Test):**
 
 ```
 4. Send test amount BACK to another address you control
@@ -114,6 +124,7 @@ Request from sender:
 - **\>$10M**: Consider 2-3 separate transactions (reduces single-transaction risk, allows staged confirmation, provides
   pause points to verify each step)
 - **\>$50M**: Multiple transactions strongly recommended with 30-minute intervals between each
+
 **Anti-Duress Protocols:**
 
 Since kidnapping and other forms of duress have been employed by criminals to steal cryptocurrency, organizations should
@@ -121,6 +132,7 @@ prepare for this. Establish a duress word that indicates a transfer is not being
 duress word is mentioned during an exchange involving the transfer, law enforcement will be contacted and the
 transaction will not be processed. Procedures should be put in place with concrete runbooks for these situations. Safe words
 should not appear in runbooks or any digital format.
+
 **Anti-Social-Engineering Protocols:**
 
 Establish a code phrase during the initial verified meeting. Use this phrase to authenticate any address changes or unusual
@@ -359,9 +371,8 @@ After transaction reaches finality:
 
 ## Multi-Signature Best Practices
 
-See the Multisigs for Protocols guide.
-
-# TODO: Add link to Multisigs for Protocols guide. AFTER IT IS MERGED
+For protocol and operational multisig design, thresholds, and runbooks, see
+[Multisig for Protocols](/multisig-for-protocols/overview).
 
 ## Critical Risk Mitigations
 
@@ -425,6 +436,15 @@ See the Multisigs for Protocols guide.
 extensive, but preventing a single mistake justifies significant operational overhead.
 
 The cost of verification is measured in minutes. The cost of a mistake is measured in millions.
+
+## Further reading
+
+- [Treasury Operations overview](/treasury-operations/overview)
+- [Classification Framework](/treasury-operations/classification)
+- [Enhanced Controls for High-Risk Accounts](/treasury-operations/enhanced-controls)
+- [Multisig for Protocols](/multisig-for-protocols/overview)
+- [Wallet Security](/wallet-security/overview)
+- [OpSec](/opsec/overview)
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Unit Testing | Security Alliance"
-description: "Build smart contract security with comprehensive unit tests. Test individual functions, access controls, and arithmetic operations using Foundry, Hardhat, Moccasin, or Anchor."
+description: "Build smart contract security with comprehensive unit tests. Test individual functions, access controls, and arithmetic operations using Foundry, Hardhat"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -10,6 +10,10 @@ tags:
 contributors:
   - role: wrote
     users: [patrickalphac]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -18,6 +22,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Unit tests prove expected behavior for individual functions. High path coverage is necessary
+> substrate for fuzzing, integration tests, and audit readiness—not a substitute for them.
 
 Unit testing is the foundation of smart contract security testing. While fuzz tests can find edge cases and integration
 tests verify system interactions, unit tests ensure that individual functions behave correctly under expected
@@ -206,7 +213,7 @@ contract MyContractTest is Test {
 - The external dependency is simple and deterministic
 - You're specifically testing the interaction with the external system
 
-## Best Practices
+## Best practices
 
 ### 1. Achieve High Code Coverage
 
@@ -277,7 +284,7 @@ function testTransfer() public {
 
 ## Common Smart Contract Tools and Frameworks
 
-- [Foundry (Solidity)](https://github.com/foundry-rs/foundry):
+- [Foundry (Solidity)](https://github.com/foundry-rs/foundry)
 - [Hardhat (Solidity)](https://hardhat.org/)
 - [Moccasin (Vyper)](https://github.com/Cyfrin/moccasin)
 - [Anchor (Rust)](https://www.anchor-lang.com/docs)

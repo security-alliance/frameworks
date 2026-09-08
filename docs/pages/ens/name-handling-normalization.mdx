@@ -1,12 +1,16 @@
 ---
 title: "ENS Name Handling & Normalization | SEAL"
-description: "Normalize ENS names per ENSIP-15 before creating namehash. Protect users from homograph attacks with confusable character detection and proper emoji handling with UTS-51 compliance."
+description: "Normalize ENS names per ENSIP-15 before creating namehash. Protect users from homograph attacks with confusable character detection and proper emoji handling"
 tags:
   - Engineer/Developer
   - Security Specialist
 contributors:
-- role: wrote
-  users: [ghadi8]
+  - role: wrote
+    users: [ghadi8]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -15,6 +19,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Normalize with ENSIP-15 before any namehash or encoding step, and warn on confusable
+> scripts that enable homograph phishing.
 
 ## Normalize Names per [ENSIP-15](https://docs.ens.domains/ensip/15)
 
@@ -57,6 +64,14 @@ multiple code points, including zero-width joiners (ZWJ) and variation selectors
 Incorrect emoji implementation can cause names to appear differently across platforms or fail to resolve correctly.
 Emoji rendering also varies significantly between operating systems and browsers, requiring thorough cross-platform
 testing to ensure consistent user experience.
+
+## Further reading
+
+- [ENS overview](/ens/overview): how the pages of this framework fit together
+- [Data Integrity & Verification](/ens/data-integrity-verification): verifying a resolved name before it is used to move
+  funds
+- [ENSIP-15: Name Normalization](https://docs.ens.domains/ensip/15): the normalization algorithm implementations must
+  follow
 
 ---
 

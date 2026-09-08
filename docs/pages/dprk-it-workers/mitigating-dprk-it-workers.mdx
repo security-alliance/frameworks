@@ -1,6 +1,6 @@
 ---
 title: "Mitigating DPRK IT Worker Threats | SEAL"
-description: "Harden your hiring process and organization against DPRK IT Workers. Implement access controls, verify remote employees, and follow step-by-step response procedures if you've hired one."
+description: "Harden your hiring process and organization against DPRK IT Workers. Implement access controls, verify remote employees. All of the strategies covered"
 tags:
   - Security Specialist
   - Operations & Strategy
@@ -8,17 +8,23 @@ tags:
   - HR
   - Engineer/Developer
 contributors:
-- role: wrote
-  users: [blackbigswan]
-- role: reviewed
-  users: [yaniv, dickson]
+  - role: wrote
+    users: [blackbigswan]
+  - role: reviewed
+    users: [yaniv, dickson]
+  - role: fact-checked
+    users: []
 ---
+
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # Mitigating DPRK IT Workers
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Prevention is hiring verification plus least privilege. After a
+> hit, revoke access fast, preserve evidence, and treat sanctions and supply-chain exposure as first-class incidents.
 
 This section discusses ways you can harden your organization against DPRK IT Workers, both before and after a potential
 hiring. All of the strategies covered in the prior section, [**Techniques, Tactics, and
@@ -172,6 +178,13 @@ with future mitigation and the discovery of other actors.
     operations.
 6. **Contribution to the North Korean Military:** DPRK IT worker salaries directly contribute to the Military Ministry
 of North Korea. The workers do not keep the salaries for themselves.
+
+## Further reading
+
+- [DPRK IT Workers overview](/dprk-it-workers/overview): how the pages of this framework fit together
+- [DPRK Attack Playbook](/incident-management/playbooks/hacked-dprk): incident response once a worker is confirmed
+- [Role-Based Access Control](/iam/role-based-access-control): implementing the least privilege rules described here
+- [Repository Hardening](/devsecops/repository-hardening): protecting branches, releases, and publishing permissions
 
 ---
 

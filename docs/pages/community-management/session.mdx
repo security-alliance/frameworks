@@ -1,0 +1,102 @@
+---
+title: "Session Security | Security Alliance"
+description: "Run a Session community safely: recovery-password custody, Account ID impersonation, unencrypted Communities, and moderation without a central account provider."
+tags:
+  - Community & Marketing
+contributors:
+  - role: wrote
+    users: [AllyPry]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
+
+# Session
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Session removes phone numbers and central accounts, so recovery and revocation disappear with
+> them. The recovery password is the account, and Communities are not end-to-end encrypted.
+
+Session account and Community security spans recovery-password custody, Account ID verification, privacy settings, and
+Community server administration—each covered in depth in the
+[Session Security Guide](/guides/account-management/session). Use this page to find the right section.
+
+## The community manager's role in security
+
+Session appeals to Web3 teams for the reason it appeals to everyone else: no phone number, no email address, and no
+central account provider. For a community manager who has watched a colleague lose an account to a SIM swap, that is a
+meaningful improvement.
+
+The same design removes the safety net. There is no support desk that can freeze a stolen identity, no password reset,
+and no way to revoke a leaked credential. A community manager operating on Session holds a key pair, and the entire
+security posture of the role reduces to how that key pair is stored and how members verify which Account ID is real.
+
+What differs from Discord and Telegram is that recovery is a project responsibility rather than a platform feature.
+Losing the recovery password means the operator identity is gone; leaking it means an attacker becomes that identity to
+every contact, with no mechanism to take it back.
+
+### Why following this guide is not optional
+
+Session's two chat surfaces have different security properties, and mixing them up is the most common operational
+mistake. Groups are end-to-end encrypted and suited to team coordination. Communities run on a Session Open Group
+Server (SOGS) and are **not** end-to-end encrypted on that server: whoever operates the instance can read the traffic
+it stores. Treating a Community as a private channel misplaces trust in an operator who may not even be the project.
+
+Impersonation is also harder to counter than on platforms with usernames and verified badges. Account IDs are long
+hexadecimal strings, and members cannot reasonably eyeball the difference between a real one and a near-match. The only
+durable answer is a project-controlled page listing official Account IDs and invite links, plus a stated policy that
+moderators never send the first direct message.
+
+### What is at stake
+
+| Risk | Consequence |
+| --- | --- |
+| **Recovery password leak** | Attacker restores the account and becomes the operator to every contact, permanently |
+| **Recovery password loss** | Operator identity is unrecoverable; contacts must be re-established out of band |
+| **Account ID impersonation** | Lookalike IDs direct members to scam links with no verified-badge signal to contradict them |
+| **Community server exposure** | The SOGS operator can read Community messages, which are not end-to-end encrypted |
+| **Unsolicited message requests** | Posting in a Community exposes the operator Account ID to mass phishing |
+| **Over-granted moderator rights** | Compromised moderator can act on the server with no central authority to intervene |
+| **Community cloning** | Duplicate rooms and invite URLs redirect members into attacker-controlled spaces |
+
+The guide addresses these with controls that fit the platform's constraints, starting with treating the recovery
+password like a wallet seed phrase.
+
+## What the guide covers
+
+The guide is structured by scope: personal account first, then Community operations.
+
+| Scope | What it covers |
+| --- | --- |
+| **Personal account** | Recovery password custody, privacy toggles, screen lock, notification content, contact verification |
+| **Community operations** | Choosing groups over Communities, moderator permissions, SOGS hosting, official channel lists |
+
+## Topic index
+
+| Topic | Summary | Guide section |
+| --- | --- | --- |
+| **Recovery password** | The mnemonic that encodes the account key; store it offline like a seed phrase | [Account security checklist](/guides/account-management/session#account-security-checklist) |
+| **Privacy settings** | Screen lock, read receipts, link previews, and Community message requests | [Account security checklist](/guides/account-management/session#account-security-checklist) |
+| **Account ID verification** | Compare the full ID out of band; matching prefixes and suffixes prove nothing | [Verifying who is on the other end](/guides/account-management/session#verifying-who-is-on-the-other-end) |
+| **Communities are not E2EE** | Community traffic is readable by the server operator; keep sensitive threads in groups | [Best practices](/guides/account-management/session#best-practices-for-safe-use) |
+| **Groups versus Communities** | Pick the surface by confidentiality requirement, not by member count | [Choosing groups or Communities](/guides/account-management/session#choosing-groups-or-communities) |
+| **Moderator permissions** | SOGS read, write, upload, and access rights granted at the minimum level | [Community and server checklist](/guides/account-management/session#community-and-server-checklist) |
+| **Compromise response** | Removing server permissions and re-establishing the operator under a new Account ID | [Community and server checklist](/guides/account-management/session#community-and-server-checklist) |
+
+For step-by-step procedures, see the [Session Security Guide](/guides/account-management/session).
+
+## Further reading
+
+- [Session Security Guide](/guides/account-management/session)
+- [Community Management overview](/community-management/overview): how platform pages fit together
+- [Session documentation](https://docs.getsession.org/): vendor documentation
+- [How to stay safe on Session](https://getsession.org/blog/how-to-stay-safe-on-session): vendor security guidance
+
+---
+
+<ContributeFooter />

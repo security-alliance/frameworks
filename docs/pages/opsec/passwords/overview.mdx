@@ -1,12 +1,16 @@
 ---
 title: "Password Management | Security Alliance"
-description: "Implement strong password basics: length, complexity, uniqueness, generation to resist brute-force/dictionary attacks. Essential foundation."
+description: "Password basics for OpSec: long unique passphrases, one master secret, enterprise managers and SSO so teams avoid reuse and weak recovery paths."
 tags:
   - Security Specialist
   - Operations & Strategy
 contributors:
   - role: wrote
     users: [shallem]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -16,11 +20,14 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Use one strong memorable master secret, store the rest in an enterprise password manager, and
+> prefer SSO so people are not forced into password reuse.
+
 Password security is the first line of defense protecting access to data and tools that you rely on daily. While
 passwords should never be the only line of defense (see [MFA](/opsec/mfa/overview)), following best practices in setting
 and securing passwords is an essential measure to keep your organization safe.
 
-## First Principles
+## What this section covers
 
 ### What is a strong password?
 
@@ -59,6 +66,16 @@ because that single password is used to unlock access to everything needed for w
 on the dedicated [SSO](/opsec/passwords/sso) page.
 
 3. **Root Account Passwords** - as described in the dedicated [Root Account Passwords](/opsec/passwords/rootaccounts)
-page, root account passwords are a special case for many online services (e.g., Vercel, AWS, etc.) that require special handling.
+page, root account passwords are a special case for many online services (e.g., Vercel, AWS, etc.) that require special
+handling.
+
+## Further reading
+
+- [OpSec overview](/opsec/overview): how the pages of this framework fit together
+- [Password Managers](/opsec/passwords/managers): choosing and rolling out a manager
+- [Single Sign-On](/opsec/passwords/sso): centralizing authentication
+- [Root Accounts](/opsec/passwords/rootaccounts): protecting the highest-privilege credentials
+
+---
 
 <ContributeFooter />

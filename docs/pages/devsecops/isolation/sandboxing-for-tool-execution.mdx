@@ -1,6 +1,6 @@
 ---
 title: "Sandboxing for Tool Execution | SEAL"
-description: "Controls for high-risk tool invocation in automation workflows: policy checks, constrained runtime, and auditable side effects."
+description: "Control high-risk tool calls with policy checks, constrained sandboxes, risk tiers, and auditable side effects for deploy and publish paths."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -11,6 +11,8 @@ contributors:
     users: [munamwasi, jubos, masterfung]
   - role: reviewed
     users: [mattaereal]
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../../components'
@@ -90,7 +92,7 @@ A secure flow is:
 - Allowing tool calls to inherit unrestricted network access.
 - Missing audit logs for high-impact tool operations.
 
-## References
+## Further reading
 
 - [NIST SP 800-53 Rev. 5 (least privilege, audit, execution controls)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
 - [NIST SP 800-190, *Application Container Security Guide*](https://csrc.nist.gov/pubs/sp/800/190/final)

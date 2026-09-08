@@ -1,0 +1,175 @@
+---
+title: "Execution Paths in Untrusted Code | SEAL"
+description: "Execution paths in untrusted repositories: inspect source hooks, Git behavior, IDE automation, framework tooling, containers, and AI coding agents."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - DevOps
+  - SRE
+contributors:
+  - role: wrote
+    users: [blackbigswan, tayvano]
+  - role: reviewed
+    users: [mattaereal, scode2277]
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
+
+# Execution paths in untrusted code
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Repository contents become dangerous when a trusted tool interprets them. Identify the exact
+> trigger, review its configuration, and cross the boundary only inside a constrained environment.
+
+An external repository contains data until a developer tool treats some of that data as instructions. Package
+managers run lifecycle scripts, Git may invoke locally configured filters, IDEs enable tasks after trust is granted,
+frameworks load executable configuration, and AI coding agents may translate text into tool calls.
+
+This page distinguishes those execution paths from operations that are ordinarily non-executing. The distinction
+matters because accurate controls depend on the trigger, not on treating every clone or file open as automatic code
+execution.
+
+## Where execution begins
+
+An execution path has three parts:
+
+1. **Attacker-controlled input** enters through repository files, dependencies, remote responses, images, or tool
+   configuration.
+2. **A trigger** causes a trusted program to interpret the input as code, a command, a path to an executable, or an
+   instruction to call another tool.
+3. **Available capabilities** determine the impact: files, environment variables, browser sessions, credentials,
+   network access, cloud control planes, signing systems, and production services.
+
+Inspection should cover all three. Finding an obfuscated string without its trigger can miss the real path;
+finding a task without checking its privileges can understate the impact.
+
+## Source and dependency payloads
+
+Source-level payloads commonly wait for a later tool or application to load them. Inspect more than the primary
+application files:
+
+- **Lifecycle and build hooks:** npm `preinstall`, `install`, `postinstall`, and `prepare` scripts; Python build
+  backends; Cargo `build.rs`; Make targets; and shell-based setup scripts can run during installation or build.
+- **Interpreter startup files:** Python `.pth` files can add paths and execute import lines when the `site` module
+  initializes. Review package contents rather than relying only on imported application modules.
+- **Unsafe data handling:** deserializers, template engines, dynamic imports, and `eval`-like functions may turn a
+  network response or fixture into code. Use safe loaders and constrain accepted types and schemas.
+- **Executable configuration:** JavaScript and Python configuration files may execute when a build tool loads them.
+  Read the entire file, including appended code after otherwise valid configuration.
+- **Obfuscation and display tricks:** long lines, encoded blobs, string assembly, non-printing characters, and Unicode
+  bidirectional controls can hide behavior from a quick scroll or rendered diff.
+- **Tests and fixtures:** a request to reproduce one failing test can place the trigger in the exact test, helper,
+  snapshot, or fixture the developer is expected to run.
+- **Dependency substitution:** typosquatting and dependency confusion rely on a familiar-looking name resolving to an
+  attacker-controlled package. Verify the namespace, registry, version, and integrity value.
+
+Run an install with scripts disabled only as an inspection step where the package manager supports it. This does not
+make the dependency safe: later builds, imports, or application startup may execute code that an install-script flag
+does not cover.
+
+## Git retrieval and checkout
+
+Plain cloning and checkout do not normally execute arbitrary files from the repository. Treat the following as the
+conditions that change that baseline:
+
+- **Recursive submodules:** `.gitmodules` controls submodule paths and URLs. CVE-2024-32002 allowed a crafted
+  recursive clone to write a hook and execute it under specific filesystem conditions. Keep Git patched, clone without
+  recursion first, and inspect every submodule before initialization.
+- **Hooks:** ordinary clones do not copy repository files into `.git/hooks`. Hooks may still come from a local or
+  organization-wide `core.hooksPath`, a template directory, a vulnerable submodule flow, or a separate setup step.
+  Review the effective Git configuration before treating hooks as absent.
+- **Attributes and filters:** `.gitattributes` may select a named clean or smudge filter for a path, but the executable
+  command is defined separately in Git configuration. Inspect both `.gitattributes` and the effective `filter.*`
+  configuration, including its source, before checkout or staging.
+- **External helpers:** credential helpers, diff drivers, merge drivers, pagers, and other configured programs expand
+  the trust boundary beyond repository files. Use a clean Git configuration in the inspection environment.
+
+Do not embed a personal access token in a clone URL. A credential-free first retrieval prevents the repository,
+submodules, and subsequent tooling from reaching a reusable developer credential.
+
+## Developer tools and environments
+
+Developer tools deliberately execute project configuration. Review each tool's inputs before invoking it.
+
+### IDEs and extensions
+
+Visual Studio Code tasks with `runOptions.runOn` set to `folderOpen` can run after automatic tasks are permitted in a
+trusted workspace. Restricted Mode blocks or limits tasks and many workspace settings. Inspect `.vscode/tasks.json`,
+`.vscode/settings.json`, `.vscode/launch.json`, extension recommendations, `.idea/`, and dev-container configuration
+before granting trust.
+
+Workspace settings that select interpreters, formatters, linters, test runners, debug adapters, or other executable
+paths can redirect trusted tooling. A repository-local VSIX package is arbitrary extension code; do not sideload it
+because a project claims it is required. Previews and extensions may also fetch remote resources, depending on the
+editor's settings and the extension's behavior.
+
+### Containers and infrastructure tools
+
+Dockerfiles and Compose files define commands that run during build and container startup. Inspect `RUN`, `ENTRYPOINT`,
+`command`, build arguments, environment files, image sources, privileged mode, Linux capabilities, bind mounts, and
+socket mounts. A privileged container, Docker socket mount, or home-directory bind can expose the host or its
+credentials despite the container boundary.
+
+`terraform init` initializes the working directory and downloads or installs required provider plugins. Do not imply
+that provider code universally runs during initialization. Provider processes are used by later operations such as
+validation, planning, refreshing, and applying. Review `required_providers`, installation mirrors, CLI configuration,
+and `.terraform.lock.hcl` before initialization, then run all later operations without cloud credentials unless the
+task requires narrowly scoped access.
+
+Foundry can manage dependencies as Git submodules, so dependency installation inherits the submodule review. Hardhat
+loads its JavaScript or TypeScript configuration when its commands start, making the configuration part of the code
+execution boundary. Apply the same inspection to plugins, remappings, scripts, and custom toolchain configuration.
+
+### AI coding agents
+
+Repository text can contain instructions aimed at an agent rather than a human. Sources include README files, comments,
+issues, `AGENTS.md`, `CLAUDE.md`, editor rules, project settings, hooks, and Model Context Protocol (MCP) server
+configuration. The content becomes an execution path only when the agent honors it, calls a tool, or receives approval.
+
+Product trust behavior differs and changes over time. Keep shell, file-write, network, and external-tool actions behind
+approval for untrusted code. Inspect project-level instructions and hooks before starting the agent, and run the agent
+inside the same credential-free isolation boundary used for builds. An agent's assessment that a repository "looks
+safe" is not a substitute for independent review or containment.
+
+## Revalidation after trust changes
+
+Re-run the boundary analysis whenever inputs change. A pull, dependency update, new image digest, modified lockfile,
+changed agent configuration, or replacement installer can introduce a new path even when the project name and remote
+URL remain familiar.
+
+For updates to previously trusted code:
+
+1. Fetch into an isolated mirror or disposable environment.
+2. Compare the new tree, dependency graph, configuration, and release identity with the reviewed version.
+3. Review changes to files that tools execute automatically, even when the application diff is small.
+4. Repeat constrained build and runtime validation before promoting the revision to a trusted workstation or pipeline.
+
+## Further reading
+
+- [npm scripts documentation](https://docs.npmjs.com/cli/using-npm/scripts): lifecycle events and script behavior
+- [Python `site` module documentation](https://docs.python.org/3/library/site.html): `.pth` processing at interpreter
+  initialization
+- [Trojan Source](https://trojansource.codes/): Unicode bidirectional controls and source-code display attacks
+- [Git security advisory for CVE-2024-32002](https://github.com/git/git/security/advisories/GHSA-8h77-4q3w-gfgv):
+  CVE-2024-32002 conditions and remediation
+- [Git attributes documentation](https://git-scm.com/docs/gitattributes): clean and smudge filter selection
+- [Git configuration documentation](https://git-scm.com/docs/git-config): filter commands, hooks paths, helpers, and
+  configuration scope
+- [Visual Studio Code Workspace Trust](https://code.visualstudio.com/docs/editing/workspaces/workspace-trust):
+  Restricted Mode and trust-sensitive features
+- [Visual Studio Code tasks](https://code.visualstudio.com/docs/debugtest/tasks): automatic folder-open task behavior
+- [Docker bind mounts](https://docs.docker.com/engine/storage/bind-mounts/): host paths exposed to containers
+- [Terraform `init`](https://developer.hashicorp.com/terraform/cli/commands/init): provider installation and working
+  directory initialization
+- [Foundry dependencies](https://getfoundry.sh/projects/dependencies): Git-based dependency management
+- [Hardhat configuration](https://hardhat.org/docs/reference/configuration): executable project configuration
+- [OWASP prompt injection guidance](https://genai.owasp.org/llmrisk/llm01-prompt-injection/): direct and indirect
+  prompt-injection risks
+
+---
+
+<ContributeFooter />

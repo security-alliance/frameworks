@@ -1,23 +1,27 @@
 ---
 title: "Enterprise Password Managers | Security Alliance"
-description: "Configure password managers (Bitwarden, etc.) for secure storage, autofill, and sharing. Includes self-hosting, TOTP, zero-trust, emergency recovery."
+description: "Enterprise password managers: client-side encryption, generation, varied secret types, secure sharing, recovery, biometric lock, and anti-theft controls."
 tags:
   - Security Specialist
   - Operations & Strategy
 contributors:
   - role: wrote
     users: [shallem]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
-import { TagList, AttributionList, TagProvider, TagFilter, ContributeFooter } from '../../../../components'
-
-<TagProvider>
-<TagFilter />
+import { TagList, AttributionList, ContributeFooter } from '../../../../components'
 
 # Enterprise Password Managers
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: Choose password managers with client-side encryption, strong recovery, secure sharing for
+> necessary admin secrets, and controls that blunt master-password theft.
 
 ## What are they?
 
@@ -114,5 +118,14 @@ understand how to securely administer master password recovery (if desired), the
 enterprise password manager. Ensure that your master password is either something that you will remember, or it is
 backed up offline in a secure location.
 
-</TagProvider>
+## Further reading
+
+- [Passwords overview](/opsec/passwords/overview): how the credential pages fit together
+- [Password Manager Endpoint Hardening](/guides/endpoint-security/password-manager-endpoint-hardening): hardening the
+  client itself
+- [Multi-Factor Authentication](/opsec/mfa/overview): the second factor alongside the vault
+- [Single Sign-On](/opsec/passwords/sso): reducing the number of passwords to manage
+
+---
+
 <ContributeFooter />

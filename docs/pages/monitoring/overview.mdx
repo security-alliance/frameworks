@@ -1,6 +1,6 @@
 ---
 title: "Monitoring | Security Alliance"
-description: "Blockchain security monitoring framework: detect anomalies and breaches in real-time with guidelines for alerts, thresholds, and monitoring tools."
+description: "On-chain security monitoring for Web3 protocols: first principles, alert ownership, redundancy, guidelines, thresholds, and tooling choices."
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -20,36 +20,66 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Monitoring is a crucial aspect of maintaining the security and integrity of a blockchain project. Effective monitoring
-allows you to detect anomalies and potential security breaches in real-time, enabling prompt response and mitigation.
-This section focuses on monitoring the on-chain security of a project, including guidelines for setting up monitoring
-systems, defining thresholds for alerts, and utilizing existing on-chain monitoring tools.
+> 🔑 **Key Takeaway**: Monitoring only improves security when every alert has an owner and a documented response.
+> Detection without action is noise.
 
-## First Principles
+On-chain monitoring watches blockchain state and events so teams can detect anomalies and attacks close to real time.
+For smart contract protocols, that means tracking the behaviors that matter to safety and solvency — large transfers,
+mint and burn activity, admin changes, upgrades, oracle deviations, and similar signals — and routing those signals to
+people prepared to act.
+
+This framework focuses on **on-chain** security monitoring. Off-chain infrastructure metrics (hosts, CI, cloud control
+planes) belong in DevSecOps and infrastructure guidance; linking monitored on-chain signals to
+[incident management](/incident-management/overview) remains essential.
+
+## First principles
 
 Before deploying any monitoring tool, establish the fundamentals that make monitoring effective.
 
-### Know what you're monitoring and why
+### Know what is monitored and why
 
-Define which on-chain events are meaningful to your project and what response each alert should trigger. A monitoring
-setup without defined responses is noise: it consumes attention without producing safety. For every alert you
-configure, answer: *who receives this, and what do they do when it fires?*
+Define which on-chain events are meaningful to the project and which response each alert must trigger. A monitoring
+setup without defined responses is noise: it consumes attention without producing safety. For every alert configured,
+answer: *who receives this, and what do they do when it fires?*
 
-### Act on your alerts
+### Act on alerts
 
-Organizations fail to monitor in two ways: not logging at all or logging without acting. Both leave you blind.
+Organizations fail at monitoring in two ways: not observing at all, or observing without acting. Both leave teams blind
+to preventable loss.
 
-Every alert must map to a concrete, documented response. For smart contract protocols, this typically means having a
-pause mechanism or circuit breaker and, in higher-maturity setups, possibly a carefully designed automated system that
-can trigger when a critical alert fires, but only where the trigger conditions and failure modes have been explicitly
-reviewed. Without this, monitoring only tells you what happened, not what you could have prevented.
+Every alert must map to a concrete, documented response. For smart contract protocols, that typically means a pause
+mechanism or circuit breaker and, in higher-maturity setups, carefully designed automation that may fire on critical
+alerts only when trigger conditions and failure modes have been explicitly reviewed. Without this, monitoring reports
+what happened after the fact rather than enabling prevention or fast containment.
 
-### Monitor with redundancy *(higher maturity)*
+### Monitor with redundancy (higher maturity)
 
 No monitoring provider has perfect uptime or perfect detection. For critical systems, run two independent providers
-monitoring the same invariants in parallel (one self-hosted, one managed). If one has downtime or misses an event,
-the other still provides coverage. See the [Tools](/monitoring/tools) page for guidance on combining self-hosted and
-managed options.
+monitoring the same invariants in parallel (for example one self-hosted and one managed). If one has downtime or misses
+an event, the other still provides coverage. See [Tools](/monitoring/tools) for combining self-hosted and managed
+options.
+
+## What this framework covers
+
+1. [Guidelines](/monitoring/guidelines): objectives, coverage tracks, alerting design, reviews, and linkage to
+   incident response and forensic readiness.
+2. [Tools](/monitoring/tools): open-source and commercial on-chain monitoring options with reliability criteria.
+3. [Thresholds](/monitoring/thresholds): baseline metrics, multi-layered alerts, adaptive thresholds, and anomaly
+   detection.
+
+## Related frameworks
+
+- [Incident Management](/incident-management/overview): response plans, communications, and forensic readiness tied to
+  alerts
+- [Infrastructure](/infrastructure/overview): broader infrastructure and network monitoring context
+- [DevSecOps](/devsecops/overview): CI/CD and pipeline telemetry complementary to on-chain signals
+- [Treasury Operations](/treasury-operations/overview): high-value transfer monitoring and controls
+
+## Further reading
+
+- [OpenZeppelin Monitor](https://docs.openzeppelin.com/monitor): open-source monitoring stack often used as a
+  self-hosted baseline
+- [Forta Network](https://docs.forta.network/): decentralized detection bots and community-shared threat signals
 
 ---
 

@@ -1,13 +1,16 @@
 ---
 title: "Incident Response Template for Web3 Protocols | Security Alliance"
-description: "A practical template for building incident response capabilities at cryptocurrency protocols and DAOs."
+description: "A practical template for building incident response capabilities at cryptocurrency protocols and DAOs. Customize severity, roles, contacts, and runbook"
 tags:
   - Security Specialist
   - Operations & Strategy
 contributors:
   - role: wrote
     users: [hexnickk4997, n0guest]
-
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
@@ -16,6 +19,10 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: This template is a skeleton, not a finished plan. Customize
+> severity, roles, contacts, and runbook commands, then tabletop the result before a
+> real exploit forces improvisation.
 
 A practical template for building incident response capabilities at cryptocurrency protocols and DAOs.
 
@@ -78,22 +85,24 @@ That's it to start. Add complexity only as you need it.
 - Review past incidents (yours or others via [Rekt News](https://rekt.news/))
 - Update docs when you find gaps
 
-## Using This Template
+## What this section covers
 
 Review and adapt these pages for your own internal incident response documentation.
 
 ### What's Included
 
-| Document | Purpose |
-| --- | --- |
-| [Incident Response Policy](./incident-response-policy) | Core policy defining roles, severity levels, and response steps |
-| [Roles and Staffing](./roles-and-staffing) | Options for structuring your response team |
-| [Communications](./communications) | Guidance and examples for public announcements |
-| [Contacts](./contacts) | Critical partner and vendor contact sheet |
-| [Templates](./templates/overview) | Incident log and post-mortem templates |
-| [Example Incident Log](./templates/example-incident-log) | Sample filled-out incident log |
-| [Example Post-Mortem](./templates/example-post-mortem) | Sample filled-out post-mortem |
-| [Runbooks](./runbooks/overview) | Step-by-step guides for specific incident types |
+1. [Incident Response Policy](/incident-management/incident-response-template/incident-response-policy):
+   roles, severity levels, and response steps.
+2. [Roles and Staffing](/incident-management/incident-response-template/roles-and-staffing): how to
+   structure the response team by size.
+3. [Communications](/incident-management/incident-response-template/communications): internal and public
+   announcement building blocks.
+4. [Contacts](/incident-management/incident-response-template/contacts): critical partner and vendor
+   contact sheet.
+5. [Templates hub](/incident-management/incident-response-template/templates/overview): incident log,
+   post-mortem, runbook templates, and examples.
+6. [Runbooks hub](/incident-management/incident-response-template/runbooks/overview): step-by-step
+   guides for specific incident types.
 
 ### Customization Checklist
 
@@ -144,7 +153,7 @@ These documents support effective incident response but typically live elsewhere
 
 You don't need all of these to start. Build them over time as your protocol matures.
 
-## Key Principles
+## Key principles
 
 **When in doubt, escalate.** Treating a P2 as P1 creates some noise. Treating a P1 as P2 can cost millions.
 
@@ -162,5 +171,7 @@ You don't need all of these to start. Build them over time as your protocol matu
 - [SEAL 911](https://securityalliance.org/seal-911) - Emergency response coordination
 
 *This template is open source. Adapt it to your needs.*
+
+---
 
 <ContributeFooter />

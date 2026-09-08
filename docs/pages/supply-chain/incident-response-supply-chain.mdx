@@ -1,6 +1,6 @@
 ---
 title: "Supply Chain Incident Response | SEAL"
-description: "Respond to supply chain compromises in Web3 projects. Detect compromised dependencies, assess blast radius, lock affected versions, and coordinate recovery across frontend and smart contracts."
+description: "Respond to a compromised dependency or provider: assess exposure, contain the damage, rotate build secrets, and coordinate recovery across front end and contracts."
 tags:
   - Security Specialist
   - SRE
@@ -17,7 +17,7 @@ import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-> 🔑 **Key Takeaway:** Supply chain incidents move faster than direct compromises. You do not control the affected
+> 🔑 **Key Takeaway**: Supply chain incidents move faster than direct compromises. You do not control the affected
 > code, the fix depends on an external maintainer, and the same attack may be hitting hundreds of other projects
 > simultaneously. Speed and a practiced response plan are what determine your outcome.
 
@@ -30,9 +30,9 @@ propagate at ecosystem scale, and the window between compromise and discovery is
 For general incident response procedures, see the [Incident Management](/incident-management/overview) framework.
 This page focuses on the aspects unique to supply chain compromises.
 
-## How Supply Chain Incidents Differ
+## How supply chain incidents differ
 
-| Aspect | Direct Compromise | Supply Chain Compromise |
+| Aspect | Direct compromise | Supply-chain compromise |
 | -------- | ------------------- | ------------------------ |
 | **Control** | You own the affected code | You depend on an external maintainer |
 | **Detection** | Internal monitoring catches it | Typically discovered externally: community, security researchers, registry alerts |
@@ -40,7 +40,7 @@ This page focuses on the aspects unique to supply chain compromises.
 | **Blast radius** | Scoped to your systems | May affect every project in the ecosystem using that dependency |
 | **Attribution** | Attacker targeted you specifically | You are collateral in an ecosystem-wide attack |
 
-## Detection Signals
+## Detection signals
 
 Watch for these indicators that a supply chain compromise may have occurred:
 
@@ -53,14 +53,14 @@ Watch for these indicators that a supply chain compromise may have occurred:
 - **Registry advisories.** npm sends security advisories when a package is flagged, though this can lag behind public
   disclosure.
 
-## Response Scenarios
+## Response scenarios
 
-### Frontend Dependency Compromise
+### Front-end dependency compromise
 
 This is the most common scenario: a compromised npm package serves malicious JavaScript to users through
-your frontend.
+your front end.
 
-- **Deploy a clean frontend immediately.** Revert to the last known good build or rebuild without the compromised
+- **Deploy a clean front end immediately.** Revert to the last known good build or rebuild without the compromised
   dependency.
 - **Invalidate CDN caches.** A cached compromised version will continue to reach users even after you redeploy from
   clean source.
@@ -69,7 +69,7 @@ your frontend.
 - **Check for wallet drainer activity.** If the compromise targeted wallet signing flows, check on-chain for
   unauthorized transactions originating from your application's users during the exposure window.
 
-### Smart Contract Dependency Compromise
+### Smart contract dependency compromise
 
 If a Solidity library used in your contracts is found to be vulnerable or malicious:
 
@@ -80,7 +80,7 @@ If a Solidity library used in your contracts is found to be vulnerable or malici
 - **Plan migration if needed.** Evaluate whether the vulnerability is actively exploitable
   with your current configuration and plan a new deployment.
 
-### CI/CD Pipeline Compromise
+### CI/CD pipeline compromise
 
 If the compromised dependency ran during your build process:
 
@@ -91,11 +91,11 @@ If the compromised dependency ran during your build process:
 - **Review CI logs.** Look for unexpected network calls or file system access during the build.
 - **Rebuild with clean dependencies.** Use `--frozen-lockfile` with a verified lockfile.
 
-## Immediate Response Steps
+## Immediate response steps
 
 When a compromise is confirmed or credibly suspected:
 
-### Assess Exposure
+### Assess exposure
 
 - **Check your lockfile.** Is the compromised version present in `pnpm-lock.yaml`, `yarn.lock`, or
   `package-lock.json`?
@@ -103,14 +103,14 @@ When a compromise is confirmed or credibly suspected:
 - **Check CI history.** Did any CI run install the compromised version? If so, CI secrets may have been exposed.
 - **Identify the attack window.** When was the malicious version published, and when did you last install or build?
 
-### Contain the Damage
+### Contain the damage
 
 - **Lock dependencies** to the last known good version. Delete `node_modules` and rebuild from a verified lockfile
   using `--frozen-lockfile`.
 - **Do not deploy anything** built during the exposure window until the build is clean.
 - **Rotate exposed secrets.** If the compromised package ran during CI, assume that CI environment's secrets (API
   keys, deployment keys, npm tokens) are exposed and rotate them immediately.
-- **Take down compromised deployments.** If a compromised frontend was served to users, take it offline or deploy a
+- **Take down compromised deployments.** If a compromised front end was served to users, take it offline or deploy a
   clean version as fast as possible. A few minutes of unavailability is recoverable, continued exposure is not.
 
 ### Communicate
@@ -121,7 +121,7 @@ When a compromise is confirmed or credibly suspected:
 - **Coordinate with the maintainer.** Report the compromise to the package maintainer and to the registry (npm,
   crates, PyPI).
 
-## Post-Incident Actions
+## Post-incident actions
 
 Once the immediate threat is contained:
 
@@ -132,7 +132,7 @@ Once the immediate threat is contained:
   CI? Address any gaps the incident exposed.
 - **Update your response playbook.** Incorporate lessons learned so the next response is faster.
 
-## Quick-Reference Checklist
+## Quick-reference checklist
 
 When a supply chain compromise is reported:
 
@@ -149,7 +149,7 @@ When a supply chain compromise is reported:
 - [ ] Document the incident timeline and run a retrospective.
 </Checklist>
 
-## Further Reading
+## Further reading
 
 - [Incident Management](/incident-management/overview): General incident response procedures and team coordination
 - [Web3 Supply Chain Threats](/supply-chain/web3-supply-chain-threats): Real-world incidents that

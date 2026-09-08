@@ -1,12 +1,19 @@
 ---
-title: "Role-Based Access Control | Security Alliance"
-description: "Implement RBAC to ensure minimum necessary access: define roles with specific permissions, assign based on job responsibilities, regularly review permissions, and enforce separation of duties."
+title: "Role-Based Access Control | SEAL"
+description: "Implement RBAC with clear role definitions, least-privilege assignments, regular permission reviews, and separation of duties to limit blast radius."
 tags:
   - Engineer/Developer
   - Security Specialist
   - Operations & Strategy
   - DevOps
   - HR
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -16,21 +23,34 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
-Role-Based Access Control (RBAC) is a method of regulating access to systems and data based on the roles assigned to
-individual users within a project. RBAC ensures that users have the minimum access necessary to perform their job
-functions, reducing the risk of unauthorized access.
+> 🔑 **Key Takeaway**: Assign permissions to roles tied to job functions, not named individuals, and review those roles
+> so privileges do not accumulate silently.
 
-## Key Principles of RBAC
+Role-Based Access Control (RBAC) regulates access based on roles assigned to people (and sometimes services) in a
+project. Well-designed RBAC keeps each principal at the minimum access needed for their function and reduces accidental
+or malicious privilege use.
 
-- **Role Definition**: Clearly define roles within the project based on the team member's job responsibility. Each role
-should have a specific set of permissions, for example a community manager could potentially not require administrative
-permissions to the project's github repository.
-- **Role Assignment**: Assign roles to team members based on their job responsibilities. Ensure that users only have
-access to the resources they need.
-- **Permission Management**: Regularly review and update role permissions to ensure they are aligned with current team
-functions and security requirements.
-- **Separation of Duties**: Implement separation of duties to prevent conflicts of interest and reduce the risk of
-threats.
+## Key principles
+
+- **Role definition:** Define roles from job responsibilities. Each role must carry a specific permission set. Example:
+  a community manager may not need admin rights on the project's GitHub organization.
+- **Role assignment:** Assign roles from responsibilities. Principals must only reach the resources they need.
+- **Permission management:** Review and update role permissions as functions and tooling change.
+- **Separation of duties:** Split critical powers so no single persona can complete a high-impact action alone when the
+  risk model requires dual control.
+
+## Practices
+
+1. Start from deny-by-default; add capabilities only when a role proves need.
+2. Prefer fewer, well-named roles over snowflake personal grants, except short-lived exceptions under access management.
+3. Document privileged roles (billing admin, root cloud, multisig admin-adjacent SaaS) with owners and review cadence.
+
+## Further reading
+
+- [IAM overview](/iam/overview)
+- [Access management](/iam/access-management)
+- [Secure authentication](/iam/secure-authentication)
+- [Guides — Account Management](/guides/account-management/overview)
 
 ---
 

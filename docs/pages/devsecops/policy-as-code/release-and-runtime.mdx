@@ -1,0 +1,436 @@
+---
+title: "Policy in Release and Runtime | SEAL"
+description: "Release, deploy, and runtime policy gates: publishing identity, provenance verification at deployment, and drift between declared and running state."
+tags:
+  - Engineer/Developer
+  - Security Specialist
+  - DevOps
+  - SRE
+  - Protocol
+contributors:
+  - role: wrote
+    users: [s1ns3nz0]
+  - role: reviewed
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../components'
+
+# Policy in Release and Runtime
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: The deploy gate is where the pipeline's work becomes enforceable.
+> Everything the build proved stays advisory until something refuses an artifact that cannot
+> show where it came from.
+
+The artifact and its attestation arrive from
+[Policy in the CI Pipeline](/devsecops/policy-as-code/ci-pipeline). Three stages remain:
+publish it, deploy it, and keep the running state matching what was declared.
+
+The earlier stages evaluate things the team controls directly. From here the artifact leaves
+those systems, and the gates read signed evidence about it.
+
+The publish stage matters most for Web3 teams and is gated least often. A package published to
+a registry is loaded by wallet frontends within hours, and the registry account that publishes
+it usually sits outside both the repository settings and the pipeline.
+
+## Release and publish
+
+What arrives is the artifact and its build attestation. After this stage the artifact is
+installed by other parties, so it is the last point at which anything can be asserted about it.
+
+Attackers target the evidence generation process as well as the artifact, to remove the record
+that distinguishes a legitimate release from a malicious one. Verifying a signature on package
+metadata is not sufficient, because the signature generation step is itself attackable.
+
+What the engine evaluates? Publishing identity lives in a package registry's account settings
+and not in the repository, so this stage uses mode 2 and requires a second collector. The
+registry's member list, MFA status, and token inventory are pulled and compared against the
+current organization roster, which is the same policy data the commit stage reads. Most
+organizations do not build this collector.
+
+Where the decision is enforced? The signing step. It does not refuse to promote an existing
+artifact; it refuses to produce one. An unsigned artifact cannot be verified downstream, so a
+failure here propagates without further enforcement.
+
+### Signing is gated on the build policy result
+
+Result: `Deterministic`
+
+Signing must be conditional on the policy result. If the check runs after signing, or runs
+where the signing step cannot observe it, the signature records only that a pipeline
+executed.
+
+### Every publishing identity is org-owned, MFA-enforced, and on the current roster
+
+Result: `Deterministic`
+
+Authorization must be evaluated at release time. Account setup is not evidence of current
+authorization. This
+is mode 2 applied to a different platform: the registry's member list and token inventory,
+compared against the organization roster.
+
+```python
+package release.publish
+
+import rego.v1
+
+deny contains msg if {
+  not input.build.policy_passed
+  msg := "signing requested before the build policy result was available"
+}
+
+deny contains msg if {
+  some publisher in input.registry.publishers
+  not publisher.login in data.roster.active_members
+  msg := sprintf("registry publisher %q is not a current member", [publisher.login])
+}
+
+deny contains msg if {
+  some publisher in input.registry.publishers
+  not publisher.mfa_enabled
+  msg := sprintf("registry publisher %q has no MFA enabled", [publisher.login])
+}
+
+deny contains msg if {
+  input.artifact.published_digest != input.attestation.subject_digest
+  msg := sprintf("published digest %s does not match attested digest %s", [input.artifact.published_digest, input.attestation.subject_digest])
+}
+```
+
+In December 2023 a former Ledger employee's npm account was phished using a stolen session
+token that bypassed 2FA. The attacker published malicious versions `1.1.5` through `1.1.7` of
+Ledger Connect Kit, injecting a wallet drainer into every dApp that loaded the library, and
+roughly $600,000 was taken before the code was removed about forty minutes after discovery.
+Ledger's [incident report](https://www.ledger.com/blog/security-incident-report) notes that the
+employee's access to GitHub, SSO, and internal tooling had been revoked at offboarding. Their
+npm access had not.
+
+No build-time policy would have caught this. The build was fine; the authorization on the
+publish path was not. That is the argument for evaluating publishing identity on every release
+instead of configuring it once.
+
+### Signing keys are structured so one compromise is survivable
+
+Result: `Deterministic`
+
+Requirements:
+
+- roles hold multiple keys under threshold or quorum trust
+- online keys, used automatically without a human present, are not the keys clients ultimately
+  trust for what they install
+- where an online key is unavoidable, it is HSM-backed and usable only against an artifact that
+  passed the build policy
+
+Key count and quorum size are organizational decisions, determined by team size and the impact
+of a single compromise.
+
+### The published digest matches the attested digest, and versions are immutable
+
+Result: `Deterministic`
+
+Two checks:
+
+- the published digest equals the attested digest, which catches a mismatch between what was
+  built and what shipped
+- registry version immutability is enabled, so a published version cannot be replaced under
+  consumers that already pinned it
+
+### The release emits evidence bound to the artifact digest
+
+Result: `Deterministic`
+
+Three records leave this stage, all bound to the same digest.
+
+| Record | Format | Stored | Consumed by |
+| --- | --- | --- | --- |
+| Signed provenance | in-toto or SLSA attestation | Attestation store or registry | Deploy gate |
+| SBOM | SPDX or CycloneDX | Artifact store, retained for the artifact's life | Incident response, deploy gate |
+| Signature and certificate | Cosign bundle, transparency log entry | Registry, Rekor | Any external verifier |
+
+The SBOM is what answers whether a release is affected when a CVE is disclosed against a
+dependency, which may be years after the build.
+
+Most teams emit nothing here that anything downstream reads. The package is published, the
+record stops, and no installer is in a position to notice.
+
+Controls: [Implementing Code Signing](/devsecops/code-signing).
+
+## Deploy
+
+What arrives is an artifact reference and whatever evidence exists about it. This gate knows
+only what upstream metadata records. When those records are absent, the correct result is
+refusal.
+
+What the engine evaluates? Signed evidence: the provenance predicate and the attested scan
+result. Both are verified for signature first, then evaluated as claims. On a cluster this
+arrives as an admission review; in a pipeline, as a verified attestation bundle. This is the
+only stage where the engine reads signed assertions.
+
+Where the decision is enforced? Either an admission controller, which refuses to start the
+workload, or the deploy job, which refuses to promote. The choice affects coverage. An
+admission controller evaluates everything reaching the cluster, including changes that did not
+come through the pipeline. A deploy-job enforcement point sees only what the pipeline sends it.
+
+Thresholds are not universal at this stage. They are read from policy data, keyed by what the
+artifact can reach:
+
+```python
+package deploy.gate
+
+import rego.v1
+
+tier := data.reachability[input.artifact.repo]
+
+deny contains v if {
+  builder := input.provenance.runDetails.builder.id
+  not builder in tier.trusted_builders
+  v := {
+    "id": "deploy.untrusted-builder",
+    "class": "deterministic",
+    "msg": sprintf("built by %q, which is not a trusted builder for this tier", [builder]),
+  }
+}
+
+deny contains v if {
+  scan_age_days := round((input.now_ns - time.parse_rfc3339_ns(input.scan.completed_at)) / (24 * 60 * 60 * 1000000000))
+  scan_age_days > tier.max_scan_age_days
+  v := {
+    "id": "deploy.stale-scan",
+    "class": "judgment",
+    "msg": sprintf("vulnerability scan is %d days old; this tier allows %d", [scan_age_days, tier.max_scan_age_days]),
+  }
+}
+
+deny contains v if {
+  some finding in input.scan.findings
+  finding.severity in tier.blocking_severities
+  v := {
+    "id": "deploy.blocking-vulnerability",
+    "class": "judgment",
+    "msg": sprintf("%s finding %q blocks release at this tier", [finding.severity, finding.id]),
+  }
+}
+```
+
+```json
+{
+  "reachability": {
+    "wallet-connect-kit": {
+      "reaches_user_funds": true,
+      "reversible": false,
+      "trusted_builders": ["https://github.com/acme/wallet-connect-kit/.github/workflows/release.yml@refs/heads/main"],
+      "max_scan_age_days": 7,
+      "blocking_severities": ["critical", "high", "medium"]
+    },
+    "internal-dashboard": {
+      "reaches_user_funds": false,
+      "reversible": true,
+      "trusted_builders": ["https://github.com/acme/internal-dashboard/.github/workflows/release.yml@refs/heads/main"],
+      "max_scan_age_days": 30,
+      "blocking_severities": ["critical", "high"]
+    }
+  }
+}
+```
+
+One rule set, two outcomes. A Medium finding and a three-week-old scan block the wallet library
+and pass the internal dashboard. The rule did not change; the data did. One of these artifacts
+loads into a page where users sign transactions and cannot be unpublished once released.
+
+Where those numbers come from is covered in
+[Governing the Policy Set](/devsecops/policy-as-code/governance).
+
+### The signature is verified before any claim inside the attestation is evaluated
+
+Result: `Deterministic`
+
+Order matters, and the error is easy to miss because both steps appear to work in isolation.
+Evaluating policy over an unverified document produces a verdict about assertions that anyone
+could have written.
+
+### Provenance matches the approved build process
+
+Result: `Deterministic`
+
+Builder identity, source repository, and source ref must all match policy. The build emits an
+attestation; this gate refuses any artifact that cannot produce one naming an approved
+builder.
+
+This refusal is what makes the CI pipeline enforceable. Without it, the build can be as careful
+as it likes and nothing prevents a different artifact from reaching production under the same
+version number.
+
+### Missing evidence produces refusal, not an assumption of good faith
+
+Result: `Deterministic`
+
+The common failure at this gate is an absent verdict: the attestation is missing, the scan
+result was never uploaded, or the evidence store was unreachable. Treat each as a refusal.
+
+### An attested vulnerability scan exists and is recent enough for this tier
+
+Result: `Judgment`
+
+Scanners are updated continuously to detect newly disclosed vulnerabilities, so scan age is
+part of the check. What counts as too old depends on what the artifact can
+reach, and is set per tier.
+
+### Deployable content is scanned for secrets, and dependency risk is visible
+
+Result: `Judgment`
+
+Secret scanning at this point catches what earlier stages could not see: configuration
+assembled during release, and values injected at packaging. Dependency review surfaces
+vulnerable versions before promotion.
+
+### Deployment runs under a short-lived, environment-scoped identity
+
+Result: `Deterministic`
+
+Use a short-lived OIDC credential scoped to the target environment, and require environment
+approval on production paths. Scope granularity is an organizational decision and should be
+documented. Platform defaults are not a scope decision.
+
+### The gate records what it decided and what it read
+
+Result: `Deterministic`
+
+Two records leave the gate.
+
+| Record | Contents | Consumed by |
+| --- | --- | --- |
+| Admission decision | Rule ids evaluated, verdict, artifact digest, evidence consulted | Audit, incident response |
+| Deployed digest | Pinned in the deployment manifest, never a mutable tag | Runtime drift detection |
+
+## Runtime
+
+What arrives is two states that should be identical: the state declared in Git, and the state
+running in the cluster. The control at this stage is continuous comparison between the two.
+
+What the engine evaluates? The rendered manifests in Git as one document, the live cluster
+state as another, and whether they agree. Rules also evaluate the declared state on its own
+terms: images referenced by digest rather than tag, no privileged pods, resource limits
+present.
+
+Where the decision is enforced? The GitOps controller. This enforcement point differs from the
+others because the change has already taken effect. It acts by resyncing or by raising an
+alert, which is the only option available once something is running.
+
+### Declared state pins digests, not tags
+
+Result: `Deterministic`
+
+A manifest that references `:latest` declares nothing verifiable. The same declared state
+resolves to different running code depending on when it was applied, which makes drift
+detection meaningless.
+
+### Drift is detected continuously, and divergence never persists silently
+
+Result: `Deterministic`
+
+Pull the repository, compare against live configuration, then either resync automatically or
+alert for remediation. Choosing between resync and alert is an operational decision. Doing
+neither leaves divergence undetected until it causes an incident.
+
+```python
+package runtime.declared
+
+import rego.v1
+
+deny contains msg if {
+  some c in input.spec.template.spec.containers
+  not contains(c.image, "@sha256:")
+  msg := sprintf("container %q references %q by tag; declared state must pin digests", [c.name, c.image])
+}
+
+deny contains msg if {
+  some d in input.drift
+  d.field != ""
+  msg := sprintf("live state diverges from declared at %q (declared %q, observed %q)", [d.field, d.declared, d.observed])
+}
+```
+
+### Changes arrive through the pipeline, never through an operator's terminal
+
+Result: `Deterministic`
+
+Change the code and trigger a release, so Git commits remain the single source of truth for
+what runs. Roll back by reverting the declared state and letting the controller apply it.
+
+This item is what makes the preceding stages count. Every control across these pages is void if
+an operator can edit the running state afterwards, because the state that was verified and the
+state that is running are then two different things.
+
+### Release data is preserved for every release
+
+Result: `Deterministic`
+
+Retain module versions, configuration files, and operational metadata for every release. This
+is what allows responders to determine what was running at a given point in time during a
+post-incident review.
+
+Enforcement at admission time, using tools such as Gatekeeper or the Sigstore policy controller,
+is covered in
+[Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement).
+
+## Where the chain actually breaks
+
+Two stages hold by convention alone.
+
+The commit stage rests on an identity the SCM asserts and nothing attests to. A phished session
+token satisfies every check in that stage, and everything downstream inherits the result.
+
+The publish stage usually emits evidence that nothing downstream reads. The package ships, the
+provenance is either absent or unverified by any consumer, and the record stops there. For a
+team shipping npm packages into wallet frontends, this is the widest gap in the sequence.
+
+## Release and runtime checklist
+
+<Checklist id="release-runtime-policy">
+- [ ] Signing **must** be gated on the build policy result, checked before signing runs
+- [ ] Publishing identities **must** be org-owned, MFA-enforced, and resolved against the
+  current roster
+- [ ] Signing roles **should** hold multiple keys under threshold or quorum trust
+- [ ] Online keys **should** not be the keys clients ultimately trust; unavoidable ones **must**
+  be HSM-backed
+- [ ] The published digest **must** equal the attested digest
+- [ ] Registry version immutability **must** be enabled
+- [ ] Provenance, SBOM, and signature bundle **must** be published and bound to the same digest
+- [ ] The signature **must** be verified before any attestation claim is evaluated
+- [ ] Provenance **must** be matched against builder identity, source repository, and ref
+- [ ] Missing evidence **must** produce refusal
+- [ ] An attested vulnerability scan **must** be required, with a tier-specific age threshold
+- [ ] Deployable content **must** be scanned for secrets; dependency review **should** precede
+  promotion
+- [ ] The deployment identity **must** be short-lived and environment-scoped; production
+  **must** require approval
+- [ ] Admission decisions **must** be logged with rule ids, verdict, digest, and evidence
+  consulted
+- [ ] The deployed digest **must** be pinned in the manifest, never a mutable tag
+- [ ] Drift **should** be detected continuously, with auto-resync or alerting
+- [ ] Manual runtime mutation **must** be blocked; rollbacks **must** revert declared state
+- [ ] Release data **should** be preserved: module versions, configuration, operational metadata
+</Checklist>
+
+## Further reading
+
+- [Policy as Code: Overview](/devsecops/policy-as-code/overview): the engine, the two modes,
+  and what the standard requires
+- [Policy in the CI Pipeline](/devsecops/policy-as-code/ci-pipeline): where the artifact and
+  its attestation come from
+- [Governing the Policy Set](/devsecops/policy-as-code/governance): where the tier thresholds
+  above come from, and who may override a blocked release
+- [Implementing Code Signing](/devsecops/code-signing): signing mechanics behind the release gate
+- [Sandboxing & Policy Enforcement](/devsecops/isolation/sandboxing-and-policy-enforcement):
+  admission-time and runtime enforcement
+- [SLSA provenance specification](https://slsa.dev/spec/v1.0/provenance)
+- [Sigstore](https://docs.sigstore.dev/): signing, transparency log, and policy controller
+- [Ledger security incident report](https://www.ledger.com/blog/security-incident-report):
+  the Connect Kit compromise
+
+---
+
+<ContributeFooter />

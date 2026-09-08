@@ -1,6 +1,6 @@
 ---
 title: "HTTPS vs VPN | Security Alliance"
-description: "Why HTTPS does not make VPNs unnecessary. How SNI leakage, DNS query exposure, traffic analysis, and IP-as-identity create a metadata gap that only a VPN can address."
+description: "Why HTTPS does not make VPNs unnecessary. How SNI leakage, DNS query exposure, traffic analysis, and IP-as-identity create a metadata gap that only a VPN can"
 tags:
   - Engineer/Developer
   - Security Specialist
@@ -9,6 +9,8 @@ contributors:
     users: [mattaereal]
   - role: reviewed
     users: [scode2277]
+  - role: fact-checked
+    users: []
 outline: deep
 ---
 
@@ -18,6 +20,9 @@ import { TagList, AttributionList, ContributeFooter } from '../../../../componen
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: HTTPS protects content of a site session; a VPN protects path and endpoint metadata to many
+> destinations. Each leaves a gap the other does not fill alone.
 
 A common misconception is that HTTPS makes VPNs unnecessary. They solve different problems:
 
@@ -65,5 +70,15 @@ location, and in many jurisdictions, your legal identity.
 
 If you only care about someone reading your messages, HTTPS is enough. If you care about someone knowing what you are
 doing — where you go, when, and how often — that is where a VPN earns its place.
+
+## Further reading
+
+- [VPN Services overview](/privacy/vpns/overview): how the pages in this section fit together
+- [VPN Limitations](/privacy/vpns/vpn-limitations): what the tunnel still fails to hide
+- [Encryption in Transit](/encryption/encryption-in-transit): TLS, DoH, and DoT in more depth
+- [Are VPNs really necessary? Is HTTPS enough?](https://blog.theredguild.org/are-vpns-really-necessary-is-https-enough/):
+  The Red Guild on metadata leakage and threat modeling
+
+---
 
 <ContributeFooter />

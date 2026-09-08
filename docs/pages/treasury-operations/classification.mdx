@@ -1,6 +1,6 @@
 ---
 title: "Treasury Security Classification | SEAL"
-description: "Classify custodial treasury accounts by financial impact and operational requirements. Security control matrix for determining approvers, MFA requirements, and whitelist delays based on risk level."
+description: "Classify custodial treasury accounts by financial impact and operational urgency. Apply a control matrix for approvers, MFA, whitelist delays"
 tags:
   - Treasury Ops
   - Operations
@@ -10,20 +10,26 @@ contributors:
     users: [dickson]
   - role: reviewed
     users: [relotnek, bsamuels453, ElliotFriedman]
+  - role: fact-checked
+    users: []
 ---
 
-import { TagList, AttributionList, ContributeFooter } from "../../../components"
+import { TagList, AttributionList, ContributeFooter } from '../../../components'
 
 # Custodial Treasury Security: Classification Framework
 
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Size controls to impact and access urgency. High financial concentration or time-critical access
+> without matching approvers, MFA, and delays is misclassification risk.
+
 Proper documentation and classification of custodial accounts is essential for institutional treasury security. This
 guide focuses on the security assessment and classification framework for crypto assets held with third-party
 custodians.
 
-> See also: [Registration Documents](./registration-documents) and [Enhanced Controls for High-Risk Accounts](./enhanced-controls)
+See also: [Registration Documents](/treasury-operations/registration-documents) and
+[Enhanced Controls for High-Risk Accounts](/treasury-operations/enhanced-controls).
 
 ## Classification Process
 
@@ -59,12 +65,12 @@ Evaluate regulatory and compliance consequences:
 
 #### Impact Classification
 
-| Level        | Financial Exposure (% of Total Assets) | Operational Dependency                       | Regulatory Impact                                    |
-| ------------ | -------------------------------------- | -------------------------------------------- | ---------------------------------------------------- |
-| **Low**      | \<1%                                   | No critical operations depend on it          | No regulatory reporting tied to this account         |
-| **Medium**   | 1% - 10%                               | Important but alternative funding available  | Periodic reporting; delays manageable                |
-| **High**     | 10% - 25%                              | Critical operations, limited alternatives    | Regular regulatory filings; delays cause violations  |
-| **Critical** | \>25%                                  | Business-critical, no alternatives for weeks | Real-time reporting requirements; SEC filings; audit |
+| Level | Financial Exposure (% of Total Assets) | Operational Dependency | Regulatory Impact |
+| --- | --- | --- | --- |
+| **Low** | \<1% | No critical operations depend on it | No regulatory reporting tied to this account |
+| **Medium** | 1% - 10% | Important but alternative funding available | Periodic reporting; delays manageable |
+| **High** | 10% - 25% | Critical operations, limited alternatives | Regular regulatory filings; delays cause violations |
+| **Critical** | \>25% | Business-critical, no alternatives for weeks | Real-time reporting requirements; SEC filings; audit |
 
 ### Step 2: Operational Assessment
 
@@ -99,12 +105,12 @@ compensating controls like strict spending limits and daily reconciliation.
 
 #### Operational Classification
 
-| Type                  | Frequency     | Response Window | Example Use Cases                                  |
-| --------------------- | ------------- | --------------- | -------------------------------------------------- |
-| **Cold Vault**        | \<5 tx/month  | 48-72 hours     | Long-term reserves, infrequent rebalancing         |
-| **Warm Storage**      | 5-50 tx/month | 4-24 hours      | Scheduled payments, planned operations             |
-| **Active Operations** | \>50 tx/month | \<4 hours       | Trading capital, frequent operational expenses     |
-| **Time-Critical**     | Unpredictable | \<2 hours       | Collateral management, market-sensitive operations |
+| Type | Frequency | Response Window | Example Use Cases |
+| --- | --- | --- | --- |
+| **Cold Vault** | \<5 tx/month | 48-72 hours | Long-term reserves, infrequent rebalancing |
+| **Warm Storage** | 5-50 tx/month | 4-24 hours | Scheduled payments, planned operations |
+| **Active Operations** | \>50 tx/month | \<4 hours | Trading capital, frequent operational expenses |
+| **Time-Critical** | Unpredictable | \<2 hours | Collateral management, market-sensitive operations |
 
 ### Step 3: Security Control Matrix
 
@@ -127,8 +133,18 @@ Combine impact and operational assessments to determine required controls.
 - Capture approver thresholds and required controls
 - Store links to relevant custody accounts and addresses
 
-Proceed to: [Registration Documents](./registration-documents)
+Proceed to: [Registration Documents](/treasury-operations/registration-documents).
 
-For Critical/High accounts, ensure you also review: [Enhanced Controls for High-Risk Accounts](./enhanced-controls)
+For Critical/High accounts, also review:
+[Enhanced Controls for High-Risk Accounts](/treasury-operations/enhanced-controls).
+
+## Further reading
+
+- [Registration Documents](/treasury-operations/registration-documents)
+- [Enhanced Controls for High-Risk Accounts](/treasury-operations/enhanced-controls)
+- [Treasury Operations overview](/treasury-operations/overview)
+- [Transaction Verification](/treasury-operations/transaction-verification)
+
+---
 
 <ContributeFooter />

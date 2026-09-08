@@ -1,9 +1,16 @@
 ---
-title: "Email Encryption | Security Alliance"
-description: "Secure email communications with S/MIME certificates and PGP/GPG encryption. Setup guides for Outlook, Apple Mail, Thunderbird with Enigmail, and ProtonMail alternatives."
+title: "Email Encryption | SEAL"
+description: "Harden email with S/MIME or PGP/GPG, client setup patterns for Outlook, Apple Mail, and Thunderbird, and privacy-focused providers such as Proton Mail."
 tags:
   - Engineer/Developer
   - Security Specialist
+contributors:
+  - role: wrote
+    users: []
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
 import { TagList, AttributionList, ContributeFooter } from '../../../components'
@@ -13,9 +20,15 @@ import { TagList, AttributionList, ContributeFooter } from '../../../components'
 <TagList tags={frontmatter.tags} />
 <AttributionList contributors={frontmatter.contributors} />
 
+> 🔑 **Key Takeaway**: Plain email is not confidential by default. Use S/MIME or PGP/GPG when message content must stay
+> confidential beyond transport TLS.
+
+SMTP and typical mailbox hosting provide at best hop-to-hop TLS. Message-level encryption is required when content must
+remain confidential if a server or mail host is compromised.
+
 Email is insecure and un-encrypted by default, but can become more secure by following best practices:
 
-## Best Practices
+## Best practices
 
 1. **Implement S/MIME or PGP**:
    - **S/MIME**: Secure/Multipurpose Internet Mail Extensions (S/MIME) is a widely accepted protocol for sending
@@ -61,8 +74,13 @@ eavesdropping and tampering.
    - **ProtonMail**: A secure email service that offers end-to-end encryption and is open-source. It provides an
    easy-to-use interface and strong privacy protections.
 
-By following these best practices and utilizing the recommended tools, you can significantly enhance the security of
-your email communications.
+## Further reading
+
+- [Encryption overview](/encryption/overview): framework map and shared concepts
+- [NIST SP 800-175B](https://csrc.nist.gov/publications/detail/sp/800-175b/rev-1/final): guideline for using
+  cryptographic standards in the federal government (useful baseline references)
+- [OWASP Cryptographic Storage Cheat
+  Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 ---
 
