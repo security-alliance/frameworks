@@ -1,1 +1,628 @@
+# Changelog
 
+All notable changes to the Security Frameworks are documented here.
+
+## 0.0.1 (2026-09-01)
+
+### New content
+
+- adding section on encumbered wallets ([#258](https://github.com/security-alliance/frameworks/pull/258)) by @njelich
+- Multisig for Protocols ([#239](https://github.com/security-alliance/frameworks/pull/239)) by @DicksonWu654
+- Treasury ops ([#247](https://github.com/security-alliance/frameworks/pull/247)) by @DicksonWu654
+- More context and instructions for DNSSEC and CAA sections ([#314](https://github.com/security-alliance/frameworks/pull/314)) by @gunnim
+- [multisig] independent transaction verification requirement ([#335](https://github.com/security-alliance/frameworks/pull/335)) by @monperrus
+- Enhancement: Adding SMTP DANE section to DNS security ([#329](https://github.com/security-alliance/frameworks/pull/329)) by @gunnim
+- Chore - expand overview of each framework page ([#344](https://github.com/security-alliance/frameworks/pull/344)) by @scode2277
+- Integrating W3OSC's Multisig content into Frameworks ([#303](https://github.com/security-alliance/frameworks/pull/303)) by @DicksonWu654
+- Add back "Create Devops Cert & Updating 2 other Certs" ([#334](https://github.com/security-alliance/frameworks/pull/334)) by @DicksonWu654
+- Integrating w3os discord guide into frameworks ([#321](https://github.com/security-alliance/frameworks/pull/321)) by @DicksonWu654
+- Implementing W3OSC's account configuration guides into Frameworks ([#305](https://github.com/security-alliance/frameworks/pull/305)) by @DicksonWu654
+- AI Security Domain first commit ([#397](https://github.com/security-alliance/frameworks/pull/397)) by @mattaereal
+- Content(add): Zoom hardening guide for opsec/endpoint ([#375](https://github.com/security-alliance/frameworks/pull/375)) by @artemisclaw82
+- Content(add): white hat frontrunning section in SEAL 911 war room guidelines ([#376](https://github.com/security-alliance/frameworks/pull/376)) by @artemisclaw82
+- Content(add): smart contract interaction security page under wallet-security ([#377](https://github.com/security-alliance/frameworks/pull/377)) by @artemisclaw82
+- DevSecOps: move sandboxing/isolation guidance out of AI Security (#398) -- verified ([#411](https://github.com/security-alliance/frameworks/pull/411)) by @frameworks-volunteer
+- TLS-RPT ([#315](https://github.com/security-alliance/frameworks/pull/315)) by @gunnim
+- content(devsecops): add Data Security & Contract Upgrade Checklist ([#385](https://github.com/security-alliance/frameworks/pull/385)) by @artemisclaw82
+- content(telegram): add passkeys to security guide ([#380](https://github.com/security-alliance/frameworks/pull/380)) by @artemisclaw82
+- Supply Chain Framework: expand the framework ([#410](https://github.com/security-alliance/frameworks/pull/410)) by @scode2277
+- content(opsec): add Secure Operating Systems guide ([#381](https://github.com/security-alliance/frameworks/pull/381)) by @artemisclaw82
+- content(governance): add Security Council Best Practices page ([#384](https://github.com/security-alliance/frameworks/pull/384)) by @artemisclaw82
+- Add multisig operational runbooks and documentation guidance ([#408](https://github.com/security-alliance/frameworks/pull/408)) by @DicksonWu654
+- Expand monitoring section ([#421](https://github.com/security-alliance/frameworks/pull/421)) by @JosepBove
+
+### Updated content
+
+- Restructuring opsec domain ([#299](https://github.com/security-alliance/frameworks/pull/299)) by @zedt3ster
+- clarify template.mdx location in the contributing file ([#326](https://github.com/security-alliance/frameworks/pull/326)) by @gunnim
+- fix: Certified protocols/partners fails to fetch ([#351](https://github.com/security-alliance/frameworks/pull/351)) by @DicksonWu654
+
+### Enhancements
+
+- Add branch-aware robots.txt ([#330](https://github.com/security-alliance/frameworks/pull/330)) by @scode2277
+- adding custom 404 that doesn't redirect ([#327](https://github.com/security-alliance/frameworks/pull/327)) by @scode2277
+- Badge system for contributors ([#346](https://github.com/security-alliance/frameworks/pull/346)) by @scode2277
+- Fix/twitter preview image (it gets cropped when linking) ([#347](https://github.com/security-alliance/frameworks/pull/347)) by @scode2277
+- weekly spellchecker + linter outputs fix ([#322](https://github.com/security-alliance/frameworks/pull/322)) by @scode2277
+- Chore: style fixes for toc and sidebar + contributing files sync ([#353](https://github.com/security-alliance/frameworks/pull/353)) by @scode2277
+- Chore: Add workflow to remind contributors to update vocs.config.ts ([#358](https://github.com/security-alliance/frameworks/pull/358)) by @scode2277
+- feat: add printable checklists for SFC certifications ([#320](https://github.com/security-alliance/frameworks/pull/320)) by @madjin
+- Chore: fix spellcheck + linter outputs, sync indexes, sync tags, sync badges ([#374](https://github.com/security-alliance/frameworks/pull/374)) by @scode2277
+- Chore: add canonical tags ([#383](https://github.com/security-alliance/frameworks/pull/383)) by @scode2277
+- feat(certs): Export All Certifications button on overview page ([#378](https://github.com/security-alliance/frameworks/pull/378)) by @artemisclaw82
+- Chore: Bump vocs to fix sidebar sections not opening on internal links ([#414](https://github.com/security-alliance/frameworks/pull/414)) by @scode2277
+
+### Other
+
+Everything below predates our labelled-PR workflow: the original mdBook version of the site, the migration to vocs, the tagging and theming work, and the early framework drafts. Preserved in full since this is our first release.
+
+<details>
+<summary>Full pre-workflow history (expand)</summary>
+
+- Initial commit privs by @mattaereal
+- Working vanilla mdBook with catpuccino, and admonish by @mattaereal
+- Hardcoding /book/ path as path_root to fix theme. Adding vercel config locally by @mattaereal
+- Initial PoC structure. by @mattaereal
+- Update structure by @mattaereal
+- Creation of develop branch to run mdbook serve locally by @mattaereal
+- Update gitignore by @mattaereal
+- Hardcoding path again, after ignoring index.hbs. Should not be modified again unless necessary. by @mattaereal
+- Update in structure by @mattaereal
+- README.md contents, with installation and collaboration guidelines by @mattaereal
+- Update issue templates by @mattaereal
+- Workaround to develop on vercel as well as locally using serve.sh by @mattaereal
+- Removing serve.sh workaround since develop deployment can be accessed via vercel sharing by @mattaereal
+- Test to see vercel deployment develop sharing by @mattaereal
+- Test to see vercel deployment develop sharing by @mattaereal
+- trg intro test by @mattaereal
+- SEAL intro update by @mattaereal
+- What is it or isn't by @mattaereal
+- README update and minor updates to intro section. by @mattaereal
+- Major update with a lot of content. Some imgs are broken, need to be fixed. by @mattaereal
+- Adding a way to load the logo over the ToC by @mattaereal
+- Update SUMMARY.md by @0xFredrik
+- Minor fixes by @0xFredrik
+- Update awareness/README.md by @0xFredrik
+- Update security-training.md by @0xFredrik
+- Update social-engineering.md by @0xFredrik
+- Update staying-up-to-date.md by @0xFredrik
+- Update integrated-development-environments.md by @0xFredrik
+- Create security-testing.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update cloud-data-encryption.md by @0xFredrik
+- Create encryption-in-transit.md by @0xFredrik
+- Update database-encryption.md by @0xFredrik
+- Update email-encryption.md by @0xFredrik
+- Update file-encryption.md by @0xFredrik
+- Update full-disk-encryption.md by @0xFredrik
+- Update hardware-encryption.md by @0xFredrik
+- Update communication-encryption.md by @0xFredrik
+- Update communication-encryption.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Delete src/encryption/volume-encryption.md by @0xFredrik
+- Update security-policies-procedures.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update mobile-application-security.md by @0xFredrik
+- Create common-vulnerabilities.md by @0xFredrik
+- Create security-tools-resources.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update compliance-regulatory-requirements.md by @0xFredrik
+- Update risk-management.md by @0xFredrik
+- Update security-metrics-kpis.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update role-based-access-control.md by @0xFredrik
+- Update secure-authentication.md by @0xFredrik
+- Create access-management-best-practises.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update communication-strategies.md by @0xFredrik
+- Update incident-detection-and-response-mechanisms.md by @0xFredrik
+- Update lessons-learned.md by @0xFredrik
+- Update playbooks.md by @0xFredrik
+- Update seal-911-war-room-guidelines.md by @0xFredrik
+- Update zero-trust-principles.md by @0xFredrik
+- Update hardware-wallets.md by @0xFredrik
+- Update software-wallets.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update guidelines.md by @0xFredrik
+- Update thresholds.md by @0xFredrik
+- Update detecting-and-mitigating-insider-threats.md by @0xFredrik
+- Update g-suite-security.md by @0xFredrik
+- Update physical-security.md by @0xFredrik
+- Update standard-operating-environment.md by @0xFredrik
+- Update wireless-security.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update bug-bounties.md by @0xFredrik
+- Update security-contact.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update data-removal-services.md by @0xFredrik
+- Update digital-footprint.md by @0xFredrik
+- Update financial-privacy-services.md by @0xFredrik
+- Update privacy-focused-operating-systems-tools.md by @0xFredrik
+- Update secure-browsing.md by @0xFredrik
+- Update vpn-services.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update code-reviews-peer-audits.md by @0xFredrik
+- Update secure-code-repositories-version-control.md by @0xFredrik
+- Update secure-coding-standards-guidelines.md by @0xFredrik
+- Update threat-modeling-secure-design-principles.md by @0xFredrik
+- Update secure-code-repositories-version-control.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update compliance-checks.md by @0xFredrik
+- Update infrastructure-as-code.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update dynamic-application-security-testing.md by @0xFredrik
+- Update fuzz-testing.md by @0xFredrik
+- Update security-regression-testing.md by @0xFredrik
+- Update static-application-security-testing.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update dependency-awareness.md by @0xFredrik
+- Update supply-chain-levels-software-artifacts.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update create-maintain-threat-models.md by @0xFredrik
+- Update identity-mitigate-threats.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update phishing-social-engineering.md by @0xFredrik
+- Update security-aware-culture.md by @0xFredrik
+- Update security-training.md by @0xFredrik
+- Adding a minimalistic crisis handbook by @mattaereal
+- discord.md updates by @0xFredrik
+- added self audit so it's aligned with the other community management docs by @0xFredrik
+- google.md updates by @0xFredrik
+- devsecops readme.md update by @0xFredrik
+- Update code-signing.md by @0xFredrik
+- Update continuous-integration-continuous-deployment.md by @0xFredrik
+- Update repository-hardening.md by @0xFredrik
+- Delete src/encryption/partition-encryption.md by @0xFredrik
+- Update expectation.md by @0xFredrik
+- Update preparation.md by @0xFredrik
+- Update vendor-selection.md by @0xFredrik
+- Update web-application-security.md by @0xFredrik
+- Update how-to-navigate-the-website.md by @0xFredrik
+- Update introduction.md by @0xFredrik
+- Update overview-of-each-framework.md by @0xFredrik
+- Update what-is-it.md by @0xFredrik
+- Update what-it-isnt.md by @0xFredrik
+- Delete src/infrastructure/identity-and-access-management.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update asset-inventory.md by @0xFredrik
+- Update cloud.md by @0xFredrik
+- Update ddos-protection.md by @0xFredrik
+- Update dns-and-domain-registration.md by @0xFredrik
+- Update network-security.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update cold-vs-hot-wallet.md by @0xFredrik
+- Update custodial-vs-non-custodial.md by @0xFredrik
+- Update signing-schemes.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update password-secrets-management.md by @0xFredrik
+- Delete src/operational-security/telegram.md by @0xFredrik
+- Delete src/privacy/encrypted-communication-tools.md by @0xFredrik
+- Delete src/security-automation/threat-detection-response.md by @0xFredrik
+- Update operating-system-security.md by @0xFredrik
+- Update operating-system-security.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update sim-swapping.md by @0xFredrik
+- Update sim-swapping.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update security-training.md by @0xFredrik
+- Update social-engineering.md by @0xFredrik
+- Update staying-up-to-date.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update discord.md by @0xFredrik
+- Update google.md by @0xFredrik
+- Update telegram.md by @0xFredrik
+- Update twitter.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update code-signing.md by @0xFredrik
+- Update continuous-integration-continuous-deployment.md by @0xFredrik
+- Update integrated-development-environments.md by @0xFredrik
+- Update repository-hardening.md by @0xFredrik
+- Update security-testing.md by @0xFredrik
+- Update repository-hardening.md by @0xFredrik
+- Update introduction.md by @0xFredrik
+- Update what-is-it.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update cloud-data-encryption.md by @0xFredrik
+- Update database-encryption.md by @0xFredrik
+- Update email-encryption.md by @0xFredrik
+- Update encryption-in-transit.md by @0xFredrik
+- Update full-disk-encryption.md by @0xFredrik
+- Update hardware-encryption.md by @0xFredrik
+- Update guidelines.md by @0xFredrik
+- Update thresholds.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update compliance-checks.md by @0xFredrik
+- Update infrastructure-as-code.md by @0xFredrik
+- Update standard-operating-environment.md by @0xFredrik
+- Update expectation.md by @0xFredrik
+- Update preparation.md by @0xFredrik
+- Update security-policies-procedures.md by @0xFredrik
+- Update vendor-selection.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update common-vulnerabilities.md by @0xFredrik
+- Update mobile-application-security.md by @0xFredrik
+- Update security-tools-resources.md by @0xFredrik
+- Update web-application-security.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update compliance-regulatory-requirements.md by @0xFredrik
+- Update risk-management.md by @0xFredrik
+- Update security-metrics-kpis.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update access-management-best-practises.md by @0xFredrik
+- Update role-based-access-control.md by @0xFredrik
+- Update secure-authentication.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update communication-strategies.md by @0xFredrik
+- Update incident-detection-and-response-mechanisms.md by @0xFredrik
+- Update lessons-learned.md by @0xFredrik
+- Update playbooks.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update asset-inventory.md by @0xFredrik
+- Update cloud.md by @0xFredrik
+- Update ddos-protection.md by @0xFredrik
+- Update dns-and-domain-registration.md by @0xFredrik
+- Update network-security.md by @0xFredrik
+- Update operating-system-security.md by @0xFredrik
+- Update zero-trust-principles.md by @0xFredrik
+- Update cold-vs-hot-wallet.md by @0xFredrik
+- Update custodial-vs-non-custodial.md by @0xFredrik
+- Update signing-schemes.md by @0xFredrik
+- Update software-wallets.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update bug-bounties.md by @0xFredrik
+- Update security-contact.md by @0xFredrik
+- Update create-maintain-threat-models.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update phishing-social-engineering.md by @0xFredrik
+- Update security-aware-culture.md by @0xFredrik
+- Update security-training.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update dependency-awareness.md by @0xFredrik
+- Update supply-chain-levels-software-artifacts.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update dynamic-application-security-testing.md by @0xFredrik
+- Update security-regression-testing.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update code-reviews-peer-audits.md by @0xFredrik
+- Update secure-code-repositories-version-control.md by @0xFredrik
+- Update secure-coding-standards-guidelines.md by @0xFredrik
+- Update threat-modeling-secure-design-principles.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update data-removal-services.md by @0xFredrik
+- Update digital-footprint.md by @0xFredrik
+- Update financial-privacy-services.md by @0xFredrik
+- Update privacy-focused-operating-systems-tools.md by @0xFredrik
+- Update secure-browsing.md by @0xFredrik
+- Update vpn-services.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update detecting-and-mitigating-insider-threats.md by @0xFredrik
+- Update g-suite-security.md by @0xFredrik
+- Update password-secrets-management.md by @0xFredrik
+- Update physical-security.md by @0xFredrik
+- Update standard-operating-environment.md by @0xFredrik
+- Update wireless-security.md by @0xFredrik
+- Update mobile-application-security.md by @0xFredrik
+- Update email-encryption.md by @0xFredrik
+- Update web-application-security.md by @0xFredrik
+- Update secure-code-repositories-version-control.md by @0xFredrik
+- Update security-training.md by @0xFredrik
+- Update social-engineering.md by @0xFredrik
+- Update lessons-learned.md by @0xFredrik
+- Update communication-strategies.md by @0xFredrik
+- Update full-disk-encryption.md by @0xFredrik
+- Update software-wallets.md by @0xFredrik
+- Create CODE_OF_CONDUCT.md by @0xFredrik
+- Update .gitignore by @0xFredrik
+- Create md-lint.yaml by @0xFredrik
+- Create spell-check.yml by @0xFredrik
+- Create PULL_REQUEST_TEMPLATE.md by @0xFredrik
+- Create wordlist.txt by @0xFredrik
+- Create content-request.md by @0xFredrik
+- Create contributing.md by @0xFredrik
+- Update SUMMARY.md by @0xFredrik
+- Update contributing.md by @0xFredrik
+- Update contributing.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update security-training.md by @0xFredrik
+- Update social-engineering.md by @0xFredrik
+- Update staying-up-to-date.md by @0xFredrik
+- Update SUMMARY.md by @0xFredrik
+- Update SUMMARY.md by @0xFredrik
+- Delete src/misc/contributors.md by @0xFredrik
+- Moving contributors.md into contribute folder by @0xFredrik
+- Update introduction.md by @0xFredrik
+- Update README.md by @0xFredrik
+- Update security-training.md by @0xFredrik
+- Update social-engineering.md by @0xFredrik
+- Update staying-up-to-date.md by @0xFredrik
+- Update contributing.md by @0xFredrik
+- Update introduction.md by @0xFredrik
+- Update contributing.md by @0xFredrik
+- Stage 2 of merge by @mattaereal
+- Update content-request.md by @mattaereal
+- Create update-request.md by @mattaereal
+- Update content-request.md by @mattaereal
+- Update update-request.md by @mattaereal
+- Added suggested feedback for compliance, IAM, how to navigate the website, and more. by @mattaereal
+- Update seal-911-war-room-guidelines.md by @mattaereal
+- Added the correct path to the contribution page. by @mattaereal
+- Feedback applied to passwords, SE, and security training. by @mattaereal
+- Update README.md with recent changes to collaboration and local setup instructions by @mattaereal
+- Updated build setup to newest version by @mattaereal
+- Improved best practices on email encryption by @mattaereal
+- Improved best practices on cloud encryption by @mattaereal
+- Modified serve.sh script to be compatible with macos by @tebayoso
+- Tags working by @tebayoso
+- Added serve and build specs by @tebayoso
+- Cleaned up eol by @tebayoso
+- Added EOL to editorconfig by @tebayoso
+- Upgraded vercel build by @tebayoso
+- Added sample tags to each page, improved serve.sh script, and updated various documentation files to enhance clarity and completeness by @mattaereal
+- Modified gitignore to accept handlebars index. by @mattaereal
+- Changed URLS and minor typo on serve script. by @mattaereal
+- Trying a new way to deploy to get rid of a hardcoding workaround on index.hbs by @mattaereal
+- Trying a new vercel.json config by @mattaereal
+- Deprecating previous replacement with sed on serve.sh by @mattaereal
+- Removing old /book path from url on README.md by @mattaereal
+- Updating readme to match current local setup by @mattaereal
+- Added improved tag images by @tebayoso
+- Tags Colors working by @tebayoso
+- Fix wordlist.txt by @0xFredrik
+- Added collaborate stripe by @tebayoso
+- Updating current tags to incorporate HR, and a few more by @mattaereal
+- Improvemets in tag selection and announcement banner by @tebayoso
+- Clear tags and filters by @tebayoso
+- Update theme/index.hbs by @tebayoso
+- fix typos by @zedt3ster
+- expand wordlist and order alphabetically by @zedt3ster
+- more word exclusions by @zedt3ster
+- more typo fixes by @zedt3ster
+- more typo fixes by @zedt3ster
+- Updating wordlist.txt and some markdown linting fixes by @mattaereal
+- Jump of line fix in README by @mattaereal
+- Updating wordlist by @mattaereal
+- docs: Update README ##pull-requests by @Robert-MacWha
+- fix: Fix typo by @Robert-MacWha
+- fix: typos in pr_template by @Robert-MacWha
+- add SEAL logo as favicon by @zedt3ster
+- feat: improved tag generation by @Robert-MacWha
+- feat: Update tag display system by @Robert-MacWha
+- feat: remove duplicate code & document methods by @Robert-MacWha
+- refactor: move JS and CSS to seperate files by @Robert-MacWha
+- style: Added margin around page-tags by @Robert-MacWha
+- refactor: Extract tag initialization logic into seperate methods by @Robert-MacWha
+- fix: announcement-stripe overflowing at lower horizontal resolutions by @Robert-MacWha
+- feat: implemented AND selection for tags. by @Robert-MacWha
+- feat: remove HTML styling on tag-search by @Robert-MacWha
+- Adding a few more words to wordlist.txt by @mattaereal
+- feat: Bookmarks ([#83](https://github.com/security-alliance/frameworks/pull/83)) by @Robert-MacWha
+- Safe Harbor Docs ([#92](https://github.com/security-alliance/frameworks/pull/92)) by @Robert-MacWha
+- Add yaml frontmatter & build time tags ([#102](https://github.com/security-alliance/frameworks/pull/102)) by @Robert-MacWha
+- Adding .code-workspace to gitignore by @mattaereal
+- Merge from develop ([#85](https://github.com/security-alliance/frameworks/pull/85)) by @mattaereal
+- Changing default theme to navy by @mattaereal
+- First commit for this framework. Introduction refactored. by @mattaereal
+- Discord update, with ToC by @mattaereal
+- X (Twitter) update, with ToC by @mattaereal
+- Normalizing summary.md by @mattaereal
+- Updating Telegram, also a ToC and MITM attack by @mattaereal
+- Updating Google, added ToC, and SUMMARY by @mattaereal
+- Normalizing dividers by @mattaereal
+- Minor modifications, reordering SUMMARY by @mattaereal
+- Update src/community-management/README.md by @mattaereal
+- Update src/community-management/README.md by @mattaereal
+- Added key takeaways and improved some wording. by @mattaereal
+- Trying JoreAli's mdBook pagetoc by @mattaereal
+- feat: fix toc and package theme into "toc" folder ([#100](https://github.com/security-alliance/frameworks/pull/100)) by @Robert-MacWha
+- Update spell-check.yml by @mattaereal
+- Update discord.md by @NFTDreww
+- Update google.md by @NFTDreww
+- Update telegram.md by @NFTDreww
+- Update twitter.md by @NFTDreww
+- Improved formatting and summarized contents by @mattaereal
+- Improved formatting and summarized contents (google) by @mattaereal
+- Improved formatting and summarized contents (telegram) by @mattaereal
+- Improved formatting and summarized contents (X) by @mattaereal
+- Fw community mgmt ([#99](https://github.com/security-alliance/frameworks/pull/99)) by @NFTDreww
+- Solving conflicts from previous merge by @mattaereal
+- Solving more conflicts from previous merge. My ide messed up something by @mattaereal
+- Adding following banner, improved ToC, footer, and more by @mattaereal
+- Normalizing platform contents for comm mgmt by @mattaereal
+- update telegram session management instructions ([#104](https://github.com/security-alliance/frameworks/pull/104)) by @matt-dragonfly
+- Removing remove from toc title for twitter by @mattaereal
+- Tweaked footer by @mattaereal
+- Adding conditional banner, and prebuild to change SUMMARY depending on branch. by @mattaereal
+- Testing pre-build run on develop by @mattaereal
+- Merge from develop, testing conditional banner by @mattaereal
+- Merge from develop! New stage. ([#111](https://github.com/security-alliance/frameworks/pull/111)) by @mattaereal
+- Updating summary by @mattaereal
+- Merge prebuild-summary into develop ([#114](https://github.com/security-alliance/frameworks/pull/114)) by @mattaereal
+- Merge prebuild-summary into develop ([#116](https://github.com/security-alliance/frameworks/pull/116)) by @mattaereal
+- Updating prebuild.sh to work with vercel's config and fixing grammar ([#117](https://github.com/security-alliance/frameworks/pull/117)) by @mattaereal
+- Merge prebuild-summary into develop ([#118](https://github.com/security-alliance/frameworks/pull/118)) by @mattaereal
+- Contributors first run by @mattaereal
+- Tags and Contributors plugin merge into mdbook-metadata, plus an example by @mattaereal
+- Cleaned contributors plugin, removing unused code by @mattaereal
+- Fix broken link by @engn33r
+- Updating spellcheck wordlist.txt by @mattaereal
+- Updating spellcheck wordlist.txt (removing invalid character by @mattaereal
+- Updating spellcheck wordlist.txt (adding draww again). This spellcheck I swear to god... by @mattaereal
+- Initial commit for this updated framework by @mattaereal
+- Adding new words to wordlist by @mattaereal
+- Merging user-team-security into awareness, at least for now. A lot of overlap by @mattaereal
+- Updating summary to remove user-team-security by @mattaereal
+- Proof reading and improving current contents with Claude. Adding Key takeaways. by @mattaereal
+- Removing user-team-security folder, no longer needed after merging it with awareness. by @mattaereal
+- Added prebuild.sh to vercel_build and updated Summaries. by @mattaereal
+- Updating prebuild to work in vercel for dynamic summaries. by @mattaereal
+- Updating wordlist as well for summaries by @mattaereal
+- Updating wordlist by @mattaereal
+- Updating prebuild config. by @mattaereal
+- Restructuring contributors and tags generation by @mattaereal
+- Improving the format of contributors on the contributing final list by @mattaereal
+- Forgot to keep track of these files on the previous commit. by @mattaereal
+- Moved CSS from within rust to actual CSS/HTML files, with a fallback in rust for some themes, but mainly files. by @mattaereal
+- Fix announcement banner width ([#131](https://github.com/security-alliance/frameworks/pull/131)) by @davidthegardens
+- feat: remove banner from production site ([#133](https://github.com/security-alliance/frameworks/pull/133)) by @Robert-MacWha
+- chore: update Cargo.lock for mdbook-metadata plugin by @mattaereal
+- Updating contributions by @mattaereal
+- Contributors style and formatting upgrade ([#136](https://github.com/security-alliance/frameworks/pull/136)) by @mattaereal
+- Minor theme fix, bullets on outline by @mattaereal
+- Updated contributor list with correct information by @mattaereal
+- Merging develop from mdbook-contributors ([#138](https://github.com/security-alliance/frameworks/pull/138)) by @mattaereal
+- Ens best practices ([#139](https://github.com/security-alliance/frameworks/pull/139)) by @Ghadi8
+- ENS, Awareness, Summaries and Contributors hygiene. by @mattaereal
+- Removing track of contributorsindex and tagsindex by @mattaereal
+- Code review additions ([#145](https://github.com/security-alliance/frameworks/pull/145)) by @ElliotFriedman
+- Updated contributing and readme.md by @mattaereal
+- Removed catpuccin, updated mdbook and admonish. ([#147](https://github.com/security-alliance/frameworks/pull/147)) by @mattaereal
+- Clean update of logo and favicon. ([#151](https://github.com/security-alliance/frameworks/pull/151)) by @mattaereal
+- Updating develop to the new and more humane beginning of a written Opsec Framework ([#154](https://github.com/security-alliance/frameworks/pull/154)) by @mattaereal
+- Updating Opsec with latest updates ([#157](https://github.com/security-alliance/frameworks/pull/157)) by @mattaereal
+- Initial draft of personal security travel guide! ([#158](https://github.com/security-alliance/frameworks/pull/158)) by @mattaereal
+- Attribution by @mattaereal
+- Updating naming on opsec travel guide by @mattaereal
+- Updating, and re-ordering paragraphs from opsec travel guide by @mattaereal
+- Attribution to sources by @mattaereal
+- Add Secure Multisig Signing Process ([#122](https://github.com/security-alliance/frameworks/pull/122)) by @engn33r
+- Removing the old operational-security folder, moving secure-multisig contents within wallet-security, and re-generated the overview of frameworks with AI. by @mattaereal
+- feat: Safe Harbor Framework ([#144](https://github.com/security-alliance/frameworks/pull/144)) by @Robert-MacWha
+- doc: Instruction for re-writing history to sign commits ([#156](https://github.com/security-alliance/frameworks/pull/156)) by @Robert-MacWha
+- Tidy plugins ([#143](https://github.com/security-alliance/frameworks/pull/143)) by @Robert-MacWha
+- feat: overhaul of the Wallet Security section ([#164](https://github.com/security-alliance/frameworks/pull/164)) by @pinalikefruit
+- feat: fix extra fields & add verbose errors ([#167](https://github.com/security-alliance/frameworks/pull/167)) by @Robert-MacWha
+- Fix several misc ([#168](https://github.com/security-alliance/frameworks/pull/168)) by @mattaereal
+- Removing spell-check from develop. Only on main from now on. Exploratory. by @mattaereal
+- feat: security testing - solidity focused ([#163](https://github.com/security-alliance/frameworks/pull/163)) by @PatrickAlphaC
+- Introducing Decentralized IR Framework ([#165](https://github.com/security-alliance/frameworks/pull/165)) by @relotnek
+- feat: external security reviews & patrick addition ([#160](https://github.com/security-alliance/frameworks/pull/160)) by @PatrickAlphaC
+- Adding to the outline the latest pushed content. by @mattaereal
+- Bump mdbook version ([#177](https://github.com/security-alliance/frameworks/pull/177)) by @davidthegardens
+- feat: added more information on wallet security ([#173](https://github.com/security-alliance/frameworks/pull/173)) by @PatrickAlphaC
+- Update PULL_REQUEST_TEMPLATE.md ([#174](https://github.com/security-alliance/frameworks/pull/174)) by @mattaereal
+- fix: stewards ([#172](https://github.com/security-alliance/frameworks/pull/172)) by @PatrickAlphaC
+- Update tldr.md ([#181](https://github.com/security-alliance/frameworks/pull/181)) by @NFTDreww
+- Update README.md ([#178](https://github.com/security-alliance/frameworks/pull/178)) by @GodwinDA
+- Update implementation-process.md ([#179](https://github.com/security-alliance/frameworks/pull/179)) by @GodwinDA
+- feat: updating linting, devcontainer, and local development ([#184](https://github.com/security-alliance/frameworks/pull/184)) by @PatrickAlphaC
+- Going back to 0.4.40 stable. by @mattaereal
+- Fix spelling issues and update wordlist ([#188](https://github.com/security-alliance/frameworks/pull/188)) by @mattaereal
+- Fix typos in mdbook-metadata README.md and add renderer to wordlist by @mattaereal
+- Update threat-modeling-overview.md ([#182](https://github.com/security-alliance/frameworks/pull/182)) by @damboy0
+- Updating Safe Harbor Documentation ([#186](https://github.com/security-alliance/frameworks/pull/186)) by @DicksonWu654
+- Updating outlines. Removing empty frameworks from main by @mattaereal
+- Fixing broken link in PR template by @mattaereal
+- Fixing grammar issues and spellcheck by @mattaereal
+- 3 frameworks, contributors and spellcheck (Wallet Security, External Security Reviews, and Security Testing frameworks) ([#187](https://github.com/security-alliance/frameworks/pull/187)) by @mattaereal
+- feat: handle reverse records per chain ([#199](https://github.com/security-alliance/frameworks/pull/199)) by @Ghadi8
+- Update Safe Harbor documentation for clarity and consistency ([#195](https://github.com/security-alliance/frameworks/pull/195)) by @DicksonWu654
+- Fix cross-site image loading issues ([#200](https://github.com/security-alliance/frameworks/pull/200)) by @Robert-MacWha
+- quick fix for external security reviews by @mattaereal
+- Fixed DevContainer Issue + github cli + Updated Documentation + Pre-build docker image ([#198](https://github.com/security-alliance/frameworks/pull/198)) by @DicksonWu654
+- Update link in Identity and Access Management documentation for accuracy ([#203](https://github.com/security-alliance/frameworks/pull/203)) by @DicksonWu654
+- Update links in self-checklist.md for improved navigation ([#205](https://github.com/security-alliance/frameworks/pull/205)) by @DicksonWu654
+- feat: Add insider-threats framework (DPRK IT Workers) ([#193](https://github.com/security-alliance/frameworks/pull/193)) by @shortdoom
+- Addition of a Mutation Testing Section ([#180](https://github.com/security-alliance/frameworks/pull/180)) by @nbelenkov
+- docs: update wallet security resources ([#213](https://github.com/security-alliance/frameworks/pull/213)) by @pinalikefruit
+- Add manual review page in External Security Reviews framework. ([#183](https://github.com/security-alliance/frameworks/pull/183)) by @the-caliber
+- Update guide to put some realistic info a bout juice jacking by @mattaereal
+- Updated dev ([#215](https://github.com/security-alliance/frameworks/pull/215)) by @Robert-MacWha
+- Updating main on missing commits due to previous selective-merging ([#192](https://github.com/security-alliance/frameworks/pull/192)) by @mattaereal
+- quick fix for external security reviews by @mattaereal
+- Adding dobs suggestions by @mattaereal
+- Add Yaniv Sofer as a contributor and update review roles in insider t… ([#221](https://github.com/security-alliance/frameworks/pull/221)) by @DicksonWu654
+- hotfix: fix broken summary.md.main link by @Robert-MacWha
+- fix: naming change - explicit DPRK IT Workers framework ([#223](https://github.com/security-alliance/frameworks/pull/223)) by @shortdoom
+- Incident management playbook ([#224](https://github.com/security-alliance/frameworks/pull/224)) by @00xWizard
+- Incident management playbooks ([#233](https://github.com/security-alliance/frameworks/pull/233)) by @scode2277
+- Vocs Migration ([#227](https://github.com/security-alliance/frameworks/pull/227)) by @scode2277
+- Restructure README.md and CONTRIBUTING.md ([#225](https://github.com/security-alliance/frameworks/pull/225)) by @scode2277
+- Fix logo path in README.md ([#237](https://github.com/security-alliance/frameworks/pull/237)) by @scode2277
+- Update telegram.mdx ([#243](https://github.com/security-alliance/frameworks/pull/243)) by @aviggiano
+- feat: update the PULL_REQUEST_TEMPLATE for vocs ([#245](https://github.com/security-alliance/frameworks/pull/245)) by @scode2277
+- feat: Benchmark component ([#241](https://github.com/security-alliance/frameworks/pull/241)) by @Robert-MacWha
+- feat: create mermaid wrapper pre-build script ([#242](https://github.com/security-alliance/frameworks/pull/242)) by @scode2277
+- chore(images): migrate all images to S3 ([#252](https://github.com/security-alliance/frameworks/pull/252)) by @scode2277
+- fix: CONTRIBUTING.md + contributing.mdx ([#250](https://github.com/security-alliance/frameworks/pull/250)) by @scode2277
+- chore: update tags ([#253](https://github.com/security-alliance/frameworks/pull/253)) by @scode2277
+- fix(flickering on reload): remove redirects from vercel.json ([#249](https://github.com/security-alliance/frameworks/pull/249)) by @scode2277
+- chore(spellcheck): migrate from Aspell to CSpell ([#251](https://github.com/security-alliance/frameworks/pull/251)) by @scode2277
+- chore: add temporary patch for Vocs search indexing issue ([#257](https://github.com/security-alliance/frameworks/pull/257)) by @scode2277
+- fix: branch-related files ([#259](https://github.com/security-alliance/frameworks/pull/259)) by @scode2277
+- Adding indexes! index.mdx -> index.html ([#260](https://github.com/security-alliance/frameworks/pull/260)) by @mattaereal
+- Migrating from npm to pnpm ([#261](https://github.com/security-alliance/frameworks/pull/261)) by @mattaereal
+- fix: remove duplicate framework from sidebar ([#262](https://github.com/security-alliance/frameworks/pull/262)) by @scode2277
+- Fix/markdown lint outputs ([#271](https://github.com/security-alliance/frameworks/pull/271)) by @scode2277
+- chore: add pre-build script to sync the contributing files ([#264](https://github.com/security-alliance/frameworks/pull/264)) by @scode2277
+- chore: update the issue templates to be more frameworks-customized ([#265](https://github.com/security-alliance/frameworks/pull/265)) by @scode2277
+- chore: add og images for preview links ([#276](https://github.com/security-alliance/frameworks/pull/276)) by @scode2277
+- feat/issue-forms ([#279](https://github.com/security-alliance/frameworks/pull/279)) by @scode2277
+- DNS & Domain security PR (final) ([#284](https://github.com/security-alliance/frameworks/pull/284)) by @mattaereal
+- Fix/dickson slug in infra framework ([#285](https://github.com/security-alliance/frameworks/pull/285)) by @scode2277
+- chore: upgrade filter ([#277](https://github.com/security-alliance/frameworks/pull/277)) by @scode2277
+- update collapsed sections ([#286](https://github.com/security-alliance/frameworks/pull/286)) by @scode2277
+- Monthly update & migration (mdbook -> vocs) ([#255](https://github.com/security-alliance/frameworks/pull/255)) by @mattaereal
+- Updating vsconfig to enable new updates on main by @mattaereal
+- Updating vsconfig to enable new updates on main ([#289](https://github.com/security-alliance/frameworks/pull/289)) by @mattaereal
+- Chore/travel guide update ([#291](https://github.com/security-alliance/frameworks/pull/291)) by @scode2277
+- SEAL Certifications incorporation, including 5 certs ([#294](https://github.com/security-alliance/frameworks/pull/294)) by @Robert-MacWha
+- Certs fix: adding current status to overview and minor typos/grammar improvements ([#296](https://github.com/security-alliance/frameworks/pull/296)) by @DicksonWu654
+- Certs fix: Updating certified partners ([#297](https://github.com/security-alliance/frameworks/pull/297)) by @DicksonWu654
+- Sync Main ([#295](https://github.com/security-alliance/frameworks/pull/295)) by @Robert-MacWha
+- Wallet security multisig content ([#275](https://github.com/security-alliance/frameworks/pull/275)) by @DicksonWu654
+- fix: update safe mobile app references and titles ([#292](https://github.com/security-alliance/frameworks/pull/292)) by @compojoom
+- Create Devops Cert & Updating 2 other Certs ([#304](https://github.com/security-alliance/frameworks/pull/304)) by @DicksonWu654
+- Pnpm update ([#308](https://github.com/security-alliance/frameworks/pull/308)) by @Robert-MacWha
+- fixing spotlight zone ([#311](https://github.com/security-alliance/frameworks/pull/311)) by @scode2277
+- making the vite deadlinks error just a warning ([#312](https://github.com/security-alliance/frameworks/pull/312)) by @scode2277
+- Revert "Create Devops Cert & Updating 2 other Certs" ([#317](https://github.com/security-alliance/frameworks/pull/317)) by @DicksonWu654
+- Restore automated tag colors and fix broken link ([#310](https://github.com/security-alliance/frameworks/pull/310)) by @scode2277
+- Add Isaac and Dickson as stewards ([#316](https://github.com/security-alliance/frameworks/pull/316)) by @DicksonWu654
+- fix md-linter path in the github workflow ([#331](https://github.com/security-alliance/frameworks/pull/331)) by @scode2277
+- Add meta descriptions to every page for SEO enhancement ([#324](https://github.com/security-alliance/frameworks/pull/324)) by @scode2277
+- Remove misadded files ([#338](https://github.com/security-alliance/frameworks/pull/338)) by @scode2277
+- Bump up react-router-dom dep ([#341](https://github.com/security-alliance/frameworks/pull/341)) by @scode2277
+- Making the searchbar indexer not run in local builds ([#348](https://github.com/security-alliance/frameworks/pull/348)) by @scode2277
+- Certs: Changes to Multisig Cert from Auditor's Feedback ([#339](https://github.com/security-alliance/frameworks/pull/339)) by @DicksonWu654
+- Certs: SFC DNS fixes based on feedback ([#340](https://github.com/security-alliance/frameworks/pull/340)) by @DicksonWu654
+- fix: restore Tailwind usage for Certs components after vocs upgrade ([#354](https://github.com/security-alliance/frameworks/pull/354)) by @scode2277
+- Chore: fix index generator titles/ordering + update fetched tags ([#352](https://github.com/security-alliance/frameworks/pull/352)) by @scode2277
+- Update Safe Harbor documentation for clarity and accuracy ([#356](https://github.com/security-alliance/frameworks/pull/356)) by @DicksonWu654
+- Fix double title suffix by adding titleTemplate config ([#361](https://github.com/security-alliance/frameworks/pull/361)) by @smagdali
+- Cert Multisig Updates ([#362](https://github.com/security-alliance/frameworks/pull/362)) by @DicksonWu654
+- Certs Incident Response update ([#363](https://github.com/security-alliance/frameworks/pull/363)) by @DicksonWu654
+- Certs DNS Update ([#364](https://github.com/security-alliance/frameworks/pull/364)) by @DicksonWu654
+- Certs treasury ops update ([#365](https://github.com/security-alliance/frameworks/pull/365)) by @DicksonWu654
+- Certs workspace update ([#366](https://github.com/security-alliance/frameworks/pull/366)) by @DicksonWu654
+- Certs devops update ([#367](https://github.com/security-alliance/frameworks/pull/367)) by @DicksonWu654
+- Update vocs.config.ts to explore frameworks and outline collapsed or not ([#368](https://github.com/security-alliance/frameworks/pull/368)) by @mattaereal
+- Merge Develop into Main ([#298](https://github.com/security-alliance/frameworks/pull/298)) by @davidthegardens
+- Grammar fix on-chain-adoption-guide.mdx by @mattaereal
+- Update wordlist.txt by @mattaereal
+- Add reauthentication to wordlist.txt by @mattaereal
+- Rename files with '&' to 'and' for URL compatibility ([#372](https://github.com/security-alliance/frameworks/pull/372)) by @smagdali
+- Chore: add sitemap.xml ([#371](https://github.com/security-alliance/frameworks/pull/371)) by @scode2277
+- Update styles.css by @mattaereal
+- Enhancement: Extending sidebar reminder to work on PRs from forks too by using pull_request_target ([#373](https://github.com/security-alliance/frameworks/pull/373)) by @scode2277
+- Fix: vocs.config path in index generator + added more in depth escapes for ts syntax ([#394](https://github.com/security-alliance/frameworks/pull/394)) by @scode2277
+- chore: migrate preview deployments from Vercel to Cloudflare Pages via GitHub Actions ([#395](https://github.com/security-alliance/frameworks/pull/395)) by @scode2277
+- Chore: Remove production workflow as it works with the git integration ([#402](https://github.com/security-alliance/frameworks/pull/402)) by @scode2277
+- Chore: weekly repo cleanup ([#413](https://github.com/security-alliance/frameworks/pull/413)) by @scode2277
+- Incident response template integration ([#407](https://github.com/security-alliance/frameworks/pull/407)) by @DicksonWu654
+- Revert "chore(deps): bump the npm_and_yarn group across 1 directory with 2 updates" ([#426](https://github.com/security-alliance/frameworks/pull/426)) by @mattaereal
+- Fix indentation for fact-check contributor entry ([#427](https://github.com/security-alliance/frameworks/pull/427)) by @mattaereal
+- Fix typos across docs ([#415](https://github.com/security-alliance/frameworks/pull/415)) by @DicksonWu654
+- Incident management attribution cleanup ([#423](https://github.com/security-alliance/frameworks/pull/423)) by @DicksonWu654
+- Clarify preview feedback path on contribution docs ([#418](https://github.com/security-alliance/frameworks/pull/418)) by @DicksonWu654
+- Updating main from develop ([#436](https://github.com/security-alliance/frameworks/pull/436)) by @scode2277
+- Chore: making Monitoring, DevSecOps, Supply Chain, AI Security and In… ([#438](https://github.com/security-alliance/frameworks/pull/438)) by @scode2277
+- Monthly Main branch update ([#486](https://github.com/security-alliance/frameworks/pull/486)) by @scode2277
+- Chore: monthly .org update ([#552](https://github.com/security-alliance/frameworks/pull/552)) by @scode2277
+- Chore: monthly .org update (#617)
+
+</details>
