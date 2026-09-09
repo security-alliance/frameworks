@@ -2,6 +2,18 @@
 
 All notable changes to the Security Frameworks are documented here.
 
+
+## 0.0.2 (2026-09-09)
+
+
+### Other
+
+- Fix: make developer-targeted-intrusion section visible on .org (#628)
+- Remove dev:true from "Policy as Code" (#630)
+# Changelog
+
+All notable changes to the Security Frameworks are documented here.
+
 ## 0.0.1 (2026-09-01)
 
 ### New content
