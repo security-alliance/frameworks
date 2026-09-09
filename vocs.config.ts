@@ -19,7 +19,7 @@ const config = {
     return { canonical: `https://frameworks.securityalliance.org${cleanPath || '/'}` }
   },
   banner: {
-    content: 'This is a work in progress and not a release. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.',
+    content: 'This is a work in progress and releases are experimental. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.',
     height: '30px',
     backgroundColor: '#8b5cf6',
     textColor: 'white',
@@ -133,13 +133,12 @@ const config = {
             { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments' },
             {
               text: 'Policy as Code',
-              collapsed: true,
-              dev: true,
+              collapsed: false,
               items: [
-                { text: 'Overview', link: '/devsecops/policy-as-code/overview', dev: true },
-                { text: 'Policy in the CI Pipeline', link: '/devsecops/policy-as-code/ci-pipeline', dev: true },
-                { text: 'Policy in Release and Runtime', link: '/devsecops/policy-as-code/release-and-runtime', dev: true },
-                { text: 'Governing the Policy Set', link: '/devsecops/policy-as-code/governance', dev: true },
+                { text: 'Overview', link: '/devsecops/policy-as-code/overview' },
+                { text: 'Policy in the CI Pipeline', link: '/devsecops/policy-as-code/ci-pipeline' },
+                { text: 'Policy in Release and Runtime', link: '/devsecops/policy-as-code/release-and-runtime' },
+                { text: 'Governing the Policy Set', link: '/devsecops/policy-as-code/governance' },
               ]
             },
             { text: 'Repository Hardening', link: '/devsecops/repository-hardening' },

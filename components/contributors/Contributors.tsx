@@ -1,7 +1,7 @@
 import contributorsData from '../../docs/pages/config/contributors.json';
 import './Contributors.css';
 import BadgeDisplay from './BadgeDisplay';
-import { getBadgeConfig, BADGE_ICONS } from '../shared/badgeConfig';
+import { getBadgeConfig, badgeIconUid, renderBadgeIcon, isDisplayableBadge } from '../shared/badgeConfig';
 
 interface Badge {
   name: string;
@@ -43,7 +43,7 @@ function formatFrameworks(frameworks: string[]): string {
 function getRoleBadgeInfo(role: string, badges: Badge[]): { label: string; badgeName: string; color: string; description: string; tier: string } | null {
   if (role === 'lead') {
     const config = getBadgeConfig('Lead');
-    return { label: 'Lead', badgeName: 'Lead', color: config.color, description: config.description, tier: config.tier || 'epic' };
+    return { label: 'Lead', badgeName: 'Lead', color: config.color, description: config.description, tier: config.tier || 'legendary' };
   }
   if (role === 'core') {
     const config = getBadgeConfig('Core-Contributor');
@@ -66,7 +66,7 @@ function getRoleBadgeInfo(role: string, badges: Badge[]): { label: string; badge
 }
 
 // Helper component for role badge overlay
-function RoleBadgeOverlay({ role, badges }: { role: string; badges: Badge[] }) {
+function RoleBadgeOverlay({ role, badges, slug }: { role: string; badges: Badge[]; slug: string }) {
   const roleInfo = getRoleBadgeInfo(role, badges);
   if (!roleInfo) return null;
   return (
@@ -75,7 +75,7 @@ function RoleBadgeOverlay({ role, badges }: { role: string; badges: Badge[] }) {
       style={{ '--role-color': roleInfo.color } as React.CSSProperties}
     >
       <div className="role-badge-icon-svg">
-        {BADGE_ICONS[roleInfo.badgeName] || BADGE_ICONS['default']}
+        {renderBadgeIcon(roleInfo.badgeName, badgeIconUid('role', slug))}
       </div>
       <span className="role-badge-simple-tooltip">{roleInfo.label}</span>
     </div>
@@ -127,40 +127,68 @@ function StewardInfo({ badges }: { badges: Badge[] }) {
   );
 }
 
-// Get activity status from badges: 'active' | 'dormant' | 'none'
-function getActivityStatus(badges: Badge[]): 'active' | 'dormant' | 'none' {
-  const hasActive = badges.some(b =>
+type ActivityStatus = 'active' | 'neutral' | 'dormant' | 'unbadged';
+
+// Display order: contributors who are actually active, then those who simply
+// carry no activity badge, then dormant ones, then those with no badges at all.
+const ACTIVITY_PRIORITY: Record<ActivityStatus, number> = {
+  active: 0,
+  neutral: 1,
+  dormant: 2,
+  unbadged: 3
+};
+
+// Nearly everyone holds these two, so they say nothing about a contributor
+// relative to their peers. They still render on the card; they just don't earn
+// a better position in the list.
+const BASELINE_BADGES = new Set(['First-Contribution', 'Dormant-90d+']);
+
+function hasEarnedBadges(badges: Badge[]): boolean {
+  return badges.some(b => b.name && b.name.trim() !== '' && !BASELINE_BADGES.has(b.name));
+}
+
+function getActivityStatus(badges: Badge[]): ActivityStatus {
+  // Match the filter BadgeDisplay renders with, so "no badges" here means the
+  // card genuinely shows none.
+  const named = badges.filter(b => b.name && b.name.trim() !== '');
+  if (named.length === 0) return 'unbadged';
+
+  const hasActive = named.some(b =>
     b.name === 'Active-Last-7d' || b.name === 'Active-Last-30d'
   );
   if (hasActive) return 'active';
 
-  const hasDormant = badges.some(b => b.name === 'Dormant-90d+');
+  const hasDormant = named.some(b => b.name === 'Dormant-90d+');
   if (hasDormant) return 'dormant';
 
-  return 'none';
+  return 'neutral';
 }
 
 // Get the most recent activity date from badges
 function getLastActivityDate(badges: Badge[]): Date | null {
-  const activityBadge = badges.find(b =>
-    b.name === 'Active-Last-7d' || b.name === 'Active-Last-30d' || b.name === 'Dormant-90d+'
-  );
-  if (activityBadge?.lastActive) {
-    return new Date(activityBadge.lastActive);
-  }
-  return null;
+  const timestamps = badges
+    .filter(b =>
+      b.name === 'Active-Last-7d' || b.name === 'Active-Last-30d' || b.name === 'Dormant-90d+'
+    )
+    .map(b => (b.lastActive ? new Date(b.lastActive).getTime() : NaN))
+    .filter(t => !Number.isNaN(t));
+
+  return timestamps.length > 0 ? new Date(Math.max(...timestamps)) : null;
 }
 
-// Sort contributors by activity within their group
+// Sort contributors within their group: those who earned something beyond the
+// baseline badges lead, then by activity, then by recency.
 function sortByActivity(contributors: Contributor[]): Contributor[] {
   return [...contributors].sort((a, b) => {
+    const earnedA = hasEarnedBadges(a.badges || []);
+    const earnedB = hasEarnedBadges(b.badges || []);
+    if (earnedA !== earnedB) return earnedA ? -1 : 1;
+
     const statusA = getActivityStatus(a.badges || []);
     const statusB = getActivityStatus(b.badges || []);
 
-    // Priority: active > none > dormant
-    const priority = { active: 0, none: 1, dormant: 2 };
-    if (priority[statusA] !== priority[statusB]) {
-      return priority[statusA] - priority[statusB];
+    if (ACTIVITY_PRIORITY[statusA] !== ACTIVITY_PRIORITY[statusB]) {
+      return ACTIVITY_PRIORITY[statusA] - ACTIVITY_PRIORITY[statusB];
     }
 
     // Within same status, sort by most recent activity date (newest first)
@@ -261,7 +289,7 @@ export function Contributors() {
                       loading="lazy"
                     />
                     {(contributor.role === 'lead' || contributor.role === 'core' || contributor.role === 'steward') && (
-                      <RoleBadgeOverlay role={contributor.role} badges={contributor.badges || []} />
+                      <RoleBadgeOverlay role={contributor.role} badges={contributor.badges || []} slug={contributor.slug} />
                     )}
                     <ContributorHoverCard contributor={contributor} />
                   </div>
@@ -278,10 +306,15 @@ export function Contributors() {
                     <StewardInfo badges={contributor.badges || []} />
                   )}
 
-                  {/* Badges display */}
-                  {contributor.badges && contributor.badges.length > 0 && (
+                  {/* Badges display. Dormant is recorded but never drawn, so a
+                      contributor carrying only that must not get an empty row. */}
+                  {(contributor.badges || []).some(b => isDisplayableBadge(b.name)) && (
                     <div className="contributors-page-badges">
-                      <BadgeDisplay badges={contributor.badges} compact={true} />
+                      <BadgeDisplay
+                        badges={contributor.badges}
+                        contributorSlug={contributor.slug}
+                        compact={true}
+                      />
                     </div>
                   )}
 

@@ -1,14 +1,150 @@
 /* Badge Legend Styles */
 .badge-legend {
-  margin-top: 3rem;
-  padding: 2rem;
+  margin: 2rem 0;
+  padding: 0;
   background: var(--sidebar-bg, #f9fafb);
-  border-radius: 16px;
+  border-radius: 12px;
   border: 1px solid var(--theme-popup-border, #e5e7eb);
+  border-left: 3px solid #a855f7;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.badge-legend-title.vocs_H2 {
-  margin-bottom: 0.75rem;
+.badge-legend[open] {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Disclosure header: always visible, collapsed by default */
+.badge-legend-summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  list-style: none;
+  padding: 0.875rem 1.25rem;
+  transition: background 0.2s ease;
+}
+
+.badge-legend-summary:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Replace the default triangle with our own so it can sit at the end */
+.badge-legend-summary::-webkit-details-marker {
+  display: none;
+}
+
+.badge-legend-summary:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: -2px;
+}
+
+.badge-legend-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.badge-legend .badge-legend-title {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--fg, #111827);
+}
+
+.badge-legend-hint {
+  font-size: 0.8125rem;
+  color: var(--fg, #6b7280);
+  opacity: 0.6;
+}
+
+/* Preview of a few real badges, so the closed row shows what it holds */
+.badge-legend-preview {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.badge-legend-preview-icon {
+  width: 26px;
+  height: 26px;
+  display: block;
+  margin-left: -7px;
+  opacity: 0.9;
+  transition: transform 0.2s ease, margin 0.2s ease;
+}
+
+.badge-legend-preview-icon:first-child {
+  margin-left: 0;
+}
+
+.badge-legend-preview-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Fan the stack out slightly on hover */
+.badge-legend-summary:hover .badge-legend-preview-icon {
+  margin-left: -3px;
+  opacity: 1;
+}
+
+.badge-legend-summary:hover .badge-legend-preview-icon:first-child {
+  margin-left: 0;
+}
+
+.badge-legend[open] .badge-legend-preview {
+  display: none;
+}
+
+.badge-legend-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--fg, #6b7280);
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+
+.badge-legend[open] .badge-legend-toggle {
+  margin-left: auto;
+}
+
+.badge-legend-summary:hover .badge-legend-toggle {
+  opacity: 0.85;
+}
+
+.badge-legend[open] .badge-legend-toggle-label {
+  visibility: hidden;
+}
+
+.badge-legend-chevron {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.badge-legend[open] .badge-legend-chevron {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+.badge-legend-body {
+  padding: 0.25rem 1.25rem 1.5rem;
 }
 
 .badge-legend-intro {
@@ -102,10 +238,31 @@
 
 .badge-item {
   display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--theme-popup-border, rgba(0, 0, 0, 0.08));
+}
+
+.badge-item-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.badge-item-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.badge-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
 }
 
 .badge-item:last-child {
@@ -152,8 +309,15 @@
 }
 
 @keyframes arrow-bounce {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(3px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
 }
 
 /* Visual indicator in legend note */
@@ -178,14 +342,34 @@
 }
 
 @keyframes legend-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(0.8); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
 }
 
 /* Dark mode adjustments */
 :root[data-vocs-theme='dark'] .badge-legend {
   background: #1b1b1b;
-  border-color: var(--theme-popup-border, #374151);
+  /* Per side: the shorthand would repaint the left accent stripe too */
+  border-top-color: var(--theme-popup-border, #374151);
+  border-right-color: var(--theme-popup-border, #374151);
+  border-bottom-color: var(--theme-popup-border, #374151);
+}
+
+:root[data-vocs-theme='dark'] .badge-legend-summary:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+:root[data-vocs-theme='dark'] .badge-legend .badge-legend-title {
+  color: var(--fg, #f9fafb);
 }
 
 :root[data-vocs-theme='dark'] .badge-legend-intro {
@@ -231,6 +415,17 @@
   color: var(--fg, #9ca3af);
 }
 
+:root[data-vocs-theme='dark'] .legend-block-title,
+:root[data-vocs-theme='dark'] .legend-tier-meaning,
+:root[data-vocs-theme='dark'] .legend-rule-list li {
+  color: var(--fg, #f9fafb);
+}
+
+:root[data-vocs-theme='dark'] .legend-block-intro,
+:root[data-vocs-theme='dark'] .legend-tier-members {
+  color: var(--fg, #9ca3af);
+}
+
 :root[data-vocs-theme='dark'] .badge-legend-note {
   background: rgba(251, 191, 36, 0.15);
   color: #fcd34d;
@@ -242,7 +437,131 @@
     grid-template-columns: 1fr;
   }
 
+  .badge-legend-summary {
+    gap: 0.625rem;
+  }
+
+  /* Not enough room for the preview stack next to the title */
+  .badge-legend-preview {
+    display: none;
+  }
+
+  .badge-legend-toggle {
+    margin-left: auto;
+  }
+
   .badge-legend-category.milestone {
     height: auto;
+  }
+}
+
+/* ---- Tiers and rules ---- */
+
+.badge-legend-tiers,
+.badge-legend-rules {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--theme-popup-border, rgba(0, 0, 0, 0.08));
+}
+
+.legend-block-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg, #111827);
+  margin: 0 0 0.375rem;
+}
+
+.legend-block-intro {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--fg, #6b7280);
+  opacity: 0.8;
+  margin: 0 0 0.875rem;
+}
+
+.legend-tier-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.625rem;
+}
+
+.legend-tier-row {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.legend-tier-row .tier-badge {
+  justify-self: start;
+  align-self: center;
+}
+
+.legend-tier-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.legend-tier-meaning {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--fg, #111827);
+}
+
+.legend-tier-members {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--fg, #6b7280);
+  opacity: 0.7;
+}
+
+.legend-rule-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.legend-rule-list li {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  padding-left: 0.875rem;
+  position: relative;
+  color: var(--fg, #111827);
+}
+
+.legend-rule-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.legend-rule-list strong {
+  font-weight: 650;
+}
+
+.legend-inline-chip {
+  display: inline-block;
+  padding: 0.05rem 0.3rem;
+  border-radius: 4px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: rgba(148, 163, 184, 0.22);
+}
+
+@media (max-width: 600px) {
+  .legend-tier-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
   }
 }

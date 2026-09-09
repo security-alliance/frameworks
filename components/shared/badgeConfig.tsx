@@ -21,7 +21,7 @@ export const BADGE_CONFIG: Record<string, BadgeConfigItem> = {
     category: 'role',
     label: 'Lead',
     description: 'Initiative lead and project maintainer',
-    tier: 'epic'
+    tier: 'legendary'
   },
   'Framework-Steward': {
     color: '#3b82f6',
@@ -38,21 +38,21 @@ export const BADGE_CONFIG: Record<string, BadgeConfigItem> = {
     tier: 'legendary'
   },
   'Contributor-25': {
-    color: '#ec4899',
+    color: '#f59e0b',
     category: 'milestone',
-    label: 'Diamond Contributor',
+    label: 'Gold Contributor',
     description: '25+ merged contributions',
     tier: 'epic'
   },
   'Contributor-10': {
-    color: '#f59e0b',
+    color: '#9ca3af',
     category: 'milestone',
-    label: 'Gold Contributor',
+    label: 'Silver Contributor',
     description: '10+ merged contributions',
     tier: 'rare'
   },
   'Contributor-5': {
-    color: '#fb923c',
+    color: '#b45309',
     category: 'milestone',
     label: 'Bronze Contributor',
     description: '5+ merged contributions',
@@ -61,35 +61,37 @@ export const BADGE_CONFIG: Record<string, BadgeConfigItem> = {
   'Reviewer-10': {
     color: '#8b5cf6',
     category: 'milestone',
-    label: 'Skilled Reviewer',
+    label: 'Trusted Reviewer',
     description: '10+ code reviews completed',
     tier: 'rare'
   },
   'Reviewer-25': {
     color: '#a855f7',
     category: 'milestone',
-    label: 'Review Master',
+    label: 'Senior Reviewer',
     description: '25+ code reviews completed',
     tier: 'epic'
   },
+  // Reporter -> Observer -> Investigator -> Analyst. Each rung is a bare noun;
+  // the description under it says which activity it counts.
   'Issue-Opener-5': {
     color: '#06b6d4',
     category: 'milestone',
-    label: 'Issue Reporter',
+    label: 'Reporter',
     description: '5+ issues opened',
     tier: 'common'
   },
   'Issue-Opener-10': {
     color: '#0ea5e9',
     category: 'milestone',
-    label: 'Active Reporter',
+    label: 'Observer',
     description: '10+ issues opened',
     tier: 'rare'
   },
   'Issue-Opener-25': {
     color: '#3b82f6',
     category: 'milestone',
-    label: 'Master Reporter',
+    label: 'Investigator',
     description: '25+ issues opened',
     tier: 'epic'
   },
@@ -164,537 +166,332 @@ export function getBadgeConfig(badgeName: string): BadgeConfigItem {
   };
 }
 
-export const BADGE_ICONS: Record<string, JSX.Element> = {
-  // FRAMEWORK STEWARD - Shield with gear/cog representing maintenance & protection
-  'Framework-Steward': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="steward-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3b82f6" />
-          <stop offset="100%" stopColor="#1e40af" />
-        </linearGradient>
-        <linearGradient id="steward-inner" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#60a5fa" />
-          <stop offset="100%" stopColor="#3b82f6" />
-        </linearGradient>
-      </defs>
-      {/* Shield shape */}
-      <path d="M32 4L8 14V30C8 44 18 54 32 60C46 54 56 44 56 30V14L32 4Z"
-        fill="url(#steward-grad)" className="badge-main" />
-      <path d="M32 8L12 16V30C12 42 20 50 32 56C44 50 52 42 52 30V16L32 8Z"
-        fill="url(#steward-inner)" opacity="0.3" />
-      {/* Gear/cog icon - represents maintenance */}
-      <circle cx="32" cy="32" r="8" fill="white" opacity="0.95" />
-      <circle cx="32" cy="32" r="5" fill="#1e40af" />
-      {/* Gear teeth */}
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
-        const rad = (angle * Math.PI) / 180;
-        const x = 32 + Math.cos(rad) * 12;
-        const y = 32 + Math.sin(rad) * 12;
-        return <circle key={i} cx={x} cy={y} r="3" fill="white" opacity="0.9" />;
-      })}
-      {/* Crown on top - leadership */}
-      <path d="M24 18L28 14L32 18L36 14L40 18L38 22H26L24 18Z" fill="#fbbf24" />
-    </svg>
-  ),
+/**
+ * Badges that are recorded and used, but never drawn on a card. Empty for now;
+ * add a badge name here to keep it working in the sort and the data while
+ * keeping it off the page.
+ */
+export const HIDDEN_BADGES = new Set<string>();
 
-  // CORE CONTRIBUTOR - Star with connected nodes (network/core team)
-  'Core-Contributor': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="core-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fbbf24" />
-          <stop offset="100%" stopColor="#d97706" />
-        </linearGradient>
-        <filter id="core-glow">
-          <feGaussianBlur stdDeviation="2" result="blur" />
-          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-        </filter>
-      </defs>
-      {/* Outer star burst */}
-      <path d="M32 2L38 22L58 22L42 36L48 56L32 44L16 56L22 36L6 22L26 22L32 2Z"
-        fill="url(#core-grad)" className="badge-main" />
-      {/* Core hub - center */}
-      <circle cx="32" cy="32" r="10" fill="white" filter="url(#core-glow)" />
-      <circle cx="32" cy="32" r="6" fill="#d97706" />
-      {/* Connected nodes - representing team */}
-      <circle cx="20" cy="24" r="4" fill="white" opacity="0.9" />
-      <circle cx="44" cy="24" r="4" fill="white" opacity="0.9" />
-      <circle cx="20" cy="40" r="4" fill="white" opacity="0.9" />
-      <circle cx="44" cy="40" r="4" fill="white" opacity="0.9" />
-      {/* Connection lines */}
-      <line x1="24" y1="26" x2="28" y2="30" stroke="white" strokeWidth="2" opacity="0.7" />
-      <line x1="40" y1="26" x2="36" y2="30" stroke="white" strokeWidth="2" opacity="0.7" />
-      <line x1="24" y1="38" x2="28" y2="34" stroke="white" strokeWidth="2" opacity="0.7" />
-      <line x1="40" y1="38" x2="36" y2="34" stroke="white" strokeWidth="2" opacity="0.7" />
-    </svg>
-  ),
+export function isDisplayableBadge(badgeName: string | undefined): boolean {
+  return !!badgeName && badgeName.trim() !== '' && !HIDDEN_BADGES.has(badgeName);
+}
 
-  // LEAD - Compass/direction representing leadership and guiding the project
-  'Lead': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+/**
+ * What the tooltip prints where the tier goes.
+ *
+ * Activity badges describe a status rather than an achievement, so giving them
+ * a rarity said that being new, or being quiet, was a common drop. They get the
+ * word Status instead. Everything else prints its rank as-is.
+ */
+export function getTierChip(config: BadgeConfigItem): { text: string; className: string } {
+  if (config.category === 'activity') {
+    return { text: 'Status', className: 'tier-status' };
+  }
+  const tier = config.tier || 'common';
+  return {
+    text: `${tier.charAt(0).toUpperCase()}${tier.slice(1)}`,
+    className: `tier-${tier}`
+  };
+}
+
+/* ------------------------------------------------------------------ */
+/* Shared geometry and helpers                                          */
+/* ------------------------------------------------------------------ */
+
+const SHIELD = 'M32 4L8 14V30C8 44 18 54 32 60C46 54 56 44 56 30V14L32 4Z';
+const SHIELD_INNER = 'M32 8L12 16V30C12 42 20 50 32 56C44 50 52 42 52 30V16L32 8Z';
+const STAR = 'M32 2L38 22L58 22L42 36L48 56L32 44L16 56L22 36L6 22L26 22L32 2Z';
+const HEX = 'M32 3L55.5 16.5V43.5L32 57L8.5 43.5V16.5Z';
+const OCTAGON = 'M22 6L42 6L58 22L58 42L42 58L22 58L6 42L6 22Z';
+
+// Numbers on a badge are read at 36px, so they need a UI face rather than the
+// document serif Vocs sets on the page.
+const NUM_FONT = 'system-ui, -apple-system, Segoe UI, sans-serif';
+
+function Grad({ id, from, to, mid }: { id: string; from: string; to: string; mid?: string }) {
+  return (
+    <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor={from} />
+      {mid && <stop offset="50%" stopColor={mid} />}
+      <stop offset="100%" stopColor={to} />
+    </linearGradient>
+  );
+}
+
+function Sheen({ id }: { id: string }) {
+  return (
+    <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="white" stopOpacity="0.5" />
+      <stop offset="50%" stopColor="white" stopOpacity="0" />
+      <stop offset="100%" stopColor="white" stopOpacity="0.5" />
+    </linearGradient>
+  );
+}
+
+const Svg = ({ children }: { children: React.ReactNode }) => (
+  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">{children}</svg>
+);
+
+const Squircle = ({ id }: { id: string }) => (
+  <rect x="4" y="4" width="56" height="56" rx="16" fill={`url(#${id})`} className="badge-main" />
+);
+
+/* A four-point spark, the "this was the first one" accent. */
+const Spark = ({ x, y, r, fill = '#fbbf24', opacity = 1 }: { x: number; y: number; r: number; fill?: string; opacity?: number }) => (
+  <path
+    d={`M${x} ${y - r}L${x + r * 0.32} ${y - r * 0.32}L${x + r} ${y}L${x + r * 0.32} ${y + r * 0.32}L${x} ${y + r}L${x - r * 0.32} ${y + r * 0.32}L${x - r} ${y}L${x - r * 0.32} ${y - r * 0.32}Z`}
+    fill={fill}
+    opacity={opacity}
+  />
+);
+
+/* ------------------------------------------------------------------ */
+/* Milestone ladder palettes                                            */
+/* ------------------------------------------------------------------ */
+
+type Level = 5 | 10 | 25;
+
+interface Metal { light: string; mid: string; dark: string; ribbon: string; ink: string }
+
+// Bronze at 5, silver at 10, gold at 25, matching the labels in BADGE_CONFIG.
+const METALS: Record<Level, Metal> = {
+  5: { light: '#f0a75e', mid: '#d9822b', dark: '#96501a', ribbon: '#8a4513', ink: '#ffffff' },
+  10: { light: '#f8fafc', mid: '#cbd5e1', dark: '#94a3b8', ribbon: '#64748b', ink: '#334155' },
+  25: { light: '#fde68a', mid: '#fbbf24', dark: '#d97706', ribbon: '#b45309', ink: '#7c2d12' }
+};
+
+const REVIEW_HUES: Record<number, [string, string, string]> = {
+  10: ['#a78bfa', '#6d28d9', '#5b21b6'],
+  25: ['#8b5cf6', '#4c1d95', '#3b0764']
+};
+
+const ISSUE_HUES: Record<Level, [string, string, string]> = {
+  5: ['#22d3ee', '#0891b2', '#0e7490'],
+  10: ['#38bdf8', '#0369a1', '#075985'],
+  25: ['#60a5fa', '#1d4ed8', '#1e40af']
+};
+
+/* ------------------------------------------------------------------ */
+/* Icon builders                                                        */
+/* ------------------------------------------------------------------ */
+
+/** Contribution medal: ribbon, metal disc, code brackets, the threshold. */
+const contributorMedal = (uid: string, level: Level) => {
+  const m = METALS[level];
+  return (
+    <Svg>
       <defs>
-        <linearGradient id="lead-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#ec4899" />
-          <stop offset="100%" stopColor="#be185d" />
-        </linearGradient>
-        <linearGradient id="lead-inner" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#f472b6" />
-          <stop offset="100%" stopColor="#ec4899" />
-        </linearGradient>
+        <Grad id={`${uid}-m`} from={m.light} mid={m.mid} to={m.dark} />
+        <Sheen id={`${uid}-s`} />
       </defs>
-      {/* Outer circle badge */}
-      <circle cx="32" cy="32" r="28" fill="url(#lead-grad)" className="badge-main" />
-      {/* Inner compass ring */}
-      <circle cx="32" cy="32" r="20" fill="white" opacity="0.95" />
-      <circle cx="32" cy="32" r="16" stroke="#be185d" strokeWidth="2" fill="none" opacity="0.3" />
-      {/* Compass needle - pointing up (North/direction) */}
-      <path d="M32 14L38 32L32 28L26 32L32 14Z" fill="#be185d" />
-      <path d="M32 50L26 32L32 36L38 32L32 50Z" fill="#f9a8d4" />
-      {/* Center dot */}
-      <circle cx="32" cy="32" r="4" fill="#be185d" />
+      <path d="M20 2L32 20L44 2L49 2L38 23L32 27L26 23L15 2Z" fill={m.ribbon} />
+      <circle cx="32" cy="41" r="21" fill={`url(#${uid}-m)`} className="badge-main" />
+      <circle cx="32" cy="41" r="21" fill={`url(#${uid}-s)`} />
+      <circle cx="32" cy="41" r="17.5" stroke="white" strokeWidth="1.5" opacity="0.45" />
+      <g stroke={m.ink} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
+        <path d="M26.5 27.5L23 31L26.5 34.5" />
+        <path d="M37.5 27.5L41 31L37.5 34.5" />
+      </g>
+      <text x="32" y="52.5" fontSize="21" fontWeight="800" fill={m.ink} textAnchor="middle" fontFamily={NUM_FONT}>
+        {level}
+      </text>
+    </Svg>
+  );
+};
+
+/** Reviewer: an approved changelist, three lines, three checks. */
+const reviewerHex = (uid: string, level: 10 | 25) => {
+  const [from, to, ink] = REVIEW_HUES[level];
+  return (
+    <Svg>
+      <defs><Grad id={`${uid}-o`} from={from} to={to} /></defs>
+      <path d={HEX} fill={`url(#${uid}-o)`} className="badge-main" />
+      <path d="M32 8L51 19V41L32 52L13 41V19Z" stroke="white" strokeWidth="1.5" opacity="0.28" />
+      {[14, 23.5, 33].map((y, i) => (
+        <g key={y}>
+          <path
+            d={`M15 ${y + 4.5}L18.5 ${y + 8}L25 ${y + 1}`}
+            stroke="#34d399"
+            strokeWidth="3.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <rect x="29" y={y + 3} width={i === 2 ? 12 : 20} height="3.6" rx="1.8" fill="white" opacity={0.9 - i * 0.16} />
+        </g>
+      ))}
+      <circle cx="32" cy="45" r="11.5" fill="white" />
+      <text x="32" y="50.2" fontSize="14.5" fontWeight="800" fill={ink} textAnchor="middle" fontFamily={NUM_FONT}>
+        {level}
+      </text>
+    </Svg>
+  );
+};
+
+/** Issue ladder: the octagon, the bug, the threshold. */
+const issueOctagon = (uid: string, level: Level) => {
+  const [from, to, ink] = ISSUE_HUES[level];
+  return (
+    <Svg>
+      <defs><Grad id={`${uid}-o`} from={from} to={to} /></defs>
+      <path d={OCTAGON} fill={`url(#${uid}-o)`} className="badge-main" />
+      <ellipse cx="32" cy="25" rx="10.5" ry="11.5" fill="white" />
+      <g stroke={to} strokeWidth="1.8" opacity="0.55">
+        <path d="M22 21H42M22 29H42" />
+      </g>
+      <circle cx="32" cy="13.5" r="6" fill="white" />
+      <circle cx="29.4" cy="12.8" r="1.9" fill={to} />
+      <circle cx="34.6" cy="12.8" r="1.9" fill={to} />
+      <g stroke="white" strokeWidth="3.2" strokeLinecap="round">
+        <path d="M28.2 9.2L25.5 5.5M35.8 9.2L38.5 5.5" />
+        <path d="M22 19.5L13.5 15.5M42 19.5L50.5 15.5M22 30.5L13.5 34.5M42 30.5L50.5 34.5" />
+      </g>
+      <circle cx="32" cy="46.5" r="11.5" fill="white" />
+      <text x="32" y="51.7" fontSize="14.5" fontWeight="800" fill={ink} textAnchor="middle" fontFamily={NUM_FONT}>
+        {level}
+      </text>
+    </Svg>
+  );
+};
+
+export const BADGE_ICONS: Record<string, (uid: string) => JSX.Element> = {
+  // LEAD - Compass: leadership is pointing the project somewhere.
+  'Lead': (uid: string) => (
+    <Svg>
+      <defs><Grad id={`${uid}-o`} from="#f472b6" to="#be185d" /></defs>
+      <circle cx="32" cy="32" r="28" fill={`url(#${uid}-o)`} className="badge-main" />
+      <circle cx="32" cy="32" r="21" fill="white" />
+      <circle cx="32" cy="32" r="16.5" stroke="#be185d" strokeWidth="2" opacity="0.22" />
+      <path d="M32 13L39.5 32L32 27.5L24.5 32Z" fill="#be185d" />
+      <path d="M32 51L24.5 32L32 36.5L39.5 32Z" fill="#f9a8d4" />
+      <circle cx="32" cy="32" r="4.8" fill="#be185d" />
       <circle cx="32" cy="32" r="2" fill="white" />
-      {/* Cardinal direction markers */}
-      <circle cx="32" cy="16" r="2" fill="#be185d" />
-      <circle cx="32" cy="48" r="2" fill="#be185d" opacity="0.5" />
-      <circle cx="16" cy="32" r="2" fill="#be185d" opacity="0.5" />
-      <circle cx="48" cy="32" r="2" fill="#be185d" opacity="0.5" />
-      {/* Star accent */}
-      <path d="M50 12L52 16L56 16L53 19L54 23L50 20L46 23L47 19L44 16L48 16L50 12Z" fill="#fbbf24" />
-    </svg>
+      <path d="M50 9L52.4 14.4L58 15L53.8 18.8L55 24.4L50 21.6L45 24.4L46.2 18.8L42 15L47.6 14.4Z" fill="#fbbf24" />
+    </Svg>
   ),
 
-  // CONTRIBUTOR-5 - Bronze medal with code brackets
-  'Contributor-5': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  // FRAMEWORK STEWARD - Shield and gear, with the approval check at the hub.
+  'Framework-Steward': (uid: string) => (
+    <Svg>
       <defs>
-        <linearGradient id="bronze-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#d97706" />
-          <stop offset="50%" stopColor="#b45309" />
-          <stop offset="100%" stopColor="#92400e" />
-        </linearGradient>
-        <linearGradient id="bronze-shine" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#fbbf24" stopOpacity="0.4" />
-          <stop offset="50%" stopColor="#fbbf24" stopOpacity="0" />
-          <stop offset="100%" stopColor="#fbbf24" stopOpacity="0.4" />
-        </linearGradient>
+        <Grad id={`${uid}-o`} from="#60a5fa" to="#1d4ed8" />
+        <Grad id={`${uid}-i`} from="#93c5fd" to="#3b82f6" />
       </defs>
-      {/* Ribbon */}
-      <path d="M24 4L32 16L40 4L44 4L38 20L32 24L26 20L20 4Z" fill="#c2410c" opacity="0.9" />
-      <path d="M28 4L32 12L36 4" stroke="#fbbf24" strokeWidth="1" opacity="0.5" />
-      {/* Medal circle */}
-      <circle cx="32" cy="38" r="20" fill="url(#bronze-grad)" className="badge-main" />
-      <circle cx="32" cy="38" r="20" fill="url(#bronze-shine)" />
-      <circle cx="32" cy="38" r="16" stroke="#fbbf24" strokeWidth="1" opacity="0.3" />
-      {/* Code brackets < > representing contributions */}
-      <path d="M24 32L18 38L24 44" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M40 32L46 38L40 44" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Number 5 */}
-      <text x="32" y="43" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">5</text>
-    </svg>
+      <path d={SHIELD} fill={`url(#${uid}-o)`} className="badge-main" />
+      <path d={SHIELD_INNER} fill={`url(#${uid}-i)`} opacity="0.3" />
+      {[0, 45, 90, 135].map((a) => (
+        <rect key={a} x="28.5" y="15" width="7" height="34" rx="3.5" fill="white" transform={`rotate(${a} 32 32)`} />
+      ))}
+      <circle cx="32" cy="32" r="12.5" fill="white" />
+      <circle cx="32" cy="32" r="9" fill="#1d4ed8" />
+      <path d="M27.6 32.4L30.6 35.4L36.4 28.9" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
   ),
 
-  // CONTRIBUTOR-10 - Silver medal with merge icon
-  'Contributor-10': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="silver-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#e5e7eb" />
-          <stop offset="50%" stopColor="#9ca3af" />
-          <stop offset="100%" stopColor="#6b7280" />
-        </linearGradient>
-        <linearGradient id="silver-shine" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="white" stopOpacity="0.5" />
-          <stop offset="50%" stopColor="white" stopOpacity="0" />
-          <stop offset="100%" stopColor="white" stopOpacity="0.5" />
-        </linearGradient>
-      </defs>
-      {/* Ribbon */}
-      <path d="M22 4L32 18L42 4L46 4L38 22L32 26L26 22L18 4Z" fill="#4b5563" opacity="0.9" />
-      <path d="M32 8L26 4M32 8L38 4" stroke="#9ca3af" strokeWidth="1" opacity="0.6" />
-      {/* Medal */}
-      <circle cx="32" cy="40" r="20" fill="url(#silver-grad)" className="badge-main" />
-      <circle cx="32" cy="40" r="20" fill="url(#silver-shine)" />
-      <circle cx="32" cy="40" r="16" stroke="white" strokeWidth="1" opacity="0.4" />
-      {/* Git merge icon */}
-      <circle cx="26" cy="34" r="3" fill="white" />
-      <circle cx="38" cy="34" r="3" fill="white" />
-      <circle cx="32" cy="48" r="3" fill="white" />
-      <path d="M26 37V42C26 45 28 48 32 48M38 37V40C38 43 36 46 32 48" stroke="white" strokeWidth="2" />
-      {/* Number */}
-      <text x="32" y="43" fontSize="10" fill="#4b5563" fontWeight="bold" textAnchor="middle">10</text>
-    </svg>
+  // CORE TEAM - The star, with a concentric core.
+  'Core-Contributor': (uid: string) => (
+    <Svg>
+      <defs><Grad id={`${uid}-o`} from="#fcd34d" to="#d97706" /></defs>
+      <path d={STAR} fill={`url(#${uid}-o)`} className="badge-main" />
+      <circle cx="32" cy="32" r="13.5" fill="white" />
+      <circle cx="32" cy="32" r="9.5" fill="#d97706" />
+      <circle cx="32" cy="32" r="4.5" fill="white" />
+    </Svg>
   ),
 
-  // CONTRIBUTOR-25 - Gold medal with diamond & pull request icon
-  'Contributor-25': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="gold-medal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fcd34d" />
-          <stop offset="50%" stopColor="#fbbf24" />
-          <stop offset="100%" stopColor="#d97706" />
-        </linearGradient>
-        <linearGradient id="gold-shine" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="white" stopOpacity="0.6" />
-          <stop offset="50%" stopColor="white" stopOpacity="0" />
-          <stop offset="100%" stopColor="white" stopOpacity="0.6" />
-        </linearGradient>
-      </defs>
-      {/* Premium ribbon */}
-      <path d="M20 2L32 20L44 2L48 2L38 24L32 28L26 24L16 2Z" fill="#b45309" opacity="0.9" />
-      <path d="M24 4L32 16L40 4" stroke="#fcd34d" strokeWidth="1" opacity="0.7" />
-      {/* Stars on ribbon */}
-      <circle cx="24" cy="8" r="2" fill="#fcd34d" />
-      <circle cx="32" cy="6" r="2" fill="#fcd34d" />
-      <circle cx="40" cy="8" r="2" fill="#fcd34d" />
-      {/* Medal */}
-      <circle cx="32" cy="42" r="20" fill="url(#gold-medal-grad)" className="badge-main" />
-      <circle cx="32" cy="42" r="20" fill="url(#gold-shine)" />
-      <circle cx="32" cy="42" r="16" stroke="white" strokeWidth="1.5" opacity="0.5" />
-      {/* Diamond shape in center */}
-      <path d="M32 30L42 42L32 54L22 42Z" fill="white" opacity="0.95" />
-      <path d="M32 30L37 38H27L32 30Z" fill="#ec4899" opacity="0.8" />
-      <path d="M27 38L32 54L22 42L27 38ZM37 38L32 54L42 42L37 38Z" fill="#be185d" opacity="0.6" />
-      {/* Number */}
-      <text x="32" y="47" fontSize="12" fill="#be185d" fontWeight="bold" textAnchor="middle">25</text>
-    </svg>
+  'Contributor-5': (uid: string) => contributorMedal(uid, 5),
+  'Contributor-10': (uid: string) => contributorMedal(uid, 10),
+  'Contributor-25': (uid: string) => contributorMedal(uid, 25),
+
+  'Reviewer-10': (uid: string) => reviewerHex(uid, 10),
+  'Reviewer-25': (uid: string) => reviewerHex(uid, 25),
+
+  'Issue-Opener-5': (uid: string) => issueOctagon(uid, 5),
+  'Issue-Opener-10': (uid: string) => issueOctagon(uid, 10),
+  'Issue-Opener-25': (uid: string) => issueOctagon(uid, 25),
+
+  // EARLY CONTRIBUTOR - Here before the project had a shape.
+  'Early-Contributor': (uid: string) => (
+    <Svg>
+      <defs><Grad id={`${uid}-o`} from="#fbbf24" to="#b45309" /></defs>
+      <circle cx="32" cy="32" r="28" fill={`url(#${uid}-o)`} className="badge-main" />
+      <path d="M32 7C32 7 42 20 42 33C42 41 37.5 47 32 47C26.5 47 22 41 22 33C22 20 32 7 32 7Z" fill="white" />
+      <circle cx="32" cy="26" r="5.5" fill="#b45309" />
+      <path d="M22 37L13.5 46.5L22 48Z" fill="white" />
+      <path d="M42 37L50.5 46.5L42 48Z" fill="white" />
+      <path d="M26.5 47.5L32 60L37.5 47.5Z" fill="#ef4444" />
+      <path d="M29.3 47.5L32 55.5L34.7 47.5Z" fill="#fde68a" />
+    </Svg>
   ),
 
-  // REVIEWER-10 - Document with checkmarks
-  'Reviewer-10': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="review10-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#8b5cf6" />
-          <stop offset="100%" stopColor="#6d28d9" />
-        </linearGradient>
-      </defs>
-      {/* Hexagon badge */}
-      <path d="M32 4L54 18V46L32 60L10 46V18L32 4Z" fill="url(#review10-grad)" className="badge-main" />
-      {/* Document */}
-      <rect x="20" y="14" width="24" height="32" rx="2" fill="white" opacity="0.95" />
-      <path d="M40 14L44 18V14H40Z" fill="#6d28d9" opacity="0.3" />
-      {/* Code/text lines */}
-      <rect x="24" y="22" width="16" height="2" rx="1" fill="#6d28d9" opacity="0.3" />
-      <rect x="24" y="28" width="12" height="2" rx="1" fill="#6d28d9" opacity="0.3" />
-      <rect x="24" y="34" width="14" height="2" rx="1" fill="#6d28d9" opacity="0.3" />
-      {/* Checkmarks - reviewed */}
-      <circle cx="26" cy="23" r="4" fill="#10b981" />
-      <path d="M24 23L25.5 24.5L28 22" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="26" cy="35" r="4" fill="#10b981" />
-      <path d="M24 35L25.5 36.5L28 34" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Number badge */}
-      <circle cx="44" cy="48" r="10" fill="#fbbf24" />
-      <text x="44" y="52" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">10</text>
-    </svg>
+  // FIRST CONTRIBUTION - One date, one gold star.
+  'First-Contribution': (uid: string) => (
+    <Svg>
+      <defs><Grad id={`${uid}-o`} from="#a78bfa" mid="#7c3aed" to="#5b21b6" /></defs>
+      <path d={SHIELD} fill={`url(#${uid}-o)`} className="badge-main" />
+      <path d={SHIELD_INNER} fill="white" opacity="0.14" />
+      <rect x="15" y="17" width="34" height="32" rx="4.5" fill="white" />
+      <path d="M15 21.5A4.5 4.5 0 0 1 19.5 17h25A4.5 4.5 0 0 1 49 21.5V27H15Z" fill="#6d28d9" />
+      <rect x="21.5" y="12" width="4.5" height="10" rx="2.25" fill="white" />
+      <rect x="38" y="12" width="4.5" height="10" rx="2.25" fill="white" />
+      <path
+        d="M32 28.5L34.9 35.6L42.5 36.1L36.6 41L38.5 48.4L32 44.2L25.5 48.4L27.4 41L21.5 36.1L29.1 35.6Z"
+        fill="#fbbf24"
+      />
+    </Svg>
   ),
 
-  // REVIEWER-25 - Stack of reviewed documents with star
-  'Reviewer-25': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="review25-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#a855f7" />
-          <stop offset="100%" stopColor="#7c3aed" />
-        </linearGradient>
-      </defs>
-      {/* Star burst background */}
-      <path d="M32 2L38 20L56 24L42 36L46 54L32 44L18 54L22 36L8 24L26 20L32 2Z"
-        fill="url(#review25-grad)" className="badge-main" />
-      {/* Stacked documents */}
-      <rect x="22" y="22" width="20" height="26" rx="1" fill="white" opacity="0.6" transform="rotate(-5 32 35)" />
-      <rect x="22" y="20" width="20" height="26" rx="1" fill="white" opacity="0.8" transform="rotate(3 32 33)" />
-      <rect x="22" y="18" width="20" height="26" rx="1" fill="white" opacity="0.95" />
-      {/* Document lines */}
-      <rect x="25" y="24" width="14" height="2" rx="1" fill="#7c3aed" opacity="0.3" />
-      <rect x="25" y="29" width="10" height="2" rx="1" fill="#7c3aed" opacity="0.3" />
-      <rect x="25" y="34" width="12" height="2" rx="1" fill="#7c3aed" opacity="0.3" />
-      {/* Big checkmark */}
-      <path d="M26 32L30 36L38 26" stroke="#10b981" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Number badge */}
-      <circle cx="46" cy="46" r="10" fill="#fbbf24" />
-      <text x="46" y="50" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">25</text>
-    </svg>
+  // FIRST REVIEW - A review comment, not a document, so it cannot be mistaken
+  // for the Reviewer hexagon.
+  'First-Review': (uid: string) => (
+    <Svg>
+      <defs><Grad id={`${uid}-o`} from="#34d399" mid="#059669" to="#065f46" /></defs>
+      <path d={SHIELD} fill={`url(#${uid}-o)`} className="badge-main" />
+      <path d={SHIELD_INNER} fill="white" opacity="0.14" />
+      <path d="M18 16h28a4.5 4.5 0 0 1 4.5 4.5v15A4.5 4.5 0 0 1 46 40H34l-7.5 7.5V40H18a4.5 4.5 0 0 1-4.5-4.5v-15A4.5 4.5 0 0 1 18 16Z" fill="white" />
+      <path d="M23.5 28.5L28.5 33.5L39.5 22.5" stroke="#047857" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
+      <Spark x={45} y={46} r={7.5} />
+    </Svg>
   ),
 
-  // ISSUE-OPENER-5 - Bug with magnifying glass
-  'Issue-Opener-5': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="issue5-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#06b6d4" />
-          <stop offset="100%" stopColor="#0891b2" />
-        </linearGradient>
-      </defs>
-      {/* Octagon */}
-      <path d="M22 6L42 6L58 22L58 42L42 58L22 58L6 42L6 22L22 6Z" fill="url(#issue5-grad)" className="badge-main" />
-      {/* Bug body */}
-      <ellipse cx="32" cy="32" rx="12" ry="14" fill="white" opacity="0.95" />
-      {/* Bug segments */}
-      <line x1="20" y1="28" x2="44" y2="28" stroke="#0891b2" strokeWidth="1.5" />
-      <line x1="20" y1="36" x2="44" y2="36" stroke="#0891b2" strokeWidth="1.5" />
-      {/* Bug head */}
-      <circle cx="32" cy="20" r="6" fill="white" />
-      <circle cx="29" cy="19" r="2" fill="#0891b2" />
-      <circle cx="35" cy="19" r="2" fill="#0891b2" />
-      {/* Antennae */}
-      <path d="M28 14L24 8" stroke="white" strokeWidth="2" strokeLinecap="round" />
-      <path d="M36 14L40 8" stroke="white" strokeWidth="2" strokeLinecap="round" />
-      {/* Bug legs */}
-      <path d="M20 26L14 22" stroke="white" strokeWidth="2" strokeLinecap="round" />
-      <path d="M44 26L50 22" stroke="white" strokeWidth="2" strokeLinecap="round" />
-      <path d="M20 38L14 42" stroke="white" strokeWidth="2" strokeLinecap="round" />
-      <path d="M44 38L50 42" stroke="white" strokeWidth="2" strokeLinecap="round" />
-      {/* Number */}
-      <circle cx="46" cy="50" r="8" fill="#fbbf24" />
-      <text x="46" y="54" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">5</text>
-    </svg>
+  // ACTIVE-LAST-7D - Rounded square, glyph, duration as large white text.
+  'Active-Last-7d': (uid: string) => (
+    <Svg>
+      <defs><Grad id={`${uid}-active7-grad`} from="#34d399" to="#047857" /></defs>
+      <Squircle id={`${uid}-active7-grad`} />
+      <path d="M35 8L20.5 31H29L27 44L43.5 22H34.5Z" fill="white" />
+      <text x="32" y="56" fontSize="15" fontWeight="800" fill="white" textAnchor="middle" fontFamily={NUM_FONT}>7d</text>
+    </Svg>
   ),
 
-  // ISSUE-OPENER-10 - Alert/warning icon with exclamation
-  'Issue-Opener-10': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="issue10-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#0ea5e9" />
-          <stop offset="100%" stopColor="#0284c7" />
-        </linearGradient>
-      </defs>
-      {/* Circle */}
-      <circle cx="32" cy="32" r="28" fill="url(#issue10-grad)" className="badge-main" />
-      {/* Warning triangle */}
-      <path d="M32 12L52 48H12L32 12Z" fill="white" opacity="0.95" />
-      {/* Exclamation mark */}
-      <rect x="29" y="22" width="6" height="14" rx="2" fill="#0284c7" />
-      <circle cx="32" cy="42" r="3" fill="#0284c7" />
-      {/* Number badge */}
-      <circle cx="48" cy="18" r="10" fill="#fbbf24" />
-      <text x="48" y="22" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">10</text>
-    </svg>
-  ),
-
-  // ISSUE-OPENER-25 - Radar/scanner detecting issues
-  'Issue-Opener-25': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="issue25-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3b82f6" />
-          <stop offset="100%" stopColor="#1d4ed8" />
-        </linearGradient>
-      </defs>
-      {/* Star badge */}
-      <path d="M32 2L40 22L60 26L46 40L50 60L32 48L14 60L18 40L4 26L24 22L32 2Z"
-        fill="url(#issue25-grad)" className="badge-main" />
-      {/* Radar circles */}
-      <circle cx="32" cy="34" r="16" stroke="white" strokeWidth="2" fill="none" opacity="0.3" />
-      <circle cx="32" cy="34" r="11" stroke="white" strokeWidth="2" fill="none" opacity="0.5" />
-      <circle cx="32" cy="34" r="6" stroke="white" strokeWidth="2" fill="none" opacity="0.7" />
-      {/* Radar sweep */}
-      <path d="M32 34L32 18" stroke="white" strokeWidth="2" strokeLinecap="round" />
-      <path d="M32 34L44 26" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-      {/* Detected dots (issues found) */}
-      <circle cx="38" cy="28" r="3" fill="#ef4444" />
-      <circle cx="26" cy="38" r="2" fill="#ef4444" opacity="0.8" />
-      <circle cx="40" cy="40" r="2" fill="#ef4444" opacity="0.6" />
-      {/* Center */}
-      <circle cx="32" cy="34" r="3" fill="white" />
-      {/* Number badge */}
-      <circle cx="50" cy="50" r="10" fill="#fbbf24" />
-      <text x="50" y="54" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">25</text>
-    </svg>
-  ),
-
-  // EARLY CONTRIBUTOR - Pioneer/rocket ship
-  'Early-Contributor': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="early-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#f59e0b" />
-          <stop offset="100%" stopColor="#b45309" />
-        </linearGradient>
-      </defs>
-      {/* Circle badge */}
-      <circle cx="32" cy="32" r="28" fill="url(#early-grad)" className="badge-main" />
-      {/* Rocket ship */}
-      <path d="M32 8C32 8 24 20 24 32C24 40 28 46 32 46C36 46 40 40 40 32C40 20 32 8 32 8Z"
-        fill="white" opacity="0.95" />
-      {/* Rocket window */}
-      <circle cx="32" cy="24" r="5" fill="#f59e0b" />
-      <circle cx="32" cy="24" r="3" fill="white" opacity="0.5" />
-      {/* Rocket fins */}
-      <path d="M24 36L18 42L24 44Z" fill="white" opacity="0.9" />
-      <path d="M40 36L46 42L40 44Z" fill="white" opacity="0.9" />
-      {/* Rocket flames */}
-      <path d="M28 46L32 56L36 46" fill="#ef4444" />
-      <path d="M30 46L32 52L34 46" fill="#fbbf24" />
-      {/* Stars */}
-      <circle cx="14" cy="16" r="2" fill="white" opacity="0.8" />
-      <circle cx="50" cy="20" r="1.5" fill="white" opacity="0.6" />
-      <circle cx="18" cy="48" r="1.5" fill="white" opacity="0.7" />
-      <circle cx="48" cy="44" r="2" fill="white" opacity="0.8" />
-      {/* #1 badge */}
-      <circle cx="48" cy="14" r="8" fill="white" />
-      <text x="48" y="18" fontSize="9" fill="#b45309" fontWeight="bold" textAnchor="middle">#1</text>
-    </svg>
-  ),
-
-  // FIRST CONTRIBUTION - Calendar with star marking the date
-  'First-Contribution': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="first-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#8b5cf6" />
-          <stop offset="50%" stopColor="#7c3aed" />
-          <stop offset="100%" stopColor="#6d28d9" />
-        </linearGradient>
-        <linearGradient id="first-shine" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="white" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="white" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      {/* Shield/badge background */}
-      <path d="M32 4L54 14V34C54 46 44 56 32 60C20 56 10 46 10 34V14L32 4Z"
-        fill="url(#first-grad)" className="badge-main" />
-      <path d="M32 4L54 14V34C54 46 44 56 32 60C20 56 10 46 10 34V14L32 4Z"
-        fill="url(#first-shine)" />
-      {/* Calendar body */}
-      <rect x="18" y="20" width="28" height="28" rx="3" fill="white" opacity="0.95" />
-      {/* Calendar header */}
-      <rect x="18" y="20" width="28" height="8" rx="3" fill="#7c3aed" />
-      <rect x="18" y="24" width="28" height="4" fill="#7c3aed" />
-      {/* Calendar rings */}
-      <circle cx="24" cy="20" r="2" fill="white" opacity="0.9" />
-      <circle cx="32" cy="20" r="2" fill="white" opacity="0.9" />
-      <circle cx="40" cy="20" r="2" fill="white" opacity="0.9" />
-      {/* Calendar grid dots (days) */}
-      <circle cx="24" cy="32" r="1.5" fill="#7c3aed" opacity="0.3" />
-      <circle cx="30" cy="32" r="1.5" fill="#7c3aed" opacity="0.3" />
-      <circle cx="36" cy="32" r="1.5" fill="#7c3aed" opacity="0.3" />
-      <circle cx="42" cy="32" r="1.5" fill="#7c3aed" opacity="0.3" />
-      <circle cx="24" cy="37" r="1.5" fill="#7c3aed" opacity="0.3" />
-      <circle cx="30" cy="37" r="1.5" fill="#7c3aed" opacity="0.3" />
-      <circle cx="36" cy="37" r="1.5" fill="#7c3aed" opacity="0.3" />
-      <circle cx="42" cy="37" r="1.5" fill="#7c3aed" opacity="0.3" />
-      <circle cx="24" cy="42" r="1.5" fill="#7c3aed" opacity="0.3" />
-      <circle cx="30" cy="42" r="1.5" fill="#7c3aed" opacity="0.3" />
-      {/* Highlighted date with star - THE FIRST CONTRIBUTION */}
-      <circle cx="36" cy="42" r="5" fill="#fbbf24" />
-      <path d="M36 39L37 41.5L39.5 41.5L37.5 43L38 45.5L36 44L34 45.5L34.5 43L32.5 41.5L35 41.5Z"
-        fill="white" />
-      {/* Confetti/sparkle effects */}
-      <circle cx="14" cy="16" r="1.5" fill="#fbbf24" opacity="0.8" />
-      <circle cx="50" cy="18" r="1.5" fill="#ec4899" opacity="0.8" />
-      <circle cx="12" cy="44" r="1" fill="#10b981" opacity="0.7" />
-      <circle cx="52" cy="46" r="1" fill="#3b82f6" opacity="0.7" />
-      {/* #1 badge in corner */}
-      <circle cx="48" cy="14" r="7" fill="#fbbf24" />
-      <text x="48" y="18" fontSize="8" fill="white" fontWeight="bold" textAnchor="middle">#1</text>
-    </svg>
-  ),
-
-  // FIRST REVIEW - Document with checkmark and calendar date
-  'First-Review': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="first-review-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#10b981" />
-          <stop offset="50%" stopColor="#059669" />
-          <stop offset="100%" stopColor="#047857" />
-        </linearGradient>
-        <linearGradient id="first-review-shine" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="white" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="white" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      {/* Shield/badge background */}
-      <path d="M32 4L54 14V34C54 46 44 56 32 60C20 56 10 46 10 34V14L32 4Z"
-        fill="url(#first-review-grad)" className="badge-main" />
-      <path d="M32 4L54 14V34C54 46 44 56 32 60C20 56 10 46 10 34V14L32 4Z"
-        fill="url(#first-review-shine)" />
-      {/* Document body */}
-      <rect x="18" y="16" width="28" height="36" rx="3" fill="white" opacity="0.95" />
-      {/* Document fold corner */}
-      <path d="M40 16L46 22H40V16Z" fill="#059669" opacity="0.3" />
-      {/* Document lines */}
-      <rect x="22" y="24" width="18" height="2" rx="1" fill="#059669" opacity="0.3" />
-      <rect x="22" y="30" width="14" height="2" rx="1" fill="#059669" opacity="0.3" />
-      <rect x="22" y="36" width="16" height="2" rx="1" fill="#059669" opacity="0.3" />
-      {/* Big checkmark - review approved */}
-      <circle cx="32" cy="44" r="8" fill="#10b981" />
-      <path d="M28 44L31 47L37 41" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Sparkle effects */}
-      <circle cx="14" cy="16" r="1.5" fill="#fbbf24" opacity="0.8" />
-      <circle cx="50" cy="18" r="1.5" fill="#ec4899" opacity="0.8" />
-      <circle cx="12" cy="44" r="1" fill="#8b5cf6" opacity="0.7" />
-      <circle cx="52" cy="46" r="1" fill="#3b82f6" opacity="0.7" />
-      {/* #1 badge in corner */}
-      <circle cx="48" cy="14" r="7" fill="#fbbf24" />
-      <text x="48" y="18" fontSize="8" fill="white" fontWeight="bold" textAnchor="middle">#1</text>
-    </svg>
-  ),
-
-  // ACTIVE-LAST-7D - Lightning bolt with calendar
-  'Active-Last-7d': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="active30-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#10b981" />
-          <stop offset="100%" stopColor="#047857" />
-        </linearGradient>
-      </defs>
-      {/* Circle */}
-      <circle cx="32" cy="32" r="28" fill="url(#active30-grad)" className="badge-main" />
-      {/* Lightning bolt - energy/activity */}
-      <path d="M36 8L22 32H30L28 56L42 28H34L36 8Z" fill="white" opacity="0.95" />
-      {/* Inner bolt highlight */}
-      <path d="M34 14L26 30H32L30 48L40 32H34L34 14Z" fill="#10b981" opacity="0.3" />
-      {/* Pulse rings */}
-      <circle cx="32" cy="32" r="24" stroke="white" strokeWidth="1" opacity="0.2" />
-      <circle cx="32" cy="32" r="20" stroke="white" strokeWidth="1" opacity="0.3" />
-      {/* 7d indicator */}
-      <rect x="42" y="44" width="18" height="14" rx="2" fill="white" />
-      <text x="51" y="54" fontSize="8" fill="#047857" fontWeight="bold" textAnchor="middle">7d</text>
-    </svg>
-  ),
-
-  // ACTIVE-LAST-90D - Activity chart
-  'Active-Last-30d': (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="active90-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#14b8a6" />
-          <stop offset="100%" stopColor="#0d9488" />
-        </linearGradient>
-      </defs>
-      {/* Rounded square */}
-      <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#active90-grad)" className="badge-main" />
-      {/* Activity pulse line */}
-      <path d="M10 36L18 36L22 28L28 44L34 20L40 38L46 32L54 32"
-        stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      {/* Activity dots */}
-      <circle cx="22" cy="28" r="3" fill="white" />
-      <circle cx="28" cy="44" r="3" fill="white" />
-      <circle cx="34" cy="20" r="3" fill="white" />
-      <circle cx="40" cy="38" r="3" fill="white" />
-      {/* 30d label */}
-      <rect x="20" y="48" width="24" height="10" rx="2" fill="white" opacity="0.95" />
-      <text x="32" y="56" fontSize="8" fill="#0d9488" fontWeight="bold" textAnchor="middle">30 DAYS</text>
-    </svg>
+  // ACTIVE-LAST-30D - Same frame, activity trace instead of the bolt.
+  'Active-Last-30d': (uid: string) => (
+    <Svg>
+      <defs><Grad id={`${uid}-active30-grad`} from="#2dd4bf" to="#0f766e" /></defs>
+      <Squircle id={`${uid}-active30-grad`} />
+      <path
+        d="M11 30H19L24 18L31 41L37 25L42 33H53"
+        stroke="white"
+        strokeWidth="4.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <text x="32" y="56" fontSize="15" fontWeight="800" fill="white" textAnchor="middle" fontFamily={NUM_FONT}>30d</text>
+    </Svg>
   ),
 
   // NEW JOINER - Welcome with sparkles
-  'New-Joiner': (
+  'New-Joiner': (uid: string) => (
     <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="newbie-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={`${uid}-newbie-grad`} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#fde047" />
           <stop offset="100%" stopColor="#eab308" />
         </linearGradient>
       </defs>
       {/* Starburst */}
       <path d="M32 0L36 24L60 20L40 32L60 44L36 40L32 64L28 40L4 44L24 32L4 20L28 24L32 0Z"
-        fill="url(#newbie-grad)" className="badge-main" />
+        fill={`url(#${uid}-newbie-grad)`} className="badge-main" />
       {/* Welcome hand wave */}
       <circle cx="32" cy="32" r="14" fill="white" opacity="0.95" />
       <text x="32" y="38" fontSize="20" textAnchor="middle">👋</text>
@@ -707,45 +504,54 @@ export const BADGE_ICONS: Record<string, JSX.Element> = {
   ),
 
   // DORMANT-90D+ - Sleeping moon
-  'Dormant-90d+': (
+  'Dormant-90d+': (uid: string) => (
     <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="dormant-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={`${uid}-dormant-grad`} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#6b7280" />
           <stop offset="100%" stopColor="#374151" />
         </linearGradient>
+        {/* The crescent is cut out of a disc rather than drawn as two arcs. The
+            arc form needs a radius of at least half the distance between its
+            endpoints; ask for less and SVG silently scales it up, which turns
+            the crescent back into the full disc it was cut from. */}
+        <mask id={`${uid}-dormant-moon`}>
+          <rect width="64" height="64" fill="black" />
+          <circle cx="29" cy="34" r="21" fill="white" />
+          <circle cx="49" cy="24" r="18" fill="black" />
+        </mask>
       </defs>
       {/* Circle */}
-      <circle cx="32" cy="32" r="28" fill="url(#dormant-grad)" className="badge-main" />
+      <circle cx="32" cy="32" r="28" fill={`url(#${uid}-dormant-grad)`} className="badge-main" />
+      {/* Stars, in the night sky the crescent leaves open */}
+      <circle cx="45" cy="36" r="2" fill="white" opacity="0.5" />
+      <circle cx="52" cy="27" r="1.5" fill="white" opacity="0.45" />
+      <circle cx="49" cy="45" r="1.5" fill="white" opacity="0.5" />
       {/* Moon crescent */}
-      <path d="M38 14A18 18 0 1 1 38 50A14 14 0 1 0 38 14Z" fill="white" opacity="0.9" />
-      {/* Sleeping face on moon */}
-      <path d="M26 30C26 30 28 32 30 30" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M34 30C34 30 36 32 38 30" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M30 38C30 38 32 40 34 38" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" />
+      <rect width="64" height="64" fill="white" opacity="0.95" mask={`url(#${uid}-dormant-moon)`} />
+      {/* Sleeping face on the lit side of the moon */}
+      <g stroke="#374151" strokeWidth="3" strokeLinecap="round" fill="none">
+        <path d="M11 31.5Q14.5 36 18 31.5" />
+        <path d="M22 31.5Q25.5 36 29 31.5" />
+        <path d="M16 41Q20 45.5 24 41" />
+      </g>
       {/* ZZZ */}
-      <text x="48" y="20" fontSize="10" fill="white" opacity="0.9" fontFamily="serif" fontStyle="italic" fontWeight="bold">Z</text>
-      <text x="52" y="14" fontSize="8" fill="white" opacity="0.7" fontFamily="serif" fontStyle="italic" fontWeight="bold">z</text>
-      <text x="55" y="10" fontSize="6" fill="white" opacity="0.5" fontFamily="serif" fontStyle="italic" fontWeight="bold">z</text>
-      {/* Stars */}
-      <circle cx="14" cy="18" r="1.5" fill="white" opacity="0.6" />
-      <circle cx="20" cy="12" r="1" fill="white" opacity="0.5" />
-      <circle cx="10" cy="26" r="1" fill="white" opacity="0.4" />
-      <circle cx="16" cy="48" r="1.5" fill="white" opacity="0.5" />
+      <text x="38" y="26" fontSize="16" fill="white" opacity="0.95" fontFamily="serif" fontStyle="italic" fontWeight="bold">Z</text>
+      <text x="45" y="18" fontSize="10.5" fill="white" opacity="0.7" fontFamily="serif" fontStyle="italic" fontWeight="bold">z</text>
     </svg>
   ),
 
   // DEFAULT - Generic achievement badge
-  'default': (
+  'default': (uid: string) => (
     <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="default-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={`${uid}-default-grad`} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#6366f1" />
           <stop offset="100%" stopColor="#4338ca" />
         </linearGradient>
       </defs>
       {/* Hexagon */}
-      <path d="M32 4L56 18V46L32 60L8 46V18L32 4Z" fill="url(#default-grad)" className="badge-main" />
+      <path d="M32 4L56 18V46L32 60L8 46V18L32 4Z" fill={`url(#${uid}-default-grad)`} className="badge-main" />
       {/* Inner hexagon */}
       <path d="M32 12L48 22V42L32 52L16 42V22L32 12Z" stroke="white" strokeWidth="2" fill="none" opacity="0.3" />
       {/* Star */}
@@ -754,15 +560,27 @@ export const BADGE_ICONS: Record<string, JSX.Element> = {
   )
 };
 
+export function badgeIconUid(...parts: (string | number | undefined)[]): string {
+  return parts
+    .filter((part) => part !== undefined && part !== '')
+    .join('-')
+    .replace(/[^A-Za-z0-9_-]/g, '-');
+}
+
+export function renderBadgeIcon(name: string, uid: string): JSX.Element {
+  return (BADGE_ICONS[name] || BADGE_ICONS['default'])(uid);
+}
+
 interface BadgeIconProps {
   name: string;
   isNew: boolean;
+  uid: string;
 }
 
-export function BadgeIcon({ name, isNew }: BadgeIconProps) {
+export function BadgeIcon({ name, isNew, uid }: BadgeIconProps) {
   return (
     <div className={`badge-icon-container ${isNew ? 'badge-new' : ''}`}>
-      {BADGE_ICONS[name] || BADGE_ICONS['default']}
+      {renderBadgeIcon(name, uid)}
     </div>
   );
 }

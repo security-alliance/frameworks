@@ -23,7 +23,7 @@
       { "name": "Issue-Opener-5", "assigned": "2024-08-22" },
       { "name": "Issue-Opener-10", "assigned": "2024-08-24" },
       { "name": "Issue-Opener-25", "assigned": "2024-09-25" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-05" }
+      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
     ]
   },
   "fredriksvantes": {
@@ -83,7 +83,7 @@
       { "name": "First-Contribution", "assigned": "2025-01-29" },
       { "name": "Contributor-5", "assigned": "2026-07-08" },
       { "name": "First-Review", "assigned": "2025-12-16" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-04" }
+      { "name": "Active-Last-7d", "lastActive": "2026-08-29" }
     ]
   },
   "robert": {
@@ -193,7 +193,7 @@
       { "name": "Framework-Steward", "assigned": "2025-07-10", "framework": "Wallet Security" },
       { "name": "First-Contribution", "assigned": "2025-07-10" },
       { "name": "First-Review", "assigned": "2025-09-25" },
-      { "name": "Dormant-90d+", "lastActive": "2026-04-07" }
+      { "name": "Active-Last-30d", "lastActive": "2026-08-20" }
     ]
   },
   "njelich": {
@@ -334,9 +334,10 @@
     "website": "https://kleidi.io/",
     "company": "Solidity Labs",
     "job_title": "Founder & Engineer",
-    "role": "contributor",
-    "description": "Founder & Engineer",
+    "role": "steward",
+    "description": "Steward of DevSecOps framework",
     "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-05-06", "framework": "DevSecOps" },
       { "name": "First-Contribution", "assigned": "2025-06-02" },
       { "name": "Contributor-5", "assigned": "2026-06-21" }
     ]
@@ -439,7 +440,11 @@
     "job_title": null,
     "role": "contributor",
     "description": "Frameworks Contributor",
-    "badges": []
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-08-31" },
+      { "name": "New-Joiner", "lastActive": "2026-08-31" },
+      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
+    ]
   },
   "scode2277": {
     "slug": "scode2277",
@@ -461,7 +466,7 @@
       { "name": "First-Review", "assigned": "2025-08-12" },
       { "name": "Reviewer-10", "assigned": "2025-09-12" },
       { "name": "Reviewer-25", "assigned": "2026-03-20" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-06" }
+      { "name": "Active-Last-7d", "lastActive": "2026-09-03" }
     ]
   },
   "gunnim": {
@@ -795,7 +800,8 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-05-24" }
+      { "name": "First-Contribution", "assigned": "2026-05-24" },
+      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
     ]
   },
   "tansawit": {
@@ -856,7 +862,11 @@
     "job_title": null,
     "role": "contributor",
     "description": "Frameworks Contributor",
-    "badges": []
+    "badges": [
+      { "name": "First-Contribution", "assigned": "2026-08-31" },
+      { "name": "New-Joiner", "lastActive": "2026-08-31" },
+      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
+    ]
   },
   "tayvano": {
     "slug": "tayvano",
@@ -884,8 +894,8 @@
     "description": "Frameworks Contributor",
     "badges": [
       { "name": "First-Contribution", "assigned": "2026-08-19" },
-      { "name": "New-Joiner", "lastActive": "2026-08-19" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-19" }
+      { "name": "New-Joiner", "lastActive": "2026-08-31" },
+      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
     ]
   }
 }
