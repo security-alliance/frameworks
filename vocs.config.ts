@@ -556,6 +556,7 @@ const config = {
             { text: 'Overview', link: '/supply-chain/overview' },
             { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts' },
             { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness' },
+            { text: 'Private Registries and Package Mirrors', link: '/supply-chain/private-registries-and-mirrors', dev: true },
             { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats' },
             { text: 'Vendor Risk Management', link: '/supply-chain/vendor-risk-management' },
             { text: 'Incident Response', link: '/supply-chain/incident-response-supply-chain' },

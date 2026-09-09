@@ -23,6 +23,7 @@ axie
 Barboni
 Beemo
 BIP
+Birsan
 Bitgo
 Bitwarden
 Blackcloak

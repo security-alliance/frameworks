@@ -249,7 +249,9 @@ Dependencies are a major attack surface for supply chain compromises.
 - For Web3: audit Solidity dependencies (OpenZeppelin, forge-std) for known
   vulnerabilities. Use `npm audit` or `pip audit` for off-chain dependencies.
 - Consider using a private registry (Artifactory, npm enterprise) to proxy
-  and cache dependencies, preventing dependency confusion attacks.
+  and cache dependencies, preventing dependency confusion attacks. See
+  [Private Registries and Package Mirrors](/supply-chain/private-registries-and-mirrors)
+  for how to route internal names and secure the registry itself.
 
 ## Configuration Checklists
 
