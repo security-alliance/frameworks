@@ -133,13 +133,12 @@ const config = {
             { text: 'Integrated Development Environments', link: '/devsecops/integrated-development-environments' },
             {
               text: 'Policy as Code',
-              collapsed: true,
-              dev: true,
+              collapsed: false,
               items: [
-                { text: 'Overview', link: '/devsecops/policy-as-code/overview', dev: true },
-                { text: 'Policy in the CI Pipeline', link: '/devsecops/policy-as-code/ci-pipeline', dev: true },
-                { text: 'Policy in Release and Runtime', link: '/devsecops/policy-as-code/release-and-runtime', dev: true },
-                { text: 'Governing the Policy Set', link: '/devsecops/policy-as-code/governance', dev: true },
+                { text: 'Overview', link: '/devsecops/policy-as-code/overview' },
+                { text: 'Policy in the CI Pipeline', link: '/devsecops/policy-as-code/ci-pipeline' },
+                { text: 'Policy in Release and Runtime', link: '/devsecops/policy-as-code/release-and-runtime' },
+                { text: 'Governing the Policy Set', link: '/devsecops/policy-as-code/governance' },
               ]
             },
             { text: 'Repository Hardening', link: '/devsecops/repository-hardening' },
