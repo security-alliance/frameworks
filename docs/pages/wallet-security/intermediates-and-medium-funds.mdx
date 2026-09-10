@@ -122,10 +122,9 @@ This check can be performed in three ways.
 
 ### Native App
 
-Use the native app offered by your hardware wallet manufacturer, such as Recovery Check by Ledger or Check
+- Use the native app offered by your hardware wallet manufacturer, such as Recovery Check by Ledger or Check
 Backup by Trezor. Other hardware wallets offer similar apps.
-
-The app prompts you to re-enter your seed phrase on the hardware wallet screen, then confirms whether it matches
+- The app prompts you to re-enter your seed phrase on the hardware wallet screen, then confirms whether it matches
 the one stored on the device.
 
 ### Secondary Device
@@ -137,15 +136,14 @@ the one stored on the device.
 ### Wipe and Restore
 
 > ⚠️ This method applies only to freshly initialized hardware wallets. Only do this when Native App and Secondary Device
-> options are not available.
-> **Do not wipe a device that holds funds.**
+> options are not available. Do not wipe a device that holds funds.
 
 - After setting up your hardware wallet, note down the receiving address.
 - Wipe the hardware wallet.
 - Restore it using the same seed phrase and compare the receiving address with the one noted earlier. They should
   match if the seed phrase was recorded correctly.
 
-If you use a 25th-word passphrase, verify it separately after confirming the base seed. Verify it in a temporary
+If a 25th-word passphrase is used, verify it separately after confirming the base seed. Verify it in a temporary
 session to ensure the derived receiving address matches.
 
 ## Backup Device (For Critical Operations & Multisigs)
