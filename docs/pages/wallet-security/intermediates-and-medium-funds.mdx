@@ -105,14 +105,46 @@ Before using a new hardware wallet, verify its authenticity:
 - **No Digital Storage:** Never export or store your private keys or seed phrases in any digital format, including
 pictures or in password managers
 - Generate seed following device instructions
-- **Dry-run Recovery Check:** Perform a dry-run recovery via native hardware wallet features before adding funds or
-multisig keys. If using a 25th-word passphrase, verify it in a temporary session to ensure the derived receiving
-address matches.
+- Perform dry-run recovery check
 - Create accounts as needed
 
 ### Clear Signing
 
 Use Clear Signing support when available, but never rely on it alone - always fully verify transactions manually.
+
+## Dry-run Recovery Check
+
+Perform a dry-run recovery check after initial setup and before moving funds to your hardware wallet. Perform this check even
+if your device already asked you to confirm a few random words during setup, that step only verifies those words, not the full
+seed phrase.
+
+This check can be performed in three ways.
+
+### Native App
+
+- Use the native app offered by your hardware wallet manufacturer, such as Recovery Check by Ledger or Check
+Backup by Trezor. Other hardware wallets offer similar apps.
+- The app prompts you to re-enter your seed phrase on the hardware wallet screen, then confirms whether it matches
+the one stored on the device.
+
+### Secondary Device
+
+- Import your seed phrase onto a secondary device.
+- Compare the receiving address with the one shown on your primary device. They should match if the seed
+  phrase was recorded correctly.
+
+### Wipe and Restore
+
+> ⚠️ This method applies only to freshly initialized hardware wallets. Only do this when Native App and Secondary Device
+> options are not available. Do not wipe a device that holds funds.
+
+- After setting up your hardware wallet, note down the receiving address.
+- Wipe the hardware wallet.
+- Restore it using the same seed phrase and compare the receiving address with the one noted earlier. They should
+  match if the seed phrase was recorded correctly.
+
+If a 25th-word passphrase is used, verify it separately after confirming the base seed. Verify it in a temporary
+session to ensure the derived receiving address matches.
 
 ## Backup Device (For Critical Operations & Multisigs)
 
