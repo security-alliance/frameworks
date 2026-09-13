@@ -1,22 +1,62 @@
 ---
-title: "Attack Surface Overview | Security Alliance"
-description: "Visual overview of the Web3 threat landscape. See how protocols get compromised, assess your security posture, and find remediation guides."
+title: "Security Map | Security Alliance"
+description: "Explore the SEAL Security Map: trace assets, attack surfaces, threats, and controls, assess implementation locally, and open exact framework guidance."
 tags:
   - Security Specialist
   - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
 ---
 
-import { AttackSurfaceDashboard, ContributeFooter } from '../../../components'
-import { TagList } from '../../../components'
+import { SecurityMap, TagList, AttributionList, ContributeFooter } from '../../../components'
 
-# Attack Surface Overview
+# Security Map
 
 <TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
 
-See where your protocol is most exposed. Click the checkbox on each vector to track your security
-posture. Your progress is saved locally in your browser.
+> 🔑 **Key Takeaway**: Assess controls, not threats. The map is an incomplete, curated graph of SEAL guidance.
+> Local ratings never leave this browser.
 
-<AttackSurfaceDashboard />
+The Security Map is a way to walk SEAL Frameworks as a graph: what can be compromised, which people and systems
+create the exposure, how failure happens, which controls reduce or detect it, and where the implementation page lives.
+
+It replaces the earlier radial Attack Surface Overview. Old threat-level Gap / In Progress / Secured marks are not
+security evidence and are not migrated into control assessments.
+
+Start from a domain or a saved entry point. Search and filters stay local. Shareable URLs may include focus, domain,
+and view. They never include assessment state.
+
+<SecurityMap />
+
+## How to read the map
+
+- **Assets** are things whose confidentiality, integrity, availability, authenticity, or control matters.
+- **Components** are the people, devices, accounts, pipelines, and services in play.
+- **Attack surfaces** are specific workflows or trust boundaries, not whole domains.
+- **Threats** are adversarial actions or failure modes. They are not assessment items.
+- **Controls** are the only things you rate. Not assessed is the default and stays visually neutral.
+- **Responses** are containment and recovery procedures.
+- **Guidance** nodes open the matching Frameworks page.
+
+The graph canvas is a visual neighborhood. The list is the primary keyboard and screen-reader interface and supports
+the same tasks.
+
+## Local assessment
+
+Assessment files are versioned JSON stored under `seal-security-map-assessment:v1`. Import replaces the current
+assessment after a preview. Treat exports as sensitive: they can reveal missing controls.
+
+## Further reading
+
+- `docs/data/security-map/README.md` in this repository: how maintainers add nodes, edges, and MDX mappings
+- [Content model](/contribute/content-model): page contracts the map links into
+- [Contributing](/contribute/contributing): PR workflow for framework-scoped map expansions
 
 ---
 
