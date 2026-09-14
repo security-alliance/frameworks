@@ -158,6 +158,7 @@ describe('production catalogue', () => {
     }
     assert.equal(first.graph.nodes.filter((n) => n.type === 'incident').length, 0)
     assert.ok(first.graph.nodes.some((n) => n.id === 'component-hardware-wallet'))
+    assert.ok(first.graph.nodes.some((n) => n.id === 'control-controlled-surrender'))
     assert.ok(
       first.graph.edges.some(
         (e) =>
@@ -166,8 +167,17 @@ describe('production catalogue', () => {
           e.type === 'documented-by',
       ),
     )
+    assert.ok(
+      first.graph.edges.some(
+        (e) =>
+          e.source === 'threat-duress-coercion' &&
+          e.target === 'guidance-coercion-duress' &&
+          e.type === 'documented-by',
+      ),
+    )
   })
 })
+
 
 
 describe('minimal graph', () => {

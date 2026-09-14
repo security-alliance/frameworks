@@ -93,6 +93,30 @@
       ]
     },
     {
+      "id": "asset-key-holder-safety",
+      "type": "asset",
+      "title": "Key-holder safety",
+      "summary": "The bodily safety of people who can move funds, and of their families. Coercion spends this asset to bypass cryptography.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "safety",
+        "duress",
+        "people"
+      ],
+      "roles": [
+        "multisig-signer",
+        "founder-executive"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "incident-response"
+      ],
+      "framework": "physical-security"
+    },
+    {
       "id": "asset-secrets-credentials",
       "type": "asset",
       "title": "Secrets and credentials",
@@ -351,6 +375,29 @@
         "normal-operations"
       ],
       "framework": "infrastructure"
+    },
+    {
+      "id": "component-family-household",
+      "type": "component",
+      "title": "Family and household",
+      "summary": "People and staff close to a key-holder. Attackers coerce them to reach keys the target will not surrender for themselves.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "family",
+        "household"
+      ],
+      "roles": [
+        "founder-executive",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "incident-response"
+      ],
+      "framework": "physical-security"
     },
     {
       "id": "component-founders-executives",
@@ -709,6 +756,34 @@
       "framework": "wallet-security"
     },
     {
+      "id": "control-controlled-surrender",
+      "type": "control",
+      "title": "Controlled-surrender wallet",
+      "summary": "A believable low-value path an attacker can take immediately. Core reserves stay behind delay and extra approvals the victim cannot skip.",
+      "domains": [
+        "people",
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "duress",
+        "decoy",
+        "surrender"
+      ],
+      "roles": [
+        "multisig-signer",
+        "founder-executive"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations",
+        "incident-response"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "physical-security"
+    },
+    {
       "id": "control-dependency-pinning-provenance",
       "type": "control",
       "title": "Dependency pinning and provenance",
@@ -779,6 +854,33 @@
       "controlClass": "detective",
       "assessmentEligible": true,
       "framework": "infrastructure"
+    },
+    {
+      "id": "control-duress-signing-limits",
+      "type": "control",
+      "title": "Duress signing limits",
+      "summary": "Per-transaction and daily caps, extra approvals above a threshold, and time delays so a coerced sitting cannot drain reserves.",
+      "domains": [
+        "governance-treasury",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "limits",
+        "timelock",
+        "duress"
+      ],
+      "roles": [
+        "multisig-signer",
+        "governance-participant"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "incident-response"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "physical-security"
     },
     {
       "id": "control-duress-travel-protocol",
@@ -881,6 +983,33 @@
       "framework": "front-end-web-app"
     },
     {
+      "id": "control-geographic-key-separation",
+      "type": "control",
+      "title": "Geographic key separation",
+      "summary": "Do not keep cold keys or seeds at the primary residence. Split signers and hardware across places so a local incident cannot collect a threshold.",
+      "domains": [
+        "people",
+        "devices-identity",
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "geography",
+        "keys",
+        "duress"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "physical-security"
+    },
+    {
       "id": "control-hiring-identity-verification",
       "type": "control",
       "title": "Hiring identity verification",
@@ -902,6 +1031,32 @@
       "controlClass": "preventive",
       "assessmentEligible": true,
       "framework": "opsec"
+    },
+    {
+      "id": "control-identity-separation",
+      "type": "control",
+      "title": "Public and signer identity separation",
+      "summary": "Keep the public persona off the devices and profiles that sign. Family and staff are trained not to discuss holdings or routines.",
+      "domains": [
+        "people",
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "identity",
+        "osint",
+        "family"
+      ],
+      "roles": [
+        "founder-executive",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "physical-security"
     },
     {
       "id": "control-independent-tx-verification",
@@ -1401,6 +1556,22 @@
       "framework": "devsecops"
     },
     {
+      "id": "guidance-coercion-duress",
+      "type": "guidance",
+      "title": "Coercion and duress",
+      "summary": "Wrench attacks coerce the people who hold keys. Cryptography does not stop a physically present attacker.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "duress",
+        "wrench-attack"
+      ],
+      "href": "/physical-security/coercion-and-duress/overview",
+      "framework": "physical-security"
+    },
+    {
       "id": "guidance-cold-vs-hot",
       "type": "guidance",
       "title": "Cold vs hot wallets",
@@ -1576,6 +1747,92 @@
       ],
       "href": "/incident-management/playbooks/hacked-dprk",
       "framework": "incident-management"
+    },
+    {
+      "id": "guidance-duress-defensive-principles",
+      "type": "guidance",
+      "title": "Defensive design principles",
+      "summary": "Minimize what one coerced person can move, compartmentalize keys, offer controlled surrender, recover without reused secrets, and put human safety first.",
+      "domains": [
+        "people",
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "duress",
+        "design"
+      ],
+      "href": "/physical-security/coercion-and-duress/defensive-design-principles",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-duress-incident-response",
+      "type": "guidance",
+      "title": "Wrench-attack incident response",
+      "summary": "Life safety first, then contain signing power. Do not treat a coerced signature as an ordinary key-compromise drill.",
+      "domains": [
+        "detection-incident-response",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "duress",
+        "incident-response"
+      ],
+      "href": "/physical-security/coercion-and-duress/incident-response",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-duress-personal-safety",
+      "type": "guidance",
+      "title": "Personal and family safety",
+      "summary": "Cut OSINT, separate public and signer identities, train family and staff, and harden routines so a wrench attack has less to aim at.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "family",
+        "osint",
+        "duress"
+      ],
+      "href": "/physical-security/coercion-and-duress/personal-and-family-safety",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-duress-transaction-flows",
+      "type": "guidance",
+      "title": "Transaction flows under duress",
+      "summary": "Hard limits, delayed approvals, separated channels, and a plausible low-value compliance path with no upgrade to core funds.",
+      "domains": [
+        "governance-treasury",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "limits",
+        "duress"
+      ],
+      "href": "/physical-security/coercion-and-duress/transaction-flows-under-duress",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-duress-wallet-architecture",
+      "type": "guidance",
+      "title": "Wallet and key architecture under duress",
+      "summary": "Tiered hot-to-deep-cold wallets, multisig or MPC, geographic key storage, and controlled-surrender paths.",
+      "domains": [
+        "governance-treasury",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "wallet",
+        "multisig",
+        "duress"
+      ],
+      "href": "/physical-security/coercion-and-duress/wallet-and-key-architecture",
+      "framework": "physical-security"
     },
     {
       "id": "guidance-exploit-runbook",
@@ -1890,6 +2147,22 @@
       ],
       "href": "/opsec/control-domains/physical-environmental/overview",
       "framework": "opsec"
+    },
+    {
+      "id": "guidance-physical-security",
+      "type": "guidance",
+      "title": "Physical Security",
+      "summary": "Protect people and hardware from coercion, theft, surveillance, and tampering. Distinct from OpSec, which reduces what an adversary can learn.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "physical",
+        "duress"
+      ],
+      "href": "/physical-security/overview",
+      "framework": "physical-security"
     },
     {
       "id": "guidance-security-culture",
@@ -2361,6 +2634,28 @@
       "lifecycle": [
         "normal-operations"
       ]
+    },
+    {
+      "id": "surface-family-and-household",
+      "type": "attack-surface",
+      "title": "Family and household coercion",
+      "summary": "Home routines, joint public profiles, and staff who know where devices live. Pressure here is a wrench attack on someone else.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "family",
+        "duress"
+      ],
+      "roles": [
+        "founder-executive",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "physical-security"
     },
     {
       "id": "surface-frontend-deployment",
@@ -3056,9 +3351,23 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:asset-key-holder-safety:guidance-physical-security",
+      "source": "asset-key-holder-safety",
+      "target": "guidance-physical-security",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:asset-seed-secrets:guidance-seed-phrase-management",
       "source": "asset-seed-secrets",
       "target": "guidance-seed-phrase-management",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:component-family-household:guidance-duress-personal-safety",
+      "source": "component-family-household",
+      "target": "guidance-duress-personal-safety",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3098,6 +3407,27 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-cold-wallet-separation:guidance-duress-wallet-architecture",
+      "source": "control-cold-wallet-separation",
+      "target": "guidance-duress-wallet-architecture",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-controlled-surrender:guidance-duress-defensive-principles",
+      "source": "control-controlled-surrender",
+      "target": "guidance-duress-defensive-principles",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-controlled-surrender:guidance-duress-wallet-architecture",
+      "source": "control-controlled-surrender",
+      "target": "guidance-duress-wallet-architecture",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-dependency-pinning-provenance:guidance-supply-chain-overview",
       "source": "control-dependency-pinning-provenance",
       "target": "guidance-supply-chain-overview",
@@ -3126,6 +3456,20 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-duress-signing-limits:guidance-duress-transaction-flows",
+      "source": "control-duress-signing-limits",
+      "target": "guidance-duress-transaction-flows",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-duress-travel-protocol:guidance-duress-personal-safety",
+      "source": "control-duress-travel-protocol",
+      "target": "guidance-duress-personal-safety",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-duress-travel-protocol:guidance-physical",
       "source": "control-duress-travel-protocol",
       "target": "guidance-physical",
@@ -3136,6 +3480,13 @@
       "id": "documented-by:control-duress-travel-protocol:guidance-travel",
       "source": "control-duress-travel-protocol",
       "target": "guidance-travel",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-emergency-pause:guidance-duress-incident-response",
+      "source": "control-emergency-pause",
+      "target": "guidance-duress-incident-response",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3168,9 +3519,23 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-geographic-key-separation:guidance-duress-wallet-architecture",
+      "source": "control-geographic-key-separation",
+      "target": "guidance-duress-wallet-architecture",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-hiring-identity-verification:guidance-people-controls",
       "source": "control-hiring-identity-verification",
       "target": "guidance-people-controls",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-identity-separation:guidance-duress-personal-safety",
+      "source": "control-identity-separation",
+      "target": "guidance-duress-personal-safety",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3220,6 +3585,13 @@
       "id": "documented-by:control-limited-token-approvals:guidance-smart-contract-interaction",
       "source": "control-limited-token-approvals",
       "target": "guidance-smart-contract-interaction",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-multisig-threshold-policy:guidance-duress-wallet-architecture",
+      "source": "control-multisig-threshold-policy",
+      "target": "guidance-duress-wallet-architecture",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3371,6 +3743,13 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:response-duress-event:guidance-duress-incident-response",
+      "source": "response-duress-event",
+      "target": "guidance-duress-incident-response",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:response-duress-event:guidance-travel",
       "source": "response-duress-event",
       "target": "guidance-travel",
@@ -3399,6 +3778,13 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:surface-physical-presence:guidance-coercion-duress",
+      "source": "surface-physical-presence",
+      "target": "guidance-coercion-duress",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-blind-signing:guidance-signing-verification",
       "source": "threat-blind-signing",
       "target": "guidance-signing-verification",
@@ -3409,6 +3795,13 @@
       "id": "documented-by:threat-dprk-it-worker-infiltration:guidance-dprk-playbook",
       "source": "threat-dprk-it-worker-infiltration",
       "target": "guidance-dprk-playbook",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-duress-coercion:guidance-coercion-duress",
+      "source": "threat-duress-coercion",
+      "target": "guidance-coercion-duress",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3518,9 +3911,23 @@
       "status": "proposed"
     },
     {
+      "id": "exposes:component-family-household:surface-family-and-household",
+      "source": "component-family-household",
+      "target": "surface-family-and-household",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
       "id": "exposes:component-founders-executives:surface-executive-communications",
       "source": "component-founders-executives",
       "target": "surface-executive-communications",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-founders-executives:surface-physical-presence",
+      "source": "component-founders-executives",
+      "target": "surface-physical-presence",
       "type": "exposes",
       "status": "proposed"
     },
@@ -3644,6 +4051,13 @@
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-controlled-surrender:threat-duress-coercion",
+      "source": "control-controlled-surrender",
+      "target": "threat-duress-coercion",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-dependency-pinning-provenance:threat-supply-chain-compromise",
       "source": "control-dependency-pinning-provenance",
       "target": "threat-supply-chain-compromise",
@@ -3654,6 +4068,13 @@
       "id": "mitigates:control-device-hardening:threat-opsec-hygiene-failure",
       "source": "control-device-hardening",
       "target": "threat-opsec-hygiene-failure",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-duress-signing-limits:threat-duress-coercion",
+      "source": "control-duress-signing-limits",
+      "target": "threat-duress-coercion",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -3686,9 +4107,23 @@
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-geographic-key-separation:threat-duress-coercion",
+      "source": "control-geographic-key-separation",
+      "target": "threat-duress-coercion",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-hiring-identity-verification:threat-dprk-it-worker-infiltration",
       "source": "control-hiring-identity-verification",
       "target": "threat-dprk-it-worker-infiltration",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-identity-separation:threat-duress-coercion",
+      "source": "control-identity-separation",
+      "target": "threat-duress-coercion",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -3910,6 +4345,34 @@
       "status": "proposed"
     },
     {
+      "id": "protects:control-controlled-surrender:asset-key-holder-safety",
+      "source": "control-controlled-surrender",
+      "target": "asset-key-holder-safety",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-controlled-surrender:asset-treasury-funds",
+      "source": "control-controlled-surrender",
+      "target": "asset-treasury-funds",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-duress-signing-limits:asset-treasury-funds",
+      "source": "control-duress-signing-limits",
+      "target": "asset-treasury-funds",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-duress-signing-limits:surface-transaction-signing",
+      "source": "control-duress-signing-limits",
+      "target": "surface-transaction-signing",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-external-security-review:component-smart-contracts",
       "source": "control-external-security-review",
       "target": "component-smart-contracts",
@@ -3920,6 +4383,41 @@
       "id": "protects:control-frontend-integrity-monitoring:component-frontend",
       "source": "control-frontend-integrity-monitoring",
       "target": "component-frontend",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-geographic-key-separation:asset-signer-keys",
+      "source": "control-geographic-key-separation",
+      "target": "asset-signer-keys",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-geographic-key-separation:component-hardware-wallet",
+      "source": "control-geographic-key-separation",
+      "target": "component-hardware-wallet",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-identity-separation:asset-key-holder-safety",
+      "source": "control-identity-separation",
+      "target": "asset-key-holder-safety",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-identity-separation:component-family-household",
+      "source": "control-identity-separation",
+      "target": "component-family-household",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-identity-separation:surface-family-and-household",
+      "source": "control-identity-separation",
+      "target": "surface-family-and-household",
       "type": "protects",
       "status": "proposed"
     },
@@ -4106,6 +4604,13 @@
       "status": "proposed"
     },
     {
+      "id": "targets:threat-duress-coercion:asset-key-holder-safety",
+      "source": "threat-duress-coercion",
+      "target": "asset-key-holder-safety",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-duress-coercion:asset-seed-secrets",
       "source": "threat-duress-coercion",
       "target": "asset-seed-secrets",
@@ -4116,6 +4621,20 @@
       "id": "targets:threat-duress-coercion:asset-signer-keys",
       "source": "threat-duress-coercion",
       "target": "asset-signer-keys",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-duress-coercion:component-family-household",
+      "source": "threat-duress-coercion",
+      "target": "component-family-household",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-duress-coercion:surface-family-and-household",
+      "source": "threat-duress-coercion",
+      "target": "surface-family-and-household",
       "type": "targets",
       "status": "proposed"
     },
