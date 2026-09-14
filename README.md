@@ -82,4 +82,4 @@ on how to get started.
 
 ## License
 
-Security Frameworks © 2023 by Security Alliance, licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Security Frameworks © 2026 by Security Alliance, licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
