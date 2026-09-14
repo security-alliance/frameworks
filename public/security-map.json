@@ -780,6 +780,30 @@
       "framework": "wallet-security"
     },
     {
+      "id": "control-continuous-remote-identity-review",
+      "type": "control",
+      "title": "Continuous remote identity review",
+      "summary": "Keep checking remote workers after hire: camera-on presence, identity consistency, and access that still matches the role.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "hiring",
+        "identity",
+        "dprk"
+      ],
+      "roles": [
+        "founder-executive"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "detective",
+      "assessmentEligible": true,
+      "framework": "dprk-it-workers"
+    },
+    {
       "id": "control-controlled-surrender",
       "type": "control",
       "title": "Controlled-surrender wallet",
@@ -1876,6 +1900,56 @@
       "href": "/infrastructure/domain-and-dns-security/overview"
     },
     {
+      "id": "guidance-dprk-general-information",
+      "type": "guidance",
+      "title": "DPRK IT workers: general information",
+      "summary": "False-identity remote IT work that funds a sanctioned regime. Treat it as high-impact insider and sanctions risk, not ordinary freelance noise.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "dprk",
+        "sanctions"
+      ],
+      "href": "/dprk-it-workers/general-information",
+      "framework": "dprk-it-workers"
+    },
+    {
+      "id": "guidance-dprk-it-workers",
+      "type": "guidance",
+      "title": "Insider threats (DPRK)",
+      "summary": "Fraudulently hired remote workers who fund a sanctioned regime and can pivot to theft, extortion, or sabotage. Hiring and access control are the primary defenses.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "dprk",
+        "insider"
+      ],
+      "href": "/dprk-it-workers/overview",
+      "framework": "dprk-it-workers"
+    },
+    {
+      "id": "guidance-dprk-mitigation",
+      "type": "guidance",
+      "title": "Mitigating DPRK IT workers",
+      "summary": "Hiring verification plus least privilege before a hit. After discovery, revoke access, preserve evidence, and treat sanctions and supply-chain exposure as incidents.",
+      "domains": [
+        "people",
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "dprk",
+        "hiring",
+        "least-privilege"
+      ],
+      "href": "/dprk-it-workers/mitigating-dprk-it-workers",
+      "framework": "dprk-it-workers"
+    },
+    {
       "id": "guidance-dprk-playbook",
       "type": "guidance",
       "title": "North Korea (DPRK) attack response",
@@ -1890,6 +1964,23 @@
       ],
       "href": "/incident-management/playbooks/hacked-dprk",
       "framework": "incident-management"
+    },
+    {
+      "id": "guidance-dprk-ttps",
+      "type": "guidance",
+      "title": "DPRK IT worker TTPs",
+      "summary": "Spot fraud and inconsistency across identity, code history, and interviews. Do not rely on stereotypes. Tactics change.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "dprk",
+        "hiring",
+        "ttps"
+      ],
+      "href": "/dprk-it-workers/techniques-tactics-and-procedures",
+      "framework": "dprk-it-workers"
     },
     {
       "id": "guidance-duress-defensive-principles",
@@ -2803,6 +2894,30 @@
       ]
     },
     {
+      "id": "surface-contributor-hire-path",
+      "type": "attack-surface",
+      "title": "Contributor-to-hire path",
+      "summary": "Valid pull requests and open-source help used to skip ordinary hiring checks and request repository or infrastructure access.",
+      "domains": [
+        "people",
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "hiring",
+        "oss",
+        "dprk"
+      ],
+      "roles": [
+        "founder-executive",
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "dprk-it-workers"
+    },
+    {
       "id": "surface-custodial-admin-access",
       "type": "attack-surface",
       "title": "Custodial admin access",
@@ -3636,6 +3751,13 @@
       "status": "proposed"
     },
     {
+      "id": "detects:control-continuous-remote-identity-review:threat-dprk-it-worker-infiltration",
+      "source": "control-continuous-remote-identity-review",
+      "target": "threat-dprk-it-worker-infiltration",
+      "type": "detects",
+      "status": "proposed"
+    },
+    {
       "id": "detects:control-dns-change-monitoring:threat-frontend-dns-hijacking",
       "source": "control-dns-change-monitoring",
       "target": "threat-frontend-dns-hijacking",
@@ -3706,6 +3828,13 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:component-hiring-pipeline:guidance-dprk-it-workers",
+      "source": "component-hiring-pipeline",
+      "target": "guidance-dprk-it-workers",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:component-software-wallet:guidance-wallet-security",
       "source": "component-software-wallet",
       "target": "guidance-wallet-security",
@@ -3737,6 +3866,13 @@
       "id": "documented-by:control-cold-wallet-separation:guidance-duress-wallet-architecture",
       "source": "control-cold-wallet-separation",
       "target": "guidance-duress-wallet-architecture",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-continuous-remote-identity-review:guidance-dprk-mitigation",
+      "source": "control-continuous-remote-identity-review",
+      "target": "guidance-dprk-mitigation",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3853,6 +3989,20 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-hiring-identity-verification:guidance-dprk-mitigation",
+      "source": "control-hiring-identity-verification",
+      "target": "guidance-dprk-mitigation",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-hiring-identity-verification:guidance-dprk-ttps",
+      "source": "control-hiring-identity-verification",
+      "target": "guidance-dprk-ttps",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-hiring-identity-verification:guidance-people-controls",
       "source": "control-hiring-identity-verification",
       "target": "guidance-people-controls",
@@ -3888,6 +4038,13 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-insider-threat-mitigation:guidance-dprk-mitigation",
+      "source": "control-insider-threat-mitigation",
+      "target": "guidance-dprk-mitigation",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-insider-threat-mitigation:guidance-insider-threat",
       "source": "control-insider-threat-mitigation",
       "target": "guidance-insider-threat",
@@ -3905,6 +4062,13 @@
       "id": "documented-by:control-isolated-reproducible-builds:guidance-code-signing",
       "source": "control-isolated-reproducible-builds",
       "target": "guidance-code-signing",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-least-privilege-review:guidance-dprk-mitigation",
+      "source": "control-least-privilege-review",
+      "target": "guidance-dprk-mitigation",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4119,6 +4283,13 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:response-dprk-it-worker:guidance-dprk-mitigation",
+      "source": "response-dprk-it-worker",
+      "target": "guidance-dprk-mitigation",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:response-dprk-it-worker:guidance-dprk-playbook",
       "source": "response-dprk-it-worker",
       "target": "guidance-dprk-playbook",
@@ -4182,9 +4353,30 @@
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-dprk-it-worker-infiltration:guidance-dprk-general-information",
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "guidance-dprk-general-information",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-dprk-it-worker-infiltration:guidance-dprk-it-workers",
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "guidance-dprk-it-workers",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-dprk-it-worker-infiltration:guidance-dprk-playbook",
       "source": "threat-dprk-it-worker-infiltration",
       "target": "guidance-dprk-playbook",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-dprk-it-worker-infiltration:guidance-dprk-ttps",
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "guidance-dprk-ttps",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4364,6 +4556,13 @@
       "status": "proposed"
     },
     {
+      "id": "exposes:component-hiring-pipeline:surface-contributor-hire-path",
+      "source": "component-hiring-pipeline",
+      "target": "surface-contributor-hire-path",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
       "id": "exposes:component-hiring-pipeline:surface-hiring-contractor-access",
       "source": "component-hiring-pipeline",
       "target": "surface-hiring-contractor-access",
@@ -4458,6 +4657,13 @@
       "id": "mitigates:control-cold-wallet-separation:threat-blind-signing",
       "source": "control-cold-wallet-separation",
       "target": "threat-blind-signing",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-continuous-remote-identity-review:threat-dprk-it-worker-infiltration",
+      "source": "control-continuous-remote-identity-review",
+      "target": "threat-dprk-it-worker-infiltration",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -4819,6 +5025,13 @@
       "status": "proposed"
     },
     {
+      "id": "protects:control-continuous-remote-identity-review:component-hiring-pipeline",
+      "source": "control-continuous-remote-identity-review",
+      "target": "component-hiring-pipeline",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-controlled-surrender:asset-key-holder-safety",
       "source": "control-controlled-surrender",
       "target": "asset-key-holder-safety",
@@ -4871,6 +5084,13 @@
       "id": "protects:control-geographic-key-separation:component-hardware-wallet",
       "source": "control-geographic-key-separation",
       "target": "component-hardware-wallet",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-hiring-identity-verification:surface-contributor-hire-path",
+      "source": "control-hiring-identity-verification",
+      "target": "surface-contributor-hire-path",
       "type": "protects",
       "status": "proposed"
     },
@@ -5130,6 +5350,13 @@
       "id": "targets:threat-dprk-it-worker-infiltration:asset-source-code",
       "source": "threat-dprk-it-worker-infiltration",
       "target": "asset-source-code",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-dprk-it-worker-infiltration:surface-contributor-hire-path",
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "surface-contributor-hire-path",
       "type": "targets",
       "status": "proposed"
     },

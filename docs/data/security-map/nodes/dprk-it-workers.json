@@ -1,0 +1,75 @@
+{
+  "nodes": [
+    {
+      "id": "surface-contributor-hire-path",
+      "type": "attack-surface",
+      "title": "Contributor-to-hire path",
+      "summary": "Valid pull requests and open-source help used to skip ordinary hiring checks and request repository or infrastructure access.",
+      "domains": ["people", "development-supply-chain"],
+      "status": "proposed",
+      "tags": ["hiring", "oss", "dprk"],
+      "roles": ["founder-executive", "engineer-developer"],
+      "lifecycle": ["normal-operations"],
+      "framework": "dprk-it-workers"
+    },
+    {
+      "id": "control-continuous-remote-identity-review",
+      "type": "control",
+      "title": "Continuous remote identity review",
+      "summary": "Keep checking remote workers after hire: camera-on presence, identity consistency, and access that still matches the role.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["hiring", "identity", "dprk"],
+      "controlClass": "detective",
+      "assessmentEligible": true,
+      "roles": ["founder-executive"],
+      "lifecycle": ["normal-operations"],
+      "framework": "dprk-it-workers"
+    },
+    {
+      "id": "guidance-dprk-it-workers",
+      "type": "guidance",
+      "title": "Insider threats (DPRK)",
+      "summary": "Fraudulently hired remote workers who fund a sanctioned regime and can pivot to theft, extortion, or sabotage. Hiring and access control are the primary defenses.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["dprk", "insider"],
+      "href": "/dprk-it-workers/overview",
+      "framework": "dprk-it-workers"
+    },
+    {
+      "id": "guidance-dprk-general-information",
+      "type": "guidance",
+      "title": "DPRK IT workers: general information",
+      "summary": "False-identity remote IT work that funds a sanctioned regime. Treat it as high-impact insider and sanctions risk, not ordinary freelance noise.",
+
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["dprk", "sanctions"],
+      "href": "/dprk-it-workers/general-information",
+      "framework": "dprk-it-workers"
+    },
+    {
+      "id": "guidance-dprk-ttps",
+      "type": "guidance",
+      "title": "DPRK IT worker TTPs",
+      "summary": "Spot fraud and inconsistency across identity, code history, and interviews. Do not rely on stereotypes. Tactics change.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["dprk", "hiring", "ttps"],
+      "href": "/dprk-it-workers/techniques-tactics-and-procedures",
+      "framework": "dprk-it-workers"
+    },
+    {
+      "id": "guidance-dprk-mitigation",
+      "type": "guidance",
+      "title": "Mitigating DPRK IT workers",
+      "summary": "Hiring verification plus least privilege before a hit. After discovery, revoke access, preserve evidence, and treat sanctions and supply-chain exposure as incidents.",
+      "domains": ["people", "development-supply-chain"],
+      "status": "proposed",
+      "tags": ["dprk", "hiring", "least-privilege"],
+      "href": "/dprk-it-workers/mitigating-dprk-it-workers",
+      "framework": "dprk-it-workers"
+    }
+  ]
+}

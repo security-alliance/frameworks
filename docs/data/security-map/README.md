@@ -122,8 +122,9 @@ The first seed is `proposed` on purpose.
 
 1. Run `pnpm run coverage:security-map` and treat the lists as the work queue.
 2. Map one framework per PR (`feat/security-map-<framework>`). Steward review for security semantics.
-   Wallet Security, Physical Security (duress), and Treasury Operations are seeded. Next coverage
-   gaps are empty frameworks on the work queue, not another implied seed.
+   Wallet Security, Physical Security (duress), Treasury Operations, and DPRK IT Workers are seeded.
+   Next gaps are remaining empty frameworks on the work queue.
+
 
 3. Add the missing component, surface, control, or guidance edge. Cross-links appear because two
    frameworks share a node, not because overview pages mention each other.
