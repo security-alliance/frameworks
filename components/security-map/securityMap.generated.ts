@@ -315,6 +315,30 @@ export const securityMapGraph = {
       "framework": "community-management"
     },
     {
+      "id": "component-custodial-treasury",
+      "type": "component",
+      "title": "Custodial treasury",
+      "summary": "Third-party or co-managed custody that holds organizational funds. Not the protocol governance multisig.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "custody",
+        "treasury",
+        "custodian"
+      ],
+      "roles": [
+        "governance-participant",
+        "founder-executive"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "incident-response"
+      ],
+      "framework": "treasury-operations"
+    },
+    {
       "id": "component-dependency-graph",
       "type": "component",
       "title": "Dependency graph",
@@ -1182,6 +1206,31 @@ export const securityMapGraph = {
       "framework": "wallet-security"
     },
     {
+      "id": "control-multi-channel-transfer-confirm",
+      "type": "control",
+      "title": "Multi-channel transfer confirmation",
+      "summary": "Request on one channel, approve on another, with a second person checking destination and amount. Treat urgency as a social-engineering signal.",
+      "domains": [
+        "governance-treasury",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "confirmation",
+        "ceremony"
+      ],
+      "roles": [
+        "governance-participant",
+        "founder-executive"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "treasury-operations"
+    },
+    {
       "id": "control-multisig-threshold-policy",
       "type": "control",
       "title": "Multisig threshold policy",
@@ -1475,6 +1524,29 @@ export const securityMapGraph = {
       "framework": "wallet-security"
     },
     {
+      "id": "control-test-transfer",
+      "type": "control",
+      "title": "Test transfer before full send",
+      "summary": "Send a small test to a new address and confirm receipt on an independent channel before the irreversible full amount.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "test-transaction",
+        "verification"
+      ],
+      "roles": [
+        "governance-participant"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "treasury-operations"
+    },
+    {
       "id": "control-tested-incident-runbooks",
       "type": "control",
       "title": "Tested incident runbooks",
@@ -1496,6 +1568,77 @@ export const securityMapGraph = {
       "controlClass": "recovery",
       "assessmentEligible": true,
       "framework": "incident-management"
+    },
+    {
+      "id": "control-treasury-classification",
+      "type": "control",
+      "title": "Treasury account classification",
+      "summary": "Classify each custodial account by financial impact and access urgency, then match approvers, MFA, and delays to that bar.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "classification",
+        "impact"
+      ],
+      "roles": [
+        "governance-participant"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations"
+      ],
+      "controlClass": "governance",
+      "assessmentEligible": true,
+      "framework": "treasury-operations"
+    },
+    {
+      "id": "control-treasury-registration",
+      "type": "control",
+      "title": "Custodial account registration",
+      "summary": "Register every account, log access changes, snapshot security settings, and review quarterly so classification matches reality.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "registration",
+        "audit"
+      ],
+      "roles": [
+        "governance-participant"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "detective",
+      "assessmentEligible": true,
+      "framework": "treasury-operations"
+    },
+    {
+      "id": "control-whitelist-and-delay",
+      "type": "control",
+      "title": "Whitelist and delay policy",
+      "summary": "Policy-engine gates, address allowlists, and time delays on High and Critical accounts so a stolen session cannot drain immediately.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "whitelist",
+        "delay",
+        "policy-engine"
+      ],
+      "roles": [
+        "governance-participant"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "treasury-operations"
     },
     {
       "id": "guidance-awareness",
@@ -2344,6 +2487,84 @@ export const securityMapGraph = {
       "framework": "opsec"
     },
     {
+      "id": "guidance-treasury-classification",
+      "type": "guidance",
+      "title": "Treasury account classification",
+      "summary": "Dual impact and operational classification plus a control matrix for approvers, MFA, and whitelist delays.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "classification"
+      ],
+      "href": "/treasury-operations/classification",
+      "framework": "treasury-operations"
+    },
+    {
+      "id": "guidance-treasury-enhanced-controls",
+      "type": "guidance",
+      "title": "Enhanced controls for high-risk accounts",
+      "summary": "Dedicated devices, stronger quorum or MPC, policy-engine gates, and monitored access for High and Critical impact accounts.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "enhanced-controls",
+        "mpc"
+      ],
+      "href": "/treasury-operations/enhanced-controls",
+      "framework": "treasury-operations"
+    },
+    {
+      "id": "guidance-treasury-operations",
+      "type": "guidance",
+      "title": "Treasury Operations Security",
+      "summary": "Classify custodial accounts like cash vaults, document who can move funds, and verify every large transfer before it is irreversible.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "treasury",
+        "custody"
+      ],
+      "href": "/treasury-operations/overview",
+      "framework": "treasury-operations"
+    },
+    {
+      "id": "guidance-treasury-registration",
+      "type": "guidance",
+      "title": "Custodial account registration",
+      "summary": "Templates for account registration, access-change logs, security snapshots, and quarterly review.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "registration"
+      ],
+      "href": "/treasury-operations/registration-documents",
+      "framework": "treasury-operations"
+    },
+    {
+      "id": "guidance-treasury-transaction-verification",
+      "type": "guidance",
+      "title": "Large cryptocurrency transfers",
+      "summary": "Receive and send protocols: independent address checks, test transactions, multi-party confirmation, and no rush.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "transfer",
+        "verification"
+      ],
+      "href": "/treasury-operations/transaction-verification",
+      "framework": "treasury-operations"
+    },
+    {
       "id": "guidance-wallet-security",
       "type": "guidance",
       "title": "Wallet Security",
@@ -2585,6 +2806,30 @@ export const securityMapGraph = {
       ]
     },
     {
+      "id": "surface-custodial-admin-access",
+      "type": "attack-surface",
+      "title": "Custodial admin access",
+      "summary": "Logins, approvers, and policy-engine roles on the custodian platform. Takeover here spends treasury without touching protocol keys.",
+      "domains": [
+        "governance-treasury",
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "custody",
+        "iam",
+        "approvers"
+      ],
+      "roles": [
+        "governance-participant",
+        "founder-executive"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "treasury-operations"
+    },
+    {
       "id": "surface-device-endpoint",
       "type": "attack-surface",
       "title": "Endpoint and browser",
@@ -2714,6 +2959,29 @@ export const securityMapGraph = {
       "lifecycle": [
         "normal-operations"
       ]
+    },
+    {
+      "id": "surface-large-transfer",
+      "type": "attack-surface",
+      "title": "Large transfer ceremony",
+      "summary": "Receive and send of irreversible amounts. Address substitution and fake urgency are the usual failure, not cryptography.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "transfer",
+        "verification",
+        "ceremony"
+      ],
+      "roles": [
+        "governance-participant",
+        "founder-executive"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "treasury-operations"
     },
     {
       "id": "surface-multisig-signing-workflow",
@@ -2920,6 +3188,25 @@ export const securityMapGraph = {
       "framework": "wallet-security"
     },
     {
+      "id": "threat-custody-access-abuse",
+      "type": "threat",
+      "title": "Custody access abuse",
+      "summary": "An attacker or insider uses custodian logins, weak quorum, or an unregistered access change to move High or Critical balances.",
+      "domains": [
+        "governance-treasury",
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "custody",
+        "insider",
+        "iam"
+      ],
+      "severity": "critical",
+      "severityBasis": "Default triage is critical because platform approval is authorized spend. Blast radius is the classified impact of the account.",
+      "framework": "treasury-operations"
+    },
+    {
       "id": "threat-dprk-it-worker-infiltration",
       "type": "threat",
       "title": "DPRK or threat-actor hiring",
@@ -3045,6 +3332,24 @@ export const securityMapGraph = {
         "leadership-phishing"
       ],
       "framework": "awareness"
+    },
+    {
+      "id": "threat-misdirected-transfer",
+      "type": "threat",
+      "title": "Misdirected transfer",
+      "summary": "Funds go to an attacker address because destination or amount was taken from chat, a rushed UI, or a lookalike site. The send is valid and irreversible.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "transfer",
+        "address",
+        "social-engineering"
+      ],
+      "severity": "critical",
+      "severityBasis": "Default triage is critical because a confirmed send cannot be reversed. Impact is the full transfer, not a later exploit.",
+      "framework": "treasury-operations"
     },
     {
       "id": "threat-monitoring-gaps",
@@ -3226,6 +3531,14 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "contains:asset-treasury-funds:component-custodial-treasury",
+      "source": "asset-treasury-funds",
+      "target": "component-custodial-treasury",
+      "type": "contains",
+      "rationale": "Organizational funds also sit in third-party or co-managed custody, separate from the protocol multisig.",
+      "status": "proposed"
+    },
+    {
       "id": "contains:asset-treasury-funds:component-multisig",
       "source": "asset-treasury-funds",
       "target": "component-multisig",
@@ -3257,6 +3570,13 @@ export const securityMapGraph = {
     {
       "id": "depends-on:component-cloud-infrastructure:component-identity-accounts",
       "source": "component-cloud-infrastructure",
+      "target": "component-identity-accounts",
+      "type": "depends-on",
+      "status": "proposed"
+    },
+    {
+      "id": "depends-on:component-custodial-treasury:component-identity-accounts",
+      "source": "component-custodial-treasury",
       "target": "component-identity-accounts",
       "type": "depends-on",
       "status": "proposed"
@@ -3364,6 +3684,13 @@ export const securityMapGraph = {
       "id": "documented-by:asset-seed-secrets:guidance-seed-phrase-management",
       "source": "asset-seed-secrets",
       "target": "guidance-seed-phrase-management",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:component-custodial-treasury:guidance-treasury-operations",
+      "source": "component-custodial-treasury",
+      "target": "guidance-treasury-operations",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3557,6 +3884,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-independent-tx-verification:guidance-treasury-transaction-verification",
+      "source": "control-independent-tx-verification",
+      "target": "guidance-treasury-transaction-verification",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-insider-threat-mitigation:guidance-insider-threat",
       "source": "control-insider-threat-mitigation",
       "target": "guidance-insider-threat",
@@ -3588,6 +3922,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-limited-token-approvals:guidance-smart-contract-interaction",
       "source": "control-limited-token-approvals",
       "target": "guidance-smart-contract-interaction",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-multi-channel-transfer-confirm:guidance-treasury-transaction-verification",
+      "source": "control-multi-channel-transfer-confirm",
+      "target": "guidance-treasury-transaction-verification",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3644,6 +3985,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-phishing-resistant-mfa:guidance-phishing",
       "source": "control-phishing-resistant-mfa",
       "target": "guidance-phishing",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-phishing-resistant-mfa:guidance-treasury-enhanced-controls",
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-treasury-enhanced-controls",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3718,6 +4066,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-simulate-before-sign:guidance-treasury-transaction-verification",
+      "source": "control-simulate-before-sign",
+      "target": "guidance-treasury-transaction-verification",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-test-transfer:guidance-treasury-transaction-verification",
+      "source": "control-test-transfer",
+      "target": "guidance-treasury-transaction-verification",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-tested-incident-runbooks:guidance-incident-playbooks",
       "source": "control-tested-incident-runbooks",
       "target": "guidance-incident-playbooks",
@@ -3728,6 +4090,27 @@ export const securityMapGraph = {
       "id": "documented-by:control-tested-incident-runbooks:guidance-ir-detection",
       "source": "control-tested-incident-runbooks",
       "target": "guidance-ir-detection",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-treasury-classification:guidance-treasury-classification",
+      "source": "control-treasury-classification",
+      "target": "guidance-treasury-classification",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-treasury-registration:guidance-treasury-registration",
+      "source": "control-treasury-registration",
+      "target": "guidance-treasury-registration",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-whitelist-and-delay:guidance-treasury-enhanced-controls",
+      "source": "control-whitelist-and-delay",
+      "target": "guidance-treasury-enhanced-controls",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3795,6 +4178,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-custody-access-abuse:guidance-treasury-classification",
+      "source": "threat-custody-access-abuse",
+      "target": "guidance-treasury-classification",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-dprk-it-worker-infiltration:guidance-dprk-playbook",
       "source": "threat-dprk-it-worker-infiltration",
       "target": "guidance-dprk-playbook",
@@ -3826,6 +4216,13 @@ export const securityMapGraph = {
       "id": "documented-by:threat-leadership-phishing:guidance-threat-vectors",
       "source": "threat-leadership-phishing",
       "target": "guidance-threat-vectors",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-misdirected-transfer:guidance-treasury-transaction-verification",
+      "source": "threat-misdirected-transfer",
+      "target": "guidance-treasury-transaction-verification",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3889,6 +4286,20 @@ export const securityMapGraph = {
       "id": "exposes:component-cloud-infrastructure:surface-cloud-admin-console",
       "source": "component-cloud-infrastructure",
       "target": "surface-cloud-admin-console",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-custodial-treasury:surface-custodial-admin-access",
+      "source": "component-custodial-treasury",
+      "target": "surface-custodial-admin-access",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-custodial-treasury:surface-large-transfer",
+      "source": "component-custodial-treasury",
+      "target": "surface-large-transfer",
       "type": "exposes",
       "status": "proposed"
     },
@@ -4152,6 +4563,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-independent-tx-verification:threat-misdirected-transfer",
+      "source": "control-independent-tx-verification",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-independent-tx-verification:threat-multisig-operational-failure",
       "source": "control-independent-tx-verification",
       "target": "threat-multisig-operational-failure",
@@ -4194,6 +4612,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-multi-channel-transfer-confirm:threat-misdirected-transfer",
+      "source": "control-multi-channel-transfer-confirm",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-multisig-threshold-policy:threat-duress-coercion",
       "source": "control-multisig-threshold-policy",
       "target": "threat-duress-coercion",
@@ -4225,6 +4650,13 @@ export const securityMapGraph = {
       "id": "mitigates:control-offline-seed-custody:threat-seed-phrase-compromise",
       "source": "control-offline-seed-custody",
       "target": "threat-seed-phrase-compromise",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-phishing-resistant-mfa:threat-custody-access-abuse",
+      "source": "control-phishing-resistant-mfa",
+      "target": "threat-custody-access-abuse",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -4313,9 +4745,51 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-simulate-before-sign:threat-misdirected-transfer",
+      "source": "control-simulate-before-sign",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-test-transfer:threat-misdirected-transfer",
+      "source": "control-test-transfer",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-tested-incident-runbooks:threat-monitoring-gaps",
       "source": "control-tested-incident-runbooks",
       "target": "threat-monitoring-gaps",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-treasury-classification:threat-custody-access-abuse",
+      "source": "control-treasury-classification",
+      "target": "threat-custody-access-abuse",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-treasury-registration:threat-custody-access-abuse",
+      "source": "control-treasury-registration",
+      "target": "threat-custody-access-abuse",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-whitelist-and-delay:threat-custody-access-abuse",
+      "source": "control-whitelist-and-delay",
+      "target": "threat-custody-access-abuse",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-whitelist-and-delay:threat-misdirected-transfer",
+      "source": "control-whitelist-and-delay",
+      "target": "threat-misdirected-transfer",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -4453,6 +4927,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-multi-channel-transfer-confirm:surface-large-transfer",
+      "source": "control-multi-channel-transfer-confirm",
+      "target": "surface-large-transfer",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-multisig-threshold-policy:asset-treasury-funds",
       "source": "control-multisig-threshold-policy",
       "target": "asset-treasury-funds",
@@ -4481,6 +4962,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-phishing-resistant-mfa:surface-custodial-admin-access",
+      "source": "control-phishing-resistant-mfa",
+      "target": "surface-custodial-admin-access",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-registrar-hardening:asset-domain-control",
       "source": "control-registrar-hardening",
       "target": "asset-domain-control",
@@ -4505,6 +4993,34 @@ export const securityMapGraph = {
       "id": "protects:control-simulate-before-sign:surface-transaction-signing",
       "source": "control-simulate-before-sign",
       "target": "surface-transaction-signing",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-test-transfer:surface-large-transfer",
+      "source": "control-test-transfer",
+      "target": "surface-large-transfer",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-treasury-classification:component-custodial-treasury",
+      "source": "control-treasury-classification",
+      "target": "component-custodial-treasury",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-treasury-registration:component-custodial-treasury",
+      "source": "control-treasury-registration",
+      "target": "component-custodial-treasury",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-whitelist-and-delay:asset-treasury-funds",
+      "source": "control-whitelist-and-delay",
+      "target": "asset-treasury-funds",
       "type": "protects",
       "status": "proposed"
     },
@@ -4582,6 +5098,27 @@ export const securityMapGraph = {
       "id": "targets:threat-blind-signing:surface-transaction-signing",
       "source": "threat-blind-signing",
       "target": "surface-transaction-signing",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-custody-access-abuse:asset-treasury-funds",
+      "source": "threat-custody-access-abuse",
+      "target": "asset-treasury-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-custody-access-abuse:component-custodial-treasury",
+      "source": "threat-custody-access-abuse",
+      "target": "component-custodial-treasury",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-custody-access-abuse:surface-custodial-admin-access",
+      "source": "threat-custody-access-abuse",
+      "target": "surface-custodial-admin-access",
       "type": "targets",
       "status": "proposed"
     },
@@ -4733,9 +5270,30 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-leadership-phishing:surface-custodial-admin-access",
+      "source": "threat-leadership-phishing",
+      "target": "surface-custodial-admin-access",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-leadership-phishing:surface-executive-communications",
       "source": "threat-leadership-phishing",
       "target": "surface-executive-communications",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-misdirected-transfer:asset-treasury-funds",
+      "source": "threat-misdirected-transfer",
+      "target": "asset-treasury-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-misdirected-transfer:surface-large-transfer",
+      "source": "threat-misdirected-transfer",
+      "target": "surface-large-transfer",
       "type": "targets",
       "status": "proposed"
     },
@@ -4862,6 +5420,13 @@ export const securityMapGraph = {
       "id": "targets:threat-social-engineering:surface-executive-communications",
       "source": "threat-social-engineering",
       "target": "surface-executive-communications",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-social-engineering:surface-large-transfer",
+      "source": "threat-social-engineering",
+      "target": "surface-large-transfer",
       "type": "targets",
       "status": "proposed"
     },
