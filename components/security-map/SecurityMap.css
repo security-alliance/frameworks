@@ -341,7 +341,8 @@
   margin: 0 0 4px;
 }
 
-.sm-rel button {
+.sm-rel button,
+.sm-page-link {
   font: inherit;
   padding: 0;
   border: 0;
@@ -349,7 +350,13 @@
   color: var(--color-primary);
   cursor: pointer;
   text-align: left;
+  text-decoration: none;
 }
+
+.sm-page-link:hover {
+  text-decoration: underline;
+}
+
 
 .sm-assess {
   margin-top: 16px;

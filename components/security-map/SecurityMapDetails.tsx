@@ -1,4 +1,3 @@
-import { Link } from "vocs";
 import {
   NODE_TYPE_LABELS,
   type AssessmentState,
@@ -6,9 +5,10 @@ import {
   type SecurityMapNode,
 } from "./types";
 import { gapReasons, relatedByType, type GraphIndex } from "./graphIndex";
-
 import { SecurityMapAssessment } from "./SecurityMapAssessment";
 import type { AssessmentDocument } from "./assessment";
+
+const MAP_REL_TYPES: NodeType[] = ["attack-surface", "threat", "control"];
 
 const COUNT_TYPES: NodeType[] = [
   "attack-surface",
@@ -18,6 +18,22 @@ const COUNT_TYPES: NodeType[] = [
   "guidance",
   "response",
 ];
+
+function pageLinks(index: GraphIndex, id: string): SecurityMapNode[] {
+  const seen: Record<string, true> = Object.create(null);
+  const pages: SecurityMapNode[] = [];
+  const add = (node: SecurityMapNode | undefined) => {
+    if (!node?.href || seen[node.id]) return;
+    seen[node.id] = true;
+    pages.push(node);
+  };
+  add(index.nodesById[id]);
+  for (const edge of index.outgoing[id] || []) {
+    if (edge.type === "documented-by") add(index.nodesById[edge.target]);
+  }
+  return pages;
+}
+
 
 export function SecurityMapDetails({
   index,
@@ -46,6 +62,7 @@ export function SecurityMapDetails({
   const related = relatedByType(index, node.id, 2);
   const assessed = assessment.controls[node.id];
   const reasons = gapReasons(index, node.id);
+  const pages = pageLinks(index, node.id);
 
   return (
     <aside className="sm-details" aria-labelledby="sm-detail-title">
@@ -57,6 +74,17 @@ export function SecurityMapDetails({
       </div>
       <h2 id="sm-detail-title">{node.title}</h2>
       <p>{node.summary}</p>
+      {pages.length ? (
+        <ul className="sm-rel">
+          {pages.map((page) => (
+            <li key={page.id}>
+              <a className="sm-page-link" href={page.href} target="_blank" rel="noreferrer">
+                {page.id === node.id ? "Open framework page" : page.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : null}
       <ul className="sm-stats">
         {COUNT_TYPES.map((type) => (
           <li key={type}>
@@ -72,8 +100,7 @@ export function SecurityMapDetails({
           ))}
         </ul>
       ) : null}
-
-      {COUNT_TYPES.map((type) =>
+      {MAP_REL_TYPES.map((type) =>
         related[type].length ? (
           <div key={type}>
             <h3>{NODE_TYPE_LABELS[type]}</h3>
@@ -89,11 +116,7 @@ export function SecurityMapDetails({
           </div>
         ) : null,
       )}
-      {node.type === "guidance" && node.href ? (
-        <p>
-          <Link href={node.href}>Open framework page</Link>
-        </p>
-      ) : null}
+
       {node.type === "control" && node.assessmentEligible !== false ? (
         <SecurityMapAssessment
           controlId={node.id}
