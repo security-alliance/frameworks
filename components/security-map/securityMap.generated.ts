@@ -759,6 +759,31 @@ export const securityMapGraph = {
       "framework": "infrastructure"
     },
     {
+      "id": "control-cloud-kms-custody",
+      "type": "control",
+      "title": "Cloud KMS key custody",
+      "summary": "Encrypt cloud data at rest with a KMS or BYOK design. Do not leave keys in the same breach domain as the ciphertext.",
+      "domains": [
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "kms",
+        "cloud",
+        "at-rest"
+      ],
+      "roles": [
+        "infrastructure-operator"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "encryption"
+    },
+    {
       "id": "control-cold-wallet-separation",
       "type": "control",
       "title": "Cold and hot wallet separation",
@@ -1034,6 +1059,30 @@ export const securityMapGraph = {
       "framework": "front-end-web-app"
     },
     {
+      "id": "control-full-disk-encryption",
+      "type": "control",
+      "title": "Full-disk encryption",
+      "summary": "Confirm FDE is on for every work endpoint, with a strong algorithm and recovery keys stored off the device.",
+      "domains": [
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "fde",
+        "endpoint"
+      ],
+      "roles": [
+        "engineer-developer",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "encryption"
+    },
+    {
       "id": "control-geographic-key-separation",
       "type": "control",
       "title": "Geographic key separation",
@@ -1059,6 +1108,33 @@ export const securityMapGraph = {
       "controlClass": "preventive",
       "assessmentEligible": true,
       "framework": "physical-security"
+    },
+    {
+      "id": "control-hardware-backed-encryption",
+      "type": "control",
+      "title": "Hardware-backed encryption keys",
+      "summary": "Keep encryption keys in TPM, a self-encrypting drive, or an HSM so host memory and malware see less key material. This is not a hardware wallet.",
+      "domains": [
+        "devices-identity",
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "tpm",
+        "hsm",
+        "hardware"
+      ],
+      "roles": [
+        "engineer-developer",
+        "infrastructure-operator"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "encryption"
     },
     {
       "id": "control-hiring-identity-verification",
@@ -1594,6 +1670,32 @@ export const securityMapGraph = {
       "framework": "incident-management"
     },
     {
+      "id": "control-tls-ssh-transit",
+      "type": "control",
+      "title": "TLS and SSH in transit",
+      "summary": "Use modern TLS for internet traffic and SSH for remote admin. Cleartext HTTP and unencrypted remote shells are not acceptable on sensitive systems.",
+      "domains": [
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "tls",
+        "ssh",
+        "transit"
+      ],
+      "roles": [
+        "engineer-developer",
+        "infrastructure-operator"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "encryption"
+    },
+    {
       "id": "control-treasury-classification",
       "type": "control",
       "title": "Treasury account classification",
@@ -1709,6 +1811,22 @@ export const securityMapGraph = {
       ],
       "href": "/infrastructure/cloud",
       "framework": "infrastructure"
+    },
+    {
+      "id": "guidance-cloud-data-encryption",
+      "type": "guidance",
+      "title": "Cloud data encryption",
+      "summary": "Encrypt cloud data in transit and at rest, with keys in a KMS or BYOK design, not default storage alone.",
+      "domains": [
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "cloud",
+        "kms"
+      ],
+      "href": "/encryption/cloud-data-encryption",
+      "framework": "encryption"
     },
     {
       "id": "guidance-code-signing",
@@ -2072,6 +2190,38 @@ export const securityMapGraph = {
       "framework": "physical-security"
     },
     {
+      "id": "guidance-encryption",
+      "type": "guidance",
+      "title": "Encryption",
+      "summary": "Protect confidentiality when keys are managed on purpose across data at rest and in transit. Algorithms do not fix weak custody or cleartext channels.",
+      "domains": [
+        "devices-identity",
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "encryption"
+      ],
+      "href": "/encryption/overview",
+      "framework": "encryption"
+    },
+    {
+      "id": "guidance-encryption-in-transit",
+      "type": "guidance",
+      "title": "Encryption in transit",
+      "summary": "Data crossing networks uses TLS, SSH, or a VPN as appropriate. Cleartext remote admin and bulk HTTP are unacceptable for sensitive systems.",
+      "domains": [
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "tls",
+        "transit"
+      ],
+      "href": "/encryption/encryption-in-transit",
+      "framework": "encryption"
+    },
+    {
       "id": "guidance-exploit-runbook",
       "type": "guidance",
       "title": "Smart contract exploit runbook",
@@ -2120,6 +2270,21 @@ export const securityMapGraph = {
       "framework": "front-end-web-app"
     },
     {
+      "id": "guidance-full-disk-encryption",
+      "type": "guidance",
+      "title": "Full-disk encryption",
+      "summary": "Enable FDE on endpoints that store work data so lost or stolen devices do not expose plaintext at rest.",
+      "domains": [
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "fde"
+      ],
+      "href": "/encryption/full-disk-encryption",
+      "framework": "encryption"
+    },
+    {
       "id": "guidance-governance",
       "type": "guidance",
       "title": "Governance",
@@ -2133,6 +2298,23 @@ export const securityMapGraph = {
       ],
       "href": "/governance/overview",
       "framework": "governance"
+    },
+    {
+      "id": "guidance-hardware-encryption",
+      "type": "guidance",
+      "title": "Hardware encryption",
+      "summary": "TPM, self-encrypting drives, and HSMs keep encryption keys out of host memory when they are deployed and managed correctly.",
+      "domains": [
+        "devices-identity",
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "tpm",
+        "hsm"
+      ],
+      "href": "/encryption/hardware-encryption",
+      "framework": "encryption"
     },
     {
       "id": "guidance-iam",
@@ -2860,6 +3042,28 @@ export const securityMapGraph = {
       ]
     },
     {
+      "id": "surface-cloud-data-at-rest",
+      "type": "attack-surface",
+      "title": "Cloud data at rest",
+      "summary": "Object stores, managed disks, and backups. Default storage encryption without separate key custody still fails with the account.",
+      "domains": [
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "cloud",
+        "kms",
+        "at-rest"
+      ],
+      "roles": [
+        "infrastructure-operator"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "encryption"
+    },
+    {
       "id": "surface-contract-external-calls",
       "type": "attack-surface",
       "title": "Contract external calls and value flow",
@@ -2945,6 +3149,29 @@ export const securityMapGraph = {
       "framework": "treasury-operations"
     },
     {
+      "id": "surface-data-in-transit",
+      "type": "attack-surface",
+      "title": "Data in transit",
+      "summary": "Traffic across the internet, public Wi-Fi, and remote-admin paths. An on-path observer can read or alter cleartext.",
+      "domains": [
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "tls",
+        "ssh",
+        "transit"
+      ],
+      "roles": [
+        "engineer-developer",
+        "infrastructure-operator"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "encryption"
+    },
+    {
       "id": "surface-device-endpoint",
       "type": "attack-surface",
       "title": "Endpoint and browser",
@@ -2976,6 +3203,29 @@ export const securityMapGraph = {
       "lifecycle": [
         "normal-operations"
       ]
+    },
+    {
+      "id": "surface-endpoint-at-rest",
+      "type": "attack-surface",
+      "title": "Endpoint storage at rest",
+      "summary": "Disks on laptops, desktops, and phones. A lost or stolen powered-off device exposes plaintext unless the volume is encrypted.",
+      "domains": [
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "fde",
+        "endpoint",
+        "at-rest"
+      ],
+      "roles": [
+        "engineer-developer",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "encryption"
     },
     {
       "id": "surface-executive-communications",
@@ -3303,6 +3553,24 @@ export const securityMapGraph = {
       "framework": "wallet-security"
     },
     {
+      "id": "threat-cloud-plaintext-at-rest",
+      "type": "threat",
+      "title": "Cloud plaintext at rest",
+      "summary": "Object stores, disks, or backups keep data readable, or encryption keys sit in the same account as the ciphertext, so a stolen volume or hijacked role yields the data.",
+      "domains": [
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "cloud",
+        "kms",
+        "at-rest"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because cloud disks and buckets outlive any one server. Blast radius is the classified data in that store, not the compute instance.",
+      "framework": "encryption"
+    },
+    {
       "id": "threat-custody-access-abuse",
       "type": "threat",
       "title": "Custody access abuse",
@@ -3508,6 +3776,24 @@ export const securityMapGraph = {
       "framework": "multisig-for-protocols"
     },
     {
+      "id": "threat-on-path-interception",
+      "type": "threat",
+      "title": "On-path interception",
+      "summary": "An observer on the network path reads or alters traffic that used HTTP, cleartext admin, or a broken TLS setup.",
+      "domains": [
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "mitm",
+        "tls",
+        "transit"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because cleartext remote admin and bulk HTTP expose credentials and change commands. Impact tracks what the channel carries.",
+      "framework": "encryption"
+    },
+    {
       "id": "threat-opsec-hygiene-failure",
       "type": "threat",
       "title": "Operational security failures",
@@ -3528,6 +3814,24 @@ export const securityMapGraph = {
         "opsec-failures"
       ],
       "framework": "opsec"
+    },
+    {
+      "id": "threat-plaintext-lost-device",
+      "type": "threat",
+      "title": "Plaintext on a lost device",
+      "summary": "A lost or stolen endpoint yields work data, secrets, or key-adjacent files because the disk was unencrypted or the recovery key sat beside the device.",
+      "domains": [
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "fde",
+        "theft",
+        "endpoint"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because a stolen laptop is common and the disk holds whatever the operator used. FDE does not stop a logged-in malware session.",
+      "framework": "encryption"
     },
     {
       "id": "threat-seed-phrase-compromise",
@@ -3817,6 +4121,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:component-developer-devices:guidance-encryption",
+      "source": "component-developer-devices",
+      "target": "guidance-encryption",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:component-family-household:guidance-duress-personal-safety",
       "source": "component-family-household",
       "target": "guidance-duress-personal-safety",
@@ -3855,6 +4166,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-cloud-hardening:guidance-cloud",
       "source": "control-cloud-hardening",
       "target": "guidance-cloud",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-cloud-kms-custody:guidance-cloud-data-encryption",
+      "source": "control-cloud-kms-custody",
+      "target": "guidance-cloud-data-encryption",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3904,6 +4222,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-device-hardening:guidance-device-hardening",
       "source": "control-device-hardening",
       "target": "guidance-device-hardening",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-device-hardening:guidance-full-disk-encryption",
+      "source": "control-device-hardening",
+      "target": "guidance-full-disk-encryption",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3985,9 +4310,23 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-full-disk-encryption:guidance-full-disk-encryption",
+      "source": "control-full-disk-encryption",
+      "target": "guidance-full-disk-encryption",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-geographic-key-separation:guidance-duress-wallet-architecture",
       "source": "control-geographic-key-separation",
       "target": "guidance-duress-wallet-architecture",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-hardware-backed-encryption:guidance-hardware-encryption",
+      "source": "control-hardware-backed-encryption",
+      "target": "guidance-hardware-encryption",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4258,6 +4597,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-tls-ssh-transit:guidance-cloud-data-encryption",
+      "source": "control-tls-ssh-transit",
+      "target": "guidance-cloud-data-encryption",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-tls-ssh-transit:guidance-encryption-in-transit",
+      "source": "control-tls-ssh-transit",
+      "target": "guidance-encryption-in-transit",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-treasury-classification:guidance-treasury-classification",
       "source": "control-treasury-classification",
       "target": "guidance-treasury-classification",
@@ -4349,6 +4702,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-cloud-plaintext-at-rest:guidance-cloud-data-encryption",
+      "source": "threat-cloud-plaintext-at-rest",
+      "target": "guidance-cloud-data-encryption",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-custody-access-abuse:guidance-treasury-classification",
       "source": "threat-custody-access-abuse",
       "target": "guidance-treasury-classification",
@@ -4426,9 +4786,23 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-on-path-interception:guidance-encryption-in-transit",
+      "source": "threat-on-path-interception",
+      "target": "guidance-encryption-in-transit",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-opsec-hygiene-failure:guidance-opsec",
       "source": "threat-opsec-hygiene-failure",
       "target": "guidance-opsec",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-plaintext-lost-device:guidance-full-disk-encryption",
+      "source": "threat-plaintext-lost-device",
+      "target": "guidance-full-disk-encryption",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4482,6 +4856,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "exposes:component-cloud-infrastructure:surface-cloud-data-at-rest",
+      "source": "component-cloud-infrastructure",
+      "target": "surface-cloud-data-at-rest",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-cloud-infrastructure:surface-data-in-transit",
+      "source": "component-cloud-infrastructure",
+      "target": "surface-data-in-transit",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
       "id": "exposes:component-custodial-treasury:surface-custodial-admin-access",
       "source": "component-custodial-treasury",
       "target": "surface-custodial-admin-access",
@@ -4506,6 +4894,13 @@ export const securityMapGraph = {
       "id": "exposes:component-developer-devices:surface-device-endpoint",
       "source": "component-developer-devices",
       "target": "surface-device-endpoint",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-developer-devices:surface-endpoint-at-rest",
+      "source": "component-developer-devices",
+      "target": "surface-endpoint-at-rest",
       "type": "exposes",
       "status": "proposed"
     },
@@ -4657,6 +5052,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-cloud-kms-custody:threat-cloud-plaintext-at-rest",
+      "source": "control-cloud-kms-custody",
+      "target": "threat-cloud-plaintext-at-rest",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-cold-wallet-separation:threat-blind-signing",
       "source": "control-cold-wallet-separation",
       "target": "threat-blind-signing",
@@ -4688,6 +5090,13 @@ export const securityMapGraph = {
       "id": "mitigates:control-device-hardening:threat-opsec-hygiene-failure",
       "source": "control-device-hardening",
       "target": "threat-opsec-hygiene-failure",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-device-hardening:threat-plaintext-lost-device",
+      "source": "control-device-hardening",
+      "target": "threat-plaintext-lost-device",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -4727,9 +5136,23 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-full-disk-encryption:threat-plaintext-lost-device",
+      "source": "control-full-disk-encryption",
+      "target": "threat-plaintext-lost-device",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-geographic-key-separation:threat-duress-coercion",
       "source": "control-geographic-key-separation",
       "target": "threat-duress-coercion",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-hardware-backed-encryption:threat-plaintext-lost-device",
+      "source": "control-hardware-backed-encryption",
+      "target": "threat-plaintext-lost-device",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -4972,6 +5395,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-tls-ssh-transit:threat-on-path-interception",
+      "source": "control-tls-ssh-transit",
+      "target": "threat-on-path-interception",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-treasury-classification:threat-custody-access-abuse",
       "source": "control-treasury-classification",
       "target": "threat-custody-access-abuse",
@@ -5010,6 +5440,20 @@ export const securityMapGraph = {
       "id": "protects:control-cloud-hardening:component-cloud-infrastructure",
       "source": "control-cloud-hardening",
       "target": "component-cloud-infrastructure",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-cloud-kms-custody:component-cloud-infrastructure",
+      "source": "control-cloud-kms-custody",
+      "target": "component-cloud-infrastructure",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-cloud-kms-custody:surface-cloud-data-at-rest",
+      "source": "control-cloud-kms-custody",
+      "target": "surface-cloud-data-at-rest",
       "type": "protects",
       "status": "proposed"
     },
@@ -5077,6 +5521,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-full-disk-encryption:asset-secrets-credentials",
+      "source": "control-full-disk-encryption",
+      "target": "asset-secrets-credentials",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-full-disk-encryption:surface-endpoint-at-rest",
+      "source": "control-full-disk-encryption",
+      "target": "surface-endpoint-at-rest",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-geographic-key-separation:asset-signer-keys",
       "source": "control-geographic-key-separation",
       "target": "asset-signer-keys",
@@ -5087,6 +5545,13 @@ export const securityMapGraph = {
       "id": "protects:control-geographic-key-separation:component-hardware-wallet",
       "source": "control-geographic-key-separation",
       "target": "component-hardware-wallet",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-hardware-backed-encryption:surface-endpoint-at-rest",
+      "source": "control-hardware-backed-encryption",
+      "target": "surface-endpoint-at-rest",
       "type": "protects",
       "status": "proposed"
     },
@@ -5224,6 +5689,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-tls-ssh-transit:surface-data-in-transit",
+      "source": "control-tls-ssh-transit",
+      "target": "surface-data-in-transit",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-treasury-classification:component-custodial-treasury",
       "source": "control-treasury-classification",
       "target": "component-custodial-treasury",
@@ -5318,6 +5790,20 @@ export const securityMapGraph = {
       "id": "targets:threat-blind-signing:surface-transaction-signing",
       "source": "threat-blind-signing",
       "target": "surface-transaction-signing",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-cloud-plaintext-at-rest:asset-secrets-credentials",
+      "source": "threat-cloud-plaintext-at-rest",
+      "target": "asset-secrets-credentials",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-cloud-plaintext-at-rest:surface-cloud-data-at-rest",
+      "source": "threat-cloud-plaintext-at-rest",
+      "target": "surface-cloud-data-at-rest",
       "type": "targets",
       "status": "proposed"
     },
@@ -5567,6 +6053,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-on-path-interception:asset-secrets-credentials",
+      "source": "threat-on-path-interception",
+      "target": "asset-secrets-credentials",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-on-path-interception:surface-data-in-transit",
+      "source": "threat-on-path-interception",
+      "target": "surface-data-in-transit",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-opsec-hygiene-failure:asset-secrets-credentials",
       "source": "threat-opsec-hygiene-failure",
       "target": "asset-secrets-credentials",
@@ -5577,6 +6077,20 @@ export const securityMapGraph = {
       "id": "targets:threat-opsec-hygiene-failure:surface-device-endpoint",
       "source": "threat-opsec-hygiene-failure",
       "target": "surface-device-endpoint",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-plaintext-lost-device:asset-secrets-credentials",
+      "source": "threat-plaintext-lost-device",
+      "target": "asset-secrets-credentials",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-plaintext-lost-device:surface-endpoint-at-rest",
+      "source": "threat-plaintext-lost-device",
+      "target": "surface-endpoint-at-rest",
       "type": "targets",
       "status": "proposed"
     },
