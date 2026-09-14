@@ -977,6 +977,170 @@ function generate(options = {}) {
   }
 }
 
+function frameworkFromHref(href) {
+  if (typeof href !== 'string' || !href.startsWith('/') || href.startsWith('//')) return null
+  const first = href.replace(/^\//, '').split('/')[0]
+  return first || null
+}
+
+function listFrameworkIds(pagesDir) {
+  if (!pagesDir || !fs.existsSync(pagesDir)) return []
+  return fs
+    .readdirSync(pagesDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && !entry.name.startsWith('.'))
+    .filter((entry) => fs.existsSync(path.join(pagesDir, entry.name, 'overview.mdx')))
+    .map((entry) => entry.name)
+    .sort()
+}
+
+function relatedFrameworkSection(body) {
+  const lines = String(body || '').split('\n')
+  const start = lines.findIndex((line) => line.trim() === '## Related frameworks')
+  if (start < 0) return ''
+  const out = []
+  for (let i = start + 1; i < lines.length; i += 1) {
+    if (/^## /.test(lines[i])) break
+    out.push(lines[i])
+  }
+  return out.join('\n')
+}
+
+function parseRelatedFrameworkHrefs(body) {
+  const section = relatedFrameworkSection(body)
+  if (!section) return []
+  const hrefs = []
+  const re = /\[[^\]]*\]\((\/[^)\s#]+)(?:#[^)]*)?\)/g
+  let match
+  while ((match = re.exec(section))) {
+    hrefs.push(match[1])
+  }
+  return [...new Set(hrefs)]
+}
+
+function nodeFrameworks(node) {
+  const out = new Set()
+  if (node.framework) out.add(node.framework)
+  const fromHref = frameworkFromHref(node.href)
+  if (fromHref) out.add(fromHref)
+  return out
+}
+
+function sliceIds(nodes, frameworkId) {
+  return new Set(nodes.filter((node) => nodeFrameworks(node).has(frameworkId)).map((node) => node.id))
+}
+
+function slicesShare(idsA, idsB, edges) {
+  for (const id of idsA) {
+    if (idsB.has(id)) return true
+  }
+  for (const edge of edges) {
+    if ((idsA.has(edge.source) && idsB.has(edge.target)) || (idsB.has(edge.source) && idsA.has(edge.target))) {
+      return true
+    }
+  }
+  return false
+}
+
+function coverageReport({ nodes, edges, pagesDir }) {
+  const graphNodes = nodes || []
+  const graphEdges = edges || []
+
+  const threatsWithoutControl = graphNodes
+    .filter((node) => node.type === 'threat')
+    .filter((node) => !graphEdges.some((edge) => edge.type === 'mitigates' && edge.target === node.id))
+    .map((node) => node.id)
+    .sort()
+
+  const controlsWithoutGuidance = graphNodes
+    .filter((node) => node.type === 'control')
+    .filter((node) => !graphEdges.some((edge) => edge.type === 'documented-by' && edge.source === node.id))
+    .map((node) => node.id)
+    .sort()
+
+  const frameworks = listFrameworkIds(pagesDir)
+  const usedFrameworks = new Set()
+  for (const node of graphNodes) {
+    for (const fw of nodeFrameworks(node)) usedFrameworks.add(fw)
+  }
+  const frameworksWithZeroNodes = frameworks.filter((fw) => !usedFrameworks.has(fw))
+
+  const relatedUnshared = []
+  if (pagesDir && fs.existsSync(pagesDir)) {
+    for (const file of walkMdx(pagesDir)) {
+      const raw = fs.readFileSync(file, 'utf8')
+      const parsed = matter(raw)
+      const hrefs = parseRelatedFrameworkHrefs(parsed.content)
+      if (!hrefs.length) continue
+      const pageHref = fileToHref(pagesDir, file)
+      const fromFw = frameworkFromHref(pageHref)
+      if (!fromFw) continue
+      const fromIds = sliceIds(graphNodes, fromFw)
+      for (const href of hrefs) {
+        const toFw = frameworkFromHref(href)
+        if (!toFw || toFw === fromFw) continue
+        const toIds = sliceIds(graphNodes, toFw)
+        if (slicesShare(fromIds, toIds, graphEdges)) continue
+        relatedUnshared.push({
+          page: pageHref,
+          neighbor: href,
+          from: fromFw,
+          to: toFw,
+        })
+      }
+    }
+  }
+  relatedUnshared.sort((a, b) => {
+    const left = `${a.page} ${a.neighbor}`
+    const right = `${b.page} ${b.neighbor}`
+    return left.localeCompare(right)
+  })
+
+  return {
+    threatsWithoutControl,
+    controlsWithoutGuidance,
+    frameworksWithZeroNodes,
+    relatedUnshared,
+    counts: {
+      nodes: graphNodes.length,
+      edges: graphEdges.length,
+      threatsWithoutControl: threatsWithoutControl.length,
+      controlsWithoutGuidance: controlsWithoutGuidance.length,
+      frameworksWithZeroNodes: frameworksWithZeroNodes.length,
+      relatedUnshared: relatedUnshared.length,
+    },
+  }
+}
+
+function formatCoverage(report) {
+  const lines = [
+    'Security map coverage',
+    '',
+    `Threats with no control (${report.counts.threatsWithoutControl})`,
+    ...(report.threatsWithoutControl.length
+      ? report.threatsWithoutControl.map((id) => `- ${id}`)
+      : ['- none']),
+    '',
+    `Controls with no guidance (${report.counts.controlsWithoutGuidance})`,
+    ...(report.controlsWithoutGuidance.length
+      ? report.controlsWithoutGuidance.map((id) => `- ${id}`)
+      : ['- none']),
+    '',
+    `Frameworks with 0 map nodes (${report.counts.frameworksWithZeroNodes})`,
+    ...(report.frameworksWithZeroNodes.length
+      ? report.frameworksWithZeroNodes.map((id) => `- ${id}`)
+      : ['- none']),
+    '',
+    `Related frameworks with no shared node (${report.counts.relatedUnshared})`,
+    ...(report.relatedUnshared.length
+      ? report.relatedUnshared.map((item) => `- ${item.page} -> ${item.neighbor}`)
+      : ['- none']),
+    '',
+  ]
+  return lines.join('\n')
+}
+
+
+
 module.exports = {
   SCHEMA_VERSION,
   ValidationError,
@@ -987,4 +1151,7 @@ module.exports = {
   hrefExists,
   edgeId,
   TYPE_PREFIX,
+  coverageReport,
+  formatCoverage,
 }
+

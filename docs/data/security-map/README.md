@@ -26,11 +26,18 @@ Do not hand-edit `public/security-map.json` or `components/security-map/security
 ```bash
 pnpm run generate-security-map
 pnpm run validate:security-map
+pnpm run coverage:security-map
 pnpm run test:security-map
 pnpm run docs:build
 ```
 
 `docs:dev` and `docs:build` both generate the graph before Vocs runs. An invalid graph fails the build.
+
+`coverage:security-map` does not fail the build. It prints the work queue: threats with no
+control, controls with no guidance, frameworks with zero nodes, and `## Related frameworks`
+links whose two framework slices share no graph node or edge. Use `--json` for machine output.
+Do not scrape those related-framework bullets into `related-to`.
+
 
 ## Node IDs
 
@@ -113,8 +120,11 @@ The first seed is `proposed` on purpose.
 
 ## Follow-up
 
-1. Map one framework per PR (`feat/security-map-<framework>`).
-2. Steward review for security semantics.
-3. Sourced incidents in dedicated evidence PRs.
-4. Coverage reports: threats without controls, controls without guidance, critical assets without response, broken routes.
+1. Run `pnpm run coverage:security-map` and treat the lists as the work queue.
+2. Map one framework per PR (`feat/security-map-<framework>`). Steward review for security semantics.
+   Wallet Security is the first expansion. Next implied gaps: Physical Security, then Treasury Operations.
+3. Add the missing component, surface, control, or guidance edge. Cross-links appear because two
+   frameworks share a node, not because overview pages mention each other.
+4. Sourced incidents in dedicated evidence PRs.
 5. Schema migrations before changing stable IDs or enum meanings.
+

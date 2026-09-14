@@ -24,7 +24,9 @@
     "generate-cert-data": "node utils/generate-cert-data.cjs",
     "generate-security-map": "node utils/generate-security-map.cjs",
     "validate:security-map": "node utils/validate-security-map.cjs",
+    "coverage:security-map": "node utils/coverage-security-map.cjs",
     "test:security-map": "node --test utils/security-map.test.cjs utils/security-map-assessment.test.cjs",
+
     "validate:content": "node utils/validate-content.cjs"
   },
   "keywords": [],

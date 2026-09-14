@@ -118,6 +118,30 @@ export const securityMapGraph = {
       ]
     },
     {
+      "id": "asset-seed-secrets",
+      "type": "asset",
+      "title": "Seed phrase and recovery secrets",
+      "summary": "The mnemonic or recovery material that reconstructs signing keys. Anyone who sees it can take the wallet.",
+      "domains": [
+        "devices-identity",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "seed-phrase",
+        "recovery",
+        "keys"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "incident-response"
+      ],
+      "framework": "wallet-security"
+    },
+    {
       "id": "asset-signer-keys",
       "type": "asset",
       "title": "Signer keys",
@@ -396,6 +420,28 @@ export const securityMapGraph = {
       "framework": "governance"
     },
     {
+      "id": "component-hardware-wallet",
+      "type": "component",
+      "title": "Hardware wallet",
+      "summary": "A dedicated signing device that keeps keys offline and shows destination and amount on its own screen.",
+      "domains": [
+        "devices-identity",
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "hardware-wallet",
+        "cold-wallet"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "wallet-security"
+    },
+    {
       "id": "component-hiring-pipeline",
       "type": "component",
       "title": "Hiring pipeline",
@@ -507,6 +553,29 @@ export const securityMapGraph = {
       ]
     },
     {
+      "id": "component-seed-backup",
+      "type": "component",
+      "title": "Seed backup",
+      "summary": "Offline copies of the seed phrase: paper, metal, or split shares. Physical access here is wallet takeover.",
+      "domains": [
+        "devices-identity",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "seed-phrase",
+        "backup"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "recovery"
+      ],
+      "framework": "wallet-security"
+    },
+    {
       "id": "component-signers",
       "type": "component",
       "title": "Signers",
@@ -549,6 +618,28 @@ export const securityMapGraph = {
         "upgrade"
       ],
       "framework": "external-security-reviews"
+    },
+    {
+      "id": "component-software-wallet",
+      "type": "component",
+      "title": "Software wallet",
+      "summary": "A hot wallet on a phone or browser that signs from an internet-connected device. Convenience with a larger remote attack surface.",
+      "domains": [
+        "devices-identity",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "software-wallet",
+        "hot-wallet"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "wallet-security"
     },
     {
       "id": "control-branch-protection",
@@ -595,6 +686,30 @@ export const securityMapGraph = {
       "controlClass": "preventive",
       "assessmentEligible": true,
       "framework": "infrastructure"
+    },
+    {
+      "id": "control-cold-wallet-separation",
+      "type": "control",
+      "title": "Cold and hot wallet separation",
+      "summary": "Keep high-value keys on offline or hardware signers. Use a hot wallet only for amounts you can afford to lose.",
+      "domains": [
+        "devices-identity",
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "cold-wallet",
+        "isolation"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "wallet-security"
     },
     {
       "id": "control-dependency-pinning-provenance",
@@ -888,6 +1003,30 @@ export const securityMapGraph = {
       "framework": "iam"
     },
     {
+      "id": "control-limited-token-approvals",
+      "type": "control",
+      "title": "Limited token approvals",
+      "summary": "Approve only the amount needed for this transaction. Revoke leftover allowances. Avoid permit and infinite approve by default.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "approvals",
+        "allowance"
+      ],
+      "roles": [
+        "engineer-developer",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "wallet-security"
+    },
+    {
       "id": "control-multisig-threshold-policy",
       "type": "control",
       "title": "Multisig threshold policy",
@@ -935,6 +1074,31 @@ export const securityMapGraph = {
       "controlClass": "preventive",
       "assessmentEligible": true,
       "framework": "infrastructure"
+    },
+    {
+      "id": "control-offline-seed-custody",
+      "type": "control",
+      "title": "Offline seed custody",
+      "summary": "Keep the seed offline, preferably durable and split. Treat any screen, photo, or cloud copy as compromise and rotate.",
+      "domains": [
+        "devices-identity",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "seed-phrase",
+        "offline"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "recovery"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "wallet-security"
     },
     {
       "id": "control-onchain-anomaly-detection",
@@ -1132,6 +1296,30 @@ export const securityMapGraph = {
       "framework": "multisig-for-protocols"
     },
     {
+      "id": "control-simulate-before-sign",
+      "type": "control",
+      "title": "Simulate and decode before signing",
+      "summary": "Independently simulate the transaction and read destination, asset, and calldata on a trusted display. Do not sign because a website said it was safe.",
+      "domains": [
+        "devices-identity",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "simulation",
+        "verification"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "wallet-security"
+    },
+    {
       "id": "control-tested-incident-runbooks",
       "type": "control",
       "title": "Tested incident runbooks",
@@ -1214,6 +1402,22 @@ export const securityMapGraph = {
       ],
       "href": "/devsecops/code-signing",
       "framework": "devsecops"
+    },
+    {
+      "id": "guidance-cold-vs-hot",
+      "type": "guidance",
+      "title": "Cold vs hot wallets",
+      "summary": "Match fund tier to connectivity. Cold and hardware signers cut remote theft; hot wallets stay for operational amounts.",
+      "domains": [
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "cold-wallet",
+        "hot-wallet"
+      ],
+      "href": "/wallet-security/cold-vs-hot-wallet",
+      "framework": "wallet-security"
     },
     {
       "id": "guidance-community",
@@ -1738,6 +1942,55 @@ export const securityMapGraph = {
       "framework": "user-team-security"
     },
     {
+      "id": "guidance-seed-phrase-management",
+      "type": "guidance",
+      "title": "Seed phrase management",
+      "summary": "Offline backup, metal and split-share options, and the rule that suspected exposure means rotate immediately.",
+      "domains": [
+        "devices-identity",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "seed-phrase"
+      ],
+      "href": "/wallet-security/seed-phrase-management",
+      "framework": "wallet-security"
+    },
+    {
+      "id": "guidance-signing-verification",
+      "type": "guidance",
+      "title": "Signing and verification",
+      "summary": "Never sign blindly. Prefer the hardware screen and independently verified calldata over any web UI claim.",
+      "domains": [
+        "devices-identity",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "signing",
+        "verification"
+      ],
+      "href": "/wallet-security/signing-and-verification/signing-verification",
+      "framework": "wallet-security"
+    },
+    {
+      "id": "guidance-smart-contract-interaction",
+      "type": "guidance",
+      "title": "Smart contract interaction security",
+      "summary": "Verify the contract, simulate, and limit approvals before interacting. Most losses here are interaction mistakes, not stolen keys.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "approvals",
+        "simulation"
+      ],
+      "href": "/wallet-security/smart-contract-interaction-security",
+      "framework": "wallet-security"
+    },
+    {
       "id": "guidance-supply-chain-overview",
       "type": "guidance",
       "title": "Supply Chain Security",
@@ -1816,6 +2069,22 @@ export const securityMapGraph = {
       ],
       "href": "/opsec/travel/guide",
       "framework": "opsec"
+    },
+    {
+      "id": "guidance-wallet-security",
+      "type": "guidance",
+      "title": "Wallet Security",
+      "summary": "Custody models, hot versus cold tradeoffs, signing verification, seed custody, and safer contract interaction.",
+      "domains": [
+        "devices-identity",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "wallet"
+      ],
+      "href": "/wallet-security/overview",
+      "framework": "wallet-security"
     },
     {
       "id": "guidance-zero-trust",
@@ -2248,6 +2517,29 @@ export const securityMapGraph = {
       ]
     },
     {
+      "id": "surface-seed-custody",
+      "type": "attack-surface",
+      "title": "Seed custody",
+      "summary": "How the seed is written, stored, split, and retrieved. Digital copies and casual physical access both count as exposure.",
+      "domains": [
+        "devices-identity",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "seed-phrase",
+        "custody"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "recovery"
+      ],
+      "framework": "wallet-security"
+    },
+    {
       "id": "surface-signer-lifecycle",
       "type": "attack-surface",
       "title": "Signer onboarding and offboarding",
@@ -2267,6 +2559,70 @@ export const securityMapGraph = {
       "lifecycle": [
         "normal-operations"
       ]
+    },
+    {
+      "id": "surface-token-approvals",
+      "type": "attack-surface",
+      "title": "Token approvals",
+      "summary": "ERC-20 approve and permit grants that let a spender move tokens later. Unlimited allowance outlives the original swap.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "approvals",
+        "permit",
+        "erc20"
+      ],
+      "roles": [
+        "engineer-developer",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "wallet-security"
+    },
+    {
+      "id": "surface-transaction-signing",
+      "type": "attack-surface",
+      "title": "Transaction signing",
+      "summary": "The moment a wallet approves calldata. A hostile UI or unread payload turns a good key into an authorized drain.",
+      "domains": [
+        "devices-identity",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "signing",
+        "calldata"
+      ],
+      "roles": [
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "wallet-security"
+    },
+    {
+      "id": "threat-blind-signing",
+      "type": "threat",
+      "title": "Blind signing",
+      "summary": "The signer approves attacker-controlled calldata because a website, chat, or wallet UI was trusted instead of the raw transaction.",
+      "domains": [
+        "devices-identity",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "signing",
+        "phishing",
+        "calldata"
+      ],
+      "severity": "critical",
+      "severityBasis": "Default triage is critical because a valid signature spends funds without stealing the key. Impact scales with what the wallet can move.",
+      "framework": "wallet-security"
     },
     {
       "id": "threat-dprk-it-worker-infiltration",
@@ -2459,6 +2815,24 @@ export const securityMapGraph = {
       "framework": "opsec"
     },
     {
+      "id": "threat-seed-phrase-compromise",
+      "type": "threat",
+      "title": "Seed phrase compromise",
+      "summary": "The seed is photographed, typed into a connected device, stored in cloud notes, or read by someone with physical access.",
+      "domains": [
+        "devices-identity",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "seed-phrase",
+        "theft"
+      ],
+      "severity": "critical",
+      "severityBasis": "Default triage is critical because the seed reconstructs every derived key. Treat any suspected exposure as full compromise.",
+      "framework": "wallet-security"
+    },
+    {
       "id": "threat-smart-contract-exploits",
       "type": "threat",
       "title": "Smart contract exploits",
@@ -2521,6 +2895,23 @@ export const securityMapGraph = {
         "supply-chain-attacks"
       ],
       "framework": "supply-chain"
+    },
+    {
+      "id": "threat-unlimited-token-approval",
+      "type": "threat",
+      "title": "Unlimited token approval",
+      "summary": "A spender keeps uint256 allowance or a permit grant after the intended swap. A later exploit or hostile spender drains the wallet.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "approvals",
+        "permit"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because the drain does not need the key, but it is limited to the approved token and spender. Treat as critical when the spender is unaudited or the allowance is protocol-wide.",
+      "framework": "wallet-security"
     }
   ],
   "edges": [
@@ -2597,9 +2988,23 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "depends-on:component-multisig:component-hardware-wallet",
+      "source": "component-multisig",
+      "target": "component-hardware-wallet",
+      "type": "depends-on",
+      "status": "proposed"
+    },
+    {
       "id": "depends-on:component-multisig:component-signers",
       "source": "component-multisig",
       "target": "component-signers",
+      "type": "depends-on",
+      "status": "proposed"
+    },
+    {
+      "id": "depends-on:component-signers:component-hardware-wallet",
+      "source": "component-signers",
+      "target": "component-hardware-wallet",
       "type": "depends-on",
       "status": "proposed"
     },
@@ -2609,6 +3014,13 @@ export const securityMapGraph = {
       "target": "component-multisig",
       "type": "depends-on",
       "rationale": "Upgradeable contracts typically grant admin to a protocol multisig.",
+      "status": "proposed"
+    },
+    {
+      "id": "depends-on:component-software-wallet:component-frontend",
+      "source": "component-software-wallet",
+      "target": "component-frontend",
+      "type": "depends-on",
       "status": "proposed"
     },
     {
@@ -2647,6 +3059,27 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:asset-seed-secrets:guidance-seed-phrase-management",
+      "source": "asset-seed-secrets",
+      "target": "guidance-seed-phrase-management",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:component-hardware-wallet:guidance-cold-vs-hot",
+      "source": "component-hardware-wallet",
+      "target": "guidance-cold-vs-hot",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:component-software-wallet:guidance-wallet-security",
+      "source": "component-software-wallet",
+      "target": "guidance-wallet-security",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-branch-protection:guidance-devsecops",
       "source": "control-branch-protection",
       "target": "guidance-devsecops",
@@ -2657,6 +3090,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-cloud-hardening:guidance-cloud",
       "source": "control-cloud-hardening",
       "target": "guidance-cloud",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-cold-wallet-separation:guidance-cold-vs-hot",
+      "source": "control-cold-wallet-separation",
+      "target": "guidance-cold-vs-hot",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -2745,6 +3185,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-independent-tx-verification:guidance-signing-verification",
+      "source": "control-independent-tx-verification",
+      "target": "guidance-signing-verification",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-insider-threat-mitigation:guidance-insider-threat",
       "source": "control-insider-threat-mitigation",
       "target": "guidance-insider-threat",
@@ -2773,6 +3220,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-limited-token-approvals:guidance-smart-contract-interaction",
+      "source": "control-limited-token-approvals",
+      "target": "guidance-smart-contract-interaction",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-multisig-threshold-policy:guidance-multisig-overview",
       "source": "control-multisig-threshold-policy",
       "target": "guidance-multisig-overview",
@@ -2790,6 +3244,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-network-segmentation:guidance-zero-trust",
       "source": "control-network-segmentation",
       "target": "guidance-zero-trust",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-offline-seed-custody:guidance-seed-phrase-management",
+      "source": "control-offline-seed-custody",
+      "target": "guidance-seed-phrase-management",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -2857,6 +3318,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-signer-isolation:guidance-cold-vs-hot",
+      "source": "control-signer-isolation",
+      "target": "guidance-cold-vs-hot",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-signer-isolation:guidance-opsec",
       "source": "control-signer-isolation",
       "target": "guidance-opsec",
@@ -2867,6 +3335,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-signer-lifecycle:guidance-multisig-joining",
       "source": "control-signer-lifecycle",
       "target": "guidance-multisig-joining",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-simulate-before-sign:guidance-signing-verification",
+      "source": "control-simulate-before-sign",
+      "target": "guidance-signing-verification",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -2927,6 +3402,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-blind-signing:guidance-signing-verification",
+      "source": "threat-blind-signing",
+      "target": "guidance-signing-verification",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-dprk-it-worker-infiltration:guidance-dprk-playbook",
       "source": "threat-dprk-it-worker-infiltration",
       "target": "guidance-dprk-playbook",
@@ -2969,6 +3451,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-seed-phrase-compromise:guidance-seed-phrase-management",
+      "source": "threat-seed-phrase-compromise",
+      "target": "guidance-seed-phrase-management",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-smart-contract-exploits:guidance-external-security-reviews",
       "source": "threat-smart-contract-exploits",
       "target": "guidance-external-security-reviews",
@@ -2986,6 +3475,13 @@ export const securityMapGraph = {
       "id": "documented-by:threat-social-engineering:guidance-community",
       "source": "threat-social-engineering",
       "target": "guidance-community",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-unlimited-token-approval:guidance-smart-contract-interaction",
+      "source": "threat-unlimited-token-approval",
+      "target": "guidance-smart-contract-interaction",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -3046,6 +3542,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "exposes:component-hardware-wallet:surface-transaction-signing",
+      "source": "component-hardware-wallet",
+      "target": "surface-transaction-signing",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
       "id": "exposes:component-hiring-pipeline:surface-hiring-contractor-access",
       "source": "component-hiring-pipeline",
       "target": "surface-hiring-contractor-access",
@@ -3070,6 +3573,13 @@ export const securityMapGraph = {
       "id": "exposes:component-rpc-endpoints:surface-rpc-trust-boundary",
       "source": "component-rpc-endpoints",
       "target": "surface-rpc-trust-boundary",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-seed-backup:surface-seed-custody",
+      "source": "component-seed-backup",
+      "target": "surface-seed-custody",
       "type": "exposes",
       "status": "proposed"
     },
@@ -3102,6 +3612,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "exposes:component-software-wallet:surface-token-approvals",
+      "source": "component-software-wallet",
+      "target": "surface-token-approvals",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-software-wallet:surface-transaction-signing",
+      "source": "component-software-wallet",
+      "target": "surface-transaction-signing",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-branch-protection:threat-supply-chain-compromise",
       "source": "control-branch-protection",
       "target": "threat-supply-chain-compromise",
@@ -3112,6 +3636,13 @@ export const securityMapGraph = {
       "id": "mitigates:control-cloud-hardening:threat-infrastructure-compromise",
       "source": "control-cloud-hardening",
       "target": "threat-infrastructure-compromise",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-cold-wallet-separation:threat-blind-signing",
+      "source": "control-cold-wallet-separation",
+      "target": "threat-blind-signing",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -3165,6 +3696,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-independent-tx-verification:threat-blind-signing",
+      "source": "control-independent-tx-verification",
+      "target": "threat-blind-signing",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-independent-tx-verification:threat-governance-manipulation",
       "source": "control-independent-tx-verification",
       "target": "threat-governance-manipulation",
@@ -3214,6 +3752,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-limited-token-approvals:threat-unlimited-token-approval",
+      "source": "control-limited-token-approvals",
+      "target": "threat-unlimited-token-approval",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-multisig-threshold-policy:threat-duress-coercion",
       "source": "control-multisig-threshold-policy",
       "target": "threat-duress-coercion",
@@ -3231,6 +3776,20 @@ export const securityMapGraph = {
       "id": "mitigates:control-network-segmentation:threat-infrastructure-compromise",
       "source": "control-network-segmentation",
       "target": "threat-infrastructure-compromise",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-offline-seed-custody:threat-duress-coercion",
+      "source": "control-offline-seed-custody",
+      "target": "threat-duress-coercion",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-offline-seed-custody:threat-seed-phrase-compromise",
+      "source": "control-offline-seed-custody",
+      "target": "threat-seed-phrase-compromise",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -3284,6 +3843,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-signer-isolation:threat-blind-signing",
+      "source": "control-signer-isolation",
+      "target": "threat-blind-signing",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-signer-isolation:threat-leadership-phishing",
       "source": "control-signer-isolation",
       "target": "threat-leadership-phishing",
@@ -3301,6 +3867,13 @@ export const securityMapGraph = {
       "id": "mitigates:control-signer-lifecycle:threat-multisig-operational-failure",
       "source": "control-signer-lifecycle",
       "target": "threat-multisig-operational-failure",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-simulate-before-sign:threat-blind-signing",
+      "source": "control-simulate-before-sign",
+      "target": "threat-blind-signing",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -3326,6 +3899,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-cold-wallet-separation:asset-signer-keys",
+      "source": "control-cold-wallet-separation",
+      "target": "asset-signer-keys",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-cold-wallet-separation:component-hardware-wallet",
+      "source": "control-cold-wallet-separation",
+      "target": "component-hardware-wallet",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-external-security-review:component-smart-contracts",
       "source": "control-external-security-review",
       "target": "component-smart-contracts",
@@ -3347,6 +3934,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-independent-tx-verification:surface-transaction-signing",
+      "source": "control-independent-tx-verification",
+      "target": "surface-transaction-signing",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-isolated-reproducible-builds:asset-deployment-authority",
       "source": "control-isolated-reproducible-builds",
       "target": "asset-deployment-authority",
@@ -3354,9 +3948,30 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-limited-token-approvals:surface-token-approvals",
+      "source": "control-limited-token-approvals",
+      "target": "surface-token-approvals",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-multisig-threshold-policy:asset-treasury-funds",
       "source": "control-multisig-threshold-policy",
       "target": "asset-treasury-funds",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-offline-seed-custody:asset-seed-secrets",
+      "source": "control-offline-seed-custody",
+      "target": "asset-seed-secrets",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-offline-seed-custody:surface-seed-custody",
+      "source": "control-offline-seed-custody",
+      "target": "surface-seed-custody",
       "type": "protects",
       "status": "proposed"
     },
@@ -3378,6 +3993,20 @@ export const securityMapGraph = {
       "id": "protects:control-signer-isolation:asset-signer-keys",
       "source": "control-signer-isolation",
       "target": "asset-signer-keys",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-signer-isolation:component-hardware-wallet",
+      "source": "control-signer-isolation",
+      "target": "component-hardware-wallet",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-simulate-before-sign:surface-transaction-signing",
+      "source": "control-simulate-before-sign",
+      "target": "surface-transaction-signing",
       "type": "protects",
       "status": "proposed"
     },
@@ -3431,6 +4060,34 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-blind-signing:asset-signer-keys",
+      "source": "threat-blind-signing",
+      "target": "asset-signer-keys",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-blind-signing:asset-treasury-funds",
+      "source": "threat-blind-signing",
+      "target": "asset-treasury-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-blind-signing:asset-user-funds",
+      "source": "threat-blind-signing",
+      "target": "asset-user-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-blind-signing:surface-transaction-signing",
+      "source": "threat-blind-signing",
+      "target": "surface-transaction-signing",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-dprk-it-worker-infiltration:asset-secrets-credentials",
       "source": "threat-dprk-it-worker-infiltration",
       "target": "asset-secrets-credentials",
@@ -3452,6 +4109,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-duress-coercion:asset-seed-secrets",
+      "source": "threat-duress-coercion",
+      "target": "asset-seed-secrets",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-duress-coercion:asset-signer-keys",
       "source": "threat-duress-coercion",
       "target": "asset-signer-keys",
@@ -3462,6 +4126,13 @@ export const securityMapGraph = {
       "id": "targets:threat-duress-coercion:surface-physical-presence",
       "source": "threat-duress-coercion",
       "target": "surface-physical-presence",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-duress-coercion:surface-seed-custody",
+      "source": "threat-duress-coercion",
+      "target": "surface-seed-custody",
       "type": "targets",
       "status": "proposed"
     },
@@ -3606,6 +4277,27 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-seed-phrase-compromise:asset-seed-secrets",
+      "source": "threat-seed-phrase-compromise",
+      "target": "asset-seed-secrets",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-seed-phrase-compromise:asset-signer-keys",
+      "source": "threat-seed-phrase-compromise",
+      "target": "asset-signer-keys",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-seed-phrase-compromise:surface-seed-custody",
+      "source": "threat-seed-phrase-compromise",
+      "target": "surface-seed-custody",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-smart-contract-exploits:asset-treasury-funds",
       "source": "threat-smart-contract-exploits",
       "target": "asset-treasury-funds",
@@ -3679,6 +4371,20 @@ export const securityMapGraph = {
       "id": "targets:threat-supply-chain-compromise:surface-package-install",
       "source": "threat-supply-chain-compromise",
       "target": "surface-package-install",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-unlimited-token-approval:asset-user-funds",
+      "source": "threat-unlimited-token-approval",
+      "target": "asset-user-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-unlimited-token-approval:surface-token-approvals",
+      "source": "threat-unlimited-token-approval",
+      "target": "surface-token-approvals",
       "type": "targets",
       "status": "proposed"
     }
