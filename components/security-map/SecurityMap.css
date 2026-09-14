@@ -3,17 +3,17 @@
   --color-text-muted: #9ca3af;
   --color-text-primary: #e5e7eb;
   --color-text-strong: #ffffff;
-  --bg-card: #1c1c24;
+  --bg-card: rgba(255, 255, 255, 0.05);
   --border-card: rgba(255, 255, 255, 0.1);
-  --sm-asset: #7c9cff;
+  --sm-asset: #818cf8;
   --sm-component: #a5b4fc;
-  --sm-surface: #c084fc;
-  --sm-threat: #fb923c;
-  --sm-control: #34d399;
-  --sm-response: #22d3ee;
-  --sm-guidance: #93c5fd;
-  --sm-wire: rgba(165, 180, 252, 0.35);
-  --sm-col-bg: rgba(255, 255, 255, 0.03);
+  --sm-surface: #c4b5fd;
+  --sm-threat: #ef4444;
+  --sm-control: #10b981;
+  --sm-response: #f59e0b;
+  --sm-guidance: #4339db;
+  --sm-wire: rgba(67, 57, 219, 0.3);
+  --sm-col-bg: transparent;
   max-width: none;
   margin: 0;
   color: var(--color-text-primary);
@@ -22,19 +22,20 @@
 :root:not([data-vocs-theme="dark"]) .sm-wrap {
   --color-text-muted: #6b7280;
   --color-text-primary: #1f2937;
-  --color-text-strong: #111827;
-  --bg-card: #ffffff;
-  --border-card: rgba(15, 23, 42, 0.1);
-  --sm-asset: #3730a3;
-  --sm-component: #4338ca;
-  --sm-surface: #7e22ce;
-  --sm-threat: #c2410c;
-  --sm-control: #047857;
-  --sm-response: #0e7490;
-  --sm-guidance: #1d4ed8;
-  --sm-wire: rgba(67, 56, 202, 0.28);
-  --sm-col-bg: rgba(67, 57, 219, 0.04);
+  --color-text-strong: #202020;
+  --bg-card: rgba(0, 0, 0, 0.02);
+  --border-card: rgba(0, 0, 0, 0.08);
+  --sm-asset: #4339db;
+  --sm-component: #4339db;
+  --sm-surface: #4339db;
+  --sm-threat: #ef4444;
+  --sm-control: #10b981;
+  --sm-response: #f59e0b;
+  --sm-guidance: #4339db;
+  --sm-wire: rgba(67, 57, 219, 0.25);
+  --sm-col-bg: transparent;
 }
+
 
 .sm-wrap * {
   box-sizing: border-box;
@@ -55,22 +56,24 @@
   gap: 4px;
   padding: 8px 0 0;
 }
-
 .sm-view {
   border: 1px solid var(--border-card);
   background: transparent;
   color: var(--color-text-muted);
   font: inherit;
-  font-size: 0.78rem;
-  padding: 4px 10px;
-  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
 .sm-view.is-on {
   border-color: var(--color-primary);
-  color: var(--color-text-strong);
-  background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  color: #ffffff;
+  background: var(--color-primary);
 }
 
 .sm-view-summary {
@@ -109,16 +112,26 @@
   gap: 8px;
   margin-top: 8px;
 }
-
 .sm-btn {
   font: inherit;
-  font-size: 0.85rem;
-  padding: 6px 10px;
-  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 4px;
   border: 1px solid var(--border-card);
-  background: var(--bg-card);
-  color: var(--color-text-primary);
+  background: transparent;
+  color: var(--color-text-muted);
   cursor: pointer;
+}
+
+.sm-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:root:not([data-vocs-theme="dark"]) .sm-btn:hover {
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .sm-btn:focus-visible,
@@ -137,8 +150,8 @@
   min-height: 560px;
   max-height: 75vh;
   border: 1px solid var(--border-card);
-  border-radius: 12px;
-  background: var(--sm-col-bg);
+  border-radius: 8px;
+  background: var(--bg-card);
 }
 
 .sm-wires {
@@ -205,7 +218,6 @@
   flex-direction: column;
   gap: 6px;
 }
-
 .sm-field {
   display: flex;
   align-items: flex-start;
@@ -213,16 +225,20 @@
   gap: 6px;
   width: 100%;
   text-align: left;
-  padding: 8px;
-  border-radius: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
   border: 1px solid var(--border-card);
-  background: var(--bg-card);
+  background: transparent;
   color: var(--color-text-primary);
   cursor: pointer;
 }
 
+.sm-field:hover {
+  background: rgba(67, 57, 219, 0.04);
+}
+
 .sm-field-title {
-  font-size: 0.78rem;
+  font-size: 13px;
   font-weight: 600;
   line-height: 1.25;
 }
@@ -231,10 +247,10 @@
   flex: none;
   min-width: 1.35em;
   padding: 1px 5px;
-  border-radius: 999px;
-  background: #b91c1c;
+  border-radius: 50%;
+  background: #ef4444;
   color: #fff;
-  font-size: 0.68rem;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1.4;
   text-align: center;
@@ -249,8 +265,8 @@
 .sm-field-guidance { box-shadow: inset 3px 0 0 var(--sm-guidance); }
 
 .sm-field.is-focus {
-  border-color: var(--color-primary);
-  box-shadow: inset 3px 0 0 var(--color-primary), 0 0 0 1px var(--color-primary);
+  border-color: var(--color-text-strong);
+  background: rgba(67, 57, 219, 0.08);
 }
 
 .sm-field.is-near {
@@ -266,11 +282,11 @@
 }
 
 .sm-details {
-  margin-top: 12px;
-  border: 1px solid var(--border-card);
+  margin-top: 24px;
+  padding: 24px 28px;
   background: var(--bg-card);
-  border-radius: 12px;
-  padding: 14px;
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
 }
 
 .sm-details-head {
@@ -289,20 +305,25 @@
 }
 
 .sm-details h2 {
-  margin: 6px 0 8px;
-  font-size: 1.15rem;
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 700;
   color: var(--color-text-strong);
 }
 
 .sm-details h3 {
   margin: 14px 0 6px;
-  font-size: 0.78rem;
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
 }
 
 .sm-details p {
-  margin: 0 0 10px;
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
 }
 
 .sm-stats {
@@ -316,7 +337,7 @@
 
 .sm-stats li {
   border: 1px solid var(--border-card);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 8px;
 }
 
@@ -341,8 +362,7 @@
   margin: 0 0 4px;
 }
 
-.sm-rel button,
-.sm-page-link {
+.sm-rel button {
   font: inherit;
   padding: 0;
   border: 0;
@@ -350,12 +370,23 @@
   color: var(--color-primary);
   cursor: pointer;
   text-align: left;
+}
+
+.sm-page-link {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  padding: 8px 20px;
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  color: var(--color-primary);
   text-decoration: none;
 }
 
 .sm-page-link:hover {
-  text-decoration: underline;
+  background: rgba(67, 57, 219, 0.08);
 }
+
 
 
 .sm-assess {

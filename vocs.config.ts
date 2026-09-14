@@ -53,7 +53,14 @@ const config = {
         { text: 'Introduction to Frameworks', link: '/intro/introduction' },
         { text: 'How to Navigate the Website', link: '/intro/how-to-navigate-the-website' },
         { text: 'Overview of each Framework', link: '/intro/overview-of-each-framework' },
-        { text: 'Security Map', link: '/intro/attack-surface' },
+      ]
+    },
+    {
+      text: 'Interactive content',
+      collapsed: false,
+      items: [
+        { text: 'Attack Surface Overview', link: '/intro/attack-surface' },
+        { text: 'Security Map', link: '/intro/security-map' },
       ]
     },
     {

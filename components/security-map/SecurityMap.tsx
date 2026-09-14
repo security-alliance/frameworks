@@ -77,7 +77,8 @@ export function SecurityMap({ variant = "embedded" }: { variant?: "embedded" | "
         <header className="sm-full-bar">
           <a href="/">SEAL Frameworks</a>
           <strong>Security Map</strong>
-          <a href="/intro/attack-surface">Docs</a>
+          <a href="/intro/security-map">Docs</a>
+
         </header>
       ) : (
         <p className="sm-disclaimer">
