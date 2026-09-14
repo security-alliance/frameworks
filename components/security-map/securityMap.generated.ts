@@ -274,6 +274,30 @@ export const securityMapGraph = {
       ]
     },
     {
+      "id": "component-ai-agent",
+      "type": "component",
+      "title": "AI agent",
+      "summary": "A model that reads untrusted text and can call tools, write files, or construct transactions. Prompt templates do not bound what it does next.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ai",
+        "agent",
+        "llm"
+      ],
+      "roles": [
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "development",
+        "normal-operations"
+      ],
+      "framework": "ai-security"
+    },
+    {
       "id": "component-ci-cd",
       "type": "component",
       "title": "CI/CD pipeline",
@@ -760,6 +784,30 @@ export const securityMapGraph = {
       "framework": "devsecops"
     },
     {
+      "id": "control-bug-bounty-program",
+      "type": "control",
+      "title": "Bug bounty program",
+      "summary": "Pay independent researchers under clear scope, rewards, and triage capacity. Pair it with a durable security contact. This is not Safe Harbor for live exploits.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "bounty",
+        "disclosure"
+      ],
+      "roles": [
+        "security-engineer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "detective",
+      "assessmentEligible": true,
+      "framework": "vulnerability-disclosure"
+    },
+    {
       "id": "control-cloud-hardening",
       "type": "control",
       "title": "Cloud account hardening",
@@ -1082,6 +1130,57 @@ export const securityMapGraph = {
       "framework": "multisig-for-protocols"
     },
     {
+      "id": "control-ensip15-normalization",
+      "type": "control",
+      "title": "ENSIP-15 name normalization",
+      "summary": "Normalize names with ENSIP-15 before any namehash, and warn on confusable scripts. Homographs survive if the UI skips this.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ens",
+        "normalization",
+        "homograph"
+      ],
+      "roles": [
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "design",
+        "development"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "ens"
+    },
+    {
+      "id": "control-execution-path-enforcement",
+      "type": "control",
+      "title": "Execution-path enforcement",
+      "summary": "Allow, warn, or block where the agent is about to act. Monitoring after the fact is too late for irreversible tool calls and transactions.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ai",
+        "runtime",
+        "allowlist"
+      ],
+      "roles": [
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "ai-security"
+    },
+    {
       "id": "control-external-security-review",
       "type": "control",
       "title": "External security review",
@@ -1331,6 +1430,31 @@ export const securityMapGraph = {
       "framework": "devsecops"
     },
     {
+      "id": "control-l1-ens-resolution",
+      "type": "control",
+      "title": "L1-backed ENS resolution",
+      "summary": "For fund movement, resolve from Ethereum L1, not a stale indexer. Verify reverse records with a matching forward lookup before the send.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ens",
+        "l1",
+        "reverse-record"
+      ],
+      "roles": [
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "ens"
+    },
+    {
       "id": "control-least-privilege-review",
       "type": "control",
       "title": "Least privilege and privileged-access review",
@@ -1378,6 +1502,33 @@ export const securityMapGraph = {
       "controlClass": "preventive",
       "assessmentEligible": true,
       "framework": "wallet-security"
+    },
+    {
+      "id": "control-living-threat-model",
+      "type": "control",
+      "title": "Living threat model",
+      "summary": "Name assets, threats, and mitigations before build, then update the model when architecture or value at risk changes. A one-time workshop is not this control.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "threat-model",
+        "stride"
+      ],
+      "roles": [
+        "engineer-developer",
+        "security-engineer"
+      ],
+      "lifecycle": [
+        "design",
+        "development",
+        "upgrade"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "threat-modeling"
     },
     {
       "id": "control-multi-channel-transfer-confirm",
@@ -1504,6 +1655,29 @@ export const securityMapGraph = {
       "framework": "monitoring"
     },
     {
+      "id": "control-peer-code-review",
+      "type": "control",
+      "title": "Peer code review",
+      "summary": "Required human review of production changes, with a checklist that covers authz, input handling, and irreversible Web3 paths. Branch rules without actual review are theater.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "review",
+        "sdlc"
+      ],
+      "roles": [
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "development"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "secure-software-development"
+    },
+    {
       "id": "control-phishing-resistant-mfa",
       "type": "control",
       "title": "Phishing-resistant multi-factor authentication",
@@ -1531,6 +1705,30 @@ export const securityMapGraph = {
       "framework": "iam"
     },
     {
+      "id": "control-prompt-input-constraint",
+      "type": "control",
+      "title": "Prompt input constraint",
+      "summary": "Classify and constrain model inputs at the execution boundary. Do not rely on boilerplate system prompts. Treat on-chain data and retrieved documents as untrusted.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ai",
+        "prompt-injection"
+      ],
+      "roles": [
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "design",
+        "development"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "ai-security"
+    },
+    {
       "id": "control-published-recovery-address",
       "type": "control",
       "title": "Published recovery address",
@@ -1556,6 +1754,30 @@ export const securityMapGraph = {
       "controlClass": "recovery",
       "assessmentEligible": true,
       "framework": "safe-harbor"
+    },
+    {
+      "id": "control-published-security-contact",
+      "type": "control",
+      "title": "Published security contact",
+      "summary": "SECURITY.md, a monitored security mailbox, and .well-known/security.txt. Someone skilled acknowledges reports quickly and keeps them confidential until a fix ships.",
+      "domains": [
+        "development-supply-chain",
+        "detection-incident-response"
+      ],
+      "status": "proposed",
+      "tags": [
+        "security.txt",
+        "contact"
+      ],
+      "roles": [
+        "security-engineer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "detective",
+      "assessmentEligible": true,
+      "framework": "vulnerability-disclosure"
     },
     {
       "id": "control-registrar-hardening",
@@ -1920,6 +2142,39 @@ export const securityMapGraph = {
       "framework": "treasury-operations"
     },
     {
+      "id": "guidance-account-management",
+      "type": "guidance",
+      "title": "Account management guides",
+      "summary": "High-value SaaS and community accounts need strong MFA, session hygiene, least privilege, and admin separation.",
+      "domains": [
+        "devices-identity",
+        "community-communications"
+      ],
+      "status": "proposed",
+      "tags": [
+        "accounts",
+        "mfa"
+      ],
+      "href": "/guides/account-management/overview",
+      "framework": "guides"
+    },
+    {
+      "id": "guidance-ai-security",
+      "type": "guidance",
+      "title": "AI Security",
+      "summary": "Agentic AI turns instruction-following into irreversible actions. Prefer runtime execution-path controls and isolation over prompt templates alone.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ai"
+      ],
+      "href": "/ai-security/overview",
+      "framework": "ai-security"
+    },
+    {
       "id": "guidance-awareness",
       "type": "guidance",
       "title": "Awareness",
@@ -1933,6 +2188,22 @@ export const securityMapGraph = {
       ],
       "href": "/awareness/overview",
       "framework": "awareness"
+    },
+    {
+      "id": "guidance-bug-bounties",
+      "type": "guidance",
+      "title": "Bug bounties",
+      "summary": "Bug bounties work when scope, rewards, and triage capacity match the asset risk, and researchers can report under explicit safe harbor and disclosure rules.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "bounty"
+      ],
+      "href": "/vulnerability-disclosure/bug-bounties",
+      "framework": "vulnerability-disclosure"
     },
     {
       "id": "guidance-cicd",
@@ -1980,6 +2251,21 @@ export const securityMapGraph = {
       ],
       "href": "/encryption/cloud-data-encryption",
       "framework": "encryption"
+    },
+    {
+      "id": "guidance-code-reviews",
+      "type": "guidance",
+      "title": "Code reviews and peer audits",
+      "summary": "Review cadence, checklists, automation assist, and a culture that treats unreviewed production merges as a defect.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "review"
+      ],
+      "href": "/secure-software-development/code-reviews-peer-audits",
+      "framework": "secure-software-development"
     },
     {
       "id": "guidance-code-signing",
@@ -2057,6 +2343,22 @@ export const securityMapGraph = {
       ],
       "href": "/governance/council-best-practices",
       "framework": "governance"
+    },
+    {
+      "id": "guidance-create-maintain-threat-models",
+      "type": "guidance",
+      "title": "Create and maintain threat models",
+      "summary": "A useful threat model is a maintained artifact. Redefine scope and mitigations when architecture or value at risk changes.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "threat-model",
+        "maintenance"
+      ],
+      "href": "/threat-modeling/create-maintain-threat-models",
+      "framework": "threat-modeling"
     },
     {
       "id": "guidance-dependency-runbook",
@@ -2407,6 +2709,70 @@ export const securityMapGraph = {
       "framework": "encryption"
     },
     {
+      "id": "guidance-ens",
+      "type": "guidance",
+      "title": "ENS best practices",
+      "summary": "Secure ENS use means fresh L1-backed resolution for funds moves, correct name normalization, and verified bidirectional records.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ens"
+      ],
+      "href": "/ens/overview",
+      "framework": "ens"
+    },
+    {
+      "id": "guidance-ens-integrity",
+      "type": "guidance",
+      "title": "ENS data integrity",
+      "summary": "For fund movement, resolve from Ethereum L1 and always verify reverse records with a matching forward lookup.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ens",
+        "integrity"
+      ],
+      "href": "/ens/data-integrity-verification",
+      "framework": "ens"
+    },
+    {
+      "id": "guidance-ens-normalization",
+      "type": "guidance",
+      "title": "ENS name handling",
+      "summary": "Normalize with ENSIP-15 before any namehash, and warn on confusable scripts that enable homograph phishing.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ens",
+        "normalization"
+      ],
+      "href": "/ens/name-handling-normalization",
+      "framework": "ens"
+    },
+    {
+      "id": "guidance-execution-path",
+      "type": "guidance",
+      "title": "Execution-path enforcement",
+      "summary": "Enforce allow, warn, or block where the agent is about to act. Monitoring after the fact is too late for irreversible actions.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ai",
+        "runtime"
+      ],
+      "href": "/ai-security/execution-path-enforcement",
+      "framework": "ai-security"
+    },
+    {
       "id": "guidance-exploit-runbook",
       "type": "guidance",
       "title": "Smart contract exploit runbook",
@@ -2485,6 +2851,23 @@ export const securityMapGraph = {
       "framework": "governance"
     },
     {
+      "id": "guidance-guides",
+      "type": "guidance",
+      "title": "Guides",
+      "summary": "Product-specific checklists for account management and endpoint controls. Follow the steps for each tool, then review settings when vendors change defaults.",
+      "domains": [
+        "devices-identity",
+        "community-communications"
+      ],
+      "status": "proposed",
+      "tags": [
+        "guides",
+        "checklists"
+      ],
+      "href": "/guides/overview",
+      "framework": "guides"
+    },
+    {
       "id": "guidance-hardware-encryption",
       "type": "guidance",
       "title": "Hardware encryption",
@@ -2502,6 +2885,23 @@ export const securityMapGraph = {
       "framework": "encryption"
     },
     {
+      "id": "guidance-hardware-security-keys",
+      "type": "guidance",
+      "title": "Hardware security keys",
+      "summary": "Use FIDO2/WebAuthn keys on high-value accounts, register at least two keys, disable SMS fallback where possible, and test recovery before you need it.",
+      "domains": [
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "fido2",
+        "webauthn",
+        "mfa"
+      ],
+      "href": "/guides/endpoint-security/hardware-security-keys",
+      "framework": "guides"
+    },
+    {
       "id": "guidance-iam",
       "type": "guidance",
       "title": "Identity and access management",
@@ -2515,6 +2915,23 @@ export const securityMapGraph = {
       ],
       "href": "/iam/overview",
       "framework": "iam"
+    },
+    {
+      "id": "guidance-identify-mitigate-threats",
+      "type": "guidance",
+      "title": "Identify and mitigate threats",
+      "summary": "STRIDE-oriented enumeration, attack surface analysis, and mitigation patterns for the system under review.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "stride",
+        "mitigation"
+      ],
+      "href": "/threat-modeling/identity-mitigate-threats",
+      "framework": "threat-modeling"
     },
     {
       "id": "guidance-incident-playbooks",
@@ -2786,6 +3203,22 @@ export const securityMapGraph = {
       "framework": "privacy"
     },
     {
+      "id": "guidance-prompt-injection",
+      "type": "guidance",
+      "title": "Prompt injection defenses",
+      "summary": "Prompt injection succeeds because models treat text as instructions. Constrain and classify inputs at the execution boundary.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ai",
+        "prompt-injection"
+      ],
+      "href": "/ai-security/prompt-injection-defenses",
+      "framework": "ai-security"
+    },
+    {
       "id": "guidance-public-networks",
       "type": "guidance",
       "title": "Attack surfaces on public networks",
@@ -2888,6 +3321,54 @@ export const securityMapGraph = {
       "framework": "privacy"
     },
     {
+      "id": "guidance-secure-coding",
+      "type": "guidance",
+      "title": "Secure coding standards",
+      "summary": "Input validation, encoding, authz checks, error handling, least privilege in code, and secure data handling.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "coding",
+        "standards"
+      ],
+      "href": "/secure-software-development/secure-coding-standards-guidelines",
+      "framework": "secure-software-development"
+    },
+    {
+      "id": "guidance-secure-repos",
+      "type": "guidance",
+      "title": "Secure code repositories",
+      "summary": "Repository compromise is supply-chain compromise. Enforce least privilege, strong authentication, protected branches, and review-required merges.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "github",
+        "branch-protection"
+      ],
+      "href": "/secure-software-development/secure-code-repositories-version-control",
+      "framework": "secure-software-development"
+    },
+    {
+      "id": "guidance-security-contact",
+      "type": "guidance",
+      "title": "Security contact",
+      "summary": "A security contact is useless unless someone skilled monitors it, acknowledges reports quickly, and keeps findings confidential until fixes ship.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "contact",
+        "security.txt"
+      ],
+      "href": "/vulnerability-disclosure/security-contact",
+      "framework": "vulnerability-disclosure"
+    },
+    {
       "id": "guidance-security-culture",
       "type": "guidance",
       "title": "Security-aware culture",
@@ -2984,6 +3465,37 @@ export const securityMapGraph = {
       "framework": "wallet-security"
     },
     {
+      "id": "guidance-ssdlc",
+      "type": "guidance",
+      "title": "Secure software development",
+      "summary": "Security in the SDLC is continuous: design, code, review, and repository controls. It is not a final gate before ship.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "sdlc"
+      ],
+      "href": "/secure-software-development/overview",
+      "framework": "secure-software-development"
+    },
+    {
+      "id": "guidance-ssdlc-threat-design",
+      "type": "guidance",
+      "title": "Threat modeling and secure design",
+      "summary": "Threat modeling before build chooses which controls matter. Secure design principles keep residual risk from depending on a single check.",
+      "domains": [
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "threat-model",
+        "design"
+      ],
+      "href": "/secure-software-development/threat-modeling-secure-design-principles",
+      "framework": "secure-software-development"
+    },
+    {
       "id": "guidance-supply-chain-overview",
       "type": "guidance",
       "title": "Supply Chain Security",
@@ -3031,6 +3543,22 @@ export const securityMapGraph = {
       ],
       "href": "/security-automation/threat-detection-response",
       "framework": "security-automation"
+    },
+    {
+      "id": "guidance-threat-modeling",
+      "type": "guidance",
+      "title": "Threat modeling",
+      "summary": "A structured way to decide which abuses matter before they happen. Name assets, threats, and mitigations, then keep the model current as the system changes.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "threat-model"
+      ],
+      "href": "/threat-modeling/overview",
+      "framework": "threat-modeling"
     },
     {
       "id": "guidance-threat-vectors",
@@ -3155,6 +3683,22 @@ export const securityMapGraph = {
       ],
       "href": "/privacy/vpns/overview",
       "framework": "privacy"
+    },
+    {
+      "id": "guidance-vulnerability-disclosure",
+      "type": "guidance",
+      "title": "Vulnerability disclosure",
+      "summary": "Make fixed issues public on a deliberate timeline. Before that, teams need inbound reporting paths, triage, and a plan when quiet disclosure is no longer safe.",
+      "domains": [
+        "development-supply-chain",
+        "detection-incident-response"
+      ],
+      "status": "proposed",
+      "tags": [
+        "disclosure"
+      ],
+      "href": "/vulnerability-disclosure/overview",
+      "framework": "vulnerability-disclosure"
     },
     {
       "id": "guidance-wallet-security",
@@ -3369,6 +3913,30 @@ export const securityMapGraph = {
         "incident-response"
       ],
       "framework": "safe-harbor"
+    },
+    {
+      "id": "surface-agent-tool-path",
+      "type": "attack-surface",
+      "title": "Agent tool path",
+      "summary": "The moment an agent is about to call a tool, write a file, or build a transaction. After-the-fact monitoring is too late if the action is irreversible.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ai",
+        "tools",
+        "runtime"
+      ],
+      "roles": [
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "development",
+        "normal-operations"
+      ],
+      "framework": "ai-security"
     },
     {
       "id": "surface-ci-cd-secrets",
@@ -3593,6 +4161,27 @@ export const securityMapGraph = {
         "normal-operations"
       ],
       "framework": "encryption"
+    },
+    {
+      "id": "surface-ens-resolution",
+      "type": "attack-surface",
+      "title": "ENS name resolution",
+      "summary": "Turning a human-readable name into an address before a send. Stale indexers, skipped reverse checks, and confusable scripts all produce a valid-looking wrong destination.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ens",
+        "resolution"
+      ],
+      "roles": [
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "ens"
     },
     {
       "id": "surface-executive-communications",
@@ -3842,6 +4431,29 @@ export const securityMapGraph = {
         "normal-operations"
       ],
       "framework": "privacy"
+    },
+    {
+      "id": "surface-researcher-inbound",
+      "type": "attack-surface",
+      "title": "Researcher inbound path",
+      "summary": "How an external researcher reaches the team with a vulnerability. Public issues, social DMs, or a dead mailbox all leak the finding before a fix exists.",
+      "domains": [
+        "development-supply-chain",
+        "detection-incident-response"
+      ],
+      "status": "proposed",
+      "tags": [
+        "disclosure",
+        "contact"
+      ],
+      "roles": [
+        "security-engineer",
+        "engineer-developer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "vulnerability-disclosure"
     },
     {
       "id": "surface-rpc-trust-boundary",
@@ -4267,6 +4879,24 @@ export const securityMapGraph = {
       "framework": "encryption"
     },
     {
+      "id": "threat-prompt-injection",
+      "type": "threat",
+      "title": "Prompt injection",
+      "summary": "Untrusted text, including on-chain data or retrieved documents, is treated as instructions. The agent then leaks secrets or takes an action the operator did not intend.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ai",
+        "prompt-injection"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because injection rides the model's instruction-following. Blast radius is whatever the agent can sign, send, or read. Prompt templates are not a control.",
+      "framework": "ai-security"
+    },
+    {
       "id": "threat-seed-phrase-compromise",
       "type": "threat",
       "title": "Seed phrase compromise",
@@ -4346,6 +4976,42 @@ export const securityMapGraph = {
       "framework": "awareness"
     },
     {
+      "id": "threat-spoofed-ens-resolution",
+      "type": "threat",
+      "title": "Spoofed ENS resolution",
+      "summary": "The UI shows a trusted name while the resolved address is attacker-controlled, from a stale indexer, a reverse record that does not loop, or a homograph.",
+      "domains": [
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "ens",
+        "homograph",
+        "spoofing"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because the send is valid and irreversible. The bug is in resolution, not in the signature.",
+      "framework": "ens"
+    },
+    {
+      "id": "threat-stale-threat-model",
+      "type": "threat",
+      "title": "Stale threat model",
+      "summary": "Architecture or value at risk changed and the model did not. New trust boundaries, admin paths, or bridges ship without named abuses or owners.",
+      "domains": [
+        "development-supply-chain",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "threat-model",
+        "design"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because Web3 design misses become irreversible production loss. The failure is skipped analysis, not a missing scanner.",
+      "framework": "threat-modeling"
+    },
+    {
       "id": "threat-supply-chain-compromise",
       "type": "threat",
       "title": "Supply chain attacks",
@@ -4365,6 +5031,24 @@ export const securityMapGraph = {
         "supply-chain-attacks"
       ],
       "framework": "supply-chain"
+    },
+    {
+      "id": "threat-uncontactable-disclosure",
+      "type": "threat",
+      "title": "Uncontactable disclosure",
+      "summary": "A researcher finds a bug and cannot reach a monitored security contact. The report goes public, gets sold, or sits unread while the bug stays live.",
+      "domains": [
+        "development-supply-chain",
+        "detection-incident-response"
+      ],
+      "status": "proposed",
+      "tags": [
+        "disclosure",
+        "contact"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because inbound silence turns a fixable finding into an uncoordinated release. A bounty platform does not replace a monitored contact.",
+      "framework": "vulnerability-disclosure"
     },
     {
       "id": "threat-unlimited-token-approval",
@@ -4440,6 +5124,13 @@ export const securityMapGraph = {
       "source": "component-multisig",
       "target": "component-signers",
       "type": "contains",
+      "status": "proposed"
+    },
+    {
+      "id": "depends-on:component-ai-agent:component-developer-devices",
+      "source": "component-ai-agent",
+      "target": "component-developer-devices",
+      "type": "depends-on",
       "status": "proposed"
     },
     {
@@ -4584,6 +5275,27 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:component-ai-agent:guidance-ai-security",
+      "source": "component-ai-agent",
+      "target": "guidance-ai-security",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:component-ci-cd:guidance-secure-repos",
+      "source": "component-ci-cd",
+      "target": "guidance-secure-repos",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:component-community-channels:guidance-account-management",
+      "source": "component-community-channels",
+      "target": "guidance-account-management",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:component-community-channels:guidance-encrypted-communication",
       "source": "component-community-channels",
       "target": "guidance-encrypted-communication",
@@ -4612,6 +5324,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:component-frontend:guidance-ens",
+      "source": "component-frontend",
+      "target": "guidance-ens",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:component-governance-module:guidance-safe-harbor-adoption",
       "source": "component-governance-module",
       "target": "guidance-safe-harbor-adoption",
@@ -4633,6 +5352,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:component-identity-accounts:guidance-account-management",
+      "source": "component-identity-accounts",
+      "target": "guidance-account-management",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:component-identity-accounts:guidance-guides",
+      "source": "component-identity-accounts",
+      "target": "guidance-guides",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:component-multisig:guidance-safe-harbor-scope",
       "source": "component-multisig",
       "target": "guidance-safe-harbor-scope",
@@ -4650,6 +5383,20 @@ export const securityMapGraph = {
       "id": "documented-by:control-branch-protection:guidance-devsecops",
       "source": "control-branch-protection",
       "target": "guidance-devsecops",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-branch-protection:guidance-secure-repos",
+      "source": "control-branch-protection",
+      "target": "guidance-secure-repos",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-bug-bounty-program:guidance-bug-bounties",
+      "source": "control-bug-bounty-program",
+      "target": "guidance-bug-bounties",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4801,9 +5548,37 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-ensip15-normalization:guidance-ens-normalization",
+      "source": "control-ensip15-normalization",
+      "target": "guidance-ens-normalization",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-execution-path-enforcement:guidance-execution-path",
+      "source": "control-execution-path-enforcement",
+      "target": "guidance-execution-path",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-external-security-review:guidance-bug-bounties",
+      "source": "control-external-security-review",
+      "target": "guidance-bug-bounties",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-external-security-review:guidance-external-security-reviews",
       "source": "control-external-security-review",
       "target": "guidance-external-security-reviews",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-external-security-review:guidance-ssdlc",
+      "source": "control-external-security-review",
+      "target": "guidance-ssdlc",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4920,6 +5695,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-l1-ens-resolution:guidance-ens-integrity",
+      "source": "control-l1-ens-resolution",
+      "target": "guidance-ens-integrity",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-least-privilege-review:guidance-dprk-mitigation",
       "source": "control-least-privilege-review",
       "target": "guidance-dprk-mitigation",
@@ -4937,6 +5719,34 @@ export const securityMapGraph = {
       "id": "documented-by:control-limited-token-approvals:guidance-smart-contract-interaction",
       "source": "control-limited-token-approvals",
       "target": "guidance-smart-contract-interaction",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-living-threat-model:guidance-create-maintain-threat-models",
+      "source": "control-living-threat-model",
+      "target": "guidance-create-maintain-threat-models",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-living-threat-model:guidance-identify-mitigate-threats",
+      "source": "control-living-threat-model",
+      "target": "guidance-identify-mitigate-threats",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-living-threat-model:guidance-ssdlc-threat-design",
+      "source": "control-living-threat-model",
+      "target": "guidance-ssdlc-threat-design",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-living-threat-model:guidance-threat-modeling",
+      "source": "control-living-threat-model",
+      "target": "guidance-threat-modeling",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4990,6 +5800,27 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-peer-code-review:guidance-code-reviews",
+      "source": "control-peer-code-review",
+      "target": "guidance-code-reviews",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-phishing-resistant-mfa:guidance-account-management",
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-account-management",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-phishing-resistant-mfa:guidance-hardware-security-keys",
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-hardware-security-keys",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-phishing-resistant-mfa:guidance-iam",
       "source": "control-phishing-resistant-mfa",
       "target": "guidance-iam",
@@ -5011,9 +5842,30 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-prompt-input-constraint:guidance-prompt-injection",
+      "source": "control-prompt-input-constraint",
+      "target": "guidance-prompt-injection",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-published-recovery-address:guidance-safe-harbor-scope",
       "source": "control-published-recovery-address",
       "target": "guidance-safe-harbor-scope",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-published-security-contact:guidance-safe-harbor-scope",
+      "source": "control-published-security-contact",
+      "target": "guidance-safe-harbor-scope",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-published-security-contact:guidance-security-contact",
+      "source": "control-published-security-contact",
+      "target": "guidance-security-contact",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -5046,9 +5898,30 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-safe-harbor-adoption:guidance-vulnerability-disclosure",
+      "source": "control-safe-harbor-adoption",
+      "target": "guidance-vulnerability-disclosure",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-secure-sdlc-testing:guidance-secure-coding",
+      "source": "control-secure-sdlc-testing",
+      "target": "guidance-secure-coding",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-secure-sdlc-testing:guidance-security-testing",
       "source": "control-secure-sdlc-testing",
       "target": "guidance-security-testing",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-secure-sdlc-testing:guidance-ssdlc",
+      "source": "control-secure-sdlc-testing",
+      "target": "guidance-ssdlc",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -5091,6 +5964,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-signer-lifecycle:guidance-multisig-joining",
       "source": "control-signer-lifecycle",
       "target": "guidance-multisig-joining",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-simulate-before-sign:guidance-ens-integrity",
+      "source": "control-simulate-before-sign",
+      "target": "guidance-ens-integrity",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -5389,6 +6269,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-prompt-injection:guidance-prompt-injection",
+      "source": "threat-prompt-injection",
+      "target": "guidance-prompt-injection",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-seed-phrase-compromise:guidance-seed-phrase-management",
       "source": "threat-seed-phrase-compromise",
       "target": "guidance-seed-phrase-management",
@@ -5424,6 +6311,27 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-spoofed-ens-resolution:guidance-ens-integrity",
+      "source": "threat-spoofed-ens-resolution",
+      "target": "guidance-ens-integrity",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-stale-threat-model:guidance-create-maintain-threat-models",
+      "source": "threat-stale-threat-model",
+      "target": "guidance-create-maintain-threat-models",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-uncontactable-disclosure:guidance-vulnerability-disclosure",
+      "source": "threat-uncontactable-disclosure",
+      "target": "guidance-vulnerability-disclosure",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-unlimited-token-approval:guidance-smart-contract-interaction",
       "source": "threat-unlimited-token-approval",
       "target": "guidance-smart-contract-interaction",
@@ -5435,6 +6343,13 @@ export const securityMapGraph = {
       "source": "threat-whitehat-legal-freeze",
       "target": "guidance-safe-harbor",
       "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-ai-agent:surface-agent-tool-path",
+      "source": "component-ai-agent",
+      "target": "surface-agent-tool-path",
+      "type": "exposes",
       "status": "proposed"
     },
     {
@@ -5550,6 +6465,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "exposes:component-frontend:surface-ens-resolution",
+      "source": "component-frontend",
+      "target": "surface-ens-resolution",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
       "id": "exposes:component-frontend:surface-frontend-deployment",
       "source": "component-frontend",
       "target": "surface-frontend-deployment",
@@ -5595,6 +6517,13 @@ export const securityMapGraph = {
       "id": "exposes:component-multisig:surface-multisig-signing-workflow",
       "source": "component-multisig",
       "target": "surface-multisig-signing-workflow",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-rpc-endpoints:surface-ens-resolution",
+      "source": "component-rpc-endpoints",
+      "target": "surface-ens-resolution",
       "type": "exposes",
       "status": "proposed"
     },
@@ -5648,6 +6577,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "exposes:component-smart-contracts:surface-researcher-inbound",
+      "source": "component-smart-contracts",
+      "target": "surface-researcher-inbound",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
       "id": "exposes:component-software-wallet:surface-token-approvals",
       "source": "component-software-wallet",
       "target": "surface-token-approvals",
@@ -5665,6 +6601,13 @@ export const securityMapGraph = {
       "id": "mitigates:control-branch-protection:threat-supply-chain-compromise",
       "source": "control-branch-protection",
       "target": "threat-supply-chain-compromise",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-bug-bounty-program:threat-uncontactable-disclosure",
+      "source": "control-bug-bounty-program",
+      "target": "threat-uncontactable-disclosure",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -5767,6 +6710,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-ensip15-normalization:threat-spoofed-ens-resolution",
+      "source": "control-ensip15-normalization",
+      "target": "threat-spoofed-ens-resolution",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-execution-path-enforcement:threat-prompt-injection",
+      "source": "control-execution-path-enforcement",
+      "target": "threat-prompt-injection",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-external-security-review:threat-smart-contract-exploits",
       "source": "control-external-security-review",
       "target": "threat-smart-contract-exploits",
@@ -5865,6 +6822,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-l1-ens-resolution:threat-misdirected-transfer",
+      "source": "control-l1-ens-resolution",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-l1-ens-resolution:threat-spoofed-ens-resolution",
+      "source": "control-l1-ens-resolution",
+      "target": "threat-spoofed-ens-resolution",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-least-privilege-review:threat-dprk-it-worker-infiltration",
       "source": "control-least-privilege-review",
       "target": "threat-dprk-it-worker-infiltration",
@@ -5882,6 +6853,20 @@ export const securityMapGraph = {
       "id": "mitigates:control-limited-token-approvals:threat-unlimited-token-approval",
       "source": "control-limited-token-approvals",
       "target": "threat-unlimited-token-approval",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-living-threat-model:threat-smart-contract-exploits",
+      "source": "control-living-threat-model",
+      "target": "threat-smart-contract-exploits",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-living-threat-model:threat-stale-threat-model",
+      "source": "control-living-threat-model",
+      "target": "threat-stale-threat-model",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -5928,6 +6913,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-peer-code-review:threat-smart-contract-exploits",
+      "source": "control-peer-code-review",
+      "target": "threat-smart-contract-exploits",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-peer-code-review:threat-supply-chain-compromise",
+      "source": "control-peer-code-review",
+      "target": "threat-supply-chain-compromise",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-phishing-resistant-mfa:threat-custody-access-abuse",
       "source": "control-phishing-resistant-mfa",
       "target": "threat-custody-access-abuse",
@@ -5949,9 +6948,23 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-prompt-input-constraint:threat-prompt-injection",
+      "source": "control-prompt-input-constraint",
+      "target": "threat-prompt-injection",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-published-recovery-address:threat-whitehat-legal-freeze",
       "source": "control-published-recovery-address",
       "target": "threat-whitehat-legal-freeze",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-published-security-contact:threat-uncontactable-disclosure",
+      "source": "control-published-security-contact",
+      "target": "threat-uncontactable-disclosure",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -6040,6 +7053,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-simulate-before-sign:threat-spoofed-ens-resolution",
+      "source": "control-simulate-before-sign",
+      "target": "threat-spoofed-ens-resolution",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-test-transfer:threat-misdirected-transfer",
       "source": "control-test-transfer",
       "target": "threat-misdirected-transfer",
@@ -6099,6 +7119,13 @@ export const securityMapGraph = {
       "id": "protects:control-branch-protection:asset-source-code",
       "source": "control-branch-protection",
       "target": "asset-source-code",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-bug-bounty-program:asset-user-funds",
+      "source": "control-bug-bounty-program",
+      "target": "asset-user-funds",
       "type": "protects",
       "status": "proposed"
     },
@@ -6183,6 +7210,20 @@ export const securityMapGraph = {
       "id": "protects:control-duress-signing-limits:surface-transaction-signing",
       "source": "control-duress-signing-limits",
       "target": "surface-transaction-signing",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-ensip15-normalization:surface-ens-resolution",
+      "source": "control-ensip15-normalization",
+      "target": "surface-ens-resolution",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-execution-path-enforcement:surface-agent-tool-path",
+      "source": "control-execution-path-enforcement",
+      "target": "surface-agent-tool-path",
       "type": "protects",
       "status": "proposed"
     },
@@ -6292,9 +7333,30 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-l1-ens-resolution:asset-user-funds",
+      "source": "control-l1-ens-resolution",
+      "target": "asset-user-funds",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-l1-ens-resolution:surface-ens-resolution",
+      "source": "control-l1-ens-resolution",
+      "target": "surface-ens-resolution",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-limited-token-approvals:surface-token-approvals",
       "source": "control-limited-token-approvals",
       "target": "surface-token-approvals",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-living-threat-model:asset-source-code",
+      "source": "control-living-threat-model",
+      "target": "asset-source-code",
       "type": "protects",
       "status": "proposed"
     },
@@ -6327,6 +7389,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-peer-code-review:asset-source-code",
+      "source": "control-peer-code-review",
+      "target": "asset-source-code",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-phishing-resistant-mfa:component-identity-accounts",
       "source": "control-phishing-resistant-mfa",
       "target": "component-identity-accounts",
@@ -6341,6 +7410,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-prompt-input-constraint:component-ai-agent",
+      "source": "control-prompt-input-constraint",
+      "target": "component-ai-agent",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-published-recovery-address:asset-user-funds",
       "source": "control-published-recovery-address",
       "target": "asset-user-funds",
@@ -6351,6 +7427,13 @@ export const securityMapGraph = {
       "id": "protects:control-published-recovery-address:component-multisig",
       "source": "control-published-recovery-address",
       "target": "component-multisig",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-published-security-contact:surface-researcher-inbound",
+      "source": "control-published-security-contact",
+      "target": "surface-researcher-inbound",
       "type": "protects",
       "status": "proposed"
     },
@@ -6740,6 +7823,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-misdirected-transfer:surface-ens-resolution",
+      "source": "threat-misdirected-transfer",
+      "target": "surface-ens-resolution",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-misdirected-transfer:surface-large-transfer",
       "source": "threat-misdirected-transfer",
       "target": "surface-large-transfer",
@@ -6859,6 +7949,27 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-prompt-injection:asset-secrets-credentials",
+      "source": "threat-prompt-injection",
+      "target": "asset-secrets-credentials",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-prompt-injection:asset-user-funds",
+      "source": "threat-prompt-injection",
+      "target": "asset-user-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-prompt-injection:surface-agent-tool-path",
+      "source": "threat-prompt-injection",
+      "target": "surface-agent-tool-path",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-seed-phrase-compromise:asset-seed-secrets",
       "source": "threat-seed-phrase-compromise",
       "target": "asset-seed-secrets",
@@ -6964,6 +8075,41 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-spoofed-ens-resolution:asset-user-funds",
+      "source": "threat-spoofed-ens-resolution",
+      "target": "asset-user-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-spoofed-ens-resolution:surface-ens-resolution",
+      "source": "threat-spoofed-ens-resolution",
+      "target": "surface-ens-resolution",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-stale-threat-model:asset-source-code",
+      "source": "threat-stale-threat-model",
+      "target": "asset-source-code",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-stale-threat-model:asset-user-funds",
+      "source": "threat-stale-threat-model",
+      "target": "asset-user-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-stale-threat-model:surface-contract-upgrade-path",
+      "source": "threat-stale-threat-model",
+      "target": "surface-contract-upgrade-path",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-supply-chain-compromise:asset-deployment-authority",
       "source": "threat-supply-chain-compromise",
       "target": "asset-deployment-authority",
@@ -6988,6 +8134,27 @@ export const securityMapGraph = {
       "id": "targets:threat-supply-chain-compromise:surface-package-install",
       "source": "threat-supply-chain-compromise",
       "target": "surface-package-install",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-uncontactable-disclosure:asset-source-code",
+      "source": "threat-uncontactable-disclosure",
+      "target": "asset-source-code",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-uncontactable-disclosure:asset-user-funds",
+      "source": "threat-uncontactable-disclosure",
+      "target": "asset-user-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-uncontactable-disclosure:surface-researcher-inbound",
+      "source": "threat-uncontactable-disclosure",
+      "target": "surface-researcher-inbound",
       "type": "targets",
       "status": "proposed"
     },

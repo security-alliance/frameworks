@@ -1,0 +1,89 @@
+{
+  "edges": [
+    {
+      "source": "component-frontend",
+      "target": "surface-ens-resolution",
+      "type": "exposes"
+    },
+    {
+      "source": "component-rpc-endpoints",
+      "target": "surface-ens-resolution",
+      "type": "exposes"
+    },
+    {
+      "source": "threat-spoofed-ens-resolution",
+      "target": "surface-ens-resolution",
+      "type": "targets"
+    },
+    {
+      "source": "threat-spoofed-ens-resolution",
+      "target": "asset-user-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-misdirected-transfer",
+      "target": "surface-ens-resolution",
+      "type": "targets"
+    },
+    {
+      "source": "control-l1-ens-resolution",
+      "target": "threat-spoofed-ens-resolution",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-ensip15-normalization",
+      "target": "threat-spoofed-ens-resolution",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-l1-ens-resolution",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-simulate-before-sign",
+      "target": "threat-spoofed-ens-resolution",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-l1-ens-resolution",
+      "target": "surface-ens-resolution",
+      "type": "protects"
+    },
+    {
+      "source": "control-ensip15-normalization",
+      "target": "surface-ens-resolution",
+      "type": "protects"
+    },
+    {
+      "source": "control-l1-ens-resolution",
+      "target": "asset-user-funds",
+      "type": "protects"
+    },
+    {
+      "source": "control-l1-ens-resolution",
+      "target": "guidance-ens-integrity",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-ensip15-normalization",
+      "target": "guidance-ens-normalization",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-spoofed-ens-resolution",
+      "target": "guidance-ens-integrity",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-frontend",
+      "target": "guidance-ens",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-simulate-before-sign",
+      "target": "guidance-ens-integrity",
+      "type": "documented-by"
+    }
+  ]
+}

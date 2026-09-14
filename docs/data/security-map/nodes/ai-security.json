@@ -1,0 +1,101 @@
+{
+  "nodes": [
+    {
+      "id": "component-ai-agent",
+      "type": "component",
+      "title": "AI agent",
+      "summary": "A model that reads untrusted text and can call tools, write files, or construct transactions. Prompt templates do not bound what it does next.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["ai", "agent", "llm"],
+      "roles": ["engineer-developer"],
+      "lifecycle": ["development", "normal-operations"],
+      "framework": "ai-security"
+    },
+    {
+      "id": "surface-agent-tool-path",
+      "type": "attack-surface",
+      "title": "Agent tool path",
+      "summary": "The moment an agent is about to call a tool, write a file, or build a transaction. After-the-fact monitoring is too late if the action is irreversible.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["ai", "tools", "runtime"],
+      "roles": ["engineer-developer"],
+      "lifecycle": ["development", "normal-operations"],
+      "framework": "ai-security"
+    },
+    {
+      "id": "threat-prompt-injection",
+      "type": "threat",
+      "title": "Prompt injection",
+      "summary": "Untrusted text, including on-chain data or retrieved documents, is treated as instructions. The agent then leaks secrets or takes an action the operator did not intend.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["ai", "prompt-injection"],
+      "severity": "high",
+      "severityBasis": "Default triage is high because injection rides the model's instruction-following. Blast radius is whatever the agent can sign, send, or read. Prompt templates are not a control.",
+      "framework": "ai-security"
+    },
+    {
+      "id": "control-prompt-input-constraint",
+      "type": "control",
+      "title": "Prompt input constraint",
+      "summary": "Classify and constrain model inputs at the execution boundary. Do not rely on boilerplate system prompts. Treat on-chain data and retrieved documents as untrusted.",
+      "domains": ["development-supply-chain"],
+      "status": "proposed",
+      "tags": ["ai", "prompt-injection"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["engineer-developer"],
+      "lifecycle": ["design", "development"],
+      "framework": "ai-security"
+    },
+    {
+      "id": "control-execution-path-enforcement",
+      "type": "control",
+      "title": "Execution-path enforcement",
+      "summary": "Allow, warn, or block where the agent is about to act. Monitoring after the fact is too late for irreversible tool calls and transactions.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["ai", "runtime", "allowlist"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["engineer-developer"],
+      "lifecycle": ["design", "normal-operations"],
+      "framework": "ai-security"
+    },
+    {
+      "id": "guidance-ai-security",
+      "type": "guidance",
+      "title": "AI Security",
+      "summary": "Agentic AI turns instruction-following into irreversible actions. Prefer runtime execution-path controls and isolation over prompt templates alone.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["ai"],
+      "href": "/ai-security/overview",
+      "framework": "ai-security"
+    },
+    {
+      "id": "guidance-prompt-injection",
+      "type": "guidance",
+      "title": "Prompt injection defenses",
+      "summary": "Prompt injection succeeds because models treat text as instructions. Constrain and classify inputs at the execution boundary.",
+      "domains": ["development-supply-chain"],
+      "status": "proposed",
+      "tags": ["ai", "prompt-injection"],
+      "href": "/ai-security/prompt-injection-defenses",
+      "framework": "ai-security"
+    },
+    {
+      "id": "guidance-execution-path",
+      "type": "guidance",
+      "title": "Execution-path enforcement",
+      "summary": "Enforce allow, warn, or block where the agent is about to act. Monitoring after the fact is too late for irreversible actions.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["ai", "runtime"],
+      "href": "/ai-security/execution-path-enforcement",
+      "framework": "ai-security"
+    }
+  ]
+}

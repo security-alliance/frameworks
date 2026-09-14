@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "id": "guidance-guides",
+      "type": "guidance",
+      "title": "Guides",
+      "summary": "Product-specific checklists for account management and endpoint controls. Follow the steps for each tool, then review settings when vendors change defaults.",
+      "domains": ["devices-identity", "community-communications"],
+      "status": "proposed",
+      "tags": ["guides", "checklists"],
+      "href": "/guides/overview",
+      "framework": "guides"
+    },
+    {
+      "id": "guidance-account-management",
+      "type": "guidance",
+      "title": "Account management guides",
+      "summary": "High-value SaaS and community accounts need strong MFA, session hygiene, least privilege, and admin separation.",
+      "domains": ["devices-identity", "community-communications"],
+      "status": "proposed",
+      "tags": ["accounts", "mfa"],
+      "href": "/guides/account-management/overview",
+      "framework": "guides"
+    },
+    {
+      "id": "guidance-hardware-security-keys",
+      "type": "guidance",
+      "title": "Hardware security keys",
+      "summary": "Use FIDO2/WebAuthn keys on high-value accounts, register at least two keys, disable SMS fallback where possible, and test recovery before you need it.",
+      "domains": ["devices-identity"],
+      "status": "proposed",
+      "tags": ["fido2", "webauthn", "mfa"],
+      "href": "/guides/endpoint-security/hardware-security-keys",
+      "framework": "guides"
+    }
+  ]
+}

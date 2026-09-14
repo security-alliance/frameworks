@@ -121,10 +121,12 @@ The first seed is `proposed` on purpose.
 ## Follow-up
 
 1. Run `pnpm run coverage:security-map` and treat the lists as the work queue.
-2. Map one framework per PR (`feat/security-map-<framework>`). Steward review for security semantics.
-   Wallet Security, Physical Security (duress), Treasury Operations, DPRK IT Workers, Encryption,
-   Privacy, and Safe Harbor are seeded. Eligibility checklist and on-chain adoption walkthrough
-   stay unmapped. No Nomad incident node without a sourced evidence PR.
+2. Map one framework per PR (`feat/security-map-<framework>`) unless the remaining empty list
+   is small enough to seed together. Steward review for security semantics. Current seed covers
+   Wallet, Physical (duress), Treasury, DPRK IT Workers, Encryption, Privacy, Safe Harbor, AI
+   Security, ENS, Guides, SSDLC, Threat Modeling, and Vulnerability Disclosure. Product-level
+   guide pages, AI browsers/exfil, ENS cross-chain, and sourced incidents stay unmapped.
+
 
 
 
