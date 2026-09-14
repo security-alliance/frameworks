@@ -72,9 +72,10 @@ Package managers frequently search more than one source. When an internal name e
 the resolver is also allowed to consult a public registry, an attacker who publishes that same name publicly, at a
 higher version, can win the resolution. The build then installs attacker code under a name the team considers its own.
 
-The failure is in resolution order, not in the package itself, so pinning a version does not address it. A pinned
-internal package that has never been published publicly is still resolvable from a public source the moment an
-attacker registers the name.
+The failure is in resolution order, not in the package itself, so a version constraint does not close it on its own.
+A lockfile with integrity hashes catches a substitution on later installs, but the lock has to be written from a
+correct resolution first, and an internal name that has never been published publicly becomes resolvable from a
+public source the moment an attacker registers it.
 
 Two controls close it, and both belong at the registry rather than in each repository.
 
