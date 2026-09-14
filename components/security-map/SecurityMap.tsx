@@ -14,13 +14,16 @@ import {
 } from "./assessment";
 import "./SecurityMap.css";
 
-export function SecurityMap() {
+export function SecurityMap({ variant = "embedded" }: { variant?: "embedded" | "full" }) {
   const graph = securityMapGraph;
   const state = useSecurityMapState(graph);
   const [importPreview, setImportPreview] = useState<AssessmentParseResult | null>(null);
   const [importRaw, setImportRaw] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const focused = state.focusId ? state.index.nodesById[state.focusId] : null;
+  const full = variant === "full";
+  const fullHref = `/map${state.focusId ? `?focus=${encodeURIComponent(state.focusId)}` : ""}`;
+
 
   const onExport = useCallback(() => {
     const blob = new Blob([exportAssessment(state.assessment)], { type: "application/json" });
@@ -63,11 +66,22 @@ export function SecurityMap() {
   }, []);
 
   return (
-    <div className="sm-wrap">
-      <p className="sm-disclaimer">
-        Incomplete map. Click a field to see what it holds, how it is reached, how it fails, and
-        which controls apply. Local ratings never leave this browser.
-      </p>
+    <div className={`sm-wrap${full ? " is-full" : ""}`}>
+      {full ? (
+        <header className="sm-full-bar">
+          <a href="/">SEAL Frameworks</a>
+          <strong>Security Map</strong>
+          <a href="/intro/attack-surface">Docs</a>
+        </header>
+      ) : (
+        <p className="sm-disclaimer">
+          Incomplete map. Click a field to see what it holds, how it is reached, how it fails, and
+          which controls apply. Local ratings never leave this browser.{" "}
+          <a className="sm-full-link" href={fullHref} target="_blank" rel="noreferrer">
+            Open full map
+          </a>
+        </p>
+      )}
       {state.legacyVisible ? (
         <div className="sm-legacy">
           This browser still has old Attack Surface Overview ratings in{" "}
@@ -89,10 +103,10 @@ export function SecurityMap() {
           dist={state.dist}
           onSelect={state.selectNode}
         />
-        {focused ? (
+        {full || focused ? (
           <SecurityMapDetails
             index={state.index}
-            node={focused}
+            node={focused || null}
             onSelect={state.selectNode}
             onClose={state.clearFocus}
             assessment={state.assessment}
@@ -100,7 +114,6 @@ export function SecurityMap() {
           />
         ) : null}
       </div>
-
       <div className="sm-foot">
         <p className="sm-privacy">
           Assessments stay in this browser. Share URLs may include <code>focus</code>. They never
@@ -112,6 +125,7 @@ export function SecurityMap() {
         <button type="button" className="sm-btn" onClick={() => fileRef.current?.click()}>
           Import assessment
         </button>
+
         <input
           ref={fileRef}
           type="file"

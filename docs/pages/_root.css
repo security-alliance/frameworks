@@ -55,6 +55,22 @@ html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup
   font-style: italic;
 }
 
+
+[data-layout="blank"] [data-v-main] {
+  height: 100dvh;
+  padding-bottom: 0;
+}
+
+[data-layout="blank"] [data-v-content] {
+  padding: 0;
+  max-width: none;
+  overflow: hidden;
+}
+
+[data-layout="blank"] [data-v-footer] {
+  display: none;
+}
+
 /* Print stylesheet - hide chrome, optimize for paper */
 @media print {
 
