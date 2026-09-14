@@ -5,7 +5,8 @@ import {
   type NodeType,
   type SecurityMapNode,
 } from "./types";
-import { relatedByType, type GraphIndex } from "./graphIndex";
+import { gapReasons, relatedByType, type GraphIndex } from "./graphIndex";
+
 import { SecurityMapAssessment } from "./SecurityMapAssessment";
 import type { AssessmentDocument } from "./assessment";
 
@@ -44,8 +45,7 @@ export function SecurityMapDetails({
 
   const related = relatedByType(index, node.id, 2);
   const assessed = assessment.controls[node.id];
-  const coverageGap =
-    node.type === "control" && related.guidance.length === 0;
+  const reasons = gapReasons(index, node.id);
 
   return (
     <aside className="sm-details" aria-labelledby="sm-detail-title">
@@ -65,9 +65,14 @@ export function SecurityMapDetails({
           </li>
         ))}
       </ul>
-      {coverageGap ? (
-        <p className="sm-help">This control is not yet linked to a framework page.</p>
+      {reasons.length ? (
+        <ul className="sm-gaps">
+          {reasons.map((reason) => (
+            <li key={reason}>{reason}</li>
+          ))}
+        </ul>
       ) : null}
+
       {COUNT_TYPES.map((type) =>
         related[type].length ? (
           <div key={type}>

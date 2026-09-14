@@ -9,26 +9,43 @@ import {
   setControlState,
   type AssessmentDocument,
 } from "./assessment";
-import { buildIndex, hopsFrom, type GraphIndex } from "./graphIndex";
+import {
+  ALL_VIEW_ID,
+  buildIndex,
+  hopsFrom,
+  listMapViews,
+  viewNodeIds,
+  type GraphIndex,
+} from "./graphIndex";
 
-function readFocus(): string | null {
-  if (typeof window === "undefined") return null;
-  const focus = new URLSearchParams(window.location.search).get("focus");
-  return focus && focus.trim() ? focus.trim() : null;
+function readQuery(): { focus: string | null; view: string } {
+  if (typeof window === "undefined") return { focus: null, view: ALL_VIEW_ID };
+  const params = new URLSearchParams(window.location.search);
+  const focus = params.get("focus");
+  const view = params.get("view");
+  return {
+    focus: focus && focus.trim() ? focus.trim() : null,
+    view: view && view.trim() ? view.trim() : ALL_VIEW_ID,
+  };
 }
 
-function writeFocus(focus: string | null) {
+function writeQuery(focus: string | null, view: string) {
   if (typeof window === "undefined") return;
   const url = new URL(window.location.href);
   if (focus) url.searchParams.set("focus", focus);
   else url.searchParams.delete("focus");
+  if (view && view !== ALL_VIEW_ID) url.searchParams.set("view", view);
+  else url.searchParams.delete("view");
   const qs = url.searchParams.toString();
   window.history.replaceState(null, "", `${url.pathname}${qs ? `?${qs}` : ""}${url.hash}`);
 }
 
 export function useSecurityMapState(graph: SecurityMapGraph) {
   const index = useMemo(() => buildIndex(graph), [graph]);
+  const views = useMemo(() => listMapViews(graph), [graph]);
   const [focusId, setFocusId] = useState<string | null>(null);
+  const [viewId, setViewId] = useState(ALL_VIEW_ID);
+  const [hydrated, setHydrated] = useState(false);
   const [assessment, setAssessment] = useState<AssessmentDocument>(() => ({
     schemaVersion: "1.0.0",
     graphSchemaVersion: graph.schemaVersion,
@@ -38,15 +55,26 @@ export function useSecurityMapState(graph: SecurityMapGraph) {
   const [legacyVisible, setLegacyVisible] = useState(false);
 
   useEffect(() => {
-    const initial = readFocus();
-    setFocusId(initial && index.nodesById[initial] ? initial : null);
+    const initial = readQuery();
+    const knownView = views.some((view) => view.id === initial.view) ? initial.view : ALL_VIEW_ID;
+    const visible = viewNodeIds(index, knownView);
+    const focus =
+      initial.focus && index.nodesById[initial.focus] && (!visible || visible.has(initial.focus))
+        ? initial.focus
+        : null;
+    setViewId(knownView);
+    setFocusId(focus);
     setAssessment(loadAssessment(graph));
     setLegacyVisible(hasLegacyPosture() && !isLegacyDismissed());
-  }, [graph, index]);
+    setHydrated(true);
+  }, [graph, index, views]);
 
   useEffect(() => {
-    writeFocus(focusId);
-  }, [focusId]);
+    if (!hydrated) return;
+    writeQuery(focusId, viewId);
+  }, [hydrated, focusId, viewId]);
+
+  const visibleIds = useMemo(() => viewNodeIds(index, viewId), [index, viewId]);
 
   const dist = useMemo(
     () => (focusId ? hopsFrom(index, focusId, 2) : (Object.create(null) as Record<string, number>)),
@@ -60,6 +88,22 @@ export function useSecurityMapState(graph: SecurityMapGraph) {
   const clearFocus = useCallback(() => {
     setFocusId(null);
   }, []);
+
+  const selectView = useCallback(
+    (id: string) => {
+      const next = views.some((view) => view.id === id) ? id : ALL_VIEW_ID;
+      const visible = viewNodeIds(index, next);
+      const option = views.find((view) => view.id === next);
+      setViewId(next);
+      setFocusId((cur) => {
+        if (cur && index.nodesById[cur] && (!visible || visible.has(cur))) return cur;
+        if (option?.focusNodeId && index.nodesById[option.focusNodeId]) return option.focusNodeId;
+        return null;
+      });
+    },
+    [index, views],
+  );
+
 
   const assess = useCallback(
     (controlId: string, nextState: AssessmentState) => {
@@ -85,11 +129,15 @@ export function useSecurityMapState(graph: SecurityMapGraph) {
 
   return {
     index,
+    views,
+    viewId,
+    visibleIds,
     focusId,
     dist,
     assessment,
     legacyVisible,
     selectNode,
+    selectView,
     clearFocus,
     assess,
     replaceAssessment,

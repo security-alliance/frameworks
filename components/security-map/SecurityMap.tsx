@@ -22,7 +22,13 @@ export function SecurityMap({ variant = "embedded" }: { variant?: "embedded" | "
   const fileRef = useRef<HTMLInputElement>(null);
   const focused = state.focusId ? state.index.nodesById[state.focusId] : null;
   const full = variant === "full";
-  const fullHref = `/map${state.focusId ? `?focus=${encodeURIComponent(state.focusId)}` : ""}`;
+  const query = new URLSearchParams();
+  if (state.viewId && state.viewId !== "view-all") query.set("view", state.viewId);
+  if (state.focusId) query.set("focus", state.focusId);
+  const qs = query.toString();
+  const fullHref = `/map${qs ? `?${qs}` : ""}`;
+  const activeView = state.views.find((view) => view.id === state.viewId);
+
 
 
   const onExport = useCallback(() => {
@@ -82,6 +88,22 @@ export function SecurityMap({ variant = "embedded" }: { variant?: "embedded" | "
           </a>
         </p>
       )}
+      <div className="sm-views" role="tablist" aria-label="Map views">
+        {state.views.map((view) => (
+          <button
+            key={view.id}
+            type="button"
+            role="tab"
+            aria-selected={state.viewId === view.id}
+            className={`sm-view${state.viewId === view.id ? " is-on" : ""}`}
+            onClick={() => state.selectView(view.id)}
+          >
+            {view.title}
+          </button>
+        ))}
+      </div>
+      {activeView ? <p className="sm-view-summary">{activeView.summary}</p> : null}
+
       {state.legacyVisible ? (
         <div className="sm-legacy">
           This browser still has old Attack Surface Overview ratings in{" "}
@@ -101,8 +123,10 @@ export function SecurityMap({ variant = "embedded" }: { variant?: "embedded" | "
           index={state.index}
           focusId={state.focusId}
           dist={state.dist}
+          visibleIds={state.visibleIds}
           onSelect={state.selectNode}
         />
+
         {full || focused ? (
           <SecurityMapDetails
             index={state.index}
@@ -116,9 +140,10 @@ export function SecurityMap({ variant = "embedded" }: { variant?: "embedded" | "
       </div>
       <div className="sm-foot">
         <p className="sm-privacy">
-          Assessments stay in this browser. Share URLs may include <code>focus</code>. They never
-          include assessment state.
+          Assessments stay in this browser. Share URLs may include <code>view</code> and{" "}
+          <code>focus</code>. They never include assessment state.
         </p>
+
         <button type="button" className="sm-btn" onClick={onExport}>
           Export assessment
         </button>{" "}

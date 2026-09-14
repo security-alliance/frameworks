@@ -33,13 +33,16 @@ export function SecurityMapGraph({
   index,
   focusId,
   dist,
+  visibleIds,
   onSelect,
 }: {
   index: GraphIndex;
   focusId: string | null;
   dist: Record<string, number>;
+  visibleIds: Set<string> | null;
   onSelect: (id: string) => void;
 }) {
+
   const boardRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
   const [centers, setCenters] = useState<Record<string, Point>>({});
@@ -76,7 +79,8 @@ export function SecurityMapGraph({
       board.removeEventListener("scroll", measure);
       window.removeEventListener("resize", measure);
     };
-  }, [index, focusId]);
+  }, [index, focusId, visibleIds]);
+
 
   useEffect(() => {
     const board = boardRef.current;
@@ -97,10 +101,15 @@ export function SecurityMapGraph({
       setSize({ w: Math.max(board.scrollWidth, 1), h: Math.max(board.scrollHeight, 1) });
     }, 50);
     return () => window.clearTimeout(t);
-  }, [index, focusId]);
+  }, [index, focusId, visibleIds]);
 
 
-  const edges = useMemo(() => mapEdges(index), [index]);
+
+  const edges = useMemo(() => {
+    const all = mapEdges(index);
+    if (!visibleIds) return all;
+    return all.filter((edge) => visibleIds.has(edge.source) && visibleIds.has(edge.target));
+  }, [index, visibleIds]);
 
   return (
     <div className="sm-board" ref={boardRef}>
@@ -121,8 +130,7 @@ export function SecurityMapGraph({
           let cls = "sm-wire";
           if (focusId) {
             const hit = edge.source === focusId || edge.target === focusId;
-            const near =
-              (dist[edge.source] !== undefined && dist[edge.target] !== undefined);
+            const near = dist[edge.source] !== undefined && dist[edge.target] !== undefined;
             if (hit) cls += " is-hit";
             else if (near) cls += " is-near";
             else cls += " is-dim";
@@ -132,7 +140,10 @@ export function SecurityMapGraph({
       </svg>
       <div className="sm-columns">
         {MAP_COLUMNS.map((col) => {
-          const nodes = col.types.flatMap((type) => index.nodesByType[type] || []);
+          const nodes = col.types
+            .flatMap((type) => index.nodesByType[type] || [])
+            .filter((node) => !visibleIds || visibleIds.has(node.id));
+
           return (
             <section key={col.id} className={`sm-col sm-col-${col.id}`}>
               <header className="sm-col-head">
