@@ -105,7 +105,7 @@ Before using a new hardware wallet, verify its authenticity:
 - **No Digital Storage:** Never export or store your private keys or seed phrases in any digital format, including
 pictures or in password managers
 - Generate seed following device instructions
-- Perform dry-run recovery check
+- [Perform dry-run recovery check](#dry-run-recovery-check)
 - Create accounts as needed
 
 ### Clear Signing
@@ -115,22 +115,22 @@ Use Clear Signing support when available, but never rely on it alone - always fu
 ## Dry-run Recovery Check
 
 Perform a dry-run recovery check after initial setup and before moving funds to your hardware wallet. Perform this check even
-if your device already asked you to confirm a few random words during setup, that step only verifies those words, not the full
+if your device already asked you to confirm a few random words during setup. That step only verifies those words, not the full
 seed phrase.
 
 This check can be performed in three ways.
 
 ### Native App
 
-- Use the native app offered by your hardware wallet manufacturer, such as Recovery Check by Ledger or Check
-Backup by Trezor. Other hardware wallets offer similar apps.
+- Use the native app offered by your hardware wallet manufacturer, such as [Recovery Check](https://support.ledger.com/article/360007223753-zd)
+by Ledger or [Check Backup](https://trezor.io/guides/backups-recovery/general-standards/check-backup-on-trezor-safe-3) by Trezor. Other hardware wallets offer similar apps.
 - The app prompts you to re-enter your seed phrase on the hardware wallet screen, then confirms whether it matches
 the one stored on the device.
 
-### Secondary Device
+### Backup Hardware Wallet
 
-- Import your seed phrase onto a secondary device.
-- Compare the receiving address with the one shown on your primary device. They should match if the seed
+- Import your seed phrase onto a backup hardware wallet. Never import the seed into a computer or hot wallet.
+- Compare the receiving address with the one shown on your primary hardware wallet. They should match if the seed
   phrase was recorded correctly.
 
 ### Wipe and Restore
