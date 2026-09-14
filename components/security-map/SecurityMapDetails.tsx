@@ -1,3 +1,4 @@
+import { Link } from "vocs";
 import {
   NODE_TYPE_LABELS,
   type AssessmentState,
@@ -7,6 +8,7 @@ import {
 import { gapReasons, relatedByType, type GraphIndex } from "./graphIndex";
 import { SecurityMapAssessment } from "./SecurityMapAssessment";
 import type { AssessmentDocument } from "./assessment";
+
 
 const MAP_REL_TYPES: NodeType[] = ["attack-surface", "threat", "control"];
 
@@ -78,13 +80,15 @@ export function SecurityMapDetails({
         <ul className="sm-rel">
           {pages.map((page) => (
             <li key={page.id}>
-              <a className="sm-page-link" href={page.href} target="_blank" rel="noreferrer">
+              <Link className="sm-page-link" to={page.href as string}>
                 {page.id === node.id ? "Open framework page" : page.title}
-              </a>
+              </Link>
+
             </li>
           ))}
         </ul>
       ) : null}
+
       <ul className="sm-stats">
         {COUNT_TYPES.map((type) => (
           <li key={type}>
