@@ -8,7 +8,10 @@ const {
   loadAndValidate,
   generate,
   serializeGraph,
+  coverageReport,
+  formatCoverage,
 } = require('./security-map-lib.cjs')
+
 
 const ROOT = path.join(__dirname, '..')
 
@@ -141,7 +144,7 @@ describe('production catalogue', () => {
     assert.equal(first.graph.license, 'CC-BY-SA-4.0')
     assert.doesNotMatch(serializeGraph(first.graph), /\/home\/|generatedAt|C:\\/)
     const threats = first.graph.nodes.filter((n) => n.type === 'threat')
-    assert.equal(threats.length, 12)
+    assert.equal(threats.length, 15)
     for (const threat of threats) {
       assert.equal(threat.assessmentEligible, undefined)
       const hasTarget = first.graph.edges.some((e) => e.type === 'targets' && e.source === threat.id)
@@ -154,8 +157,18 @@ describe('production catalogue', () => {
       assert.ok(hasPath, `${threat.id} missing mitigation/guidance`)
     }
     assert.equal(first.graph.nodes.filter((n) => n.type === 'incident').length, 0)
+    assert.ok(first.graph.nodes.some((n) => n.id === 'component-hardware-wallet'))
+    assert.ok(
+      first.graph.edges.some(
+        (e) =>
+          e.source === 'control-signer-isolation' &&
+          e.target === 'guidance-cold-vs-hot' &&
+          e.type === 'documented-by',
+      ),
+    )
   })
 })
+
 
 describe('minimal graph', () => {
   it('accepts a valid graph', () => {
@@ -488,3 +501,135 @@ describe('synthetic larger fixture', () => {
     assert.equal(graph.edges.length, 320)
   })
 })
+
+describe('coverage report', () => {
+  it('lists missing controls, guidance, empty frameworks, and unshared related pages', () => {
+    const dir = tmpDir('cov')
+    copyProductionTaxonomy(dir)
+    writeJson(path.join(dir, 'nodes', 'core.json'), {
+      nodes: [
+        {
+          id: 'asset-funds',
+          type: 'asset',
+          title: 'Funds',
+          summary: 'Value at risk.',
+          domains: ['governance-treasury'],
+          status: 'proposed',
+          tags: ['funds'],
+          framework: 'alpha',
+        },
+        {
+          id: 'component-wallet',
+          type: 'component',
+          title: 'Wallet',
+          summary: 'Holds funds.',
+          domains: ['governance-treasury'],
+          status: 'proposed',
+          tags: ['wallet'],
+          framework: 'alpha',
+        },
+        {
+          id: 'surface-signing',
+          type: 'attack-surface',
+          title: 'Signing',
+          summary: 'How transactions are signed.',
+          domains: ['governance-treasury'],
+          status: 'proposed',
+          tags: ['signing'],
+          framework: 'alpha',
+        },
+        {
+          id: 'threat-key-theft',
+          type: 'threat',
+          title: 'Key theft',
+          summary: 'An attacker steals a signing key.',
+          domains: ['governance-treasury'],
+          status: 'proposed',
+          tags: ['keys'],
+          severity: 'high',
+          severityBasis: 'Stolen key is authorized theft.',
+          framework: 'alpha',
+        },
+        {
+          id: 'control-hardware-wallet',
+          type: 'control',
+          title: 'Hardware wallet',
+          summary: 'Keys stay on dedicated hardware.',
+          domains: ['governance-treasury'],
+          status: 'proposed',
+          tags: ['hardware'],
+          controlClass: 'preventive',
+          assessmentEligible: true,
+          framework: 'alpha',
+        },
+        {
+          id: 'guidance-wallet',
+          type: 'guidance',
+          title: 'Wallet page',
+          summary: 'Docs for the wallet control.',
+          domains: ['governance-treasury'],
+          status: 'proposed',
+          tags: ['docs'],
+          href: '/intro/attack-surface',
+          framework: 'alpha',
+        },
+      ],
+    })
+    writeJson(path.join(dir, 'edges', 'core.json'), {
+      edges: [
+        { source: 'component-wallet', target: 'surface-signing', type: 'exposes' },
+        { source: 'threat-key-theft', target: 'surface-signing', type: 'targets' },
+        { source: 'control-hardware-wallet', target: 'threat-key-theft', type: 'mitigates' },
+      ],
+    })
+    const pages = tmpDir('cov-pages')
+    fs.mkdirSync(path.join(pages, 'alpha'), { recursive: true })
+    fs.mkdirSync(path.join(pages, 'beta'), { recursive: true })
+    fs.writeFileSync(
+      path.join(pages, 'alpha', 'overview.mdx'),
+      `---\ntitle: Alpha\n---\n\n# Alpha\n\n## Related frameworks\n\n- [Beta](/beta/overview): neighbor with no shared node\n`,
+    )
+    fs.writeFileSync(path.join(pages, 'beta', 'overview.mdx'), `---\ntitle: Beta\n---\n\n# Beta\n`)
+    const { graph } = loadAndValidate({ dataDir: dir, pagesDir: pagesDir(), skipMdx: true })
+
+    const report = coverageReport({ nodes: graph.nodes, edges: graph.edges, pagesDir: pages })
+    assert.deepEqual(report.threatsWithoutControl, [])
+    assert.deepEqual(report.controlsWithoutGuidance, ['control-hardware-wallet'])
+    assert.deepEqual(report.frameworksWithZeroNodes, ['beta'])
+    assert.equal(report.relatedUnshared.length, 1)
+    assert.equal(report.relatedUnshared[0].page, '/alpha/overview')
+    assert.equal(report.relatedUnshared[0].neighbor, '/beta/overview')
+    const text = formatCoverage(report)
+    assert.match(text, /control-hardware-wallet/)
+    assert.match(text, /\/alpha\/overview -> \/beta\/overview/)
+  })
+
+  it('drops related-framework candidates once a typed edge joins the slices', () => {
+    const dir = tmpDir('cov-shared')
+    copyProductionTaxonomy(dir)
+    writeJson(path.join(dir, 'nodes', 'core.json'), {
+      nodes: [
+        ...minimalNodes().map((node) => ({
+          ...node,
+          framework: node.id.startsWith('guidance') ? 'beta' : 'alpha',
+        })),
+      ],
+    })
+    writeJson(path.join(dir, 'edges', 'core.json'), { edges: minimalEdges() })
+    const pages = tmpDir('cov-shared-pages')
+    fs.mkdirSync(path.join(pages, 'alpha'), { recursive: true })
+    fs.mkdirSync(path.join(pages, 'beta'), { recursive: true })
+    fs.writeFileSync(
+      path.join(pages, 'alpha', 'overview.mdx'),
+      `---\ntitle: Alpha\n---\n\n# Alpha\n\n## Related frameworks\n\n- [Beta](/beta/overview): now shares documented-by\n`,
+    )
+    fs.writeFileSync(path.join(pages, 'beta', 'overview.mdx'), `---\ntitle: Beta\n---\n\n# Beta\n`)
+    const { graph } = loadAndValidate({ dataDir: dir, pagesDir: pagesDir(), skipMdx: true })
+
+    const report = coverageReport({ nodes: graph.nodes, edges: graph.edges, pagesDir: pages })
+    assert.deepEqual(report.relatedUnshared, [])
+    assert.deepEqual(report.frameworksWithZeroNodes, [])
+    assert.deepEqual(report.controlsWithoutGuidance, [])
+  })
+})
+

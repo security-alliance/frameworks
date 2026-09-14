@@ -1,0 +1,229 @@
+{
+  "edges": [
+    {
+      "source": "component-hardware-wallet",
+      "target": "surface-transaction-signing",
+      "type": "exposes"
+    },
+    {
+      "source": "component-software-wallet",
+      "target": "surface-transaction-signing",
+      "type": "exposes"
+    },
+    {
+      "source": "component-software-wallet",
+      "target": "surface-token-approvals",
+      "type": "exposes"
+    },
+    {
+      "source": "component-seed-backup",
+      "target": "surface-seed-custody",
+      "type": "exposes"
+    },
+    {
+      "source": "component-signers",
+      "target": "component-hardware-wallet",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-multisig",
+      "target": "component-hardware-wallet",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-software-wallet",
+      "target": "component-frontend",
+      "type": "depends-on"
+    },
+    {
+      "source": "threat-blind-signing",
+      "target": "surface-transaction-signing",
+      "type": "targets"
+    },
+    {
+      "source": "threat-blind-signing",
+      "target": "asset-signer-keys",
+      "type": "targets"
+    },
+    {
+      "source": "threat-blind-signing",
+      "target": "asset-user-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-blind-signing",
+      "target": "asset-treasury-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-seed-phrase-compromise",
+      "target": "surface-seed-custody",
+      "type": "targets"
+    },
+    {
+      "source": "threat-seed-phrase-compromise",
+      "target": "asset-seed-secrets",
+      "type": "targets"
+    },
+    {
+      "source": "threat-seed-phrase-compromise",
+      "target": "asset-signer-keys",
+      "type": "targets"
+    },
+    {
+      "source": "threat-unlimited-token-approval",
+      "target": "surface-token-approvals",
+      "type": "targets"
+    },
+    {
+      "source": "threat-unlimited-token-approval",
+      "target": "asset-user-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-duress-coercion",
+      "target": "asset-seed-secrets",
+      "type": "targets"
+    },
+    {
+      "source": "threat-duress-coercion",
+      "target": "surface-seed-custody",
+      "type": "targets"
+    },
+    {
+      "source": "control-simulate-before-sign",
+      "target": "threat-blind-signing",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "threat-blind-signing",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-signer-isolation",
+      "target": "threat-blind-signing",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-cold-wallet-separation",
+      "target": "threat-blind-signing",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-offline-seed-custody",
+      "target": "threat-seed-phrase-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-offline-seed-custody",
+      "target": "threat-duress-coercion",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-limited-token-approvals",
+      "target": "threat-unlimited-token-approval",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-cold-wallet-separation",
+      "target": "asset-signer-keys",
+      "type": "protects"
+    },
+    {
+      "source": "control-cold-wallet-separation",
+      "target": "component-hardware-wallet",
+      "type": "protects"
+    },
+    {
+      "source": "control-offline-seed-custody",
+      "target": "asset-seed-secrets",
+      "type": "protects"
+    },
+    {
+      "source": "control-offline-seed-custody",
+      "target": "surface-seed-custody",
+      "type": "protects"
+    },
+    {
+      "source": "control-simulate-before-sign",
+      "target": "surface-transaction-signing",
+      "type": "protects"
+    },
+    {
+      "source": "control-limited-token-approvals",
+      "target": "surface-token-approvals",
+      "type": "protects"
+    },
+    {
+      "source": "control-signer-isolation",
+      "target": "component-hardware-wallet",
+      "type": "protects"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "surface-transaction-signing",
+      "type": "protects"
+    },
+    {
+      "source": "control-signer-isolation",
+      "target": "guidance-cold-vs-hot",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-cold-wallet-separation",
+      "target": "guidance-cold-vs-hot",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-offline-seed-custody",
+      "target": "guidance-seed-phrase-management",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-simulate-before-sign",
+      "target": "guidance-signing-verification",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "guidance-signing-verification",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-limited-token-approvals",
+      "target": "guidance-smart-contract-interaction",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-blind-signing",
+      "target": "guidance-signing-verification",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-seed-phrase-compromise",
+      "target": "guidance-seed-phrase-management",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-unlimited-token-approval",
+      "target": "guidance-smart-contract-interaction",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-hardware-wallet",
+      "target": "guidance-cold-vs-hot",
+      "type": "documented-by"
+    },
+    {
+      "source": "asset-seed-secrets",
+      "target": "guidance-seed-phrase-management",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-software-wallet",
+      "target": "guidance-wallet-security",
+      "type": "documented-by"
+    }
+  ]
+}
