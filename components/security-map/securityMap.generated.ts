@@ -1531,6 +1531,33 @@ export const securityMapGraph = {
       "framework": "iam"
     },
     {
+      "id": "control-published-recovery-address",
+      "type": "control",
+      "title": "Published recovery address",
+      "summary": "Name a hardened multisig or governance address in the Safe Harbor scope so rescued funds have a legal destination. Keep it able to receive a large inflow.",
+      "domains": [
+        "onchain-systems",
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "recovery",
+        "multisig",
+        "safe-harbor"
+      ],
+      "roles": [
+        "governance-participant",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations"
+      ],
+      "controlClass": "recovery",
+      "assessmentEligible": true,
+      "framework": "safe-harbor"
+    },
+    {
       "id": "control-registrar-hardening",
       "type": "control",
       "title": "Registrar account hardening",
@@ -1552,6 +1579,33 @@ export const securityMapGraph = {
       "controlClass": "preventive",
       "assessmentEligible": true,
       "framework": "infrastructure"
+    },
+    {
+      "id": "control-safe-harbor-adoption",
+      "type": "control",
+      "title": "Safe Harbor adoption",
+      "summary": "Publish scope, register on-chain, and pre-authorize independent whitehats for active exploits only. This is not a bug bounty and does not replace pause or review.",
+      "domains": [
+        "onchain-systems",
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "safe-harbor",
+        "whitehat",
+        "governance"
+      ],
+      "roles": [
+        "governance-participant",
+        "incident-responder"
+      ],
+      "lifecycle": [
+        "design",
+        "normal-operations"
+      ],
+      "controlClass": "governance",
+      "assessmentEligible": true,
+      "framework": "safe-harbor"
     },
     {
       "id": "control-secure-sdlc-testing",
@@ -2749,6 +2803,74 @@ export const securityMapGraph = {
       "framework": "privacy"
     },
     {
+      "id": "guidance-safe-harbor",
+      "type": "guidance",
+      "title": "SEAL Whitehat Safe Harbor",
+      "summary": "Pre-authorize whitehats to rescue funds during active exploits under defined scope and rules. Not a substitute for bug bounties or pre-exploit disclosure.",
+      "domains": [
+        "onchain-systems",
+        "detection-incident-response"
+      ],
+      "status": "proposed",
+      "tags": [
+        "safe-harbor",
+        "whitehat"
+      ],
+      "href": "/safe-harbor/overview",
+      "framework": "safe-harbor"
+    },
+    {
+      "id": "guidance-safe-harbor-adoption",
+      "type": "guidance",
+      "title": "Safe Harbor self-adoption",
+      "summary": "Define scope, complete governance when required, register on-chain, update public terms, and announce so whitehats can rely on the rules.",
+      "domains": [
+        "governance-treasury",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "safe-harbor",
+        "adoption"
+      ],
+      "href": "/safe-harbor/self-adoption-guide",
+      "framework": "safe-harbor"
+    },
+    {
+      "id": "guidance-safe-harbor-scope",
+      "type": "guidance",
+      "title": "Safe Harbor scope terms",
+      "summary": "Recovery address, contacts, covered assets, bounty, and identity rules that tell whitehats how a rescue must work.",
+      "domains": [
+        "onchain-systems",
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "safe-harbor",
+        "scope"
+      ],
+      "href": "/safe-harbor/scope-terms",
+      "framework": "safe-harbor"
+    },
+    {
+      "id": "guidance-safe-harbor-whitehat",
+      "type": "guidance",
+      "title": "Safe Harbor for whitehats",
+      "summary": "Coverage applies only when the rescuer is independent of the attacker, returns funds on time, and follows the protocol's published rules.",
+      "domains": [
+        "detection-incident-response",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "whitehat",
+        "rescue"
+      ],
+      "href": "/safe-harbor/whitehat",
+      "framework": "safe-harbor"
+    },
+    {
       "id": "guidance-secure-browsing",
       "type": "guidance",
       "title": "Secure browsing",
@@ -3199,6 +3321,54 @@ export const securityMapGraph = {
         "incident-response"
       ],
       "framework": "incident-management"
+    },
+    {
+      "id": "response-whitehat-rescue",
+      "type": "response",
+      "title": "Whitehat fund rescue",
+      "summary": "Independent of the attacker, move at-risk funds to the published recovery address, notify the security contact, and involve SEAL 911. Coverage dies if those rules are skipped.",
+      "domains": [
+        "detection-incident-response",
+        "onchain-systems"
+      ],
+      "status": "proposed",
+      "tags": [
+        "whitehat",
+        "rescue",
+        "seal911"
+      ],
+      "roles": [
+        "incident-responder",
+        "security-engineer"
+      ],
+      "lifecycle": [
+        "incident-response"
+      ],
+      "framework": "safe-harbor"
+    },
+    {
+      "id": "surface-active-exploit-window",
+      "type": "attack-surface",
+      "title": "Active exploit window",
+      "summary": "The minutes after a drain starts or a malicious transaction sits in the mempool. Responsible disclosure is too slow. Pause and whitehat rescue are the remaining moves.",
+      "domains": [
+        "onchain-systems",
+        "detection-incident-response"
+      ],
+      "status": "proposed",
+      "tags": [
+        "exploit",
+        "mempool",
+        "rescue"
+      ],
+      "roles": [
+        "incident-responder",
+        "security-engineer"
+      ],
+      "lifecycle": [
+        "incident-response"
+      ],
+      "framework": "safe-harbor"
     },
     {
       "id": "surface-ci-cd-secrets",
@@ -4212,6 +4382,25 @@ export const securityMapGraph = {
       "severity": "high",
       "severityBasis": "Default triage is high because the drain does not need the key, but it is limited to the approved token and spender. Treat as critical when the spender is unaudited or the allowance is protocol-wide.",
       "framework": "wallet-security"
+    },
+    {
+      "id": "threat-whitehat-legal-freeze",
+      "type": "threat",
+      "title": "Whitehat legal freeze",
+      "summary": "Independent researchers watch a live drain and do not intervene because the protocol never pre-authorized a rescue. Funds keep leaving.",
+      "domains": [
+        "onchain-systems",
+        "detection-incident-response"
+      ],
+      "status": "proposed",
+      "tags": [
+        "whitehat",
+        "legal",
+        "exploit"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because the exploit is already in progress and delay is measured in drained TVL. Safe Harbor does not stop the bug. It removes the legal reason not to help.",
+      "framework": "safe-harbor"
     }
   ],
   "edges": [
@@ -4423,6 +4612,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:component-governance-module:guidance-safe-harbor-adoption",
+      "source": "component-governance-module",
+      "target": "guidance-safe-harbor-adoption",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:component-hardware-wallet:guidance-cold-vs-hot",
       "source": "component-hardware-wallet",
       "target": "guidance-cold-vs-hot",
@@ -4433,6 +4629,13 @@ export const securityMapGraph = {
       "id": "documented-by:component-hiring-pipeline:guidance-dprk-it-workers",
       "source": "component-hiring-pipeline",
       "target": "guidance-dprk-it-workers",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:component-multisig:guidance-safe-harbor-scope",
+      "source": "component-multisig",
+      "target": "guidance-safe-harbor-scope",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4808,6 +5011,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-published-recovery-address:guidance-safe-harbor-scope",
+      "source": "control-published-recovery-address",
+      "target": "guidance-safe-harbor-scope",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-registrar-hardening:guidance-dns-cert",
       "source": "control-registrar-hardening",
       "target": "guidance-dns-cert",
@@ -4818,6 +5028,20 @@ export const securityMapGraph = {
       "id": "documented-by:control-registrar-hardening:guidance-dns-security-overview",
       "source": "control-registrar-hardening",
       "target": "guidance-dns-security-overview",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-safe-harbor-adoption:guidance-safe-harbor",
+      "source": "control-safe-harbor-adoption",
+      "target": "guidance-safe-harbor",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-safe-harbor-adoption:guidance-safe-harbor-adoption",
+      "source": "control-safe-harbor-adoption",
+      "target": "guidance-safe-harbor-adoption",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -5011,9 +5235,23 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:response-smart-contract-exploit:guidance-safe-harbor-whitehat",
+      "source": "response-smart-contract-exploit",
+      "target": "guidance-safe-harbor-whitehat",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:response-supply-chain-incident:guidance-dependency-runbook",
       "source": "response-supply-chain-incident",
       "target": "guidance-dependency-runbook",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:response-whitehat-rescue:guidance-safe-harbor-whitehat",
+      "source": "response-whitehat-rescue",
+      "target": "guidance-safe-harbor-whitehat",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -5189,6 +5427,13 @@ export const securityMapGraph = {
       "id": "documented-by:threat-unlimited-token-approval:guidance-smart-contract-interaction",
       "source": "threat-unlimited-token-approval",
       "target": "guidance-smart-contract-interaction",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-whitehat-legal-freeze:guidance-safe-harbor",
+      "source": "threat-whitehat-legal-freeze",
+      "target": "guidance-safe-harbor",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -5378,6 +5623,13 @@ export const securityMapGraph = {
       "id": "exposes:component-signers:surface-signer-lifecycle",
       "source": "component-signers",
       "target": "surface-signer-lifecycle",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-smart-contracts:surface-active-exploit-window",
+      "source": "component-smart-contracts",
+      "target": "surface-active-exploit-window",
       "type": "exposes",
       "status": "proposed"
     },
@@ -5697,9 +5949,23 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-published-recovery-address:threat-whitehat-legal-freeze",
+      "source": "control-published-recovery-address",
+      "target": "threat-whitehat-legal-freeze",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-registrar-hardening:threat-frontend-dns-hijacking",
       "source": "control-registrar-hardening",
       "target": "threat-frontend-dns-hijacking",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-safe-harbor-adoption:threat-whitehat-legal-freeze",
+      "source": "control-safe-harbor-adoption",
+      "target": "threat-whitehat-legal-freeze",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -6075,9 +6341,30 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-published-recovery-address:asset-user-funds",
+      "source": "control-published-recovery-address",
+      "target": "asset-user-funds",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-published-recovery-address:component-multisig",
+      "source": "control-published-recovery-address",
+      "target": "component-multisig",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-registrar-hardening:asset-domain-control",
       "source": "control-registrar-hardening",
       "target": "asset-domain-control",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-safe-harbor-adoption:asset-user-funds",
+      "source": "control-safe-harbor-adoption",
+      "target": "asset-user-funds",
       "type": "protects",
       "status": "proposed"
     },
@@ -6197,6 +6484,20 @@ export const securityMapGraph = {
       "id": "responds-to:response-supply-chain-incident:threat-supply-chain-compromise",
       "source": "response-supply-chain-incident",
       "target": "threat-supply-chain-compromise",
+      "type": "responds-to",
+      "status": "proposed"
+    },
+    {
+      "id": "responds-to:response-whitehat-rescue:threat-smart-contract-exploits",
+      "source": "response-whitehat-rescue",
+      "target": "threat-smart-contract-exploits",
+      "type": "responds-to",
+      "status": "proposed"
+    },
+    {
+      "id": "responds-to:response-whitehat-rescue:threat-whitehat-legal-freeze",
+      "source": "response-whitehat-rescue",
+      "target": "threat-whitehat-legal-freeze",
       "type": "responds-to",
       "status": "proposed"
     },
@@ -6614,6 +6915,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-smart-contract-exploits:surface-active-exploit-window",
+      "source": "threat-smart-contract-exploits",
+      "target": "surface-active-exploit-window",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-smart-contract-exploits:surface-contract-external-calls",
       "source": "threat-smart-contract-exploits",
       "target": "surface-contract-external-calls",
@@ -6694,6 +7002,20 @@ export const securityMapGraph = {
       "id": "targets:threat-unlimited-token-approval:surface-token-approvals",
       "source": "threat-unlimited-token-approval",
       "target": "surface-token-approvals",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-whitehat-legal-freeze:asset-user-funds",
+      "source": "threat-whitehat-legal-freeze",
+      "target": "asset-user-funds",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-whitehat-legal-freeze:surface-active-exploit-window",
+      "source": "threat-whitehat-legal-freeze",
+      "target": "surface-active-exploit-window",
       "type": "targets",
       "status": "proposed"
     }
