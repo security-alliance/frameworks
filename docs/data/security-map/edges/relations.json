@@ -1,0 +1,674 @@
+{
+  "edges": [
+    {
+      "source": "threat-smart-contract-exploits",
+      "target": "surface-contract-external-calls",
+      "type": "targets"
+    },
+    {
+      "source": "threat-smart-contract-exploits",
+      "target": "surface-contract-upgrade-path",
+      "type": "targets"
+    },
+    {
+      "source": "threat-smart-contract-exploits",
+      "target": "asset-user-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-smart-contract-exploits",
+      "target": "asset-treasury-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-multisig-operational-failure",
+      "target": "surface-multisig-signing-workflow",
+      "type": "targets"
+    },
+    {
+      "source": "threat-multisig-operational-failure",
+      "target": "surface-signer-lifecycle",
+      "type": "targets"
+    },
+    {
+      "source": "threat-multisig-operational-failure",
+      "target": "asset-treasury-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-multisig-operational-failure",
+      "target": "asset-signer-keys",
+      "type": "targets"
+    },
+    {
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "surface-hiring-contractor-access",
+      "type": "targets"
+    },
+    {
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "asset-source-code",
+      "type": "targets"
+    },
+    {
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "asset-secrets-credentials",
+      "type": "targets"
+    },
+    {
+      "source": "threat-leadership-phishing",
+      "target": "surface-executive-communications",
+      "type": "targets"
+    },
+    {
+      "source": "threat-leadership-phishing",
+      "target": "asset-signer-keys",
+      "type": "targets"
+    },
+    {
+      "source": "threat-leadership-phishing",
+      "target": "component-founders-executives",
+      "type": "targets"
+    },
+    {
+      "source": "threat-infrastructure-compromise",
+      "target": "surface-cloud-admin-console",
+      "type": "targets"
+    },
+    {
+      "source": "threat-infrastructure-compromise",
+      "target": "surface-rpc-trust-boundary",
+      "type": "targets"
+    },
+    {
+      "source": "threat-infrastructure-compromise",
+      "target": "asset-secrets-credentials",
+      "type": "targets"
+    },
+    {
+      "source": "threat-frontend-dns-hijacking",
+      "target": "surface-dns-records",
+      "type": "targets"
+    },
+    {
+      "source": "threat-frontend-dns-hijacking",
+      "target": "surface-frontend-deployment",
+      "type": "targets"
+    },
+    {
+      "source": "threat-frontend-dns-hijacking",
+      "target": "asset-domain-control",
+      "type": "targets"
+    },
+    {
+      "source": "threat-frontend-dns-hijacking",
+      "target": "asset-user-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-opsec-hygiene-failure",
+      "target": "surface-device-endpoint",
+      "type": "targets"
+    },
+    {
+      "source": "threat-opsec-hygiene-failure",
+      "target": "asset-secrets-credentials",
+      "type": "targets"
+    },
+    {
+      "source": "threat-supply-chain-compromise",
+      "target": "surface-package-install",
+      "type": "targets"
+    },
+    {
+      "source": "threat-supply-chain-compromise",
+      "target": "surface-ci-cd-secrets",
+      "type": "targets"
+    },
+    {
+      "source": "threat-supply-chain-compromise",
+      "target": "asset-source-code",
+      "type": "targets"
+    },
+    {
+      "source": "threat-supply-chain-compromise",
+      "target": "asset-deployment-authority",
+      "type": "targets"
+    },
+    {
+      "source": "threat-monitoring-gaps",
+      "target": "surface-onchain-activity",
+      "type": "targets"
+    },
+    {
+      "source": "threat-monitoring-gaps",
+      "target": "component-monitoring-stack",
+      "type": "targets"
+    },
+    {
+      "source": "threat-social-engineering",
+      "target": "component-community-channels",
+      "type": "targets"
+    },
+    {
+      "source": "threat-social-engineering",
+      "target": "asset-community-trust",
+      "type": "targets"
+    },
+    {
+      "source": "threat-social-engineering",
+      "target": "surface-executive-communications",
+      "type": "targets"
+    },
+    {
+      "source": "threat-duress-coercion",
+      "target": "surface-physical-presence",
+      "type": "targets"
+    },
+    {
+      "source": "threat-duress-coercion",
+      "target": "asset-signer-keys",
+      "type": "targets"
+    },
+    {
+      "source": "threat-governance-manipulation",
+      "target": "surface-governance-proposal",
+      "type": "targets"
+    },
+    {
+      "source": "threat-governance-manipulation",
+      "target": "asset-governance-authority",
+      "type": "targets"
+    },
+    {
+      "source": "control-external-security-review",
+      "target": "threat-smart-contract-exploits",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-secure-sdlc-testing",
+      "target": "threat-smart-contract-exploits",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-emergency-pause",
+      "target": "threat-smart-contract-exploits",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-multisig-threshold-policy",
+      "target": "threat-multisig-operational-failure",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "threat-multisig-operational-failure",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-signer-lifecycle",
+      "target": "threat-multisig-operational-failure",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-emergency-pause",
+      "target": "threat-multisig-operational-failure",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-hiring-identity-verification",
+      "target": "threat-dprk-it-worker-infiltration",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-insider-threat-mitigation",
+      "target": "threat-dprk-it-worker-infiltration",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-least-privilege-review",
+      "target": "threat-dprk-it-worker-infiltration",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "threat-leadership-phishing",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-signer-isolation",
+      "target": "threat-leadership-phishing",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "threat-leadership-phishing",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-security-awareness-training",
+      "target": "threat-leadership-phishing",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-cloud-hardening",
+      "target": "threat-infrastructure-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-network-segmentation",
+      "target": "threat-infrastructure-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-least-privilege-review",
+      "target": "threat-infrastructure-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-registrar-hardening",
+      "target": "threat-frontend-dns-hijacking",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "threat-opsec-hygiene-failure",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-device-hardening",
+      "target": "threat-opsec-hygiene-failure",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-signer-isolation",
+      "target": "threat-opsec-hygiene-failure",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-dependency-pinning-provenance",
+      "target": "threat-supply-chain-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-isolated-reproducible-builds",
+      "target": "threat-supply-chain-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-branch-protection",
+      "target": "threat-supply-chain-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-tested-incident-runbooks",
+      "target": "threat-monitoring-gaps",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-security-awareness-training",
+      "target": "threat-social-engineering",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-multisig-threshold-policy",
+      "target": "threat-duress-coercion",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-duress-travel-protocol",
+      "target": "threat-duress-coercion",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-security-council-process",
+      "target": "threat-governance-manipulation",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "threat-governance-manipulation",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-dns-change-monitoring",
+      "target": "threat-frontend-dns-hijacking",
+      "type": "detects"
+    },
+    {
+      "source": "control-frontend-integrity-monitoring",
+      "target": "threat-frontend-dns-hijacking",
+      "type": "detects"
+    },
+    {
+      "source": "control-onchain-anomaly-detection",
+      "target": "threat-smart-contract-exploits",
+      "type": "detects"
+    },
+    {
+      "source": "control-onchain-anomaly-detection",
+      "target": "threat-monitoring-gaps",
+      "type": "detects"
+    },
+    {
+      "source": "control-insider-threat-mitigation",
+      "target": "threat-dprk-it-worker-infiltration",
+      "type": "detects"
+    },
+    {
+      "source": "control-multisig-threshold-policy",
+      "target": "asset-treasury-funds",
+      "type": "protects"
+    },
+    {
+      "source": "control-signer-isolation",
+      "target": "asset-signer-keys",
+      "type": "protects"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "surface-multisig-signing-workflow",
+      "type": "protects"
+    },
+    {
+      "source": "control-registrar-hardening",
+      "target": "asset-domain-control",
+      "type": "protects"
+    },
+    {
+      "source": "control-branch-protection",
+      "target": "asset-source-code",
+      "type": "protects"
+    },
+    {
+      "source": "control-isolated-reproducible-builds",
+      "target": "asset-deployment-authority",
+      "type": "protects"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "component-identity-accounts",
+      "type": "protects"
+    },
+    {
+      "source": "control-external-security-review",
+      "target": "component-smart-contracts",
+      "type": "protects"
+    },
+    {
+      "source": "control-cloud-hardening",
+      "target": "component-cloud-infrastructure",
+      "type": "protects"
+    },
+    {
+      "source": "control-frontend-integrity-monitoring",
+      "target": "component-frontend",
+      "type": "protects"
+    },
+    {
+      "source": "response-smart-contract-exploit",
+      "target": "threat-smart-contract-exploits",
+      "type": "responds-to"
+    },
+    {
+      "source": "response-signer-compromise",
+      "target": "threat-multisig-operational-failure",
+      "type": "responds-to"
+    },
+    {
+      "source": "response-signer-compromise",
+      "target": "threat-leadership-phishing",
+      "type": "responds-to"
+    },
+    {
+      "source": "response-dprk-it-worker",
+      "target": "threat-dprk-it-worker-infiltration",
+      "type": "responds-to"
+    },
+    {
+      "source": "response-dns-hijack",
+      "target": "threat-frontend-dns-hijacking",
+      "type": "responds-to"
+    },
+    {
+      "source": "response-supply-chain-incident",
+      "target": "threat-supply-chain-compromise",
+      "type": "responds-to"
+    },
+    {
+      "source": "response-duress-event",
+      "target": "threat-duress-coercion",
+      "type": "responds-to"
+    },
+    {
+      "source": "threat-smart-contract-exploits",
+      "target": "guidance-external-security-reviews",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-external-security-review",
+      "target": "guidance-external-security-reviews",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-secure-sdlc-testing",
+      "target": "guidance-security-testing",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "guidance-multisig-joining",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-signer-lifecycle",
+      "target": "guidance-multisig-joining",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-emergency-pause",
+      "target": "guidance-multisig-emergency",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-emergency-pause",
+      "target": "guidance-multisig-runbooks",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-signer-isolation",
+      "target": "guidance-opsec",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "guidance-dprk-playbook",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-hiring-identity-verification",
+      "target": "guidance-people-controls",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-insider-threat-mitigation",
+      "target": "guidance-insider-threat",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-leadership-phishing",
+      "target": "guidance-threat-vectors",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-security-awareness-training",
+      "target": "guidance-security-training",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-iam",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-least-privilege-review",
+      "target": "guidance-iam",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-infrastructure-compromise",
+      "target": "guidance-infrastructure",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-cloud-hardening",
+      "target": "guidance-cloud",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-network-segmentation",
+      "target": "guidance-network",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-network-segmentation",
+      "target": "guidance-zero-trust",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-dns-change-monitoring",
+      "target": "guidance-dns-monitoring",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-frontend-integrity-monitoring",
+      "target": "guidance-frontend",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-registrar-hardening",
+      "target": "guidance-dns-cert",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-opsec-hygiene-failure",
+      "target": "guidance-opsec",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-device-hardening",
+      "target": "guidance-device-hardening",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-device-hardening",
+      "target": "guidance-technical-controls",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-isolated-reproducible-builds",
+      "target": "guidance-cicd",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-branch-protection",
+      "target": "guidance-devsecops",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-isolated-reproducible-builds",
+      "target": "guidance-code-signing",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-monitoring-gaps",
+      "target": "guidance-monitoring",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-onchain-anomaly-detection",
+      "target": "guidance-threat-detection",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-tested-incident-runbooks",
+      "target": "guidance-ir-detection",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-social-engineering",
+      "target": "guidance-awareness",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-security-awareness-training",
+      "target": "guidance-security-culture",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-social-engineering",
+      "target": "guidance-community",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-duress-travel-protocol",
+      "target": "guidance-travel",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-duress-travel-protocol",
+      "target": "guidance-physical",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-governance-manipulation",
+      "target": "guidance-governance",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-security-council-process",
+      "target": "guidance-council",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-smart-contract-exploit",
+      "target": "guidance-exploit-runbook",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-signer-compromise",
+      "target": "guidance-key-compromise-runbook",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-dprk-it-worker",
+      "target": "guidance-dprk-playbook",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-dns-hijack",
+      "target": "guidance-dns-hijack-runbook",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-supply-chain-incident",
+      "target": "guidance-dependency-runbook",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-duress-event",
+      "target": "guidance-travel",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-phishing",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-tested-incident-runbooks",
+      "target": "guidance-incident-playbooks",
+      "type": "documented-by"
+    }
+  ]
+}

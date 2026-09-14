@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "1.0.0",
+  "domains": [
+    {
+      "id": "people",
+      "title": "People",
+      "summary": "Founders, signers, hires, and anyone who can be phished, coerced, or planted inside the team."
+    },
+    {
+      "id": "devices-identity",
+      "title": "Devices and identity",
+      "summary": "Endpoints, accounts, authenticators, and the credentials that unlock everything else."
+    },
+    {
+      "id": "development-supply-chain",
+      "title": "Development and supply chain",
+      "summary": "Source, dependencies, build systems, and the path from commit to deployed artifact."
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "summary": "Cloud, networks, DNS, registrars, and the admin planes that host the product."
+    },
+    {
+      "id": "onchain-systems",
+      "title": "Onchain systems",
+      "summary": "Contracts, upgrade paths, oracles, and other on-chain logic that moves value."
+    },
+    {
+      "id": "governance-treasury",
+      "title": "Governance and treasury",
+      "summary": "Multisigs, proposals, councils, and the authority to spend or change the protocol."
+    },
+    {
+      "id": "community-communications",
+      "title": "Community and communications",
+      "summary": "Public channels, support surfaces, and the trust people place in official messages."
+    },
+    {
+      "id": "detection-incident-response",
+      "title": "Detection and incident response",
+      "summary": "Monitoring, alerting, runbooks, and the people who contain a live incident."
+    }
+  ],
+  "roles": [
+    { "id": "founder-executive", "title": "Founder / executive" },
+    { "id": "engineer-developer", "title": "Engineer / developer" },
+    { "id": "security-engineer", "title": "Security engineer" },
+    { "id": "multisig-signer", "title": "Multisig signer" },
+    { "id": "infrastructure-operator", "title": "Infrastructure operator" },
+    { "id": "community-manager", "title": "Community manager" },
+    { "id": "incident-responder", "title": "Incident responder" },
+    { "id": "governance-participant", "title": "Governance participant" }
+  ],
+  "lifecycle": [
+    { "id": "design", "title": "Design" },
+    { "id": "development", "title": "Development" },
+    { "id": "pre-launch", "title": "Pre-launch" },
+    { "id": "normal-operations", "title": "Normal operations" },
+    { "id": "upgrade", "title": "Upgrade" },
+    { "id": "incident-response", "title": "Incident response" },
+    { "id": "recovery", "title": "Recovery" }
+  ],
+  "nodeTypes": [
+    { "id": "asset", "title": "Asset", "prefix": "asset" },
+    { "id": "component", "title": "Component", "prefix": "component" },
+    { "id": "attack-surface", "title": "Attack surface", "prefix": "surface" },
+    { "id": "threat", "title": "Threat", "prefix": "threat" },
+    { "id": "control", "title": "Control", "prefix": "control" },
+    { "id": "response", "title": "Response", "prefix": "response" },
+    { "id": "guidance", "title": "Guidance", "prefix": "guidance" },
+    { "id": "incident", "title": "Incident", "prefix": "incident" }
+  ],
+  "edgeTypes": [
+    {
+      "id": "contains",
+      "title": "contains",
+      "direction": "source contains target",
+      "sources": ["asset", "component"],
+      "targets": ["component"]
+    },
+    {
+      "id": "depends-on",
+      "title": "depends on",
+      "direction": "source depends on target",
+      "sources": ["component"],
+      "targets": ["component"]
+    },
+    {
+      "id": "exposes",
+      "title": "exposes",
+      "direction": "source exposes target",
+      "sources": ["component"],
+      "targets": ["attack-surface"]
+    },
+    {
+      "id": "targets",
+      "title": "targets",
+      "direction": "source threat targets target",
+      "sources": ["threat"],
+      "targets": ["asset", "component", "attack-surface"]
+    },
+    {
+      "id": "mitigates",
+      "title": "mitigates",
+      "direction": "source control mitigates target threat",
+      "sources": ["control"],
+      "targets": ["threat"]
+    },
+    {
+      "id": "protects",
+      "title": "protects",
+      "direction": "source control protects target",
+      "sources": ["control"],
+      "targets": ["asset", "component", "attack-surface"]
+    },
+    {
+      "id": "detects",
+      "title": "detects",
+      "direction": "source control detects target",
+      "sources": ["control"],
+      "targets": ["threat", "attack-surface"]
+    },
+    {
+      "id": "responds-to",
+      "title": "responds to",
+      "direction": "source response responds to target",
+      "sources": ["response"],
+      "targets": ["threat", "incident"]
+    },
+    {
+      "id": "documented-by",
+      "title": "documented by",
+      "direction": "source is documented by target guidance",
+      "sources": ["asset", "component", "attack-surface", "threat", "control", "response", "incident"],
+      "targets": ["guidance"]
+    },
+    {
+      "id": "demonstrated-by",
+      "title": "demonstrated by",
+      "direction": "source is demonstrated by target incident",
+      "sources": ["threat", "attack-surface"],
+      "targets": ["incident"]
+    },
+    {
+      "id": "related-to",
+      "title": "related to",
+      "direction": "weak symmetric link; use only when a stronger edge is wrong",
+      "sources": ["asset", "component", "attack-surface", "threat", "control", "response", "guidance", "incident"],
+      "targets": ["asset", "component", "attack-surface", "threat", "control", "response", "guidance", "incident"]
+    }
+  ],
+  "controlClasses": [
+    { "id": "preventive", "title": "Preventive" },
+    { "id": "detective", "title": "Detective" },
+    { "id": "corrective", "title": "Corrective" },
+    { "id": "recovery", "title": "Recovery" },
+    { "id": "governance", "title": "Governance" }
+  ],
+  "severities": [
+    { "id": "contextual", "title": "Contextual" },
+    { "id": "low", "title": "Low" },
+    { "id": "medium", "title": "Medium" },
+    { "id": "high", "title": "High" },
+    { "id": "critical", "title": "Critical" }
+  ],
+  "statuses": [
+    { "id": "proposed", "title": "Proposed" },
+    { "id": "reviewed", "title": "Reviewed" },
+    { "id": "deprecated", "title": "Deprecated" }
+  ],
+  "notes": {
+    "rolesVsMdxTags": "Security Map roles are a graph taxonomy for filtering map nodes. They are deliberately distinct from MDX audience tags such as Engineer/Developer or Operations & Strategy. Do not treat a role id as a page tag.",
+    "severity": "Threat severity is a default triage hint, not a universal ranking. Every threat with a severity other than contextual must include severityBasis."
+  }
+}

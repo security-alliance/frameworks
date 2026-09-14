@@ -23,6 +23,7 @@ export { CertifiedProtocolsWrapper } from './cert/certified-protocols/CertifiedP
 export { BadgeLegend } from './contributors/BadgeLegend'
 export { DevOnly } from './dev-only/DevOnly'
 export { AttackSurfaceDashboard } from './attack-surface/AttackSurfaceDashboard'
+export { SecurityMap } from './security-map/SecurityMap'
 export { GovernanceSDLCPipeline } from './governance-sdlc/GovernanceSDLCPipeline'
 export { GovernanceChecklistItem } from './governance-sdlc/GovernanceChecklistItem'
 export { Checklist } from './checklist/Checklist'

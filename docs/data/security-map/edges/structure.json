@@ -1,0 +1,147 @@
+{
+  "edges": [
+    {
+      "source": "asset-treasury-funds",
+      "target": "component-multisig",
+      "type": "contains",
+      "rationale": "Protocol treasuries in this model are held by the protocol multisig."
+    },
+    {
+      "source": "asset-governance-authority",
+      "target": "component-governance-module",
+      "type": "contains"
+    },
+    {
+      "source": "asset-governance-authority",
+      "target": "component-multisig",
+      "type": "contains",
+      "rationale": "Upgrade and pause authority often sit on the same privileged multisig as treasury."
+    },
+    {
+      "source": "component-multisig",
+      "target": "component-signers",
+      "type": "contains"
+    },
+    {
+      "source": "component-frontend",
+      "target": "component-dns-registrar",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-frontend",
+      "target": "component-ci-cd",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-ci-cd",
+      "target": "component-dependency-graph",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-ci-cd",
+      "target": "component-identity-accounts",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-multisig",
+      "target": "component-signers",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-smart-contracts",
+      "target": "component-multisig",
+      "type": "depends-on",
+      "rationale": "Upgradeable contracts typically grant admin to a protocol multisig."
+    },
+    {
+      "source": "component-monitoring-stack",
+      "target": "component-rpc-endpoints",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-cloud-infrastructure",
+      "target": "component-identity-accounts",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-smart-contracts",
+      "target": "surface-contract-external-calls",
+      "type": "exposes"
+    },
+    {
+      "source": "component-smart-contracts",
+      "target": "surface-contract-upgrade-path",
+      "type": "exposes"
+    },
+    {
+      "source": "component-multisig",
+      "target": "surface-multisig-signing-workflow",
+      "type": "exposes"
+    },
+    {
+      "source": "component-signers",
+      "target": "surface-signer-lifecycle",
+      "type": "exposes"
+    },
+    {
+      "source": "component-hiring-pipeline",
+      "target": "surface-hiring-contractor-access",
+      "type": "exposes"
+    },
+    {
+      "source": "component-founders-executives",
+      "target": "surface-executive-communications",
+      "type": "exposes"
+    },
+    {
+      "source": "component-cloud-infrastructure",
+      "target": "surface-cloud-admin-console",
+      "type": "exposes"
+    },
+    {
+      "source": "component-rpc-endpoints",
+      "target": "surface-rpc-trust-boundary",
+      "type": "exposes"
+    },
+    {
+      "source": "component-dns-registrar",
+      "target": "surface-dns-records",
+      "type": "exposes"
+    },
+    {
+      "source": "component-frontend",
+      "target": "surface-frontend-deployment",
+      "type": "exposes"
+    },
+    {
+      "source": "component-dependency-graph",
+      "target": "surface-package-install",
+      "type": "exposes"
+    },
+    {
+      "source": "component-ci-cd",
+      "target": "surface-ci-cd-secrets",
+      "type": "exposes"
+    },
+    {
+      "source": "component-developer-devices",
+      "target": "surface-device-endpoint",
+      "type": "exposes"
+    },
+    {
+      "source": "component-governance-module",
+      "target": "surface-governance-proposal",
+      "type": "exposes"
+    },
+    {
+      "source": "component-monitoring-stack",
+      "target": "surface-onchain-activity",
+      "type": "exposes"
+    },
+    {
+      "source": "component-signers",
+      "target": "surface-physical-presence",
+      "type": "exposes"
+    }
+  ]
+}

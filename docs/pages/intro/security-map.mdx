@@ -1,0 +1,71 @@
+---
+title: "Security Map | Security Alliance"
+description: "Explore the SEAL Security Map: trace assets, attack surfaces, threats, and controls, assess implementation locally, and open exact framework guidance."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+contributors:
+  - role: wrote
+    users: [mattaereal]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { SecurityMap, TagList, AttributionList, ContributeFooter } from '../../../components'
+
+# Security Map
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+:::warning[Experimental]
+The Security Map is experimental. Coverage, layout, and local assessment format may change.
+:::
+
+
+> 🔑 **Key Takeaway**: Click a field. Related fields in the other columns are what actually connect
+> to it. Assess controls, not threats. Ratings stay in this browser.
+
+Six columns follow how a failure actually travels: what can be lost, who holds it, how it is
+reached, how it fails, what reduces that failure, and where the Frameworks page lives.
+
+Click one field. Related fields in the other columns light up. Views cut the map to a job:
+multisig, deployment, domains, signers, supply chain, response, or gaps. The docs column is too
+narrow for six columns plus guidance, so [open the full map](/map) in a new tab for a side-by-side
+view.
+
+Shareable URLs may include `view` and `focus`. They never include assessment state.
+
+The [Attack Surface Overview](/intro/attack-surface) is a separate radial checklist of threat
+vectors. This map is the graph of assets, surfaces, threats, and controls.
+
+<SecurityMap />
+
+## How to read the map
+
+- **Assets** are things whose confidentiality, integrity, availability, authenticity, or control matters.
+- **Components** are the people, devices, accounts, pipelines, and services in play.
+- **Attack surfaces** are specific workflows or trust boundaries, not whole domains.
+- **Threats** are adversarial actions or failure modes. They are not assessment items.
+- **Controls** are the only things you rate. Not assessed is the default.
+- **Guidance** opens the matching Frameworks page. Response procedures sit in this column.
+
+Numbers on a field are related threats. Zero incidents in this seed. An incident needs a source.
+
+## Local assessment
+
+Assessment files are versioned JSON stored under `seal-security-map-assessment:v1`. Import replaces
+the current assessment after a preview. Treat exports as sensitive: they can reveal missing controls.
+
+## Further reading
+
+- `docs/data/security-map/README.md` in this repository: how maintainers add nodes and edges
+- [Content model](/contribute/content-model): page contracts the map links into
+- [Contributing](/contribute/contributing): PR workflow for framework-scoped map expansions
+- [Attack Surface Overview](/intro/attack-surface): radial threat-vector checklist
+
+---
+
+<ContributeFooter />
