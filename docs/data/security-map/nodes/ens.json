@@ -1,0 +1,89 @@
+{
+  "nodes": [
+    {
+      "id": "surface-ens-resolution",
+      "type": "attack-surface",
+      "title": "ENS name resolution",
+      "summary": "Turning a human-readable name into an address before a send. Stale indexers, skipped reverse checks, and confusable scripts all produce a valid-looking wrong destination.",
+      "domains": ["onchain-systems"],
+      "status": "proposed",
+      "tags": ["ens", "resolution"],
+      "roles": ["engineer-developer"],
+      "lifecycle": ["normal-operations"],
+      "framework": "ens"
+    },
+    {
+      "id": "threat-spoofed-ens-resolution",
+      "type": "threat",
+      "title": "Spoofed ENS resolution",
+      "summary": "The UI shows a trusted name while the resolved address is attacker-controlled, from a stale indexer, a reverse record that does not loop, or a homograph.",
+      "domains": ["onchain-systems"],
+      "status": "proposed",
+      "tags": ["ens", "homograph", "spoofing"],
+      "severity": "high",
+      "severityBasis": "Default triage is high because the send is valid and irreversible. The bug is in resolution, not in the signature.",
+      "framework": "ens"
+    },
+    {
+      "id": "control-l1-ens-resolution",
+      "type": "control",
+      "title": "L1-backed ENS resolution",
+      "summary": "For fund movement, resolve from Ethereum L1, not a stale indexer. Verify reverse records with a matching forward lookup before the send.",
+      "domains": ["onchain-systems"],
+      "status": "proposed",
+      "tags": ["ens", "l1", "reverse-record"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["engineer-developer"],
+      "lifecycle": ["design", "normal-operations"],
+      "framework": "ens"
+    },
+    {
+      "id": "control-ensip15-normalization",
+      "type": "control",
+      "title": "ENSIP-15 name normalization",
+      "summary": "Normalize names with ENSIP-15 before any namehash, and warn on confusable scripts. Homographs survive if the UI skips this.",
+      "domains": ["onchain-systems"],
+      "status": "proposed",
+      "tags": ["ens", "normalization", "homograph"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["engineer-developer"],
+      "lifecycle": ["design", "development"],
+      "framework": "ens"
+    },
+    {
+      "id": "guidance-ens",
+      "type": "guidance",
+      "title": "ENS best practices",
+      "summary": "Secure ENS use means fresh L1-backed resolution for funds moves, correct name normalization, and verified bidirectional records.",
+      "domains": ["onchain-systems"],
+      "status": "proposed",
+      "tags": ["ens"],
+      "href": "/ens/overview",
+      "framework": "ens"
+    },
+    {
+      "id": "guidance-ens-integrity",
+      "type": "guidance",
+      "title": "ENS data integrity",
+      "summary": "For fund movement, resolve from Ethereum L1 and always verify reverse records with a matching forward lookup.",
+      "domains": ["onchain-systems"],
+      "status": "proposed",
+      "tags": ["ens", "integrity"],
+      "href": "/ens/data-integrity-verification",
+      "framework": "ens"
+    },
+    {
+      "id": "guidance-ens-normalization",
+      "type": "guidance",
+      "title": "ENS name handling",
+      "summary": "Normalize with ENSIP-15 before any namehash, and warn on confusable scripts that enable homograph phishing.",
+      "domains": ["onchain-systems"],
+      "status": "proposed",
+      "tags": ["ens", "normalization"],
+      "href": "/ens/name-handling-normalization",
+      "framework": "ens"
+    }
+  ]
+}

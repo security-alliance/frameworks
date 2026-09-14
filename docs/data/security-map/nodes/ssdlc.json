@@ -1,0 +1,73 @@
+{
+  "nodes": [
+    {
+      "id": "control-peer-code-review",
+      "type": "control",
+      "title": "Peer code review",
+      "summary": "Required human review of production changes, with a checklist that covers authz, input handling, and irreversible Web3 paths. Branch rules without actual review are theater.",
+      "domains": ["development-supply-chain"],
+      "status": "proposed",
+      "tags": ["review", "sdlc"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["engineer-developer"],
+      "lifecycle": ["development"],
+      "framework": "secure-software-development"
+    },
+    {
+      "id": "guidance-ssdlc",
+      "type": "guidance",
+      "title": "Secure software development",
+      "summary": "Security in the SDLC is continuous: design, code, review, and repository controls. It is not a final gate before ship.",
+      "domains": ["development-supply-chain"],
+      "status": "proposed",
+      "tags": ["sdlc"],
+      "href": "/secure-software-development/overview",
+      "framework": "secure-software-development"
+    },
+    {
+      "id": "guidance-secure-coding",
+      "type": "guidance",
+      "title": "Secure coding standards",
+      "summary": "Input validation, encoding, authz checks, error handling, least privilege in code, and secure data handling.",
+      "domains": ["development-supply-chain"],
+      "status": "proposed",
+      "tags": ["coding", "standards"],
+      "href": "/secure-software-development/secure-coding-standards-guidelines",
+      "framework": "secure-software-development"
+    },
+    {
+      "id": "guidance-code-reviews",
+      "type": "guidance",
+      "title": "Code reviews and peer audits",
+      "summary": "Review cadence, checklists, automation assist, and a culture that treats unreviewed production merges as a defect.",
+      "domains": ["development-supply-chain"],
+      "status": "proposed",
+      "tags": ["review"],
+      "href": "/secure-software-development/code-reviews-peer-audits",
+      "framework": "secure-software-development"
+    },
+    {
+      "id": "guidance-secure-repos",
+      "type": "guidance",
+      "title": "Secure code repositories",
+      "summary": "Repository compromise is supply-chain compromise. Enforce least privilege, strong authentication, protected branches, and review-required merges.",
+      "domains": ["development-supply-chain"],
+      "status": "proposed",
+      "tags": ["github", "branch-protection"],
+      "href": "/secure-software-development/secure-code-repositories-version-control",
+      "framework": "secure-software-development"
+    },
+    {
+      "id": "guidance-ssdlc-threat-design",
+      "type": "guidance",
+      "title": "Threat modeling and secure design",
+      "summary": "Threat modeling before build chooses which controls matter. Secure design principles keep residual risk from depending on a single check.",
+      "domains": ["development-supply-chain"],
+      "status": "proposed",
+      "tags": ["threat-model", "design"],
+      "href": "/secure-software-development/threat-modeling-secure-design-principles",
+      "framework": "secure-software-development"
+    }
+  ]
+}

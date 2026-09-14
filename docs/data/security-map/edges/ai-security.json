@@ -1,0 +1,69 @@
+{
+  "edges": [
+    {
+      "source": "component-ai-agent",
+      "target": "component-developer-devices",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-ai-agent",
+      "target": "surface-agent-tool-path",
+      "type": "exposes"
+    },
+    {
+      "source": "threat-prompt-injection",
+      "target": "surface-agent-tool-path",
+      "type": "targets"
+    },
+    {
+      "source": "threat-prompt-injection",
+      "target": "asset-secrets-credentials",
+      "type": "targets"
+    },
+    {
+      "source": "threat-prompt-injection",
+      "target": "asset-user-funds",
+      "type": "targets"
+    },
+    {
+      "source": "control-prompt-input-constraint",
+      "target": "threat-prompt-injection",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-execution-path-enforcement",
+      "target": "threat-prompt-injection",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-execution-path-enforcement",
+      "target": "surface-agent-tool-path",
+      "type": "protects"
+    },
+    {
+      "source": "control-prompt-input-constraint",
+      "target": "component-ai-agent",
+      "type": "protects"
+    },
+    {
+      "source": "control-prompt-input-constraint",
+      "target": "guidance-prompt-injection",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-execution-path-enforcement",
+      "target": "guidance-execution-path",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-prompt-injection",
+      "target": "guidance-prompt-injection",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-ai-agent",
+      "target": "guidance-ai-security",
+      "type": "documented-by"
+    }
+  ]
+}
