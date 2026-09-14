@@ -122,9 +122,11 @@ The first seed is `proposed` on purpose.
 
 1. Run `pnpm run coverage:security-map` and treat the lists as the work queue.
 2. Map one framework per PR (`feat/security-map-<framework>`). Steward review for security semantics.
-   Wallet Security is the first expansion. Next implied gaps: Physical Security, then Treasury Operations.
+   Wallet Security and Physical Security (coercion and duress) are seeded. Next implied gap:
+   Treasury Operations. Facility, counter-surveillance, and hardware supply-chain pages stay stubs.
 3. Add the missing component, surface, control, or guidance edge. Cross-links appear because two
    frameworks share a node, not because overview pages mention each other.
 4. Sourced incidents in dedicated evidence PRs.
 5. Schema migrations before changing stable IDs or enum meanings.
+
 
