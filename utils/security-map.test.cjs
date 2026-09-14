@@ -161,6 +161,8 @@ describe('production catalogue', () => {
     assert.ok(first.graph.nodes.some((n) => n.id === 'component-hardware-wallet'))
     assert.ok(first.graph.nodes.some((n) => n.id === 'control-controlled-surrender'))
     assert.ok(first.graph.nodes.some((n) => n.id === 'component-custodial-treasury'))
+    assert.ok(first.graph.nodes.some((n) => n.id === 'control-continuous-remote-identity-review'))
+
 
     assert.ok(
       first.graph.edges.some(
