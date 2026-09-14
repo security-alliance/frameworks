@@ -144,7 +144,8 @@ describe('production catalogue', () => {
     assert.equal(first.graph.license, 'CC-BY-SA-4.0')
     assert.doesNotMatch(serializeGraph(first.graph), /\/home\/|generatedAt|C:\\/)
     const threats = first.graph.nodes.filter((n) => n.type === 'threat')
-    assert.equal(threats.length, 20)
+    assert.equal(threats.length, 22)
+
 
 
     for (const threat of threats) {
@@ -164,6 +165,8 @@ describe('production catalogue', () => {
     assert.ok(first.graph.nodes.some((n) => n.id === 'component-custodial-treasury'))
     assert.ok(first.graph.nodes.some((n) => n.id === 'control-continuous-remote-identity-review'))
     assert.ok(first.graph.nodes.some((n) => n.id === 'control-full-disk-encryption'))
+    assert.ok(first.graph.nodes.some((n) => n.id === 'control-default-e2ee-messaging'))
+
 
 
 

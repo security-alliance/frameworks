@@ -120,6 +120,30 @@ export const securityMapGraph = {
       "framework": "physical-security"
     },
     {
+      "id": "asset-personal-identifying-data",
+      "type": "asset",
+      "title": "Personal identifying data",
+      "summary": "Home, travel, family, and holdings traces that attackers use to phish, coerce, or show up in person. Distinct from account passwords and signing keys.",
+      "domains": [
+        "people",
+        "community-communications"
+      ],
+      "status": "proposed",
+      "tags": [
+        "osint",
+        "footprint",
+        "pii"
+      ],
+      "roles": [
+        "founder-executive",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "privacy"
+    },
+    {
       "id": "asset-secrets-credentials",
       "type": "asset",
       "title": "Secrets and credentials",
@@ -860,6 +884,32 @@ export const securityMapGraph = {
       "framework": "physical-security"
     },
     {
+      "id": "control-default-e2ee-messaging",
+      "type": "control",
+      "title": "Default end-to-end encrypted messaging",
+      "summary": "Put sensitive ops on messengers with E2EE on by default and verified safety numbers. Cloud backups and metadata still leak. Discord is not this control.",
+      "domains": [
+        "community-communications"
+      ],
+      "status": "proposed",
+      "tags": [
+        "e2ee",
+        "messaging"
+      ],
+      "roles": [
+        "founder-executive",
+        "engineer-developer",
+        "community-manager"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "incident-response"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "privacy"
+    },
+    {
       "id": "control-dependency-pinning-provenance",
       "type": "control",
       "title": "Dependency pinning and provenance",
@@ -905,6 +955,30 @@ export const securityMapGraph = {
       "controlClass": "preventive",
       "assessmentEligible": true,
       "framework": "opsec"
+    },
+    {
+      "id": "control-digital-footprint-reduction",
+      "type": "control",
+      "title": "Digital footprint reduction",
+      "summary": "Audit public presence, cut what you share, lock down privacy settings, and delete unused accounts on a cadence.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "osint",
+        "footprint"
+      ],
+      "roles": [
+        "founder-executive",
+        "multisig-signer"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "privacy"
     },
     {
       "id": "control-dns-change-monitoring",
@@ -1743,6 +1817,31 @@ export const securityMapGraph = {
       "framework": "treasury-operations"
     },
     {
+      "id": "control-vpn-on-untrusted-networks",
+      "type": "control",
+      "title": "VPN on untrusted networks",
+      "summary": "Tunnel traffic on public Wi-Fi so the local network cannot read or alter it. A VPN is not anonymity, malware defense, or a substitute for HTTPS.",
+      "domains": [
+        "infrastructure",
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "vpn",
+        "wifi"
+      ],
+      "roles": [
+        "engineer-developer",
+        "founder-executive"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "framework": "privacy"
+    },
+    {
       "id": "control-whitelist-and-delay",
       "type": "control",
       "title": "Whitelist and delay policy",
@@ -1951,6 +2050,22 @@ export const securityMapGraph = {
       ],
       "href": "/devsecops/overview",
       "framework": "devsecops"
+    },
+    {
+      "id": "guidance-digital-footprint",
+      "type": "guidance",
+      "title": "Digital footprint",
+      "summary": "Active posts and passive tracking both form a footprint attackers use for targeting. Audit, minimize sharing, and delete unused accounts.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "osint",
+        "footprint"
+      ],
+      "href": "/privacy/digital-footprint",
+      "framework": "privacy"
     },
     {
       "id": "guidance-dns-cert",
@@ -2188,6 +2303,22 @@ export const securityMapGraph = {
       ],
       "href": "/physical-security/coercion-and-duress/wallet-and-key-architecture",
       "framework": "physical-security"
+    },
+    {
+      "id": "guidance-encrypted-communication",
+      "type": "guidance",
+      "title": "Encrypted communication tools",
+      "summary": "Prefer apps with default end-to-end encryption and verifiable safety numbers. Metadata and backup settings still leak.",
+      "domains": [
+        "community-communications"
+      ],
+      "status": "proposed",
+      "tags": [
+        "e2ee",
+        "messaging"
+      ],
+      "href": "/privacy/encrypted-communication-tools",
+      "framework": "privacy"
     },
     {
       "id": "guidance-encryption",
@@ -2584,6 +2715,57 @@ export const securityMapGraph = {
       "framework": "physical-security"
     },
     {
+      "id": "guidance-privacy",
+      "type": "guidance",
+      "title": "Privacy",
+      "summary": "Shrink personal and team data exposure first. Encryption and network tools then reduce what remains.",
+      "domains": [
+        "people",
+        "community-communications",
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "privacy"
+      ],
+      "href": "/privacy/overview",
+      "framework": "privacy"
+    },
+    {
+      "id": "guidance-public-networks",
+      "type": "guidance",
+      "title": "Attack surfaces on public networks",
+      "summary": "Open Wi-Fi multiplies rogue AP, captive-portal, and local scanning risk. Assume the LAN is adversarial.",
+      "domains": [
+        "infrastructure",
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "wifi",
+        "vpn"
+      ],
+      "href": "/privacy/vpns/attack-surfaces-public-networks",
+      "framework": "privacy"
+    },
+    {
+      "id": "guidance-secure-browsing",
+      "type": "guidance",
+      "title": "Secure browsing",
+      "summary": "Prefer HTTPS end to end, cut trackers, and treat public Wi-Fi as hostile unless traffic is also tunneled.",
+      "domains": [
+        "devices-identity",
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "https",
+        "browser"
+      ],
+      "href": "/privacy/secure-browsing",
+      "framework": "privacy"
+    },
+    {
       "id": "guidance-security-culture",
       "type": "guidance",
       "title": "Security-aware culture",
@@ -2836,6 +3018,21 @@ export const securityMapGraph = {
       ],
       "href": "/treasury-operations/transaction-verification",
       "framework": "treasury-operations"
+    },
+    {
+      "id": "guidance-vpns",
+      "type": "guidance",
+      "title": "VPN services",
+      "summary": "A VPN encrypts and relocates network egress for specific threat models. It is not anonymity, malware defense, or a substitute for HTTPS.",
+      "domains": [
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "vpn"
+      ],
+      "href": "/privacy/vpns/overview",
+      "framework": "privacy"
     },
     {
       "id": "guidance-wallet-security",
@@ -3388,6 +3585,31 @@ export const securityMapGraph = {
       ]
     },
     {
+      "id": "surface-operator-messaging",
+      "type": "attack-surface",
+      "title": "Operator messaging",
+      "summary": "Team chat used for ops, keys-adjacent work, and incident coordination. A server-readable default turns a platform breach into plaintext.",
+      "domains": [
+        "community-communications",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "e2ee",
+        "messaging"
+      ],
+      "roles": [
+        "founder-executive",
+        "engineer-developer",
+        "community-manager"
+      ],
+      "lifecycle": [
+        "normal-operations",
+        "incident-response"
+      ],
+      "framework": "privacy"
+    },
+    {
       "id": "surface-package-install",
       "type": "attack-surface",
       "title": "Package install and update",
@@ -3426,6 +3648,30 @@ export const securityMapGraph = {
       "lifecycle": [
         "normal-operations"
       ]
+    },
+    {
+      "id": "surface-public-wifi",
+      "type": "attack-surface",
+      "title": "Public Wi-Fi",
+      "summary": "Open hotel, airport, and cafe networks. Rogue APs, captive portals, and local scanning sit on the path before any website TLS.",
+      "domains": [
+        "infrastructure",
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "wifi",
+        "vpn",
+        "transit"
+      ],
+      "roles": [
+        "engineer-developer",
+        "founder-executive"
+      ],
+      "lifecycle": [
+        "normal-operations"
+      ],
+      "framework": "privacy"
     },
     {
       "id": "surface-rpc-trust-boundary",
@@ -3816,6 +4062,23 @@ export const securityMapGraph = {
       "framework": "opsec"
     },
     {
+      "id": "threat-osint-targeting",
+      "type": "threat",
+      "title": "OSINT targeting",
+      "summary": "Public posts, old accounts, and tracker trails give an attacker a home, a family member, a travel plan, or a pretext for phishing.",
+      "domains": [
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "osint",
+        "footprint"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because the same traces feed spearphishing and wrench attacks. The leak itself is not theft. The follow-on is.",
+      "framework": "privacy"
+    },
+    {
       "id": "threat-plaintext-lost-device",
       "type": "threat",
       "title": "Plaintext on a lost device",
@@ -3850,6 +4113,24 @@ export const securityMapGraph = {
       "severity": "critical",
       "severityBasis": "Default triage is critical because the seed reconstructs every derived key. Treat any suspected exposure as full compromise.",
       "framework": "wallet-security"
+    },
+    {
+      "id": "threat-server-readable-chat",
+      "type": "threat",
+      "title": "Server-readable operational chat",
+      "summary": "Ops traffic lives in Discord, default Telegram, Slack, or similar. The provider, a seized server, or a hijacked admin can read it.",
+      "domains": [
+        "community-communications"
+      ],
+      "status": "proposed",
+      "tags": [
+        "e2ee",
+        "messaging",
+        "discord"
+      ],
+      "severity": "high",
+      "severityBasis": "Default triage is high because teams paste credentials, wallet addresses, and incident detail into everyday chat. E2EE does not hide metadata.",
+      "framework": "privacy"
     },
     {
       "id": "threat-smart-contract-exploits",
@@ -4114,6 +4395,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:component-community-channels:guidance-encrypted-communication",
+      "source": "component-community-channels",
+      "target": "guidance-encrypted-communication",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:component-custodial-treasury:guidance-treasury-operations",
       "source": "component-custodial-treasury",
       "target": "guidance-treasury-operations",
@@ -4212,6 +4500,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-default-e2ee-messaging:guidance-encrypted-communication",
+      "source": "control-default-e2ee-messaging",
+      "target": "guidance-encrypted-communication",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-dependency-pinning-provenance:guidance-supply-chain-overview",
       "source": "control-dependency-pinning-provenance",
       "target": "guidance-supply-chain-overview",
@@ -4236,6 +4531,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-device-hardening:guidance-technical-controls",
       "source": "control-device-hardening",
       "target": "guidance-technical-controls",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-digital-footprint-reduction:guidance-digital-footprint",
+      "source": "control-digital-footprint-reduction",
+      "target": "guidance-digital-footprint",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4348,6 +4650,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-hiring-identity-verification:guidance-people-controls",
       "source": "control-hiring-identity-verification",
       "target": "guidance-people-controls",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-identity-separation:guidance-digital-footprint",
+      "source": "control-identity-separation",
+      "target": "guidance-digital-footprint",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4611,6 +4920,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:control-tls-ssh-transit:guidance-secure-browsing",
+      "source": "control-tls-ssh-transit",
+      "target": "guidance-secure-browsing",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:control-treasury-classification:guidance-treasury-classification",
       "source": "control-treasury-classification",
       "target": "guidance-treasury-classification",
@@ -4621,6 +4937,20 @@ export const securityMapGraph = {
       "id": "documented-by:control-treasury-registration:guidance-treasury-registration",
       "source": "control-treasury-registration",
       "target": "guidance-treasury-registration",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-vpn-on-untrusted-networks:guidance-public-networks",
+      "source": "control-vpn-on-untrusted-networks",
+      "target": "guidance-public-networks",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-vpn-on-untrusted-networks:guidance-vpns",
+      "source": "control-vpn-on-untrusted-networks",
+      "target": "guidance-vpns",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4793,9 +5123,23 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-on-path-interception:guidance-public-networks",
+      "source": "threat-on-path-interception",
+      "target": "guidance-public-networks",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-opsec-hygiene-failure:guidance-opsec",
       "source": "threat-opsec-hygiene-failure",
       "target": "guidance-opsec",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-osint-targeting:guidance-digital-footprint",
+      "source": "threat-osint-targeting",
+      "target": "guidance-digital-footprint",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4810,6 +5154,13 @@ export const securityMapGraph = {
       "id": "documented-by:threat-seed-phrase-compromise:guidance-seed-phrase-management",
       "source": "threat-seed-phrase-compromise",
       "target": "guidance-seed-phrase-management",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:threat-server-readable-chat:guidance-encrypted-communication",
+      "source": "threat-server-readable-chat",
+      "target": "guidance-encrypted-communication",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -4870,6 +5221,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "exposes:component-community-channels:surface-operator-messaging",
+      "source": "component-community-channels",
+      "target": "surface-operator-messaging",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
       "id": "exposes:component-custodial-treasury:surface-custodial-admin-access",
       "source": "component-custodial-treasury",
       "target": "surface-custodial-admin-access",
@@ -4905,6 +5263,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "exposes:component-developer-devices:surface-public-wifi",
+      "source": "component-developer-devices",
+      "target": "surface-public-wifi",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
       "id": "exposes:component-dns-registrar:surface-dns-records",
       "source": "component-dns-registrar",
       "target": "surface-dns-records",
@@ -4922,6 +5287,13 @@ export const securityMapGraph = {
       "id": "exposes:component-founders-executives:surface-executive-communications",
       "source": "component-founders-executives",
       "target": "surface-executive-communications",
+      "type": "exposes",
+      "status": "proposed"
+    },
+    {
+      "id": "exposes:component-founders-executives:surface-operator-messaging",
+      "source": "component-founders-executives",
+      "target": "surface-operator-messaging",
       "type": "exposes",
       "status": "proposed"
     },
@@ -5080,6 +5452,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-default-e2ee-messaging:threat-server-readable-chat",
+      "source": "control-default-e2ee-messaging",
+      "target": "threat-server-readable-chat",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-dependency-pinning-provenance:threat-supply-chain-compromise",
       "source": "control-dependency-pinning-provenance",
       "target": "threat-supply-chain-compromise",
@@ -5097,6 +5476,13 @@ export const securityMapGraph = {
       "id": "mitigates:control-device-hardening:threat-plaintext-lost-device",
       "source": "control-device-hardening",
       "target": "threat-plaintext-lost-device",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-digital-footprint-reduction:threat-osint-targeting",
+      "source": "control-digital-footprint-reduction",
+      "target": "threat-osint-targeting",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -5167,6 +5553,13 @@ export const securityMapGraph = {
       "id": "mitigates:control-identity-separation:threat-duress-coercion",
       "source": "control-identity-separation",
       "target": "threat-duress-coercion",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-identity-separation:threat-osint-targeting",
+      "source": "control-identity-separation",
+      "target": "threat-osint-targeting",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -5416,6 +5809,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-vpn-on-untrusted-networks:threat-on-path-interception",
+      "source": "control-vpn-on-untrusted-networks",
+      "target": "threat-on-path-interception",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-whitelist-and-delay:threat-custody-access-abuse",
       "source": "control-whitelist-and-delay",
       "target": "threat-custody-access-abuse",
@@ -5493,6 +5893,20 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-default-e2ee-messaging:surface-operator-messaging",
+      "source": "control-default-e2ee-messaging",
+      "target": "surface-operator-messaging",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-digital-footprint-reduction:asset-personal-identifying-data",
+      "source": "control-digital-footprint-reduction",
+      "target": "asset-personal-identifying-data",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-duress-signing-limits:asset-treasury-funds",
       "source": "control-duress-signing-limits",
       "target": "asset-treasury-funds",
@@ -5566,6 +5980,13 @@ export const securityMapGraph = {
       "id": "protects:control-identity-separation:asset-key-holder-safety",
       "source": "control-identity-separation",
       "target": "asset-key-holder-safety",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-identity-separation:asset-personal-identifying-data",
+      "source": "control-identity-separation",
+      "target": "asset-personal-identifying-data",
       "type": "protects",
       "status": "proposed"
     },
@@ -5696,6 +6117,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "protects:control-tls-ssh-transit:surface-public-wifi",
+      "source": "control-tls-ssh-transit",
+      "target": "surface-public-wifi",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
       "id": "protects:control-treasury-classification:component-custodial-treasury",
       "source": "control-treasury-classification",
       "target": "component-custodial-treasury",
@@ -5706,6 +6134,13 @@ export const securityMapGraph = {
       "id": "protects:control-treasury-registration:component-custodial-treasury",
       "source": "control-treasury-registration",
       "target": "component-custodial-treasury",
+      "type": "protects",
+      "status": "proposed"
+    },
+    {
+      "id": "protects:control-vpn-on-untrusted-networks:surface-public-wifi",
+      "source": "control-vpn-on-untrusted-networks",
+      "target": "surface-public-wifi",
       "type": "protects",
       "status": "proposed"
     },
@@ -6067,6 +6502,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "targets:threat-on-path-interception:surface-public-wifi",
+      "source": "threat-on-path-interception",
+      "target": "surface-public-wifi",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
       "id": "targets:threat-opsec-hygiene-failure:asset-secrets-credentials",
       "source": "threat-opsec-hygiene-failure",
       "target": "asset-secrets-credentials",
@@ -6077,6 +6519,27 @@ export const securityMapGraph = {
       "id": "targets:threat-opsec-hygiene-failure:surface-device-endpoint",
       "source": "threat-opsec-hygiene-failure",
       "target": "surface-device-endpoint",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-osint-targeting:asset-key-holder-safety",
+      "source": "threat-osint-targeting",
+      "target": "asset-key-holder-safety",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-osint-targeting:asset-personal-identifying-data",
+      "source": "threat-osint-targeting",
+      "target": "asset-personal-identifying-data",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-osint-targeting:component-founders-executives",
+      "source": "threat-osint-targeting",
+      "target": "component-founders-executives",
       "type": "targets",
       "status": "proposed"
     },
@@ -6112,6 +6575,27 @@ export const securityMapGraph = {
       "id": "targets:threat-seed-phrase-compromise:surface-seed-custody",
       "source": "threat-seed-phrase-compromise",
       "target": "surface-seed-custody",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-server-readable-chat:asset-secrets-credentials",
+      "source": "threat-server-readable-chat",
+      "target": "asset-secrets-credentials",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-server-readable-chat:component-community-channels",
+      "source": "threat-server-readable-chat",
+      "target": "component-community-channels",
+      "type": "targets",
+      "status": "proposed"
+    },
+    {
+      "id": "targets:threat-server-readable-chat:surface-operator-messaging",
+      "source": "threat-server-readable-chat",
+      "target": "surface-operator-messaging",
       "type": "targets",
       "status": "proposed"
     },
