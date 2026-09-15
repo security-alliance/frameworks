@@ -101,6 +101,68 @@
         "response",
         "guidance"
       ]
+    },
+    {
+      "id": "view-constrain-ai-agents",
+      "title": "Constrain an AI agent",
+      "summary": "The agent tool path, prompt injection, and runtime allow/deny before an irreversible action.",
+      "kind": "entry",
+      "focusNodeId": "component-ai-agent",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-resolve-ens-names",
+      "title": "Resolve ENS before sending",
+      "summary": "Human-readable names, L1 resolution, and normalization so a send does not go to a lookalike.",
+      "kind": "entry",
+      "focusNodeId": "surface-ens-resolution",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-receive-vuln-reports",
+      "title": "Receive a vulnerability report",
+      "summary": "A monitored security contact and bounty path before a finding goes public or gets sold.",
+      "kind": "entry",
+      "focusNodeId": "surface-researcher-inbound",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "response",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-keep-threat-model-current",
+      "title": "Keep the threat model current",
+      "summary": "Named abuses and owners that get rewritten when architecture or value at risk changes.",
+      "kind": "entry",
+      "focusNodeId": "control-living-threat-model",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "guidance"
+      ]
     }
+
   ]
 }

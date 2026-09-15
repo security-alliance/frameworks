@@ -1089,9 +1089,17 @@ function coverageReport({ nodes, edges, pagesDir }) {
       }
     }
   }
-  relatedUnshared.sort((a, b) => {
-    const left = `${a.page} ${a.neighbor}`
-    const right = `${b.page} ${b.neighbor}`
+  const seenPairs = new Set()
+  const uniqueRelated = []
+  for (const item of relatedUnshared) {
+    const pair = [item.from, item.to].sort().join('::')
+    if (seenPairs.has(pair)) continue
+    seenPairs.add(pair)
+    uniqueRelated.push(item)
+  }
+  uniqueRelated.sort((a, b) => {
+    const left = `${a.from} ${a.to}`
+    const right = `${b.from} ${b.to}`
     return left.localeCompare(right)
   })
 
@@ -1099,14 +1107,14 @@ function coverageReport({ nodes, edges, pagesDir }) {
     threatsWithoutControl,
     controlsWithoutGuidance,
     frameworksWithZeroNodes,
-    relatedUnshared,
+    relatedUnshared: uniqueRelated,
     counts: {
       nodes: graphNodes.length,
       edges: graphEdges.length,
       threatsWithoutControl: threatsWithoutControl.length,
       controlsWithoutGuidance: controlsWithoutGuidance.length,
       frameworksWithZeroNodes: frameworksWithZeroNodes.length,
-      relatedUnshared: relatedUnshared.length,
+      relatedUnshared: uniqueRelated.length,
     },
   }
 }

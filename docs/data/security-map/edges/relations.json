@@ -546,11 +546,6 @@
       "type": "documented-by"
     },
     {
-      "source": "control-registrar-hardening",
-      "target": "guidance-dns-cert",
-      "type": "documented-by"
-    },
-    {
       "source": "threat-opsec-hygiene-failure",
       "target": "guidance-opsec",
       "type": "documented-by"

@@ -76,7 +76,9 @@ Canonical direction is stored. The UI walks both ways.
 | `responds-to` | Response procedure for a threat or incident |
 | `documented-by` | Node is documented by a guidance page |
 | `demonstrated-by` | Threat or surface is shown by a sourced incident |
+| `evaluated-by` | Node is in scope for a SEAL Certification module page |
 | `related-to` | Weak link. Use only when a stronger type is wrong |
+
 
 Edge IDs are generated as `type:source:target`. Duplicate semantic edges fail. Inverse edges are not stored.
 
@@ -120,21 +122,15 @@ The first seed is `proposed` on purpose.
 
 ## Follow-up
 
-1. Run `pnpm run coverage:security-map` and treat the lists as the work queue.
-2. Map one framework per PR (`feat/security-map-<framework>`) unless the remaining empty list
-   is small enough to seed together. Steward review for security semantics. Current seed covers
-   Wallet, Physical (duress), Treasury, DPRK IT Workers, Encryption, Privacy, Safe Harbor, AI
-   Security, ENS, Guides, SSDLC, Threat Modeling, and Vulnerability Disclosure. Product-level
-   guide pages, AI browsers/exfil, ENS cross-chain, and sourced incidents stay unmapped.
-
-
-
-
-
-
-3. Add the missing component, surface, control, or guidance edge. Cross-links appear because two
-   frameworks share a node, not because overview pages mention each other.
+1. Run `pnpm run coverage:security-map` and treat the lists as the work queue. Related-framework
+   rows are unique undirected pairs. Cert pages stay in the queue until a typed `evaluated-by`
+   edge joins the slices.
+2. Map one mechanism at a time. Steward review for security semantics. Do not scrape
+   related-framework bullets into `related-to`.
+3. Certification modules are guidance nodes under `framework: certs`. They evaluate map nodes
+   through `evaluated-by`. Do not copy SFC checklist IDs (`ms-1.1.1`) onto map controls.
 4. Sourced incidents in dedicated evidence PRs.
 5. Schema migrations before changing stable IDs or enum meanings.
+
 
 

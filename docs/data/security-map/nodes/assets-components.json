@@ -177,7 +177,9 @@
       "status": "proposed",
       "tags": ["rpc", "nodes"],
       "roles": ["infrastructure-operator", "engineer-developer"],
-      "lifecycle": ["normal-operations"]
+      "lifecycle": ["normal-operations"],
+      "framework": "infrastructure"
+
     },
     {
       "id": "component-frontend",

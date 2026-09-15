@@ -12,6 +12,7 @@ import {
   readLegacyPosture,
   type AssessmentParseResult,
 } from "./assessment";
+import { DEFAULT_VIEW_ID } from "./graphIndex";
 import "./SecurityMap.css";
 
 export function SecurityMap({ variant = "embedded" }: { variant?: "embedded" | "full" }) {
@@ -23,8 +24,9 @@ export function SecurityMap({ variant = "embedded" }: { variant?: "embedded" | "
   const focused = state.focusId ? state.index.nodesById[state.focusId] : null;
   const full = variant === "full";
   const query = new URLSearchParams();
-  if (state.viewId && state.viewId !== "view-all") query.set("view", state.viewId);
+  if (state.viewId && state.viewId !== DEFAULT_VIEW_ID) query.set("view", state.viewId);
   if (state.focusId) query.set("focus", state.focusId);
+
   const qs = query.toString();
   const fullHref = `/map${qs ? `?${qs}` : ""}`;
   const activeView = state.views.find((view) => view.id === state.viewId);

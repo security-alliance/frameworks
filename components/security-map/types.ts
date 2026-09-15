@@ -21,7 +21,9 @@ export type EdgeType =
   | "responds-to"
   | "documented-by"
   | "demonstrated-by"
+  | "evaluated-by"
   | "related-to";
+
 
 export type MapStatus = "proposed" | "reviewed" | "deprecated";
 
@@ -175,5 +177,7 @@ export const EDGE_TYPE_LABELS: Record<EdgeType, string> = {
   "responds-to": "responds to",
   "documented-by": "documented by",
   "demonstrated-by": "demonstrated by",
+  "evaluated-by": "evaluated by",
   "related-to": "related to",
+
 };

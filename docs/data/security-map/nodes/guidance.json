@@ -210,17 +210,6 @@
       "framework": "front-end-web-app"
     },
     {
-      "id": "guidance-dns-cert",
-      "type": "guidance",
-      "title": "DNS registrar certification",
-      "summary": "SEAL certification controls for DNS and registrar hygiene.",
-      "domains": ["infrastructure"],
-      "status": "proposed",
-      "tags": ["dns", "certification"],
-      "href": "/certs/sfc-dns-registrar",
-      "framework": "certs"
-    },
-    {
       "id": "guidance-opsec",
       "type": "guidance",
       "title": "Operational security",

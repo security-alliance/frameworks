@@ -143,6 +143,14 @@
       "targets": ["incident"]
     },
     {
+      "id": "evaluated-by",
+      "title": "evaluated by",
+      "direction": "source is in scope for target certification guidance",
+      "sources": ["asset", "component", "attack-surface", "threat", "control", "response"],
+      "targets": ["guidance"]
+    },
+
+    {
       "id": "related-to",
       "title": "related to",
       "direction": "weak symmetric link; use only when a stronger edge is wrong",

@@ -176,6 +176,7 @@ export function mapEdges(index: GraphIndex): SecurityMapEdge[] {
 
 export const ALL_VIEW_ID = "view-all";
 export const GAPS_VIEW_ID = "view-gaps";
+export const DEFAULT_VIEW_ID = "view-secure-multisig";
 
 const VIEW_SHORT_TITLE: Record<string, string> = {
   [ALL_VIEW_ID]: "All",
@@ -186,6 +187,10 @@ const VIEW_SHORT_TITLE: Record<string, string> = {
   "view-reduce-signer-compromise": "Signers",
   "view-harden-supply-chain": "Supply chain",
   "view-prepare-incident-response": "Response",
+  "view-constrain-ai-agents": "AI agents",
+  "view-resolve-ens-names": "ENS",
+  "view-receive-vuln-reports": "Disclosure",
+  "view-keep-threat-model-current": "Threat model",
   [GAPS_VIEW_ID]: "Gaps",
 };
 
@@ -199,7 +204,6 @@ export interface MapViewOption {
 export function listMapViews(graph: SecurityMapGraph): MapViewOption[] {
   const entries = graph.views.filter((view) => view.kind === "entry");
   return [
-    { id: ALL_VIEW_ID, title: "All", summary: "Every seeded node." },
     ...entries.map((view) => ({
       id: view.id,
       title: VIEW_SHORT_TITLE[view.id] || view.title,
@@ -211,8 +215,10 @@ export function listMapViews(graph: SecurityMapGraph): MapViewOption[] {
       title: "Gaps",
       summary: "Threats with no response, assets with no protecting control, and what they touch.",
     },
+    { id: ALL_VIEW_ID, title: "All", summary: "Every seeded node." },
   ];
 }
+
 
 function hasTypedEdge(index: GraphIndex, id: string, dir: "in" | "out", type: EdgeType): boolean {
   const list = dir === "in" ? index.incoming[id] : index.outgoing[id];

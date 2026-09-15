@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {
+      "id": "guidance-third-party-scripts",
+      "type": "guidance",
+      "title": "Third-party script security",
+      "summary": "Every third-party script shares the page origin and can call wallet APIs. CSP, SRI, and Trusted Types constrain what executes.",
+      "domains": ["infrastructure", "development-supply-chain"],
+      "status": "proposed",
+      "tags": ["csp", "sri", "supply-chain"],
+      "href": "/front-end-web-app/third-party-script-security",
+      "framework": "front-end-web-app"
+    }
+  ]
+}

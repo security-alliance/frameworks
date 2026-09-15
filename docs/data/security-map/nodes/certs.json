@@ -1,0 +1,82 @@
+{
+  "nodes": [
+    {
+      "id": "guidance-certs",
+      "type": "guidance",
+      "title": "SEAL certifications",
+      "summary": "Operational security certifications. A module evaluates whether practices exist. It is not the implementation guide and it is not a map control.",
+      "domains": ["governance-treasury", "detection-incident-response", "infrastructure", "development-supply-chain", "devices-identity"],
+      "status": "proposed",
+      "tags": ["sfc", "certification"],
+      "href": "/certs/overview",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-sfc-multisig-ops",
+      "type": "guidance",
+      "title": "SFC: Multisig operations",
+      "summary": "Certification criteria for multisig governance, signer security, transaction verification, and emergency paging.",
+      "domains": ["governance-treasury"],
+      "status": "proposed",
+      "tags": ["sfc", "multisig", "certification"],
+      "href": "/certs/sfc-multisig-ops",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-sfc-treasury-ops",
+      "type": "guidance",
+      "title": "SFC: Treasury operations",
+      "summary": "Certification criteria for treasury architecture, custody, large transfers, and vendor access.",
+      "domains": ["governance-treasury"],
+      "status": "proposed",
+      "tags": ["sfc", "treasury", "certification"],
+      "href": "/certs/sfc-treasury-ops",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-sfc-incident-response",
+      "type": "guidance",
+      "title": "SFC: Incident response",
+      "summary": "Certification criteria for IR roles, monitoring, playbooks, drills, and whitehat coordination.",
+      "domains": ["detection-incident-response"],
+      "status": "proposed",
+      "tags": ["sfc", "incident-response", "certification"],
+      "href": "/certs/sfc-incident-response",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-sfc-devops-infrastructure",
+      "type": "guidance",
+      "title": "SFC: DevOps and infrastructure",
+      "summary": "Certification criteria for development isolation, source control, CI/CD, cloud admin, and supply chain.",
+      "domains": ["development-supply-chain", "infrastructure"],
+      "status": "proposed",
+      "tags": ["sfc", "devsecops", "certification"],
+      "href": "/certs/sfc-devops-infrastructure",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-dns-cert",
+      "type": "guidance",
+      "title": "SFC: DNS and registrar",
+      "summary": "Certification criteria for domain inventory, registrar hardening, DNS change control, and email authentication.",
+      "domains": ["infrastructure"],
+      "status": "proposed",
+      "tags": ["sfc", "dns", "certification"],
+      "aliases": ["guidance-sfc-dns-registrar"],
+      "href": "/certs/sfc-dns-registrar",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-sfc-identity-accounts",
+      "type": "guidance",
+      "title": "SFC: Identity and accounts",
+      "summary": "Certification criteria for org account inventory, phishing-resistant MFA, recovery, and takeover monitoring.",
+      "domains": ["devices-identity", "people"],
+      "status": "proposed",
+      "tags": ["sfc", "iam", "certification"],
+      "href": "/certs/sfc-identity-accounts",
+      "framework": "certs"
+    }
+  ]
+}
