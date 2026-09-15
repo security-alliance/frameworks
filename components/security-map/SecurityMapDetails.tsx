@@ -31,8 +31,9 @@ function pageLinks(index: GraphIndex, id: string): SecurityMapNode[] {
   };
   add(index.nodesById[id]);
   for (const edge of index.outgoing[id] || []) {
-    if (edge.type === "documented-by") add(index.nodesById[edge.target]);
+    if (edge.type === "documented-by" || edge.type === "evaluated-by") add(index.nodesById[edge.target]);
   }
+
   return pages;
 }
 

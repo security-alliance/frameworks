@@ -669,7 +669,8 @@ export const securityMapGraph = {
       ],
       "lifecycle": [
         "normal-operations"
-      ]
+      ],
+      "framework": "infrastructure"
     },
     {
       "id": "component-seed-backup",
@@ -2206,6 +2207,26 @@ export const securityMapGraph = {
       "framework": "vulnerability-disclosure"
     },
     {
+      "id": "guidance-certs",
+      "type": "guidance",
+      "title": "SEAL certifications",
+      "summary": "Operational security certifications. A module evaluates whether practices exist. It is not the implementation guide and it is not a map control.",
+      "domains": [
+        "governance-treasury",
+        "detection-incident-response",
+        "infrastructure",
+        "development-supply-chain",
+        "devices-identity"
+      ],
+      "status": "proposed",
+      "tags": [
+        "sfc",
+        "certification"
+      ],
+      "href": "/certs/overview",
+      "framework": "certs"
+    },
+    {
       "id": "guidance-cicd",
       "type": "guidance",
       "title": "CI/CD security",
@@ -2426,17 +2447,21 @@ export const securityMapGraph = {
     {
       "id": "guidance-dns-cert",
       "type": "guidance",
-      "title": "DNS registrar certification",
-      "summary": "SEAL certification controls for DNS and registrar hygiene.",
+      "title": "SFC: DNS and registrar",
+      "summary": "Certification criteria for domain inventory, registrar hardening, DNS change control, and email authentication.",
       "domains": [
         "infrastructure"
       ],
       "status": "proposed",
       "tags": [
+        "sfc",
         "dns",
         "certification"
       ],
       "href": "/certs/sfc-dns-registrar",
+      "aliases": [
+        "guidance-sfc-dns-registrar"
+      ],
       "framework": "certs"
     },
     {
@@ -3432,6 +3457,93 @@ export const securityMapGraph = {
       "framework": "wallet-security"
     },
     {
+      "id": "guidance-sfc-devops-infrastructure",
+      "type": "guidance",
+      "title": "SFC: DevOps and infrastructure",
+      "summary": "Certification criteria for development isolation, source control, CI/CD, cloud admin, and supply chain.",
+      "domains": [
+        "development-supply-chain",
+        "infrastructure"
+      ],
+      "status": "proposed",
+      "tags": [
+        "sfc",
+        "devsecops",
+        "certification"
+      ],
+      "href": "/certs/sfc-devops-infrastructure",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-sfc-identity-accounts",
+      "type": "guidance",
+      "title": "SFC: Identity and accounts",
+      "summary": "Certification criteria for org account inventory, phishing-resistant MFA, recovery, and takeover monitoring.",
+      "domains": [
+        "devices-identity",
+        "people"
+      ],
+      "status": "proposed",
+      "tags": [
+        "sfc",
+        "iam",
+        "certification"
+      ],
+      "href": "/certs/sfc-identity-accounts",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-sfc-incident-response",
+      "type": "guidance",
+      "title": "SFC: Incident response",
+      "summary": "Certification criteria for IR roles, monitoring, playbooks, drills, and whitehat coordination.",
+      "domains": [
+        "detection-incident-response"
+      ],
+      "status": "proposed",
+      "tags": [
+        "sfc",
+        "incident-response",
+        "certification"
+      ],
+      "href": "/certs/sfc-incident-response",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-sfc-multisig-ops",
+      "type": "guidance",
+      "title": "SFC: Multisig operations",
+      "summary": "Certification criteria for multisig governance, signer security, transaction verification, and emergency paging.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "sfc",
+        "multisig",
+        "certification"
+      ],
+      "href": "/certs/sfc-multisig-ops",
+      "framework": "certs"
+    },
+    {
+      "id": "guidance-sfc-treasury-ops",
+      "type": "guidance",
+      "title": "SFC: Treasury operations",
+      "summary": "Certification criteria for treasury architecture, custody, large transfers, and vendor access.",
+      "domains": [
+        "governance-treasury"
+      ],
+      "status": "proposed",
+      "tags": [
+        "sfc",
+        "treasury",
+        "certification"
+      ],
+      "href": "/certs/sfc-treasury-ops",
+      "framework": "certs"
+    },
+    {
       "id": "guidance-signing-verification",
       "type": "guidance",
       "title": "Signing and verification",
@@ -3528,6 +3640,24 @@ export const securityMapGraph = {
       ],
       "href": "/opsec/control-domains/technical/overview",
       "framework": "opsec"
+    },
+    {
+      "id": "guidance-third-party-scripts",
+      "type": "guidance",
+      "title": "Third-party script security",
+      "summary": "Every third-party script shares the page origin and can call wallet APIs. CSP, SRI, and Trusted Types constrain what executes.",
+      "domains": [
+        "infrastructure",
+        "development-supply-chain"
+      ],
+      "status": "proposed",
+      "tags": [
+        "csp",
+        "sri",
+        "supply-chain"
+      ],
+      "href": "/front-end-web-app/third-party-script-security",
+      "framework": "front-end-web-app"
     },
     {
       "id": "guidance-threat-detection",
@@ -5261,6 +5391,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:asset-key-holder-safety:guidance-incident-playbooks",
+      "source": "asset-key-holder-safety",
+      "target": "guidance-incident-playbooks",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:asset-key-holder-safety:guidance-physical-security",
       "source": "asset-key-holder-safety",
       "target": "guidance-physical-security",
@@ -5303,6 +5440,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:component-custodial-treasury:guidance-incident-playbooks",
+      "source": "component-custodial-treasury",
+      "target": "guidance-incident-playbooks",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:component-custodial-treasury:guidance-treasury-operations",
       "source": "component-custodial-treasury",
       "target": "guidance-treasury-operations",
@@ -5341,6 +5485,13 @@ export const securityMapGraph = {
       "id": "documented-by:component-hardware-wallet:guidance-cold-vs-hot",
       "source": "component-hardware-wallet",
       "target": "guidance-cold-vs-hot",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:component-hardware-wallet:guidance-key-compromise-runbook",
+      "source": "component-hardware-wallet",
+      "target": "guidance-key-compromise-runbook",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -5586,6 +5737,13 @@ export const securityMapGraph = {
       "id": "documented-by:control-frontend-integrity-monitoring:guidance-frontend",
       "source": "control-frontend-integrity-monitoring",
       "target": "guidance-frontend",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:control-frontend-integrity-monitoring:guidance-third-party-scripts",
+      "source": "control-frontend-integrity-monitoring",
+      "target": "guidance-third-party-scripts",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -5870,13 +6028,6 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
-      "id": "documented-by:control-registrar-hardening:guidance-dns-cert",
-      "source": "control-registrar-hardening",
-      "target": "guidance-dns-cert",
-      "type": "documented-by",
-      "status": "proposed"
-    },
-    {
       "id": "documented-by:control-registrar-hardening:guidance-dns-security-overview",
       "source": "control-registrar-hardening",
       "target": "guidance-dns-security-overview",
@@ -6094,9 +6245,23 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:response-duress-event:guidance-incident-playbooks",
+      "source": "response-duress-event",
+      "target": "guidance-incident-playbooks",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:response-duress-event:guidance-travel",
       "source": "response-duress-event",
       "target": "guidance-travel",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:response-signer-compromise:guidance-incident-playbooks",
+      "source": "response-signer-compromise",
+      "target": "guidance-incident-playbooks",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -6132,6 +6297,13 @@ export const securityMapGraph = {
       "id": "documented-by:response-whitehat-rescue:guidance-safe-harbor-whitehat",
       "source": "response-whitehat-rescue",
       "target": "guidance-safe-harbor-whitehat",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "documented-by:response-whitehat-rescue:guidance-wallet-security",
+      "source": "response-whitehat-rescue",
+      "target": "guidance-wallet-security",
       "type": "documented-by",
       "status": "proposed"
     },
@@ -6325,6 +6497,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "documented-by:threat-supply-chain-compromise:guidance-third-party-scripts",
+      "source": "threat-supply-chain-compromise",
+      "target": "guidance-third-party-scripts",
+      "type": "documented-by",
+      "status": "proposed"
+    },
+    {
       "id": "documented-by:threat-uncontactable-disclosure:guidance-vulnerability-disclosure",
       "source": "threat-uncontactable-disclosure",
       "target": "guidance-vulnerability-disclosure",
@@ -6343,6 +6522,230 @@ export const securityMapGraph = {
       "source": "threat-whitehat-legal-freeze",
       "target": "guidance-safe-harbor",
       "type": "documented-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:asset-domain-control:guidance-dns-cert",
+      "source": "asset-domain-control",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:asset-treasury-funds:guidance-sfc-treasury-ops",
+      "source": "asset-treasury-funds",
+      "target": "guidance-sfc-treasury-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-ci-cd:guidance-certs",
+      "source": "component-ci-cd",
+      "target": "guidance-certs",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-ci-cd:guidance-sfc-devops-infrastructure",
+      "source": "component-ci-cd",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-cloud-infrastructure:guidance-sfc-devops-infrastructure",
+      "source": "component-cloud-infrastructure",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-custodial-treasury:guidance-sfc-treasury-ops",
+      "source": "component-custodial-treasury",
+      "target": "guidance-sfc-treasury-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-dns-registrar:guidance-dns-cert",
+      "source": "component-dns-registrar",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-identity-accounts:guidance-sfc-identity-accounts",
+      "source": "component-identity-accounts",
+      "target": "guidance-sfc-identity-accounts",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-monitoring-stack:guidance-certs",
+      "source": "component-monitoring-stack",
+      "target": "guidance-certs",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-monitoring-stack:guidance-sfc-incident-response",
+      "source": "component-monitoring-stack",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-multisig:guidance-certs",
+      "source": "component-multisig",
+      "target": "guidance-certs",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:component-multisig:guidance-sfc-multisig-ops",
+      "source": "component-multisig",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:control-branch-protection:guidance-sfc-devops-infrastructure",
+      "source": "control-branch-protection",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:control-living-threat-model:guidance-sfc-incident-response",
+      "source": "control-living-threat-model",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:control-multisig-threshold-policy:guidance-sfc-multisig-ops",
+      "source": "control-multisig-threshold-policy",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:control-onchain-anomaly-detection:guidance-sfc-incident-response",
+      "source": "control-onchain-anomaly-detection",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:control-phishing-resistant-mfa:guidance-sfc-identity-accounts",
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-sfc-identity-accounts",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:control-registrar-hardening:guidance-dns-cert",
+      "source": "control-registrar-hardening",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:control-signer-isolation:guidance-sfc-multisig-ops",
+      "source": "control-signer-isolation",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:control-simulate-before-sign:guidance-sfc-multisig-ops",
+      "source": "control-simulate-before-sign",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:control-tested-incident-runbooks:guidance-sfc-incident-response",
+      "source": "control-tested-incident-runbooks",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:response-smart-contract-exploit:guidance-sfc-incident-response",
+      "source": "response-smart-contract-exploit",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:response-whitehat-rescue:guidance-sfc-incident-response",
+      "source": "response-whitehat-rescue",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:surface-ci-cd-secrets:guidance-sfc-devops-infrastructure",
+      "source": "surface-ci-cd-secrets",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:surface-dns-records:guidance-dns-cert",
+      "source": "surface-dns-records",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:surface-executive-communications:guidance-sfc-identity-accounts",
+      "source": "surface-executive-communications",
+      "target": "guidance-sfc-identity-accounts",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:surface-large-transfer:guidance-sfc-treasury-ops",
+      "source": "surface-large-transfer",
+      "target": "guidance-sfc-treasury-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:surface-multisig-signing-workflow:guidance-sfc-multisig-ops",
+      "source": "surface-multisig-signing-workflow",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:surface-signer-lifecycle:guidance-sfc-multisig-ops",
+      "source": "surface-signer-lifecycle",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:threat-frontend-dns-hijacking:guidance-dns-cert",
+      "source": "threat-frontend-dns-hijacking",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:threat-misdirected-transfer:guidance-sfc-treasury-ops",
+      "source": "threat-misdirected-transfer",
+      "target": "guidance-sfc-treasury-ops",
+      "type": "evaluated-by",
+      "status": "proposed"
+    },
+    {
+      "id": "evaluated-by:threat-supply-chain-compromise:guidance-sfc-devops-infrastructure",
+      "source": "threat-supply-chain-compromise",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by",
       "status": "proposed"
     },
     {
@@ -6640,6 +7043,13 @@ export const securityMapGraph = {
       "status": "proposed"
     },
     {
+      "id": "mitigates:control-continuous-remote-identity-review:threat-supply-chain-compromise",
+      "source": "control-continuous-remote-identity-review",
+      "target": "threat-supply-chain-compromise",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
       "id": "mitigates:control-controlled-surrender:threat-duress-coercion",
       "source": "control-controlled-surrender",
       "target": "threat-duress-coercion",
@@ -6727,6 +7137,13 @@ export const securityMapGraph = {
       "id": "mitigates:control-external-security-review:threat-smart-contract-exploits",
       "source": "control-external-security-review",
       "target": "threat-smart-contract-exploits",
+      "type": "mitigates",
+      "status": "proposed"
+    },
+    {
+      "id": "mitigates:control-frontend-integrity-monitoring:threat-supply-chain-compromise",
+      "source": "control-frontend-integrity-monitoring",
+      "target": "threat-supply-chain-compromise",
       "type": "mitigates",
       "status": "proposed"
     },
@@ -8388,6 +8805,11 @@ export const securityMapGraph = {
         "direction": "source is demonstrated by target incident"
       },
       {
+        "id": "evaluated-by",
+        "title": "evaluated by",
+        "direction": "source is in scope for target certification guidance"
+      },
+      {
         "id": "related-to",
         "title": "related to",
         "direction": "weak symmetric link; use only when a stronger edge is wrong"
@@ -8551,6 +8973,67 @@ export const securityMapGraph = {
         "threat",
         "control",
         "response",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-constrain-ai-agents",
+      "title": "Constrain an AI agent",
+      "summary": "The agent tool path, prompt injection, and runtime allow/deny before an irreversible action.",
+      "kind": "entry",
+      "focusNodeId": "component-ai-agent",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-resolve-ens-names",
+      "title": "Resolve ENS before sending",
+      "summary": "Human-readable names, L1 resolution, and normalization so a send does not go to a lookalike.",
+      "kind": "entry",
+      "focusNodeId": "surface-ens-resolution",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-receive-vuln-reports",
+      "title": "Receive a vulnerability report",
+      "summary": "A monitored security contact and bounty path before a finding goes public or gets sold.",
+      "kind": "entry",
+      "focusNodeId": "surface-researcher-inbound",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "response",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-keep-threat-model-current",
+      "title": "Keep the threat model current",
+      "summary": "Named abuses and owners that get rewritten when architecture or value at risk changes.",
+      "kind": "entry",
+      "focusNodeId": "control-living-threat-model",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
         "guidance"
       ]
     }

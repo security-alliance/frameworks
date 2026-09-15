@@ -173,6 +173,17 @@ describe('production catalogue', () => {
     assert.ok(first.graph.nodes.some((n) => n.id === 'control-l1-ens-resolution'))
     assert.ok(first.graph.nodes.some((n) => n.id === 'control-living-threat-model'))
     assert.ok(first.graph.nodes.some((n) => n.id === 'control-published-security-contact'))
+    assert.ok(first.graph.nodes.some((n) => n.id === 'guidance-sfc-multisig-ops'))
+    assert.ok(
+      first.graph.edges.some(
+        (e) =>
+          e.source === 'component-multisig' &&
+          e.target === 'guidance-sfc-multisig-ops' &&
+          e.type === 'evaluated-by',
+      ),
+    )
+    assert.ok(first.graph.views.some((v) => v.id === 'view-constrain-ai-agents'))
+
 
 
 
@@ -661,5 +672,28 @@ describe('coverage report', () => {
     assert.deepEqual(report.frameworksWithZeroNodes, [])
     assert.deepEqual(report.controlsWithoutGuidance, [])
   })
+
+  it('collapses bidirectional related-framework mentions to one pair', () => {
+    const dir = tmpDir('cov-bidir')
+    seedMinimal(dir)
+    const pages = tmpDir('cov-bidir-pages')
+    fs.mkdirSync(path.join(pages, 'alpha'), { recursive: true })
+    fs.mkdirSync(path.join(pages, 'beta'), { recursive: true })
+    fs.writeFileSync(
+      path.join(pages, 'alpha', 'overview.mdx'),
+      `---\ntitle: Alpha\n---\n\n# Alpha\n\n## Related frameworks\n\n- [Beta](/beta/overview): neighbor\n`,
+    )
+    fs.writeFileSync(
+      path.join(pages, 'beta', 'overview.mdx'),
+      `---\ntitle: Beta\n---\n\n# Beta\n\n## Related frameworks\n\n- [Alpha](/alpha/overview): neighbor\n`,
+    )
+    const { graph } = loadAndValidate({ dataDir: dir, pagesDir: pagesDir(), skipMdx: true })
+    const report = coverageReport({ nodes: graph.nodes, edges: graph.edges, pagesDir: pages })
+    assert.equal(report.relatedUnshared.length, 1)
+    const pair = [report.relatedUnshared[0].from, report.relatedUnshared[0].to].sort()
+    assert.deepEqual(pair, ['alpha', 'beta'])
+  })
+
+
 })
 

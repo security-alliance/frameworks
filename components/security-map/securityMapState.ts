@@ -11,6 +11,7 @@ import {
 } from "./assessment";
 import {
   ALL_VIEW_ID,
+  DEFAULT_VIEW_ID,
   buildIndex,
   hopsFrom,
   listMapViews,
@@ -18,14 +19,15 @@ import {
   type GraphIndex,
 } from "./graphIndex";
 
+
 function readQuery(): { focus: string | null; view: string } {
-  if (typeof window === "undefined") return { focus: null, view: ALL_VIEW_ID };
+  if (typeof window === "undefined") return { focus: null, view: DEFAULT_VIEW_ID };
   const params = new URLSearchParams(window.location.search);
   const focus = params.get("focus");
   const view = params.get("view");
   return {
     focus: focus && focus.trim() ? focus.trim() : null,
-    view: view && view.trim() ? view.trim() : ALL_VIEW_ID,
+    view: view && view.trim() ? view.trim() : DEFAULT_VIEW_ID,
   };
 }
 
@@ -34,7 +36,7 @@ function writeQuery(focus: string | null, view: string) {
   const url = new URL(window.location.href);
   if (focus) url.searchParams.set("focus", focus);
   else url.searchParams.delete("focus");
-  if (view && view !== ALL_VIEW_ID) url.searchParams.set("view", view);
+  if (view && view !== DEFAULT_VIEW_ID) url.searchParams.set("view", view);
   else url.searchParams.delete("view");
   const qs = url.searchParams.toString();
   window.history.replaceState(null, "", `${url.pathname}${qs ? `?${qs}` : ""}${url.hash}`);
@@ -44,8 +46,9 @@ export function useSecurityMapState(graph: SecurityMapGraph) {
   const index = useMemo(() => buildIndex(graph), [graph]);
   const views = useMemo(() => listMapViews(graph), [graph]);
   const [focusId, setFocusId] = useState<string | null>(null);
-  const [viewId, setViewId] = useState(ALL_VIEW_ID);
+  const [viewId, setViewId] = useState(DEFAULT_VIEW_ID);
   const [hydrated, setHydrated] = useState(false);
+
   const [assessment, setAssessment] = useState<AssessmentDocument>(() => ({
     schemaVersion: "1.0.0",
     graphSchemaVersion: graph.schemaVersion,
@@ -56,7 +59,8 @@ export function useSecurityMapState(graph: SecurityMapGraph) {
 
   useEffect(() => {
     const initial = readQuery();
-    const knownView = views.some((view) => view.id === initial.view) ? initial.view : ALL_VIEW_ID;
+    const knownView = views.some((view) => view.id === initial.view) ? initial.view : DEFAULT_VIEW_ID;
+
     const visible = viewNodeIds(index, knownView);
     const focus =
       initial.focus && index.nodesById[initial.focus] && (!visible || visible.has(initial.focus))
