@@ -81,13 +81,27 @@ Two controls close it, and both belong at the registry rather than in each repos
 
 **Reserve the namespace publicly.** Registering the organization's scope or package names on the public registry
 means an attacker cannot claim them. This is cheap and worth doing even where routing is already correct, because it
-survives a misconfigured client.
+survives a misconfigured client. Cargo has no scoped namespaces, so a crate name is reserved by publishing a stub
+under it; Go has no name registry at all, since module paths are import paths rooted in a domain the organization
+already controls.
 
 **Route by name, and replace rather than extend.** Internal scopes should resolve only from the internal registry.
-The exact mechanism differs by ecosystem, and the distinction that matters is whether a setting *replaces* the index
-or *adds* to it. In pip, `--index-url` replaces the default index while `--extra-index-url` adds a second one that is
-searched alongside it, with version precedence deciding the winner; the second form is the one that is exploitable.
-In npm, a scope can be bound to a registry so that `@org/*` never resolves elsewhere.
+The exact mechanism differs by ecosystem, and the distinction that matters is whether a setting *replaces* the
+resolution path or *adds* to it; the additive form is the one that is exploitable, because it leaves the public
+source reachable for a name the internal registry was supposed to own.
+
+| Ecosystem | Replaces resolution | Adds a second source (exploitable) |
+| --------- | -------------------- | ----------------------------------- |
+| **pip** | `--index-url` (or `PIP_INDEX_URL`) points every lookup at the internal index. | `--extra-index-url` searches the public index too, with version precedence deciding the winner. |
+| **npm** | Binding a scope to a registry (`npm config set @org:registry <url>`) means `@org/*` never resolves elsewhere. | An unscoped internal name with no registry binding falls through to the default registry. |
+| **Go** | `GOPRIVATE` (a glob pattern of module path prefixes) marks internal modules as private, so `go get` skips the public proxy and checksum database for them and fetches directly from the source instead. | A private module path left out of `GOPRIVATE` resolves through `GOPROXY` and the public checksum database like any other module. |
+| **Cargo** | A `[source]` replacement in `.cargo/config.toml` (`replace-with`) reroutes crates.io itself to the internal registry for every dependency. | Declaring the internal registry only in `[registries]` and referencing it per-dependency leaves the crates.io source active for anything not explicitly redirected. |
+
+Solidity has no registry of its own to route. Foundry pins dependencies to specific git commits via submodules, so
+resolution is fixed by the commit hash rather than by a name lookup, which is why dependency confusion does not apply
+to it the way it applies to a name-based resolver. Hardhat projects that pull dependencies through npm inherit npm's
+routing behavior above, and should be configured the same way. See
+[Dependency Awareness](/supply-chain/dependency-awareness) for how each ecosystem's lockfile fits alongside routing.
 
 A team that runs a registry without configuring routing has added a cache and none of the protection.
 
@@ -169,12 +183,14 @@ down, and should have run that path at least once.
   the browser-delivery counterpart to vendoring
 - [Dependency confusion](https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610): Alex Birsan's 2021
   writeup of the resolution-order attack
-- [3 ways to mitigate risk when using private package feeds](https://azure.microsoft.com/en-us/resources/3-ways-to-mitigate-risk-using-private-package-feeds/):
-  Microsoft's guidance published in response to the same disclosure
 - [npm scoped registries](https://docs.npmjs.com/cli/using-npm/scope#associating-a-scope-with-a-registry): binding a
   scope to a specific registry
 - [pip index options](https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-index-url): the difference between
   replacing and extending the package index
+- [Go private modules](https://go.dev/ref/mod#private-modules): marking module paths private with `GOPRIVATE` and
+  routing them around the public proxy and checksum database
+- [Cargo source replacement](https://doc.rust-lang.org/cargo/reference/source-replacement.html): rerouting crates.io
+  to an internal registry
 
 ---
 
