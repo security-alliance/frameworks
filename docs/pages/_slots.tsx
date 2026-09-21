@@ -1,4 +1,4 @@
-import { TagFilter } from '../../components'
+import { DonateNavButton, DonateSidebarLink, TagFilter } from '../../components'
 
 export function Footer() {
   return (
@@ -9,5 +9,11 @@ export function Footer() {
 }
 
 export function SidebarHeader() {
-  return <TagFilter />
+  return (
+    <>
+      <TagFilter />
+      <DonateSidebarLink />
+      <DonateNavButton />
+    </>
+  )
 }

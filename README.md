@@ -80,6 +80,9 @@ Every contribution helps strengthen the resource and improve security practices 
 See our [Contributing Guide](https://github.com/security-alliance/frameworks/blob/develop/CONTRIBUTING.md) for details
 on how to get started.
 
+Funding is another way to contribute. [Support the Frameworks](https://securityalliance.org/donate) to help keep
+this resource free, open, and independent.
+
 ## License
 
 Security Frameworks © 2026 by Security Alliance, licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

@@ -19,7 +19,7 @@ const config = {
     return { canonical: `https://frameworks.securityalliance.org${cleanPath || '/'}` }
   },
   banner: {
-    content: 'This is a work in progress and releases are experimental. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.',
+    content: 'This is a work in progress and releases are experimental. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate, or [chip in to keep this work going](https://securityalliance.org/donate).',
     height: '30px',
     backgroundColor: '#8b5cf6',
     textColor: 'white',
@@ -42,6 +42,7 @@ const config = {
       items: [
         { text: 'Changelog', link: '/changelog' },
         { text: 'Contributing', link: '/contribute/contributing' },
+        { text: 'Support the project', link: 'https://securityalliance.org/donate' },
       ],
     },
   ],
