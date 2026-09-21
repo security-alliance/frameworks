@@ -34,11 +34,15 @@ html:not([data-vocs-theme='dark']) [data-v-content] blockquote>p {
   font-weight: bolder;
 }
 
-html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup='dialog'] {
+/* Light-mode border treatment for the top-left controls: the search trigger
+   and the donate button, which is styled to match it. */
+html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup='dialog'],
+html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] .donate-nav-button {
   border-color: #908f8f;
 }
 
-html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup='dialog']:hover {
+html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] button[aria-haspopup='dialog']:hover,
+html:not([data-vocs-theme='dark']) [data-v-gutter-top-left] .donate-nav-button:hover {
   border-color: #303030;
   color: #1e1e1e;
 }
