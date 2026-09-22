@@ -115,6 +115,13 @@ the [Drainer playbook](/incident-management/playbooks/hacked-drainer) instead. I
 affected at once with no shared file or link, suspect the identity provider or the supply chain rather than
 a single endpoint.
 
+Two of the lures above are documented campaigns, with real message screenshots worth comparing against what
+the user received. A meeting link that resolved to an unfamiliar domain, or a fake recruiter task, matches
+[North Korea (DPRK) Attack](/incident-management/playbooks/hacked-dprk). A Zoom call where the caller asked
+for screen share or remote control matches
+[ELUSIVE COMET](/incident-management/playbooks/hacked-elusive-comet). Naming the campaign tells you which
+follow-on accounts to check, so it is worth the two minutes.
+
 ## Immediate Actions
 
 ### Step 1: Reach the user out of band
@@ -312,7 +319,8 @@ managed hardware, contractors on VDI, everyone else behind a managed browser.
 
 The rebuild is the midpoint. [NIST SP 800-61r3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats
 improvement as a standing function rather than a meeting held once the noise dies down, so the work below
-closes the runbook.
+closes the runbook. [Lessons Learned](/incident-management/lessons-learned) carries the review questions and
+the blameless format.
 
 <Checklist id="closing-the-incident">
 - [ ] Timeline written up in the
@@ -338,7 +346,9 @@ closes the runbook.
 </Checklist>
 
 Legal owns external notification, but the clock starts at discovery and runs while you are still
-containing. Raise it early, while the timing is still yours to pick.
+containing. Raise it early, while the timing is still yours to pick. For wording, cadence, and who speaks,
+use [Communications](/incident-management/incident-response-template/communications) and
+[Communication Strategies](/incident-management/communication-strategies).
 
 <Checklist id="external-notification">
 - [ ] Disclosure obligations checked against your jurisdictions and [X hours] reporting windows
