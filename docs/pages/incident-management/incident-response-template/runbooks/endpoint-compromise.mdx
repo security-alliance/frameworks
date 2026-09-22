@@ -233,9 +233,9 @@ Work top to bottom. Each row links to whoever owns the procedure.
 
 ### Evidence to Collect
 
-Collect in order of volatility, following [NIST SP
-800-86](https://csrc.nist.gov/pubs/sp/800/86/final): the most perishable evidence first, because each step
-down the list survives longer without you. If the device is still running, memory outranks everything.
+Collect in order of volatility, following [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final).
+The top rows vanish on their own; the lower ones keep. If the device is still running, memory outranks
+everything.
 
 | Order | Data | Source |
 | ------- | ------ | -------- |
@@ -266,8 +266,8 @@ nobody closes buries the next real one.
 ### Rebuild, do not clean
 
 Finish identifying every foothold before you start removing any of them. Rebuilding the laptop while an
-OAuth grant, mail rule, or deploy key survives just moves the attacker off the device and leaves them in
-the accounts, and the rebuild destroys the evidence that would have found them.
+OAuth grant, mail rule, or deploy key survives moves the attacker off the device and leaves them in the
+accounts, and the rebuild destroys the evidence that would have found them.
 
 Wipe and rebuild, or replace the hardware. Do not restore the user profile from a backup taken after the
 compromise window opened, and do not accept "the antivirus removed it" as an outcome. You cannot prove an
@@ -310,9 +310,9 @@ managed hardware, contractors on VDI, everyone else behind a managed browser.
 
 ### Closing the incident
 
-An incident is not closed because the laptop was rebuilt. [NIST SP
-800-61r3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats improvement as a standing function rather
-than a meeting held once the noise dies down, so the work below is the last step of this runbook.
+The rebuild is the midpoint. [NIST SP 800-61r3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats
+improvement as a standing function rather than a meeting held once the noise dies down, so the work below
+closes the runbook.
 
 <Checklist id="closing-the-incident">
 - [ ] Timeline written up in the
@@ -338,7 +338,7 @@ than a meeting held once the noise dies down, so the work below is the last step
 </Checklist>
 
 Legal owns external notification, but the clock starts at discovery and runs while you are still
-containing. Raise it early enough that a deadline stays a choice.
+containing. Raise it early, while the timing is still yours to pick.
 
 <Checklist id="external-notification">
 - [ ] Disclosure obligations checked against your jurisdictions and [X hours] reporting windows
