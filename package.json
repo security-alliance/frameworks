@@ -5,12 +5,12 @@
   "main": "index.js",
   "type": "module",
   "devDependencies": {
-    "@types/react": "^19.2.15",
-    "@types/react-dom": "^19.2.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "cspell": "10.0.1",
     "tailwindcss": "4.3.3",
-    "vocs": "2.6.2",
-    "waku": "1.0.0-beta.6"
+    "vocs": "2.10.0",
+    "waku": "1.0.0-rc.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -57,8 +57,11 @@
       "fast-uri": ">=3.1.5",
       "react-router": ">=8.3.0",
       "postcss": ">=8.5.25",
-      "react-server-dom-webpack": ">=19.2.8",
-      "ip-address": ">=10.4.0"
+      "react-server-dom-webpack": ">=19.3.0",
+      "ip-address": ">=10.4.0",
+      "@vitejs/plugin-rsc": ">=0.5.35",
+      "@vitejs/plugin-react": ">=6.1.1",
+      "es-module-lexer": ">=2.3.0 <3"
     }
   },
   "packageManager": "pnpm@10.15.0",
@@ -72,9 +75,10 @@
     "mermaid": "^11.16.1",
     "minisearch": "^7.2.0",
     "playwright": "^1.60.0",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "react-router-dom": "^7.15.1",
+    "react-server-dom-webpack": "19.3.0",
     "sharp": "^0.35.1",
     "uuid": "^14.0.0"
   }
