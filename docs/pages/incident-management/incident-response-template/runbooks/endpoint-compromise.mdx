@@ -233,17 +233,25 @@ Work top to bottom. Each row links to whoever owns the procedure.
 
 ### Evidence to Collect
 
-| Data | Source |
-| ------ | -------- |
-| Memory and disk images | The device, before rebuild |
-| Process, persistence, and install history | Endpoint tooling, local logs |
-| Authentication and session logs | Identity provider, code host, cloud |
-| Outbound network telemetry | DNS, proxy, and firewall logs, if retained |
-| The lure itself | Message, repository, installer, meeting link |
-| On-chain activity | Block explorer, for addresses the user controls |
+Collect in order of volatility, following [NIST SP
+800-86](https://csrc.nist.gov/pubs/sp/800/86/final): the most perishable evidence first, because each step
+down the list survives longer without you. If the device is still running, memory outranks everything.
 
-Preserve evidence before rebuilding. See [Forensic Readiness](/incident-management/forensic-readiness) for
-chain of custody and retention design, which only helps if it is already in place when the incident starts.
+| Order | Data | Source |
+| ------- | ------ | -------- |
+| 1 | Memory image | The live device, before any shutdown |
+| 2 | Live network state and running processes | The live device |
+| 3 | Disk image | The device, before rebuild |
+| 4 | Persistence and install history | Endpoint tooling, local logs |
+| 5 | Authentication and session logs | Identity provider, code host, cloud |
+| 6 | Outbound network telemetry | DNS, proxy, and firewall logs, if retained |
+| 7 | The lure itself | Message, repository, installer, meeting link |
+| 8 | On-chain activity | Block explorer, for addresses the user controls |
+
+Rows 1 and 2 are gone the moment the device powers off, which is why Step 2 forks on whether anyone can
+capture them. Rows 4 through 6 depend on retention windows you set long before the incident. See
+[Forensic Readiness](/incident-management/forensic-readiness) for chain of custody and retention design,
+which only helps if it is already in place when the incident starts.
 
 If the same lure reached other contributors, treat that wider exposure as its own incident and send the
 team the specific indicators to look for.
@@ -256,6 +264,10 @@ nobody closes buries the next real one.
 ## Recovery and Prevention
 
 ### Rebuild, do not clean
+
+Finish identifying every foothold before you start removing any of them. Rebuilding the laptop while an
+OAuth grant, mail rule, or deploy key survives just moves the attacker off the device and leaves them in
+the accounts, and the rebuild destroys the evidence that would have found them.
 
 Wipe and rebuild, or replace the hardware. Do not restore the user profile from a backup taken after the
 compromise window opened, and do not accept "the antivirus removed it" as an outcome. You cannot prove an
@@ -296,6 +308,23 @@ managed hardware, contractors on VDI, everyone else behind a managed browser.
 - [ ] Contributors know where to report, including out of hours
 </Checklist>
 
+### Closing the incident
+
+An incident is not closed because the laptop was rebuilt. [NIST SP
+800-61r3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats improvement as a standing function rather
+than a meeting held once the noise dies down, so the work below is the last step of this runbook.
+
+<Checklist id="closing-the-incident">
+- [ ] Timeline written up in the
+      [Incident Log](/incident-management/incident-response-template/templates/incident-log-template)
+- [ ] Return-to-service gate signed off by the named approver
+- [ ] Post-mortem scheduled if the compromise reached P1 or P2
+      ([template](/incident-management/incident-response-template/templates/post-mortem-template))
+- [ ] Indicators shared with the team, and with partners if the lure was reused against them
+- [ ] Prevention items above converted into owned work, not left in this checklist
+- [ ] Detection gap reviewed: what would have caught this a day earlier
+</Checklist>
+
 ## Escalation
 
 <Checklist id="escalation">
@@ -306,6 +335,17 @@ managed hardware, contractors on VDI, everyone else behind a managed browser.
 - [ ] [Legal](/incident-management/incident-response-template/contacts#legal--communications) - if funds
       were stolen, data was exposed, or insider involvement is suspected
 - [ ] [SEAL 911](https://t.me/seal_911_bot) - for crypto-specific containment help beyond your team
+</Checklist>
+
+Legal owns external notification, but the clock starts at discovery and runs while you are still
+containing. Raise it early enough that a deadline stays a choice.
+
+<Checklist id="external-notification">
+- [ ] Disclosure obligations checked against your jurisdictions and [X hours] reporting windows
+- [ ] Affected users or customers notified if their data or funds were reachable
+- [ ] Law enforcement report filed if funds were stolen (see
+      [Malware Infection](/incident-management/playbooks/malware) for the reporting venues)
+- [ ] Partners and exchanges told which addresses and accounts to watch
 </Checklist>
 
 ## Further reading
