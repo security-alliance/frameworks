@@ -301,6 +301,7 @@ const config = {
                     { text: 'Overview', link: '/incident-management/incident-response-template/runbooks/overview' },
                     { text: 'Smart Contract Exploit', link: '/incident-management/incident-response-template/runbooks/smart-contract-exploit' },
                     { text: 'Key Compromise', link: '/incident-management/incident-response-template/runbooks/key-compromise' },
+                    { text: 'Endpoint Compromise', link: '/incident-management/incident-response-template/runbooks/endpoint-compromise' },
                     { text: 'Frontend Compromise', link: '/incident-management/incident-response-template/runbooks/frontend-compromise' },
                     { text: 'DNS Hijack', link: '/incident-management/incident-response-template/runbooks/dns-hijack' },
                     { text: 'CDN/Hosting Compromise', link: '/incident-management/incident-response-template/runbooks/cdn-hosting-compromise' },
