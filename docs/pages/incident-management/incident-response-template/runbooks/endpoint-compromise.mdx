@@ -67,8 +67,8 @@ is proposing. The third turns one laptop into a campaign against users.
 </Checklist>
 
 Until the inventory in [Credential Revocation Order](#credential-revocation-order) is complete, treat the
-incident at the higher tier. Access is least understood during the first twenty minutes, which is exactly
-when severity gets set.
+incident at the higher tier. Severity gets set before anyone has finished listing what the user could
+reach.
 
 This runbook stops at P3. The policy also defines P4 and P5, but their response times ("can be scheduled"
 and "no immediate action") do not fit a confirmed endpoint compromise, where a stolen session cookie stays
@@ -160,15 +160,14 @@ Pick the one row that matches your capability:
 | No tooling, memory capture possible within [X hours] | Disconnect the network, do not sleep or shut down |
 | No tooling, no memory capture possible | Disconnect the network, then power off fully |
 
-Expect the first row often. [Malware Infection](/incident-management/playbooks/malware) tells the affected
-person to power off immediately, so a user who followed that guidance, or who simply panicked, hands you a
-cold machine. Memory is already gone at that point and booting the device only runs the malware's
-persistence again, so the rest of this runbook proceeds from the credential side.
-
 Powering off destroys running processes, injected code, and secrets decrypted in memory, which is the
 evidence that tells you what actually ran and therefore what must be rotated. It also stops an active
 thief. Choose speed when nobody is positioned to capture memory: a machine left running on a desk "for
 forensics" that nobody ever images is the worst of both options.
+
+Expect the first row often, since [Malware Infection](/incident-management/playbooks/malware) tells the
+affected person to power off immediately. Booting the device only runs the persistence again, so that case
+proceeds from the credential side.
 
 <Checklist id="step-2-contain-the-device">
 - [ ] Network access cut, by console containment or physical disconnect
@@ -194,12 +193,6 @@ reliably under pressure.
 **If you have endpoint management:** pull the installed application list, the extension inventory, and
 recent process history instead of relying on the user's memory.
 
-### Step 4: Start the revocation clock
-
-Move straight to [Credential Revocation Order](#credential-revocation-order). Session revocation is time
-sensitive: a stolen session cookie keeps working until the session itself is killed, no matter how many
-passwords change.
-
 ## Credential Revocation Order
 
 **Why order matters:** the usual failures are sequencing errors. Rotating an SSH key before killing the
@@ -223,7 +216,7 @@ Work top to bottom. Each row links to whoever owns the procedure.
 <Checklist id="revocation-verification">
 - [ ] Every row above assigned to a named person
 - [ ] All revocation done from a known-clean device
-- [ ] Persistence checked (mail rules, OAuth grants, deploy keys, new signers)
+- [ ] Row 9 actually worked, not only credentials rotated
 - [ ] Anything not revocable within [X hours] escalated
 </Checklist>
 
@@ -242,7 +235,7 @@ Work top to bottom. Each row links to whoever owns the procedure.
 ### Evidence to Collect
 
 Collect in order of volatility, following [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final).
-The top rows vanish on their own; the lower ones keep. If the device is still running, memory outranks
+The top rows vanish on their own; the rest wait for you. If the device is still running, memory outranks
 everything.
 
 | Order | Data | Source |
@@ -256,10 +249,9 @@ everything.
 | 7 | The lure itself | Message, repository, installer, meeting link |
 | 8 | On-chain activity | Block explorer, for addresses the user controls |
 
-Rows 1 and 2 are gone the moment the device powers off, which is why Step 2 forks on whether anyone can
-capture them. Rows 4 through 6 depend on retention windows you set long before the incident. See
-[Forensic Readiness](/incident-management/forensic-readiness) for chain of custody and retention design,
-which only helps if it is already in place when the incident starts.
+Rows 1 and 2 are why Step 2 forks on memory capture. Rows 4 through 6 depend on retention windows set long
+before the incident. See [Forensic Readiness](/incident-management/forensic-readiness) for chain of custody
+and retention design, which only helps if it is already in place when the incident starts.
 
 If the same lure reached other contributors, treat that wider exposure as its own incident and send the
 team the specific indicators to look for.
