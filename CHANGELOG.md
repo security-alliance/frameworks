@@ -623,6 +623,6 @@ Everything below predates our labelled-PR workflow: the original mdBook version 
 - Chore: making Monitoring, DevSecOps, Supply Chain, AI Security and In… ([#438](https://github.com/security-alliance/frameworks/pull/438)) by @scode2277
 - Monthly Main branch update ([#486](https://github.com/security-alliance/frameworks/pull/486)) by @scode2277
 - Chore: monthly .org update ([#552](https://github.com/security-alliance/frameworks/pull/552)) by @scode2277
-- Chore: monthly .org update (#617)
+- Chore: monthly .org update ([#617](https://github.com/security-alliance/frameworks/pull/617)) by @scode2277
 
 </details>
