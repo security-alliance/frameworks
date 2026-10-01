@@ -82,6 +82,21 @@ endpoints; custom polling layers are required for automated alerting.
 - **Website:** [etherscan.io](https://etherscan.io)
 - **Documentation:** [docs.etherscan.io](https://docs.etherscan.io)
 
+### Gliese Watch
+
+Public monitor for protocol control changes: proxy upgrades, owner and admin changes, Safe signer and threshold
+changes, timelock queues and delay changes, role grants and pauses, plus owner, admin and implementation changes read
+from storage slots when no event is emitted. Every watched contract has a public page showing who can change it
+(proxy admin, owner, Safe or timelock, up to the top of the control chain), and every change is classified by
+severity. Alerts go to Telegram, email or webhooks; median time from block to detection is about 25 seconds, with a
+per-chain finality window so reorgs do not produce phantom alerts. The event signature registry is open source (MIT).
+
+- **Free plan:** Public feed and contract pages without an account; a free account watches up to 100 contracts with
+  Telegram and email alerts for high and critical changes
+- **Chains:** Ethereum, Arbitrum, Base, Optimism, Polygon, BNB Smart Chain
+- **Website:** [gliese.io](https://gliese.io)
+- **GitHub:** [halilbeydilli/gliese-events](https://github.com/halilbeydilli/gliese-events) (event registry)
+
 ### Guardrail
 
 Real-time DeFi security monitoring and automated threat response. Deploys customizable Guards (rule sets that
