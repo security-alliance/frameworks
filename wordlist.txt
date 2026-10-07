@@ -152,6 +152,7 @@ halmos
 Hdiv
 Helius
 Hetrix
+hiberfil
 hevm
 HIDS
 HIPAA
