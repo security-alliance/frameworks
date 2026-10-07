@@ -1,0 +1,409 @@
+---
+title: "Runbook: Endpoint compromise | Security Alliance"
+description: "Responder-side runbook for a compromised contributor workstation: contain the device, scope its access, revoke credentials in order, and rebuild."
+tags:
+  - Security Specialist
+  - Operations & Strategy
+  - DevOps
+contributors:
+  - role: wrote
+    users: [s1ns3nz0]
+  - role: reviewed
+    users: []
+  - role: fact-checked
+    users: []
+---
+
+import { TagList, AttributionList, ContributeFooter, Checklist } from '../../../../../components'
+
+# Runbook: Endpoint compromise
+
+<TagList tags={frontmatter.tags} />
+<AttributionList contributors={frontmatter.contributors} />
+
+> 🔑 **Key Takeaway**: A compromised workstation is a credential incident, not a hardware
+> incident. Contain the device, inventory what it could reach, revoke in the right order,
+> and rebuild rather than clean.
+
+**This is an example runbook.** Review and customize for your organization before use. Fill in the
+containment tools, the collection tools, the named owners in the revocation table, and the approver.
+Decide every `[bracketed]` value below in advance; an incident is the wrong time to pick one.
+
+This runbook covers a contributor workstation (laptop or desktop, macOS/Windows/Linux) that is suspected
+or confirmed compromised: infostealer malware, a malicious dependency or fake job "test task", a trojanized
+meeting client, or hands-on access. Servers are out of scope, since server containment usually means
+snapshot and quarantine. A mobile device is out of scope as the compromised device, but a phone holding the
+user's authenticator is in scope as a credential, in rows 4 and 9 of the revocation table.
+
+The person on the other end of this runbook is a colleague, and they may be frightened. Hand them
+[Malware Infection](/incident-management/playbooks/malware) after containment, as the victim-facing side of
+the same incident. Do not hand it over while you still need their attention for Step 1.
+
+## Quick reference
+
+| Field | Value |
+| ------- | ------- |
+| **Typical severity** | P1 or P2, by the access the user holds |
+| **Primary responder** | Security SME |
+| **Last updated** | [Date] |
+| **Owner** | [Name] |
+
+A **known-clean device** means one outside the compromise window and not the machine under investigation:
+a freshly imaged spare, an admin workstation, or a phone never paired to it. Four steps below need one, so
+identify it in advance.
+
+Severity follows what the device could reach. Access is observable within the first twenty minutes and
+impact is not, so this table maps access onto the impact bands in the
+[Incident Response Policy](/incident-management/incident-response-template/incident-response-policy).
+
+| Access the user holds | Severity | Examples | What the attacker gains |
+| ----------------------- | ---------- | ---------- | ------------------------- |
+| Signing, deployer, or production admin, including any repository or pipeline path that reaches production without a human approval gate | P1 | Multisig signer key, contract upgrade or owner key, deployer EOA, hot wallet, cloud root, domain registrar, exchange withdrawal credentials, CI/CD secrets that deploy unreviewed | Move funds or land code in production, meeting the policy's fund-loss condition on the spot |
+| Everything else | P2 | Repository write behind review, cloud IAM write, internal admin panels, identity provider admin, official announcement channels, email, chat, shared documents | Impersonate a trusted colleague against the row above, publish to users, or pivot toward a P1 holder |
+
+A multisig signer below threshold is still P1, as is any pipeline that deploys without review (see
+[Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise)).
+
+**If you cannot tell which row applies, use P1.** Severity is set before anyone has finished the access
+inventory in [Step 3](#step-3-scope-what-the-device-could-reach), and in an organization of any size you will
+not know a colleague's access from memory. There is no tier below P2 here: a stolen session cookie does not
+wait for a scheduled response.
+
+## Identification
+
+### Symptoms
+
+<Checklist id="symptoms">
+- [ ] Unexpected script, installer, or "fix" for a broken meeting link was run
+- [ ] Job assessment, trading bot, or repo arrived from a new contact
+- [ ] Browser or editor extension from a repo recommendation, sent file, or sideload
+- [ ] Wallet or node plugin installed from a link rather than the vendor
+- [ ] Unfamiliar login alerts, sessions, or unprompted 2FA challenges
+- [ ] Wallet drain or sweeper activity on a user-controlled address
+- [ ] Unexpected persistence (login items, launch agents, scheduled tasks)
+- [ ] Outbound traffic to unknown hosts
+- [ ] Third-party notification (exchange, partner, another protocol's security team)
+</Checklist>
+
+A malicious extension reads every session the browser holds, and a repository can pressure the install
+through its own recommendations. See
+[Integrated Development Environments](/devsecops/integrated-development-environments).
+
+### Confirming compromise
+
+**With EDR**, work the console: process ancestry for anything spawned from a browser, archive, or downloads
+folder; credential-store access; and the agent's own health. A single quarantined detection still runs this
+runbook, since quarantine proves the product caught one payload.
+
+<Checklist id="symptoms-edr">
+- [ ] Agent stopped reporting, disabled, or tamper alert
+- [ ] Credential-store access (keychain, cookie database, process memory)
+- [ ] Shell or interpreter spawned from a browser, archive, or downloads folder
+- [ ] Unsigned binary executed from a user-writable path
+- [ ] Further activity after a detection was blocked or auto-resolved
+- [ ] New extension or plugin making outbound calls
+</Checklist>
+
+**Without EDR**, you will not get a clean confirmation, so do not wait for one. Check the four places
+persistence lands and the two the user controls, from the device's own interface before it is disconnected,
+or from the disk image afterwards.
+
+<Checklist id="confirming-compromise-unmanaged">
+- [ ] Login items, launch agents, and daemons
+- [ ] Scheduled tasks and cron entries
+- [ ] Shell profiles and PATH overrides
+- [ ] Browser and editor extensions, against what the user remembers
+- [ ] Identity provider sign-in history for logins they do not recognize
+- [ ] What they ran, in their words, with the file or link
+</Checklist>
+
+Absent evidence is not absence. If the user executed something and you cannot rule out what it did, treat
+the device as compromised and continue.
+
+### Differentiation
+
+If a wallet drained but the device shows no sign of compromise, the user most likely signed a malicious
+approval. Stop here and switch to
+[Key Compromise](/incident-management/incident-response-template/runbooks/key-compromise) and the
+[Drainer playbook](/incident-management/playbooks/hacked-drainer). If several contributors are affected at
+once with no shared file or link, suspect the identity provider or the supply chain rather than a single
+endpoint.
+
+Two of the lures above are documented campaigns. Both playbooks carry screenshots of the messages attackers
+sent, so you can put them in front of the user and ask whether theirs matched. A meeting link that resolved
+to an unfamiliar domain, or a fake recruiter task, matches
+[North Korea (DPRK) Attack](/incident-management/playbooks/hacked-dprk). A Zoom call where the caller asked
+for screen share or remote control matches
+[ELUSIVE COMET](/incident-management/playbooks/hacked-elusive-comet). Read either alongside this runbook
+rather than instead of it: they identify the campaign and tell you which follow-on accounts to check, while
+the steps below stay the same.
+
+## Immediate actions
+
+### Step 1: Cut access and reach the user
+
+> **Before you call.** If the user may be the threat actor (fake contributor, suspected DPRK IT worker,
+> hostile departure), do not call them and do not reveal that you detected anything. Preserve access logs
+> and device state, cut access quietly, and engage
+> [Legal](/incident-management/incident-response-template/contacts#legal--communications) first. Confirming
+> that suspicion is a Legal and HR judgement rather than a responder's; see
+> [Mitigating DPRK IT Workers](/dprk-it-workers/mitigating-dprk-it-workers).
+
+**Why:** The account is the urgent part, and the user's chat, email, and phone may already be in the
+attacker's hands.
+
+Two tracks, two people, the same minute. The org-side track needs nothing from the user.
+
+<Checklist id="step-1-org-side">
+- [ ] Export identity provider sign-in and session logs
+- [ ] Kill sessions at identity provider, chat, email, and code host
+- [ ] Suspend cloud and production access
+- [ ] Page [Decision Makers](/incident-management/incident-response-template/contacts#decision-makers) at P1
+</Checklist>
+
+<Checklist id="step-1-person-side">
+- [ ] Call on a channel not tied to the suspect device
+- [ ] Confirm identity by voice, never by text
+- [ ] Tell them to stop using it, powered as it is
+- [ ] Tell them to unplug hardware wallets and security keys
+- [ ] Say plainly that blame is not the point
+</Checklist>
+
+Export the logs before revoking: killing sessions can truncate the sign-in records that show where the
+attacker connected from, and they do not come back. Revocation also tells the attacker they were seen, so
+close fund-movement paths first and leave the noisier account cleanup for the table below.
+
+If the user does not answer, keep going. Leave one instruction: leave the device alone. Rows 3, 4, and 8 of
+the revocation table do need them, so if they are still unreachable after
+[contact timeout, 4 hours suggested], suspend the account outright rather than leaving it half-rotated.
+
+### Step 2: Contain the device and capture what disappears
+
+**Why:** Stop live session abuse without destroying what you need to scope the incident.
+
+Find the row that matches your situation:
+
+| Situation | Action |
+| ----------- | -------- |
+| Device already powered off | Leave it off, and do not boot it to "check something" |
+| Endpoint tooling with network containment | Contain the host in the console, leave it powered for capture |
+| No tooling, someone can capture memory within [memory capture window, 2 hours suggested] | Disconnect the network, do not sleep or shut down |
+| No tooling, nobody can capture memory | Disconnect the network, then power off fully |
+
+Disconnect means unplug the cable and turn off the wireless radio from a hardware switch where one exists.
+Toggling Wi-Fi from inside the operating system means working on a live compromised machine.
+
+Memory holds what actually ran, and therefore what must be rotated. But a machine left running on a desk
+"for forensics" that nobody ever images is the worst of both options, so choose speed when nobody can
+capture it.
+
+Expect the first row often, since [Malware Infection](/incident-management/playbooks/malware) tells the
+affected person to power off immediately. Booting it runs the persistence again, so that case proceeds from
+the credential side. Image the disk anyway: hibernation and swap files (`hiberfil.sys`, `pagefile.sys`,
+macOS `sleepimage`) often still hold decrypted secrets and process state.
+
+While the device is still live, collect in this order. Decide the tools in advance; choosing one
+mid-incident is how memory gets lost.
+
+| Order | Data | Source | Tool |
+| ------- | ------ | -------- | ------ |
+| 1 | Memory image | The live device, before any shutdown | [tool and command] |
+| 2 | Live network state and running processes | The live device | [tool and command] |
+| 3 | Disk image | The device, before rebuild | [tool and command] |
+
+Most volatile first, per [RFC 3227](https://www.rfc-editor.org/rfc/rfc3227). Memory leads because a full
+image also captures connections and sessions.
+
+<Checklist id="step-2-contain-the-device">
+- [ ] Cut network access, at the console or physically
+- [ ] Do not wipe, "clean", or restart the device
+- [ ] Unplug hardware wallets, security keys, and external drives
+- [ ] Record the time and method
+</Checklist>
+
+### Step 3: Scope what the device could reach
+
+**Why:** Severity, revocation order, and blast radius all depend on this inventory, and nobody recalls it
+reliably under pressure.
+
+<Checklist id="step-3-scope-what-the-device-could-reach">
+- [ ] List accounts (identity provider, chat, email, code, cloud, treasury)
+- [ ] List keys held and signer roles they can approve
+- [ ] List paired devices (2FA apps, security keys, hardware wallets)
+- [ ] Find plaintext credentials (.env, cloud and SSH config, notes apps)
+- [ ] Set severity, P1 if the access is unclear
+</Checklist>
+
+**If you have endpoint management:** pull the installed application list, the extension inventory, and
+recent process history instead of relying on the user's memory.
+
+## Credential revocation order
+
+Finish the access inventory in [Step 3](#step-3-scope-what-the-device-could-reach) before removing
+footholds. Revoking what you have found while an OAuth grant or mail rule you have not found survives moves
+the attacker out of the device and leaves them in the accounts. A foothold on the host itself is handled by
+Step 2 cutting the network and by rebuilding rather than cleaning; do not treat credential rotation as
+having removed it.
+
+**Why order matters:** the usual failures are sequencing errors. Rotating an SSH key before killing the
+attacker's live session lets them add the new key themselves. Changing a password before revoking sessions
+leaves the stolen cookie valid on any identity provider that does not revoke sessions on password change,
+which is most of them. Re-enrolling 2FA from a cloud backup restores the same seed, which the attacker may
+already hold.
+
+Rows 1 and 2 run together at P1. Otherwise work top to bottom. Assign every `[Name]` in advance.
+
+| # | Credential class | Where | Owner | Notes |
+| --- | ------------------ | ------- | ------- | ------- |
+| 1 | Active sessions | Identity provider, chat, email, code host | [Name] | Started in Step 1; confirm every system is covered. Revoke OAuth tokens separately, since session revocation does not reach them. Re-check after row 8: on a service with no second factor, a stolen password buys a fresh session |
+| 2 | Signing and deployer keys | Multisig, contracts, treasury | [Name] | Run alongside row 1 at P1, per [Key Compromise](/incident-management/incident-response-template/runbooks/key-compromise). For a hot wallet, revoking the session is not enough: move the assets to a wallet generated on a known-clean device |
+| 3 | Password manager | Vault account | [Name] | Assume vault contents exposed; rotate master password and re-enroll 2FA from a known-clean device |
+| 4 | MFA enrollments | Identity provider, exchanges | [Name] | Re-enroll on a new device; never restore an authenticator from cloud backup |
+| 5 | SSH and git access | Code host, servers | [Name] | Remove old public keys and look for attacker-added keys and deploy keys. Reissue per [SSH client and key management hardening](/guides/endpoint-security/ssh-client-and-key-management-hardening) |
+| 6 | Cloud and CI/CD tokens | Cloud IAM, CI secrets, registries | [Name] | See [Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise) |
+| 7 | API and exchange keys | Exchanges, data providers | [Name] | Withdrawal-capable keys first |
+| 8 | Passwords | Everything above | [Name] | Last, after sessions are dead, from a known-clean device |
+| 9 | Recovery channels | Mail rules, recovery codes, phone, OAuth grants | [Name] | Attackers persist here; check rules and grants, not just credentials |
+
+<Checklist id="revocation-verification">
+- [ ] Every row above assigned to a named person
+- [ ] All revocation done from a known-clean device
+- [ ] Row 9 re-checked after the rest, not only rotated
+- [ ] Anything not revocable within [revocation deadline, 4 hours suggested] escalated
+</Checklist>
+
+## Investigation
+
+### Key questions
+
+<Checklist id="key-questions">
+- [ ] What was the initial access (link, file, dependency, installer, physical)?
+- [ ] When did it start, and what happened before containment?
+- [ ] What was exfiltrated, and what is only assumed exfiltrated?
+- [ ] Did the attacker move laterally, or stop at the device?
+- [ ] Are other contributors exposed to the same lure?
+</Checklist>
+
+### Evidence to collect
+
+The volatile sources are in Step 2; they are gone by the time you reach this section.
+
+| Data | Source |
+| ------ | -------- |
+| Persistence and install history | Endpoint tooling, local logs, or the disk image |
+| Authentication and session logs | Exported in Step 1, before revocation |
+| Outbound network telemetry | DNS, proxy, and firewall logs, if retained |
+| The lure itself | Message, repository, installer, meeting link |
+| On-chain activity | Block explorer, for addresses the user controls |
+
+Retention is decided long before an incident. See
+[Forensic Readiness](/incident-management/forensic-readiness) for chain of custody and retention design,
+which only helps if it is already in place when the incident starts.
+
+If the same lure reached other contributors, treat that wider exposure as its own incident and send the team
+the specific indicators to look for.
+
+If the lure arrived but was never executed, and no credential exposure is confirmed, downgrade the incident
+and close it. Record what ruled execution out in the
+[Incident Log](/incident-management/incident-response-template/templates/incident-log-template). A P1 that
+nobody closes buries the next real one.
+
+## Escalation
+
+<Checklist id="escalation">
+- [ ] [Decision Makers](/incident-management/incident-response-template/contacts#decision-makers) -
+      immediately at P1, as started in Step 1
+- [ ] [Security Partners](/incident-management/incident-response-template/contacts#security-partners) - for
+      forensics, or whenever lateral movement is suspected
+- [ ] [Legal](/incident-management/incident-response-template/contacts#legal--communications) - if funds
+      were stolen, data was exposed, or insider involvement is suspected
+- [ ] [SEAL 911](https://t.me/seal_911_bot) - for crypto-specific containment help beyond your team
+</Checklist>
+
+Legal owns external notification, but the clock starts at discovery and runs while you are still containing.
+Raise it early, while the timing is still yours to pick. For wording, cadence, and who speaks, use
+[Communications](/incident-management/incident-response-template/communications) and
+[Communication Strategies](/incident-management/communication-strategies).
+
+<Checklist id="external-notification">
+- [ ] Check disclosure obligations against your jurisdictions and
+      [reporting window, 72 hours suggested]
+- [ ] Notify affected users if their data or funds were reachable
+- [ ] File a law enforcement report if funds were stolen (see
+      [Malware Infection](/incident-management/playbooks/malware) for venues)
+- [ ] Tell partners and exchanges which addresses to watch
+</Checklist>
+
+## Recovery and prevention
+
+### Rebuild, do not clean
+
+Wipe and rebuild, or replace the hardware. Do not restore the user profile from a backup taken after the
+compromise window opened, and do not accept "the antivirus removed it" as an outcome. You cannot prove an
+infostealer is gone, and the cost of being wrong is handing back signing authority.
+
+<Checklist id="rebuild-do-not-clean">
+- [ ] Wipe and reinstall from trusted media, or replace the device
+- [ ] Move data file by file, never a whole user folder
+- [ ] Rebuild browser profiles, extensions, and shell config
+- [ ] Retain the device if forensics or regulation require it
+</Checklist>
+
+### Return-to-service gate
+
+Privileged access returns only when a named approver confirms all of the following:
+
+<Checklist id="return-to-service-gate">
+- [ ] Device rebuilt or replaced, and enrolled in management where the organization has it
+- [ ] Every credential class above reissued from a known-clean device
+- [ ] MFA re-enrolled fresh, not restored from a backup
+- [ ] Recovery channels re-verified (mail rules, recovery codes, phone, OAuth grants)
+- [ ] Signing and deployer roles restored last, after [monitoring period, 30 days suggested]
+- [ ] Approver: [Name]
+</Checklist>
+
+### Prevention
+
+<Checklist id="prevention">
+- [ ] Device tiers, per [Endpoint Security](/opsec/endpoint/overview)
+- [ ] Separate signing devices
+- [ ] EDR and disk encryption for P1 access holders
+- [ ] Extension allowlisting
+- [ ] Sandboxing for untrusted code
+- [ ] Phishing-resistant MFA
+- [ ] Short session lifetimes for privileged tooling
+- [ ] A known-clean device kept ready
+- [ ] An out-of-hours reporting path
+</Checklist>
+
+### Closing the incident
+
+The rebuild is the midpoint. [Lessons Learned](/incident-management/lessons-learned) carries
+the review questions and the blameless format.
+
+<Checklist id="closing-the-incident">
+- [ ] Write up the timeline in the
+      [Incident Log](/incident-management/incident-response-template/templates/incident-log-template)
+- [ ] Get the return-to-service gate signed off
+- [ ] Schedule a post-mortem per the
+      [Post-Mortem Template](/incident-management/incident-response-template/templates/post-mortem-template)
+- [ ] Share indicators with the team, and with partners if the lure was reused
+- [ ] Assign owners to the prevention items above
+- [ ] Review the detection gap: what would have caught this a day earlier
+</Checklist>
+
+## Further reading
+
+- [Runbooks overview](/incident-management/incident-response-template/runbooks/overview): how the runbooks in this section fit together
+- [Malware Infection](/incident-management/playbooks/malware): the victim-facing guide to hand the
+  affected person
+- [Key Compromise](/incident-management/incident-response-template/runbooks/key-compromise): rotation
+  procedures for signer and deployer keys
+- [Forensic Readiness](/incident-management/forensic-readiness): preserving evidence before you rebuild
+- [Endpoint Security](/opsec/endpoint/overview): device tiers, EDR, and MDM that limit the blast radius
+- [Developer-targeted intrusions](/devsecops/developer-targeted-intrusions/overview): how the lure reaches
+  a contributor in the first place
+
+---
+
+<ContributeFooter />
