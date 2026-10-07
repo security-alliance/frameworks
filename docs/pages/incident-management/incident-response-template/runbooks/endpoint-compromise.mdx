@@ -241,7 +241,9 @@ recent process history instead of relying on the user's memory.
 
 Finish the access inventory in [Step 3](#step-3-scope-what-the-device-could-reach) before removing
 footholds. Revoking what you have found while an OAuth grant or mail rule you have not found survives moves
-the attacker out of the device and leaves them in the accounts.
+the attacker out of the device and leaves them in the accounts. A foothold on the host itself is handled by
+Step 2 cutting the network and by rebuilding rather than cleaning; do not treat credential rotation as
+having removed it.
 
 **Why order matters:** the usual failures are sequencing errors. Rotating an SSH key before killing the
 attacker's live session lets them add the new key themselves. Changing a password before revoking sessions
