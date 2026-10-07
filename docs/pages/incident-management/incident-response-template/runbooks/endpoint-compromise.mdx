@@ -253,7 +253,7 @@ Rows 1 and 2 run together at P1. Otherwise work top to bottom. Assign every `[Na
 
 | # | Credential class | Where | Owner | Notes |
 | --- | ------------------ | ------- | ------- | ------- |
-| 1 | Active sessions | Identity provider, chat, email, code host | [Name] | Started in Step 1; confirm every system is covered. Session revocation does not reach OAuth tokens, so revoke those separately |
+| 1 | Active sessions | Identity provider, chat, email, code host | [Name] | Started in Step 1; confirm every system is covered. Revoke OAuth tokens separately, since session revocation does not reach them. Re-check after row 8: on a service with no second factor, a stolen password buys a fresh session |
 | 2 | Signing and deployer keys | Multisig, contracts, treasury | [Name] | Run alongside row 1 at P1, per [Key Compromise](/incident-management/incident-response-template/runbooks/key-compromise). For a hot wallet, revoking the session is not enough: move the assets to a wallet generated on a known-clean device |
 | 3 | Password manager | Vault account | [Name] | Assume vault contents exposed; rotate master password and re-enroll 2FA from a known-clean device |
 | 4 | MFA enrollments | Identity provider, exchanges | [Name] | Re-enroll on a new device; never restore an authenticator from cloud backup |
