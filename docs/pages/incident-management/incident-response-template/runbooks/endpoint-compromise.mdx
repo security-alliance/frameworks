@@ -48,10 +48,9 @@ the same incident. Do not hand it over while you still need their attention for 
 | **Last updated** | [Date] |
 | **Owner** | [Name] |
 
-A **known-clean device** means one that was outside the compromise window and is not the machine under
-investigation: a freshly imaged spare, an administrator workstation, or a phone that was never paired to the
-suspect machine. Identify one in advance. Sourcing it mid-incident costs hours, and four steps below depend
-on having it.
+A **known-clean device** means one outside the compromise window and not the machine under investigation:
+a freshly imaged spare, an admin workstation, or a phone never paired to it. Four steps below need one, so
+identify it in advance.
 
 Severity follows what the device could reach. Access is observable within the first twenty minutes and
 impact is not, so this table maps access onto the impact bands in the
@@ -62,9 +61,8 @@ impact is not, so this table maps access onto the impact bands in the
 | Signing, deployer, or production admin, including any repository or pipeline path that reaches production without a human approval gate | P1 | Multisig signer key, contract upgrade or owner key, deployer EOA, hot wallet, cloud root, domain registrar, exchange withdrawal credentials, CI/CD secrets that deploy unreviewed | Move funds or land code in production, meeting the policy's fund-loss condition on the spot |
 | Everything else | P2 | Repository write behind review, cloud IAM write, internal admin panels, identity provider admin, official announcement channels, email, chat, shared documents | Impersonate a trusted colleague against the row above, publish to users, or pivot toward a P1 holder |
 
-A multisig signer below threshold is still P1: one more compromised signer executes. A pipeline with no
-approval gate is P1 because it deploys on the attacker's behalf, as in
-[Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise).
+A multisig signer below threshold is still P1, as is any pipeline that deploys without review (see
+[Build Pipeline Compromise](/incident-management/incident-response-template/runbooks/build-pipeline-compromise)).
 
 **If you cannot tell which row applies, use P1.** Severity is set before anyone has finished the access
 inventory in [Step 3](#step-3-scope-what-the-device-could-reach), and in an organization of any size you will
@@ -87,13 +85,11 @@ wait for a scheduled response.
 - [ ] Third-party notification (exchange, partner, another protocol's security team)
 </Checklist>
 
-Extension and plugin installs deserve their own check: a malicious one reads every session the browser
-holds, and a repository can pressure the install through its own recommendations. See
+A malicious extension reads every session the browser holds, and a repository can pressure the install
+through its own recommendations. See
 [Integrated Development Environments](/devsecops/integrated-development-environments).
 
 ### Confirming compromise
-
-One symptom is enough to start. This section is about whether you can stop.
 
 **With EDR**, work the console: process ancestry for anything spawned from a browser, archive, or downloads
 folder; credential-store access; and the agent's own health. A single quarantined detection still runs this
@@ -113,12 +109,12 @@ persistence lands and the two the user controls, from the device's own interface
 or from the disk image afterwards.
 
 <Checklist id="confirming-compromise-unmanaged">
-- [ ] Login items and launch agents or daemons
+- [ ] Login items, launch agents, and daemons
 - [ ] Scheduled tasks and cron entries
-- [ ] Shell profile files and PATH overrides
-- [ ] Browser and editor extensions, against what the user remembers installing
-- [ ] Identity provider sign-in history for logins the user does not recognize
-- [ ] What the user actually ran, in their words, with the file or link if they still have it
+- [ ] Shell profiles and PATH overrides
+- [ ] Browser and editor extensions, against what the user remembers
+- [ ] Identity provider sign-in history for logins they do not recognize
+- [ ] What they ran, in their words, with the file or link
 </Checklist>
 
 Absent evidence is not absence. If the user executed something and you cannot rule out what it did, treat
@@ -159,18 +155,17 @@ attacker's hands.
 Two tracks, two people, the same minute. The org-side track needs nothing from the user.
 
 <Checklist id="step-1-org-side">
-- [ ] Identity provider sign-in and session logs exported, before anything is revoked
-- [ ] Sessions killed at identity provider, chat, email, and code host
-- [ ] Cloud and production access suspended
-- [ ] [Decision Makers](/incident-management/incident-response-template/contacts#decision-makers) paged if
-      the access is or may be P1
+- [ ] Export identity provider sign-in and session logs
+- [ ] Kill sessions at identity provider, chat, email, and code host
+- [ ] Suspend cloud and production access
+- [ ] Page [Decision Makers](/incident-management/incident-response-template/contacts#decision-makers) at P1
 </Checklist>
 
 <Checklist id="step-1-person-side">
 - [ ] Call on a channel not tied to the suspect device
-- [ ] Confirm identity by voice, never by text alone
-- [ ] Tell them to stop using the device and leave it powered as it is
-- [ ] Tell them to unplug hardware wallets and security keys now, not later
+- [ ] Confirm identity by voice, never by text
+- [ ] Tell them to stop using it, powered as it is
+- [ ] Tell them to unplug hardware wallets and security keys
 - [ ] Say plainly that blame is not the point
 </Checklist>
 
@@ -198,10 +193,9 @@ Find the row that matches your situation:
 Disconnect means unplug the cable and turn off the wireless radio from a hardware switch where one exists.
 Toggling Wi-Fi from inside the operating system means working on a live compromised machine.
 
-Powering off ends access to running processes, injected code, and secrets decrypted in memory, which is the
-evidence that tells you what actually ran and therefore what must be rotated. It also stops an active thief.
-Choose speed when nobody is positioned to capture memory: a machine left running on a desk "for forensics"
-that nobody ever images is the worst of both options.
+Memory holds what actually ran, and therefore what must be rotated. But a machine left running on a desk
+"for forensics" that nobody ever images is the worst of both options, so choose speed when nobody can
+capture it.
 
 Expect the first row often, since [Malware Infection](/incident-management/playbooks/malware) tells the
 affected person to power off immediately. Booting it runs the persistence again, so that case proceeds from
@@ -218,13 +212,13 @@ mid-incident is how memory gets lost.
 | 3 | Disk image | The device, before rebuild | [tool and command] |
 
 Most volatile first, per [RFC 3227](https://www.rfc-editor.org/rfc/rfc3227). Memory leads because a full
-image also captures connections, login sessions, and the process table.
+image also captures connections and sessions.
 
 <Checklist id="step-2-contain-the-device">
-- [ ] Network access cut, by console containment or physical disconnect
-- [ ] Device not wiped, not "cleaned", and not casually restarted
-- [ ] Hardware wallets, security keys, and external drives unplugged and set aside
-- [ ] Time and method of containment recorded
+- [ ] Cut network access, at the console or physically
+- [ ] Do not wipe, "clean", or restart the device
+- [ ] Unplug hardware wallets, security keys, and external drives
+- [ ] Record the time and method
 </Checklist>
 
 ### Step 3: Scope what the device could reach
@@ -233,11 +227,11 @@ image also captures connections, login sessions, and the process table.
 reliably under pressure.
 
 <Checklist id="step-3-scope-what-the-device-could-reach">
-- [ ] Accounts held (identity provider, chat, email, code, cloud, treasury)
-- [ ] Keys held, and signer roles the user can approve
-- [ ] Paired devices (2FA apps, security keys, hardware wallets)
-- [ ] Plaintext credentials on disk (.env files, cloud and SSH config, notes apps)
-- [ ] Severity set from the table above, P1 wherever the access is unclear
+- [ ] List accounts (identity provider, chat, email, code, cloud, treasury)
+- [ ] List keys held and signer roles they can approve
+- [ ] List paired devices (2FA apps, security keys, hardware wallets)
+- [ ] Find plaintext credentials (.env, cloud and SSH config, notes apps)
+- [ ] Set severity, P1 if the access is unclear
 </Checklist>
 
 **If you have endpoint management:** pull the installed application list, the extension inventory, and
@@ -255,8 +249,7 @@ leaves the stolen cookie valid on any identity provider that does not revoke ses
 which is most of them. Re-enrolling 2FA from a cloud backup restores the same seed, which the attacker may
 already hold.
 
-Rows 1 and 2 run together at P1. Otherwise work top to bottom. Assign every `[Name]` before an incident:
-an unassigned row is where revocation stalls at 3am.
+Rows 1 and 2 run together at P1. Otherwise work top to bottom. Assign every `[Name]` in advance.
 
 | # | Credential class | Where | Owner | Notes |
 | --- | ------------------ | ------- | ------- | ------- |
@@ -331,12 +324,12 @@ Raise it early, while the timing is still yours to pick. For wording, cadence, a
 [Communication Strategies](/incident-management/communication-strategies).
 
 <Checklist id="external-notification">
-- [ ] Disclosure obligations checked against your jurisdictions and
+- [ ] Check disclosure obligations against your jurisdictions and
       [reporting window, 72 hours suggested]
-- [ ] Affected users or customers notified if their data or funds were reachable
-- [ ] Law enforcement report filed if funds were stolen (see
-      [Malware Infection](/incident-management/playbooks/malware) for the reporting venues)
-- [ ] Partners and exchanges told which addresses and accounts to watch
+- [ ] Notify affected users if their data or funds were reachable
+- [ ] File a law enforcement report if funds were stolen (see
+      [Malware Infection](/incident-management/playbooks/malware) for venues)
+- [ ] Tell partners and exchanges which addresses to watch
 </Checklist>
 
 ## Recovery and prevention
@@ -348,10 +341,10 @@ compromise window opened, and do not accept "the antivirus removed it" as an out
 infostealer is gone, and the cost of being wrong is handing back signing authority.
 
 <Checklist id="rebuild-do-not-clean">
-- [ ] Device wiped and reinstalled from trusted media, or replaced
-- [ ] Data moved file by file, never a whole user folder
-- [ ] Browser profiles, extensions, and shell config rebuilt, not migrated
-- [ ] Device retained if forensic or regulatory obligations require it
+- [ ] Wipe and reinstall from trusted media, or replace the device
+- [ ] Move data file by file, never a whole user folder
+- [ ] Rebuild browser profiles, extensions, and shell config
+- [ ] Retain the device if forensics or regulation require it
 </Checklist>
 
 ### Return-to-service gate
@@ -370,33 +363,31 @@ Privileged access returns only when a named approver confirms all of the followi
 ### Prevention
 
 <Checklist id="prevention">
-- [ ] Device tier matched to role risk, per [Endpoint Security](/opsec/endpoint/overview)
-- [ ] Signing devices separate from daily-driver workstations
-- [ ] EDR and disk encryption on the devices of P1 access holders
-- [ ] Extensions allowlisted, repo-recommended ones declined by default
-- [ ] Untrusted code run only in a sandbox or disposable VM
-- [ ] Phishing-resistant MFA on high-value accounts
-- [ ] Shortened session lifetimes for privileged tooling
-- [ ] A known-clean device identified and kept ready
-- [ ] Contributors know where to report, including out of hours
+- [ ] Device tiers, per [Endpoint Security](/opsec/endpoint/overview)
+- [ ] Separate signing devices
+- [ ] EDR and disk encryption for P1 access holders
+- [ ] Extension allowlisting
+- [ ] Sandboxing for untrusted code
+- [ ] Phishing-resistant MFA
+- [ ] Short session lifetimes for privileged tooling
+- [ ] A known-clean device kept ready
+- [ ] An out-of-hours reporting path
 </Checklist>
 
 ### Closing the incident
 
-The rebuild is the midpoint. [NIST SP 800-61r3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats
-improvement as a standing function rather than a meeting held once the noise dies down, so the work below
-closes the runbook. [Lessons Learned](/incident-management/lessons-learned) carries the review questions and
-the blameless format.
+The rebuild is the midpoint. [Lessons Learned](/incident-management/lessons-learned) carries
+the review questions and the blameless format.
 
 <Checklist id="closing-the-incident">
-- [ ] Timeline written up in the
+- [ ] Write up the timeline in the
       [Incident Log](/incident-management/incident-response-template/templates/incident-log-template)
-- [ ] Return-to-service gate signed off by the named approver
-- [ ] Post-mortem scheduled per the
+- [ ] Get the return-to-service gate signed off
+- [ ] Schedule a post-mortem per the
       [Post-Mortem Template](/incident-management/incident-response-template/templates/post-mortem-template)
-- [ ] Indicators shared with the team, and with partners if the lure was reused against them
-- [ ] Prevention items above converted into owned work, not left in this checklist
-- [ ] Detection gap reviewed: what would have caught this a day earlier
+- [ ] Share indicators with the team, and with partners if the lure was reused
+- [ ] Assign owners to the prevention items above
+- [ ] Review the detection gap: what would have caught this a day earlier
 </Checklist>
 
 ## Further reading
