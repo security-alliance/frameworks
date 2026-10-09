@@ -699,7 +699,7 @@ const config = {
       collapsed: false,
       items: [
         { text: 'Overview', link: '/certs/overview' },
-        { text: 'Certified Partners', link: '/certs/certified-partners' },
+        { text: 'Auditor Accreditation', link: '/certs/auditor-accreditation' },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
             { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
