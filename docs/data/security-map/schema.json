@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "SEAL Security Map catalogue schema",
+  "description": "Authoring contract for docs/data/security-map. The generator validates this shape before writing public/security-map.json.",
+  "nodeIdPattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+  "requiredNodeFields": ["id", "type", "title", "summary", "domains", "status", "tags"],
+  "optionalNodeFields": [
+    "roles",
+    "lifecycle",
+    "controlClass",
+    "severity",
+    "severityBasis",
+    "href",
+    "sources",
+    "aliases",
+    "framework",
+    "assessmentEligible",
+    "deprecatedBy",
+    "date",
+    "datePrecision",
+    "dateEnd",
+    "loss"
+  ],
+  "requiredEdgeFields": ["source", "target", "type"],
+  "optionalEdgeFields": ["rationale", "status", "sources"],
+  "guidanceHref": "Internal documentation route beginning with /. Resolved against docs/pages. Must not be a URL.",
+  "incidentSources": {
+    "min": 1,
+    "itemFields": ["url", "title", "publisher"]
+  },
+  "assessment": {
+    "eligibleTypes": ["control"],
+    "defaultEligible": false,
+    "storageKey": "seal-security-map-assessment:v1",
+    "legacyStorageKey": "attackSurface-posture",
+    "states": [
+      "not-assessed",
+      "not-applicable",
+      "missing",
+      "planned",
+      "partially-implemented",
+      "implemented",
+      "verified"
+    ]
+  },
+  "generatedOutputs": [
+    "public/security-map.json",
+    "components/security-map/securityMap.generated.ts"
+  ]
+}

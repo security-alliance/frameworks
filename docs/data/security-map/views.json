@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0.0",
+  "views": [
+    {
+      "id": "view-overview",
+      "title": "Overview",
+      "summary": "Start from the eight domains. Pick a domain, a saved view, or search.",
+      "kind": "overview"
+    },
+    {
+      "id": "view-secure-multisig",
+      "title": "Secure a multisig operation",
+      "summary": "Treasury and upgrade authority held by a multisig, the signing workflow, and the controls that keep signers from being the weak link.",
+      "kind": "entry",
+      "focusNodeId": "component-multisig",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "response",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-protect-deployment",
+      "title": "Protect deployment authority",
+      "summary": "Who can ship code or upgrade contracts, and the build path that has to stay trustworthy.",
+      "kind": "entry",
+      "focusNodeId": "asset-deployment-authority",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-protect-domains-frontends",
+      "title": "Protect domains and frontends",
+      "summary": "Registrar, DNS, and frontend deployment integrity, where users actually connect their wallets.",
+      "kind": "entry",
+      "focusNodeId": "asset-domain-control",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "response",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-reduce-signer-compromise",
+      "title": "Reduce signer compromise risk",
+      "summary": "Phishing, malware, hiring, and device hygiene that turn a signer into an attacker-controlled key.",
+      "kind": "entry",
+      "focusNodeId": "asset-signer-keys",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "response",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-harden-supply-chain",
+      "title": "Harden software supply chains",
+      "summary": "Dependencies, CI/CD, and reproducible builds between a commit and what users run.",
+      "kind": "entry",
+      "focusNodeId": "component-dependency-graph",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "response",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-prepare-incident-response",
+      "title": "Prepare for incident response",
+      "summary": "Detection gaps, runbooks, and containment paths before an incident is live.",
+      "kind": "entry",
+      "focusNodeId": "component-monitoring-stack",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "response",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-constrain-ai-agents",
+      "title": "Constrain an AI agent",
+      "summary": "The agent tool path, prompt injection, and runtime allow/deny before an irreversible action.",
+      "kind": "entry",
+      "focusNodeId": "component-ai-agent",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-resolve-ens-names",
+      "title": "Resolve ENS before sending",
+      "summary": "Human-readable names, L1 resolution, and normalization so a send does not go to a lookalike.",
+      "kind": "entry",
+      "focusNodeId": "surface-ens-resolution",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-receive-vuln-reports",
+      "title": "Receive a vulnerability report",
+      "summary": "A monitored security contact and bounty path before a finding goes public or gets sold.",
+      "kind": "entry",
+      "focusNodeId": "surface-researcher-inbound",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "response",
+        "guidance"
+      ]
+    },
+    {
+      "id": "view-keep-threat-model-current",
+      "title": "Keep the threat model current",
+      "summary": "Named abuses and owners that get rewritten when architecture or value at risk changes.",
+      "kind": "entry",
+      "focusNodeId": "control-living-threat-model",
+      "visibleTypes": [
+        "asset",
+        "component",
+        "attack-surface",
+        "threat",
+        "control",
+        "guidance"
+      ]
+    }
+
+  ]
+}

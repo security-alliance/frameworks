@@ -1,0 +1,173 @@
+{
+  "nodes": [
+    {
+      "id": "asset-key-holder-safety",
+      "type": "asset",
+      "title": "Key-holder safety",
+      "summary": "The bodily safety of people who can move funds, and of their families. Coercion spends this asset to bypass cryptography.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["safety", "duress", "people"],
+      "roles": ["multisig-signer", "founder-executive"],
+      "lifecycle": ["normal-operations", "incident-response"],
+      "framework": "physical-security"
+    },
+    {
+      "id": "component-family-household",
+      "type": "component",
+      "title": "Family and household",
+      "summary": "People and staff close to a key-holder. Attackers coerce them to reach keys the target will not surrender for themselves.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["family", "household"],
+      "roles": ["founder-executive", "multisig-signer"],
+      "lifecycle": ["normal-operations", "incident-response"],
+      "framework": "physical-security"
+    },
+    {
+      "id": "surface-family-and-household",
+      "type": "attack-surface",
+      "title": "Family and household coercion",
+      "summary": "Home routines, joint public profiles, and staff who know where devices live. Pressure here is a wrench attack on someone else.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["family", "duress"],
+      "roles": ["founder-executive", "multisig-signer"],
+      "lifecycle": ["normal-operations"],
+      "framework": "physical-security"
+    },
+    {
+      "id": "control-controlled-surrender",
+      "type": "control",
+      "title": "Controlled-surrender wallet",
+      "summary": "A believable low-value path an attacker can take immediately. Core reserves stay behind delay and extra approvals the victim cannot skip.",
+      "domains": ["people", "governance-treasury"],
+      "status": "proposed",
+      "tags": ["duress", "decoy", "surrender"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["multisig-signer", "founder-executive"],
+      "lifecycle": ["design", "normal-operations", "incident-response"],
+      "framework": "physical-security"
+    },
+    {
+      "id": "control-geographic-key-separation",
+      "type": "control",
+      "title": "Geographic key separation",
+      "summary": "Do not keep cold keys or seeds at the primary residence. Split signers and hardware across places so a local incident cannot collect a threshold.",
+      "domains": ["people", "devices-identity", "governance-treasury"],
+      "status": "proposed",
+      "tags": ["geography", "keys", "duress"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["multisig-signer"],
+      "lifecycle": ["design", "normal-operations"],
+      "framework": "physical-security"
+    },
+    {
+      "id": "control-duress-signing-limits",
+      "type": "control",
+      "title": "Duress signing limits",
+      "summary": "Per-transaction and daily caps, extra approvals above a threshold, and time delays so a coerced sitting cannot drain reserves.",
+      "domains": ["governance-treasury", "people"],
+      "status": "proposed",
+      "tags": ["limits", "timelock", "duress"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["multisig-signer", "governance-participant"],
+      "lifecycle": ["normal-operations", "incident-response"],
+      "framework": "physical-security"
+    },
+    {
+      "id": "control-identity-separation",
+      "type": "control",
+      "title": "Public and signer identity separation",
+      "summary": "Keep the public persona off the devices and profiles that sign. Family and staff are trained not to discuss holdings or routines.",
+      "domains": ["people", "devices-identity"],
+      "status": "proposed",
+      "tags": ["identity", "osint", "family"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["founder-executive", "multisig-signer"],
+      "lifecycle": ["normal-operations"],
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-physical-security",
+      "type": "guidance",
+      "title": "Physical Security",
+      "summary": "Protect people and hardware from coercion, theft, surveillance, and tampering. Distinct from OpSec, which reduces what an adversary can learn.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["physical", "duress"],
+      "href": "/physical-security/overview",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-coercion-duress",
+      "type": "guidance",
+      "title": "Coercion and duress",
+      "summary": "Wrench attacks coerce the people who hold keys. Cryptography does not stop a physically present attacker.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["duress", "wrench-attack"],
+      "href": "/physical-security/coercion-and-duress/overview",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-duress-defensive-principles",
+      "type": "guidance",
+      "title": "Defensive design principles",
+      "summary": "Minimize what one coerced person can move, compartmentalize keys, offer controlled surrender, recover without reused secrets, and put human safety first.",
+      "domains": ["people", "governance-treasury"],
+      "status": "proposed",
+      "tags": ["duress", "design"],
+      "href": "/physical-security/coercion-and-duress/defensive-design-principles",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-duress-wallet-architecture",
+      "type": "guidance",
+      "title": "Wallet and key architecture under duress",
+      "summary": "Tiered hot-to-deep-cold wallets, multisig or MPC, geographic key storage, and controlled-surrender paths.",
+      "domains": ["governance-treasury", "people"],
+      "status": "proposed",
+      "tags": ["wallet", "multisig", "duress"],
+      "href": "/physical-security/coercion-and-duress/wallet-and-key-architecture",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-duress-transaction-flows",
+      "type": "guidance",
+      "title": "Transaction flows under duress",
+      "summary": "Hard limits, delayed approvals, separated channels, and a plausible low-value compliance path with no upgrade to core funds.",
+      "domains": ["governance-treasury", "people"],
+      "status": "proposed",
+      "tags": ["limits", "duress"],
+      "href": "/physical-security/coercion-and-duress/transaction-flows-under-duress",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-duress-personal-safety",
+      "type": "guidance",
+      "title": "Personal and family safety",
+      "summary": "Cut OSINT, separate public and signer identities, train family and staff, and harden routines so a wrench attack has less to aim at.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["family", "osint", "duress"],
+      "href": "/physical-security/coercion-and-duress/personal-and-family-safety",
+      "framework": "physical-security"
+    },
+    {
+      "id": "guidance-duress-incident-response",
+      "type": "guidance",
+      "title": "Wrench-attack incident response",
+      "summary": "Life safety first, then contain signing power. Do not treat a coerced signature as an ordinary key-compromise drill.",
+      "domains": ["detection-incident-response", "people"],
+      "status": "proposed",
+      "tags": ["duress", "incident-response"],
+      "href": "/physical-security/coercion-and-duress/incident-response",
+      "framework": "physical-security"
+    }
+  ]
+}

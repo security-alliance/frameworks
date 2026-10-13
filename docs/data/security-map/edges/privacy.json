@@ -1,0 +1,150 @@
+{
+  "edges": [
+    {
+      "source": "component-community-channels",
+      "target": "surface-operator-messaging",
+      "type": "exposes"
+    },
+    {
+      "source": "component-founders-executives",
+      "target": "surface-operator-messaging",
+      "type": "exposes"
+    },
+    {
+      "source": "component-developer-devices",
+      "target": "surface-public-wifi",
+      "type": "exposes"
+    },
+    {
+      "source": "threat-server-readable-chat",
+      "target": "surface-operator-messaging",
+      "type": "targets"
+    },
+    {
+      "source": "threat-server-readable-chat",
+      "target": "asset-secrets-credentials",
+      "type": "targets"
+    },
+    {
+      "source": "threat-server-readable-chat",
+      "target": "component-community-channels",
+      "type": "targets"
+    },
+    {
+      "source": "threat-osint-targeting",
+      "target": "asset-personal-identifying-data",
+      "type": "targets"
+    },
+    {
+      "source": "threat-osint-targeting",
+      "target": "asset-key-holder-safety",
+      "type": "targets"
+    },
+    {
+      "source": "threat-osint-targeting",
+      "target": "component-founders-executives",
+      "type": "targets"
+    },
+    {
+      "source": "threat-on-path-interception",
+      "target": "surface-public-wifi",
+      "type": "targets"
+    },
+    {
+      "source": "control-default-e2ee-messaging",
+      "target": "threat-server-readable-chat",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-vpn-on-untrusted-networks",
+      "target": "threat-on-path-interception",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-digital-footprint-reduction",
+      "target": "threat-osint-targeting",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-identity-separation",
+      "target": "threat-osint-targeting",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-tls-ssh-transit",
+      "target": "surface-public-wifi",
+      "type": "protects"
+    },
+    {
+      "source": "control-default-e2ee-messaging",
+      "target": "surface-operator-messaging",
+      "type": "protects"
+    },
+    {
+      "source": "control-vpn-on-untrusted-networks",
+      "target": "surface-public-wifi",
+      "type": "protects"
+    },
+    {
+      "source": "control-digital-footprint-reduction",
+      "target": "asset-personal-identifying-data",
+      "type": "protects"
+    },
+    {
+      "source": "control-identity-separation",
+      "target": "asset-personal-identifying-data",
+      "type": "protects"
+    },
+    {
+      "source": "control-default-e2ee-messaging",
+      "target": "guidance-encrypted-communication",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-server-readable-chat",
+      "target": "guidance-encrypted-communication",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-digital-footprint-reduction",
+      "target": "guidance-digital-footprint",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-osint-targeting",
+      "target": "guidance-digital-footprint",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-identity-separation",
+      "target": "guidance-digital-footprint",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-vpn-on-untrusted-networks",
+      "target": "guidance-vpns",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-vpn-on-untrusted-networks",
+      "target": "guidance-public-networks",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-on-path-interception",
+      "target": "guidance-public-networks",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-tls-ssh-transit",
+      "target": "guidance-secure-browsing",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-community-channels",
+      "target": "guidance-encrypted-communication",
+      "type": "documented-by"
+    }
+
+  ]
+}

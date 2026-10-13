@@ -1,0 +1,164 @@
+{
+  "edges": [
+    {
+      "source": "component-family-household",
+      "target": "surface-family-and-household",
+      "type": "exposes"
+    },
+    {
+      "source": "component-founders-executives",
+      "target": "surface-physical-presence",
+      "type": "exposes"
+    },
+    {
+      "source": "threat-duress-coercion",
+      "target": "asset-key-holder-safety",
+      "type": "targets"
+    },
+    {
+      "source": "threat-duress-coercion",
+      "target": "component-family-household",
+      "type": "targets"
+    },
+    {
+      "source": "threat-duress-coercion",
+      "target": "surface-family-and-household",
+      "type": "targets"
+    },
+    {
+      "source": "control-controlled-surrender",
+      "target": "threat-duress-coercion",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-geographic-key-separation",
+      "target": "threat-duress-coercion",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-duress-signing-limits",
+      "target": "threat-duress-coercion",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-identity-separation",
+      "target": "threat-duress-coercion",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-controlled-surrender",
+      "target": "asset-treasury-funds",
+      "type": "protects"
+    },
+    {
+      "source": "control-controlled-surrender",
+      "target": "asset-key-holder-safety",
+      "type": "protects"
+    },
+    {
+      "source": "control-geographic-key-separation",
+      "target": "asset-signer-keys",
+      "type": "protects"
+    },
+    {
+      "source": "control-geographic-key-separation",
+      "target": "component-hardware-wallet",
+      "type": "protects"
+    },
+    {
+      "source": "control-duress-signing-limits",
+      "target": "asset-treasury-funds",
+      "type": "protects"
+    },
+    {
+      "source": "control-duress-signing-limits",
+      "target": "surface-transaction-signing",
+      "type": "protects"
+    },
+    {
+      "source": "control-identity-separation",
+      "target": "asset-key-holder-safety",
+      "type": "protects"
+    },
+    {
+      "source": "control-identity-separation",
+      "target": "component-family-household",
+      "type": "protects"
+    },
+    {
+      "source": "control-identity-separation",
+      "target": "surface-family-and-household",
+      "type": "protects"
+    },
+    {
+      "source": "threat-duress-coercion",
+      "target": "guidance-coercion-duress",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-controlled-surrender",
+      "target": "guidance-duress-defensive-principles",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-controlled-surrender",
+      "target": "guidance-duress-wallet-architecture",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-geographic-key-separation",
+      "target": "guidance-duress-wallet-architecture",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-duress-signing-limits",
+      "target": "guidance-duress-transaction-flows",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-identity-separation",
+      "target": "guidance-duress-personal-safety",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-duress-travel-protocol",
+      "target": "guidance-duress-personal-safety",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-multisig-threshold-policy",
+      "target": "guidance-duress-wallet-architecture",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-cold-wallet-separation",
+      "target": "guidance-duress-wallet-architecture",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-emergency-pause",
+      "target": "guidance-duress-incident-response",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-duress-event",
+      "target": "guidance-duress-incident-response",
+      "type": "documented-by"
+    },
+    {
+      "source": "asset-key-holder-safety",
+      "target": "guidance-physical-security",
+      "type": "documented-by"
+    },
+    {
+      "source": "surface-physical-presence",
+      "target": "guidance-coercion-duress",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-family-household",
+      "target": "guidance-duress-personal-safety",
+      "type": "documented-by"
+    }
+  ]
+}

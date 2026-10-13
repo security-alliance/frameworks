@@ -1,16 +1,19 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import { DONATE_URL } from '../shared/donate'
 import './ContributeFooter.css'
 
 interface ContributeFooterProps {
   learnMoreUrl?: string;
   contributeUrl?: string;
+  donateUrl?: string;
 }
 
-export function ContributeFooter({ 
-  learnMoreUrl = "/contribute/contributing", 
-  contributeUrl = "https://github.com/security-alliance/frameworks/blob/develop/docs/pages/"
+export function ContributeFooter({
+  learnMoreUrl = "/contribute/contributing",
+  contributeUrl = "https://github.com/security-alliance/frameworks/blob/develop/docs/pages/",
+  donateUrl = DONATE_URL
 }: ContributeFooterProps) {
   const [currentPath, setCurrentPath] = useState<string>("");
 
@@ -34,14 +37,27 @@ export function ContributeFooter({
             Learn more
           </a>
         </p>
-        <a 
-          href={`${contributeUrl}${currentPath}`} 
-          className="contribute-footer-button"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ✏️ Contribute today!
-        </a>
+        <div className="contribute-footer-actions">
+          <a
+            href={`${contributeUrl}${currentPath}`}
+            className="contribute-footer-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ✏️ Contribute today!
+          </a>
+          <a
+            href={donateUrl}
+            className="contribute-footer-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💜 Keep this work funded
+          </a>
+        </div>
+        <p className="contribute-footer-note">
+          Short on time? Supporting SEAL keeps the Frameworks free and independent.
+        </p>
       </div>
     </div>
   );

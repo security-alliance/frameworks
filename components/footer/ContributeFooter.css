@@ -44,6 +44,21 @@
   color: #352eb0; /* Darker SEAL Blue */
 }
 
+.contribute-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.contribute-footer-note {
+  font-size: 0.9rem;
+  color: #6C757D; /* Gray from SEAL palette */
+  margin-top: 0.6rem;
+  line-height: 1.3;
+}
+
 .contribute-footer-button {
   display: inline-block;
   font-weight: 500;
@@ -70,31 +85,10 @@
   border: none;
 }
 
-:root[data-vocs-theme='dark'] .contribute-footer-title {
-  color: #6b63e8; /* Brighter SEAL Blue for dark themes */
-}
-
 :root[data-vocs-theme='dark'] .contribute-footer-subtitle {
   color: #a8adb2; /* Lighter gray for dark themes */
 }
 
-:root[data-vocs-theme='dark'] .contribute-footer-link {
-  color: #6b63e8; /* Brighter SEAL Blue for dark themes */
-}
-
-:root[data-vocs-theme='dark'] .contribute-footer-link:hover {
-  color: #8c85f0; /* Even brighter SEAL Blue for dark themes */
-}
-
-:root[data-vocs-theme='dark'] .contribute-footer-button {
-  color: #FFFFFF;
-  border-color: #6b63e8; /* Brighter SEAL Blue for dark themes */
-  background-color: #6b63e8;
-}
-
-:root[data-vocs-theme='dark'] .contribute-footer-button:hover {
-  background-color: #8c85f0; /* Even brighter SEAL Blue for dark themes */
-  border-color: #8c85f0;
-  color: #1a1a1a; /* Darker background for contrast */
-  box-shadow: 0 4px 8px rgba(107, 99, 232, 0.3);
+:root[data-vocs-theme='dark'] .contribute-footer-note {
+  color: #a8adb2; /* Lighter gray for dark themes */
 }

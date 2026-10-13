@@ -5,23 +5,28 @@
   "main": "index.js",
   "type": "module",
   "devDependencies": {
-    "@types/react": "^19.2.15",
-    "@types/react-dom": "^19.2.3",
-    "cspell": "10.0.1",
-    "tailwindcss": "4.3.2",
-    "vocs": "2.6.2",
-    "waku": "1.0.0-beta.6"
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "cspell": "10.3.5",
+    "tailwindcss": "4.3.3",
+    "vocs": "2.10.0",
+    "waku": "1.0.0-rc.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && vocs dev --host 0.0.0.0 --port 5173",
-    "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run generate-printables && pnpm run generate-cert-data && vocs build",
+    "docs:dev": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run generate-security-map && vocs dev --host 0.0.0.0 --port 5173",
+    "docs:build": "pnpm run generate-tags && pnpm run generate-indexes && pnpm run generate-printables && pnpm run generate-cert-data && pnpm run generate-security-map && vocs build",
     "postdocs:build": "node utils/sitemap-generator.cjs && node utils/generate-llms.cjs && node utils/searchbar-indexing.cjs",
     "docs:preview": "vocs preview",
     "generate-tags": "node utils/tags-fetcher.cjs",
     "generate-indexes": "node utils/generate-folder-indexes.cjs",
     "generate-printables": "node utils/generate-printable-checklists.cjs",
     "generate-cert-data": "node utils/generate-cert-data.cjs",
+    "generate-security-map": "node utils/generate-security-map.cjs",
+    "validate:security-map": "node utils/validate-security-map.cjs",
+    "coverage:security-map": "node utils/coverage-security-map.cjs",
+    "test:security-map": "node --test utils/security-map.test.cjs utils/security-map-assessment.test.cjs",
+
     "validate:content": "node utils/validate-content.cjs"
   },
   "keywords": [],
@@ -52,25 +57,29 @@
       "fast-uri": ">=3.1.5",
       "react-router": ">=8.3.0",
       "postcss": ">=8.5.25",
-      "react-server-dom-webpack": ">=19.2.8",
-      "ip-address": ">=10.4.0"
+      "react-server-dom-webpack": ">=19.3.0",
+      "ip-address": ">=10.4.0",
+      "@vitejs/plugin-rsc": ">=0.5.35",
+      "@vitejs/plugin-react": ">=6.1.1",
+      "es-module-lexer": ">=2.3.0 <3"
     }
   },
   "packageManager": "pnpm@10.15.0",
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1075.0",
-    "@aws-sdk/lib-storage": "3.1075.0",
-    "axios": "1.18.1",
+    "@aws-sdk/client-s3": "3.1142.0",
+    "@aws-sdk/lib-storage": "3.1142.0",
+    "axios": "1.20.0",
     "exceljs": "^4.4.0",
     "gray-matter": "^4.0.3",
     "just-install": "^2.0.2",
     "mermaid": "^11.16.1",
     "minisearch": "^7.2.0",
     "playwright": "^1.60.0",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "react-router-dom": "^7.15.1",
-    "sharp": "^0.35.1",
+    "react-server-dom-webpack": "19.3.0",
+    "sharp": "^0.35.5",
     "uuid": "^14.0.0"
   }
 }

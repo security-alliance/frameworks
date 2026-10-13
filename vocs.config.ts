@@ -19,7 +19,7 @@ const config = {
     return { canonical: `https://frameworks.securityalliance.org${cleanPath || '/'}` }
   },
   banner: {
-    content: 'This is a work in progress and releases are experimental. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate.',
+    content: 'This is a work in progress and releases are experimental. We are looking for volunteers. See [Issues](https://github.com/security-alliance/frameworks/issues) and [Contribution](https://github.com/security-alliance/frameworks/blob/develop/docs/pages/contribute/contributing.mdx) to know how to collaborate, or [chip in to keep this work going](https://securityalliance.org/donate).',
     height: '30px',
     backgroundColor: '#8b5cf6',
     textColor: 'white',
@@ -42,6 +42,7 @@ const config = {
       items: [
         { text: 'Changelog', link: '/changelog' },
         { text: 'Contributing', link: '/contribute/contributing' },
+        { text: 'Support the project', link: 'https://securityalliance.org/donate' },
       ],
     },
   ],
@@ -53,7 +54,14 @@ const config = {
         { text: 'Introduction to Frameworks', link: '/intro/introduction' },
         { text: 'How to Navigate the Website', link: '/intro/how-to-navigate-the-website' },
         { text: 'Overview of each Framework', link: '/intro/overview-of-each-framework' },
+      ]
+    },
+    {
+      text: 'Interactive content',
+      collapsed: false,
+      items: [
         { text: 'Attack Surface Overview', link: '/intro/attack-surface' },
+        { text: 'Security Map', link: '/intro/security-map' },
       ]
     },
     {
@@ -229,7 +237,7 @@ const config = {
             { text: 'Risk Management', link: '/governance/risk-management', dev: true },
             { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
             { text: 'Security Council Best Practices', link: '/governance/council-best-practices', dev: true },
-            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs', dev:true },
+            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs', dev: true },
           ]
         },
         {
@@ -250,7 +258,7 @@ const config = {
             { text: 'Overview', link: '/incident-management/overview' },
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
             { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
-            { text: 'Forensic Readiness', link: '/incident-management/forensic-readiness', dev: true },
+            { text: 'Forensic Readiness', link: '/incident-management/forensic-readiness' },
             { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
             {
               text: 'Playbooks',
@@ -293,6 +301,7 @@ const config = {
                     { text: 'Overview', link: '/incident-management/incident-response-template/runbooks/overview' },
                     { text: 'Smart Contract Exploit', link: '/incident-management/incident-response-template/runbooks/smart-contract-exploit' },
                     { text: 'Key Compromise', link: '/incident-management/incident-response-template/runbooks/key-compromise' },
+                    { text: 'Endpoint Compromise', link: '/incident-management/incident-response-template/runbooks/endpoint-compromise' },
                     { text: 'Frontend Compromise', link: '/incident-management/incident-response-template/runbooks/frontend-compromise' },
                     { text: 'DNS Hijack', link: '/incident-management/incident-response-template/runbooks/dns-hijack' },
                     { text: 'CDN/Hosting Compromise', link: '/incident-management/incident-response-template/runbooks/cdn-hosting-compromise' },
@@ -555,6 +564,7 @@ const config = {
             { text: 'Overview', link: '/supply-chain/overview' },
             { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts' },
             { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness' },
+            { text: 'Private Registries and Package Mirrors', link: '/supply-chain/private-registries-and-mirrors' },
             { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats' },
             { text: 'Vendor Risk Management', link: '/supply-chain/vendor-risk-management' },
             { text: 'Incident Response', link: '/supply-chain/incident-response-supply-chain' },
@@ -717,8 +727,8 @@ const config = {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/contribute/contributing' },
-            { text: 'Content Model', link: '/contribute/content-model', dev: true },
-            { text: 'Style and Terminology', link: '/contribute/style-and-terminology', dev: true },
+            { text: 'Content Model', link: '/contribute/content-model' },
+            { text: 'Style and Terminology', link: '/contribute/style-and-terminology' },
             { text: 'Docs Normalization Checklist', link: '/contribute/docs-normalization-checklist', dev: true },
             { text: 'Spotlight Zone', link: '/contribute/spotlight-zone' },
             { text: 'Stewardship', link: '/contribute/stewards' },

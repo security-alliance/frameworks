@@ -23,7 +23,7 @@
       { "name": "Issue-Opener-5", "assigned": "2024-08-22" },
       { "name": "Issue-Opener-10", "assigned": "2024-08-24" },
       { "name": "Issue-Opener-25", "assigned": "2024-09-25" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
+      { "name": "Active-Last-30d", "lastActive": "2026-09-15" }
     ]
   },
   "fredriksvantes": {
@@ -82,8 +82,7 @@
       { "name": "Framework-Steward", "framework": "Community Management" },
       { "name": "First-Contribution", "assigned": "2025-01-29" },
       { "name": "Contributor-5", "assigned": "2026-07-08" },
-      { "name": "First-Review", "assigned": "2025-12-16" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-29" }
+      { "name": "First-Review", "assigned": "2025-12-16" }
     ]
   },
   "robert": {
@@ -193,7 +192,8 @@
       { "name": "Framework-Steward", "assigned": "2025-07-10", "framework": "Wallet Security" },
       { "name": "First-Contribution", "assigned": "2025-07-10" },
       { "name": "First-Review", "assigned": "2025-09-25" },
-      { "name": "Active-Last-30d", "lastActive": "2026-08-20" }
+      { "name": "Reviewer-10", "assigned": "2026-09-17" },
+      { "name": "Active-Last-30d", "lastActive": "2026-09-23" }
     ]
   },
   "njelich": {
@@ -232,7 +232,8 @@
       { "name": "Contributor-25", "assigned": "2026-02-09" },
       { "name": "First-Review", "assigned": "2025-08-11" },
       { "name": "Reviewer-10", "assigned": "2026-02-24" },
-      { "name": "Reviewer-25", "assigned": "2024-03-01" }
+      { "name": "Reviewer-25", "assigned": "2024-03-01" },
+      { "name": "Dormant-90d+", "lastActive": "2026-06-19" }
     ]
   },
   "blackbigswan": {
@@ -339,7 +340,8 @@
     "badges": [
       { "name": "Framework-Steward", "assigned": "2026-05-06", "framework": "DevSecOps" },
       { "name": "First-Contribution", "assigned": "2025-06-02" },
-      { "name": "Contributor-5", "assigned": "2026-06-21" }
+      { "name": "Contributor-5", "assigned": "2026-06-21" },
+      { "name": "Dormant-90d+", "lastActive": "2026-06-21" }
     ]
   },
   "isaac": {
@@ -356,7 +358,8 @@
     "badges": [
       { "name": "Framework-Steward", "assigned": "2025-12-17", "framework": "SEAL Certs" },
       { "name": "First-Contribution", "assigned": "2026-04-21" },
-      { "name": "First-Review", "assigned": "2026-01-26" }
+      { "name": "First-Review", "assigned": "2026-01-26" },
+      { "name": "Dormant-90d+", "lastActive": "2026-06-21" }
     ]
   },
   "geoffrey": {
@@ -438,12 +441,12 @@
     "website": "https://miata.cloud",
     "company": null,
     "job_title": null,
-    "role": "contributor",
-    "description": "Frameworks Contributor",
+    "role": "steward",
+    "description": "Steward of Supply Chain framework",
     "badges": [
+      { "name": "Framework-Steward", "assigned": "2026-09-21", "framework": "Supply Chain" },
       { "name": "First-Contribution", "assigned": "2026-08-31" },
-      { "name": "New-Joiner", "lastActive": "2026-08-31" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
+      { "name": "Active-Last-7d", "lastActive": "2026-10-13" }
     ]
   },
   "scode2277": {
@@ -466,7 +469,7 @@
       { "name": "First-Review", "assigned": "2025-08-12" },
       { "name": "Reviewer-10", "assigned": "2025-09-12" },
       { "name": "Reviewer-25", "assigned": "2026-03-20" },
-      { "name": "Active-Last-7d", "lastActive": "2026-09-03" }
+      { "name": "Active-Last-7d", "lastActive": "2026-10-13" }
     ]
   },
   "gunnim": {
@@ -594,7 +597,8 @@
     "description": "Frameworks Steward",
     "badges": [
       { "name": "Framework-Steward", "assigned": "2026-03-26", "framework": "Incident Management" },
-      { "name": "First-Contribution", "assigned": "2026-03-26" }
+      { "name": "First-Contribution", "assigned": "2026-03-26" },
+      { "name": "First-Review", "assigned": "2026-09-24" }
     ]
   },
   "n0guest": {
@@ -737,7 +741,8 @@
     "description": "Steward of Opsec framework",
     "badges": [
       { "name": "Framework-Steward", "assigned": "2026-04-09", "framework": "Operational Security" },
-      { "name": "First-Contribution", "assigned": "2025-09-10" }
+      { "name": "First-Contribution", "assigned": "2025-09-10" },
+      { "name": "Dormant-90d+", "lastActive": "2026-06-19" }
     ]
   },
   "txscope-sol": {
@@ -800,8 +805,7 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-05-24" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
+      { "name": "First-Contribution", "assigned": "2026-05-24" }
     ]
   },
   "tansawit": {
@@ -832,7 +836,8 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-06-21" }
+      { "name": "First-Contribution", "assigned": "2026-06-21" },
+      { "name": "Dormant-90d+", "lastActive": "2026-06-21" }
     ]
   },
   "umar-ahmed": {
@@ -863,9 +868,7 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": [
-      { "name": "First-Contribution", "assigned": "2026-08-31" },
-      { "name": "New-Joiner", "lastActive": "2026-08-31" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
+      { "name": "First-Contribution", "assigned": "2026-08-31" }
     ]
   },
   "tayvano": {
@@ -894,8 +897,33 @@
     "description": "Frameworks Contributor",
     "badges": [
       { "name": "First-Contribution", "assigned": "2026-08-19" },
-      { "name": "New-Joiner", "lastActive": "2026-08-31" },
-      { "name": "Active-Last-7d", "lastActive": "2026-08-31" }
+      { "name": "Active-Last-7d", "lastActive": "2026-10-06" }
     ]
+  },
+  "michael-lewellen": {
+    "slug": "michael-lewellen",
+    "name": "Michael Lewellen",
+    "avatar": null,
+    "github": null,
+    "twitter": null,
+    "website": "https://www.openzeppelin.com",
+    "company": "OpenZeppelin",
+    "job_title": null,
+    "role": "author of article",
+    "description": "Co-author of the OpenZeppelin Security Council Best Practices guide",
+    "badges": []
+  },
+  "bram-hoogenkamp": {
+    "slug": "bram-hoogenkamp",
+    "name": "Bram Hoogenkamp",
+    "avatar": null,
+    "github": null,
+    "twitter": null,
+    "website": "https://www.openzeppelin.com",
+    "company": "OpenZeppelin",
+    "job_title": null,
+    "role": "author of article",
+    "description": "Co-author of the OpenZeppelin Security Council Best Practices guide",
+    "badges": []
   }
 }

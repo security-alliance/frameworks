@@ -1,0 +1,154 @@
+{
+  "edges": [
+    {
+      "source": "component-developer-devices",
+      "target": "surface-endpoint-at-rest",
+      "type": "exposes"
+    },
+    {
+      "source": "component-cloud-infrastructure",
+      "target": "surface-data-in-transit",
+      "type": "exposes"
+    },
+    {
+      "source": "component-cloud-infrastructure",
+      "target": "surface-cloud-data-at-rest",
+      "type": "exposes"
+    },
+    {
+      "source": "threat-plaintext-lost-device",
+      "target": "surface-endpoint-at-rest",
+      "type": "targets"
+    },
+    {
+      "source": "threat-plaintext-lost-device",
+      "target": "asset-secrets-credentials",
+      "type": "targets"
+    },
+    {
+      "source": "threat-on-path-interception",
+      "target": "surface-data-in-transit",
+      "type": "targets"
+    },
+    {
+      "source": "threat-on-path-interception",
+      "target": "asset-secrets-credentials",
+      "type": "targets"
+    },
+    {
+      "source": "threat-cloud-plaintext-at-rest",
+      "target": "surface-cloud-data-at-rest",
+      "type": "targets"
+    },
+    {
+      "source": "threat-cloud-plaintext-at-rest",
+      "target": "asset-secrets-credentials",
+      "type": "targets"
+    },
+    {
+      "source": "control-full-disk-encryption",
+      "target": "threat-plaintext-lost-device",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-device-hardening",
+      "target": "threat-plaintext-lost-device",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-hardware-backed-encryption",
+      "target": "threat-plaintext-lost-device",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-tls-ssh-transit",
+      "target": "threat-on-path-interception",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-cloud-kms-custody",
+      "target": "threat-cloud-plaintext-at-rest",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-full-disk-encryption",
+      "target": "surface-endpoint-at-rest",
+      "type": "protects"
+    },
+    {
+      "source": "control-full-disk-encryption",
+      "target": "asset-secrets-credentials",
+      "type": "protects"
+    },
+    {
+      "source": "control-tls-ssh-transit",
+      "target": "surface-data-in-transit",
+      "type": "protects"
+    },
+    {
+      "source": "control-cloud-kms-custody",
+      "target": "surface-cloud-data-at-rest",
+      "type": "protects"
+    },
+    {
+      "source": "control-cloud-kms-custody",
+      "target": "component-cloud-infrastructure",
+      "type": "protects"
+    },
+    {
+      "source": "control-hardware-backed-encryption",
+      "target": "surface-endpoint-at-rest",
+      "type": "protects"
+    },
+    {
+      "source": "control-full-disk-encryption",
+      "target": "guidance-full-disk-encryption",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-device-hardening",
+      "target": "guidance-full-disk-encryption",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-tls-ssh-transit",
+      "target": "guidance-encryption-in-transit",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-tls-ssh-transit",
+      "target": "guidance-cloud-data-encryption",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-cloud-kms-custody",
+      "target": "guidance-cloud-data-encryption",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-hardware-backed-encryption",
+      "target": "guidance-hardware-encryption",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-plaintext-lost-device",
+      "target": "guidance-full-disk-encryption",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-on-path-interception",
+      "target": "guidance-encryption-in-transit",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-cloud-plaintext-at-rest",
+      "target": "guidance-cloud-data-encryption",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-developer-devices",
+      "target": "guidance-encryption",
+      "type": "documented-by"
+    }
+  ]
+}

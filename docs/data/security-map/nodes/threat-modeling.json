@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "id": "threat-stale-threat-model",
+      "type": "threat",
+      "title": "Stale threat model",
+      "summary": "Architecture or value at risk changed and the model did not. New trust boundaries, admin paths, or bridges ship without named abuses or owners.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["threat-model", "design"],
+      "severity": "high",
+      "severityBasis": "Default triage is high because Web3 design misses become irreversible production loss. The failure is skipped analysis, not a missing scanner.",
+      "framework": "threat-modeling"
+    },
+    {
+      "id": "control-living-threat-model",
+      "type": "control",
+      "title": "Living threat model",
+      "summary": "Name assets, threats, and mitigations before build, then update the model when architecture or value at risk changes. A one-time workshop is not this control.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["threat-model", "stride"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["engineer-developer", "security-engineer"],
+      "lifecycle": ["design", "development", "upgrade"],
+      "framework": "threat-modeling"
+    },
+    {
+      "id": "guidance-threat-modeling",
+      "type": "guidance",
+      "title": "Threat modeling",
+      "summary": "A structured way to decide which abuses matter before they happen. Name assets, threats, and mitigations, then keep the model current as the system changes.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["threat-model"],
+      "href": "/threat-modeling/overview",
+      "framework": "threat-modeling"
+    },
+    {
+      "id": "guidance-create-maintain-threat-models",
+      "type": "guidance",
+      "title": "Create and maintain threat models",
+      "summary": "A useful threat model is a maintained artifact. Redefine scope and mitigations when architecture or value at risk changes.",
+      "domains": ["development-supply-chain"],
+      "status": "proposed",
+      "tags": ["threat-model", "maintenance"],
+      "href": "/threat-modeling/create-maintain-threat-models",
+      "framework": "threat-modeling"
+    },
+    {
+      "id": "guidance-identify-mitigate-threats",
+      "type": "guidance",
+      "title": "Identify and mitigate threats",
+      "summary": "STRIDE-oriented enumeration, attack surface analysis, and mitigation patterns for the system under review.",
+      "domains": ["development-supply-chain", "onchain-systems"],
+      "status": "proposed",
+      "tags": ["stride", "mitigation"],
+      "href": "/threat-modeling/identity-mitigate-threats",
+      "framework": "threat-modeling"
+    }
+  ]
+}

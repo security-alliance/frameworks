@@ -1,0 +1,49 @@
+{
+  "edges": [
+    {
+      "source": "control-peer-code-review",
+      "target": "threat-supply-chain-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-peer-code-review",
+      "target": "threat-smart-contract-exploits",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-peer-code-review",
+      "target": "asset-source-code",
+      "type": "protects"
+    },
+    {
+      "source": "control-peer-code-review",
+      "target": "guidance-code-reviews",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-branch-protection",
+      "target": "guidance-secure-repos",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-secure-sdlc-testing",
+      "target": "guidance-ssdlc",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-secure-sdlc-testing",
+      "target": "guidance-secure-coding",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-external-security-review",
+      "target": "guidance-ssdlc",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-ci-cd",
+      "target": "guidance-secure-repos",
+      "type": "documented-by"
+    }
+  ]
+}

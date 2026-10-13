@@ -1,0 +1,164 @@
+{
+  "edges": [
+    {
+      "source": "component-multisig",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "surface-multisig-signing-workflow",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "surface-signer-lifecycle",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "control-multisig-threshold-policy",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "control-signer-isolation",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "control-simulate-before-sign",
+      "target": "guidance-sfc-multisig-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "asset-treasury-funds",
+      "target": "guidance-sfc-treasury-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "component-custodial-treasury",
+      "target": "guidance-sfc-treasury-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "surface-large-transfer",
+      "target": "guidance-sfc-treasury-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "threat-misdirected-transfer",
+      "target": "guidance-sfc-treasury-ops",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "component-monitoring-stack",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "control-living-threat-model",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "control-onchain-anomaly-detection",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "control-tested-incident-runbooks",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "response-smart-contract-exploit",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "response-whitehat-rescue",
+      "target": "guidance-sfc-incident-response",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "component-ci-cd",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "component-cloud-infrastructure",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "surface-ci-cd-secrets",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "control-branch-protection",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "threat-supply-chain-compromise",
+      "target": "guidance-sfc-devops-infrastructure",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "asset-domain-control",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "component-dns-registrar",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "surface-dns-records",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "control-registrar-hardening",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "threat-frontend-dns-hijacking",
+      "target": "guidance-dns-cert",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "component-identity-accounts",
+      "target": "guidance-sfc-identity-accounts",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-sfc-identity-accounts",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "surface-executive-communications",
+      "target": "guidance-sfc-identity-accounts",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "component-multisig",
+      "target": "guidance-certs",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "component-monitoring-stack",
+      "target": "guidance-certs",
+      "type": "evaluated-by"
+    },
+    {
+      "source": "component-ci-cd",
+      "target": "guidance-certs",
+      "type": "evaluated-by"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "edges": [
+    {
+      "source": "component-hiring-pipeline",
+      "target": "surface-contributor-hire-path",
+      "type": "exposes"
+    },
+    {
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "surface-contributor-hire-path",
+      "type": "targets"
+    },
+    {
+      "source": "control-hiring-identity-verification",
+      "target": "surface-contributor-hire-path",
+      "type": "protects"
+    },
+    {
+      "source": "control-continuous-remote-identity-review",
+      "target": "threat-dprk-it-worker-infiltration",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-continuous-remote-identity-review",
+      "target": "threat-dprk-it-worker-infiltration",
+      "type": "detects"
+    },
+    {
+      "source": "control-continuous-remote-identity-review",
+      "target": "component-hiring-pipeline",
+      "type": "protects"
+    },
+    {
+      "source": "control-least-privilege-review",
+      "target": "guidance-dprk-mitigation",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-hiring-identity-verification",
+      "target": "guidance-dprk-ttps",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-hiring-identity-verification",
+      "target": "guidance-dprk-mitigation",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-insider-threat-mitigation",
+      "target": "guidance-dprk-mitigation",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-continuous-remote-identity-review",
+      "target": "guidance-dprk-mitigation",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "guidance-dprk-it-workers",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "guidance-dprk-ttps",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-dprk-it-worker-infiltration",
+      "target": "guidance-dprk-general-information",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-hiring-pipeline",
+      "target": "guidance-dprk-it-workers",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-dprk-it-worker",
+      "target": "guidance-dprk-mitigation",
+      "type": "documented-by"
+    }
+  ]
+}

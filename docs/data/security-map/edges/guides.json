@@ -1,0 +1,29 @@
+{
+  "edges": [
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-hardware-security-keys",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-account-management",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-identity-accounts",
+      "target": "guidance-guides",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-identity-accounts",
+      "target": "guidance-account-management",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-community-channels",
+      "target": "guidance-account-management",
+      "type": "documented-by"
+    }
+  ]
+}

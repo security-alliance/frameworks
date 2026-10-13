@@ -1,0 +1,59 @@
+{
+  "edges": [
+    {
+      "source": "threat-stale-threat-model",
+      "target": "surface-contract-upgrade-path",
+      "type": "targets"
+    },
+    {
+      "source": "threat-stale-threat-model",
+      "target": "asset-source-code",
+      "type": "targets"
+    },
+    {
+      "source": "threat-stale-threat-model",
+      "target": "asset-user-funds",
+      "type": "targets"
+    },
+    {
+      "source": "control-living-threat-model",
+      "target": "threat-stale-threat-model",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-living-threat-model",
+      "target": "threat-smart-contract-exploits",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-living-threat-model",
+      "target": "asset-source-code",
+      "type": "protects"
+    },
+    {
+      "source": "control-living-threat-model",
+      "target": "guidance-threat-modeling",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-living-threat-model",
+      "target": "guidance-create-maintain-threat-models",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-living-threat-model",
+      "target": "guidance-identify-mitigate-threats",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-living-threat-model",
+      "target": "guidance-ssdlc-threat-design",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-stale-threat-model",
+      "target": "guidance-create-maintain-threat-models",
+      "type": "documented-by"
+    }
+  ]
+}

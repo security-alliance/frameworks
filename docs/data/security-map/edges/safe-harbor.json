@@ -1,0 +1,99 @@
+{
+  "edges": [
+    {
+      "source": "component-smart-contracts",
+      "target": "surface-active-exploit-window",
+      "type": "exposes"
+    },
+    {
+      "source": "threat-whitehat-legal-freeze",
+      "target": "surface-active-exploit-window",
+      "type": "targets"
+    },
+    {
+      "source": "threat-whitehat-legal-freeze",
+      "target": "asset-user-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-smart-contract-exploits",
+      "target": "surface-active-exploit-window",
+      "type": "targets"
+    },
+    {
+      "source": "control-safe-harbor-adoption",
+      "target": "threat-whitehat-legal-freeze",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-published-recovery-address",
+      "target": "threat-whitehat-legal-freeze",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-safe-harbor-adoption",
+      "target": "asset-user-funds",
+      "type": "protects"
+    },
+    {
+      "source": "control-published-recovery-address",
+      "target": "asset-user-funds",
+      "type": "protects"
+    },
+    {
+      "source": "control-published-recovery-address",
+      "target": "component-multisig",
+      "type": "protects"
+    },
+    {
+      "source": "response-whitehat-rescue",
+      "target": "threat-smart-contract-exploits",
+      "type": "responds-to"
+    },
+    {
+      "source": "response-whitehat-rescue",
+      "target": "threat-whitehat-legal-freeze",
+      "type": "responds-to"
+    },
+    {
+      "source": "control-safe-harbor-adoption",
+      "target": "guidance-safe-harbor",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-safe-harbor-adoption",
+      "target": "guidance-safe-harbor-adoption",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-published-recovery-address",
+      "target": "guidance-safe-harbor-scope",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-whitehat-rescue",
+      "target": "guidance-safe-harbor-whitehat",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-smart-contract-exploit",
+      "target": "guidance-safe-harbor-whitehat",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-whitehat-legal-freeze",
+      "target": "guidance-safe-harbor",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-multisig",
+      "target": "guidance-safe-harbor-scope",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-governance-module",
+      "target": "guidance-safe-harbor-adoption",
+      "type": "documented-by"
+    }
+  ]
+}

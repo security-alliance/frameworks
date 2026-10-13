@@ -1,0 +1,190 @@
+{
+  "edges": [
+    {
+      "source": "asset-treasury-funds",
+      "target": "component-custodial-treasury",
+      "type": "contains",
+      "rationale": "Organizational funds also sit in third-party or co-managed custody, separate from the protocol multisig."
+    },
+    {
+      "source": "component-custodial-treasury",
+      "target": "component-identity-accounts",
+      "type": "depends-on"
+    },
+    {
+      "source": "component-custodial-treasury",
+      "target": "surface-custodial-admin-access",
+      "type": "exposes"
+    },
+    {
+      "source": "component-custodial-treasury",
+      "target": "surface-large-transfer",
+      "type": "exposes"
+    },
+    {
+      "source": "threat-misdirected-transfer",
+      "target": "surface-large-transfer",
+      "type": "targets"
+    },
+    {
+      "source": "threat-misdirected-transfer",
+      "target": "asset-treasury-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-custody-access-abuse",
+      "target": "surface-custodial-admin-access",
+      "type": "targets"
+    },
+    {
+      "source": "threat-custody-access-abuse",
+      "target": "asset-treasury-funds",
+      "type": "targets"
+    },
+    {
+      "source": "threat-custody-access-abuse",
+      "target": "component-custodial-treasury",
+      "type": "targets"
+    },
+    {
+      "source": "threat-social-engineering",
+      "target": "surface-large-transfer",
+      "type": "targets"
+    },
+    {
+      "source": "threat-leadership-phishing",
+      "target": "surface-custodial-admin-access",
+      "type": "targets"
+    },
+    {
+      "source": "control-treasury-classification",
+      "target": "threat-custody-access-abuse",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-treasury-registration",
+      "target": "threat-custody-access-abuse",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-whitelist-and-delay",
+      "target": "threat-custody-access-abuse",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-whitelist-and-delay",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-test-transfer",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-multi-channel-transfer-confirm",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-simulate-before-sign",
+      "target": "threat-misdirected-transfer",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "threat-custody-access-abuse",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-treasury-classification",
+      "target": "component-custodial-treasury",
+      "type": "protects"
+    },
+    {
+      "source": "control-treasury-registration",
+      "target": "component-custodial-treasury",
+      "type": "protects"
+    },
+    {
+      "source": "control-whitelist-and-delay",
+      "target": "asset-treasury-funds",
+      "type": "protects"
+    },
+    {
+      "source": "control-test-transfer",
+      "target": "surface-large-transfer",
+      "type": "protects"
+    },
+    {
+      "source": "control-multi-channel-transfer-confirm",
+      "target": "surface-large-transfer",
+      "type": "protects"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "surface-custodial-admin-access",
+      "type": "protects"
+    },
+    {
+      "source": "control-treasury-classification",
+      "target": "guidance-treasury-classification",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-treasury-registration",
+      "target": "guidance-treasury-registration",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-whitelist-and-delay",
+      "target": "guidance-treasury-enhanced-controls",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-test-transfer",
+      "target": "guidance-treasury-transaction-verification",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-multi-channel-transfer-confirm",
+      "target": "guidance-treasury-transaction-verification",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-independent-tx-verification",
+      "target": "guidance-treasury-transaction-verification",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-simulate-before-sign",
+      "target": "guidance-treasury-transaction-verification",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-phishing-resistant-mfa",
+      "target": "guidance-treasury-enhanced-controls",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-misdirected-transfer",
+      "target": "guidance-treasury-transaction-verification",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-custody-access-abuse",
+      "target": "guidance-treasury-classification",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-custodial-treasury",
+      "target": "guidance-treasury-operations",
+      "type": "documented-by"
+    }
+  ]
+}

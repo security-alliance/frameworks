@@ -3,15 +3,22 @@ header = """
 # Changelog
 
 All notable changes to the Security Frameworks are documented here.
+
 """
 
+# PR titles are contributor input and are published in the GitHub Release and on the
+# site's /changelog page, so they are rendered as plain text. The template escapes < and
+# > to prevent HTML tags, escapes [ and ] as entities to prevent markdown links and
+# images (entities, unlike backslashes, cannot be undone by a preceding backslash), and
+# inserts a zero-width space (\u200B) after @ to prevent mentions. The "-%}" markers
+# produce a single blank line around headings.
 body = """
-{% macro remote_url() %}https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}{% endmacro %}
-{% if version %}
+{% macro remote_url() %}https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}{% endmacro -%}
+{% if version -%}
 ## {{ version | trim_start_matches(pat="v") }} ({{ timestamp | date(format="%Y-%m-%d") }})
-{% else %}
+{% else -%}
 ## Unreleased
-{% endif %}
+{% endif -%}
 {% for group, commits in commits | filter(attribute="merge_commit", value=false) | group_by(attribute="group") %}
 ### {{ group | striptags | trim | upper_first }}
 {% for commit in commits %}
@@ -20,7 +27,8 @@ body = """
 {%- else -%}
 {%- set entry = commit.message | split(pat="\n") | first -%}
 {%- endif %}
-- {{ entry | trim }}{% if commit.remote.pr_number %} ([#{{ commit.remote.pr_number }}]({{ self::remote_url() }}/pull/{{ commit.remote.pr_number }})){% endif %}{% if commit.remote.username %} by @{{ commit.remote.username }}{% endif %}
+{%- set entry = entry | trim | replace(from="<", to="&lt;") | replace(from=">", to="&gt;") | replace(from="[", to="&#91;") | replace(from="]", to="&#93;") | replace(from="@", to="@\u200B") %}
+- {{ entry }}{% if commit.remote.pr_number %} ([#{{ commit.remote.pr_number }}]({{ self::remote_url() }}/pull/{{ commit.remote.pr_number }})){% endif %}{% if commit.remote.username %} by @{{ commit.remote.username }}{% endif %}
 {%- endfor %}
 {% endfor %}
 """
@@ -28,6 +36,9 @@ body = """
 trim = true
 
 [git]
+# Each run renders a single release from an explicit range. Older release tags inside
+# the range, introduced by main -> develop syncs, must not split it into sections.
+ignore_tags = ".*"
 conventional_commits = false
 filter_unconventional = false
 filter_commits = false
@@ -38,12 +49,17 @@ commit_parsers = [
   { message = "^Merge branch", skip = true },
   { message = "^chore\\(release\\)", skip = true },
 
-  { field = "github.pr_labels", pattern = "dependencies", skip = true },
+  # Excluded from the changelog:
+  #   release        - the chore(release) PR.
+  #   skip-changelog - any PR that should not be listed.
+  { field = "github.pr_labels", pattern = "^(release|skip-changelog)$", skip = true },
+  { field = "github.pr_labels", pattern = "^dependencies$", skip = true },
 
   { field = "github.pr_labels", pattern = "content:add",    group = "<!-- 0 --> New content" },
   { field = "github.pr_labels", pattern = "content:update", group = "<!-- 1 --> Updated content" },
   { field = "github.pr_labels", pattern = "enhancement",    group = "<!-- 2 --> Enhancements" },
-  { field = "github.pr_labels", pattern = "certifications", group = "<!-- 3 --> Certifications" },
-
+  # Anchored so that it does not match "wontfix".
+  { field = "github.pr_labels", pattern = "^fix$",          group = "<!-- 3 --> Fixes" },
+  { field = "github.pr_labels", pattern = "certifications", group = "<!-- 4 --> Certifications" },
   { message = ".*", group = "<!-- 9 --> Other" },
 ]

@@ -1,0 +1,935 @@
+name: Prepare Release
+
+# Prepares the changelog for the next release.
+#
+# The changelog is generated from develop, where each commit is a squash-merged PR with a
+# title, number, author and labels. main receives only squash commits of develop and does
+# not carry this information.
+#
+# Process:
+#   1. Opening the monthly develop -> main PR runs 'build', 'commit' and 'notify'. The new
+#      CHANGELOG section is committed to release/next as a single signed commit, and a
+#      link to open the release PR into develop is posted on the monthly PR. The release
+#      PR is opened manually because the organization does not allow Actions to open PRs.
+#   2. While the release PR is open, each push to develop runs 'sync-build' and
+#      'sync-commit', which append the new entries to release/next and advance
+#      changelog_base. Existing entries, including manual edits, are not modified. If no
+#      prepared release exists on release/next, 'route' runs step 1 instead.
+#   3. The release PR is merged into develop immediately before the monthly PR is merged
+#      into main. release-publish.yml then tags main and publishes the GitHub Release.
+#   Changes merged into develop between the two merges in step 3 are released in this
+#   version and listed in the next one.
+#
+# Versioning: automatic runs propose a patch bump. For a minor or major release, run this
+# workflow manually with 'bump' or 'version' before merging the release PR. The run resets
+# release/next to develop, discarding manual edits, and renames the release PR.
+#
+# Security: steps that run git-cliff or process PR titles use a read-only token. Jobs with
+# contents: write run only the shell in this file, rebuild VERSION and release-state.json
+# themselves, and accept a CHANGELOG.md only if it adds entries to the top section and
+# changes nothing else. This workflow does not delete branches.
+
+on:
+  pull_request:
+    # opened, reopened: prepare the release. synchronize (a push to develop): 'route'
+    # decides between appending to the prepared release and preparing one.
+    types: [opened, reopened, synchronize]
+    branches: [main] # base branch; PRs into develop do not trigger this workflow
+  workflow_dispatch:
+    inputs:
+      # Option labels include an example because the dropdown has no per-option description.
+      # Only the first word is used, so plain values also work through the API.
+      bump:
+        description: "How big is this release? Ignored if you set an exact version below."
+        required: false
+        default: "patch (e.g. v0.0.3 -> v0.0.4)"
+        type: choice
+        options:
+          - "patch (e.g. v0.0.3 -> v0.0.4)"
+          - "minor (e.g. v0.0.3 -> v0.1.0)"
+          - "major (e.g. v0.0.3 -> v1.0.0)"
+      version:
+        description: "This is to set an exact version. Setting it overrides the previous choice."
+        required: false
+        type: string
+      pr:
+        description: "Number of the open develop -> main PR, to comment the release link there."
+        required: false
+        type: string
+
+permissions: {}
+
+env:
+  RELEASE_BRANCH: release/next
+
+  # Scripts shared by 'commit' and 'sync-commit'. Environment values are not evaluated as
+  # expressions, so event data cannot alter the script text.
+
+  # Accepts a rendered CHANGELOG.md only if, relative to the current file, it adds lines
+  # without removing or changing any; each added line is an entry, a group heading or
+  # blank; and each non-blank addition is inside the top release section. In 'prepare'
+  # mode the top heading must be new; in 'sync' mode it must already exist. Added lines
+  # must not contain <, >, [ or ] outside the generated PR link, which requires
+  # GITHUB_REPOSITORY in the environment.
+  # Usage: python3 -c "$CHECK_CHANGELOG" <current> <rendered> prepare|sync <version>
+  CHECK_CHANGELOG: |
+    import os, re, sys
+    from difflib import SequenceMatcher
+
+    old_path, new_path, mode, version = sys.argv[1:5]
+    # newline="" preserves \r so that line-ending changes are detected.
+    with open(old_path, encoding="utf-8", newline="") as f:
+        old = f.read().split("\n")
+    with open(new_path, encoding="utf-8", newline="") as f:
+        new = f.read().split("\n")
+
+    def fail(msg):
+        sys.exit("::error::Rejected CHANGELOG.md: " + msg)
+
+    h2 = [i for i, line in enumerate(new) if line.startswith("## ")]
+    if not h2:
+        fail("it has no release section")
+    top, end = h2[0], (h2[1] if len(h2) > 1 else len(new))
+    if not new[top].startswith("## " + version[1:] + " ("):
+        fail(f"the top section is {new[top]!r}, not {version}")
+
+    heading = re.compile(r"^## \d+\.\d+\.\d+ \(\d{4}-\d{2}-\d{2}\)$")
+    shape = re.compile(r"^(### \S.*|- \S.*|)$")
+    # Release notes are displayed on the site as rendered markdown. Apart from the PR link
+    # that cliff.toml appends, an added line must not contain anything that can form an
+    # HTML tag, a markdown link or an image.
+    pr_link = re.compile(
+        r" \(\[#(\d+)\]\(https://github\.com/" + re.escape(os.environ["GITHUB_REPOSITORY"]) + r"/pull/\1\)\)",
+        re.IGNORECASE)
+    markup = re.compile(r"[<>\[\]]")
+    added_heading = False
+    entries = 0
+    for op, i1, i2, j1, j2 in SequenceMatcher(None, old, new, autojunk=False).get_opcodes():
+        if op == "equal":
+            continue
+        if op != "insert":
+            fail(f"it {op}s existing lines {i1 + 1}-{i2}")
+        for j in range(j1, j2):
+            line = new[j]
+            if j == top:
+                if mode != "prepare" or not heading.match(line):
+                    fail(f"line {j + 1} adds a release heading: {line!r}")
+                added_heading = True
+                continue
+            if not shape.match(line):
+                fail(f"line {j + 1} is not an entry or a group heading: {line!r}")
+            if line and not top < j < end:
+                fail(f"line {j + 1} is outside the top section")
+            if markup.search(pr_link.sub("", line)):
+                fail(f"line {j + 1} contains markup (<, >, [ or ]) outside the PR link: {line!r}")
+            entries += line.startswith("- ")
+
+    if mode == "prepare" and not added_heading:
+        fail(f"the {version} heading already existed")
+    if entries == 0:
+        fail("it adds no entries")
+    print(f"CHANGELOG.md accepted: {entries} new entries.")
+
+  # Commits files to a branch with the GraphQL createCommitOnBranch mutation and verifies
+  # the signature. Commits created through this API are signed by GitHub; a commit made on
+  # the runner would be unsigned. expectedHeadOid makes the call fail if the branch has
+  # moved. File contents are passed to jq from disk because CHANGELOG.md exceeds the
+  # maximum size of a single command-line argument. Writes the commit SHA to
+  # $GITHUB_OUTPUT as 'oid'.
+  # Usage: bash -c "$SIGNED_COMMIT" signed-commit <branch> <expected-oid> <headline> <repo-path>=<local-file>...
+  SIGNED_COMMIT: |
+    set -euo pipefail
+    branch="$1" expected="$2" headline="$3"
+    shift 3
+    : > additions.jsonl
+    for pair in "$@"; do
+      path="${pair%%=*}"
+      file="${pair#*=}"
+      base64 -w0 "$file" > "$file.b64"
+      jq -nc --arg path "$path" --rawfile contents "$file.b64" \
+        '{path: $path, contents: $contents}' >> additions.jsonl
+    done
+    jq -n \
+      --arg repo "$GITHUB_REPOSITORY" \
+      --arg branch "$branch" \
+      --arg oid "$expected" \
+      --arg msg "$headline" \
+      --slurpfile additions additions.jsonl \
+      '{
+        query: "mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { oid } } }",
+        variables: {
+          input: {
+            branch: { repositoryNameWithOwner: $repo, branchName: $branch },
+            expectedHeadOid: $oid,
+            message: { headline: $msg },
+            fileChanges: { additions: $additions }
+          }
+        }
+      }' > commit-payload.json
+    oid="$(gh api graphql --input commit-payload.json --jq '.data.createCommitOnBranch.commit.oid')"
+    if [ -z "$oid" ]; then
+      echo "::error::createCommitOnBranch returned no commit."
+      exit 1
+    fi
+    # The signature is verified here because branch protection would otherwise reject an
+    # unsigned commit later, with a less specific error.
+    verified="$(gh api "repos/${GITHUB_REPOSITORY}/commits/${oid}" --jq '.commit.verification.verified')"
+    if [ "$verified" != "true" ]; then
+      echo "::error::Commit ${oid} is not signed. Release commits must be signed."
+      exit 1
+    fi
+    echo "Signed commit ${oid} on ${branch}."
+    echo "oid=${oid}" >> "$GITHUB_OUTPUT"
+
+jobs:
+  # ---------------------------------------------------------------------------------------
+  # Route: selects the action for this event. Opening or reopening the monthly PR, and
+  # manual runs, prepare a release. A push to develop appends to the prepared release on
+  # release/next; if none exists (a failed prepare, or a PR opened with a merge conflict,
+  # for which GitHub runs no workflows), it prepares one instead.
+  # ---------------------------------------------------------------------------------------
+
+  route:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.base.ref == 'main' &&
+       github.event.pull_request.head.ref == 'develop' &&
+       github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      mode: ${{ steps.route.outputs.mode }}
+      version: ${{ steps.route.outputs.version }}
+      base: ${{ steps.route.outputs.base }}
+      head: ${{ steps.route.outputs.head }}
+      branch_sha: ${{ steps.route.outputs.branch_sha }}
+    steps:
+      - name: Decide between prepare and sync
+        id: route
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" = "workflow_dispatch" ] || [ "$ACTION" != "synchronize" ]; then
+            echo "Monthly PR ${ACTION:-} / manual run: prepare."
+            echo "mode=prepare" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # gh api writes the JSON error body to stdout on HTTP errors, including with --jq, so
+          # both the exit status and the body are checked. Only 404 is treated as "not found";
+          # any other error fails the job.
+          # Usage: get <api path> <output file> [gh args]; returns 1 on 404.
+          get() {
+            local path="$1" out="$2"
+            shift 2
+            if gh api "$@" "repos/${GITHUB_REPOSITORY}/${path}" > "$out" 2>/dev/null; then
+              return 0
+            elif jq -e '.status == "404"' "$out" >/dev/null 2>&1; then
+              return 1
+            fi
+            echo "::error::GitHub API call failed for ${path}: $(cat "$out")"
+            exit 1
+          }
+          file_at() { get "contents/$1?ref=$2" "$3" -H "Accept: application/vnd.github.raw"; }
+          tagged() { get "git/ref/tags/$1" tag.json; }
+
+          # 1. The release PR is merged into develop and awaits publication. Changes pushed now
+          #    are released in that version and listed in the next one.
+          if ! file_at .github/release-state.json "$HEAD_SHA" develop-state.json; then
+            echo "::error::develop has no .github/release-state.json."
+            exit 1
+          fi
+          develop_version="$(jq -r '.version // empty' develop-state.json)"
+          if [ -n "$develop_version" ] && ! tagged "$develop_version"; then
+            echo "The ${develop_version} release PR is already merged into develop."
+            echo "Anything pushed from now on ships in ${develop_version} but is listed in the next release."
+            echo "mode=none" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # 2. No prepared release on release/next: prepare one.
+          if ! get "git/ref/heads/${RELEASE_BRANCH}" branch.json; then
+            echo "No ${RELEASE_BRANCH} branch: nothing was prepared for this PR yet. Preparing now."
+            echo "mode=prepare" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          branch_sha="$(jq -r '.object.sha // empty' branch.json)"
+          if ! printf '%s' "$branch_sha" | grep -qE '^[0-9a-f]{40}$'; then
+            echo "::error::Unexpected ${RELEASE_BRANCH} ref: '${branch_sha}'."
+            exit 1
+          fi
+          if ! file_at .github/release-state.json "$branch_sha" branch-state.json; then
+            echo "::error::${RELEASE_BRANCH} has no .github/release-state.json."
+            exit 1
+          fi
+          version="$(jq -r '.version // empty' branch-state.json)"
+          base="$(jq -r '.changelog_base // empty' branch-state.json)"
+          if ! printf '%s' "$version" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$' \
+            || ! printf '%s' "$base" | grep -qE '^[0-9a-f]{40}$'; then
+            echo "::error::${RELEASE_BRANCH} has an unreadable release-state.json."
+            exit 1
+          fi
+          # This also covers a prepare that failed after resetting the branch, which then
+          # carries develop's state and therefore the last published version.
+          if tagged "$version"; then
+            echo "${RELEASE_BRANCH} holds ${version}, which is already published. Preparing the next release."
+            echo "mode=prepare" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # 3. A prepared release is pending: append the new entries to it.
+          if [ "$base" = "$HEAD_SHA" ]; then
+            echo "${RELEASE_BRANCH} already covers develop. Nothing to sync."
+            echo "mode=none" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "Syncing ${version} on ${RELEASE_BRANCH}: ${base}..${HEAD_SHA}"
+          {
+            echo "mode=sync"
+            echo "version=$version"
+            echo "base=$base"
+            echo "head=$HEAD_SHA"
+            echo "branch_sha=$branch_sha"
+          } >> "$GITHUB_OUTPUT"
+
+  # ---------------------------------------------------------------------------------------
+  # Prepare: builds the release and commits it to release/next.
+  # ---------------------------------------------------------------------------------------
+
+  build:
+    needs: route
+    if: needs.route.outputs.mode == 'prepare'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: release-prepare
+      cancel-in-progress: false
+    # Read-only token: this job runs git-cliff and processes PR titles.
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      next: ${{ steps.version.outputs.next }}
+      head_sha: ${{ steps.range.outputs.head_sha }}
+      has_changes: ${{ steps.check.outputs.has_changes }}
+      notes_b64: ${{ steps.out.outputs.notes_b64 }}
+      changelog_b64: ${{ steps.out.outputs.changelog_b64 }}
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          # The develop commit of the triggering event; the develop tip on manual runs.
+          ref: ${{ github.event.pull_request.head.sha || 'develop' }}
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: false
+
+      # Stops if a prepared release has not been published. A version recorded in
+      # release-state.json is published once release-publish.yml has tagged it. An untagged
+      # version means its chore(release) commit is on develop but not yet on main; preparing
+      # again would produce a near-empty range and a duplicate section.
+      #
+      # There is no override. Both resolutions listed below correct the state, after which
+      # this check passes.
+      - name: Guard against an unpublished release
+        run: |
+          set -euo pipefail
+          prepared=""
+          if [ -f .github/release-state.json ]; then
+            prepared="$(jq -r '.version // empty' .github/release-state.json)"
+          fi
+          if [ -z "$prepared" ]; then
+            echo "No version recorded yet. Continuing."
+            exit 0
+          fi
+          if git rev-parse -q --verify "refs/tags/${prepared}" >/dev/null; then
+            echo "Last recorded release ${prepared} is published. Continuing."
+            exit 0
+          fi
+          echo "::error::${prepared} is already prepared on develop but has no tag yet."
+          echo ""
+          echo "That means ${prepared}'s chore(release) commit reached develop, but develop"
+          echo "has not reached main yet, so release-publish.yml never tagged it."
+          echo ""
+          echo "To publish ${prepared} (what you normally want):"
+          echo "  merge the monthly develop -> main PR, then run this workflow again."
+          echo ""
+          echo "To throw ${prepared} away and prepare a different version instead:"
+          echo "  revert its chore(release) commit on develop, then run this workflow again."
+          echo "  The revert restores the previous version in release-state.json, which is"
+          echo "  tagged, so this check passes."
+          exit 1
+
+      - name: Compute next version
+        id: version
+        env:
+          OVERRIDE: ${{ inputs.version }}
+          BUMP: ${{ inputs.bump }}
+        run: |
+          set -euo pipefail
+          if [ -n "${OVERRIDE:-}" ]; then
+            if ! printf '%s' "$OVERRIDE" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+              echo "::error::Invalid version override '$OVERRIDE' (expected vMAJOR.MINOR.PATCH)"
+              exit 1
+            fi
+            next="$OVERRIDE"
+            echo "Using exact override: $next"
+          else
+            # Dropdown values include an example; only the first word is used.
+            kind="${BUMP:-patch}"
+            kind="${kind%% *}"
+            # Only strict vMAJOR.MINOR.PATCH tags are considered; the glob also matches names such
+            # as v1.2.3-rc1. awk is used because grep exits 1 when nothing matches, which fails
+            # under pipefail.
+            latest=$(git tag --list 'v*.*.*' --sort=-v:refname \
+              | awk '/^v[0-9]+\.[0-9]+\.[0-9]+$/ { print; exit }')
+            if [ -z "$latest" ]; then
+              next="v0.0.1"
+            else
+              v="${latest#v}"
+              major="${v%%.*}"
+              rest="${v#*.}"
+              minor="${rest%%.*}"
+              patch="${rest#*.}"
+              case "$kind" in
+                major) next="v$((major + 1)).0.0" ;;
+                minor) next="v${major}.$((minor + 1)).0" ;;
+                patch) next="v${major}.${minor}.$((patch + 1))" ;;
+                *) echo "::error::Invalid bump '${BUMP}' (expected patch, minor or major)"; exit 1 ;;
+              esac
+            fi
+            echo "Latest tag: ${latest:-none}, bump: ${kind}"
+          fi
+          # Validated on every path: the action passes the value unquoted to git-cliff.
+          if ! printf '%s' "$next" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "::error::Computed version '$next' is not vMAJOR.MINOR.PATCH."
+            exit 1
+          fi
+          if git rev-parse -q --verify "refs/tags/${next}" >/dev/null; then
+            echo "::error::Tag ${next} already exists. Pick a different version."
+            exit 1
+          fi
+          echo "next=$next" >> "$GITHUB_OUTPUT"
+          echo "Next version: $next"
+
+      - name: Resolve changelog range
+        id: range
+        run: |
+          set -euo pipefail
+          head_sha="$(git rev-parse HEAD)"
+          base=""
+          if [ -f .github/release-state.json ]; then
+            base="$(jq -r '.changelog_base // empty' .github/release-state.json)"
+          fi
+
+          if [ -z "$base" ]; then
+            echo "::warning::No changelog_base in .github/release-state.json, using full history."
+            range="$head_sha"
+          elif ! printf '%s' "$base" | grep -qE '^[0-9a-f]{40}$'; then
+            echo "::error::changelog_base '$base' is not a full commit SHA. Fix .github/release-state.json."
+            exit 1
+          elif ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            echo "::error::changelog_base '$base' is not a commit reachable from develop."
+            exit 1
+          elif ! git merge-base --is-ancestor "$base" HEAD; then
+            echo "::error::changelog_base '$base' is not an ancestor of develop. Fix .github/release-state.json."
+            exit 1
+          else
+            range="${base}..${head_sha}"
+          fi
+
+          count="$(git rev-list --count "$range")"
+          echo "Range: $range ($count commits)"
+          echo "range=$range" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$head_sha" >> "$GITHUB_OUTPUT"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+      - name: Report nothing to release
+        if: steps.range.outputs.count == '0'
+        run: |
+          echo "No commits on develop since the last release."
+          echo "No commits on develop since the last release." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Generate changelog
+        if: steps.range.outputs.count != '0'
+        uses: orhun/git-cliff-action@f50e11560dce63f7c33227798f90b924471a88b5 # v4.8.0
+        with:
+          config: cliff.toml
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          args: ${{ steps.range.outputs.range }} --tag ${{ steps.version.outputs.next }}
+        env:
+          OUTPUT: RELEASE_FULL.md
+          # The checkout is a detached HEAD, from which git-cliff cannot infer the GitHub
+          # repository. Without this variable it skips the GitHub lookup, and entries lack PR
+          # links, authors and label groups.
+          GITHUB_REPO: ${{ github.repository }}
+
+      - name: Check for releasable entries
+        if: steps.range.outputs.count != '0'
+        id: check
+        run: |
+          set -euo pipefail
+          # Keep only the version section; git-cliff also emits the configured header.
+          # --prepend is not used because it writes the header again on every run.
+          sed -n '/^## /,$p' RELEASE_FULL.md > RELEASE_NOTES.md
+          if grep -qE '^- ' RELEASE_NOTES.md; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            echo "Changes found:"
+            cat RELEASE_NOTES.md
+          else
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "Every commit in range was filtered out (dependencies, release chores). Skipping."
+            echo "Every commit since the last release is filtered out by cliff.toml. Nothing to release." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Splice the new section into CHANGELOG.md
+        if: steps.check.outputs.has_changes == 'true'
+        run: |
+          set -euo pipefail
+          touch CHANGELOG.md
+          first="$(grep -n '^## ' CHANGELOG.md | head -n1 | cut -d: -f1 || true)"
+          if [ -n "$first" ]; then
+            # Insert above the previous release, below the existing header. The added blank line
+            # separates the new section from the next heading.
+            head -n "$((first - 1))" CHANGELOG.md > CHANGELOG.new
+            cat RELEASE_NOTES.md >> CHANGELOG.new
+            printf '\n' >> CHANGELOG.new
+            tail -n "+${first}" CHANGELOG.md >> CHANGELOG.new
+          else
+            # No previous release: git-cliff's output already includes the header.
+            cp RELEASE_FULL.md CHANGELOG.new
+          fi
+          mv CHANGELOG.new CHANGELOG.md
+          head -n 12 CHANGELOG.md
+
+      # Job outputs are the only data passed to the write job. Base64 keeps each value on one
+      # line; the commit job validates everything it receives.
+      - name: Hand the result to the commit job
+        if: steps.check.outputs.has_changes == 'true'
+        id: out
+        run: |
+          set -euo pipefail
+          echo "notes_b64=$(base64 -w0 RELEASE_NOTES.md)" >> "$GITHUB_OUTPUT"
+          echo "changelog_b64=$(base64 -w0 CHANGELOG.md)" >> "$GITHUB_OUTPUT"
+
+  commit:
+    needs: build
+    if: needs.build.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: release-branch-prepare
+      cancel-in-progress: false
+    # No checkout and no third-party actions: only the shell below runs with the write
+    # token.
+    permissions:
+      contents: write
+    outputs:
+      oid: ${{ steps.push.outputs.oid }}
+    steps:
+      - name: Check the build output and rebuild VERSION and state
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEXT: ${{ needs.build.outputs.next }}
+          HEAD_SHA: ${{ needs.build.outputs.head_sha }}
+          CHANGELOG_B64: ${{ needs.build.outputs.changelog_b64 }}
+        run: |
+          set -euo pipefail
+          if ! printf '%s' "$NEXT" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "::error::Invalid version '$NEXT' from build."
+            exit 1
+          fi
+          if ! printf '%s' "$HEAD_SHA" | grep -qE '^[0-9a-f]{40}$'; then
+            echo "::error::Invalid commit '$HEAD_SHA' from build."
+            exit 1
+          fi
+          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${NEXT}" >/dev/null 2>&1; then
+            echo "::error::Tag ${NEXT} already exists."
+            exit 1
+          fi
+          # The release branch must start from a commit on develop.
+          status="$(gh api "repos/${GITHUB_REPOSITORY}/compare/${HEAD_SHA}...develop" --jq '.status')"
+          case "$status" in
+            identical | ahead) : ;;
+            *) echo "::error::${HEAD_SHA} is not on develop (compare status: ${status})."; exit 1 ;;
+          esac
+
+          # Current files are read from GitHub, not taken from the build job.
+          gh api -H "Accept: application/vnd.github.raw" \
+            "repos/${GITHUB_REPOSITORY}/contents/CHANGELOG.md?ref=${HEAD_SHA}" > CHANGELOG.current.md
+          gh api -H "Accept: application/vnd.github.raw" \
+            "repos/${GITHUB_REPOSITORY}/contents/.github/release-state.json?ref=${HEAD_SHA}" > state.current.json
+
+          printf '%s' "$CHANGELOG_B64" | base64 -d > CHANGELOG.md
+          python3 -c "$CHECK_CHANGELOG" CHANGELOG.current.md CHANGELOG.md prepare "$NEXT"
+
+          printf '%s\n' "$NEXT" > VERSION
+          jq --arg v "$NEXT" --arg b "$HEAD_SHA" \
+            '.version = $v | .changelog_base = $b' state.current.json > release-state.json
+          cat release-state.json
+
+      - name: Push release branch
+        id: push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEXT: ${{ needs.build.outputs.next }}
+          HEAD_SHA: ${{ needs.build.outputs.head_sha }}
+        run: |
+          set -euo pipefail
+          # createCommitOnBranch requires an existing branch, so release/next is first pointed at
+          # the develop commit. The update is forced: every prepare starts from develop.
+          if gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/${RELEASE_BRANCH}" >/dev/null 2>&1; then
+            gh api -X PATCH "repos/${GITHUB_REPOSITORY}/git/refs/heads/${RELEASE_BRANCH}" \
+              -f sha="$HEAD_SHA" -F force=true >/dev/null
+            echo "Reset ${RELEASE_BRANCH} to ${HEAD_SHA}."
+          else
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/git/refs" \
+              -f ref="refs/heads/${RELEASE_BRANCH}" -f sha="$HEAD_SHA" >/dev/null
+            echo "Created ${RELEASE_BRANCH} at ${HEAD_SHA}."
+          fi
+
+          # If a sync-commit lands between the reset and this commit, expectedHeadOid makes this
+          # step fail. Re-run the workflow in that case.
+          bash -c "$SIGNED_COMMIT" signed-commit "$RELEASE_BRANCH" "$HEAD_SHA" "chore(release): ${NEXT}" \
+            CHANGELOG.md=CHANGELOG.md \
+            VERSION=VERSION \
+            .github/release-state.json=release-state.json
+
+  notify:
+    needs: [build, commit]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Link, rename and comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEXT: ${{ needs.build.outputs.next }}
+          NOTES_B64: ${{ needs.build.outputs.notes_b64 }}
+          COMMIT_OID: ${{ needs.commit.outputs.oid }}
+          PR: ${{ github.event.pull_request.number || inputs.pr }}
+        run: |
+          set -euo pipefail
+          if ! printf '%s' "$NEXT" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "::error::Invalid version '$NEXT' from build."
+            exit 1
+          fi
+          if ! printf '%s' "$COMMIT_OID" | grep -qE '^[0-9a-f]{40}$'; then
+            echo "::error::Invalid commit '$COMMIT_OID' from commit."
+            exit 1
+          fi
+          # 'pr' is free text on manual runs and is used in an API path.
+          if [ -n "${PR:-}" ] && ! printf '%s' "$PR" | grep -qE '^[0-9]+$'; then
+            echo "::error::Invalid PR number '$PR'."
+            exit 1
+          fi
+          printf '%s' "$NOTES_B64" | base64 -d > RELEASE_NOTES.md
+
+          title="chore(release): ${NEXT}"
+
+          # A re-run resets release/next, which updates an open release PR in place; the PR is
+          # renamed to the new version. The organization restricts creating PRs, not editing them.
+          #
+          # --head matches the branch name only and therefore also returns PRs from forks. Only a
+          # PR from this repository whose head is the commit created by the commit job is treated
+          # as the release PR. Other PRs are ignored.
+          gh pr list --repo "$GITHUB_REPOSITORY" --head "$RELEASE_BRANCH" --base develop --state open \
+            --json number,isCrossRepository,headRepository,headRepositoryOwner,headRefOid > prs.json
+          release_pr="$(jq -r --arg repo "$GITHUB_REPOSITORY" --arg oid "$COMMIT_OID" '
+            [ .[]
+              | select(.isCrossRepository == false
+                       and ((.headRepositoryOwner.login + "/" + .headRepository.name) | ascii_downcase) == ($repo | ascii_downcase)
+                       and .headRefOid == $oid)
+              | .number ] | first // empty' prs.json)"
+          ignored="$(jq -r --arg n "$release_pr" '[.[] | select((.number | tostring) != $n) | "#\(.number)"] | join(", ")' prs.json)"
+          if [ -n "$ignored" ]; then
+            echo "::warning::Ignored ${ignored}: open PRs from a branch named ${RELEASE_BRANCH} that are not this repository's release branch at ${COMMIT_OID}."
+          fi
+          if [ -n "$release_pr" ]; then
+            if gh api -X PATCH "repos/${GITHUB_REPOSITORY}/pulls/${release_pr}" -f title="$title" >/dev/null; then
+              echo "Renamed release PR #${release_pr} to '${title}'."
+            else
+              echo "::warning::Could not rename release PR #${release_pr}. Set its title to '${title}' by hand."
+            fi
+            action="The open release PR #${release_pr} was updated in place and renamed to \`${title}\`."
+          else
+            body="$(printf '%s\n' \
+              "Changelog for **${NEXT}**, generated from develop's history by \`release-prepare.yml\`." \
+              "" \
+              "**Merge order.** Merge this PR into \`develop\` last, immediately before the monthly \`develop\` -> \`main\` PR." \
+              "\`main\` picks up the changelog inside that squash commit, and \`release-publish.yml\` tags it and cuts the GitHub Release." \
+              "" \
+              "**Keeping up with develop.** Until this PR is merged, every push to \`develop\` appends its new entries to this branch automatically." \
+              "Anything merged into \`develop\` after this PR and before the monthly PR still ships in ${NEXT}, but is listed in the next release." \
+              "" \
+              "**Version.** \`${NEXT}\` is an automatic patch bump. For a minor or major, re-run the **Prepare Release** workflow with the \`bump\` input before merging." \
+              "That resets this branch to \`develop\` (edits made here are lost) and renames this PR. Do not edit \`VERSION\` by hand." \
+              "" \
+              "Wording of the entries is safe to edit here.")"
+            enc_title="$(jq -rn --arg s "$title" '$s|@uri')"
+            enc_body="$(jq -rn --arg s "$body" '$s|@uri')"
+            url="https://github.com/${GITHUB_REPOSITORY}/compare/develop...${RELEASE_BRANCH}?quick_pull=1&labels=release&title=${enc_title}&body=${enc_body}"
+            action="[**Open the release PR into \`develop\`**](${url}) (title, body and \`release\` label are prefilled)."
+          fi
+
+          {
+            echo "## Release ${NEXT} is ready"
+            echo ""
+            echo "$action"
+            echo ""
+            echo "<details><summary>Changelog preview</summary>"
+            echo ""
+            cat RELEASE_NOTES.md
+            echo ""
+            echo "</details>"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ -z "${PR:-}" ]; then
+            echo "No monthly PR to comment on. The link is in the job summary."
+            exit 0
+          fi
+          {
+            echo "<!-- release-prepare -->"
+            echo "### Release \`${NEXT}\` is ready"
+            echo ""
+            echo "$action"
+            echo ""
+            echo "Merge the release PR into \`develop\` last, immediately before this PR. Tagging and the GitHub Release happen automatically once \`main\` has the new \`VERSION\`."
+            echo ""
+            echo "\`${NEXT}\` is an automatic patch bump. For a minor or major, re-run **Prepare Release** with the \`bump\` input before merging the release PR."
+            echo ""
+            echo "<details><summary>Changelog preview</summary>"
+            echo ""
+            cat RELEASE_NOTES.md
+            echo ""
+            echo "</details>"
+          } > comment.md
+
+          # The comment is located by its marker rather than with `gh pr comment --edit-last`,
+          # which edits the actor's most recent comment. The marker must start the body and the
+          # author must be this bot.
+          id="$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" --paginate \
+            --jq '[.[] | select(.user.login == "github-actions[bot]" and (.body | startswith("<!-- release-prepare -->"))) | .id] | last // empty' \
+            | tail -n1)"
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${id}" \
+              -F body=@comment.md >/dev/null
+            echo "Updated release comment ${id}."
+          else
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" \
+              -F body=@comment.md >/dev/null
+            echo "Posted a new release comment."
+          fi
+
+  # ---------------------------------------------------------------------------------------
+  # Sync: runs on a push to develop while a prepared release is pending on release/next
+  # (see 'route') and appends the new entries to it. Posts no comments.
+  # ---------------------------------------------------------------------------------------
+
+  sync-build:
+    needs: route
+    if: needs.route.outputs.mode == 'sync'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      # Only the latest push is relevant: each run covers everything since the branch's
+      # changelog_base, and sync-commit does not commit over a branch that has moved.
+      group: release-sync-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    # Read-only token: this job runs git-cliff and processes PR titles.
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      has_entries: ${{ steps.merge.outputs.has_entries }}
+      version: ${{ needs.route.outputs.version }}
+      old_base: ${{ needs.route.outputs.base }}
+      new_base: ${{ needs.route.outputs.head }}
+      branch_sha: ${{ needs.route.outputs.branch_sha }}
+      changelog_b64: ${{ steps.merge.outputs.changelog_b64 }}
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      # 'route' validated the formats; the ancestry check requires the checkout.
+      - name: Check the range
+        env:
+          VERSION_TO_SYNC: ${{ needs.route.outputs.version }}
+          BASE: ${{ needs.route.outputs.base }}
+        run: |
+          set -euo pipefail
+          if ! git merge-base --is-ancestor "$BASE" HEAD; then
+            echo "::error::changelog_base ${BASE} on ${RELEASE_BRANCH} is not an ancestor of develop."
+            exit 1
+          fi
+          echo "Syncing ${VERSION_TO_SYNC}: $(git rev-list --count "${BASE}..HEAD") new commit(s) since ${BASE}."
+
+      - name: Render the new entries
+        uses: orhun/git-cliff-action@f50e11560dce63f7c33227798f90b924471a88b5 # v4.8.0
+        with:
+          config: cliff.toml
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          args: ${{ needs.route.outputs.base }}..${{ needs.route.outputs.head }} --tag ${{ needs.route.outputs.version }}
+        env:
+          OUTPUT: SYNC_FULL.md
+          # Detached HEAD: see "Generate changelog" in the build job.
+          GITHUB_REPO: ${{ github.repository }}
+
+      - name: Append them to the release branch's changelog
+        id: merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_SHA: ${{ needs.route.outputs.branch_sha }}
+        run: |
+          set -euo pipefail
+          gh api -H "Accept: application/vnd.github.raw" \
+            "repos/${GITHUB_REPOSITORY}/contents/CHANGELOG.md?ref=${BRANCH_SHA}" > CHANGELOG.branch.md
+
+          # Appends each new entry to the end of its group in the top section, adding the group
+          # heading in cliff.toml order where missing. Existing lines, including manual edits, are
+          # not modified. Entries whose PR is already linked in the section are skipped.
+          python3 - CHANGELOG.branch.md SYNC_FULL.md cliff.toml CHANGELOG.md <<'PY'
+          import re, sys
+
+          branch_path, notes_path, config_path, out_path = sys.argv[1:5]
+          with open(branch_path, encoding="utf-8", newline="") as f:
+              lines = f.read().split("\n")
+          with open(notes_path, encoding="utf-8") as f:
+              notes = f.read().split("\n")
+          with open(config_path, encoding="utf-8") as f:
+              config = f.read()
+
+          order = [name for _, name in sorted(
+              (int(n), name.strip()) for n, name in re.findall(r'group = "<!-- (\d+) -->([^"]+)"', config))]
+          rank = lambda g: order.index(g) if g in order else len(order)
+
+          new, group = {}, None
+          for line in notes:
+              if line.startswith("### "):
+                  group = line[4:].strip()
+                  new.setdefault(group, [])
+              elif line.startswith("- ") and group:
+                  new[group].append(line)
+
+          def section():
+              h2 = [i for i, l in enumerate(lines) if l.startswith("## ")]
+              return h2[0], (h2[1] if len(h2) > 1 else len(lines))
+
+          added = 0
+          for group in sorted(new, key=rank):
+              start, end = section()
+              text = "\n".join(lines[start:end])
+              entries = []
+              for e in new[group]:
+                  m = re.search(r"/pull/\d+\)", e)
+                  if not (m and m.group(0) in text):
+                      entries.append(e)
+              if not entries:
+                  continue
+              heading = next((i for i in range(start + 1, end) if lines[i] == "### " + group), None)
+              if heading is not None:
+                  last, i = heading, heading + 1
+                  while i < end and not lines[i].startswith("### "):
+                      if lines[i].startswith("- "):
+                          last = i
+                      i += 1
+                  if last == heading:
+                      lines[heading + 1:heading + 1] = [""] + entries
+                  else:
+                      lines[last + 1:last + 1] = entries
+              else:
+                  at = next((i for i in range(start + 1, end)
+                             if lines[i].startswith("### ") and rank(lines[i][4:].strip()) > rank(group)), end)
+                  lines[at:at] = ["### " + group, ""] + entries + [""]
+              added += len(entries)
+
+          with open(out_path, "w", encoding="utf-8", newline="") as f:
+              f.write("\n".join(lines))
+          print(f"{added} new entries.")
+          PY
+
+          if cmp -s CHANGELOG.branch.md CHANGELOG.md; then
+            echo "Nothing new to list: everything since the last sync is filtered out or already there."
+            exit 0
+          fi
+          diff CHANGELOG.branch.md CHANGELOG.md || true
+          echo "has_entries=true" >> "$GITHUB_OUTPUT"
+          echo "changelog_b64=$(base64 -w0 CHANGELOG.md)" >> "$GITHUB_OUTPUT"
+
+  sync-commit:
+    needs: sync-build
+    if: needs.sync-build.outputs.has_entries == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: release-branch-sync
+      cancel-in-progress: false
+    # No checkout and no third-party actions: only the shell below runs with the write
+    # token.
+    permissions:
+      contents: write
+    steps:
+      - name: Check the build output and commit it
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_VERSION: ${{ needs.sync-build.outputs.version }}
+          OLD_BASE: ${{ needs.sync-build.outputs.old_base }}
+          NEW_BASE: ${{ needs.sync-build.outputs.new_base }}
+          BRANCH_SHA: ${{ needs.sync-build.outputs.branch_sha }}
+          CHANGELOG_B64: ${{ needs.sync-build.outputs.changelog_b64 }}
+        run: |
+          set -euo pipefail
+          if ! printf '%s' "$RELEASE_VERSION" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "::error::Invalid version '$RELEASE_VERSION' from sync-build."
+            exit 1
+          fi
+          for sha in "$OLD_BASE" "$NEW_BASE" "$BRANCH_SHA"; do
+            if ! printf '%s' "$sha" | grep -qE '^[0-9a-f]{40}$'; then
+              echo "::error::Invalid commit '$sha' from sync-build."
+              exit 1
+            fi
+          done
+
+          # The new base must be on develop and after the old base.
+          status="$(gh api "repos/${GITHUB_REPOSITORY}/compare/${NEW_BASE}...develop" --jq '.status')"
+          case "$status" in
+            identical | ahead) : ;;
+            *) echo "::error::${NEW_BASE} is not on develop (compare status: ${status})."; exit 1 ;;
+          esac
+          status="$(gh api "repos/${GITHUB_REPOSITORY}/compare/${OLD_BASE}...${NEW_BASE}" --jq '.status')"
+          if [ "$status" != "ahead" ]; then
+            echo "::error::${NEW_BASE} does not come after ${OLD_BASE} (compare status: ${status})."
+            exit 1
+          fi
+
+          # Current files are read from GitHub, not taken from the build job.
+          gh api -H "Accept: application/vnd.github.raw" \
+            "repos/${GITHUB_REPOSITORY}/contents/CHANGELOG.md?ref=${BRANCH_SHA}" > CHANGELOG.current.md
+          gh api -H "Accept: application/vnd.github.raw" \
+            "repos/${GITHUB_REPOSITORY}/contents/.github/release-state.json?ref=${BRANCH_SHA}" > state.current.json
+          if [ "$(jq -r '.version' state.current.json)" != "$RELEASE_VERSION" ] \
+            || [ "$(jq -r '.changelog_base' state.current.json)" != "$OLD_BASE" ]; then
+            echo "::error::${RELEASE_BRANCH} at ${BRANCH_SHA} does not hold what sync-build read."
+            exit 1
+          fi
+
+          printf '%s' "$CHANGELOG_B64" | base64 -d > CHANGELOG.md
+          python3 -c "$CHECK_CHANGELOG" CHANGELOG.current.md CHANGELOG.md sync "$RELEASE_VERSION"
+
+          jq --arg b "$NEW_BASE" '.changelog_base = $b' state.current.json > release-state.json
+
+          # expectedHeadOid is the branch tip read by sync-build. If the branch has moved since
+          # (another sync, a prepare re-run, a manual edit), the commit fails and the next push to
+          # develop retries.
+          bash -c "$SIGNED_COMMIT" signed-commit "$RELEASE_BRANCH" "$BRANCH_SHA" "chore(release): add new develop entries to ${RELEASE_VERSION}" \
+            CHANGELOG.md=CHANGELOG.md \
+            .github/release-state.json=release-state.json

@@ -1,0 +1,29 @@
+.donate-sidebar-divider {
+  width: 1px;
+  height: 1rem;
+  margin: 0 0.25rem;
+  background-color: var(--vocs-background-color-primary);
+}
+
+.donate-sidebar-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #4339db; /* SEAL Blue */
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.donate-sidebar-link:hover {
+  color: #352eb0; /* Darker SEAL Blue */
+  transform: scale(1.1);
+}
+
+:root[data-vocs-theme='dark'] .donate-sidebar-link {
+  color: #6b63e8; /* Brighter SEAL Blue for dark themes */
+}
+
+:root[data-vocs-theme='dark'] .donate-sidebar-link:hover {
+  color: #8c85f0;
+}

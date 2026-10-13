@@ -1,0 +1,54 @@
+{
+  "edges": [
+    {
+      "source": "control-frontend-integrity-monitoring",
+      "target": "threat-supply-chain-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "control-frontend-integrity-monitoring",
+      "target": "guidance-third-party-scripts",
+      "type": "documented-by"
+    },
+    {
+      "source": "threat-supply-chain-compromise",
+      "target": "guidance-third-party-scripts",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-duress-event",
+      "target": "guidance-incident-playbooks",
+      "type": "documented-by"
+    },
+    {
+      "source": "response-signer-compromise",
+      "target": "guidance-incident-playbooks",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-custodial-treasury",
+      "target": "guidance-incident-playbooks",
+      "type": "documented-by"
+    },
+    {
+      "source": "control-continuous-remote-identity-review",
+      "target": "threat-supply-chain-compromise",
+      "type": "mitigates"
+    },
+    {
+      "source": "response-whitehat-rescue",
+      "target": "guidance-wallet-security",
+      "type": "documented-by"
+    },
+    {
+      "source": "asset-key-holder-safety",
+      "target": "guidance-incident-playbooks",
+      "type": "documented-by"
+    },
+    {
+      "source": "component-hardware-wallet",
+      "target": "guidance-key-compromise-runbook",
+      "type": "documented-by"
+    }
+  ]
+}

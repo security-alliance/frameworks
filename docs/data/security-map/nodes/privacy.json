@@ -1,0 +1,172 @@
+{
+  "nodes": [
+    {
+      "id": "asset-personal-identifying-data",
+      "type": "asset",
+      "title": "Personal identifying data",
+      "summary": "Home, travel, family, and holdings traces that attackers use to phish, coerce, or show up in person. Distinct from account passwords and signing keys.",
+      "domains": ["people", "community-communications"],
+      "status": "proposed",
+      "tags": ["osint", "footprint", "pii"],
+      "roles": ["founder-executive", "multisig-signer"],
+      "lifecycle": ["normal-operations"],
+      "framework": "privacy"
+    },
+    {
+      "id": "surface-operator-messaging",
+      "type": "attack-surface",
+      "title": "Operator messaging",
+      "summary": "Team chat used for ops, keys-adjacent work, and incident coordination. A server-readable default turns a platform breach into plaintext.",
+      "domains": ["community-communications", "people"],
+      "status": "proposed",
+      "tags": ["e2ee", "messaging"],
+      "roles": ["founder-executive", "engineer-developer", "community-manager"],
+      "lifecycle": ["normal-operations", "incident-response"],
+      "framework": "privacy"
+    },
+    {
+      "id": "surface-public-wifi",
+      "type": "attack-surface",
+      "title": "Public Wi-Fi",
+      "summary": "Open hotel, airport, and cafe networks. Rogue APs, captive portals, and local scanning sit on the path before any website TLS.",
+      "domains": ["infrastructure", "devices-identity"],
+      "status": "proposed",
+      "tags": ["wifi", "vpn", "transit"],
+      "roles": ["engineer-developer", "founder-executive"],
+      "lifecycle": ["normal-operations"],
+      "framework": "privacy"
+    },
+    {
+      "id": "threat-server-readable-chat",
+      "type": "threat",
+      "title": "Server-readable operational chat",
+      "summary": "Ops traffic lives in Discord, default Telegram, Slack, or similar. The provider, a seized server, or a hijacked admin can read it.",
+      "domains": ["community-communications"],
+      "status": "proposed",
+      "tags": ["e2ee", "messaging", "discord"],
+      "severity": "high",
+      "severityBasis": "Default triage is high because teams paste credentials, wallet addresses, and incident detail into everyday chat. E2EE does not hide metadata.",
+      "framework": "privacy"
+    },
+    {
+      "id": "threat-osint-targeting",
+      "type": "threat",
+      "title": "OSINT targeting",
+      "summary": "Public posts, old accounts, and tracker trails give an attacker a home, a family member, a travel plan, or a pretext for phishing.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["osint", "footprint"],
+      "severity": "high",
+      "severityBasis": "Default triage is high because the same traces feed spearphishing and wrench attacks. The leak itself is not theft. The follow-on is.",
+      "framework": "privacy"
+    },
+    {
+      "id": "control-default-e2ee-messaging",
+      "type": "control",
+      "title": "Default end-to-end encrypted messaging",
+      "summary": "Put sensitive ops on messengers with E2EE on by default and verified safety numbers. Cloud backups and metadata still leak. Discord is not this control.",
+      "domains": ["community-communications"],
+      "status": "proposed",
+      "tags": ["e2ee", "messaging"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["founder-executive", "engineer-developer", "community-manager"],
+      "lifecycle": ["normal-operations", "incident-response"],
+      "framework": "privacy"
+    },
+    {
+      "id": "control-vpn-on-untrusted-networks",
+      "type": "control",
+      "title": "VPN on untrusted networks",
+      "summary": "Tunnel traffic on public Wi-Fi so the local network cannot read or alter it. A VPN is not anonymity, malware defense, or a substitute for HTTPS.",
+      "domains": ["infrastructure", "devices-identity"],
+      "status": "proposed",
+      "tags": ["vpn", "wifi"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["engineer-developer", "founder-executive"],
+      "lifecycle": ["normal-operations"],
+      "framework": "privacy"
+    },
+    {
+      "id": "control-digital-footprint-reduction",
+      "type": "control",
+      "title": "Digital footprint reduction",
+      "summary": "Audit public presence, cut what you share, lock down privacy settings, and delete unused accounts on a cadence.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["osint", "footprint"],
+      "controlClass": "preventive",
+      "assessmentEligible": true,
+      "roles": ["founder-executive", "multisig-signer"],
+      "lifecycle": ["normal-operations"],
+      "framework": "privacy"
+    },
+    {
+      "id": "guidance-privacy",
+      "type": "guidance",
+      "title": "Privacy",
+      "summary": "Shrink personal and team data exposure first. Encryption and network tools then reduce what remains.",
+      "domains": ["people", "community-communications", "devices-identity"],
+      "status": "proposed",
+      "tags": ["privacy"],
+      "href": "/privacy/overview",
+      "framework": "privacy"
+    },
+    {
+      "id": "guidance-encrypted-communication",
+      "type": "guidance",
+      "title": "Encrypted communication tools",
+      "summary": "Prefer apps with default end-to-end encryption and verifiable safety numbers. Metadata and backup settings still leak.",
+      "domains": ["community-communications"],
+      "status": "proposed",
+      "tags": ["e2ee", "messaging"],
+      "href": "/privacy/encrypted-communication-tools",
+      "framework": "privacy"
+    },
+    {
+      "id": "guidance-digital-footprint",
+      "type": "guidance",
+      "title": "Digital footprint",
+      "summary": "Active posts and passive tracking both form a footprint attackers use for targeting. Audit, minimize sharing, and delete unused accounts.",
+      "domains": ["people"],
+      "status": "proposed",
+      "tags": ["osint", "footprint"],
+      "href": "/privacy/digital-footprint",
+      "framework": "privacy"
+    },
+    {
+      "id": "guidance-secure-browsing",
+      "type": "guidance",
+      "title": "Secure browsing",
+      "summary": "Prefer HTTPS end to end, cut trackers, and treat public Wi-Fi as hostile unless traffic is also tunneled.",
+      "domains": ["devices-identity", "infrastructure"],
+      "status": "proposed",
+      "tags": ["https", "browser"],
+      "href": "/privacy/secure-browsing",
+      "framework": "privacy"
+    },
+    {
+      "id": "guidance-vpns",
+      "type": "guidance",
+      "title": "VPN services",
+      "summary": "A VPN encrypts and relocates network egress for specific threat models. It is not anonymity, malware defense, or a substitute for HTTPS.",
+      "domains": ["infrastructure"],
+      "status": "proposed",
+      "tags": ["vpn"],
+      "href": "/privacy/vpns/overview",
+      "framework": "privacy"
+    },
+    {
+      "id": "guidance-public-networks",
+      "type": "guidance",
+      "title": "Attack surfaces on public networks",
+      "summary": "Open Wi-Fi multiplies rogue AP, captive-portal, and local scanning risk. Assume the LAN is adversarial.",
+      "domains": ["infrastructure", "devices-identity"],
+      "status": "proposed",
+      "tags": ["wifi", "vpn"],
+      "href": "/privacy/vpns/attack-surfaces-public-networks",
+      "framework": "privacy"
+    }
+  ]
+}

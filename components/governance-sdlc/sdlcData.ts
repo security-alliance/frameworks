@@ -1,7 +1,19 @@
-import type { Category, FrameworkLink } from "../attack-surface/threatData";
+export type Category = "smart-contract" | "operational" | "human" | "infrastructure" | "supply-chain" | "governance";
 
-export { categoryMeta } from "../attack-surface/threatData";
-export type { Category, FrameworkLink } from "../attack-surface/threatData";
+export interface FrameworkLink {
+  label: string;
+  href: string;
+}
+
+export const categoryMeta: Record<Category, { label: string; color: string }> = {
+  "smart-contract": { label: "Smart Contract", color: "#ef4444" },
+  operational: { label: "Operational", color: "#f97316" },
+  human: { label: "Human", color: "#eab308" },
+  infrastructure: { label: "Infrastructure", color: "#8b5cf6" },
+  "supply-chain": { label: "Supply Chain", color: "#3b82f6" },
+  governance: { label: "Governance", color: "#10b981" },
+};
+
 
 export interface StageThreat {
   id: string;

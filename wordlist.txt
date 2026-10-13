@@ -23,6 +23,7 @@ axie
 Barboni
 Beemo
 BIP
+Birsan
 Bitgo
 Bitwarden
 Blackcloak
@@ -152,6 +153,7 @@ halmos
 Hdiv
 Helius
 Hetrix
+hiberfil
 hevm
 HIDS
 HIPAA
