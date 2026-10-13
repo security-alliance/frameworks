@@ -693,6 +693,11 @@
       "Operations & Strategy",
       "DevOps"
     ],
+    "/incident-management/incident-response-template/runbooks/endpoint-compromise": [
+      "Security Specialist",
+      "Operations & Strategy",
+      "DevOps"
+    ],
     "/incident-management/incident-response-template/runbooks/frontend-compromise": [
       "Security Specialist",
       "Operations & Strategy",
@@ -875,6 +880,10 @@
     "/intro/overview-of-each-framework": [
       "Operations & Strategy",
       "Security Specialist"
+    ],
+    "/intro/security-map": [
+      "Security Specialist",
+      "Operations & Strategy"
     ],
     "/monitoring/guidelines": [
       "Engineer/Developer",
@@ -1349,6 +1358,12 @@
       "Security Specialist",
       "DevOps"
     ],
+    "/supply-chain/private-registries-and-mirrors": [
+      "Engineer/Developer",
+      "Security Specialist",
+      "DevOps",
+      "SRE"
+    ],
     "/supply-chain/supply-chain-levels-software-artifacts": [
       "Engineer/Developer",
       "Security Specialist"
@@ -1532,11 +1547,13 @@
     ]
   },
   "sectionMappings": {
+    "Interactive content": "intro",
     "AI Security": "ai-security",
     "Awareness": "awareness",
     "Community Management": "community-management",
     "DevSecOps": "devsecops",
     "Isolation & Sandboxing": "isolation",
+    "Developer-Targeted Intrusions": "developer-targeted-intrusions",
     "Policy as Code": "policy-as-code",
     "DPRK IT Workers": "dprk-it-workers",
     "Encryption": "encryption",

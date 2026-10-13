@@ -237,7 +237,7 @@ const config = {
             { text: 'Risk Management', link: '/governance/risk-management', dev: true },
             { text: 'Security Metrics and KPIs', link: '/governance/security-metrics-kpis', dev: true },
             { text: 'Security Council Best Practices', link: '/governance/council-best-practices', dev: true },
-            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs', dev:true },
+            { text: 'Rebrands & Reorgs', link: '/governance/rebrands-and-reorgs', dev: true },
           ]
         },
         {
@@ -258,7 +258,7 @@ const config = {
             { text: 'Overview', link: '/incident-management/overview' },
             { text: 'Communication Strategies', link: '/incident-management/communication-strategies' },
             { text: 'Incident Detection and Response', link: '/incident-management/incident-detection-and-response' },
-            { text: 'Forensic Readiness', link: '/incident-management/forensic-readiness', dev: true },
+            { text: 'Forensic Readiness', link: '/incident-management/forensic-readiness' },
             { text: 'Lessons Learned', link: '/incident-management/lessons-learned' },
             {
               text: 'Playbooks',
@@ -564,7 +564,7 @@ const config = {
             { text: 'Overview', link: '/supply-chain/overview' },
             { text: 'Supply Chain Levels for Software Artifacts', link: '/supply-chain/supply-chain-levels-software-artifacts' },
             { text: 'Dependency Awareness', link: '/supply-chain/dependency-awareness' },
-            { text: 'Private Registries and Package Mirrors', link: '/supply-chain/private-registries-and-mirrors', dev: true },
+            { text: 'Private Registries and Package Mirrors', link: '/supply-chain/private-registries-and-mirrors' },
             { text: 'Web3 Supply Chain Threats', link: '/supply-chain/web3-supply-chain-threats' },
             { text: 'Vendor Risk Management', link: '/supply-chain/vendor-risk-management' },
             { text: 'Incident Response', link: '/supply-chain/incident-response-supply-chain' },
@@ -727,8 +727,8 @@ const config = {
           collapsed: false,
           items: [
             { text: 'Overview', link: '/contribute/contributing' },
-            { text: 'Content Model', link: '/contribute/content-model', dev: true },
-            { text: 'Style and Terminology', link: '/contribute/style-and-terminology', dev: true },
+            { text: 'Content Model', link: '/contribute/content-model' },
+            { text: 'Style and Terminology', link: '/contribute/style-and-terminology' },
             { text: 'Docs Normalization Checklist', link: '/contribute/docs-normalization-checklist', dev: true },
             { text: 'Spotlight Zone', link: '/contribute/spotlight-zone' },
             { text: 'Stewardship', link: '/contribute/stewards' },
