@@ -2,6 +2,49 @@
 
 All notable changes to the Security Frameworks are documented here.
 
+## 0.0.2 (2026-10-13)
+
+### New content
+
+- docs(supply-chain): add private registries and package mirrors ([#627](https://github.com/security-alliance/frameworks/pull/627)) by @s1ns3nz0
+- docs(wallet-security): add security best practices for hot wallets ([#649](https://github.com/security-alliance/frameworks/pull/649)) by @0xusmanf
+- docs(incident-management): add endpoint compromise runbook ([#647](https://github.com/security-alliance/frameworks/pull/647)) by @s1ns3nz0
+
+### Updated content
+
+- Update Discord Guide to match Discord's settings redesign ([#613](https://github.com/security-alliance/frameworks/pull/613)) by @NFTDreww
+- docs(wallet-security): added separate section for dry-run recovery check ([#631](https://github.com/security-alliance/frameworks/pull/631)) by @0xusmanf
+
+### Enhancements
+
+- Chore: spotlight zone upgrade ([#621](https://github.com/security-alliance/frameworks/pull/621)) by @scode2277
+- Chore: add donate call on the site ([#646](https://github.com/security-alliance/frameworks/pull/646)) by @scode2277
+- chore: rebuild release flow around develop's history ([#652](https://github.com/security-alliance/frameworks/pull/652)) by @scode2277
+
+### Fixes
+
+- Fix: Make "developer-targeted intrusions" section visible on .org ([#620](https://github.com/security-alliance/frameworks/pull/620)) by @scode2277
+- Fix: make developer-targeted-intrusion section visible on .org ([#628](https://github.com/security-alliance/frameworks/pull/628)) by @scode2277
+
+### Other
+
+- Chore: monthly .org update ([#617](https://github.com/security-alliance/frameworks/pull/617)) by @scode2277
+- chore: weekly repo cleanup ([#622](https://github.com/security-alliance/frameworks/pull/622)) by @scode2277
+- Chore: Remove dev:true from "Policy as Code" section ([#629](https://github.com/security-alliance/frameworks/pull/629)) by @scode2277
+- feat: add the Security Map foundation ([#633](https://github.com/security-alliance/frameworks/pull/633)) by @mattaereal
+- feat: map Wallet Security onto the Security Map ([#635](https://github.com/security-alliance/frameworks/pull/635)) by @mattaereal
+- feat: map Physical Security duress onto the Security Map ([#636](https://github.com/security-alliance/frameworks/pull/636)) by @mattaereal
+- feat: map Treasury Operations onto the Security Map ([#637](https://github.com/security-alliance/frameworks/pull/637)) by @mattaereal
+- feat: map DPRK IT Workers onto the Security Map ([#638](https://github.com/security-alliance/frameworks/pull/638)) by @mattaereal
+- feat: map Encryption at rest and in transit onto the Security Map ([#639](https://github.com/security-alliance/frameworks/pull/639)) by @mattaereal
+- feat: map Privacy messaging, VPN, and footprint onto the Security Map ([#640](https://github.com/security-alliance/frameworks/pull/640)) by @mattaereal
+- feat: map Safe Harbor whitehat rescue onto the Security Map ([#641](https://github.com/security-alliance/frameworks/pull/641)) by @mattaereal
+- feat: seed remaining empty frameworks onto the Security Map ([#642](https://github.com/security-alliance/frameworks/pull/642)) by @mattaereal
+- feat: add Security Map job views and cert evaluation edges ([#645](https://github.com/security-alliance/frameworks/pull/645)) by @mattaereal
+- Chore: update license copyright year to 2026 ([#634](https://github.com/security-alliance/frameworks/pull/634)) by @scode2277
+- Chore: repo cleanup ([#659](https://github.com/security-alliance/frameworks/pull/659)) by @scode2277
+- Remove dev:true from "Policy as Code" ([#630](https://github.com/security-alliance/frameworks/pull/630)) by @scode2277
+
 ## 0.0.1 (2026-09-01)
 
 ### New content
