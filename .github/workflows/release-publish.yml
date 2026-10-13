@@ -1,61 +1,153 @@
 name: Publish Release
 
+# Tags main and publishes the GitHub Release when main carries a VERSION that has not
+# been published.
+#
+# Runs on every push to main and reads VERSION, so it covers every way main can change.
+# The job is idempotent: it creates only what is missing and exits when the version is
+# already published.
+
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches: [main]
+  workflow_dispatch:
 
 permissions: {}
 
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
+
 jobs:
   publish:
-    if: >
-      github.event.pull_request.merged == true &&
-      github.event.pull_request.base.ref == 'main' &&
-      startsWith(github.event.pull_request.head.ref, 'release/') &&
-      contains(github.event.pull_request.labels.*.name, 'release')
+    # Manual runs can be started from any branch; only main is released.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
     steps:
+      # The commit that triggered the run, not the current tip of main.
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
-          ref: main
+          ref: ${{ github.sha }}
           fetch-depth: 0
+          fetch-tags: true
           persist-credentials: false
 
       - name: Read version
         id: version
         run: |
           set -euo pipefail
+          if [ ! -f VERSION ]; then
+            echo "::error::No VERSION file on main."
+            exit 1
+          fi
           tag="$(head -n1 VERSION | tr -d '[:space:]')"
           if ! printf '%s' "$tag" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
             echo "::error::Invalid VERSION content '$tag' (expected vMAJOR.MINOR.PATCH)"
             exit 1
           fi
+          # The release commit is the one that last changed VERSION on main (the monthly squash),
+          # not HEAD, so a retried or delayed run tags the correct commit.
+          release_sha="$(git log -1 --format=%H -- VERSION)"
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "release_sha=$release_sha" >> "$GITHUB_OUTPUT"
+          echo "VERSION on main: $tag, set by ${release_sha}"
 
-      - name: Extract latest changelog section
+      # Most pushes to main do not change the version, so an existing tag is the normal case.
+      # Tag and release are checked separately so that a run that tagged but failed before
+      # publishing can be completed by a re-run.
+      - name: Work out what is missing
+        id: state
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.version.outputs.tag }}
+          RELEASE_SHA: ${{ steps.version.outputs.release_sha }}
         run: |
-          awk '/^## /{ if (found) exit; found=1; next } found' CHANGELOG.md > RELEASE_NOTES.md
+          set -euo pipefail
+
+          if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+            # An existing tag is accepted only if it points at the release commit; otherwise a
+            # tag created on an unreviewed commit could be published.
+            tagged="$(git rev-parse "refs/tags/${TAG}^{commit}")"
+            if [ "$tagged" != "$RELEASE_SHA" ]; then
+              echo "::error::Tag ${TAG} points at ${tagged}, but the release commit is ${RELEASE_SHA}."
+              echo "Refusing to publish on a tag this workflow did not create. Inspect and delete the tag by hand."
+              exit 1
+            fi
+            need_tag=false
+          else
+            need_tag=true
+          fi
+
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            need_release=false
+          else
+            need_release=true
+          fi
+
+          echo "need_tag=$need_tag" >> "$GITHUB_OUTPUT"
+          echo "need_release=$need_release" >> "$GITHUB_OUTPUT"
+
+          if [ "$need_tag" = false ] && [ "$need_release" = false ]; then
+            echo "${TAG} is already published. Nothing to do."
+          else
+            echo "${TAG}: tag needed=${need_tag}, release needed=${need_release}"
+          fi
+
+      - name: Extract release notes
+        if: steps.state.outputs.need_release == 'true'
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+
+          # cliff.toml renders headings as "## 0.1.0 (YYYY-MM-DD)", without the leading v. The
+          # top section must match VERSION; otherwise the release would carry the wrong notes.
+          heading="$(grep -m1 '^## ' CHANGELOG.md || true)"
+          case "$heading" in
+            "## ${TAG#v}" | "## ${TAG#v} "*) : ;;
+            *)
+              echo "::error::VERSION says ${TAG} but the top CHANGELOG.md section is '${heading}'."
+              echo "Refusing to publish mismatched release notes."
+              exit 1
+              ;;
+          esac
+
+          # Lines between this heading and the next, without the leading blank lines.
+          awk '/^## /{ if (found) exit; found=1; next } found' CHANGELOG.md \
+            | awk 'NF { started = 1 } started' > RELEASE_NOTES.md
+          if [ ! -s RELEASE_NOTES.md ]; then
+            echo "::error::No release notes found under '${heading}'."
+            exit 1
+          fi
           cat RELEASE_NOTES.md
 
       - name: Create tag
+        if: steps.state.outputs.need_tag == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ steps.version.outputs.tag }}
+          RELEASE_SHA: ${{ steps.version.outputs.release_sha }}
         run: |
           set -euo pipefail
-          sha="$(git rev-parse HEAD)"
           gh api "repos/${GITHUB_REPOSITORY}/git/refs" \
             -f "ref=refs/tags/${TAG}" \
-            -f "sha=${sha}"
+            -f "sha=${RELEASE_SHA}" >/dev/null
+          echo "Tagged ${TAG} at ${RELEASE_SHA}."
 
       - name: Create GitHub Release
+        if: steps.state.outputs.need_release == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ steps.version.outputs.tag }}
         run: |
           set -euo pipefail
+          # --verify-tag: fail instead of creating the tag if it does not exist.
           gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
             --title "$TAG" \
             --notes-file RELEASE_NOTES.md
+          echo "Published ${TAG}."
