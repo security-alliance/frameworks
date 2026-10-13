@@ -7,7 +7,7 @@
   "devDependencies": {
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "cspell": "10.0.1",
+    "cspell": "10.3.5",
     "tailwindcss": "4.3.3",
     "vocs": "2.10.0",
     "waku": "1.0.0-rc.1"
@@ -66,8 +66,8 @@
   },
   "packageManager": "pnpm@10.15.0",
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1075.0",
-    "@aws-sdk/lib-storage": "3.1075.0",
+    "@aws-sdk/client-s3": "3.1142.0",
+    "@aws-sdk/lib-storage": "3.1142.0",
     "axios": "1.20.0",
     "exceljs": "^4.4.0",
     "gray-matter": "^4.0.3",
