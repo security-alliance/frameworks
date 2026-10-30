@@ -6,7 +6,7 @@ tags:
   - Security Specialist
 contributors:
   - role: wrote
-    users: [pinalikefruit]
+    users: [pinalikefruit, mevdao-org]
   - role: reviewed
     users: [Coinspect]
   - role: fact-checked
@@ -65,6 +65,37 @@ comes from an external link or pop-up.
 > ⚠️ Wallets will only prompt you to switch to a smart account within the wallet's native. Any request to do so via
 > email, a website, or a direct message is a phishing scam.
 
+## Checking an existing delegation
+
+Most wallets still show a delegated account as an ordinary address, so check its code directly. Call `eth_getCode` on
+the address, or run `cast code <address> --rpc-url <rpc>`. A plain EOA returns `0x`. A delegated EOA returns exactly 23
+bytes: the delegation designator `0xef0100` followed by the 20-byte address of the contract it delegates to.
+
+- **Check every chain the key has used.** A delegation only exists on the chain where it was processed, but an
+  authorization signed with `chain ID 0` can be replayed on any EVM chain that supports EIP-7702.
+- **Compare the target with your wallet's documented delegation contract.** If you didn't knowingly upgrade, or the
+  target is unverified, treat the account as compromised.
+
+## Clearing a delegation
+
+An authorization pointing to the zero address resets the account's code to empty. It has to be included in a type
+`0x04` transaction. If a sweeper is watching the account, don't send ETH to it for gas. Let a separate funded account
+submit the transaction instead:
+
+```bash
+# Signed by the delegated account. Uses its current nonce because another account will broadcast.
+AUTH=$(cast wallet sign-auth 0x0000000000000000000000000000000000000000 --account authority --rpc-url $RPC_URL)
+
+# Broadcast and paid for by a separate, clean account
+cast send $AUTHORITY --auth "$AUTH" --account broadcaster --rpc-url $RPC_URL
+```
+
+If the delegated account sends the transaction itself, sign with `--self-broadcast` so the authorization uses
+nonce + 1. Run `cast code` again afterwards and confirm it returns `0x`.
+
+> ⚠️ Clearing the delegation does not fix a leaked private key. Whoever holds the key can sign a new delegation at any
+> time, so move remaining assets to a fresh wallet.
+
 ## Further reading
 
 - [Signing & Verification](/wallet-security/signing-and-verification/signing-verification): the verification discipline
@@ -73,6 +104,10 @@ comes from an external link or pop-up.
   baseline EOA checks
 - [Account Abstraction Wallets](/wallet-security/account-abstraction): the smart account model 7702 borrows from
 - [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702): the specification and its authorization semantics
+- [Foundry: EIP-7702 account delegation](https://www.getfoundry.sh/cast/eip-7702-delegation): signing, nonce selection
+  and clearing with `cast`
+- [How to Check and Remove a Malicious EIP-7702 Delegation](https://mevdao.org/blog/how-to-check-and-remove-a-malicious-eip-7702-delegation):
+  step-by-step walkthrough including sponsored revocation
 
 ---
 
