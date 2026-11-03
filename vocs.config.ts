@@ -613,11 +613,13 @@ const config = {
         {
           text: 'Vulnerability Disclosure',
           collapsed: true,
-          dev: true,
           items: [
-            { text: 'Overview', link: '/vulnerability-disclosure/overview', dev: true },
-            { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact', dev: true },
-            { text: 'Bug Bounties', link: '/vulnerability-disclosure/bug-bounties', dev: true },
+            { text: 'Overview', link: '/vulnerability-disclosure/overview' },
+            { text: 'Disclosure Policy', link: '/vulnerability-disclosure/disclosure-policy' },
+            { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact' },
+            { text: 'Handling Vulnerability Reports', link: '/vulnerability-disclosure/handling-reports' },
+            { text: 'Publishing Security Advisories', link: '/vulnerability-disclosure/publishing-advisories' },
+            { text: 'Bug Bounties', link: '/vulnerability-disclosure/bug-bounties' },
           ]
         },
         {

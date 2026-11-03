@@ -1443,16 +1443,42 @@
     ],
     "/vulnerability-disclosure/bug-bounties": [
       "Engineer/Developer",
-      "Security Specialist"
+      "Security Specialist",
+      "Protocol",
+      "Whitehat",
+      "Smart Contracts"
+    ],
+    "/vulnerability-disclosure/disclosure-policy": [
+      "Security Specialist",
+      "Engineer/Developer",
+      "Protocol",
+      "Whitehat",
+      "Legal & Compliance"
+    ],
+    "/vulnerability-disclosure/handling-reports": [
+      "Security Specialist",
+      "Engineer/Developer",
+      "Protocol",
+      "Smart Contracts"
     ],
     "/vulnerability-disclosure/overview": [
       "Engineer/Developer",
       "Security Specialist",
-      "DevOps"
+      "DevOps",
+      "Protocol",
+      "Whitehat"
+    ],
+    "/vulnerability-disclosure/publishing-advisories": [
+      "Security Specialist",
+      "Engineer/Developer",
+      "Protocol",
+      "Community & Marketing"
     ],
     "/vulnerability-disclosure/security-contact": [
       "Engineer/Developer",
-      "Security Specialist"
+      "Security Specialist",
+      "Whitehat",
+      "Smart Contracts"
     ],
     "/wallet-security/account-abstraction": [
       "Engineer/Developer",
