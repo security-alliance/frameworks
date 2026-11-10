@@ -615,10 +615,13 @@ const config = {
           collapsed: true,
           items: [
             { text: 'Overview', link: '/vulnerability-disclosure/overview' },
+            { text: 'Decision Trees', link: '/vulnerability-disclosure/decision-trees' },
+            { text: 'Reporting a Vulnerability', link: '/vulnerability-disclosure/reporting-a-vulnerability' },
             { text: 'Disclosure Policy', link: '/vulnerability-disclosure/disclosure-policy' },
             { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact' },
             { text: 'Handling Vulnerability Reports', link: '/vulnerability-disclosure/handling-reports' },
             { text: 'Publishing Security Advisories', link: '/vulnerability-disclosure/publishing-advisories' },
+            { text: 'Exceptional Cases', link: '/vulnerability-disclosure/exceptional-cases' },
             { text: 'Bug Bounties', link: '/vulnerability-disclosure/bug-bounties' },
           ]
         },

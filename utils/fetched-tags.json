@@ -1448,11 +1448,24 @@
       "Whitehat",
       "Smart Contracts"
     ],
+    "/vulnerability-disclosure/decision-trees": [
+      "Whitehat",
+      "Security Specialist",
+      "Engineer/Developer",
+      "Protocol"
+    ],
     "/vulnerability-disclosure/disclosure-policy": [
       "Security Specialist",
       "Engineer/Developer",
       "Protocol",
       "Whitehat",
+      "Legal & Compliance"
+    ],
+    "/vulnerability-disclosure/exceptional-cases": [
+      "Security Specialist",
+      "Whitehat",
+      "Protocol",
+      "Engineer/Developer",
       "Legal & Compliance"
     ],
     "/vulnerability-disclosure/handling-reports": [
@@ -1473,6 +1486,13 @@
       "Engineer/Developer",
       "Protocol",
       "Community & Marketing"
+    ],
+    "/vulnerability-disclosure/reporting-a-vulnerability": [
+      "Whitehat",
+      "Security Specialist",
+      "Engineer/Developer",
+      "Smart Contracts",
+      "Legal & Compliance"
     ],
     "/vulnerability-disclosure/security-contact": [
       "Engineer/Developer",
