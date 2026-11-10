@@ -25,6 +25,13 @@ const config = {
     textColor: 'white',
     dismissable: false
   },
+  // SEO redirect: PR #520 renamed the page content to "Auditor Accreditation"
+  // but kept the old route to avoid breaking inbound links. Now that the
+  // route is renamed, redirect the legacy /certs/certified-partners path so
+  // existing links (including the SEAL website) keep resolving (#524).
+  redirects: [
+    { from: '/certs/certified-partners', to: '/certs/auditor-accreditation' },
+  ],
   title: 'Security Frameworks by SEAL',
   titleTemplate: '%s',
   description: 'Comprehensive security framework documentation for Web3 projects and blockchain security best practices.',
@@ -700,7 +707,7 @@ const config = {
       collapsed: false,
       items: [
         { text: 'Overview', link: '/certs/overview' },
-        { text: 'Certified Partners', link: '/certs/certified-partners' },
+        { text: 'Auditor Accreditation', link: '/certs/auditor-accreditation' },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
             { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },
