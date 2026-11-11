@@ -10,6 +10,7 @@ All notable changes to the Security Frameworks are documented here.
 - docs(guides): update Twitter ([#679](https://github.com/security-alliance/frameworks/pull/679)) by @NFTDreww
 - docs(guides): update Discord ([#678](https://github.com/security-alliance/frameworks/pull/678)) by @NFTDreww
 - Add steps to check and clear an EIP-7702 delegation ([#683](https://github.com/security-alliance/frameworks/pull/683)) by @mevdao-org
+- Revamp + extend the vulnerability disclosure framework ([#676](https://github.com/security-alliance/frameworks/pull/676)) by @scode2277
 
 ### Fixes
 
