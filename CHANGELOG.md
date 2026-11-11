@@ -2,6 +2,23 @@
 
 All notable changes to the Security Frameworks are documented here.
 
+## 0.0.3 (2026-11-11)
+
+### New content
+
+- docs(devsecops): package manager config as an execution path ([#680](https://github.com/security-alliance/frameworks/pull/680)) by @cryptostrapon
+- docs(guides): update Twitter ([#679](https://github.com/security-alliance/frameworks/pull/679)) by @NFTDreww
+- docs(guides): update Discord ([#678](https://github.com/security-alliance/frameworks/pull/678)) by @NFTDreww
+- Add steps to check and clear an EIP-7702 delegation ([#683](https://github.com/security-alliance/frameworks/pull/683)) by @mevdao-org
+
+### Fixes
+
+- fix(certs): move Auditor Accreditation page to /certs/auditor-accreditation ([#685](https://github.com/security-alliance/frameworks/pull/685)) by @scode2277
+
+### Other
+
+- Chore: monthly .org update ([#660](https://github.com/security-alliance/frameworks/pull/660)) by @scode2277
+
 ## 0.0.2 (2026-10-13)
 
 ### New content

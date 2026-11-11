@@ -1,5 +1,5 @@
 {
   "_comment": "Bookkeeping for the release workflows. 'changelog_base' is the commit on develop that the last release covered up to; the next changelog is generated from that commit to develop's tip. Updated automatically by .github/workflows/release-prepare.yml. Edit by hand only to correct a bad range.",
-  "version": "v0.0.2",
-  "changelog_base": "0f4634edeea0229cc8e475c4445328ee546af25c"
+  "version": "v0.0.3",
+  "changelog_base": "3e1c3621d369e63b9db76f15d282f6af2b2969c5"
 }
