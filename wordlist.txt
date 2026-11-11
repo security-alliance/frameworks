@@ -89,6 +89,7 @@ DevSecOps
 DFIR
 DFIRS
 discoverable
+distros
 DIY
 DLP
 DMARC
@@ -136,6 +137,7 @@ Galxe
 Gapped
 Gatekeeper
 Ghostery
+GHSA
 GitHub
 GitLab
 Gnosis
