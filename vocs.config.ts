@@ -613,11 +613,16 @@ const config = {
         {
           text: 'Vulnerability Disclosure',
           collapsed: true,
-          dev: true,
           items: [
-            { text: 'Overview', link: '/vulnerability-disclosure/overview', dev: true },
-            { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact', dev: true },
-            { text: 'Bug Bounties', link: '/vulnerability-disclosure/bug-bounties', dev: true },
+            { text: 'Overview', link: '/vulnerability-disclosure/overview' },
+            { text: 'Decision Trees', link: '/vulnerability-disclosure/decision-trees' },
+            { text: 'Reporting a Vulnerability', link: '/vulnerability-disclosure/reporting-a-vulnerability' },
+            { text: 'Disclosure Policy', link: '/vulnerability-disclosure/disclosure-policy' },
+            { text: 'Security Contact', link: '/vulnerability-disclosure/security-contact' },
+            { text: 'Handling Vulnerability Reports', link: '/vulnerability-disclosure/handling-reports' },
+            { text: 'Publishing Security Advisories', link: '/vulnerability-disclosure/publishing-advisories' },
+            { text: 'Exceptional Cases', link: '/vulnerability-disclosure/exceptional-cases' },
+            { text: 'Bug Bounties', link: '/vulnerability-disclosure/bug-bounties' },
           ]
         },
         {
@@ -700,7 +705,7 @@ const config = {
       collapsed: false,
       items: [
         { text: 'Overview', link: '/certs/overview' },
-        { text: 'Certified Partners', link: '/certs/certified-partners' },
+        { text: 'Auditor Accreditation', link: '/certs/auditor-accreditation' },
         {
           text: 'SEAL Certification Frameworks', collapsed: true, items: [
             { text: 'DevOps & Infrastructure', link: '/certs/sfc-devops-infrastructure' },

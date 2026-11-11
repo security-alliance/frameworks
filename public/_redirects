@@ -11,3 +11,7 @@
 # Renamed folder: account_management to account-management
 /guides/account_management/* /guides/account-management/:splat 301
 /guides/account_management /guides/account-management 301
+
+# Renamed page: Certified Partners became Auditor Accreditation
+/certs/certified-partners /certs/auditor-accreditation 301
+/certs/certified-partners/ /certs/auditor-accreditation 301

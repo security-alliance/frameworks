@@ -7,10 +7,10 @@
   "devDependencies": {
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "cspell": "10.3.5",
+    "cspell": "10.4.0",
     "tailwindcss": "4.3.3",
-    "vocs": "2.10.0",
-    "waku": "1.0.0-rc.1"
+    "vocs": "2.11.1",
+    "waku": "1.0.0-rc.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -51,7 +51,8 @@
       "js-yaml": ">=4.3.1",
       "gray-matter>js-yaml": ">=3.15.1 <4",
       "@babel/core": ">=7.29.7 <8",
-      "brace-expansion": ">=2.1.4",
+      "minimatch@3>brace-expansion": "1.1.21",
+      "minimatch@5>brace-expansion": "2.1.7",
       "body-parser": ">=2.3.0",
       "@hono/node-server": ">=2.1.0",
       "fast-uri": ">=3.1.5",
@@ -61,13 +62,16 @@
       "ip-address": ">=10.4.0",
       "@vitejs/plugin-rsc": ">=0.5.35",
       "@vitejs/plugin-react": ">=6.1.1",
-      "es-module-lexer": ">=2.3.0 <3"
+      "es-module-lexer": ">=2.3.0 <3",
+      "toml": ">=5.0.1",
+      "follow-redirects": ">=1.16.2",
+      "katex": ">=0.18.2 <0.19"
     }
   },
   "packageManager": "pnpm@10.15.0",
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1142.0",
-    "@aws-sdk/lib-storage": "3.1142.0",
+    "@aws-sdk/client-s3": "3.1156.0",
+    "@aws-sdk/lib-storage": "3.1156.0",
     "axios": "1.20.0",
     "exceljs": "^4.4.0",
     "gray-matter": "^4.0.3",
@@ -75,10 +79,10 @@
     "mermaid": "^11.16.1",
     "minisearch": "^7.2.0",
     "playwright": "^1.60.0",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "react-router-dom": "^7.15.1",
-    "react-server-dom-webpack": "19.3.0",
+    "react-server-dom-webpack": "19.3.1",
     "sharp": "^0.35.5",
     "uuid": "^14.0.0"
   }

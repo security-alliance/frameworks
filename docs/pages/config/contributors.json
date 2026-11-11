@@ -925,5 +925,18 @@
     "role": "author of article",
     "description": "Co-author of the OpenZeppelin Security Council Best Practices guide",
     "badges": []
+  },
+  "mevdao-org": {
+    "slug": "mevdao-org",
+    "name": "MEV DAO Engineering",
+    "avatar": "https://avatars.githubusercontent.com/mevdao-org",
+    "github": "https://github.com/mevdao-org",
+    "twitter": null,
+    "website": "https://mevdao.org",
+    "company": "MEV DAO",
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": []
   }
 }
