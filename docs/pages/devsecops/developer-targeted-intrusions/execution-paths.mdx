@@ -67,10 +67,10 @@ application files:
 - **Dependency substitution:** typosquatting and dependency confusion rely on a familiar-looking name resolving to an
   attacker-controlled package. Verify the namespace, registry, version, and integrity value.
 - **Package manager configuration:** a project-level `.npmrc`, `.yarnrc`, or `.yarnrc.yml` is read during install. It
-  can point the whole project or a single scope to another registry and can ship its own auth token, so an install
-  fetches packages that the public registry does not show and that a review of `package.json` alone will not reveal.
-  Read these files before the first install, and remove them from the inspection copy if the task does not need a
-  private registry.
+  can point the whole project or a single scope to another registry and can ship its own auth token, so the names in
+  `package.json` resolve to packages that the public registry does not show. A `.yarnrc.yml` can also set `yarnPath`,
+  which makes Yarn execute a local file on any `yarn` command, before any install script runs. Read these files before
+  the first install, and remove them from the inspection copy if the task does not need a private registry.
 
 Run an install with scripts disabled only as an inspection step where the package manager supports it. This does not
 make the dependency safe: later builds, imports, or application startup may execute code that an install-script flag
