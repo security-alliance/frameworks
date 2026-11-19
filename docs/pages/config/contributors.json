@@ -938,5 +938,18 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": []
+  },
+  "alinushu86": {
+    "slug": "alinushu86",
+    "name": "Alin",
+    "avatar": "https://avatars.githubusercontent.com/Alinushu86",
+    "github": "https://github.com/Alinushu86",
+    "twitter": null,
+    "website": null,
+    "company": null,
+    "job_title": "Independent security researcher",
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": []
   }
 }

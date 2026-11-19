@@ -6,7 +6,7 @@ tags:
   - Security Specialist
 contributors:
   - role: wrote
-    users: [pinalikefruit, mevdao-org]
+    users: [pinalikefruit, mevdao-org, alinushu86]
   - role: reviewed
     users: [Coinspect]
   - role: fact-checked
@@ -95,6 +95,34 @@ nonce + 1. Run `cast code` again afterwards and confirm it returns `0x`.
 
 > ⚠️ Clearing the delegation does not fix a leaked private key. Whoever holds the key can sign a new delegation at any
 > time, so move remaining assets to a fresh wallet.
+
+## Guidance for hot-wallet and signing-service operators
+
+Exchanges, custodians, and other teams that sign from hot wallets through an automated signing service face a different
+threat: an attacker who reaches the service that requests signatures does not need to phish anyone. In October 2026, an
+attacker with access to Binance's wallet-signing service obtained 50 authorizations for consecutive nonces of one hot
+wallet; one matched the live nonce, and the delegated wallet was swept for about $2.5B
+([Blockaid analysis](https://blockaid.io/blog/binance-55b-hack-using-advanced-ai-models-blockaid-detects-the-biggest-theft-in-crypto-history)).
+
+- **Refuse authorizations by default.** The signing service must refuse to sign an EIP-7702 authorization unless the
+  delegate address is on an allowlist approved by more than one person. Most hot wallets never need a delegation.
+- **Treat authorizations as privileged operations.** An allowed authorization should require the same approvals as a
+  cold-wallet transfer, not those of a routine withdrawal.
+- **Refuse nonce sprays and `chain ID 0`.** The signer should refuse an authorization for a nonce above the account's
+  confirmed nonce, any request covering several nonces, and any authorization with `chain ID 0`. A run of consecutive
+  nonces is how an attacker beats the moving nonce of a busy hot wallet.
+- **Monitor every type `0x04` transaction.** Any account can submit the transaction that carries an authorization, so
+  watching only transactions sent by the hot wallet misses it. Monitoring must read the authorization list of every type
+  `0x04` transaction and check each hot wallet's code every block for the `0xef0100` designator.
+- **Wire detection to the signer.** A delegation alert should stop the signing service automatically. An alert that
+  waits for human review in a dashboard leaves the delegation usable: in the Binance case, outflows continued for about
+  115 minutes until operations were paused
+  ([Cloud Security Alliance analysis](https://cloudsecurityalliance.org/blog/2026/11/12/the-6-3-billion-binance-signing-compromise-and-agentic-ai-threat-analysis)).
+- **Prepare the revocation before it is needed.** Teams should script and rehearse the clearing transaction from
+  [Clearing a delegation](#clearing-a-delegation), with a funded broadcaster account ready on every chain the wallet uses.
+
+> ⚠️ Pausing withdrawals or revoking internal access does not remove a delegation that is already on-chain. Only a new
+> authorization replaces it, so the clearing transaction has to be sent even after the signing service is shut down.
 
 ## Further reading
 
