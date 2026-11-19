@@ -938,5 +938,18 @@
     "role": "contributor",
     "description": "Frameworks Contributor",
     "badges": []
+  },
+  "sofiabobadilla": {
+    "slug": "sofiabobadilla",
+    "name": "Sofia Bobadilla",
+    "avatar": "https://avatars.githubusercontent.com/sofiabobadilla",
+    "github": "https://github.com/sofiabobadilla",
+    "twitter": "https://twitter.com/BobadillaPSofia",
+    "website": "https://sofiabobadilla.github.io/",
+    "company": "KTH Royal Institute of Technology",
+    "job_title": null,
+    "role": "contributor",
+    "description": "Frameworks Contributor",
+    "badges": []
   }
 }
