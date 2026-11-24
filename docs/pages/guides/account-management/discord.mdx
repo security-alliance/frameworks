@@ -56,6 +56,25 @@ on their own accounts.
   or **Log Out All Known Devices**
 - [ ] User Settings > Connected Apps > Connections: Review and remove any unnecessary connections
 - [ ] User Settings > Data and Privacy: Disable **Show my message content from Discoverable channels on web pages**
+- [ ] User Settings > Data and Privacy > How Discord Uses My Data: Disable **Use data to improve Discord** and
+  **Use data to personalize my Discord experience** (and, if shown, the toggle allowing your voice to be recorded in
+  **Clips**). Turning these off stops new collection, but Discord may keep using data gathered while they were on
+- [ ] User Settings > Data and Privacy > Sponsored Content: Disable **Use data based on my Discord activity to
+  personalize sponsored content** and **Use data from third party sources about me to personalize sponsored content**
+  (the third-party toggle covers data from advertisers and data brokers linked to your account)
+- [ ] Mobile app > Settings > Data and Privacy (**Privacy & Safety** on older builds): Disable **Sync Contacts**
+  and turn off both the phone number and email options under **Discovery Permissions** ("Allow contacts to find me").
+  Otherwise anyone holding a leaked phone number or email can match it to your Discord account, and syncing uploads your
+  address book (including teammates' numbers) to Discord. Also deny Discord contacts access in the OS settings
+- [ ] User Settings > Content & Social > Friend Requests: Disable **Everyone**; allow only **Friends of Friends**
+  and/or **Server Members** if needed. Unsolicited friend requests are a common first step in phishing and fake support
+  scams
+
+> **Why the data and discovery settings matter:** Every account signal Discord collects or exposes, such as linked
+> contact info, activity, servers joined, and games played, is something an attacker can use to profile and target team
+> members. Contact discovery is the most direct risk. It turns a breached email or phone number into a confirmed Discord
+> identity, which is the starting point for targeted social engineering and SIM-swap attempts. Setting names change
+> often; if a label differs, look for the closest equivalent under **Data and Privacy** or **Content & Social**.
 </Checklist>
 
 ## For Team Members
