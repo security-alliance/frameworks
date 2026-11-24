@@ -10,7 +10,7 @@
     "cspell": "10.4.1",
     "tailwindcss": "4.3.5",
     "vocs": "2.12.0",
-    "waku": "1.0.0-rc.4"
+    "waku": "1.0.0-rc.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
